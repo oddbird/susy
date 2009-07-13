@@ -1,13 +1,13 @@
 Susy - Compass Plugin
 ================================
 
-Let me introduce you to Susy
+Let me introduce you to Susy.
 
 Susy is a semantic CSS framework creator built native to [Compass](http://compass-style.org/).
 
 Susy is an expert at designing elastic (or fixed, if you swing that way) grids that will never activate that bloody side-scroll bar. Susy sets your width on the outer element (@grid-container@), adds a @max-width@ of @99%@ and builds the rest of your grid in percentages of the whole.
 
-Columns can also be nested by declaring the context along with the target width. Etc, Etc.
+Columns can also be nested by declaring the context along with the target width. Etc.
 
 Install
 =======
@@ -21,13 +21,13 @@ Create a Susy-based Compass Project
 
     compass -r susy -f susy <project name>
 
-Then edit your `base.sass`, `screen.sass` and `print.sass` files accordingly. A reset is added automatically.
+Then edit your `_base.sass`, `screen.sass` and `print.sass` files accordingly. A reset is added automatically.
 
 Customizing your Grid System
 ============================
 
-To create a grid system, set the !grid_unit, !total_cols, !col_width, and
-!gutter_width variables in your `base.sass` and then use the `+grid-container` mixin to declare
+To create a grid system, set the `!grid_unit`, `!total_cols`, `!col_width`, and
+`!gutter_width` variables in your `base.sass` and then use the `+grid-container` mixin to declare
 your container element.
 
 Example:

@@ -15,14 +15,14 @@ Create a Susy-based Compass Project
 
     compass -r susy -f susy <project name>
 
-Then edit your `screen.sass` and `print.sass` files accordingly. A reset is added automatically.
+Then edit your `base.sass`, `screen.sass` and `print.sass` files accordingly. A reset is added automatically.
 
 Customizing your Grid System
 ============================
 
 To create a grid system, set the !grid_unit, !total_cols, !col_width, and
-!gutter_width variables and then use the `+grid-container` mixin to declare
-!your container element.
+!gutter_width variables in your `base.sass` and then use the `+grid-container` mixin to declare
+your container element.
 
 Example:
 
@@ -41,15 +41,18 @@ Making Semantic Grids
 
 * Use the `+grid-container` mixin to declare your container element.
 
-* Use the `+grid-col` mixin to declare a grid element.  The first argument
+* Use the `+grid-col` mixin to declare a grid element. The first argument
 is the number of cols, the second is the size (in grid columns) of the
-containing element (defaults to the containers total_cols).  The third
-argument should be true if this is the final column (defaults to false), and
-the fourth argument should be true if this element should be floated right
-instead of left.
+containing element (defaults to the containers total_cols).
+
+* Use the `+last` mixin to declare the last comumn in a row.
+
+* Use the `+right` mixin to float a grid item to the right instead of left.
 
 * Use the `+grid-prefix` and `+grid-suffix` mixins to add grid columns
 before or after a grid element.
+
+
 
 Example:
 
@@ -58,5 +61,13 @@ Example:
       #left-nav
         +grid-col(3)
       #main-content
-        +grid-prefix(1)
-        +grid-col(4, 10, true)
+        +grid-prefix(2)
+        +grid-col(4, 10)
+        +last
+        +right
+
+Extra Utility Mixins
+=====================
+
+Extra utilities are included in Susy's `utils.sass` file, with additional list options, 
+experimental (CSS3/proprietary) CSS, and more.

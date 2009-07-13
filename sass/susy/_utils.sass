@@ -1,0 +1,111 @@
+@import compass/utilities.sass
+
+// removes all background images and colors from the element and offspring, and adds a grid image
+=show-grid(!src)
+  :background
+    :image= "url("!src")"
+    :repeat repeat 
+    :position top left
+  *
+    :background transparent
+
+// an inline-block list that works in IE
+=inline-block-list(!hpad = 0)
+  +horizontal-list-container
+  li
+    +no-bullet
+    +inline-block
+    :padding 
+      :left= !hpad
+      :right= !hpad
+    &.first, &:first-child
+      :padding-left 0px
+    &.last, &:last-child
+      :padding-right 0px
+
+// hide an element from the viewport, but keep it for accessability
+=hide
+  :position absolute
+  :top -9999px
+
+// a skip-to-content accessibility link that will appear on focus
+=skip-link( !t = 0, !r = fales, !b = false, !l = false)
+  +hide
+  :display block
+  &:focus
+    @if !t
+      :top= !t
+    @if !r
+      :right= !r
+    @if !b
+      :bottom= !b
+    @if !l
+      :left= !l
+    :z-index 999
+
+// Because some serif fonts add line-height when switching to italics inline:
+=inline-italic
+  :font-style italic
+  :line-height .5
+
+
+// EXPERIMENTAL
+
+=trans(!o = 100)
+  :filter= "alpha(opacity=" + !o + ")"
+  :-moz-opacity= !o / 100
+  :-khtml-opacity= !o / 100
+  :opacity= !o / 100
+
+=rounded(!trbl = false, !tl = false, !tr = false, !br = false, !bl = false)
+  @if !trbl
+    /* Mozilla (FireFox)
+    -moz-border-radius= !trbl
+    /* Webkit (Safari, Chrome)
+    -webkit-border-radius= !trbl
+    /* CSS3
+    border-radius= !trbl
+  @if !tl
+    /* Mozilla (FireFox)
+    -moz-border-radius-topleft= !tl
+    /* Webkit (Safari, Chrome)
+    -webkit-border-top-left-radius= !tl
+    /* CSS3
+    border-top-left-radius= !tl
+  @if !tr
+    /* Mozilla (FireFox)
+    -moz-border-radius-topright= !tr
+    /* Webkit (Safari, Chrome)
+    -webkit-border-top-right-radius= !tr
+    /* CSS3
+    border-top-right-radius= !tr
+  @if !br
+    /* Mozilla (FireFox)
+    -moz-border-radius-bottomright= !br
+    /* Webkit (Safari, Chrome)
+    -webkit-border-bottom-right-radius= !br
+    /* CSS3
+    border-bottom-right-radius= !br
+  @if !bl
+    /* Mozilla (FireFox)
+    -moz-border-radius-bottomleft= !bl
+    /* Webkit (Safari, Chrome)
+    -webkit-border-bottom-left-radius= !bl
+    /* CSS3
+    border-bottom-left-radius= !bl
+
+=box_model(!bm)
+  /* Mozilla (FireFox)
+  -moz-box-sizing= !bm
+  /* Webkit (Safari, Chrome)
+  -webkit-box-sizing= !bm
+  /* IE (8)
+  -ms-box-sizing= !bm
+  /* CSS3
+  box-sizing= !bm
+
+=box_shadow(!ho, !vo, !b, !c )
+  /* Webkit (Safari, Chrome)
+  -webkit-box-shadow= !ho !vo !b !c
+  /* CSS3
+  box-shadow= !ho !vo !b !c

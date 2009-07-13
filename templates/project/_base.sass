@@ -1,0 +1,102 @@
+// 
+//  Susy: My own damn Compass/SASS framework
+//  by Eric Meyer
+//
+
+
+/* RESET STYLES
+@import compass/reset.sass
+
+// MIXINS
+@import frame/utils.sass
+@import frame/grid.sass
+
+// GRID
+// !grid_unit = "em"
+// !total_cols = 10
+// !col_width = 7
+// !gutter_width = 1
+
+
+// COLORS
+!dark = #000
+!light = #fff
+
+
+// FONT PRESETS
+
+// You set the font and line heights in pixels
+!base_font_size_px ||= 12
+!base_line_height_px ||= 18
+
+// SUSY will do the math to make that relative
+!base_line_height = (!base_line_height_px / !base_font_size_px) + "em"
+!base_font_size = (!base_font_size_px / 16) + "em"
+
+// Give yourself some font stacks to work with
+=sans-family
+  :font-family 'Futura Medium', 'Century Gothic', AppleGothic, sans-serif
+
+=serif-family
+  :font-family 'Adobe Caslon Pro', 'Big Caslon', Garamond, 'Hoefler Text', 'Times New Roman', Times, serif 
+
+
+// Remember to add default styles to everything!
+/* DEFAULTS
+\:focus
+
+/* links
+a
+
+/* headers
+h1, h2, h3, h4, h5, h6
+
+/* forms
+form
+
+fieldset
+
+label
+
+textarea
+
+input
+
+input[type=submit]
+
+/* block tags
+p
+
+=list_default(!ol = false)
+  @if !ol
+    :list-style decimal-leading-zero
+    :margin 0 1.5em 1.5em 2em
+  @else
+    :list-style disc
+    :margin 0 1.5em 1.5em 1.5em 
+
+ol
+  +list_default("ol")
+
+ul
+  +list_default
+
+blockquote
+
+/* inline tags
+cite
+
+em
+  +inline-italic
+
+strong
+  :font-weight bold
+
+ins
+  :text-decoration underline
+
+del
+  :text-decoration line-through
+
+/* replaced tags
+img

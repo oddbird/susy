@@ -1,0 +1,32 @@
+!grid_unit ||= "em"
+!total_cols ||= 16
+!col_width ||= 4
+!gutter_width ||= 1
+
+=grid-container(!grid = !total_cols )
+  :margin-left auto
+  :margin-right auto
+  :overflow hidden
+  :width= (!grid * !col_width) + ((!grid - 1) * !gutter_width) + !grid_unit
+  :max-width 99%
+
+=get_col_width(!n, !context = !total_cols)
+  :width= ((!n * !col_width) + ((!n - 1) * !gutter_width)) / ((!context * !col_width) + ((!context - 1) * !gutter_width)) * 100 + "%"
+
+=grid-col(!n, !last = false, !context = !total_cols, !switch = false)
+  +get_col_width(!n, !context)
+  :display inline
+  @if !switch
+    :float right
+  @else
+    :float left
+  @if !last
+    :margin-right 0
+  @else
+    :margin-right= !gutter_width / ((!context * !col_width) + ((!context - 1) * !gutter_width)) * 100 + "%"
+
+=grid-prefix(!n, !context = !total_cols)
+  :padding-left= ((!n * !col_width) + ((!n) * !gutter_width)) / ((!context * !col_width) + ((!context - 1) * !gutter_width)) * 100 + "%"
+
+=grid-suffix(!n, !context = !total_cols)
+  :padding-right= ((!n * !col_width) + ((!n-1) * !gutter_width)) / ((!context * !col_width) + ((!context - 1) * !gutter_width)) * 100 + "%"

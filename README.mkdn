@@ -1,7 +1,13 @@
 Susy - Compass Plugin
 ================================
 
-This plugin is a native grid system framework for [Compass](http://compass-style.org/).
+Let me introduce you to Susy
+
+Susy is a semantic CSS framework creator built native to [Compass](http://compass-style.org/).
+
+Susy is an expert at designing elastic (or fixed, if you swing that way) grids that will never activate that bloody side-scroll bar. Susy sets your width on the outer element (@grid-container@), adds a @max-width@ of @99%@ and builds the rest of your grid in percentages of the whole.
+
+Columns can also be nested by declaring the context along with the target width. Etc, Etc.
 
 Install
 =======

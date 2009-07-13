@@ -7,14 +7,14 @@
   +clearfix
   :margin-left auto
   :margin-right auto
-  :width= (!grid * !col_width) + ((!grid - 1) * !gutter_width) + !grid_unit
+  :width= (!total_cols * !col_width) + ((!total_cols - 1) * !gutter_width) + !grid_unit
   :max-width 99%
 
-=get_col_width(!n, !context = !total_cols)
+=get-col-width(!n, !context = !total_cols)
   :width= ((!n * !col_width) + ((!n - 1) * !gutter_width)) / ((!context * !col_width) + ((!context - 1) * !gutter_width)) * 100 + "%"
 
 =grid-col(!n, !context = !total_cols)
-  +get_col_width(!n, !context)
+  +get-col-width(!n, !context)
   :display inline
   :float left
   :margin-right= !gutter_width / ((!context * !col_width) + ((!context - 1) * !gutter_width)) * 100 + "%"
@@ -27,7 +27,7 @@
   :float right
 
 =grid-prefix(!n, !context = !total_cols)
-  :padding-left= ((!n * !col_width) + ((!n) * !gutter_width)) / ((!context * !col_width) + ((!context - 1) * !gutter_width)) * 100 + "%"
+  :padding-left= ((!n * !col_width) + (!n * !gutter_width)) / ((!context * !col_width) + ((!context - 1) * !gutter_width)) * 100 + "%"
 
 =grid-suffix(!n, !context = !total_cols)
-  :padding-right= ((!n * !col_width) + ((!n - 1) * !gutter_width)) / ((!context * !col_width) + ((!context - 1) * !gutter_width)) * 100 + "%"
+  :padding-right= ((!n * !col_width) + (!n * !gutter_width)) / ((!context * !col_width) + ((!context - 1) * !gutter_width)) * 100 + "%"

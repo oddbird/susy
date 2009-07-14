@@ -7,15 +7,18 @@
 /* RESET STYLES
 @import compass/reset.sass
 
-// MIXINS
-@import susy/utils.sass
-@import susy/grid.sass
-
 // GRID
+// override these values as needed for your grid layout
+
 // !grid_unit = "em"
 // !total_cols = 10
 // !col_width = 7
 // !gutter_width = 1
+
+// MIXINS
+//  (don't move these @imports above the GRID overrides)
+@import susy/utils.sass
+@import susy/grid.sass
 
 
 // COLORS
@@ -29,7 +32,7 @@
 !base_font_size_px ||= 12
 !base_line_height_px ||= 18
 
-// SUSY will do the math to make that relative
+// SUSY can do the math to make that relative
 !base_line_height = (!base_line_height_px / !base_font_size_px) + "em"
 !base_font_size = (!base_font_size_px / 16) + "em"
 

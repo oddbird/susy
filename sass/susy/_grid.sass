@@ -2,22 +2,20 @@
 !total_cols ||= 16
 !col_width ||= 4
 !gutter_width ||= 1
+!container_width = container(!total_cols, !col_width, !gutter_width)
 
 =grid-container
   +clearfix
   :margin-left auto
   :margin-right auto
-  :width= (!total_cols * !col_width) + ((!total_cols - 1) * !gutter_width) + !grid_unit
+  :width= !container_width + !grid_unit
   :max-width 99%
 
-=get-col-width(!n, !context = !total_cols)
-  :width= ((!n * !col_width) + ((!n - 1) * !gutter_width)) / ((!context * !col_width) + ((!context - 1) * !gutter_width)) * 100 + "%"
-
 =grid-col(!n, !context = !total_cols)
-  +get-col-width(!n, !context)
+  :width= columns(!n, !context) + "%"
   :display inline
   :float left
-  :margin-right= !gutter_width / ((!context * !col_width) + ((!context - 1) * !gutter_width)) * 100 + "%"
+  :margin-right= gutter(!context) + "%"
 
 =last
   :margin-right= 0
@@ -27,7 +25,7 @@
   :float right
 
 =grid-prefix(!n, !context = !total_cols)
-  :padding-left= ((!n * !col_width) + (!n * !gutter_width)) / ((!context * !col_width) + ((!context - 1) * !gutter_width)) * 100 + "%"
+  :padding-left= columns(!n, !context) + gutter(!context) + "%"
 
 =grid-suffix(!n, !context = !total_cols)
-  :padding-right= ((!n * !col_width) + (!n * !gutter_width)) / ((!context * !col_width) + ((!context - 1) * !gutter_width)) * 100 + "%"
+  :padding-right= columns(!n, !context) + gutter(!context) + "%"

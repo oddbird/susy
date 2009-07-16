@@ -53,8 +53,6 @@ containing element (defaults to the containers total_cols).
 
 * Use the `+last` mixin to declare the last comumn in a row.
 
-* Use the `+right` mixin to float a grid item to the right instead of left.
-
 * Use the `+grid-prefix` and `+grid-suffix` mixins to add grid columns
 before or after a grid element.
 
@@ -68,9 +66,10 @@ Example:
         +grid-col(3)
       #main-content
         +grid-prefix(2)
-        +grid-col(4, 10)
+        +grid-col(4)
         +last
-        +right
+        #article
+          +grid-col(3,4)
 
 Extra Utility Mixins
 =====================

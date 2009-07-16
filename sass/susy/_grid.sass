@@ -1,31 +1,90 @@
+//** Grid Settings **//
+
+//**
+  Your basic units for the grid
 !grid_unit ||= "em"
 !total_cols ||= 16
 !col_width ||= 4
 !gutter_width ||= 1
-!container_width = container(!total_cols, !col_width, !gutter_width)
+!page_padd ||= !gutter_width
+!container_width = container(!total_cols, !col_width, !gutter_width, !page_padd)
 
-=grid-container
+
+//** 
+  You set the font and line heights in pixels
+!base_font_size_px ||= 12
+!base_line_height_px ||= 18
+
+
+//** 
+  Susy can do the math to make that relative
+!base_font_size = (!base_font_size_px / 16) + "em"
+!base_line_height = (!base_line_height_px / !base_font_size_px) + "em"
+
+
+//** 
+  body font size set to browser default (usually 16px)
+=susy(!align = "center")
+  //  text-align set to center by default for auto-centering layouts 
+  //  (override !align for left/right-aligned designs)
+  :text-align= !align
+  //  set your base font sizes
+  :font-size= !base_font_size
+  :line-height= !base_line_height
+
+//** 
+  set on the outer grid containing element.
+=container(!align = "left")
+  //  clear all floated columns
   +clearfix
-  :margin-left auto
-  :margin-right auto
+  //  align the text back to the left (override for other alignments)
+  :text-align= !align
+  //  use auto horzontal margins to center your page in the body
+  :margin
+    :left auto
+    :right auto
+  //  set the page width based on your column settings and base font sizes (for em based grids)
   :width= !container_width + !grid_unit
-  :max-width 99%
+  //  never exceed 100% of the browser window (no side-scrolling)
+  :max-width 100%
 
-=grid-col(!n, !context = !total_cols)
+
+//** 
+  set on any column element, even nested ones.
+  the first agument [required] is the number of columns to span
+  the second argument is the context (the number of columns spanned by it's parent)
+  this is required in any nested context
+  by default a grid-col is floated left with a right gutter, override that with +float("right"), +first or +last
+=column(!n, !context = !total_cols)
+  //  the width of the column is set as a percentage of the context
   :width= columns(!n, !context) + "%"
-  :display inline
-  :float left
+  //  the column is floated left
+  +float("left")
+  //  the right gutter is added as a percentage of the context
   :margin-right= gutter(!context) + "%"
 
-=last
-  :margin-right= 0
-
-=right
-  :display inline
-  :float right
-
-=grid-prefix(!n, !context = !total_cols)
+//** 
+  set on any column to add empty colums before or after
+=prefix(!n, !context = !total_cols)
   :padding-left= columns(!n, !context) + gutter(!context) + "%"
 
-=grid-suffix(!n, !context = !total_cols)
+=suffix(!n, !context = !total_cols)
   :padding-right= columns(!n, !context) + gutter(!context) + "%"
+
+//**  
+  set on the first column of a row to take page-padding into account
+  - must override `!nested` for nested columns
+=first(!context = !total_cols)
+  @if !context == !total_cols
+    :margin-left= padd(!context) + "%"
+  @else
+    :margin-left= 0
+
+//**  
+  set on the first column of a row to take page-padding into account
+  - must override `!nested` for nested columns
+=last(!context = !total_cols)
+  @if !context == !total_cols
+    :margin-right= padd(!context) + "%"
+  @else
+    :margin-right 0

@@ -1,6 +1,8 @@
 @import compass/utilities.sass
 
-// removes all background images and colors from the element and offspring, and adds a grid image
+//** 
+  removes all background images and colors from the element and offspring
+  then adds a grid image of your choosing
 =show-grid(!src)
   :background
     :image= "url("!src")"
@@ -9,26 +11,28 @@
   *
     :background transparent
 
-// an inline-block list that works in IE
+//** 
+  an inline-block list that works in IE
+  for those awkward moments when a floated horizontal list just wont cut it
 =inline-block-list(!hpad = 0)
   +horizontal-list-container
   li
     +no-bullet
+    :white-space no-wrap
     +inline-block
     :padding 
       :left= !hpad
       :right= !hpad
-    &.first, &:first-child
-      :padding-left 0px
-    &.last, &:last-child
-      :padding-right 0px
 
-// hide an element from the viewport, but keep it for accessability
+//** 
+  hide an element from the viewport, but keep it around for accessability
 =hide
   :position absolute
   :top -9999em
 
-// a skip-to-content accessibility link that will appear on focus
+//** 
+  a skip-to-content accessibility link that will appear on focus
+  set the location arguments if you care where it appears
 =skip-link(!t = 0, !r = false, !b = false, !l = false)
   +hide
   :display block
@@ -43,7 +47,8 @@
       :left= !l
     :z-index 999
 
-// Because some serif fonts add line-height when switching to italics inline:
+//** 
+  Because some serif fonts add line-height when switching to italics inline:
 =inline-italic
   :font-style italic
   :line-height .5
@@ -51,50 +56,36 @@
 
 // EXPERIMENTAL
 
-=trans(!o = 100)
-  :filter= "alpha(opacity=" + !o + ")"
-  :-moz-opacity= !o / 100
-  :-khtml-opacity= !o / 100
-  :opacity= !o / 100
+//**
+  transparency for everyone!
+=trans(!o = 1)
+  :filter= "alpha(opacity=" + (!o*100) + ")"
+  :-moz-opacity= !o
+  :-khtml-opacity= !o
+  :opacity= !o
 
-=rounded(!trbl = false, !tl = false, !tr = false, !br = false, !bl = false)
-  @if !trbl
-    /* Mozilla (FireFox)
-    -moz-border-radius= !trbl
-    /* Webkit (Safari, Chrome)
-    -webkit-border-radius= !trbl
-    /* CSS3
-    border-radius= !trbl
-  @if !tl
-    /* Mozilla (FireFox)
-    -moz-border-radius-topleft= !tl
-    /* Webkit (Safari, Chrome)
-    -webkit-border-top-left-radius= !tl
-    /* CSS3
-    border-top-left-radius= !tl
-  @if !tr
-    /* Mozilla (FireFox)
-    -moz-border-radius-topright= !tr
-    /* Webkit (Safari, Chrome)
-    -webkit-border-top-right-radius= !tr
-    /* CSS3
-    border-top-right-radius= !tr
-  @if !br
-    /* Mozilla (FireFox)
-    -moz-border-radius-bottomright= !br
-    /* Webkit (Safari, Chrome)
-    -webkit-border-bottom-right-radius= !br
-    /* CSS3
-    border-bottom-right-radius= !br
-  @if !bl
-    /* Mozilla (FireFox)
-    -moz-border-radius-bottomleft= !bl
-    /* Webkit (Safari, Chrome)
-    -webkit-border-bottom-left-radius= !bl
-    /* CSS3
-    border-bottom-left-radius= !bl
+//**
+  rounded corners for Mozilla, Webkit and the future
+=rounded(!tl, !tr, !br, !bl)
+  /* Mozilla (FireFox)
+  -moz-border-radius-topleft= !tl
+  -moz-border-radius-topright= !tr
+  -moz-border-radius-bottomright= !br
+  -moz-border-radius-bottomleft= !bl
+  /* Webkit (Safari, Chrome)
+  -webkit-border-top-left-radius= !tl
+  -webkit-border-top-right-radius= !tr
+  -webkit-border-bottom-right-radius= !br
+  -webkit-border-bottom-left-radius= !bl
+  /* CSS3
+  border-top-left-radius= !tl
+  border-top-right-radius= !tr
+  border-bottom-right-radius= !br
+  border-bottom-left-radius= !bl
 
-=box_model(!bm)
+//**
+  change the box model for Mozilla, Webkit, IE8 and the future
+=box-model(!bm)
   /* Mozilla (FireFox)
   -moz-box-sizing= !bm
   /* Webkit (Safari, Chrome)
@@ -104,7 +95,9 @@
   /* CSS3
   box-sizing= !bm
 
-=box_shadow(!ho, !vo, !b, !c )
+//**
+  box shadow for Webkit and the future
+=box-shadow(!ho, !vo, !b, !c )
   /* Webkit (Safari, Chrome)
   -webkit-box-shadow= !ho !vo !b !c
   /* CSS3

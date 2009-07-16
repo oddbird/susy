@@ -1,47 +1,58 @@
-// 
-//  Susy: My own damn Compass/SASS framework
-//  by Eric Meyer
-//
+//**
+//  Susy: Elastic-Fluid grids without all the math
+//  by Eric Meyer and OddBird Collective
+//  oddbird. 
+//**
 
 
 /* RESET STYLES
 @import compass/reset.sass
 
-// GRID
-// override these values as needed for your grid layout
 
+//** 
+  GRID
+  un-comment and override these values as needed for your grid layout (defaults are shown)
 // !grid_unit = "em"
-// !total_cols = 10
-// !col_width = 7
+// !total_cols = 16
+// !col_width = 4
 // !gutter_width = 1
+// !page_padd = !gutter_width (coming soon)
+
+//** 
+  FONT-SIZE
+  un-comment and override these values as needed (defaults are shown)
+  - you set the font and line heights in pixels.
+  - Susy will do the math and give you !base_font_size and !base_line_height set flexibly against the common browser default of 16px
+// !base_font_size_px = 12
+// !base_line_height_px = 18
 
 // MIXINS
-//  (don't move these @imports above the GRID overrides)
+//  (don't move these @imports above the GRID and FONT-SIZE overrides)
 @import susy/utils.sass
 @import susy/grid.sass
 
 
 // COLORS
+// set any colors you will need later
 !dark = #000
 !light = #fff
 
-
-// FONT PRESETS
-
-// You set the font and line heights in pixels
-!base_font_size_px ||= 12
-!base_line_height_px ||= 18
-
-// SUSY can do the math to make that relative
-!base_line_height = (!base_line_height_px / !base_font_size_px) + "em"
-!base_font_size = (!base_font_size_px / 16) + "em"
-
+// FONTS
 // Give yourself some font stacks to work with
 =sans-family
   :font-family 'Futura Medium', 'Century Gothic', AppleGothic, sans-serif
 
 =serif-family
   :font-family 'Adobe Caslon Pro', 'Big Caslon', Garamond, 'Hoefler Text', 'Times New Roman', Times, serif 
+
+// Get yourself a base font mixin (defaults to your sans-serif font stack)
+=base-font(!serif = false)
+  :font-size= !base_font_size
+  :line-height= !base_line_height
+  @if !serif
+    +serif-family 
+  @else
+    +sans-family
 
 
 // Remember to add default styles to everything!
@@ -70,7 +81,7 @@ input[type=submit]
 /* block tags
 p
 
-=list_default(!ol = false)
+=list-default(!ol = false)
   @if !ol
     :list-style decimal-leading-zero
     :margin 0 1.5em 1.5em 2em
@@ -79,10 +90,10 @@ p
     :margin 0 1.5em 1.5em 1.5em 
 
 ol
-  +list_default("ol")
+  +list-default("ol")
 
 ul
-  +list_default
+  +list-default
 
 blockquote
 

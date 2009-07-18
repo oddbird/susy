@@ -51,7 +51,7 @@
 
 //**
   transparency for everyone!
-=trans(!o = 1)
+=opacity(!o = 1)
   :filter= "alpha(opacity=" + (!o*100) + ")"
   :-moz-opacity= !o
   :-khtml-opacity= !o
@@ -59,37 +59,61 @@
 
 //**
   rounded corners for Mozilla, Webkit and the future
-=rounded(!tl, !tr, !br, !bl)
+=border-radius(!r)
+  /* Mozilla (FireFox)
+  -moz-border-radius = !r
+  /* Webkit (Safari, Chrome)
+  -webkit-border-radius = !r
+  /* CSS3
+  border-radius = !r
+
+=border-top-left-radius(!tl)
   /* Mozilla (FireFox)
   -moz-border-radius-topleft= !tl
-  -moz-border-radius-topright= !tr
-  -moz-border-radius-bottomright= !br
-  -moz-border-radius-bottomleft= !bl
   /* Webkit (Safari, Chrome)
   -webkit-border-top-left-radius= !tl
-  -webkit-border-top-right-radius= !tr
-  -webkit-border-bottom-right-radius= !br
-  -webkit-border-bottom-left-radius= !bl
   /* CSS3
   border-top-left-radius= !tl
+
+=border-top-right-radius(!tr)
+  /* Mozilla (FireFox)
+  -moz-border-radius-topright= !tr
+  /* Webkit (Safari, Chrome)
+  -webkit-border-top-right-radius= !tr
+  /* CSS3
   border-top-right-radius= !tr
+
+=border-bottom-right-radius(!br)
+  /* Mozilla (FireFox)
+  -moz-border-radius-bottomright= !br
+  /* Webkit (Safari, Chrome)
+  -webkit-border-bottom-right-radius= !br  
+  /* CSS3
   border-bottom-right-radius= !br
+
+=border-bottom-left-radius(!bl)
+  /* Mozilla (FireFox)
+  -moz-border-radius-bottomleft= !bl
+  /* Webkit (Safari, Chrome)
+  -webkit-border-bottom-left-radius= !bl
+  /* CSS3
   border-bottom-left-radius= !bl
 
 //**
   change the box model for Mozilla, Webkit, IE8 and the future
-=box-model(!bm)
+=box-sizing(!bs)
   /* Mozilla (FireFox)
-  -moz-box-sizing= !bm
+  -moz-box-sizing= !bs
   /* Webkit (Safari, Chrome)
-  -webkit-box-sizing= !bm
+  -webkit-box-sizing= !bs
   /* IE (8)
-  -ms-box-sizing= !bm
+  -ms-box-sizing= !bs
   /* CSS3
-  box-sizing= !bm
+  box-sizing= !bs
 
 //**
   box shadow for Webkit and the future
+  - arguments are horizontal offset, vertical offset, blur and color
 =box-shadow(!ho, !vo, !b, !c )
   /* Webkit (Safari, Chrome)
   -webkit-box-shadow= !ho !vo !b !c

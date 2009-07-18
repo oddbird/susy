@@ -52,7 +52,7 @@ The default values are 16 columns, 4em column widths, and 1em gutters and side
 gutters that match the internal ones.
 
 Of course, designing in `em`'s, you'll want to get your font sizes set to make
-this all meaningful. Do that by assigning a pixel value (without the untis) to
+this all meaningful. Do that by assigning a pixel value (without the units) to
 `!base_font_size_px` and `!base_line_height_px`. Susy will convert those to a
 percentage of the common browser default (16px) and apply them to your
 `grid-container`.
@@ -71,23 +71,31 @@ ought have a default (but don't because of the reset).
 Making Semantic Grids 
 =====================
 
-* Use the `+susy` mixin to get things ready, set your base fonts and center
-  your grid in the browser window. Change the page alignment with an optional
-  `left || center || right` argument.
+* Use the `+susy` mixin to get things ready, set your base fonts and
+  center your grid in the browser window. Change the alignment of your
+  grid in the window with an optional `left | center | right`
+  argument.
 
-* Use the `+container` mixin to declare your container element. Besides
-  building the grid shell, this set's your horizontal margins to auto for
-  centering your design, and returns your text-alignment to "left". Change the
-  internal text alignment with an optional `left || center || right` argument.
+* Use the `+container` mixin to declare your container
+  element. Besides building the grid shell, this sets your horizontal
+  margins to auto (for centered designs) and returns your
+  text-alignment to "left". Change the internal text alignment with an
+  optional `left | center | right` argument.
 
-* Use the `+column` mixin to declare a grid column. The first argument is
-  the number of columns to span, the second is the size (in columns) of the
-  containing element when nesting (defaults to the container's `!total_cols`).
+* Use the `+column` mixin to declare a grid element. The first
+  argument is the number of columns to span, the second (optional)
+  argument is the size (in columns) of the containing element when
+  nesting (defaults to the container's `!total_cols`).
 
-* Use the `+alpha` and `+omega` mixins to declare the first and last columns in a row.
+* Use the `+alpha` and `+omega` mixins to declare the first and last
+  elements in a row, or inside a nested element. In the latter case,
+  each of these mixins takes one argument, which is the size (in
+  columns) of the containing element.
 
-* Use the `+prefix` and `+suffix` mixins to add grid columns before
-  or after a grid element.
+* Use the `+prefix` and `+suffix` mixins with one argument to add that
+  many grid columns as margin before or after a grid element. These
+  mixins also take an optional second argument, the size in columns of
+  the containing element when nested.
 
 Example:
 

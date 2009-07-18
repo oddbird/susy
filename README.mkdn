@@ -1,122 +1,145 @@
-Susy - Compass Plugin
+Susy - Compass Plugin 
 ================================
 
-Susy is a semantic CSS framework creator entirely native to [Compass](http://compass-style.org/).
+Susy is a semantic CSS framework creator entirely native to
+[Compass](http://compass-style.org/).
+Susy is an expert at fluid grids in an elastic (or fluid, or fixed) shell that
+will never activate that bloody side-scroll bar. Susy sets your width on the
+outer element (`container`), adds a `max-width` of `100%` and builds the rest
+of your grid in percentages. The philosophy and technique are based on
+[Natalie Downe](http://natbat.net/)'s "[CSS
+Systems](http://natbat.net/2008/Sep/28/css-systems/)" - which introduces
+difficult math in the service of beautiful structure. With the power of
+Compass/Sass, Susy will do that math for you.
 
-Susy is an expert at designing elastic (or fixed, if you swing that way) grids that will never activate that bloody side-scroll bar. Susy sets your width on the outer element (`grid-container`), adds a `max-width` of `100%` and builds the rest of your grid in percentages of the whole.
-The philosophy and technique are based on Natalie Downe's "CSS Systems" - which introduced difficult math in the service of beautiful structure. With the power of Compass/Sass, Susy will do that math for you.
+Using simple mixins, columns can be created, suffixed, prefixed, and nested
+easily - and always in flexible percentages.
 
-Using simple mixins, columns can be created, suffixed, prefixed, and nested easily - and always in flexible percentages.
-
-Install
+Install 
 =======
 
-    sudo gem sources --add http://gems.github.com/
-    sudo gem install chriseppstein-compass
-    sudo gem install ericam-compass-susy-plugin
+  sudo gem sources --add http://gems.github.com/ 
+  sudo gem install chriseppstein-compass 
+  sudo gem install ericam-compass-susy-plugin
 
-Create a Susy-based Compass Project
+Create a Susy-based Compass Project 
 ==================================
 
-    compass -r susy -f susy <project name>
+  compass -r susy -f susy <project name>
 
-Then edit your `_base.sass`, `screen.sass` and `print.sass` files accordingly. A reset is added automatically.
+Then edit your `_base.sass`, `screen.sass` and `print.sass` files accordingly.
+A reset is added automatically.
 
-Customizing your Grid System
+Customizing your Grid System 
 ============================
 
 Start in your `_base.sass` file. That's where you set all your defaults.
 
-To create a grid system, set the 
-`!grid_unit` (units that your grid is based in), 
-`!total_cols` (total number of columns in your grid), 
-`!col_width` (width of columns), and
-`!gutter_width` (width of gutters)
-variables in your `_base.sass`.
+To create a grid system, set the `!grid_unit` (units that your grid is based
+in), `!total_cols` (total number of columns in your grid), `!col_width` (width
+of columns), and `!gutter_width` (width of gutters) variables in your
+`_base.sass`.
 
 Example:
 
-    !grid_unit = "em"
-    !total_cols = 10
-    !col_width = 7
-    !gutter_width = 1
+  !grid_unit = "em" 
+  !total_cols = 10 
+  !col_width = 7 
+  !gutter_width = 1
+  !side_gutter_width = 2
 
+The default values are 16 columns, 4em column widths, and 1em gutters and side
+gutters that match the internal ones.
 
-The default values are 16 columns, 4em column widths, and 1em gutters.
-
-Of course, designing in `em`'s, you'll want to get your font sizes set to make this all meaningful. 
-Do that by assigning a pixel value (without the untis) to `!base_font_size_px` and `!base_line_height_px`.
-Susy will convert those to a percentage of the common browser default (16px) and apply them to your `grid-container`.
-Susy also provides you with `!base_font_size` and `!base_line_height` (in percentages) for use elsewhere.
+Of course, designing in `em`'s, you'll want to get your font sizes set to make
+this all meaningful. Do that by assigning a pixel value (without the untis) to
+`!base_font_size_px` and `!base_line_height_px`. Susy will convert those to a
+percentage of the common browser default (16px) and apply them to your
+`grid-container`.
 
 Example:
 
-    !base_font_size_px = 14
-    !base_line_height_px = 16
+  !base_font_size_px = 14 
+  !base_line_height_px = 16
 
 The default values are 12px fonts with an 18px line-height.
 
-`_base.sass` also has everything you need for setting default font families, colors to reuse throughout, 
-and default styles for all those elements that ought have a default.
+`_base.sass` also has everything you need for setting default font families,
+colors to reuse throughout, and default styles for all those elements that
+ought have a default (but don't because of the reset).
 
-Making Semantic Grids
+Making Semantic Grids 
 =====================
 
-* Use the `+susy` mixin to get things ready, set your base fonts and center your grid in the browser window. Change the page alignment with an optional `left || center || right` argument.
+* Use the `+susy` mixin to get things ready, set your base fonts and center
+  your grid in the browser window. Change the page alignment with an optional
+  `left || center || right` argument.
 
-* Use the `+grid-container` mixin to declare your container element. Change the internal text alignment with an optional `left || center || right` argument.
+* Use the `+container` mixin to declare your container element. Besides
+  building the grid shell, this set's your horizontal margins to auto for
+  centering your design, and returns your text-alignment to "left". Change the
+  internal text alignment with an optional `left || center || right` argument.
 
-* Use the `+grid-col` mixin to declare a grid element. The first argument
-is the number of cols, the second is the size (in grid columns) of the
-containing element (defaults to the container's `!total_cols`).
+* Use the `+column` mixin to declare a grid column. The first argument is
+  the number of columns to span, the second is the size (in columns) of the
+  containing element when nesting (defaults to the container's `!total_cols`).
 
-* Use the `+last` mixin to declare the last comumn in a row.
+* Use the `+alpha` and `+omega` mixins to declare the first and last columns in a row.
 
-* Use the `+grid-prefix` and `+grid-suffix` mixins to add grid columns
-before or after a grid element.
-
+* Use the `+prefix` and `+suffix` mixins to add grid columns before
+  or after a grid element.
 
 Example:
-    
-    body
-      +susy
 
-    #page
-      +grid-container
-      #left-nav
-        +grid-col(3)
-      #main-content
-        +grid-prefix(2)
-        +grid-col(4, 10)
-        +last
-          .header
-            +grid-col(1, 4)
-          .article
-            +grid-col(3, 4)
-            +last
+  body 
+    +susy
 
-Extra Utility Mixins
+    #page 
+      +container 
+      #left-nav 
+        +columns(3) 
+        +alpha
+        #main-content 
+          +prefix(2)
+          +columns(4, 10) 
+          +omega 
+          .header 
+            +columns(1, 4) 
+          .article 
+            +columns(3, 4) 
+            +omega
+
+Extra Utility Mixins 
 =====================
 
-Extra utilities are included in Susy's `utils.sass` file, with additional list options, 
-experimental (CSS3/proprietary) CSS, and more.
+Extra utilities are included in Susy's `utils.sass` file, with additional list
+options, experimental (CSS3/proprietary) CSS, and more.
 
-* `+show-grid(!src)` will remove all your backgrounds and repeat the specified grid image on an element. Good for testing your baseline grid.
+* `+show-grid(!src)` will remove all your backgrounds and repeat the specified
+  grid image on an element. Good for testing your baseline grid.
 
-* `+inline-block-list([!horizontalpadding])` for makeing lists inline-block when floating just won't do the trick.
+* `+inline-block-list([!horizontalpadding])` for making lists inline-block
+  when floating just won't do the trick.
 
-* `+hide` for hiding content from visual browsers while keeping accessability intact.
+* `+hide` for hiding content from visual browsers while keeping accessability
+  intact.
 
-* `+skip-link([!top = 0, !right, !bottom, !left])` hide a link, and then show it again on focus
+* `+skip-link([!top = 0, !right, !bottom, !left])` hide a link, and then show
+  it again on focus. the TRBL settings allow you to place it absolutely on
+  display. Default will be top left of the positioning context.
 
-* `+inline-italic` because some fonts/browsers add line-height when you explicitly set italics on an inline element - this takes some away.
+* `+inline-italic` because some fonts/browsers add line-height when you
+  explicitly set italics on an inline element - this takes some away.
 
 And then the fun stuff:
 
-* `+trans(!opacity)` adds cross-browser opacity settings (takes a range of 0 - 1)
+* `+opacity(!opacity)` adds cross-browser opacity settings (takes a range of 0
+  - 1).
 
-* `+rounded(!topleft, !topright, !bottomright, !bottomleft)` for rounded corners in supporting browsers
+* `+border-radius(!radius)` (`+border-bottom-left-radius` etc. all work) for
+  rounded corners in supporting browsers.
 
-* `+box-model(!model)` for setting the box model in supporting browsers
+* `+box-sizing(!model)` for setting the box sizing model in supporting browsers.
 
-* `+box-shadow(!verticaloffset, !horizontaloffset, !blur, !color)` for box-shadow in webkit and CSS3
+* `+box-shadow(!verticaloffset, !horizontaloffset, !blur, !color)` for
+  box-shadow in webkit and CSS3.

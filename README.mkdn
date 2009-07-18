@@ -99,7 +99,7 @@ Making Semantic Grids
   mixins also take an optional second argument, the size in columns of
   the containing element when nested.
 
-Example:
+Example (works with the default grid settings):
 
     body
       +susy

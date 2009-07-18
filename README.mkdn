@@ -143,8 +143,8 @@ options, experimental (CSS3/proprietary) CSS, and more.
 
 And then the fun stuff:
 
-* `+opacity(!opacity)` adds cross-browser opacity settings (takes a range of 0
-  - 1).
+* `+opacity(!opacity)` adds cross-browser opacity settings (takes a range of
+  0 to 1).
 
 * `+border-radius(!radius)` (`+border-bottom-left-radius` etc. all work) for
   rounded corners in supporting browsers.

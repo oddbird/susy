@@ -11,25 +11,26 @@
 
 //** 
   GRID
-  un-comment and override these values as needed for your grid layout (defaults are shown)
+  un-comment and override these values as needed for your grid layout 
+  (defaults are shown)
 // !grid_unit = "em"
 // !total_cols = 16
 // !col_width = 4
 // !gutter_width = 1
-// !page_padd = !gutter_width (coming soon)
+// !side_gutter_width = !gutter_width
 
 //** 
   FONT-SIZE
   un-comment and override these values as needed (defaults are shown)
   - you set the font and line heights in pixels.
-  - Susy will do the math and give you !base_font_size and !base_line_height set flexibly against the common browser default of 16px
+  - Susy will do the math and give you !base_font_size and !base_line_height 
+    variables, set flexibly against the common browser default of 16px
 // !base_font_size_px = 12
 // !base_line_height_px = 18
 
-// MIXINS
-//  (don't move these @imports above the GRID and FONT-SIZE overrides)
-@import susy/utils.sass
-@import susy/grid.sass
+// SUSY
+//  (don't move this @import above the GRID and FONT-SIZE overrides)
+@import susy/susy.sass
 
 
 // COLORS
@@ -44,15 +45,6 @@
 
 =serif-family
   :font-family 'Adobe Caslon Pro', 'Big Caslon', Garamond, 'Hoefler Text', 'Times New Roman', Times, serif 
-
-// Get yourself a base font mixin (defaults to your sans-serif font stack)
-=base-font(!serif = false)
-  :font-size= !base_font_size
-  :line-height= !base_line_height
-  @if !serif
-    +serif-family 
-  @else
-    +sans-family
 
 
 // Remember to add default styles to everything!
@@ -83,11 +75,12 @@ p
 
 =list-default(!ol = false)
   @if !ol
-    :list-style decimal-leading-zero
-    :margin 0 1.5em 1.5em 2em
+    :list-style decimal
+    :margin 0 1.5em 1.5em 1.5em
   @else
     :list-style disc
-    :margin 0 1.5em 1.5em 1.5em 
+    :margin 0 1.5em 1.5em 1.5em
+
 
 ol
   +list-default("ol")

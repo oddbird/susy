@@ -5,11 +5,11 @@ module Sass::Script::Functions
   #  column, gutter and padding widths should be sent as unitless numbers, 
   #  though they may "really" be ems or pixels (_grid.sass handles units).
   # return total width of container (without units)
-  def container(total_columns, column_width, gutter_width, page_padd)
+  def container(total_columns, column_width, gutter_width, side_gutter_width)
     @@susy_total_columns = total_columns.value
     @@susy_column_width = Float(column_width.value)
     @@susy_gutter_width = Float(gutter_width.value)
-    @@susy_page_padd = Float(page_padd.value)
+    @@susy_side_gutter_width = Float(side_gutter_width.value)
     context
   end
 
@@ -19,15 +19,15 @@ module Sass::Script::Functions
     begin
       n = n.value
     rescue NoMethodError
-      n = @@susy_total_columns
+      n = false
     end
-    if n == @@susy_total_columns
-      p = @@susy_page_padd
-    else
-      p = 0
+    sg = 0
+    if !n
+      n = @@susy_total_columns
+      sg = @@susy_side_gutter_width
     end
     c, g = [@@susy_column_width, @@susy_gutter_width]
-    Sass::Script::Number.new(((n * c) + ((n - 1) * g)) + (p*2))
+    Sass::Script::Number.new(((n * c) + ((n - 1) * g)) + (sg * 2))
   end
 
   # return the percentage width of 'number' columns in a context of
@@ -47,12 +47,12 @@ module Sass::Script::Functions
     Sass::Script::Number.new((g / context_width) * 100)
   end
 
-  # return the percentage width of a single gutter in a context of
+  # return the percentage width of a single side gutter in a context of
   #  'context_columns'
-  def padd(context_columns = nil)
+  def side_gutter(context_columns = nil)
     context_width = context(context_columns).value
-    p = @@susy_page_padd
-    Sass::Script::Number.new((p / context_width) * 100)
+    sg = @@susy_side_gutter_width
+    Sass::Script::Number.new((sg / context_width) * 100)
   end
 
   # return the percentage width of a single column in a context of

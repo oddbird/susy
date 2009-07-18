@@ -1,0 +1,14 @@
+@import utils.sass
+@import text.sass
+@import grid.sass
+
+//** 
+  body font size set to browser default (usually 16px)
+=susy(!align = "center")
+  //  text-align set to center by default for auto-centering layouts 
+  //  (override !align for left/right-aligned designs)
+  :text-align= !align
+  //  set your base font sizes
+  :font-size= !base_font_size
+  :line-height= !base_line_height
+

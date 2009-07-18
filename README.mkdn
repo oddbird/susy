@@ -101,23 +101,34 @@ Making Semantic Grids
 
 Example:
 
-    body 
+    body
       +susy
 
-      #page 
-        +container 
-        #left-nav 
-          +columns(3) 
-          +alpha
-          #main-content 
-            +prefix(2)
-            +columns(4, 10) 
-            +omega 
-            .header 
-              +columns(1, 4) 
-            .article 
-              +columns(3, 4) 
-              +omega
+    #page
+      +container
+      #brand
+        +columns(13)
+        +prefix(3)
+        +alpha
+        +omega
+      #site-nav
+        +columns(3)
+        +alpha
+      #content
+        +columns(13)
+        +omega
+        #main
+          +columns(8,13)
+          +alpha(13)
+        #aside
+          +columns(4,13)
+          +prefix(1,13)
+          +omega(13)
+      #site-info
+        +columns(13)
+        +prefix(3)
+        +alpha
+        +omega
 
 Extra Utility Mixins 
 =====================

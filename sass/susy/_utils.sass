@@ -67,37 +67,25 @@
   /* CSS3
   border-radius = !r
 
-=border-top-left-radius(!tl)
+=border-corner-radius(!vert, !horz, !r)
   /* Mozilla (FireFox)
-  -moz-border-radius-topleft= !tl
+  -moz-border-radius-#{!vert}#{!horz}= !r
   /* Webkit (Safari, Chrome)
-  -webkit-border-top-left-radius= !tl
+  -webkit-border-#{!vert}-#{!horz}-radius= !r
   /* CSS3
-  border-top-left-radius= !tl
+  border-#{!vert}-#{!horz}-radius= !r
 
-=border-top-right-radius(!tr)
-  /* Mozilla (FireFox)
-  -moz-border-radius-topright= !tr
-  /* Webkit (Safari, Chrome)
-  -webkit-border-top-right-radius= !tr
-  /* CSS3
-  border-top-right-radius= !tr
+=border-top-left-radius(!r)
+  +border-corner-radius("top", "left", !r)
 
-=border-bottom-right-radius(!br)
-  /* Mozilla (FireFox)
-  -moz-border-radius-bottomright= !br
-  /* Webkit (Safari, Chrome)
-  -webkit-border-bottom-right-radius= !br  
-  /* CSS3
-  border-bottom-right-radius= !br
+=border-top-right-radius(!r)
+  +border-corner-radius("top", "right", !r)
 
-=border-bottom-left-radius(!bl)
-  /* Mozilla (FireFox)
-  -moz-border-radius-bottomleft= !bl
-  /* Webkit (Safari, Chrome)
-  -webkit-border-bottom-left-radius= !bl
-  /* CSS3
-  border-bottom-left-radius= !bl
+=border-bottom-right-radius(!r)
+  +border-corner-radius("bottom", "right", !r)
+
+=border-bottom-left-radius(!r)
+  +border-corner-radius("bottom", "left", !r)
 
 //**
   change the box model for Mozilla, Webkit, IE8 and the future

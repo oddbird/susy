@@ -6,6 +6,8 @@ Rakefile
 README.mkdn
 sass/susy/_grid.sass
 sass/susy/_utils.sass
+sass/susy/_text.sass
+sass/susy/_susy.sass
 templates/project/print.sass
 templates/project/screen.sass
 templates/project/ie.sass

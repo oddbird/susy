@@ -18,14 +18,14 @@ easily - and always in flexible percentages.
 Install 
 =======
 
-  sudo gem sources --add http://gems.github.com/ 
-  sudo gem install chriseppstein-compass 
-  sudo gem install ericam-compass-susy-plugin
+    sudo gem sources --add http://gems.github.com/ 
+    sudo gem install chriseppstein-compass 
+    sudo gem install ericam-compass-susy-plugin
 
 Create a Susy-based Compass Project 
 ==================================
 
-  compass -r susy -f susy <project name>
+    compass -r susy -f susy <project name>
 
 Then edit your `_base.sass`, `screen.sass` and `print.sass` files accordingly.
 A reset is added automatically.
@@ -42,11 +42,11 @@ of columns), and `!gutter_width` (width of gutters) variables in your
 
 Example:
 
-  !grid_unit = "em" 
-  !total_cols = 10 
-  !col_width = 7 
-  !gutter_width = 1
-  !side_gutter_width = 2
+    !grid_unit = "em" 
+    !total_cols = 10 
+    !col_width = 7 
+    !gutter_width = 1
+    !side_gutter_width = 2
 
 The default values are 16 columns, 4em column widths, and 1em gutters and side
 gutters that match the internal ones.
@@ -59,8 +59,8 @@ percentage of the common browser default (16px) and apply them to your
 
 Example:
 
-  !base_font_size_px = 14 
-  !base_line_height_px = 16
+    !base_font_size_px = 14 
+    !base_line_height_px = 16
 
 The default values are 12px fonts with an 18px line-height.
 
@@ -99,23 +99,23 @@ Making Semantic Grids
 
 Example:
 
-  body 
-    +susy
+    body 
+      +susy
 
-    #page 
-      +container 
-      #left-nav 
-        +columns(3) 
-        +alpha
-        #main-content 
-          +prefix(2)
-          +columns(4, 10) 
-          +omega 
-          .header 
-            +columns(1, 4) 
-          .article 
-            +columns(3, 4) 
-            +omega
+      #page 
+        +container 
+        #left-nav 
+          +columns(3) 
+          +alpha
+          #main-content 
+            +prefix(2)
+            +columns(4, 10) 
+            +omega 
+            .header 
+              +columns(1, 4) 
+            .article 
+              +columns(3, 4) 
+              +omega
 
 Extra Utility Mixins 
 =====================

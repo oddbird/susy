@@ -31,8 +31,8 @@ Then edit your `_base.sass`, `screen.sass` and `print.sass` files accordingly.
 A reset is added automatically.
 
 
-
-<h1 id="tutorial">A Tutorial</h1>
+A Tutorial
+================
 
 Once you've installed everything we start building our grid. I'll walk you
 through the steps. I'm starting with the assumption that you already know CSS
@@ -72,7 +72,9 @@ But Susy harnesses the power of Compass and Sass to do all the math for you.
 On Susy's Terms
 ----------------------------
 
-Terms to understand for following along and using Susy:
+For a few diagrams that might help, download the
+[figures.pdf](http://www.oddbird.net/susy/tutorial/files/figures.pdf) file.
+Here are the terms to understand for following along and using Susy:
 
 * There is always a `container` element that wraps the page. This container
   will act as our elastic shell. The `container` also represents a grid

@@ -51,7 +51,7 @@
   :padding-right= columns(!n, !context) + gutter(!context) + "%"
 
 //**  
-  set on the first column of a row to take side-gutters into account
+  set on the first element of a row to take side-gutters into account
   - must override `!nested` for nested columns
 =alpha(!nested = false)
   @if !nested
@@ -60,10 +60,25 @@
     :margin-left= side_gutter() + "%"
 
 //**  
-  set on the last column of a row to take side-gutters into account
+  set on the last element of a row to take side-gutters into account
   - must override `!nested` for nested columns
 =omega(!nested = false)
   @if !nested
     :margin-right 0
   @else
     :margin-right= side_gutter() + "%"
+
+
+//**
+  set on an element that will span it's entire context
+=full(!n = false)
+  +alpha(!n)
+  +omega(!n)
+
+/**
+  set as shortcut for prefix and suffix
+=pad(!p = 0, !s = 0, !c = false)
+  @if !p != 0
+    +prefix(!p,!c)
+  @if !s != 0
+    +suffix(!s,!c)

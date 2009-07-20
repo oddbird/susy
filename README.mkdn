@@ -1,5 +1,5 @@
 Susy - Compass Plugin 
-================================
+=====================
 
 Susy is a semantic CSS framework creator entirely native to
 [Compass](http://compass-style.org/).
@@ -23,26 +23,15 @@ Install
     sudo gem install ericam-compass-susy-plugin
 
 Create a Susy-based Compass Project 
-==================================
+===================================
 
     compass -r susy -f susy <project name>
 
 Then edit your `_base.sass`, `screen.sass` and `print.sass` files accordingly.
 A reset is added automatically.
 
-
-A Tutorial
-==========
-
-Once you've installed everything we start building our grid. I'll walk you
-through the steps. I'm starting with the assumption that you already know CSS
-and the Compass/Sass syntax. If you don't, check out [Chris Eppstein's great
-intro](http://wiki.github.com/chriseppstein/compass).
-
-Let's start with a quick discussion of _why Susy_:
-
-Susy's Philosophy and Goals
-----------------------------
+Philosophy and Goals
+--------------------
 
 The method comes from [Natalie Downe](http://natbat.net/)'s "[CSS
 Systems](http://natbat.net/2008/Sep/28/css-systems/)", but I'll cover it here.
@@ -67,299 +56,69 @@ shell so that it never exceeds the size of the viewport. It's simple in
 theory, but daunting in practice, as you constantly have to adjust your math
 based on the context.
 
-But Susy harnesses the power of Compass and Sass to do the math for you.
+But Susy harnesses the power of Compass and Sass to do all the math for you.
 
-On Susy's Terms
-----------------------------
+Grid Basics
+===========
 
-For a few diagrams that might help, download the
-[figures.pdf](http://www.oddbird.net/susy/tutorial/files/figures.pdf) file.
-Here are the terms to understand for following along and using Susy:
+* Set up your default grid values (total columns, column width, gutter
+  width, side gutter width), your base font size, and other style defaults
+  in `_base.sass`.
 
-* There is always a __container__ element that wraps the page. This
-  container will act as our elastic shell. The container also represents a
-  grid structure made up of __columns__, __gutters__ between the columns,
-  and __side gutters__ on the outside edges of the grid.
+* Create your grid in `screen.sass`: apply the `+susy` mixin to the `body`
+  element and the `+container` mixin to the element that contains the page
+  grid.
 
-* The base __context__ is the number of columns in your grid system, and any
-  direct children of the __container__ will use that base as their
-  __context__.  However, as you continue to nest elements within each other
-  that context will change. Just remember that it always refers to the
-  number of columns spanned by the parent element.
+* Use the `+columns` mixin to declare the width in columns of an element,
 
-* There are any number of __grid elements__ making up the structure of our
-  site, nested within the __container__. Each grid element has a width that
-  spans any number of __columns__ along with the __gutters__ between those
-  columns (number of columns minus one), and a right-margin that represents
-  the gutter to the right of it.
+* Use `+alpha` and `+omega` to declare elements which include the first or
+  last column within their parent element (`+full` to declare both `+alpha`
+  and `+omega`).
 
-* A __grid element__ might also include a __prefix__ and/or __suffix__ added
-  as padding on either side. Any __prefix__ or __suffix__ will span any
-  given number of __columns__ as well as all associated __gutters__ (in this
-  case the same number of gutters as columns). Since these are padding, they
-  do not add to the __context__ relevant for nested elements.
+* Use `+prefix` or `+suffix` to give the width (in columns) of an elements
+  left or right margin, or `+pad` to give both `+prefix` and `+suffix` at
+  once.
 
-* Any `grid elements` that span the first and last columns in any given
-  context will sometimes need to handle gutters in special ways. These will be
-  referred to as the `alpha` and `omega` elements. One element that spans an
-  entire context (a header or footer perhaps) may be both `alpha` and `omega`.
+* In nested contexts, all of these mixins take an extra final argument, the
+  width in columns of the parent (nesting) element.
 
-Customizing your Grid System 
------------------------------
-
-So let's get started. We're going to build a website for Susy. [This
-website](http://www.oddbird.net/susy/). It's a simple site but it covers
-everything you need to get started on your own.
-
-Create a susy.html file. You can [grab my source from
-gist](http://gist.github.com/150011). Once you have that, we're ready to style
-it with Susy.
-
-Start in your `_base.sass` file. That's where you set all your defaults.
-
-To create a grid system, set the `!grid_unit` (units that your grid is based
-in), `!total_cols` (total number of columns in your grid), `!col_width` (width
-of columns), and `!gutter_width` (width of gutters) variables in your
-`_base.sass`.
-
-The default values are 16 columns, 4em column widths, 1em gutters and side
-gutters that match the internal ones. But we want a 10 column grid, with 5em
-columns, 2em gutters and 1em side-gutters.
-
-Take a look at our target site again, this time [with a grid
-overlay](http://www.oddbird.net/susy/tutorial/01_target/).
-
-So we'll set our grid like this:
-
-    !grid_unit = "em" 
-    !total_cols = 10 
-    !col_width = 5 
-    !gutter_width = 2
-    !side_gutter_width = 1
-
-Of course, designing in __em__s, we'll want to get your font sizes set to make
-this all meaningful. Do that by assigning a pixel value (without the units) to
-`!base_font_size_px` and `!base_line_height_px`. Susy will convert those to a
-percentage of the common browser default (16px) and apply them to your
-`container`.
-
-For us:
-
-    !base_font_size_px = 14 
-    !base_line_height_px = 21
-
-The default values here are 12px fonts with an 18px line-height.
-
-`_base.sass` also has everything you need for setting default font families,
-colors to reuse throughout, and default styles for all those elements that
-ought have a default (but don't because of the reset).
-
-We can leave most of that as it is for now, but let's fill in a few of the
-most important defaults. We want some colors to choose from, and defaults for
-links and paragraphs.
-
-So let's add some colors:
-
-    !text = #332016
-    !light = #CC8866
-    !links = #4CAAC0
-
-And style the links:
-    
-    a
-      &:link, &:visited
-        :color= !links
-        :text-decoration none
-      &:focus, &:hover, &:active
-        :color= !light
-        :border-bottom
-          :width .1429em
-          :style dashed
-
-(`.1429em` is simply an approximation of `2px` in terms of our em units.)
-
-And we'll add a bit of margin to our paragraphs:
-    
-    p
-      :margin-bottom 1.5em
-
-That's it. You can look around at the other defaults and set what you like,
-but I'm moving on.
-
-
-Making Semantic Grids 
-----------------------
-
-First the explanation:
-
-* Use the `+susy` mixin to get things ready, set your base font sizes and
-  center your grid in the browser window. Change the alignment of your grid in
-  the window with an optional `left | center | right` argument.
-
-* Use the `+container` mixin to declare your container element. Besides
-  building the grid shell, this sets your horizontal margins to auto (for
-  centered designs) and returns your text-alignment to "left". Change the
-  internal text alignment with an optional `left | center | right` argument.
-
-* Use the `+columns` mixin to set the width (in columns) of a grid element.
-  The first argument is the number of columns to span, the second (optional)
-  argument is the width (in columns) of the containing element when nesting
-  (defaults to the container's `!total_cols`). By default, the left margin is
-  set to 0 and the right margin is set to the width of a gutter. Modify this
-  for first and last elements with the `+alpha` and `+omega` mixins (below),
-  or set larger margins using `+prefix` and `+suffix`.
-
-* Use the `+alpha` and `+omega` mixins to declare the first and last elements
-  in a row, or inside a nested element. In the latter case, each of these
-  mixins takes one argument, which is the size (in columns) of the containing
-  element.
-
-* Use the `+prefix` and `+suffix` mixins with one argument to add that many
-  grid columns as margin before or after a grid element. These mixins also
-  take an optional second argument, the size in columns of the containing
-  element when nested.
-
-Then we do it. We'll start by declaring our intent to use susy, and our
-container:
+* That's it for the basics! Here's a sample Susy grid layout:
 
     body
       +susy
-    
+     
     #page
       +container
-
-That wasn't hard. You might ask why I didn't nest `#page` inside of `body`, as
-is so tempting and easy with Sass. It's part personal preference and part
-Natalie Downe's voice in my head. Don't nest when you don't need to. It keeps
-your output code much cleaner.
-
-While we're at it, why don't we get the fonts and text colors going right from
-the start?
-
-    #page
-      +container
-      +sans-family
-      :color= !text
-
-Perfect. Take a look at [the
-results](http://www.oddbird.net/susy/tutorial/02_container/). So far we have:
-
-* Reset everything. This happens by default in the background.
-
-* Added a few of our own replacement default styles, like links, paragraphs,
-  fonts and colors.
-
-* Created an elastic container for our grid at 70em that goes fluid for small
-  windows (try it!).
-
-
-Laying Out The Components
---------------------------
-
-It's time to lay out our grid components. We'll just work our way through the
-DOM, starting with our brand header (#brand). We can refer back to our [target
-site with a grid overlay](http://www.oddbird.net/susy/tutorial/01_grid/) to
-see what we need. Looks like our branding gets an entire row to itself, with
-the content starting one row in. For the sake of argument, let's say we want
-the header content contained within the middle 8 columns - one in from each
-end. That means it will be an 8 column element, with 1 column prefixed and one
-suffixed, for a total of 10 columns - the full width.
-
-    #brand
-      +columns(8)
-      +prefix(1)
-      +suffix(1)
-
-Since it spans both the first and last columns in the context we'll need to
-add:
-
-    +alpha
-    +omega
-
-Or we would have to, but there are several shortcuts available to us. To
-declare something as both alpha and omega we can just declare it as full:
-
-    +full
-
-There is also a shorcut for prefix and suffix additions (+pad), so we can
-simplify down to:
-
+     
     #brand
       +columns(8)
       +pad(1,1)
       +full
-
-Since we don't have an image in there yet, let's move the text over to line up
-with the future placement of our main content area. By turning the `h1` into a
-grid element and prefixing a padding of one column, we can move the text
-without any effect on the image that will replace it (using the Compass
-utility `+replace-text`, though I'll leave the implementation that as an
-excercise for you to figure out). To line it all up with the content below it,
-we'll assign it 5 columns in a context of 8, with the extra 3 split between a
-prefix of 1 and a suffix of 2 - giving it a full span.
-
-    h1
-      +columns(5,8)
-      +pad(1,2,8)
-      +full(8)
-
-We're only worried about structure for now, so the header is done. Let's move
-on to the navigation (#nav). The nav spans 2 columns, including the first
-column in it's context.
-
+      h1
+        +columns(5,8)
+        +pad(1,2,8)
+        +full(8)
+        
     #nav
       +columns(2)
       +alpha
-
-Done. The content (#content, which includes both #description and #credit)
-spans the remaining 8 columns, including the last one.
-
+     
     #content
       +columns(8)
       +omega
+      #description
+        +columns(5,8)
+        +alpha(8)
+      #credit
+        +columns(3,8)
+        +omega(8)
 
-Done. #description spans 5, including the first; #credit spans 3 including
-the last. Both are in a nested context of 8, which we now need to pass on:
+Tutorial
+========
 
-    #description
-      +columns(5,8)
-      +alpha(8)
-    
-    #credit
-      +columns(3,8)
-      +omega(8)
+For more details, read [the tutorial](http://www.oddbird.net/susy/tutorial/).  
+It's also included with Susy in the docs/ folder.
 
-Done and done. All we have left is the footer (#site-info) spanning the full
-width, but only using the right 8 columns:
-
-    #site-info
-      +columns(8)
-      +prefix(2)
-      +full
-
-Nested in the footer are `.license` and `.styles`, so let's put them in
-place. I'm going to say that each should match the width of the element
-visually above it on the page. So .license will span 5 columns including the
-first in its context of 8, and .styles will span 3 including the last.
-
-    p.license
-      +columns(5,8)
-      +alpha
-    p.styles
-      +columns(3,8)
-      +omega
-
-And we're done. That's it. That's what Susy does. The details of making it
-pretty are left as an excercise for the reader, and have more to do with
-Compass than Susy.
-
-* [The resulting files](http://gist.github.com/150053) (with _base.sass only
-  showing what we used).
-
-* [The site structure all in place](http://www.oddbird.net/susy/tutorial/03_structure/)
-  (this should match what you have if you followed along).
-
-* [My final styles for the site](http://gist.github.com/150061). 
 
 Extra Utility Mixins 
 =====================

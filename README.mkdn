@@ -32,11 +32,11 @@ A reset is added automatically.
 
 
 A Tutorial
-================
+==========
 
 Once you've installed everything we start building our grid. I'll walk you
 through the steps. I'm starting with the assumption that you already know CSS
-and the Compass/Sass syntax. If you don't, check out [Chris Eppstien's great
+and the Compass/Sass syntax. If you don't, check out [Chris Eppstein's great
 intro](http://wiki.github.com/chriseppstein/compass).
 
 Let's start with a quick discussion of _why Susy_:
@@ -49,12 +49,12 @@ Systems](http://natbat.net/2008/Sep/28/css-systems/)", but I'll cover it here.
 
 It is important for accessibility and usability that we are:
 
-* Responsive to Text Sizing: In order for our site to be accessible we need to
+* Responsive to text sizing: In order for our site to be accessible we need to
   allow different font-sizes to be set by the client. In order to maintain
   design integrity of proportions and line-lengths, the grid needs to respond
   to those sizes.
 
-* Responsive to Window Sizing: In order to maintain usability across
+* Responsive to window sizing: In order to maintain usability across
   platforms/monitors, our grid needs to respond to the size of the viewport.
   This is mainly an issue as the viewport shrinks and we are given a
   side-scroll bar. No one likes that. On the large end our design integrity
@@ -63,11 +63,11 @@ It is important for accessibility and usability that we are:
 In order to achieve both we need to combine the best of the elastic (em-based)
 and fluid (%-based) models. The solution is simple: First we build a fluid
 grid, then place it inside an elastic shell, and apply a maximum width to that
-shell so that it never excedes the size of the viewport. It's simple in
+shell so that it never exceeds the size of the viewport. It's simple in
 theory, but daunting in practice, as you constantly have to adjust your math
 based on the context.
 
-But Susy harnesses the power of Compass and Sass to do all the math for you.
+But Susy harnesses the power of Compass and Sass to do the math for you.
 
 On Susy's Terms
 ----------------------------
@@ -76,28 +76,28 @@ For a few diagrams that might help, download the
 [figures.pdf](http://www.oddbird.net/susy/tutorial/files/figures.pdf) file.
 Here are the terms to understand for following along and using Susy:
 
-* There is always a `container` element that wraps the page. This container
-  will act as our elastic shell. The `container` also represents a grid
-  structure made up of `columns`, `gutters` between the columns, and `side
-  gutters` on the outside edges of the grid.
+* There is always a __container__ element that wraps the page. This
+  container will act as our elastic shell. The container also represents a
+  grid structure made up of __columns__, __gutters__ between the columns,
+  and __side gutters__ on the outside edges of the grid.
 
-* The base `context` is the number of columns in your grid system, and any
-  direct children of the `container` will use that base as their `context`.
-  However, as you continue to nest elements within each other that context
-  will change. Just remember that it always refers to the number of columns
-  spanned by the parent element.
+* The base __context__ is the number of columns in your grid system, and any
+  direct children of the __container__ will use that base as their
+  __context__.  However, as you continue to nest elements within each other
+  that context will change. Just remember that it always refers to the
+  number of columns spanned by the parent element.
 
-* There are any number of `grid elements` making up the structure of our site,
-  nested within the `container`. Each grid element has a width that spans any
-  number of `columns` along with the `gutters` between those columns (number
-  of columns minus one), and a right-margin that represents the gutter to the
-  right of it.
+* There are any number of __grid elements__ making up the structure of our
+  site, nested within the __container__. Each grid element has a width that
+  spans any number of __columns__ along with the __gutters__ between those
+  columns (number of columns minus one), and a right-margin that represents
+  the gutter to the right of it.
 
-* A `grid element` might also include a `prefix` and/or `suffix` added as
-  padding on either side. Any `prefix` or `suffix` will span any given number
-  of `columns` as well as all associated `gutters` (in this case the same
-  number of gutters as columns). Since these are padding, they do not add to the
-  `context` relevant for nested elements.
+* A __grid element__ might also include a __prefix__ and/or __suffix__ added
+  as padding on either side. Any __prefix__ or __suffix__ will span any
+  given number of __columns__ as well as all associated __gutters__ (in this
+  case the same number of gutters as columns). Since these are padding, they
+  do not add to the __context__ relevant for nested elements.
 
 * Any `grid elements` that span the first and last columns in any given
   context will sometimes need to handle gutters in special ways. These will be
@@ -137,11 +137,11 @@ So we'll set our grid like this:
     !gutter_width = 2
     !side_gutter_width = 1
 
-Of course, designing in `em`'s, we'll want to get your font sizes set to make
+Of course, designing in __em__s, we'll want to get your font sizes set to make
 this all meaningful. Do that by assigning a pixel value (without the units) to
 `!base_font_size_px` and `!base_line_height_px`. Susy will convert those to a
 percentage of the common browser default (16px) and apply them to your
-`grid-container`.
+`container`.
 
 For us:
 
@@ -176,7 +176,7 @@ And style the links:
           :width .1429em
           :style dashed
 
-(`.1429em` is simply an apporximation of `2px` in terms of our em units.)
+(`.1429em` is simply an approximation of `2px` in terms of our em units.)
 
 And we'll add a bit of margin to our paragraphs:
     
@@ -190,7 +190,7 @@ but I'm moving on.
 Making Semantic Grids 
 ----------------------
 
-First the explination:
+First the explanation:
 
 * Use the `+susy` mixin to get things ready, set your base font sizes and
   center your grid in the browser window. Change the alignment of your grid in
@@ -250,7 +250,7 @@ results](http://www.oddbird.net/susy/tutorial/02_container/). So far we have:
   fonts and colors.
 
 * Created an elastic container for our grid at 70em that goes fluid for small
-  widows (try it!).
+  windows (try it!).
 
 
 Laying Out The Components
@@ -318,8 +318,8 @@ spans the remaining 8 columns, including the last one.
       +columns(8)
       +omega
 
-Done. #description spans 5, including the first; #credit spans 3 including the last.
-Both are in a nested context of 8, which we now need to pass on:
+Done. #description spans 5, including the first; #credit spans 3 including
+the last. Both are in a nested context of 8, which we now need to pass on:
 
     #description
       +columns(5,8)
@@ -329,17 +329,18 @@ Both are in a nested context of 8, which we now need to pass on:
       +columns(3,8)
       +omega(8)
 
-Done and done. All we have left is the footer (#site-info) spanning the full width, but only using
-the right 8 columns:
+Done and done. All we have left is the footer (#site-info) spanning the full
+width, but only using the right 8 columns:
 
     #site-info
       +columns(8)
       +prefix(2)
       +full
 
-Nested in the footer are `.license` and `.styles`, so let's put them in place. I'm going to say that
-each should match the width of the element visually above it on the page. So .license will span 5 columns
-including the first in its context of 8, and .styles will span 3 including the last.
+Nested in the footer are `.license` and `.styles`, so let's put them in
+place. I'm going to say that each should match the width of the element
+visually above it on the page. So .license will span 5 columns including the
+first in its context of 8, and .styles will span 3 including the last.
 
     p.license
       +columns(5,8)

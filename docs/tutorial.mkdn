@@ -229,7 +229,7 @@ Laying Out The Components
 
 It's time to lay out our grid components. We'll just work our way through the
 DOM, starting with our brand header (#brand). We can refer back to our [target
-site with a grid overlay](http://www.oddbird.net/susy/tutorial/01_grid/) to
+site with a grid overlay](http://www.oddbird.net/susy/tutorial/01_target/) to
 see what we need. Looks like our branding gets an entire row to itself, with
 the content starting one row in. For the sake of argument, let's say we want
 the header content contained within the middle 8 columns - one in from each

@@ -8,51 +8,24 @@ the assumption that you already know CSS and the Compass/Sass syntax. If you
 don't, check out [Chris Eppstein's great
 intro](http://wiki.github.com/chriseppstein/compass).
 
-Let's start with a quick discussion of _why Susy_:
-
-Susy's Philosophy and Goals
----------------------------
-
-The method comes from [Natalie Downe](http://natbat.net/)'s "[CSS
-Systems](http://natbat.net/2008/Sep/28/css-systems/)", but I'll cover it here.
-
-It is important for accessibility and usability that we are:
-
-* Responsive to Text Sizing: In order for our site to be accessible we need to
-  allow different font-sizes to be set by the client. In order to maintain
-  design integrity of proportions and line-lengths, the grid needs to respond
-  to those sizes.
-
-* Responsive to Window Sizing: In order to maintain usability across
-  platforms/monitors, our grid needs to respond to the size of the viewport.
-  This is mainly an issue as the viewport shrinks and we are given a
-  side-scroll bar. No one likes that. On the large end our design integrity
-  and line lengths are more important than taking up all the possible space.
-
-In order to achieve both we need to combine the best of the elastic (em-based)
-and fluid (%-based) models. The solution is simple: First we build a fluid
-grid, then place it inside an elastic shell, and apply a maximum width to that
-shell so that it never exceeds the size of the viewport. It's simple in
-theory, but daunting in practice, as you constantly have to adjust your math
-based on the context.
-
-But Susy harnesses the power of Compass and Sass to do all the math for you.
+For a brief overview of Susy's philosophy and goals, see [the
+README](http://github.com/ericam/compass-susy-plugin/tree/master).
 
 On Susy's Terms
 ---------------
 
 Here are the terms to understand for following along and using Susy:
 
-* There is always a **container** element that wraps the page. This
-  container will act as our elastic shell. The **container** also represents
-  a grid structure made up of **columns**, **gutters** between the columns,
-  and **side gutters** on the outside edges of the grid.
+* There is always a **container** element that wraps the page. This container
+  will act as our elastic shell. The **container** also represents a grid
+  structure made up of **columns**, **gutters** between the columns, and
+  **side gutters** on the outside edges of the grid.
 
 * The base **context** is the number of columns in your grid system, and any
   direct children of the **container** will use that base as their
   **context**.  However, as you continue to nest elements within each other
-  that context will change. Just remember that the **context** is always
-  the number of columns spanned by the parent element.
+  that context will change. Just remember that the **context** is always the
+  number of columns spanned by the parent element.
 
 * There are any number of **grid elements** making up the structure of our
   site, nested within the **container**. Each grid element has a width that
@@ -61,15 +34,15 @@ Here are the terms to understand for following along and using Susy:
   the gutter to the right of it.
 
 * A **grid element** might also include a **prefix** and/or **suffix** added
-  as margin on either side. Any **prefix** or **suffix** will span any given
-  number of **columns** as well as all associated **gutters** (in this case
-  the same number of gutters as columns).
+  as padding on either side. Any **prefix** or **suffix** will span the number
+  of **columns** given as argument, as well as all associated **gutters** (in
+  this case the same number of gutters as columns).
 
 * Any **grid elements** that span the first or last columns in any given
-  context will sometimes need to handle gutters in special ways. These will
-  be referred to as the **alpha** and **omega** elements. One element that
-  spans an entire context (a header or footer perhaps) may be both **alpha**
-  and **omega**.
+  context will sometimes need to handle gutters in special ways. These will be
+  referred to as the **alpha** and **omega** elements. One element that spans
+  an entire context (a header or footer perhaps) may be both **alpha** and
+  **omega**.
 
 Customizing your Grid System 
 ----------------------------
@@ -78,11 +51,15 @@ So let's get started. We're going to build a website for Susy. [This
 website](http://www.oddbird.net/susy/). It's a simple site but it covers
 everything you need to get started on your own.
 
-Create a susy.html file. You can [grab my
-source](http://gist.github.com/150011). Once you have that, we're ready to
-style it with Susy.
+Create yourself a Compass project using Susy:
 
-Start in your `_base.sass` file. That's where you set all your defaults.
+    compass -r susy -f susy susy_tutorial
+
+Inside the susy_tutorial directory, create an `index.html` file. You can [grab
+my source](code/_common/index.html).
+
+Start in your `_base.sass` file (in the `src` directory). That's where you set
+all your defaults.
 
 To create a grid system, set the `!grid_unit` (units that your grid is based
 in), `!total_cols` (total number of columns in your grid), `!col_width` (width
@@ -107,15 +84,12 @@ So we'll set our grid like this:
 Of course, designing in em's, we'll want to get your font sizes set to make
 this all meaningful. Do that by assigning a pixel value (without the units) to
 `!base_font_size_px` and `!base_line_height_px`. Susy will convert those to a
-percentage of the common browser default (16px) and apply them to your
-**container**.
+percentage of the common browser default (16px) and apply them to your grid.
 
-For us:
+The default values here are 12px fonts with an 18px line-height. For us:
 
     !base_font_size_px = 14 
     !base_line_height_px = 21
-
-The default values here are 12px fonts with an 18px line-height.
 
 `_base.sass` also has everything you need for setting default font families,
 colors to reuse throughout, and default styles for all those elements that
@@ -150,8 +124,8 @@ And we'll add a bit of margin to our paragraphs:
     p
       :margin-bottom 1.5em
 
-That's it. You can look around at the other defaults and set what you like,
-but I'm moving on.
+That's it. You can look around at the other defaults and set what you like, or
+juse use [mine](code/site/src/_base.sass).
 
 
 Making Semantic Grids 
@@ -172,11 +146,9 @@ First the explanation:
 
 * Use the `+columns` mixin to set the width (in columns) of a grid element.
   The first argument is the number of columns to span, the second (optional)
-  argument is the width (in columns) of the containing element when nesting
-  (defaults to the container's `!total_cols`). By default, the left margin is
-  set to 0 and the right margin is set to the width of a gutter. Modify this
-  for first and last elements with the `+alpha` and `+omega` mixins (below),
-  or set larger margins using `+prefix` and `+suffix`.
+  argument is the width (in columns) of the containing element when
+  nesting. If the element is not nested (its parent is the grid container),
+  don't pass a second argument.
 
 ![The Susy Grid Elements](figures/susy_elements.png)
 
@@ -186,12 +158,12 @@ First the explanation:
   element.
 
 * Use the `+prefix` and `+suffix` mixins with one argument to add that many
-  grid columns as margin before or after a grid element. These mixins also
+  grid columns as padding before or after a grid element. These mixins also
   take an optional second argument, the size in columns of the containing
   element when nested.
 
-Then we do it. We'll start by declaring our intent to use susy, and our
-container:
+Then we do it. In `screen.sass`, we'll start by declaring our intent to use
+Susy, and our container:
 
     body
       +susy
@@ -315,21 +287,19 @@ first in its context of 8, and .styles will span 3 including the last.
 
     p.license
       +columns(5,8)
-      +alpha
+      +alpha(8)
     p.styles
       +columns(3,8)
-      +omega
+      +omega(8)
 
 And we're done. That's it. That's what Susy does. The details of making it
 pretty are left as an exercise for the reader, and have more to do with
 Compass than Susy.
 
-* [The resulting files](http://gist.github.com/150053) (with _base.sass only
-  showing what we used).
-
-* [The site structure all in
-  place](http://www.oddbird.net/susy/tutorial/03_structure/) (this should
+* [The resulting files](code/03_structure/src/) with [the site structure all
+  in place](http://www.oddbird.net/susy/tutorial/03_structure/) (this should
   match what you have if you followed along).
 
-* [My final styles for the site](http://gist.github.com/150061). 
+* [My final styles](code/site/src) for [the
+  site](http://www.oddbird.net/susy/).
 

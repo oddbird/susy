@@ -1,0 +1,50 @@
+/*
+  Welcome to Susy. Use this file to define screen styles.
+  Import this file using the following HTML or equivalent:
+  <link href="/stylesheets/screen.css" media="screen" rel="stylesheet" type="text/css" />
+ 
+@import base.sass
+ 
+/* STRUCTURE
+body
+  +susy
+ 
+#page
+  +container
+  +sans-family
+  :color= !text
+ 
+#brand
+  +columns(8)
+  +pad(1,1)
+  +full
+  h1
+    +columns(5,8)
+    +pad(1,2,8)
+    +full(8)
+    
+#nav
+  +columns(2)
+  +alpha
+ 
+#content
+  +columns(8)
+  +omega
+  #description
+    +columns(5,8)
+    +alpha(8)
+  #credit
+    +columns(3,8)
+    +omega(8)
+ 
+#site-info
+  +columns(8)
+  +prefix(2)
+  +full
+  p.license
+    +columns(5,8)
+    +alpha(8)
+  p.styles
+    +columns(3,8)
+    +omega(8)
+ 

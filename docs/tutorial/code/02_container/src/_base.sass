@@ -1,0 +1,95 @@
+//**
+//  Susy: Elastic-Fluid grids without all the math
+//  by Eric Meyer and OddBird Collective
+//  oddbird. 
+//**
+
+
+/* RESET STYLES
+@import compass/reset.sass
+
+
+//** 
+  GRID
+  un-comment and override these values as needed for your grid layout 
+  (defaults are shown)
+!grid_unit = "em"
+!total_cols = 10
+!col_width = 5
+!gutter_width = 2
+!side_gutter_width = 1
+
+//** 
+  FONT-SIZE
+  un-comment and override these values as needed (defaults are shown)
+  - you set the font and line heights in pixels.
+  - Susy will do the math and give you !base_font_size and !base_line_height 
+    variables, set flexibly against the common browser default of 16px
+!base_font_size_px = 14
+!base_line_height_px = 21
+
+// SUSY
+//  (don't move this @import above the GRID and FONT-SIZE overrides)
+@import susy/susy.sass
+
+
+// COLORS
+// set any colors you will need later
+!text = #332016
+!light = #CC8866
+!links = #4CAAC0
+
+// FONTS
+// Give yourself some font stacks to work with
+=sans-family
+  :font-family 'Futura Medium', 'Century Gothic', AppleGothic, sans-serif
+
+=serif-family
+  :font-family 'Adobe Caslon Pro', 'Big Caslon', Garamond, 'Hoefler Text', 'Times New Roman', Times, serif 
+
+
+// Remember to add default styles to everything!
+/* DEFAULTS
+
+/* links
+a
+  &:link, &:visited
+    :color= !links
+    :text-decoration none
+  &:focus, &:hover, &:active
+    :color= !light
+    :border-bottom
+      :width .1429em
+      :style dashed
+
+/* block tags
+p
+  :margin-bottom 1.5em
+
+=list-default(!ol = false)
+  @if !ol
+    :list-style decimal
+    :margin 0 1.5em 1.5em 1.5em
+  @else
+    :list-style disc
+    :margin 0 1.5em 1.5em 1.5em
+
+
+ol
+  +list-default("ol")
+
+ul
+  +list-default
+
+/* inline tags
+em
+  +inline-italic
+
+strong
+  :font-weight bold
+
+ins
+  :text-decoration underline
+
+del
+  :text-decoration line-through

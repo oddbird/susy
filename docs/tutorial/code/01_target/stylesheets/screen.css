@@ -1,0 +1,90 @@
+/* Welcome to Susy. Use this file to define screen styles. Import this file using the following HTML or equivalent: <link href="/stylesheets/screen.css" media="screen" rel="stylesheet" type="text/css" /> */
+/* RESET STYLES */
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td { margin: 0; padding: 0; border: 0; outline: 0; font-weight: inherit; font-style: inherit; font-size: 100%; font-family: inherit; vertical-align: baseline; }
+
+*:focus { outline: 0; }
+
+body { line-height: 1em; color: black; background: #fff; }
+
+ol, ul { list-style: none; }
+
+/* tables still need 'cellspacing="0"' in the markup */
+table { border-collapse: separate; border-spacing: 0; vertical-align: middle; }
+
+caption, th, td { text-align: left; font-weight: normal; vertical-align: middle; }
+
+q, blockquote { quotes: "" ""; }
+q:before, q:after, blockquote:before, blockquote:after { content: ""; }
+
+img a { border: none; }
+
+/* * set as shortcut for prefix and suffix */
+
+/* DEFAULTS */
+:focus { outline: 1px dotted; }
+
+/* links */
+a:link, a:visited { color: #4caac0; text-decoration: none; }
+a:focus, a:hover, a:active { color: #cc8866; border-bottom-width: .1429em; border-bottom-style: dashed; }
+
+/* headers */
+
+/* forms */
+
+
+
+
+
+
+/* block tags */
+p { margin: 0 0 1.5em 0; }
+
+ol { list-style: decimal; margin: 0 1.5em 1.5em 1.5em; }
+
+ul { list-style: disc; margin: 0 1.5em 1.5em 1.5em; }
+
+
+/* inline tags */
+
+em { font-style: italic; line-height: .5; }
+
+strong { font-weight: bold; }
+
+ins { text-decoration: underline; }
+
+del { text-decoration: line-through; }
+
+/* replaced tags */
+
+/* STRUCTURE */
+body { text-align: center; font-size: 87.5%; line-height: 150%; }
+
+#page { overflow: hidden; display: inline-block; text-align: left; margin-left: auto; margin-right: auto; width: 70em; max-width: 100%; font-family: 'Futura Medium', 'Century Gothic', AppleGothic, sans-serif; color: #332016; }
+#page { display: block; }
+
+#brand { width: 77.143%; display: inline; float: left; margin-right: 2.857%; padding-left: 10%; padding-right: 10%; margin-left: 1.429%; margin-right: 1.429%; margin-top: 3em; margin-bottom: 1.5em; }
+#brand h1 { text-indent: -9999em; overflow: hidden; background-image: url('../images/susy_logo.png?1247988505'); background-repeat: no-repeat; background-position: left 50%; height: 105px; }
+
+#nav { width: 17.143%; display: inline; float: left; margin-right: 2.857%; margin-left: 1.429%; }
+#nav ul { margin: 0; text-align: right; font-weight: bold; }
+#nav ul li { list-style-type: none; margin-left: 0px; }
+
+#content { width: 77.143%; display: inline; float: left; margin-right: 2.857%; margin-right: 1.429%; margin-bottom: 3em; }
+#content #description { width: 61.111%; display: inline; float: left; margin-right: 3.704%; margin-left: 0; }
+#content #credit { width: 35.185%; display: inline; float: left; margin-right: 3.704%; margin-right: 0; color: #cc8866; }
+#content #credit h2 { font-weight: bold; text-transform: uppercase; }
+
+#site-info { width: 77.143%; display: inline; float: left; margin-right: 2.857%; padding-left: 20%; margin-left: 1.429%; margin-right: 1.429%; padding-top: .5em; padding-bottom: .75em; border-top-width: .25em; border-top-style: dashed; border-top-color: #cc8866; font-family: 'Adobe Caslon Pro', 'Big Caslon', Garamond, 'Hoefler Text', 'Times New Roman', Times, serif; font-style: italic; color: #cc8866; }
+#site-info p { margin: 0; }
+#site-info p.license { width: 61.111%; display: inline; float: left; margin-right: 3.704%; margin-left: 0; }
+#site-info p.styles { width: 35.185%; display: inline; float: left; margin-right: 3.704%; margin-right: 0; text-align: right; }
+#site-info a:link, #site-info a:visited { color: #cc8866; font-weight: bold; }
+
+/* COMPONENTS BY TYPE */
+/* COMPONENTS BY CONTENT */
+/* COMPONENTS BY PAGE */
+/* DEBUG uncomment, adjust and use for debugging */
+#page { background-image: url('../images/../images/grid.png?1248035155'); background-repeat: repeat; background-position: top left; background-position: 1em top; }
+#page * { background: transparent; }
+#page div { background: #333; opacity: 0.75; -moz-opacity: 0.75; -khtml-opacity: 0.75; -ms-filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=75); filter: alpha(opacity=75); }
+#page div div { background: #000; }

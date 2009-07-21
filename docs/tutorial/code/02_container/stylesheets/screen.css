@@ -18,34 +18,19 @@ q:before, q:after, blockquote:before, blockquote:after { content: ""; }
 
 img a { border: none; }
 
-/* * set as shortcut for prefix and suffix */
-
 /* DEFAULTS */
-:focus { outline: 1px dotted; }
-
 /* links */
 a:link, a:visited { color: #4caac0; text-decoration: none; }
 a:focus, a:hover, a:active { color: #cc8866; border-bottom-width: .1429em; border-bottom-style: dashed; }
 
-/* headers */
-
-/* forms */
-
-
-
-
-
-
 /* block tags */
-p { margin: 0 0 1.5em 0; }
+p { margin-bottom: 1.5em; }
 
 ol { list-style: decimal; margin: 0 1.5em 1.5em 1.5em; }
 
 ul { list-style: disc; margin: 0 1.5em 1.5em 1.5em; }
 
-
 /* inline tags */
-
 em { font-style: italic; line-height: .5; }
 
 strong { font-weight: bold; }
@@ -54,12 +39,14 @@ ins { text-decoration: underline; }
 
 del { text-decoration: line-through; }
 
-/* replaced tags */
-
 /* STRUCTURE */
 body { text-align: center; font-size: 87.5%; line-height: 150%; }
 
 #page { overflow: hidden; display: inline-block; text-align: left; margin-left: auto; margin-right: auto; width: 70em; max-width: 100%; font-family: 'Futura Medium', 'Century Gothic', AppleGothic, sans-serif; color: #332016; }
 #page { display: block; }
 
+/* COMPONENTS BY TYPE */
+/* COMPONENTS BY CONTENT */
+/* COMPONENTS BY PAGE */
 /* DEBUG uncomment, adjust and use for debugging */
+/* * #page   +show-grid("../images/grid.gif") */

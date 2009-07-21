@@ -27,7 +27,12 @@ EOF
 
 pushd \`dirname \${0}\` > /dev/null
 name=\`basename \\\`pwd\\\`\`
-cp "\${1}" "../../code/\${name}/\${1}"
+dest="../../code/\${name}/\${1}"
+if [ ! -f "${dest}" ]; then
+  echo "File \${dest} does not exist; does this file belong in _common?"
+  exit 1
+fi
+cp "\${1}" 
 popd > /dev/null
 EOF
   chmod 755 "${d}/use.sh"

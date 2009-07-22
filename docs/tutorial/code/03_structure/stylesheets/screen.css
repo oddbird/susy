@@ -46,7 +46,7 @@ body { text-align: center; font-size: 87.5%; line-height: 150%; }
 #page { display: block; }
 
 #brand { width: 77.143%; display: inline; float: left; margin-right: 2.857%; padding-left: 10%; padding-right: 10%; margin-left: 1.429%; margin-right: 1.429%; }
-#brand h1 { width: 61.111%; display: inline; float: left; margin-right: 3.704%; padding-left: 12.963%; padding-right: 25.926%; margin-left: 0; margin-right: 0; }
+#brand h1 a { width: 61.111%; display: inline; float: left; margin-right: 3.704%; padding-left: 12.963%; padding-right: 25.926%; margin-left: 0; margin-right: 0; }
 
 #nav { width: 17.143%; display: inline; float: left; margin-right: 2.857%; margin-left: 1.429%; }
 

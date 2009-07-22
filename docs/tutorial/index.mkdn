@@ -60,7 +60,7 @@ Create yourself a Compass project using Susy:
     compass -r susy -f susy susy_tutorial
 
 Inside the susy_tutorial directory, create an `index.html` file. You can [grab
-my source](http://www.oddbird.net/susy/index.html).
+my source](01_target/index.html).
 
 Start in your `_base.sass` file (in the `src` directory). That's where you set
 all your defaults.
@@ -74,7 +74,7 @@ gutters that match the internal ones. But we want a 10 column grid, with 5em
 columns, 2em gutters and 1em side-gutters.
 
 Take a look at our target site again, this time [with a grid
-overlay](http://www.oddbird.net/susy/tutorial/01_target/).
+overlay](01_target/).
 
 So we'll set our grid like this:
 
@@ -128,7 +128,7 @@ And we'll add a bit of margin to our paragraphs:
       :margin-bottom 1.5em
 
 That's it. You can look around at the other defaults and set what you like, or
-juse use [mine](http://www.oddbird.net/susy/src/_base.sass).
+juse use [mine](../src/_base.sass).
 
 
 Making Semantic Grids 
@@ -183,8 +183,7 @@ the start?
       +sans-family
       :color= !text
 
-Perfect. Take a look at [the
-results](http://www.oddbird.net/susy/tutorial/02_container/). So far we have:
+Perfect. Take a look at [the results](02_container/). So far we have:
 
 * Reset everything. This happens by default in the background.
 
@@ -200,12 +199,12 @@ Laying Out The Components
 
 It's time to lay out our grid components. We'll just work our way through the
 DOM, starting with our brand header (#brand). We can refer back to our [target
-site with a grid overlay](http://www.oddbird.net/susy/tutorial/01_target/) to
-see what we need. Looks like our branding gets an entire row to itself, with
-the content starting one row in. For the sake of argument, let's say we want
-the header content contained within the middle 8 columns - one in from each
-end. That means it will be an 8 column element, with 1 column prefixed and one
-suffixed, for a total of 10 columns - the full width.
+site with a grid overlay](01_target/) to see what we need. Looks like our
+branding gets an entire row to itself, with the content starting one row
+in. For the sake of argument, let's say we want the header content contained
+within the middle 8 columns - one in from each end. That means it will be an 8
+column element, with 1 column prefixed and one suffixed, for a total of 10
+columns - the full width.
 
     #brand
       +columns(8)
@@ -295,12 +294,9 @@ And we're done. That's it. That's what Susy does. The details of making it
 pretty are left as an exercise for the reader, and have more to do with
 Compass than Susy.
 
-* [The resulting
-  files](http://www.oddbird.net/susy/tutorial/03_structure/src/) with
-  [the site structure all in
-  place](http://www.oddbird.net/susy/tutorial/03_structure/) (this
-  should match what you have if you followed along).
+* [The resulting files](03_structure/src/) with [the site structure all in
+  place](03_structure/) (this should match what you have if you followed
+  along).
 
-* [My final styles](http://www.oddbird.net/susy/src/) for [the
-  site](http://www.oddbird.net/susy/).
+* [My final styles](../src/) for [the site](http://www.oddbird.net/susyss/).
 

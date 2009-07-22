@@ -38,7 +38,10 @@ EOF
 cat _tools/head.tpl.html \
     | sed 's/{{ STYLE_PATH }}//; s/{{ BODY_CLASS }}/home/; s/{{ TITLE }}/A Grid Plugin for Compass/;' \
     > _tools/home_head.html
-cat _tools/home_head.html _tools/home_content.html _tools/foot.html > _common/index.html
+cat _tools/foot.tpl.html \
+    | sed 's/{{ STYLE_PATH }}//;' \
+    > _tools/home_foot.html
+cat _tools/home_head.html _tools/home_content.html _tools/home_foot.html > _common/index.html
 
 # copy the tutorial figures into site/
 if [ ! -d "site/tutorial" ]; then
@@ -51,7 +54,10 @@ perl _tools/Markdown.pl --html4tags ../index.mkdn > _tools/tutorial_content.html
 cat _tools/head.tpl.html \
     | sed 's/{{ STYLE_PATH }}/..\//; s/{{ BODY_CLASS }}/tutorial/; s/{{ TITLE }}/A Tutorial/;' \
     > _tools/tutorial_head.html
-cat _tools/tutorial_head.html _tools/tutorial_content.html  _tools/foot.html > site/tutorial/index.html
+cat _tools/foot.tpl.html \
+    | sed 's/{{ STYLE_PATH }}/..\//;' \
+    > _tools/tutorial_foot.html
+cat _tools/tutorial_head.html _tools/tutorial_content.html  _tools/tutorial_foot.html > site/tutorial/index.html
 
 # remove _tools
 rm -r _tools/

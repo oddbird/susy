@@ -9,7 +9,7 @@ don't, check out [Chris Eppstein's great
 intro](http://wiki.github.com/chriseppstein/compass).
 
 For a brief overview of Susy's philosophy and goals, see [the
-README](http://github.com/ericam/compass-susy-plugin/tree/master).
+README](http://github.com/ericam/compass-susy-plugin/tree/master#readme).
 
 On Susy's Terms
 ---------------
@@ -20,6 +20,8 @@ Here are the terms to understand for following along and using Susy:
   will act as our elastic shell. The **container** also represents a grid
   structure made up of **columns**, **gutters** between the columns, and
   **side gutters** on the outside edges of the grid.
+
+  ![The Susy Grid](figures/susy_grid.png)
 
 * The base **context** is the number of columns in your grid system, and any
   direct children of the **container** will use that base as their
@@ -32,6 +34,8 @@ Here are the terms to understand for following along and using Susy:
   spans any number of **columns** along with the **gutters** between those
   columns (number of columns minus one), and a right-margin that represents
   the gutter to the right of it.
+
+  ![The Susy Grid Element](figures/susy_element.png)
 
 * A **grid element** might also include a **prefix** and/or **suffix** added
   as padding on either side. Any **prefix** or **suffix** will span the number
@@ -56,15 +60,14 @@ Create yourself a Compass project using Susy:
     compass -r susy -f susy susy_tutorial
 
 Inside the susy_tutorial directory, create an `index.html` file. You can [grab
-my source](code/_common/index.html).
+my source](http://www.oddbird.net/susy/index.html).
 
 Start in your `_base.sass` file (in the `src` directory). That's where you set
 all your defaults.
 
-To create a grid system, set the `!grid_unit` (units that your grid is based
-in), `!total_cols` (total number of columns in your grid), `!col_width` (width
-of columns), and `!gutter_width` (width of gutters) variables in your
-`_base.sass`.
+To create a grid, set the `!grid_unit` (units that your grid is based in),
+`!total_cols` (total number of columns in your grid), `!col_width` (width of
+columns), and `!gutter_width` (width of gutters) variables.
 
 The default values are 16 columns, 4em column widths, 1em gutters and side
 gutters that match the internal ones. But we want a 10 column grid, with 5em
@@ -125,7 +128,7 @@ And we'll add a bit of margin to our paragraphs:
       :margin-bottom 1.5em
 
 That's it. You can look around at the other defaults and set what you like, or
-juse use [mine](code/site/src/_base.sass).
+juse use [mine](http://www.oddbird.net/susy/src/_base.sass).
 
 
 Making Semantic Grids 
@@ -142,15 +145,11 @@ First the explanation:
   centered designs) and returns your text-alignment to "left". Change the
   internal text alignment with an optional `left | center | right` argument.
   
-![The Susy Grid](figures/susy_grid.png)
-
 * Use the `+columns` mixin to set the width (in columns) of a grid element.
   The first argument is the number of columns to span, the second (optional)
   argument is the width (in columns) of the containing element when
   nesting. If the element is not nested (its parent is the grid container),
   don't pass a second argument.
-
-![The Susy Grid Elements](figures/susy_elements.png)
 
 * Use the `+alpha` and `+omega` mixins to declare the first and last elements
   in a row, or inside a nested element. In the latter case, each of these
@@ -296,10 +295,12 @@ And we're done. That's it. That's what Susy does. The details of making it
 pretty are left as an exercise for the reader, and have more to do with
 Compass than Susy.
 
-* [The resulting files](code/03_structure/src/) with [the site structure all
-  in place](http://www.oddbird.net/susy/tutorial/03_structure/) (this should
-  match what you have if you followed along).
+* [The resulting
+  files](http://www.oddbird.net/susy/tutorial/03_structure/src/) with
+  [the site structure all in
+  place](http://www.oddbird.net/susy/tutorial/03_structure/) (this
+  should match what you have if you followed along).
 
-* [My final styles](code/site/src) for [the
+* [My final styles](http://www.oddbird.net/susy/src/) for [the
   site](http://www.oddbird.net/susy/).
 

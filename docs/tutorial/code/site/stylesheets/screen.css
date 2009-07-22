@@ -31,7 +31,7 @@ h1 { font-family: 'Adobe Caslon Pro', 'Big Caslon', Garamond, 'Hoefler Text', 'T
 h2 { font-weight: bold; text-transform: uppercase; }
 
 /* block tags */
-p { margin-bottom: 1.5em; }
+p { margin: 1em 0 1em 0; }
 
 ol { list-style: decimal; margin: 0 1.5em 1.5em 1.5em; }
 
@@ -53,7 +53,7 @@ body { text-align: center; font-size: 87.5%; line-height: 150%; }
 #page { display: block; }
 
 #brand { width: 77.143%; display: inline; float: left; margin-right: 2.857%; padding-left: 10%; padding-right: 10%; margin-left: 1.429%; margin-right: 1.429%; margin-top: 3em; margin-bottom: 1.5em; }
-#brand h1 { width: 61.111%; display: inline; float: left; margin-right: 3.704%; padding-left: 12.963%; padding-right: 25.926%; margin-left: 0; margin-right: 0; text-indent: -9999em; overflow: hidden; background-image: url('../images/susy_logo.png?1248042471'); background-repeat: no-repeat; background-position: left 50%; height: 105px; }
+#brand h1 { width: 61.111%; display: inline; float: left; margin-right: 3.704%; padding-left: 12.963%; padding-right: 25.926%; margin-left: 0; margin-right: 0; text-indent: -9999em; overflow: hidden; background-image: url('../images/susy_logo.png?1248288555'); background-repeat: no-repeat; background-position: left 50%; height: 105px; }
 
 #nav { width: 17.143%; display: inline; float: left; margin-right: 2.857%; margin-left: 1.429%; }
 #nav ul { margin: 0; text-align: right; font-weight: bold; }
@@ -69,7 +69,8 @@ body { text-align: center; font-size: 87.5%; line-height: 150%; }
 #site-info p.styles { width: 35.185%; display: inline; float: left; margin-right: 3.704%; margin-right: 0; text-align: right; }
 #site-info a:link, #site-info a:visited { color: #cc8866; font-weight: bold; }
 
-#tutorial { width: 77.143%; display: inline; float: left; margin-right: 2.857%; padding-left: 20%; margin-left: 1.429%; margin-right: 1.429%; margin-bottom: 3em; }
-#tutorial li { margin-bottom: 1.5em; }
+.tutorial #content { margin-bottom: 3em; }
+.tutorial #content li { margin-bottom: 1.5em; }
+.tutorial #content code { font-size: 1.25em; font-family: monospace; color: #cc6633; }
 
 /* DEBUG uncomment, adjust and use for debugging */

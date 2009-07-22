@@ -3,9 +3,16 @@
   Import this file using the following HTML or equivalent:
   <link href="/stylesheets/screen.css" media="screen" rel="stylesheet" type="text/css" />
 
-@import base.sass
+/* @group reset */
+@import compass/reset.sass
+/* @end */
 
-/* STRUCTURE
+/* @group defaults */
+@import base.sass
+/* @end */
+
+/* @group STRUCTURE */
+
 body
   +susy
 #page
@@ -13,19 +20,4 @@ body
   +sans-family
   :color= !text
 
-  
-/* COMPONENTS BY TYPE
-
-
-/* COMPONENTS BY CONTENT
-
-        
-/* COMPONENTS BY PAGE
-
-
-/* DEBUG
-  uncomment, adjust and use for debugging
-  
-/** 
-  #page
-    +show-grid("../images/grid.gif")
+/* @end */

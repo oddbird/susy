@@ -3,9 +3,16 @@
   Import this file using the following HTML or equivalent:
   <link href="/stylesheets/screen.css" media="screen" rel="stylesheet" type="text/css" />
  
+/* @group reset */
+@import compass/reset.sass
+/* @end */
+
+/* @group defaults */
 @import base.sass
+/* @end */
  
-/* STRUCTURE
+/* @group STRUCTURE */
+
 body
   +susy
  
@@ -48,3 +55,4 @@ body
     +columns(3,8)
     +omega(8)
  
+/* @end */

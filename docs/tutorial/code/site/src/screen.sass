@@ -3,9 +3,16 @@
   Import this file using the following HTML or equivalent:
   <link href="/stylesheets/screen.css" media="screen" rel="stylesheet" type="text/css" />
  
+/* @group reset */
+@import compass/reset.sass
+/* @end */
+
+/* @group defaults */
 @import base.sass
- 
-/* STRUCTURE AND STYLE (too simple to split out)
+/* @end */
+
+/* @group STRUCTURE */
+
 body
   +susy
  
@@ -86,16 +93,6 @@ body
     code
       :font-size 1.25em
       :font-family monospace
-      :color #cc6633
- 
-/* DEBUG
-  uncomment, adjust and use for debugging
-  
-/ #page
-/ +show-grid("../images/grid.png")
-/ :background-position= !side_gutter_width + "em top"
-/ div
-/ :background #333
-/ +opacity(.75)
-/ div
-/ :background #000
+      :color= !light
+
+/* @end */

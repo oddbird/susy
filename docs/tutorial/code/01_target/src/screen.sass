@@ -3,9 +3,16 @@
   Import this file using the following HTML or equivalent:
   <link href="/stylesheets/screen.css" media="screen" rel="stylesheet" type="text/css" />
  
+/* @group reset */
+@import compass/reset.sass
+/* @end */
+
+/* @group defaults */
 @import base.sass
- 
-/* STRUCTURE AND STYLE (too simple to split out)
+/* @end */
+
+/* @group STRUCTURE */
+
 body
   +susy
  
@@ -21,12 +28,14 @@ body
   :margin
     :top 3em
     :bottom 1.5em
-  h1
+  h1 a
     +columns(5,8)
     +pad(1,2,8)
     +full(8)
     +replace-text("susy_logo.png", "left")
     :height 105px
+    &:focus, &:hover, &:active
+      :border-bottom 0
     
 #nav
   +columns(2)
@@ -75,15 +84,15 @@ body
   a:link, a:visited
     :color= !light
     :font-weight bold
- 
-/* DEBUG
-  uncomment, adjust and use for debugging
-  
-#page
-  +show-grid("grid.png")
-  :background-position= !side_gutter_width + "em top"
-  div
-    :background #333
-    +opacity(.75)
-    div
-      :background #000
+
+.tutorial
+  #content
+    :margin-bottom 3em
+    li
+      :margin-bottom 1.5em
+    code
+      :font-size 1.25em
+      :font-family monospace
+      :color= !light
+
+/* @end */

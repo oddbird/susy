@@ -21,7 +21,7 @@ Here are the terms to understand for following along and using Susy:
   structure made up of **columns**, **gutters** between the columns, and
   **side gutters** on the outside edges of the grid.
 
-  ![The Susy Grid](figures/susy_grid.png)
+  [![The Susy Grid](figures/susy_grid.png)](figures/susy_grid.png)
 
 * The base **context** is the number of columns in your grid system, and any
   direct children of the **container** will use that base as their
@@ -35,7 +35,7 @@ Here are the terms to understand for following along and using Susy:
   columns (number of columns minus one), and a right-margin that represents
   the gutter to the right of it.
 
-  ![The Susy Grid Element](figures/susy_element.png)
+  [![The Susy Grid Element](figures/susy_element.png)](figures/susy_element.png)
 
 * A **grid element** might also include a **prefix** and/or **suffix** added
   as padding on either side. Any **prefix** or **suffix** will span the number
@@ -231,16 +231,16 @@ simplify down to:
       +pad(1,1)
       +full
 
-Since we don't have an image in there yet, let's move the text over to line
-up with the future placement of our main content area. By turning the `h1`
+Since we don't have an image in there yet, let's move the text over to line up
+with the future placement of our main content area. By turning the `h1` link
 into a grid element and prefixing a padding of one column, we can move the
 text without any effect on the image that will replace it (using the Compass
 utility `+replace-text`, though I'll leave the implementation that as an
-exercise for you to figure out). To line it all up with the content below
-it, we'll assign it 5 columns in a context of 8, with the extra 3 split
-between a prefix of 1 and a suffix of 2 - giving it a full span.
+exercise for you to figure out). To line it all up with the content below it,
+we'll assign it 5 columns in a context of 8, with the extra 3 split between a
+prefix of 1 and a suffix of 2 - giving it a full span.
 
-    h1
+    h1 a
       +columns(5,8)
       +pad(1,2,8)
       +full(8)

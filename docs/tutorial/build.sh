@@ -8,11 +8,11 @@ if [ ! -d "_build" ]; then
   mkdir "_build"
 fi
 
-cp -a code/* _build/
+cp -pR code/* _build/
 cd _build
 
 for d in 01_target 02_container 03_structure site; do
-  cp -a _common/* "${d}/"
+  cp -pR _common/* "${d}/"
   cat > "${d}/diff.sh" <<EOF
 #!/bin/bash
 

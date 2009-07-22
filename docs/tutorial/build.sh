@@ -11,6 +11,29 @@ fi
 cp -pR code/* _build/
 cd _build
 
+# create activate and deactivate scripts
+cat > activate <<EOF
+#!/bin/bash 
+
+cd "${tut_dir}/_build"
+pushd ../../../lib > /dev/null
+libdir=\`pwd\`
+popd > /dev/null
+
+export OLD_RUBYLIB=\${RUBYLIB}
+export RUBYLIB=\${libdir}
+EOF
+
+cat > deactivate <<EOF
+#!/bin/bash
+
+export RUBYLIB=\${OLD_RUBYLIB}
+export OLD_RUBYLIB=
+EOF
+
+# activate so we can run compass later
+. activate
+
 # create the site index.html and place it in _common
 cat _tools/head.tpl.html \
     | sed 's/{{ STYLE_PATH }}//; s/{{ BODY_CLASS }}/home/; s/{{ TITLE }}/A Grid Plugin for Compass/;' \
@@ -36,12 +59,15 @@ rm -r _tools/
 # copy files in _common into each stage; also create diff.sh and use.sh
 for d in 01_target 02_container 03_structure site; do
     cp -pR _common/* "${d}/"
+    pushd "${d}" > /dev/null
+    compass > /dev/null
+    popd > /dev/null
     cat > "${d}/diff.sh" <<EOF
 #!/bin/bash
 
 pushd \`dirname \${0}\` > /dev/null
 name=\`basename \\\`pwd\\\`\`
-diff -r ${tut_dir}/code/\${name}/stylesheets stylesheets/
+diff -r ${tut_dir}/code/\${name}/src/ src/
 popd > /dev/null
 EOF
     chmod 755 "${d}/diff.sh"
@@ -69,26 +95,6 @@ for d in 01_target 02_container 03_structure; do
     cp -pR "${d}" site/tutorial/
     rm -r "${d}"
 done
-
-# create activate and deactivate scripts
-cat > activate <<EOF
-#!/bin/bash 
-
-cd "${tut_dir}/_build"
-pushd ../../../lib > /dev/null
-libdir=\`pwd\`
-popd > /dev/null
-
-export OLD_RUBYLIB=\${RUBYLIB}
-export RUBYLIB=\${libdir}
-EOF
-
-cat > deactivate <<EOF
-#!/bin/bash
-
-export RUBYLIB=\${OLD_RUBYLIB}
-export OLD_RUBYLIB=
-EOF
 
 # create install script
 cat > install.sh <<EOF

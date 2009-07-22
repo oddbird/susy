@@ -120,6 +120,43 @@ For more details, read [the tutorial](http://www.oddbird.net/susy/tutorial/).
 It's also included with Susy in the docs/ folder.
 
 
+Gotcha
+======
+
+There is one easy 'gotcha' mistake in the way Susy handles context, caused by the addition
+of side-gutters and the limitations of the Sass language. It is this: in the first layer of nesting
+(direct children of your container, such as #brand in this case) you *must not declare a context*.
+If you do, your side-gutters will be ignored. At every nested layer below that, even if the context hasn't changed,
+you *must declare a context* or it will try to add side-gutters in again. That means even if you have one nested
+element wrapping the rest at full width and not changing the context, that wrapper does not get a context but its
+decendants do, even where that context is the same as the full page.
+
+For example these *will not work*:
+
+    #page
+      +container
+      .inner
+        +columns(10,10)
+
+    #page
+      +container
+      .inner
+        +columns(10)
+        #brand
+          +columns(10)
+
+This *will work*:
+
+    #page
+      +container
+      .inner
+        +columns(10)
+        #brand
+          +columns(10,10)
+
+Remember that if your side gutters or columns ever seem the wrong size.
+
+
 Extra Utility Mixins 
 =====================
 

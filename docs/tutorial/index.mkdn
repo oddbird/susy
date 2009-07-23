@@ -244,15 +244,16 @@ prefix of 1 and a suffix of 2 - giving it a full span.
       +pad(1,2,8)
       +full(8)
 
-There is one easy 'gotcha' mistake in the way Susy handles context, caused by the addition
-of side-gutters and the limitations of the Sass language. It is this: in the first layer of nesting
-(direct children of your container, such as #brand in this case) you *must not declare a context*.
-If you do, your side-gutters will be ignored. At every nested layer below that, even if the context hasn't changed,
-you *must declare a context* or it will try to add side-gutters in again. That means even if you have one nested
-element wrapping the rest at full width and not changing the context, that wrapper does not get a context but its
-decendants do, even where that context is the same as the full page.
+There is one 'gotcha' in the way Susy handles context. Direct children of your
+container (such as #brand in this case) *must not declare a context*.  If you
+do, your side-gutters will be ignored. At every nested layer below that, even
+if the context hasn't changed, you *must declare a context* or it will try to
+add side-gutters again. That means even if you have one nested element
+wrapping the rest at full width and not changing the context, that wrapper
+does not get a context but its descendants do, even where that context is the
+same as the full page.
 
-For example these *will not work*:
+For example, these *will not work*:
 
     #page
       +container

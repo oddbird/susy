@@ -2,14 +2,16 @@
 
 //** 
   removes all background images and colors from the element and offspring
-  then adds a grid image of your choosing
+  then adds a grid image of your choosing. highlights divs on modern browsers
 =show-grid(!src)
   :background
     :image= image_url(!src)
     :repeat repeat 
-    :position top left
+    :position= side_gutter() + "% 0"
   *
     :background transparent
+  div
+    :background rgba(0,0,0,.125)
 
 //** 
   an inline-block list that works in IE

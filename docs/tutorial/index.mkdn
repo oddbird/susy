@@ -332,5 +332,5 @@ Compass than Susy.
   place](03_structure/) (this should match what you have if you followed
   along).
 
-* [My final styles](../src/) for [the site](http://www.oddbird.net/susyss/).
+* [My final styles](../src/) for [the site](http://www.oddbird.net/susys/).
 

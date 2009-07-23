@@ -134,3 +134,8 @@ find "\${1}" -name '*.sh' -exec rm {} \;
 echo "Installed."
 EOF
 chmod 755 install.sh
+
+# if we got an argument, go ahead and install there
+if [ ! -z "${1}" ]; then
+    ./install.sh "${1}"
+fi

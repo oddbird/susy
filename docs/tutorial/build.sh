@@ -122,8 +122,14 @@ if [ -e "\${1}" ]; then
     rm -r \${1}
 fi
 
+
 echo "Installing Susy site to \${1}."
-cp -pR site/ "\${1}"
+
+pushd \`dirname \${0}\` > /dev/null
+base=\`pwd\`
+popd > /dev/null
+cp -pR "\${base}/site/" "\${1}" || exit 1
+
 find "\${1}" -name '*.sh' -exec rm {} \;
 echo "Installed."
 EOF

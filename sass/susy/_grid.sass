@@ -52,7 +52,7 @@
 
 //**  
   set on the first element of a row to take side-gutters into account
-  - must override `!nested` for nested columns
+  - must set !n for nested columns
 =alpha(!nested = false)
   @if !nested
     :margin-left 0
@@ -61,7 +61,7 @@
 
 //**  
   set on the last element of a row to take side-gutters into account
-  - must override `!nested` for nested columns
+  - must set !n for nested columns
 =omega(!n = false)
   @if !n    
     :margin-right= 0
@@ -70,8 +70,8 @@
 
 //**  
   use to override +omega in ie.sass for IE6-7 to handle sub-pixel rounding issues
-  - must override `!nested` for nested columns
-  - must override `!right` for right-floated omega elements
+  - set !nested for nested columns
+  - set !right for right-floated omega elements
 =ie-omega(!nested = false, !right = false)
   @if !right
     @if !nested    

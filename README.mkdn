@@ -82,7 +82,7 @@ Grid Basics
 * In nested contexts, all of these mixins take an extra final argument, the
   width in columns of the parent (nesting) element.
 
-* That's it for the basics! Here's a sample Susy grid layout:
+That's it for the basics! Here's a sample Susy grid layout:
 
     body
       +susy

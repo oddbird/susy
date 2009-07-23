@@ -73,13 +73,18 @@
   - must override `!nested` for nested columns
   - must override `!right` for right-floated omega elements
 =ie-omega(!nested = false, !right = false)
-  @if !nested    
-    :margin-right= -1%
-  @else
-    :margin-right= side_gutter() - 1 + "%"
   @if !right
-    :position relative
-    :left = -1%
+    @if !nested    
+      :margin-right 0
+    @else
+      :margin-right= side_gutter() + "%"
+    :margin-left -1%
+  @else
+    @if !nested    
+      :margin-right= -1%
+    @else
+      :margin-right= side_gutter() - 1 + "%"
+
 
 //**
   set on an element that will span it's entire context

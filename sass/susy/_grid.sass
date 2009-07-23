@@ -61,30 +61,22 @@
 
 //**  
   set on the last element of a row to take side-gutters into account
-  - must set !n for nested columns
-=omega(!n = false)
-  @if !n    
-    :margin-right= 0
-  @else
-    :margin-right= side_gutter() + "%"
-
-//**  
-  use to override +omega in ie.sass for IE6-7 to handle sub-pixel rounding issues
   - set !nested for nested columns
   - set !right for right-floated omega elements
-=ie-omega(!nested = false, !right = false)
-  @if !right
-    @if !nested    
-      :margin-right 0
-    @else
-      :margin-right= side_gutter() + "%"
-    :margin-left -1%
+=omega(!nested = false, !right = false)
+  !s = side_gutter()
+  @if !nested
+    :margin-right 0
   @else
-    @if !nested    
-      :margin-right= -1%
+    :margin-right= !s + "%"
+  /* ugly hacks for IE6-7 */
+  @if !right
+    :_margin-left -1%
+  @else
+    @if !nested
+      :_margin-right -1%
     @else
-      :margin-right= side_gutter() - 1 + "%"
-
+      :_margin-right= !s - 1 + "%"
 
 //**
   set on an element that will span it's entire context

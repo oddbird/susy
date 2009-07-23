@@ -1,6 +1,20 @@
 require 'sass'
 
 module Sass::Script::Functions
+  # set the Susy base font size (in pixels)
+  # return the percentage base font size
+  #  this could be done in Sass, but we need to store the px_size so we
+  #  can provide a px_to_em function
+  def base_font_size(base_font_size_px)
+    @@susy_base_font_size_px = Float(base_font_size_px.value)
+    Sass::Script::Number.new((@@susy_base_font_size_px / 16) * 100)
+  end
+
+  # approximate a given pixel size in ems
+  def px2em(size_in_px)
+    Sass::Script::Number.new((size_in_px.value / @@susy_base_font_size_px))
+  end
+
   # set the Susy column and gutter widths and number of columns
   #  column, gutter and padding widths should be sent as unitless numbers, 
   #  though they may "really" be ems or pixels (_grid.sass handles units).

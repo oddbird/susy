@@ -117,10 +117,14 @@ And style the links:
       &:focus, &:hover, &:active
         :color= !light
         :border-bottom
-          :width .1429em
+          :width= px2em(2) + "em"
           :style dashed
 
-(`.1429em` is just an approximation of `2px` in terms of our em units.)
+(Susy provides the convenience function `px2em`, which can approximate a pixel
+value in ems, given our chosen !base_font_size_px. Here we want the dashed
+bottom border to be 2 pixels wide at the default font size, but we size it in
+ems - the result here will be .1429em. Susy's math functions return bare
+numbers, so we add "em" ourselves).
 
 And we'll add a bit of margin to our paragraphs:
     

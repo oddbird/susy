@@ -56,7 +56,7 @@ a
   &:focus, &:hover, &:active
     :color= !light
     :border-bottom
-      :width .1429em
+      :width= px2em(2) + "em"
       :style dashed
 
 /* headers
@@ -77,10 +77,10 @@ p
   :margin 0 0 1.5em 0
 
 pre
-  :border .071em solid
+  :border px2em(1) + "em solid"
     :color= !light
   :margin 0 0 1.5em 0
-  :padding 1.429em 1em
+  :padding= px2em(20) + "em 1em"
 
 =list-default(!ol = false)
   @if !ol

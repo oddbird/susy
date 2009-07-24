@@ -13,6 +13,15 @@
   div
     :background rgba(0,0,0,.125)
 
+=inline-block
+  :display -moz-inline-box
+  :-moz-box-orient vertical
+  :display inline-block
+  :vertical-align middle
+  :#display inline
+  // fixes alignment against native input/button on IE6
+  :#vertical-align auto
+
 //** 
   an inline-block list that works in IE
   for those awkward moments when a floated horizontal list just wont cut it

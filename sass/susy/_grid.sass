@@ -71,12 +71,12 @@
     :margin-right= !s + "%"
   /* ugly hacks for IE6-7 */
   @if !right
-    :_margin-left -1%
+    :#margin-left -1%
   @else
     @if !nested
-      :_margin-right -1%
+      :#margin-right -1%
     @else
-      :_margin-right= !s - 1 + "%"
+      :#margin-right= !s - 1 + "%"
 
 //**
   set on an element that will span it's entire context

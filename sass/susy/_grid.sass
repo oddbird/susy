@@ -50,12 +50,6 @@
 =suffix(!n, !context = false)
   :padding-right= columns(!n, !context) + gutter(!context) + "%"
 
-=flex
-  :float none
-  :display block
-  :width auto
-  :overflow hidden
-
 //**  
   set on the first element of a row to take side-gutters into account
   - must set !n for nested columns
@@ -65,28 +59,41 @@
   @else
     :margin-left= side_gutter() + "%"
 
+//**
+  when global constant !hacks == true:
+  - this will be called automatically with hacks
+  when global constant !hacks == false:
+  - you can call it yourself in ie.sass without the hacks
+=ie-omega(!right = false, !hack = false)
+  @if !hack
+    @if !right
+      :#margin-left -1%
+    @else
+      :#margin-right -1%
+  @else
+    @if !right
+      :margin-left -1%
+    @else
+      :margin-right -1%
+
 //**  
   set on the last element of a row to take side-gutters into account
   - set !nested for nested columns
-  - set !right for right-floated omega elements
-=omega(!nested = false, !right = false, !hacks = true)
+  - set !float for right-floated omega elements
+=omega(!nested = false, !right = false)
   !s = side_gutter()
   @if !nested
     :margin-right 0
   @else
     :margin-right= !s + "%"
-  /* ugly hacks for IE6-7 */
-  @if !right
-    @if !hacks
-      :#margin-left -1%
-  @else
-    +flex
+  @if !hacks
+    /* ugly hacks for IE6-7 */
+    +ie-omega(!right,"*")
 
 //**
   set on an element that will span it's entire context
-=full(!n = false)
-  +alpha(!n)
-  +omega(!n)
+=full(!nested = false)
+  +flex(!nested)
 
 //**
   set as shortcut for prefix and suffix
@@ -95,3 +102,17 @@
     +prefix(!p,!c)
   @if !s != 0
     +suffix(!s,!c)
+
+//**
+  use for a flexible last element (not necessarily omega column)
+  - automatically used for "full" elements
+  - no need for the ie-omega fixes if this is used in a row
+=flex(!nested = false)
+  :float none
+  :display block
+  :width auto
+  :overflow hidden
+  @if !nested == false
+    !s = side_gutter() + "%"
+    margin-right= !s
+    margin-left= !s

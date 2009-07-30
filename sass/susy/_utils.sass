@@ -13,18 +13,37 @@
   div
     :background rgba(0,0,0,.125)
 
+//**
+  brings IE in line with inline-block display
+  - using hacks if called automatically because !hacks == true
+  - or without if you call it from ie.sass
+=ie-inline-block(!hack = false)
+  @if !hack
+    :#display inline
+    // fixes alignment against native input/button on IE6
+    :#vertical-align auto
+  @else
+    :display inline
+    // fixes alignment against native input/button on IE6
+    :vertical-align auto
+
+//**
+  an override for compass inline-block that lets you take advantage
+  of Susys !hacks constant. if true, hacks. if false, use ie-inline-block
+  to help ie along in your ie.sass
 =inline-block
   :display -moz-inline-box
   :-moz-box-orient vertical
   :display inline-block
   :vertical-align middle
-  :#display inline
-  // fixes alignment against native input/button on IE6
-  :#vertical-align auto
+  @if !hacks
+    +ie-inline-block("*")
 
 //** 
   an inline-block list that works in IE
   for those awkward moments when a floated horizontal list just wont cut it
+  if global !hacks == false:
+  - you'll need to fix list items in ie.sass with +ie-inline-block
 =inline-block-list(!hpad = 0)
   +horizontal-list-container
   li

@@ -70,10 +70,12 @@ Grid Basics
   grid.
 
 * Use the `+columns` mixin to declare the width in columns of an element,
+  or `+full` for any element spanning the full width of its context.
 
 * Use `+alpha` and `+omega` to declare elements which include the first or
   last column within their parent element (`+full` to declare both `+alpha`
-  and `+omega`).
+  and `+omega`). Note: `+alpha` is actually only needed in the very top level,
+  and does nothing in nested contexts. Neither is needed on a `+full` element.
 
 * Use `+prefix` or `+suffix` to give the width (in columns) of an elements
   left or right margin, or `+pad` to give both `+prefix` and `+suffix` at
@@ -91,13 +93,11 @@ That's it for the basics! Here's a sample Susy grid layout:
       +container
      
     #brand
-      +columns(8)
-      +pad(1,1)
       +full
+      +pad(1,1)
       h1
-        +columns(5,8)
-        +pad(1,2,8)
         +full(8)
+        +pad(1,2,8)
         
     #nav
       +columns(2)
@@ -108,7 +108,6 @@ That's it for the basics! Here's a sample Susy grid layout:
       +omega
       #description
         +columns(5,8)
-        +alpha(8)
       #credit
         +columns(3,8)
         +omega(8)
@@ -154,3 +153,67 @@ And then the fun stuff:
 
 * `+box-shadow(!verticaloffset, !horizontaloffset, !blur, !color)` for
   box-shadow in webkit and CSS3.
+
+Advanced Options
+================
+
+Susy is built for flexibility, so that you always write the code you want to
+write. While everything should 'just work' out of the box, there are plenty of
+advanced options hidden inside. Here's a few:
+
+* `!hacks` is a boolean constant that you can set in your base.sass file to
+  choose between using targeted hacks for IE (a variation of the star hack in
+  most cases) in your screen.css, or using a conditional-comment targeted
+  ie.css. All the needed mixins are available for either setting. `!hacks` is
+  true by default so there is no extra work maintaining multiple files unless
+  you want to.
+
+    Example 1:
+
+        !hacks = true
+    
+        #nav
+          +inline-block-list
+
+    Example 2:
+
+        !hacks = false
+    
+        (in screen.sass)
+        #nav
+          +inline-block-list
+      
+        (in ie.sass)
+        #nav li
+          +ie-inline-block
+
+  It requires more maintenance on your part, but the result is a hack-free output.
+  
+  The susy mixins that use either hacks or targeted mixins are `+omega`
+  ('+ie-omega([!right-floated = false])'), `+inline-block` (`+ie-inline-block`), and
+  `+inline-block-list` which sets `+inline-block` on the list items.
+  
+  These ie-specific mixins only add the needed ie-specific adjustments, so
+  they need to be used in addition to their counterparts, not on their own.
+
+* `gutter(!context)` is a function that you can call at any time to return the
+  size of a gutter in your given context using percentages. The number is
+  returned without units so that you can perform math on it. In order to use
+  it, you will have to add "%" to it.
+
+    Example:
+        
+        #nav
+          padding-right: gutter(5) + "%"
+
+* `columns(!number, !context)` returns the span of `!number` columns in
+  `!context` as a percentage (again without the units declared). This span
+  includes any gutters between the columns spanned.
+
+    Example:
+        
+        #nav
+          padding-left: columns(3,5) + "%"
+
+* `side_gutter()` is also available and takes no arguments since it is always
+  used at the top nesting level.

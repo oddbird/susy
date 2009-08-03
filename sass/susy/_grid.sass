@@ -50,13 +50,19 @@
 =suffix(!n, !context = false)
   :padding-right= columns(!n, !context) + gutter(!context) + "%"
 
+//**
+  set as shortcut for prefix and suffix
+=pad(!p = 0, !s = 0, !c = false)
+  @if !p != 0
+    +prefix(!p,!c)
+  @if !s != 0
+    +suffix(!s,!c)
+
 //**  
-  set on the first element of a row to take side-gutters into account
-  - must set !n for nested columns
+  set on any element spanning the first column in non-nested context
+  to take side-gutters into account
 =alpha(!nested = false)
-  @if !nested
-    :margin-left 0
-  @else
+  @if !nested == false
     :margin-left= side_gutter() + "%"
 
 //**
@@ -64,17 +70,24 @@
   - this will be called automatically with hacks
   when global constant !hacks == false:
   - you can call it yourself in ie.sass without the hacks
-=ie-omega(!right = false, !hack = false)
-  @if !hack
-    @if !right
+=ie-omega(!nested = false, !right = false, !hack = false)
+  !s = side_gutter()
+  @if !right
+    @if !hack
       :#margin-left -1%
     @else
-      :#margin-right -1%
-  @else
-    @if !right
       :margin-left -1%
+  @else
+    @if !nested
+      @if !hack
+        :#margin-right -1%
+      @else
+        :margin-right -1%
     @else
-      :margin-right -1%
+      @if !hack
+        :#margin-right= !s - 1 + "%"
+      @else
+        :margin-right= !s - 1 + "%"
 
 //**  
   set on the last element of a row to take side-gutters into account
@@ -88,30 +101,14 @@
     :margin-right= !s + "%"
   @if !hacks
     /* ugly hacks for IE6-7 */
-    +ie-omega(!right,"*")
+    +ie-omega(!nested, !right,"*")
 
 //**
   set on an element that will span it's entire context
+  - no need for +columns, +alpha or +omega on a +full element
 =full(!nested = false)
-  +flex(!nested)
-
-//**
-  set as shortcut for prefix and suffix
-=pad(!p = 0, !s = 0, !c = false)
-  @if !p != 0
-    +prefix(!p,!c)
-  @if !s != 0
-    +suffix(!s,!c)
-
-//**
-  use for a flexible last element (not necessarily omega column)
-  - automatically used for "full" elements
-  - no need for the ie-omega fixes if this is used in a row
-=flex(!nested = false)
-  :float none
-  :display block
-  :width auto
-  :overflow hidden
+  :clear both
+  +clearfix
   @if !nested == false
     !s = side_gutter() + "%"
     margin-right= !s

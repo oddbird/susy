@@ -204,7 +204,7 @@ advanced options hidden inside. Here's a few:
     Example:
         
         #nav
-          padding-right: gutter(5) + "%"
+          :padding-right= gutter(5) + "%"
 
 * `columns(!number, !context)` returns the span of `!number` columns in
   `!context` as a percentage (again without the units declared). This span
@@ -213,7 +213,17 @@ advanced options hidden inside. Here's a few:
     Example:
         
         #nav
-          padding-left: columns(3,5) + "%"
+          :padding-left= columns(3,5) + "%"
 
 * `side_gutter()` is also available and takes no arguments since it is always
   used at the top nesting level.
+
+* `px2em()` takes one numeric argument representing the number of pixels you
+  want to mimic. The return is an em value (with no units declared) that
+  approximates that number of pixels. Useful for keeping your entire design
+  fluid.
+  
+  Example:
+    
+      #nav
+        :border-bottom= px2em(2) + "em"

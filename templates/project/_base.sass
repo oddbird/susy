@@ -1,7 +1,7 @@
 //**
 //  Susy: Elastic-Fluid grids without all the math
 //  by Eric Meyer and OddBird Collective
-//  oddbird. 
+//  Site: www.oddbird.net/susy/
 //**
 
 //** 
@@ -35,7 +35,6 @@
 //  (don't move this @import above the GRID and FONT-SIZE overrides)
 @import susy/susy.sass
 
-
 // COLORS
 // set any colors you will need later
 !dark = #000
@@ -49,18 +48,26 @@
 =serif-family
   :font-family 'Adobe Caslon Pro', 'Big Caslon', Garamond, 'Hoefler Text', 'Times New Roman', Times, serif 
 
-
 // Remember to add default styles to everything!
-/* DEFAULTS
+
+/* @group links */
+
 \:focus
 
-/* links
 a
 
-/* headers
+/* @end */
+
+
+/* @group headers */
+
 h1, h2, h3, h4, h5, h6
 
-/* forms
+/* @end */
+
+
+/* @group forms */
+
 form
 
 fieldset
@@ -73,7 +80,11 @@ input
 
 input[type=submit]
 
-/* block tags
+/* @end */
+
+
+/* @group block tags */
+
 p
 
 =list-default(!ol = false)
@@ -92,7 +103,11 @@ ul
 
 blockquote
 
-/* inline tags
+/* @end */
+
+
+/* @group inline tags */
+
 cite
 
 em
@@ -107,5 +122,11 @@ ins
 del
   :text-decoration line-through
 
-/* replaced tags
+/* @end */
+
+
+/* @group replaced tags */
+
 img
+
+/* @end */

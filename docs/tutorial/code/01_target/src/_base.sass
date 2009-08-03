@@ -27,7 +27,6 @@
 //  (don't move this @import above the GRID and FONT-SIZE overrides)
 @import susy/susy.sass
 
-
 // COLORS
 // set any colors you will need later
 !text = #332016
@@ -42,13 +41,13 @@
 =serif-family
   :font-family 'Adobe Caslon Pro', 'Big Caslon', Garamond, 'Hoefler Text', 'Times New Roman', Times, serif 
 
-
 // Remember to add default styles to everything!
-/* DEFAULTS
+
+/* @group links */
+
 \:focus
   :outline 1px dotted
 
-/* links
 a
   &:link, &:visited
     :color= !links
@@ -59,7 +58,11 @@ a
       :width= px2em(2) + "em"
       :style dashed
 
-/* headers
+/* @end */
+
+
+/* @group headers */
+
 h1
   +serif-family
   :text-transform lowercase
@@ -72,7 +75,10 @@ h2
   :font-weight bold
   :text-transform uppercase
 
-/* block tags
+/* @end */
+
+
+/* @group block tags */
 p
   :margin 0 0 1.5em 0
 
@@ -95,7 +101,11 @@ ol
 ul
   +list-default
 
-/* inline tags
+/* @end */
+
+
+/* @group inline tags */
+
 em
   +inline-italic
 
@@ -107,3 +117,5 @@ ins
 
 del
   :text-decoration line-through
+
+/* @end */

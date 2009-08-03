@@ -19,9 +19,11 @@
   - or without if you call it from ie.sass
 =ie-inline-block(!hack = false)
   @if !hack
+    /* ugly hacks for IE6-7 */
     :#display inline
     // fixes alignment against native input/button on IE6
     :#vertical-align auto
+    /* end ugly hacks */
   @else
     :display inline
     // fixes alignment against native input/button on IE6

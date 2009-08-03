@@ -67,7 +67,8 @@ all your defaults.
 
 To create a grid, set the `!grid_unit` (units that your grid is based in),
 `!total_cols` (total number of columns in your grid), `!col_width` (width of
-columns), and `!gutter_width` (width of gutters) variables.
+columns), `!gutter_width` (width of gutters), and `!side_gutter_width` (width
+of side gutters) variables.
 
 The default values are 16 columns, 4em column widths, 1em gutters and side
 gutters that match the internal ones. But we want a 10 column grid, with 5em
@@ -96,43 +97,9 @@ The default values here are 12px fonts with an 18px line-height. For us:
 
 `_base.sass` also has everything you need for setting default font families,
 colors to reuse throughout, and default styles for all those elements that
-ought have a default (but don't because of the reset).
-
-We can leave most of that as it is for now, but let's fill in a few of the
-most important defaults. We want some colors to choose from, and defaults for
-links and paragraphs.
-
-So let's add some colors:
-
-    !text = #332016
-    !light = #CC8866
-    !links = #4CAAC0
-
-And style the links:
-    
-    a
-      &:link, &:visited
-        :color= !links
-        :text-decoration none
-      &:focus, &:hover, &:active
-        :color= !light
-        :border-bottom
-          :width= px2em(2) + "em"
-          :style dashed
-
-(Susy provides the convenience function `px2em`, which can approximate a pixel
-value in ems, given our chosen `!base_font_size_px`. Here we want the dashed
-bottom border to be 2 pixels wide at the default font size, but we size it in
-ems - the result here will be .1429em. Susy's math functions return bare
-numbers, so we add "em" ourselves).
-
-And we'll add a bit of margin to our paragraphs:
-    
-    p
-      :margin-bottom 1.5em
-
-That's it. You can look around at the other defaults and set what you like, or
-juse use [mine](../src/_base.sass).
+ought have a default (but don't because of the reset). we're going to skip
+that for now and play with the fun toys. You can look around at the other
+defaults and set what you like, or juse use [mine](../src/_base.sass).
 
 
 Making Semantic Grids 
@@ -154,7 +121,7 @@ First the explanation:
   argument is the width (in columns) of the containing element when nesting.
   If the element is not nested (its parent is the grid container), don't pass
   a second argument. For an element that will span the full width (including
-  prefix and suffix), you can simply use the `+full`, which takes one argument
+  prefix and suffix), you can simply use `+full`, which takes one argument
   of the context (in columns) when nested.
 
 * Use the `+alpha` and `+omega` mixins to declare the first and last elements
@@ -181,20 +148,15 @@ is so tempting and easy with Sass. It's part personal preference and part
 Natalie Downe's voice in my head. Don't nest when you don't need to. It keeps
 your output code much cleaner.
 
-While we're at it, why don't we get the fonts and text colors going right from
-the start?
+While we're at it, why don't we get the fonts going right from the start?
 
     #page
       +container
       +sans-family
-      :color= !text
 
 Perfect. Take a look at [the results](02_container/). So far we have:
 
 * Reset everything. This happens by default in the background.
-
-* Added a few of our own replacement default styles, like links, paragraphs,
-  fonts and colors.
 
 * Created an elastic container for our grid at 70em that goes fluid for small
   windows (try it!).
@@ -204,7 +166,7 @@ Laying Out The Components
 --------------------------
 
 It's time to lay out our grid components. We'll just work our way through the
-DOM, starting with our brand header (#brand). We can refer back to our [target
+HTML, starting with our brand header (#brand). We can refer back to our [target
 site with a grid overlay](01_target/) to see what we need. Looks like our
 branding gets an entire row to itself, with the content starting one row
 in. For the sake of argument, let's say we want the header content contained
@@ -240,17 +202,17 @@ Since we don't have an image in there yet, let's move the text over to line up
 with the future placement of our main content area. By turning the `h1` link
 into a grid element and prefixing a padding of one column, we can move the
 text without any effect on the image that will replace it (using the Compass
-utility `+replace-text`, though I'll leave the implementation that as an
+utility `+replace-text`, though I'll leave the implementation of that as an
 exercise for you to figure out). To line it all up with the content below it,
 we'll assign it 5 columns in a context of 8, with the extra 3 split between a
-prefix of 1 and a suffix of 2 - giving it a full span again:
+prefix of 1 and a suffix of 2 - giving it a full span again. This time we are
+nested and need to supply the context.
 
     h1 a
       +full(8)
       +pad(1,2,8)
 
-There is one 'gotcha' in the way Susy handles context. Direct children of your
-container (such as #brand in this case) *must not declare a context*.  If you
+Note: when not nested, you *must not declare a context*.  If you
 do, your side-gutters will be ignored. At every nested layer below that, even
 if the context hasn't changed, you *must declare a context* or it will try to
 add side-gutters again. That means even if you have one nested element
@@ -259,14 +221,18 @@ does not get a context but its descendants do, even where that context is the
 same as the full page.
 
 For example, these *will not work*:
-
+    
+    /*because context is declared at the top level:*/
     #page
       +container
+      
       .inner
         +columns(8,10)
-
+    
+    /*because context is not declared in a nested level:*/
     #page
       +container
+      
       .inner
         +columns(10)
         #brand
@@ -276,12 +242,11 @@ This *will work*:
 
     #page
       +container
+      
       .inner
         +columns(10)
         #brand
           +columns(8,10)
-
-Remember that if your side gutters or columns ever seem the wrong size.
 
 We're only worried about structure for now, so the header is done. Let's move
 on to the navigation (#nav). The nav spans 2 columns, including the first
@@ -291,7 +256,7 @@ column in it's context.
       +columns(2)
       +alpha
 
-Done. The content (#content, which includes both #description and #credit)
+Done. The #content (which includes both #description and #credit)
 spans the remaining 8 columns, including the last one.
 
     #content

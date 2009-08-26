@@ -171,8 +171,10 @@
   /* CSS3
   box-shadow= !ho !vo !b !c
 
+
 //**
   CSS3 columns for Mozilla, Webkit and the Future
+
 =column-count(!n)
   :-moz-column-count= !n
   :-webkit-column-count= !n
@@ -188,16 +190,22 @@
   :-webkit-column-width= !u
   :column-width= !u
 
+=column-rule-width(!w)
+  :-moz-column-rule-width= !w
+  :-webkit-column-rule-width= !w
+  :column-rule-width= !w
+
+=column-rule-style(!s)
+  :-moz-column-rule-style= !s
+  :-webkit-column-rule-style= !s
+  :column-rule-style= !s
+
+=column-rule-color(!c)
+  :-moz-column-rule-color= !c
+  :-webkit-column-rule-color= !c
+  :column-rule-color= !c
+
 =column-rule(!w, !s = "solid", !c = " ")
-  :-moz-column-rule
-    :width= !w
-    :style= !s
-    :color= !c
-  :-webkit-column-rule= !w
-    :width= !w
-    :style= !s
-    :color= !c
-  :column-rule= !w
-    :width= !w
-    :style= !s
-    :color= !c
+  +column-rule-width(!w)
+  +column-rule-style(!s)
+  +column-rule-color(!c)

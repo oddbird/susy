@@ -137,9 +137,6 @@ options, experimental (CSS3/proprietary) CSS, and more.
   it again on focus. the TRBL settings allow you to place it absolutely on
   display. Default will be top left of the positioning context.
 
-* `+inline-italic` because some fonts/browsers add line-height when you
-  explicitly set italics on an inline element - this takes some away.
-
 And then the fun stuff:
 
 * `+opacity(!opacity)` adds cross-browser opacity settings (takes a range of
@@ -152,7 +149,11 @@ And then the fun stuff:
   browsers.
 
 * `+box-shadow(!verticaloffset, !horizontaloffset, !blur, !color)` for
-  box-shadow in webkit and CSS3.
+  box-shadow in webkit, mozilla and CSS3.
+
+* `+column-count(!number)`, `+column-gap(!length)`, `+column-width(!length)`,
+  and `+column-rule(!width, !style, !color)` for CSS columns in webkit,
+  mozilla and CSS3.
 
 Advanced Options
 ================

@@ -43,10 +43,10 @@
 // FONTS
 // Give yourself some font stacks to work with
 =sans-family
-  :font-family 'Futura Medium', 'Century Gothic', AppleGothic, sans-serif
+  :font-family Futura, sans-serif
 
 =serif-family
-  :font-family 'Adobe Caslon Pro', 'Big Caslon', Garamond, 'Hoefler Text', 'Times New Roman', Times, serif 
+  :font-family Baskerville, serif 
 
 // Remember to add default styles to everything!
 
@@ -72,13 +72,36 @@ form
 
 fieldset
 
+legend
+
 label
 
 textarea
 
 input
 
-input[type=submit]
+button
+
+/* @end */
+
+
+/* @group tables */
+
+/* tables still need 'cellspacing="0"' in the markup */
+
+table
+
+thead
+
+tbody
+
+tfoot
+
+tr
+
+th
+
+td
 
 /* @end */
 
@@ -94,6 +117,11 @@ p
   @else
     :list-style disc
     :margin 0 1.5em 1.5em 1.5em
+
+=no-style-list
+  +no-bullets
+  :margin 0
+  :padding 0
 
 ol
   +list-default("ol")
@@ -121,6 +149,8 @@ ins
 
 del
   :text-decoration line-through
+
+q
 
 /* @end */
 

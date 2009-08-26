@@ -105,7 +105,7 @@
 //**
   rounded corners for Mozilla, Webkit and the future
 =border-radius(!r)
-  /* Mozilla (FireFox)
+  /* Mozilla (FireFox, Camino)
   -moz-border-radius = !r
   /* Webkit (Safari, Chrome)
   -webkit-border-radius = !r
@@ -113,7 +113,7 @@
   border-radius = !r
 
 =border-corner-radius(!vert, !horz, !r)
-  /* Mozilla (FireFox)
+  /* Mozilla (FireFox, Camino)
   -moz-border-radius-#{!vert}#{!horz}= !r
   /* Webkit (Safari, Chrome)
   -webkit-border-#{!vert}-#{!horz}-radius= !r
@@ -151,7 +151,7 @@
 //**
   change the box model for Mozilla, Webkit, IE8 and the future
 =box-sizing(!bs)
-  /* Mozilla (FireFox)
+  /* Mozilla (FireFox, Camino)
   -moz-box-sizing= !bs
   /* Webkit (Safari, Chrome)
   -webkit-box-sizing= !bs
@@ -166,7 +166,38 @@
 =box-shadow(!ho, !vo, !b, !c )
   /* Webkit (Safari, Chrome)
   -webkit-box-shadow= !ho !vo !b !c
-  /* Webkit (Safari, Chrome)
+  /* Mozilla (Firefox, Camino)
   -moz-box-shadow= !ho !vo !b !c
   /* CSS3
   box-shadow= !ho !vo !b !c
+
+//**
+  CSS3 columns for Mozilla, Webkit and the Future
+=column-count(!n)
+  :-moz-column-count= !n
+  :-webkit-column-count= !n
+  :column-count= !n
+
+=column-gap(!u)
+  :-moz-column-gap= !u
+  :-webkit-column-gap= !u
+  :column-gap= !u
+
+=column-width(!u)
+  :-moz-column-width= !u
+  :-webkit-column-width= !u
+  :column-width= !u
+
+=column-rule(!w, !s = "solid", !c = " ")
+  :-moz-column-rule
+    :width= !w
+    :style= !s
+    :color= !c
+  :-webkit-column-rule= !w
+    :width= !w
+    :style= !s
+    :color= !c
+  :column-rule= !w
+    :width= !w
+    :style= !s
+    :color= !c

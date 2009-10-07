@@ -92,9 +92,12 @@
 //**  
   set on the last element of a row to take side-gutters into account
   - set !nested for nested columns
-  - set !float for right-floated omega elements
+  - over-ride !omega_float globally or set +float locally for left-floated omega elements
+!omega_float ||= "right"
+
 =omega(!nested = false, !right = false)
   !s = side_gutter()
+  +float(!omega_float)
   @if !nested
     :margin-right 0
   @else

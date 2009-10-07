@@ -12,10 +12,3 @@
   because Susy needs to "remember" our base_font_size_px for px2em()
 !base_font_size = base_font_size(!base_font_size_px) + "%"
 !base_line_height = (!base_line_height_px / !base_font_size_px) * 100 + "%"
-
-//** 
-  Because some serif fonts add line-height when switching to italics inline:
-=inline-italic
-  :font-style italic
-  :line-height .5
-

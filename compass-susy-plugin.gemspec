@@ -14,7 +14,6 @@ Gem::Specification.new do |s|
   s.homepage = %q{http://github.com/ericam/compass-susy-plugin}
   s.rdoc_options = ["--line-numbers", "--inline-source", "--title", "Compass-Susy-plugin", "--main", "README.mkdn"]
   s.require_paths = ["lib"]
-  s.rubyforge_project = %q{compass-susy-plugin}
   s.rubygems_version = %q{1.3.3}
   s.summary = %q{A Compass grid system plugin.}
 
@@ -23,14 +22,14 @@ Gem::Specification.new do |s|
     s.specification_version = 3
 
     if Gem::Version.new(Gem::RubyGemsVersion) >= Gem::Version.new('1.2.0') then
-      s.add_runtime_dependency(%q<chriseppstein-compass>, [">= 0"])
+      s.add_runtime_dependency(%q<compass>, [">= 0"])
       s.add_development_dependency(%q<echoe>, [">= 0"])
     else
-      s.add_dependency(%q<chriseppstein-compass>, [">= 0"])
+      s.add_dependency(%q<compass>, [">= 0"])
       s.add_dependency(%q<echoe>, [">= 0"])
     end
   else
-    s.add_dependency(%q<chriseppstein-compass>, [">= 0"])
+    s.add_dependency(%q<compass>, [">= 0"])
     s.add_dependency(%q<echoe>, [">= 0"])
   end
 end

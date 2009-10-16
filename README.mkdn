@@ -18,9 +18,8 @@ easily - and always in flexible percentages.
 Install 
 =======
 
-    sudo gem sources --add http://gems.github.com/ 
-    sudo gem install chriseppstein-compass 
-    sudo gem install ericam-compass-susy-plugin
+    sudo gem sources --add http://gemcutter.org/ 
+    sudo gem install compass-susy-plugin
 
 Create a Susy-based Compass Project 
 ===================================
@@ -170,32 +169,35 @@ advanced options hidden inside. Here's a few:
   you want to.
 
     Example 1:
-
+    
         !hacks = true
     
         #nav
           +inline-block-list
-
-    Example 2:
-
-        !hacks = false
     
+    Example 2:
+    
+        !hacks = false
+      
         (in screen.sass)
         #nav
           +inline-block-list
-      
+        
         (in ie.sass)
         #nav li
           +ie-inline-block
 
-  It requires more maintenance on your part, but the result is a hack-free output.
-  
-  The susy mixins that use either hacks or targeted mixins are `+omega`
-  ('+ie-omega([!right-floated = false])'), `+inline-block` (`+ie-inline-block`), and
-  `+inline-block-list` which sets `+inline-block` on the list items.
-  
-  These ie-specific mixins only add the needed ie-specific adjustments, so
-  they need to be used in addition to their counterparts, not on their own.
+    It requires more maintenance on your part, but the result is a
+    hack-free output.
+    
+    The susy mixins that use either hacks or targeted mixins are
+    `+omega` (`+ie-omega([!right-floated = false])`), `+inline-block`
+    (`+ie-inline-block`), and `+inline-block-list` which sets
+    `+inline-block` on the list items.
+    
+    The ie-specific mixins only add the needed ie-specific adjustments,
+    so they need to be used in addition to their counterparts, not on
+    their own.
 
 * `gutter(!context)` is a function that you can call at any time to return the
   size of a gutter in your given context using percentages. The number is
@@ -224,7 +226,7 @@ advanced options hidden inside. Here's a few:
   approximates that number of pixels. Useful for keeping your entire design
   fluid.
   
-  Example:
+    Example:
     
-      #nav
-        :border-bottom= px2em(2) + "em"
+        #nav
+          :border-bottom= px2em(2) + "em"

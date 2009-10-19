@@ -126,8 +126,10 @@ First the explanation:
 
 * Use the `+alpha` and `+omega` mixins to declare the first and last elements
   in a row. In a nested context `+omega` takes one argument repesenting its
-  context. `+alpha` is only needed in the very top level, and does nothing in
-  nested contexts. Neither one is needed on a `+full` element.
+  context. `+omega` also floats an element right by default. You can change
+  !omega_float to override that default. `+alpha` is only needed in the very 
+  top level, and does nothing in nested contexts. Neither one is needed on a 
+  `+full` element.
 
 * Use the `+prefix` and `+suffix` mixins with one argument to add that many
   grid columns as padding before or after a grid element. These mixins also

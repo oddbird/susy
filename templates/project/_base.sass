@@ -45,15 +45,8 @@
 
 // COLORS
 // set any colors you will need later
-!font_color = #444
-!quiet_color = !font_color + #333
-!loud_color = !font_color - #222
-!header_color = !font_color - #111 	
-!link_color = #099 	
-!visited_color = #909
-!hover_color = !link_color - #333
-!focus_color = !hover_color
-!active_color = !hover_color
+!main = #194C66
+!alt = #CC6633
 
 // FONTS
 // Give yourself some font stacks to work with
@@ -66,22 +59,20 @@
 // Remember to add default styles to everything!
 
 body
+  +susy
   +sans-family
-  :color= !font_color
+  :color= !main
 
 /* @group links */
 
 \:focus
-  :outline= 1px "dotted" !quiet_color
-  :color= !hover_color
+  :outline= 1px "dotted" !alt
 
 a
-  &:link
-    :color= !link_color
-  &:visited
-    :color= !visited_color
+  &:link, &:visited
+    :color= !alt
   &:focus, &:hover, &:active
-    :color= !hover_color
+    :color= !alt - #222
     :text-decoration none
 
 /* @end */
@@ -90,14 +81,7 @@ a
 /* @group headers */
 
 h1, h2, h3, h4, h5, h6
-  :color= !header_color
   :font-weight bold
-
-h1, h2, h3
-  +serif-family
-  
-h1
-  :font-size= !base_line_height
 
 /* @end */
 
@@ -122,7 +106,6 @@ legend + label
   :margin-top 0
 
 textarea, input[type="text"]
-  :color= !quiet_color
   +box-sizing("border-box")
   :width 100%
 
@@ -135,14 +118,11 @@ textarea, input[type="text"]
 
 table
   :width 100%
-  :border= 1/16 + "em solid" !quiet_color + #333
+  :border= 1/16 + "em solid" !main + #333
     :left none
     :right none
   :padding= 7/16 + "em 0"
   :margin= 8/16 + "em 0"
-
-tbody
-  :color= !quiet_color
 
 th
   :font-weight bold
@@ -156,12 +136,11 @@ p
   :margin= !base_line_height 0
 
 =list-default(!ol = false)
+  :margin= !base_line_height
   @if !ol
     :list-style decimal
-    :margin 0 1.5em 1.5em 1.5em
   @else
     :list-style disc
-    :margin 0 1.5em 1.5em 1.5em
 
 =no-style-list
   +no-bullets
@@ -176,7 +155,7 @@ ul
 
 blockquote
   :margin= !base_line_height
-  :color= !quiet_color
+  +serif-family
 
 /* @end */
 
@@ -185,7 +164,6 @@ blockquote
 
 cite
   :font-style italic
-  :color= !quiet_color
 
 em
   :font-style italic

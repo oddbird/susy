@@ -60,7 +60,9 @@
 
 //**  
   set on any element spanning the first column in non-nested context
-  to take side-gutters into account
+  to take side-gutters into account. Recommended that you pass the
+  actual nested contexts (when nested) rather than a true/false argument
+  for the sake of simplicity. Effect is the same.
 =alpha(!nested = false)
   @if !nested == false
     :margin-left= side_gutter() + "%"
@@ -90,8 +92,10 @@
         :margin-right= !s - 1 + "%"
 
 //**  
-  set on the last element of a row to take side-gutters into account
-  - set !nested for nested columns
+  set omega on the last element of a row to take side-gutters into account
+  - set !nested argument for nested columns. Recommended that you pass the
+    actual nested contexts (when nested) rather than a true/false argument
+    for the sake of simplicity. Effect is the same.
   - over-ride !omega_float globally or set +float locally for left-floated omega elements
 !omega_float ||= "right"
 

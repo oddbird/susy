@@ -1,121 +1,127 @@
-//** Grid Settings **//
+//** The Susy Grid **//
+// Updated 11.20.2009 by Eric A. Meyer
 
-//**
-  Your basic units for the grid
+
+// Your basic settings for the grid.
+// Override these in base.sass to customize your site.
+// The grid_unit will be used for col_width, gutter_width and side_gutter_width
 !grid_unit ||= "em"
 !total_cols ||= 12
 !col_width ||= 4
 !gutter_width ||= 1
 !side_gutter_width ||= !gutter_width
+
+
+// Susy will set your outer shell based on the variables above.
 !container_width = container(!total_cols, !col_width, !gutter_width, !side_gutter_width)
 
 
-//** 
-  set on the outer grid containing element.
+// Set on the outer grid-containing element(s).
 =container(!align = "left")
-  //  clear all floated columns
+  // clear all floated columns
   +clearfix
-  //  align the text back to the left (override for other alignments)
-  :text-align= !align
-  //  use auto horizontal margins to center your page in the body
-  :margin
-    :left auto
-    :right auto
-  //  set the page width based on column settings
-  :width= !container_width + !grid_unit
-  //  never exceed 100% of the browser window (no side-scrolling)
-  :max-width 100%
+  // align the text back to the left (override for other alignments)
+  text-align= !align
+  // use auto horizontal margins to center your page in the body
+  margin:
+    left: auto
+    right: auto
+  // set the page width based on column settings
+  width= !container_width + !grid_unit
+  // never exceed 100% of the browser window (no side-scrolling)
+  max-width: 100%
 
 
-//** 
-  set on any column element, even nested ones.
-  the first agument [required] is the number of columns to span
-  the second argument is the context (columns spanned by parent)
-  this is required in any nested context
-  by default a grid-col is floated left with a right gutter
-  override that with +float("right"), +first or +last
+// Set on any column element, even nested ones.
+// The first agument [required] is the number of columns to span.
+// The second argument is the context (columns spanned by parent).
+//  - Context is required on any nested elements.
+//  - Context MUST NOT be declared on a top-level element.
+// By default a grid-column is floated left with a right gutter.
+//  - Override those with +float("right"), +alpha or +omega
 =columns(!n, !context = false)
-  //  the width of the column is set as a percentage of the context
-  :width= columns(!n, !context) + "%"
-  //  the column is floated left
+  // the column is floated left
   +float("left")
-  //  the right gutter is added as a percentage of the context
-  :margin-right= gutter(!context) + "%"
+  // the width of the column is set as a percentage of the context
+  width= columns(!n, !context) + "%"
+  // the right gutter is added as a percentage of the context
+  margin-right= gutter(!context) + "%"
 
-//** 
-  set on any column to add empty colums before or after
+
+// Set on any element to add empty colums as padding before or after.
 =prefix(!n, !context = false)
-  :padding-left= columns(!n, !context) + gutter(!context) + "%"
+  padding-left= columns(!n, !context) + gutter(!context) + "%"
 
 =suffix(!n, !context = false)
-  :padding-right= columns(!n, !context) + gutter(!context) + "%"
+  padding-right= columns(!n, !context) + gutter(!context) + "%"
 
-//**
-  set as shortcut for prefix and suffix
+
+// Set as a shortcut for both prefix and suffix.
 =pad(!p = 0, !s = 0, !c = false)
   @if !p != 0
     +prefix(!p,!c)
   @if !s != 0
     +suffix(!s,!c)
 
-//**  
-  set on any element spanning the first column in non-nested context
-  to take side-gutters into account. Recommended that you pass the
-  actual nested contexts (when nested) rather than a true/false argument
-  for the sake of simplicity. Effect is the same.
+
+// Set on any element spanning the first column in non-nested context
+// to take side-gutters into account. Recommended that you pass the
+// actual nested contexts (when nested) rather than a true/false argument
+// for the sake of consistency. Effect is the same.
 =alpha(!nested = false)
   @if !nested == false
-    :margin-left= side_gutter() + "%"
+    margin-left= side_gutter() + "%"
 
-//**
-  when global constant !hacks == true:
-  - this will be called automatically with hacks
-  when global constant !hacks == false:
-  - you can call it yourself in ie.sass without the hacks
-=ie-omega(!nested = false, !right = false, !hack = false)
+
+// When global constant !hacks == true:
+//  - this will be called automatically with hacks
+// When global constant !hacks == false:
+//  - you can call it yourself in ie.sass without the hacks
+=ie-omega(!nested = false, !dir = "right", !hack = false)
   !s = side_gutter()
-  @if !right
+  @if !dir == "right"
     @if !hack
-      :#margin-left -1%
+      #margin-left: -1%
     @else
-      :margin-left -1%
+      margin-left: -1%
   @else
     @if !nested
       @if !hack
-        :#margin-right -1%
+        #margin-right: -1%
       @else
-        :margin-right -1%
+        margin-right: -1%
     @else
       @if !hack
-        :#margin-right= !s - 1 + "%"
+        #margin-right= !s - 1 + "%"
       @else
-        :margin-right= !s - 1 + "%"
+        margin-right= !s - 1 + "%"
 
-//**  
-  set omega on the last element of a row to take side-gutters into account
-  - set !nested argument for nested columns. Recommended that you pass the
-    actual nested contexts (when nested) rather than a true/false argument
-    for the sake of simplicity. Effect is the same.
-  - over-ride !omega_float globally or set +float locally for left-floated omega elements
+
+// Sets the direction that +omega elements are floated
+//  - Override !omega_float globally or set +float locally to change
 !omega_float ||= "right"
 
-=omega(!nested = false, !right = false)
-  !s = side_gutter()
+
+// Set omega on the last element of a row to take side-gutters 
+// and the page edge into account. Set the !nested argument for nested columns. 
+// It is recommended that you pass the actual nested context when nested, 
+// rather than a true/false argument, for the sake of consistency. Effect is the same.
+=omega(!nested = false)
   +float(!omega_float)
   @if !nested
-    :margin-right 0
+    margin-right: 0
   @else
-    :margin-right= !s + "%"
+    margin-right= side_gutter() + "%"
   @if !hacks
     /* ugly hacks for IE6-7 */
-    +ie-omega(!nested, !right,"*")
+    +ie-omega(!nested, !omega_float, true)
     /* end ugly hacks */
     
-//**
-  set on an element that will span it's entire context
-  - no need for +columns, +alpha or +omega on a +full element
+    
+// Set on an element that will span it's entire context.
+// - no need for +columns, +alpha or +omega on a +full element.
 =full(!nested = false)
-  :clear both
+  clear: both
   @if !nested == false
     !s = side_gutter() + "%"
     margin-right= !s

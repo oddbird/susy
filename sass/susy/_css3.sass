@@ -1,0 +1,127 @@
+//** EXPERIMENTAL CSS3 **//
+// Updated 11.20.2009 by Eric A. Meyer
+
+
+// CSS3 rules based on those in Compass Edge as of 7.18.09
+// - These will be removed from Susy once they enter a major Compass release.
+
+
+// Provide cross-browser css opacity using CSS3 (0-1) syntax.
+=opacity(!opacity)
+  opacity= !opacity
+  -moz-opacity= !opacity
+  -khtml-opacity= !opacity
+  -ms-filter= "progid:DXImageTransform.Microsoft.Alpha(Opacity=" + round(!opacity*100) + ")"
+  filter= "alpha(opacity=" + round(!opacity*100) + ")"
+
+// Make an element completely transparent.
+=transparent
+  +opacity(0)
+
+// Make an element completely opaque.
+=opaque
+  +opacity(1)
+
+
+// Rounded corners for Mozilla, Webkit and CSS3
+=border-radius(!r)
+  /* Mozilla (FireFox, Camino)
+  -moz-border-radius = !r
+  /* Webkit (Safari, Chrome)
+  -webkit-border-radius = !r
+  /* CSS3
+  border-radius = !r
+
+=border-corner-radius(!vert, !horz, !r)
+  /* Mozilla (FireFox, Camino)
+  -moz-border-radius-#{!vert}#{!horz}= !r
+  /* Webkit (Safari, Chrome)
+  -webkit-border-#{!vert}-#{!horz}-radius= !r
+  /* CSS3
+  border-#{!vert}-#{!horz}-radius= !r
+
+=border-top-left-radius(!r)
+  +border-corner-radius("top", "left", !r)
+
+=border-top-right-radius(!r)
+  +border-corner-radius("top", "right", !r)
+
+=border-bottom-right-radius(!r)
+  +border-corner-radius("bottom", "right", !r)
+
+=border-bottom-left-radius(!r)
+  +border-corner-radius("bottom", "left", !r)
+
+=border-top-radius(!r)
+  +border-top-left-radius(!r)
+  +border-top-right-radius(!r)
+
+=border-right-radius(!r)
+  +border-top-right-radius(!r)
+  +border-bottom-right-radius(!r)
+
+=border-bottom-radius(!r)
+  +border-bottom-right-radius(!r)
+  +border-bottom-left-radius(!r)
+
+=border-left-radius(!r)
+  +border-top-left-radius(!r)
+  +border-bottom-left-radius(!r)
+
+
+// Change the box model for Mozilla, Webkit, IE8 and CSS3
+=box-sizing(!bs)
+  /* Mozilla (FireFox, Camino)
+  -moz-box-sizing= !bs
+  /* Webkit (Safari, Chrome)
+  -webkit-box-sizing= !bs
+  /* IE (8)
+  -ms-box-sizing= !bs
+  /* CSS3
+  box-sizing= !bs
+
+// Box shadow for Webkit and CSS3
+=box-shadow(!ho, !vo, !b, !c )
+  /* Webkit (Safari, Chrome)
+  -webkit-box-shadow= !ho !vo !b !c
+  /* Mozilla (Firefox, Camino)
+  -moz-box-shadow= !ho !vo !b !c
+  /* CSS3
+  box-shadow= !ho !vo !b !c
+
+
+// CSS columns for Mozilla, Webkit and CSS3
+=column-count(!n)
+  -moz-column-count= !n
+  -webkit-column-count= !n
+  column-count= !n
+
+=column-gap(!u)
+  -moz-column-gap= !u
+  -webkit-column-gap= !u
+  column-gap= !u
+
+=column-width(!u)
+  -moz-column-width= !u
+  -webkit-column-width= !u
+  column-width= !u
+
+=column-rule-width(!w)
+  -moz-column-rule-width= !w
+  -webkit-column-rule-width= !w
+  column-rule-width= !w
+
+=column-rule-style(!s)
+  -moz-column-rule-style= !s
+  -webkit-column-rule-style= !s
+  column-rule-style= !s
+
+=column-rule-color(!c)
+  -moz-column-rule-color= !c
+  -webkit-column-rule-color= !c
+  column-rule-color= !c
+
+=column-rule(!w, !s = "solid", !c = " ")
+  +column-rule-width(!w)
+  +column-rule-style(!s)
+  +column-rule-color(!c)

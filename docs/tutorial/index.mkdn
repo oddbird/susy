@@ -70,7 +70,7 @@ To create a grid, set the `!grid_unit` (units that your grid is based in),
 columns), `!gutter_width` (width of gutters), and `!side_gutter_width` (width
 of side gutters) variables.
 
-The default values are 16 columns, 4em column widths, 1em gutters and side
+The default values are 12 columns, 4em column widths, 1em gutters and side
 gutters that match the internal ones. But we want a 10 column grid, with 5em
 columns, 2em gutters and 1em side-gutters.
 
@@ -90,16 +90,17 @@ this all meaningful. Do that by assigning a pixel value (without the units) to
 `!base_font_size_px` and `!base_line_height_px`. Susy will convert those to a
 percentage of the common browser default (16px) and apply them to your grid.
 
-The default values here are 12px fonts with an 18px line-height. For us:
+The default values here are 16px fonts with an 24px line-height. For us:
 
     !base_font_size_px = 14 
     !base_line_height_px = 21
 
 `_base.sass` also has everything you need for setting default font families,
-colors to reuse throughout, and default styles for all those elements that
-ought have a default (but don't because of the reset). we're going to skip
-that for now and play with the fun toys. You can look around at the other
-defaults and set what you like, or juse use [mine](../src/_base.sass).
+colors and mixins to reuse throughout. From there you should head over to
+`_defaults.sass` to set default styles for all those elements that ought have
+a default (but don't because of the reset). We're going to skip that for now
+and play with the fun toys. You can look around at the other defaults and set
+what you like, or juse [use](../src/_base.sass) [mine](../src/_defaults.sass).
 
 
 Making Semantic Grids 
@@ -150,15 +151,10 @@ is so tempting and easy with Sass. It's part personal preference and part
 Natalie Downe's voice in my head. Don't nest when you don't need to. It keeps
 your output code much cleaner.
 
-While we're at it, why don't we get the fonts going right from the start?
+Take a look at [the results](02_container/). So far we have:
 
-    #page
-      +container
-      +sans-family
-
-Perfect. Take a look at [the results](02_container/). So far we have:
-
-* Reset everything. This happens by default in the background.
+* Replaced browser defaults with our own. This happens automatically in the
+  background, thanks to `_defaults.sass`.
 
 * Created an elastic container for our grid at 70em that goes fluid for small
   windows (try it!).
@@ -188,7 +184,7 @@ add:
     +omega
 
 Or we would have to, but there are several shortcuts available to us. To
-declare something as full width (both alpha and omega) we can just declare it
+declare something as full-width (both alpha and omega) we can just declare it
 as full:
 
     +full
@@ -205,10 +201,10 @@ with the future placement of our main content area. By turning the `h1` link
 into a grid element and prefixing a padding of one column, we can move the
 text without any effect on the image that will replace it (using the Compass
 utility `+replace-text`, though I'll leave the implementation of that as an
-exercise for you to figure out). To line it all up with the content below it,
-we'll assign it 5 columns in a context of 8, with the extra 3 split between a
-prefix of 1 and a suffix of 2 - giving it a full span again. This time we are
-nested and need to supply the context.
+exercise for the reader). To line it all up with the content below it, we'll
+assign it 5 columns in a context of 8, with the extra 3 split between a prefix
+of 1 and a suffix of 2 - giving it a full span again. This time we are nested
+and need to supply the context.
 
     h1 a
       +full(8)
@@ -251,10 +247,10 @@ This *will work*:
           +columns(8,10)
 
 We're only worried about structure for now, so the header is done. Let's move
-on to the navigation (#nav). The nav spans 2 columns, including the first
+on to the navigation (#site-nav). The nav spans 2 columns, including the first
 column in it's context.
 
-    #nav
+    #site-nav
       +columns(2)
       +alpha
 
@@ -275,10 +271,10 @@ nested context of 8, which we now need to pass on:
       +columns(3,8)
       +omega(8)
 
-Done and done. All we have left is the footer (#site-info) spanning the full
+Done and done. All we have left is the footer (#contentinfo) spanning the full
 width, but with two blank columns on the left:
 
-    #site-info
+    #contentinfo
       +full
       +prefix(2)
 
@@ -294,8 +290,8 @@ above it on the page. So .license will span 5 columns in its context of 8, and
       +omega(8)
 
 And we're done. That's it. That's what Susy does. The details of making it
-pretty are left as an exercise for the reader, and have more to do with
-Compass than Susy.
+pretty are an exercise for the reader, and have more to do with Compass than
+Susy.
 
 * [The resulting files](03_structure/src/) with [the site structure all in
   place](03_structure/) (this should match what you have if you followed

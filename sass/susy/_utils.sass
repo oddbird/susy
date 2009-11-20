@@ -1,211 +1,81 @@
+//** Susy Utilities **//
+// Updated 11.20.2009 by Eric A. Meyer
+
+
+// An extension of the Compass Core Utilities
 @import compass/utilities.sass
 
-//** 
-  removes all background images and colors from the element and offspring
-  then adds a grid image of your choosing. highlights divs on modern browsers
-=show-grid(!src)
-  :background
-    :image= image_url(!src)
-    :repeat repeat 
-    :position= side_gutter() + "% 0"
-  *
-    :background transparent
-  div
-    :background rgba(0,0,0,.125)
 
-//**
-  brings IE in line with inline-block display
-  - using hacks if called automatically because !hacks == true
-  - or without if you call it from ie.sass
+// Apply to you container element(s) to show a grid image.
+//  - You need to supply the image. Susy can't do everything.
+=show-grid(!src)
+  background:
+    image= image_url(!src)
+    repeat: repeat 
+    position= side_gutter() + "% 0"
+
+
+// Brings IE in line with inline-block display
+//  - Using hacks if called automatically because !hacks == true
+//  - Or not, if you call it from ie.sass because !hacks == false
 =ie-inline-block(!hack = false)
   @if !hack
     /* ugly hacks for IE6-7 */
-    :#display inline
+    #display: inline
     // fixes alignment against native input/button on IE6
-    :#vertical-align auto
+    #vertical-align: auto
     /* end ugly hacks */
   @else
-    :display inline
+    display: inline
     // fixes alignment against native input/button on IE6
-    :vertical-align auto
+    vertical-align: auto
 
-//**
-  an override for compass inline-block that lets you take advantage
-  of Susys !hacks constant. if true, hacks. if false, use ie-inline-block
-  to help ie along in your ie.sass
+
+// An override for compass inline-block that lets you take advantage
+// of Susys !hacks constant. if true, hacks. if false, use ie-inline-block
+// to help ie along in your ie.sass
 =inline-block
-  :display -moz-inline-box
-  :-moz-box-orient vertical
-  :display inline-block
-  :vertical-align middle
+  display: -moz-inline-box
+  -moz-box-orient: vertical
+  display: inline-block
+  vertical-align: middle
   @if !hacks
-    +ie-inline-block("*")
+    +ie-inline-block(true)
 
-//** 
-  an inline-block list that works in IE
-  for those awkward moments when a floated horizontal list just wont cut it
-  if global !hacks == false:
-  - you'll need to fix list items in ie.sass with +ie-inline-block
+
+// An inline-block list that works in IE
+// For those awkward moments when a floated horizontal list just wont cut it
+// NOTE: If global !hacks == false:
+//  - you'll need to fix list items in ie.sass with +ie-inline-block
 =inline-block-list(!hpad = 0)
   +horizontal-list-container
   li
     +no-bullet
-    :white-space no-wrap
     +inline-block
-    :padding 
-      :left= !hpad
-      :right= !hpad
+    white-space: no-wrap
+    padding:
+      left= !hpad
+      right= !hpad
 
-//** 
-  hide an element from the viewport, but keep it around for accessability
+
+// Hide an element from the viewport, but keep it around for accessability
 =hide
-  :position absolute
-  :top -9999em
+  position: absolute
+  top: -9999em
 
-//** 
-  a skip-to-content accessibility link that will appear on focus
-  set the location arguments if you care where it appears
+
+// Apply to skip-to-content accessibility links that will appear on focus.
+//  - Set the location arguments if you care where it appears.
 =skip-link(!t = 0, !r = false, !b = false, !l = false)
   +hide
-  :display block
+  display: block
   &:focus
     @if !t
-      :top= !t
+      top= !t
     @if !r
-      :right= !r
+      right= !r
     @if !b
-      :bottom= !b
+      bottom= !b
     @if !l
-      :left= !l
-    :z-index 999
-
-// EXPERIMENTAL
-
-//**
-  [Opacity rules based on those in Compass Core Edge as of 7.18.09]
-  - These will be removed from Susy once they enter a major Compass release.
-  Provides cross-browser css opacity.
-  @param !opacity
-    A number between 0 and 1, where 0 is transparent and 1 is opaque.
-=opacity(!opacity)
-  :opacity= !opacity
-  :-moz-opacity= !opacity
-  :-khtml-opacity= !opacity
-  :-ms-filter= "progid:DXImageTransform.Microsoft.Alpha(Opacity=" + round(!opacity*100) + ")"
-  :filter= "alpha(opacity=" + round(!opacity*100) + ")"
- 
-// Make an element completely transparent.
-=transparent
-  +opacity(0)
- 
-// Make an element completely opaque.
-=opaque
-  +opacity(1)
-
-//**
-  rounded corners for Mozilla, Webkit and the future
-=border-radius(!r)
-  /* Mozilla (FireFox, Camino)
-  -moz-border-radius = !r
-  /* Webkit (Safari, Chrome)
-  -webkit-border-radius = !r
-  /* CSS3
-  border-radius = !r
-
-=border-corner-radius(!vert, !horz, !r)
-  /* Mozilla (FireFox, Camino)
-  -moz-border-radius-#{!vert}#{!horz}= !r
-  /* Webkit (Safari, Chrome)
-  -webkit-border-#{!vert}-#{!horz}-radius= !r
-  /* CSS3
-  border-#{!vert}-#{!horz}-radius= !r
-
-=border-top-left-radius(!r)
-  +border-corner-radius("top", "left", !r)
-
-=border-top-right-radius(!r)
-  +border-corner-radius("top", "right", !r)
-
-=border-bottom-right-radius(!r)
-  +border-corner-radius("bottom", "right", !r)
-
-=border-bottom-left-radius(!r)
-  +border-corner-radius("bottom", "left", !r)
-
-=border-top-radius(!r)
-  +border-top-left-radius(!r)
-  +border-top-right-radius(!r)
-
-=border-right-radius(!r)
-  +border-top-right-radius(!r)
-  +border-bottom-right-radius(!r)
-
-=border-bottom-radius(!r)
-  +border-bottom-right-radius(!r)
-  +border-bottom-left-radius(!r)
-
-=border-left-radius(!r)
-  +border-top-left-radius(!r)
-  +border-bottom-left-radius(!r)
-
-//**
-  change the box model for Mozilla, Webkit, IE8 and the future
-=box-sizing(!bs)
-  /* Mozilla (FireFox, Camino)
-  -moz-box-sizing= !bs
-  /* Webkit (Safari, Chrome)
-  -webkit-box-sizing= !bs
-  /* IE (8)
-  -ms-box-sizing= !bs
-  /* CSS3
-  box-sizing= !bs
-
-//**
-  box shadow for Webkit and the future
-  - arguments are horizontal offset, vertical offset, blur and color
-=box-shadow(!ho, !vo, !b, !c )
-  /* Webkit (Safari, Chrome)
-  -webkit-box-shadow= !ho !vo !b !c
-  /* Mozilla (Firefox, Camino)
-  -moz-box-shadow= !ho !vo !b !c
-  /* CSS3
-  box-shadow= !ho !vo !b !c
-
-
-//**
-  CSS3 columns for Mozilla, Webkit and the Future
-
-=column-count(!n)
-  :-moz-column-count= !n
-  :-webkit-column-count= !n
-  :column-count= !n
-
-=column-gap(!u)
-  :-moz-column-gap= !u
-  :-webkit-column-gap= !u
-  :column-gap= !u
-
-=column-width(!u)
-  :-moz-column-width= !u
-  :-webkit-column-width= !u
-  :column-width= !u
-
-=column-rule-width(!w)
-  :-moz-column-rule-width= !w
-  :-webkit-column-rule-width= !w
-  :column-rule-width= !w
-
-=column-rule-style(!s)
-  :-moz-column-rule-style= !s
-  :-webkit-column-rule-style= !s
-  :column-rule-style= !s
-
-=column-rule-color(!c)
-  :-moz-column-rule-color= !c
-  :-webkit-column-rule-color= !c
-  :column-rule-color= !c
-
-=column-rule(!w, !s = "solid", !c = " ")
-  +column-rule-width(!w)
-  +column-rule-style(!s)
-  +column-rule-color(!c)
+      left= !l
+    z-index: 999

@@ -2,14 +2,10 @@
   Welcome to Susy. Use this file to define screen styles.
   Import this file using the following HTML or equivalent:
   <link href="/stylesheets/screen.css" media="screen" rel="stylesheet" type="text/css" />
- 
-/* @group reset */
-@import compass/reset.sass
-/* @end */
 
-/* @group defaults */
-@import base.sass
-/* @end */
+
+@import defaults.sass
+
  
 /* @group STRUCTURE */
 
@@ -27,7 +23,7 @@ body
     +full(8)
     +pad(1,2,8)
     
-#nav
+#site-nav
   +columns(2)
   +alpha
  
@@ -40,7 +36,7 @@ body
     +columns(3,8)
     +omega(8)
  
-#site-info
+#contentinfo
   +full
   +prefix(2)
   p.license

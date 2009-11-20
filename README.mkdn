@@ -26,8 +26,9 @@ Create a Susy-based Compass Project
 
     compass -r susy -f susy <project name>
 
-Then edit your `_base.sass`, `screen.sass` and `print.sass` files accordingly.
-A reset is added automatically.
+Then edit your `_base.sass`, `_defaults.sass`, `screen.sass` and `print.sass`
+files accordingly. A reset is added automatically, and includes help for some
+HTML5 elements.
 
 Philosophy and Goals
 --------------------
@@ -48,12 +49,12 @@ It is important for accessibility and usability that we are:
   side-scroll bar. No one likes that. On the large end our design integrity
   and line lengths are more important than taking up all the possible space.
 
-In order to achieve both we need to combine the best of the elastic (em-based)
-and fluid (%-based) models. The solution is simple: First we build a fluid
-grid, then place it inside an elastic shell, and apply a maximum width to that
-shell so that it never exceeds the size of the viewport. It's simple in
-theory, but daunting in practice, as you constantly have to adjust your math
-based on the context.
+In order to achieve both goals we need to combine the best of the elastic
+(em-based) and fluid (%-based) models. The solution is simple: First we build
+a fluid grid, then place it inside an elastic shell, and apply a maximum width
+to that shell so that it never exceeds the size of the viewport. It's simple
+in theory, but daunting in practice, as you constantly have to adjust your
+math based on the context.
 
 But Susy harnesses the power of Compass and Sass to do all the math for you.
 
@@ -61,8 +62,11 @@ Grid Basics
 ===========
 
 * Set up your default grid values (total columns, column width, gutter
-  width, side gutter width), your base font size, and other style defaults
+  width, side gutter width), your base font size, and important mixins
   in `_base.sass`.
+
+* Set defaults for all the important HTML tags in `_defaults.sass`. It's
+  better than using the browser defaults. And better than using ours.
 
 * Create your grid in `screen.sass`: apply the `+susy` mixin to the `body`
   element and the `+container` mixin to the element that contains the page
@@ -123,36 +127,35 @@ Extra Utility Mixins
 Extra utilities are included in Susy's `utils.sass` file, with additional list
 options, experimental (CSS3/proprietary) CSS, and more.
 
-* `+show-grid(!src)` will remove all your backgrounds and repeat the specified
-  grid image on an element. Good for testing your baseline grid.
+* `+show-grid(!src)` - Repeat the specified grid image on an element. Good for
+  testing your baseline grid.
 
-* `+inline-block-list([!horizontalpadding])` for making lists inline-block
-  when floating just won't do the trick.
+* `+inline-block-list([!horizontalpadding])` - Make list items inline-block
+  when floating just won't do the trick (if you need them centered or right).
 
-* `+hide` for hiding content from visual browsers while keeping accessability
+* `+hide` - Hide content from visual browsers while keeping accessability
   intact.
 
-* `+skip-link([!top = 0, !right, !bottom, !left])` hide a link, and then show
+* `+skip-link([!top = 0, !right, !bottom, !left])` - Hide a link, and then show
   it again on focus. the TRBL settings allow you to place it absolutely on
   display. Default will be top left of the positioning context.
 
-And then the fun stuff:
+And then the fun stuff in `_CSS3.sass`:
 
-* `+opacity(!opacity)` adds cross-browser opacity settings (takes a range of
-  0 to 1).
+* `+opacity(!opacity)` - add cross-browser opacity settings (takes a range of
+  0 to 1). `+transprent` and `+opaque` are available as shortcuts.
 
-* `+border-radius(!radius)` (`+border-bottom-left-radius` etc. all work) for
-  rounded corners in supporting browsers.
+* `+border-radius(!radius)` - Rounded corners in supporting browsers.
+  `+border-bottom-left-radius` etc. all work.
 
-* `+box-sizing(!model)` for setting the box sizing model in supporting
-  browsers.
+* `+box-sizing(!model)` - Set the box sizing model in supporting browsers.
 
-* `+box-shadow(!verticaloffset, !horizontaloffset, !blur, !color)` for
-  box-shadow in webkit, mozilla and CSS3.
+* `+box-shadow(!verticaloffset, !horizontaloffset, !blur, !color)` -
+  Box-shadow in supporting browsers.
 
 * `+column-count(!number)`, `+column-gap(!length)`, `+column-width(!length)`,
-  and `+column-rule(!width, !style, !color)` for CSS columns in webkit,
-  mozilla and CSS3.
+  and `+column-rule(!width, !style, !color)` - CSS columns in supporting
+  browsers.
 
 Advanced Options
 ================
@@ -190,7 +193,7 @@ advanced options hidden inside. Here's a few:
     It requires more maintenance on your part, but the result is a
     hack-free output.
     
-    The susy mixins that use either hacks or targeted mixins are
+    The Susy mixins that use either hacks or targeted mixins are
     `+omega` (`+ie-omega([!right-floated = false])`), `+inline-block`
     (`+ie-inline-block`), and `+inline-block-list` which sets
     `+inline-block` on the list items.
@@ -207,7 +210,7 @@ advanced options hidden inside. Here's a few:
     Example:
         
         #nav
-          :padding-right= gutter(5) + "%"
+          padding-right= gutter(5) + "%"
 
 * `columns(!number, !context)` returns the span of `!number` columns in
   `!context` as a percentage (again without the units declared). This span
@@ -216,7 +219,7 @@ advanced options hidden inside. Here's a few:
     Example:
         
         #nav
-          :padding-left= columns(3,5) + "%"
+          padding-left= columns(3,5) + "%"
 
 * `side_gutter()` is also available and takes no arguments since it is always
   used at the top nesting level.
@@ -229,4 +232,4 @@ advanced options hidden inside. Here's a few:
     Example:
     
         #nav
-          :border-bottom= px2em(2) + "em"
+          border-bottom= px2em(2) + "em"

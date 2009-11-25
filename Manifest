@@ -5,6 +5,7 @@ Manifest
 Rakefile
 README.mkdn
 sass/susy/_grid.sass
+sass/susy/_reset.sass
 sass/susy/_utils.sass
 sass/susy/_text.sass
 sass/susy/_susy.sass
@@ -12,6 +13,7 @@ templates/project/print.sass
 templates/project/screen.sass
 templates/project/ie.sass
 templates/project/_base.sass
+templates/project/_defaults.sass
 templates/project/manifest.rb
 VERSION
 LICENSE.txt

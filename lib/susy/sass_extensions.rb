@@ -12,6 +12,7 @@ module Sass::Script::Functions
 
   # approximate a given pixel size in ems
   def px2em(size_in_px)
+    raise Sass::SyntaxError, "base_font_size() must be called before px2em() - should be called in susy/susy.sass" unless defined?(@@susy_base_font_size_px)
     Sass::Script::Number.new((size_in_px.value / @@susy_base_font_size_px))
   end
 
@@ -30,6 +31,7 @@ module Sass::Script::Functions
   # return the width of 'n' columns plus 'n - 1' gutters 
   # plus page padding in non-nested contexts
   def context(n = nil)
+    raise Sass::SyntaxError, "container() must be called before context() - should be called in susy/susy.sass" unless defined?(@@susy_side_gutter_width)
     begin
       n = n.value
     rescue NoMethodError
@@ -47,6 +49,7 @@ module Sass::Script::Functions
   # return the percentage width of 'number' columns in a context of
   #  'context_columns'
   def columns(number, context_columns = nil)
+    raise Sass::SyntaxError, "container() must be called before columns() - should be called in susy/susy.sass" unless defined?(@@susy_column_width)
     n = number.value
     context_width = context(context_columns).value
     c, g = [@@susy_column_width, @@susy_gutter_width]
@@ -56,6 +59,7 @@ module Sass::Script::Functions
   # return the percentage width of a single gutter in a context of
   #  'context_columns'
   def gutter(context_columns = nil)
+    raise Sass::SyntaxError, "container() must be called before columns() - should be called in susy/susy.sass" unless defined?(@@susy_gutter_width)
     context_width = context(context_columns).value
     g = @@susy_gutter_width
     Sass::Script::Number.new((g / context_width) * 100)
@@ -64,6 +68,7 @@ module Sass::Script::Functions
   # return the percentage width of a single side gutter in a context of
   #  'context_columns'
   def side_gutter(context_columns = nil)
+    raise Sass::SyntaxError, "container() must be called before side_gutter() - should be called in susy/susy.sass" unless defined?(@@susy_side_gutter_width)
     context_width = context(context_columns).value
     sg = @@susy_side_gutter_width
     Sass::Script::Number.new((sg / context_width) * 100)
@@ -72,6 +77,7 @@ module Sass::Script::Functions
   # return the percentage width of a single column in a context of
   #  'context_columns'
   def column(context_columns = nil)
+    raise Sass::SyntaxError, "container() must be called before column() - should be called in susy/susy.sass" unless defined?(@@susy_column_width)
     context_width = context(context_columns).value
     c = @@susy_column_width
     Sass::Script::Number.new((c / context_width) * 100)

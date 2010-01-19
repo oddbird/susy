@@ -12,12 +12,13 @@
 
 body
   +sans-family
-  color= !main
+  color= !base
 
 /* @group links */
 
-\:focus
-  outline= 1px "dotted" !alt
+a, input, textarea, button
+  &:focus
+    outline= 1px "dotted" !alt
 
 a
   &:link, &:visited
@@ -37,46 +38,21 @@ h1, h2, h3, h4, h5, h6
 /* @end */
 
 
-/* @group forms */
-
-form *:focus
-  outline: none
-
-fieldset
-  margin= !base_line_height 0
-
-legend
-  font-weight: bold
-  font-variant: small-caps
-
-label
-  display: block
-  margin-top= !base_line_height
-
-legend + label
-  margin-top: 0
-
-textarea, input[type="text"]
-  +box-sizing("border-box")
-  width: 100%
-
-/* @end */
-
-
 /* @group tables */
 
 /* tables still need 'cellspacing="0"' in the markup */
 
 table
-  :width 100%
-  :border= 1/16 + "em solid" !main + #333
-    :left none
-    :right none
-  :padding= 7/16 + "em 0"
-  :margin= 8/16 + "em 0"
+  width: 100%
+  border:
+    width: 0
+    style: solid 
+    color= !base
+  +top-border(1px, 0.5)
+  +bottom-border(1px, 0.5)
 
 th
-  :font-weight bold
+  font-weight: bold
 
 /* @end */
 
@@ -84,19 +60,21 @@ th
 /* @group block tags */
 
 p
-  :margin= !base_line_height 0
+  +leader
+  +trailer
 
 =list-default(!ol = false)
-  :margin= !base_line_height
+  +leader
+  +trailer
   @if !ol
-    :list-style decimal
+    list-style: decimal
   @else
-    :list-style disc
+    list-style: disc
 
 =no-style-list
   +no-bullets
-  :margin 0
-  :padding 0
+  margin: 0
+  padding: 0
 
 ol
   +list-default("ol")
@@ -105,7 +83,7 @@ ul
   +list-default
 
 blockquote
-  :margin= !base_line_height
+  margin= !base_rhythm_unit
   +serif-family
 
 /* @end */
@@ -114,24 +92,24 @@ blockquote
 /* @group inline tags */
 
 cite
-  :font-style italic
+  font-style: italic
 
 em
-  :font-style italic
+  font-style: italic
 
 strong
-  :font-weight bold
+  font-weight: bold
 
 ins
-  :text-decoration underline
+  text-decoration: underline
 
 del
-  :text-decoration line-through
+  text-decoration: line-through
 
 q
-  :font-style italic
+  font-style: italic
   em
-    :font-style normal
+    font-style: normal
 
 /* @end */
 
@@ -139,7 +117,33 @@ q
 /* @group replaced tags */
 
 img
-  :vertical-align bottom
+  vertical-align: bottom
+
+/* @end */
+
+
+/* @group forms */
+
+form *:focus
+  outline: none
+
+fieldset
+  +trailer
+
+legend
+  font-weight: bold
+  font-variant: small-caps
+
+label
+  display: block
+  +leader
+
+legend + label
+  margin-top: 0
+
+textarea, input:not([type="radio"])
+  +box-sizing("border-box")
+  width: 100%
 
 /* @end */
 

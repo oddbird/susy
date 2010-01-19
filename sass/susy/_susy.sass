@@ -1,5 +1,5 @@
 //** Susy **//
-// Updated 11.20.2009 by Eric A. Meyer
+// Updated 01.19.2010 by Eric A. Meyer
 
 
 // Tell susy whether you are using hacks or conditional comments.
@@ -15,10 +15,8 @@
 
 // Set Susy on your BODY element to get things started.
 =susy(!align = "center")
+  +establish-baseline
   // text-align set to center by default for auto-centering layouts 
   //  - override !align for left/right-aligned designs
-  text-align= !align
-  // font size is set against the browser default (usually 16px)
-  font-size= !base_font_size
-  line-height= !base_line_height
-
+  body
+    text-align= !align

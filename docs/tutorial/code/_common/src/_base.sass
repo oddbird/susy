@@ -4,14 +4,19 @@
 //  Site: www.oddbird.net/susy/
 //**
 
+
+// FONT-SIZE
+// Override these values as needed (defaults are 12/18)
+!base_font_size = 14px
+!base_line_height = 21px
+
+
 // GRID
 // Set these values as needed for your grid layout.
-//  - defaults are shown.
-!grid_unit = "em"
 !total_cols = 10
-!col_width = 5
-!gutter_width = 2
-!side_gutter_width = 1
+!col_width = 5em
+!gutter_width = 2em
+!side_gutter_width = 1em
 
 
 // OMEGA_FLOAT
@@ -28,15 +33,6 @@
 // !hacks = true
 
 
-// FONT-SIZE
-// Override these values as needed (defaults are shown)
-//  - You set the font and line heights in pixels.
-//  - Susy will do the math and give you !base_font_size and !base_line_height 
-//    variables, set flexibly against the common browser default of 16px
-!base_font_size_px = 14
-!base_line_height_px = 21
-
-
 // SUSY
 // Don't move this @import above the GRID and FONT-SIZE overrides.
 @import susy/susy.sass
@@ -44,9 +40,9 @@
 
 // COLORS
 // Set any colors you will need later.
-!text = #332016
+!base = #332016
 !light = #CC8866
-!links = #4CAAC0
+!alt = #4CAAC0
 
 
 // FONTS

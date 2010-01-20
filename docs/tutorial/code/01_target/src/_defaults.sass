@@ -13,17 +13,18 @@
 
 /* @group links */
 
-\:focus
-  outline: 1px dotted
+a, input, textarea, button
+  :focus
+    outline: 1px dotted
 
 a
   &:link, &:visited
-    color= !links
+    color= !alt
     text-decoration: none
   &:focus, &:hover, &:active
     color= !light
     border-bottom:
-      width= px2em(2) + "em"
+      width= !px2em*2
       style: dashed
 
 /* @end */
@@ -37,7 +38,7 @@ h1
   font-size: 3em
   line-height: 1
   font-weight: bold
-  color= !links
+  color= !alt
 
 h2
   font-weight: bold
@@ -56,12 +57,12 @@ pre
   padding: 1.5em
 
 =list-default(!ol = false)
+  +leader
+  +trailer
   @if !ol
     list-style: decimal
-    margin: 0 1.5em 1.5em 1.5em
   @else
     list-style: disc
-    margin: 0 1.5em 1.5em 1.5em
 
 ol
   +list-default("ol")

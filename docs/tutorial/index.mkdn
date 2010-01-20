@@ -19,7 +19,9 @@ Here are the terms to understand for following along and using Susy:
 * There is always a **container** element that wraps the page. This container
   will act as our elastic shell. The **container** also represents a grid
   structure made up of **columns**, **gutters** between the columns, and
-  **side gutters** on the outside edges of the grid.
+  **side gutters** on the outside edges of the grid. There can be more than
+  one **container** on a page, but each acts as the top level of it's own Susy
+  grid, so they should not be nested.
 
   [![The Susy Grid](figures/susy_grid.png)](figures/susy_grid.png)
 
@@ -65,32 +67,32 @@ my source](01_target/index.html).
 Start in your `_base.sass` file (in the `src` directory). That's where you set
 all your defaults.
 
-To create a grid, set the `!grid_unit` (units that your grid is based in),
-`!total_cols` (total number of columns in your grid), `!col_width` (width of
-columns), `!gutter_width` (width of gutters), and `!side_gutter_width` (width
-of side gutters) variables.
+To create a grid, set the `!total_cols` (total number of columns in your
+grid), `!col_width` (width of columns), `!gutter_width` (width of gutters),
+and `!side_gutter_width` (width of side gutters) variables. the `_width`
+variables will work with any units as long as they are all the same.
 
 The default values are 12 columns, 4em column widths, 1em gutters and side
-gutters that match the internal ones. But we want a 10 column grid, with 5em
-columns, 2em gutters and 1em side-gutters.
+gutters that match the internal ones. But for this site we want a 10 column
+grid, with 5em columns, 2em gutters and 1em side-gutters.
 
 Take a look at our target site again, this time [with a grid
 overlay](01_target/).
 
 So we'll set our grid like this:
 
-    !grid_unit = "em" 
     !total_cols = 10 
-    !col_width = 5 
-    !gutter_width = 2
-    !side_gutter_width = 1
+    !col_width = 5em
+    !gutter_width = 2em
+    !side_gutter_width = 1em
 
 Of course, designing in em's, we'll want to get your font sizes set to make
-this all meaningful. Do that by assigning a pixel value (without the units) to
-`!base_font_size_px` and `!base_line_height_px`. Susy will convert those to a
-percentage of the common browser default (16px) and apply them to your grid.
+this all meaningful. Do that by assigning a pixel value to `!base_font_size`
+and `!base_line_height`. Susy will convert those and apply them to your grid,
+giving you a set of tools for managing your [vertical
+rhythm](http://24ways.org/2006/compose-to-a-vertical-rhythm/) as well.
 
-The default values here are 16px fonts with an 24px line-height. For us:
+The default values here are 12px fonts with an 18px line-height. For us:
 
     !base_font_size_px = 14 
     !base_line_height_px = 21
@@ -98,7 +100,7 @@ The default values here are 16px fonts with an 24px line-height. For us:
 `_base.sass` also has everything you need for setting default font families,
 colors and mixins to reuse throughout. From there you should head over to
 `_defaults.sass` to set default styles for all those elements that ought have
-a default (but don't because of the reset). We're going to skip that for now
+a default but don't because of the reset. We're going to skip that for now
 and play with the fun toys. You can look around at the other defaults and set
 what you like, or juse [use](../src/_base.sass) [mine](../src/_defaults.sass).
 
@@ -140,18 +142,12 @@ First the explanation:
 Then we do it. In `screen.sass`, we'll start by declaring our intent to use
 Susy, and our container:
 
-    body
-      +susy
+    +susy
     
     #page
       +container
 
-That wasn't hard. You might ask why I didn't nest `#page` inside of `body`, as
-is so tempting and easy with Sass. It's part personal preference and part
-Natalie Downe's voice in my head. Don't nest when you don't need to. It keeps
-your output code much cleaner.
-
-Take a look at [the results](02_container/). So far we have:
+That wasn't hard. Take a look at [the results](02_container/). So far we have:
 
 * Replaced browser defaults with our own. This happens automatically in the
   background, thanks to `_defaults.sass`.

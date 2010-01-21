@@ -13,8 +13,9 @@
 
 /* @group links */
 
-\:focus
-  outline: 1px dotted
+a, input, textarea, button
+  :focus
+    outline: 1px dotted
 
 a
   &:link, &:visited
@@ -23,7 +24,7 @@ a
   &:focus, &:hover, &:active
     color= !light
     border-bottom:
-      width= px2em(2) + "em"
+      width= !px2em*2px
       style: dashed
 
 /* @end */

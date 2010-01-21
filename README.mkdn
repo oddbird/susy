@@ -229,4 +229,4 @@ advanced options hidden inside. Here's a few:
         #nav
           border-bottom:
             style: solid
-            width= !px2em*2
+            width= !px2em*2px

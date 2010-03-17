@@ -1,6 +1,8 @@
 //** Vertical Rhythm **//
 // By Chris Eppstein, living here on a temporary basis
 
+// set the default border style for rhythm borders
+!default_rhythm_border_style = "solid"
 
 // The IE font ratio is a fact of life. Deal with it.
 !ie_font_ratio = 16px / 100%
@@ -38,28 +40,45 @@
 // !lines is a number that is how many times the baseline rhythm this
 // font size should use up. Does not have to be an integer, but it defaults
 // to the smallest integer that is large enough to fit the font.
-=adjust-font-size-to(!font_size, !lines = ceil(!font_size / !base_line_height))
-  font-size= 1em * !font_size / !base_font_size
+// Use !from_size to adjust from a non-base font-size.
+=adjust-font-size-to(!to_size, !lines = ceil(!font_size / !base_line_height), !from_size = !base_font_size)
+  font-size= 1em * !to_size / !from_size
   +adjust-leading-to(!lines, !font_size)
  
 =adjust-leading-to(!lines, !font_size = !base_font_size)
   line-height= 1em * !lines * !base_line_height / !font_size
  
 // Apply leading whitespace
-=leader(!lines = 1, !font_size = !base_font_size)
-  margin-top= 1em * !lines * !base_line_height / !font_size
+=leader(!lines = 1, !font_size = !base_font_size, !property = "margin")
+  #{!property}-top= 1em * !lines * !base_line_height / !font_size
  
 // Apply trailing whitespace
-=trailer(!lines = 1, !font_size = !base_font_size)
-  margin-bottom= 1em * !lines * !base_line_height / !font_size
+=trailer(!lines = 1, !font_size = !base_font_size, !property = "margin")
+  #{!property}-bottom= 1em * !lines * !base_line_height / !font_size
  
-// Apply a border width without messing up the rhythm
-=border(!side, !width = 1px, !lines = 1, !font_size = !base_font_size)
-  border-#{!side}-width= 1em * !width / !font_size
+// Apply a border width to any side without destroying the vertical rhythm
+=apply-side-rhythm-border(!side, !width = 1px, !lines = 1, !font_size = !base_font_size, !border_style = !default_rhythm_border_style)
+  border-#{!side}:
+    style= !border_style
+    width= 1em * !width / !font_size
   padding-#{!side}= (1em / !font_size) * ((!lines * !base_line_height) - !width)
- 
-=top-border(!width = 1px, !lines = 1, !font_size = !base_font_size)
-  +border("top", !width, !lines, !font_size)
- 
-=bottom-border(!width = 1px, !lines = 1, !font_size = !base_font_size)
-  +border("bottom", !width, !lines, !font_size)
+
+// Aplly rhythm borders equally to all sides 
+=rhythm-borders(!width = 1px, !lines = 1, !font_size = !base_font_size, !border_style = !default_rhythm_border_style)
+  border:
+    style= !border_style
+    width= 1em * !width / !font_size
+  padding= (1em / !font_size) * ((!lines * !base_line_height) - !width)
+
+// Apply a leading rhythm border 
+=leading-border(!width = 1px, !lines = 1, !font_size = !base_font_size, !border_style = !default_rhythm_border_style)
+  +apply-side-rhythm-border("top", !width, !lines, !font_size, !border_style)
+
+// Apply a trailing rhythm border
+=trailing-border(!width = 1px, !lines = 1, !font_size = !base_font_size, !border_style = !default_rhythm_border_style)
+  +apply-side-rhythm-border("bottom", !width, !lines, !font_size, !border_style)
+
+// Apply both leading and trailing rhythm borders
+=horizontal-borders(!width = 1px, !lines = 1, !font_size = !base_font_size, !border_style = !default_rhythm_border_style)
+  +leading-border(!width, !lines, !font_size, !border_style) 
+  +trailing-border(!width, !lines, !font_size, !border_style)

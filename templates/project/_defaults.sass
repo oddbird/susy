@@ -16,9 +16,8 @@ body
 
 /* @group links */
 
-a, input, textarea, button
-  &:focus
-    outline= 1px "dotted" !alt
+\:focus
+  outline= 1px "dotted" !alt
 
 a
   &:link, &:visited
@@ -122,9 +121,6 @@ th
 
 
 /* @group forms */
-
-form *:focus
-  outline: none
 
 fieldset
   +trailer

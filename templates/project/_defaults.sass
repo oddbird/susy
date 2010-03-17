@@ -30,27 +30,42 @@ a
 /* @end */
 
 
-/* @group headers */
+/* @group inline tags */
 
-h1, h2, h3, h4, h5, h6
+cite
+  font-style: italic
+
+em
+  font-style: italic
+
+strong
   font-weight: bold
+
+ins
+  text-decoration: underline
+
+del
+  text-decoration: line-through
+
+q
+  font-style: italic
+  em
+    font-style: normal
 
 /* @end */
 
 
-/* @group tables */
+/* @group replaced tags */
 
-/* tables still need 'cellspacing="0"' in the markup */
+img
+  vertical-align: bottom
 
-table
-  width: 100%
-  border:
-    width: 0
-    style: solid 
-    color= !base
-  +horizontal-borders(1px, 0.5)
+/* @end */
 
-th
+
+/* @group headers */
+
+h1, h2, h3, h4, h5, h6
   font-weight: bold
 
 /* @end */
@@ -88,35 +103,20 @@ blockquote
 /* @end */
 
 
-/* @group inline tags */
+/* @group tables */
 
-cite
-  font-style: italic
+/* tables still need 'cellspacing="0"' in the markup */
 
-em
-  font-style: italic
+table
+  width: 100%
+  border:
+    width: 0
+    style: solid 
+    color= !base
+  +horizontal-borders(1px, 0.5)
 
-strong
+th
   font-weight: bold
-
-ins
-  text-decoration: underline
-
-del
-  text-decoration: line-through
-
-q
-  font-style: italic
-  em
-    font-style: normal
-
-/* @end */
-
-
-/* @group replaced tags */
-
-img
-  vertical-align: bottom
 
 /* @end */
 

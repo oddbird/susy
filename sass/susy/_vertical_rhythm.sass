@@ -1,5 +1,6 @@
 //** Vertical Rhythm **//
-// By Chris Eppstein, living here on a temporary basis
+// By Chris Eppstein and Eric Meyer, living here on a temporary basis
+
 
 // set the default border style for rhythm borders
 !default_rhythm_border_style = "solid"
@@ -51,10 +52,22 @@
 // Apply leading whitespace
 =leader(!lines = 1, !font_size = !base_font_size, !property = "margin")
   #{!property}-top= 1em * !lines * !base_line_height / !font_size
- 
+
+=padding-leader(!lines = 1, !font_size = !base_font_size)
+  +leader(!lines, !font_size, "padding")
+
+=margin-leader(!lines = 1, !font_size = !base_font_size)
+  +leader(!lines, !font_size, "margin")
+
 // Apply trailing whitespace
 =trailer(!lines = 1, !font_size = !base_font_size, !property = "margin")
   #{!property}-bottom= 1em * !lines * !base_line_height / !font_size
+
+=padding-trailer(!lines = 1, !font_size = !base_font_size)
+  +trailer(!lines, !font_size, "padding")
+
+=margin-trailer(!lines = 1, !font_size = !base_font_size)
+  +trailer(!lines, !font_size, "margin")
  
 // Apply a border width to any side without destroying the vertical rhythm
 =apply-side-rhythm-border(!side, !width = 1px, !lines = 1, !font_size = !base_font_size, !border_style = !default_rhythm_border_style)

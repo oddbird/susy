@@ -141,16 +141,22 @@ options, experimental (CSS3/proprietary) CSS, and more.
 And then the fun stuff in `_vertical_rhythm.sass`, written by Chris Eppstein
 and probably moving to the compass core before too long:
 
-* `+adjust-font-size-to(!font_size, [!lines])` - adjust the font size and number
+* `+adjust-font-size-to(!to_size, [!lines, !from_size])` - adjust the font size and number
   of baseline (line) units to occupy.
 
-* `+leader([!lines, !font_size])` and `+trailer([!lines, !font_size])` - add
-  leading or trailing whitespace to an element. These are added as top and
-  bottom margins that keep your vertical rhythm intact.
+* `+leader([!lines, !font_size, !property])` and `+trailer([!lines,
+  !font_size, !property])` - add leading or trailing whitespace to an element.
+  These are added as top and bottom margins (by default) that keep your
+  vertical rhythm intact. You can also send "padding" as the `!property` or
+  use `+padding-leader` and `+padding-trailer`. Be aware that this may
+  conflict with uses of rhythm-borders.
 
-* `+top-border([!width, !lines, !font_size])` and `+bottom-border([!width,
-  !lines, !font_size])` will combine border and padding to create borders that
-  also keep the vertical rhythm going.
+* `+leading-border([!width, !lines, !font_size, !style])` and
+  `+trailing-border([!width, !lines, !font_size, !style])` will combine border
+  and padding to create borders that also keep the vertical rhythm going. The
+  defaults are `1px, 1, !base_font_size, 'solid'`. Also available:
+  `+horizontal-borders` (for both leading and trailing), and `+rhythm-borders`
+  for applying equal borders and padding to all sides of a box.
 
 
 Advanced Options
@@ -199,30 +205,29 @@ advanced options hidden inside. Here's a few:
     their own.
 
 * `gutter(!context)` is a function that you can call at any time to return the
-  size of a gutter in your given context using percentages. The number is
-  returned without units so that you can perform math on it. In order to use
-  it, you will have to add "%" to it.
+  size of a gutter in your given context as a percentage.
 
     Example:
         
         #nav
-          padding-right= gutter(5) + "%"
+          padding-right= gutter(5)
 
 * `columns(!number, !context)` returns the span of `!number` columns in
-  `!context` as a percentage (again without the units declared). This span
-  includes any gutters between the columns spanned.
+  `!context` as a percentage. This span includes any gutters between the
+  columns spanned.
 
     Example:
         
         #nav
-          padding-left= columns(3,5) + "%"
+          padding-left= columns(3,5)
 
 * `side_gutter()` is also available and takes no arguments since it is always
   used at the top nesting level.
 
 * `!px2em` is a variable that represents the height of one pixel as a fraction
   of your base em-height. Multiply it with your target pixel value to
-  represent that value in ems.
+  represent that value in ems. Note that this is only accurate at your
+  `!base_font_size`.
 
     Example:
     

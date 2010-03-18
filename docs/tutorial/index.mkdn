@@ -94,8 +94,8 @@ rhythm](http://24ways.org/2006/compose-to-a-vertical-rhythm/) as well.
 
 The default values here are 12px fonts with an 18px line-height. For us:
 
-    !base_font_size_px = 14 
-    !base_line_height_px = 21
+    !base_font_size = 14px 
+    !base_line_height = 21px
 
 `_base.sass` also has everything you need for setting default font families,
 colors and mixins to reuse throughout. From there you should head over to

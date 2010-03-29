@@ -5,3 +5,21 @@
 
 
 @import defaults.sass
+
+=print()
+  nav
+    display: none
+    
+  *
+    float: none !important
+    
+  body
+    +serif-family
+    font-size: 12pt
+    background: white
+    color: black
+    
+  a:link:after, a:visited:after
+    content: " (" attr(href) ") "
+
++print

@@ -42,10 +42,10 @@
 // font size should use up. Does not have to be an integer, but it defaults
 // to the smallest integer that is large enough to fit the font.
 // Use !from_size to adjust from a non-base font-size.
-=adjust-font-size-to(!to_size, !lines = ceil(!font_size / !base_line_height), !from_size = !base_font_size)
+=adjust-font-size-to(!to_size, !lines = ceil(!to_size / !base_line_height), !from_size = !base_font_size)
   font-size= 1em * !to_size / !from_size
-  +adjust-leading-to(!lines, !font_size)
- 
+  +adjust-leading-to(!lines, !to_size)
+
 =adjust-leading-to(!lines, !font_size = !base_font_size)
   line-height= 1em * !lines * !base_line_height / !font_size
  
@@ -95,3 +95,7 @@
 =horizontal-borders(!width = 1px, !lines = 1, !font_size = !base_font_size, !border_style = !default_rhythm_border_style)
   +leading-border(!width, !lines, !font_size, !border_style) 
   +trailing-border(!width, !lines, !font_size, !border_style)
+
+=h-borders(!width = 1px, !lines = 1, !font_size = !base_font_size, !border_style = !default_rhythm_border_style)
+  +horizontal-borders(!width, !lines, !font_size, !border_style)
+  

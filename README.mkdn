@@ -26,7 +26,7 @@ Create a Susy-based Compass Project
 
     compass -r susy -f susy <project name>
 
-Then edit your `_base.sass`, `_defaults.sass`, `screen.sass` and `print.sass`
+Then edit your `_base.scss`, `_defaults.scss`, `screen.scss` and `print.scss`
 files accordingly. A reset is added automatically, and includes help for some
 HTML5 elements.
 
@@ -61,102 +61,118 @@ But Susy harnesses the power of Compass and Sass to do all the math for you.
 Grid Basics
 ===========
 
-* Set up your default grid values (total columns, column width, gutter
-  width, side gutter width), your base font size, and important mixins
-  in `_base.sass`.
+* Set up your default grid values (total columns, column width, gutter width,
+  side gutter width), your base font size, and important mixins in
+  `_base.scss`.
 
-* Set defaults for all the important HTML tags in `_defaults.sass`. It's
+* Set defaults for all the important HTML tags in `_defaults.scss`. It's
   better than using the browser defaults. And better than using ours.
 
-* Create your grid in `screen.sass`: apply the `+susy` mixin at the top level
-  and the `+container` mixin to the element that contains the page grid.
+* Create your grid in `screen.scss`: apply the `@include susy` mixin at the
+  top level and the `@include container` mixin to the element that contains
+  the page grid.
 
-* Use the `+columns` mixin to declare the width in columns of an element,
-  or `+full` for any element spanning the full width of its context.
+* Use the `@include columns` mixin to declare the width in columns of an
+  element, or `+full` for any element spanning the full width of its context.
 
-* Use `+alpha` and `+omega` to declare elements which include the first or
-  last column within their parent element (`+full` to declare both `+alpha`
-  and `+omega`). Note: `+alpha` is actually only needed in the very top level,
-  and does nothing in nested contexts. Neither is needed on a `+full` element.
+* Use `@include alpha` and `@include omega` to declare elements which include
+  the first or last column within their parent element (`@include full` to
+  declare both `@include alpha` and `@include omega`). Note: `@include alpha`
+  is actually only needed in the very top level, and does nothing in nested
+  contexts. Neither is needed on a `@include full` element.
 
-* Use `+prefix` or `+suffix` to give the width (in columns) of an elements
-  left or right margin, or `+pad` to give both `+prefix` and `+suffix` at
-  once.
+* Use `@include prefix` or `@include suffix` to give the width (in columns) of
+  an elements left or right margin, or `@include pad` to give both `@include
+  prefix` and `@include suffix` at once.
 
 * In nested contexts, all of these mixins take an extra final argument, the
   width in columns of the parent (nesting) element.
 
 That's it for the basics! Here's a sample Susy grid layout:
 
-    +susy
+    @include susy;
      
-    #page
-      +container
+    #page {
+      @include container; 
+    }
      
-    #brand
-      +full
-      +pad(1,1)
-      h1
-        +full(8)
-        +pad(1,2,8)
+    #brand {
+      @include full;
+      @include pad(1,1);
+      
+      h1 {
+        @include full(8);
+        @include pad(1,2,8); 
+      } 
+    }
         
-    #nav
-      +columns(2)
-      +alpha
+    #nav {
+      @include columns(2);
+      @include alpha;
+    }
      
-    #content
-      +columns(8)
-      +omega
-      #description
-        +columns(5,8)
-      #credit
-        +columns(3,8)
-        +omega(8)
+    #content {
+      @include columns(8);
+      @include omega;
+      
+      #description {
+        @include columns(5,8);
+      }
+      
+      #credit {
+        @include columns(3,8);
+        @include omega(8);
+      }
+    }
 
 Tutorial
 ========
 
-For more details, read [the tutorial](http://www.oddbird.net/susy/tutorial/).  
-It's also included with Susy in the docs/ folder.
+The original [tutorial](http://www.oddbird.net/susy/tutorial/) was written for
+earlier versions of Susy and is no longer entirely accurate for version 0.7.
+An updated tutorial will be released soon.
 
 Extra Utility Mixins 
 =====================
 
-Extra utilities are included in Susy's `utils.sass` file, with additional list
+Extra utilities are included in Susy's `utils.scss` file, with additional list
 options, experimental (CSS3/proprietary) CSS, and more.
 
-* `+show-grid(!src)` - Repeat the specified grid image on an element. Good for
-  testing your baseline and grid.
+* `@include show-grid($src)` - Repeat the specified grid image on an element.
+  Good for testing your baseline and grid.
 
-* `+inline-block-list([!horizontalpadding])` - Make list items inline-block
-  when floating just won't do the trick (if you need them centered or right).
+* `@include inline-block-list([$horizontalpadding])` - Make list items
+  inline-block when floating just won't do the trick (if you need them
+  centered or right).
 
-* `+hide` - Hide content from visual browsers while keeping accessability
-  intact.
+* `@include hide` - Hide content from visual browsers while keeping
+  accessability intact.
 
-* `+skip-link([!top, !right, !bottom, !left])` - Hide a link, and then show
-  it again on focus. the TRBL settings allow you to place it absolutely on
-  display. Default will be top left of the positioning context.
+* `@include skip-link([$top, $right, $bottom, $left])` - Hide a link, and then
+  show it again on focus. the TRBL settings allow you to place it absolutely
+  on display. Default will be top left of the positioning context.
 
-And then the fun stuff in `_vertical_rhythm.sass`, written by Chris Eppstein
-and probably moving to the compass core before too long:
+And then the fun stuff in `_vertical_rhythm.scss`, originally written by Chris
+Eppstein and probably moving to the compass core before too long:
 
-* `+adjust-font-size-to(!to_size, [!lines, !from_size])` - adjust the font size and number
-  of baseline (line) units to occupy.
+* `@include adjust-font-size-to($to_size, [$lines, $from_size])` - adjust the
+  font size and number of baseline (line) units to occupy.
 
-* `+leader([!lines, !font_size, !property])` and `+trailer([!lines,
-  !font_size, !property])` - add leading or trailing whitespace to an element.
-  These are added as top and bottom margins (by default) that keep your
-  vertical rhythm intact. You can also send "padding" as the `!property` or
-  use `+padding-leader` and `+padding-trailer`. Be aware that this may
-  conflict with uses of rhythm-borders.
+* `@include leader([$lines, $font_size, $property])` and `@include
+  trailer([$lines, $font_size, $property])` - add leading or trailing
+  whitespace to an element. These are added as top and bottom margins (by
+  default) that keep your vertical rhythm intact. You can also send "padding"
+  as the `$property` or use `@include padding-leader` and `@include
+  padding-trailer`. Be aware that this may conflict with uses of
+  rhythm-borders.
 
-* `+leading-border([!width, !lines, !font_size, !style])` and
-  `+trailing-border([!width, !lines, !font_size, !style])` will combine border
-  and padding to create borders that also keep the vertical rhythm going. The
-  defaults are `1px, 1, !base_font_size, 'solid'`. Also available:
-  `+horizontal-borders` (for both leading and trailing), and `+rhythm-borders`
-  for applying equal borders and padding to all sides of a box.
+* `@include leading-border([$width, $lines, $font_size, $style])` and
+  `@include trailing-border([$width, $lines, $font_size, $style])` will
+  combine border and padding to create borders that also keep the vertical
+  rhythm going. The defaults are `1px, 1, $base_font_size, 'solid'`. Also
+  available: `@include horizontal-borders` (for both leading and trailing),
+  and `@include rhythm-borders` for applying equal borders and padding to all
+  sides of a box.
 
 
 Advanced Options
@@ -164,74 +180,80 @@ Advanced Options
 
 Susy is built for flexibility, so that you always write the code you want to
 write. While everything should 'just work' out of the box, there are plenty of
-advanced options hidden inside. Here's a few:
+advanced options hidden inside. Here are a few:
 
-* `!hacks` is a boolean constant that you can set in your base.sass file to
+* `$hacks` is a boolean constant that you can set in your base.sass file to
   choose between using targeted hacks for IE (a variation of the star hack in
   most cases) in your screen.css, or using a conditional-comment targeted
-  ie.css. All the needed mixins are available for either setting. `!hacks` is
+  ie.css. All the needed mixins are available for either setting. `$hacks` is
   true by default so there is no extra work maintaining multiple files unless
   you want to.
 
     Example 1:
     
-        !hacks = true
+        $hacks: true;
     
-        #nav
-          +inline-block-list
+        #nav {
+          @include inline-block-list;          
+        }
     
     Example 2:
     
-        !hacks = false
+        $hacks: false;
       
-        (in screen.sass)
-        #nav
-          +inline-block-list
+        // in screen.scss
+        #nav {
+          @include inline-block-list;
+        }
         
-        (in ie.sass)
-        #nav li
-          +ie-inline-block
+        //in ie.scss
+        #nav li {
+         @include ie-inline-block; 
+        }
 
-    It requires more maintenance on your part, but the result is a
-    hack-free output.
+    It requires more maintenance on your part, but the result is a hack-free
+    output.
     
-    The Susy mixins that use either hacks or targeted mixins are
-    `+omega` (`+ie-omega([!right-floated = false])`), `+inline-block`
-    (`+ie-inline-block`), and `+inline-block-list` which sets
-    `+inline-block` on the list items.
+     The Susy mixins that use either hacks or targeted mixins are `@include
+    omega` (`@include ie-omega([$right-floated: false])`), `@include
+    inline-block` (`@include ie-inline-block`), and `@include
+    inline-block-list` which sets `@include inline-block` on the list items.
     
-    The ie-specific mixins only add the needed ie-specific adjustments,
-    so they need to be used in addition to their counterparts, not on
-    their own.
+     The ie-specific mixins only add the needed ie-specific adjustments, so
+    they need to be used in addition to their counterparts, not on their own.
 
-* `gutter(!context)` is a function that you can call at any time to return the
+* `gutter($context)` is a function that you can call at any time to return the
   size of a gutter in your given context as a percentage.
 
     Example:
         
-        #nav
-          padding-right= gutter(5)
+        #nav {
+          padding-right: gutter(5);
+        }
 
-* `columns(!number, !context)` returns the span of `!number` columns in
-  `!context` as a percentage. This span includes any gutters between the
+* `columns($number, $context)` returns the span of `$number` columns in
+  `$context` as a percentage. This span includes any gutters between the
   columns spanned.
 
     Example:
         
-        #nav
-          padding-left= columns(3,5)
+        #nav {
+          padding-left: columns(3,5);
+        }
 
 * `side_gutter()` is also available and takes no arguments since it is always
   used at the top nesting level.
 
-* `!px2em` is a variable that represents the height of one pixel as a fraction
+* `$px2em` is a variable that represents the height of one pixel as a fraction
   of your base em-height. Multiply it with your target pixel value to
   represent that value in ems. Note that this is only accurate at your
-  `!base_font_size`.
+  `$base_font_size`.
 
     Example:
     
-        #nav
-          border-bottom:
-            style: solid
-            width= !px2em*2px
+        #nav {
+          border-bottom: {
+            style: solid;
+            width: $px2em*2px;
+          };
+        }

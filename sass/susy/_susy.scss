@@ -1,0 +1,19 @@
+//** Susy **//
+// Updated 01.19.2010 by Eric A. Meyer
+
+// Tell susy whether you are using hacks or conditional comments.
+$hacks: true !default;
+
+// Import all the Important Stuff.
+@import "compass/css3.scss";
+@import "utils.scss";
+@import "text.scss";
+@import "grid.scss";
+
+// Set Susy on your BODY element to get things started.
+@mixin susy($align: center) {
+  @include establish-baseline;
+  // text-align set to center by default for auto-centering layouts
+  //  - override !align for left/right-aligned designs
+  body {
+    text-align: $align; } }

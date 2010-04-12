@@ -1,0 +1,116 @@
+//** The Susy Grid **//
+// Updated 11.20.2009 by Eric A. Meyer
+
+// Your basic settings for the grid.
+// Override these in base.sass to customize your site.
+$total-cols: 12 !default;
+$col-width: 4em !default;
+$gutter-width: 1em !default;
+$side-gutter-width: $gutter-width !default;
+
+// Susy will set your outer shell based on the variables above. 
+$container-width: container($total-cols, $col-width, $gutter-width, $side-gutter-width);
+
+// Set on the outer grid-containing element(s).
+@mixin container($align: left) {
+  // clear all floated columns
+  @include clearfix;
+  // align the text back to the left (override for other alignments)
+  text-align: $align;
+  // use auto horizontal margins to center your page in the body
+  margin: {
+    left: auto;
+    right: auto; };
+  // set the page width based on column settings
+  width: $container-width;
+  // never exceed 100% of the browser window (no side-scrolling)
+  max-width: 100%; }
+
+// Set on any column element, even nested ones.
+// The first agument [required] is the number of columns to span.
+// The second argument is the context (columns spanned by parent).
+//  - Context is required on any nested elements.
+//  - Context MUST NOT be declared on a top-level element.
+// By default a grid-column is floated left with a right gutter.
+//  - Override those with +float("right"), +alpha or +omega
+@mixin columns($n, $context: false) {
+  // the column is floated left
+  @include float(left);
+  // the width of the column is set as a percentage of the context
+  width: columns($n, $context);
+  // the right gutter is added as a percentage of the context
+  margin-right: gutter($context); }
+
+// Set on any element to add empty colums as padding before or after.
+@mixin prefix($n, $context: false) {
+  padding-left: columns($n, $context) + gutter($context); }
+
+@mixin suffix($n, $context: false) {
+  padding-right: columns($n, $context) + gutter($context); }
+
+// Set as a shortcut for both prefix and suffix.
+@mixin pad($p: 0, $s: 0, $c: false) {
+  @if $p != 0 {
+    @include prefix($p, $c); }
+  @if $s != 0 {
+    @include suffix($s, $c); } }
+
+// Set on any element spanning the first column in non-nested context
+// to take side-gutters into account. Recommended that you pass the
+// actual nested contexts (when nested) rather than a true/false argument
+// for the sake of consistency. Effect is the same.
+@mixin alpha($nested: false) {
+  @if $nested == false {
+    margin-left: side-gutter(); } }
+
+// When global constant !hacks == true:
+//  - this will be called automatically with hacks
+// When global constant !hacks == false:
+//  - you can call it yourself in ie.sass without the hacks
+@mixin ie-omega($nested: false, $dir: right, $hack: false) {
+  $s: side-gutter();
+  @if $dir == "right" {
+    @if $hack {
+      #margin-left: -1%; }
+    @else {
+      margin-left: -1%; } }
+  @else {
+    @if $nested {
+      @if $hack {
+        #margin-right: -1%; }
+      @else {
+        margin-right: -1%; } }
+    @else {
+      @if $hack {
+        #margin-right: $s - 1%; }
+      @else {
+        margin-right: $s - 1%; } } } }
+
+// Sets the direction that +omega elements are floated
+//  - Override !omega_float globally or set +float locally to change
+$omega-float: right !default;
+
+// Set omega on the last element of a row to take side-gutters
+// and the page edge into account. Set the !nested argument for nested 
+// columns. It is recommended that you pass the actual nested context when 
+// nested, rather than a true/false argument, for the sake of consistency. 
+// Effect is the same.
+@mixin omega($nested: false) {
+  @include float($omega-float);
+  @if $nested {
+    margin-right: 0; }
+  @else {
+    margin-right: side-gutter(); }
+  @if $hacks {
+    /* ugly hacks for IE6-7 */
+    @include ie-omega($nested, $omega-float, true);
+    /* end ugly hacks */ } }
+
+// Set on an element that will span it's entire context.
+// - no need for +columns, +alpha or +omega on a +full element.
+@mixin full($nested: false) {
+  clear: both;
+  @if $nested == false {
+    $s: side-gutter();
+    margin-right: $s;
+    margin-left: $s; } }

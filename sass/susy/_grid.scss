@@ -1,5 +1,4 @@
 //** The Susy Grid **//
-// Updated 11.20.2009 by Eric A. Meyer
 
 // Your basic settings for the grid.
 // Override these in base.sass to customize your site.
@@ -75,12 +74,12 @@ $omega-float: right !default;
 @mixin ie-omega($dir: $omega-float, $hack: false) {
   $s: side-gutter();
   @if $dir == right {
-    @if $hack {
+    @if $hack == true {
       #margin-left: - $gutter-width; }
     @else {
       margin-left: - $gutter-width; } }
   @else {
-    @if $hack {
+    @if $hack == true {
       #margin-right: - $gutter-width; }
     @else {
       margin-right: - $gutter-width; } } }
@@ -96,7 +95,7 @@ $omega-float: right !default;
     margin-right: 0; }
   @else {
     margin-right: side-gutter(); }
-  @if $hacks {
+  @if $hacks == true {
     /* ugly hacks for IE6-7 */
     @include ie-omega($omega-float, true);
     /* end ugly hacks */ } }

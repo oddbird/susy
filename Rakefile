@@ -12,7 +12,7 @@ begin
     p.url = "http://github.com/ericam/compass-susy-plugin"
     p.author = ['Eric Meyer']
     p.email = "eric@oddbird.net"
-    p.dependencies = ["compass >=0.10.0.pre1"]
+    p.dependencies = ["compass >=0.10.0.rc2"]
     p.has_rdoc = false
   end
  

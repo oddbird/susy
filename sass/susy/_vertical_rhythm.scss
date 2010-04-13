@@ -37,10 +37,10 @@ $base-half-leader: $base-leader / 2;
   background: url(underline.png); }
 
 // Adjust a block to have a different font size and leading to maintain the rhythm.
-// !lines is a number that is how many times the baseline rhythm this
+// $lines is a number that is how many times the baseline rhythm this
 // font size should use up. Does not have to be an integer, but it defaults
 // to the smallest integer that is large enough to fit the font.
-// Use !from_size to adjust from a non-base font-size.
+// Use $from_size to adjust from a non-base font-size.
 @mixin adjust-font-size-to($to-size, $lines: ceil($to-size / $base-line-height), $from-size: $base-font-size) {
   font-size: 1em * $to-size / $from-size;
   @include adjust-leading-to($lines, $to-size); }

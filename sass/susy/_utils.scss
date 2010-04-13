@@ -1,5 +1,4 @@
 //** Susy Utilities **//
-// Updated 11.20.2009 by Eric A. Meyer
 
 // An extension of the Compass Core Utilities
 @import "compass/utilities";
@@ -13,8 +12,8 @@
     position: $side-gutter-width 0; }; }
 
 // Brings IE in line with inline-block display
-//  - Using hacks if called automatically because !hacks == true
-//  - Or not, if you call it from ie.sass because !hacks == false
+//  - Using hacks if called automatically because $hacks == true
+//  - Or not, if you call it from ie.sass because $hacks == false
 @mixin ie-inline-block($hack: false) {
   @if $hack {
     /* ugly hacks for IE6-7 */
@@ -28,7 +27,7 @@
     vertical-align: auto; } }
 
 // An override for compass inline-block that lets you take advantage
-// of Susys !hacks constant. if true, hacks. if false, use ie-inline-block
+// of Susys $hacks constant. if true, hacks. if false, use ie-inline-block
 // to help ie along in your ie.sass
 @mixin inline-block {
   display: -moz-inline-box;

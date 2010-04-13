@@ -1,5 +1,4 @@
 //** Susy **//
-// Updated 01.19.2010 by Eric A. Meyer
 
 // Tell susy whether you are using hacks or conditional comments.
 $hacks: true !default;
@@ -14,6 +13,6 @@ $hacks: true !default;
 @mixin susy($align: center) {
   @include establish-baseline;
   // text-align set to center by default for auto-centering layouts
-  //  - override !align for left/right-aligned designs
+  //  - override $align for left/right-aligned designs
   body {
     text-align: $align; } }

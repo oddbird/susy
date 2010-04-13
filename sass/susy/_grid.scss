@@ -64,12 +64,12 @@ $container-width: container($total-cols, $col-width, $gutter-width, $side-gutter
 
 
 // Sets the direction that +omega elements are floated
-//  - Override !omega_float globally or set +float locally to change
+//  - Override $omega_float globally or set +float locally to change
 $omega-float: right !default;
 
-// When global constant !hacks == true:
+// When global constant $hacks == true:
 //  - this will be called automatically with hacks
-// When global constant !hacks == false:
+// When global constant $hacks == false:
 //  - you can call it yourself in ie.sass without the hacks
 @mixin ie-omega($dir: $omega-float, $hack: false) {
   $s: side-gutter();
@@ -85,7 +85,7 @@ $omega-float: right !default;
       margin-right: - $gutter-width; } } }
 
 // Set omega on the last element of a row to take side-gutters
-// and the page edge into account. Set the !nested argument for nested 
+// and the page edge into account. Set the $nested argument for nested 
 // columns. It is recommended that you pass the actual nested context when 
 // nested, rather than a true/false argument, for the sake of consistency. 
 // Effect is the same.

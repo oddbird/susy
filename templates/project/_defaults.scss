@@ -2,10 +2,10 @@
 // Don't forget to set your default styles.
 
 // Get all the details and mixins from base.sass
-@import "base.scss";
+@import "base";
 
 // Reset browser defaults, and prepare block-level HTML5 elements
-@import "susy/reset.scss";
+@import "susy/reset";
 
 /* @group defaults */
 

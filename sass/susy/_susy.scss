@@ -5,10 +5,10 @@
 $hacks: true !default;
 
 // Import all the Important Stuff.
-@import "compass/css3.scss";
-@import "utils.scss";
-@import "text.scss";
-@import "grid.scss";
+@import "compass/css3";
+@import "utils";
+@import "text";
+@import "grid";
 
 // Set Susy on your BODY element to get things started.
 @mixin susy($align: center) {

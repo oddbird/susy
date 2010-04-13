@@ -2,7 +2,7 @@
  * Import this file using the following HTML or equivalent:
  * <link href="/stylesheets/print.css" media="print" rel="stylesheet" type="text/css" /> */
 
-@import "defaults.scss";
+@import "defaults";
 
 @mixin print {
   nav {

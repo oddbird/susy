@@ -1,5 +1,5 @@
-stylesheet 'screen.sass', :media => "screen, projection"
-stylesheet 'print.sass', :media => "print"
-stylesheet 'ie.sass', :media => "screen, projection"
-stylesheet '_base.sass'
-stylesheet '_defaults.sass'
+stylesheet 'screen.scss', :media => "screen, projection"
+stylesheet 'print.scss', :media => "print"
+stylesheet 'ie.scss', :media => "screen, projection"
+stylesheet '_base.scss'
+stylesheet '_defaults.scss'

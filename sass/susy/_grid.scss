@@ -63,32 +63,27 @@ $container-width: container($total-cols, $col-width, $gutter-width, $side-gutter
   @if $nested == false {
     margin-left: side-gutter(); } }
 
-// When global constant !hacks == true:
-//  - this will be called automatically with hacks
-// When global constant !hacks == false:
-//  - you can call it yourself in ie.sass without the hacks
-@mixin ie-omega($nested: false, $dir: right, $hack: false) {
-  $s: side-gutter();
-  @if $dir == "right" {
-    @if $hack {
-      #margin-left: -1%; }
-    @else {
-      margin-left: -1%; } }
-  @else {
-    @if $nested {
-      @if $hack {
-        #margin-right: -1%; }
-      @else {
-        margin-right: -1%; } }
-    @else {
-      @if $hack {
-        #margin-right: $s - 1%; }
-      @else {
-        margin-right: $s - 1%; } } } }
 
 // Sets the direction that +omega elements are floated
 //  - Override !omega_float globally or set +float locally to change
 $omega-float: right !default;
+
+// When global constant !hacks == true:
+//  - this will be called automatically with hacks
+// When global constant !hacks == false:
+//  - you can call it yourself in ie.sass without the hacks
+@mixin ie-omega($dir: $omega-float, $hack: false) {
+  $s: side-gutter();
+  @if $dir == right {
+    @if $hack {
+      #margin-left: - $gutter-width; }
+    @else {
+      margin-left: - $gutter-width; } }
+  @else {
+    @if $hack {
+      #margin-right: - $gutter-width; }
+    @else {
+      margin-right: - $gutter-width; } } }
 
 // Set omega on the last element of a row to take side-gutters
 // and the page edge into account. Set the !nested argument for nested 
@@ -103,7 +98,7 @@ $omega-float: right !default;
     margin-right: side-gutter(); }
   @if $hacks {
     /* ugly hacks for IE6-7 */
-    @include ie-omega($nested, $omega-float, true);
+    @include ie-omega($omega-float, true);
     /* end ugly hacks */ } }
 
 // Set on an element that will span it's entire context.

@@ -23,7 +23,7 @@ $side-gutter-width: $gutter-width;
 // By default, +omega elements are floated right.
 // You can override that globally here:
 
-// !omega_float = "right"
+// $omega_float: "right"
 
 // HACKS
 // Are you using hacks or conditional comments? Susy makes both possible.
@@ -31,12 +31,12 @@ $side-gutter-width: $gutter-width;
 // comments. Conditional comments will require overrides for +omega, 
 // +inline-block and several other mixins.
 
-// !hacks = true
+// $hacks: true
 
 // SUSY
 // Don't move this @import above the GRID and FONT-SIZE overrides.
 
-@import "susy/susy.scss";
+@import "susy/susy";
 
 // COLORS
 // Set any colors you will need later.

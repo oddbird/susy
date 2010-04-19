@@ -64,10 +64,10 @@ $container-width: container($total-cols, $col-width, $gutter-width, $side-gutter
 
 // Set as a shortcut for both prefix and suffix.
 @mixin pad($p: false, $s: false, $c: false) {
-  @if not $p {
+  @if $p {
     @include prefix($p, $c); 
   } 
-  @if not $s {
+  @if $s {
     @include suffix($s, $c); 
   } 
 }

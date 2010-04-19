@@ -1,5 +1,13 @@
 require 'sass'
 
+module Sass::Script
+  class Number < Literal
+    def ceil
+      Number.new(value.ceil, numerator_units, denominator_units)
+    end
+  end
+end
+
 module Sass::Script::Functions
 
   # some helpful constants
@@ -27,7 +35,7 @@ module Sass::Script::Functions
       sg = @@susy_side_gutter_width
     end
     c, g = [@@susy_column_width, @@susy_gutter_width]
-    n.times(c).plus(n.minus(ONE).times(g)).plus(sg.times(TWO))
+    n.times(c).plus(n.minus(ONE).ceil.times(g)).plus(sg.times(TWO))
   end
 
   # return the percentage width of 'n' columns in a context of
@@ -36,7 +44,7 @@ module Sass::Script::Functions
     raise Sass::SyntaxError, "container() must be called before columns() - should be called in susy/susy.sass" unless defined?(@@susy_column_width)
     w = context(context_columns)
     c, g = [@@susy_column_width, @@susy_gutter_width]
-    n.times(c).plus(n.minus(ONE).times(g)).div(w).times(PERCENT)
+    n.times(c).plus(n.minus(ONE).ceil.times(g)).div(w).times(PERCENT)
   end
 
   # return the percentage width of a single gutter in a context of

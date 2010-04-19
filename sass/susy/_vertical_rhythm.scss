@@ -80,6 +80,15 @@ $base-half-leader: $base-leader / 2;
   @include trailer($lines, $font-size, margin); 
 }
 
+// Whitespace application shortcut
+// Apply top margin/padding + bottom padding/margin
+@mixin rhythm($leader: 0, $padding-leader: 0, $padding-trailer: 0, $trailer: 0, $font-size: $base-font-size) {
+  @include leader($leader, $font-size);
+  @include padding-leader($padding-leader, $font-size);
+  @include padding-trailer($padding-trailer, $font-size);
+  @include trailer($trailer, $font-size);
+}
+
 // Apply a border width to any side without destroying the vertical rhythm
 @mixin apply-side-rhythm-border($side, $width: 1px, $lines: 1, $font-size: $base-font-size, $border-style: $default-rhythm-border-style) {
   border-#{$side}: {

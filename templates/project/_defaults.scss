@@ -11,57 +11,71 @@
 
 body {
   @include sans-family;
-  color: $base; }
+  color: $base; 
+}
 
 /* @group links */
 
 :focus {
-  outline: 1px dotted $alt; }
+  outline: 1px dotted $alt; 
+}
 
 a {
   &:link, &:visited {
-    color: $alt; }
+    color: $alt; 
+  }
   &:focus, &:hover, &:active {
-    color: $alt - #222222;
-    text-decoration: none; } }
+    color: darken($alt,5);
+    text-decoration: none; 
+  } 
+}
 
 /* @end */
 
 /* @group inline tags */
 
-cite {
-  font-style: italic; }
+cite { 
+  font-style: italic; 
+}
 
-em {
-  font-style: italic; }
+em { 
+  font-style: italic; 
+}
 
-strong {
-  font-weight: bold; }
+strong { 
+  font-weight: bold; 
+}
 
-ins {
-  text-decoration: underline; }
+ins { 
+  text-decoration: underline; 
+}
 
-del {
-  text-decoration: line-through; }
+del { 
+  text-decoration: line-through; 
+}
 
 q {
   font-style: italic;
   em {
-    font-style: normal; } }
+    font-style: normal; 
+  } 
+}
 
 /* @end */
 
 /* @group replaced tags */
 
 img {
-  vertical-align: bottom; }
+  vertical-align: bottom; 
+}
 
 /* @end */
 
 /* @group headers */
 
 h1, h2, h3, h4, h5, h6 {
-  font-weight: bold; }
+  font-weight: bold; 
+}
 
 /* @end */
 
@@ -69,30 +83,37 @@ h1, h2, h3, h4, h5, h6 {
 
 p {
   @include leader;
-  @include trailer; }
+  @include trailer; 
+}
 
 @mixin list-default($ol: false) {
   @include leader;
   @include trailer;
   @if $ol {
-    list-style: decimal; }
-  @else {
-    list-style: disc; } }
+    list-style: decimal; 
+  } @else {
+    list-style: disc; 
+  } 
+}
 
 @mixin no-style-list {
   @include no-bullets;
   margin: 0;
-  padding: 0; }
+  padding: 0; 
+}
 
 ol {
-  @include list-default(ol); }
+  @include list-default(ol); 
+}
 
 ul {
-  @include list-default; }
+  @include list-default; 
+}
 
 blockquote {
   margin: $base-rhythm-unit;
-  @include serif-family; }
+  @include serif-family; 
+}
 
 /* @end */
 
@@ -105,8 +126,10 @@ table {
   border: {
     width: 0;
     style: solid;
-    color: $base; };
-  @include horizontal-borders(1px, 0.5); }
+    color: $base; 
+  };
+  @include horizontal-borders(1px, 0.5); 
+}
 
 th {
   font-weight: bold; }
@@ -116,22 +139,29 @@ th {
 /* @group forms */
 
 fieldset {
-  @include trailer; }
+  @include trailer; 
+}
 
 legend {
   font-weight: bold;
-  font-variant: small-caps; }
+  font-variant: small-caps; 
+}
 
 label {
   display: block;
-  @include leader; }
+  @include leader; 
+}
 
 legend + label {
-  margin-top: 0; }
+  margin-top: 0; 
+}
 
 textarea, input:not([type="radio"]) {
+  // box-sizing will help us control the width of inputs
+  // which are otherwise very hard to manage in the grid.
   @include box-sizing(border-box);
-  width: 100%; }
+  width: 100%; 
+}
 
 /* @end */
 

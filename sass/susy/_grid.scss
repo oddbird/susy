@@ -1,4 +1,5 @@
-//** The Susy Grid **//
+//** Susy Grid **//
+
 
 // Your basic settings for the grid.
 // Override these in base.sass to customize your site.
@@ -10,7 +11,7 @@ $side-gutter-width: $gutter-width !default;
 // Susy will set your outer shell based on the variables above. 
 $container-width: container($total-cols, $col-width, $gutter-width, $side-gutter-width);
 
-// Set on the outer grid-containing element(s).
+// Set +container() on the outer grid-containing element(s).
 @mixin container($align: left) {
   // clear all floated columns
   @include clearfix;
@@ -19,13 +20,15 @@ $container-width: container($total-cols, $col-width, $gutter-width, $side-gutter
   // use auto horizontal margins to center your page in the body
   margin: {
     left: auto;
-    right: auto; };
+    right: auto; 
+  };
   // set the page width based on column settings
   width: $container-width;
   // never exceed 100% of the browser window (no side-scrolling)
-  max-width: 100%; }
+  max-width: 100%; 
+}
 
-// Set on any column element, even nested ones.
+// Set +columns() on any column element, even nested ones.
 // The first agument [required] is the number of columns to span.
 // The second argument is the context (columns spanned by parent).
 //  - Context is required on any nested elements.
@@ -38,30 +41,38 @@ $container-width: container($total-cols, $col-width, $gutter-width, $side-gutter
   // the width of the column is set as a percentage of the context
   width: columns($n, $context);
   // the right gutter is added as a percentage of the context
-  margin-right: gutter($context); }
+  margin-right: gutter($context); 
+}
 
-// Set on any element to add empty colums as padding before or after.
+// Set +prefix() on any element to add empty colums as padding 
+// before or after.
 @mixin prefix($n, $context: false) {
-  padding-left: columns($n, $context) + gutter($context); }
+  padding-left: columns($n, $context) + gutter($context); 
+}
 
 @mixin suffix($n, $context: false) {
-  padding-right: columns($n, $context) + gutter($context); }
+  padding-right: columns($n, $context) + gutter($context); 
+}
 
 // Set as a shortcut for both prefix and suffix.
 @mixin pad($p: 0, $s: 0, $c: false) {
   @if $p != 0 {
-    @include prefix($p, $c); }
+    @include prefix($p, $c); 
+  } 
   @if $s != 0 {
-    @include suffix($s, $c); } }
+    @include suffix($s, $c); 
+  } 
+}
 
-// Set on any element spanning the first column in non-nested context
-// to take side-gutters into account. Recommended that you pass the
-// actual nested contexts (when nested) rather than a true/false argument
-// for the sake of consistency. Effect is the same.
+// Set +alpha on any element spanning the first column in non-nested 
+// context to take side-gutters into account. Recommended that you pass 
+// the actual nested contexts (when nested) rather than a true/false 
+// argument for the sake of consistency. Effect is the same.
 @mixin alpha($nested: false) {
   @if $nested == false {
-    margin-left: side-gutter(); } }
-
+    margin-left: side-gutter(); 
+  }
+}
 
 // Sets the direction that +omega elements are floated
 //  - Override $omega_float globally or set +float locally to change
@@ -75,16 +86,20 @@ $omega-float: right !default;
   $s: side-gutter();
   @if $dir == right {
     @if $hack == true {
-      #margin-left: - $gutter-width; }
-    @else {
-      margin-left: - $gutter-width; } }
-  @else {
+      #margin-left: - $gutter-width; 
+    } @else {
+      margin-left: - $gutter-width; 
+    } 
+  } @else {
     @if $hack == true {
-      #margin-right: - $gutter-width; }
-    @else {
-      margin-right: - $gutter-width; } } }
+      #margin-right: - $gutter-width; 
+    } @else {
+      margin-right: - $gutter-width; 
+    } 
+  } 
+}
 
-// Set omega on the last element of a row to take side-gutters
+// Set +omega() on the last element of a row, in order to take side-gutters
 // and the page edge into account. Set the $nested argument for nested 
 // columns. It is recommended that you pass the actual nested context when 
 // nested, rather than a true/false argument, for the sake of consistency. 
@@ -92,19 +107,23 @@ $omega-float: right !default;
 @mixin omega($nested: false) {
   @include float($omega-float);
   @if $nested {
-    margin-right: 0; }
-  @else {
-    margin-right: side-gutter(); }
+    margin-right: 0; 
+  } @else {
+    margin-right: side-gutter(); 
+  }
   @if $hacks == true {
     /* ugly hacks for IE6-7 */
     @include ie-omega($omega-float, true);
-    /* end ugly hacks */ } }
+  } 
+}
 
-// Set on an element that will span it's entire context.
-// - no need for +columns, +alpha or +omega on a +full element.
+// Set +full() on an element that will span it's entire context.
+// There is no need for +columns, +alpha or +omega on a +full element.
 @mixin full($nested: false) {
   clear: both;
   @if $nested == false {
     $s: side-gutter();
     margin-right: $s;
-    margin-left: $s; } }
+    margin-left: $s; 
+  } 
+}

@@ -1,5 +1,6 @@
 //** Susy Utilities **//
 
+
 // An extension of the Compass Core Utilities
 @import "compass/utilities";
 
@@ -9,7 +10,9 @@
   background: {
     image: image-url($src);
     repeat: repeat;
-    position: $side-gutter-width 0; }; }
+    position: $side-gutter-width 0; 
+  }; 
+}
 
 // Brings IE in line with inline-block display
 //  - Using hacks if called automatically because $hacks == true
@@ -20,11 +23,12 @@
     #display: inline;
     // fixes alignment against native input/button on IE6
     #vertical-align: auto;
-    /* end ugly hacks */ }
-  @else {
+  } @else {
     display: inline;
     // fixes alignment against native input/button on IE6
-    vertical-align: auto; } }
+    vertical-align: auto; 
+  } 
+}
 
 // An override for compass inline-block that lets you take advantage
 // of Susys $hacks constant. if true, hacks. if false, use ie-inline-block
@@ -35,7 +39,9 @@
   display: inline-block;
   vertical-align: middle;
   @if $hacks {
-    @include ie-inline-block(true); } }
+    @include ie-inline-block(true); 
+  } 
+}
 
 // An inline-block list that works in IE
 // For those awkward moments when a floated horizontal list just wont cut it
@@ -49,7 +55,10 @@
     white-space: no-wrap;
     padding: {
       left: $hpad;
-      right: $hpad; }; } }
+      right: $hpad; 
+    }; 
+  } 
+}
 
 // Hide an element from the viewport, but keep it around for accessability
 @mixin hide {
@@ -62,12 +71,10 @@
   @include hide;
   display: block;
   &:focus {
-    @if $t {
-      top: $t; }
-    @if $r {
-      right: $r; }
-    @if $b {
-      bottom: $b; }
-    @if $l {
-      left: $l; }
-    z-index: 999; } }
+    @if $t { top: $t; }
+    @if $r { right: $r; }
+    @if $b { bottom: $b; }
+    @if $l { left: $l; }
+    z-index: 999; 
+  } 
+}

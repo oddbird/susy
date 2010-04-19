@@ -1,5 +1,6 @@
 //** Susy **//
 
+
 // Tell susy whether you are using hacks or conditional comments.
 $hacks: true !default;
 
@@ -15,4 +16,6 @@ $hacks: true !default;
   // text-align set to center by default for auto-centering layouts
   //  - override $align for left/right-aligned designs
   body {
-    text-align: $align; } }
+    text-align: $align; 
+  } 
+}

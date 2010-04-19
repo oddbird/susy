@@ -6,15 +6,23 @@
 
 @mixin print {
   nav {
-    display: none; }
+    // no need to navigate on paper
+    display: none; 
+  }
   * {
-    float: none !important; }
+    // floated elements disappear when they overflow the page
+    float: none !important; 
+  }
   body {
     @include serif-family;
     font-size: 12pt;
     background: white;
-    color: black; }
+    color: black; 
+  }
   a:link:after, a:visited:after {
-    content: " (" attr(href) ") "; } }
+    // print target URLs next to their links
+    content: " (" attr(href) ") "; 
+  } 
+}
 
 @include print;

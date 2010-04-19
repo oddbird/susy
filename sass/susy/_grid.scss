@@ -63,11 +63,11 @@ $container-width: container($total-cols, $col-width, $gutter-width, $side-gutter
 }
 
 // Set as a shortcut for both prefix and suffix.
-@mixin pad($p: 0, $s: 0, $c: false) {
-  @if $p != 0 {
+@mixin pad($p: false, $s: false, $c: false) {
+  @if not $p {
     @include prefix($p, $c); 
   } 
-  @if $s != 0 {
+  @if not $s {
     @include suffix($s, $c); 
   } 
 }
@@ -77,8 +77,10 @@ $container-width: container($total-cols, $col-width, $gutter-width, $side-gutter
 // the actual nested contexts (when nested) rather than a true/false 
 // argument for the sake of consistency. Effect is the same.
 @mixin alpha($nested: false) {
-  @if $nested == false {
-    margin-left: side-gutter(); 
+  @if not $nested {
+    margin-left: side-gutter();
+  } @else {
+    @warn "The alpha mixin is not needed in a nested context";
   }
 }
 
@@ -93,13 +95,13 @@ $omega-float: right !default;
 @mixin ie-omega($dir: $omega-float, $hack: false) {
   $s: side-gutter();
   @if $dir == right {
-    @if $hack == true {
+    @if $hack {
       #margin-left: - $gutter-width; 
     } @else {
       margin-left: - $gutter-width; 
     } 
   } @else {
-    @if $hack == true {
+    @if $hack {
       #margin-right: - $gutter-width; 
     } @else {
       margin-right: - $gutter-width; 
@@ -119,7 +121,7 @@ $omega-float: right !default;
   } @else {
     margin-right: side-gutter(); 
   }
-  @if $hacks == true {
+  @if $hacks {
     /* ugly hacks for IE6-7 */
     @include ie-omega($omega-float, true);
   } 
@@ -129,7 +131,7 @@ $omega-float: right !default;
 // There is no need for +columns, +alpha or +omega on a +full element.
 @mixin full($nested: false) {
   clear: both;
-  @if $nested == false {
+  @if not $nested {
     $s: side-gutter();
     margin-right: $s;
     margin-left: $s; 

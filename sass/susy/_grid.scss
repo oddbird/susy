@@ -44,6 +44,14 @@ $container-width: container($total-cols, $col-width, $gutter-width, $side-gutter
   margin-right: gutter($context); 
 }
 
+// Set +un-column to reset a column element to default block behavior
+@mixin un-column {
+  float: none;
+  display: block;
+  width: auto;
+  margin-right: auto;  
+}
+
 // Set +prefix() on any element to add empty colums as padding 
 // before or after.
 @mixin prefix($n, $context: false) {

@@ -18,7 +18,6 @@ easily - and always in flexible percentages.
 Install 
 =======
 
-    sudo gem sources --add http://gemcutter.org/ 
     sudo gem install compass-susy-plugin
 
 Create a Susy-based Compass Project 

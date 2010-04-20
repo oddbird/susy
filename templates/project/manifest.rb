@@ -17,6 +17,6 @@ Please see the Susy website for all documentation and tutorials:
 
     http://www.oddbird.net/susy
 
-To get started, set up your grid in the grid partial by following the inline instructions.
+To get started, set up your grid in the base partial by following the inline instructions.
 }
 

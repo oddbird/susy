@@ -1,168 +1,256 @@
 //** DEFAULT STYLES **//
-// Don't forget to set your default styles.
 
-// Get all the details and mixins from base.sass
+// Based on the work of:
+// Andy Clarke: http://forabeautifulweb.com/
+
+/* Imports --------------------------------------------------------------*/
+
 @import "base";
-
-// Reset browser defaults, and prepare block-level HTML5 elements
 @import "susy/reset";
 
-/* @group defaults */
+/* Body --------------------------------------------------------------*/
 
 body {
   @include sans-family;
-  color: $base; 
+  color: $base;
 }
 
-/* @group links */
-
-:focus {
-  outline: 1px dotted $alt; 
-}
+/* Links --------------------------------------------------------------*/
 
 a {
   &:link, &:visited {
-    color: $alt; 
+    color: $alt;
   }
   &:focus, &:hover, &:active {
     color: darken($alt,5);
-    text-decoration: none; 
-  } 
+    text-decoration: none;
+  }
+  img {
+    border: none;
+  }
 }
 
-/* @end */
+/* Headings --------------------------------------------------------------*/
 
-/* @group inline tags */
-
-cite { 
-  font-style: italic; 
+h1, h2, h3, h4, h5, h6 { 
+  font-weight: normal;
+  img {
+    margin: 0;
+  }
 }
 
-em { 
-  font-style: italic; 
+h1 { 
+  @include adjust-font-size-to(48px);
+  @include trailer(1,48px);
 }
 
-strong { 
-  font-weight: bold; 
+h2 { 
+  @include adjust-font-size-to(32px);
+  @include trailer(1,32px);  
+}
+
+h3 {
+  @include adjust-font-size-to(24px);
+  @include trailer(1,24px);
+}
+
+h4 {
+  @include adjust-font-size-to(18px);
+  @include trailer(1,18px);
+}
+
+h5, h6 { 
+  @include trailer(1);
+  font-weight: bold;
+}
+
+/* Text --------------------------------------------------------------*/
+
+cite, em, dfn { 
+  font-style: italic;
+}
+
+strong, dfn { 
+  font-weight: bold;
+}
+
+sup, sub { 
+  line-height: 0;
+}
+
+abbr, acronym { 
+  border-bottom: 1px dotted;
+}
+
+address {
+  @include trailer;
+  font-style: italic;
 }
 
 ins { 
-  text-decoration: underline; 
+  text-decoration: underline;
 }
 
 del { 
-  text-decoration: line-through; 
+  text-decoration: line-through;
+}
+
+pre, code, tt {
+  margin: $base-rhythm-unit {
+    left: -$base-rhythm-unit;
+  };
+  padding-left: $base-rhythm-unit;
+  border-left: 1px dotted;
+  @include monospace-family;
+}
+
+pre { 
+  white-space: pre;
+}
+
+code { 
+  display: block;
 }
 
 q {
   font-style: italic;
   em {
-    font-style: normal; 
+    font-style: normal;
   } 
 }
 
-/* @end */
+p {
+  @include trailer;
+}
 
-/* @group replaced tags */
+blockquote, q {
+  quotes : "" "";
+}
+
+blockquote { 
+  margin: $base-rhythm-unit {
+    left: -$base-rhythm-unit;
+  };
+  padding-left: $base-rhythm-unit;
+  border-left: 1px solid;
+  @include serif-family;
+  font-style: italic;
+}
+
+blockquote, q {
+  &:before, &:after { 
+    content: "";
+  }
+}
+
+/* Replaced --------------------------------------------------------------*/
 
 img {
-  vertical-align: bottom; 
+  vertical-align: bottom;
 }
 
-/* @end */
-
-/* @group headers */
-
-h1, h2, h3, h4, h5, h6 {
-  font-weight: bold; 
-}
-
-/* @end */
-
-/* @group block tags */
-
-p {
-  @include leader;
-  @include trailer; 
-}
+/* Lists --------------------------------------------------------------*/
 
 @mixin list-default($ol: false) {
-  @include leader;
-  @include trailer;
+  margin: 0 $base-rhythm-unit $base-rhythm-unit 0;
   @if $ol {
-    list-style: decimal; 
+    list-style: decimal;
   } @else {
-    list-style: disc; 
+    list-style: disc;
   } 
 }
 
 @mixin no-style-list {
   @include no-bullets;
   margin: 0;
-  padding: 0; 
+  padding: 0;
 }
 
 ol {
-  @include list-default(ol); 
+  @include list-default(ol);
 }
 
 ul {
-  @include list-default; 
+  @include list-default;
 }
 
-blockquote {
-  margin: $base-rhythm-unit;
-  @include serif-family; 
+li {
+  ul, ol { 
+    list-style-type: circle;
+    margin: 0 $base-rhythm-unit $base-rhythm-unit*.5;
+  }
 }
 
-/* @end */
+dl {
+  @include trailer;
+  @include leading-border(1px);
+  dt {
+    @include adjust-font-size-to(18px);
+    @include trailer(.5,18px);
+  }
+}
 
-/* @group tables */
+dd {
+  @include trailer;
+  @include trailing-border(1px);
+}
 
-/* tables still need 'cellspacing="0"' in the markup */
+/* Tables --------------------------------------------------------------*/
+/* tables still need 'cellspacing="0"' in the markup
 
 table {
+  @include trailer;
   width: 100%;
-  border: {
-    width: 0;
-    style: solid;
-    color: $base; 
-  };
-  @include horizontal-borders(1px, 0.5); 
+  border-collapse: separate;
+  border-spacing: 0;
 }
 
-th {
-  font-weight: bold; }
+table, td, th { 
+  vertical-align: top;
+}
 
-/* @end */
+th, thead th {
+  font-weight: bold;
+}
 
-/* @group forms */
+th, td, caption {
+  padding: $base-rhythm-unit*.5;
+  text-align: left;
+  font-weight: normal;
+}
+
+th, td {
+  @include trailing-border(1px,.5);
+}
+
+tfoot { 
+  @include adjust-font-size-to(14px);
+}
+
+caption {
+  @include adjust-font-size-to(24px);
+  @include trailer(1,24px);
+}
+
+/* Forms --------------------------------------------------------------*/
 
 fieldset {
-  @include trailer; 
+  @include trailer;
+  @include rhythm-borders(1px);
 }
 
 legend {
+  @include adjust-font-size-to(18px);
   font-weight: bold;
-  font-variant: small-caps; 
 }
 
 label {
-  display: block;
-  @include leader; 
-}
-
-legend + label {
-  margin-top: 0; 
+  font-weight: bold;
 }
 
 textarea, input:not([type="radio"]) {
   // box-sizing will help us control the width of inputs
   // which are otherwise very hard to manage in the grid.
   @include box-sizing(border-box);
-  width: 100%; 
+  width: 100%;
 }
-
-/* @end */
-
-/* @end */

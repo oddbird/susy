@@ -2,7 +2,11 @@
  * Import this file using the following HTML or equivalent:
  * <link href="/stylesheets/screen.css" media="screen" rel="stylesheet" type="text/css" /> */
 
+/* Imports --------------------------------------------------------------*/
+
 @import "defaults";
+
+/* Layout --------------------------------------------------------------*/
 
 @include susy;
 
@@ -15,3 +19,5 @@
 // For other grid settings, run `compass grid-img 30+10x20`
 // Where 30 is the column width, 10 is the gutter width, 
 // and 20 is the (optional) line-height.
+
+/* Styles --------------------------------------------------------------*/

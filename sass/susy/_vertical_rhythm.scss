@@ -8,10 +8,10 @@ $default-rhythm-border-style: solid !default;
 $ie-font-ratio: 16px / 100%;
 
 // The base line height is the basic unit of line hightness.
-$base-line-height: 18px !default;
+$base-line-height: 24px !default;
 
 // The base font size
-$base-font-size: 12px !default;
+$base-font-size: 16px !default;
 
 // The basic unit of font rhythm
 $base-rhythm-unit: $base-line-height / $base-font-size * 1em;

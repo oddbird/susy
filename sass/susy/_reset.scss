@@ -1,10 +1,9 @@
 //** Susy Reset **//
 
+/* Reset --------------------------------------------------------------*/
 
-/* @group reset */
 @import "compass/reset";
 
-// HTML5 reset
-@include reset-html5;
+/* HTML5 Reset --------------------------------------------------------------*/
 
-/* @end */
+@include reset-html5;

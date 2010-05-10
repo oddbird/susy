@@ -3,7 +3,7 @@
 // Based on the work of:
 // Andy Clarke: http://forabeautifulweb.com/
 
-/* Imports --------------------------------------------------------------*/
+// Imports --------------------------------------------------------------*/
 
 @import "base";
 @import "susy/reset";
@@ -196,7 +196,7 @@ dd {
 }
 
 /* Tables --------------------------------------------------------------*/
-/* tables still need 'cellspacing="0"' in the markup
+/* tables still need 'cellspacing="0"' in the markup */
 
 table {
   @include trailer;

@@ -1,6 +1,6 @@
 //**
-//  Susy: Fixed-Elastic-Fluid grids without all the math
-//  By: Eric A. Meyer and OddBird Collective
+//  Susy: Un-obtrusive grids for designers
+//  By: Eric A. Meyer and OddBird
 //  Site: www.oddbird.net/susy/
 //**
 
@@ -16,7 +16,7 @@ $col-width: 4em;
 $gutter-width: 1em;
 $side-gutter-width: $gutter-width;
 
-// Don't move this @import above the GRID and FONT-SIZE overrides.
+// Don't move this @import above the GRID and FONT-SIZE variables.
 @import "susy/susy";
 
 // Colors --------------------------------------------------------------

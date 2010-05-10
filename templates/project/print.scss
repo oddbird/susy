@@ -2,7 +2,7 @@
  * Import this file using the following HTML or equivalent:
  * <link href="/stylesheets/print.css" media="print" rel="stylesheet" type="text/css" /> */
 
-/* Imports --------------------------------------------------------------*/
+// Imports --------------------------------------------------------------*/
 
 @import "defaults";
 
@@ -16,6 +16,7 @@
   * {
     // floated elements disappear when they overflow the page
     float: none !important; 
+    background: none;
   }
   body {
     @include serif-family;

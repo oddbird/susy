@@ -4,33 +4,14 @@
 
 @import "defaults";
 
-/* @group STRUCTURE */
-
 @include susy;
 
 // change '#page' to match your HTML container element(s)
 #page {
-  @include container; }
+  @include container;
+  @include show-grid("grid.png"); }
 
-/* @end */
-
-/* @group COMPONENTS by type */
-
-/* @end */
-
-/* @group OVERRIDES by content */
-
-/* @end */
-
-/* @group OVERRIDES by page */
-
-/* @end */
-
-/* @group DEBUG */
-
-// Uncomment, adjust and use for debugging
-
-// #page {
-//   @include show-grid("your-grid-image.png"); }
-
-/* @end */
+// show-grid loads a 64+16x24 grid image by default
+// For other grid settings, run `compass grid-img 30+10x20`
+// Where 30 is the column width, 10 is the gutter width, 
+// and 20 is the (optional) line-height.

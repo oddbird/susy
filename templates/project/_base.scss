@@ -27,15 +27,15 @@ $alt: #005498;
 // Fonts --------------------------------------------------------------
 
 @mixin sans-family {
-  font-family: Helvetica, Arial, sans-serif; 
+  font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
 }
 
 @mixin serif-family {
-  font-family: Baskerville, Palatino, serif; 
+  font-family: 'Adobe Caslon Pro', Caslon, Baskerville, Palatino, 'Palatino Linotype', "Hoefler Text", Garamond, "URW Palladio L", "Book Antiqua", Georgia, serif;
 }
 
 @mixin monospace-family {
-  font-family: 'andale mono', 'lucida console', monospace;
+  font-family: Consolas, Menlo, Monaco, "Lucida Console", "Liberation Mono", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Courier New", monospace, serif;
 }
 
 // OTHER MIXINS --------------------------------------------------------------

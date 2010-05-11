@@ -1,19 +1,22 @@
 Susy - Compass Plugin 
 =====================
 
-Susy is a semantic CSS framework creator entirely native to
-[Compass](http://compass-style.org/).
-Susy is an expert at fluid grids in an elastic (or fluid, or fixed) shell that
-will never activate that bloody side-scroll bar. Susy sets your width on the
-outer element (`container`), adds a `max-width` of `100%` and builds the rest
-of your grid in percentages. The philosophy and technique are based on
-[Natalie Downe](http://natbat.net/)'s "[CSS
+Susy is a semantic CSS grid system for designers.
+
+Build beautiful grids of any type, width and breakdown, without touching your
+markup or changing the way you work. Built entirely native to
+[Compass](http://compass-style.org/), Susy is an expert at fluid grids in an
+elastic (or fluid, or fixed) shell that stay where you want without ever
+activating that bloody side-scroll bar. Susy sets your width on the outer
+element (`container`), adds a `max-width` of `100%` and builds the rest of
+your grid in percentages. The philosophy and technique are based on [Natalie
+Downe](http://natbat.net/)'s "[CSS
 Systems](http://natbat.net/2008/Sep/28/css-systems/)" - which introduces
 difficult math in the service of beautiful structure. With the power of
-Compass/Sass, Susy will do that math for you.
+Compass/Sass, Susy will do that math and let you focus on your designs.
 
-Using simple mixins, columns can be created, suffixed, prefixed, and nested
-easily - and always in flexible percentages.
+Using simple mixins, columns can be created, suffixed, prefixed, and nested -
+always in flexible percentages and without touching your markup.
 
 Install 
 =======
@@ -26,16 +29,18 @@ Create a Susy-based Compass Project
     compass -r susy -f susy <project name>
 
 Then edit your `_base.scss`, `_defaults.scss`, `screen.scss` and `print.scss`
-files accordingly. A reset is added automatically, and includes help for some
+files accordingly. A reset is added automatically, and includes support for
 HTML5 elements.
 
 Philosophy and Goals
---------------------
+====================
 
 The method comes from [Natalie Downe](http://natbat.net/)'s "[CSS
 Systems](http://natbat.net/2008/Sep/28/css-systems/)", but I'll cover it here.
 
 It is important for accessibility and usability that we are:
+
+* Able to control our designs and line-lengths with some amount of precision.
 
 * Responsive to text sizing: In order for our site to be accessible we need to
   allow different font-sizes to be set by the client. In order to maintain
@@ -63,29 +68,162 @@ Grid Basics
 * Set up your default grid values (total columns, column width, gutter width,
   side gutter width), your base font size, and important mixins in
   `_base.scss`.
+  
+    Example:
+  
+        $base-font-size: 16px;
+        $base-line-height: 24px;
+
+        $total-cols: 12; /* a 12-column grid */
+        $col-width: 4em; /* each column is 4em (64px) wide */
+        $gutter-width: 1em; /* 1em (16px) gutters between columns */
+        $side-gutter-width: $gutter-width; /* 1em (16px) padding at the edges of the page as well */
 
 * Set defaults for all the important HTML tags in `_defaults.scss`. It's
   better than using the browser defaults. And better than using ours.
 
 * Create your grid in `screen.scss`: apply the `@include susy` mixin at the
   top level and the `@include container` mixin to the element that contains
-  the page grid.
+  the page grid. This will set up your font sizes, vertical rhythm, and grid
+  container.
+
+    Example:
+
+        @include susy;
+     
+        #page {
+          @include container; 
+        }
+    
+    CSS Output:
+    
+        body {
+          font-size: 100%;
+          line-height: 1.5em;
+        }
+
+        html > body {
+          font-size: 16px;
+        }
+
+        body {
+          text-align: center;
+        }
+
+        #page {
+          overflow: hidden;
+          display: inline-block;
+          text-align: left;
+          margin-left: auto;
+          margin-right: auto;
+          width: 61em;
+          max-width: 100%;
+        }
+        #page {
+          display: block;
+        }
 
 * Use the `@include columns` mixin to declare the width in columns of an
-  element, or `+full` for any element spanning the full width of its context.
+  element, or `@include full` for any element spanning the full width of its
+  context.
+
+  There is an important distinction between "root" and "nested" contexts in
+  Susy. There is also a distinction between "grid elements" and "non-grid
+  elements". Grid elements are any elements that you assign a span to, either
+  with the `columns` or `full` mixin. Non-Grid elements include everything
+  else. Just as CSS absolute positioning happens in relation to the nearest
+  positioned ancestor, Susy grid "context" depends on the nearest grid-element
+  ancestor. Any element with the `container` as it's nearest grid ancestor is
+  considered to be in the "root" context. Any element within other grid
+  elements (with a nearest grid ancestor other than the `container`) is
+  considered to be in a "nested" context.
+    
+  This is important because side-gutters are handled at the root level, as
+  margins on root grid elements. Margins that we don't want at nested levels.
+  It is also important because Susy grid elements are %-based, and so the
+  context is important to Susy's math. `Full` is simply a shortcut to replace
+  `columns` when the span should be the full width.
+  
+    The `columns` mixin:
+  
+        @include columns($span [, $context]);
+  
+    The `full` mixin:
+  
+        @include full([$context]);
+
+  *Note:* Context _must not_ be passed at the root level, and _must_ be passed at nested levels.
 
 * Use `@include alpha` and `@include omega` to declare elements which include
-  the first or last column within their parent element (`@include full` to
-  declare both `@include alpha` and `@include omega`). Note: `@include alpha`
-  is actually only needed in the very top level, and does nothing in nested
-  contexts. Neither is needed on a `@include full` element.
+  the first or last column within their parent element.
+  
+  *Note:* `@include alpha` is _only_ needed in the root level, and does
+  nothing in nested contexts. Neither is needed with an `@include full` element.
+  
+    The `alpha` and `omega` mixins:
+    
+        @include alpha;
+        @include omega([$context]);
+  
+    Example Scss:
+    
+        #page {
+          @include container;
+          header {
+            @include full;
+            h1 {
+              @include full(12);
+            }
+          }
+          nav {
+            @include columns(3);
+            @include alpha;
+          }
+          #content {
+            @include columns(9);
+            @include omega;
+            #main {
+              @include columns(6,9);
+            }
+            aside {
+              @include columns(3,9);
+              @include omega(9);
+            }
+          }
+        }
+      
+  Susy's CSS output uses floats to arrange the columns, widths to set the
+  spans, right-margins to set the getter, and both side margins to set the
+  side-gutters on root `alpha` and `omega` elements.
 
-* Use `@include prefix` or `@include suffix` to give the width (in columns) of
-  an elements left or right margin, or `@include pad` to give both `@include
+* Use `@include prefix` or `@include suffix` to pad (in columns) the width of
+  an element using left and right padding, or `@include pad` to give both `@include
   prefix` and `@include suffix` at once.
-
-* In nested contexts, all of these mixins take an extra final argument, the
-  width in columns of the parent (nesting) element.
+  
+    The `prefix`, `suffix` and `pad` mixins:
+    
+        @include prefix($prefix-span [, $context])
+        @include prefix($suffix-span [, $context])
+        @include pad($prefix-span, $suffix-span [, $context])
+  
+    Used with `full` these are subtractive, so the full width remains:
+    
+        header {
+          @include full;
+          @prefix(2);
+        }
+    
+    Will result in a full-width element, with 2 columns of padding to the left.
+    
+    Used with `columns` these are addative, so the content width remains:
+    
+        aside {
+          @include columns(3,9);
+          @prefix(3,9)
+        }
+    
+    Will result in a 6-column element, with 3 of those columns used as padding 
+    on the left.
 
 That's it for the basics! Here's a sample Susy grid layout:
 
@@ -95,41 +233,36 @@ That's it for the basics! Here's a sample Susy grid layout:
       @include container; 
     }
      
-    #brand {
+    header {
       @include full;
       @include pad(1,1);
       
       h1 {
-        @include full(8);
-        @include pad(1,2,8); 
+        @include full(10);
       } 
     }
         
-    #nav {
-      @include columns(2);
+    nav {
+      @include columns(3);
       @include alpha;
     }
      
     #content {
-      @include columns(8);
+      @include columns(9);
       @include omega;
-      
-      #description {
-        @include columns(5,8);
+      #main {
+        @include columns(6,9);
       }
-      
-      #credit {
-        @include columns(3,8);
-        @include omega(8);
+      aside {
+        @include columns(3,9);
+        @include omega(9);
       }
     }
 
 Tutorial
 ========
 
-The original [tutorial](http://www.oddbird.net/susy/tutorial/) was written for
-earlier versions of Susy and is no longer entirely accurate for version 0.7.
-An updated tutorial will be released soon.
+Being built...
 
 Extra Utility Mixins 
 =====================

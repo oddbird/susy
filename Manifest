@@ -15,6 +15,7 @@ sass/susy/_utils.scss
 sass/susy/_vertical_rhythm.scss
 templates/project/_base.scss
 templates/project/_defaults.scss
+templates/project/grid.png
 templates/project/ie.scss
 templates/project/manifest.rb
 templates/project/print.scss

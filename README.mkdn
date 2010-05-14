@@ -26,7 +26,7 @@ Install
 Create a Susy-based Compass Project 
 ===================================
 
-    compass -r susy -f susy <project name>
+    compass create <project name> -r susy -u susy
 
 Then edit your `_base.scss`, `_defaults.scss`, `screen.scss` and `print.scss`
 files accordingly. A reset is added automatically, and includes support for

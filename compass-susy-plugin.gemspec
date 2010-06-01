@@ -2,11 +2,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{compass-susy-plugin}
-  s.version = "0.7.0.rc2"
+  s.version = "0.7.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 1.2") if s.respond_to? :required_rubygems_version=
   s.authors = ["Eric Meyer"]
-  s.date = %q{2010-05-13}
+  s.date = %q{2010-06-01}
   s.description = %q{Susy is a ground-up native Compass plugin grid system that takes full advantage of Sass' capabilities to remove the tedium from grid-based web design.}
   s.email = %q{eric@oddbird.net}
   s.extra_rdoc_files = ["LICENSE.txt", "README.mkdn", "lib/susy.rb", "lib/susy/compass_plugin.rb", "lib/susy/sass_extensions.rb"]
@@ -23,11 +23,11 @@ Gem::Specification.new do |s|
     s.specification_version = 3
 
     if Gem::Version.new(Gem::RubyGemsVersion) >= Gem::Version.new('1.2.0') then
-      s.add_runtime_dependency(%q<compass>, [">= 0.10.0.rc2"])
+      s.add_runtime_dependency(%q<compass>, [">= 0.10.0"])
     else
-      s.add_dependency(%q<compass>, [">= 0.10.0.rc2"])
+      s.add_dependency(%q<compass>, [">= 0.10.0"])
     end
   else
-    s.add_dependency(%q<compass>, [">= 0.10.0.rc2"])
+    s.add_dependency(%q<compass>, [">= 0.10.0"])
   end
 end

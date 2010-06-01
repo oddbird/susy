@@ -7,9 +7,9 @@ Installation:
 
 Susy runs on `Compass <http://www.compass-style.org/>`_ and `Sass <http://www.sass-lang.com>`_, which run in the command line, so you will have to learn both. However, you can start by installing Susy, and the others will tag along without any help at all. To install, you will need `RubyGems <http://www.rubygems.org/>`_. Eventually this will get much simpler, but for now this is the way things are. In your terminal, enter::
 
-  sudo gem install compass-susy-plugin
+  gem install compass-susy-plugin
 
-And then create a project::
+Some OSX/linux users will need to add ``sudo`` to the beginning of that line. Then you can create a project::
 
   compass create myproject -r susy -u susy
   cd myproject
@@ -700,4 +700,4 @@ Susy is full of more flexibility and features under the surface. You can get str
 
 Susy is simply a set of functions and mixins that do math for you. That is all. There is nothing all-in-one or magical about these things, and they will break if not applied with some finesse. You won't find leakier abstractions. While we try to fill the gaps any way we can, Susy can't write your HTML and doesn't know your design. That isn't a bug, that's the way things are.
 
-Whether you are a beginner or an expert at CSS, Susy can help you get a site off the ground more quickly and easily. Either way, you should be checking the output CSS and comparing it to your desired outcome. As always with Sass, browsers don't care what abstractions you used, they only care what CSS is in that output file. To debug means to read the CSS. As an expert you can use that knowledge to adjust your use of Susy for optimized output. For beginners, you can start to learn the tricks of the CSS trade by seeing how Susy works, and eventually you'll be an expert. 
+Whether you are a beginner or an expert at CSS, Susy can help you get a site off the ground more quickly and easily. Either way, you should be checking the output CSS and comparing it to your desired outcome. As always with Sass, browsers don't care what abstractions you used, they only care what CSS is in that output file. To debug means to read the CSS. As an expert you can use that knowledge to adjust your use of Susy for optimized output. For beginners, you can start to learn the tricks of the CSS trade by seeing how Susy works, and eventually you'll be an expert.

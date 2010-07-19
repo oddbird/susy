@@ -146,7 +146,7 @@ Grid Basics
   
     The `columns` mixin:
   
-        @include columns($span [, $context]);
+        @include columns($span, [$context]);
   
     The `full` mixin:
   

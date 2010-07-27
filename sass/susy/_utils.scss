@@ -62,8 +62,9 @@
 
 // Hide an element from the viewport, but keep it around for accessability
 @mixin hide {
-  position: absolute;
-  top: -9999em; }
+  @warn "this mixin is deprecated in favor of 'hide-text' in compass core.";
+  @include hide-text;
+}
 
 // Apply to skip-to-content accessibility links that will appear on focus.
 //  - Set the location arguments if you care where it appears.

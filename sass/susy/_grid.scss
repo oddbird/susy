@@ -88,25 +88,9 @@ $container-width: container($total-cols, $col-width, $gutter-width, $side-gutter
 //  - Override $omega_float globally or set +float locally to change
 $omega-float: right !default;
 
-// When global constant $hacks == true:
-//  - this will be called automatically with hacks
-// When global constant $hacks == false:
-//  - you can call it yourself in ie.sass without the hacks
+// This is going away
 @mixin ie-omega($dir: $omega-float, $hack: false) {
-  $s: side-gutter();
-  @if $dir == right {
-    @if $hack {
-      #margin-left: - $gutter-width; 
-    } @else {
-      margin-left: - $gutter-width; 
-    } 
-  } @else {
-    @if $hack {
-      #margin-right: - $gutter-width; 
-    } @else {
-      margin-right: - $gutter-width; 
-    } 
-  } 
+  @warn "the 'ie-omega' mixin is deprecated along with the $hacks constant";
 }
 
 // Set +omega() on the last element of a row, in order to take side-gutters
@@ -121,10 +105,11 @@ $omega-float: right !default;
   } @else {
     margin-right: side-gutter(); 
   }
-  @if $hacks {
-    /* ugly hacks for IE6-7 */
-    @include ie-omega($omega-float, true);
-  } 
+  @if $omega-float == right {
+    #margin-left: - $gutter-width; 
+  } @else {
+    #margin-right: - $gutter-width; 
+  }
 }
 
 // Set +full() on an element that will span it's entire context.
@@ -132,8 +117,7 @@ $omega-float: right !default;
 @mixin full($nested: false) {
   clear: both;
   @if not $nested {
-    $s: side-gutter();
-    margin-right: $s;
-    margin-left: $s; 
+    margin-right: side-gutter();
+    margin-left: side-gutter(); 
   } 
 }

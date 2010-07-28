@@ -14,39 +14,12 @@
   }; 
 }
 
-// Brings IE in line with inline-block display
-//  - Using hacks if called automatically because $hacks == true
-//  - Or not, if you call it from ie.sass because $hacks == false
 @mixin ie-inline-block($hack: false) {
-  @if $hack {
-    /* ugly hacks for IE6-7 */
-    #display: inline;
-    // fixes alignment against native input/button on IE6
-    #vertical-align: auto;
-  } @else {
-    display: inline;
-    // fixes alignment against native input/button on IE6
-    vertical-align: auto; 
-  } 
-}
-
-// An override for compass inline-block that lets you take advantage
-// of Susys $hacks constant. if true, hacks. if false, use ie-inline-block
-// to help ie along in your ie.sass
-@mixin inline-block {
-  display: -moz-inline-box;
-  -moz-box-orient: vertical;
-  display: inline-block;
-  vertical-align: middle;
-  @if $hacks {
-    @include ie-inline-block(true); 
-  } 
+  @warn "the 'ie-inline-block' mixin is deprecated in favor of the compass core solutions.";
 }
 
 // An inline-block list that works in IE
 // For those awkward moments when a floated horizontal list just wont cut it
-// NOTE: If global !hacks == false:
-//  - you'll need to fix list items in ie.sass with +ie-inline-block
 @mixin inline-block-list($hpad: 0) {
   @include horizontal-list-container;
   li {
@@ -64,7 +37,7 @@
 
 // Hide an element from the viewport, but keep it around for accessability
 @mixin hide {
-  @warn "this mixin is deprecated in favor of 'hide-text' in compass core.";
+  @warn "the 'hide' mixin is deprecated in favor of 'hide-text' in compass core.";
   @include hide-text;
 }
 

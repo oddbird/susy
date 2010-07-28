@@ -71,7 +71,8 @@
 // Apply to skip-to-content accessibility links that will appear on focus.
 //  - Set the location arguments if you care where it appears.
 @mixin skip-link($t: 0, $r: false, $b: false, $l: false) {
-  @include hide;
+  position: absolute;
+  top: -9999em;
   display: block;
   &:focus {
     @if $t { top: $t; }

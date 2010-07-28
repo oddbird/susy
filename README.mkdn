@@ -314,46 +314,6 @@ Susy is built for flexibility, so that you always write the code you want to
 write. While everything should 'just work' out of the box, there are plenty of
 advanced options hidden inside. Here are a few:
 
-* `$hacks` is a boolean constant that you can set in your base.sass file to
-  choose between using targeted hacks for IE (a variation of the star hack in
-  most cases) in your screen.css, or using a conditional-comment targeted
-  ie.css. All the needed mixins are available for either setting. `$hacks` is
-  true by default so there is no extra work maintaining multiple files unless
-  you want to.
-
-    Example 1:
-    
-        $hacks: true;
-    
-        #nav {
-          @include inline-block-list;          
-        }
-    
-    Example 2:
-    
-        $hacks: false;
-      
-        // in screen.scss
-        #nav {
-          @include inline-block-list;
-        }
-        
-        //in ie.scss
-        #nav li {
-         @include ie-inline-block; 
-        }
-
-    It requires more maintenance on your part, but the result is a hack-free
-    output.
-    
-     The Susy mixins that use either hacks or targeted mixins are `@include
-    omega` (`@include ie-omega([$right-floated: false])`), `@include
-    inline-block` (`@include ie-inline-block`), and `@include
-    inline-block-list` which sets `@include inline-block` on the list items.
-    
-     The ie-specific mixins only add the needed ie-specific adjustments, so
-    they need to be used in addition to their counterparts, not on their own.
-
 * `gutter($context)` is a function that you can call at any time to return the
   size of a gutter in your given context as a percentage.
 

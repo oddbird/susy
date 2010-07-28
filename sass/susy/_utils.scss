@@ -53,10 +53,12 @@
     @include no-bullet;
     @include inline-block;
     white-space: no-wrap;
-    padding: {
-      left: $hpad;
-      right: $hpad; 
-    }; 
+    @if $hpad != 0 {
+      padding: {
+        left: $hpad;
+        right: $hpad; 
+      };
+    }
   } 
 }
 

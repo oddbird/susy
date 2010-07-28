@@ -14,7 +14,7 @@ $container-width: container($total-cols, $col-width, $gutter-width, $side-gutter
 // Set +container() on the outer grid-containing element(s).
 @mixin container($align: left) {
   // clear all floated columns
-  @include clearfix;
+  @include pie-clearfix;
   // align the text back to the left (override for other alignments)
   text-align: $align;
   // use auto horizontal margins to center your page in the body

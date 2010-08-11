@@ -18,23 +18,6 @@
   @warn "the 'ie-inline-block' mixin is deprecated in favor of the compass core solutions.";
 }
 
-// An inline-block list that works in IE
-// For those awkward moments when a floated horizontal list just wont cut it
-@mixin inline-block-list($hpad: 0) {
-  @include horizontal-list-container;
-  li {
-    @include no-bullet;
-    @include inline-block;
-    white-space: no-wrap;
-    @if $hpad != 0 {
-      padding: {
-        left: $hpad;
-        right: $hpad; 
-      };
-    }
-  } 
-}
-
 // Hide an element from the viewport, but keep it around for accessability
 @mixin hide {
   @warn "the 'hide' mixin is deprecated in favor of 'hide-text' in compass core.";

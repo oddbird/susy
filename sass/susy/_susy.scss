@@ -11,8 +11,6 @@
 @mixin susy($align: false) {
   @include establish-baseline;
   @if $align {
-    body {
-      text-align: $align; 
-    }
+    @warn "the '$align' argument is deprecated because it really isn't that usefull.";
   }
 }

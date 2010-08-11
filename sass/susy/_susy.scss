@@ -8,11 +8,11 @@
 @import "grid";
 
 // Set Susy on your BODY element to get things started.
-@mixin susy($align: center) {
+@mixin susy($align: false) {
   @include establish-baseline;
-  // text-align set to center by default for auto-centering layouts
-  //  - override $align for left/right-aligned designs
-  body {
-    text-align: $align; 
-  } 
+  @if $align {
+    body {
+      text-align: $align; 
+    }
+  }
 }

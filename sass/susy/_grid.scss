@@ -12,11 +12,12 @@ $side-gutter-width: $gutter-width !default;
 $container-width: container($total-cols, $col-width, $gutter-width, $side-gutter-width);
 
 // Set +container() on the outer grid-containing element(s).
-@mixin container($align: left) {
+@mixin container($align: false) {
   // clear all floated columns
   @include pie-clearfix;
-  // align the text back to the left (override for other alignments)
-  text-align: $align;
+  @if $align {
+    @warn "the '$align' argument is deprecated because it really isn't that usefull.";
+  }
   // use auto horizontal margins to center your page in the body
   margin: {
     left: auto;

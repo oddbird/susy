@@ -24,17 +24,6 @@
   @include hide-text;
 }
 
-// Apply to skip-to-content accessibility links that will appear on focus.
-//  - Set the location arguments if you care where it appears.
 @mixin skip-link($t: 0, $r: false, $b: false, $l: false) {
-  position: absolute;
-  top: -9999em;
-  display: block;
-  &:focus {
-    @if $t { top: $t; }
-    @if $r { right: $r; }
-    @if $b { bottom: $b; }
-    @if $l { left: $l; }
-    z-index: 999; 
-  } 
+  @warn "the 'skip-link' mixin is deprecated as too tangential to belong in Susy.";
 }

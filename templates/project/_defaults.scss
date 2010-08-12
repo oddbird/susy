@@ -255,7 +255,12 @@ input {
   &[type=text], &[type=password], &[type=email], &[type=url], &[type=tel],
   &[type=date], &[type=datetime], &[type=datetime-local], &[type=month], &[type=week], &[type=time],
   &[type=number], &[type=range], &[type=search], &[type=color] {
-    @extend .textinput; } }
+    @extend .textinput; }
+  // reset webkit search styles
+  &[type=search] {
+    -webkit-appearance: none;
+    &::-webkit-search-decoration {
+      display: none; } } }
 
 button {
   width: auto;

@@ -8,6 +8,7 @@ lib/susy.rb
 lib/susy/compass_plugin.rb
 lib/susy/sass_extensions.rb
 sass/susy/_grid.scss
+sass/susy/_inline_block_list.scss
 sass/susy/_reset.scss
 sass/susy/_susy.scss
 sass/susy/_text.scss

@@ -88,7 +88,7 @@ Now, if we are going to turn that HTML into a strong grid, we’ll have to do so
 Defining the container:
 -----------------------
 
-We’ll build our grid in ‘em’ units, so that it is responsive to the user’s text size. That means our text size will be important. We want a font-size of 16px, with a vertical-rhythm of 1.5em::
+We’ll build our grid in ‘em’ units, so that it is responsive to the user’s text size. That means our text size will be important. We want a font-size of 16px, with a `vertical-rhythm <http://24ways.org/2006/compose-to-a-vertical-rhythm>`_ of 1.5em::
 
   /* IE6 needs a %-based declaration to remain flexible */
   /* This is relative to the 16px default font size in most browsers */
@@ -131,20 +131,24 @@ We’ll also want to center it in the document and factor for float clearing, IE
   html > body {
     font-size: 16px;
   }
-
-  #page {
-    overflow: hidden;            /* float clearing */
-    display: inline-block;       /* hasLayout */
-    margin-left: auto;           /* centering */
-    margin-right: auto;          /* centering */
-    width: 61em;                 /* grid container size */
-    max-width: 100%;             /* window sizing */
+  
+  #page { 
+    *zoom: 1;                   /* hasLayout */
+    margin-left: auto;          /* centering */
+    margin-right: auto;         /* centering */
+    width: 61em;                /* grid container size */
+    max-width: 100%;            /* responsive layout */
   }
-
-  #page {
-    display: block;              /* hasLayout */
+  
+  #page:after {                 /* float clearing */
+    content: "\0020"; 
+    display: block; 
+    height: 0; 
+    clear: both; 
+    overflow: hidden; 
+    visibility: hidden; 
   }
-
+  
 We'll add a grid image to the background so that we can see our grid as we align elements to it. The default grid image file in Susy already has a 4em column, 1em gutter, and 1.5em height, making it 64+16x24 or 80px by 24px. Compass has a simple command line tool for `creating your own grid images <http://compass-style.org/docs/tutorials/command-line/>`_::
 
   compass grid-img 64+16x24
@@ -388,23 +392,24 @@ Done! Here's your final CSS::
     font-size: 16px;
   }
 
-  #page {
-    overflow: hidden;            /* float clearing */
-    display: inline-block;       /* hasLayout */
-    margin-left: auto;           /* centering */
-    margin-right: auto;          /* centering */
-    width: 61em;                 /* grid container size */
-    max-width: 100%;             /* window sizing */
-  }
-
-  #page {
-    display: block;              /* hasLayout */
-  }
-
-  #page {
+  #page { 
+    *zoom: 1;                   /* hasLayout */
+    margin-left: auto;          /* centering */
+    margin-right: auto;         /* centering */
+    width: 61em;                /* grid container size */
+    max-width: 100%;            /* responsive layout */
     background-image: url('../images/grid.png');
     background-repeat: repeat;
-    background-position: 1em 0;  
+    background-position: 1em 0;
+  }
+  
+  #page:after {                 /* float clearing */
+    content: "\0020"; 
+    display: block; 
+    height: 0; 
+    clear: both; 
+    overflow: hidden; 
+    visibility: hidden; 
   }
 
   #page * {
@@ -508,33 +513,32 @@ But we won't do that now. For now we want an elastic grid, and the default one i
 
 Now we just need to build that. If you open your ``screen`` sass file you will see::
 
-  /* Welcome to Susy. Use this file to define screen styles.
-   * Import this file using the following HTML or equivalent:
-   * <link href="/stylesheets/screen.css" media="screen" rel="stylesheet" type="text/css" /> */
+  //** SCREEN STYLES **//
 
-  // Imports --------------------------------------------------------------*/
+  // Imports --------------------------------------------------------------
 
   @import "defaults";
 
-  /* Layout --------------------------------------------------------------*/
+  /* Layout -------------------------------------------------------------- */
 
   @include susy;
 
-  // change '#page' to match your HTML container element(s)
-  #page {
+  // change '.container' to match your HTML container element
+  // or @extend it to apply multiple containers on your site.
+  .container {
     @include container;
     @include show-grid("grid.png"); }
 
   // show-grid loads a 64+16x24 grid image by default
   // For other grid settings, run `compass grid-img 30+10x20`
-  // Where 30 is the column width, 10 is the gutter width, 
+  // Where 30 is the column width, 10 is the gutter width,
   // and 20 is the (optional) line-height.
 
-  /* Styles --------------------------------------------------------------*/
+  /* Styles -------------------------------------------------------------- */
 
 We've already done as instructed and linked to screen.css in our HTML. Good hustle there. The import of the ``defaults`` partial gives us some basic typography defaults (that you can and should go change for each design). It also pulls in our ``base`` partial and applies our reset.
 
-Then we have the inclusion of the ``susy`` mixin, which applies our font-sizing and baseline-grid. And finally the ``#page`` element has the ``container`` mixin included, which handles sizing, centering, a clear-fix and has-layout. It also has the ``show-grid`` mixin set up to show us our grid. All you need to change to match your own markup is the ``#page`` selector, and you are ready to go with a Susy grid already in place. Since our demo keeps aligning with the defaults, we won't change anything at this point. That was easy.
+Then we have the inclusion of the ``susy`` mixin, which applies our font-sizing and baseline-grid. And finally the ``.container`` element has the ``container`` mixin included, which handles sizing, centering, a clear-fix and has-layout. It also has the ``show-grid`` mixin set up to show us our grid. All you need to change to match your own markup is the ``.container`` selector, and you are ready to go with a Susy grid already in place. Since our demo uses ``#page`` as the container, we will make that one simple change.
 
 If you want the box-backgrounds to show us how things are lining up, you can simply add that code again::
 

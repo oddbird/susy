@@ -66,8 +66,7 @@ Grid Basics
 ===========
 
 * Set up your default grid values (total columns, column width, gutter width,
-  side gutter width), your base font size, and important mixins in
-  `_base.scss`.
+  side gutter width), your base font size, and important mixins in `_base.scss`.
   
     Example:
   
@@ -83,7 +82,7 @@ Grid Basics
   better than using the browser defaults. And better than using ours.
 
 * Create your grid in `screen.scss`: apply the `@include susy` mixin at the
-  top level and the `@include container` mixin to the element that contains
+  top level and the `@include container` mixin to the element(s) that contains
   the page grid. This will set up your font sizes, vertical rhythm, and grid
   container.
 
@@ -101,26 +100,24 @@ Grid Basics
           font-size: 100%;
           line-height: 1.5em;
         }
-
         html > body {
           font-size: 16px;
         }
 
-        body {
-          text-align: center;
+        #page { 
+          *zoom: 1; 
+          margin-left: auto; 
+          margin-right: auto; 
+          width: 61em; 
+          max-width: 100%; 
         }
-
-        #page {
-          overflow: hidden;
-          display: inline-block;
-          text-align: left;
-          margin-left: auto;
-          margin-right: auto;
-          width: 61em;
-          max-width: 100%;
-        }
-        #page {
-          display: block;
+        #page:after { 
+          content: "\0020"; 
+          display: block; 
+          height: 0; 
+          clear: both; 
+          overflow: hidden; 
+          visibility: hidden; 
         }
 
 * Use the `@include columns` mixin to declare the width in columns of an
@@ -262,30 +259,15 @@ That's it for the basics! Here's a sample Susy grid layout:
 Tutorial
 ========
 
-Being built...
+Check out the tutorial at [susy.oddbird.net/tutorial/](http://susy.oddbird.net/tutorial/) for more details.
 
 Extra Utility Mixins 
 =====================
 
-Extra utilities are included in Susy's `utils.scss` file, with additional list
-options, experimental (CSS3/proprietary) CSS, and more.
+Extra utilities are included in Susy's `_utils.scss` and `_vertical_rhythm.scss`:
 
 * `@include show-grid($src)` - Repeat the specified grid image on an element.
   Good for testing your baseline and grid.
-
-* `@include inline-block-list([$horizontalpadding])` - Make list items
-  inline-block when floating just won't do the trick (if you need them
-  centered or right).
-
-* `@include hide` - Hide content from visual browsers while keeping
-  accessability intact.
-
-* `@include skip-link([$top, $right, $bottom, $left])` - Hide a link, and then
-  show it again on focus. the TRBL settings allow you to place it absolutely
-  on display. Default will be top left of the positioning context.
-
-And then the fun stuff in `_vertical_rhythm.scss`, originally written by Chris
-Eppstein and probably moving to the compass core before too long:
 
 * `@include adjust-font-size-to($to_size, [$lines, $from_size])` - adjust the
   font size and number of baseline (line) units to occupy.

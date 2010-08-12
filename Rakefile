@@ -6,13 +6,12 @@ begin
   require 'echoe'
  
   Echoe.new('compass-susy-plugin', open('VERSION').read) do |p|
-    # p.rubyforge_name = 'susy'
-    p.summary = "A Compass grid system plugin."
-    p.description = "Susy is a ground-up native Compass plugin grid system that takes full advantage of Sass' capabilities to remove the tedium from grid-based web design."
-    p.url = "http://github.com/ericam/compass-susy-plugin"
-    p.author = ['Eric Meyer']
+    p.summary = "A responsive grid system plugin for Compass."
+    p.description = "Responsive web design with grids the quick and reliable way."
+    p.url = "http://susy.oddbird.net/"
+    p.author = "Eric Meyer"
     p.email = "eric@oddbird.net"
-    p.dependencies = ["compass >=0.10.0.rc2"]
+    p.dependencies = ["compass >=0.10.0"]
     p.has_rdoc = false
   end
  

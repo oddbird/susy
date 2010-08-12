@@ -1,257 +1,262 @@
 //** DEFAULT STYLES **//
 
-// Based on the work of:
+// Based heavily on the work of:
 // Andy Clarke: http://forabeautifulweb.com/
+// Paul Irish & Divya Manian: http://html5boilerplate.com/
+// And many others, less directly...
 
-// Imports --------------------------------------------------------------*/
+// Imports --------------------------------------------------------------
 
 @import "base";
 @import "susy/reset";
 
-/* Body --------------------------------------------------------------*/
+/* Typography -------------------------------------------------------------- */
+/* The following classes are for use with @extend. */
+
+html {
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased; }
+
+.serif {
+  @include serif-family; }
+
+.sans {
+  @include sans-family; }
+
+.mono {
+  @include monospace-family; }
+
+.caps {
+  letter-spacing: 0.1em; }
+
+.allcaps {
+  @extend .caps;
+  text-transform: uppercase; }
+
+.smallcaps {
+  @extend .caps;
+  font-variant: small-caps; }
+
+/* Body -------------------------------------------------------------- */
 
 body {
-  @include serif-family;
-  color: $base;
-}
+  @extend .serif;
+  color: $base; }
 
-/* Links --------------------------------------------------------------*/
+/* Selected Text -------------------------------------------------------------- */
+/* -moz- must be declared separately */
+
+@mixin accessible-color($background: white) {
+  @if lightness($background) >= 65% {
+    color: $base; }
+  @else {
+    color: white; } }
+
+::-moz-selection {
+  @include accessible-color($alt);
+  background: $alt;
+  text-shadow: none; }
+
+::selection {
+  @include accessible-color($alt);
+  background: $alt;
+  text-shadow: none; }
+
+/* Links -------------------------------------------------------------- */
 
 a {
   &:link, &:visited {
-    color: $alt;
-  }
+    color: $alt; }
+  &:link, &:visited, &:hover, &:active {
+    outline: none; }
   &:focus, &:hover, &:active {
-    color: darken($alt,5);
-    text-decoration: none;
-  }
-  img {
-    border: none;
-  }
-}
+    color: complement($alt);
+    text-decoration: none; }
+  &:focus {
+    outline: thin dotted; } }
 
-/* Headings --------------------------------------------------------------*/
+/* Headings -------------------------------------------------------------- */
 
-h1, h2, h3, h4, h5, h6 { 
-  font-weight: normal;
-  img {
-    margin: 0;
-  }
-}
+h2, h3, h4, h5, h6 {
+  @include trailer; }
 
-h1 { 
-  @include adjust-font-size-to(48px);
-  @include trailer(1,48px);
-}
+h1 {
+  @include adjust-font-size-to(21px);
+  @include trailer(1, 21px); }
 
-h2 { 
-  @include adjust-font-size-to(32px);
-  @include trailer(1,32px);  
-}
+h1, h2 {
+  @extend .allcaps; }
 
 h3 {
-  @include adjust-font-size-to(24px);
-  @include trailer(1,24px);
-}
+  font-weight: bold; }
 
 h4 {
-  @include adjust-font-size-to(18px);
-  @include trailer(1,18px);
-}
+  @extend .smallcaps;
+  text-transform: lowercase; }
 
-h5, h6 { 
-  @include trailer(1);
-  font-weight: bold;
-}
+h5, h6 {
+  font-style: italic; }
 
-/* Text --------------------------------------------------------------*/
+/* Inline -------------------------------------------------------------- */
 
-cite, em, dfn { 
-  font-style: italic;
-}
+cite, em, dfn, address, i {
+  font-style: italic; }
 
-strong, dfn { 
-  font-weight: bold;
-}
+strong, dfn, b {
+  font-weight: bold; }
 
-sup, sub { 
-  line-height: 0;
-}
+sup, sub {
+  font-size: smaller;
+  line-height: 0; }
 
-abbr, acronym { 
+sup {
+  vertical-align: super; }
+
+sub {
+  vertical-align: sub; }
+
+abbr, acronym {
   border-bottom: 1px dotted;
-  cursor: help;
-}
+  cursor: help; }
 
-address {
-  @include trailer;
-  font-style: italic;
-}
+ins {
+  text-decoration: underline; }
 
-ins { 
-  text-decoration: underline;
-}
+del {
+  text-decoration: line-through; }
 
-del { 
-  text-decoration: line-through;
-}
+mark {
+  background: #ffff99;
+  background-color: rgba(yellow, 0.5);
+  text-shadow: none; }
 
-pre, code, tt {
-  margin: $base-rhythm-unit {
-    left: -$base-rhythm-unit;
-  };
-  padding-left: $base-rhythm-unit;
-  border-left: 1px dotted;
-  @include monospace-family;
-}
-
-pre { 
-  white-space: pre;
-}
-
-code { 
-  display: block;
-}
+small {
+  @include adjust-font-size-to(12px); }
 
 q {
   font-style: italic;
   em {
-    font-style: normal;
-  } 
-}
+    font-style: normal; } }
+
+pre, code, tt {
+  @extend .mono; }
+
+/* Block -------------------------------------------------------------- */
 
 p {
-  @include trailer;
-}
+  @include trailer; }
 
-blockquote, q {
-  quotes : "" "";
-}
+pre {
+  margin: $base-rhythm-unit;
+  white-space: pre;
+  white-space: pre-wrap;
+  white-space: pre-line;
+  word-wrap: break-word; }
 
-blockquote { 
-  margin: $base-rhythm-unit {
-    left: -$base-rhythm-unit;
-  };
-  padding-left: $base-rhythm-unit;
-  border-left: 1px solid;
-  @include serif-family;
-  font-style: italic;
-}
+blockquote {
+  margin: $base-rhythm-unit;
+  font-style: italic; }
 
-blockquote, q {
-  &:before, &:after { 
-    content: "";
-  }
-}
-
-/* Replaced --------------------------------------------------------------*/
+/* Replaced -------------------------------------------------------------- */
 
 img {
-  vertical-align: bottom;
-}
+  vertical-align: text-bottom;
+  max-width: 100%;
+  -ms-interpolation-mode: bicubic; }
 
-/* Lists --------------------------------------------------------------*/
+/* Lists -------------------------------------------------------------- */
 
-@mixin list-default($ol: false) {
-  margin: 0 $base-rhythm-unit $base-rhythm-unit 0;
-  @if $ol {
-    list-style: decimal;
-  } @else {
-    list-style: disc;
-  } 
-}
-
-@mixin no-style-list {
-  @include no-bullets;
-  margin: 0;
-  padding: 0;
-}
+ol, ul, dl {
+  @include trailer;
+  margin-left: $base-rhythm-unit; }
 
 ol {
-  @include list-default(ol);
-}
+  list-style: decimal; }
 
 ul {
-  @include list-default;
-}
+  list-style: disc;
+  li & {
+    list-style-type: circle; } }
 
-li {
-  ul, ol { 
-    list-style-type: circle;
-    margin: 0 $base-rhythm-unit $base-rhythm-unit*.5;
-  }
-}
-
-dl {
-  @include trailer;
-  @include leading-border(1px);
-  dt {
-    @include adjust-font-size-to(18px);
-    @include trailer(.5,18px);
-  }
-}
+dt {
+  @include leader;
+  font-style: italic; }
 
 dd {
-  @include trailer;
-  @include trailing-border(1px);
-}
+  padding-left: $base-rhythm-unit; }
 
-/* Tables --------------------------------------------------------------*/
+/* Tables -------------------------------------------------------------- */
 /* tables still need 'cellspacing="0"' in the markup */
 
 table {
   @include trailer;
   width: 100%;
   border-collapse: separate;
-  border-spacing: 0;
-}
+  border-spacing: 0; }
 
-table, td, th { 
-  vertical-align: top;
-}
+table, td, th {
+  vertical-align: top; }
 
 th, thead th {
-  font-weight: bold;
-}
+  font-weight: bold; }
 
 th, td, caption {
-  padding: $base-rhythm-unit*.5;
+  padding: $base-rhythm-unit * 0.5;
   text-align: left;
-  font-weight: normal;
-}
+  font-weight: normal; }
 
-th, td {
-  @include trailing-border(1px,.5);
-}
+table, th {
+  @include trailing-border(1px, 0.5); }
 
-tfoot { 
-  @include adjust-font-size-to(14px);
-}
+tfoot {
+  @include adjust-font-size-to(14px); }
 
 caption {
-  @include adjust-font-size-to(24px);
-  @include trailer(1,24px);
-}
+  @extend .allcaps; }
 
-/* Forms --------------------------------------------------------------*/
+/* Forms -------------------------------------------------------------- */
 
 fieldset {
   @include trailer;
-  @include rhythm-borders(1px);
-}
+  @include rhythm-borders(1px); }
 
 legend {
   @include adjust-font-size-to(18px);
-  font-weight: bold;
-}
+  font-weight: bold; }
+
+input[type="radio"], input[type="checkbox"] {
+  vertical-align: baseline; }
+
+label, input[type=button], input[type=submit], button {
+  cursor: pointer; }
 
 label {
-  font-weight: bold;
-}
+  font-weight: bold; }
 
-textarea, input:not([type="radio"]) {
-  // box-sizing will help us control the width of inputs
-  // which are otherwise very hard to manage in the grid.
+// box-sizing helps us control the width of inputs
+// which are otherwise very hard to manage in the grid.
+.textinput {
+  @include sans-family;
+  @include adjust-font-size-to(14px, 1, 16px);
+  @include rhythm-borders(1px, 0.25, 14px);
+  @include trailer(0.5);
   @include box-sizing(border-box);
   width: 100%;
-}
+  margin-top: 0;
+  border-color: $base;
+  height: $base-line-height / 14px * 1.5; }
+
+textarea {
+  @extend .textinput;
+  height: $base-line-height / 14px * 6.5;
+  vertical-align: text-bottom; }
+
+input {
+  &[type=text], &[type=password], &[type=email], &[type=url], &[type=tel],
+  &[type=date], &[type=datetime], &[type=datetime-local], &[type=month], &[type=week], &[type=time],
+  &[type=number], &[type=range], &[type=search], &[type=color] {
+    @extend .textinput; } }
+
+button {
+  width: auto;
+  overflow: visible; }

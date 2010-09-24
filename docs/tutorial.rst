@@ -680,7 +680,7 @@ And we're done. No math. Just columns and contexts, alphas and omegas. That's it
     @include alpha;
     text-align: right;
     ul {
-      @include no-style-list;
+      @include no-bullets;
     }
   }
 

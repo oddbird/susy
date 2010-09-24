@@ -244,11 +244,11 @@ label {
   width: 100%;
   margin-top: 0;
   border-color: $base;
-  height: $base-line-height / 14px * 1.5; }
+  height: $base-line-height / 14px * 1.5em; }
 
 textarea {
   @extend .textinput;
-  height: $base-line-height / 14px * 6.5;
+  height: $base-line-height / 14px * 6.5em;
   vertical-align: text-bottom; }
 
 input {

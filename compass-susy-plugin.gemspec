@@ -2,11 +2,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{compass-susy-plugin}
-  s.version = "0.8.0"
+  s.version = "0.8.1"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 1.2") if s.respond_to? :required_rubygems_version=
   s.authors = ["Eric Meyer"]
-  s.date = %q{2010-08-13}
+  s.date = %q{2010-09-24}
   s.description = %q{Responsive web design with grids the quick and reliable way.}
   s.email = %q{eric@oddbird.net}
   s.extra_rdoc_files = ["LICENSE.txt", "README.mkdn", "lib/susy.rb", "lib/susy/compass_plugin.rb", "lib/susy/sass_extensions.rb"]

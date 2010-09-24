@@ -41,13 +41,13 @@ Our grid will be a simple HTML page - a simplified version of the one you are lo
   <head>
   <meta charset="utf-8" />
   <title>Susy Tutorial</title>
-  <link rel="stylesheet" href="stylesheets/screen.css" type="text/css" media="screen" charset="utf-8">
+  <link rel="stylesheet" href="stylesheets/screen.css" media="screen" />
   </head>
 
   <body>
   <div id="page">
 
-  <h1 role="banner">Susy: un-obtrusive grids for designers</h1>
+  <h1>Susy: un-obtrusive grids for designers</h1>
 
   <nav>
   <ul>
@@ -58,16 +58,16 @@ Our grid will be a simple HTML page - a simplified version of the one you are lo
   </ul>
   </nav>
 
-  <section>
+  <div role="main">
   <article>
-  <h1>The Main Content</h1>
+  <h2>The Main Content</h2>
   <p>This is where all the main content of our page will live.</p>
   </article>
   <aside>
-  <h1>note:</h1>
+  <h2>note:</h2>
   <p>we can add side-notes here<p>
   </aside>
-  </section>
+  </div>
 
   <footer>
   <p>this site is built using susy!</p>
@@ -79,7 +79,11 @@ Our grid will be a simple HTML page - a simplified version of the one you are lo
 
 As always we want to start our CSS with a reset. In this case we can use `Eric Meyer's <http://www.meyerweb.com/>`_ `reset.css <http://meyerweb.com/eric/tools/css/reset/index.html>`_, and add some simple updates to cover our HTML5 elements. The most basic change for HTML5 is to add a correction for all new block-level elements, though you can grab more from the `HTML5 Doctor <http://html5doctor.com/html-5-reset-stylesheet/>`_::
 
-  section, article, aside, header, footer, nav, dialog, figure {
+  article, aside, canvas, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary {
+    margin: 0
+    padding: 0
+    border: 0
+    outline: 0
     display: block;
   }
 
@@ -172,7 +176,7 @@ Laying out our elements:
 
 And we're finally ready to lay out our elements in relation to that grid. Let's start with the page header::
 
-  <h1 role="banner">Susy: un-obtrusive grids for designers</h1>
+  <h1>Susy: un-obtrusive grids for designers</h1>
 
 We're going to give it a grid-row all it's own, and then push the text in 3 columns from the left to align with our main content. Full-width is, of course, the default for block-level elements, so this should be easy. All we need to do for the width is account for the side-gutters. For that, we will need a margin of 1em on each side.
 
@@ -195,7 +199,7 @@ All this math is based on the same formula::
 
 And so::
 
-  h1[role='banner'] {
+  h1 {
     margin-right: 1.639%;       /* right side gutter */
     margin-left: 1.639%;        /* left side gutter */
     padding-left: 24.59%;       /* 3-column 'prefix' */
@@ -220,7 +224,7 @@ Now we want to add a leading of six lines to push it down the page, as well as a
   
 And so, combining this with our horizontal grid::
 
-  h1[role='banner'] { 
+  h1 { 
     /* horizontal grid ------------------------------------------------- */
     margin-right: 1.639%;       /* right side gutter */
     margin-left: 1.639%;        /* left side gutter */
@@ -262,16 +266,16 @@ Both our left side-gutter and our right inside gutter are 1em at this point, whi
   
 Now to align our main content::
 
-  <section>
+  <div role="main">
   <article>
-  <h1>The Main Content</h1>
+  <h2>The Main Content</h2>
   <p>This is where all the main content of our page will live.</p>
   </article>
   <aside>
-  <h1>note:</h1>
+  <h2>note:</h2>
   <p>we can add side-notes here<p>
   </aside>
-  </section>
+  </div>
 
 We'll be giving it a span of the 9 remaining columns, with no left gutter needed, and a right side gutter (in this case the same as an internal gutter, but could be different)::
 
@@ -280,7 +284,7 @@ We'll be giving it a span of the 9 remaining columns, with no left gutter needed
 
 Giving us::
 
-  section {
+  div[role="main"] {
     display: inline;            /* IE fix */
     float: right;               /* float the last element in a row right */
     width: 72.131%;             /* span 9 columns */
@@ -288,7 +292,7 @@ Giving us::
     #margin-left: -1em;         /* hack for IE6-7 sub-pixel rounding */
   }
 
-Inside that section our math changes a bit. We are no longer in a context of 61em, we no longer have to worry about side-gutters, and the final elements in a row no longer get any gutter attached to the right-hand side. Let's stack up our article and aside to span 6 and 3 columns respectively::
+Inside that div our math changes a bit. We are no longer in a context of 61em, we no longer have to worry about side-gutters, and the final elements in a row no longer get any gutter attached to the right-hand side. Let's stack up our article and aside to span 6 and 3 columns respectively::
 
   (6*4em + 5*1em) / (9*4em + 8*1em) = 65.909%
   (3*4em + 2*1em) / (9*4em + 8*1em) = 31.818%
@@ -377,7 +381,11 @@ Done! Here's your final CSS::
   }
 
   /* HTML5 Reset --------------------------------------------------------------*/
-  section, article, aside, header, footer, nav, dialog, figure {
+  article, aside, canvas, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary {
+    margin: 0
+    padding: 0
+    border: 0
+    outline: 0
     display: block;
   }
 
@@ -418,7 +426,7 @@ Done! Here's your final CSS::
 
   /* Header --------------------------------------------------------------*/
 
-  h1[role='banner'] { 
+  h1 { 
     /* horizontal grid ------------------------------------------------- */
     margin-right: 1.639%;       /* right side gutter */
     margin-left: 1.639%;        /* left side gutter */
@@ -444,7 +452,7 @@ Done! Here's your final CSS::
 
   /* Content --------------------------------------------------------------*/
 
-  section {
+  div[role="main"] {
     display: inline;            /* IE fix */
     float: right;               /* float the last element in a row right */
     width: 72.131%;             /* span 9 columns */
@@ -564,7 +572,7 @@ Susy has a simple mixin for handling elements that span their full context, and 
 
 However, with Susy, we **never** pass the context when it is "root". Instead::
 
-  h1[role="banner"] {
+  h1 {
     @include full;
     @include prefix(3);
   }
@@ -577,7 +585,7 @@ And that takes care of our horizontal positioning. Now let's look at the vertica
 
 When adjusting the font size, Susy will always default to the smallest needed line-height and the default-font-size for the size we are adjusting from. The leader and trailer, however, are also assuming our base-font-size, which is no longer accurate. And so we'll apply them thus::
 
-  h1[role="banner"] {
+  h1 {
     @include full;
     @include prefix(3);
     @include adjust-font-size-to(32px);
@@ -599,7 +607,7 @@ We will also need to override our default list style, which is common. Compass h
     @include alpha;
     text-align: right;
     ul {
-      @include no-style-list;
+      @include no-bullets;
     }
   }
 
@@ -609,7 +617,7 @@ All set there, let's take care of the content: 9 columns floated right and then 
 
 The difference is that we will need omega in any context, so it gets that argument passed to it (when the context is other-than-root). That is because Susy applies internal gutters to the right margins of their preceeding columns. We only need ``alpha`` to take care of left side-gutters at the root, but we need ``omega`` to take care of both adding the root side-gutter and removing the final gutters later on. You can see that below. Let's do this thing::
 
-  section {
+  div[role="main"] {
     @include columns(9);
     @include omega;
     article {
@@ -621,7 +629,7 @@ The difference is that we will need omega in any context, so it gets that argume
     }
   }
 
-There you see everything you need to know. The section element is in a root context and so no context is passed to the mixins. But then the section *becomes* the context at 9-columns wide, and that is passed to all nested grid mixins as the second argument. That's not too hard, is it?
+There you see everything you need to know. The div element is in a root context and so no context is passed to the mixins. But then the div *becomes* the context at 9-columns wide, and that is passed to all nested grid mixins as the second argument. That's not too hard, is it?
 
 The footer is back in the root context, at the full width but padded in from both sides. That brings us to two new mixins we can use::
 
@@ -657,7 +665,7 @@ And we're done. No math. Just columns and contexts, alphas and omegas. That's it
 
   /* Header --------------------------------------------------------------*/
 
-  h1[role="banner"] {
+  h1 {
     @include full;
     @include prefix(3);
     @include adjust-font-size-to(32px);
@@ -678,7 +686,7 @@ And we're done. No math. Just columns and contexts, alphas and omegas. That's it
 
   /* Content --------------------------------------------------------------*/
 
-  section {
+  div[role="main"] {
     @include columns(9);
     @include omega;
     article {

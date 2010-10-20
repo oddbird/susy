@@ -11,6 +11,9 @@ $side-gutter-width: $gutter-width !default;
 // Susy will set your outer shell based on the variables above. 
 $container-width: container($total-cols, $col-width, $gutter-width, $side-gutter-width);
 
+// if set, we use adjust the percentages slightly to render correctly with webkit.
+$webkit-selector: false !default;
+
 // Set +container() on the outer grid-containing element(s).
 @mixin container($align: false) {
   // clear all floated columns
@@ -43,6 +46,13 @@ $container-width: container($total-cols, $col-width, $gutter-width, $side-gutter
   width: columns($n, $context);
   // the right gutter is added as a percentage of the context
   margin-right: gutter($context); 
+
+  @if $webkit-selector {
+    #{$webkit-selector} & {
+      width: columns-nudge($n, $context);
+      margin-right: gutter-nudge($context); 
+    }
+  }
 }
 
 // Set +un-column to reset a column element to default block behavior
@@ -80,6 +90,11 @@ $container-width: container($total-cols, $col-width, $gutter-width, $side-gutter
 @mixin alpha($nested: false) {
   @if not $nested {
     margin-left: side-gutter();
+    @if $webkit-selector {
+      #{$webkit-selector} & {
+        margin-left: side-gutter-nudge(); 
+      }
+    }
   } @else {
     @warn "The alpha mixin is not needed in a nested context";
   }
@@ -111,6 +126,20 @@ $omega-float: right !default;
   } @else {
     #margin-right: - $gutter-width; 
   }
+
+  // this duplication is required, because we may need to set the right
+  // margin to zero specifically for the selector "#{$webkit-selector} &"
+  // depending on what other mixins have been included.
+  @if $webkit-selector {
+    #{$webkit-selector} & {
+      @if $nested {
+        margin-right: 0; 
+      } @else {
+        margin-right: side-gutter-nudge(); 
+      }
+    }
+  }
+
 }
 
 // Set +full() on an element that will span it's entire context.
@@ -120,5 +149,11 @@ $omega-float: right !default;
   @if not $nested {
     margin-right: side-gutter();
     margin-left: side-gutter(); 
-  } 
+    @if $webkit-selector {
+      #{$webkit-selector} & {
+        margin-right: side-gutter-nudge();
+        margin-left: side-gutter-nudge(); 
+      }
+    }
+  }
 }

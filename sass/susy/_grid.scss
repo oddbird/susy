@@ -8,6 +8,10 @@ $col-width: 4em !default;
 $gutter-width: 1em !default;
 $side-gutter-width: $gutter-width !default;
 
+// Document direction is the first direction for reading the document.
+// Default is left for LTR documents.
+$document-direction: left !default;
+
 // Susy will set your outer shell based on the variables above. 
 $container-width: container($total-cols, $col-width, $gutter-width, $side-gutter-width);
 
@@ -36,31 +40,31 @@ $container-width: container($total-cols, $col-width, $gutter-width, $side-gutter
 //  - Context MUST NOT be declared on a top-level element.
 // By default a grid-column is floated left with a right gutter.
 //  - Override those with +float("right"), +alpha or +omega
-@mixin columns($n, $context: false) {
+@mixin columns($n, $context: false, $first: $document-direction) {
   // the column is floated left
-  @include float(left);
+  @include float($first);
   // the width of the column is set as a percentage of the context
   width: columns($n, $context);
   // the right gutter is added as a percentage of the context
-  margin-right: gutter($context); 
+  margin-#{opposite-position($first)}: gutter($context);
 }
 
 // Set +un-column to reset a column element to default block behavior
-@mixin un-column {
+@mixin un-column($first: $document-direction) {
   float: none;
   display: block;
   width: auto;
-  margin-right: auto;  
+  margin-#{opposite-position($first)}: auto;
 }
 
 // Set +prefix() on any element to add empty colums as padding 
 // before or after.
-@mixin prefix($n, $context: false) {
-  padding-left: columns($n, $context) + gutter($context); 
+@mixin prefix($n, $context: false, $first: $document-direction) {
+  padding-#{$first}: columns($n, $context) + gutter($context);
 }
 
-@mixin suffix($n, $context: false) {
-  padding-right: columns($n, $context) + gutter($context); 
+@mixin suffix($n, $context: false, $first: $document-direction) {
+  padding-#{opposite-position($first)}: columns($n, $context) + gutter($context);
 }
 
 // Set as a shortcut for both prefix and suffix.
@@ -77,9 +81,9 @@ $container-width: container($total-cols, $col-width, $gutter-width, $side-gutter
 // context to take side-gutters into account. Recommended that you pass 
 // the actual nested contexts (when nested) rather than a true/false 
 // argument for the sake of consistency. Effect is the same.
-@mixin alpha($nested: false) {
+@mixin alpha($nested: false, $first: $document-direction) {
   @if not $nested {
-    margin-left: side-gutter();
+    margin-#{$first}: side-gutter();
   } @else {
     @warn "The alpha mixin is not needed in a nested context";
   }
@@ -99,17 +103,17 @@ $omega-float: right !default;
 // columns. It is recommended that you pass the actual nested context when 
 // nested, rather than a true/false argument, for the sake of consistency. 
 // Effect is the same.
-@mixin omega($nested: false) {
+@mixin omega($nested: false, $first: $document-direction) {
   @include float($omega-float);
   @if $nested {
-    margin-right: 0; 
+    margin-#{opposite-position($first)}: 0;
   } @else {
-    margin-right: side-gutter(); 
+    margin-#{opposite-position($first)}: side-gutter();
   }
   @if $omega-float == right {
-    #margin-left: - $gutter-width; 
+    #margin-#{$first}: - $gutter-width;
   } @else {
-    #margin-right: - $gutter-width; 
+    #margin-#{opposite-position($first)}: - $gutter-width;
   }
 }
 

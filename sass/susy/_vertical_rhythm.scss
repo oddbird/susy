@@ -50,6 +50,22 @@ $base-half-leader: $base-leader / 2;
   @include adjust-leading-to($lines, $to-size); 
 }
 
+// Like adjust-font-size-to, but with additional leading on the first line to
+// ensure that the baseline of the font lines up with the standard baseline
+// rather than being vertically centered in the css line-height.
+// This uses margin leader/trailer, so in order to add further leader/trailer
+// lines you must use padding instead.
+@mixin adjust-font-size-with-baseline-to($to-size, $lines: ceil($to-size / $base-line-height), $from-size: $base-font-size) {
+  @include adjust-font-size-to($to-size, $lines, $from-size);
+
+  $leader: ($lines * $base-line-height - $to-size) * 1em / $base-font-size;
+  $half-leader: $leader / 2;
+  $baseline-offset: abs(($half-leader - $base-half-leader) / $base-rhythm-unit);
+
+  @include leader($baseline-offset, $to-size);
+  @include trailer(-$baseline-offset, $to-size);
+}
+
 @mixin adjust-leading-to($lines, $font-size: $base-font-size) {
   line-height: 1em * $lines * $base-line-height / $font-size; 
 }

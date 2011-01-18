@@ -15,6 +15,18 @@ $document-direction: left !default;
 // Susy will set your outer shell based on the variables above. 
 $container-width: container($total-cols, $col-width, $gutter-width, $side-gutter-width);
 
+// A BiDi document might load LTR and RTL stylesheets, which requires extra
+// resets.
+$bidi: false !default;
+
+// Resets both directions of padding or margin.
+@mixin bidi-reset($property: margin) {
+  #{$property}: {
+    left: 0;
+    right: 0;
+  };
+}
+
 // Set +container() on the outer grid-containing element(s).
 @mixin container($align: false) {
   // clear all floated columns
@@ -41,6 +53,9 @@ $container-width: container($total-cols, $col-width, $gutter-width, $side-gutter
 // By default a grid-column is floated left with a right gutter.
 //  - Override those with +float("right"), +alpha or +omega
 @mixin columns($n, $context: false, $first: $document-direction) {
+  @if $bidi and $context {
+    @include bidi-reset;
+  }
   // the column is floated left
   @include float($first);
   // the width of the column is set as a percentage of the context
@@ -51,6 +66,9 @@ $container-width: container($total-cols, $col-width, $gutter-width, $side-gutter
 
 // Set +un-column to reset a column element to default block behavior
 @mixin un-column($first: $document-direction) {
+  @if $bidi {
+    @include bidi-reset;
+  }
   float: none;
   display: block;
   width: auto;
@@ -60,10 +78,16 @@ $container-width: container($total-cols, $col-width, $gutter-width, $side-gutter
 // Set +prefix() on any element to add empty colums as padding 
 // before or after.
 @mixin prefix($n, $context: false, $first: $document-direction) {
+  @if $bidi {
+    @include bidi-reset(padding);
+  }
   padding-#{$first}: columns($n, $context) + gutter($context);
 }
 
 @mixin suffix($n, $context: false, $first: $document-direction) {
+  @if $bidi {
+    @include bidi-reset(padding);
+  }
   padding-#{opposite-position($first)}: columns($n, $context) + gutter($context);
 }
 
@@ -82,6 +106,9 @@ $container-width: container($total-cols, $col-width, $gutter-width, $side-gutter
 // the actual nested contexts (when nested) rather than a true/false 
 // argument for the sake of consistency. Effect is the same.
 @mixin alpha($nested: false, $first: $document-direction) {
+  @if $bidi {
+    @include bidi-reset;
+  }
   @if not $nested {
     margin-#{$first}: side-gutter();
   } @else {
@@ -104,13 +131,16 @@ $omega-float: right !default;
 // nested, rather than a true/false argument, for the sake of consistency. 
 // Effect is the same.
 @mixin omega($nested: false, $first: $document-direction) {
+  @if $bidi {
+    @include bidi-reset;
+  }
   @include float($omega-float);
   @if $nested {
     margin-#{opposite-position($first)}: 0;
   } @else {
     margin-#{opposite-position($first)}: side-gutter();
   }
-  @if $omega-float == right {
+  @if $omega-float != $document-direction {
     #margin-#{$first}: - $gutter-width;
   } @else {
     #margin-#{opposite-position($first)}: - $gutter-width;

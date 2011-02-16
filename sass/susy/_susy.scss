@@ -1,16 +1,11 @@
 //** Susy **//
 
-
 // Import all the Important Stuff.
-@import "compass/css3";
+@import "compass";
 @import "utils";
-@import "text";
 @import "grid";
 
 // Set Susy on your BODY element to get things started.
-@mixin susy($align: false) {
-  @include establish-baseline;
-  @if $align {
-    @warn "the '$align' argument is deprecated because it really isn't that usefull.";
-  }
+@mixin susy() {
+  @warn "the 'susy' base mixin is no longer needed and will be removed in the ner future.";
 }

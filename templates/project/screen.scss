@@ -2,11 +2,9 @@
 
 // Imports --------------------------------------------------------------
 
-@import "defaults";
+@import "base";
 
 /* Layout -------------------------------------------------------------- */
-
-@include susy;
 
 // change '.container' to match your HTML container element
 // or @extend it to apply multiple containers on your site.

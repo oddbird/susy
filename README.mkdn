@@ -28,9 +28,7 @@ Create a Susy-based Compass Project
 
     compass create <project name> -r susy -u susy
 
-Then edit your `_base.scss`, `_defaults.scss`, `screen.scss` and `print.scss`
-files accordingly. A reset is added automatically, and includes support for
-HTML5 elements.
+Then edit your `_base.scss` and `screen.scss` files accordingly.
 
 Philosophy and Goals
 ====================
@@ -78,17 +76,11 @@ Grid Basics
         $gutter-width: 1em; /* 1em (16px) gutters between columns */
         $side-gutter-width: $gutter-width; /* 1em (16px) padding at the edges of the page as well */
 
-* Set defaults for all the important HTML tags in `_defaults.scss`. It's
-  better than using the browser defaults. And better than using ours.
-
-* Create your grid in `screen.scss`: apply the `@include susy` mixin at the
-  top level and the `@include container` mixin to the element(s) that contains
-  the page grid. This will set up your font sizes, vertical rhythm, and grid
-  container.
+* Create your grid in `screen.scss`: apply the `container` mixin to the 
+  element(s) that contains the page grid. This will set up your font sizes
+  and grid container.
 
     Example:
-
-        @include susy;
      
         #page {
           @include container; 
@@ -96,32 +88,23 @@ Grid Basics
     
     CSS Output:
     
-        body {
-          font-size: 100%;
-          line-height: 1.5em;
+        #page {
+          *zoom: 1;
+          margin: auto;
+          width: 61em;
+          max-width: 100%;
         }
-        html > body {
-          font-size: 16px;
-        }
-
-        #page { 
-          *zoom: 1; 
-          margin-left: auto; 
-          margin-right: auto; 
-          width: 61em; 
-          max-width: 100%; 
-        }
-        #page:after { 
-          content: "\0020"; 
-          display: block; 
-          height: 0; 
-          clear: both; 
-          overflow: hidden; 
-          visibility: hidden; 
+        #page:after {
+          content: "\0020";
+          display: block;
+          height: 0;
+          clear: both;
+          overflow: hidden;
+          visibility: hidden;
         }
 
-* Use the `@include columns` mixin to declare the width in columns of an
-  element, or `@include full` for any element spanning the full width of its
+* Use the `columns` mixin to declare the width in columns of an
+  element, or `full` for any element spanning the full width of its
   context.
 
   There is an important distinction between "root" and "nested" contexts in
@@ -151,11 +134,11 @@ Grid Basics
 
   *Note:* Context _must not_ be passed at the root level, and _must_ be passed at nested levels.
 
-* Use `@include alpha` and `@include omega` to declare elements which include
+* Use `alpha` and `omega` to declare elements which include
   the first or last column within their parent element.
   
-  *Note:* `@include alpha` is _only_ needed in the root level, and does
-  nothing in nested contexts. Neither is needed with an `@include full` element.
+  *Note:* `alpha` is _only_ needed in the root level, and does
+  nothing in nested contexts. Neither is needed with an `full` element.
   
     The `alpha` and `omega` mixins:
     
@@ -193,9 +176,9 @@ Grid Basics
   spans, right-margins to set the getter, and both side margins to set the
   side-gutters on root `alpha` and `omega` elements.
 
-* Use `@include prefix` or `@include suffix` to pad (in columns) the width of
-  an element using left and right padding, or `@include pad` to give both `@include
-  prefix` and `@include suffix` at once.
+* Use `prefix` or `suffix` to pad (in columns) the width of
+  an element using left and right padding, or `pad` to give both `prefix` and 
+  `@suffix` at once.
   
     The `prefix`, `suffix` and `pad` mixins:
     
@@ -264,29 +247,10 @@ Check out the tutorial at [susy.oddbird.net/tutorial/](http://susy.oddbird.net/t
 Extra Utility Mixins 
 =====================
 
-Extra utilities are included in Susy's `_utils.scss` and `_vertical_rhythm.scss`:
+Extra utilities are included in Susy's `_utils.scss`:
 
-* `@include show-grid($src)` - Repeat the specified grid image on an element.
+* `show-grid($src)` - Repeat the specified grid image on an element.
   Good for testing your baseline and grid.
-
-* `@include adjust-font-size-to($to_size, [$lines, $from_size])` - adjust the
-  font size and number of baseline (line) units to occupy.
-
-* `@include leader([$lines, $font_size, $property])` and `@include
-  trailer([$lines, $font_size, $property])` - add leading or trailing
-  whitespace to an element. These are added as top and bottom margins (by
-  default) that keep your vertical rhythm intact. You can also send "padding"
-  as the `$property` or use `@include padding-leader` and `@include
-  padding-trailer`. Be aware that this may conflict with uses of
-  rhythm-borders.
-
-* `@include leading-border([$width, $lines, $font_size, $style])` and
-  `@include trailing-border([$width, $lines, $font_size, $style])` will
-  combine border and padding to create borders that also keep the vertical
-  rhythm going. The defaults are `1px, 1, $base_font_size, 'solid'`. Also
-  available: `@include horizontal-borders` (for both leading and trailing),
-  and `@include rhythm-borders` for applying equal borders and padding to all
-  sides of a box.
 
 
 Advanced Options
@@ -307,7 +271,8 @@ advanced options hidden inside. Here are a few:
 
 * `columns($number, $context)` returns the span of `$number` columns in
   `$context` as a percentage. This span includes any gutters between the
-  columns spanned.
+  columns spanned. `column($context)` is also available as a single-column
+  shortcut.
 
     Example:
         
@@ -315,19 +280,5 @@ advanced options hidden inside. Here are a few:
           padding-left: columns(3,5);
         }
 
-* `side_gutter()` is also available and takes no arguments since it is always
-  used at the top nesting level.
-
-* `$px2em` is a variable that represents the height of one pixel as a fraction
-  of your base em-height. Multiply it with your target pixel value to
-  represent that value in ems. Note that this is only accurate at your
-  `$base_font_size`.
-
-    Example:
-    
-        #nav {
-          border-bottom: {
-            style: solid;
-            width: $px2em*2px;
-          };
-        }
+* `side_gutter()` returns the percentage width of a side-gutter and takes no 
+  arguments since it can always used at the top nesting level.

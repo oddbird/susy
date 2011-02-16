@@ -1,10 +1,5 @@
 //** Susy Utilities **//
 
-
-// An extension of the Compass Core Utilities
-@import "compass/utilities";
-@import "inline_block_list";
-
 // Apply to you container element(s) to show a grid image.
 //  - You need to supply the image. Susy can't do everything.
 @mixin show-grid($src) {
@@ -13,18 +8,4 @@
     repeat: repeat;
     position: $side-gutter-width 0; 
   }; 
-}
-
-@mixin ie-inline-block($hack: false) {
-  @warn "the 'ie-inline-block' mixin is deprecated in favor of the compass core solutions.";
-}
-
-// Hide an element from the viewport, but keep it around for accessability
-@mixin hide {
-  @warn "the 'hide' mixin is deprecated in favor of 'hide-text' in compass core.";
-  @include hide-text;
-}
-
-@mixin skip-link($t: 0, $r: false, $b: false, $l: false) {
-  @warn "the 'skip-link' mixin is deprecated as too tangential to belong in Susy.";
 }

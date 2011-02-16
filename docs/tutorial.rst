@@ -65,7 +65,7 @@ Our grid will be a simple HTML page - a simplified version of the one you are lo
   </article>
   <aside>
   <h2>note:</h2>
-  <p>we can add side-notes here<p>
+  <p>we can add side-notes here</p>
   </aside>
   </div>
 
@@ -77,36 +77,58 @@ Our grid will be a simple HTML page - a simplified version of the one you are lo
   </body>
   </html>
 
-As always we want to start our CSS with a reset. In this case we can use `Eric Meyer's <http://www.meyerweb.com/>`_ `reset.css <http://meyerweb.com/eric/tools/css/reset/index.html>`_, and add some simple updates to cover our HTML5 elements. The most basic change for HTML5 is to add a correction for all new block-level elements, though you can grab more from the `HTML5 Doctor <http://html5doctor.com/html-5-reset-stylesheet/>`_::
+Now, if we are going to turn that HTML into a strong grid, we’ll have to do some planning and a bit of math before we write our CSS. While Susy will write most of this CSS for us, it is important to start with an understanding of what Susy is doing and why. If you already know, feel free to skip ahead.
 
-  article, aside, canvas, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary {
-    margin: 0
-    padding: 0
-    border: 0
-    outline: 0
-    display: block;
+To show you how simple this will become, our final code will look like this::
+
+  // Imports --------------------------------------------------------------*/
+
+  @import "base";
+
+  /* Layout --------------------------------------------------------------*/
+
+  #page {
+    @include container;
+    @include show-grid("grid.png");
   }
 
-Now, if we are going to turn that HTML into a strong grid, we’ll have to do some planning and a bit of math before we write our CSS. While Susy will write most of this CSS for us, it is important to start with an understanding of what Susy is doing and why. If you already know, feel free to skip ahead.
+  /* Header --------------------------------------------------------------*/
+
+  h1 {
+    @include full;
+    @include prefix(3);
+  }
+
+  /* Nav --------------------------------------------------------------*/
+
+  nav {
+    @include columns(3);
+    @include alpha;
+  }
+
+  /* Content --------------------------------------------------------------*/
+
+  div[role="main"] {
+    @include columns(9);
+    @include omega;
+    article {
+      @include columns(6,9);
+    }
+    aside {
+      @include columns(3,9);
+      @include omega(9);
+    }
+  }
+
+  /* Footer --------------------------------------------------------------*/
+
+  footer {
+    @include full;
+    @include pad(3,3);
+  }
 
 Defining the container:
 -----------------------
-
-We’ll build our grid in ‘em’ units, so that it is responsive to the user’s text size. That means our text size will be important. We want a font-size of 16px, with a `vertical-rhythm <http://24ways.org/2006/compose-to-a-vertical-rhythm>`_ of 1.5em::
-
-  /* IE6 needs a %-based declaration to remain flexible */
-  /* This is relative to the 16px default font size in most browsers */
-
-  body {
-    font-size: 100%;
-    line-height: 1.5em;
-  }
-
-  /* Other browsers get the specifics for greater precision */ 
-
-  html > body {
-    font-size: 16px;
-  }
 
 Let’s say we want a 12-column grid, where each column is 4em wide and there are 1em gutters between columns. Let’s also add 1em side-gutters to each side of that for padding against the edges of the browser window::
 
@@ -126,20 +148,10 @@ But let’s make our grid responsive to small browser sizes as well, so we never
   }
 
 We’ll also want to center it in the document and factor for float clearing, IE hasLayout, and other possible issues, expanding our simple CSS out to::
-
-  body {
-    font-size: 100%;
-    line-height: 1.5em;
-  }
-
-  html > body {
-    font-size: 16px;
-  }
   
   #page { 
     *zoom: 1;                   /* hasLayout */
-    margin-left: auto;          /* centering */
-    margin-right: auto;         /* centering */
+    margin: auto;               /* centering */
     width: 61em;                /* grid container size */
     max-width: 100%;            /* responsive layout */
   }
@@ -163,12 +175,6 @@ Now we can apply it to our page, offset by the amount of our side-gutters, and r
     background-image: url('../images/grid.png');
     background-repeat: repeat;
     background-position: 1em 0;  
-  }
-  
-We can also add some styling that will help us see our grid elements stack up::
-
-  #page * {
-    background-color: rgba(0,0,0,.125);
   }
   
 Laying out our elements:
@@ -203,38 +209,6 @@ And so::
     margin-right: 1.639%;       /* right side gutter */
     margin-left: 1.639%;        /* left side gutter */
     padding-left: 24.59%;       /* 3-column 'prefix' */
-  }
-
-While we're here, let's change the font-size to something a bit larger (32px) and push the entire header down. We'll do all that in relation to our vertical-rhythm (or 'baseline grid') of 1.5em (or 24px). Again, we use our simple formula of 'target / context = multiplier'::
-
-  32px [target size] / 16px [current size] = 2 [em]
-
-To figure our line-height we can determine how many line-units 32px will take, rounding up so that we always stay aligned to our grid. You can read more on this method in `Richard Rutter's article on 24ways <http://24ways.org/2006/compose-to-a-vertical-rhythm>`_::
-  
-  32px [target] / 24px [baseline] = 1.333 = 2 [lines]
-
-And we create those two 24px-tall lines as a line-height relative to the font-size::
-
-  2*24px [baseline] / 32px [font-size] = 1.5 [em, line-height]
-
-Now we want to add a leading of six lines to push it down the page, as well as a trailer of one line to give it space below::
-
-  6*24px [baseline] / 32px [font-size] = 4.5 [em, line-height]
-  1*24px [baseline] / 32px [font-size] = .75 [em, line-height]
-  
-And so, combining this with our horizontal grid::
-
-  h1 { 
-    /* horizontal grid ------------------------------------------------- */
-    margin-right: 1.639%;       /* right side gutter */
-    margin-left: 1.639%;        /* left side gutter */
-    padding-left: 24.59%;       /* 3-column 'prefix' */  
-    
-    /* baseline grid ---------------------------------------------------- */
-    font-size: 2em;             /* font-size 32px (from 16px) */
-    line-height: 1.5em;         /* line-height of 2 lines */
-    margin-top: 4.5em;          /* leader of 6 lines */
-    margin-bottom: .75em;       /* trailer of 1 line */
   }
 
 Spiffy. On to the navigation, then?::
@@ -273,7 +247,7 @@ Now to align our main content::
   </article>
   <aside>
   <h2>note:</h2>
-  <p>we can add side-notes here<p>
+  <p>we can add side-notes here</p>
   </aside>
   </div>
 
@@ -327,83 +301,11 @@ All we have left is the footer, which is back in the 61em context and will be tr
 
 Done! Here's your final CSS::
 
-  /* Eric Meyer Reset ----------------------------------------------------------------*/
-  html, body, div, span, applet, object, iframe,
-  h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-  a, abbr, acronym, address, big, cite, code,
-  del, dfn, em, font, img, ins, kbd, q, s, samp,
-  small, strike, strong, sub, sup, tt, var,
-  dl, dt, dd, ol, ul, li,
-  fieldset, form, label, legend,
-  table, caption, tbody, tfoot, thead, tr, th, td {
-    margin: 0;
-    padding: 0;
-    border: 0;
-    outline: 0;
-    font-weight: inherit;
-    font-style: inherit;
-    font-size: 100%;
-    font-family: inherit;
-    vertical-align: baseline;
-  }
-
-  body {
-    line-height: 1;
-    color: black;
-    background: white;
-  }
-
-  ol, ul {
-    list-style: none;
-  }
-
-  table {
-    border-collapse: separate;
-    border-spacing: 0;
-    vertical-align: middle;
-  }
-
-  caption, th, td {
-    text-align: left;
-    font-weight: normal;
-    vertical-align: middle;
-  }
-
-  q, blockquote {
-    quotes: "" "";
-  }
-  q:before, q:after, blockquote:before, blockquote:after {
-    content: "";
-  }
-
-  a img {
-    border: none;
-  }
-
-  /* HTML5 Reset --------------------------------------------------------------*/
-  article, aside, canvas, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary {
-    margin: 0
-    padding: 0
-    border: 0
-    outline: 0
-    display: block;
-  }
-
   /* Susy --------------------------------------------------------------*/
-
-  body {
-    font-size: 100%;
-    line-height: 1.5em;
-  }
-
-  html > body {
-    font-size: 16px;
-  }
 
   #page { 
     *zoom: 1;                   /* hasLayout */
-    margin-left: auto;          /* centering */
-    margin-right: auto;         /* centering */
+    margin: auto;               /* centering */
     width: 61em;                /* grid container size */
     max-width: 100%;            /* responsive layout */
     background-image: url('../images/grid.png');
@@ -420,26 +322,15 @@ Done! Here's your final CSS::
     visibility: hidden; 
   }
 
-  #page * {
-    background-color: rgba(0,0,0,.125);
-  }
-
-  /* Header --------------------------------------------------------------*/
+  /* Header -----------------------------------------*/
 
   h1 { 
-    /* horizontal grid ------------------------------------------------- */
     margin-right: 1.639%;       /* right side gutter */
     margin-left: 1.639%;        /* left side gutter */
     padding-left: 24.59%;       /* 3-column 'prefix' */  
-
-    /* baseline grid ---------------------------------------------------- */
-    font-size: 2em;             /* font-size 32px (from 16px) */
-    line-height: 1.5em;         /* line-height of 2 lines */
-    margin-top: 4.5em;          /* leader of 6 lines */
-    margin-bottom: .75em;       /* trailer of 1 line */
   }
 
-  /* Nav --------------------------------------------------------------*/
+  /* Nav ---------------------------------------------*/
 
   nav {
     display: inline;            /* fix an IE float bug */
@@ -450,7 +341,7 @@ Done! Here's your final CSS::
     text-align: right;          /* right-align our text */
   }
 
-  /* Content --------------------------------------------------------------*/
+  /* Content ------------------------------------------*/
 
   div[role="main"] {
     display: inline;            /* IE fix */
@@ -475,7 +366,7 @@ Done! Here's your final CSS::
     #margin-left: -1em;         /* hack for IE6-7 sub-pixel rounding */
   }
 
-  /* Footer --------------------------------------------------------------*/
+  /* Footer -------------------------------------------*/
 
   footer { 
     clear: both;                /* footer clears all previous floats */
@@ -499,11 +390,6 @@ Defining the grid:
 
 We have to start by telling Susy about the grid that we want to build. Susy starts us out with a set of variables to do that. You can find them in the ``base`` partial (file beginning with ``_``) in your susy project sass directory::
 
-  // Font Sizes --------------------------------------------------------------
-
-  $base-font-size: 16px
-  $base-line-height: 24px
-
   // Grid --------------------------------------------------------------
 
   $total-cols: 12
@@ -513,9 +399,7 @@ We have to start by telling Susy about the grid that we want to build. Susy star
 
 ``$total-cols`` represents the number of columns in our grid, ``$col-width`` is the width of each column, ``$gutter-width`` is the width of space between columns, and ``$side-gutter-width`` is the space on either side of the page.
 
-These variables can and should be edited to fit any grid you would like to build. Font sizes should be set in pixels here, and Susy will make sure they become flexible in the CSS. For a fixed grid you can simply change your grid units to px. For a fluid grid you can change them to percentages, assuming they all add up to 100%. In order to do that I recommend setting the first three variables as percentages, and the last using this function::
-
-  $side-gutter-width: 100% - ($total-cols*$col-width + ($total-cols-1)*$gutter-width)/2
+These variables can and should be edited to fit any grid you would like to build. Font sizes should be set in pixels here, and Susy will make sure they become flexible in the CSS. For a fixed grid you can simply change your grid units to px. For a fluid grid you can change them to percentages, assuming they all add up to 100% or less.
 
 But we won't do that now. For now we want an elastic grid, and the default one is exactly to our specifications. That's lucky. Coincidence or fate? We'll never know.
 
@@ -525,11 +409,9 @@ Now we just need to build that. If you open your ``screen`` sass file you will s
 
   // Imports --------------------------------------------------------------
 
-  @import "defaults";
+  @import "base";
 
   /* Layout -------------------------------------------------------------- */
-
-  @include susy;
 
   // change '.container' to match your HTML container element
   // or @extend it to apply multiple containers on your site.
@@ -544,15 +426,9 @@ Now we just need to build that. If you open your ``screen`` sass file you will s
 
   /* Styles -------------------------------------------------------------- */
 
-We've already done as instructed and linked to screen.css in our HTML. Good hustle there. The import of the ``defaults`` partial gives us some basic typography defaults (that you can and should go change for each design). It also pulls in our ``base`` partial and applies our reset.
+We've already done as instructed and linked to screen.css in our HTML. Good hustle there.
 
-Then we have the inclusion of the ``susy`` mixin, which applies our font-sizing and baseline-grid. And finally the ``.container`` element has the ``container`` mixin included, which handles sizing, centering, a clear-fix and has-layout. It also has the ``show-grid`` mixin set up to show us our grid. All you need to change to match your own markup is the ``.container`` selector, and you are ready to go with a Susy grid already in place. Since our demo uses ``#page`` as the container, we will make that one simple change.
-
-If you want the box-backgrounds to show us how things are lining up, you can simply add that code again::
-
-  #page * {
-    background-color: rgba(0,0,0,.125);
-  }
+The ``.container`` element has the ``container`` mixin included, which handles sizing, centering, a clear-fix and has-layout. It also has the ``show-grid`` mixin set up to show us our grid. All you need to change to match your own markup is the ``.container`` selector, and you are ready to go with a Susy grid already in place. Since our demo uses ``#page`` as the container, we will make that one simple change.
 
 Laying out our elements:
 ------------------------
@@ -577,38 +453,16 @@ However, with Susy, we **never** pass the context when it is "root". Instead::
     @include prefix(3);
   }
 
-And that takes care of our horizontal positioning. Now let's look at the vertical: getting a font-size of 32px, then adding a leader of 6 lines and a trailer of 1 line. There are mixins for all of that too::
-
-  adjust-font-size-to(size, [lines, from-size])
-  leader(lines, [font-size])
-  trailer(lines, [font-size])
-
-When adjusting the font size, Susy will always default to the smallest needed line-height and the default-font-size for the size we are adjusting from. The leader and trailer, however, are also assuming our base-font-size, which is no longer accurate. And so we'll apply them thus::
-
-  h1 {
-    @include full;
-    @include prefix(3);
-    @include adjust-font-size-to(32px);
-    @include leader(6,32px);
-    @include trailer(1,32px);
-  }
-
 Looks good. On the navigation: 3 columns floated left at the root context. We have a few more mixins we can use::
 
   columns(span, [context])
   alpha
 
-The ``alpha`` mixin is only needed at the root context on the left-most ``columns`` element of any row. This adds on the necessary side-gutter. It doesn't take any arguments, because it is only needed in this one specific situation and always has the same effect.
-
-We will also need to override our default list style, which is common. Compass has a great mixin for that, so let's put it all together and align our text to the right while we're at it::
+The ``alpha`` mixin is only needed at the root context on the left-most ``columns`` element of any row. This adds on the necessary side-gutter. It doesn't take any arguments, because it is only needed in this one specific situation and always has the same effect::
 
   nav {
     @include columns(3);
     @include alpha;
-    text-align: right;
-    ul {
-      @include no-bullets;
-    }
   }
 
 All set there, let's take care of the content: 9 columns floated right and then subdivided into a main 6-column article and a 3-columns aside. The only change here is that we'll use ``omega`` instead of ``alpha``::
@@ -645,22 +499,17 @@ The footer is back in the root context, at the full width but padded in from bot
     @include pad(3,3);
   }
 
-And we're done. No math. Just columns and contexts, alphas and omegas. That's it. Susy does the rest. Here's our full code, about 1/3rd the length of our CSS and much more clear. The only difference is the inclusion of our typography defaults::
+And we're done. No math. Just columns and contexts, alphas and omegas. That's it. Susy does the rest. Here's our full code, about 1/3rd the length of our CSS and much more clear::
 
   // Imports --------------------------------------------------------------*/
 
-  @import "defaults";
+  @import "base";
 
   /* Layout --------------------------------------------------------------*/
-
-  @include susy;
 
   #page {
     @include container;
     @include show-grid("grid.png");
-    * {
-      background-color: rgba(0,0,0,.125);
-    }
   }
 
   /* Header --------------------------------------------------------------*/
@@ -668,9 +517,6 @@ And we're done. No math. Just columns and contexts, alphas and omegas. That's it
   h1 {
     @include full;
     @include prefix(3);
-    @include adjust-font-size-to(32px);
-    @include leader(6,32px);
-    @include trailer(1,32px);
   }
 
   /* Nav --------------------------------------------------------------*/
@@ -678,10 +524,6 @@ And we're done. No math. Just columns and contexts, alphas and omegas. That's it
   nav {
     @include columns(3);
     @include alpha;
-    text-align: right;
-    ul {
-      @include no-bullets;
-    }
   }
 
   /* Content --------------------------------------------------------------*/

@@ -1,6 +1,5 @@
 require 'fileutils'
 require 'sass'
-require 'lib/susy/sass_extensions'
 
 begin
   require 'echoe'
@@ -11,7 +10,7 @@ begin
     p.url = "http://susy.oddbird.net/"
     p.author = "Eric Meyer"
     p.email = "eric@oddbird.net"
-    p.dependencies = ["compass >=0.10.0"]
+    p.dependencies = ["compass >=0.11.beta.2"]
     p.has_rdoc = false
   end
  

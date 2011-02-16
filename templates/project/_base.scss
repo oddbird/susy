@@ -4,11 +4,6 @@
 //  Site: susy.oddbird.net
 //**
 
-// Font Sizes --------------------------------------------------------------
-
-$base-font-size: 16px;
-$base-line-height: 24px;
-
 // Grid --------------------------------------------------------------
 
 $total-cols: 12;
@@ -16,28 +11,5 @@ $col-width: 4em;
 $gutter-width: 1em;
 $side-gutter-width: $gutter-width;
 
-// Don't move this @import above the GRID and FONT-SIZE variables.
+// Don't move this @import above the GRID variables.
 @import "susy/susy";
-
-// Colors --------------------------------------------------------------
-
-$base: #4c4c4c;
-$alt: #005498;
-
-// Fonts --------------------------------------------------------------
-
-@mixin sans-family {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-}
-
-@mixin serif-family {
-  font-family: Cambria, Georgia, serif;
-}
-
-@mixin monospace-family {
-  font-family: "Andale Mono WT", "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", Monaco, Courier, monospace, sans-serif;
-}
-
-// OTHER MIXINS --------------------------------------------------------------
-// Mixins set here will be available in defaults, screen, print and IE
-// Or anywhere you import either base.sass or defaults.sass

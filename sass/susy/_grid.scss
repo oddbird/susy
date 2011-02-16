@@ -98,12 +98,13 @@ $omega-float        : opposite-position($from-direction)    !default;
   $context  : false, 
   $from     : $from-direction
 ) {
+  $to   : opposite-position($from);
   // the column is floated left
   @include float($from);
   // the width of the column is set as a percentage of the context
   width: columns($n, $context);
   // the right gutter is added as a percentage of the context
-  margin-right: gutter($context); 
+  margin-#{$to}: gutter($context); 
 }
 
 // Set +un-column to reset a column element to default block behavior
@@ -124,9 +125,10 @@ $omega-float        : opposite-position($from-direction)    !default;
 ) {
   clear: both;
   @if not $nested {
-    margin:;
+    margin: {
       left: side-gutter();
-      right: side-gutter(); 
+      right: side-gutter();      
+    }
   } 
 }
 
@@ -148,7 +150,7 @@ $omega-float        : opposite-position($from-direction)    !default;
   $from     : $from-direction
 ) {
   $to       : opposite-position($from);
-  padding-#{$to-dir}: columns($n, $context) + gutter($context); 
+  padding-#{$to}: columns($n, $context) + gutter($context); 
 }
 
 // Set as a shortcut for both prefix and suffix.
@@ -177,7 +179,7 @@ $omega-float        : opposite-position($from-direction)    !default;
   $from   : $from-direction
 ) {
   @if not $nested {
-    margin-#{$from-dir}: side-gutter();
+    margin-#{$from}: side-gutter();
   } @else {
     @warn "The alpha mixin is not needed in a nested context";
   }
@@ -199,6 +201,6 @@ $omega-float        : opposite-position($from-direction)    !default;
     $sg: side-gutter(); 
   }
   @include float($omega-float);
-  margin-#{$to-dir}: side-gutter(); 
-  #margin-#{$hack-dir}: - $gutter-width; 
+  margin-#{$to}: $sg; 
+  #margin-#{$hack}: - $gutter-width; 
 }

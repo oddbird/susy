@@ -64,17 +64,14 @@ Grid Basics
 ===========
 
 * Set up your default grid values (total columns, column width, gutter width,
-  side gutter width), your base font size, and important mixins in `_base.scss`.
+  side gutter width) and important mixins in `_base.scss`.
   
     Example:
   
-        $base-font-size: 16px;
-        $base-line-height: 24px;
-
-        $total-cols: 12; /* a 12-column grid */
-        $col-width: 4em; /* each column is 4em (64px) wide */
-        $gutter-width: 1em; /* 1em (16px) gutters between columns */
-        $side-gutter-width: $gutter-width; /* 1em (16px) padding at the edges of the page as well */
+        $total-cols: 12;                    /* a 12-column grid */
+        $col-width: 4em;                    /* each column is 4em (64px) wide */
+        $gutter-width: 1em;                 /* 1em (16px) gutters between columns */
+        $side-gutter-width: $gutter-width;  /* 1em (16px) padding at the edges of the page as well */
 
 * Create your grid in `screen.scss`: apply the `container` mixin to the 
   element(s) that contains the page grid. This will set up your font sizes
@@ -282,3 +279,12 @@ advanced options hidden inside. Here are a few:
 
 * `side_gutter()` returns the percentage width of a side-gutter and takes no 
   arguments since it can always used at the top nesting level.
+
+Susy now also supports right-to-left and bi-directional documents. For a 
+simple toggle, set the default `$from-direction` (defaults to `left`). For 
+more specific control, you can pass an additional, localized `$from-direction` 
+artgument to any of the Susy mixins that need to know:
+
+* `columns`, `un-column`
+* `alpha`, `omega`
+* `prefix`, `suffix`, `pad`

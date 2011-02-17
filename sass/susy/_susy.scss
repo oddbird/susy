@@ -4,8 +4,3 @@
 @import "compass";
 @import "utils";
 @import "grid";
-
-// Set Susy on your BODY element to get things started.
-@mixin susy() {
-  @warn "the 'susy' base mixin is no longer needed and will be removed in the ner future.";
-}

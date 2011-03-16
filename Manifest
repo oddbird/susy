@@ -7,6 +7,7 @@ compass-susy-plugin.gemspec
 lib/susy.rb
 lib/susy/compass_plugin.rb
 sass/susy/_grid.scss
+sass/susy/_reset.scss
 sass/susy/_susy.scss
 sass/susy/_utils.scss
 templates/project/_base.scss

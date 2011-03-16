@@ -10,7 +10,7 @@ begin
     p.url = "http://susy.oddbird.net/"
     p.author = "Eric Meyer"
     p.email = "eric@oddbird.net"
-    p.dependencies = ["compass >=0.11.beta.2"]
+    p.dependencies = ["compass >=0.11.beta.3"]
     p.has_rdoc = false
   end
  

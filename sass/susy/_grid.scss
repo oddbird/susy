@@ -195,7 +195,7 @@ $omega-float        : opposite-position($from-direction)    !default;
   $from   : $from-direction
 ) {
   $to     : opposite-position($from);
-  $hack   : #margin-#{opposite-position($omega-float)};
+  $hack   : opposite-position($omega-float);
   $sg     : 0;
   @if not $nested {
     $sg: side-gutter(); 
@@ -203,6 +203,6 @@ $omega-float        : opposite-position($from-direction)    !default;
   @include float($omega-float);
   margin-#{$to}: $sg;
   @if $legacy-support-for-ie6 or $legacy-support-for-ie7 {
-    #{$hack}: - $gutter-width;
+    #margin-#{$hack}: - $gutter-width;
   }
 }

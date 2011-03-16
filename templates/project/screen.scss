@@ -2,19 +2,19 @@
 
 // Imports --------------------------------------------------------------
 
+@import "compass/reset";
 @import "base";
 
 /* Layout -------------------------------------------------------------- */
+
+// establish your vertical baseline grid.
+// see the compass typography module for details on vertical rhythm.
+@include establish-baseline;
 
 // change '.container' to match your HTML container element
 // or @extend it to apply multiple containers on your site.
 .container {
   @include container;
-  @include show-grid("grid.png"); }
-
-// show-grid loads a 64+16x24 grid image by default
-// For other grid settings, run `compass grid-img C+Gxh
-// Where C is the column width, G is the gutter width,
-// and h is the (optional) line-height.
+  @include show-grid; }
 
 /* Styles -------------------------------------------------------------- */

@@ -4,12 +4,25 @@
 //  Site: susy.oddbird.net
 //**
 
+// Settings --------------------------------------------------------------
+// Susy & Compass use HTML hacks to support IE 6 and 7. You can turn that off:
+// $legacy-support-for-ie6 : false;
+// $legacy-support-for-ie7 : false;
+
+// Font Sizes --------------------------------------------------------------
+
+$base-font-size     : 16px;
+$base-line-height   : 24px;
+
 // Grid --------------------------------------------------------------
 
-$total-cols: 12;
-$col-width: 4em;
-$gutter-width: 1em;
-$side-gutter-width: $gutter-width;
+$total-cols         : 12;
+$col-width          : 4em;
+$gutter-width       : 1em;
+$side-gutter-width  : $gutter-width;
 
 // Don't move this @import above the GRID variables.
 @import "susy/susy";
+
+// Mixins --------------------------------------------------------------
+// Include additional default settings, variables and mixins here.

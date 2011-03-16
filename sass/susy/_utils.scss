@@ -1,8 +1,7 @@
 //** Susy Utilities **//
 
-// Apply to you container element(s) to show a grid image.
-//  - You need to supply the image. Susy can't do everything.
-@mixin show-grid($src) {
+// Apply to your container element(s) to show a grid image.
+@mixin show-grid($src:"grid.png") {
   background: {
     image: image-url($src);
     repeat: repeat;

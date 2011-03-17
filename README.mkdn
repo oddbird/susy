@@ -203,8 +203,6 @@ Grid Basics
     on the left.
 
 That's it for the basics! Here's a sample Susy grid layout:
-
-    @include susy;
      
     #page {
       @include container; 

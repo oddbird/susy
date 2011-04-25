@@ -3,20 +3,16 @@ Susy - Compass Plugin
 
 Susy is a semantic CSS grid system for designers.
 
-Build beautiful grids of any type, width and breakdown, without touching your
-markup or changing the way you work. Built entirely native to
-[Compass](http://compass-style.org/), Susy is an expert at fluid grids in an
-elastic (or fluid, or fixed) shell that stay where you want without ever
-activating that bloody side-scroll bar. Susy sets your width on the outer
-element (`container`), adds a `max-width` of `100%` and builds the rest of
-your grid in percentages. The philosophy and technique are based on [Natalie
-Downe](http://natbat.net/)'s "[CSS
-Systems](http://natbat.net/2008/Sep/28/css-systems/)" - which introduces
-difficult math in the service of beautiful structure. With the power of
-Compass/Sass, Susy will do that math and let you focus on your designs.
+Use Susy anywhere. Static sites, Rails sites, Django sites, PHP sites,
+etc. You name it. Susy just helps you with the grid - whether you want it
+fixed, fluid, elastic or Susy's specialty: fluid on the inside and elastic on
+the outside. And Susy will do it all without ever touching your markup.
 
-Using simple mixins, columns can be created, suffixed, prefixed, and nested -
-always in flexible percentages and without touching your markup.
+Built entirely native to [Compass](http://compass-style.org/), Susy is based
+on the philosophy and techniques of [Natalie Downe](http://natbat.net/)'s
+"[CSS Systems](http://natbat.net/2008/Sep/28/css-systems/)" - which introduces
+difficult math in return for beautiful structure. Now Susy will do that math
+for you and let you focus on your designs.
 
 Install
 =======
@@ -27,8 +23,6 @@ Create a Susy-based Compass Project
 ===================================
 
     compass create <project name> -r susy -u susy
-
-Then edit your `_base.scss` and `screen.scss` files accordingly.
 
 Philosophy and Goals
 ====================
@@ -69,9 +63,9 @@ Grid Basics
     Example:
 
         $total-cols: 12;                    /* a 12-column grid */
-        $col-width: 4em;                    /* each column is 4em (64px) wide */
-        $gutter-width: 1em;                 /* 1em (16px) gutters between columns */
-        $side-gutter-width: $gutter-width;  /* 1em (16px) padding at the edges of the page as well */
+        $col-width: 4em;                    /* each column is 4em wide */
+        $gutter-width: 1em;                 /* 1em gutters between columns */
+        $side-gutter-width: $gutter-width;  /* 1em padding at the edges of the page as well */
 
 * Create your grid in `screen.scss`: apply the `container` mixin to the
   element(s) that contains the page grid. This will set up your font sizes
@@ -239,14 +233,12 @@ Tutorial
 
 Check out the tutorial at [susy.oddbird.net/tutorial/](http://susy.oddbird.net/tutorial/) for more details.
 
-Extra Utility Mixins
-=====================
+Show your grids
+===============
 
-Extra utilities are included in Susy's `_utils.scss`:
-
-* `show-grid($src)` - Repeat the specified grid image on an element.
-  Good for testing your baseline and grid.
-
+* `@include susy-grid-background` - For testing it can be helpful to see your
+grid. Using CSS3 gradients, Susy will show you that grid - and it will flex
+right along with your site.
 
 Advanced Options
 ================
@@ -283,6 +275,6 @@ simple toggle, set the default `$from-direction` (defaults to `left`). For
 more specific control, you can pass an additional, localized `$from-direction`
 argument to any of the Susy mixins that need to know:
 
-* `columns`, `un-column`
+* `columns`, `reset-column`
 * `alpha`, `omega`
 * `prefix`, `suffix`, `pad`

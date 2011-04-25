@@ -89,7 +89,7 @@ To show you how simple this will become, our final code will look like this::
 
   #page {
     @include container;
-    @include show-grid("grid.png");
+    @include susy-grid-background;
   }
 
   /* Header --------------------------------------------------------------*/
@@ -136,47 +136,35 @@ Let’s say we want a 12-column grid, where each column is 4em wide and there ar
 
 So our container needs a width of 61em::
 
-  #page { 
-    width: 61em; 
+  #page {
+    width: 61em;
   }
 
 But let’s make our grid responsive to small browser sizes as well, so we never activate the horizontal scroll bar::
 
-  #page { 
-    width: 61em; 
-    max-width: 100%; 
+  #page {
+    width: 61em;
+    max-width: 100%;
   }
 
 We’ll also want to center it in the document and factor for float clearing, IE hasLayout, and other possible issues, expanding our simple CSS out to::
-  
-  #page { 
+
+  #page {
     *zoom: 1;                   /* hasLayout */
     margin: auto;               /* centering */
     width: 61em;                /* grid container size */
     max-width: 100%;            /* responsive layout */
   }
-  
+
   #page:after {                 /* float clearing */
-    content: "\0020"; 
-    display: block; 
-    height: 0; 
-    clear: both; 
-    overflow: hidden; 
-    visibility: hidden; 
+    content: "\0020";
+    display: block;
+    height: 0;
+    clear: both;
+    overflow: hidden;
+    visibility: hidden;
   }
-  
-We'll add a grid image to the background so that we can see our grid as we align elements to it. The default grid image file in Susy already has a 4em column, 1em gutter, and 1.5em height, making it 64+16x24 or 80px by 24px. Compass has a simple command line tool for `creating your own grid images <http://compass-style.org/docs/tutorials/command-line/>`_::
 
-  compass grid-img 64+16x24
-
-Now we can apply it to our page, offset by the amount of our side-gutters, and repeating::
-
-  #page {
-    background-image: url('../images/grid.png');
-    background-repeat: repeat;
-    background-position: 1em 0;  
-  }
-  
 Laying out our elements:
 ------------------------
 
@@ -198,7 +186,7 @@ The only problem with this is the math. It can get painful. We won't need to wor
 The math is similar for pushing the text in from the left by three columns. We're spanning 3 columns and 3 gutters, still in a context of 61ems::
 
   (3*4em [columns] + 3*1em [gutters]) / 61em [context] = 24.59%
-  
+
 All this math is based on the same formula::
 
   target / context = multiplier
@@ -237,7 +225,7 @@ Both our left side-gutter and our right inside gutter are 1em at this point, whi
     margin-left: 1.639%;        /* left side gutter */
     text-align: right;          /* right-align our text */
   }
-  
+
 Now to align our main content::
 
   <div role="main">
@@ -271,7 +259,7 @@ Inside that div our math changes a bit. We are no longer in a context of 61em, w
   (6*4em + 5*1em) / (9*4em + 8*1em) = 65.909%
   (3*4em + 2*1em) / (9*4em + 8*1em) = 31.818%
   1em / (9*4em + 8*1em) = 2.273%
-  
+
 And the CSS::
 
   article {
@@ -291,43 +279,40 @@ And the CSS::
 
 All we have left is the footer, which is back in the 61em context and will be treated much like the header. The only difference is that we want to push it in 3 columns from both sides, keep the font size, and push it around less vertically. We also want it to clear all our floats::
 
-  footer { 
+  footer {
     clear: both;                /* footer clears all previous floats */
     margin-right: 1.639%;       /* right side gutter */
     margin-left: 1.639%;        /* left side gutter */
-    padding-left: 24.59%;       /* 3-column 'prefix' */  
-    padding-right: 24.59%;      /* 3-column 'suffix' */  
+    padding-left: 24.59%;       /* 3-column 'prefix' */
+    padding-right: 24.59%;      /* 3-column 'suffix' */
   }
 
 Done! Here's your final CSS::
 
   /* Susy --------------------------------------------------------------*/
 
-  #page { 
+  #page {
     *zoom: 1;                   /* hasLayout */
     margin: auto;               /* centering */
     width: 61em;                /* grid container size */
     max-width: 100%;            /* responsive layout */
-    background-image: url('../images/grid.png');
-    background-repeat: repeat;
-    background-position: 1em 0;
   }
-  
+
   #page:after {                 /* float clearing */
-    content: "\0020"; 
-    display: block; 
-    height: 0; 
-    clear: both; 
-    overflow: hidden; 
-    visibility: hidden; 
+    content: "\0020";
+    display: block;
+    height: 0;
+    clear: both;
+    overflow: hidden;
+    visibility: hidden;
   }
 
   /* Header -----------------------------------------*/
 
-  h1 { 
+  h1 {
     margin-right: 1.639%;       /* right side gutter */
     margin-left: 1.639%;        /* left side gutter */
-    padding-left: 24.59%;       /* 3-column 'prefix' */  
+    padding-left: 24.59%;       /* 3-column 'prefix' */
   }
 
   /* Nav ---------------------------------------------*/
@@ -368,12 +353,12 @@ Done! Here's your final CSS::
 
   /* Footer -------------------------------------------*/
 
-  footer { 
+  footer {
     clear: both;                /* footer clears all previous floats */
     margin-right: 1.639%;       /* right side gutter */
     margin-left: 1.639%;        /* left side gutter */
-    padding-left: 24.59%;       /* 3-column 'prefix' */  
-    padding-right: 24.59%;      /* 3-column 'suffix' */  
+    padding-left: 24.59%;       /* 3-column 'prefix' */
+    padding-right: 24.59%;      /* 3-column 'suffix' */
   }
 
 Now imagine building a complex grid with all that math and repeated code. Many of you may not even need to imagine: you've done it on a daily basis. Now let's look at how Susy can simplify all of that for you.
@@ -405,41 +390,30 @@ But we won't do that now. For now we want an elastic grid, and the default one i
 
 Now we just need to build that. If you open your ``screen`` sass file you will see::
 
-  //** SCREEN STYLES **//
-
   // Imports --------------------------------------------------------------
 
   @import "base";
 
   /* Layout -------------------------------------------------------------- */
 
-  // change '.container' to match your HTML container element
-  // or @extend it to apply multiple containers on your site.
   .container {
     @include container;
-    @include show-grid("grid.png"); }
-
-  // show-grid loads a 64+16x24 grid image by default
-  // For other grid settings, run `compass grid-img 30+10x20`
-  // Where 30 is the column width, 10 is the gutter width,
-  // and 20 is the (optional) line-height.
-
-  /* Styles -------------------------------------------------------------- */
+    @include susy-grid-background; }
 
 We've already done as instructed and linked to screen.css in our HTML. Good hustle there.
 
-The ``.container`` element has the ``container`` mixin included, which handles sizing, centering, a clear-fix and has-layout. It also has the ``show-grid`` mixin set up to show us our grid. All you need to change to match your own markup is the ``.container`` selector, and you are ready to go with a Susy grid already in place. Since our demo uses ``#page`` as the container, we will make that one simple change.
+The ``.container`` element has the ``container`` mixin included, which handles sizing, centering, a clear-fix and has-layout. It also has the ``susy-grid-background`` mixin set up to show us our grid. All you need to change to match your own markup is the ``.container`` selector, and you are ready to go with a Susy grid already in place. Since our demo uses ``#page`` as the container, we will make that one simple change.
 
 Laying out our elements:
 ------------------------
 
 Let's take it from the top again, starting with that ``h1`` banner. We want it to span the full width of the grid container, minus the side-gutters, and then we want to pad the left by 3 columns, and give some vertical space. No problem.
 
-There is one more term we need to establish. In order to properly apply or remove gutters and side-gutters at the right moments, Susy needs to know whether a given element lives in a "root" or "nested" context. 
+There is one more term we need to establish. In order to properly apply or remove gutters and side-gutters at the right moments, Susy needs to know whether a given element lives in a "root" or "nested" context.
 
 In Susy, the context is the default full-span of the block, or the space that is available for it to expand into naturally. That is normally the width of a near ancestor, and when using Susy properly, the nearest grid-assigned ancestor. If your context is not aligned to the grid, Susy can't do much to help you. Because of that, Susy context is given in terms of columns-spanned.
 
-Using that definition, a "root context", in Susy terms, refers to any element whose nearest grid ancestor is the ``container`` element. Our ``h1``, for example, is in a root context. Keep that in mind. 
+Using that definition, a "root context", in Susy terms, refers to any element whose nearest grid ancestor is the ``container`` element. Our ``h1``, for example, is in a root context. Keep that in mind.
 
 Susy has a simple mixin for handling elements that span their full context, and another to add a padding prefix spanning any number of columns::
 
@@ -490,7 +464,7 @@ The footer is back in the root context, at the full width but padded in from bot
   suffix(span, [context])
   pad(prefix, suffix, [context])
 
-``suffix`` works just like prefix did. It may be worth noting that both are subtractive when applied to a ``full`` element, because full elements have no set width applied. Where a full-width element would normally expand to all 12 columns, the added padding makes the content-box narrower rather than pushing out the borders. So 3 columns of padding leave you only with 9 columns of content. But, given the standard css box-model of padding adding to set widths, they will become additive when applied to ``columns`` elements. Assigning 3 columns to the width, and another 3 to the padding will make for a 6-column element. 
+``suffix`` works just like prefix did. It may be worth noting that both are subtractive when applied to a ``full`` element, because full elements have no set width applied. Where a full-width element would normally expand to all 12 columns, the added padding makes the content-box narrower rather than pushing out the borders. So 3 columns of padding leave you only with 9 columns of content. But, given the standard css box-model of padding adding to set widths, they will become additive when applied to ``columns`` elements. Assigning 3 columns to the width, and another 3 to the padding will make for a 6-column element.
 
 ``pad`` is simply a shortcut for adding both ``prefix`` and ``suffix`` at the same time. Let's put it together::
 
@@ -509,7 +483,7 @@ And we're done. No math. Just columns and contexts, alphas and omegas. That's it
 
   #page {
     @include container;
-    @include show-grid("grid.png");
+    @include susy-grid-background;
   }
 
   /* Header --------------------------------------------------------------*/
@@ -550,7 +524,7 @@ And we're done. No math. Just columns and contexts, alphas and omegas. That's it
 Moving Forward
 ==============
 
-Susy is full of more flexibility and features under the surface. You can get straight to the numbers without any properties attached using the ``columns()`` and ``gutter()`` and ``side-gutter()`` functions to do your own math. You can change a setting to remove all IE hackery. You can push your page left or right instead of center. You can manipulate your vertical rhythm extensively without breaking it. And so on and on. 
+Susy is full of more flexibility and features under the surface. You can get straight to the numbers without any properties attached using the ``columns()`` and ``gutter()`` and ``side-gutter()`` functions to do your own math. You can change a setting to remove all IE hackery. You can push your page left or right instead of center. You can manipulate your vertical rhythm extensively without breaking it. And so on and on.
 
 Susy is simply a set of functions and mixins that do math for you. That is all. There is nothing all-in-one or magical about these things, and they will break if not applied with some finesse. You won't find leakier abstractions. While we try to fill the gaps any way we can, Susy can't write your HTML and doesn't know your design. That isn't a bug, that's the way things are.
 

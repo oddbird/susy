@@ -9,8 +9,8 @@ Gem::Specification.new do |s|
   s.date = %q{2011-04-25}
   s.description = %q{Responsive web design with grids the quick and reliable way.}
   s.email = %q{eric@oddbird.net}
-  s.extra_rdoc_files = ["LICENSE.txt", "README.mkdn", "lib/susy.rb"]
-  s.files = ["LICENSE.txt", "Manifest", "README.mkdn", "Rakefile", "VERSION", "compass-susy-plugin.gemspec", "lib/susy.rb", "sass/_susy.scss", "sass/susy/_grid.scss", "templates/project/_base.scss", "templates/project/manifest.rb", "templates/project/screen.scss"]
+  s.extra_rdoc_files = ["CHANGELOG.mkdn", "LICENSE.txt", "README.mkdn", "lib/susy.rb"]
+  s.files = ["CHANGELOG.mkdn", "LICENSE.txt", "Manifest", "README.mkdn", "Rakefile", "VERSION", "compass-susy-plugin.gemspec", "lib/susy.rb", "sass/_susy.scss", "sass/susy/_grid.scss", "sass/susy/_susy.scss", "templates/project/_base.scss", "templates/project/manifest.rb", "templates/project/screen.scss"]
   s.homepage = %q{http://susy.oddbird.net/}
   s.rdoc_options = ["--line-numbers", "--inline-source", "--title", "Compass-susy-plugin", "--main", "README.mkdn"]
   s.require_paths = ["lib"]

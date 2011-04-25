@@ -1,9 +1,0 @@
-//** Susy Reset **//
-
-@warn 'The Susy reset is deprecated, as it is now identical to the core Compass 
-reset. It will be removed in the near future. Please change your import from 
-susy/reset to compass/reset.';
-
-/* Reset --------------------------------------------------------------*/
-
-@import "compass/reset";

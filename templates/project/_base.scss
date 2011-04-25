@@ -1,28 +1,12 @@
-//**
-//  Susy: Un-obtrusive grids for designers
-//  By: Eric A. Meyer and OddBird
-//  Site: susy.oddbird.net
-//**
+// Imports -------------------------------------------------------------------
 
-// Settings --------------------------------------------------------------
-// Susy & Compass use HTML hacks to support IE 6 and 7. You can turn that off:
-// $legacy-support-for-ie6 : false;
-// $legacy-support-for-ie7 : false;
+@import "susy";
 
-// Font Sizes --------------------------------------------------------------
+// Grid ----------------------------------------------------------------------
 
-$base-font-size     : 16px;
-$base-line-height   : 24px;
+$total-cols             : 12;
+$col-width              : 4em;
+$gutter-width           : 1em;
+$side-gutter-width      : $gutter-width;
 
-// Grid --------------------------------------------------------------
-
-$total-cols         : 12;
-$col-width          : 4em;
-$gutter-width       : 1em;
-$side-gutter-width  : $gutter-width;
-
-// Don't move this @import above the GRID variables.
-@import "susy/susy";
-
-// Mixins --------------------------------------------------------------
-// Include additional default settings, variables and mixins here.
+$show-grid-backgrounds  : true;

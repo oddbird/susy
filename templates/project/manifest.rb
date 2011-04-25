@@ -1,6 +1,5 @@
 stylesheet 'screen.scss', :media => "screen, projection"
 stylesheet '_base.scss'
-image 'grid.png'
 
 description "Susy: a flexible static/fluid/elastic grid system native to compass."
 

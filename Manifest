@@ -5,12 +5,8 @@ Rakefile
 VERSION
 compass-susy-plugin.gemspec
 lib/susy.rb
-lib/susy/compass_plugin.rb
+sass/_susy.scss
 sass/susy/_grid.scss
-sass/susy/_reset.scss
-sass/susy/_susy.scss
-sass/susy/_utils.scss
 templates/project/_base.scss
-templates/project/grid.png
 templates/project/manifest.rb
 templates/project/screen.scss

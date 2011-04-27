@@ -384,7 +384,7 @@ We have to start by telling Susy about the grid that we want to build. Susy star
 
 ``$total-cols`` represents the number of columns in our grid, ``$col-width`` is the width of each column, ``$gutter-width`` is the width of space between columns, and ``$side-gutter-width`` is the space on either side of the page.
 
-These variables can and should be edited to fit any grid you would like to build. Font sizes should be set in pixels here, and Susy will make sure they become flexible in the CSS. For a fixed grid you can simply change your grid units to px. For a fluid grid you can change them to percentages, assuming they all add up to 100% or less.
+These variables can and should be edited to fit any grid you would like to build. For a fixed grid you can simply change your grid units to px. For a fluid grid you can change them to percentages, assuming they all add up to 100% or less.
 
 But we won't do that now. For now we want an elastic grid, and the default one is exactly to our specifications. That's lucky. Coincidence or fate? We'll never know.
 
@@ -400,8 +400,6 @@ Now we just need to build that. If you open your ``screen`` sass file you will s
     @include container;
     @include susy-grid-background; }
 
-We've already done as instructed and linked to screen.css in our HTML. Good hustle there.
-
 The ``.container`` element has the ``container`` mixin included, which handles sizing, centering, a clear-fix and has-layout. It also has the ``susy-grid-background`` mixin set up to show us our grid. All you need to change to match your own markup is the ``.container`` selector, and you are ready to go with a Susy grid already in place. Since our demo uses ``#page`` as the container, we will make that one simple change.
 
 Laying out our elements:
@@ -411,16 +409,18 @@ Let's take it from the top again, starting with that ``h1`` banner. We want it t
 
 There is one more term we need to establish. In order to properly apply or remove gutters and side-gutters at the right moments, Susy needs to know whether a given element lives in a "root" or "nested" context.
 
-In Susy, the context is the default full-span of the block, or the space that is available for it to expand into naturally. That is normally the width of a near ancestor, and when using Susy properly, the nearest grid-assigned ancestor. If your context is not aligned to the grid, Susy can't do much to help you. Because of that, Susy context is given in terms of columns-spanned.
+In Susy, the context is the default full-span of the block, or the space that is available for it to expand into naturally. That is normally the width of the parent. Susy context is given in terms of columns-spanned. If the parent spans N columns, the context is N. If the parent spans N columns plus the side gutters, there is no context (I call this the 'root'). If the parent isn’t aligned to the grid, you’re on your own.
 
-Using that definition, a "root context", in Susy terms, refers to any element whose nearest grid ancestor is the ``container`` element. Our ``h1``, for example, is in a root context. Keep that in mind.
+If "context" isn't making sense to you, skip over to the `Context Demo <http://susy.oddbird.net/demo/context/>`_ for a more thorough explanation.
+
+Our ``h1`` is in the root context. Left to it's own devices it will span the full container including the side gutters. Keep that in mind.
 
 Susy has a simple mixin for handling elements that span their full context, and another to add a padding prefix spanning any number of columns::
 
   full([context])
   prefix(span, [context])
 
-However, with Susy, we **never** pass the context when it is "root". Instead::
+However, with Susy, we **never** pass the context when it is "root". So::
 
   h1 {
     @include full;
@@ -443,7 +443,7 @@ All set there, let's take care of the content: 9 columns floated right and then 
 
   omega([context])
 
-The difference is that we will need omega in any context, so it gets that argument passed to it (when the context is other-than-root). That is because Susy applies internal gutters to the right margins of their preceeding columns. We only need ``alpha`` to take care of left side-gutters at the root, but we need ``omega`` to take care of both adding the root side-gutter and removing the final gutters later on. You can see that below. Let's do this thing::
+The difference is that we will need omega in any context, so it gets that argument passed to it (when the context is other-than-root). That is because Susy applies internal gutters to the right margins of their preceding columns. We only need ``alpha`` to take care of left side-gutters at the root, but we need ``omega`` to take care of both adding the root side-gutter and removing the final gutters later on. You can see that below. Let's do this thing::
 
   div[role="main"] {
     @include columns(9);
@@ -524,7 +524,7 @@ And we're done. No math. Just columns and contexts, alphas and omegas. That's it
 Moving Forward
 ==============
 
-Susy is full of more flexibility and features under the surface. You can get straight to the numbers without any properties attached using the ``columns()`` and ``gutter()`` and ``side-gutter()`` functions to do your own math. You can change a setting to remove all IE hackery. You can push your page left or right instead of center. You can manipulate your vertical rhythm extensively without breaking it. And so on and on.
+Susy is full of more flexibility and features under the surface. You can get straight to the numbers without any properties attached using the ``columns()`` and ``gutter()`` and ``side-gutter()`` functions to do your own math. You can change a setting to remove all IE hackery. And so on and on.
 
 Susy is simply a set of functions and mixins that do math for you. That is all. There is nothing all-in-one or magical about these things, and they will break if not applied with some finesse. You won't find leakier abstractions. While we try to fill the gaps any way we can, Susy can't write your HTML and doesn't know your design. That isn't a bug, that's the way things are.
 

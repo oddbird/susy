@@ -36,7 +36,7 @@ Deprecated:
 
 Removed:
 
-* The `vertical-rhythm` module has moved into compass core. The API remains the same, but if you were importing it directly, you will have to update that import.
+* The `vertical-rhythm` module has moved into compass core. The API remains the same, but if you were importing it directly, you will have to update that import. (`$px2em` was removed as part of this, but didn't make it into core).
 * The `defaults` template has been removed as 'out-of-scope'. This will not effect upgrading in any way, but new projects will not get a template with default styles.
 
 New Features:

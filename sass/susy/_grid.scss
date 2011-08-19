@@ -7,6 +7,7 @@
 // Variables -----------------------------------------------------------------
 
 // Your basic settings for the grid.
+$base-font-size     : 16px          !default;
 $total-cols         : 12            !default;
 $col-width          : 4em           !default;
 $gutter-width       : 1em           !default;
@@ -18,19 +19,31 @@ $from-direction     : left          !default;
 // The direction that +omega elements are floated by deafult.
 $omega-float        : opposite-position($from-direction)    !default;
 
+// set the default border style for rhythm borders (borrowed from compass/typography/vertical_rhythm)
+$default-rhythm-border-style: solid !default;
+
+// Set to false if you want to use absolute pixes in sizing your typography.
+$relative-font-sizing: true !default;
+
+// $base-font-size but in your output unit of choice.
+// Defaults to 1em when `$relative-font-sizing`
+$font-unit: if($relative-font-sizing, 1em, $base-font-size) !default;
+
 // Functions -----------------------------------------------------------------
 
 // Return the width of 'n' columns plus 'n - 1' gutters
 // plus page padding in non-nested contexts
+// optionally supply the combined width of the left and right borders
 @function columns-width(
-  $n: false
+  $n: false,
+  $borders-width: 0em
 ) {
   $sg: 0;
   @if not $n {
     $n: $total-cols;
     $sg: $side-gutter-width;
   }
-  $columns-width: ($n*$col-width) + (ceil($n - 1)*$gutter-width) + ($sg*2);
+  $columns-width: ($n*$col-width) + (ceil($n - 1)*$gutter-width) + ($sg*2) - $borders-width;
   @return $columns-width;
 }
 
@@ -44,11 +57,13 @@ $omega-float        : opposite-position($from-direction)    !default;
 }
 
 // Return the percentage width of 'n' columns in a context of 'c'
+// optionally supply the combined width of the left and right borders
 @function columns(
   $n,
-  $c: false
+  $c: false,
+  $borders-width: 0em
 ) {
-  $columns: percent-width(columns-width($n), columns-width($c));
+  $columns: percent-width(columns-width($n, $borders-width), columns-width($c));
   @return $columns;
 }
 
@@ -69,10 +84,12 @@ $omega-float        : opposite-position($from-direction)    !default;
 }
 
 // Return the percentage width of a single column in a context of 'c'
+// optionally supply the combined width of the left and right borders
 @function column(
-  $c: false
+  $c: false,
+  $borders-width: 0em
 ) {
-  $column: percent-width($col-width, columns-width($c));
+  $column: percent-width($col-width - $borders-width, columns-width($c));
   @return $column;
 }
 
@@ -95,16 +112,37 @@ $omega-float        : opposite-position($from-direction)    !default;
 //  - Context MUST NOT be declared on a top-level element.
 // By default a grid-column is floated left with a right gutter.
 //  - Override those with +float("right"), +alpha or +omega
+// The remaining arguments are for vertical borders (i.e. left/right)
+//  - border-left: size of the border on the left side in px
+//  - border-right: size of the border on the right side in px
+//  - font-size: font size in the current context
+//  - border-style: style of the border (e.g. 'solid')
 @mixin columns(
   $n,
   $context  : false,
-  $from     : $from-direction
+  $from     : $from-direction,
+  $border-left: 0px,
+  $border-right: 0px,
+  $font-size: $base-font-size,
+  $border-style: $default-rhythm-border-style
 ) {
   $to   : opposite-position($from);
   // the column is floated left
   @include float($from);
   // the width of the column is set as a percentage of the context
-  width: columns($n, $context);
+  width: columns($n, $context, $borders-width: $font-unit * ($border-left + $border-right) / $font-size);
+  @if $border-left > 0px {
+    border-left: {
+      style: $border-style;
+      width: $font-unit * $border-left / $font-size;
+    };
+  }
+  @if $border-right > 0px {
+    border-right: {
+      style: $border-style;
+      width: $font-unit * $border-right / $font-size;
+    };
+  }
   // the right gutter is added as a percentage of the context
   margin-#{$to}: gutter($context);
 }

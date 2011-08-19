@@ -7,6 +7,7 @@
 // Variables -----------------------------------------------------------------
 
 // Your basic settings for the grid.
+$base-font-size     : 16px          !default;
 $total-cols         : 12            !default;
 $col-width          : 4em           !default;
 $gutter-width       : 1em           !default;
@@ -20,6 +21,13 @@ $omega-float        : opposite-position($from-direction)    !default;
 
 // set the default border style for rhythm borders (borrowed from compass/typography/vertical_rhythm)
 $default-rhythm-border-style: solid !default;
+
+// Set to false if you want to use absolute pixes in sizing your typography.
+$relative-font-sizing: true !default;
+
+// $base-font-size but in your output unit of choice.
+// Defaults to 1em when `$relative-font-sizing`
+$font-unit: if($relative-font-sizing, 1em, $base-font-size) !default;
 
 // Functions -----------------------------------------------------------------
 
@@ -122,17 +130,17 @@ $default-rhythm-border-style: solid !default;
   // the column is floated left
   @include float($from);
   // the width of the column is set as a percentage of the context
-  width: columns($n, $context, $borders-width: ($border-left + $border-right) / $font-size);
+  width: columns($n, $context, $borders-width: $font-unit * ($border-left + $border-right) / $font-size);
   @if $border-left > 0px {
     border-left: {
       style: $border-style;
-      width: $base-font-size * $border-left / $font-size;
+      width: $font-unit * $border-left / $font-size;
     };
   }
   @if $border-right > 0px {
     border-right: {
       style: $border-style;
-      width: $base-font-size * $border-right / $font-size;
+      width: $font-unit * $border-right / $font-size;
     };
   }
   // the right gutter is added as a percentage of the context

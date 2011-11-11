@@ -107,6 +107,7 @@ $omega-float        : opposite-position($from-direction)    !default;
   width: columns($n, $context);
   // the right gutter is added as a percentage of the context
   margin-#{$to}: gutter($context);
+  margin-#{$from}: 0;
 }
 
 // @include `reset-column` to reset a column element to default block behavior
@@ -130,12 +131,14 @@ $omega-float        : opposite-position($from-direction)    !default;
 @mixin full(
   $nested: false
 ) {
-  clear: both;
-  @if not $nested {
-    margin: {
-      left: side-gutter();
-      right: side-gutter();
-    }
+  @if $nested {
+    @include float(left); // direction doesn't matter since it's 100% width
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+  } @else {
+    @include columns($total-cols);
+    @include alpha;
   }
 }
 

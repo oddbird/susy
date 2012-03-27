@@ -33,5 +33,5 @@ a {
 }
 
 #main {
-  padding: 50px;
+  @include container;
 }

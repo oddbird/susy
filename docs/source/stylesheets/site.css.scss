@@ -1,4 +1,14 @@
+@import "compass/css3";
+@import "compass/css3/pie";
+
 @import "compass";
+
+$total-cols: 12;
+$col-width: 4em;
+$gutter-width: 1em;
+$side-gutter-width: $gutter-width;
+ 
+@import "susy";
 
 $link-color:         #0388a6;
 $link-hover-color:   #009ce0;
@@ -10,11 +20,6 @@ $font-color:  #2a2a2a;
 $font-family: sans-serif;
 $base-font-size:   12px;
 $base-line-height: 18px;
-
-$total-cols: 12;
-$col-width: 4em;
-$gutter-width: 1em;
-$side-gutter-width: $gutter-width;
 
 @include global-reset;
 

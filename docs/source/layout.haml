@@ -10,4 +10,10 @@
   %body{ :class => page_classes }
 
     %div{ :id => "main", :role => "main" }
-      = yield
+      %header.lead
+        %h1 Susy
+        %h2 The un-obstruive, responsive grid for designers.
+      %section.nav
+        = partial "navigation"
+      %section.content
+        = yield

@@ -10,6 +10,14 @@ body {
 //Layout
 //////////
 
+//SUSY/Grid layout
+
+#main {
+  @include container;
+}
+
+//Header
+
 header.lead {
   background-color: $susy-pink;
   text-align: center;
@@ -56,10 +64,6 @@ header.lead {
     }
   }
   
-}
-
-#main {
-  @include container;
 }
 
 //Top Navigation

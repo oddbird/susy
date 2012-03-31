@@ -22,3 +22,7 @@ $base-font-size:   12px;
 $base-line-height: 18px;
 
 @include global-reset;
+
+a {
+  @include link-colors($link-color, $link-hover-color, $link-focus-color, $link-active-color, $link-visited-color);
+}

@@ -6,10 +6,19 @@ body {
   color: $font-color; 
 }
 
-a {
-  @include link-colors($link-color, $link-hover-color, $link-focus-color, $link-active-color, $link-visited-color);
+//Layout
+
+header.lead {
+  background-color: $susy-pink;
+  text-align: center;
+  
+  a.home {
+    display: block;
+  }
 }
 
 #main {
   @include container;
 }
+
+//Shared

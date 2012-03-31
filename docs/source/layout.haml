@@ -19,6 +19,13 @@
     %div{ :id => "main", :role => "main" }
       %section.nav
         = partial "partials/navigation"
+      
+      %section.side_content
+        - if yield_content :side_content
+          = yield_content :side_content
+        - else
+          %p Some default content
+      
       %section.content
       
         = yield

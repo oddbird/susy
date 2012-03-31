@@ -6,7 +6,9 @@ body {
   color: $font-color; 
 }
 
+//////////
 //Layout
+//////////
 
 header.lead {
   background-color: $susy-pink;
@@ -36,7 +38,6 @@ header.lead {
     font-size: 1.5em;
     font-weight: normal;
     font-style: italic; 
-    @include single-transition(all, .5s);
     padding-bottom: 1em;
     color: $susy-gray;
   }
@@ -50,7 +51,8 @@ header.lead {
     }
     
     h2 {
-      display: none;
+      color: white;
+      @include single-text-shadow(white, 0, 0, 0px);
     }
   }
   
@@ -58,4 +60,23 @@ header.lead {
 
 #main {
   @include container;
+}
+
+//Top Navigation
+section.nav {
+  @include full;
+  border: 1px lighten($susy-gray, 55%) solid;
+  border-top: 0px;
+  padding: 1em 0;  
+  ul {
+    text-align: center;
+    li {
+      display: inline;
+      margin: 0 0.5em;
+      a {    
+        text-decoration: none;
+      }
+    }
+  }
+  
 }

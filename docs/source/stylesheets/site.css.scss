@@ -20,7 +20,22 @@ header.lead {
   }
   
   .logo {
-    font-size: 4em;
+    font-size: 10em;
+  }
+  
+  h1 {
+    @extend .logo;
+    font-size: 2em;
+    font-weight: normal; 
+    position: absolute;
+    top: -99999px;
+  }
+  
+  h2 {
+    @extend .logo;
+    font-size: 1.5em;
+    font-weight: normal;
+    font-style: italic; 
   }
 }
 

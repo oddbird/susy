@@ -28,6 +28,17 @@ a {
 }
 
 //////////
+/////Fonts
+//////////
+
+/////Adobe Caslon Pro
+@include font-face("Caslon", font-files("/fonts/adobe_caslon_pro/adobe_caslon_pro-webfont.woff", "/fonts/adobe_caslon_pro/adobe_caslon_pro-webfont.svg", "/fonts/adobe_caslon_pro/adobe_caslon_pro-webfont.ttf"), "/fonts/adobe_caslon_pro/adobe_caslon_pro-webfont.eot", "normal", "normal");
+@include font-face("Caslon", font-files("/fonts/adobe_caslon_pro_semibold/adobe_caslon_pro_semibold-webfont.woff", "/fonts/adobe_caslon_pro_semibold/adobe_caslon_pro_semibold-webfont.svg", "/fonts/adobe_caslon_pro_semibold/adobe_caslon_pro_semibold-webfont.ttf"), "/fonts/adobe_caslon_pro_semibold/adobe_caslon_pro_semibold-webfont.eot", "bold", "normal");
+@include font-face("Caslon", font-files("/fonts/adobe_caslon_pro_italic/adobe_caslon_pro_italic-webfont.woff", "/fonts/adobe_caslon_pro_italic/adobe_caslon_pro_italic-webfont.svg", "/fonts/adobe_caslon_pro_italic/adobe_caslon_pro_italic-webfont.ttf"), "/fonts/adobe_caslon_pro_italic/adobe_caslon_pro_italic-webfont.eot", "normal", "italic");
+@include font-face("Caslon", font-files("/fonts/adobe_caslon_pro_semibold_italic/adobe_caslon_pro_semibold_italic-webfont.woff", "/fonts/adobe_caslon_pro_semibold_italic/adobe_caslon_pro_semibold_italic-webfont.svg", "/fonts/adobe_caslon_pro_semibold_italic/adobe_caslon_pro_semibold_italic-webfont.ttf"), "/fonts/adobe_caslon_pro_semibold_italic/adobe_caslon_pro_semibold_italic-webfont.eot", "bold", "italic");
+
+
+//////////
 /////Shared
 //////////
 

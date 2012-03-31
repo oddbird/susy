@@ -38,6 +38,7 @@ header.lead {
     font-style: italic; 
     @include single-transition(all, .5s);
     padding-bottom: 1em;
+    color: $susy-gray;
   }
   
   &:hover {

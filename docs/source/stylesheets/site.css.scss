@@ -44,7 +44,7 @@ header.lead {
   
   &:hover {
     background-color: $susy-pink-higlight;
-    @include background-image(linear-gradient($susy-pink-higlight, darken($susy-pink-higlight, 15%)));
+    @include background-image(linear-gradient($susy-pink-higlight, darken($susy-pink-higlight, 7%)));
     
     .logo {
       @include single-text-shadow(white, 0, 0, 10px);

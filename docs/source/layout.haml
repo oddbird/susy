@@ -24,13 +24,14 @@
         - if yield_content :side_content
           = yield_content :side_content
         - else
-          %p Some default content
+          = partial "partials/default_sidecontent"
       
       %section.content
       
         = yield
       
-      %footer.final
+      %footer.ephemera
+        = partial "partials/ephemera"
     
     = javascript_include_tag "application.js"
     

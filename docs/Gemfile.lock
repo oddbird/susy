@@ -107,3 +107,4 @@ PLATFORMS
 DEPENDENCIES
   compass-susy-plugin
   middleman (~> 2.0.15.1)
+  middleman-livereload

@@ -13,6 +13,11 @@ header.lead {
   text-align: center;
   padding-top: 1em;
   padding-bottom: 1em;
+  @include single-transition(background-color, .5s);
+  
+  &:hover {
+    background-color: $susy-pink-higlight;
+  }
   
   a.home {
     display: block;
@@ -21,6 +26,10 @@ header.lead {
   
   .logo {
     font-size: 10em;
+    
+    &:hover {
+     @include single-text-shadow(white, 0, 0, 10px);
+    }
   }
   
   h1 {

@@ -50,6 +50,7 @@ a {
   font-size: 3em;
   color: white;
   text-decoration: none;
+  @include single-transition(all, .5s);
   
   .first-character {
     font-size: .7em;
@@ -66,4 +67,5 @@ a {
     position: relative;
     top: -0.20em;
   }
+  
 }

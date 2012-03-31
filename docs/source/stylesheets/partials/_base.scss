@@ -7,7 +7,7 @@ $total-cols: 12;
 $col-width: 4em;
 $gutter-width: 1em;
 $side-gutter-width: $gutter-width;
- 
+
 @import "susy";
 
 $link-color:         #0388a6;
@@ -51,21 +51,14 @@ a {
   color: white;
   text-decoration: none;
   @include single-transition(all, .5s);
-  
-  .first-character {
-    font-size: .7em;
+
+  .first-character, .third-character {
     position: relative;
-    top: -0.20em;
+    top: -0.1375em;
   }
-  
+
   .second-character {
-    
+
   }
-  
-  .third-character {
-    font-size: .7em;
-    position: relative;
-    top: -0.20em;
-  }
-  
+
 }

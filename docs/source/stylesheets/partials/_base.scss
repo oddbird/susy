@@ -37,6 +37,9 @@ a {
 @include font-face("Caslon Italic", font-files("/fonts/adobe_caslon_pro_italic/adobe_caslon_pro_italic-webfont.woff", "/fonts/adobe_caslon_pro_italic/adobe_caslon_pro_italic-webfont.svg", "/fonts/adobe_caslon_pro_italic/adobe_caslon_pro_italic-webfont.ttf"), "/fonts/adobe_caslon_pro_italic/adobe_caslon_pro_italic-webfont.eot", "normal", "italic");
 @include font-face("Caslon Bold Italic", font-files("/fonts/adobe_caslon_pro_semibold_italic/adobe_caslon_pro_semibold_italic-webfont.woff", "/fonts/adobe_caslon_pro_semibold_italic/adobe_caslon_pro_semibold_italic-webfont.svg", "/fonts/adobe_caslon_pro_semibold_italic/adobe_caslon_pro_semibold_italic-webfont.ttf"), "/fonts/adobe_caslon_pro_semibold_italic/adobe_caslon_pro_semibold_italic-webfont.eot", "bold", "italic");
 
+//Old Century Pro
+@include font-face("Old Century", font-files("/fonts/centuryoldstylefs_regular_macroman/CenturyOldStyle-Regular-webfont.woff", "/fonts/centuryoldstylefs_regular_macroman/CenturyOldStyle-Regular-webfont.svg", "/fonts/centuryoldstylefs_regular_macroman/CenturyOldStyle-Regular-webfont.ttf"), "/fonts/centuryoldstylefs_regular_macroman/CenturyOldStyle-Regular-webfont.eot", "normal", "normal");
+
 
 //////////
 /////Shared

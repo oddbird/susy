@@ -8,11 +8,14 @@
     = yield_content :head
   
   %body{ :class => page_classes }
-
-    %div{ :id => "main", :role => "main" }
-      %header.lead
+    
+    %header.lead
+      %a.home{ :href => "/"}
+        = partial "logo"
         %h1 Susy
         %h2 The un-obstruive, responsive grid for designers.
+
+    %div{ :id => "main", :role => "main" }
       %section.nav
         = partial "navigation"
       %section.content

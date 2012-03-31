@@ -26,3 +26,31 @@ $base-line-height: 18px;
 a {
   @include link-colors($link-color, $link-hover-color, $link-focus-color, $link-active-color, $link-visited-color);
 }
+
+//////////
+/////Shared
+//////////
+
+// Logo
+.logo {
+  font-family: Georgia, serif;
+  font-size: 3em;
+  color: white;
+  text-decoration: none;
+  
+  .first-character {
+    font-size: .7em;
+    position: relative;
+    top: -0.20em;
+  }
+  
+  .second-character {
+    
+  }
+  
+  .third-character {
+    font-size: .7em;
+    position: relative;
+    top: -0.20em;
+  }
+}

@@ -11,14 +11,19 @@ body {
 header.lead {
   background-color: $susy-pink;
   text-align: center;
+  padding-top: 1em;
+  padding-bottom: 1em;
   
   a.home {
     display: block;
+    text-decoration: none;  
+  }
+  
+  .logo {
+    font-size: 4em;
   }
 }
 
 #main {
   @include container;
 }
-
-//Shared

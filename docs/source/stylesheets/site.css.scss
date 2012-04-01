@@ -109,6 +109,14 @@ section.nav {
       margin: 0 0.5em;
     }
   }
+  
+  &.fixed {
+    position: fixed;
+    top: 0;
+    margin: 0 auto !important;
+    width: 61em;
+    background-color: white
+  }
 }
 
 //Content

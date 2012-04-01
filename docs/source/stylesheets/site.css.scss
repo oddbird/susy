@@ -28,7 +28,7 @@ body {
     @include alpha;
   }
   
-  section.content {
+  section.main_content {
     @include columns(7);
   }
   
@@ -109,5 +109,6 @@ section.nav {
       margin: 0 0.5em;
     }
   }
-  
 }
+
+//

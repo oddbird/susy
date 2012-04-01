@@ -23,13 +23,13 @@ body {
   }
   
   section.side_content {
-    @include prefix(1);
     @include columns(2);
     @include alpha;
   }
   
   section.main_content {
-    @include columns(7);
+    @include prefix(1);
+    @include columns(8);
   }
   
   footer.ephemera {

@@ -4,6 +4,8 @@
 body {
   font-family: $font-family;
   color: $font-color; 
+  margin: 0px;
+  padding: 0px;
 }
 
 //////////
@@ -70,6 +72,9 @@ header.lead {
     font-style: italic; 
     padding-bottom: 1em;
     color: $susy-gray;
+    margin: 0;
+    padding: 0;
+    padding-bottom: 1em;
   }
   
   &:hover {
@@ -92,9 +97,12 @@ header.lead {
 section.nav {
   border: 1px lighten($susy-gray, 55%) solid;
   border-top: 0px;
-  padding: 1em 0;  
+  padding-top: 1em;
   ul {
     text-align: center;
+    margin: 0;
+    padding: 0;
+    margin-bottom: 1em;
     li {
       display: inline;
       margin: 0 0.5em;

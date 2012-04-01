@@ -20,7 +20,9 @@ $font-family: sans-serif;
 $base-font-size:   12px;
 $base-line-height: 18px;
 
-@include global-reset;
+//Using HTML5 Boilerplate 3.x reset instead of "@include global-reset;"
+//Danny likes normalize.css a lot better, which is why
+@import "../vendors/html5bp.css";
 
 a {
   @include link-colors($link-color, $link-hover-color, $link-focus-color, $link-active-color, $link-visited-color);
@@ -53,6 +55,7 @@ a {
   color: white;
   text-decoration: none;
   @include single-transition(all, .5s);
+  margin-bottom: -0.1em;
 
   .first-character, .third-character {
     position: relative;

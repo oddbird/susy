@@ -111,4 +111,36 @@ section.nav {
   }
 }
 
-//
+//Content
+
+section.content {
+  h1, h2, h3, h4, h5, h5 {
+    font-family: Caslon, Georgia, serif;
+    color: $susy-gray;
+  }
+  
+  pre {
+    padding: 0;
+    margin: 0;
+    code {
+      display: inline-block;
+      background-color: lighten($susy-gray, 50%);
+      border: 1px lighten($susy-gray, 30%) solid;
+      color: $susy-gray;
+      padding: 1em;
+      max-width: 90%;
+      min-width: 90%;  
+      padding-top: 0;
+      margin-top: 0;
+      
+    }
+  }
+}
+
+section.main_content {
+  font-size: 1.1em;
+}
+
+section.side_content {
+  font-size: 0.8em;
+}

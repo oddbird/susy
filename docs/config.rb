@@ -52,7 +52,7 @@
 # Helpers
 ###
 
-## Directory Indexes
+# Directory Indexes //need to add to :build?
 activate :directory_indexes
 
 # Methods defined in the helpers block are available in templates

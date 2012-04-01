@@ -112,11 +112,11 @@ section.nav {
   
   &.fixed {
     position: fixed;
-    top: 0;
     margin: 0 auto !important;
-    width: 59em;
     background-color: white;
-    left: 13%;
+    top: 0;
+    left: 0;
+    width: 100%;
   }
 }
 

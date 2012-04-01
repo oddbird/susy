@@ -114,9 +114,18 @@ section.nav {
 //Content
 
 section.content {
+  margin: 1em 0em;
+  
   h1, h2, h3, h4, h5, h5 {
     font-family: Caslon, Georgia, serif;
     color: $susy-gray;
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+  
+  img {
+    max-width: 100%;
   }
   
   pre {

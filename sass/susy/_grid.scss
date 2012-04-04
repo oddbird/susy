@@ -34,21 +34,12 @@ $omega-float        : opposite-position($from-direction)    !default;
   @return $columns-width;
 }
 
-// Return the percentage for the target in a given context
-@function percent-width(
-  $t,
-  $c
-) {
-  $perc: ($t / $c) * 100%;
-  @return $perc;
-}
-
 // Return the percentage width of 'n' columns in a context of 'c'
 @function columns(
   $n,
   $c: false
 ) {
-  $columns: percent-width(columns-width($n), columns-width($c));
+  $columns: percentage(columns-width($n) / columns-width($c));
   @return $columns;
 }
 
@@ -56,7 +47,7 @@ $omega-float        : opposite-position($from-direction)    !default;
 @function gutter(
   $c: false
 ) {
-  $gutter: percent-width($gutter-width, columns-width($c));
+  $gutter: percentage($gutter-width / columns-width($c));
   @return $gutter;
 }
 
@@ -64,7 +55,7 @@ $omega-float        : opposite-position($from-direction)    !default;
 @function side-gutter(
   $c: false
 ) {
-  $side-gutter: percent-width($side-gutter-width, columns-width($c));
+  $side-gutter: percentage($side-gutter-width / columns-width($c));
   @return $side-gutter;
 }
 
@@ -72,7 +63,7 @@ $omega-float        : opposite-position($from-direction)    !default;
 @function column(
   $c: false
 ) {
-  $column: percent-width($col-width, columns-width($c));
+  $column: percentage($col-width / columns-width($c));
   @return $column;
 }
 

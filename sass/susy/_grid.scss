@@ -208,11 +208,3 @@ $omega-float        : opposite-position($from-direction)    !default;
 @mixin susy-grid-background {
   @include column-grid-background($total-cols, $col-width, $gutter-width, $side-gutter-width, $force-fluid: true);
 }
-
-@mixin show-grid($img:false) {
-  @warn "show-grid is deprecated in favor of susy-grid-background.";
-  @if $img {
-    @warn "show-grid and susy-grid-background no longer use any images or take any arguments.";
-  }
-  @include susy-grid-background;
-}

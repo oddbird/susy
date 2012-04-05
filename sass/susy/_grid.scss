@@ -6,19 +6,47 @@
 
 // Variables -----------------------------------------------------------------
 
-// Your basic settings for the grid.
+// Total Columns:
+// One or more unitless numbers.
+// Each number represents the number of columns in a given 'layout'
 $total-cols         : 12            !default;
+
+// Column Width:
+// The width of a column in any unit of length.
 $col-width          : 4em           !default;
+
+// Gutter Width:
+// The width of a gutter in the same units as $col-width.
 $gutter-width       : 1em           !default;
+
+// Side Gutter Width:
+// The width of a side gutter in the same units as $col-width.
 $side-gutter-width  : $gutter-width !default;
 
+// From Direction:
 // Controls for right-to-left or bi-directional sites.
 $from-direction     : left          !default;
 
+// Omega Float Direction:
 // The direction that +omega elements are floated by deafult.
 $omega-float        : opposite-position($from-direction)    !default;
 
+// Layout:
+// The default layout to use (as an index of the $total-cols list).
+$layout             : 1             !default;
+
 // Functions -----------------------------------------------------------------
+
+// Return the total number of columns associated with your current layout.
+@function set-layout(){
+  $cols: nth($total-cols,1);
+  @if (length($total-cols) >= $layout) {
+    $cols: nth($total-cols,$layout);
+  } @else {
+    @warn "You only have #{length($total-cols)} layouts established in $total-cols (#{$total-cols})";
+  }
+  @return $cols;
+}
 
 // Return the width of 'n' columns plus 'n - 1' gutters
 // plus page padding in non-nested contexts
@@ -26,8 +54,9 @@ $omega-float        : opposite-position($from-direction)    !default;
   $n: false
 ) {
   $sg: 0;
+  $cols: set-layout();
   @if not $n {
-    $n: $total-cols;
+    $n: $cols;
     $sg: $side-gutter-width;
   }
   $columns-width: ($n*$col-width) + (ceil($n - 1)*$gutter-width) + ($sg*2);
@@ -70,7 +99,7 @@ $omega-float        : opposite-position($from-direction)    !default;
 // Base Mixin ----------------------------------------------------------------
 
 // Set the outer grid-containing element(s).
-@mixin container() {
+@mixin container(){
   @include pie-clearfix;
   margin: auto;
   width: columns-width();
@@ -205,6 +234,7 @@ $omega-float        : opposite-position($from-direction)    !default;
 
 // Susy Grid Backgrounds -----------------------------------------------------
 
-@mixin susy-grid-background {
-  @include column-grid-background($total-cols, $col-width, $gutter-width, $side-gutter-width, $force-fluid: true);
+@mixin susy-grid-background (){
+  $cols: set-layout();
+  @include column-grid-background($cols, $col-width, $gutter-width, $side-gutter-width, $force-fluid: true);
 }

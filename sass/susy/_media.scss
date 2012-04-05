@@ -1,0 +1,62 @@
+// ---------------------------------------------------------------------------
+// Responsive Layout Settings
+
+// Break Points:
+// Optionally set document-widths to use as @media break-points
+// between your given ($total-cols) layouts.
+// These can be referenced by index: +at-media(1) == +at-media(30em)
+$break-points       : 30em 60em         !default;
+
+// ---------------------------------------------------------------------------
+// Internal Layout Functions
+
+@function get-break($point) {
+  $break: false;
+  @if unitless($point) {
+    @if $point > length($break-points) {
+      @warn "You only have #{length($break-points)} break-points established in $break-points: #{$break-points}";
+      $point: length($break-points); }
+    $break: nth($break-points, $point); }
+  @else {
+    $break: $point; }
+  @return $break; }
+
+@function get-layout($lay: false, $point: false) {
+  @if $lay {
+    @if $lay > length($total-cols) {
+      @warn "You only have #{length($total-cols)} layouts established in $total-cols: #{$total-cols}";
+      $lay: length($total-cols); } }
+  @else {
+    @if unitless($point) {
+      $lay: $point + 1; }
+    @else {
+      // At this point we're just making our best guess...
+      $lay: 0;
+      $break: get-break($point);
+
+      @if (unit($break) != unit($col-width)) {
+        // And then giving up...
+        @warn "Throw us a bone, here!
+         We don't know how to compare #{unit($break)} to #{unit($col-width)},
+         so you'll need to tell us which layout to use. We're defaulting to #2.";
+        $lay: 2;
+      } @else {
+        @each $item in $total-cols {
+          @if $break >= columns-width($item) {
+            $lay: $lay + 1; } } } } }
+
+  @return $lay; }
+
+// ---------------------------------------------------------------------------
+// Layout Mixins
+
+@mixin layout($local-layout) {
+  $layout-context: $layout;
+  $layout: $local-layout;
+  @content;
+  $layout: $layout-context; }
+
+@mixin at-media($point: 1, $local-layout: false) {
+  @media all and (min-width: get-break($point)) {
+    @include layout(get-layout($local-layout, $point)) {
+      @content; } } }

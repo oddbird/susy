@@ -1,11 +1,15 @@
 // ---------------------------------------------------------------------------
 // Responsive Layout Settings
 
-// create any variables you want to reflect different breakpoints, layouts,
-// or breakpoint/layout pairs!
-// $small-breakpoint  : 30em;
+// create any variables you want to reflect different min-width, max-width, and layout settings.
+// Or create breakpoint/layout combos (e.g. `30em 8 60em` for min 30em, max 60em, 8 columns).
+// Order doesn't matter. Any unitless number will be used to set layout columns.
+// Any lengths will be compared (if possible) to determine min and max.
+// If there is only one length, it will be used as a min-width.
+// $small-min         : 30em;
 // $small-layout      : 8;
 // $small             : small-breakpoint $small-layout;
+// $small-only        : small-breakpoint $small-layout 60em;
 
 // ---------------------------------------------------------------------------
 // Internal Layout Functions
@@ -14,7 +18,9 @@
   $media-layout,
   $split  : false
 ) {
-  $media  : false;
+  $media  : compact();
+  $min    : false;
+  $max    : false;
   $layout : false;
   $return : false;
 
@@ -22,25 +28,43 @@
     @if unitless($val) {
       $layout: $val;
     } @else {
-      $media: $val;
+      $media: join($media,$val);
     }
   }
 
-  @if not $media {
-    @warn "looks like you forgot to pass a breakpoint at which to apply your layout.";
+  @if $media {
+    @if (length($media) == 1) {
+      $min: $media;
+    } @else {
+      $min: nth($media,1);
+      $max: nth($media,2);
+      @if unit($min) == unit($max) {
+        @if ($min > $max) {
+          $max: nth($media,1);
+          $min: nth($media,2);
+        }
+      } @else {
+        @warn "can't compare incompatible units.
+         Using #{$min} for min-width, and #{$max} for max-width";
+      }
+      @if (length($media) > 2) {
+        @warn "you can only send two lengths: a min-width and an (optional) max-width.
+         You sent #{length($media)}: #{$media}";
+      }
+    }
   }
 
-  @if not $layout {
-    @warn "looks like you forgot to pass a layout for this breakpoint.";
-  }
+  $return : $min $layout $max;
 
-  $return : $media $layout;
-
-  @if ($split == 'media') {
-    $return: $media;
+  @if ($split == 'min') {
+    $return: $min;
   } @else {
-    @if ($split == 'layout') {
-      $return: $layout;
+    @if ($split == 'max') {
+      $return: $max;
+    } @else {
+      @if ($split == 'layout') {
+        $return: $layout;
+      }
     }
   }
 
@@ -49,6 +73,7 @@
 
 // ---------------------------------------------------------------------------
 // Layout Mixins
+
 
 // Layout
 // $layout-cols : set the (unitless) number of columns to use for this layout.
@@ -73,12 +98,28 @@
 @mixin at-breakpoint(
   $media-layout
 ) {
-  $media  : medialayout($media-layout,media);
-  $layout : medialayout($media-layout,layout);
+  $media-layout : medialayout($media-layout);
+  $min          : nth($media-layout,1);
+  $layout       : nth($media-layout,2);
+  $max          : nth($media-layout,3);
 
-  @media all and (min-width: $media) {
-    @include layout($layout) {
-      @content;
+  @if $layout {
+    @if $min and $max {
+      @media (min-width: $min) and (max-width: $max) {
+        @include layout($layout) {
+          @content;
+        }
+      }
+    } @else {
+      @if $min {
+        @media (min-width: $min) {
+          @include layout($layout) {
+            @content;
+          }
+        }
+      }
     }
+  } @else {
+    @warn "please supply a unitless number of columns to use for this new layout context.";
   }
 }

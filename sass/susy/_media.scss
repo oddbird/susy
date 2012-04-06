@@ -32,7 +32,7 @@
     }
   }
 
-  @if $media {
+  @if (length($media) > 0) {
     @if (length($media) == 1) {
       $min: $media;
     } @else {
@@ -104,18 +104,21 @@
   $max          : nth($media-layout,3);
 
   @if $layout {
-    @if $min and $max {
-      @media (min-width: $min) and (max-width: $max) {
-        @include layout($layout) {
+    @include layout($layout) {
+      @if $min and $max {
+        // min and max
+        @media (min-width: $min) and (max-width: $max) {
           @content;
         }
-      }
-    } @else {
-      @if $min {
+      } @else {
+        @if not $min {
+          // neither min nor max
+          $min: columns-width();
+          @warn "you didn't include any media breakpoints, so we created one for you based on the column-count (min-width: #{$min}).";
+        }
+        // min only
         @media (min-width: $min) {
-          @include layout($layout) {
-            @content;
-          }
+          @content;
         }
       }
     }

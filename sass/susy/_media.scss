@@ -1,62 +1,77 @@
 // ---------------------------------------------------------------------------
 // Responsive Layout Settings
 
-// Break Points:
-// Optionally set document-widths to use as @media break-points
-// between your given ($total-cols) layouts.
-// These can be referenced by index: +at-media(1) == +at-media(30em)
-$break-points       : 30em 60em         !default;
+// create any variables you want to reflect different breakpoints, layouts,
+// or breakpoint/layout pairs!
+// $small-breakpoint  : 30em;
+// $small-layout      : 8;
+// $small             : small-breakpoint $small-layout;
 
 // ---------------------------------------------------------------------------
 // Internal Layout Functions
 
-@function get-break($point) {
-  $break: false;
-  @if unitless($point) {
-    @if $point > length($break-points) {
-      @warn "You only have #{length($break-points)} break-points established in $break-points: #{$break-points}";
-      $point: length($break-points); }
-    $break: nth($break-points, $point); }
-  @else {
-    $break: $point; }
-  @return $break; }
+@function medialayout(
+  $media-layout,
+  $split  : false
+) {
+  $media  : false;
+  $layout : false;
+  $return : false;
 
-@function get-layout($lay: false, $point: false) {
-  @if $lay {
-    @if $lay > length($total-cols) {
-      @warn "You only have #{length($total-cols)} layouts established in $total-cols: #{$total-cols}";
-      $lay: length($total-cols); } }
-  @else {
-    @if unitless($point) {
-      $lay: $point + 1; }
-    @else {
-      // At this point we're just making our best guess...
-      $lay: 0;
-      $break: get-break($point);
+  @if (type-of($media-layout) == 'list') {
+    // This is where I add some magic to distinguish between the two values
+    // so that you can send them in either order.
+    $media  : nth($media-layout,1);
+    $layout : nth($media-layout,2);
+    $return : $media-layout;
+  } @else {
+    @warn "you need to pass a list... at least for now.";
+  }
 
-      @if (unit($break) != unit($col-width)) {
-        // And then giving up...
-        @warn "Throw us a bone, here!
-         We don't know how to compare #{unit($break)} to #{unit($col-width)},
-         so you'll need to tell us which layout to use. We're defaulting to #2.";
-        $lay: 2;
-      } @else {
-        @each $item in $total-cols {
-          @if $break >= columns-width($item) {
-            $lay: $lay + 1; } } } } }
+  @if ($split == 'media') {
+    $return: $media;
+  } @else {
+    @if ($split == 'layout') {
+      $return: $layout;
+    }
+  }
 
-  @return $lay; }
+  @return $return;
+}
 
 // ---------------------------------------------------------------------------
 // Layout Mixins
 
-@mixin layout($local-layout) {
-  $layout-context: $layout;
-  $layout: $local-layout;
-  @content;
-  $layout: $layout-context; }
 
-@mixin at-media($point: 1, $local-layout: false) {
-  @media all and (min-width: get-break($point)) {
-    @include layout(get-layout($local-layout, $point)) {
-      @content; } } }
+// Layout
+// $layout-cols : set the (unitless) number of columns to use for this layout.
+@mixin layout(
+  $layout-cols
+) {
+  // store default $total-cols setting for later, then change it.
+  $default-layout : $total-cols;
+  $total-cols     : $layout-cols;
+
+  // apply children in this new layout context.
+  @content;
+
+  // return to default $total-cols setting.
+  $total-cols     : $default-layout;
+}
+
+// At-Breakpoint
+// $media-layout : a pair of values
+// - one is a length (em, px, etc) representing the @media breakpoint to apply.
+// - one is a unitless number representing the number of columns to use in this new layout context.
+@mixin at-breakpoint(
+  $media-layout
+) {
+  $media  : medialayout($media-layout,media);
+  $layout : medialayout($media-layout,layout);
+
+  @media all and (min-width: $media) {
+    @include layout($layout) {
+      @content;
+    }
+  }
+}

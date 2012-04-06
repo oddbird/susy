@@ -18,15 +18,23 @@
   $layout : false;
   $return : false;
 
-  @if (type-of($media-layout) == 'list') {
-    // This is where I add some magic to distinguish between the two values
-    // so that you can send them in either order.
-    $media  : nth($media-layout,1);
-    $layout : nth($media-layout,2);
-    $return : $media-layout;
-  } @else {
-    @warn "you need to pass a list... at least for now.";
+  @each $val in $media-layout {
+    @if unitless($val) {
+      $layout: $val;
+    } @else {
+      $media: $val;
+    }
   }
+
+  @if not $media {
+    @warn "looks like you forgot to pass a breakpoint at which to apply your layout.";
+  }
+
+  @if not $layout {
+    @warn "looks like you forgot to pass a layout for this breakpoint.";
+  }
+
+  $return : $media $layout;
 
   @if ($split == 'media') {
     $return: $media;
@@ -41,7 +49,6 @@
 
 // ---------------------------------------------------------------------------
 // Layout Mixins
-
 
 // Layout
 // $layout-cols : set the (unitless) number of columns to use for this layout.

@@ -15,6 +15,10 @@
 
 // ---------------------------------------------------------------------------
 // Private Functions
+//
+// medialayout()  : Sort a list of arguments into "$min $layout $max" order, and return the list.
+//
+// ---------------------------------------------------------------------------
 
 // Sort a list of arguments into "$min $layout $max" order, and return the list.
 //
@@ -28,7 +32,6 @@
 // - if one length is provided, it will be used as a min-width.
 // - if two lengths are provided, they will be used for min and max based on a comparison of values.
 // - if the values cannot be compared, then we use the first for min and the second for max.
-
 @function medialayout(
   $media-layout
 ) {
@@ -72,6 +75,11 @@
 
 // ---------------------------------------------------------------------------
 // Public API Mixins
+//
+// +layout($layout-cols)         : Create a new layout context for (@content) descendants.
+// +at-breakpoint($media-layout) : Nest a block of code (@content) inside a new media-query & layout context.
+//
+// ---------------------------------------------------------------------------
 
 // Create a new layout context for (@content) descendants.
 //

@@ -27,6 +27,7 @@
 // $media-layout  : a list of values including -
 //                : One unitless number (representing columns in a layout)
 //                : Two optional lengths (representing min and max-width media-query breakpoints).
+//                : One optional boolian or string to trigger fallback support for IE.
 //
 // Order is irrelevant in most cases:
 // - any unitless number will be used as the total column-count ($total-cols) for this layout.
@@ -41,12 +42,17 @@
   $min    : false;
   $max    : false;
   $layout : false;
+  $ie     : false;
 
   @each $val in $media-layout {
-    @if unitless($val) {
-      $layout: $val;
+    @if (type-of($val) == "number") {
+      @if unitless($val) {
+        $layout: $val;
+      } @else {
+        $media: join($media,$val);
+      }
     } @else {
-      $media: join($media,$val);
+      $ie: $val;
     }
   }
 
@@ -72,7 +78,7 @@
     }
   }
 
-  @return $min $layout $max;
+  @return $min $layout $max $ie;
 }
 
 // Return the nearest layout (column-count) above a given breakpoint.
@@ -104,6 +110,7 @@
 // $media-layout  : a list of values including -
 //                : One unitless number (representing columns in a layout)
 //                : Two optional lengths (representing min and max-width media-query breakpoints).
+//                : One optional boolian or string to trigger fallback support for IE.
 @function has-media(
   $media-layout
 ) {
@@ -149,6 +156,8 @@
 // $media-layout  : a list of values including -
 //                : One unitless number (representing columns in a layout)
 //                : Two optional lengths (representing min and max-width media-query breakpoints).
+//                : One optional boolian or string to trigger fallback support for IE
+//                : - (based on a matching class applied to <html> a la HTML5bp).
 @mixin at-breakpoint(
   $media-layout
 ) {
@@ -156,6 +165,7 @@
   $min          : nth($media-layout,1);
   $layout       : nth($media-layout,2);
   $max          : nth($media-layout,3);
+  $ie           : nth($media-layout,4);
 
   // We need to have either a min-width breakpoint or a layout in order to proceed.
   @if $min or $layout {
@@ -183,6 +193,15 @@
           // Min only. At this point, we always have $min without $max.
           // No need to test for it.
           @media (min-width: $min) {
+            @content;
+          }
+        }
+        // Set an IE fallback
+        @if $ie {
+          @if (type-of($ie) == 'bool') {
+            $ie: 'ie';
+          }
+          .#{$ie} & {
             @content;
           }
         }

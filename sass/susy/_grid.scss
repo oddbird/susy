@@ -83,12 +83,47 @@ $omega-float        : opposite-position($from-direction)    !default;
 // Base Mixin ----------------------------------------------------------------
 
 // Set the outer grid-containing element(s).
-@mixin container(){
+@mixin apply-container(){
   @include pie-clearfix;
   margin-left: auto;
   margin-right: auto;
   width: columns-width();
   max-width: 100%;
+}
+
+// Set one or more layouts on a grid-containing element at any number of media-query breakpoints.
+//
+// $media-layout-1        : [default:$total-cols] A list of values including -
+//                        : One unitless number (representing columns in a layout)
+//                        : Two optional lengths (representing min and max-width media-query breakpoints).
+// $media-layout-2 ...-10 : [optional] Same as $media-layout-1
+@mixin container(
+  $media-layout-1   : $total-cols,
+  $media-layout-2   : false,
+  $media-layout-3   : false,
+  $media-layout-4   : false,
+  $media-layout-5   : false,
+  $media-layout-6   : false,
+  $media-layout-7   : false,
+  $media-layout-8   : false,
+  $media-layout-9   : false,
+  $media-layout-10  : false
+){
+  $media-layouts    : compact($media-layout-2,$media-layout-3,$media-layout-4,$media-layout-5,$media-layout-6,$media-layout-7,$media-layout-8,$media-layout-9,$media-layout-10);
+
+  @if not (has-media($media-layout-1)) {
+    @include apply-container();
+  } @else {
+    $media-layouts: join($media-layout-1,$media-layouts);
+  }
+
+  @each $ml in $media-layouts {
+    @if $ml {
+      @include at-breakpoint($ml) {
+        @include apply-container();
+      }
+    }
+  }
 }
 
 // Column Mixins -------------------------------------------------------------

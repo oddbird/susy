@@ -50,11 +50,11 @@
 
   @if (length($media) > 0) {
     @if (length($media) == 1) {
-      $min: $media;
+      $min: nth($media,1);
     } @else {
       $min: nth($media,1);
       $max: nth($media,2);
-      @if unit($min) == unit($max) {
+      @if comparable($min, $max) {
         @if ($min > $max) {
           $max: nth($media,1);
           $min: nth($media,2);

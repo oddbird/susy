@@ -17,6 +17,7 @@
 // Private Functions
 //
 // medialayout()  : Sort a list of arguments into "$min $layout $max" order, and return the list.
+// get-layout()   : Return the nearest layout (column-count) above a given breakpoint.
 //
 // ---------------------------------------------------------------------------
 
@@ -73,6 +74,30 @@
   @return $min $layout $max;
 }
 
+// Return the nearest layout (column-count) above a given breakpoint.
+//
+// $min : The min-width media-query breakpoint above which to establish a new layout.
+@function get-layout (
+  $min
+) {
+  $default-layout : $total-cols;
+  $total-cols     : 1;
+  $layout-width   : columns-width();
+  $return         : false;
+
+  @if comparable($min, $layout-width) {
+    @while $min >= $layout-width {
+      $total-cols   : $total-cols + 1;
+      $layout-width : columns-width();
+    }
+    $return       : $total-cols;
+  }
+
+  $total-cols     : $default-layout;
+
+  @return $return;
+}
+
 // ---------------------------------------------------------------------------
 // Public API Mixins
 //
@@ -118,29 +143,43 @@
   $layout       : nth($media-layout,2);
   $max          : nth($media-layout,3);
 
-  @if $layout {
-    @include layout($layout) {
-      @if $min and $max {
-        // Both $min and $max.
-        @media (min-width: $min) and (max-width: $max) {
-          @content;
-        }
-      } @else {
-        @if not $min {
-          // Neither $min nor $max (it's impossible to have $max without $min).
-          // We can create a breakpoint based on the number of columns in the layout.
-          $min: columns-width();
-        }
-        // Min only. At this point, we always have $min without $max.
-        // No need to test for it.
-        @media (min-width: $min) {
-          @content;
+  // We need to have either a min-width breakpoint or a layout in order to proceed.
+  @if $min or $layout {
+
+    // If we don't have a layout, we create one based on the min-width.
+    @if not $layout {
+      $layout: get-layout($min);
+    }
+
+    // If we still don't have a layout, we have a problem.
+    @if $layout {
+      // Set our new layout context.
+      @include layout($layout) {
+        @if $min and $max {
+          // Both $min and $max.
+          @media (min-width: $min) and (max-width: $max) {
+            @content;
+          }
+        } @else {
+          @if not $min {
+            // Neither $min nor $max (it's impossible to have $max without $min).
+            // We can create a breakpoint based on the number of columns in the layout.
+            $min: columns-width();
+          }
+          // Min only. At this point, we always have $min without $max.
+          // No need to test for it.
+          @media (min-width: $min) {
+            @content;
+          }
         }
       }
+    } @else {
+      @warn "Something went horribly wrong here. Try adjusting your variables.";
     }
+
   } @else {
-    // If you don't provide a layout, there's not much we can do.
-    // Unless we create the next closest layout... hmmm...
-    @warn "Please supply a unitless number of columns to use for this new layout context.";
+    @warn "You need to provide either a valid layout (number of columns)
+    or a valid media-query min-width breakpoint (length).";
   }
+
 }

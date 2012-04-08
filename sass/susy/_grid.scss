@@ -85,7 +85,8 @@ $omega-float        : opposite-position($from-direction)    !default;
 // Set the outer grid-containing element(s).
 @mixin container(){
   @include pie-clearfix;
-  margin: auto;
+  margin-left: auto;
+  margin-right: auto;
   width: columns-width();
   max-width: 100%;
 }

@@ -168,6 +168,7 @@ $omega-float        : opposite-position($from-direction)    !default;
   $from : $from-direction
 ) {
   @include reset-column($from);
+  @warn "un-column in deprecated. please use reset-column instead.";
 }
 
 // @include `full` on an element that will span it's entire context.
@@ -182,6 +183,15 @@ $omega-float        : opposite-position($from-direction)    !default;
       right: side-gutter();
     }
   }
+}
+
+// @include `reset-full` to reset a full-width element to default block behavior
+@mixin reset-full() {
+  clear: none;
+  margin: {
+    left: auto;
+    right: auto;
+  };
 }
 
 // ---------------------------------------------------------------------------

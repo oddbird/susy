@@ -1,10 +1,12 @@
-// Imports -------------------------------------------------------------------
+// ---------------------------------------------------------------------------
+// Imports
 
 @import "compass/utilities/general/clearfix";
 @import "compass/utilities/general/float";
 @import "compass/layout/grid-background";
 
-// Variables -----------------------------------------------------------------
+// ---------------------------------------------------------------------------
+// Variables
 
 // Total Columns:
 // One or more unitless numbers.
@@ -31,7 +33,8 @@ $from-direction     : left          !default;
 // The direction that +omega elements are floated by deafult.
 $omega-float        : opposite-position($from-direction)    !default;
 
-// Functions -----------------------------------------------------------------
+// ---------------------------------------------------------------------------
+// Functions
 
 // Return the width of 'n' columns plus 'n - 1' gutters
 // plus page padding in non-nested contexts
@@ -80,7 +83,8 @@ $omega-float        : opposite-position($from-direction)    !default;
   @return $column;
 }
 
-// Base Mixin ----------------------------------------------------------------
+// ---------------------------------------------------------------------------
+// Base Mixin
 
 // Set the outer grid-containing element(s).
 @mixin apply-container(){
@@ -126,7 +130,8 @@ $omega-float        : opposite-position($from-direction)    !default;
   }
 }
 
-// Column Mixins -------------------------------------------------------------
+// ---------------------------------------------------------------------------
+// Column Mixins
 
 // Set +columns() on any column element, even nested ones.
 // The first agument [required] is the number of columns to span.
@@ -179,7 +184,8 @@ $omega-float        : opposite-position($from-direction)    !default;
   }
 }
 
-// Padding Mixins ------------------------------------------------------------
+// ---------------------------------------------------------------------------
+// Padding Mixins
 
 // add empty colums as padding before an element.
 @mixin prefix(
@@ -215,13 +221,18 @@ $omega-float        : opposite-position($from-direction)    !default;
   }
 }
 
-// Alpha & Omega Mixins ------------------------------------------------------
-// I recommend that you pass the actual nested contexts (when nested) rather
-// than a true/false argument for the sake of consistency. Effect is the same,
-// but your code will be much more readable.
+// ---------------------------------------------------------------------------
+// Alpha & Omega Mixins
+//
+// I recommend that you pass the actual nested contexts (when nested)
+// rather than a true/false argument (for the sake of consistency).
+// The effect is the same, but your code will be much more readable.
 
-// @include on any element spanning the first column in non-nested context to
-// take side-gutters into account.
+// Apply to elements spanning the first column to account for side-gutters.
+// - Only needed in the root context, and in conjunction with side-gutters.
+//
+// $nested  : If you need it, you don't need alpha.
+// $from    : The start-direction for your document.
 @mixin alpha(
   $nested : false,
   $from   : $from-direction
@@ -233,8 +244,10 @@ $omega-float        : opposite-position($from-direction)    !default;
   }
 }
 
-// @include on the last element of a row, in order to take side-gutters and
-// the page edge into account. Set the $nested argument for nested columns.
+// Apply to elements spanning the last column, to account for side-gutters & page edge.
+//
+// $nested  : the context, in columns, when nested.
+// $from    : The start-direction for your document.
 @mixin omega(
   $nested : false,
   $from   : $from-direction
@@ -252,8 +265,12 @@ $omega-float        : opposite-position($from-direction)    !default;
   }
 }
 
-// Susy Grid Backgrounds -----------------------------------------------------
-
+// ---------------------------------------------------------------------------
+// Susy Grid Background
+//
+// A wrapper for the compass "column-grid-background" mixin
+// Uses all your settings to create a grid background for a container element.
+// Note: Sub-pixel rounding can lead to several pixels of variation between browsers.
 @mixin susy-grid-background (){
   @include column-grid-background($total-cols, $col-width, $gutter-width, $side-gutter-width, $force-fluid: true);
 }

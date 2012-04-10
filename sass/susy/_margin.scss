@@ -1,0 +1,83 @@
+// ---------------------------------------------------------------------------
+// Margin Mixins
+
+// Apply 'columns' margin before an element to push it along the grid.
+//
+// $columns : The number of columns to span.
+// $context : [optional] The context (columns spanned by parent).
+//          : Context is required on any nested elements.
+//          : Context MUST NOT be declared on a root element.
+// $from    : The start direction of your layout (e.g. 'left' for ltr languages)
+@mixin pre(
+  $columns,
+  $context  : false,
+  $from     : $from-direction
+) {
+  $sg : if($context, 0, side-gutter());
+  
+  margin-#{$from}: $sg + space($pre,$context);
+}
+
+// 'push' is a synonymn for 'pre'
+@mixin push(
+  $columns,
+  $context  : false,
+  $from     : $from-direction
+) {
+  @include pre($columns,$context,$from)
+}
+
+// Apply negative 'columns' margin before an element to pull it along the grid.
+//
+// $columns : The number of columns to span.
+// $context : [optional] The context (columns spanned by parent).
+//          : Context is required on any nested elements.
+//          : Context MUST NOT be declared on a root element.
+// $from    : The start direction of your layout (e.g. 'left' for ltr languages)
+@mixin pull(
+  $columns,
+  $context  : false,
+  $from     : $from-direction
+) {
+  margin-#{$from}: 0 - space($columns, $context);
+}
+
+// Apply 'columns' margin after an element to contain it in a grid.
+//
+// $columns : The number of columns to span.
+// $context : [optional] The context (columns spanned by parent).
+//          : Context is required on any nested elements.
+//          : Context MUST NOT be declared on a root element.
+// $from    : The start direction of your layout (e.g. 'left' for ltr languages)
+@mixin post(
+  $columns,
+  $context  : false,
+  $from     : $from-direction
+) {
+  $to : opposite-position($from);
+  $sg : if($context, 0, side-gutter());
+
+  margin-#{$to}: $sg + space($pre,$context);
+}
+
+// Apply 'columns' before and/or after an element to contain it on a grid.
+//
+// $pre     : The number of columns to add as margin before.
+// $post    : The number of columns to add as margin after.
+// $context : [optional] The context (columns spanned by parent).
+//          : Context is required on any nested elements.
+//          : Context MUST NOT be declared on a root element.
+// $from    : The start direction of your layout (e.g. 'left' for ltr languages)
+@mixin squish(
+  $pre      : false,
+  $post     : false,
+  $context  : false,
+  $from     : $from-direction
+) {
+  @if $pre {
+    @include pre($pre,$context,$from)
+  }
+  @if $post {
+    @include post($pre,$context,$from)
+  }
+}

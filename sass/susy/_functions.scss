@@ -7,11 +7,13 @@
 //  $columns  : The number of columns to get width for.
 //  $context  : The grid context in columns, if nested.
 @function columns-width(
-  $columns  : false,
-  $context  : false
+  $columns  : false
 ) {
-  $sg       : if($context, 0, $side-gutter-width);
-  $columns  : if($columns, $columns, $total-cols);
+  $sg       : 0;
+  @if not $columns {
+    $columns  : $total-cols;
+    $sg       : $side-gutter-width; 
+  }
 
   $columns-width: ($columns * $col-width) + (ceil($columns - 1) * $gutter-width) + ($sg * 2);
   @return $columns-width;
@@ -35,8 +37,8 @@
   $columns,
   $context : false
 ) {
-  $columns: percentage(columns-width($columns) / columns-width($context));
-  @return $columns;
+  $return: percentage(columns-width($columns) / columns-width($context));
+  @return $return;
 }
 
 // Return the percentage width of a single gutter in a given 'context'.

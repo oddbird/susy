@@ -77,8 +77,6 @@
     } 
   }
 
-  width: columns($cols, $context);
-
   @if ($pos == 'full') {
     clear: both;
     @if not $context {
@@ -88,6 +86,8 @@
       }
     }
   } @else {
+    width: columns($cols, $context);
+ 
     @if ($pos == 'alpha') {
       @if not $context {
         margin-#{$from}: side-gutter();

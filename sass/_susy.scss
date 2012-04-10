@@ -1,4 +1,15 @@
-// Imports -------------------------------------------------------------------
+// ---------------------------------------------------------------------------
+// Imports
 
+@import "compass/utilities/general/clearfix";
+@import "compass/utilities/general/float";
+
+// ---------------------------------------------------------------------------
+// Partials
+
+@import "susy/settings";
+@import "susy/functions";
 @import "susy/grid";
+@import "susy/padding";
 @import "susy/media";
+@import "susy/background";

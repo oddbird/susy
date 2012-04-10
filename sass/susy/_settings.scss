@@ -1,0 +1,27 @@
+// ---------------------------------------------------------------------------
+// Susy Settings
+
+// Total Columns:
+// One or more unitless numbers.
+// Each number represents the number of columns in a given 'layout'
+$total-cols         : 12            !default;
+
+// Column Width:
+// The width of a column in any unit of length.
+$col-width          : 4em           !default;
+
+// Gutter Width:
+// The width of a gutter in the same units as $col-width.
+$gutter-width       : 1em           !default;
+
+// Side Gutter Width:
+// The width of a side gutter in the same units as $col-width.
+$side-gutter-width  : $gutter-width !default;
+
+// From Direction:
+// Controls for right-to-left or bi-directional sites.
+$from-direction     : left          !default;
+
+// Omega Float Direction:
+// The direction that +omega elements are floated by deafult.
+$omega-float        : opposite-position($from-direction)    !default;

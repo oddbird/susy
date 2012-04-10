@@ -8,7 +8,7 @@
 //          : Context MUST NOT be declared on a root element.
 // $from    : The start direction of your layout (e.g. 'left' for ltr languages)
 @mixin prefix(
-  $colums,
+  $columns,
   $context  : false,
   $from     : $from-direction
 ) {
@@ -22,7 +22,7 @@
 //          : Context MUST NOT be declared on a root element.
 // $from    : The start direction of your layout (e.g. 'left' for ltr languages)
 @mixin suffix(
-  $colums,
+  $columns,
   $context  : false,
   $from     : $from-direction
 ) {

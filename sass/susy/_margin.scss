@@ -15,7 +15,7 @@
 ) {
   $sg : if($context, 0, side-gutter());
   
-  margin-#{$from}: $sg + space($pre,$context);
+  margin-#{$from}: $sg + space($columns,$context);
 }
 
 // 'push' is a synonymn for 'pre'
@@ -57,7 +57,7 @@
   $to : opposite-position($from);
   $sg : if($context, 0, side-gutter());
 
-  margin-#{$to}: $sg + space($pre,$context);
+  margin-#{$to}: $sg + space($columns,$context);
 }
 
 // Apply 'columns' before and/or after an element to contain it on a grid.
@@ -78,6 +78,6 @@
     @include pre($pre,$context,$from)
   }
   @if $post {
-    @include post($pre,$context,$from)
+    @include post($post,$context,$from)
   }
 }

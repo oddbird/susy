@@ -35,7 +35,7 @@
   $ie           : nth($media-layout,4);
 
   // We need to have either a min-width breakpoint or a layout in order to proceed.
-  @if $min or $layout {
+  @if $min or $layout or $max {
 
     // If we don't have a layout, we create one based on the min-width.
     @if not $layout {
@@ -47,20 +47,26 @@
       // Set our new layout context.
       @include layout($layout) {
         @if $min and $max {
-          // Both $min and $max.
+          // Both $min and $max
           @media (min-width: $min) and (max-width: $max) {
             @content;
           }
         } @else {
-          @if not $min {
-            // Neither $min nor $max (it's impossible to have $max without $min).
+          @if (not $min) and (not $max) {
+            // Neither $min nor $max:
             // We can create a breakpoint based on the number of columns in the layout.
             $min: columns-width();
           }
-          // Min only. At this point, we always have $min without $max.
-          // No need to test for it.
-          @media (min-width: $min) {
-            @content;
+          @if $min {
+            // Min only:
+            @media (min-width: $min) {
+              @content;
+            }
+          } @else {
+            // Max only: 
+            @media (max-width: $max) {
+              @content;
+            }              
           }
         }
         // Set an IE fallback

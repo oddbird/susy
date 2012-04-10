@@ -95,24 +95,33 @@
 @function medialayout(
   $media-layout
 ) {
-  $media  : compact();
-  $min    : false;
-  $max    : false;
-  $layout : false;
-  $ie     : false;
+  $media        : false;
+  $min          : false;
+  $layout       : false;
+  $max          : false;
+  $ie           : false;
+  $has-layout   : false;
 
   @each $val in $media-layout {
     @if (type-of($val) == "number") {
       @if unitless($val) {
-        $layout: $val;
+        $layout     : $val;
+        $has-layout : true;
       } @else {
-        $media: join($media,$val);
+        @if ($has-layout) and (not $media) {
+          $max: $val;
+        } @else {
+          @if $media {
+            $media: join($media,$val);
+          } @else {
+            $media: $val;
+          }
+        }
       }
     } @else {
       $ie: $val;
     }
   }
-
   @if (length($media) > 0) {
     @if (length($media) == 1) {
       $min: nth($media,1);

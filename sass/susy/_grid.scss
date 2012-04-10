@@ -60,10 +60,47 @@
   $from     : $from-direction
 ) {
   $to       : opposite-position($from);
+  $pos      : false;
+  $cols     : false;
+  
+  @each $var in $columns {
+    @if (type-of($var) == 'string') {
+      $pos: $var;
+    } @else {
+      @if (type-of($var) == 'number') and (unitless($var)) {
+        $cols: $var;
+      } @else {
+        @warn '"#{$var}" is not a valid part of "$columns: #{$columns}" in the columns() mixin.';
+      }
+    } 
+  }
+  
+  @if ($pos == 'full') {
+    clear: both;
+    @if not $context {
+      margin: {
+        left: side-gutter();
+        right: side-gutter();
+      }
+    }
+  } @else {
+    @if ($pos == 'alpha') {
+      @if not $context {
+        margin-#{$from}: side-gutter();
+      } @else {
+        @warn "The alpha argument is not needed in a nested context";
+      }
+    }
 
-  @include float($from);
-  width: columns($columns, $context);
-  margin-#{$to}: gutter($context);
+    @if ($pos == 'omega') {
+      @include float($omega-float);  
+      margin-#{$to}: gutter($context);
+    } @else {  
+      @include float($from);
+    }
+    
+    width: columns($cols, $context);
+  }
 }
 
 // Reset a '+columns' grid element to default block behavior
@@ -100,13 +137,7 @@
 @mixin full(
   $context: false
 ) {
-  clear: both;
-  @if not $context {
-    margin: {
-      left: side-gutter();
-      right: side-gutter();
-    }
-  }
+  @include columns(full,$context)
 }
 
 // @include `reset-full` to reset a full-width element to default block behavior.

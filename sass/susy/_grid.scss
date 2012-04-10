@@ -59,7 +59,9 @@
   $context  : false,
   $from     : $from-direction
 ) {
+  $hack     : opposite-position($omega-float);
   $to       : opposite-position($from);
+  $sg       : if($context,0,side-gutter());
   $pos      : false;
   $cols     : false;
   
@@ -74,7 +76,9 @@
       }
     } 
   }
-  
+
+  width: columns($cols, $context);
+
   @if ($pos == 'full') {
     clear: both;
     @if not $context {
@@ -93,13 +97,15 @@
     }
 
     @if ($pos == 'omega') {
-      @include float($omega-float);  
-      margin-#{$to}: gutter($context);
+      @include float($omega-float);
+      margin-#{$to}: $sg;
+      @if $legacy-support-for-ie6 or $legacy-support-for-ie7 {
+        #margin-#{$hack}: - $gutter-width;
+      }
     } @else {  
       @include float($from);
+      margin-#{$to}: gutter($context);      
     }
-    
-    width: columns($cols, $context);
   }
 }
 
@@ -188,11 +194,7 @@
 ) {
   $to     : opposite-position($from);
   $hack   : opposite-position($omega-float);
-  $sg     : 0;
-  
-  @if not $context {
-    $sg: side-gutter();
-  }
+  $sg     : if($context,0,side-gutter());
   
   @include float($omega-float);
   margin-#{$to}: $sg;

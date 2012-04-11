@@ -1,4 +1,13 @@
 // ---------------------------------------------------------------------------
+// Imports
+
+// We need access to some basic font settings for handling media-queries.
+@import "compass/typography/vertical_rhythm";
+
+// For now, we also need this...
+$browser-default-font-size  : 16px;
+
+// ---------------------------------------------------------------------------
 // Grid Functions
 
 // Returns the full width of a grid based on your grid settings
@@ -77,23 +86,50 @@
 // ---------------------------------------------------------------------------
 // Media Functions
 
-// Sort a list of arguments into "$min $layout $max" order, and return the list.
+// Return an em value adjusted to match the browser default font size.
+// Note: This only works if actual sizes are set relative to browser defaults.
 //
-// $media-layout  : a list of values including -
-//                : One unitless number (representing columns in a layout)
-//                : Two optional lengths (representing min and max-width media-query breakpoints).
-//                : One optional boolian or string to trigger fallback support for IE.
+// $ems         : The initial value to be converted.
+// $font-size   : The current font-size in px.
+@function absolute-ems(
+  $ems,
+  $font-size: $base-font-size
+){
+  @if ($font-size != $browser-default-font-size) {
+    $ems: $ems * ($font-size / $browser-default-font-size);
+  }
+  @return $ems;
+}
+
+// Return a length, after any em-values have been sent through absolute-ems().
 //
-// Order is irrelevant in most cases:
-// - any unitless number will be used as the total column-count ($total-cols) for this layout.
-// - if no length is provided, a min-width will be created based on the number of columns present.
-// - if one length is provided, it will be used as a min-width.
-// - if two lengths are provided, they will be used for min and max based on a comparison of values.
-// - if the values cannot be compared, then we use the first for min and the second for max.
-// - any bool or string will be used to trigger an ie-fallback for media-queries.
-// - the fallback is based on a class: "ie" if TRUE, or a custom string if one is provided.
+// $length      : The length value to be checked and adjusted if necessary.
+// $font-size   : The current font-size in px.
+@function fix-ems(
+  $length,
+  $font-size: $base-font-size
+){
+  @debug $length;
+  @if $length {
+    @if (unit($length) == 'em') {
+      $length: absolute-ems($length,$font-size);
+    }
+  }
+  @debug $length;
+  @return $length;
+}
+
+// Sort a list of arguments into "$min $layout $max $ie" order, and return the list.
+//
+// $media-layout  : a list of values [$min $layout $max $ie] including...
+//                : - one unitless number (columns in a layout)
+//                : - two optional lengths (min and max-width media-query breakpoints).
+//                : - one optional boolian or string to trigger fallback support for IE.
+// $font-size     : [optional] The base font-size of your layout, if you are using ems.
+//                : - defaults to $base-font-size
 @function medialayout(
-  $media-layout
+  $media-layout,
+  $font-size: $base-font-size
 ) {
   $media        : false;
   $min          : false;
@@ -144,6 +180,11 @@
     }
   }
 
+  // media-queries must be set in ems relative to the browser default
+  // rather than the font-size set in CSS.
+  $min: fix-ems($min,$font-size);
+  $max: fix-ems($max,$font-size);
+
   @return $min $layout $max $ie;
 }
 
@@ -157,6 +198,7 @@
   $total-cols     : 1;
   $layout-width   : columns-width();
   $return         : false;
+  $min            : fix-ems($min);
 
   @if comparable($min, $layout-width) {
     @while $min >= $layout-width {
@@ -174,8 +216,8 @@
 // Check to see if a given $media-layout list is simply the default.
 //
 // $media-layout  : a list of values including -
-//                : One unitless number (representing columns in a layout)
-//                : Two optional lengths (representing min and max-width media-query breakpoints).
+//                : One unitless number (columns in a layout)
+//                : Two optional lengths (min and max-width media-query breakpoints).
 //                : One optional boolian or string to trigger fallback support for IE.
 @function is-default-layout(
   $media-layout

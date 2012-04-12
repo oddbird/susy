@@ -109,13 +109,11 @@ $browser-default-font-size  : 16px;
   $length,
   $font-size: $base-font-size
 ){
-  @debug $length;
   @if $length {
     @if (unit($length) == 'em') {
       $length: absolute-ems($length,$font-size);
     }
   }
-  @debug $length;
   @return $length;
 }
 

@@ -14,14 +14,17 @@ $browser-default-font-size  : 16px;
 // Including or excluding side-gutters, depending on context.
 // 
 //  $columns  : The number of columns to get width for.
-//  $context  : The grid context in columns, if nested.
+//  $nested   : If the columns are nested, we don't need side-gutters.
 @function columns-width(
-  $columns  : false
+  $columns  : false,
+  $nested   : false
 ) {
-  $sg       : 0;
+  $sg: 0;
   @if not $columns {
-    $columns  : $total-cols;
-    $sg       : $side-gutter-width; 
+    $columns: $total-cols;
+  }
+  @if not $nested {
+    $sg: $side-gutter-width;
   }
 
   $columns-width: ($columns * $col-width) + (ceil($columns - 1) * $gutter-width) + ($sg * 2);
@@ -34,7 +37,7 @@ $browser-default-font-size  : 16px;
 @function column(
   $context : false
 ) {
-  $column: percentage($col-width / columns-width($context));
+  $column: percentage($col-width / columns-width($context, $context));
   @return $column;
 }
 
@@ -46,7 +49,7 @@ $browser-default-font-size  : 16px;
   $columns,
   $context : false
 ) {
-  $return: percentage(columns-width($columns) / columns-width($context));
+  $return: percentage(columns-width($columns, $columns) / columns-width($context, $context));
   @return $return;
 }
 
@@ -56,7 +59,7 @@ $browser-default-font-size  : 16px;
 @function gutter(
   $context : false
 ) {
-  $gutter: percentage($gutter-width / columns-width($context));
+  $gutter: percentage($gutter-width / columns-width($context, $context));
   @return $gutter;
 }
 
@@ -66,7 +69,7 @@ $browser-default-font-size  : 16px;
 @function side-gutter(
   $context : false
 ) {
-  $side-gutter: percentage($side-gutter-width / columns-width($context));
+  $side-gutter: percentage($side-gutter-width / columns-width($context, $context));
   @return $side-gutter;
 }
 

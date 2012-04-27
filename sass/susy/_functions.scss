@@ -86,6 +86,41 @@ $browser-default-font-size  : 16px;
   @return $space;
 }
 
+// Accept a list including column-count and (optional) position.
+// Return either the column count or the position alone.
+//
+//  $columns  : the list to split and interprate.
+//  $request  : The value to return, either 'columns' or 'position'.
+@function split-columns-value(
+  $columns,
+  $request : columns
+) {
+  $pos  : false;
+  $cols : false;
+
+  @each $var in $columns {
+    @if (type-of($var) == 'string') {
+      $pos: $var;
+    } @else {
+      @if (type-of($var) == 'number') and (unitless($var)) {
+        $cols: $var;
+      } @else {
+        @warn '"#{$var}" is not a valid part of "$columns: #{$columns}" in the columns() mixin.';
+      }
+    } 
+  }
+
+  @if $request == 'columns' {
+    @return $cols;
+  } @else {
+    @if $request == 'position' {
+      @return $pos;
+    } @else {
+      @warn '"#{$request}"" is not a valid value for $request';
+    }
+  }
+}
+
 // ---------------------------------------------------------------------------
 // Media Functions
 

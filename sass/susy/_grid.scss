@@ -62,21 +62,9 @@
   $hack     : opposite-position($omega-float);
   $to       : opposite-position($from);
   $sg       : if($context,0,side-gutter());
-  $pos      : false;
-  $cols     : false;
+  $pos      : split-columns-value($columns,position);
+  $cols     : split-columns-value($columns,columns);
   
-  @each $var in $columns {
-    @if (type-of($var) == 'string') {
-      $pos: $var;
-    } @else {
-      @if (type-of($var) == 'number') and (unitless($var)) {
-        $cols: $var;
-      } @else {
-        @warn '"#{$var}" is not a valid part of "$columns: #{$columns}" in the columns() mixin.';
-      }
-    } 
-  }
-
   @if ($pos == 'full') {
     clear: both;
     @if not $context {
@@ -97,14 +85,18 @@
     }
 
     @if ($pos == 'omega') {
-      @include float($omega-float);
+      float: $omega-float;
       margin-#{$to}: $sg;
       @if $legacy-support-for-ie6 or $legacy-support-for-ie7 {
         #margin-#{$hack}: - $gutter-width;
       }
     } @else {  
-      @include float($from);
+      float: $from;
       margin-#{$to}: gutter($context);      
+    }
+
+    @if $legacy-support-for-ie6 {
+      display: inline;
     }
   }
 }
@@ -113,24 +105,31 @@
 //
 // $from  : The start direction of your layout (e.g. 'left' for ltr languages)
 @mixin reset-columns(
-  $from : $from-direction
+  $from : false
 ) {
-  $to   : opposite-position($from);
+  @if $from {
+    @warn "The $from argument for 'reset-columns' has been depricated.";
+  }
   
-  @include reset-float;
+  float: none;
   width: auto;
-  margin-#{$to}: auto;
+  margin-left: auto;
+  margin-right: auto;
+
+  @if $legacy-support-for-ie6 {
+    display: block;
+  }
 }
 
 @mixin reset-column(
-  $from : $from-direction
+  $from : false
 ) {
   @include reset-columns($from);
   @warn "reset-column in deprecated. please use reset-columns instead.";
 }
 
 @mixin un-column(
-  $from : $from-direction
+  $from : false
 ) {
   @include reset-columns($from);
   @warn "un-column in deprecated. please use reset-columns instead.";
@@ -196,9 +195,12 @@
   $hack   : opposite-position($omega-float);
   $sg     : if($context,0,side-gutter());
   
-  @include float($omega-float);
+  float: $omega-float;
   margin-#{$to}: $sg;
   @if $legacy-support-for-ie6 or $legacy-support-for-ie7 {
     #margin-#{$hack}: - $gutter-width;
+  }
+  @if $legacy-support-for-ie6 {
+    display: inline;
   }
 }

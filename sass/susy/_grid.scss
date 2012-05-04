@@ -1,4 +1,9 @@
 // ---------------------------------------------------------------------------
+// Imports
+
+@import "compass/utilities/general/clearfix";
+
+// ---------------------------------------------------------------------------
 // Container
 
 // Set the outer grid-containing element(s).
@@ -6,8 +11,12 @@
   @include pie-clearfix;
   margin-left: auto;
   margin-right: auto;
-  width: columns-width();
-  max-width: 100%;
+  @if $legacy-support-for-ie6 {
+    width: columns-width();
+    max-width: 100%;
+  } @else {
+    max-width: columns-width();
+  }
 }
 
 // Set one or more layouts on a grid-containing element at any number of media-query breakpoints.

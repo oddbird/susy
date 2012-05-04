@@ -55,7 +55,7 @@
 }
 
 // ---------------------------------------------------------------------------
-// Column Mixins
+// Columns
 
 // Create a grid element spanning any number of 'columns' in a grid 'context'.
 // $columns : The number of columns to span.
@@ -113,13 +113,7 @@
 // Reset a '+columns' grid element to default block behavior
 //
 // $from  : The start direction of your layout (e.g. 'left' for ltr languages)
-@mixin reset-columns(
-  $from : false
-) {
-  @if $from {
-    @warn "The $from argument for 'reset-columns' has been depricated.";
-  }
-  
+@mixin reset-columns() {
   float: none;
   width: auto;
   margin-left: auto;
@@ -128,20 +122,6 @@
   @if $legacy-support-for-ie6 {
     display: block;
   }
-}
-
-@mixin reset-column(
-  $from : false
-) {
-  @include reset-columns($from);
-  @warn "reset-column in deprecated. please use reset-columns instead.";
-}
-
-@mixin un-column(
-  $from : false
-) {
-  @include reset-columns($from);
-  @warn "un-column in deprecated. please use reset-columns instead.";
 }
 
 // Create a grid element that will span it's entire context.

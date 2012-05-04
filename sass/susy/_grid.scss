@@ -6,17 +6,22 @@
 // ---------------------------------------------------------------------------
 // Container
 
-// Set the outer grid-containing element(s).
-@mixin apply-container(){
-  @include pie-clearfix;
-  margin-left: auto;
-  margin-right: auto;
+// Set the width of a container
+@mixin set-container-width(){
   @if $legacy-support-for-ie6 {
     width: columns-width();
     max-width: 100%;
   } @else {
     max-width: columns-width();
   }
+}
+
+// Set the outer grid-containing element(s).
+@mixin apply-container(){
+  @include pie-clearfix;
+  @include set-container-width;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 // Set one or more layouts on a grid-containing element at any number of media-query breakpoints.
@@ -42,13 +47,15 @@
   @if is-default-layout($media-layout-1) {
     @include apply-container();
   } @else {
-    $media-layouts: join($media-layout-1,$media-layouts);
+    @include at-breakpoint($media-layout-1) {
+      @include apply-container();
+    }
   }
 
   @each $ml in $media-layouts {
     @if $ml {
       @include at-breakpoint($ml) {
-        @include apply-container();
+        @include set-container-width;
       }
     }
   }

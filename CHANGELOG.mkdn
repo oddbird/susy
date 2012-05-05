@@ -24,13 +24,16 @@ Removed:
 * `alpha` and `full` are no longer needed!
 * The poorly named `un-column` and `reset-column` have been replaced 
 once-and-for-all with `reset-columns` (to match the `columns` mixin).
+* `side-gutter()` is no longer meaningful. Use `$side-gutter-width`.
 
 Upgrade:
 
 1. Remove any mention of 'alpha' and 'full' in your code. In some cases you 
   will want to replace 'full' with a simple `clear: both;`.
 2. Replace any mention of 'un-column' or 'reset-column' with 'reset-columns'.
-3. Any time 'columns' and 'omega' are declared in the same block, they can now 
+3. Remove any mention of `side-gutter()`. Side-gutters are no longer forced 
+  fluid, so they can be referenced directly with `$side-gutter-width`. _This may cause refactoring for certain edge cases_.
+4. Any time 'columns' and 'omega' are declared in the same block, they can now 
   be joined together. `@include columns(3); @include omega();` can become 
   `@include columns(3 omega)`.
 

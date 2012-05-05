@@ -90,7 +90,7 @@
   width: columns($cols, $context);
 
   @if ($pos == 'omega') {
-    @include omega($context,$from);
+    @include omega($from);
   } @else {  
     float: $from;
     margin-#{$to}: gutter($context);      
@@ -104,10 +104,8 @@
 // Apply to elements spanning the last column, to account for the page edge.
 // Only needed as an override. Normally 'omega' can just be called by `columns`.
 //
-// $context : The context in columns, when nested.
 // $from    : The start-direction for your document.
 @mixin omega(
-  $context  : $total-columns,
   $from     : $from-direction
 ) {
   $to     : opposite-position($from);

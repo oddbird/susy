@@ -29,17 +29,19 @@ Changed API:
 Removed:
 
 * `alpha` is no longer needed.
+* `+omega` no longer accepts the `$context` argument.
 * `full` can be replaced by a simple `clear: both;` when needed.
 * `side-gutter()` is no longer needed. Use `$grid-padding` instead.
 
 Upgrade:
 
-1. Find and replace the 4 "Changed API's" listed above.
-2. Remove any mention of `alpha` and `full` in your code. 
+1. Find and replace the 4 simple "Changed API's" listed above.
+2. Remove the `$context` argument from all `omega` mixins.
+3. Remove any mention of `alpha` and `full` in your code. 
    * Replace `full` with `clear: both;` where necessary.
-3. Remove any mention of `side-gutter()`.
+4. Remove any mention of `side-gutter()`.
    * This may require some refactoring, depending on your uses.
-4. [Optional] Any time 'columns' and 'omega' are declared in the same block, 
+5. [Optional] Any time 'columns' and 'omega' are declared in the same block, 
    they can now be joined together. `@include columns(3); @include omega();` 
    can become `@include columns(3 omega)`.
 

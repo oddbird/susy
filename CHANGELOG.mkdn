@@ -1,6 +1,39 @@
 Susy Changelog
 ==============
 
+v1.0 [UNRELEASED]
+-----------------
+
+*Requires the latest unreleased master branch of Compass.*
+
+This release is loaded with new features, but don't let that fool you. Susy 
+just became shockingly simple to use. See the README for updated usage details.
+
+New Features:
+
+* `omega` can now be set directly through the `columns` mixin - for much 
+  more compact output.
+* Create responsive grid break-points using the `layout` and `at-breakpoint`.
+* `container` mixin now accepts one or more grids/breakpoints as a shortcut.
+* All mixins respect your `$legacy-support-for-ie` settings.
+* The `space` function can be used anywhere you need column+gutter math.
+* `push`, `pull`, `pre`, `post`, and `squish` add margin left/right shortcuts.
+
+Removed:
+
+* `alpha` and `full` are no longer needed!
+* The poorly named `un-column` and `reset-column` have been replaced 
+once-and-for-all with `reset-columns` (to match the `columns` mixin).
+
+**Upgrade**:
+
+# Remove any mention of 'alpha' and 'full' in your code. In some cases you 
+  will want to replace 'full' with a simple `clear: both;`.
+# Replace any mention of 'un-column' or 'reset-column' with 'reset-columns'.
+# Any time 'columns' and 'omega' are declared in the same block, they can now be joined together. `@include columns(3); @include omega();` can become `@include columns(3 omega)`.
+
+You're done! Stop worrying about all that "nested vs. root" bullshit, and start playing with the new toys!
+
 v0.9 [Apr 25 2011]
 ------------------
 

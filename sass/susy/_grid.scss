@@ -16,7 +16,6 @@
 
 // Set the outer grid-containing element(s).
 @mixin apply-container(){
-  @include box-sizing(border-box);
   @include pie-clearfix;
   @include set-container-width;
   margin: { left: auto; right: auto; }

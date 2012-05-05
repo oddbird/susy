@@ -80,7 +80,7 @@
 // $from    : The start direction of your layout (e.g. 'left' for ltr languages)
 @mixin columns(
   $columns,
-  $context  : false,
+  $context  : $total-columns,
   $from     : $from-direction
 ) {
   $to       : opposite-position($from);
@@ -107,7 +107,7 @@
 // $context : The context in columns, when nested.
 // $from    : The start-direction for your document.
 @mixin omega(
-  $context  : false,
+  $context  : $total-columns,
   $from     : $from-direction
 ) {
   $to     : opposite-position($from);

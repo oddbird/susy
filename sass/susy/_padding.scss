@@ -9,7 +9,7 @@
 // $from    : The start direction of your layout (e.g. 'left' for ltr languages)
 @mixin prefix(
   $columns,
-  $context  : false,
+  $context  : $total-columns,
   $from     : $from-direction
 ) {
   padding-#{$from}: space($columns, $context);
@@ -23,7 +23,7 @@
 // $from    : The start direction of your layout (e.g. 'left' for ltr languages)
 @mixin suffix(
   $columns,
-  $context  : false,
+  $context  : $total-columns,
   $from     : $from-direction
 ) {
   $to           : opposite-position($from);
@@ -39,7 +39,7 @@
 @mixin pad(
   $prefix   : false,
   $suffix   : false,
-  $context  : false,
+  $context  : $total-columns,
   $from     : $from-direction
 ) {
   @if $prefix {

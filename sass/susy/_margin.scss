@@ -10,7 +10,7 @@
 // $from    : The start direction of your layout (e.g. 'left' for ltr languages)
 @mixin pre(
   $columns,
-  $context  : false,
+  $context  : $total-columns,
   $from     : $from-direction
 ) {  
   margin-#{$from}: space($columns,$context);
@@ -19,7 +19,7 @@
 // 'push' is a synonymn for 'pre'
 @mixin push(
   $columns,
-  $context  : false,
+  $context  : $total-columns,
   $from     : $from-direction
 ) {
   @include pre($columns,$context,$from)
@@ -34,7 +34,7 @@
 // $from    : The start direction of your layout (e.g. 'left' for ltr languages)
 @mixin pull(
   $columns,
-  $context  : false,
+  $context  : $total-columns,
   $from     : $from-direction
 ) {
   margin-#{$from}: 0 - space($columns, $context);
@@ -49,7 +49,7 @@
 // $from    : The start direction of your layout (e.g. 'left' for ltr languages)
 @mixin post(
   $columns,
-  $context  : false,
+  $context  : $total-columns,
   $from     : $from-direction
 ) {
   $to : opposite-position($from);
@@ -67,7 +67,7 @@
 @mixin squish(
   $pre      : false,
   $post     : false,
-  $context  : false,
+  $context  : $total-columns,
   $from     : $from-direction
 ) {
   @if $pre {

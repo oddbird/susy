@@ -2,13 +2,15 @@
 // Susy Settings
 
 // The total number of columns in the grid
-$total-cols         : 12              !default;
+$total-columns      : 12              !default;
 
-// The width of columns, gutters, and side-gutters (padding on the container).
+// The width of columns and gutters.
 // These must all be set with the comparable units.
-$col-width          : 4em             !default;
+$column-width       : 4em             !default;
 $gutter-width       : 1em             !default;
-$side-gutter-width  : $gutter-width   !default;
+
+// Add padding to your grid.
+$grid-padding       : $gutter-width   !default;
 
 // ---------------------------------------------------------------------------
 // Advanced Settings

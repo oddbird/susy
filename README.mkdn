@@ -11,16 +11,15 @@ Melts in the mouth
 ------------------
 
 Susy grids are always fluid on the inside, but contained in the candy shell of 
-your choice (fixed/fluid/elastic). That allows them to flex, react, and move 
-as needed.
+your choice (fixed/fluid/elastic/magic). That allows them to flex, react, and 
+move as needed.
 
-Built entirely native to [Compass](http://compass-style.org/), Susy is based
-on the philosophy and techniques of [Natalie Downe](http://natbat.net/)'s
-"[CSS Systems](http://www.slideshare.net/nataliedowne/css-systems-presentation)
-" - which introduces difficult math in return for beautiful structure and 
-flexibility. 
-
-Susy will do all the math, and let you focus on your designs.
+What's a magic grid? That's Susy's Special Sauce. The magic grid begins as a 
+simple fixed or elastic grid, but becomes fluid when the window is too small 
+to contain it. Based on Natalie Downe's "[CSS Systems]
+(http://www.slideshare.net/nataliedowne/css-systems-presentation)" - this 
+otherwise math-heavy technique becomes simple with Susy. It's the only grid 
+system I know of that could never exist as a library apart from Sass.
 
 Installation
 ------------
@@ -35,14 +34,13 @@ _(This now refers to the unreleased 1.0 version of Susy.)_
 
 ### Settings:
 
-Set up your default grid values: total columns, column width, gutter width, 
-and side-gutter width.
+Set up your default grid values: total columns, column width, and gutter width.
 
 ```scss
-$total-cols         : 12;             /* a 12-column grid */
-$col-width          : 4em;            /* each column is 4em wide */
-$gutter-width       : 1em;            /* 1em gutters between columns */
-$side-gutter-width  : $gutter-width;  /* 1em padding on the entire grid */
+$total-columns  : 12;             /* a 12-column grid */
+$column-width   : 4em;            /* each column is 4em wide */
+$gutter-width   : 1em;            /* 1em gutters between columns */
+$grid-padding   : $gutter-width;  /* 1em padding on the grid */
 ```
 
 ### Mixins:
@@ -61,6 +59,7 @@ For example:
 ```scss
 #page {
   @include container;
+  /* If you want padding on the grid, just add it to the container. */
 
   /* 
   full-width items like the header don't need any help from Susy:
@@ -96,11 +95,13 @@ The point is to change layouts (number of columns in the grid) at breakpoints. I
   .container { @include container; } 
 }
 
-/* Between the min-width of 30em and the max-width of 60em, use a 10-column layout. Provide a fallback class for IE. */
+/* Between the min-width of 30em and the max-width of 60em, 
+   use a 10-column layout. Provide a fallback class for IE. */
 @include at-breakpoint(30em 10 60em ie) { 
   .container { @include container; } 
 }
 
-/* Create all your container layouts in one go. Each argument accepts min/layout/max/ie, same as at-breakpoint. */
+/* Create all your container layouts in one go. 
+   Each argument accepts min/layout/max/ie, same as at-breakpoint. */
 .container { @include container(4,8,12); }
 ```

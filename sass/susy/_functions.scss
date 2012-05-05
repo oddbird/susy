@@ -10,28 +10,32 @@ $browser-default-font-size  : 16px;
 // ---------------------------------------------------------------------------
 // Grid Functions
 
-// Returns the full width of a grid based on your grid settings
-// Including or excluding side-gutters, depending on context.
+// Returns the full width of a grid based on your grid settings.
 // 
 //  $columns  : The number of columns to get width for.
-//  $nested   : If the columns are nested, we don't need side-gutters.
 @function columns-width(
-  $columns  : false
+  $columns  : $total-columns
 ) {
-  $columns: if($columns, $columns, $total-cols);
+  $columns  : if($columns,$columns,$total-columns);
+  @return ($columns * $column-width) + (ceil($columns - 1) * $gutter-width);
+}
 
-  $columns-width: ($columns * $col-width) + (ceil($columns - 1) * $gutter-width);
-  @return $columns-width;
+// Return the full outer width of a Container element.
+//
+//  $columns  : The number of columns in the Grid Layout.
+@function container-outer-width(
+  $columns  : $total-columns
+) {
+  @return columns-width($columns) + $grid-padding*2;
 }
 
 // Return the percentage width of a single column in a given 'context'.
 //
 //  $context  : The grid context in columns, if nested.
 @function column(
-  $context : false
+  $context : $total-columns
 ) {
-  $column: percentage($col-width / columns-width($context));
-  @return $column;
+  @return percentage($column-width / columns-width($context));
 }
 
 // Return the percentage width of multiple 'columns' in a given 'context'.
@@ -40,20 +44,18 @@ $browser-default-font-size  : 16px;
 //  $context  : The grid context in columns, if nested.
 @function columns(
   $columns,
-  $context : false
+  $context : $total-columns
 ) {
-  $return: percentage(columns-width($columns) / columns-width($context));
-  @return $return;
+  @return percentage(columns-width($columns) / columns-width($context));
 }
 
 // Return the percentage width of a single gutter in a given 'context'.
 // 
 //  $context  : The grid context in columns, if nested.
 @function gutter(
-  $context : false
+  $context : $total-columns
 ) {
-  $gutter: percentage($gutter-width / columns-width($context));
-  @return $gutter;
+  @return percentage($gutter-width / columns-width($context));
 }
 
 // Return the total space occupied by multiple columns and associated gutters.
@@ -63,10 +65,9 @@ $browser-default-font-size  : 16px;
 //  $context  : The grid context in columns, if nested.
 @function space(
   $columns,
-  $context : false
+  $context : $total-columns
 ) {
-  $space: columns($columns, $context) + gutter($context);
-  @return $space;
+  @return columns($columns, $context) + gutter($context);
 }
 
 // Accept a list including column-count and (optional) position.
@@ -213,21 +214,21 @@ $browser-default-font-size  : 16px;
 @function get-layout (
   $min
 ) {
-  $default-layout : $total-cols;
-  $total-cols     : 1;
-  $layout-width   : columns-width();
+  $default-layout : $total-columns;
+  $total-columns  : 1;
+  $layout-width   : container-outer-width();
   $return         : false;
   $min            : fix-ems($min);
 
   @if comparable($min, $layout-width) {
     @while $min >= $layout-width {
-      $total-cols   : $total-cols + 1;
-      $layout-width : columns-width();
+      $total-columns  : $total-columns + 1;
+      $layout-width   : container-outer-width();
     }
-    $return       : $total-cols;
+    $return : $total-columns;
   }
 
-  $total-cols     : $default-layout;
+  $total-columns : $default-layout;
 
   @return $return;
 }
@@ -245,10 +246,10 @@ $browser-default-font-size  : 16px;
   $min          : nth($media-layout,1);
   $layout-cols  : nth($media-layout,2);
   $max          : nth($media-layout,3);
-  $return       : false;
 
-  @if ($layout-cols == $total-cols) { $return: true; }
-  @if $min or $max { $return: false; }
-
-  @return $return;
+  @if $min or $max { 
+    @return false; 
+  } @else {
+    @return if($layout-cols == $total-columns,true,false);
+  }
 }

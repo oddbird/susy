@@ -29,17 +29,17 @@
   @include pie-clearfix;
   @include set-container-width;
   margin: { left: auto; right: auto; }
-  padding: { left: $side-gutter-width; right: $side-gutter-width; }
+  padding: { left: $grid-padding; right: $grid-padding; }
 }
 
 // Set one or more layouts on a grid-containing element at any number of media-query breakpoints.
 //
-// $media-layout-1        : [default:$total-cols] A list of values including -
+// $media-layout-1        : [default:$total-columns] A list of values including -
 //                        : One unitless number (representing columns in a layout)
 //                        : Two optional lengths (representing min and max-width media-query breakpoints).
 // $media-layout-2 ...-10 : [optional] Same as $media-layout-1
 @mixin container(
-  $media-layout-1   : $total-cols,
+  $media-layout-1   : $total-columns,
   $media-layout-2   : false,
   $media-layout-3   : false,
   $media-layout-4   : false,

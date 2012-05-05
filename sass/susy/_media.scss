@@ -7,15 +7,15 @@
 @mixin layout(
   $layout-cols
 ) {
-  // store default $total-cols setting for later, then change it.
-  $default-layout : $total-cols;
-  $total-cols     : $layout-cols;
+  // store default $total-columns setting for later, then change it.
+  $default-layout   : $total-columns;
+  $total-columns    : $layout-cols;
 
   // apply children in this new layout context.
   @content;
 
-  // return to default $total-cols setting.
-  $total-cols     : $default-layout;
+  // return to default $total-columns setting.
+  $total-columns    : $default-layout;
 }
 
 // Nest a block of code inside a new media-query and layout context.
@@ -57,7 +57,7 @@
           @if (not $min) and (not $max) {
             // Neither $min nor $max:
             // We can create a breakpoint based on the number of columns in the layout.
-            $min: fix-ems(columns-width());
+            $min: fix-ems(container-outer-width());
           }
           @if $min {
             // Min only:

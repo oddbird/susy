@@ -8,20 +8,19 @@
 
 // Set the width of a container
 @mixin set-container-width(){
+  max-width: columns-width();
   @if $legacy-support-for-ie6 {
-    width: columns-width();
-    max-width: 100%;
-  } @else {
-    max-width: columns-width();
+    _width: columns-width();
   }
 }
 
 // Set the outer grid-containing element(s).
 @mixin apply-container(){
+  @include box-sizing(border-box);
   @include pie-clearfix;
   @include set-container-width;
-  margin-left: auto;
-  margin-right: auto;
+  margin: { left: auto; right: auto; }
+  padding: { left: $side-gutter-width; right: $side-gutter-width; }
 }
 
 // Set one or more layouts on a grid-containing element at any number of media-query breakpoints.
@@ -75,111 +74,26 @@
   $context  : false,
   $from     : $from-direction
 ) {
-  $hack     : opposite-position($omega-float);
   $to       : opposite-position($from);
-  $sg       : if($context,0,side-gutter());
   $pos      : split-columns-value($columns,position);
   $cols     : split-columns-value($columns,columns);
   
-  @if ($pos == 'full') {
-    clear: both;
-    @if not $context {
-      margin: {
-        left: side-gutter();
-        right: side-gutter();
-      }
-    }
-  } @else {
-    width: columns($cols, $context);
- 
-    @if ($pos == 'alpha') {
-      @if not $context {
-        margin-#{$from}: side-gutter();
-      } @else {
-        @warn "The alpha argument is not needed in a nested context";
-      }
-    }
+  width: columns($cols, $context);
 
-    @if ($pos == 'omega') {
-      float: $omega-float;
-      margin-#{$to}: $sg;
-      @if $legacy-support-for-ie6 or $legacy-support-for-ie7 {
-        #margin-#{$hack}: - $gutter-width;
-      }
-    } @else {  
-      float: $from;
-      margin-#{$to}: gutter($context);      
-    }
-
-    @if $legacy-support-for-ie6 {
-      display: inline;
-    }
+  @if ($pos == 'omega') {
+    @include omega($context,$from);
+  } @else {  
+    float: $from;
+    margin-#{$to}: gutter($context);      
   }
-}
-
-// Reset a '+columns' grid element to default block behavior
-//
-// $from  : The start direction of your layout (e.g. 'left' for ltr languages)
-@mixin reset-columns() {
-  float: none;
-  width: auto;
-  margin-left: auto;
-  margin-right: auto;
 
   @if $legacy-support-for-ie6 {
-    display: block;
+    display: inline;
   }
 }
 
-// Create a grid element that will span it's entire context.
-// There is no need for +columns, +alpha or +omega on a +full element.
-//
-// $context : The context in columns, when nested.
-@mixin full(
-  $context: false
-) {
-  @include columns(full,$context)
-}
-
-// @include `reset-full` to reset a full-width element to default block behavior.
-//
-// $context : The context in columns, when nested.
-@mixin reset-full(
-  $context: false
-) {
-  clear: none;
-  @if not $context {
-    margin: {
-      left: auto;
-      right: auto;
-    }
-  };
-}
-
-// ---------------------------------------------------------------------------
-// Alpha & Omega Mixins
-//
-// I recommend that you pass the actual nested contexts (when nested)
-// rather than a true/false argument (for the sake of consistency).
-// The effect is the same, but your code will be much more readable.
-
-// Apply to elements spanning the first column to account for side-gutters.
-// - Only needed in the root context, and in conjunction with side-gutters.
-//
-// $context   : If you need it, you don't need alpha.
-// $from      : The start-direction for your document.
-@mixin alpha(
-  $context  : false,
-  $from     : $from-direction
-) {
-  @if not $context {
-    margin-#{$from}: side-gutter();
-  } @else {
-    @warn "The alpha mixin is not needed in a nested context";
-  }
-}
-
-// Apply to elements spanning the last column, to account for side-gutters & page edge.
+// Apply to elements spanning the last column, to account for the page edge.
+// Only needed as an override. Normally 'omega' can just be called by `columns`.
 //
 // $context : The context in columns, when nested.
 // $from    : The start-direction for your document.
@@ -189,14 +103,34 @@
 ) {
   $to     : opposite-position($from);
   $hack   : opposite-position($omega-float);
-  $sg     : if($context,0,side-gutter());
   
   float: $omega-float;
-  margin-#{$to}: $sg;
+  margin-#{$to}: 0;
+
   @if $legacy-support-for-ie6 or $legacy-support-for-ie7 {
     #margin-#{$hack}: - $gutter-width;
+    @if $legacy-support-for-ie6 { display: inline; }
   }
-  @if $legacy-support-for-ie6 {
-    display: inline;
+}
+
+// ---------------------------------------------------------------------------
+// Reset Columns
+
+// Reset a '+columns' grid element to default block behavior
+//
+// $from  : The start direction of your layout (e.g. 'left' for ltr languages)
+@mixin reset-columns(
+  $from: $from-direction
+) {
+  $to     : opposite-position($from);
+  $hack   : opposite-position($omega-float);
+
+  float: none;
+  width: auto;
+  margin-#{$to}: auto;
+  
+  @if $legacy-support-for-ie6 or $legacy-support-for-ie7 {
+    #margin-#{$hack}: auto;
+    @if $legacy-support-for-ie6 { display: block; }
   }
 }

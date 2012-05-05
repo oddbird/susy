@@ -19,13 +19,8 @@ $browser-default-font-size  : 16px;
   $columns  : false,
   $nested   : false
 ) {
-  $sg: 0;
-  @if not $columns {
-    $columns: $total-cols;
-  }
-  @if not $nested {
-    $sg: $side-gutter-width;
-  }
+  $sg: if($nested, 0, $side-gutter-width);
+  $columns: if($columns, $columns, $total-cols);
 
   $columns-width: ($columns * $col-width) + (ceil($columns - 1) * $gutter-width) + ($sg * 2);
   @return $columns-width;
@@ -37,7 +32,7 @@ $browser-default-font-size  : 16px;
 @function column(
   $context : false
 ) {
-  $column: percentage($col-width / columns-width($context, $context));
+  $column: percentage($col-width / columns-width($context, true));
   @return $column;
 }
 
@@ -49,7 +44,7 @@ $browser-default-font-size  : 16px;
   $columns,
   $context : false
 ) {
-  $return: percentage(columns-width($columns, $columns) / columns-width($context, $context));
+  $return: percentage(columns-width($columns, true) / columns-width($context, true));
   @return $return;
 }
 
@@ -59,7 +54,7 @@ $browser-default-font-size  : 16px;
 @function gutter(
   $context : false
 ) {
-  $gutter: percentage($gutter-width / columns-width($context, $context));
+  $gutter: percentage($gutter-width / columns-width($context, true));
   @return $gutter;
 }
 
@@ -69,7 +64,7 @@ $browser-default-font-size  : 16px;
 @function side-gutter(
   $context : false
 ) {
-  $side-gutter: percentage($side-gutter-width / columns-width($context, $context));
+  $side-gutter: percentage($side-gutter-width / columns-width($context, true));
   @return $side-gutter;
 }
 

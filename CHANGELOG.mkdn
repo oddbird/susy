@@ -11,9 +11,9 @@ just became shockingly simple to use. See the README for updated usage details.
 
 New Features:
 
-* `omega` can now be set directly through the `columns` mixin - for much 
+* `omega` can now be set directly through the `columns` mixin for much 
   more compact output.
-* Create responsive grid break-points using the `layout` and `at-breakpoint`.
+* Create responsive grid break-points using `at-breakpoint` and `layout`.
 * `container` mixin now accepts one or more grids/breakpoints as a shortcut.
 * All mixins respect your `$legacy-support-for-ie` settings.
 * The `space` function can be used anywhere you need column+gutter math.

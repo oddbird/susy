@@ -25,12 +25,14 @@ Removed:
 * The poorly named `un-column` and `reset-column` have been replaced 
 once-and-for-all with `reset-columns` (to match the `columns` mixin).
 
-**Upgrade**:
+Upgrade:
 
-# Remove any mention of 'alpha' and 'full' in your code. In some cases you 
+1. Remove any mention of 'alpha' and 'full' in your code. In some cases you 
   will want to replace 'full' with a simple `clear: both;`.
-# Replace any mention of 'un-column' or 'reset-column' with 'reset-columns'.
-# Any time 'columns' and 'omega' are declared in the same block, they can now be joined together. `@include columns(3); @include omega();` can become `@include columns(3 omega)`.
+2. Replace any mention of 'un-column' or 'reset-column' with 'reset-columns'.
+3. Any time 'columns' and 'omega' are declared in the same block, they can now 
+  be joined together. `@include columns(3); @include omega();` can become 
+  `@include columns(3 omega)`.
 
 You're done! Stop worrying about all that "nested vs. root" bullshit, and start playing with the new toys!
 

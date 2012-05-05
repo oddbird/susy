@@ -22,25 +22,21 @@ flexibility.
 
 Susy will do all the math, and let you focus on your designs.
 
-Install
-=======
+Installation
+------------
 
     sudo gem install compass-susy-plugin
-
-Create a Susy-based Compass Project
-===================================
-
     compass create <project name> -r susy -u susy
 
 Grid Basics
-===========
+-----------
 
 _(This now refers to the unreleased 1.0 version of Susy.)_
 
-* Settings:
+### Settings:
 
-  Set up your default grid values: total columns, column width, gutter width, 
-  and side-gutter width.
+Set up your default grid values: total columns, column width, gutter width, 
+and side-gutter width.
 
 ```scss
 $total-cols         : 12;             /* a 12-column grid */
@@ -49,16 +45,16 @@ $gutter-width       : 1em;            /* 1em gutters between columns */
 $side-gutter-width  : $gutter-width;  /* 1em padding on the entire grid */
 ```
 
-* Mixins:
-  
-  The basic grid is composed using two simple mixins:
-  * Apply the `container` mixin to create your initial grid context. 
-  * Apply the `columns` mixin to declare the width of an element on the grid.
+### Mixins:
 
-  Use the 'omega' trigger to declare elements that span the _final_ column of 
-  their parent element, and pass a 'context' in nested situations. The 
-  'context' for any element is equal to the number of columns spanned by it's 
-  parent.
+The basic grid is composed using two simple mixins:
+* Apply the `container` mixin to create your initial grid context. 
+* Apply the `columns` mixin to declare the width of an element on the grid.
+
+Use the 'omega' trigger to declare elements that span the _final_ column of 
+their parent element, and pass a 'context' in nested situations. The 
+'context' for any element is equal to the number of columns spanned by it's 
+parent.
 
 For example:
 

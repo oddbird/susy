@@ -56,16 +56,6 @@ $browser-default-font-size  : 16px;
   @return $gutter;
 }
 
-// Return the percentage width of a single side gutter in a given 'context'.
-// 
-//  $context  : The grid context in columns, if nested.
-@function side-gutter(
-  $context : false
-) {
-  $side-gutter: percentage($side-gutter-width / columns-width($context));
-  @return $side-gutter;
-}
-
 // Return the total space occupied by multiple columns and associated gutters.
 // Useful for adding padding or margins (preifx, suffix, push, pull, etc.)
 // 

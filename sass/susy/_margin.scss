@@ -12,10 +12,8 @@
   $columns,
   $context  : false,
   $from     : $from-direction
-) {
-  $sg : if($context, 0, side-gutter());
-  
-  margin-#{$from}: $sg + space($columns,$context);
+) {  
+  margin-#{$from}: space($columns,$context);
 }
 
 // 'push' is a synonymn for 'pre'
@@ -55,9 +53,7 @@
   $from     : $from-direction
 ) {
   $to : opposite-position($from);
-  $sg : if($context, 0, side-gutter());
-
-  margin-#{$to}: $sg + space($columns,$context);
+  margin-#{$to}: space($columns,$context);
 }
 
 // Apply 'columns' before and/or after an element to contain it on a grid.

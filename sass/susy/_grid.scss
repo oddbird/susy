@@ -8,9 +8,19 @@
 
 // Set the width of a container
 @mixin set-container-width(){
-  max-width: columns-width();
-  @if $legacy-support-for-ie6 {
-    _width: columns-width();
+  $width: if($container-width, $container-width, columns-width());
+
+  @if $container-style == 'static' {
+    width: $width;
+  } @else {
+    @if $container-style == 'fluid' {
+      width: if(unit($width) == '%', $width, auto);
+    } @else {
+      max-width: $width;
+      @if $legacy-support-for-ie6 {
+        _width: $width;
+      }
+    }
   }
 }
 

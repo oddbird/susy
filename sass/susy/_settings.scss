@@ -1,27 +1,34 @@
 // ---------------------------------------------------------------------------
 // Susy Settings
 
-// Total Columns:
-// One or more unitless numbers.
-// Each number represents the number of columns in a given 'layout'
-$total-cols         : 12            !default;
+// The total number of columns in the grid
+$total-cols         : 12              !default;
 
-// Column Width:
-// The width of a column in any unit of length.
-$col-width          : 4em           !default;
+// The width of columns, gutters, and side-gutters (padding on the container).
+// These must all be set with the comparable units.
+$col-width          : 4em             !default;
+$gutter-width       : 1em             !default;
+$side-gutter-width  : $gutter-width   !default;
 
-// Gutter Width:
-// The width of a gutter in the same units as $col-width.
-$gutter-width       : 1em           !default;
-
-// Side Gutter Width:
-// The width of a side gutter in the same units as $col-width.
-$side-gutter-width  : $gutter-width !default;
+// ---------------------------------------------------------------------------
+// Advanced Settings
 
 // From Direction:
 // Controls for right-to-left or bi-directional sites.
-$from-direction     : left          !default;
+$from-direction     : left            !default;
 
 // Omega Float Direction:
 // The direction that +omega elements are floated by deafult.
 $omega-float        : opposite-position($from-direction)    !default;
+
+// Container Width:
+// Override the total width of your grid, using any length (50em, 75%, etc.)
+$container-width    : false           !default;
+
+// Container Style:
+// 'magic'  - Static (fixed or elastic) when there's enough space, 
+//            fluid when there isn't. This is the SUSY MAGIC SAUCE(TM).
+// 'static' - Forces the grid container to remain static at all times.
+// 'fluid'  - Forces the grid to remain fluid at all times.
+//            (this will overrule any static $container-width settings)
+$container-style    : mixed           !default;

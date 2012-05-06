@@ -24,7 +24,7 @@ system I know of that could never exist as a library apart from Sass.
 Installation
 ------------
 
-    sudo gem install compass-susy-plugin
+    sudo gem install susy
     compass create <project name> -r susy -u susy
 
 Grid Basics

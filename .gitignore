@@ -1,4 +1,5 @@
-compass-susy-plugin-*.gem
+susy-*.gem
+*.DS_Store
 *~
 *.DS_Store
 .sass-cache

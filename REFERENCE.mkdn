@@ -19,6 +19,13 @@ Susy Basics
 
 ## Settings
 
+```scss
+$total-columns  : 12              !default;
+$column-width   : 4em             !default;
+$gutter-width   : 1em             !default;
+$grid-padding   : $gutter-width   !default;
+```
+
 **Total Columns**: `$total-columns: <number>;`
 - _The number of Columns in your Susy Grid Layout._
 - `<number>`: Unitless number. 
@@ -40,6 +47,25 @@ Susy Basics
   - Default: `$gutter-width`.
 
 ## Mixins
+
+```scss
+.container {
+  @include container;                 // Create a grid context.
+
+  nav { @include columns(2); }        // 2-columns.
+  
+  #main { 
+    @include columns(10 omega);       // 10-columns, ending a row.
+    
+    article { 
+      @include columns(5,10);         // 5-columns, out of 10 available.
+      &.nth-child(even) {
+        @include omega;               // even articles end their rows.
+      }
+    }
+  }
+}
+```
 
 **Container**: `container([$<media-layout>]*)`
 - _Apply to the outer grid-containing element._
@@ -89,6 +115,23 @@ $media-layout : 12 lt-ie9;  // Output is included under `.lt-ie9` class,
 ```
 
 ## Mixins
+
+```scss
+$total-columns: 4;
+
+.container {
+  @include container;           // Create a default 4-col container.
+  @include at-breakpoint(10) {  // At min-width = 10-cols, use a 10-col layout.
+    @include container;         // Create a 10-col container.
+  }
+}
+
+.different {
+  @include layout(9) {          // Arbitrily use a 9-col layout context.
+    @include container;         // Create a 9-col container.
+  }
+}
+```
 
 **At-Breakpoint**: 
   `at-breakpoint(<$media-layout> [, <$font-size>]) { <@content> }`

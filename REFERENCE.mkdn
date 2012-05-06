@@ -8,21 +8,20 @@ Susy Basics
 ## Terms
 
 - **Susy Grid**: A grid that you build with Susy. 
-  You can have multiple on one page if you need.
-- **Column**: The main unit of horizontal measurement on the grid.
+- **Column**: The main unit of horizontal measurement on the _Grid_.
 - **Layout**: The total number of _Columns_ in a grid.
 - **Gutter**: The space between _Columns_.
-- **Grid Padding**: Padding between the grid and the document edges.
-- **Grid Element**: Any HTML element that is aligned to a grid.
-- **Container**: The root element of a grid.
+- **Grid Padding**: Padding between the _Grid_ and the document edges.
+- **Grid Element**: Any HTML element that is aligned to a _Grid_.
+- **Container**: The root element of a _Grid_.
 - **Context**: The number of _Columns_ spanned by the parent element.
 - **Omega**: Any _Grid Element_ spanning the last _Column_ in its _Context_.
 
 ## Settings
 
-**Total Columns**: `$total-columns: <$number>;`
+**Total Columns**: `$total-columns: <number>;`
 - _The number of Columns in your Susy Grid Layout._
-- `<$number>`: Unitless number. 
+- `<number>`: Unitless number. 
   - Default: `12`.
 
 **Column Width**: `$column-width: <length>;`
@@ -42,16 +41,16 @@ Susy Basics
 
 ## Mixins
 
-**Container**: `container([<media-layout>]*)`
+**Container**: `container([$<media-layout>]*)`
 - _Apply to the outer grid-containing element._
-- `<media-layout>`: Optional media-layout shortcuts 
-  (see 'responsive grids' below). 
+- `<$media-layout>`: Optional media-layout shortcuts 
+  (see 'Responsive Grids' below). 
   - Default: `$total-columns`.
 
-**Columns**: `columns(<$columns> [<$omega> , <$context>, <$from>])`
+**Columns**: `columns(<$columns> [<omega> , <$context>, <$from>])`
 - _Apply to any element to align it with the Susy Grid._
-- `<$columns>`: The number of Columns to span, with optional `<$omega>` flag.
-- `<$context>`: Current nesting context. 
+- `<$columns>`: The number of _Columns_ to span, with optional `<omega>` flag.
+- `<$context>`: Current nesting _Context_. 
   - Default: `$total-columns`.
 - `<$from>`: The origin direction of your document flow. 
   - Default: `$from-direction`.
@@ -67,10 +66,9 @@ Responsive Grids
 ## Terms
 
 - **Breakpoint**: A min- or max- viewport width at which to change _Layouts_.
-- **Media-Layout**: Shortcut for declaring breakpoints and layouts in Susy:
+- **Media-Layout**: Shortcut for declaring _Breakpoints_ and _Layouts_ in Susy:
   - `<min-width> <layout> <max-width> <ie-fallback>`
-  - All four arguments are optional, 
-    though you must supply either `<min>` or `<layout>`.
+  - You must supply either `<min>` or `<layout>`.
 
 ```scss
 // Example Media-Layouts
@@ -90,9 +88,18 @@ $media-layout : 12 lt-ie9;  // Output is included under `.lt-ie9` class,
 
 ## Mixins
 
-**At-Breakpoint**: `at-breakpoint(<$media-layout>)`
+**At-Breakpoint**: 
+  `at-breakpoint(<$media-layout> [, <$font-size>]) { <@content> }`
+- _At a given min- or max-width Breakpoint, use a given Layout._
+- `<$media-layout>`: The _Breakpoint/Layout_ combo to use (see above).
+- `<$font-size>`: When using EMs for your grid, the font size is important.
+  - Default: `$base-font-size`.
+- `<@content>`: Nested @content block will use the given _Layout_.
 
-**Layout**: `layout(<$layout-cols>)`
+**Layout**: `layout(<$layout-cols>) { <@content> }`
+- _Set an arbitrary Layout to use with any block of content._
+- `<$layout-cols>`: The number of _Columns_ to use in the _Layout_.
+- `<@content>`: Nested @content block will use the given _Layout_.
 
 Grid Helpers
 ------------
@@ -126,24 +133,49 @@ Grid Helpers
 
 ## Margin Mixins
 
-**Pre**: `pre(<$columns> [, <$context>])`
+**Pre**: `pre(<$columns> [, <$context>, <$from>])`
+- _Add columns of empty space as margin before an element._
+- `<$columns>`: The number of _Columns_ to be added as `margin` before.
+- `<$context>`: The _Context_. 
+  - Default: `$total-columns`.
+- `<$from>`: The origin direction of your document flow. 
+  - Default: `$from-direction`.
 
-**Post**: `post(<$columns> [, <$context>])`
+**Post**: `post(<$columns> [, <$context>, <$from>])`
+- _Add columns of empty space as margin after an element._
+- `<$columns>`: The number of _Columns_ to be added as `margin` after.
+- `<$context>`: The _Context_. 
+  - Default: `$total-columns`.
+- `<$from>`: The origin direction of your document flow. 
+  - Default: `$from-direction`.
 
-**Squish**: `squish([<$pre>, <$post>, <$context>])`
+**Squish**: `squish([<$pre>, <$post>, <$context>, <$from>])`
+- _Shortcut to add empty space as margin before and after an element._
+- `<$pre>`: The number of _Columns_ to be added as `margin` before.
+- `<$post>`: The number of _Columns_ to be added as `margin` after.
+- `<$context>`: The _Context_. 
+  - Default: `$total-columns`.
+- `<$from>`: The origin direction of your document flow. 
+  - Default: `$from-direction`.
 
-**Push**: `push(<$columns> [, <$context>])`
+**Push**: `push(<$columns> [, <$context>, <$from>])`
+- _Add positive margins before an element, to push it with the flow._
+  _Identical to `pre`._
 
-**Pull**: `pull(<$columns> [, <$context>])`
+**Pull**: `pull(<$columns> [, <$context>, <$from>])`
+- _Add negative margins before an element, to pull it against the flow._
+- `<$columns>`: The number of _Columns_ to be subtracted as `margin` before.
+- `<$context>`: The _Context_. 
+  - Default: `$total-columns`.
+- `<$from>`: The origin direction of your document flow. 
+  - Default: `$from-direction`.
 
 ## Grid Background Image
 
 **Susy Grid Background**: `susy-grid-background()`
 - _Apply to a Container to see the Susy Grid as a background-image._
 - Some browsers have trouble with sub-pixel rounding on background images.
-  Use it for checking general alignment, not pixel-exact alignment.
-  While neather is pixel-exact due to rounding, 
-  the grid itself is more reliable than the grid-image. 
+  Use it for checking general spacing, not pixel-exact alignment.
 
 ## Functions
 
@@ -161,14 +193,11 @@ that you can put where you want, and use for advanced math.
 
 **Gutter**: `gutter([<$context>])`
 - _The `%` width of one gutter in any given context._
-- `<$context>`: The context. 
+- `<$context>`: The _Context_. 
   - Default: `$total-columns`.
 - Example: `margin-right: gutter(6) + columns(2,6);`
 
-Advanced Settings
-=================
-
-## Container Overrides
+## Container Override Settings
 
 **Container Width**: `$container-width: <length>;`
 - _Override the total width of your grid with an arbitrary length._ 
@@ -187,7 +216,7 @@ Advanced Settings
     or by `$container-width`, if either is set using `%` units.
     Otherwise it will default to `auto` (100%).
 
-## Direction Overrides
+## Direction Override Settings
 
 **From Direction**: `$from-direction: <direction>;`
 - _The side of the Susy Grid from which the flow starts._

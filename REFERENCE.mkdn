@@ -60,6 +60,8 @@ Susy Basics
 - `<$from>`: The origin direction of your document flow. 
   - Default: `$from-direction`.
 
+-------------------------------------------------------------------------------
+
 Responsive Grids
 ================
 
@@ -101,8 +103,10 @@ $media-layout : 12 lt-ie9;  // Output is included under `.lt-ie9` class,
 - `<$layout-cols>`: The number of _Columns_ to use in the _Layout_.
 - `<@content>`: Nested @content block will use the given _Layout_.
 
+-------------------------------------------------------------------------------
+
 Grid Helpers
-------------
+============
 
 ## Padding Mixins
 

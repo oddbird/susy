@@ -1,14 +1,11 @@
-Susy Reference
-==============
-
 Susy Basics
------------
+===========
 
 ```scss
 @import 'susy';
 ```
 
-### Terms
+## Terms
 
 - **Susy Grid**: A grid that you build with Susy. 
   You can have multiple on one page if you need.
@@ -21,7 +18,7 @@ Susy Basics
 - **Context**: The number of _Columns_ spanned by the parent element.
 - **Omega**: Any _Grid Element_ spanning the last _Column_ in its _Context_.
 
-### Settings
+## Settings
 
 **Total Columns**: `$total-columns: <$number>;`
 - _The number of Columns in your Susy Grid Layout._
@@ -43,7 +40,7 @@ Susy Basics
 - `<length>`: Units must match `$column-width`. 
   - Default: `$gutter-width`.
 
-### Mixins
+## Mixins
 
 **Container**: `container([<media-layout>]*)`
 - _Apply to the outer grid-containing element._
@@ -65,9 +62,9 @@ Susy Basics
   - Default: `$from-direction`.
 
 Responsive Grids
-----------------
+================
 
-### Terms
+## Terms
 
 - **Breakpoint**: A min- or max- viewport width at which to change _Layouts_.
 - **Media-Layout**: Shortcut for declaring breakpoints and layouts in Susy:
@@ -78,20 +75,20 @@ Responsive Grids
 ```scss
 // Example Media-Layouts
 
-$media-layout : 12;         // Use 12-col layout at matching min-width.
-$media-layout : 30em;       // At min 30em, use closest fitting layout.
-$media-layout : 30em 12;    // At min 30em, use 12-col layout.
-$media-layout : 12 60em;    // Use 12 cols up to max 60em.
-$media-layout : 30em 60em;  // Between 30em min & max 60em, use closest layout.
-$media-layout : 30em 12 60em; // Use 12 cols between min 30em & max 60em.
-$media-layout : 60em 12 30em; // Same. Larger length will always be max-width.
+$media-layout: 12;          // Use 12-col layout at matching min-width.
+$media-layout: 30em;        // At min 30em, use closest fitting layout.
+$media-layout: 30em 12;     // At min 30em, use 12-col layout.
+$media-layout: 12 60em;     // Use 12 cols up to max 60em.
+$media-layout: 30em 60em;   // Between min 30em & max 60em, use closest layout.
+$media-layout: 30em 12 60em;// Use 12 cols between min 30em & max 60em.
+$media-layout: 60em 12 30em;// Same. Larger length will always be max-width.
 
 $media-layout : 12 lt-ie9;  // Output is included under `.lt-ie9` class,
                             // for use with IE conditional comments 
                             // on the <html> tag.
 ```
 
-### Mixins
+## Mixins
 
 **At-Breakpoint**: `at-breakpoint(<$media-layout>)`
 
@@ -100,7 +97,7 @@ $media-layout : 12 lt-ie9;  // Output is included under `.lt-ie9` class,
 Grid Helpers
 ------------
 
-### Padding Mixins
+## Padding Mixins
 
 **Prefix**: `prefix(<$columns> [, <$context>, <$from>])`
 - _Add Columns of empty space as `padding` before an element._
@@ -127,7 +124,7 @@ Grid Helpers
 - `<$from>`: The origin direction of your document flow. 
   - Default: `$from-direction`.
 
-### Margin Mixins
+## Margin Mixins
 
 **Pre**: `pre(<$columns> [, <$context>])`
 
@@ -139,7 +136,7 @@ Grid Helpers
 
 **Pull**: `pull(<$columns> [, <$context>])`
 
-### Grid Background Image
+## Grid Background Image
 
 **Susy Grid Background**: `susy-grid-background()`
 - _Apply to a Container to see the Susy Grid as a background-image._
@@ -148,7 +145,7 @@ Grid Helpers
   While neather is pixel-exact due to rounding, 
   the grid itself is more reliable than the grid-image. 
 
-### Functions
+## Functions
 
 Where a mixin returns property/value pairs, functions return simple values 
 that you can put where you want, and use for advanced math.
@@ -169,9 +166,9 @@ that you can put where you want, and use for advanced math.
 - Example: `margin-right: gutter(6) + columns(2,6);`
 
 Advanced Settings
------------------
+=================
 
-### Container Overrides
+## Container Overrides
 
 **Container Width**: `$container-width: <length>;`
 - _Override the total width of your grid with an arbitrary length._ 
@@ -190,7 +187,7 @@ Advanced Settings
     or by `$container-width`, if either is set using `%` units.
     Otherwise it will default to `auto` (100%).
 
-### Direction Overrides
+## Direction Overrides
 
 **From Direction**: `$from-direction: <direction>;`
 - _The side of the Susy Grid from which the flow starts._

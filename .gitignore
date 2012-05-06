@@ -1,0 +1,5 @@
+susy-*.gem
+*~
+*.DS_Store
+.sass-cache
+.rvmrc

@@ -1,227 +1,143 @@
-// Imports -------------------------------------------------------------------
+// ---------------------------------------------------------------------------
+// Imports
 
 @import "compass/utilities/general/clearfix";
-@import "compass/utilities/general/float";
-@import "compass/layout/grid-background";
 
-// Variables -----------------------------------------------------------------
+// ---------------------------------------------------------------------------
+// Container
 
-// Your basic settings for the grid.
-$total-cols         : 12            !default;
-$col-width          : 4em           !default;
-$gutter-width       : 1em           !default;
-$side-gutter-width  : $gutter-width !default;
+// Set the width of a container
+@mixin set-container-width(){
+  $width: if($container-width, $container-width, columns-width());
 
-// Controls for right-to-left or bi-directional sites.
-$from-direction     : left          !default;
-
-// The direction that +omega elements are floated by deafult.
-$omega-float        : opposite-position($from-direction)    !default;
-
-// Functions -----------------------------------------------------------------
-
-// Return the width of 'n' columns plus 'n - 1' gutters
-// plus page padding in non-nested contexts
-@function columns-width(
-  $n: false
-) {
-  $sg: 0;
-  @if not $n {
-    $n: $total-cols;
-    $sg: $side-gutter-width;
-  }
-  $columns-width: ($n*$col-width) + (ceil($n - 1)*$gutter-width) + ($sg*2);
-  @return $columns-width;
-}
-
-// Return the percentage for the target in a given context
-@function percent-width(
-  $t,
-  $c
-) {
-  $perc: ($t / $c) * 100%;
-  @return $perc;
-}
-
-// Return the percentage width of 'n' columns in a context of 'c'
-@function columns(
-  $n,
-  $c: false
-) {
-  $columns: percent-width(columns-width($n), columns-width($c));
-  @return $columns;
-}
-
-// Return the percentage width of a single gutter in a context of 'c'
-@function gutter(
-  $c: false
-) {
-  $gutter: percent-width($gutter-width, columns-width($c));
-  @return $gutter;
-}
-
-// Return the percentage width of a single side gutter in a context of 'c'
-@function side-gutter(
-  $c: false
-) {
-  $side-gutter: percent-width($side-gutter-width, columns-width($c));
-  @return $side-gutter;
-}
-
-// Return the percentage width of a single column in a context of 'c'
-@function column(
-  $c: false
-) {
-  $column: percent-width($col-width, columns-width($c));
-  @return $column;
-}
-
-// Base Mixin ----------------------------------------------------------------
-
-// Set the outer grid-containing element(s).
-@mixin container() {
-  @include pie-clearfix;
-  margin: auto;
-  width: columns-width();
-  max-width: 100%;
-}
-
-// Column Mixins -------------------------------------------------------------
-
-// Set +columns() on any column element, even nested ones.
-// The first agument [required] is the number of columns to span.
-// The second argument is the context (columns spanned by parent).
-//  - Context is required on any nested elements.
-//  - Context MUST NOT be declared on a top-level element.
-// By default a grid-column is floated left with a right gutter.
-//  - Override those with +float("right"), +alpha or +omega
-@mixin columns(
-  $n,
-  $context  : false,
-  $from     : $from-direction
-) {
-  $to   : opposite-position($from);
-  // the column is floated left
-  @include float($from);
-  // the width of the column is set as a percentage of the context
-  width: columns($n, $context);
-  // the right gutter is added as a percentage of the context
-  margin-#{$to}: gutter($context);
-}
-
-// @include `reset-column` to reset a column element to default block behavior
-@mixin reset-column(
-  $from : $from-direction
-) {
-  $to   : opposite-position($from);
-  @include reset-float;
-  width: auto;
-  margin-#{$to}: auto;
-}
-
-@mixin un-column(
-  $from : $from-direction
-) {
-  @include reset-column($from);
-}
-
-// @include `full` on an element that will span it's entire context.
-// There is no need for +columns, +alpha or +omega on a +full element.
-@mixin full(
-  $nested: false
-) {
-  clear: both;
-  @if not $nested {
-    margin: {
-      left: side-gutter();
-      right: side-gutter();
+  @if $container-style == 'static' {
+    width: $width;
+  } @else {
+    @if $container-style == 'fluid' {
+      width: if(unit($width) == '%', $width, auto);
+    } @else {
+      max-width: $width;
+      @if $legacy-support-for-ie6 {
+        _width: $width;
+      }
     }
   }
 }
 
-// Padding Mixins ------------------------------------------------------------
-
-// add empty colums as padding before an element.
-@mixin prefix(
-  $n,
-  $context  : false,
-  $from     : $from-direction
-) {
-  padding-#{$from}: columns($n, $context) + gutter($context);
+// Set the outer grid-containing element(s).
+@mixin apply-container(){
+  @include pie-clearfix;
+  @include set-container-width;
+  margin: { left: auto; right: auto; }
+  padding: { left: $grid-padding; right: $grid-padding; }
 }
 
-// add empty colums as padding after an element.
-@mixin suffix(
-  $n,
-  $context  : false,
+// Set one or more layouts on a grid-containing element at any number of media-query breakpoints.
+//
+// $media-layout-1        : [default:$total-columns] A list of values including -
+//                        : One unitless number (representing columns in a layout)
+//                        : Two optional lengths (representing min and max-width media-query breakpoints).
+// $media-layout-2 ...-10 : [optional] Same as $media-layout-1
+@mixin container(
+  $media-layout-1   : $total-columns,
+  $media-layout-2   : false,
+  $media-layout-3   : false,
+  $media-layout-4   : false,
+  $media-layout-5   : false,
+  $media-layout-6   : false,
+  $media-layout-7   : false,
+  $media-layout-8   : false,
+  $media-layout-9   : false,
+  $media-layout-10  : false
+){
+  $media-layouts    : compact($media-layout-2,$media-layout-3,$media-layout-4,$media-layout-5,$media-layout-6,$media-layout-7,$media-layout-8,$media-layout-9,$media-layout-10);
+
+  @if is-default-layout($media-layout-1) {
+    @include apply-container();
+  } @else {
+    @include at-breakpoint($media-layout-1) {
+      @include apply-container();
+    }
+  }
+
+  @each $ml in $media-layouts {
+    @if $ml {
+      @include at-breakpoint($ml) {
+        @include set-container-width;
+      }
+    }
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Columns
+
+// Create a grid element spanning any number of 'columns' in a grid 'context'.
+// $columns : The number of columns to span.
+// $context : [optional] The context (columns spanned by parent).
+//          : Context is required on any nested elements.
+//          : Context MUST NOT be declared on a root element.
+// $from    : The start direction of your layout (e.g. 'left' for ltr languages)
+@mixin columns(
+  $columns,
+  $context  : $total-columns,
   $from     : $from-direction
 ) {
   $to       : opposite-position($from);
-  padding-#{$to}: columns($n, $context) + gutter($context);
-}
+  $pos      : split-columns-value($columns,position);
+  $cols     : split-columns-value($columns,columns);
+  
+  width: columns($cols, $context);
 
-// add empty colums as padding before and after an element.
-@mixin pad(
-  $p    : false,
-  $s    : false,
-  $c    : false,
-  $from : $from-direction
-) {
-  @if $p {
-    @include prefix($p, $c, $from);
+  @if ($pos == 'omega') {
+    @include omega($from);
+  } @else {  
+    float: $from;
+    margin-#{$to}: gutter($context);      
   }
-  @if $s {
-    @include suffix($s, $c, $from);
-  }
-}
 
-// Alpha & Omega Mixins ------------------------------------------------------
-// I recommend that you pass the actual nested contexts (when nested) rather
-// than a true/false argument for the sake of consistency. Effect is the same,
-// but your code will be much more readable.
-
-// @include on any element spanning the first column in non-nested context to
-// take side-gutters into account.
-@mixin alpha(
-  $nested : false,
-  $from   : $from-direction
-) {
-  @if not $nested {
-    margin-#{$from}: side-gutter();
-  } @else {
-    @warn "The alpha mixin is not needed in a nested context";
+  @if $legacy-support-for-ie6 {
+    display: inline;
   }
 }
 
-// @include on the last element of a row, in order to take side-gutters and
-// the page edge into account. Set the $nested argument for nested columns.
+// Apply to elements spanning the last column, to account for the page edge.
+// Only needed as an override. Normally 'omega' can just be called by `columns`.
+//
+// $from    : The start-direction for your document.
 @mixin omega(
-  $nested : false,
-  $from   : $from-direction
+  $from     : $from-direction
 ) {
   $to     : opposite-position($from);
   $hack   : opposite-position($omega-float);
-  $sg     : 0;
-  @if not $nested {
-    $sg: side-gutter();
-  }
-  @include float($omega-float);
-  margin-#{$to}: $sg;
+  
+  float: $omega-float;
+  margin-#{$to}: 0;
+
   @if $legacy-support-for-ie6 or $legacy-support-for-ie7 {
     #margin-#{$hack}: - $gutter-width;
+    @if $legacy-support-for-ie6 { display: inline; }
   }
 }
 
-// Susy Grid Backgrounds -----------------------------------------------------
+// ---------------------------------------------------------------------------
+// Reset Columns
 
-@mixin susy-grid-background {
-  @include column-grid-background($total-cols, $col-width, $gutter-width, $side-gutter-width, $force-fluid: true);
-}
+// Reset a '+columns' grid element to default block behavior
+//
+// $from  : The start direction of your layout (e.g. 'left' for ltr languages)
+@mixin reset-columns(
+  $from: $from-direction
+) {
+  $to     : opposite-position($from);
+  $hack   : opposite-position($omega-float);
 
-@mixin show-grid($img:false) {
-  @warn "show-grid is deprecated in favor of susy-grid-background.";
-  @if $img {
-    @warn "show-grid and susy-grid-background no longer use any images or take any arguments.";
+  float: none;
+  width: auto;
+  margin-#{$to}: auto;
+  
+  @if $legacy-support-for-ie6 or $legacy-support-for-ie7 {
+    #margin-#{$hack}: auto;
+    @if $legacy-support-for-ie6 { display: block; }
   }
-  @include susy-grid-background;
 }

@@ -1,0 +1,255 @@
+// ---------------------------------------------------------------------------
+// Imports
+
+// We need access to some basic font settings for handling media-queries.
+@import "compass/typography/vertical_rhythm";
+
+// For now, we also need this...
+$browser-default-font-size  : 16px;
+
+// ---------------------------------------------------------------------------
+// Grid Functions
+
+// Returns the full width of a grid based on your grid settings.
+// 
+//  $columns  : The number of columns to get width for.
+@function columns-width(
+  $columns  : $total-columns
+) {
+  $columns  : if($columns,$columns,$total-columns);
+  @return ($columns * $column-width) + (ceil($columns - 1) * $gutter-width);
+}
+
+// Return the full outer width of a Container element.
+//
+//  $columns  : The number of columns in the Grid Layout.
+@function container-outer-width(
+  $columns  : $total-columns
+) {
+  @return columns-width($columns) + $grid-padding*2;
+}
+
+// Return the percentage width of a single column in a given 'context'.
+//
+//  $context  : The grid context in columns, if nested.
+@function column(
+  $context : $total-columns
+) {
+  @return percentage($column-width / columns-width($context));
+}
+
+// Return the percentage width of multiple 'columns' in a given 'context'.
+// 
+//  $columns  : The number of columns to get relative width for.
+//  $context  : The grid context in columns, if nested.
+@function columns(
+  $columns,
+  $context : $total-columns
+) {
+  @return percentage(columns-width($columns) / columns-width($context));
+}
+
+// Return the percentage width of a single gutter in a given 'context'.
+// 
+//  $context  : The grid context in columns, if nested.
+@function gutter(
+  $context : $total-columns
+) {
+  @return percentage($gutter-width / columns-width($context));
+}
+
+// Return the total space occupied by multiple columns and associated gutters.
+// Useful for adding padding or margins (preifx, suffix, push, pull, etc.)
+// 
+//  $columns  : The number of columns to get relative space for.
+//  $context  : The grid context in columns, if nested.
+@function space(
+  $columns,
+  $context : $total-columns
+) {
+  @return columns($columns, $context) + gutter($context);
+}
+
+// Accept a list including column-count and (optional) position.
+// Return either the column count or the position alone.
+//
+//  $columns  : the list to split and interprate.
+//  $request  : The value to return, either 'columns' or 'position'.
+@function split-columns-value(
+  $columns,
+  $request : columns
+) {
+  $pos  : false;
+  $cols : false;
+
+  @each $var in $columns {
+    @if (type-of($var) == 'string') {
+      $pos: $var;
+    } @else {
+      @if (type-of($var) == 'number') and (unitless($var)) {
+        $cols: $var;
+      } @else {
+        @warn '"#{$var}" is not a valid part of "$columns: #{$columns}" in the columns() mixin.';
+      }
+    } 
+  }
+
+  @if $request == 'columns' {
+    @return $cols;
+  } @else {
+    @if $request == 'position' {
+      @return $pos;
+    } @else {
+      @warn '"#{$request}"" is not a valid value for $request';
+    }
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Media Functions
+
+// Return an em value adjusted to match the browser default font size.
+// Note: This only works if actual sizes are set relative to browser defaults.
+//
+// $ems         : The initial value to be converted.
+// $font-size   : The current font-size in px.
+@function absolute-ems(
+  $ems,
+  $font-size: $base-font-size
+){
+  @if ($font-size != $browser-default-font-size) {
+    $ems: $ems * ($font-size / $browser-default-font-size);
+  }
+  @return $ems;
+}
+
+// Return a length, after any em-values have been sent through absolute-ems().
+//
+// $length      : The length value to be checked and adjusted if necessary.
+// $font-size   : The current font-size in px.
+@function fix-ems(
+  $length,
+  $font-size: $base-font-size
+){
+  @if $length {
+    @if (unit($length) == 'em') {
+      $length: absolute-ems($length,$font-size);
+    }
+  }
+  @return $length;
+}
+
+// Sort a list of arguments into "$min $layout $max $ie" order, and return the list.
+//
+// $media-layout  : a list of values [$min $layout $max $ie] including...
+//                : - one unitless number (columns in a layout)
+//                : - two optional lengths (min and max-width media-query breakpoints).
+//                : - one optional boolian or string to trigger fallback support for IE.
+// $font-size     : [optional] The base font-size of your layout, if you are using ems.
+//                : - defaults to $base-font-size
+@function medialayout(
+  $media-layout,
+  $font-size: $base-font-size
+) {
+  $media        : false;
+  $min          : false;
+  $layout       : false;
+  $max          : false;
+  $ie           : false;
+  $has-layout   : false;
+
+  @each $val in $media-layout {
+    @if (type-of($val) == "number") {
+      @if unitless($val) {
+        $layout     : $val;
+        $has-layout : true;
+      } @else {
+        @if ($has-layout) and (not $media) {
+          $max: $val;
+        } @else {
+          @if $media {
+            $media: join($media,$val);
+          } @else {
+            $media: $val;
+          }
+        }
+      }
+    } @else {
+      $ie: $val;
+    }
+  }
+  @if (length($media) > 0) {
+    @if (length($media) == 1) {
+      $min: nth($media,1);
+    } @else {
+      $min: nth($media,1);
+      $max: nth($media,2);
+      @if comparable($min, $max) {
+        @if ($min > $max) {
+          $max: nth($media,1);
+          $min: nth($media,2);
+        }
+      } @else {
+        @warn "Can't compare incompatible units.
+         Using #{$min} for min-width, and #{$max} for max-width";
+      }
+      @if (length($media) > 2) {
+        @warn "You can only send two lengths: a min-width and an (optional) max-width.
+         You sent #{length($media)}: #{$media}";
+      }
+    }
+  }
+
+  // media-queries must be set in ems relative to the browser default
+  // rather than the font-size set in CSS.
+  $min: fix-ems($min,$font-size);
+  $max: fix-ems($max,$font-size);
+
+  @return $min $layout $max $ie;
+}
+
+// Return the nearest layout (column-count) above a given breakpoint.
+//
+// $min : The min-width media-query breakpoint above which to establish a new layout.
+@function get-layout (
+  $min
+) {
+  $default-layout : $total-columns;
+  $total-columns  : 1;
+  $layout-width   : container-outer-width();
+  $return         : false;
+  $min            : fix-ems($min);
+
+  @if comparable($min, $layout-width) {
+    @while $min >= $layout-width {
+      $total-columns  : $total-columns + 1;
+      $layout-width   : container-outer-width();
+    }
+    $return : $total-columns;
+  }
+
+  $total-columns : $default-layout;
+
+  @return $return;
+}
+
+// Check to see if a given $media-layout list is simply the default.
+//
+// $media-layout  : a list of values including -
+//                : One unitless number (columns in a layout)
+//                : Two optional lengths (min and max-width media-query breakpoints).
+//                : One optional boolian or string to trigger fallback support for IE.
+@function is-default-layout(
+  $media-layout
+) {
+  $media-layout : medialayout($media-layout);
+  $min          : nth($media-layout,1);
+  $layout-cols  : nth($media-layout,2);
+  $max          : nth($media-layout,3);
+
+  @if $min or $max { 
+    @return false; 
+  } @else {
+    @return if($layout-cols == $total-columns,true,false);
+  }
+}

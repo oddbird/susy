@@ -1,0 +1,142 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Susy by ericam</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>Susy</h1>
+        <p>Dynamic grids for designers.</p>
+        <p class="view"><a href="https://github.com/ericam/compass-susy-plugin">View the Project on GitHub <small>ericam/compass-susy-plugin</small></a></p>
+        <ul>
+          <li><a href="https://github.com/ericam/compass-susy-plugin/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/ericam/compass-susy-plugin/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/ericam/compass-susy-plugin">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <p>Use Susy anywhere. Static sites, Rails sites, Django sites, PHP sites,
+etc. You name it. Susy just helps you with the grid - without ever touching 
+your markup. </p>
+
+<h2>Melts in the mouth</h2>
+
+<p>Susy grids are always fluid on the inside, but contained in the candy shell of 
+your choice (fixed/fluid/elastic/magic). That allows them to flex, react, and 
+move as needed.</p>
+
+<p>What's a magic grid? That's Susy's Special Sauce. The magic grid begins as a 
+simple fixed or elastic grid, but becomes fluid when the window is too small 
+to contain it. Based on Natalie Downe's "<a href="http://www.slideshare.net/nataliedowne/css-systems-presentation">CSS Systems</a>" - this 
+otherwise math-heavy technique becomes simple with Susy. It's the only grid 
+system I know of that could never exist as a library apart from Sass.</p>
+
+<h2>Installation</h2>
+
+<pre><code>sudo gem install compass-susy-plugin
+compass create &lt;project name&gt; -r susy -u susy
+</code></pre>
+
+<h2>Grid Basics</h2>
+
+<p><em>(This now refers to the unreleased 1.0 version of Susy.)</em></p>
+
+<h3>Settings:</h3>
+
+<p>Set up your default grid values: total columns, column width, and gutter width.</p>
+
+<div class="highlight">
+<pre><span class="na">$total-columns</span><span class="o">  :</span> <span class="mi">12</span><span class="p">;</span>             <span class="cm">/* a 12-column grid */</span>
+<span class="na">$column-width</span><span class="o">   :</span> <span class="mi">4</span><span class="kt">em</span><span class="p">;</span>            <span class="cm">/* each column is 4em wide */</span>
+<span class="na">$gutter-width</span><span class="o">   :</span> <span class="mi">1</span><span class="kt">em</span><span class="p">;</span>            <span class="cm">/* 1em gutters between columns */</span>
+<span class="na">$grid-padding</span><span class="o">   :</span> <span class="nv">$gutter-width</span><span class="p">;</span>  <span class="cm">/* 1em padding on the grid */</span>
+</pre>
+</div>
+
+
+<h3>Mixins:</h3>
+
+<p>The basic grid is composed using two simple mixins:</p>
+
+<ul>
+<li>Apply the <code>container</code> mixin to create your initial grid context. </li>
+<li>Apply the <code>columns</code> mixin to declare the width of an element on the grid.</li>
+</ul><p>Use the 'omega' trigger to declare elements that span the <em>final</em> column of 
+their parent element, and pass a 'context' in nested situations. The 
+'context' for any element is equal to the number of columns spanned by it's 
+parent.</p>
+
+<p>For example:</p>
+
+<div class="highlight">
+<pre><span class="nn">#page</span> <span class="p">{</span>
+  <span class="k">@include</span><span class="nd"> container</span><span class="p">;</span>
+  <span class="cm">/* If you want padding on the grid, just add it to the container. */</span>
+
+  <span class="cm">/* </span>
+<span class="cm">  full-width items like the header don't need any help from Susy:</span>
+<span class="cm">  header { ... }</span>
+<span class="cm">  */</span>
+
+  <span class="nt">nav</span> <span class="p">{</span> <span class="k">@include</span><span class="nd"> columns</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span> <span class="p">}</span>
+
+  <span class="nn">#content</span> <span class="p">{</span> 
+    <span class="k">@include</span><span class="nd"> columns</span><span class="p">(</span><span class="mi">9</span> <span class="n">omega</span><span class="p">);</span>
+
+    <span class="nn">#main</span> <span class="p">{</span> <span class="k">@include</span><span class="nd"> columns</span><span class="p">(</span><span class="mi">6</span><span class="o">,</span><span class="mi">9</span><span class="p">);</span> <span class="p">}</span>
+    <span class="nt">aside</span> <span class="p">{</span> <span class="k">@include</span><span class="nd"> columns</span><span class="p">(</span><span class="mi">3</span> <span class="n">omega</span><span class="o">,</span><span class="mi">9</span><span class="p">);</span> <span class="p">}</span>
+  <span class="p">}</span>
+
+  <span class="nt">footer</span> <span class="p">{</span> <span class="na">clear</span><span class="o">:</span> <span class="no">both</span><span class="p">;</span> <span class="p">}</span>
+<span class="p">}</span>
+</pre>
+</div>
+
+
+<h2>Layouts and Breakpoints</h2>
+
+<p>The point is to change layouts (number of columns in the grid) at breakpoints. If you supply only a breakpoint, Susy will supply the closest layout. If you supply only a layout, Susy will provide the closest breakpoint.</p>
+
+<div class="highlight">
+<pre><span class="cm">/* Switch to a 12-column grid when there is room for one. */</span>
+<span class="k">@include</span><span class="nd"> at-breakpoint</span><span class="p">(</span><span class="mi">12</span><span class="p">)</span> <span class="p">{</span> 
+  <span class="nc">.container</span> <span class="p">{</span> <span class="k">@include</span><span class="nd"> container</span><span class="p">;</span> <span class="p">}</span> 
+<span class="p">}</span>
+
+<span class="cm">/* At a min-width of 30em, switch to the nearest fitting layout. */</span>
+<span class="k">@include</span><span class="nd"> at-breakpoint</span><span class="p">(</span><span class="mi">30</span><span class="kt">em</span><span class="p">)</span> <span class="p">{</span> 
+  <span class="nc">.container</span> <span class="p">{</span> <span class="k">@include</span><span class="nd"> container</span><span class="p">;</span> <span class="p">}</span> 
+<span class="p">}</span>
+
+<span class="cm">/* Between the min-width of 30em and the max-width of 60em, </span>
+<span class="cm">   use a 10-column layout. Provide a fallback class for IE. */</span>
+<span class="k">@include</span><span class="nd"> at-breakpoint</span><span class="p">(</span><span class="mi">30</span><span class="kt">em</span> <span class="mi">10</span> <span class="mi">60</span><span class="kt">em</span> <span class="n">ie</span><span class="p">)</span> <span class="p">{</span> 
+  <span class="nc">.container</span> <span class="p">{</span> <span class="k">@include</span><span class="nd"> container</span><span class="p">;</span> <span class="p">}</span> 
+<span class="p">}</span>
+
+<span class="cm">/* Create all your container layouts in one go. </span>
+<span class="cm">   Each argument accepts min/layout/max/ie, same as at-breakpoint. */</span>
+<span class="nc">.container</span> <span class="p">{</span> <span class="k">@include</span><span class="nd"> container</span><span class="p">(</span><span class="mi">4</span><span class="o">,</span><span class="mi">8</span><span class="o">,</span><span class="mi">12</span><span class="p">);</span> <span class="p">}</span>
+</pre>
+</div>
+
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/ericam">ericam</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+    
+  </body>
+</html>

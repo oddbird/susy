@@ -19,12 +19,11 @@ body {
   //@include show-grid;
 
   section.nav {
-    @include full;
+    @include columns(12);
   }
   
   section.side_content {
     @include columns(2);
-    @include alpha;
   }
   
   section.main_content {
@@ -33,7 +32,6 @@ body {
   }
   
   footer.ephemera {
-    @include alpha;
     @include prefix(1);
     @include columns(10);
   }

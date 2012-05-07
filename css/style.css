@@ -112,6 +112,14 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   font-style: normal;
 }
 
+@font-face {
+  font-family: "BaskervilleAmp";
+  src: url('../fonts/Baskerville-amp-webfont.eot');
+  src: url('../fonts/Baskerville-amp-webfont.eot?#iefix') format('eot'), url('../fonts/Baskerville-amp-webfont.woff') format('woff'), url('../fonts/Baskerville-amp-webfont.ttf') format('truetype'), url('../fonts/Baskerville-amp-webfont.svg#webfont') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
 html {
   font-size: 100%;
   line-height: 1.5em;
@@ -135,6 +143,10 @@ b, i {
 
 code {
   font-family: Consolas, Menlo, Monaco, "Lucida Console", "Liberation Mono", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Courier New", monospace, serif;
+}
+
+.amp {
+  font-family: "BaskervilleAmp", "CenturyOldStyleFS", "Adobe Caslon Pro", Caslon, Baskerville, Palatino, "Palatino Linotype", "Hoefler Text", Garamond, "URW Palladio L", "Book Antiqua", Georgia, serif;
 }
 
 .type a:link, article a:link, footer a:link, .type a:visited, article a:visited, footer a:visited {
@@ -412,6 +424,12 @@ section {
 }
 .where h2 a:link, .where h2 a:visited {
   color: #dc322f;
+}
+.where h2 a:hover::after, .where h2 a:focus::after, .where h2 a:active::after {
+  content: "»";
+}
+.where h2 a i {
+  color: #93a1a1;
 }
 .where ul {
   list-style-type: none;

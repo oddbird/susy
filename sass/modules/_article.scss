@@ -40,6 +40,10 @@ section {
   h2 {
     a {
       #{$link} { color: $alt; }
+      #{$focus} { 
+        &::after { content: "»"; }
+      }
+      i { color: $base1; }
     }
   }
   ul {

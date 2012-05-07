@@ -73,9 +73,23 @@
   normal
 );
 
-$font-stack: "CenturyOldStyleFS","Adobe Caslon Pro",Caslon,Baskerville,Palatino,"Palatino Linotype","Hoefler Text",Garamond,"URW Palladio L","Book Antiqua",Georgia,serif;
-$caps-stack: "CenturyOldStyleFSCaps","Adobe Caslon Pro",Caslon,Baskerville,Palatino,"Palatino Linotype","Hoefler Text",Garamond,"URW Palladio L","Book Antiqua",Georgia,serif;
-$mono-stack: Consolas, Menlo, Monaco, "Lucida Console", "Liberation Mono", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Courier New", monospace, serif;
+@include font-face (
+  'BaskervilleAmp',
+  font-files(
+    'Baskerville-amp-webfont.woff', 'woff',
+    'Baskerville-amp-webfont.ttf', 'truetype',
+    'Baskerville-amp-webfont.svg#webfont', 'svg'
+  ),
+  'Baskerville-amp-webfont.eot',
+  normal,
+  normal
+);
+
+$fallback   : "Adobe Caslon Pro",Caslon,Baskerville,Palatino,"Palatino Linotype","Hoefler Text",Garamond,"URW Palladio L","Book Antiqua",Georgia,serif;
+$font-stack : "CenturyOldStyleFS", $fallback;
+$caps-stack : "CenturyOldStyleFSCaps", $fallback;
+$mono-stack : Consolas, Menlo, Monaco, "Lucida Console", "Liberation Mono", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Courier New", monospace, serif;
+$amp-stack  : "BaskervilleAmp", $font-stack;
 
 @mixin caps {
   font-family: $caps-stack;

@@ -1,0 +1,9 @@
+article {
+  h2 { 
+    font-weight: bold;
+  }
+}
+
+section {
+  @include trailer;
+}

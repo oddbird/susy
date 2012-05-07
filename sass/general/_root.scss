@@ -1,0 +1,22 @@
+//-----------------------------------------------------------------------------
+// Variables
+
+$link   : '&:link, &:visited';
+$focus  : '&:hover, &:focus, &:active';
+
+//-----------------------------------------------------------------------------
+// Root
+
+@include establish-baseline;
+html { 
+  @include text-shadow(rgba(white,.5) 0 1px 0);
+  color: #333;
+  background: #eee;
+  font-family: $font-stack; 
+}
+
+a {
+  #{$link} { text-decoration: none; }
+}
+
+b, i { font-weight: normal; font-style: normal; }

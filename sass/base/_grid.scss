@@ -1,0 +1,14 @@
+//-----------------------------------------------------------------------------
+// Imports
+
+@import "susy";
+
+//-----------------------------------------------------------------------------
+// Grid Settings
+
+$total-columns    : 5;           
+$column-width     : 4em;          
+$gutter-width     : 1em;          
+$grid-padding     : $gutter-width;
+
+$show-grid-backgrounds  : false

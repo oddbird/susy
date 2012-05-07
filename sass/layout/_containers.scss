@@ -1,0 +1,22 @@
+//-----------------------------------------------------------------------------
+// Variables
+
+$small  : 5;
+$medium : 35em 8 lt-ie9;
+
+//-----------------------------------------------------------------------------
+// Containers
+
+.container {
+  @include container();
+  @include susy-grid-background();
+
+  @include at-breakpoint($medium) {
+    @include container();
+    @include susy-grid-background();
+  }
+}
+
+nav, article, footer p {
+  @extend .container;
+}

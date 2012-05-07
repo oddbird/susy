@@ -1,0 +1,8 @@
+nav {
+  @include trailer(.5);
+  text-align: center;
+  ul { @include inline-block-list; }
+  li {
+    padding: rhythm(.25) rhythm(.5);
+  }
+}

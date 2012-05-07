@@ -1,7 +1,5 @@
-:::ruby
-content_for :head do
+- content_for :head do
   %title SUSY | The Un-obstruive, Responsive Grid for Designers
-end
   
 # HTML Ipsum Presents
 

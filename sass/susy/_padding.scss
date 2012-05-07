@@ -1,0 +1,51 @@
+// ---------------------------------------------------------------------------
+// Padding Mixins
+
+// add empty colums as padding before an element.
+// $columns : The number of columns to prefix.
+// $context : [optional] The context (columns spanned by parent).
+//          : Context is required on any nested elements.
+//          : Context MUST NOT be declared on a root element.
+// $from    : The start direction of your layout (e.g. 'left' for ltr languages)
+@mixin prefix(
+  $columns,
+  $context  : $total-columns,
+  $from     : $from-direction
+) {
+  padding-#{$from}: space($columns, $context);
+}
+
+// add empty colums as padding after an element.
+// $columns : The number of columns to suffix.
+// $context : [optional] The context (columns spanned by parent).
+//          : Context is required on any nested elements.
+//          : Context MUST NOT be declared on a root element.
+// $from    : The start direction of your layout (e.g. 'left' for ltr languages)
+@mixin suffix(
+  $columns,
+  $context  : $total-columns,
+  $from     : $from-direction
+) {
+  $to           : opposite-position($from);
+  padding-#{$to}: space($columns, $context);
+}
+
+// add empty colums as padding before and after an element.
+// $columns : The number of columns to pad.
+// $context : [optional] The context (columns spanned by parent).
+//          : Context is required on any nested elements.
+//          : Context MUST NOT be declared on a root element.
+// $from    : The start direction of your layout (e.g. 'left' for ltr languages)
+@mixin pad(
+  $prefix   : false,
+  $suffix   : false,
+  $context  : $total-columns,
+  $from     : $from-direction
+) {
+  @if $prefix {
+    @include prefix($prefix, $context, $from);
+  }
+  @if $suffix {
+    @include suffix($suffix, $context, $from);
+  }
+}

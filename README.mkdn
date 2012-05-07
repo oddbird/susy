@@ -4,277 +4,104 @@ Susy - Compass Plugin
 Susy is a semantic CSS grid system for designers.
 
 Use Susy anywhere. Static sites, Rails sites, Django sites, PHP sites,
-etc. You name it. Susy just helps you with the grid - whether you want it
-fixed, fluid, elastic or Susy's specialty: fluid on the inside and elastic on
-the outside. And Susy will do it all without ever touching your markup.
+etc. You name it. Susy just helps you with the grid - without ever touching 
+your markup. 
 
-Built entirely native to [Compass](http://compass-style.org/), Susy is based
-on the philosophy and techniques of [Natalie Downe](http://natbat.net/)'s
-"[CSS Systems](http://natbat.net/2008/Sep/28/css-systems/)" - which introduces
-difficult math in return for beautiful structure. Now Susy will do that math
-for you and let you focus on your designs.
+Melts in the mouth
+------------------
 
-Install
-=======
+Susy grids are always fluid on the inside, but contained in the candy shell of 
+your choice (fixed/fluid/elastic/magic). That allows them to flex, react, and 
+move as needed.
 
-    sudo gem install compass-susy-plugin
+What's a magic grid? That's Susy's Special Sauce. The magic grid begins as a 
+simple fixed or elastic grid, but becomes fluid when the window is too small 
+to contain it. Based on Natalie Downe's "[CSS Systems]
+(http://www.slideshare.net/nataliedowne/css-systems-presentation)" - this 
+otherwise math-heavy technique becomes simple with Susy. It's the only grid 
+system I know of that could never exist as a library apart from Sass.
 
-Create a Susy-based Compass Project
-===================================
+Installation
+------------
 
+    sudo gem install susy
     compass create <project name> -r susy -u susy
 
-Philosophy and Goals
-====================
-
-The method comes from [Natalie Downe](http://natbat.net/)'s "[CSS
-Systems](http://natbat.net/2008/Sep/28/css-systems/)", but I'll cover it here.
-
-It is important for accessibility and usability that we are:
-
-* Able to control our designs and line-lengths with some amount of precision.
-
-* Responsive to text sizing: In order for our site to be accessible we need to
-  allow different font-sizes to be set by the client. In order to maintain
-  design integrity of proportions and line-lengths, the grid needs to respond
-  to those sizes.
-
-* Responsive to window sizing: In order to maintain usability across
-  platforms/monitors, our grid needs to respond to the size of the viewport.
-  This is mainly an issue as the viewport shrinks and we are given a
-  side-scroll bar. No one likes that. On the large end our design integrity
-  and line lengths are more important than taking up all the possible space.
-
-In order to achieve both goals we need to combine the best of the elastic
-(em-based) and fluid (%-based) models. The solution is simple: First we build
-a fluid grid, then place it inside an elastic shell, and apply a maximum width
-to that shell so that it never exceeds the size of the viewport. It's simple
-in theory, but daunting in practice, as you constantly have to adjust your
-math based on the context.
-
-But Susy harnesses the power of Compass and Sass to do all the math for you.
-
 Grid Basics
-===========
+-----------
 
-* Set up your default grid values (total columns, column width, gutter width,
-  side gutter width) and important mixins in `_base.scss`.
+_(This now refers to the unreleased 1.0 version of Susy.)_
 
-    Example:
+### Settings:
 
-        $total-cols: 12;                    /* a 12-column grid */
-        $col-width: 4em;                    /* each column is 4em wide */
-        $gutter-width: 1em;                 /* 1em gutters between columns */
-        $side-gutter-width: $gutter-width;  /* 1em padding at the edges of the page as well */
+Set up your default grid values: total columns, column width, and gutter width.
 
-* Create your grid in `screen.scss`: apply the `container` mixin to the
-  element(s) that contains the page grid. This will set up your font sizes
-  and grid container.
+```scss
+$total-columns  : 12;             /* a 12-column grid */
+$column-width   : 4em;            /* each column is 4em wide */
+$gutter-width   : 1em;            /* 1em gutters between columns */
+$grid-padding   : $gutter-width;  /* 1em padding on the grid */
+```
 
-    Example:
+### Mixins:
 
-        #page {
-          @include container;
-        }
+The basic grid is composed using two simple mixins:
+* Apply the `container` mixin to create your initial grid context. 
+* Apply the `columns` mixin to declare the width of an element on the grid.
 
-    CSS Output:
+Use the 'omega' trigger to declare elements that span the _final_ column of 
+their parent element, and pass a 'context' in nested situations. The 
+'context' for any element is equal to the number of columns spanned by it's 
+parent.
 
-        #page {
-          *zoom: 1;
-          margin: auto;
-          width: 61em;
-          max-width: 100%;
-        }
-        #page:after {
-          content: "\0020";
-          display: block;
-          height: 0;
-          clear: both;
-          overflow: hidden;
-          visibility: hidden;
-        }
+For example:
 
-* Use the `columns` mixin to declare the width in columns of an
-  element, or `full` for any element spanning the full width of its
-  context.
+```scss
+#page {
+  @include container;
+  /* If you want padding on the grid, just add it to the container. */
 
-  There is an important distinction between "root" and "nested" contexts in
-  Susy. There is also a distinction between "grid elements" and "non-grid
-  elements". Grid elements are any elements that you assign a span to, either
-  with the `columns` or `full` mixin. Non-Grid elements include everything
-  else. Just as CSS absolute positioning happens in relation to the nearest
-  positioned ancestor, Susy grid "context" depends on the nearest grid-element
-  ancestor. Any element with the `container` as it's nearest grid ancestor is
-  considered to be in the "root" context. Any element within other grid
-  elements (with a nearest grid ancestor other than the `container`) is
-  considered to be in a "nested" context.
+  /* 
+  full-width items like the header don't need any help from Susy:
+  header { ... }
+  */
 
-  This is important because side-gutters are handled at the root level, as
-  margins on root grid elements. Margins that we don't want at nested levels.
-  It is also important because Susy grid elements are %-based, and so the
-  context is important to Susy's math. `Full` is simply a shortcut to replace
-  `columns` when the span should be the full width.
+  nav { @include columns(3); }
 
-    The `columns` mixin:
+  #content { 
+    @include columns(9 omega);
 
-        @include columns($span, [$context]);
+    #main { @include columns(6,9); }
+    aside { @include columns(3 omega,9); }
+  }
 
-    The `full` mixin:
+  footer { clear: both; }
+}
+```
 
-        @include full([$context]);
+Layouts and Breakpoints
+-----------------------
 
-  *Note:* Context _must not_ be passed at the root level, and _must_ be passed at nested levels.
+The point is to change layouts (number of columns in the grid) at breakpoints. If you supply only a breakpoint, Susy will supply the closest layout. If you supply only a layout, Susy will provide the closest breakpoint.
 
-* Use `alpha` and `omega` to declare elements which include
-  the first or last column within their parent element.
+```scss
+/* Switch to a 12-column grid when there is room for one. */
+@include at-breakpoint(12) { 
+  .container { @include container; } 
+}
 
-  *Note:* `alpha` is _only_ needed in the root level, and does
-  nothing in nested contexts. Neither is needed with an `full` element.
+/* At a min-width of 30em, switch to the nearest fitting layout. */
+@include at-breakpoint(30em) { 
+  .container { @include container; } 
+}
 
-    The `alpha` and `omega` mixins:
+/* Between the min-width of 30em and the max-width of 60em, 
+   use a 10-column layout. Provide a fallback class for IE. */
+@include at-breakpoint(30em 10 60em ie) { 
+  .container { @include container; } 
+}
 
-        @include alpha;
-        @include omega([$context]);
-
-    Example Scss:
-
-        #page {
-          @include container;
-          header {
-            @include full;
-            h1 {
-              @include full(12);
-            }
-          }
-          nav {
-            @include columns(3);
-            @include alpha;
-          }
-          #content {
-            @include columns(9);
-            @include omega;
-            #main {
-              @include columns(6,9);
-            }
-            aside {
-              @include columns(3,9);
-              @include omega(9);
-            }
-          }
-        }
-
-  Susy's CSS output uses floats to arrange the columns, widths to set the
-  spans, right-margins to set the getter, and both side margins to set the
-  side-gutters on root `alpha` and `omega` elements.
-
-* Use `prefix` or `suffix` to pad (in columns) the width of
-  an element using left and right padding, or `pad` to give both `prefix` and
-  `@suffix` at once.
-
-    The `prefix`, `suffix` and `pad` mixins:
-
-        @include prefix($prefix-span [, $context])
-        @include prefix($suffix-span [, $context])
-        @include pad($prefix-span, $suffix-span [, $context])
-
-    Used with `full` these are subtractive, so the full width remains:
-
-        header {
-          @include full;
-          @prefix(2);
-        }
-
-    Will result in a full-width element, with 2 columns of padding to the left.
-
-    Used with `columns` these are addative, so the content width remains:
-
-        aside {
-          @include columns(3,9);
-          @prefix(3,9)
-        }
-
-    Will result in a 6-column element, with 3 of those columns used as padding
-    on the left.
-
-That's it for the basics! Here's a sample Susy grid layout:
-
-    #page {
-      @include container;
-    }
-
-    header {
-      @include full;
-      @include pad(1,1);
-
-      h1 {
-        @include full(10);
-      }
-    }
-
-    nav {
-      @include columns(3);
-      @include alpha;
-    }
-
-    #content {
-      @include columns(9);
-      @include omega;
-      #main {
-        @include columns(6,9);
-      }
-      aside {
-        @include columns(3,9);
-        @include omega(9);
-      }
-    }
-
-Tutorial
-========
-
-Check out the tutorial at [susy.oddbird.net/tutorial/](http://susy.oddbird.net/tutorial/) for more details.
-
-Show your grids
-===============
-
-* `@include susy-grid-background` - For testing it can be helpful to see your
-grid. Using CSS3 gradients, Susy will show you that grid - and it will flex
-right along with your site.
-
-Advanced Options
-================
-
-Susy is built for flexibility, so that you always write the code you want to
-write. While everything should 'just work' out of the box, there are plenty of
-advanced options hidden inside. Here are a few:
-
-* `gutter($context)` is a function that you can call at any time to return the
-  size of a gutter in your given context as a percentage.
-
-    Example:
-
-        #nav {
-          padding-right: gutter(5);
-        }
-
-* `columns($number, $context)` returns the span of `$number` columns in
-  `$context` as a percentage. This span includes any gutters between the
-  columns spanned. `column($context)` is also available as a single-column
-  shortcut.
-
-    Example:
-
-        #nav {
-          padding-left: columns(3,5);
-        }
-
-* `side_gutter()` returns the percentage width of a side-gutter and takes no
-  arguments since it can always used at the top nesting level.
-
-Susy now also supports right-to-left and bi-directional documents. For a
-simple toggle, set the default `$from-direction` (defaults to `left`). For
-more specific control, you can pass an additional, localized `$from-direction`
-argument to any of the Susy mixins that need to know:
-
-* `columns`, `reset-column`
-* `alpha`, `omega`
-* `prefix`, `suffix`, `pad`
+/* Create all your container layouts in one go. 
+   Each argument accepts min/layout/max/ie, same as at-breakpoint. */
+.container { @include container(4,8,12); }
+```

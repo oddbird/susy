@@ -1,6 +1,5 @@
 source "http://rubygems.org"
 
-gem "middleman", "~>2.0.15.1"
-gem "middleman-livereload"
+gem "middleman", :github => "middleman/middleman"
 
-gem "compass-susy-plugin"
+gem "susy"

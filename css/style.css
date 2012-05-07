@@ -88,6 +88,30 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   font-style: normal;
 }
 
+@font-face {
+  font-family: "CenturyOldStyleFS";
+  src: url('../fonts/CenturyOldStyle-Bold-webfont.eot');
+  src: url('../fonts/CenturyOldStyle-Bold-webfont.eot?#iefix') format('eot'), url('../fonts/CenturyOldStyle-Bold-webfont.woff') format('woff'), url('../fonts/CenturyOldStyle-Bold-webfont.ttf') format('truetype'), url('../fonts/CenturyOldStyle-Bold-webfont.svg#webfont') format('svg');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "CenturyOldStyleFS";
+  src: url('../fonts/CenturyOldStyle-Italic-webfont.eot');
+  src: url('../fonts/CenturyOldStyle-Italic-webfont.eot?#iefix') format('eot'), url('../fonts/CenturyOldStyle-Italic-webfont.woff') format('woff'), url('../fonts/CenturyOldStyle-Italic-webfont.ttf') format('truetype'), url('../fonts/CenturyOldStyle-Italic-webfont.svg#webfont') format('svg');
+  font-weight: normal;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "CenturyOldStyleFSCaps";
+  src: url('../fonts/CenturyOldStyleCaps-Regular-webfont.eot');
+  src: url('../fonts/CenturyOldStyleCaps-Regular-webfont.eot?#iefix') format('eot'), url('../fonts/CenturyOldStyleCaps-Regular-webfont.woff') format('woff'), url('../fonts/CenturyOldStyleCaps-Regular-webfont.ttf') format('truetype'), url('../fonts/CenturyOldStyleCaps-Regular-webfont.svg#webfont') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
 html {
   font-size: 100%;
   line-height: 1.5em;
@@ -95,8 +119,8 @@ html {
 
 html {
   text-shadow: rgba(255, 255, 255, 0.5) 0 1px 0;
-  color: #333;
-  background: #eee;
+  color: #657b83;
+  background: #fdf6e3;
   font-family: "CenturyOldStyleFS", "Adobe Caslon Pro", Caslon, Baskerville, Palatino, "Palatino Linotype", "Hoefler Text", Garamond, "URW Palladio L", "Book Antiqua", Georgia, serif;
 }
 
@@ -109,9 +133,45 @@ b, i {
   font-style: normal;
 }
 
+code {
+  font-family: Consolas, Menlo, Monaco, "Lucida Console", "Liberation Mono", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Courier New", monospace, serif;
+}
+
+.type a:link, article a:link, footer a:link, .type a:visited, article a:visited, footer a:visited {
+  -webkit-transition: all 300ms;
+  -moz-transition: all 300ms;
+  -ms-transition: all 300ms;
+  -o-transition: all 300ms;
+  transition: all 300ms;
+  color: #6c71c4;
+}
+.type a:hover, article a:hover, footer a:hover, .type a:focus, article a:focus, footer a:focus, .type a:active, article a:active, footer a:active {
+  color: #dc322f;
+}
+.type p, article p, footer p {
+  margin-bottom: 1.5em;
+}
+.type h2, article h2, footer h2 {
+  font-family: "CenturyOldStyleFSCaps", "Adobe Caslon Pro", Caslon, Baskerville, Palatino, "Palatino Linotype", "Hoefler Text", Garamond, "URW Palladio L", "Book Antiqua", Georgia, serif;
+  text-transform: lowercase;
+  letter-spacing: .1em;
+  color: #586e75;
+}
+.type code, article code, footer code {
+  font-size: 0.75em;
+  line-height: 2em;
+  display: block;
+}
+.type code b, article code b, footer code b {
+  font-weight: bold;
+}
+.type code i, article code i, footer code i {
+  font-style: italic;
+}
+
 /*-----------------------------------------------------------------------------
   Layout */
-.container, nav, article, footer p {
+.container, header, nav, article, footer {
   *zoom: 1;
   max-width: 24em;
   _width: 24em;
@@ -128,13 +188,13 @@ b, i {
   -moz-background-clip: content-box;
   background-clip: content-box;
 }
-.container:after, nav:after, article:after, footer p:after {
+.container:after, header:after, nav:after, article:after, footer:after {
   content: "";
   display: table;
   clear: both;
 }
 @media (min-width: 35em) {
-  .container, nav, article, footer p {
+  .container, header, nav, article, footer {
     *zoom: 1;
     max-width: 39em;
     _width: 39em;
@@ -151,13 +211,13 @@ b, i {
     -moz-background-clip: content-box;
     background-clip: content-box;
   }
-  .container:after, nav:after, article:after, footer p:after {
+  .container:after, header:after, nav:after, article:after, footer:after {
     content: "";
     display: table;
     clear: both;
   }
 }
-.lt-ie9 .container, .lt-ie9 nav, .lt-ie9 article, .lt-ie9 footer p, footer .lt-ie9 p {
+.lt-ie9 .container, .lt-ie9 header, .lt-ie9 nav, .lt-ie9 article, .lt-ie9 footer {
   *zoom: 1;
   max-width: 39em;
   _width: 39em;
@@ -174,7 +234,7 @@ b, i {
   -moz-background-clip: content-box;
   background-clip: content-box;
 }
-.lt-ie9 .container:after, .lt-ie9 nav:after, .lt-ie9 article:after, .lt-ie9 footer p:after, footer .lt-ie9 p:after {
+.lt-ie9 .container:after, .lt-ie9 header:after, .lt-ie9 nav:after, .lt-ie9 article:after, .lt-ie9 footer:after {
   content: "";
   display: table;
   clear: both;
@@ -183,57 +243,66 @@ b, i {
 /*-----------------------------------------------------------------------------
   Modules */
 header {
-  padding-top: 0.75em;
+  border-top-style: solid;
+  border-top-width: 0.188em;
+  padding-top: 0.563em;
   margin-bottom: 0.75em;
-  background: pink;
   text-align: center;
+  border-color: #dc322f;
 }
 header h2 {
+  font-family: "CenturyOldStyleFSCaps", "Adobe Caslon Pro", Caslon, Baskerville, Palatino, "Palatino Linotype", "Hoefler Text", Garamond, "URW Palladio L", "Book Antiqua", Georgia, serif;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  color: #dc322f;
+}
+@media (min-width: 35em) {
+  header {
+    border-top-style: solid;
+    border-top-width: 0.188em;
+    padding-top: 2.063em;
+    margin-bottom: 2.25em;
+  }
+}
+.lt-ie9 header {
   border-top-style: solid;
-  border-top-width: 0.063em;
-  padding-top: 0.688em;
-  border-bottom-style: solid;
-  border-bottom-width: 0.063em;
-  padding-bottom: 0.688em;
-  -webkit-box-shadow: rgba(255, 0, 0, 0.25) 0 -0.5em 3em;
-  -moz-box-shadow: rgba(255, 0, 0, 0.25) 0 -0.5em 3em;
-  box-shadow: rgba(255, 0, 0, 0.25) 0 -0.5em 3em;
-  border-color: rgba(255, 0, 0, 0.25);
-  font-style: italic;
-  text-transform: lowercase;
+  border-top-width: 0.188em;
+  padding-top: 2.063em;
+  margin-bottom: 2.25em;
 }
 
 h1 a {
   font-size: 4.5em;
   line-height: 1em;
-  text-shadow: rgba(255, 0, 0, 0.25) 0 1px 0;
   -webkit-transition: text-shadow 300ms;
   -moz-transition: text-shadow 300ms;
   -ms-transition: text-shadow 300ms;
   -o-transition: text-shadow 300ms;
   transition: text-shadow 300ms;
   display: block;
-  color: white;
+  color: #dc322f;
 }
 h1 a b, h1 a i {
-  display: inline-block;
-  text-transform: uppercase;
-}
-h1 a i {
   -webkit-transition: all 300ms;
   -moz-transition: all 300ms;
   -ms-transition: all 300ms;
   -o-transition: all 300ms;
   transition: all 300ms;
+  display: inline-block;
+  text-transform: uppercase;
+  letter-spacing: -0.435em;
+}
+h1 a i {
   opacity: 0;
-  width: 0;
 }
 h1 a:hover, h1 a:focus, h1 a:active {
-  text-shadow: rgba(255, 0, 0, 0.5) 0 1px 0, rgba(255, 0, 0, 0.5) 0 0 0.5em;
+  text-shadow: rgba(255, 255, 255, 0.5) 0 1px 0, rgba(255, 255, 255, 0.5) 0 0 0.5em;
+}
+h1 a:hover b, h1 a:hover i, h1 a:focus b, h1 a:focus i, h1 a:active b, h1 a:active i {
+  letter-spacing: 0;
 }
 h1 a:hover i, h1 a:focus i, h1 a:active i {
   opacity: 1;
-  width: 1.75em;
 }
 h1 a::before, h1 a::after {
   font-size: 0.667em;
@@ -251,7 +320,17 @@ h1 a::after {
 
 nav {
   margin-bottom: 0.75em;
+  background: rgba(238, 232, 213, 0.5);
   text-align: center;
+  font-style: italic;
+}
+@media (min-width: 35em) {
+  nav {
+    text-align: left;
+  }
+}
+.lt-ie9 nav {
+  text-align: left;
 }
 nav ul {
   margin: 0;
@@ -274,16 +353,130 @@ nav ul li {
 nav ul li {
   *display: inline;
 }
-nav li {
+nav a:link, nav a:visited {
+  display: block;
   padding: 0.375em 0.75em;
+  color: #93a1a1;
+}
+nav a:hover, nav a:focus, nav a:active {
+  color: #dc322f;
 }
 
-article h2 {
-  font-weight: bold;
+article {
+  margin-bottom: 3em;
 }
 
 section {
   margin-bottom: 1.5em;
+}
+
+.border, .why h2, .who h2, footer {
+  border-top-style: solid;
+  border-top-width: 0.125em;
+  padding-top: 0.25em;
+  border-color: #eee8d5;
+}
+
+.why:first-child, .who:first-child {
+  font-size: 1.375em;
+  line-height: 1.636em;
+  margin-bottom: 0.545em;
+}
+.why:first-child h2, .who:first-child h2 {
+  display: none;
+}
+.why:first-child p, .who:first-child p {
+  margin-bottom: 1.091em;
+}
+.why:first-child p:last-child, .who:first-child p:last-child {
+  font-style: italic;
+}
+.why h2, .who h2 {
+  margin-bottom: 0.375em;
+  text-transform: uppercase;
+}
+
+.where {
+  *zoom: 1;
+  -webkit-box-shadow: #93a1a1 0 0 0.25em inset;
+  -moz-box-shadow: #93a1a1 0 0 0.25em inset;
+  box-shadow: #93a1a1 0 0 0.25em inset;
+  margin: 0 -1em 1.5em;
+  padding: 1.5em 1em;
+  background: rgba(238, 232, 213, 0.5);
+}
+.where:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.where h2 a:link, .where h2 a:visited {
+  color: #dc322f;
+}
+.where ul {
+  list-style-type: none;
+  display: block;
+  color: #93a1a1;
+}
+.where ul, .where ul li {
+  margin: 0px;
+  padding: 0px;
+  display: inline;
+}
+.where ul li:after {
+  content: ", ";
+}
+.where ul li:last-child:after {
+  content: "";
+}
+.where ul li.last:after {
+  content: "";
+}
+.where section:last-child {
+  margin-bottom: 0em;
+}
+@media (min-width: 35em) {
+  .where section {
+    width: 48.718%;
+    float: left;
+    margin-right: 2.564%;
+    display: inline;
+    margin-bottom: 0em;
+  }
+  .where section:last-child {
+    float: right;
+    margin-right: 0;
+    #margin-left: -1em;
+    display: inline;
+  }
+}
+.lt-ie9 .where section {
+  width: 48.718%;
+  float: left;
+  margin-right: 2.564%;
+  display: inline;
+  margin-bottom: 0em;
+}
+.lt-ie9 .where section:last-child {
+  float: right;
+  margin-right: 0;
+  #margin-left: -1em;
+  display: inline;
+}
+.where + .why h2 {
+  border: 0;
+  padding-top: 0;
+}
+
+footer {
+  font-family: "CenturyOldStyleFSCaps", "Adobe Caslon Pro", Caslon, Baskerville, Palatino, "Palatino Linotype", "Hoefler Text", Garamond, "URW Palladio L", "Book Antiqua", Georgia, serif;
+  font-variant: small-caps;
+  letter-spacing: .1em;
+  text-transform: lowercase;
+}
+footer p {
+  font-size: 0.875em;
+  line-height: 1.714em;
 }
 
 /*-----------------------------------------------------------------------------

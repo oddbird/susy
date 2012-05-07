@@ -17,6 +17,6 @@ $medium : 35em 8 lt-ie9;
   }
 }
 
-nav, article, footer p {
+header, nav, article, footer {
   @extend .container;
 }

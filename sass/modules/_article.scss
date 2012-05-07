@@ -1,9 +1,66 @@
 article {
-  h2 { 
-    font-weight: bold;
-  }
+  @extend .type;
+  @include trailer(2);
 }
 
 section {
   @include trailer;
+}
+
+.border {
+  @include leading-border(2px,.25);
+  border-color: $base2;
+}
+
+.why, .who {
+  &:first-child {
+    @include adjust-font-size-to(22px,1.5);
+    @include trailer(.5,22px);
+    h2 { display: none; }
+    p {
+      @include trailer(1,22px);
+      &:last-child { 
+        font-style: italic; 
+      }
+    }
+  }
+  h2 {
+    @extend .border;
+    @include trailer(.25);
+    text-transform: uppercase;
+  }
+}
+
+.where {
+  @include pie-clearfix;
+  @include box-shadow($base1 0 0 .25em inset);
+  margin: 0 0 - $grid-padding rhythm(1);
+  padding: rhythm(1) $grid-padding;
+  background: rgba($base2,.5);
+  h2 {
+    a {
+      #{$link} { color: $alt; }
+    }
+  }
+  ul {
+    @include delimited-list;
+    display: block;
+    color: $base1;
+  }
+  section {
+    &:last-child {
+      @include trailer(0);
+    }
+    @include at-breakpoint($medium) {
+      @include columns(4,8);
+      @include trailer(0);
+      &:last-child {
+        @include omega;
+      }            
+    }
+  }
+  + .why h2 {
+    border: 0;
+    padding-top: 0;
+  }
 }

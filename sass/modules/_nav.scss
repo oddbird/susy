@@ -1,8 +1,22 @@
 nav {
   @include trailer(.5);
+  background: rgba($base2,.5);
   text-align: center;
+  font-style: italic;
+
+  @include at-breakpoint($medium) {
+    text-align: left;
+  }
+
   ul { @include inline-block-list; }
-  li {
-    padding: rhythm(.25) rhythm(.5);
+  a { 
+    #{$link} {
+      display: block;
+      padding: rhythm(.25) rhythm(.5); 
+      color: $base1;
+    }
+    #{$focus} {
+      color: $alt; 
+    }
   }
 }

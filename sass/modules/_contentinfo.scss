@@ -1,0 +1,9 @@
+footer {
+  @extend .type;
+  @extend .border;
+  font-family: $caps-stack;
+  font-variant: small-caps;
+  letter-spacing: .1em;
+  text-transform: lowercase;
+  p { @include adjust-font-size-to(14px); }
+}

@@ -2,41 +2,37 @@
 // Banner
 
 header {
-  @include padding-leader(.5);
+  @include leading-border(3px,.5);
   @include trailer(.5);
-  background: pink;
   text-align: center;
+  border-color: $red;
   h2 {
-    @include h-borders(1px,.5);
-    @include box-shadow(rgba(red,.25) 0 -.5em 3em);
-    border-color: rgba(red,.25);
-    font-style: italic;
-    text-transform: lowercase;
+    @include caps;
+    color: $red;
+  }
+  @include at-breakpoint($medium) {
+    @include leading-border(3px,1.5);
+    @include trailer(1.5);
   }
 }
 
 h1 {
   a { 
     @include adjust-font-size-to(72px,3); 
-    @include text-shadow(rgba(red,.25) 0 1px 0);
     @include transition(text-shadow 300ms);
     display: block;
-    color: white;
+    color: $red;
     b, i {
+      @include transition(all 300ms);
       display: inline-block;
       text-transform: uppercase;
+      letter-spacing: -.435em;
     }
-    i {
-      @include transition(all 300ms);
-      opacity: 0;
-      width: 0;
-    }
+    i { opacity: 0; }
     #{$focus} { 
-      @include text-shadow(rgba(red,.5) 0 1px 0, rgba(red,.5) 0 0 .5em); 
-      i {
-        opacity: 1;
-        width: 1.75em;
-      }
+      @include text-shadow(rgba(white,.5) 0 1px 0, rgba(white,.5) 0 0 .5em); 
+      b, i { letter-spacing: 0; }
+      i { opacity: 1; }
     }
     &::before, &::after { 
       @include adjust-font-size-to(48px,3,72px);

@@ -13,6 +13,7 @@
 @import "compass/reset";
 @import "general/fonts";
 @import "general/root";
+@import "general/type";
 
 /*-----------------------------------------------------------------------------
   Layout */
@@ -25,6 +26,7 @@
 @import "modules/banner";
 @import "modules/nav";
 @import "modules/article";
+@import "modules/contentinfo";
 
 /*-----------------------------------------------------------------------------
   Overrides */

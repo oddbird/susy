@@ -47,8 +47,10 @@
 # page "/this-page-has-no-template.html", :proxy => "/template-file.html" do
 #   @which_fake_page = "Rendering a fake page with a variable"
 # end
-
 page "/guides/", :proxy => "/guides/getting-started.html"
+
+# Default content markup should be Markdown for the HAML templating engine
+set :markdown, :layout_engine => :haml
 
 ###
 # Helpers

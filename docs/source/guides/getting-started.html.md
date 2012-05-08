@@ -1,2 +1,5 @@
-- content_for :head do
-  %title SUSY | Getting Started
+---
+title: Getting Started
+---
+
+# Getting Started

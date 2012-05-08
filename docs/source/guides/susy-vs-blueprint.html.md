@@ -1,2 +1,5 @@
-- content_for :head do
-  %title SUSY | SUSY vs. Blueprint
+---
+title: Susy vs. Blueprint
+---
+
+# Susy vs. Blueprint

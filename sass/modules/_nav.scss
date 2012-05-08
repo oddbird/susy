@@ -9,11 +9,15 @@ nav {
   }
 
   ul { @include inline-block-list; }
+
   a { 
     #{$link} {
       display: block;
       padding: rhythm(.25) rhythm(.5); 
       color: $base1;
+      @extend .icon;
+      @extend .icon-github-sign;
+      &[href*='master'] { @extend .icon-download-alt; }
     }
     #{$focus} {
       color: $alt; 

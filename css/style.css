@@ -163,6 +163,9 @@ code {
 .type p, article p {
   margin-bottom: 1.5em;
 }
+.type ul, article ul {
+  list-style-type: disc;
+}
 .type h2, article h2 {
   font-family: "CenturyOldStyleFSCaps", "Adobe Caslon Pro", Caslon, Baskerville, Palatino, "Palatino Linotype", "Hoefler Text", Garamond, "URW Palladio L", "Book Antiqua", Georgia, serif;
   text-transform: lowercase;
@@ -1071,6 +1074,29 @@ section {
   padding-top: 0.25em;
   border-color: #eee8d5;
   text-transform: uppercase;
+}
+
+@media (min-width: 35em) {
+  .who ul {
+    -webkit-column-count: 2;
+    -moz-column-count: 2;
+    -ms-column-count: 2;
+    column-count: 2;
+    -webkit-column-gap: 2.564%;
+    -moz-column-gap: 2.564%;
+    -ms-column-gap: 2.564%;
+    column-gap: 2.564%;
+  }
+}
+.lt-ie9 .who ul {
+  -webkit-column-count: 2;
+  -moz-column-count: 2;
+  -ms-column-count: 2;
+  column-count: 2;
+  -webkit-column-gap: 2.564%;
+  -moz-column-gap: 2.564%;
+  -ms-column-gap: 2.564%;
+  column-gap: 2.564%;
 }
 
 .where {

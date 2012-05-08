@@ -9,6 +9,9 @@
   p {
     @include trailer;
   }
+  ul {
+    list-style-type: disc;
+  }
   h2 { 
     font-family: $caps-stack;
     text-transform: lowercase;

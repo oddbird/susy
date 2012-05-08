@@ -27,6 +27,15 @@ section {
   }
 }
 
+.who {
+  @include at-breakpoint($medium) {
+    ul {
+      @include column-count(2);
+      @include column-gap(gutter(8));
+    }
+  }
+}
+
 .where {
   @include pie-clearfix;
   @include box-shadow($base1 0 0 .25em inset);

@@ -20,11 +20,7 @@
       %section.nav
         = partial "partials/navigation"
       
-      %section.content.side_content
-        - if yield_content :side_content
-          = yield_content :side_content
-        - else
-          = partial "partials/default_sidecontent"
+      %section.content.side_content= page_side_content
       
       %section.content.main_content
       

@@ -1,13 +1,19 @@
-- content_for :head do
-  %title SUSY | Reference
-  
-- content_for :side_content do
-  %ul
-    %li
-      %a{ :href => "#" } container
-    %li
-      %a{ :href => "#" } full
-    %li
-      %a{ :href => "#" } alpha
-    %li
-      %a{ :href => "#" } omega
+---
+title: Reference
+side_content: >
+  <ul>
+    <li>
+      <a href="#">container</a>
+    </li>
+    <li>
+      <a href="#">full</a>
+    </li>
+    <li>
+      <a href="#">alpha</a>
+    </li>
+    <li>
+      <a href="#">omega</a>
+    </li>
+---
+
+# Reference

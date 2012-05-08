@@ -1,9 +1,19 @@
 footer {
-  @extend .type;
-  @extend .border;
+  @include padding-leader(.5);
+  @include padding-trailer(.5);
+  @include text-shadow;
+  color: $base1;
+  background: $red;
   font-family: $caps-stack;
   font-variant: small-caps;
   letter-spacing: .1em;
   text-transform: lowercase;
-  p { @include adjust-font-size-to(14px); }
+  a {
+    #{$link} { color: $base3; }
+    #{$focus} { text-decoration: underline; }
+  }
+  p { 
+    @include adjust-font-size-to(14px); 
+    @include trailer(0);
+  }
 }

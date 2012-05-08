@@ -149,7 +149,7 @@ code {
   font-family: "BaskervilleAmp", "CenturyOldStyleFS", "Adobe Caslon Pro", Caslon, Baskerville, Palatino, "Palatino Linotype", "Hoefler Text", Garamond, "URW Palladio L", "Book Antiqua", Georgia, serif;
 }
 
-.type a:link, article a:link, footer a:link, .type a:visited, article a:visited, footer a:visited {
+.type a:link, article a:link, .type a:visited, article a:visited {
   -webkit-transition: all 300ms;
   -moz-transition: all 300ms;
   -ms-transition: all 300ms;
@@ -157,27 +157,27 @@ code {
   transition: all 300ms;
   color: #6c71c4;
 }
-.type a:hover, article a:hover, footer a:hover, .type a:focus, article a:focus, footer a:focus, .type a:active, article a:active, footer a:active {
+.type a:hover, article a:hover, .type a:focus, article a:focus, .type a:active, article a:active {
   color: #dc322f;
 }
-.type p, article p, footer p {
+.type p, article p {
   margin-bottom: 1.5em;
 }
-.type h2, article h2, footer h2 {
+.type h2, article h2 {
   font-family: "CenturyOldStyleFSCaps", "Adobe Caslon Pro", Caslon, Baskerville, Palatino, "Palatino Linotype", "Hoefler Text", Garamond, "URW Palladio L", "Book Antiqua", Georgia, serif;
   text-transform: lowercase;
   letter-spacing: .1em;
   color: #586e75;
 }
-.type code, article code, footer code {
+.type code, article code {
   font-size: 0.75em;
   line-height: 2em;
   display: block;
 }
-.type code b, article code b, footer code b {
+.type code b, article code b {
   font-weight: bold;
 }
-.type code i, article code i, footer code i {
+.type code i, article code i {
   font-style: italic;
 }
 
@@ -1045,37 +1045,31 @@ nav a:hover, nav a:focus, nav a:active {
   color: #dc322f;
 }
 
-article {
-  margin-bottom: 3em;
-}
-
 section {
   margin-bottom: 1.5em;
 }
 
-.border, .why h2, .who h2, footer {
-  border-top-style: solid;
-  border-top-width: 0.125em;
-  padding-top: 0.25em;
-  border-color: #eee8d5;
-}
-
-.why:first-child, .who:first-child {
+.intro {
   font-size: 1.375em;
   line-height: 1.636em;
   margin-bottom: 0.545em;
 }
-.why:first-child h2, .who:first-child h2 {
+.intro h2 {
   display: none;
 }
-.why:first-child p, .who:first-child p {
+.intro p {
   margin-bottom: 1.091em;
 }
-.why:first-child p:last-child, .who:first-child p:last-child {
+.intro p:last-child {
   font-style: italic;
 }
-.why h2, .who h2 {
+
+.why h2 {
   margin-bottom: 0.375em;
+  border-top-style: solid;
+  border-top-width: 0.125em;
+  padding-top: 0.25em;
+  border-color: #eee8d5;
   text-transform: uppercase;
 }
 
@@ -1158,14 +1152,26 @@ section {
 }
 
 footer {
+  padding-top: 0.75em;
+  padding-bottom: 0.75em;
+  text-shadow: #aaaaaa 0px 0px 1px;
+  color: #93a1a1;
+  background: #dc322f;
   font-family: "CenturyOldStyleFSCaps", "Adobe Caslon Pro", Caslon, Baskerville, Palatino, "Palatino Linotype", "Hoefler Text", Garamond, "URW Palladio L", "Book Antiqua", Georgia, serif;
   font-variant: small-caps;
   letter-spacing: .1em;
   text-transform: lowercase;
 }
+footer a:link, footer a:visited {
+  color: #fdf6e3;
+}
+footer a:hover, footer a:focus, footer a:active {
+  text-decoration: underline;
+}
 footer p {
   font-size: 0.875em;
   line-height: 1.714em;
+  margin-bottom: 0em;
 }
 
 /*-----------------------------------------------------------------------------

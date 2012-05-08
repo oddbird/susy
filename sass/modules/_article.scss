@@ -1,32 +1,28 @@
 article {
   @extend .type;
-  @include trailer(2);
 }
 
 section {
   @include trailer;
 }
 
-.border {
-  @include leading-border(2px,.25);
-  border-color: $base2;
-}
-
-.why, .who {
-  &:first-child {
-    @include adjust-font-size-to(22px,1.5);
-    @include trailer(.5,22px);
-    h2 { display: none; }
-    p {
-      @include trailer(1,22px);
-      &:last-child { 
-        font-style: italic; 
-      }
+.intro {
+  @include adjust-font-size-to(22px,1.5);
+  @include trailer(.5,22px);
+  h2 { display: none; }
+  p {
+    @include trailer(1,22px);
+    &:last-child { 
+      font-style: italic; 
     }
   }
+}
+
+.why {
   h2 {
-    @extend .border;
     @include trailer(.25);
+    @include leading-border(2px,.25);
+    border-color: $base2;
     text-transform: uppercase;
   }
 }

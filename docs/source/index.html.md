@@ -16,6 +16,6 @@
 Here's some code:
 
     $total-columns  : 12;
-    $column-width   : 4em
+    $column-width   : 4em;
     $gutter-width   : 1em;
     $grid-padding   : $gutter-width;

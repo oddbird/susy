@@ -2,8 +2,6 @@
 # Helpers
 ###
 
-set :markdown_engine, :redcarpet
-
 require "lib/guide_helpers"
 helpers GuideHelpers
 

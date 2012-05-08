@@ -3,5 +3,3 @@ source "http://rubygems.org"
 gem "middleman", :github => "middleman/middleman"
 
 gem "susy"
-
-gem "redcarpet"

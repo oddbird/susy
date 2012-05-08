@@ -1,3 +1,10 @@
+###
+# Helpers
+###
+
+require "lib/guide_helpers"
+helpers GuideHelpers
+
 ### 
 # Compass
 ###

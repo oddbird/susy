@@ -1,12 +1,7 @@
 nav {
   @include trailer(.5);
   background: rgba($base2,.5);
-  text-align: center;
   font-style: italic;
-
-  @include at-breakpoint($medium) {
-    text-align: left;
-  }
 
   ul { @include inline-block-list; }
 
@@ -16,11 +11,14 @@ nav {
       padding: rhythm(.25) rhythm(.5); 
       color: $base1;
       @extend .icon;
-      @extend .icon-github-sign;
-      &[href*='master'] { @extend .icon-download-alt; }
+      &[title='source'] { @extend .icon-github-sign; }
+      &[href*='zipball'] { @extend .icon-download-alt; }
+      &[href*='twitter'] { @extend .icon-twitter-sign; }
     }
-    #{$focus} {
-      color: $alt; 
+    #{$focus} {color: $alt; }
+    &::before { 
+      @include adjust-font-size-to(24px, 1); 
+      vertical-align: middle;
     }
   }
 }

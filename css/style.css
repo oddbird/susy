@@ -390,7 +390,7 @@ li[class*=" icon-"].icon-large:before {
   content: "\f018";
 }
 
-.icon-download-alt:before, nav a[href*='master']:link:before, nav a[href*='master']:visited:before {
+.icon-download-alt:before, nav a[href*='zipball']:link:before, nav a[href*='zipball']:visited:before {
   content: "\f019";
 }
 
@@ -779,7 +779,7 @@ li[class*=" icon-"].icon-large:before {
   content: "\f080";
 }
 
-.icon-twitter-sign:before {
+.icon-twitter-sign:before, nav a[href*='twitter']:link:before, nav a[href*='twitter']:visited:before {
   content: "\f081";
 }
 
@@ -843,7 +843,7 @@ li[class*=" icon-"].icon-large:before {
   content: "\f091";
 }
 
-.icon-github-sign:before, nav a:link:before, nav a:visited:before {
+.icon-github-sign:before, nav a[title='source']:link:before, nav a[title='source']:visited:before {
   content: "\f092";
 }
 
@@ -859,8 +859,8 @@ li[class*=" icon-"].icon-large:before {
   Layout */
 .container, header, nav, article, footer {
   *zoom: 1;
-  max-width: 24em;
-  _width: 24em;
+  max-width: 29em;
+  _width: 29em;
   margin-left: auto;
   margin-right: auto;
   padding-left: 1em;
@@ -1007,16 +1007,7 @@ h1 a::after {
 nav {
   margin-bottom: 0.75em;
   background: rgba(238, 232, 213, 0.5);
-  text-align: center;
   font-style: italic;
-}
-@media (min-width: 35em) {
-  nav {
-    text-align: left;
-  }
-}
-.lt-ie9 nav {
-  text-align: left;
 }
 nav ul {
   margin: 0;
@@ -1046,6 +1037,11 @@ nav a:link, nav a:visited {
 }
 nav a:hover, nav a:focus, nav a:active {
   color: #dc322f;
+}
+nav a::before {
+  font-size: 1.5em;
+  line-height: 1em;
+  vertical-align: middle;
 }
 
 section {

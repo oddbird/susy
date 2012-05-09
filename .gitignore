@@ -1,3 +1,5 @@
 susy-*.gem
 *.DS_Store
 *~
+*.sublime-*
+.sass-cache

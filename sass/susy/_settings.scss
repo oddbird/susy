@@ -23,6 +23,10 @@ $from-direction     : left            !default;
 // The direction that +omega elements are floated by deafult.
 $omega-float        : opposite-position($from-direction)    !default;
 
+// Auto Omega insertion:
+// Automatically add Omega to the last colum. This assumes mixins are in markup order.
+$auto-omega         : false           !default;
+
 // Container Width:
 // Override the total width of your grid, using any length (50em, 75%, etc.)
 $container-width    : false           !default;

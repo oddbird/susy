@@ -78,14 +78,30 @@
 //          : Context is required on any nested elements.
 //          : Context MUST NOT be declared on a root element.
 // $from    : The start direction of your layout (e.g. 'left' for ltr languages)
+
+$column-counter: 0;
+
 @mixin columns(
   $columns,
   $context  : $total-columns,
-  $from     : $from-direction
+  $from     : $from-direction,
+  $counter  : $column-counter
 ) {
   $to       : opposite-position($from);
   $pos      : split-columns-value($columns,position);
   $cols     : split-columns-value($columns,columns);
+  
+  // Add columns to the counter
+  $column-counter: $counter + $columns;  
+  
+  // Apply counter logic for Omega
+  @if $column-counter >= $context {
+    @if $auto-omega {
+      $pos: 'omega';
+    }
+    // Reset counter
+    $column-counter: 0;
+  }
   
   width: columns($cols, $context);
 

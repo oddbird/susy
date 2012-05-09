@@ -78,6 +78,7 @@ GEM
     rb-fsevent (0.9.1)
     rb-inotify (0.8.8)
       ffi (>= 0.5.0)
+    redcarpet (2.1.1)
     sass (3.2.0.alpha.104)
     sinatra (1.3.2)
       rack (~> 1.3, >= 1.3.6)
@@ -107,4 +108,5 @@ PLATFORMS
 
 DEPENDENCIES
   middleman!
+  redcarpet
   susy

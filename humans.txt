@@ -3,18 +3,18 @@
 
 
 /* TEAM */
-  <your title>: <your name>
-  Site:
-  Twitter:
-  Location:
+  Creator: Eric A. Meyer
+  Site: susy.oddbird.net
+  Twitter: @CompassSusy
+  Location: Denver, CO
 
 /* THANKS */
-  Names (& URL):
+  Names (& URL): Danny Palmer (dannyprose.com), 
 
 /* SITE */
   Standards: HTML5, CSS3
-  Components: Modernizr, jQuery
-  Software:
+  Components: HTML5 Boilerplate, Modernizr, jQuery, Solarized, Font Awesome
+  Software: Sass, Compass, Susy
 
 
 

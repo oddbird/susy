@@ -4,3 +4,4 @@ susy-*.gem
 .sass-cache
 .rvmrc
 *.sublime-*
+pkg/

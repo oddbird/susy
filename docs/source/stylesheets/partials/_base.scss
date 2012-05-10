@@ -38,9 +38,9 @@ a {
   
 }
 
-//////////
-/////Fonts
-//////////
+/////
+// Fonts
+/////
 
 /////Adobe Caslon Pro
 @include font-face("Caslon", font-files("/fonts/adobe_caslon_pro/adobe_caslon_pro-webfont.woff", "/fonts/adobe_caslon_pro/adobe_caslon_pro-webfont.svg", "/fonts/adobe_caslon_pro/adobe_caslon_pro-webfont.ttf"), "/fonts/adobe_caslon_pro/adobe_caslon_pro-webfont.eot", "normal", "normal");
@@ -52,17 +52,18 @@ a {
 @include font-face("Old Century", font-files("/fonts/centuryoldstylefs_regular_macroman/CenturyOldStyle-Regular-webfont.woff", "/fonts/centuryoldstylefs_regular_macroman/CenturyOldStyle-Regular-webfont.svg", "/fonts/centuryoldstylefs_regular_macroman/CenturyOldStyle-Regular-webfont.ttf"), "/fonts/centuryoldstylefs_regular_macroman/CenturyOldStyle-Regular-webfont.eot", "normal", "normal");
 
 
-//////////
-/////Google Fonts
-//////////
+/////
+// Google Fonts
+/////
 
 //Bitter
 @import url(http://fonts.googleapis.com/css?family=Bitter:400,700,400italic);
 
 
-//////////
-/////Mixins
-//////////
+/////
+// Mixins
+/////
+
 @mixin rounded-basic {
 -webkit-border-radius: 1px;
 -moz-border-radius: 1px;
@@ -75,34 +76,12 @@ border-radius: 1px;
 border-radius: 3px;
 }
 
+/////
+// Vendor
+/////
+
 //Code Highlighting
 @import "vendor/pygments/solarized";
 
 //Font Awesome
 @import "vendor/font-awesome/font-awesome";
-
-//////////
-/////Shared
-//////////
-
-// Logo
-.logo {
-  font-family: Caslon, Georgia, serif;
-  font-weight: normal;
-  font-style: normal;
-  font-size: 3em;
-  color: white;
-  text-decoration: none;
-  @include single-transition(all, .5s);
-  margin-bottom: -0.1em;
-
-  .first-character, .third-character {
-    position: relative;
-    top: -0.1375em;
-  }
-
-  .second-character {
-
-  }
-
-}

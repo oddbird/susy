@@ -9,15 +9,15 @@
   = partial "partials/head"
   
   %body{ :class => page_classes }
-    
-    %header.lead
-      %a.home{ :href => "/"}
-        = partial "partials/logo"
-        %h1 Susy
-        %h2 <span>Susy:</span> The Un-obstruive, Responsive Grid for Designers.
 
     %div{ :id => "main", :role => "main" }
-      %section.nav
+    
+      %header.lead
+        %a.home{ :href => "/"}
+          %h1 Susy
+          %h2 <span>Susy:</span> The Un-obstruive, Responsive Grid for Designers.
+    
+      %nav
         = partial "partials/navigation"
       
       %section.content.side_content= page_side_content

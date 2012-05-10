@@ -1,4 +1,4 @@
-.highlight { background-color: #ddd }
+.highlight { background-color: #f4f4f4; border: solid 1px #eee; @include rounded-medium; }
 .c { color: #93a1a1; font-style: italic } /* Comment */
 .g { color: #d33682 } /* Generic */
 .k { color: #859900 } /* Keyword */

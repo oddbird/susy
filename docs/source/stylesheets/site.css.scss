@@ -135,20 +135,9 @@ section.content {
   }
   
   pre {
-    padding: 0;
+    padding: .5em;
     margin: 0;
-    code {
-      display: inline-block;
-      background-color: lighten($susy-gray, 50%);
-      border: 1px lighten($susy-gray, 30%) solid;
-      color: $susy-gray;
-      padding: 1em;
-      max-width: 90%;
-      min-width: 90%;  
-      padding-top: 0;
-      margin-top: 0;
-      
-    }
+    font-size: 0.9em;
   }
 }
 

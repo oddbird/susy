@@ -38,6 +38,18 @@ section {
     ul {
       @include column-count(2);
       @include column-gap(gutter(8));
+      list-style: none;
+    }
+    a {
+      #{$link} {
+        @extend .icon;
+        @extend .icon-external-link;
+        display: inline-block;
+        &::before { color: rgba($base1,.5); }
+      }
+      #{$focus} {
+        &::before { color: $base1; }
+      }
     }
   }
 }

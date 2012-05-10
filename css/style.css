@@ -220,7 +220,7 @@ code {
 }
 
 /* sprites.less reset */
-.icon, nav a:link, nav a:visited,
+.icon, nav a:link, nav a:visited, .who a:link, .who a:visited, .lt-ie9 .who a:link, .lt-ie9 .who a:visited,
 [class^="icon-"],
 [class*=" icon-"] {
   display: inline;
@@ -240,7 +240,7 @@ li[class*=" icon-"] {
 
 /*  Font Awesome styles
     ------------------------------------------------------- */
-.icon:before, nav a:link:before, nav a:visited:before,
+.icon:before, nav a:link:before, nav a:visited:before, .who a:link:before, .who a:visited:before, .lt-ie9 .who a:link:before, .lt-ie9 .who a:visited:before,
 [class^="icon-"]:before,
 [class*=" icon-"]:before {
   font-family: FontAwesome;
@@ -835,7 +835,7 @@ li[class*=" icon-"].icon-large:before {
   content: "\f08d";
 }
 
-.icon-external-link:before {
+.icon-external-link:before, .who a:link:before, .who a:visited:before, .lt-ie9 .who a:link:before, .lt-ie9 .who a:visited:before {
   content: "\f08e";
 }
 
@@ -1092,6 +1092,16 @@ section {
     -moz-column-gap: 2.564%;
     -ms-column-gap: 2.564%;
     column-gap: 2.564%;
+    list-style: none;
+  }
+  .who a:link, .who a:visited {
+    display: inline-block;
+  }
+  .who a:link::before, .who a:visited::before {
+    color: rgba(147, 161, 161, 0.5);
+  }
+  .who a:hover::before, .who a:focus::before, .who a:active::before {
+    color: #93a1a1;
   }
 }
 .lt-ie9 .who ul {
@@ -1103,6 +1113,16 @@ section {
   -moz-column-gap: 2.564%;
   -ms-column-gap: 2.564%;
   column-gap: 2.564%;
+  list-style: none;
+}
+.lt-ie9 .who a:link, .lt-ie9 .who a:visited {
+  display: inline-block;
+}
+.lt-ie9 .who a:link::before, .lt-ie9 .who a:visited::before {
+  color: rgba(147, 161, 161, 0.5);
+}
+.lt-ie9 .who a:hover::before, .lt-ie9 .who a:focus::before, .lt-ie9 .who a:active::before {
+  color: #93a1a1;
 }
 
 .where {

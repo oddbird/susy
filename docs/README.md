@@ -42,3 +42,13 @@ Edit `/docs/source/config.rb` to change the default landing page for `/docs/sour
 ### Indentation
 
 As all of Susy's docs use pre-processors that are whitespace-sensitive, please use 2 Soft Tabs for indentation.
+
+### Code Highlighting
+
+Susy's docs uses [Rack::Codehighlighter](https://github.com/wbzyl/rack-codehighlighter) (and [pygments.rb](https://github.com/tmm1/pygments.rb)) to automatically highlight Markdown code blocks, GitHub style:
+
+    :::scss
+    $total-columns  : 12;
+    $column-width   : 4em;
+    $gutter-width   : 1em;
+    $grid-padding   : $gutter-width;

@@ -149,6 +149,10 @@ code {
   font-family: "BaskervilleAmp", "CenturyOldStyleFS", "Adobe Caslon Pro", Caslon, Baskerville, Palatino, "Palatino Linotype", "Hoefler Text", Garamond, "URW Palladio L", "Book Antiqua", Georgia, serif;
 }
 
+.caps {
+  font-family: "CenturyOldStyleFSCaps", "Adobe Caslon Pro", Caslon, Baskerville, Palatino, "Palatino Linotype", "Hoefler Text", Garamond, "URW Palladio L", "Book Antiqua", Georgia, serif;
+}
+
 .type a:link, article a:link, .type a:visited, article a:visited {
   -webkit-transition: all 300ms;
   -moz-transition: all 300ms;
@@ -1070,6 +1074,12 @@ section {
   padding-top: 0.25em;
   border-color: #eee8d5;
   text-transform: uppercase;
+}
+
+.reqs {
+  margin-bottom: 0em;
+  font-style: italic;
+  text-transform: lowercase;
 }
 
 @media (min-width: 35em) {

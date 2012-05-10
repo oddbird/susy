@@ -27,6 +27,12 @@ section {
   }
 }
 
+.reqs {
+  @include trailer(0);
+  font-style: italic;
+  text-transform: lowercase;
+}
+
 .who {
   @include at-breakpoint($medium) {
     ul {

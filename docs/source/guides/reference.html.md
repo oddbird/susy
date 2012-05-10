@@ -72,7 +72,7 @@ side_content: >
     @import 'susy';
     
     .page { 
-      @include container 
+      @include container;
     }
     
 ### Terms

@@ -45,7 +45,7 @@ As all of Susy's docs use pre-processors that are whitespace-sensitive, please u
 
 ### Code Highlighting
 
-Susy's docs uses [Rack::Codehighlighter](https://github.com/wbzyl/rack-codehighlighter) (and [pygments.rb](https://github.com/tmm1/pygments.rb)) to automatically highlight Markdown code blocks. You just have to indicate the type as so in a code block:
+Susy's docs uses [Rack::Codehighlighter](https://github.com/wbzyl/rack-codehighlighter) (and [pygments.rb](https://github.com/tmm1/pygments.rb)) to automatically highlight Markdown code blocks. You just have to indicate the type in a code block:
 
     :::scss
     $total-columns  : 12;

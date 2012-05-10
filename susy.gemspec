@@ -2,11 +2,11 @@
 
 Gem::Specification.new do |s|
   s.name = "susy"
-  s.version = "1.0.alpha.0"
+  s.version = "1.0.alpha.1"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 1.2") if s.respond_to? :required_rubygems_version=
   s.authors = ["Eric Meyer"]
-  s.date = "2012-05-06"
+  s.date = "2012-05-10"
   s.description = "Responsive web design with grids the quick and reliable way."
   s.email = "eric@oddbird.net"
   s.extra_rdoc_files = ["CHANGELOG.mkdn", "LICENSE.txt", "README.mkdn", "lib/susy.rb"]

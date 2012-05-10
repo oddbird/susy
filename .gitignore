@@ -3,3 +3,4 @@ susy-*.gem
 *~
 *.sublime-*
 .sass-cache
+pkg/

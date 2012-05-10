@@ -4,7 +4,7 @@ Susy's documentation source is written with [Middleman](https://github.com/middl
 
 ## Editing Susy's Docs
 
-Susy's docs are all marked up with [Markdown](http://daringfireball.net/projects/markdown/syntax), and templated with [HAML](http://haml-lang.com/).
+Susy's docs are all marked up with (GitHub Flavored) [Markdown](http://daringfireball.net/projects/markdown/syntax), and templated with [HAML](http://haml-lang.com/).
 
 ### Adding Content
 
@@ -33,7 +33,7 @@ Note that the `>` in `side_content: >` is required to render HTML.
     
 ### Doc-wide Navigation
 
-To add a page to the doc-wide navigation, add it to `/docs/source/partials/_navigation.haml`
+To add a page to the doc-wide navigation, add it to `/docs/source/partials/_navigation.haml`.
 
 ### Default URL for /guides/
 
@@ -42,3 +42,13 @@ Edit `/docs/source/config.rb` to change the default landing page for `/docs/sour
 ### Indentation
 
 As all of Susy's docs use pre-processors that are whitespace-sensitive, please use 2 Soft Tabs for indentation.
+
+### Code Highlighting
+
+Susy's docs uses [Rack::Codehighlighter](https://github.com/wbzyl/rack-codehighlighter) (and [pygments.rb](https://github.com/tmm1/pygments.rb)) to automatically highlight Markdown code blocks. You just have to indicate the type as so in a code block:
+
+    :::scss
+    $total-columns  : 12;
+    $column-width   : 4em;
+    $gutter-width   : 1em;
+    $grid-padding   : $gutter-width;

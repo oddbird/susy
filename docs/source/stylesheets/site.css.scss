@@ -19,20 +19,20 @@ body {
   //@include susy-grid-background();
 
   section.nav {
-    @include columns(12);
+    @include span-columns(12);
   }
   
   section.side_content {
-    @include columns(2);
+    @include span-columns(2);
   }
   
   section.main_content {
-    @include columns(9 omega);
+    @include span-columns(9 omega);
   }
   
   footer.ephemera {
     @include prefix(1);
-    @include columns(10);
+    @include span-columns(10);
   }
 
 }
@@ -135,20 +135,9 @@ section.content {
   }
   
   pre {
-    padding: 0;
+    padding: .5em;
     margin: 0;
-    code {
-      display: inline-block;
-      background-color: lighten($susy-gray, 50%);
-      border: 1px lighten($susy-gray, 30%) solid;
-      color: $susy-gray;
-      padding: 1em;
-      max-width: 90%;
-      min-width: 90%;  
-      padding-top: 0;
-      margin-top: 0;
-      
-    }
+    font-size: 0.9em;
   }
 }
 

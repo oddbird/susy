@@ -107,7 +107,7 @@ GEM
     sprockets-sass (0.8.0)
       sprockets (~> 2.0)
       tilt (~> 1.1)
-    susy (1.0.alpha.0)
+    susy (1.0.alpha.1)
       compass (>= 0.13.alpha.0)
     syntax (1.0.0)
     thor (0.14.6)
@@ -126,4 +126,4 @@ DEPENDENCIES
   pygments.rb
   rack-codehighlighter!
   redcarpet
-  susy
+  susy (~> 1.0.alpha.1)

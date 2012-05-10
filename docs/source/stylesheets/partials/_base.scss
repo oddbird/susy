@@ -62,6 +62,22 @@ a {
 //Bitter
 @import url(http://fonts.googleapis.com/css?family=Bitter:400,700,400italic);
 
+
+//////////
+/////Mixins
+//////////
+@mixin rounded-basic {
+-webkit-border-radius: 1px;
+-moz-border-radius: 1px;
+border-radius: 1px;
+}
+
+@mixin rounded-medium {
+-webkit-border-radius: 3px;
+-moz-border-radius: 3px;
+border-radius: 3px;
+}
+
 //////////
 /////Shared
 //////////

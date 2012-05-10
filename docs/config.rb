@@ -3,7 +3,6 @@
 ###
 
 set :markdown_engine, :redcarpet
-set :haml, :ugly => :true
 
 require 'rack/codehighlighter'
 require "pygments"

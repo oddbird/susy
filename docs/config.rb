@@ -3,6 +3,7 @@
 ###
 
 set :markdown_engine, :redcarpet
+set :haml, :ugly => :true
 
 require "lib/guide_helpers"
 helpers GuideHelpers

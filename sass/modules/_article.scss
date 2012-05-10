@@ -61,7 +61,7 @@ section {
       @include trailer(0);
     }
     @include at-breakpoint($medium) {
-      @include columns(4,8);
+      @include span-columns(4,8);
       @include trailer(0);
       &:last-child {
         @include omega;

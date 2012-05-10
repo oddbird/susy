@@ -5,6 +5,14 @@
 set :markdown_engine, :redcarpet
 set :haml, :ugly => :true
 
+require 'rack/codehighlighter'
+require "pygments"
+use Rack::Codehighlighter, 
+  :pygments,
+  :element => "pre>code",
+  :pattern => /\A:::([-_+\w]+)\s*\n/,
+  :markdown => true
+
 require "lib/guide_helpers"
 helpers GuideHelpers
 

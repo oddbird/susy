@@ -24,6 +24,9 @@ $base-line-height: 18px;
 //Danny likes normalize.css a lot better, which is why
 @import "vendor/html5bp.css";
 
+//Code Highlighting
+@import "vendor/pygments/solarized";
+
 a {
   @include link-colors($link-color, $link-hover-color, $link-focus-color, $link-active-color, $link-visited-color);
   text-decoration: none;

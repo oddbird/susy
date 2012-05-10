@@ -15,6 +15,7 @@
 ### Header Level 3
 Here's some code:
 
+    :::scss
     $total-columns  : 12;
     $column-width   : 4em;
     $gutter-width   : 1em;

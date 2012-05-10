@@ -63,8 +63,8 @@ $grid-padding   : $gutter-width   !default;
   - Default: `$total-columns`.
 
 ```scss
-nav { @include columns(3,12); }
-article { @include columns(9 omega,12); }
+nav { @include span-columns(3,12); }
+article { @include span-columns(9 omega,12); }
 ```
 **Span Columns**: `span-columns(<$columns> [<omega> , <$context>, <$from>])`
 - _Apply to any element to align it with the Susy Grid._
@@ -76,7 +76,7 @@ article { @include columns(9 omega,12); }
 
 ```scss
 .gallery-image { 
-  @include columns(3,9);              // each gallery-image is 3 of 9 cols.
+  @include span-columns(3,9);         // each gallery-image is 3 of 9 cols.
   &:nth-child(3n) { @include omega; } // every third image completes a row.
 }
 ```

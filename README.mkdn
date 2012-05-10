@@ -47,7 +47,7 @@ $grid-padding   : $gutter-width;  /* 1em padding on the grid */
 
 The basic grid is composed using two simple mixins:
 * Apply the `container` mixin to create your initial grid context. 
-* Apply the `columns` mixin to declare the width of an element on the grid.
+* Apply the `span-columns` mixin to declare the width of an element on the grid.
 
 Use the 'omega' trigger to declare elements that span the _final_ column of 
 their parent element, and pass a 'context' in nested situations. The 
@@ -66,13 +66,13 @@ For example:
   header { ... }
   */
 
-  nav { @include columns(3); }
+  nav { @include span-columns(3); }
 
   #content { 
-    @include columns(9 omega);
+    @include span-columns(9 omega);
 
-    #main { @include columns(6,9); }
-    aside { @include columns(3 omega,9); }
+    #main { @include span-columns(6,9); }
+    aside { @include span-columns(3 omega,9); }
   }
 
   footer { clear: both; }

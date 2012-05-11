@@ -7,10 +7,6 @@ $grid-padding: $gutter-width;
   @include container;
   @include susy-grid-background();
   
-  header, nav, article, footer {
-    @extend .container;
-  }
-  
   .ephemera {
     clear: both;
   }
@@ -24,8 +20,7 @@ $grid-padding: $gutter-width;
     }
     
     .main_content {
-      @include span-columns(6);
-      @include omega;
+      @include span-columns(6 omega);
     }
   }
   

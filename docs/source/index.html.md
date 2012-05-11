@@ -1,22 +1,53 @@
-# HTML Ipsum Presents
+# Susy: A Plugin for Compass
 
-**Pellentesque habitant morbi tristique** senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. *Aenean ultricies mi vitae est.* Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, `commodo vitae`, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. [Donec non enim](#) in turpis pulvinar facilisis. Ut felis.
+Susy is a semantic CSS grid system for designers.
 
-## Header Level 2
+Use Susy anywhere. Static sites, Rails sites, Django sites, PHP sites, etc. You name it. Susy just helps you with the grid - without ever touching your markup. You'll never have to write `<div class="span-24 last">` ever again.
+  
+Susy defaults to a magic grid: The magic grid begins as a simple fixed or elastic grid, but becomes fluid when the window is too small to contain it (you can also easily make it a fixed grid), **without any additional markup**. It's based on Natalie Downe's "[CSS Systems](http://www.slideshare.net/nataliedowne/css-systems-presentation)" - this otherwise math-heavy technique becomes simple with Susy.
 
-1. Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
-2. Aliquam tincidunt mauris eu risus.
+## Installation
 
-* Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
-* Aliquam tincidunt mauris eu risus.
+Susy is a plugin for [Compass](http://www.compass-style.org). After installing Compass, run from the command line:
 
-> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus magna. Cras in mi at felis aliquet congue. Ut a est eget ligula molestie gravida. Curabitur massa. Donec eleifend, libero at sagittis mollis, tellus est malesuada tellus, at luctus turpis elit sit amet quam. Vivamus pretium ornare est.
+    :::bash
+    gem install susy
+    
+Or add it to your Gemfile:
 
-### Header Level 3
-Here's some code:
+**Gemfile**
+
+    :::ruby
+    gem "susy"
+    
+**And then [bundle](http://gembundler.com/) from the command line:**
+
+    :::bash
+    bundle install
+    
+## Basic Usage
+
+Susy comes preloaded with the following defaults, which you can overwrite in your SASS/SCSS anytime:
 
     :::scss
-    $total-columns  : 12;
-    $column-width   : 4em;
-    $gutter-width   : 1em;
-    $grid-padding   : $gutter-width;
+    $total-columns  : 12;             /* a 12-column grid */
+    $column-width   : 4em;            /* each column is 4em wide */
+    $gutter-width   : 1em;            /* 1em gutters between columns */
+    $grid-padding   : $gutter-width;  /* 1em padding on the grid */
+    
+So for a basic two column layout, with a full width header and footer:
+
+    :::scss
+    #page {
+      @include container;
+    
+      header { clear:both; }
+    
+      #content { @include columns(9); }
+    
+      aside { @include columns(9 omega); }
+    
+      footer { clear:both; }
+    }
+    
+That's it. Nothing to add to your markup. Now go and resize your browser window for smaller devices and smile.

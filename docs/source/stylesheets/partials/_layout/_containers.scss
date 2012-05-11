@@ -3,25 +3,28 @@ $column-width: 5em;
 $gutter-width: 1em;
 $grid-padding: $gutter-width;
 
+$break: 10 lt-ie9;
+
 .container {
   @include container;
   @include susy-grid-background();
   
-  .ephemera {
-    clear: both;
-  }
-  
-  @include at-breakpoint(10 lt-ie9) {
+  @include at-breakpoint($break) {
     @include container;
     @include susy-grid-background();
-    
-    .side_content {
-      @include span-columns(4);
-    }
-    
-    .main_content {
-      @include span-columns(6 omega);
-    }
   }
-  
+}
+
+@include at-breakpoint($break) {
+  .side_content {
+    @include span-columns(4);
+  }
+
+  .main_content {
+    @include span-columns(6 omega);
+  }
+}
+
+.ephemera {
+  clear: both;
 }

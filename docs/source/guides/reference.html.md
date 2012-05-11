@@ -64,12 +64,12 @@ side_content: >
   </section>
 ---
 
-## Basic Usage
+# Basic Usage
 
     :::scss
     @import 'susy';
     
-### Terms
+## Terms
 
 - **Susy Grid**: A grid that you build with Susy. 
 - **Column**: The main unit of horizontal measurement on the _Grid_.
@@ -81,41 +81,70 @@ side_content: >
 - **Context**: The number of _Columns_ spanned by the parent element.
 - **Omega**: Any _Grid Element_ spanning the last _Column_ in its _Context_.
 
-### Settings
+## Settings
+
+### Total Columns
 
     :::scss
-    $total-columns  : 12              !default;
+    $total-columns: <number>; //default: 12
+    
+    //Example
+    $total-columns: 12;
+  
+The number of Columns in your Susy Grid Layout.
 
-**Total Columns**: `$total-columns: <number>;`
-- _The number of Columns in your Susy Grid Layout._
+**Options:**
+
 - `<number>`: Unitless number. 
   - Default: `12`.
+  
+### Column Width
 
     :::scss
-    $column-width   : 4em             !default;
+    $column-width: <length>; //default: 4em
 
-**Column Width**: `$column-width: <length>;`
-- _The width of a single Column in your Susy Grid._
+    //Example
+    $column-width: 5em;
+
+The width of a single Column in your Susy Grid.
+
+**Options:**
+
 - `<length>`: Length in em, px, %, etc. 
   - Default: `4em`.
 
-    :::scss
-    $gutter-width   : 1em             !default;
-
-**Gutter Width**: `$gutter-width: <length>;`
-- _The width of space between Columns._
-- `<length>`: Units must match `$column-width`. 
-  - Default: `1em`.
+### Gutter Width
 
     :::scss
-    $grid-padding   : $gutter-width   !default;
+    $gutter-width: <length>; //default: 1em
+    
+    //Example
+    $gutter-width: 1em;
 
-**Grid Padding**: `$grid-padding: <length>;`
-- _Padding on the left and right of a grid container._
+The width of space between Columns.
+
+**Options:**
+
+  - `<length>`: Units must match `$column-width`. 
+    - Default: `1em`.
+
+### Grid Padding
+
+    :::scss
+    $grid-padding: $gutter-width; //default: $gutter-width
+
+    //Examples
+    $grid-padding: $gutter-width;
+    $grid-padding: .5em;
+
+Padding on the left and right of a grid container.
+
+**Options:**
+
 - `<length>`: Units must match `$column-width`. 
   - Default: `$gutter-width`.
-
-### Mixins
+  
+## Mixins
 
     :::scss
     .page { @include container; }
@@ -149,9 +178,12 @@ side_content: >
 - `<$from>`: The origin direction of your document flow. 
   - Default: `$from-direction`.
 
-## Responsive Grids
 
-### Terms
+
+
+# Responsive Grids
+
+## Terms
 
 - **Breakpoint**: A min- or max- viewport width at which to change _Layouts_.
 - **Media-Layout**: Shortcut for declaring _Breakpoints_ and _Layouts_ in Susy:
@@ -172,7 +204,7 @@ Example Media-Layouts:
                                 // for use with IE conditional comments 
                                 // on the <html> tag.
 
-### Mixins
+## Mixins
 
     :::scss
     $total-columns: 4;
@@ -206,9 +238,12 @@ Example Media-Layouts:
 - `<$layout-cols>`: The number of _Columns_ to use in the _Layout_.
 - `<@content>`: Nested @content block will use the given _Layout_.
 
-## Grid Helpers
 
-### Padding Mixins
+
+
+# Grid Helpers
+
+## Padding Mixins
 
 **Prefix**: `prefix(<$columns> [, <$context>, <$from>])`
 - _Add Columns of empty space as `padding` before an element._
@@ -235,7 +270,7 @@ Example Media-Layouts:
 - `<$from>`: The origin direction of your document flow. 
   - Default: `$from-direction`.
 
-### Margin Mixins
+## Margin Mixins
 
 **Pre**: `pre(<$columns> [, <$context>, <$from>])`
 - _Add columns of empty space as margin before an element._
@@ -274,14 +309,14 @@ Example Media-Layouts:
 - `<$from>`: The origin direction of your document flow. 
   - Default: `$from-direction`.
 
-### Grid Background Image
+## Grid Background Image
 
 **Susy Grid Background**: `susy-grid-background()`
 - _Apply to a Container to see the Susy Grid as a background-image._
 - Some browsers have trouble with sub-pixel rounding on background images.
   Use it for checking general spacing, not pixel-exact alignment.
 
-### Functions
+## Functions
 
 Where a mixin returns property/value pairs, functions return simple values 
 that you can put where you want, and use for advanced math.
@@ -312,7 +347,7 @@ that you can put where you want, and use for advanced math.
 - `<$context>`: The _Context_.
   - Default: `$total-columns`.
 
-### Container Override Settings
+## Container Override Settings
 
     :::scss
     $container-width  : false     !default;
@@ -337,7 +372,7 @@ that you can put where you want, and use for advanced math.
     or by `$container-width`, if either is set using `%` units.
     Otherwise it will default to `auto` (100%).
 
-### Direction Override Settings
+## Direction Override Settings
 
     :::scss
     $from-direction : left        !default;

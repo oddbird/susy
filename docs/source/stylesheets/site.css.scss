@@ -1,26 +1,4 @@
 @import "partials/_base.scss";
 @import "partials/_colors.scss";
 
-
-#main {
-  @include container;
-  //@include susy-grid-background();
-
-  section.nav {
-    @include span-columns(12);
-  }
-  
-  section.side_content {
-    @include span-columns(2);
-  }
-  
-  section.main_content {
-    @include span-columns(9 omega);
-  }
-  
-  footer.ephemera {
-    @include prefix(1);
-    @include span-columns(10);
-  }
-
-}
+@import "partials/_layout/_containers";

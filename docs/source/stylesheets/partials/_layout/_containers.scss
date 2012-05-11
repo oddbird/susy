@@ -7,11 +7,11 @@ $break: 10 lt-ie9;
 
 .container {
   @include container;
-  @include susy-grid-background();
+  //@include susy-grid-background();
   
   @include at-breakpoint($break) {
     @include container;
-    @include susy-grid-background();
+    //@include susy-grid-background();
 
     .side_content {
       @include span-columns(3);

@@ -11,19 +11,13 @@ module GuideHelpers
   
   def page_side_content
     side_content = "
-                    <h1>Lorem ipsum dolor sit amet</h1>
-                    <h2>Lorem ipsum dolor sit amet</h2>
-                    <h3>Lorem ipsum dolor sit amet</h3> 
-                    
-                    <p>Lorem ipsum dolor sit amet, <a href='#'>consectetuer</a> adipiscing elit.
-                    
-                    <h2>Lorem ipsum dolor sit amet</h2>
-                    
-                    <ul>
-                       <li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</li>
-                       <li>Aliquam tincidunt mauris eu risus.</li>
-                       <li>Vestibulum auctor dapibus neque.</li>
-                    </ul>"
+                   <h2>Contribute</h2>
+                   <ul>
+                     <li><a href='https://github.com/ericam/susy'>Fork on GitHub</a></li>
+                     <li><a href='https://github.com/ericam/susy/zipball/master'>Download</a></li>
+                     <li><a href='http://twitter.com/compasssusy/'>Follow on Twitter</a></li>
+                   </ul>
+                   "
     if data.page.side_content
       side_content = data.page.side_content
     end

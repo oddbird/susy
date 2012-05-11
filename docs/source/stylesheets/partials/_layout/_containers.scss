@@ -12,16 +12,14 @@ $break: 10 lt-ie9;
   @include at-breakpoint($break) {
     @include container;
     @include susy-grid-background();
-  }
-}
 
-@include at-breakpoint($break) {
-  .side_content {
-    @include span-columns(4);
-  }
+    .side_content {
+      @include span-columns(4);
+    }
 
-  .main_content {
-    @include span-columns(6 omega);
+    .main_content {
+      @include span-columns(6 omega);
+    }
   }
 }
 

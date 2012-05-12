@@ -1,53 +1,57 @@
-# Susy: A Plugin for Compass
+This is not another one-size-fits-all grid framework 
+that will make your sites look identical 
+and litter your markup with meaningless "col2of5" jargon. 
+Susy's not a framework, it's a power-tool.
 
-Susy is a semantic CSS grid system for designers.
+Stop assembling prefab houses, and start designing your castle.
 
-Use Susy anywhere. Static sites, Rails sites, Django sites, PHP sites, etc. You name it. Susy just helps you with the grid - without ever touching your markup. You'll never have to write `<div class="span-24 last">` ever again.
-  
-Susy defaults to a magic grid: The magic grid begins as a simple fixed or elastic grid, but becomes fluid when the window is too small to contain it (you can also easily make it a fixed grid), **without any additional markup**. It's based on Natalie Downe's "[CSS Systems](http://www.slideshare.net/nataliedowne/css-systems-presentation)" - this otherwise math-heavy technique becomes simple with Susy.
+## [Version 1.0.alpha.1](#)
+Requires Compass 0.13.alpha.1
 
-## Installation
+`gem install susy --pre`
 
-Susy is a plugin for [Compass](http://www.compass-style.org). After installing Compass, run from the command line:
+- [readme](#)
+- [changelog](#)
+- [reference](#)
 
-    :::bash
-    gem install susy
-    
-Or add it to your Gemfile:
+## [Version 0.9](#)
+Requires Compass 0.11.1
 
-**Gemfile**
+`gem install compass-susy-plugin`
 
-    :::ruby
-    gem "susy"
-    
-**And then [bundle](http://gembundler.com/) from the command line:**
+- [reference](#)
+- [tutorial](#)
 
-    :::bash
-    bundle install
-    
-## Basic Usage
+## Melts in your mouth
 
-Susy comes preloaded with the following defaults, which you can overwrite in your SASS/SCSS anytime:
+The web is a responsive place, 
+from your lithe & lively development process 
+to your end user's super-tablet-multi-magic-laptop-phone. 
+You need grids that are powerful, but custom. 
+Reliable, but responsive.
 
-    :::scss
-    $total-columns  : 12;             /* a 12-column grid */
-    $column-width   : 4em;            /* each column is 4em wide */
-    $gutter-width   : 1em;            /* 1em gutters between columns */
-    $grid-padding   : $gutter-width;  /* 1em padding on the grid */
-    
-So for a basic two column layout, with a full width header and footer:
+Susy grids are fluid on the inside, 
+ready to respond at any moment, 
+but contained in the candy shell of your choice, 
+so they respond how and when and where you want them to.
 
-    :::scss
-    #page {
-      @include container;
-    
-      header { clear:both; }
-    
-      #content { @include columns(9); }
-    
-      aside { @include columns(9 omega); }
-    
-      footer { clear:both; }
-    }
-    
-That's it. Nothing to add to your markup. Now go and resize your browser window for smaller devices and smile.
+## Everywhere you want to be
+
+Susy is based on Natalie Downe's [CSS Systems][sys], 
+made possible by [Sass][sass], and made easy with [Compass][compass]. 
+You can use it anywhere,
+from static sites to python/django, ruby/rails, and php/wordpress. 
+With [SMACSS][smacss] or [OOCS][oocss], [Bootstrap][bs], 
+[HTML5 Boilerplate][html5bp], or [320 and up][320]. 
+It even comes packaged as part of [Middleman][mm], to make your life easy.
+
+[sys]: #
+[sass]: #
+[compass]: #
+[smacss]: #
+[oocss]: #
+[bs]: #
+[html5bp]: #
+[320]: #
+[mm]:  #
+

@@ -1,10 +1,22 @@
 Susy Changelog
 ==============
 
-v1.0 [UNRELEASED]
------------------
+v1.0.alpha.2 [May 12 2012]
+--------------------------
 
-*Requires the latest unreleased master branch of Compass.*
+* Fix minor bug with repeated 'display' properties.
+* Lower Compass dependency to 0.12.2.rc.0
+
+v1.0.alpha.1 [May 9 2012]
+-------------------------
+
+Due to a conflict with the Compass CSS3 module, the `columns` mixin has been 
+renamed `span-columns`. In order to upgrade, you should simply search and replace `@include columns` (or `+columns`) in your project files.
+
+v1.0.alpha.0 [May 7 2012]
+-------------------------
+
+*Requires Compass 0.13.alpha.0 or later.*
 
 This release is loaded with new features, but don't let that fool you. Susy 
 just became shockingly simple to use. See the README for updated usage details.

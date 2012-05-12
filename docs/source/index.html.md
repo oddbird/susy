@@ -1,17 +1,19 @@
 The web is a responsive place, 
 from your lithe & lively development process 
-to your end user's super-tablet-multi-magic-laptop-phone. 
-You need grids that are powerful, but custom. 
-Reliable, but responsive.
-
-Susy is not another one-size-fits-all grid framework 
-that will make your sites look identical 
-and litter your markup with meaningless "col2of5" jargon. 
+to your end user's super-tablet-multi-magic-lap-phone. 
+You need grids that are powerful, but custom; 
+reliable, but responsive.
 
 Susy grids are fluid on the inside, 
 ready to respond at any moment, 
 but contained in the candy shell of your choice, 
 so they respond how and when and where you want them to.
+
+This isn't another one-size-fits-all grid framework 
+that will make your sites look identical 
+and litter your markup with meaningless "col2of5" jargon.
+We don't design your site or write your markup,
+we just do the math and get out of your way.
 
 ## [Version 1.0.alpha.1](#)
 Requires Compass 0.13.alpha.1

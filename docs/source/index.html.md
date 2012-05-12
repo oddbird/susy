@@ -15,8 +15,8 @@ and litter your markup with meaningless "col2of5" jargon.
 We don't design your site or write your markup,
 we just do the math and get out of your way.
 
-## [Version 1.0.alpha.1](#)
-Requires Compass 0.13.alpha.1
+## [Version 1.0.alpha.2](https://rubygems.org/gems/susy)
+Requires Compass 0.12.2.rc.0
 
     :::bash
     gem install susy --pre
@@ -27,7 +27,7 @@ Requires Compass 0.13.alpha.1
 - [Changelog](https://github.com/ericam/susy/blob/master/CHANGELOG.mkdn)
 - [Reference](/guides/reference/)
 
-## [Version 0.9](#)
+## [Version 0.9](https://rubygems.org/gems/compass-susy-plugin)
 Requires Compass 0.11.1
 
     :::bash

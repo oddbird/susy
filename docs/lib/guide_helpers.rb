@@ -4,7 +4,7 @@ module GuideHelpers
     if data.page.title
       title << data.page.title
     else
-      title << "Manage the chaos."
+      title << "Semantic grids with a responsive touch."
     end
     title
   end

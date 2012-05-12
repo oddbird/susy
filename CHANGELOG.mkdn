@@ -1,6 +1,12 @@
 Susy Changelog
 ==============
 
+v1.0.alpha.2 [May 12 2012]
+--------------------------
+
+* Fix minor bug with repeated 'display' properties.
+* Lower Compass dependency to 0.12.2.rc.0
+
 v1.0.alpha.1 [May 9 2012]
 -------------------------
 

@@ -4,7 +4,7 @@ module GuideHelpers
     if data.page.title
       title << data.page.title
     else
-      title << "Manage the chaos."
+      title << "Semantic grids with a responsive touch."
     end
     title
   end
@@ -15,8 +15,9 @@ module GuideHelpers
                    <ul>
                      <li><a href='https://github.com/ericam/susy'>Fork on GitHub</a></li>
                      <li><a href='https://github.com/ericam/susy/zipball/master'>Download</a></li>
-                     <li><a href='http://twitter.com/compasssusy/'>Follow on Twitter</a></li>
                    </ul>
+                   <a href='https://twitter.com/compasssusy' class='twitter-follow-button' data-show-count='true'>Follow @compasssusy</a>
+                    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src='//platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document,'script','twitter-wjs');</script>
                    "
     if data.page.side_content
       side_content = data.page.side_content

@@ -15,16 +15,16 @@
       %header.lead
         %h1 
           %a.home{ :href => "/"} Susy
-        %h2 Manage the chaos.
+        %h2 Semantic grids with a responsive touch.
     
       %nav
         = partial "partials/navigation"
       
-      %section.content.side_content= page_side_content
-      
       %section.content.main_content
       
         ~ yield
+      
+      %section.content.side_content= page_side_content
       
       %footer.ephemera
         = partial "partials/ephemera"

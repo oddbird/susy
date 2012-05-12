@@ -20,11 +20,11 @@
       %nav
         = partial "partials/navigation"
       
-      %section.content.side_content= page_side_content
-      
       %section.content.main_content
       
         ~ yield
+      
+      %section.content.side_content= page_side_content
       
       %footer.ephemera
         = partial "partials/ephemera"

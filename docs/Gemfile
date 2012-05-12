@@ -1,7 +1,7 @@
 source "http://rubygems.org"
 
 gem "middleman", :github => "middleman/middleman"
-gem "susy", "~> 1.0.alpha.1"
+gem "susy", "~> 1.0.alpha.2"
 gem "redcarpet"
 gem "rack-codehighlighter", :git => "git://github.com/wbzyl/rack-codehighlighter.git"
 gem "pygments.rb"

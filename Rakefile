@@ -10,7 +10,7 @@ begin
     p.url = "http://susy.oddbird.net/"
     p.author = "Eric Meyer"
     p.email = "eric@oddbird.net"
-    p.dependencies = ["compass >=0.13.alpha.0"]
+    p.dependencies = ["compass >=0.12.2.rc.0"]
   end
 
 rescue LoadError => boom

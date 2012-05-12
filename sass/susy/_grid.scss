@@ -78,7 +78,7 @@
 //          : Context is required on any nested elements.
 //          : Context MUST NOT be declared on a root element.
 // $from    : The start direction of your layout (e.g. 'left' for ltr languages)
-@mixin columns(
+@mixin span-columns(
   $columns,
   $context  : $total-columns,
   $from     : $from-direction
@@ -94,10 +94,9 @@
   } @else {  
     float: $from;
     margin-#{$to}: gutter($context);      
-  }
-
-  @if $legacy-support-for-ie6 {
-    display: inline;
+    @if $legacy-support-for-ie6 {
+      display: inline;
+    }
   }
 }
 

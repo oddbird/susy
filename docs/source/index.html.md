@@ -19,10 +19,11 @@ Requires Compass 0.13.alpha.1
     :::bash
     gem install susy --pre
 
-- [tutorial](/guides/getting-started/)
-- [readme](https://github.com/ericam/susy/blob/master/README.mkdn)
-- [changelog](https://github.com/ericam/susy/blob/master/CHANGELOG.mkdn)
-- [reference](/guides/reference/)
+- [Tutorial](/guides/getting-started/)
+- [Upgrading from 0.9](https://github.com/ericam/susy/blob/master/CHANGELOG.mkdn#v10alpha0-may-7-2012)
+- [Readme](https://github.com/ericam/susy/blob/master/README.mkdn)
+- [Changelog](https://github.com/ericam/susy/blob/master/CHANGELOG.mkdn)
+- [Reference](/guides/reference/)
 
 ## [Version 0.9](#)
 Requires Compass 0.11.1
@@ -30,8 +31,8 @@ Requires Compass 0.11.1
     :::bash
     gem install compass-susy-plugin
 
-- [reference](#)
-- [tutorial](#)
+- [Reference](https://github.com/ericam/susy/blob/d5b2c7e3f2505a1063977d474379380c695da8f8/docs/tutorial.rst#building-a-grid-with-susy)
+- [Tutorial](https://github.com/ericam/susy/blob/d5b2c7e3f2505a1063977d474379380c695da8f8/docs/tutorial.rst)
 
 ## Everywhere you want to be
 

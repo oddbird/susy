@@ -132,13 +132,13 @@ Establish the outer grid-containing element.
   (see 'Responsive Grids' below).<br />
   **Default:** `$total-columns`.
 
-### Columns
+### Span Columns
 Align an element to the Susy Grid.
 
     :::scss
-    // columns(<$columns> [<omega> , <$context>, <$from>])
-    nav { @include columns(3,12); }
-    article { @include columns(9 omega,12); }
+    // span-columns(<$columns> [<omega> , <$context>, <$from>])
+    nav { @include span-columns(3,12); }
+    article { @include span-columns(9 omega,12); }
 
 - `<$columns>`: The number of _Columns_ to span.
   - `<omega>`: Optional flag to signal the last element in a row.
@@ -153,7 +153,7 @@ Apply to any omega element as an override.
     :::scss
     // omega([<$from>])
     .gallery-image { 
-      @include columns(3,9);              // each gallery-image is 3 of 9 cols.
+      @include span-columns(3,9);              // each gallery-image is 3 of 9 cols.
       &:nth-child(3n) { @include omega; } // every third image completes a row.
     }
 
@@ -336,7 +336,7 @@ Where a mixin returns property/value pairs, functions return simple values
 that you can put where you want, and use for advanced math.
 
 ### Columns
-Identical to `columns` mixin, but returns the math-ready `%` multiplier.
+Similar to `span-columns` mixin, but returns the math-ready `%` multiplier.
 
     :::scss
     // columns(<$columns> [, <$context>])

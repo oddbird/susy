@@ -1,22 +1,57 @@
-# HTML Ipsum Presents
+This is not another one-size-fits-all grid framework 
+that will make your sites look identical 
+and litter your markup with meaningless "col2of5" jargon. 
+Susy's not a framework, it's a power-tool.
 
-**Pellentesque habitant morbi tristique** senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. *Aenean ultricies mi vitae est.* Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, `commodo vitae`, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. [Donec non enim](#) in turpis pulvinar facilisis. Ut felis.
+Stop assembling prefab houses, and start designing your castle.
 
-## Header Level 2
+## [Version 1.0.alpha.1](#)
+Requires Compass 0.13.alpha.1
 
-1. Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
-2. Aliquam tincidunt mauris eu risus.
+`gem install susy --pre`
 
-* Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
-* Aliquam tincidunt mauris eu risus.
+- [readme](#)
+- [changelog](#)
+- [reference](#)
 
-> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus magna. Cras in mi at felis aliquet congue. Ut a est eget ligula molestie gravida. Curabitur massa. Donec eleifend, libero at sagittis mollis, tellus est malesuada tellus, at luctus turpis elit sit amet quam. Vivamus pretium ornare est.
+## [Version 0.9](#)
+Requires Compass 0.11.1
 
-### Header Level 3
-Here's some code:
+`gem install compass-susy-plugin`
 
-    :::scss
-    $total-columns  : 12;
-    $column-width   : 4em;
-    $gutter-width   : 1em;
-    $grid-padding   : $gutter-width;
+- [reference](#)
+- [tutorial](#)
+
+## Melts in your mouth
+
+The web is a responsive place, 
+from your lithe & lively development process 
+to your end user's super-tablet-multi-magic-laptop-phone. 
+You need grids that are powerful, but custom. 
+Reliable, but responsive.
+
+Susy grids are fluid on the inside, 
+ready to respond at any moment, 
+but contained in the candy shell of your choice, 
+so they respond how and when and where you want them to.
+
+## Everywhere you want to be
+
+Susy is based on Natalie Downe's [CSS Systems][sys], 
+made possible by [Sass][sass], and made easy with [Compass][compass]. 
+You can use it anywhere,
+from static sites to python/django, ruby/rails, and php/wordpress. 
+With [SMACSS][smacss] or [OOCS][oocss], [Bootstrap][bs], 
+[HTML5 Boilerplate][html5bp], or [320 and up][320]. 
+It even comes packaged as part of [Middleman][mm], to make your life easy.
+
+[sys]: #
+[sass]: #
+[compass]: #
+[smacss]: #
+[oocss]: #
+[bs]: #
+[html5bp]: #
+[320]: #
+[mm]:  #
+

@@ -2,3 +2,8 @@
 @import "partials/_colors.scss";
 
 @import "partials/_layout/_containers";
+
+[href*='github'] {
+  @extend .icon;
+  @extend .icon-github-sign;
+}

@@ -94,10 +94,9 @@
   } @else {  
     float: $from;
     margin-#{$to}: gutter($context);      
-  }
-
-  @if $legacy-support-for-ie6 {
-    display: inline;
+    @if $legacy-support-for-ie6 {
+      display: inline;
+    }
   }
 }
 

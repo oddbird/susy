@@ -19,9 +19,10 @@ Requires Compass 0.13.alpha.1
     :::bash
     gem install susy --pre
 
-- [readme](#)
-- [changelog](#)
-- [reference](#)
+- [tutorial](/guides/getting-started/)
+- [readme](https://github.com/ericam/susy/blob/master/README.mkdn)
+- [changelog](https://github.com/ericam/susy/blob/master/CHANGELOG.mkdn)
+- [reference](/guides/reference/)
 
 ## [Version 0.9](#)
 Requires Compass 0.11.1

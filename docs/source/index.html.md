@@ -1,14 +1,23 @@
-This is not another one-size-fits-all grid framework 
+The web is a responsive place, 
+from your lithe & lively development process 
+to your end user's super-tablet-multi-magic-laptop-phone. 
+You need grids that are powerful, but custom. 
+Reliable, but responsive.
+
+Susy is not another one-size-fits-all grid framework 
 that will make your sites look identical 
 and litter your markup with meaningless "col2of5" jargon. 
-Susy's not a framework, it's a power-tool.
 
-Stop assembling prefab houses, and start designing your castle.
+Susy grids are fluid on the inside, 
+ready to respond at any moment, 
+but contained in the candy shell of your choice, 
+so they respond how and when and where you want them to.
 
 ## [Version 1.0.alpha.1](#)
 Requires Compass 0.13.alpha.1
 
-`gem install susy --pre`
+    :::bash
+    gem install susy --pre
 
 - [readme](#)
 - [changelog](#)
@@ -17,23 +26,11 @@ Requires Compass 0.13.alpha.1
 ## [Version 0.9](#)
 Requires Compass 0.11.1
 
-`gem install compass-susy-plugin`
+    :::bash
+    gem install compass-susy-plugin
 
 - [reference](#)
 - [tutorial](#)
-
-## Melts in your mouth
-
-The web is a responsive place, 
-from your lithe & lively development process 
-to your end user's super-tablet-multi-magic-laptop-phone. 
-You need grids that are powerful, but custom. 
-Reliable, but responsive.
-
-Susy grids are fluid on the inside, 
-ready to respond at any moment, 
-but contained in the candy shell of your choice, 
-so they respond how and when and where you want them to.
 
 ## Everywhere you want to be
 
@@ -45,13 +42,12 @@ With [SMACSS][smacss] or [OOCS][oocss], [Bootstrap][bs],
 [HTML5 Boilerplate][html5bp], or [320 and up][320]. 
 It even comes packaged as part of [Middleman][mm], to make your life easy.
 
-[sys]: #
-[sass]: #
-[compass]: #
-[smacss]: #
-[oocss]: #
-[bs]: #
-[html5bp]: #
-[320]: #
-[mm]:  #
-
+[sys]: http://www.slideshare.net/nataliedowne/css-systems-presentation
+[sass]: http://www.sass-lang.com/
+[compass]: http://www.compass-style.org/
+[smacss]: http://www.smacss.com/
+[oocss]: http://www.oocss.org/
+[bs]: http://twitter.github.com/bootstrap/
+[html5bp]: http://www.html5boilerplate.com/
+[320]: http://stuffandnonsense.co.uk/projects/320andup/
+[mm]: http://www.middlemanapp.com/

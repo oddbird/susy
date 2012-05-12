@@ -122,7 +122,7 @@ Padding on the left and right of a Grid Container.
 ## Mixins
 
 ### Container
-Establishe the outer grid-containing element.
+Establish the outer grid-containing element.
 
     :::scss
     // container([$<media-layout>]*)

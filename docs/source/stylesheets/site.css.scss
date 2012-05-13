@@ -5,5 +5,5 @@
 
 // [href*='github'] {
 //   @extend .icon;
-//   @extend .icon-github-sign;
+//   @include font-icon-image($icon-github-sign);
 // }

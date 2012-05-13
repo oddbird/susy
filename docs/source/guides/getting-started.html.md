@@ -51,6 +51,9 @@ And run:
 
 # Usage
 
+    :::scss
+    @import "susy";
+
 ## Settings
 Set up your default grid values: total columns, column width, and gutter width.
 

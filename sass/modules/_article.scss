@@ -73,6 +73,7 @@ section {
     @include delimited-list;
     display: block;
     color: $base1;
+    text-transform: lowercase;
   }
   section {
     &:last-child {

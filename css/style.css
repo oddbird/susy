@@ -1152,6 +1152,7 @@ section {
   list-style-type: none;
   display: block;
   color: #93a1a1;
+  text-transform: lowercase;
 }
 .where ul, .where ul li {
   margin: 0px;

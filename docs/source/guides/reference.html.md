@@ -304,7 +304,6 @@ Identical to `pre`.
     // push(<$columns> [, <$context>, <$from>])
     .box { @include push(3); }
 
-
 ### Pull
 Add negative margins before an element, to pull it against the flow.
 

@@ -16,25 +16,13 @@ We don't design your site or write your markup,
 we just do the math and get out of your way.
 
 ## [Version 1.0.alpha.2](https://rubygems.org/gems/susy)
-Requires Compass 0.12.2.rc.0
+Requires [Compass 0.12.2.rc.0](https://rubygems.org/gems/compass)
 
     :::bash
     gem install susy --pre
 
-- [Tutorial](/guides/getting-started/)
-- [Upgrading from 0.9](https://github.com/ericam/susy/blob/master/CHANGELOG.mkdn#v10alpha0-may-7-2012)
-- [Readme](https://github.com/ericam/susy/blob/master/README.mkdn)
-- [Changelog](https://github.com/ericam/susy/blob/master/CHANGELOG.mkdn)
-- [Reference](/guides/reference/)
-
-## [Version 0.9](https://rubygems.org/gems/compass-susy-plugin)
-Requires Compass 0.11.1
-
-    :::bash
-    gem install compass-susy-plugin
-
-- [Reference](https://github.com/ericam/susy/blob/d5b2c7e3f2505a1063977d474379380c695da8f8/docs/tutorial.rst#building-a-grid-with-susy)
-- [Tutorial](https://github.com/ericam/susy/blob/d5b2c7e3f2505a1063977d474379380c695da8f8/docs/tutorial.rst)
+- [What's changed](https://github.com/ericam/susy/blob/master/CHANGELOG.mkdn)
+- [Upgrade from 0.9](https://github.com/ericam/susy/blob/master/CHANGELOG.mkdn#v10alpha0-may-7-2012)
 
 ## Everywhere you want to be
 

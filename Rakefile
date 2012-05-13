@@ -5,12 +5,12 @@ begin
   require 'echoe'
 
   Echoe.new('susy', open('VERSION').read) do |p|
-    p.summary = "A responsive grid system plugin for Compass."
-    p.description = "Responsive web design with grids the quick and reliable way."
+    p.summary = "Responsive grids for Compass."
+    p.description = "Susy grids are fluid on the inside, ready to respond at any moment, but contained in the candy shell of your choice, so they respond how and when and where you want them to. We don't design your site or dictate your markup, we just do the math and get out of your way."
     p.url = "http://susy.oddbird.net/"
     p.author = "Eric Meyer"
     p.email = "eric@oddbird.net"
-    p.dependencies = ["compass >=0.12.2.rc.0"]
+    p.dependencies = ["compass >=0.12.2.rc.0", "sass >=3.2.0.alpha.237"]
   end
 
 rescue LoadError => boom

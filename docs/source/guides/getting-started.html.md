@@ -1,5 +1,22 @@
 ---
 title: Getting Started
+side_content: >
+  <nav class="glossary">
+    <h2>Getting Started</h2>
+    <h3>Installation</h3>
+    <ul>
+      <li><a href="#">New Compass Project</a></li>
+      <li><a href="#">Existing Compass Project</a></li>
+      <li><a href="#">Rails 3.x</a></li>
+    </ul>
+    <h3>Usage</h3>
+    <ul>
+      <li><a href="#">Settings</a></li>
+      <li><a href="#">Basic Grids</a></li>
+      <li><a href="#">Responsive Grids</a></li>
+      <li><a href="#">Advanced</a></li>
+    </ul>
+  </nav>
 ---
 
 # Installation

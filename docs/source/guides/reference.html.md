@@ -1,67 +1,67 @@
 ---
 title: Reference
 side_content: >
-  <section class="glossary">
+  <nav class="glossary">
     <h2>Reference</h2>
     <h3>Settings</h3>
     <ul>
-      <li><a href="#">$total-columns</li>
-      <li><a href="#">$column-width</li>
-      <li><a href="#">$gutter-width</li>
-      <li><a href="#">$grid-padding</li>
+      <li><a href="#">$total-columns</a></li>
+      <li><a href="#">$column-width</a></li>
+      <li><a href="#">$gutter-width</a></li>
+      <li><a href="#">$grid-padding</a></li>
     </ul>
     <h3>Mixins</h3>
     <ul>
-      <li><a href="#">container()</li>
-      <li><a href="#">span-columns()</li>
-      <li><a href="#">omega()</li>
+      <li><a href="#">container()</a></li>
+      <li><a href="#">span-columns()</a></li>
+      <li><a href="#">omega()</a></li>
     </ul>
     <h2>Responsive Grids</h2>
     <h3>Settings</h3>
     <ul>
-      <li><a href="#">$media-layout</li>
+      <li><a href="#">$media-layout</a></li>
     </ul>
     <h3>Mixins</h3>
     <ul>
-      <li><a href="#">at-breakpoint()</li>
-      <li><a href="#">layout()</li>
+      <li><a href="#">at-breakpoint()</a></li>
+      <li><a href="#">layout()</a></li>
     </ul>
     <h2>Grid Helpers</h2>
     <h3>Padding Mixins</h3>
     <ul>
-      <li><a href="#">prefix()</li>
-      <li><a href="#">suffix()</li>
-      <li><a href="#">pad()</li>
+      <li><a href="#">prefix()</a></li>
+      <li><a href="#">suffix()</a></li>
+      <li><a href="#">pad()</a></li>
     </ul>
     <h3>Margin Mixins</h3>
     <ul>
-      <li><a href="#">pre()</li>
-      <li><a href="#">post()</li>
-      <li><a href="#">squish()</li>
-      <li><a href="#">push()</li>
-      <li><a href="#">pull()</li>
+      <li><a href="#">pre()</a></li>
+      <li><a href="#">post()</a></li>
+      <li><a href="#">squish()</a></li>
+      <li><a href="#">push()</a></li>
+      <li><a href="#">pull()</a></li>
     </ul>
     <h3>Other Mixins</h3>
     <ul>
-      <li><a href="#">susy-grid-background()</li>
+      <li><a href="#">susy-grid-background()</a></li>
     </ul>
     <h3>Functions</h3>
     <ul>
-      <li><a href="#">span-columns()</li>
-      <li><a href="#">gutter()</li>
-      <li><a href="#">space()</li>
+      <li><a href="#">span-columns()</a></li>
+      <li><a href="#">gutter()</a></li>
+      <li><a href="#">space()</a></li>
     </ul>
     <h3>Container Override Settings</h3>
     <ul>
-      <li><a href="#">$container-width</li>
-      <li><a href="#">$container-style</li>
+      <li><a href="#">$container-width</a></li>
+      <li><a href="#">$container-style</a></li>
     </ul>
     <h3>Direction Override Settings</h3>
     <ul>
-      <li><a href="#">$from-direction</li>
-      <li><a href="#">$omega-float</li>
+      <li><a href="#">$from-direction</a></li>
+      <li><a href="#">$omega-float</a></li>
     </ul>
-  </section>
+  </nav>
 ---
 
 # Basic Usage

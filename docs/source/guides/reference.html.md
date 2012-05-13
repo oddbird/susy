@@ -2,7 +2,7 @@
 title: Reference
 side_content: >
   <section class="glossary">
-    <h2>Susy Basics</h2>
+    <h2>Reference</h2>
     <h3>Settings</h3>
     <ul>
       <li><a href="#">$total-columns</li>

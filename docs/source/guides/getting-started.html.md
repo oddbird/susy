@@ -8,17 +8,29 @@ title: Getting Started
     # command line
     sudo gem install susy
 
-## New project
+## New [Compass](http://www.compass-style.org) Project
 
     :::bash
     # command line
     compass create <project name> -r susy -u susy
 
-## Existing Project
+## Existing [Compass](http://www.compass-style.org) Project
 
     :::ruby
     # config.rb
     require "susy"
+    
+## Rails 3.x
+
+    :::ruby
+    # Gemfile
+    gem "susy"
+
+And run:
+
+    :::bash
+    # command line
+    bundle install
 
 # Usage
 

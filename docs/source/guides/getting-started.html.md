@@ -48,12 +48,12 @@ Here's a simple page layout:
       // header and footer are full-width by default.
       header, footer { clear: both; }
       
-      // nav spans 3 columns.
-      nav { @include span-columns(3); }
+      // nav spans 3 columns of total 12.
+      nav { @include span-columns(3,12); }
 
       .content { 
-        // content spans 9 columns, including the last one (omega).
-        @include span-columns(9 omega);
+        // content spans the final (omega) 9 columns of 12.
+        @include span-columns(9 omega,12);
 
         // main content spans 6 of those 9 columns.
         .main { @include span-columns(6,9); }

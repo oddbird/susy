@@ -78,44 +78,49 @@ side_content: >
 
 ## Import
 
-    :::scss
-    @import 'susy';
+```scss
+@import 'susy';
+```
 
 ## Settings
 
 ### Total Columns
 The number of Columns in your default Grid Layout.
 
-    :::scss
-    // $total-columns: <number>; 
-    $total-columns: 12; 
+```scss
+// $total-columns: <number>; 
+$total-columns: 12; 
+```
 
 - `<number>`: Unitless number.
   
 ### Column Width
 The width of a single Column in your Grid.
 
-    :::scss
-    // $column-width: <length>;
-    $column-width: 4em;
+```scss
+// $column-width: <length>;
+$column-width: 4em;
+```
 
 - `<length>`: Length in any unit of measurement (em, px, %, etc). 
 
 ### Gutter Width
 The space between Columns.
 
-    :::scss
-    // $gutter-width: <length>;
-    $gutter-width: 1em;
+```scss
+// $gutter-width: <length>;
+$gutter-width: 1em;
+```
 
 - `<length>`: Units must match `$column-width`. 
 
 ### Grid Padding
 Padding on the left and right of a Grid Container.
 
-    :::scss
-    // $grid-padding: <length>;
-    $grid-padding: $gutter-width;  // 1em
+```scss
+// $grid-padding: <length>;
+$grid-padding: $gutter-width;  // 1em
+```
 
 - `<length>`: Units must match `$column-width`. 
   
@@ -124,9 +129,10 @@ Padding on the left and right of a Grid Container.
 ### Container
 Establish the outer grid-containing element.
 
-    :::scss
-    // container([$<media-layout>]*)
-    .page { @include container; }
+```scss
+// container([$<media-layout>]*)
+.page { @include container; }
+```
 
 - `<$media-layout>`: Optional media-layout shortcuts 
   (see 'Responsive Grids' below).<br />
@@ -135,10 +141,11 @@ Establish the outer grid-containing element.
 ### Span Columns
 Align an element to the Susy Grid.
 
-    :::scss
-    // span-columns(<$columns> [<omega> , <$context>, <$from>])
-    nav { @include span-columns(3,12); }
-    article { @include span-columns(9 omega,12); }
+```scss
+// span-columns(<$columns> [<omega> , <$context>, <$from>])
+nav { @include span-columns(3,12); }
+article { @include span-columns(9 omega,12); }
+```
 
 - `<$columns>`: The number of _Columns_ to span.
   - `<omega>`: Optional flag to signal the last element in a row.
@@ -150,12 +157,13 @@ Align an element to the Susy Grid.
 ### Omega
 Apply to any omega element as an override.
 
-    :::scss
-    // omega([<$from>])
-    .gallery-image { 
-      @include span-columns(3,9);              // each gallery-image is 3 of 9 cols.
-      &:nth-child(3n) { @include omega; } // every third image completes a row.
-    }
+```scss
+// omega([<$from>])
+.gallery-image { 
+  @include span-columns(3,9);         // each gallery-image is 3 of 9 cols.
+  &:nth-child(3n) { @include omega; } // every third image completes a row.
+}
+```
 
 - `<$from>`: The origin direction of your document flow.<br />
   **Default:** `$from-direction`.
@@ -168,30 +176,32 @@ Apply to any omega element as an override.
 
 ## Media-Layouts
 
-    :::scss
-    // $media-layout: <min-width> <layout> <max-width> <ie-fallback>;
-    // - You must supply either <min> or <layout>.
-    $media-layout: 12;          // Use 12-col layout at matching min-width.
-    $media-layout: 30em;        // At min 30em, use closest fitting layout.
-    $media-layout: 30em 12;     // At min 30em, use 12-col layout.
-    $media-layout: 12 60em;     // Use 12 cols up to max 60em.
-    $media-layout: 30em 60em;   // Between min 30em & max 60em, use closest layout.
-    $media-layout: 30em 12 60em;// Use 12 cols between min 30em & max 60em.
-    $media-layout: 60em 12 30em;// Same. Larger length will always be max-width.
-    $media-layout : 12 lt-ie9;  // Output is included under `.lt-ie9` class,
-                                // for use with IE conditional comments 
-                                // on the <html> tag.
+```scss
+// $media-layout: <min-width> <layout> <max-width> <ie-fallback>;
+// - You must supply either <min> or <layout>.
+$media-layout: 12;          // Use 12-col layout at matching min-width.
+$media-layout: 30em;        // At min 30em, use closest fitting layout.
+$media-layout: 30em 12;     // At min 30em, use 12-col layout.
+$media-layout: 12 60em;     // Use 12 cols up to max 60em.
+$media-layout: 30em 60em;   // Between min 30em & max 60em, use closest layout.
+$media-layout: 30em 12 60em;// Use 12 cols between min 30em & max 60em.
+$media-layout: 60em 12 30em;// Same. Larger length will always be max-width.
+$media-layout : 12 lt-ie9;  // Output is included under `.lt-ie9` class,
+                            // for use with IE conditional comments 
+                            // on the <html> tag.
+```
 
 ## Mixins
 
 ### At-Breakpoint
 At a given min- or max-width Breakpoint, use a given Layout.
     
-    :::scss
-    // at-breakpoint(<$media-layout> [, <$font-size>]) { <@content> }
-    @include at-breakpoint(30em 12) {
-      .page { @include container; }
-    }
+```scss
+// at-breakpoint(<$media-layout> [, <$font-size>]) { <@content> }
+@include at-breakpoint(30em 12) {
+  .page { @include container; }
+}
+```
 
 - `<$media-layout>`: The _Breakpoint/Layout_ combo to use (see above).
 - `<$font-size>`: When using EMs for your grid, the font size is important.<br />
@@ -201,11 +211,12 @@ At a given min- or max-width Breakpoint, use a given Layout.
 ### Layout
 Set an arbitrary Layout to use with any block of content.
 
-    :::scss
-    // layout(<$layout-cols>) { <@content> }
-    @include layout(6) {
-      .narrow-page { @include container; }
-    }
+```scss
+// layout(<$layout-cols>) { <@content> }
+@include layout(6) {
+  .narrow-page { @include container; }
+}
+```
 
 - `<$layout-cols>`: The number of _Columns_ to use in the _Layout_.
 - `<@content>`: Nested `@content` block will use the given _Layout_.
@@ -218,9 +229,10 @@ Set an arbitrary Layout to use with any block of content.
 ### Prefix
 Add Columns of empty space as `padding` before an element.
 
-    :::scss
-    // prefix(<$columns> [, <$context>, <$from>])
-    .box { @include prefix(3); }
+```scss
+// prefix(<$columns> [, <$context>, <$from>])
+.box { @include prefix(3); }
+```
 
 - `<$columns>`: The number of _Columns_ to be added as `padding` before.
 - `<$context>`: The _Context_.<br />
@@ -231,9 +243,10 @@ Add Columns of empty space as `padding` before an element.
 ### Suffix
 Add columns of empty space as padding after an element.
 
-    :::scss
-    // suffix(<$columns> [, <$context>, <$from>])
-    .box { @include suffix(2); }
+```scss
+// suffix(<$columns> [, <$context>, <$from>])
+.box { @include suffix(2); }
+```
 
 - `<$columns>`: The number of _Columns_ to be added as `padding` after.
 - `<$context>`: The _Context_.<br />
@@ -244,9 +257,10 @@ Add columns of empty space as padding after an element.
 ### Pad
 Shortcut for adding both Prefix and Suffix `padding`.
 
-    :::scss
-    // pad([<$prefix>, <$suffix>, <$context>, <$from>])
-    .box { @include pad(3,2); }
+```scss
+// pad([<$prefix>, <$suffix>, <$context>, <$from>])
+.box { @include pad(3,2); }
+```
 
 - `<$prefix>`: The number of _Columns_ to be added as `padding` before.
 - `<$suffix>`: The number of _Columns_ to be added as `padding` after.
@@ -260,9 +274,10 @@ Shortcut for adding both Prefix and Suffix `padding`.
 ### Pre
 Add columns of empty space as margin before an element.
 
-    :::scss
-    // pre(<$columns> [, <$context>, <$from>])
-    .box { @include pre(2); }
+```scss
+// pre(<$columns> [, <$context>, <$from>])
+.box { @include pre(2); }
+```
 
 - `<$columns>`: The number of _Columns_ to be added as `margin` before.
 - `<$context>`: The _Context_.<br />
@@ -273,9 +288,10 @@ Add columns of empty space as margin before an element.
 ### Post
 Add columns of empty space as margin after an element.
 
-    :::scss
-    // post(<$columns> [, <$context>, <$from>])
-    .box { @include post(3); }
+```scss
+// post(<$columns> [, <$context>, <$from>])
+.box { @include post(3); }
+```
 
 - `<$columns>`: The number of _Columns_ to be added as `margin` after.
 - `<$context>`: The _Context_.<br />
@@ -286,9 +302,10 @@ Add columns of empty space as margin after an element.
 ### Squish
 Shortcut to add empty space as margin before and after an element.
 
-    :::scss
-    // squish([<$pre>, <$post>, <$context>, <$from>])
-    .box { @include squish(2,3); }
+```scss
+// squish([<$pre>, <$post>, <$context>, <$from>])
+.box { @include squish(2,3); }
+```
 
 - `<$pre>`: The number of _Columns_ to be added as `margin` before.
 - `<$post>`: The number of _Columns_ to be added as `margin` after.
@@ -300,16 +317,18 @@ Shortcut to add empty space as margin before and after an element.
 ### Push
 Identical to `pre`.
 
-    :::scss
-    // push(<$columns> [, <$context>, <$from>])
-    .box { @include push(3); }
+```scss
+// push(<$columns> [, <$context>, <$from>])
+.box { @include push(3); }
+```
 
 ### Pull
 Add negative margins before an element, to pull it against the flow.
 
-    :::scss
-    // pull(<$columns> [, <$context>, <$from>])
-    .box { @include pull(2); }
+```scss
+// pull(<$columns> [, <$context>, <$from>])
+.box { @include pull(2); }
+```
 
 - `<$columns>`: The number of _Columns_ to be subtracted as `margin` before.
 - `<$context>`: The _Context_.<br />
@@ -322,9 +341,10 @@ Add negative margins before an element, to pull it against the flow.
 ### Susy Grid Background
 Show the Susy Grid as a background-image on any container.
 
-    :::scss
-    // susy-grid-background();
-    .page { @include susy-grid-background; }
+```scss
+// susy-grid-background();
+.page { @include susy-grid-background; }
+```
 
 - **Note:** Some browsers have trouble with sub-pixel rounding on background images.
   Use it for checking general spacing, not pixel-exact alignment.
@@ -337,9 +357,10 @@ that you can put where you want, and use for advanced math.
 ### Columns
 Similar to `span-columns` mixin, but returns the math-ready `%` multiplier.
 
-    :::scss
-    // columns(<$columns> [, <$context>])
-    .item { width: columns(3,6); }
+```scss
+// columns(<$columns> [, <$context>])
+.item { width: columns(3,6); }
+```
 
 - `<$columns>`: The number of _Columns_ to span, 
 - `<$context>`: The _Context_.<br />
@@ -348,9 +369,10 @@ Similar to `span-columns` mixin, but returns the math-ready `%` multiplier.
 ### Gutter
 The `%` width of one gutter in any given context.
 
-    :::scss
-    // gutter([<$context>])
-    .item { margin-right: gutter(6) + columns(3,6); }
+```scss
+// gutter([<$context>])
+.item { margin-right: gutter(6) + columns(3,6); }
+```
 
 - `<$context>`: The _Context_.<br />
   **Default:** `$total-columns`.
@@ -358,9 +380,10 @@ The `%` width of one gutter in any given context.
 ### Space
 Total `%` space taken by Columns, including internal AND external gutters.
 
-    :::scss
-    // space(<$columns> [, <$context>])
-    .item { margin-right: space(3,6); }
+```scss
+// space(<$columns> [, <$context>])
+.item { margin-right: space(3,6); }
+```
 
 - `<$columns>`: The number of _Columns_ to span, 
 - `<$context>`: The _Context_.<br />
@@ -371,9 +394,10 @@ Total `%` space taken by Columns, including internal AND external gutters.
 ### Container Width
 Override the total width of your grid with an arbitrary length.
 
-    :::scss
-    // $container-width: <length> | <boolian>;
-    $container-width: false;
+```scss
+// $container-width: <length> | <boolian>;
+$container-width: false;
+```
 
 - `<length>`: Length in em, px, %, etc.
 - `<boolian>`: True or false.
@@ -381,9 +405,10 @@ Override the total width of your grid with an arbitrary length.
 ### Container Style
 Override the type of shell containing your grid.
 
-    :::scss
-    // $container-style: <style>;
-    $container-style: magic;
+```scss
+// $container-style: <style>;
+$container-style: magic;
+```
 
 - `<style>`: `magic` | `static` | `fluid`.
   - `magic`: Susy's magic grid has a set width,
@@ -401,17 +426,19 @@ Override the type of shell containing your grid.
 The side of the Susy Grid from which the flow starts.
 For ltr documents, this is the left.
 
-    :::scss
-    // $from-direction: <direction>;
-    $from-direction: left;
+```scss
+// $from-direction: <direction>;
+$from-direction: left;
+```
 
 - `<direction>`: `left` | `right`
 
 ### Omega Float
 The direction that Omega elements should be floated.
 
-    :::scss
-    // $omega-float: <direction>;
-    $omega-float: opposite-position($from-direction);
+```scss
+// $omega-float: <direction>;
+$omega-float: opposite-position($from-direction);
+```
 
 - `<direction>`: `left` | `right`

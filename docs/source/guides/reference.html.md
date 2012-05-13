@@ -415,3 +415,39 @@ The direction that Omega elements should be floated.
     $omega-float: opposite-position($from-direction);
 
 - `<direction>`: `left` | `right`
+
+## Compass Options
+
+### Base Font Size
+From the [Compass Vertical Rhythm][rhythm] module, 
+Susy uses your base font size to help manage
+em-based media-queries.
+
+    :::scss
+    // $base-font-size: <px-size>;
+    $base-font-size: 16px;
+
+- `<px-size>`: Any length in `px`. 
+  This will not actually effect your font size 
+  unless you use other Vertical Rhythm tools,
+  we just need to know.
+  See [Compass Docs][base-font-size] for further usage details.
+
+[rhythm]: http://compass-style.org/reference/compass/typography/vertical_rhythm/
+[base-font-size]: http://compass-style.org/reference/compass/typography/vertical_rhythm/#const-base-font-size
+
+### Cross-Browser Support
+Susy recognizes all the [Compass Cross-Browser Support][support] variables,
+although only IE6 and IE7 have special cases attached to them currently.
+
+    :::scss
+    // $legacy-support-for-ie  : <boolian>;
+    // $legacy-support-for-ie6 : <boolian>;
+    // $legacy-support-for-ie7 : <boolian>;
+    $legacy-support-for-ie  : true;
+    $legacy-support-for-ie6 : $legacy-support-for-ie;
+    $legacy-support-for-ie7 : $legacy-support-for-ie;
+
+- `<boolian>`: `true` | `false`
+
+[support]: http://compass-style.org/reference/compass/support/

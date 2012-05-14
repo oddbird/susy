@@ -2,42 +2,43 @@
 title: Getting Started
 side_content: >
   <nav class="glossary">
-    <h2>Getting Started</h2>
-    <h3>Installation</h3>
+    <h2><a href="#start-install">Installation</a></h2>
     <ul>
-      <li><a href="#">New Compass Project</a></li>
-      <li><a href="#">Existing Compass Project</a></li>
-      <li><a href="#">Rails 3.x</a></li>
+      <li><a href="#start-compass">Compass</a></li>
+      <li><a href="#start-rails">Rails 3.x</a></li>
     </ul>
-    <h3>Usage</h3>
+    <h2><a href="#start-usage">Usage</a></h2>
     <ul>
-      <li><a href="#">Settings</a></li>
-      <li><a href="#">Basic Grids</a></li>
-      <li><a href="#">Responsive Grids</a></li>
-      <li><a href="#">Advanced</a></li>
+      <li><a href="#start-settings">Settings</a></li>
+      <li><a href="#start-basic">Basic Grids</a></li>
+      <li><a href="#start-responsive">Responsive Grids</a></li>
+      <li><a href="#start-advanced">Advanced</a></li>
     </ul>
   </nav>
 ---
 
-# Installation
+# <a href="#start-install" id="start-install">Installation</a>
 
     :::bash
     # command line
     sudo gem install susy
 
-## New [Compass](http://www.compass-style.org) Project
+## <a href="#start-compass" id="start-compass">Compass</a>
+Create a new [Compass][compass] project:
 
     :::bash
     # command line
     compass create <project name> -r susy -u susy
 
-## Existing [Compass](http://www.compass-style.org) Project
+Or update an existing [Compass][compass] project:
 
     :::ruby
     # config.rb
     require "susy"
+
+[compass]: http://compass-style.org/
     
-## Rails 3.x
+## <a href="#start-rails" id="start-rails">Rails 3.x</a>
 
     :::ruby
     # Gemfile
@@ -49,12 +50,12 @@ And run:
     # command line
     bundle install
 
-# Usage
+# <a href="#start-usage" id="start-usage">Usage</a>
 
     :::scss
     @import "susy";
 
-## Settings
+## <a href="#start-settings" id="start-settings">Settings</a>
 Set up your default grid values: total columns, column width, and gutter width.
 
     :::scss
@@ -63,7 +64,7 @@ Set up your default grid values: total columns, column width, and gutter width.
     $gutter-width   : 1em;            // 1em gutters between columns
     $grid-padding   : $gutter-width;  // grid-padding equal to gutters
 
-## Basic Grid
+## <a href="#start-basic" id="start-basic">Basic Grids</a>
 The basic Susy grid is composed using two simple mixins:
 
 - Use the [container()][container] mixin to create your initial grid context.
@@ -95,7 +96,7 @@ Here's a simple page layout:
       }
     }
 
-## Responsive Grid
+## <a href="#start-responsive" id="start-responsive">Responsive Grids</a>
 Responsive Susy grids allow you to change the number of columns in a layout 
 at different window sizes, using @media-quries with min and max widths.
 This requires one more mixin:
@@ -120,7 +121,7 @@ Here's a mobile-first example:
       }
     }
 
-## Advanced
+## <a href="#start-advanced" id="start-advanced">Advanced</a>
 Susy is built to handle your unique markup, and any number of edge cases.
 It includes the standard [push()][push] and [pull()][pull] mixins,
 along with other useful functions and shortcuts,
@@ -128,9 +129,9 @@ supoprt for various grid styles,
 and even bi-directional grids for multi-lingual sites.
 Check the [reference documentation][reference] for details.
 
-[reference]: reference
-[container]: reference#container
-[span-columns]: reference#span-columns
-[at-breakpoint]: reference#at-breakpoint
-[push]: reference#push
-[pull]: reference#pull
+[reference]: ../reference/
+[container]: ../reference/#ref-container
+[span-columns]: ../reference/#ref-span-columns
+[at-breakpoint]: ../reference/#ref-at-breakpoint
+[push]: ../reference/#ref-push
+[pull]: ../reference/#ref-pull

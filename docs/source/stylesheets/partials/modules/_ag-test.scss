@@ -1,0 +1,36 @@
+.ag-test {
+  @include clearfix;
+  display: none;
+  div { 
+    @include border-radius(.25em);
+    min-height: rhythm(2); 
+  }
+  b {
+    @include adjust-font-size-to(9px);
+    display: block;
+    padding: rhythm(.5,9px);
+    color: $susy-bodycopy-dark-20;
+    text-align: center;
+  }
+  @include at-breakpoint($break) {
+    @include pre(-3,7);
+    display: block;
+    
+    .ag1, .ag10 { background: rgba(cyan,.25); min-height: rhythm(10); }
+    &, .ag2, .ag6 { background: rgba($susy-background-dark-5,.5); }
+    .ag3, .ag4, .ag7, .ag8 { background: rgba(red,.25); }
+    .ag5 { background: rgba(orange,.25); min-height: rhythm(6); }
+    .ag9 { background: rgba(pink,.5); }
+
+    .ag1 { @include span-columns(2,10); }
+    .ag2 { @include span-columns(6,10); }
+    .ag3 { @include span-columns(3,6); }
+    .ag4 { @include span-columns(3 omega,6); }
+    .ag5 { @include span-columns(2,6); }
+    .ag6 { @include span-columns(4 omega,6); }
+    .ag7 { @include span-columns(2,4); }
+    .ag8 { @include span-columns(2 omega,4); }
+    .ag9 { clear: both; }
+    .ag10 { @include span-columns(2 omega, 10); }
+  }
+}

@@ -34,6 +34,37 @@ Requires [Compass 0.11.1][compass gem]
 [compass gem]: https://rubygems.org/gems/compass
 [sass gem]: https://rubygems.org/gems/sass
 
+## Complex grids made simple
+
+With [two simple mixins](http://localhost:8000/guides/reference/#ref-basic-mixins), 
+Susy can build complex grids nested as deep as you need.
+
+<!-- 
+  START DEMO.
+  This is ugly markup, but you can do better.
+-->
+<figure class="ag-test">
+  <figcaption>
+    <b>10-column <a href="http://oocss.org/grids_docs.html">complex nested grid AG test</a></b>
+  </figcaption>
+  <div class="ag1"><b>2 of 10</b></div>
+  <div class="ag2">
+    <b>6 of 10</b>
+    <div class="ag3"><b>3 of 6</b></div>
+    <div class="ag4"><b>3 of 6 (omega)</b></div>
+    <div class="ag5"><b>2 of 6</b></div>
+    <div class="ag6">
+      <b>4 of 6 (omega)</b>
+      <div class="ag7"><b>2 of 4</b></div>
+      <div class="ag8"><b>2 of 4 (omega)</b></div>
+      <div class="ag9"><b>auto</b></div>
+    </div>
+  </div>
+  <div class="ag10"><b>2 of 10 (omega)</b></div>
+</figure>
+
+<!-- END DEMO -->
+
 ## Everywhere you want to be
 
 Susy is based on Natalie Downe's [CSS Systems][sys], 

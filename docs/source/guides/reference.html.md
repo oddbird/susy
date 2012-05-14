@@ -2,7 +2,7 @@
 title: Reference
 side_content: >
   <nav class="glossary">
-    <h2>Reference</h2>
+    <h2>Basic Usage</h2>
     <h3>Settings</h3>
     <ul>
       <li><a href="#">$total-columns</a></li>
@@ -60,6 +60,11 @@ side_content: >
     <ul>
       <li><a href="#">$from-direction</a></li>
       <li><a href="#">$omega-float</a></li>
+    </ul>
+    <h3>Compass Options</h3>
+    <ul>
+      <li><a href="#">$base-font-size</a></li>
+      <li><a href="#">$legacy-support-for-...</a></li>
     </ul>
   </nav>
 ---

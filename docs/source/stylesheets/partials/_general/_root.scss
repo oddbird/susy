@@ -57,3 +57,23 @@ a {
     margin: 10px;
   }
 }
+
+/////
+// Site
+/////
+
+header.lead {
+  text-align: center;
+  
+  h1 {
+    a {
+      &:before {
+        content: "\2039";
+      }
+      &:after {
+        content: "\203A";
+      }
+    }
+    
+  }
+}

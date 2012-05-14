@@ -13,8 +13,8 @@ We don't design your site or dictate your markup,
 we just do the math and get out of your way.
 
 ## [Version 1.0.rc.0](https://rubygems.org/gems/susy)
-Requires [Compass 0.12.2 (release candidate)](https://rubygems.org/gems/compass)
-and [Sass 3.2 (alpha)](https://rubygems.org/gems/sass)
+Requires [Compass 0.12.2][compass gem] (release candidate)
+and [Sass 3.2][sass gem] (alpha)
 
     :::bash
     gem install susy --pre
@@ -22,15 +22,17 @@ and [Sass 3.2 (alpha)](https://rubygems.org/gems/sass)
 - [What's changed](https://github.com/ericam/susy/blob/master/CHANGELOG.mkdn)
 - [Upgrade from 0.9](https://github.com/ericam/susy/blob/master/CHANGELOG.mkdn#v10alpha0-may-7-2012)
 
+## [Version 0.9 (deprecated)](https://rubygems.org/gems/compass-susy-plugin)
 
-## [Version 0.9 (depreciated)](https://rubygems.org/gems/compass-susy-plugin)
-
-Requires Compass 0.11.1
+Requires [Compass 0.11.1][compass gem]
     
     :::bash
     gem install compass-susy-plugin
 - [Reference](https://github.com/ericam/susy/blob/d5b2c7e3f2505a1063977d474379380c695da8f8/docs/tutorial.rst#building-a-grid-with-susy)
 - [Tutorial](https://github.com/ericam/susy/blob/d5b2c7e3f2505a1063977d474379380c695da8f8/docs/tutorial.rst)
+
+[compass gem]: https://rubygems.org/gems/compass
+[sass gem]: https://rubygems.org/gems/sass
 
 ## Everywhere you want to be
 

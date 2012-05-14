@@ -86,3 +86,16 @@ header.lead {
     }
   }
 }
+
+.content {
+  h1, h2, h3, h4, h5, h6 {
+    a {
+      color: $susy-bodycopy-dark-20;
+      &:hover {
+        color: $susy-bodycopy-dark-20;
+        @extend .icon;
+        @include font-icon-image($icon-bookmark);
+      }
+    }
+  }
+}

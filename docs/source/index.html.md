@@ -39,6 +39,8 @@ Requires [Compass 0.11.1][compass gem]
 With [two simple mixins](http://localhost:8000/guides/reference/#ref-basic-mixins), 
 Susy can build complex grids nested as deep as you need.
 
+[Placeholder for grid toggle](#grid-body)
+
 <!-- 
   START DEMO.
   This is ugly markup, but you can do better.

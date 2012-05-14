@@ -46,6 +46,13 @@ a {
 //Old Century Pro
 @include font-face("Old Century", font-files("/fonts/centuryoldstylefs_regular_macroman/CenturyOldStyle-Regular-webfont.woff", "/fonts/centuryoldstylefs_regular_macroman/CenturyOldStyle-Regular-webfont.svg", "/fonts/centuryoldstylefs_regular_macroman/CenturyOldStyle-Regular-webfont.ttf"), "/fonts/centuryoldstylefs_regular_macroman/CenturyOldStyle-Regular-webfont.eot", "normal", "normal");
 
+/////
+// Font Stacks
+/////
+
+@mixin font-stack-serif {
+  font-family: "Caslon", Caslon, Baskerville, Palatino, "Palatino Linotype", "Hoefler Text", Garamond, "URW Palladio L", "Book Antiqua", Georgia, serif;
+}
 
 /////
 // Google Fonts

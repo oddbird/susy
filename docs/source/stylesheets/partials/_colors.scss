@@ -1,2 +1,18 @@
 $susy-background:        #fdf6e3;
-$susy-highlight:          #dc322f;
+$susy-highlight:         #dc322f;
+$susy-bodycopy:          #657B83;
+
+//5% darker
+$susy-background-dark-5: darken($susy-background, 5%);
+$susy-highlight-dark-5: darken($susy-highlight, 5%);
+$susy-bodycopy-dark-5: darken($susy-bodycopy, 5%);
+
+//10% darker
+$susy-background-dark-10: darken($susy-background, 10%);
+$susy-highlight-dark-10: darken($susy-highlight, 10%);
+$susy-bodycopy-dark-10: darken($susy-bodycopy, 10%);
+
+//20% darker
+$susy-background-dark-20: darken($susy-background, 20%);
+$susy-highlight-dark-20: darken($susy-highlight, 20%);
+$susy-bodycopy-dark-20: darken($susy-bodycopy, 20%);

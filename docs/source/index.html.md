@@ -12,8 +12,9 @@ so they respond how and when and where you want them to.
 We don't design your site or dictate your markup,
 we just do the math and get out of your way.
 
-## [Version 1.0.alpha.2](https://rubygems.org/gems/susy)
-Requires [Compass 0.12.2.rc.0](https://rubygems.org/gems/compass)
+## [Version 1.0.rc.0](https://rubygems.org/gems/susy)
+Requires [Compass 0.12.2 (release candidate)](https://rubygems.org/gems/compass)
+and [Sass 3.2 (alpha)](https://rubygems.org/gems/sass)
 
     :::bash
     gem install susy --pre

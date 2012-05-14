@@ -4,7 +4,7 @@ module GuideHelpers
     if data.page.title
       title << data.page.title
     else
-      title << "The responsive grid for Compass"
+      title << "Responsive grids for Compass"
     end
     title
   end

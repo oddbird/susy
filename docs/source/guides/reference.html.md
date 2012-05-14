@@ -151,7 +151,7 @@ Apply to any omega element as an override.
     :::scss
     // omega([<$from>])
     .gallery-image { 
-      @include span-columns(3,9);              // each gallery-image is 3 of 9 cols.
+      @include span-columns(3,9); // each gallery-image is 3 of 9 cols.
       &:nth-child(3n) { @include omega; } // every third image completes a row.
     }
 

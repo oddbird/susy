@@ -71,20 +71,14 @@ side_content: >
 
 # Basic Usage
 
-- **Susy Grid**: A grid that you build with Susy. 
-- **Column**: The main unit of horizontal measurement on the _Grid_.
-- **Layout**: The total number of _Columns_ in a grid.
-- **Gutter**: The space between _Columns_.
-- **Grid Padding**: Padding between the _Grid_ and the document edges.
-- **Grid Element**: Any HTML element that is aligned to a _Grid_.
-- **Container**: The root element of a _Grid_.
-- **Context**: The number of _Columns_ spanned by the parent element.
-- **Omega**: Any _Grid Element_ spanning the last _Column_ in its _Context_.
-
-## Import
-
     :::scss
     @import 'susy';
+
+- **Container**: The root element of a _Grid_.
+- **Layout**: The total number of _Columns_ in a grid.
+- **Grid Padding**: Padding on the sides of the _Grid_.
+- **Context**: The number of _Columns_ spanned by the parent element.
+- **Omega**: Any _Grid Element_ spanning the last _Column_ in its _Context_.
 
 ## Settings
 

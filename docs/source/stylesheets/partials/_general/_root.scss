@@ -1,0 +1,14 @@
+/////
+// Basic Setup
+/////
+
+body {
+  background-color: $susy-background;
+}
+
+a {
+  color: $susy-highlight;
+  &:visited {
+    color: $susy-highlight;
+  }
+}

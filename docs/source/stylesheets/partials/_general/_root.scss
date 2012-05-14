@@ -93,7 +93,7 @@ header.lead {
       color: $susy-bodycopy-dark-20;
       &:hover {
         color: $susy-bodycopy-dark-20;
-        @extend .icon;
+        @include font-icon(false, after, .4em, false);
         @include font-icon-image($icon-bookmark, after);
       }
     }

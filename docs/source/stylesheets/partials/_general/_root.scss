@@ -66,6 +66,9 @@ header.lead {
   text-align: center;
   
   h1 {
+    margin-bottom: 0em;
+    margin-top: 0.1em;
+    @include font-stack-serif;
     a {
       &:before {
         content: "\2039";
@@ -74,6 +77,12 @@ header.lead {
         content: "\203A";
       }
     }
-    
+  }
+  h2 {
+    @extend h1;
+    a {
+      &:before { content: none; }
+      &:after { content: none; }
+    }
   }
 }

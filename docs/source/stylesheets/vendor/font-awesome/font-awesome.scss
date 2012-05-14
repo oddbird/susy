@@ -45,27 +45,24 @@ $font_path: "font-awesome/fontawesome-webfont" !default;
 @mixin font-icon(
   $icon: false,
   $position: before,
-  $padding: .4em, 
-  $resize: false
+  $padding: .4em
 ) {
+  $position: if($position == 'before' or $position == 'after', $position, before);
   $margin: if($position == 'before', right, left);
   &::#{$position} {
     @if $icon { content: $icon; }
-    @if $resize {
-      font-size: $resize;
-    }
+    @if $padding { margin-#{$margin}: $padding; }
     font-family: FontAwesome;
     font-weight: normal;
     font-style: normal;
     display: inline-block;
     text-decoration: inherit;
-    @if $padding {
-      margin-#{$margin}: $padding;
-    }
+    @content;
   }
 }
 
 @mixin font-icon-image($icon,$position: before) {
+  $position: if($position, if($position == 'before' or $position == 'after', $position, before), false);
   @if $position { &::#{$position} { content: $icon; } } 
   @else { content: $icon; }
 }
@@ -73,7 +70,7 @@ $font_path: "font-awesome/fontawesome-webfont" !default;
 /* Classes */
 
 .icon {
-  @include font-icon();
+  @include font-icon {};
 }
 
 //  Font Awesome uses the Unicode Private Use Area (PUA) to ensure screen

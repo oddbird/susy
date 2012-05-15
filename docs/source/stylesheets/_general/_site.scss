@@ -44,8 +44,11 @@ header.lead {
     }
   }
   h2 {
+    display: block;
+    position: relative;
     font-weight: normal;
     font-size: 1.5em;
+    z-index: 2;
   }
 }
 

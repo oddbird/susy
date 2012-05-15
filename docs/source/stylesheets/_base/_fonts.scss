@@ -92,7 +92,7 @@ $mono-stack : Consolas, Menlo, Monaco, "Lucida Console", "Liberation Mono", "Dej
 $amp-stack  : "BaskervilleAmp", $font-stack;
 
 @mixin font-stack-serif {
-  font-family: $font-stack
+  font-family: $font-stack;
 }
 
 @mixin caps {

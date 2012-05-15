@@ -4,25 +4,39 @@
 
 header.lead {
   text-align: center;
-  
-  h1 {
+
+  h1, h2 {
     margin-bottom: 0em;
     margin-top: 0.1em;
     @include font-stack-serif;
+  }
+  
+  h1 {
+    font-weight: normal;
     a {
-      &:before {
-        content: "\2039";
-      }
-      &:after {
-        content: "\203A";
+      &:before { content: "\2039"; }
+      &:after { content: "\203A"; }
+      .fontface & {
+        &:before, &:after {
+          position: relative;
+          top: -.125em; 
+          letter-spacing: -.05em;
+        }
+        &:hover, &:focus { 
+          b, span { letter-spacing: 0; }
+          span { opacity: 1; }
+        }
       }
     }
-  }
-  h2 {
-    @extend h1;
-    a {
-      &:before { content: none; }
-      &:after { content: none; }
+    .fontface & {
+      b, span {
+        @include transition(all 300ms);
+        display: inline-block;
+        text-transform: uppercase;
+        letter-spacing: -.45em;
+      }
+      span { opacity: 0; }
+
     }
   }
 }

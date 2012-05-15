@@ -1,8 +1,8 @@
-@import "partials/_base.scss";
-@import "partials/_colors.scss";
+@import "_base/_base.scss";
 
-@import "partials/_layout/_containers";
+@import "_layout";
 
-@import "partials/_general/_root";
+@import "_general/_root";
+@import "_general/_site";
 
-@import "partials/modules/_ag-test";
+@import "_modules/_ag-test";

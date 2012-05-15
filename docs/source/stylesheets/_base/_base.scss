@@ -1,0 +1,39 @@
+@import "compass";
+@import "susy";
+
+@import "_fonts";
+@import "_colors.scss";
+
+$font-family: $font-stack;
+$base-font-size:   12px;
+$base-line-height: 18px;
+
+//Using HTML5 Boilerplate 3.x reset instead of "@include global-reset;"
+//Danny likes normalize.css a lot better, which is why
+@import "../vendor/html5bp";
+
+/////
+// Mixins
+/////
+
+@mixin rounded-basic {
+-webkit-border-radius: 1px;
+-moz-border-radius: 1px;
+border-radius: 1px;
+}
+
+@mixin rounded-medium {
+-webkit-border-radius: 3px;
+-moz-border-radius: 3px;
+border-radius: 3px;
+}
+
+/////
+// Vendor
+/////
+
+//Code Highlighting
+@import "../vendor/pygments/solarized";
+
+//Font Awesome
+@import "../vendor/font-awesome/font-awesome";

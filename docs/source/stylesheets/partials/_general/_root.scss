@@ -90,11 +90,22 @@ header.lead {
 .content {
   h1, h2, h3, h4, h5, h6 {
     a {
+      display: block;
       position: relative;
       color: $susy-bodycopy-dark-20;
+      @include font-icon($icon-bookmark,after) { 
+        @include transition(all 300ms);
+        @include opacity(0);
+        display: block;
+        position: absolute;
+        right: 100% + gutter(7)*.5;
+        top: 0;
+      };
       &:hover {
         color: $susy-bodycopy-dark-20;
-        @include font-icon($icon-bookmark,after) {};
+        &::after {
+          @include opacity(1);
+        }
       }
     }
   }

@@ -1,8 +1,6 @@
-@import "compass/css3";
-
 @import "compass";
-
 @import "susy";
+@import "base/_fonts";
 
 $link-color:         #0388a6;
 $link-hover-color:   #009ce0;
@@ -11,7 +9,7 @@ $link-active-color:  false;
 $link-visited-color: false;
 
 $font-color:  #2a2a2a;
-$font-family: sans-serif;
+$font-family: $font-stack;
 $base-font-size:   12px;
 $base-line-height: 18px;
 
@@ -32,35 +30,6 @@ a {
   }
   
 }
-
-/////
-// Fonts
-/////
-
-/////Adobe Caslon Pro
-@include font-face("Caslon", font-files("/fonts/adobe_caslon_pro/adobe_caslon_pro-webfont.woff", "/fonts/adobe_caslon_pro/adobe_caslon_pro-webfont.svg", "/fonts/adobe_caslon_pro/adobe_caslon_pro-webfont.ttf"), "/fonts/adobe_caslon_pro/adobe_caslon_pro-webfont.eot", "normal", "normal");
-@include font-face("Caslon Bold", font-files("/fonts/adobe_caslon_pro_semibold/adobe_caslon_pro_semibold-webfont.woff", "/fonts/adobe_caslon_pro_semibold/adobe_caslon_pro_semibold-webfont.svg", "/fonts/adobe_caslon_pro_semibold/adobe_caslon_pro_semibold-webfont.ttf"), "/fonts/adobe_caslon_pro_semibold/adobe_caslon_pro_semibold-webfont.eot", "bold", "normal");
-@include font-face("Caslon Italic", font-files("/fonts/adobe_caslon_pro_italic/adobe_caslon_pro_italic-webfont.woff", "/fonts/adobe_caslon_pro_italic/adobe_caslon_pro_italic-webfont.svg", "/fonts/adobe_caslon_pro_italic/adobe_caslon_pro_italic-webfont.ttf"), "/fonts/adobe_caslon_pro_italic/adobe_caslon_pro_italic-webfont.eot", "normal", "italic");
-@include font-face("Caslon Bold Italic", font-files("/fonts/adobe_caslon_pro_semibold_italic/adobe_caslon_pro_semibold_italic-webfont.woff", "/fonts/adobe_caslon_pro_semibold_italic/adobe_caslon_pro_semibold_italic-webfont.svg", "/fonts/adobe_caslon_pro_semibold_italic/adobe_caslon_pro_semibold_italic-webfont.ttf"), "/fonts/adobe_caslon_pro_semibold_italic/adobe_caslon_pro_semibold_italic-webfont.eot", "bold", "italic");
-
-//Old Century Pro
-@include font-face("Old Century", font-files("/fonts/centuryoldstylefs_regular_macroman/CenturyOldStyle-Regular-webfont.woff", "/fonts/centuryoldstylefs_regular_macroman/CenturyOldStyle-Regular-webfont.svg", "/fonts/centuryoldstylefs_regular_macroman/CenturyOldStyle-Regular-webfont.ttf"), "/fonts/centuryoldstylefs_regular_macroman/CenturyOldStyle-Regular-webfont.eot", "normal", "normal");
-
-/////
-// Font Stacks
-/////
-
-@mixin font-stack-serif {
-  font-family: "Caslon", Caslon, Baskerville, Palatino, "Palatino Linotype", "Hoefler Text", Garamond, "URW Palladio L", "Book Antiqua", Georgia, serif;
-}
-
-/////
-// Google Fonts
-/////
-
-//Bitter
-@import url(http://fonts.googleapis.com/css?family=Bitter:400,700,400italic);
-
 
 /////
 // Mixins

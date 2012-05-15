@@ -25,7 +25,7 @@
 /* Imports */
 
 @import "compass/css3/font-face";
-$font_path: "font-awesome/fontawesome-webfont" !default;
+$font_path: "fontawesome-webfont" !default;
 
 @include font-face(
   'FontAwesome',

@@ -1,0 +1,102 @@
+/*
+ * Web Fonts from fontspring.com
+ *
+ * All OpenType features and all extended glyphs have been removed.
+ * Fully installable fonts can be purchased at http://www.fontspring.com
+ *
+ * The fonts included in this stylesheet are subject to the End User License you purchased
+ * from Fontspring. The fonts are protected under domestic and international trademark and 
+ * copyright law. You are prohibited from modifying, reverse engineering, duplicating, or
+ * distributing this font software.
+ *
+ * (c) 2010 Fontspring
+ *
+ *
+ *
+ *
+ * The fonts included are copyrighted by the vendor listed below.
+ *
+ * Vendor:      FontSite Inc.
+ * License URL: http://www.fontspring.com/fflicense/fontsite
+ *
+ *
+ */
+
+//-----------------------------------------------------------------------------
+// Fonts
+
+@include font-face (
+  'CenturyOldStyleFS',
+  font-files(
+    'CenturyOldStyle-Regular-webfont.woff', 'woff',
+    'CenturyOldStyle-Regular-webfont.ttf', 'truetype',
+    'CenturyOldStyle-Regular-webfont.svg#webfont', 'svg'
+  ),
+  'CenturyOldStyle-Regular-webfont.eot',
+  normal,
+  normal
+);
+
+@include font-face (
+  'CenturyOldStyleFS',
+  font-files(
+    'CenturyOldStyle-Bold-webfont.woff', 'woff',
+    'CenturyOldStyle-Bold-webfont.ttf', 'truetype',
+    'CenturyOldStyle-Bold-webfont.svg#webfont', 'svg'
+  ),
+  'CenturyOldStyle-Bold-webfont.eot',
+  bold,
+  normal
+);
+
+@include font-face (
+  'CenturyOldStyleFS',
+  font-files(
+    'CenturyOldStyle-Italic-webfont.woff', 'woff',
+    'CenturyOldStyle-Italic-webfont.ttf', 'truetype',
+    'CenturyOldStyle-Italic-webfont.svg#webfont', 'svg'
+  ),
+  'CenturyOldStyle-Italic-webfont.eot',
+  normal,
+  italic
+);
+
+@include font-face (
+  'CenturyOldStyleFSCaps',
+  font-files(
+    'CenturyOldStyleCaps-Regular-webfont.woff', 'woff',
+    'CenturyOldStyleCaps-Regular-webfont.ttf', 'truetype',
+    'CenturyOldStyleCaps-Regular-webfont.svg#webfont', 'svg'
+  ),
+  'CenturyOldStyleCaps-Regular-webfont.eot',
+  normal,
+  normal
+);
+
+@include font-face (
+  'BaskervilleAmp',
+  font-files(
+    'Baskerville-amp-webfont.woff', 'woff',
+    'Baskerville-amp-webfont.ttf', 'truetype',
+    'Baskerville-amp-webfont.svg#webfont', 'svg'
+  ),
+  'Baskerville-amp-webfont.eot',
+  normal,
+  normal
+);
+
+$fallback   : "Adobe Caslon Pro",Caslon,Baskerville,Palatino,"Palatino Linotype","Hoefler Text",Garamond,"URW Palladio L","Book Antiqua",Georgia,serif;
+$font-stack : "CenturyOldStyleFS", $fallback;
+$caps-stack : "CenturyOldStyleFSCaps", $fallback;
+$mono-stack : Consolas, Menlo, Monaco, "Lucida Console", "Liberation Mono", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Courier New", monospace, serif;
+$amp-stack  : "BaskervilleAmp", $font-stack;
+
+@mixin font-stack-serif {
+  font-family: $font-stack
+}
+
+@mixin caps {
+  font-family: $caps-stack;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+}

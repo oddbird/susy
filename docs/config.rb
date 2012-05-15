@@ -65,7 +65,9 @@ helpers GuideHelpers
 # page "/this-page-has-no-template.html", :proxy => "/template-file.html" do
 #   @which_fake_page = "Rendering a fake page with a variable"
 # end
+
 page "/guides/", :proxy => "/guides/getting-started.html"
+page "/tutorial/", :proxy => "/guides/getting-started.html"
 
 ###
 # Helpers

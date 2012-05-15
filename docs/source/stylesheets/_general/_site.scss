@@ -26,6 +26,7 @@ header.lead {
         &:hover, &:focus { 
           b, span { letter-spacing: 0; }
           span { opacity: 1; }
+          color: $susy-highlight;
         }
       }
     }

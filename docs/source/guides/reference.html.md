@@ -68,6 +68,8 @@ side_content: >
   </nav>
 ---
 
+# <a href="#ref-version" id="ref-version">Version 1.0.rc.0</a>
+
 # <a href="#ref-basic" id="ref-basic">Basic Usage</a>
 
     :::scss

@@ -98,8 +98,9 @@ header.lead {
         @include opacity(0);
         display: block;
         position: absolute;
-        right: 100% + gutter(7)*.5;
+        right: 100%;
         top: 0;
+        padding-right: .2em;
       };
       &:hover {
         color: $susy-bodycopy-dark-20;

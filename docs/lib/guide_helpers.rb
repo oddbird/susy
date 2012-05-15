@@ -10,14 +10,7 @@ module GuideHelpers
   end
   
   def page_side_content
-    side_content = "
-                   <h2>Contribute</h2>
-                   <ul>
-                     <li><a href='https://github.com/ericam/susy'>Fork on GitHub</a></li>
-                     <li><a href='https://github.com/ericam/susy/zipball/master'>Download</a></li>
-                     <li><a href='http://twitter.com/compasssusy/'>Follow on Twitter</a></li>
-                   </ul>
-                   "
+    side_content = ""
     if data.page.side_content
       side_content = data.page.side_content
     end

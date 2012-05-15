@@ -13,6 +13,8 @@ header.lead {
   
   h1 {
     font-weight: normal;
+    margin-bottom: -0.3em;
+    margin-top: -0.2em;
     a {
       &:before { content: "\2039"; }
       &:after { content: "\203A"; }
@@ -40,6 +42,10 @@ header.lead {
       span { opacity: 0; }
 
     }
+  }
+  h2 {
+    font-weight: normal;
+    font-size: 1.5em;
   }
 }
 

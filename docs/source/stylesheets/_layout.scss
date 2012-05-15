@@ -24,9 +24,6 @@ $break: 10 lt-ie9;
     @include container;
     :target & { @include susy-grid-background(); }
     
-    .main_content {
-      @include pad(1,1);
-    }
   }
 }
 

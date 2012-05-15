@@ -20,7 +20,7 @@
   .ag9 { background: rgba(pink,.5); }
 
   // the grid
-  @include at-breakpoint($break) { margin: 0 0 - space(1,8); }
+  @include at-breakpoint($break) { }
 
   .ag1, .ag10 { min-height: rhythm(13); }
   .ag5 { min-height: rhythm(8); }

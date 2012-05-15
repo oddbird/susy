@@ -25,8 +25,7 @@ $break: 10 lt-ie9;
     :target & { @include susy-grid-background(); }
     
     .main_content {
-      @include span-columns(8);
-      @include push(1);
+      @include pad(1,1);
     }
   }
 }
@@ -47,7 +46,7 @@ body.guides_reference,body.guides_getting-started {
   
     .main_content {
       @include span-columns(7 omega);
-      @include push (0);
+      @include pad(0,0);
     }
   }
 }

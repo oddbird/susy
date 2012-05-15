@@ -1,13 +1,20 @@
+//-----------------------------------------------------------------------------
+// AG Test
+
 .ag-test {
   @include clearfix;
+  @include trailer;
+
+  @include at-breakpoint($break) { margin: 0 0 - space(1,8) rhythm(1); }
+
   div { 
     @include border-radius(.25em);
     min-height: rhythm(3); 
   }
   b {
-    @include adjust-font-size-to(8px);
+    @include adjust-font-size-to($smallpx);
     display: block;
-    padding: rhythm(.5,8px) rhythm(.25,8px);
+    padding: rhythm(.5,$smallpx) rhythm(.25,$smallpx);
     color: $susy-bodycopy-dark-20;
     text-align: center;
   }
@@ -18,9 +25,6 @@
   .ag3, .ag4, .ag7, .ag8 { background: rgba(red,.25); }
   .ag5 { background: rgba(orange,.25); }
   .ag9 { background: rgba(pink,.5); }
-
-  // the grid
-  @include at-breakpoint($break) { }
 
   .ag1, .ag10 { min-height: rhythm(13); }
   .ag5 { min-height: rhythm(8); }

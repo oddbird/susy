@@ -1,0 +1,19 @@
+// ---------------------------------------------------------------------------
+// Type Settings
+
+$base-font-size             : $normpx;
+$base-line-height           : $medpx;
+
+$round-to-nearest-half-line : true;
+
+// ---------------------------------------------------------------------------
+// Type Mixins
+
+@mixin ellipsis($r:1) {
+  overflow: hidden;
+  max-height: rhythm($r);
+  white-space: nowrap;
+  word-wrap: break-word;
+  -o-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+}

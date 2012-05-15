@@ -1,0 +1,42 @@
+.type {
+  h2 {
+    @include adjust-font-size-to($xlargepx);
+  }
+  h3 {
+    @include adjust-font-size-to($largepx);
+  }
+  h4 {
+    @extend .caps;
+  }
+  h5 {
+    font-style: italic;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    a {
+      position: relative;
+      display: inline-block;
+      color: $susy-bodycopy-dark-20;
+      @include font-icon($icon-bookmark,after) { 
+        @include transition(all 300ms);
+        @include opacity(0);
+        position: absolute;
+        display: block;
+        right: 100%;
+        top: 0;
+        padding-right: .2em;
+        line-height: inherit;
+      };
+      &:hover {
+        color: $susy-bodycopy-dark-20;
+        &::after {
+          @include opacity(1);
+        }
+      }
+    }
+  }
+
+  ul, ol, p {
+    @include trailer;
+  }
+}

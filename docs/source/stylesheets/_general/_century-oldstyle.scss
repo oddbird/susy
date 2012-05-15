@@ -1,0 +1,70 @@
+// ---------------------------------------------------------------------------
+// Settings
+
+$fallback   : "Adobe Caslon Pro",Caslon,Baskerville,Palatino,"Palatino Linotype","Hoefler Text",Garamond,"URW Palladio L","Book Antiqua",Georgia,serif;
+$font-stack : "CenturyOldStyleFS", $fallback;
+$caps-stack : "CenturyOldStyleFSCaps", $fallback;
+$amp-stack  : "BaskervilleAmp", $font-stack;
+
+// ---------------------------------------------------------------------------
+// Fonts
+
+@include font-face (
+  'CenturyOldStyleFS',
+  font-files(
+    'CenturyOldStyle-Regular-webfont.woff', 'woff',
+    'CenturyOldStyle-Regular-webfont.ttf', 'truetype',
+    'CenturyOldStyle-Regular-webfont.svg#webfont', 'svg'
+  ),
+  'CenturyOldStyle-Regular-webfont.eot',
+  normal,
+  normal
+);
+
+@include font-face (
+  'CenturyOldStyleFS',
+  font-files(
+    'CenturyOldStyle-Bold-webfont.woff', 'woff',
+    'CenturyOldStyle-Bold-webfont.ttf', 'truetype',
+    'CenturyOldStyle-Bold-webfont.svg#webfont', 'svg'
+  ),
+  'CenturyOldStyle-Bold-webfont.eot',
+  bold,
+  normal
+);
+
+@include font-face (
+  'CenturyOldStyleFS',
+  font-files(
+    'CenturyOldStyle-Italic-webfont.woff', 'woff',
+    'CenturyOldStyle-Italic-webfont.ttf', 'truetype',
+    'CenturyOldStyle-Italic-webfont.svg#webfont', 'svg'
+  ),
+  'CenturyOldStyle-Italic-webfont.eot',
+  normal,
+  italic
+);
+
+@include font-face (
+  'CenturyOldStyleFSCaps',
+  font-files(
+    'CenturyOldStyleCaps-Regular-webfont.woff', 'woff',
+    'CenturyOldStyleCaps-Regular-webfont.ttf', 'truetype',
+    'CenturyOldStyleCaps-Regular-webfont.svg#webfont', 'svg'
+  ),
+  'CenturyOldStyleCaps-Regular-webfont.eot',
+  normal,
+  normal
+);
+
+@include font-face (
+  'BaskervilleAmp',
+  font-files(
+    'Baskerville-amp-webfont.woff', 'woff',
+    'Baskerville-amp-webfont.ttf', 'truetype',
+    'Baskerville-amp-webfont.svg#webfont', 'svg'
+  ),
+  'Baskerville-amp-webfont.eot',
+  normal,
+  normal
+);

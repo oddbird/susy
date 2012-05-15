@@ -1,0 +1,42 @@
+//-----------------------------------------------------------------------------
+// Grid Toggle
+
+.grid-toggle {
+  // display: none;
+  position: absolute;
+  top: .5em;
+  right: .5em;
+}
+
+.on, .off {
+  a {
+    &:link, &:visited {
+      @extend .icon;
+      @include font-icon($icon-align-justify) { @include rotate(90deg); }
+      @include hide-text;
+      @include transition(all 300ms);
+      font-size: 1.5em;
+      width: 1.5em;
+      height: 1.5em;
+      position: relative;
+      color: $susy-bodycopy-dark-20;
+    }
+    &:hover, &:focus, &:active {
+      color: $susy-bodycopy;
+    }
+    &::before {
+      position: absolute;
+      top: 0;
+      right: 0;
+      text-indent: 0;
+    }
+  }
+}
+.off a { 
+  &:link, &:visited {
+    display: none; 
+    color: $susy-highlight;
+  }
+}
+.on a { display: block; }
+

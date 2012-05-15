@@ -22,7 +22,7 @@ helpers GuideHelpers
 
 # Susy grids in Compass
 # First: gem install compass-susy-plugin
-# require 'susy'
+require 'modular-scale'
 
 # Change Compass configuration
 # compass_config do |config|

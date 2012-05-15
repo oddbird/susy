@@ -64,23 +64,3 @@ Susy can build complex grids nested as deep as you need.
 </figure>
 
 <!-- END DEMO -->
-
-# Everywhere you want to be
-
-Susy is based on Natalie Downe's [CSS Systems][sys], 
-made possible by [Sass][sass], and made easy with [Compass][compass]. 
-You can use it anywhere,
-from static sites to Python/Django, Ruby/Rails, and PHP/Wordpress. 
-With [SMACSS][smacss] or [OOCS][oocss], [Bootstrap][bs], 
-[HTML5 Boilerplate][html5bp], or [320 and up][320]. 
-It even comes packaged as part of [Middleman][mm], to make your life easy.
-
-[sys]: http://www.slideshare.net/nataliedowne/css-systems-presentation
-[sass]: http://www.sass-lang.com/
-[compass]: http://www.compass-style.org/
-[smacss]: http://www.smacss.com/
-[oocss]: http://www.oocss.org/
-[bs]: http://twitter.github.com/bootstrap/
-[html5bp]: http://www.html5boilerplate.com/
-[320]: http://stuffandnonsense.co.uk/projects/320andup/
-[mm]: http://www.middlemanapp.com/

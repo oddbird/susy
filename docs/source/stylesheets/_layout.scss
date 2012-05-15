@@ -1,11 +1,16 @@
+//-----------------------------------------------------------------------------
+// Grid Settings
+
 $total-columns: 4;
 $column-width: 5em;
 $gutter-width: 1em;
 $grid-padding: $gutter-width;
 
-$break: 10 lt-ie9;
+$break: 40em 10 lt-ie9;
 
-.container {
+// 
+
+.page {
   @include container;
 
   :target & { 
@@ -17,25 +22,33 @@ $break: 10 lt-ie9;
   @include at-breakpoint($break) {
     @include container;
     :target & { @include susy-grid-background(); }
-    
   }
 }
 
-.ephemera {
+[role="main"] {
+  @extend .type;
+  @include at-breakpoint($break) {
+    @include pad(1,1);
+  }
+}
+
+[role="contentinfo"] {
   clear: both;
 }
 
 //Exceptions
 
-body.guides_reference,body.guides_getting-started,body.tutorial {
-  
+.guides_reference, .guides_getting-started, .tutorial { 
+  .secondary { display: none; }
+
   @include at-breakpoint($break) {
     
-    .side_content {
+    .secondary {
       @include span-columns(3);
+      display: block;
     }
   
-    .main_content {
+    [role="main"] {
       @include span-columns(7 omega);
       @include pad(0,0);
     }

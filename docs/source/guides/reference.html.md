@@ -1,76 +1,74 @@
 ---
 title: Reference
 side_content: >
-  <nav class="glossary">
-    <h2><a href="#ref-basic">Basic Usage</a></h2>
-    <h3><a href="#ref-basic-settings">Basic Settings</a></h3>
-    <ul>
-      <li><a href="#ref-total-columns">$total-columns</a></li>
-      <li><a href="#ref-column-width">$column-width</a></li>
-      <li><a href="#ref-gutter-width">$gutter-width</a></li>
-      <li><a href="#ref-grid-padding">$grid-padding</a></li>
-    </ul>
-    <h3><a href="#ref-basic-mixins">Basic Mixins</a></h3>
-    <ul>
-      <li><a href="#ref-container">container()</a></li>
-      <li><a href="#ref-span-columns">span-columns()</a></li>
-      <li><a href="#ref-omega">omega()</a></li>
-    </ul>
-    <h2><a href="#ref-responsive">Responsive Grids</a></h2>
-    <ul>
-      <li><a href="#ref-media-layouts">$media-layout</a></li>
-    </ul>
-    <h3><a href="#ref-responsive-mixins">Responsive Mixins</a></h3>
-    <ul>
-      <li><a href="#ref-at-breakpoint">at-breakpoint()</a></li>
-      <li><a href="#ref-layout">layout()</a></li>
-    </ul>
-    <h2><a href="#ref-helper">Grid Helpers</a></h2>
-    <h3><a href="#ref-helper-padding">Padding Mixins</a></h3>
-    <ul>
-      <li><a href="#ref-prefix">prefix()</a></li>
-      <li><a href="#ref-suffix">suffix()</a></li>
-      <li><a href="#ref-pad">pad()</a></li>
-    </ul>
-    <h3><a href="#ref-helper-margin">Margin Mixins</a></h3>
-    <ul>
-      <li><a href="#ref-pre">pre()</a></li>
-      <li><a href="#ref-post">post()</a></li>
-      <li><a href="#ref-squish">squish()</a></li>
-      <li><a href="#ref-push">push()</a></li>
-      <li><a href="#ref-pull">pull()</a></li>
-    </ul>
-    <h3><a href="#ref-helper-other">Other Mixins</a></h3>
-    <ul>
-      <li><a href="#ref-grid-background">susy-grid-background()</a></li>
-    </ul>
-    <h3><a href="#ref-helper-functions">Functions</a></h3>
-    <ul>
-      <li><a href="#ref-columns">columns()</a></li>
-      <li><a href="#ref-gutter">gutter()</a></li>
-      <li><a href="#ref-space">space()</a></li>
-    </ul>
-    <h3><a href="#ref-container-override">Container Override Settings</a></h3>
-    <ul>
-      <li><a href="#ref-container-width">$container-width</a></li>
-      <li><a href="#ref-container-style">$container-style</a></li>
-    </ul>
-    <h3><a href="#ref-direction-override">Direction Override Settings</a></h3>
-    <ul>
-      <li><a href="#ref-from-direction">$from-direction</a></li>
-      <li><a href="#ref-omega-float">$omega-float</a></li>
-    </ul>
-    <h3><a href="#ref-compass-options">Compass Options</a></h3>
-    <ul>
-      <li><a href="#ref-base-font-size">$base-font-size</a></li>
-      <li><a href="#ref-browser-support">$legacy-support-for-...</a></li>
-    </ul>
-  </nav>
+  <h2><a href="#ref-basic">Basic Usage</a></h2>
+  <h3><a href="#ref-basic-settings">Basic Settings</a></h3>
+  <ul>
+    <li><a href="#ref-total-columns">$total-columns</a></li>
+    <li><a href="#ref-column-width">$column-width</a></li>
+    <li><a href="#ref-gutter-width">$gutter-width</a></li>
+    <li><a href="#ref-grid-padding">$grid-padding</a></li>
+  </ul>
+  <h3><a href="#ref-basic-mixins">Basic Mixins</a></h3>
+  <ul>
+    <li><a href="#ref-container">container()</a></li>
+    <li><a href="#ref-span-columns">span-columns()</a></li>
+    <li><a href="#ref-omega">omega()</a></li>
+  </ul>
+  <h2><a href="#ref-responsive">Responsive Grids</a></h2>
+  <ul>
+    <li><a href="#ref-media-layouts">$media-layout</a></li>
+  </ul>
+  <h3><a href="#ref-responsive-mixins">Responsive Mixins</a></h3>
+  <ul>
+    <li><a href="#ref-at-breakpoint">at-breakpoint()</a></li>
+    <li><a href="#ref-layout">layout()</a></li>
+  </ul>
+  <h2><a href="#ref-helper">Grid Helpers</a></h2>
+  <h3><a href="#ref-helper-padding">Padding Mixins</a></h3>
+  <ul>
+    <li><a href="#ref-prefix">prefix()</a></li>
+    <li><a href="#ref-suffix">suffix()</a></li>
+    <li><a href="#ref-pad">pad()</a></li>
+  </ul>
+  <h3><a href="#ref-helper-margin">Margin Mixins</a></h3>
+  <ul>
+    <li><a href="#ref-pre">pre()</a></li>
+    <li><a href="#ref-post">post()</a></li>
+    <li><a href="#ref-squish">squish()</a></li>
+    <li><a href="#ref-push">push()</a></li>
+    <li><a href="#ref-pull">pull()</a></li>
+  </ul>
+  <h3><a href="#ref-helper-other">Other Mixins</a></h3>
+  <ul>
+    <li><a href="#ref-grid-background">susy-grid-background()</a></li>
+  </ul>
+  <h3><a href="#ref-helper-functions">Functions</a></h3>
+  <ul>
+    <li><a href="#ref-columns">columns()</a></li>
+    <li><a href="#ref-gutter">gutter()</a></li>
+    <li><a href="#ref-space">space()</a></li>
+  </ul>
+  <h3><a href="#ref-container-override">Container Override Settings</a></h3>
+  <ul>
+    <li><a href="#ref-container-width">$container-width</a></li>
+    <li><a href="#ref-container-style">$container-style</a></li>
+  </ul>
+  <h3><a href="#ref-direction-override">Direction Override Settings</a></h3>
+  <ul>
+    <li><a href="#ref-from-direction">$from-direction</a></li>
+    <li><a href="#ref-omega-float">$omega-float</a></li>
+  </ul>
+  <h3><a href="#ref-compass-options">Compass Options</a></h3>
+  <ul>
+    <li><a href="#ref-base-font-size">$base-font-size</a></li>
+    <li><a href="#ref-browser-support">$legacy-support-for-...</a></li>
+  </ul>
 ---
 
-# <a href="#ref-version" id="ref-version">Version 1.0.rc.0</a>
+_Version 1.0.rc.0_
 
-# <a href="#ref-basic" id="ref-basic">Basic Usage</a>
+## <a href="#ref-basic" id="ref-basic">Basic Usage</a>
 
     :::scss
     @import 'susy';
@@ -81,9 +79,9 @@ side_content: >
 - **Context**: The number of _Columns_ spanned by the parent element.
 - **Omega**: Any _Grid Element_ spanning the last _Column_ in its _Context_.
 
-## <a href="#ref-basic-settings" id="ref-basic-settings">Basic Settings</a>
+### <a href="#ref-basic-settings" id="ref-basic-settings">Basic Settings</a>
 
-### <a href="#ref-total-columns" id="ref-total-columns">Total Columns</a>
+#### <a href="#ref-total-columns" id="ref-total-columns">Total Columns</a>
 The number of Columns in your default Grid Layout.
 
     :::scss
@@ -92,7 +90,7 @@ The number of Columns in your default Grid Layout.
 
 - `<number>`: Unitless number.
   
-### <a href="#ref-column-width" id="ref-column-width">Column Width</a>
+#### <a href="#ref-column-width" id="ref-column-width">Column Width</a>
 The width of a single Column in your Grid.
 
     :::scss
@@ -101,7 +99,7 @@ The width of a single Column in your Grid.
 
 - `<length>`: Length in any unit of measurement (em, px, %, etc). 
 
-### <a href="#ref-gutter-width"id="ref-gutter-width">Gutter Width</a>
+#### <a href="#ref-gutter-width"id="ref-gutter-width">Gutter Width</a>
 The space between Columns.
 
     :::scss
@@ -110,7 +108,7 @@ The space between Columns.
 
 - `<length>`: Units must match `$column-width`. 
 
-### <a href="#ref-grid-padding" id="ref-grid-padding">Grid Padding</a>
+#### <a href="#ref-grid-padding" id="ref-grid-padding">Grid Padding</a>
 Padding on the left and right of a Grid Container.
 
     :::scss
@@ -119,9 +117,9 @@ Padding on the left and right of a Grid Container.
 
 - `<length>`: Units must match `$column-width`. 
   
-## <a href="#ref-basic-mixins" id="ref-basic-mixins">Basic Mixins</a>
+### <a href="#ref-basic-mixins" id="ref-basic-mixins">Basic Mixins</a>
 
-### <a href="#ref-container" id="ref-container">Container</a>
+#### <a href="#ref-container" id="ref-container">Container</a>
 Establish the outer grid-containing element.
 
     :::scss
@@ -132,7 +130,7 @@ Establish the outer grid-containing element.
   (see 'Responsive Grids' below).<br />
   **Default:** `$total-columns`.
 
-### <a href="#ref-span-columns" id="ref-span-columns">Span Columns</a>
+#### <a href="#ref-span-columns" id="ref-span-columns">Span Columns</a>
 Align an element to the Susy Grid.
 
     :::scss
@@ -147,7 +145,7 @@ Align an element to the Susy Grid.
 - `<$from>`: The origin direction of your document flow.<br />
   **Default:** `$from-direction`.
 
-### <a href="#ref-omega" id="ref-omega">Omega</a>
+#### <a href="#ref-omega" id="ref-omega">Omega</a>
 Apply to any omega element as an override.
 
     :::scss
@@ -161,12 +159,12 @@ Apply to any omega element as an override.
   **Default:** `$from-direction`.
 
 
-# <a href="#ref-responsive" id="ref-responsive">Responsive Grids</a>
+## <a href="#ref-responsive" id="ref-responsive">Responsive Grids</a>
 
 - **Breakpoint**: A min- or max- viewport width at which to change _Layouts_.
 - **Media-Layout**: Shortcut for declaring _Breakpoints_ and _Layouts_ in Susy.
 
-## <a href="#ref-media-layouts" id="ref-media-layouts">Media-Layouts</a>
+### <a href="#ref-media-layouts" id="ref-media-layouts">Media-Layouts</a>
 
     :::scss
     // $media-layout: <min-width> <layout> <max-width> <ie-fallback>;
@@ -182,9 +180,9 @@ Apply to any omega element as an override.
                                 // for use with IE conditional comments 
                                 // on the <html> tag.
 
-## <a href="#ref-responsive-mixins" id="ref-responsive-mixins">Responsive Mixins</a>
+### <a href="#ref-responsive-mixins" id="ref-responsive-mixins">Responsive Mixins</a>
 
-### <a href="#ref-at-breakpoint" id="ref-at-breakpoint">At-Breakpoint</a>
+#### <a href="#ref-at-breakpoint" id="ref-at-breakpoint">At-Breakpoint</a>
 At a given min- or max-width Breakpoint, use a given Layout.
     
     :::scss
@@ -198,7 +196,7 @@ At a given min- or max-width Breakpoint, use a given Layout.
   **Default:** `$base-font-size`.
 - `<@content>`: Nested `@content` block will use the given _Layout_.
 
-### <a href="#ref-layout" id="ref-layout">Layout</a>
+#### <a href="#ref-layout" id="ref-layout">Layout</a>
 Set an arbitrary Layout to use with any block of content.
 
     :::scss
@@ -211,11 +209,11 @@ Set an arbitrary Layout to use with any block of content.
 - `<@content>`: Nested `@content` block will use the given _Layout_.
 
 
-# <a href="#ref-helper" id="ref-helper">Grid Helpers</a>
+## <a href="#ref-helper" id="ref-helper">Grid Helpers</a>
 
-## <a href="#ref-helper-padding" id="ref-helper-padding">Padding Mixins</a>
+### <a href="#ref-helper-padding" id="ref-helper-padding">Padding Mixins</a>
 
-### <a href="#ref-prefix" id="ref-prefix">Prefix</a>
+#### <a href="#ref-prefix" id="ref-prefix">Prefix</a>
 Add Columns of empty space as `padding` before an element.
 
     :::scss
@@ -228,7 +226,7 @@ Add Columns of empty space as `padding` before an element.
 - `<$from>`: The origin direction of your document flow.<br />
   **Default:** `$from-direction`.
 
-### <a href="#ref-suffix" id="ref-suffix">Suffix</a>
+#### <a href="#ref-suffix" id="ref-suffix">Suffix</a>
 Add columns of empty space as padding after an element.
 
     :::scss
@@ -241,7 +239,7 @@ Add columns of empty space as padding after an element.
 - `<$from>`: The origin direction of your document flow.<br />
   **Default:** `$from-direction`.
 
-### <a href="#ref-pad" id="ref-pad">Pad</a>
+#### <a href="#ref-pad" id="ref-pad">Pad</a>
 Shortcut for adding both Prefix and Suffix `padding`.
 
     :::scss
@@ -255,9 +253,9 @@ Shortcut for adding both Prefix and Suffix `padding`.
 - `<$from>`: The origin direction of your document flow.<br />
   **Default:** `$from-direction`.
 
-## <a href="#ref-helper-margin" id="ref-helper-margin">Margin Mixins</a>
+### <a href="#ref-helper-margin" id="ref-helper-margin">Margin Mixins</a>
 
-### <a href="#ref-pre" id="ref-pre">Pre</a>
+#### <a href="#ref-pre" id="ref-pre">Pre</a>
 Add columns of empty space as margin before an element.
 
     :::scss
@@ -270,7 +268,7 @@ Add columns of empty space as margin before an element.
 - `<$from>`: The origin direction of your document flow.<br />
   **Default:** `$from-direction`.
 
-### <a href="#ref-post" id="ref-post">Post</a>
+#### <a href="#ref-post" id="ref-post">Post</a>
 Add columns of empty space as margin after an element.
 
     :::scss
@@ -283,7 +281,7 @@ Add columns of empty space as margin after an element.
 - `<$from>`: The origin direction of your document flow.<br /> 
   **Default:** `$from-direction`.
 
-### <a href="#ref-squish" id="ref-squish">Squish</a>
+#### <a href="#ref-squish" id="ref-squish">Squish</a>
 Shortcut to add empty space as margin before and after an element.
 
     :::scss
@@ -297,14 +295,14 @@ Shortcut to add empty space as margin before and after an element.
 - `<$from>`: The origin direction of your document flow.<br /> 
   **Default:** `$from-direction`.
 
-### <a href="#ref-push" id="ref-push">Push</a>
+#### <a href="#ref-push" id="ref-push">Push</a>
 Identical to `pre`.
 
     :::scss
     // push(<$columns> [, <$context>, <$from>])
     .box { @include push(3); }
 
-### <a href="#ref-pull" id="ref-pull">Pull</a>
+#### <a href="#ref-pull" id="ref-pull">Pull</a>
 Add negative margins before an element, to pull it against the flow.
 
     :::scss
@@ -317,9 +315,9 @@ Add negative margins before an element, to pull it against the flow.
 - `<$from>`: The origin direction of your document flow.<br />
   **Default:** `$from-direction`.
 
-## <a href="#ref-helper-other" id="ref-helper-other">Other Mixins</a>
+### <a href="#ref-helper-other" id="ref-helper-other">Other Mixins</a>
 
-### <a href="#ref-grid-background" id="ref-grid-background">Susy Grid Background</a>
+#### <a href="#ref-grid-background" id="ref-grid-background">Susy Grid Background</a>
 Show the Susy Grid as a background-image on any container.
 
     :::scss
@@ -329,12 +327,12 @@ Show the Susy Grid as a background-image on any container.
 - **Note:** Some browsers have trouble with sub-pixel rounding on background images.
   Use it for checking general spacing, not pixel-exact alignment.
 
-## <a href="#ref-helper-functions" id="ref-helper-functions">Functions</a>
+### <a href="#ref-helper-functions" id="ref-helper-functions">Functions</a>
 
 Where a mixin returns property/value pairs, functions return simple values 
 that you can put where you want, and use for advanced math.
 
-### <a href="#ref-columns" id="ref-columns">Columns</a>
+#### <a href="#ref-columns" id="ref-columns">Columns</a>
 Similar to `span-columns` mixin, but returns the math-ready `%` multiplier.
 
     :::scss
@@ -345,7 +343,7 @@ Similar to `span-columns` mixin, but returns the math-ready `%` multiplier.
 - `<$context>`: The _Context_.<br />
   **Default:** `$total-columns`.
 
-### <a href="#ref-gutter" id="ref-gutter">Gutter</a>
+#### <a href="#ref-gutter" id="ref-gutter">Gutter</a>
 The `%` width of one gutter in any given context.
 
     :::scss
@@ -355,7 +353,7 @@ The `%` width of one gutter in any given context.
 - `<$context>`: The _Context_.<br />
   **Default:** `$total-columns`.
 
-### <a href="#ref-space" id="ref-space">Space</a>
+#### <a href="#ref-space" id="ref-space">Space</a>
 Total `%` space taken by Columns, including internal AND external gutters.
 
     :::scss
@@ -366,9 +364,9 @@ Total `%` space taken by Columns, including internal AND external gutters.
 - `<$context>`: The _Context_.<br />
   **Default:** `$total-columns`.
 
-## <a href="#ref-container-override" id="ref-container-override">Container Override Settings</a>
+### <a href="#ref-container-override" id="ref-container-override">Container Override Settings</a>
 
-### <a href="#ref-container-width" id="ref-container-width">Container Width</a>
+#### <a href="#ref-container-width" id="ref-container-width">Container Width</a>
 Override the total width of your grid with an arbitrary length.
 
     :::scss
@@ -378,7 +376,7 @@ Override the total width of your grid with an arbitrary length.
 - `<length>`: Length in em, px, %, etc.
 - `<boolian>`: True or false.
 
-### <a href="#ref-container-style" id="ref-container-style">Container Style</a>
+#### <a href="#ref-container-style" id="ref-container-style">Container Style</a>
 Override the type of shell containing your grid.
 
     :::scss
@@ -395,9 +393,9 @@ Override the type of shell containing your grid.
     or by `$container-width`, if either is set using `%` units.
     Otherwise it will default to `auto` (100%).
 
-## <a href="#ref-direction-override" id="ref-direction-override">Direction Override Settings</a>
+### <a href="#ref-direction-override" id="ref-direction-override">Direction Override Settings</a>
 
-### <a href="#ref-from-direction" id="ref-from-direction">From Direction</a>
+#### <a href="#ref-from-direction" id="ref-from-direction">From Direction</a>
 The side of the Susy Grid from which the flow starts.
 For ltr documents, this is the left.
 
@@ -407,7 +405,7 @@ For ltr documents, this is the left.
 
 - `<direction>`: `left` | `right`
 
-### <a href="#ref-omega-float" id="ref-omega-float">Omega Float</a>
+#### <a href="#ref-omega-float" id="ref-omega-float">Omega Float</a>
 The direction that Omega elements should be floated.
 
     :::scss
@@ -416,9 +414,9 @@ The direction that Omega elements should be floated.
 
 - `<direction>`: `left` | `right`
 
-## <a href="#ref-compass-options" id="ref-compass-options">Compass Options</a>
+### <a href="#ref-compass-options" id="ref-compass-options">Compass Options</a>
 
-### <a href="#ref-base-font-size" id="ref-base-font-size">Base Font Size</a>
+#### <a href="#ref-base-font-size" id="ref-base-font-size">Base Font Size</a>
 From the [Compass Vertical Rhythm][rhythm] module, 
 Susy uses your base font size to help manage
 em-based media-queries.
@@ -436,7 +434,7 @@ em-based media-queries.
 [rhythm]: http://compass-style.org/reference/compass/typography/vertical_rhythm/
 [base-font-size]: http://compass-style.org/reference/compass/typography/vertical_rhythm/#const-base-font-size
 
-### <a href="#ref-browser-support" id="ref-browser-support">Browser Support</a>
+#### <a href="#ref-browser-support" id="ref-browser-support">Browser Support</a>
 Susy recognizes all the [Compass Browser Support][support] variables,
 although only IE6 and IE7 have special cases attached to them currently.
 

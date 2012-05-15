@@ -10,15 +10,9 @@
   
   %body{ :id => "susy-oddbird-net", :class => page_classes }
 
-    %div{ :id => "main", :role => "main", :class => "container" }
+    %div.page
 
-      %ul.grid-toggle
-        %li.on
-          %a{ :href => "#susy-oddbird-net" } show grid
-        %li.off
-          %a{ :href => "#" } hide grid
-
-      %header.lead
+      %header{ :role => "banner" }
         %h1 
           %a.home{ :href => "/"} <b>S</b><span>usy</span>
         %h2 Responsive grids for <a href="http://www.compass-style.org/">Compass</a>.
@@ -26,15 +20,20 @@
       %nav
         = partial "partials/navigation"
       
-      %section.content.main_content
+      %section{ :role => "main" }
       
         ~ yield
       
-      %section.content.side_content= page_side_content
+      -if page_side_content
+        %aside.secondary= page_side_content
       
-      %footer.ephemera
-        = partial "partials/ephemera"
-    
-    = javascript_include_tag "application.js"
-    
+      %footer{ :role => "contentinfo" }
+        = partial "partials/contentinfo"
+
+      %ul.grid-toggle
+        %li.on
+          %a{ :href => "#susy-oddbird-net" } show grid
+        %li.off
+          %a{ :href => "#" } hide grid
+        
     = partial "partials/google_analytics"

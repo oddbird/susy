@@ -67,6 +67,8 @@ GEM
       rb-inotify (~> 0.8.8)
     maruku (0.6.0)
       syntax (>= 1.0.0)
+    modular-scale (0.0.5)
+      compass (>= 0.11.5)
     multi_json (1.3.5)
     nokogiri (1.5.2)
     padrino-core (0.10.6)
@@ -124,6 +126,7 @@ PLATFORMS
 
 DEPENDENCIES
   middleman!
+  modular-scale (~> 0.0.5)
   pygments.rb
   rack-codehighlighter!
   redcarpet

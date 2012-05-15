@@ -1,8 +1,21 @@
-@import "_base/_base.scss";
+//-----------------------------------------------------------------------------
+// Base
 
-@import "_layout";
+@import "_base/base";
 
-@import "_general/_root";
-@import "_general/_site";
+//-----------------------------------------------------------------------------
+// General
 
-@import "_modules/_ag-test";
+@import "_general/root";
+
+//-----------------------------------------------------------------------------
+// Layout
+
+@import "layout";
+
+//-----------------------------------------------------------------------------
+// Modules
+
+@import "_modules/banner";
+@import "_modules/toggle";
+@import "_modules/ag-test";

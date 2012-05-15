@@ -12,7 +12,7 @@ so they respond how and when and where you want them to.
 We don't design your site or dictate your markup,
 we just do the math and get out of your way.
 
-## [Version 1.0.rc.0](https://rubygems.org/gems/susy)
+# [Version 1.0.rc.0](https://rubygems.org/gems/susy)
 Requires [Compass 0.12.2][compass gem] (release candidate)
 and [Sass 3.2][sass gem] (alpha)
 
@@ -22,7 +22,7 @@ and [Sass 3.2][sass gem] (alpha)
 - [What's changed](https://github.com/ericam/susy/blob/master/CHANGELOG.mkdn)
 - [Upgrade from 0.9](https://github.com/ericam/susy/blob/master/CHANGELOG.mkdn#v10alpha0-may-7-2012)
 
-## [Version 0.9 (deprecated)](https://rubygems.org/gems/compass-susy-plugin)
+# [Version 0.9 (deprecated)](https://rubygems.org/gems/compass-susy-plugin)
 
 Requires [Compass 0.11.1][compass gem]
     
@@ -34,7 +34,7 @@ Requires [Compass 0.11.1][compass gem]
 [compass gem]: https://rubygems.org/gems/compass
 [sass gem]: https://rubygems.org/gems/sass
 
-## Complex grids made simple
+# Complex grids made simple
 
 With [two simple mixins](http://localhost:8000/guides/reference/#ref-basic-mixins), 
 Susy can build complex grids nested as deep as you need.
@@ -65,7 +65,7 @@ Susy can build complex grids nested as deep as you need.
 
 <!-- END DEMO -->
 
-## Everywhere you want to be
+# Everywhere you want to be
 
 Susy is based on Natalie Downe's [CSS Systems][sys], 
 made possible by [Sass][sass], and made easy with [Compass][compass]. 

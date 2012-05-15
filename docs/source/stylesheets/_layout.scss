@@ -27,7 +27,7 @@ $break: 10 lt-ie9;
 
 //Exceptions
 
-body.guides_reference,body.guides_getting-started {
+body.guides_reference,body.guides_getting-started,body.tutorial {
   
   @include at-breakpoint($break) {
     

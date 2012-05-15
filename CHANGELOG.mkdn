@@ -45,7 +45,7 @@ Removed:
 * `full` can be replaced by a simple `clear: both;` when needed.
 * `side-gutter()` is no longer needed. Use `$grid-padding` instead.
 
-Upgrade:
+### Upgrade:
 
 1. Find and replace the 4 simple "Changed API's" listed above.
 2. Remove the `$context` argument from all `omega` mixins.

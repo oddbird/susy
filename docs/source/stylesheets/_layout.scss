@@ -23,9 +23,10 @@ $break: 10 lt-ie9;
   @include at-breakpoint($break) {
     @include container;
     :target & { @include susy-grid-background(); }
-
+    
     .main_content {
-      @include span-columns(10);
+      @include span-columns(8);
+      @include push(1);
     }
   }
 }
@@ -38,11 +39,15 @@ $break: 10 lt-ie9;
 
 body.guides_reference,body.guides_getting-started {
   
-  .side_content {
-    @include span-columns(3, 10);
-  }
+  @include at-breakpoint($break) {
+    
+    .side_content {
+      @include span-columns(3);
+    }
   
-  .main_content {
-    @include span-columns(7, 10);
+    .main_content {
+      @include span-columns(7 omega);
+      @include push (0);
+    }
   }
 }

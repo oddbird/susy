@@ -6,4 +6,4 @@
   $ ->
 
     $("header.lead h1").fitText(0.5);
-    $("header.lead h2").fitText(1.8);
+    $("header.lead h2").fitText(1.3);

@@ -8,16 +8,10 @@ $break: 10 lt-ie9;
 .container {
   @include container;
 
-  .grid-toggle {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-    .off { display: none; }
-  }
   :target & { 
     @include susy-grid-background(); 
-    .off { display: block; }
-    .on { display: none; }
+    .off a { display: block; }
+    .on a { display: none; }
   }
   
   @include at-breakpoint($break) {

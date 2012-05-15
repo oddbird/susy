@@ -2,6 +2,47 @@
 // Site
 /////
 
+.grid-toggle {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  position: fixed;
+  top: .125em;
+  right: 0;
+}
+
+.on, .off {
+  a {
+    &:link, &:visited {
+      @extend .icon;
+      @include font-icon($icon-align-justify) { @include rotate(90deg); }
+      @include hide-text;
+      @include transition(all 300ms);
+      font-size: 1.5em;
+      width: 1.5em;
+      height: 1.5em;
+      position: relative;
+      color: $susy-bodycopy-dark-20;
+    }
+    &:hover, &:focus, &:active {
+      color: $susy-bodycopy;
+    }
+    &::before {
+      position: absolute;
+      top: 0;
+      right: 0;
+      text-indent: 0;
+    }
+  }
+}
+.off a { 
+  &:link, &:visited {
+    display: none; 
+    color: $susy-highlight;
+  }
+}
+.on a { display: block; }
+
 header.lead {
   text-align: center;
 

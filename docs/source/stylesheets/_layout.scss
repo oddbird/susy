@@ -24,16 +24,25 @@ $break: 10 lt-ie9;
     @include container;
     :target & { @include susy-grid-background(); }
 
-    .side_content {
-      @include span-columns(3);
-    }
-
     .main_content {
-      @include span-columns(7 omega);
+      @include span-columns(10);
     }
   }
 }
 
 .ephemera {
   clear: both;
+}
+
+//Exceptions
+
+body.guides_reference,body.guides_getting-started {
+  
+  .side_content {
+    @include span-columns(3, 10);
+  }
+  
+  .main_content {
+    @include span-columns(7, 10);
+  }
 }

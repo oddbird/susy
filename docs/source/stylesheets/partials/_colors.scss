@@ -16,3 +16,5 @@ $susy-bodycopy-dark-10: darken($susy-bodycopy, 10%);
 $susy-background-dark-20: darken($susy-background, 20%);
 $susy-highlight-dark-20: darken($susy-highlight, 20%);
 $susy-bodycopy-dark-20: darken($susy-bodycopy, 20%);
+
+$grid-background-column-color: rgba(lighten($susy-background,5%),.5);

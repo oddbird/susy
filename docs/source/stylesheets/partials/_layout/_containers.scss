@@ -7,11 +7,22 @@ $break: 10 lt-ie9;
 
 .container {
   @include container;
-  //@include susy-grid-background();
+
+  .grid-toggle {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    .off { display: none; }
+  }
+  :target & { 
+    @include susy-grid-background(); 
+    .off { display: block; }
+    .on { display: none; }
+  }
   
   @include at-breakpoint($break) {
     @include container;
-    //@include susy-grid-background();
+    :target & { @include susy-grid-background(); }
 
     .side_content {
       @include span-columns(3);

@@ -20,7 +20,7 @@ and [Sass 3.2][sass gem] (alpha)
     gem install susy --pre
 
 - [What's changed](https://github.com/ericam/susy/blob/master/CHANGELOG.mkdn)
-- [Upgrade from 0.9](https://github.com/ericam/susy/blob/master/CHANGELOG.mkdn#v10alpha0-may-7-2012)
+- [Upgrade from 0.9](https://github.com/ericam/susy/blob/master/CHANGELOG.mkdn#upgrade)
 
 # [Version 0.9 (deprecated)](https://rubygems.org/gems/compass-susy-plugin)
 

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]--><!--[if IE 7]> <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]--><!--[if IE 8]> <html class="no-js lt-ie9" lang="en"> <![endif]--><!--[if gt IE 8]> ><! <![endif]--><html class="no-js" lang="en">
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]--><!--[if IE 7]> <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]--><!--[if IE 8]> <html class="no-js lt-ie9" lang="en"> <![endif]--><!--[if gt IE 8]> ><! <![endif]--><html class="no-js" lang="en" manifest="manifest.appcache">
 <!-- <![endif] --><head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
@@ -8,7 +8,7 @@
 <meta content="Susy: Semantic grids with a responsive touch." name="description">
 <meta content="width=device-width" name="viewport">
 <link type="text/css" media="screen" rel="stylesheet" href="../../stylesheets/site.css">
-<script type="text/javascript" src="../../javascripts/modernizr-2.5.3.min.js"></script>
+<script type="text/javascript" src="../../javascripts/modernizr-2.5.3.min.js"></script><script type="text/javascript" src="../../javascripts/modernizr.selectors.js"></script>
 </head>
 <body class="guides guides_reference guides_reference_index" id="susy-oddbird-net">
     <div class="page">
@@ -388,7 +388,7 @@
         </ul>
 <h4><a href="#ref-push" id="ref-push">Push</a></h4>
         
-        <p>Identical to <code>pre</code>.</p>
+        <p>Identical to <a href="#ref-pre">pre</a>.</p>
         
         <div class="highlight">
 <pre><span class="c1">// push(&lt;$columns&gt; [, &lt;$context&gt;, &lt;$from&gt;])</span>
@@ -443,7 +443,8 @@
         
         <h4><a href="#ref-columns" id="ref-columns">Columns</a></h4>
         
-        <p>Similar to <code>span-columns</code> mixin, but returns the math-ready <code>%</code> multiplier.</p>
+        <p>Similar to <a href="#ref-span-columns">span-columns</a> mixin, 
+        but returns the math-ready <code>%</code> multiplier.</p>
         
         <div class="highlight">
 <pre><span class="c1">// columns(&lt;$columns&gt; [, &lt;$context&gt;])</span>
@@ -713,7 +714,7 @@
         </li>
       </ul>
 </div>
-    <script type="text/javascript">
+    <script type="text/javascript" src="../../javascripts/viewport.js"></script><script type="text/javascript">
       //<![CDATA[
         var _gaq=[['_setAccount','UA-30497331-1'],['_trackPageview']];
         (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];

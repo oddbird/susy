@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]--><!--[if IE 7]> <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]--><!--[if IE 8]> <html class="no-js lt-ie9" lang="en"> <![endif]--><!--[if gt IE 8]> ><! <![endif]--><html class="no-js" lang="en">
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]--><!--[if IE 7]> <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]--><!--[if IE 8]> <html class="no-js lt-ie9" lang="en"> <![endif]--><!--[if gt IE 8]> ><! <![endif]--><html class="no-js" lang="en" manifest="manifest.appcache">
 <!-- <![endif] --><head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
@@ -8,7 +8,7 @@
 <meta content="Susy: Semantic grids with a responsive touch." name="description">
 <meta content="width=device-width" name="viewport">
 <link type="text/css" media="screen" rel="stylesheet" href="stylesheets/site.css">
-<script type="text/javascript" src="javascripts/modernizr-2.5.3.min.js"></script>
+<script type="text/javascript" src="javascripts/modernizr-2.5.3.min.js"></script><script type="text/javascript" src="javascripts/modernizr.selectors.js"></script>
 </head>
 <body class="index" id="susy-oddbird-net">
     <div class="page">
@@ -78,12 +78,12 @@
 </div>
         </section><section class="why"><h2>Why is 1.0 a release candidate?</h2>
           <p>
-            Susy 1.0 is stable and tested, all the features are in,
-            and we're ready to launch. 
-            But our 1.0 depends on unreleased Compass and Sass features.
+            Susy 1.0 is stable, tested, <span class="amp">&amp;</span> feature complete;
+            but our launch depends on unreleased Compass and Sass features.
             We think those features are stable as well,
-            and we'll do what it takes to stay on top of any changes they make,
-            but we can't officially land until they do.
+            and you should <a href="guides/getting-started/">get started</a> 
+            with Susy 1.0 RC right now. 
+            We'll make sure the final upgrade is as painless as possible.
           </p>
         </section><figure class="ag-test"><figcaption><p>10-column <a href="http://oocss.org/grids_docs.html">complex nested grid AG test</a></p>
           </figcaption><div class="ag1"><p><strong>ag1</strong> 2 of 10</p></div>
@@ -159,7 +159,7 @@
         </li>
       </ul>
 </div>
-    <script type="text/javascript">
+    <script type="text/javascript" src="javascripts/viewport.js"></script><script type="text/javascript">
       //<![CDATA[
         var _gaq=[['_setAccount','UA-30497331-1'],['_trackPageview']];
         (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];

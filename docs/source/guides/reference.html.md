@@ -371,11 +371,11 @@ Total `%` space taken by Columns, including internal AND external gutters.
 Override the total width of your grid with an arbitrary length.
 
     :::scss
-    // $container-width: <length> | <boolian>;
+    // $container-width: <length> | <boolean>;
     $container-width: false;
 
 - `<length>`: Length in em, px, %, etc.
-- `<boolian>`: True or false.
+- `<boolean>`: True or false.
 
 #### <a href="#ref-container-style" id="ref-container-style">Container Style</a>
 Override the type of shell containing your grid.
@@ -440,13 +440,13 @@ Susy recognizes all the [Compass Browser Support][support] variables,
 although only IE6 and IE7 have special cases attached to them currently.
 
     :::scss
-    // $legacy-support-for-ie  : <boolian>;
-    // $legacy-support-for-ie6 : <boolian>;
-    // $legacy-support-for-ie7 : <boolian>;
+    // $legacy-support-for-ie  : <boolean>;
+    // $legacy-support-for-ie6 : <boolean>;
+    // $legacy-support-for-ie7 : <boolean>;
     $legacy-support-for-ie  : true;
     $legacy-support-for-ie6 : $legacy-support-for-ie;
     $legacy-support-for-ie7 : $legacy-support-for-ie;
 
-- `<boolian>`: `true` | `false`
+- `<boolean>`: `true` | `false`
 
 [support]: http://compass-style.org/reference/compass/support/

@@ -144,7 +144,7 @@ $browser-default-font-size  : 16px;
 // $media-layout  : a list of values [$min $layout $max $ie] including...
 //                : - one unitless number (columns in a layout)
 //                : - two optional lengths (min and max-width media-query breakpoints).
-//                : - one optional boolian or string to trigger fallback support for IE.
+//                : - one optional boolean or string to trigger fallback support for IE.
 // $font-size     : [optional] The base font-size of your layout, if you are using ems.
 //                : - defaults to $base-font-size
 @function medialayout(
@@ -238,7 +238,7 @@ $browser-default-font-size  : 16px;
 // $media-layout  : a list of values including -
 //                : One unitless number (columns in a layout)
 //                : Two optional lengths (min and max-width media-query breakpoints).
-//                : One optional boolian or string to trigger fallback support for IE.
+//                : One optional boolean or string to trigger fallback support for IE.
 @function is-default-layout(
   $media-layout
 ) {

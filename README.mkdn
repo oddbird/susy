@@ -26,3 +26,12 @@ we just do the math and get out of your way.
 - [Reference](http://susy.oddbird.net/guides/reference/)
 - [Sites using Susy](http://susy.oddbird.net/sites-using-susy/)
 - [Twitter @CompassSusy](http://twitter.com/compasssusy/)
+
+## Why is 1.0 a release candidate?
+
+Susy 1.0 is stable and tested, all the features are in,
+and we're ready to launch. 
+But our 1.0 depends on unreleased Compass and Sass features.
+We think those features are stable as well,
+and we'll do what it takes to stay on top of any changes they make,
+but we can't officially land until they do.

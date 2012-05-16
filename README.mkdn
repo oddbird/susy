@@ -22,5 +22,7 @@ we just do the math and get out of your way.
 ## Resources
 - [Website](http://susy.oddbird.net)
 - [Changelog](https://github.com/ericam/susy/blob/master/CHANGELOG.mkdn)
-- [Tutorial](https://github.com/ericam/susy/blob/master/docs/source/guides/getting-started.html.md)
-- [Reference](https://github.com/ericam/susy/blob/master/docs/source/guides/reference.html.md#basic-usage)
+- [Tutorial](http://susy.oddbird.net/guides/getting-started/)
+- [Reference](http://susy.oddbird.net/guides/reference/)
+- [Sites using Susy](http://susy.oddbird.net/sites-using-susy/)
+- [Twitter @CompassSusy](http://twitter.com/compasssusy/)

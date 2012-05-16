@@ -1,25 +1,15 @@
 Susy Changelog
 ==============
 
-v1.0.alpha.2 [May 12 2012]
---------------------------
-
-* Fix minor bug with repeated 'display' properties.
-* Lower Compass dependency to 0.12.2.rc.0
-
-v1.0.alpha.1 [May 9 2012]
--------------------------
-
-Due to a conflict with the Compass CSS3 module, the `columns` mixin has been 
-renamed `span-columns`. In order to upgrade, you should simply search and replace `@include columns` (or `+columns`) in your project files.
-
-v1.0.alpha.0 [May 7 2012]
--------------------------
-
-*Requires Compass 0.13.alpha.0 or later.*
+v1.0 [UNRELEASED]
+-----------------
 
 This release is loaded with new features, but don't let that fool you. Susy 
-just became shockingly simple to use. See the README for updated usage details.
+just became shockingly simple to use. See the [website][site] for details.
+
+Note that the gem name has changed from `compass-susy-plugin` to `susy`.
+
+[site]: http://susy.oddbird.net/
 
 New Features:
 
@@ -37,6 +27,7 @@ Changed API:
 * `$col-width` => `$column-width`
 * `$side-gutter-width` => `$grid-padding`
 * `+un-column` & `+reset-column` => `+reset-columns`
+* `+columns` => `+span-columns`
 
 Removed:
 
@@ -45,19 +36,27 @@ Removed:
 * `full` can be replaced by a simple `clear: both;` when needed.
 * `side-gutter()` is no longer needed. Use `$grid-padding` instead.
 
+Other:
+
+* Fix minor bug with repeated 'display' properties.
+* Lower Compass dependency to 0.12.2.rc.0
+* Add Sass dependency at 3.2.0.alpha.237
+
 ### Upgrade:
 
-1. Find and replace the 4 simple "Changed API's" listed above.
-2. Remove the `$context` argument from all `omega` mixins.
-3. Remove any mention of `alpha` and `full` in your code. 
+1. Uninstall `compass-susy-plugin` and install `susy` in it's place.
+2. Find and replace the 5 simple "Changed API's" listed above.
+3. Remove the `$context` argument from all `omega` mixins.
+4. Remove any mention of `alpha` and `full` in your code. 
    * Replace `full` with `clear: both;` where necessary.
-4. Remove any mention of `side-gutter()`.
+5. Remove any mention of `side-gutter()`.
    * This may require some refactoring, depending on your uses.
-5. [Optional] Any time 'columns' and 'omega' are declared in the same block, 
+6. [Optional] Any time 'columns' and 'omega' are declared in the same block, 
    they can now be joined together. `@include columns(3); @include omega();` 
    can become `@include columns(3 omega)`.
 
-You're done! Stop worrying about all that "nested vs. root" bullshit, and start playing with the new toys!
+You're done! Stop worrying about all that "nested vs. root" bullshit, 
+and start playing with the new toys!
 
 v0.9 [Apr 25 2011]
 ------------------

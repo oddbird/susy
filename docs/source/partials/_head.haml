@@ -6,6 +6,12 @@
   
   %meta{:content => "Susy: Semantic grids with a responsive touch.", :name => "description"}
   %meta{:content => "width=device-width", :name => "viewport"}
+  %meta{:content => "yes", :name => "apple-mobile-web-app-capable"}
+
+  %link{:rel => "apple-touch-startup-image", :media => "screen and (max-device-width: 480px) and not (-webkit-min-device-pixel-ratio: 2)", :href => "images/splash-iphone.png"}
+  %link{:rel => "apple-touch-startup-image", :media => "screen and (max-device-width: 480px) and (-webkit-min-device-pixel-ratio: 2)", :href => "images/splash-iphone4.png"}
+  %link{:rel => "apple-touch-startup-image", :media => "screen and (min-device-width: 768px) and (orientation: portrait)", :href => "images/splash-portrait.png"}
+  %link{:rel => "apple-touch-startup-image", :media => "screen and (min-device-width: 768px) and (orientation: landscape)", :href => "images/splash-landscape.png"}
 
   = stylesheet_link_tag "site.css"
   = javascript_include_tag "modernizr-2.5.3.min.js"

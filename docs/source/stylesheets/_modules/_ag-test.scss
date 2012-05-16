@@ -2,10 +2,11 @@
 // AG Test
 
 .ag-test {
+  @include cond;
   @include clearfix;
   @include trailer;
-
-  @include at-breakpoint($break) { margin: 0 0 - space(1,8) rhythm(1); }
+  clear: both;
+  background: $susy-background-dark-5;
 
   div { 
     @include border-radius(.25em);
@@ -20,23 +21,24 @@
   }
 
   // color blocks
-  .ag1, .ag10 { background: rgba(cyan,.25); }
-  &, .ag2, .ag6 { background: rgba($susy-background-dark-5,.5); }
-  .ag3, .ag4, .ag7, .ag8 { background: rgba(red,.25); }
-  .ag5 { background: rgba(orange,.25); }
-  .ag9 { background: rgba(pink,.5); }
+  .ag1, .ag3 { background: lighten($cyan,25); }
+  .ag2 { background: $susy-background-dark-10; }
+  .ag7 { background: $susy-background-dark-20; }
+  .ag4, .ag5, .ag8, .ag9 { background: lighten($red,25); }
+  .ag6 { background: lighten($orange,25); }
+  .ag10 { background: lighten($magenta,25); }
 
-  .ag1, .ag10 { min-height: rhythm(13); }
-  .ag5 { min-height: rhythm(8); }
+  .ag1, .ag3 { min-height: rhythm(13); }
+  .ag6 { min-height: rhythm(8); }
 
   .ag1 { @include span-columns(2,10); }
   .ag2 { @include span-columns(6,10); }
-  .ag3 { @include span-columns(3,6); }
-  .ag4 { @include span-columns(3 omega,6); }
-  .ag5 { @include span-columns(2,6); }
-  .ag6 { @include span-columns(4 omega,6); }
-  .ag7 { @include span-columns(2,4); }
-  .ag8 { @include span-columns(2 omega,4); }
-  .ag9 { clear: both; }
-  .ag10 { @include span-columns(2 omega, 10); }
+  .ag3 { @include span-columns(2 omega, 10); }
+  .ag4 { @include span-columns(3,6); }
+  .ag5 { @include span-columns(3 omega,6); }
+  .ag6 { @include span-columns(2,6); }
+  .ag7 { @include span-columns(4 omega,6); }
+  .ag8 { @include span-columns(2,4); }
+  .ag9 { @include span-columns(2 omega,4); }
+  .ag10 { clear: both; }
 }

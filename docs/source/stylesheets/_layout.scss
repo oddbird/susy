@@ -20,8 +20,8 @@
 [role="main"] {
   @include trailer(1);
   @include at-breakpoint($break) {
-    @include pad(1,1);
     @include trailer(2);
+    .sites-using-susy & { @include pad(1,1); }
   }
   .sites-using-susy & { @extend .type; }
 }
@@ -45,7 +45,6 @@
   
     [role="main"] {
       @include span-columns(7 omega);
-      @include pad(0,0);
     }
   }
 }

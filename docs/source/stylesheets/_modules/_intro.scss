@@ -1,0 +1,54 @@
+//-----------------------------------------------------------------------------
+// Intro
+
+.intro {
+  @include adjust-font-size-to($medpx);
+  @include trailer(1,$medpx);
+  p { 
+    @include trailer(1,$medpx); 
+    &:first-child { color: $susy-bodycopy-dark-20; }
+    &:last-child { font-style: italic; }
+  }
+  @include at-breakpoint($break) {
+    @include span-columns(5);
+  }
+}
+
+.info {
+  @include trailer;
+  @include rhythm-borders(1px,1);
+  border-color: $susy-background-dark-20;
+  background: $susy-background-dark-10;
+  > div { 
+    @include clearfix;
+    @include trailer; 
+  }
+  @include at-breakpoint($break) {
+    @include span-columns(4 omega);
+  }
+  h2 {
+    @extend .caps;
+    letter-spacing: .1em;
+    a { 
+      @extend .icon;
+      @include font-icon-image($icon-pushpin);
+      font-weight: bold;
+      &::before { margin-right: $xxxsmallpx; }
+    }
+  }
+  ul { 
+    list-style: circle;
+    padding-left: rhythm(1);
+  }
+  i {
+    @include opacity(.75);
+    color: $susy-bodycopy;
+    font-weight: normal;
+  }
+}
+
+.v1-0 {
+  h2 {
+    @include adjust-font-size-to($medpx);
+  }
+}

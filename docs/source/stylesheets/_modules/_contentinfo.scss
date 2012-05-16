@@ -21,6 +21,9 @@
     .colophon { @include span-columns(7 omega,10); }
     .license { @include span-columns(3,10); }
   }
+  .caps {
+    font-family: $caps-stack;
+  }
 }
 
 .colophon {

@@ -1,0 +1,22 @@
+//-----------------------------------------------------------------------------
+// Secondary Content
+
+.secondary {
+  @include sans;
+
+  h2 { 
+    @extend .caps;
+    a { color: $susy-bodycopy-dark-5; }
+    ~ h2, ~ h3 { @include leader(1); }
+  }
+  h2, h3 { font-weight: bold; }
+}
+
+.version {
+  @include leader(1.25);
+  @include trailer(1.25);
+  font-family: $caps-stack;
+  color: $susy-bodycopy-dark-10;
+  text-transform: lowercase;
+  span { color: $susy-bodycopy; }
+}

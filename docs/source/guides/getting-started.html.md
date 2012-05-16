@@ -2,7 +2,7 @@
 title: Getting Started
 class: guide
 side_content: >
-  <p class="version">Version 1.0.rc.0</p>
+  <p class="version">Version <span>1.0.rc.0</span></p>
   <h2><a href="#start-install">Installation</a></h2>
   <ul>
     <li><a href="#start-compass">Compass</a></li>

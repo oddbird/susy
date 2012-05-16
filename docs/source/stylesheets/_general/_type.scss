@@ -1,5 +1,11 @@
+// ---------------------------------------------------------------------------
+// Basic Typography
+
 .type {
   @include sans;
+
+  // -------------------------------------------------------------------------
+  // Headings
 
   h2 {
     @extend .caps;
@@ -77,14 +83,25 @@
     }
   }
 
+  // -------------------------------------------------------------------------
+  // Block
+
   ul, ol, p { @include trailer; }
   li { @include trailer(.5); }
   ul {
     list-style: circle;
   }
+
+  // -------------------------------------------------------------------------
+  // Inline
+
   strong, code { 
     font-weight: bold; 
     color: $susy-bodycopy-dark-5;
   }
   em { font-style: italic; }
+
+  a[href^="http"] {
+    @include font-icon($icon-external-link,after){ font-size: .75em; }
+  }
 }

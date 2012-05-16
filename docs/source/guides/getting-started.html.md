@@ -1,6 +1,8 @@
 ---
 title: Getting Started
+class: guide
 side_content: >
+  <p class="version">Version 1.0.rc.0</p>
   <h2><a href="#start-install">Installation</a></h2>
   <ul>
     <li><a href="#start-compass">Compass</a></li>
@@ -14,8 +16,6 @@ side_content: >
     <li><a href="#start-advanced">Advanced</a></li>
   </ul>
 ---
-
-_Version 1.0.rc.0_
 
 ## <a href="#start-install" id="start-install">Installation</a>
 

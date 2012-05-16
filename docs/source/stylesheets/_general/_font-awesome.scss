@@ -22,9 +22,9 @@
 
     */
 
-/* Imports */
+// ---------------------------------------------------------------------------
+// Setup
 
-@import "compass/css3/font-face";
 $font_path: "fontawesome-webfont" !default;
 
 @include font-face(
@@ -40,7 +40,8 @@ $font_path: "fontawesome-webfont" !default;
   normal
 );
 
-/* Mixins */
+// ---------------------------------------------------------------------------
+// Mixins
 
 @mixin font-icon(
   $icon: false,
@@ -67,11 +68,15 @@ $font_path: "fontawesome-webfont" !default;
   @else { content: $icon; }
 }
 
-/* Classes */
+// ---------------------------------------------------------------------------
+// Class
 
 .icon {
   @include font-icon {};
 }
+
+// ---------------------------------------------------------------------------
+// Variables
 
 //  Font Awesome uses the Unicode Private Use Area (PUA) to ensure screen
 //  readers do not read off random characters that represent icons

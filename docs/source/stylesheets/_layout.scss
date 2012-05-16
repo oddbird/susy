@@ -17,10 +17,10 @@
 }
 
 [role="main"] {
-  @extend .type;
   @include at-breakpoint($break) {
     @include pad(1,1);
   }
+  .sites-using-susy & { @extend .type; }
 }
 
 [role="contentinfo"] {
@@ -29,7 +29,8 @@
 
 //Exceptions
 
-.guides_reference, .guides_getting-started, .tutorial { 
+.guides, .tutorial {   
+  [role="main"] { @extend .type; }
   .secondary { display: none; }
 
   @include at-breakpoint($break) {

@@ -16,9 +16,18 @@
       color: rgba($susy-bodycopy,.75);
       &[href*='github'] { @include font-icon-image($icon-github-sign); }
       &[href*='twitter'] { @include font-icon-image($icon-twitter-sign); }
-      &[href*='getting-started'] { @include font-icon-image($icon-off); }
-      &[href*='reference'] { @include font-icon-image($icon-list); }
-      &[href*='sites-using-susy'] { @include font-icon-image($icon-external-link); }
+      &[href*='getting-started'] { 
+        @include font-icon-image($icon-off); 
+        .guides_getting-started &, .tutorial & { color: $susy-bodycopy-dark-10; }
+      }
+      &[href*='reference'] { 
+        @include font-icon-image($icon-list); 
+        .guides_reference & { color: $susy-bodycopy-dark-10; }
+      }
+      &[href*='sites-using-susy'] { 
+        @include font-icon-image($icon-picture); 
+        .sites-using-susy & { color: $susy-bodycopy-dark-10; }
+      }
     }
     #{$focus} {color: $susy-highlight-dark-20; }
   }

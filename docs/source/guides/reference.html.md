@@ -1,6 +1,8 @@
 ---
 title: Reference
+class: guide
 side_content: >
+  <p class="version">Version 1.0.rc.0</p>
   <h2><a href="#ref-basic">Basic Usage</a></h2>
   <h3><a href="#ref-basic-settings">Basic Settings</a></h3>
   <ul>
@@ -65,8 +67,6 @@ side_content: >
     <li><a href="#ref-browser-support">$legacy-support-for-...</a></li>
   </ul>
 ---
-
-_Version 1.0.rc.0_
 
 ## <a href="#ref-basic" id="ref-basic">Basic Usage</a>
 

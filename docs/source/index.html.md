@@ -12,7 +12,7 @@ so they respond how and when and where you want them to.
 We don't design your site or dictate your markup,
 we just do the math and get out of your way.
 
-# [Version 1.0.rc.0](https://rubygems.org/gems/susy)
+## [Version 1.0.rc.0](https://rubygems.org/gems/susy)
 Requires [Compass 0.12.2][compass gem] (release candidate)
 and [Sass 3.2][sass gem] (alpha)
 
@@ -22,7 +22,7 @@ and [Sass 3.2][sass gem] (alpha)
 - [What's changed](https://github.com/ericam/susy/blob/master/CHANGELOG.mkdn)
 - [Upgrade from 0.9](https://github.com/ericam/susy/blob/master/CHANGELOG.mkdn#upgrade)
 
-# [Version 0.9 (deprecated)](https://rubygems.org/gems/compass-susy-plugin)
+## [Version 0.9 (deprecated)](https://rubygems.org/gems/compass-susy-plugin)
 
 Requires [Compass 0.11.1][compass gem]
     

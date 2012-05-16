@@ -3,6 +3,7 @@
 
 .page {
   @include container;
+  position: relative;
 
   :target & { 
     @include susy-grid-background(); 

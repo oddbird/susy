@@ -10,7 +10,7 @@
 
 .on, .off {
   a {
-    &:link, &:visited {
+    #{$link} {
       @extend .icon;
       @include font-icon($icon-align-justify) { @include rotate(90deg); }
       @include hide-text;
@@ -19,9 +19,9 @@
       width: 1.5em;
       height: 1.5em;
       position: relative;
-      color: $susy-bodycopy-dark-20;
+      color: $susy-background-dark-20;
     }
-    &:hover, &:focus, &:active {
+    #{$focus} {
       color: $susy-bodycopy;
     }
     &::before {
@@ -33,7 +33,7 @@
   }
 }
 .off a { 
-  &:link, &:visited {
+  #{$link} {
     display: none; 
     color: $susy-highlight;
   }

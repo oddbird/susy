@@ -296,7 +296,7 @@ Shortcut to add empty space as margin before and after an element.
   Default: `$from-direction`.
 
 #### <a href="#ref-push" id="ref-push">Push</a>
-Identical to `pre`.
+Identical to [pre](#ref-pre).
 
     :::scss
     // push(<$columns> [, <$context>, <$from>])
@@ -333,7 +333,8 @@ Where a mixin returns property/value pairs, functions return simple values
 that you can put where you want, and use for advanced math.
 
 #### <a href="#ref-columns" id="ref-columns">Columns</a>
-Similar to `span-columns` mixin, but returns the math-ready `%` multiplier.
+Similar to [span-columns](#ref-span-columns) mixin, 
+but returns the math-ready `%` multiplier.
 
     :::scss
     // columns(<$columns> [, <$context>])

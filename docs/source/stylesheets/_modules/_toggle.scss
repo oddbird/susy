@@ -2,10 +2,11 @@
 // Grid Toggle
 
 .grid-toggle {
-  // display: none;
+  display: none;
   position: absolute;
   top: .5em;
   right: .5em;
+  .target & { display: block; }
 }
 
 .on, .off {

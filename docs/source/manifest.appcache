@@ -1,5 +1,5 @@
 CACHE MANIFEST
-# version 0.1
+# version 0.2
 
 CACHE:
 index.html
@@ -10,3 +10,13 @@ stylesheets/site.css
 javascripts/modernizr-2.5.3.min.js
 javascripts/modernizr.selectors.js
 javascripts/viewport.js
+fonts/fontawesome-webfont.woff
+fonts/fontawesome-webfont.svg
+fonts/FranklinGothic-Book-webfont.woff
+fonts/FranklinGothic-Book-webfont.svg
+fonts/FranklinGothic-Cd-webfont.woff
+fonts/FranklinGothic-Cd-webfont.svg
+fonts/CenturyOldStyle-Regular-webfont.woff
+fonts/CenturyOldStyle-Regular-webfont.svg
+fonts/CenturyOldStyleCaps-Regular-webfont.woff
+fonts/CenturyOldStyleCaps-Regular-webfont.svg

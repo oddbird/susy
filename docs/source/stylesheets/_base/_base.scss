@@ -4,6 +4,19 @@
 @import "compass";
 @import "susy";
 
+//-----------------------------------------------------------------------------
+// Grid Settings
+
+$total-columns: 4;
+$column-width: 5em;
+$gutter-width: 1em;
+$grid-padding: $gutter-width;
+
+$break: 40em 10 lt-ie9;
+
+//-----------------------------------------------------------------------------
+// Other Settings
+
 @import "colors";
 @import "size";
 @import "type";

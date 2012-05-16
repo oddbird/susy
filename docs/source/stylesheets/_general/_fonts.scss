@@ -17,9 +17,10 @@ $mono-stack : Consolas, Menlo, Monaco, "Lucida Console", "Liberation Mono", "Dej
 @mixin sans { font-family: $sans-stack; }
 @mixin cond { font-family: $cond-stack; }
 
-@mixin caps {
-  font-family: $caps-stack;
+@mixin caps($serif: false) {
+  @if $serif {
+    font-family: $caps-stack;
+  }
   text-transform: uppercase;
-  letter-spacing: .1em;
 }
 

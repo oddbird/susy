@@ -52,3 +52,25 @@
     @include adjust-font-size-to($medpx);
   }
 }
+
+.why {
+  @include adjust-font-size-to($medpx);
+  @include h-borders(3px,1,$medpx);
+  @include trailer(1,$medpx);
+  clear: both;
+  border-color: $susy-highlight;
+  h2 { @include adjust-font-size-to($largepx,1.5,$medpx); }
+  @include at-breakpoint($break) {
+    @include trailer(2,$medpx);
+    @include pad(2,2);
+    position: relative;
+    @include font-icon($icon-question-sign) {
+      @include adjust-font-size-to($xxxlargepx);
+      position: absolute;
+      left: 0;
+      top: rhythm(-.375,$xxxlargepx);
+      color: $susy-background-dark-5;
+      z-index: -1;
+    }
+  }
+}

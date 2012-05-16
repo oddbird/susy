@@ -46,12 +46,12 @@
 <section class="why">
   <h2>Why is 1.0 a release candidate?</h2>
   <p>
-    Susy 1.0 is stable and tested, all the features are in,
-    and we're ready to launch. 
-    But our 1.0 depends on unreleased Compass and Sass features.
+    Susy 1.0 is stable, tested, <span class="amp">&</span> feature complete;
+    but our launch depends on unreleased Compass and Sass features.
     We think those features are stable as well,
-    and we'll do what it takes to stay on top of any changes they make,
-    but we can't officially land until they do.
+    and you should <a href="guides/getting-started/">get started</a> 
+    with Susy 1.0 RC right now. 
+    We'll make sure the final upgrade is as painless as possible.
   </p>
 </section>
 <figure class="ag-test">

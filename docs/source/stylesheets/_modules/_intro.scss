@@ -60,15 +60,22 @@
   clear: both;
   border-color: $susy-highlight;
   h2 { @include adjust-font-size-to($largepx,1.5,$medpx); }
+  a {
+    #{$link} { 
+      font-family: $caps-stack;
+      text-transform: uppercase; 
+    }
+  }
   @include at-breakpoint($break) {
     @include trailer(2,$medpx);
+    @include h-borders(3px,1.5,$medpx);
     @include pad(2,2);
     position: relative;
     @include font-icon($icon-question-sign) {
       @include adjust-font-size-to($xxxlargepx);
       position: absolute;
       left: 0;
-      top: rhythm(-.375,$xxxlargepx);
+      top: rhythm(-.5,$xxxlargepx);
       color: $susy-background-dark-5;
       z-index: -1;
     }

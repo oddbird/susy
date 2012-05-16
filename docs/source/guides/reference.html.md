@@ -127,8 +127,8 @@ Establish the outer grid-containing element.
     .page { @include container; }
 
 - `<$media-layout>`: Optional media-layout shortcuts 
-  (see 'Responsive Grids' below).<br />
-  **Default:** `$total-columns`.
+  (see 'Responsive Grids' below).
+  Default: `$total-columns`.
 
 #### <a href="#ref-span-columns" id="ref-span-columns">Span Columns</a>
 Align an element to the Susy Grid.
@@ -140,10 +140,10 @@ Align an element to the Susy Grid.
 
 - `<$columns>`: The number of _Columns_ to span.
   - `<omega>`: Optional flag to signal the last element in a row.
-- `<$context>`: Current nesting _Context_.<br />
-  **Default:** `$total-columns`.
-- `<$from>`: The origin direction of your document flow.<br />
-  **Default:** `$from-direction`.
+- `<$context>`: Current nesting _Context_.
+  Default: `$total-columns`.
+- `<$from>`: The origin direction of your document flow.
+  Default: `$from-direction`.
 
 #### <a href="#ref-omega" id="ref-omega">Omega</a>
 Apply to any omega element as an override.
@@ -155,8 +155,8 @@ Apply to any omega element as an override.
       &:nth-child(3n) { @include omega; } // every third image completes a row.
     }
 
-- `<$from>`: The origin direction of your document flow.<br />
-  **Default:** `$from-direction`.
+- `<$from>`: The origin direction of your document flow.
+  Default: `$from-direction`.
 
 
 ## <a href="#ref-responsive" id="ref-responsive">Responsive Grids</a>
@@ -192,8 +192,8 @@ At a given min- or max-width Breakpoint, use a given Layout.
     }
 
 - `<$media-layout>`: The _Breakpoint/Layout_ combo to use (see above).
-- `<$font-size>`: When using EMs for your grid, the font size is important.<br />
-  **Default:** `$base-font-size`.
+- `<$font-size>`: When using EMs for your grid, the font size is important.
+  Default: `$base-font-size`.
 - `<@content>`: Nested `@content` block will use the given _Layout_.
 
 #### <a href="#ref-layout" id="ref-layout">Layout</a>
@@ -221,10 +221,10 @@ Add Columns of empty space as `padding` before an element.
     .box { @include prefix(3); }
 
 - `<$columns>`: The number of _Columns_ to be added as `padding` before.
-- `<$context>`: The _Context_.<br />
-  **Default:** `$total-columns`.
-- `<$from>`: The origin direction of your document flow.<br />
-  **Default:** `$from-direction`.
+- `<$context>`: The _Context_.
+  Default: `$total-columns`.
+- `<$from>`: The origin direction of your document flow.
+  Default: `$from-direction`.
 
 #### <a href="#ref-suffix" id="ref-suffix">Suffix</a>
 Add columns of empty space as padding after an element.
@@ -234,10 +234,10 @@ Add columns of empty space as padding after an element.
     .box { @include suffix(2); }
 
 - `<$columns>`: The number of _Columns_ to be added as `padding` after.
-- `<$context>`: The _Context_.<br />
-  **Default:** `$total-columns`.
-- `<$from>`: The origin direction of your document flow.<br />
-  **Default:** `$from-direction`.
+- `<$context>`: The _Context_.
+  Default: `$total-columns`.
+- `<$from>`: The origin direction of your document flow.
+  Default: `$from-direction`.
 
 #### <a href="#ref-pad" id="ref-pad">Pad</a>
 Shortcut for adding both Prefix and Suffix `padding`.
@@ -248,10 +248,10 @@ Shortcut for adding both Prefix and Suffix `padding`.
 
 - `<$prefix>`: The number of _Columns_ to be added as `padding` before.
 - `<$suffix>`: The number of _Columns_ to be added as `padding` after.
-- `<$context>`: The _Context_.<br />
-  **Default:** `$total-columns`.
-- `<$from>`: The origin direction of your document flow.<br />
-  **Default:** `$from-direction`.
+- `<$context>`: The _Context_.
+  Default: `$total-columns`.
+- `<$from>`: The origin direction of your document flow.
+  Default: `$from-direction`.
 
 ### <a href="#ref-helper-margin" id="ref-helper-margin">Margin Mixins</a>
 
@@ -263,10 +263,10 @@ Add columns of empty space as margin before an element.
     .box { @include pre(2); }
 
 - `<$columns>`: The number of _Columns_ to be added as `margin` before.
-- `<$context>`: The _Context_.<br />
-  **Default:** `$total-columns`.
-- `<$from>`: The origin direction of your document flow.<br />
-  **Default:** `$from-direction`.
+- `<$context>`: The _Context_.
+  Default: `$total-columns`.
+- `<$from>`: The origin direction of your document flow.
+  Default: `$from-direction`.
 
 #### <a href="#ref-post" id="ref-post">Post</a>
 Add columns of empty space as margin after an element.
@@ -276,10 +276,10 @@ Add columns of empty space as margin after an element.
     .box { @include post(3); }
 
 - `<$columns>`: The number of _Columns_ to be added as `margin` after.
-- `<$context>`: The _Context_.<br />
-  **Default:** `$total-columns`.
-- `<$from>`: The origin direction of your document flow.<br /> 
-  **Default:** `$from-direction`.
+- `<$context>`: The _Context_.
+  Default: `$total-columns`.
+- `<$from>`: The origin direction of your document flow. 
+  Default: `$from-direction`.
 
 #### <a href="#ref-squish" id="ref-squish">Squish</a>
 Shortcut to add empty space as margin before and after an element.
@@ -290,10 +290,10 @@ Shortcut to add empty space as margin before and after an element.
 
 - `<$pre>`: The number of _Columns_ to be added as `margin` before.
 - `<$post>`: The number of _Columns_ to be added as `margin` after.
-- `<$context>`: The _Context_.<br /> 
-  **Default:** `$total-columns`.
-- `<$from>`: The origin direction of your document flow.<br /> 
-  **Default:** `$from-direction`.
+- `<$context>`: The _Context_. 
+  Default: `$total-columns`.
+- `<$from>`: The origin direction of your document flow. 
+  Default: `$from-direction`.
 
 #### <a href="#ref-push" id="ref-push">Push</a>
 Identical to `pre`.
@@ -310,10 +310,10 @@ Add negative margins before an element, to pull it against the flow.
     .box { @include pull(2); }
 
 - `<$columns>`: The number of _Columns_ to be subtracted as `margin` before.
-- `<$context>`: The _Context_.<br />
-  **Default:** `$total-columns`.
-- `<$from>`: The origin direction of your document flow.<br />
-  **Default:** `$from-direction`.
+- `<$context>`: The _Context_.
+  Default: `$total-columns`.
+- `<$from>`: The origin direction of your document flow.
+  Default: `$from-direction`.
 
 ### <a href="#ref-helper-other" id="ref-helper-other">Other Mixins</a>
 
@@ -340,8 +340,8 @@ Similar to `span-columns` mixin, but returns the math-ready `%` multiplier.
     .item { width: columns(3,6); }
 
 - `<$columns>`: The number of _Columns_ to span, 
-- `<$context>`: The _Context_.<br />
-  **Default:** `$total-columns`.
+- `<$context>`: The _Context_.
+  Default: `$total-columns`.
 
 #### <a href="#ref-gutter" id="ref-gutter">Gutter</a>
 The `%` width of one gutter in any given context.
@@ -350,8 +350,8 @@ The `%` width of one gutter in any given context.
     // gutter([<$context>])
     .item { margin-right: gutter(6) + columns(3,6); }
 
-- `<$context>`: The _Context_.<br />
-  **Default:** `$total-columns`.
+- `<$context>`: The _Context_.
+  Default: `$total-columns`.
 
 #### <a href="#ref-space" id="ref-space">Space</a>
 Total `%` space taken by Columns, including internal AND external gutters.
@@ -361,8 +361,8 @@ Total `%` space taken by Columns, including internal AND external gutters.
     .item { margin-right: space(3,6); }
 
 - `<$columns>`: The number of _Columns_ to span, 
-- `<$context>`: The _Context_.<br />
-  **Default:** `$total-columns`.
+- `<$context>`: The _Context_.
+  Default: `$total-columns`.
 
 ### <a href="#ref-container-override" id="ref-container-override">Container Override Settings</a>
 

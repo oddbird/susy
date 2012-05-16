@@ -12,6 +12,10 @@
     @include border-radius(.25em);
     min-height: rhythm(3); 
   }
+  figcaption b { 
+    font-size: 1em;
+    font-weight: bold; 
+  }
   b {
     @include adjust-font-size-to($smallpx);
     display: block;

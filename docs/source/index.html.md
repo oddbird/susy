@@ -1,7 +1,7 @@
 <div class="intro">
   <p>
     The web is a responsive place, 
-    from your lithe & lively development process 
+    from your lithe <span class="amp">&</span> lively development process 
     to your end-user's super-tablet-multi-magic-lap-phone. 
     You need grids that are powerful yet custom, 
     reliable yet responsive.

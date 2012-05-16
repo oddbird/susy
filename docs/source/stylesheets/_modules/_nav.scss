@@ -1,0 +1,29 @@
+//-----------------------------------------------------------------------------
+// Site Nav
+
+[role="navigation"] {
+  @include trailer(1);
+  background: rgba($base2,.5);
+  font-style: italic;
+
+  ul { @include inline-block-list; }
+
+  a { 
+    #{$link} {
+      @extend .icon;
+      display: block;
+      padding: rhythm(.25) rhythm(.5); 
+      color: rgba($susy-bodycopy,.75);
+      &[href*='github'] { @include font-icon-image($icon-github-sign); }
+      &[href*='twitter'] { @include font-icon-image($icon-twitter-sign); }
+      &[href*='getting-started'] { @include font-icon-image($icon-off); }
+      &[href*='reference'] { @include font-icon-image($icon-list); }
+      &[href*='sites-using-susy'] { @include font-icon-image($icon-external-link); }
+    }
+    #{$focus} {color: $susy-highlight-dark-20; }
+  }
+
+  @include at-breakpoint($break) {
+    @include trailer(2);
+  }
+}

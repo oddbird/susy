@@ -10,18 +10,23 @@
 
   div { 
     @include border-radius(.25em);
-    min-height: rhythm(3); 
+    min-height: rhythm(4); 
   }
-  figcaption b { 
+  figcaption p { 
     font-size: 1em;
     font-weight: bold; 
   }
-  b {
+  p {
     @include adjust-font-size-to($smallpx);
     display: block;
     padding: rhythm(.5,$smallpx) rhythm(.25,$smallpx);
     color: $susy-bodycopy-dark-20;
     text-align: center;
+  }
+  strong {
+    display: block;
+    text-transform: uppercase;
+    font-weight: bold;
   }
 
   // color blocks
@@ -32,8 +37,8 @@
   .ag6 { background: lighten($orange,25); }
   .ag10 { background: lighten($magenta,25); }
 
-  .ag1, .ag3 { min-height: rhythm(13); }
-  .ag6 { min-height: rhythm(8); }
+  .ag1, .ag3 { min-height: rhythm(18); }
+  .ag6 { min-height: rhythm(11); }
 
   .ag1 { @include span-columns(2,10); }
   .ag2 { @include span-columns(6,10); }

@@ -56,26 +56,26 @@
 </section>
 <figure class="ag-test">
   <figcaption>
-    <b>10-column <a href="http://oocss.org/grids_docs.html">complex nested grid AG test</a></b>
+    <p>10-column <a href="http://oocss.org/grids_docs.html">complex nested grid AG test</a></p>
   </figcaption>
-  <div class="ag1"><b>2 of 10</b></div>
+  <div class="ag1"><p><strong>ag1</strong> 2 of 10</p></div>
   <div class="ag2">
-    <b>6 of 10</b>
-    <div class="ag4"><b>3 of 6</b></div>
-    <div class="ag5"><b>3 of 6 (omega)</b></div>
-    <div class="ag6"><b>2 of 6</b></div>
+    <p><strong>ag2</strong> 6 of 10</p>
+    <div class="ag4"><p><strong>ag4</strong> 3 of 6</p></div>
+    <div class="ag5"><p><strong>ag5</strong> 3 of 6 (omega)</p></div>
+    <div class="ag6"><p><strong>ag6</strong> 2 of 6</p></div>
     <div class="ag7">
-      <b>4 of 6 (omega)</b>
-      <div class="ag8"><b>2 of 4</b></div>
-      <div class="ag9"><b>2 of 4 (omega)</b></div>
-      <div class="ag10"><b>auto</b></div>
+      <p><strong>ag7</strong> 4 of 6 (omega)</p>
+      <div class="ag8"><p><strong>ag8</strong> 2 of 4</p></div>
+      <div class="ag9"><p><strong>ag9</strong> 2 of 4 (omega)</p></div>
+      <div class="ag10"><p><strong>ag10</strong> auto</p></div>
     </div>
   </div>
-  <div class="ag3"><b>2 of 10 (omega)</b></div>
+  <div class="ag3"><p><strong>ag3</strong> 2 of 10 (omega)</p></div>
 </figure>
 
     :::scss
-    // The AG Layout, brought to you by Susy:
+    // Complex AG grid, brought to you by Susy:
     .ag1 { @include span-columns(2,10); }
     .ag2 { @include span-columns(6,10); }
     .ag3 { @include span-columns(2 omega, 10); }

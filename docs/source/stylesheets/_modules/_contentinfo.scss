@@ -5,16 +5,16 @@
   @include clearfix;
   @include text-shadow($susy-highlight-dark-10 0 1px 0);
   background: $susy-highlight;
-  color: rgba($susy-background,.875);
+  color: $susy-background-dark-5;
   margin: 0 0 - $grid-padding;
   padding: rhythm(1) $grid-padding;
   a {
     #{$link} {
       font-family: $caps-stack;
-      color: $susy-background-dark-10;
+      color: $susy-background-dark-20;
     }
     #{$focus} {
-      color: $susy-background-dark-5;
+      color: $susy-background;
     }
   }
   @include at-breakpoint($break) {

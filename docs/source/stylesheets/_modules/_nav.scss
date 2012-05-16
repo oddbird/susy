@@ -3,6 +3,7 @@
 
 [role="navigation"] {
   @include trailer(1);
+  background: $base2;
   background: rgba($base2,.5);
   font-style: italic;
 
@@ -13,7 +14,7 @@
       @extend .icon;
       display: block;
       padding: rhythm(.25) rhythm(.5); 
-      color: rgba($susy-bodycopy,.75);
+      color: $susy-bodycopy;
       &[href*='github'] { @include font-icon-image($icon-github-sign); }
       &[href*='twitter'] { @include font-icon-image($icon-twitter-sign); }
       &[href*='getting-started'] { 

@@ -1,0 +1,38 @@
+//-----------------------------------------------------------------------------
+// Site Banner
+
+[role="contentinfo"] {
+  @include clearfix;
+  @include text-shadow($susy-highlight-dark-10 0 1px 0);
+  background: $susy-highlight;
+  color: rgba($susy-background,.875);
+  margin: 0 0 - $grid-padding;
+  padding: rhythm(1) $grid-padding;
+  a {
+    #{$link} {
+      font-family: $caps-stack;
+      color: $susy-background-dark-10;
+    }
+    #{$focus} {
+      color: $susy-background-dark-5;
+    }
+  }
+  @include at-breakpoint($break) {
+    .colophon { @include span-columns(7 omega,10); }
+    .license { @include span-columns(3,10); }
+  }
+}
+
+.colophon {
+  p { @include trailer; }
+}
+
+.license {
+  font-family: $caps-stack;
+  text-transform: lowercase;
+  a {
+    #{$link} {
+      white-space: nowrap;
+    }
+  }
+}

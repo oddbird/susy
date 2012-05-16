@@ -46,7 +46,7 @@
 <section class="why">
   <h2>Why is 1.0 a release candidate?</h2>
   <p>
-    The code is stable and tested, all the features are in,
+    Susy 1.0 is stable and tested, all the features are in,
     and we're ready to launch. 
     But our 1.0 depends on unreleased Compass and Sass features.
     We think those features are stable as well,

@@ -1,147 +1,162 @@
-<!doctype html>
-<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
-<!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
-<head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-
-	<title>Susy</title>
-	<meta name="description" content="Simple, dynamic, & un-obtrusive grids.">
-	<meta name="author" content="Eric A. Meyer">
-
-	<meta name="viewport" content="width=device-width">
-
-	<link rel="stylesheet" href="css/style.css">
-
-	<script src="js/libs/modernizr-2.5.3.min.js"></script>
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]--><!--[if IE 7]> <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]--><!--[if IE 8]> <html class="no-js lt-ie9" lang="en"> <![endif]--><!--[if gt IE 8]> ><! <![endif]--><html class="no-js" lang="en">
+<!-- <![endif] --><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+<title>Susy: Responsive grids for Compass</title>
+<meta content="Susy: Semantic grids with a responsive touch." name="description">
+<meta content="width=device-width" name="viewport">
+<link type="text/css" media="screen" rel="stylesheet" href="stylesheets/site.css">
+<script type="text/javascript" src="javascripts/modernizr-2.5.3.min.js"></script>
 </head>
-<body>
-	<header role="banner">
-		<h1><a href="/" rel="home" class="logo"><b>S</b><i>usy</i></a></h1>
-    <h2>Manage the chaos.</h2>
-	</header>
+<body class="index" id="susy-oddbird-net">
+    <div class="page">
+      <header role="banner"><h1>
+          <a class="home" href="/"><b>S</b><span>usy</span></a>
+        </h1>
+        <h2>Responsive grids for <a href="http://www.compass-style.org/">Compass</a>.</h2>
+      </header><nav role="navigation"><ul>
+<li>
+            <a href="/guides/getting-started/">Getting Started</a>
+          </li>
+          <li>
+            <a href="/guides/reference/">Reference</a>
+          </li>
+          <li>
+            <a href="/sites-using-susy/">Sites using Susy</a>
+          </li>
+          <li>
+            <a href="https://github.com/ericam/susy">Contribute on Github</a>
+          </li>
+          <li>
+            <a href="http://twitter.com/compasssusy/">Follow on Twitter</a>
+          </li>
+        </ul></nav><section role="main"><p></p>
+<div class="intro">
+          <p>
+            The web is a responsive place, 
+            from your lithe &amp; lively development process 
+            to your end-user's super-tablet-multi-magic-lap-phone. 
+            You need grids that are powerful yet custom, 
+            reliable yet responsive.
+          </p>
+          <p>
+            Susy grids are fluid on the inside, 
+            ready to respond at any moment, 
+            but contained in the candy shell of your choice, 
+            so they respond how and when and where you want them to.
+          </p>
+          <p>
+            We don't design your site or dictate your markup,
+            we just do the math and get out of your way.
+          </p>
+        </div>
+        <section class="info"><div class="v1-0">
+            <h2>
+              <a href="https://rubygems.org/gems/susy">Version 1.0<i>.rc.0</i></a>
+            </h2>
+            <div class="highlight">
+              <pre>gem install susy --pre</pre>
+            </div>
+            <ul>
+<li><a href="https://github.com/ericam/susy/blob/master/CHANGELOG.mkdn">What's changed</a></li>
+              <li><a href="https://github.com/ericam/susy/blob/master/CHANGELOG.mkdn#upgrade">Upgrade</a></li>
+            </ul>
+</div>
+          <div class="v0-9">
+            <h2>
+              <a href="https://rubygems.org/gems/compass-susy-plugin">Version 0.9</a> (deprecated)
+            </h2>
+            <div class="highlight">
+              <pre>gem install compass-susy-plugin</pre>
+            </div>
+            <ul>
+<li><a href="https://gist.github.com/1163918">Reference</a></li>
+              <li><a href="https://gist.github.com/1163463">Tutorial</a></li>
+            </ul>
+</div>
+        </section><figure class="ag-test"><figcaption><b>10-column <a href="http://oocss.org/grids_docs.html">complex nested grid AG test</a></b>
+          </figcaption><div class="ag1"><b>2 of 10</b></div>
+          <div class="ag2">
+            <b>6 of 10</b>
+            <div class="ag4"><b>3 of 6</b></div>
+            <div class="ag5"><b>3 of 6 (omega)</b></div>
+            <div class="ag6"><b>2 of 6</b></div>
+            <div class="ag7">
+              <b>4 of 6 (omega)</b>
+              <div class="ag8"><b>2 of 4</b></div>
+              <div class="ag9"><b>2 of 4 (omega)</b></div>
+              <div class="ag10"><b>auto</b></div>
+            </div>
+          </div>
+          <div class="ag3"><b>2 of 10 (omega)</b></div>
+        </figure><div class="highlight">
+<pre><span class="c1">// The AG Layout, brought to you by Susy:</span>
+<span class="nc">.ag1</span> <span class="p">{</span> <span class="k">@include</span><span class="nd"> span-columns</span><span class="p">(</span><span class="mi">2</span><span class="o">,</span><span class="mi">10</span><span class="p">);</span> <span class="p">}</span>
+<span class="nc">.ag2</span> <span class="p">{</span> <span class="k">@include</span><span class="nd"> span-columns</span><span class="p">(</span><span class="mi">6</span><span class="o">,</span><span class="mi">10</span><span class="p">);</span> <span class="p">}</span>
+<span class="nc">.ag3</span> <span class="p">{</span> <span class="k">@include</span><span class="nd"> span-columns</span><span class="p">(</span><span class="mi">2</span> <span class="n">omega</span><span class="o">,</span> <span class="mi">10</span><span class="p">);</span> <span class="p">}</span>
+<span class="nc">.ag4</span> <span class="p">{</span> <span class="k">@include</span><span class="nd"> span-columns</span><span class="p">(</span><span class="mi">3</span><span class="o">,</span><span class="mi">6</span><span class="p">);</span> <span class="p">}</span>
+<span class="nc">.ag5</span> <span class="p">{</span> <span class="k">@include</span><span class="nd"> span-columns</span><span class="p">(</span><span class="mi">3</span> <span class="n">omega</span><span class="o">,</span><span class="mi">6</span><span class="p">);</span> <span class="p">}</span>
+<span class="nc">.ag6</span> <span class="p">{</span> <span class="k">@include</span><span class="nd"> span-columns</span><span class="p">(</span><span class="mi">2</span><span class="o">,</span><span class="mi">6</span><span class="p">);</span> <span class="p">}</span>
+<span class="nc">.ag7</span> <span class="p">{</span> <span class="k">@include</span><span class="nd"> span-columns</span><span class="p">(</span><span class="mi">4</span> <span class="n">omega</span><span class="o">,</span><span class="mi">6</span><span class="p">);</span> <span class="p">}</span>
+<span class="nc">.ag8</span> <span class="p">{</span> <span class="k">@include</span><span class="nd"> span-columns</span><span class="p">(</span><span class="mi">2</span><span class="o">,</span><span class="mi">4</span><span class="p">);</span> <span class="p">}</span>
+<span class="nc">.ag9</span> <span class="p">{</span> <span class="k">@include</span><span class="nd"> span-columns</span><span class="p">(</span><span class="mi">2</span> <span class="n">omega</span><span class="o">,</span><span class="mi">4</span><span class="p">);</span> <span class="p">}</span>
+<span class="nc">.ag10</span> <span class="p">{</span> <span class="na">clear</span><span class="o">:</span> <span class="no">both</span><span class="p">;</span> <span class="p">}</span>
+</pre>
+</div>
 
-	<nav>
-		<ul>
-			<li><a href="https://github.com/ericam/susy" title="source">Fork on Github</a></li>
-			<li><a href="https://github.com/ericam/susy/zipball/master">Download</a></li>
-			<li><a href="http://twitter.com/compasssusy/">Follow on Twitter</a></li>
-		</ul>
-	</nav>
-
-	<article role="main">
-		<section class="intro">
-			<h2>Off the beaten grid</h2>
-			<p>
-			  This is not another one-size-fits-all grid framework 
-			  that will make your sites look identical 
-			  and litter your markup with meaningless "col2of5" jargon. 
-			  Susy's not a framework, it's a&nbsp;power-tool.
-			</p>
-			<p>
-			  Stop assembling prefab houses, 
-			  and start designing your&nbsp;castle.
-			</p>
-		</section>
-
-		<div class="where">
-			<section class="v10">
-				<h2><a href="https://rubygems.org/gems/susy">Version 1.0<i>.alpha.</i>2</a></h2>
-				<p class="reqs">Requires Compass <span class="caps">0.12.2.rc.0</span></p>
-				<code>gem install <b>susy</b> <i>--pre</i></code>
-				<ul>
-					<li><a href="https://github.com/ericam/susy/blob/master/CHANGELOG.mkdn">Changelog</a></li>
-					<li><a href="https://github.com/ericam/susy/blob/master/docs/source/guides/getting-started.html.md">Tutorial</a></li>
-					<li><a href="https://github.com/ericam/susy/blob/master/docs/source/guides/reference.html.md#basic-usage">Reference</a></li>
-				</ul>
-			</section>
-
-			<section class="v09">
-				<h2><a href="https://rubygems.org/gems/compass-susy-plugin">Version 0.9</a></h2>
-				<p class="reqs">Requires Compass <span class="caps">0.11.1</span></p>
-				<code>gem install <b>compass-susy-plugin</b></code>
-				<ul>
-					<li><a href="https://gist.github.com/1163463">tutorial</a></li>
-					<li><a href="https://gist.github.com/1163918">reference</a></li>
-				</ul>
-			</section>
-		</div>
-
-		<section class="why fluid">
-			<h2>Melts in your mouth</h2>
-			<p>
-			  The web is a responsive place, 
-			  from your lithe <span class="amp">&</span> lively development process 
-			  to your end user's super-tablet-multi-magic-laptop-phone. 
-			  You need grids that are powerful, but custom. 
-			  Reliable, but&nbsp;responsive.
-			</p>
-			<p>
-			  Susy grids are fluid on the inside, 
-			  ready to respond at any moment, 
-			  but contained in the candy shell of your choice, 
-			  so they respond how and when and where you want them&nbsp;to.
-			</p>
-		</section>
-
-		<section class="why friendly">
-			<h2>Everywhere you want to be</h2>
-			<p>
-			  Susy is based on Natalie Downe's 
-			  <a href="http://www.slideshare.net/nataliedowne/css-systems-presentation">CSS Systems</a>, 
-			  made possible by <a href="http://sass-lang.com/">Sass</a>, 
-			  and made easy with <a href="http://compass-style.org/">Compass</a>.
-			  This site was built on 
-			  <a href="http://html5boilerplate.com/">HTML5 Boilerplate</a> with 
-			  <a href="http://ethanschoonover.com/solarized">Solarized</a> colors, a 
-			  <a href="https://github.com/scottkellum/modular-scale">Modular 
-			  	Scale</a>, and
-			  <a href="http://fortawesome.github.com/Font-Awesome/">Font 
-			  	Awesome</a>&nbsp;icons.
-			</p>
-			<p>
-			  Susy plays well with everyone, from 
-			  static sites to python/django, ruby/rails, and php/wordpress. 
-			  From <a href="http://smacss.com/">SMACSS</a> to 
-			  <a href="http://oocss.org/">OOCS</a>, 
-			  <a href="http://twitter.github.com/bootstrap/">Bootstrap</a>, 
-			  <a href="http://html5boilerplate.com/">HTML5 Boilerplate</a>, and
-			  <a href="http://stuffandnonsense.co.uk/projects/320andup/">320 and up</a>. 
-			  It even comes packaged as part of <a href="http://middlemanapp.com/">Middleman</a>, 
-			  to make your life&nbsp;easy.
-			</p>
-		</section>
-
-		<section class="why who">
-			<h2>Built with Susy</h2>
-			<ul>
-				<li><a href="http://leoburnett.co.uk">Leo Burnett</a></li>
-				<li><a href="http://renault.tv/">Renault TV</a></li>
-				<li><a href="http://satrya.me/demo/tiga/">Tiga Minimal WordPress Theme</a></li>
-				<li><a href="https://github.com/mozilla/moztrap">Mozilla MozTrap</a></li>
-				<li><a href="http://www.cassiegreer.com/">Cassie Greer</a></li>
-			</ul>
-		</section>
-
-	</article>
-	
-	<footer role="contentinfo">
-		<p>
-			Copyleft (cc) 2012 <a href="http://eric.andmeyer.com/">Eric A. Meyer</a><br />
-			An <a href="http://oddbird.net/">OddBird</a> project.
-		</p>
-	</footer>
-
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-<script>window.jQuery || document.write('<script src="js/libs/jquery-1.7.2.min.js"><\/script>')</script>
-
-<script>
-	var _gaq=[['_setAccount','UA-30497331-1'],['_trackPageview']];
-	(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
-	g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
-	s.parentNode.insertBefore(g,s)}(document,'script'));
-</script>
-
+      </section><footer role="contentinfo"><div class="colophon">
+          <p>
+            Susy is based on Natalie Downe's 
+            <a href="http://www.slideshare.net/nataliedowne/css-systems-presentation">CSS Systems</a>, 
+            made possible by <a href="http://www.sass-lang.com/">Sass</a>, 
+            and made easy with <a href="http://www.compass-style.org/">Compass</a>. 
+            You can use it anywhere,
+            from static sites to Django, Rails, Wordpress and more.
+            It even comes packaged as part of 
+            <a href="http://www.middlemanapp.com/">Middleman</a>, to make your life easy.
+          </p>
+          <p>
+            This site was built with <span class="caps">HTML5</span> and 
+            <span class="caps">CSS3</span> 
+            using <a href="http://www.middlemanapp.com/">Middleman</a>, 
+            <a href="http://www.compass-style.org/">Compass</a>, 
+            <a href="http://www.sass-lang.com/">Sass</a>,
+            <a href="/">Susy</a>,
+            <a href="http://html5boilerplate.com/">HTML5 Boilerplate</a>,
+            <a href="http://www.modernizr.com/">Modernizr</a>,
+            <a href="http://ethanschoonover.com/solarized">Solarized</a> colors,
+            <a href="http://pygments.org/">Pygments</a> syntax highlighting,
+            <a href="http://fortawesome.github.com/Font-Awesome/">Font Awesome</a> icons,
+            and Franklin Gothic with Century OldStyle from 
+            <a href="http://www.fontspring.com/">Fontspring</a>.
+          </p>
+        </div>
+        
+        <p class="license">
+          <a href="https://github.com/ericam/susy/blob/master/LICENSE.txt">
+            Copyright © 2012
+          </a>
+          <a href="http://eric.andmeyer.com/">Eric A. Meyer</a><br>
+          An <a href="http://oddbird.net/">OddBird</a> project.
+        </p>
+      </footer><ul class="grid-toggle">
+<li class="on">
+          <a href="#susy-oddbird-net">show grid</a>
+        </li>
+        <li class="off">
+          <a href="#">hide grid</a>
+        </li>
+      </ul>
+</div>
+    <script type="text/javascript">
+      //<![CDATA[
+        var _gaq=[['_setAccount','UA-30497331-1'],['_trackPageview']];
+        (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+        g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+        s.parentNode.insertBefore(g,s)}(document,'script'));
+      //]]>
+    </script>
 </body>
 </html>

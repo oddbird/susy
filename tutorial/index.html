@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]--><!--[if IE 7]> <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]--><!--[if IE 8]> <html class="no-js lt-ie9" lang="en"> <![endif]--><!--[if gt IE 8]> ><! <![endif]--><html class="no-js" lang="en">
+<!-- <![endif] --><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+<title>Susy: Getting Started</title>
+<meta content="Susy: Semantic grids with a responsive touch." name="description">
+<meta content="width=device-width" name="viewport">
+<link type="text/css" media="screen" rel="stylesheet" href="../stylesheets/site.css">
+<script type="text/javascript" src="../javascripts/modernizr-2.5.3.min.js"></script>
+</head>
+<body class="tutorial tutorial_index" id="susy-oddbird-net">
+    <div class="page">
+      <header role="banner"><h1>
+          <a class="home" href="/"><b>S</b><span>usy</span></a>
+        </h1>
+        <h2>Responsive grids for <a href="http://www.compass-style.org/">Compass</a>.</h2>
+      </header><nav role="navigation"><ul>
+<li>
+            <a href="/guides/getting-started/">Getting Started</a>
+          </li>
+          <li>
+            <a href="/guides/reference/">Reference</a>
+          </li>
+          <li>
+            <a href="/sites-using-susy/">Sites using Susy</a>
+          </li>
+          <li>
+            <a href="https://github.com/ericam/susy">Contribute on Github</a>
+          </li>
+          <li>
+            <a href="http://twitter.com/compasssusy/">Follow on Twitter</a>
+          </li>
+        </ul></nav><section role="main"><h2><a href="#start-install" id="start-install">Installation</a></h2>
+        
+        <div class="highlight">
+<pre><span class="c"># command line</span>
+sudo gem install susy
+</pre>
+</div>
+
+        
+        <h3><a href="#start-compass" id="start-compass">Compass</a></h3>
+        
+        <p>Create a new <a href="http://compass-style.org/">Compass</a> project:</p>
+        
+        <div class="highlight">
+<pre><span class="c"># command line</span>
+compass create &lt;project name&gt; -r susy -u susy
+</pre>
+</div>
+
+        
+        <p>Or update an existing <a href="http://compass-style.org/">Compass</a> project:</p>
+        
+        <div class="highlight">
+<pre><span class="c1"># config.rb</span>
+<span class="nb">require</span> <span class="s2">"susy"</span>
+</pre>
+</div>
+
+        
+        <h3><a href="#start-rails" id="start-rails">Rails 3.x</a></h3>
+        
+        <div class="highlight">
+<pre><span class="c1"># Gemfile</span>
+<span class="n">gem</span> <span class="s2">"susy"</span>
+</pre>
+</div>
+
+        
+        <p>And run:</p>
+        
+        <div class="highlight">
+<pre><span class="c"># command line</span>
+bundle install
+</pre>
+</div>
+
+        
+        <h2><a href="#start-usage" id="start-usage">Usage</a></h2>
+        
+        <div class="highlight">
+<pre><span class="k">@import</span> <span class="s2">"susy"</span><span class="p">;</span>
+</pre>
+</div>
+
+        
+        <h3><a href="#start-settings" id="start-settings">Settings</a></h3>
+        
+        <p>Set up your default grid values: total columns, column width, and gutter width.</p>
+        
+        <div class="highlight">
+<pre><span class="na">$total-columns</span><span class="o">  :</span> <span class="mi">12</span><span class="p">;</span>             <span class="c1">// a 12-column grid</span>
+<span class="na">$column-width</span><span class="o">   :</span> <span class="mi">4</span><span class="kt">em</span><span class="p">;</span>            <span class="c1">// each column is 4em wide</span>
+<span class="na">$gutter-width</span><span class="o">   :</span> <span class="mi">1</span><span class="kt">em</span><span class="p">;</span>            <span class="c1">// 1em gutters between columns</span>
+<span class="na">$grid-padding</span><span class="o">   :</span> <span class="nv">$gutter-width</span><span class="p">;</span>  <span class="c1">// grid-padding equal to gutters</span>
+</pre>
+</div>
+
+        
+        <h3><a href="#start-basic" id="start-basic">Basic Grids</a></h3>
+        
+        <p>The basic Susy grid is composed using two simple mixins:</p>
+        
+        <ul>
+<li>Use the <a href="../reference/#ref-container">container()</a> mixin to create your initial grid context.</li>
+        <li>Use the <a href="../reference/#ref-span-columns">span-columns()</a> mixin to declare 
+        the width of an element on the grid.</li>
+        </ul>
+<p>Here's a simple page layout:</p>
+        
+        <div class="highlight">
+<pre><span class="nc">.page</span> <span class="p">{</span> 
+  <span class="c1">// page acts as a container for our grid.</span>
+  <span class="k">@include</span><span class="nd"> container</span><span class="p">;</span> 
+
+  <span class="c1">// header and footer are full-width by default.</span>
+  <span class="nt">header</span><span class="o">,</span> <span class="nt">footer</span> <span class="p">{</span> <span class="na">clear</span><span class="o">:</span> <span class="no">both</span><span class="p">;</span> <span class="p">}</span>
+
+  <span class="c1">// nav spans 3 columns of total 12.</span>
+  <span class="nt">nav</span> <span class="p">{</span> <span class="k">@include</span><span class="nd"> span-columns</span><span class="p">(</span><span class="mi">3</span><span class="o">,</span><span class="mi">12</span><span class="p">);</span> <span class="p">}</span>
+
+  <span class="nc">.content</span> <span class="p">{</span> 
+    <span class="c1">// content spans the final (omega) 9 columns of 12.</span>
+    <span class="k">@include</span><span class="nd"> span-columns</span><span class="p">(</span><span class="mi">9</span> <span class="n">omega</span><span class="o">,</span><span class="mi">12</span><span class="p">);</span>
+
+    <span class="c1">// main content spans 6 of those 9 columns.</span>
+    <span class="nc">.main</span> <span class="p">{</span> <span class="k">@include</span><span class="nd"> span-columns</span><span class="p">(</span><span class="mi">6</span><span class="o">,</span><span class="mi">9</span><span class="p">);</span> <span class="p">}</span>
+
+    <span class="c1">// secondary content spans the final 3 (omega) of 9 columns.</span>
+    <span class="nc">.secondary</span> <span class="p">{</span> <span class="k">@include</span><span class="nd"> span-columns</span><span class="p">(</span><span class="mi">3</span> <span class="n">omega</span><span class="o">,</span><span class="mi">9</span><span class="p">);</span> <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre>
+</div>
+
+        
+        <h3><a href="#start-responsive" id="start-responsive">Responsive Grids</a></h3>
+        
+        <p>Responsive Susy grids allow you to change the number of columns in a layout 
+        at different window sizes, using @media-quries with min and max widths.
+        This requires one more mixin:</p>
+        
+        <ul>
+<li>Use <a href="../reference/#ref-at-breakpoint">at-breakpoint()</a> to set different layouts
+        at min- and max-width breakpoints.</li>
+        </ul>
+<p>Here's a mobile-first example:</p>
+        
+        <div class="highlight">
+<pre><span class="na">$total-columns</span><span class="o">:</span> <span class="mi">4</span><span class="p">;</span>
+
+<span class="nc">.page</span> <span class="p">{</span>
+  <span class="c1">// Establish our default 4-column grid container.</span>
+  <span class="k">@include</span><span class="nd"> container</span><span class="p">;</span>
+
+  <span class="c1">// Create a media-query breakpoint at a min-width of 30em</span>
+  <span class="c1">// And use a larger 8-column grid within that media-query.</span>
+  <span class="k">@include</span><span class="nd"> at-breakpoint</span><span class="p">(</span><span class="mi">30</span><span class="kt">em</span> <span class="mi">8</span><span class="p">)</span> <span class="p">{</span> 
+    <span class="c1">// Establish our new 8-column container.</span>
+    <span class="k">@include</span><span class="nd"> container</span><span class="p">;</span> 
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre>
+</div>
+
+        
+        <h3><a href="#start-advanced" id="start-advanced">Advanced</a></h3>
+        
+        <p>Susy is built to handle your unique markup, and any number of edge cases.
+        It includes the standard <a href="../reference/#ref-push">push()</a> and <a href="../reference/#ref-pull">pull()</a> mixins,
+        along with other useful functions and shortcuts,
+        supoprt for various grid styles, 
+        and even bi-directional grids for multi-lingual sites.
+        Check the <a href="../reference/">reference documentation</a> for details.</p>
+      </section><aside class="secondary"><p class="version">Version <span>1.0.rc.0</span></p> <h2><a href="#start-install">Installation</a></h2> <ul>
+<li><a href="#start-compass">Compass</a></li>
+          <li><a href="#start-rails">Rails 3.x</a></li>
+        </ul>
+<h2><a href="#start-usage">Usage</a></h2> <ul>
+<li><a href="#start-settings">Settings</a></li>
+          <li><a href="#start-basic">Basic Grids</a></li>
+          <li><a href="#start-responsive">Responsive Grids</a></li>
+          <li><a href="#start-advanced">Advanced</a></li>
+        </ul></aside><footer role="contentinfo"><div class="colophon">
+          <p>
+            Susy is based on Natalie Downe's 
+            <a href="http://www.slideshare.net/nataliedowne/css-systems-presentation">CSS Systems</a>, 
+            made possible by <a href="http://www.sass-lang.com/">Sass</a>, 
+            and made easy with <a href="http://www.compass-style.org/">Compass</a>. 
+            You can use it anywhere,
+            from static sites to Django, Rails, Wordpress and more.
+            It even comes packaged as part of 
+            <a href="http://www.middlemanapp.com/">Middleman</a>, to make your life easy.
+          </p>
+          <p>
+            This site was built with <span class="caps">HTML5</span> and 
+            <span class="caps">CSS3</span> 
+            using <a href="http://www.middlemanapp.com/">Middleman</a>, 
+            <a href="http://www.compass-style.org/">Compass</a>, 
+            <a href="http://www.sass-lang.com/">Sass</a>,
+            <a href="/">Susy</a>,
+            <a href="http://html5boilerplate.com/">HTML5 Boilerplate</a>,
+            <a href="http://www.modernizr.com/">Modernizr</a>,
+            <a href="http://ethanschoonover.com/solarized">Solarized</a> colors,
+            <a href="http://pygments.org/">Pygments</a> syntax highlighting,
+            <a href="http://fortawesome.github.com/Font-Awesome/">Font Awesome</a> icons,
+            and Franklin Gothic with Century OldStyle from 
+            <a href="http://www.fontspring.com/">Fontspring</a>.
+          </p>
+        </div>
+        
+        <p class="license">
+          <a href="https://github.com/ericam/susy/blob/master/LICENSE.txt">
+            Copyright © 2012
+          </a>
+          <a href="http://eric.andmeyer.com/">Eric A. Meyer</a><br>
+          An <a href="http://oddbird.net/">OddBird</a> project.
+        </p>
+      </footer><ul class="grid-toggle">
+<li class="on">
+          <a href="#susy-oddbird-net">show grid</a>
+        </li>
+        <li class="off">
+          <a href="#">hide grid</a>
+        </li>
+      </ul>
+</div>
+    <script type="text/javascript">
+      //<![CDATA[
+        var _gaq=[['_setAccount','UA-30497331-1'],['_trackPageview']];
+        (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+        g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+        s.parentNode.insertBefore(g,s)}(document,'script'));
+      //]]>
+    </script>
+</body>
+</html>

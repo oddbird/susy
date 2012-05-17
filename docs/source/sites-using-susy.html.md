@@ -12,5 +12,6 @@ title: Sites using Susy
 - [HR &hearts; PE](http://www.hrlovespe.com/)
 - [My job would be easier if...](http://www.myjobwouldbeeasierif.com/)
 - [Volunteer Center Northumberland](https://volunteeringnorthumberland.org.uk/)
+- [Rita Konig](http://ritakonig.com/)
 
 Have a site to add? [Let us know](http://twitter.com/compasssusy/) or [fork and add your site on GitHub](https://github.com/ericam/susy).

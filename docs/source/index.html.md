@@ -100,7 +100,7 @@
     for large projects.
   </p>
   <p>
-    <em>Susy provides the power-tools,
-    what you build is up to you.</em>
+    Susy provides the power-tools,
+    what you build is up to you.
   </p>
 </section>

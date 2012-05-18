@@ -90,6 +90,7 @@
 
 .andmore {
   @extend .serif-type;
+  p:last-child { font-style: italic; }
   @include at-breakpoint(50em 10) { 
     @include span-columns(5 omega,10); 
   }

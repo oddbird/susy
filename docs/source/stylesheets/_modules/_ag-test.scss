@@ -50,4 +50,10 @@
   .ag8 { @include span-columns(2,4); }
   .ag9 { @include span-columns(2 omega,4); }
   .ag10 { clear: both; }
+
+  + .highlight {
+    @include at-breakpoint(50em 10) { 
+      @include span-columns(5,10); 
+    }
+  }
 }

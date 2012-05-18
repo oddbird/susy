@@ -86,3 +86,21 @@
     .ag8 { @include span-columns(2,4); }
     .ag9 { @include span-columns(2 omega,4); }
     .ag10 { clear: both; }
+
+<section class="andmore">
+  <h2>We're just getting warmed up.</h2>
+  <p>
+    Quickly add media-query breakpoints for new layouts with
+    <a href="guides/reference/#ref-at-breakpoint">at-breakpoint</a>,
+    or create your own custom math 
+    using Susy's full array of 
+    <a href="guides/reference/#ref-helper">grid helpers</a>. 
+    Build a one-off site in minutes, 
+    or create your own scalable object-oriented grid library
+    for large projects.
+  </p>
+  <p>
+    <em>Susy provides the power-tools,
+    what you build is up to you.</em>
+  </p>
+</section>

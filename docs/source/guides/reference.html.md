@@ -16,6 +16,7 @@ side_content: >
     <li><a href="#ref-container">container()</a></li>
     <li><a href="#ref-span-columns">span-columns()</a></li>
     <li><a href="#ref-omega">omega()</a></li>
+    <li><a href="#ref-reset-columns">reset-columns()</a></li>
   </ul>
   <h2><a href="#ref-responsive">Responsive Grids</a></h2>
   <ul>
@@ -157,6 +158,15 @@ Apply to any omega element as an override.
 
 - `<$from>`: The origin direction of your document flow.
   Default: `$from-direction`.
+
+#### <a href="#ref-reset-columns" id="ref-reset-columns">Reset Columns</a>
+Resets an element to default block behaviour.
+
+    :::scss
+    // reset-columns([<$from>])
+    article { @include span-columns(6); }     // articles are 6 cols wide
+    #news article { @include reset-columns; } // but news span the full width
+                                              // of their container
 
 
 ## <a href="#ref-responsive" id="ref-responsive">Responsive Grids</a>

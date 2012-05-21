@@ -185,7 +185,20 @@
 <code>&lt;$from&gt;</code>: The origin direction of your document flow.
         Default: <code>$from-direction</code>.</li>
         </ul>
-<h2><a href="#ref-responsive" id="ref-responsive">Responsive Grids</a></h2>
+<h4><a href="#ref-reset-columns" id="ref-reset-columns">Reset Columns</a></h4>
+        
+        <p>Resets an element to default block behaviour.</p>
+        
+        <div class="highlight">
+<pre><span class="c1">// reset-columns([&lt;$from&gt;])</span>
+<span class="nt">article</span> <span class="p">{</span> <span class="k">@include</span><span class="nd"> span-columns</span><span class="p">(</span><span class="mi">6</span><span class="p">);</span> <span class="p">}</span>     <span class="c1">// articles are 6 cols wide</span>
+<span class="nn">#news</span> <span class="nt">article</span> <span class="p">{</span> <span class="k">@include</span><span class="nd"> reset-columns</span><span class="p">;</span> <span class="p">}</span> <span class="c1">// but news span the full width</span>
+                                          <span class="c1">// of their container</span>
+</pre>
+</div>
+
+        
+        <h2><a href="#ref-responsive" id="ref-responsive">Responsive Grids</a></h2>
         
         <ul>
 <li>
@@ -636,6 +649,7 @@
 <li><a href="#ref-container">container()</a></li>
           <li><a href="#ref-span-columns">span-columns()</a></li>
           <li><a href="#ref-omega">omega()</a></li>
+          <li><a href="#ref-reset-columns">reset-columns()</a></li>
         </ul>
 <h2><a href="#ref-responsive">Responsive Grids</a></h2> <ul>
 <li><a href="#ref-media-layouts">$media-layout</a></li>

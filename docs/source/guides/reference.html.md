@@ -168,6 +168,8 @@ Resets an element to default block behaviour.
     #news article { @include reset-columns; } // but news span the full width
                                               // of their container
 
+- `<$from>`: The origin direction of your document flow.
+  Default: `$from-direction`.
 
 ## <a href="#ref-responsive" id="ref-responsive">Responsive Grids</a>
 

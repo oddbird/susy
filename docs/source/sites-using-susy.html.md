@@ -4,6 +4,7 @@ title: Sites using Susy
 
 ## Sites Using Susy
 
+- [Ben Frain](http://benfrain.com/)
 - [Leo Burnett](http://leoburnett.co.uk/)
 - [Renault TV](http://renault.tv/)
 - [Tiga Minimal WordPress Theme](http://satrya.me/demo/tiga/)

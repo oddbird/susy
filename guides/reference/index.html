@@ -455,9 +455,12 @@ Default: <code>$from-direction</code>.</li>
 
 
 <ul>
-<li>
-<strong>Note:</strong> Some browsers have trouble with sub-pixel rounding on background images.
-Use it for checking general spacing, not pixel-exact alignment.</li>
+<li>If you are using the <code>&lt;body&gt;</code> element as your <em>Container</em>,
+you need to apply a background to the <code>&lt;html&gt;</code> element
+in order for this grid-background to size properly.</li>
+<li>Some browsers have trouble with sub-pixel rounding on background images.
+Use this for checking general spacing, not pixel-exact alignment.
+Susy columns tend to be more accurate than gradient grid-backgrounds.</li>
 </ul>
 <h3><a href="#ref-helper-functions" id="ref-helper-functions">Functions</a></h3>
 

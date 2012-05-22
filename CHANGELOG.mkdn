@@ -38,6 +38,7 @@ Removed:
 
 Other:
 
+* Fix bug in susy-background-grid for fluid sites.
 * Fix minor bug with repeated 'display' properties.
 * Lower Compass dependency to 0.12.2.rc.0
 * Add Sass dependency at 3.2.0.alpha.237

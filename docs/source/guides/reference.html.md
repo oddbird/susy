@@ -336,8 +336,12 @@ Show the Susy Grid as a background-image on any container.
     // susy-grid-background();
     .page { @include susy-grid-background; }
 
-- **Note:** Some browsers have trouble with sub-pixel rounding on background images.
-  Use it for checking general spacing, not pixel-exact alignment.
+- If you are using the `<body>` element as your _Container_,
+  you need to apply a background to the `<html>` element
+  in order for this grid-background to size properly.
+- Some browsers have trouble with sub-pixel rounding on background images.
+  Use this for checking general spacing, not pixel-exact alignment.
+  Susy columns tend to be more accurate than gradient grid-backgrounds.
 
 ### <a href="#ref-helper-functions" id="ref-helper-functions">Functions</a>
 

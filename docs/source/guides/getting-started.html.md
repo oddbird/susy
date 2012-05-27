@@ -21,7 +21,7 @@ side_content: >
 
     :::bash
     # command line
-    sudo gem install susy
+    sudo gem install susy --pre
 
 ### <a href="#start-compass" id="start-compass">Compass</a>
 Create a new [Compass][compass] project:

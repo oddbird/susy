@@ -44,6 +44,11 @@ Or update an existing [Compass][compass] project:
     # Gemfile
     gem "susy"
 
+You may also need:
+
+    :::ruby
+    gem "compass-rails", ">= 1.0.0.rc.4"
+
 And run:
 
     :::bash

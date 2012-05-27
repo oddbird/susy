@@ -14,5 +14,6 @@ title: Sites using Susy
 - [Volunteer Center Northumberland](https://volunteeringnorthumberland.org.uk/)
 - [Rita Konig](http://ritakonig.com/)
 - [Concordia discors](http://www.ffzg.unizg.hr/zbor/)
+- [Waldorf camp](http://waldorfcamp.net/)
 
 Have a site to add? [Let us know](http://twitter.com/compasssusy/) or [fork and add your site on GitHub](https://github.com/ericam/susy).

@@ -29,6 +29,10 @@
         @include font-icon-image($icon-picture); 
         .sites-using-susy & { color: $susy-bodycopy-dark-10; }
       }
+      &[href*='demos'] { 
+        @include font-icon-image($icon-cogs); 
+        .demos & { color: $susy-bodycopy-dark-10; }
+      }
     }
     #{$focus} {color: $susy-highlight-dark-20; }
   }

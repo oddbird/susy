@@ -7,7 +7,6 @@
   / <![endif]
   
   = partial "partials/head"
-  = stylesheet_link_tag "site.css"
 
   %body{ :id => "susy-oddbird-net", :class => page_classes }
 
@@ -37,7 +36,4 @@
         %li.off
           %a{ :href => "#" } hide grid
     
-    = javascript_include_tag "jquery-1.7.1.min.js"
-    = javascript_include_tag "jqwidont.js"
-    = javascript_include_tag "viewport.js"
-    = partial "partials/google_analytics"
+    = partial "partials/javascripts"

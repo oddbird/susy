@@ -1,0 +1,34 @@
+!!! 5
+/[if lt IE 7] <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en">
+/[if IE 7] <html class="no-js lt-ie9 lt-ie8" lang="en">
+/[if IE 8] <html class="no-js lt-ie9" lang="en">
+/ [if gt IE 8]><!
+%html.no-js{:lang => "en"}
+  / <![endif]
+  
+  = partial "partials/head"
+
+  %body{ :id => "susy-oddbird-net", :class => page_classes }
+    
+    = partial "partials/demonav"
+
+    %section.page
+
+      %header.banner{ :role => "banner" }
+        %h1 Susy Demo
+        %h2 responsive grids for compass
+
+      %nav.pagenav
+        = data.page.pagenav
+
+      %article.main{ :role => "main" }
+        %aside.summary
+          = data.page.aside
+        %div.content
+          ~ yield
+
+      %footer.contentinfo{ :role => "contentinfo" }
+        = partial "partials/contentinfo"
+      
+    = partial "partials/javascripts"
+    

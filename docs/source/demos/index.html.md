@@ -4,7 +4,7 @@ title: Demos
 
 ## Demos
 
-- ["Magic" responsive grids](magic)
+- [Building a mobile-first "magic" grid](magic)
 
 Have a tutorial you'd like to see? 
 [Contact us][twitter], 

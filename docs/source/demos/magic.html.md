@@ -20,7 +20,7 @@ pagenav: >
   </ul>
 ---
 
-## Magic Grids
+## Mobile-First Magic Grids
 
 All Susy sites are fluid on the inside,
 but my favorite of the Susy options is 

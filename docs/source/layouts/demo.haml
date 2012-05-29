@@ -7,7 +7,6 @@
   / <![endif]
   
   = partial "partials/head"
-  = stylesheet_link_tag data.page.stylesheet
 
   %body{ :id => "susy-oddbird-net", :class => page_classes }
     
@@ -22,7 +21,12 @@
           %h2 responsive grids for compass
 
       %div{ :role => "main" }
-        ~ yield
+        %article
+          ~ yield
+        %aside
+          = data.page.aside
+      %nav.pagenav
+        = data.page.pagenav
 
       %footer{ :role => "contentinfo" }
         %div.container

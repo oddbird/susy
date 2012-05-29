@@ -3,53 +3,6 @@
 
 @import "../demo";
 
-//-----------------------------------------------------------------------------
-// Settings
-
-$total-columns: 4;
-$column-width: 5em;
-$gutter-width: 1em;
-$grid-padding: $gutter-width;
-
-$break: 40em 10 lt-ie9;
-
-//-----------------------------------------------------------------------------
-// Container
-
-.page {
-  @include container($total-columns, $break);
-}
-
-//-----------------------------------------------------------------------------
-// Layout
-
-
-[role="contentinfo"] {
-  clear: both;
-}
-
-//-----------------------------------------------------------------------------
-// Style
-
-[role="banner"] {
-  @include cond;
-  @include leader;
-  @include trailer;
-  font-weight: bold;
-  h1 {
-    @include adjust-font-size-to($xlargepx);
-  }
-  h2 {
-    text-transform: uppercase;    
-  }
-}
-
-[role="main"] {
-  @extend %type;
-  @include leader;
-  @include trailer;
-}
-
-[role="contentinfo"] {
-  @include leader;
-}
+// not sure why it wants the full path, but it does...
+@import "demos/magic/layout";
+@import "demos/magic/style";

@@ -1,0 +1,316 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html><body>
+<h2>Magic Grids</h2>
+
+<p>All Susy sites are fluid on the inside,
+but my favorite of the Susy options is 
+what I call the Magic Grid.
+Fluid on the inside and elastic on the outside,
+the magic grid responds to both font and window size
+while keeping you in control of typographic line lengths.</p>
+
+<p>This demo will lay out the steps
+for building its own mobile-first layout
+based on Susy's default Magic Grid.</p>
+
+<h3><a href="#demo-settings" id="demo-settings">Basic Settings</a></h3>
+
+<p>We'll start by defining
+our mobile-first grid.
+We'll keep the default grid sizes,
+and just change the number of columns used:</p>
+
+<div class="highlight">
+<pre><span class="na">$total-columns</span><span class="o">  :</span> <span class="mi">7</span><span class="p">;</span>
+<span class="na">$column-width</span><span class="o">   :</span> <span class="mi">4</span><span class="kt">em</span><span class="p">;</span>
+<span class="na">$gutter-width</span><span class="o">   :</span> <span class="mi">1</span><span class="kt">em</span><span class="p">;</span>
+<span class="na">$grid-padding</span><span class="o">   :</span> <span class="nv">$gutter-width</span><span class="p">;</span>
+</pre>
+</div>
+
+
+<p>In this case I decided that 7 columns
+was a good line-length for the main content.
+While that's larger than most mobile devices,
+the site will flex to fit them as well.</p>
+
+<p>Think of this setting as a max-width
+for your initial linear layout.</p>
+
+<h3><a href="#demo-mobile" id="demo-mobile">Mobile Layout</a></h3>
+
+<p>The first step in applying our Susy grid is to 
+define our <a href="http://susy.oddbird.net/guides/reference/#ref-container">container</a>:</p>
+
+<div class="highlight">
+<pre><span class="nc">.page</span> <span class="p">{</span> <span class="k">@include</span><span class="nd"> container</span><span class="p">;</span> <span class="p">}</span>
+</pre>
+</div>
+
+
+<p>I wrote the source order in a way
+that makes sense to me
+even when the sidebars move inline with the main content.</p>
+
+<div class="highlight">
+<pre><span class="p-Indicator">-</span> <span class="l-Scalar-Plain">.page</span>
+  <span class="l-Scalar-Plain">- .banner</span>
+  <span class="l-Scalar-Plain">- .pagenav</span>
+  <span class="l-Scalar-Plain">- .main</span>
+    <span class="l-Scalar-Plain">- .summary</span>
+    <span class="l-Scalar-Plain">- .content</span>
+  <span class="l-Scalar-Plain">- .contentinfo</span>
+</pre>
+</div>
+
+
+<p>We're going to keep the mobile layout simple and linear,
+but I want the footer to have a red background
+that encompasses the <a href="http://susy.oddbird.net/guides/reference/#ref-grid-padding">grid-padding</a>.
+In order to do that,
+I apply negative margins equal to <code>$grid-padding</code>,
+and add it back in as padding to the footer:</p>
+
+<div class="highlight">
+<pre><span class="nc">.contentinfo</span> <span class="p">{</span>
+  <span class="na">margin</span><span class="o">:</span> <span class="mi">0</span> <span class="mi">0</span> <span class="o">-</span> <span class="nv">$grid-padding</span><span class="p">;</span>
+  <span class="na">padding</span><span class="o">:</span> <span class="mi">0</span> <span class="nv">$grid-padding</span><span class="p">;</span>
+<span class="p">}</span>
+</pre>
+</div>
+
+
+<p>Add in some style and typography, 
+and we're done with the mobile layout.</p>
+
+<h3><a href="#demo-breakpoints" id="demo-breakpoints">Breakpoints</a></h3>
+
+<p>I'm only adding one layout <a href="http://susy.oddbird.net/guides/reference/#ref-media-layouts">breakpoint</a> to this page,
+although you can add as many as you want.</p>
+
+<p>As soon as there is enough room for 12 columns,
+we'll jump to a 12-column grid,
+and bring our two sidebars into play.</p>
+
+<p>Let's set that breakpoint as a variable,
+since we'll need it several times:</p>
+
+<div class="highlight">
+<pre><span class="nv">$break</span><span class="o">:</span> <span class="mi">12</span><span class="p">;</span>
+</pre>
+</div>
+
+
+<p>We could get more complex,
+switching to 12 columns at an arbitrary min-width (<code>$break: 40em 12</code>),
+or adding a fallback class for older versions of IE (<code>$break: 12 lt-ie9</code>),
+but I don't think we need either one in this case.</p>
+
+<p>Let's update the container
+to respond to our new breakpoint:</p>
+
+<div class="highlight">
+<pre><span class="nc">.page</span> <span class="p">{</span>
+  <span class="k">@include</span><span class="nd"> container</span><span class="p">(</span><span class="nv">$total-columns</span><span class="o">,</span> <span class="nv">$break</span><span class="p">);</span>
+<span class="p">}</span>
+</pre>
+</div>
+
+
+<p>We're using the shortcut here,
+setting multiple containers in a single command.
+The first argument uses the default layout (<code>$total-columns</code>)
+which doesn't trigger any media-queries,
+the second uses our 12-column breakpoint.
+This serves the same function as the longhand
+using <a href="http://susy.oddbird.net/guides/reference/#ref-at-breakpoint">at-breakpoint</a>:</p>
+
+<div class="highlight">
+<pre><span class="nc">.page</span> <span class="p">{</span>
+  <span class="k">@include</span><span class="nd"> container</span><span class="p">;</span>
+  <span class="k">@include</span><span class="nd"> at-breakpoint</span><span class="p">(</span><span class="nv">$break</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">@include</span><span class="nd"> container</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre>
+</div>
+
+
+<p>However, the shorthand also performs some optomizations for us,
+using <code>set-container-width</code> instead of <code>container</code> inside the breakpoint.
+Since we know the other container settings are already in place,
+all we need to override is the containers width.
+you can also do that longhand too, if you like:</p>
+
+<div class="highlight">
+<pre><span class="nc">.page</span> <span class="p">{</span>
+  <span class="k">@include</span><span class="nd"> container</span><span class="p">;</span>
+  <span class="k">@include</span><span class="nd"> at-breakpoint</span><span class="p">(</span><span class="nv">$break</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">@include</span><span class="nd"> set-container-width</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre>
+</div>
+
+
+<p>The longhand can be useful 
+if you have other opperations to perform inside the breakpoint.
+In our case, we can move on to laying out our 12-column grid.</p>
+
+<h3><a href="#demo-screen" id="demo-screen">Large-Screen Layout</a></h3>
+
+<p>Let's start with the banner.
+It should span the full width,
+but have 2 of 12 columns <a href="http://susy.oddbird.net/guides/reference/#ref-prefix">prefixed</a> as padding on the left.</p>
+
+<p>Since the banner didn't have any layout styles
+in our mobile layout,
+we can place the entire selector block
+inside a breakpoint:</p>
+
+<div class="highlight">
+<pre><span class="k">@include</span><span class="nd"> at-breakpoint</span><span class="p">(</span><span class="nv">$break</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nc">.banner</span> <span class="p">{</span> <span class="k">@include</span><span class="nd"> prefix</span><span class="p">(</span><span class="mi">2</span><span class="o">,</span><span class="mi">12</span><span class="p">);</span> <span class="p">}</span>
+<span class="p">}</span>
+</pre>
+</div>
+
+
+<p>Next comes the pagenav,
+which we want to set as a sidebar
+<a href="http://susy.oddbird.net/guides/reference/#ref-span-columns">spanning</a> 2 of the available 12 columns.
+We can add that to the same breakpoint block
+we already created.</p>
+
+<div class="highlight">
+<pre><span class="k">@include</span><span class="nd"> at-breakpoint</span><span class="p">(</span><span class="nv">$break</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nc">.banner</span> <span class="p">{</span> <span class="k">@include</span><span class="nd"> prefix</span><span class="p">(</span><span class="mi">2</span><span class="o">,</span><span class="mi">12</span><span class="p">);</span> <span class="p">}</span>
+  <span class="nc">.pagenav</span> <span class="p">{</span> <span class="k">@include</span><span class="nd"> span-columns</span><span class="p">(</span><span class="mi">2</span><span class="o">,</span><span class="mi">12</span><span class="p">);</span> <span class="p">}</span>
+<span class="p">}</span>
+</pre>
+</div>
+
+
+<p>The main content will fill the remaining space,
+spanning 10 of 12 columns,
+including the final right-most "<a href="http://susy.oddbird.net/guides/reference/#ref-omega">omega</a>" column.
+Adding that to what we have:</p>
+
+<div class="highlight">
+<pre><span class="k">@include</span><span class="nd"> at-breakpoint</span><span class="p">(</span><span class="nv">$break</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nc">.banner</span> <span class="p">{</span> <span class="k">@include</span><span class="nd"> prefix</span><span class="p">(</span><span class="mi">2</span><span class="o">,</span><span class="mi">12</span><span class="p">);</span> <span class="p">}</span>
+  <span class="nc">.pagenav</span> <span class="p">{</span> <span class="k">@include</span><span class="nd"> span-columns</span><span class="p">(</span><span class="mi">2</span><span class="o">,</span><span class="mi">12</span><span class="p">);</span> <span class="p">}</span>
+  <span class="nc">.main</span> <span class="p">{</span> <span class="k">@include</span><span class="nd"> span-columns</span><span class="p">(</span><span class="mi">10</span> <span class="n">omega</span><span class="o">,</span> <span class="mi">12</span><span class="p">);</span> <span class="p">}</span>
+<span class="p">}</span>
+</pre>
+</div>
+
+
+<p>Inside the main content
+we have a summary (which becomes a second sidebar),
+and content that occupies the main area.
+The content spans 7 of the main 10,
+while the summary spans the remaining 3 (omega) of 10:</p>
+
+<div class="highlight">
+<pre><span class="k">@include</span><span class="nd"> at-breakpoint</span><span class="p">(</span><span class="nv">$break</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nc">.banner</span> <span class="p">{</span> <span class="k">@include</span><span class="nd"> prefix</span><span class="p">(</span><span class="mi">2</span><span class="o">,</span><span class="mi">12</span><span class="p">);</span> <span class="p">}</span>
+  <span class="nc">.pagenav</span> <span class="p">{</span> <span class="k">@include</span><span class="nd"> span-columns</span><span class="p">(</span><span class="mi">2</span><span class="o">,</span><span class="mi">12</span><span class="p">);</span> <span class="p">}</span>
+  <span class="nc">.main</span> <span class="p">{</span>
+    <span class="k">@include</span><span class="nd"> span-columns</span><span class="p">(</span><span class="mi">10</span> <span class="n">omega</span><span class="o">,</span> <span class="mi">12</span><span class="p">);</span>
+    <span class="nc">.content</span> <span class="p">{</span> <span class="k">@include</span><span class="nd"> span-columns</span><span class="p">(</span><span class="mi">7</span><span class="o">,</span><span class="mi">10</span><span class="p">)</span> <span class="p">}</span>
+    <span class="nc">.summary</span> <span class="p">{</span> <span class="k">@include</span><span class="nd"> span-columns</span><span class="p">(</span><span class="mi">3</span> <span class="n">omega</span><span class="o">,</span> <span class="mi">10</span><span class="p">)</span> <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre>
+</div>
+
+
+<p>That works, even though the summary comes first in our source.
+Applying <code>omega</code> to an element 
+automatically pushes it to the end.</p>
+
+<p>All we have left is the footer.
+With 12 columns available now,
+we can replace the grid-padding trick
+with a few columns of padding on either side.
+Let's create a new breakpoint block for that
+inside the footer block we already have.
+We also need to clear the floated content above,
+which is easy enough with plain CSS:</p>
+
+<div class="highlight">
+<pre><span class="o">[</span><span class="nt">role</span><span class="o">=</span><span class="s2">"contentinfo"</span><span class="o">]</span> <span class="p">{</span>
+  <span class="na">margin</span><span class="o">:</span> <span class="mi">0</span> <span class="mi">0</span> <span class="o">-</span> <span class="nv">$grid-padding</span><span class="p">;</span>
+  <span class="na">padding</span><span class="o">:</span> <span class="mi">0</span> <span class="nv">$grid-padding</span><span class="p">;</span>
+  <span class="k">@include</span><span class="nd"> at-breakpoint</span><span class="p">(</span><span class="nv">$break</span><span class="p">)</span> <span class="p">{</span>
+    <span class="na">clear</span><span class="o">:</span> <span class="no">both</span><span class="p">;</span>
+    <span class="na">margin</span><span class="o">:</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">@include</span><span class="nd"> pad</span><span class="p">(</span><span class="mi">2</span><span class="o">,</span><span class="mi">3</span><span class="o">,</span><span class="mi">12</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre>
+</div>
+
+
+<p>And we're done. The rest is <a href="https://github.com/ericam/susy/blob/master/docs/source/stylesheets/_demos/magic/_style.scss">stylish icing</a>.</p>
+
+<h3><a href="#demo-complete" id="demo-complete">Complete Layout Styles</a></h3>
+
+<p>In the end,
+we have an entirely responsive layout
+defined in just a few simple and meaningful lines,
+without doing any math at all:</p>
+
+<div class="highlight">
+<pre><span class="c1">// Settings</span>
+
+<span class="na">$total-columns</span><span class="o">  :</span> <span class="mi">7</span><span class="p">;</span>
+<span class="na">$column-width</span><span class="o">   :</span> <span class="mi">4</span><span class="kt">em</span><span class="p">;</span>
+<span class="na">$gutter-width</span><span class="o">   :</span> <span class="mi">1</span><span class="kt">em</span><span class="p">;</span>
+<span class="na">$grid-padding</span><span class="o">   :</span> <span class="nv">$gutter-width</span><span class="p">;</span>
+
+<span class="nv">$break</span><span class="o">          :</span> <span class="mi">12</span><span class="p">;</span>
+
+<span class="c1">// Container</span>
+
+<span class="nc">.page</span> <span class="p">{</span>
+  <span class="k">@include</span><span class="nd"> container</span><span class="p">(</span><span class="nv">$total-columns</span><span class="o">,</span> <span class="nv">$break</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// Layout</span>
+
+<span class="k">@include</span><span class="nd"> at-breakpoint</span><span class="p">(</span><span class="nv">$break</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nc">.banner</span> <span class="p">{</span> <span class="k">@include</span><span class="nd"> prefix</span><span class="p">(</span><span class="mi">2</span><span class="o">,</span><span class="mi">12</span><span class="p">);</span> <span class="p">}</span>
+  <span class="nc">.pagenav</span> <span class="p">{</span> <span class="k">@include</span><span class="nd"> span-columns</span><span class="p">(</span><span class="mi">2</span><span class="o">,</span><span class="mi">12</span><span class="p">);</span> <span class="p">}</span>
+  <span class="nc">.main</span> <span class="p">{</span>
+    <span class="k">@include</span><span class="nd"> span-columns</span><span class="p">(</span><span class="mi">10</span> <span class="n">omega</span><span class="o">,</span> <span class="mi">12</span><span class="p">);</span>
+    <span class="nc">.content</span> <span class="p">{</span> <span class="k">@include</span><span class="nd"> span-columns</span><span class="p">(</span><span class="mi">7</span><span class="o">,</span><span class="mi">10</span><span class="p">)</span> <span class="p">}</span>
+    <span class="nc">.summary</span> <span class="p">{</span> <span class="k">@include</span><span class="nd"> span-columns</span><span class="p">(</span><span class="mi">3</span> <span class="n">omega</span><span class="o">,</span> <span class="mi">10</span><span class="p">)</span> <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="nc">.contentinfo</span> <span class="p">{</span>
+  <span class="na">clear</span><span class="o">:</span> <span class="no">both</span><span class="p">;</span>
+  <span class="na">margin</span><span class="o">:</span> <span class="mi">0</span> <span class="mi">0</span> <span class="o">-</span> <span class="nv">$grid-padding</span><span class="p">;</span>
+  <span class="na">padding</span><span class="o">:</span> <span class="mi">0</span> <span class="nv">$grid-padding</span><span class="p">;</span>
+  <span class="k">@include</span><span class="nd"> at-breakpoint</span><span class="p">(</span><span class="nv">$break</span><span class="p">)</span> <span class="p">{</span>
+    <span class="na">margin</span><span class="o">:</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">@include</span><span class="nd"> pad</span><span class="p">(</span><span class="mi">2</span><span class="o">,</span><span class="mi">3</span><span class="o">,</span><span class="mi">12</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre>
+</div>
+
+
+<p><strong>Note</strong>:
+Due to a known Sass bug,
+if you are using an IE fallback class,
+you can not apply <code>at-breakpoint</code> at the document root.
+This should be fixed soon.
+In the meantime,
+breakpoints with fallback classes must be nested
+inside another selector.
+We're not using the fallback,
+so we're ok.</p>
+</body></html>

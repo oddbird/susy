@@ -29,6 +29,9 @@
             <a href="/guides/reference/">Reference</a>
           </li>
           <li>
+            <a href="/demos/">Demos</a>
+          </li>
+          <li>
             <a href="/sites-using-susy/">Sites using Susy</a>
           </li>
           <li>
@@ -135,7 +138,7 @@
 <ul>
 <li>
 <code>&lt;$media-layout&gt;</code>: Optional media-layout shortcuts 
-(see 'Responsive Grids' below).
+(see '<a href="#ref-responsive">Responsive Grids</a>' below).
 Default: <code>$total-columns</code>.</li>
 </ul>
 <h4><a href="#ref-span-columns" id="ref-span-columns">Span Columns</a></h4>
@@ -272,6 +275,27 @@ Default: <code>$base-font-size</code>.</li>
 <code>&lt;$layout-cols&gt;</code>: The number of <em>Columns</em> to use in the <em>Layout</em>.</li>
 <li>
 <code>&lt;@content&gt;</code>: Nested <code>@content</code> block will use the given <em>Layout</em>.</li>
+</ul>
+<h4><a href="#ref-container-width" id="ref-container-width">Set Container Width</a></h4>
+
+<p>Reset the width of a Container for a new Layout context.
+Can be used when <code>container()</code> has already been applied to an element,
+for DRYer output than simply using <code>container</code> again.</p>
+
+<div class="highlight">
+<pre><span class="c1">// set-container-width([&lt;$columns&gt;])</span>
+<span class="k">@include</span><span class="nd"> container</span><span class="p">;</span>
+<span class="k">@include</span><span class="nd"> at-breakpoint</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">@include</span><span class="nd"> set-container-width</span><span class="p">;</span>
+<span class="p">}</span>
+</pre>
+</div>
+
+
+<ul>
+<li>
+<code>&lt;$columns&gt;</code>: The number of <em>Columns</em> to be contained.
+Default: Current value of <code>$total-columns</code> depending on <em>Layout</em>.</li>
 </ul>
 <h2><a href="#ref-helper" id="ref-helper">Grid Helpers</a></h2>
 
@@ -665,6 +689,7 @@ although only IE6 and IE7 have special cases attached to them currently.</p>
 <h3><a href="#ref-responsive-mixins">Responsive Mixins</a></h3> <ul>
 <li><a href="#ref-at-breakpoint">at-breakpoint()</a></li>
   <li><a href="#ref-layout">layout()</a></li>
+  <li><a href="#ref-container-width">set-container-width()</a></li>
 </ul>
 <h2><a href="#ref-helper">Grid Helpers</a></h2> <h3><a href="#ref-helper-padding">Padding Mixins</a></h3> <ul>
 <li><a href="#ref-prefix">prefix()</a></li>

@@ -1,6 +1,6 @@
 ---
 title: Demos
-stylesheet: "demos/magic.css"
+stylesheet: "magic.css"
 aside: >
   <h3>In this demo:</h3>
   <p>
@@ -15,7 +15,7 @@ pagenav: >
     <li><a href="#demo-settings">Basic Settings</a></li>
     <li><a href="#demo-mobile">Mobile Layout</a></li>
     <li><a href="#demo-breakpoints">Breakpoints</a></li>
-    <li><a href="#demo-layout">Large-Screens</a></li>
+    <li><a href="#demo-screen">Large-Screens</a></li>
     <li><a href="#demo-complete">Complete Layout</a></li>
   </ul>
 ---
@@ -33,17 +33,19 @@ This demo will lay out the steps
 for building its own mobile-first layout
 based on Susy's default Magic Grid.
 
-### Basic Settings
+### <a href="#demo-settings" id="demo-settings">Basic Settings</a>
+
+We'll start by defining
+our mobile-first grid.
+We'll keep the default grid sizes,
+and just change the number of columns used:
 
     :::scss
-    // Defaults 
-    $total-columns  : 12;
+    $total-columns  : 7;
     $column-width   : 4em;
     $gutter-width   : 1em;
     $grid-padding   : $gutter-width;
 
-If we're going mobile-first,
-we want to start with a smaller grid.
 In this case I decided that 7 columns
 was a good line-length for the main content.
 While that's larger than most mobile devices,
@@ -52,53 +54,47 @@ the site will flex to fit them as well.
 Think of this setting as a max-width
 for your initial linear layout.
 
-    :::scss
-    // Mobile First
-    $total-columns  : 7;
-    $column-width   : 4em;
-    $gutter-width   : 1em;
-    $grid-padding   : $gutter-width;
+### <a href="#demo-mobile" id="demo-mobile">Mobile Layout</a>
 
-### Mobile Layout
-
-The first step with Susy is always to 
-define your [container][container]:
+The first step in applying our Susy grid is to 
+define our [container][container]:
 
     :::scss
     .page { @include container; }
 
-There's not much else to the mobile layout,
-since we don't have room to place things side by side.
+I wrote the source order in a way
+that makes sense to me
+even when the sidebars move inline with the main content.
 
-I've decided that the in-page navigation (`.pagenav`)
-isn't useful on mobile. 
-So let's get rid of it for now:
+    :::yaml
+    - .page
+      - .banner
+      - .pagenav
+      - .main
+        - .summary
+        - .content
+      - .contentinfo
 
-    :::scss
-    .pagenav { display: none; }
-
-I also want the footer to have a red background
+We're going to keep the mobile layout simple and linear,
+but I want the footer to have a red background
 that encompasses the [grid-padding][grid-padding].
 In order to do that,
-I apply negative margins equal to the grid padding
-and add it to the padding instead:
+I apply negative margins equal to `$grid-padding`,
+and add it back in as padding to the footer:
 
     :::scss
-    [role="contentinfo"] {
+    .contentinfo {
       margin: 0 0 - $grid-padding;
-      padding: rhythm() $grid-padding;
+      padding: 0 $grid-padding;
     }
 
-The `rhythm()` function comes from 
-the Compass [Vertical Rhythms][rhythms] module,
-which I happen to be using as well.
-You should look into it.
+Add in some style and typography, 
+and we're done with the mobile layout.
 
 [container]: #
 [grid-padding]: #
-[rhythms]: #
 
-### Breakpoints
+### <a href="#demo-breakpoints" id="demo-breakpoints">Breakpoints</a>
 
 I'm only adding one layout [breakpoint][breakpoint] to this page,
 although you can add as many as you want.
@@ -128,9 +124,9 @@ to respond to our new breakpoint:
 
 We're using the shortcut here,
 setting multiple containers in a single command.
-The first container uses the default layout (`$total-columns`)
+The first argument uses the default layout (`$total-columns`)
 which doesn't trigger any media-queries,
-the second uses our breakpoint.
+the second uses our 12-column breakpoint.
 This serves the same function as the longhand:
 
     :::scss
@@ -145,7 +141,7 @@ However, the shorthand also performs some optomizations for us,
 using `set-container-width` instead of `container` inside the breakpoint.
 Since we know the other container settings are already in place,
 all we need to override is the containers width.
-you can also do that longhand if you like:
+you can also do that longhand too, if you like:
 
     :::scss
     .page {
@@ -161,11 +157,11 @@ In our case, we can move on to laying out our 12-column grid.
 
 [breakpoint]: #
 
-### Large-Screen Layout
+### <a href="#demo-screen" id="demo-screen">Large-Screen Layout</a>
 
 Let's start with the banner.
 It should span the full width,
-but have 2 of 12 columns of padding [prefixed][prefix] on the left.
+but have 2 of 12 columns [prefixed][prefix] as padding on the left.
 
 Since the banner didn't have any layout styles
 in our mobile layout,
@@ -174,90 +170,69 @@ inside a breakpoint:
 
     :::scss
     @include at-breakpoint($break) {
-      [role="banner"] { 
-        @include prefix(2,12); 
-      }
+      .banner { @include prefix(2,12); }
     }
 
-**Note**:
-Due to a known Sass bug,
-You can only use `at-breakpoint` at the document root like this
-when you are not using an IE fallback class
-as part of the argument.
-This should be fixed soon.
-In the meantime,
-breakpoints with fallback classes must be nested
-inside another selector.
-
-Next, we need the main content off to the side
-so that we have room to bring back our page nav.
-We can do that in the same breakpoint block
-as the banner:
+Next comes the pagenav,
+which we want to set as a sidebar
+[spanning][span-columns] 2 of the available 12 columns.
+We can add that to the same breakpoint block
+we already created.
 
     :::scss
     @include at-breakpoint($break) {
-      [role="banner"] {
-        @include prefix(2,12);
-      }
-      [role="main"] {
-        @include span-columns(10 omega, 12);
-      }
+      .banner { @include prefix(2,12); }
+      .pagenav { @include span-columns(2,12); }
     }
 
-Even though it comes first in the markup,
-we want the main content floating to the end of our grid,
-[spanning][span-columns] 10 of 12 columns
-including the final ([omega][omega]) column.
+The main content will fill the remaining space,
+spanning 10 of 12 columns,
+including the final right-most "[omega][omega]" column.
+Adding that to what we have:
 
-Now we can bring back the pagenav
-as a sidebar on the left,
-spanning the remaining 2 of 12 columns.
-Let's add that to what we had before:
-    
     :::scss
-    .pagenav {
-      // remove pagenav from mobile
-      display: none;
-      @include at-breakpoint($break){
-        // bring it back as a sidebar on larger screens
-        @include span-columns(2,12);
-        display: block;
-      }
+    @include at-breakpoint($break) {
+      .banner { @include prefix(2,12); }
+      .pagenav { @include span-columns(2,12); }
+      .main { @include span-columns(10 omega, 12); }
     }
 
 Inside the main content
-we have an article which should get ample space, 
-and an aside that can act as a second sidebar.
-We'll add those in the same block 
-as the banner and the main content.
-The article spans 7 of the main 10,
-while the aside spans the remaining 3 (omega) of 10:
+we have a summary (which becomes a second sidebar),
+and content that occupies the main area.
+The content spans 7 of the main 10,
+while the summary spans the remaining 3 (omega) of 10:
 
     :::scss
     @include at-breakpoint($break) {
-      [role="banner"] {
-        @include prefix(2,12);
-      }
-
-      [role="main"] {
+      .banner { @include prefix(2,12); }
+      .pagenav { @include span-columns(2,12); }
+      .main {
         @include span-columns(10 omega, 12);
-        article { @include span-columns(7,10) }
-        aside { @include span-columns(3 omega, 10) }
+        .content { @include span-columns(7,10) }
+        .summary { @include span-columns(3 omega, 10) }
       }
     }
 
+That works, even though the summary comes first in our source.
+Applying `omega` to an element 
+automatically pushes it to the end.
+
 All we have left is the footer.
-We'll replace that grid-padding trick
-with a few columns of padding on either side
-to match the sidebars.
-Placing that inside the footer block we already have:
+With 12 columns available now,
+we can replace the grid-padding trick
+with a few columns of padding on either side.
+Let's create a new breakpoint block for that
+inside the footer block we already have.
+We also need to clear the floated content above,
+which is easy enough with plain CSS:
 
     :::scss
     [role="contentinfo"] {
-      clear: both;
       margin: 0 0 - $grid-padding;
-      padding: rhythm() $grid-padding;
+      padding: 0 $grid-padding;
       @include at-breakpoint($break) {
+        clear: both;
         margin: 0;
         @include pad(2,3,12);
       }
@@ -270,13 +245,15 @@ And we're done. The rest is [stylish icing][styles].
 [omega]: #
 [styles]: #
 
-### Complete Layout Styles
+### <a href="#demo-complete" id="demo-complete">Complete Layout Styles</a>
 
-In the end, we have all our layouts defined
-together in one place:
+In the end,
+we have an entirely responsive layout
+defined in just a few simple and meaningful lines,
+without doing any math at all:
 
     :::scss
-    // Settings ------------------
+    // Settings
 
     $total-columns  : 7;
     $column-width   : 4em;
@@ -285,40 +262,41 @@ together in one place:
 
     $break          : 12;
 
-    // Container -----------------
+    // Container
 
     .page {
       @include container($total-columns, $break);
     }
 
-    // Layout --------------------
+    // Layout
 
     @include at-breakpoint($break) {
-      [role="banner"] {
-        @include prefix(2,12);
-      }
-
-      [role="main"] {
+      .banner { @include prefix(2,12); }
+      .pagenav { @include span-columns(2,12); }
+      .main {
         @include span-columns(10 omega, 12);
-        article { @include span-columns(7,10) }
-        aside { @include span-columns(3 omega, 10) }
+        .content { @include span-columns(7,10) }
+        .summary { @include span-columns(3 omega, 10) }
       }
     }
 
-    .pagenav {
-      display: none;
-      @include at-breakpoint($break){
-        @include span-columns(2,12);
-        display: block;
-      }
-    }
-
-    [role="contentinfo"] {
+    .contentinfo {
       clear: both;
       margin: 0 0 - $grid-padding;
-      padding: rhythm() $grid-padding;
+      padding: 0 $grid-padding;
       @include at-breakpoint($break) {
         margin: 0;
         @include pad(2,3,12);
       }
     }
+
+**Note**:
+Due to a known Sass bug,
+if you are using an IE fallback class,
+you can not apply `at-breakpoint` at the document root.
+This should be fixed soon.
+In the meantime,
+breakpoints with fallback classes must be nested
+inside another selector.
+We're not using the fallback,
+so we're ok.

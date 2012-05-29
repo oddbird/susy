@@ -15,22 +15,21 @@
 
     %section.page
 
-      %header{ :role => "banner" }
-        %hgroup
-          %h1 Susy Demo
-          %h2 responsive grids for compass
+      %header.banner{ :role => "banner" }
+        %h1 Susy Demo
+        %h2 responsive grids for compass
 
-      %div{ :role => "main" }
-        %article
-          ~ yield
-        %aside
-          = data.page.aside
       %nav.pagenav
         = data.page.pagenav
 
-      %footer{ :role => "contentinfo" }
-        %div.container
-          = partial "partials/contentinfo"
+      %article.main{ :role => "main" }
+        %aside.summary
+          = data.page.aside
+        %div.content
+          ~ yield
+
+      %footer.contentinfo{ :role => "contentinfo" }
+        = partial "partials/contentinfo"
       
     = javascript_include_tag "jquery-1.7.1.min.js"
     = javascript_include_tag "jqwidont.js"

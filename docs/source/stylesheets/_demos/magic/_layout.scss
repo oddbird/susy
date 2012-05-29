@@ -1,0 +1,39 @@
+//-----------------------------------------------------------------------------
+// Settings
+
+$total-columns  : 7;
+$column-width   : 4em;
+$gutter-width   : 1em;
+$grid-padding   : $gutter-width;
+
+$break          : 12;
+
+//-----------------------------------------------------------------------------
+// Container
+
+.page {
+  @include container($total-columns, $break);
+}
+
+//-----------------------------------------------------------------------------
+// Layout
+
+@include at-breakpoint($break) {
+  .banner { @include prefix(2,12); }
+  .pagenav { @include span-columns(2,12); }
+  .main {
+    @include span-columns(10 omega, 12);
+    .content { @include span-columns(7,10) }
+    .summary { @include span-columns(3 omega, 10) }
+  }
+}
+
+.contentinfo {
+  clear: both;
+  margin: 0 0 - $grid-padding;
+  padding: 0 $grid-padding;
+  @include at-breakpoint($break) {
+    margin: 0;
+    @include pad(2,3,12);
+  }
+}

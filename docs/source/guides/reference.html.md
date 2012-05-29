@@ -128,8 +128,10 @@ Establish the outer grid-containing element.
     .page { @include container; }
 
 - `<$media-layout>`: Optional media-layout shortcuts 
-  (see 'Responsive Grids' below).
+  (see '[Responsive Grids][responsive]' below).
   Default: `$total-columns`.
+
+[responsive]: #ref-responsive
 
 #### <a href="#ref-span-columns" id="ref-span-columns">Span Columns</a>
 Align an element to the Susy Grid.

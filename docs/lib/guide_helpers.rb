@@ -8,7 +8,7 @@ module GuideHelpers
     end
     title
   end
-  
+
   def page_side_content
     side_content = false
     if data.page.side_content

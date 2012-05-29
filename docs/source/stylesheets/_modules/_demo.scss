@@ -1,0 +1,17 @@
+//-----------------------------------------------------------------------------
+// Demos
+
+[role="navigation"] {
+  padding: rhythm(.5);
+  background: $base03;
+  color: $base1;
+  font-style: italic;
+  a {
+    #{$link} { 
+      @extend .icon;
+      @include font-icon-image($icon-arrow-left);
+      color: $base2; 
+    }
+    #{$focus} { color: $base3; }
+  }
+}

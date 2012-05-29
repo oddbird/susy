@@ -62,3 +62,16 @@ pre {
   border-color: $susy-background-dark-10;
   overflow: auto;
 }
+
+//-----------------------------------------------------------------------------
+// Simple Pages
+
+%simple {
+  [role="main"] { 
+    @extend %type;
+    @include at-breakpoint($break) {
+      @include pad(1,1); 
+    }
+  }
+}
+

@@ -62,7 +62,7 @@ require 'modular-scale'
 #   page "/admin/*"
 # end
 
-page "/demos/index.html", :layout => "demos/magic"
+page "/demos/magic.html", :layout => "demos/magic"
 
 # Proxy (fake) files
 # page "/this-page-has-no-template.html", :proxy => "/template-file.html" do

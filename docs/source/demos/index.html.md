@@ -91,8 +91,8 @@ and add it back in as padding to the footer:
 Add in some style and typography, 
 and we're done with the mobile layout.
 
-[container]: #
-[grid-padding]: #
+[container]: http://susy.oddbird.net/guides/reference/#ref-container
+[grid-padding]: http://susy.oddbird.net/guides/reference/#ref-grid-padding
 
 ### <a href="#demo-breakpoints" id="demo-breakpoints">Breakpoints</a>
 
@@ -127,7 +127,8 @@ setting multiple containers in a single command.
 The first argument uses the default layout (`$total-columns`)
 which doesn't trigger any media-queries,
 the second uses our 12-column breakpoint.
-This serves the same function as the longhand:
+This serves the same function as the longhand
+using [at-breakpoint][at-breakpoint]:
 
     :::scss
     .page {
@@ -155,7 +156,8 @@ The longhand can be useful
 if you have other opperations to perform inside the breakpoint.
 In our case, we can move on to laying out our 12-column grid.
 
-[breakpoint]: #
+[breakpoint]: http://susy.oddbird.net/guides/reference/#ref-media-layouts
+[at-breakpoint]: http://susy.oddbird.net/guides/reference/#ref-at-breakpoint
 
 ### <a href="#demo-screen" id="demo-screen">Large-Screen Layout</a>
 
@@ -240,10 +242,10 @@ which is easy enough with plain CSS:
 
 And we're done. The rest is [stylish icing][styles].
 
-[prefix]: #
-[span-columns]: #
-[omega]: #
-[styles]: #
+[prefix]: http://susy.oddbird.net/guides/reference/#ref-prefix
+[span-columns]: http://susy.oddbird.net/guides/reference/#ref-span-columns
+[omega]: http://susy.oddbird.net/guides/reference/#ref-omega
+[styles]: https://github.com/ericam/susy/blob/master/docs/source/stylesheets/_demos/magic/_style.scss
 
 ### <a href="#demo-complete" id="demo-complete">Complete Layout Styles</a>
 

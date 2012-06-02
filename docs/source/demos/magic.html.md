@@ -214,9 +214,10 @@ while the summary spans the remaining 3 (omega) of 10:
       .banner { @include prefix(2,$break); }
       .pagenav { @include span-columns(2,$break); }
       .main {
-        @include span-columns(10 omega, $break);
-        .content { @include span-columns(7,10) }
-        .summary { @include span-columns(3 omega, 10) }
+        $cols: 10;
+        @include span-columns($cols omega, $break);
+        .content { @include span-columns(7,$cols) }
+        .summary { @include span-columns(3 omega, $cols) }
       }
     }
 
@@ -280,9 +281,10 @@ without doing any math at all:
       .banner { @include prefix(2,$break); }
       .pagenav { @include span-columns(2,$break); }
       .main {
-        @include span-columns(10 omega, $break);
-        .content { @include span-columns(7,10) }
-        .summary { @include span-columns(3 omega, 10) }
+        $cols: 10;
+        @include span-columns($cols omega, $break);
+        .content { @include span-columns(7,$cols) }
+        .summary { @include span-columns(3 omega, $cols) }
       }
     }
 

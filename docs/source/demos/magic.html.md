@@ -235,7 +235,7 @@ We also need to clear the floated content above,
 which is easy enough with plain CSS:
 
     :::scss
-    [role="contentinfo"] {
+    .contentinfo {
       margin: 0 0 - $grid-padding;
       padding: 0 $grid-padding;
       @include at-breakpoint($break) {

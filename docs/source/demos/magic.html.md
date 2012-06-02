@@ -221,6 +221,8 @@ while the summary spans the remaining 3 (omega) of 10:
       }
     }
 
+(Again, notice I'm using `$cols` for defining columns and contexts.)
+
 That works, even though the summary comes first in our source.
 Applying `omega` to an element 
 automatically pushes it to the end.

@@ -84,7 +84,7 @@ and add it back in as padding to the footer:
 
     :::scss
     .contentinfo {
-      margin: 0 0 - $grid-padding;
+      margin: 0 - $grid-padding;
       padding: 0 $grid-padding;
     }
 
@@ -284,7 +284,7 @@ without doing any math at all:
 
     .contentinfo {
       clear: both;
-      margin: 0 0 - $grid-padding;
+      margin: 0 - $grid-padding;
       padding: 0 $grid-padding;
       @include at-breakpoint($break) {
         margin: 0;

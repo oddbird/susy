@@ -214,14 +214,14 @@ while the summary spans the remaining 3 (omega) of 10:
       .banner { @include prefix(2,$break); }
       .pagenav { @include span-columns(2,$break); }
       .main {
-        $cols: 10;
-        @include span-columns($cols omega, $break);
-        .content { @include span-columns(7,$cols) }
-        .summary { @include span-columns(3 omega, $cols) }
+        $main-columns: 10;
+        @include span-columns($main-columns omega, $break);
+        .content { @include span-columns(7,$main-columns) }
+        .summary { @include span-columns(3 omega, $main-columns) }
       }
     }
 
-(Again, notice I'm using `$cols` for defining columns and contexts.)
+(Again, notice I'm using `$main-columns` for defining columns and contexts.)
 
 That works, even though the summary comes first in our source.
 Applying `omega` to an element 
@@ -283,10 +283,10 @@ without doing any math at all:
       .banner { @include prefix(2,$break); }
       .pagenav { @include span-columns(2,$break); }
       .main {
-        $cols: 10;
-        @include span-columns($cols omega, $break);
-        .content { @include span-columns(7,$cols) }
-        .summary { @include span-columns(3 omega, $cols) }
+        $main-columns: 10;
+        @include span-columns($main-columns omega, $break);
+        .content { @include span-columns(7,$main-columns) }
+        .summary { @include span-columns(3 omega, $main-columns) }
       }
     }
 

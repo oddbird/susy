@@ -19,11 +19,14 @@ side_content: >
 
 ## <a href="#start-install" id="start-install">Installation</a>
 
+### <a href="#start-compass" id="start-compass">Compass</a>
+
+Install from the command line:
+
     :::bash
     # command line
     sudo gem install susy --pre
 
-### <a href="#start-compass" id="start-compass">Compass</a>
 Create a new [Compass][compass] project:
 
     :::bash

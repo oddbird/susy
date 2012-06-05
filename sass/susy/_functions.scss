@@ -16,7 +16,6 @@ $browser-default-font-size  : 16px;
 @function columns-width(
   $columns  : $total-columns
 ) {
-  $columns  : if($columns,$columns,$total-columns);
   @return ($columns * $column-width) + (ceil($columns - 1) * $gutter-width);
 }
 

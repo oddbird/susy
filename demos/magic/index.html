@@ -66,8 +66,14 @@ was a good line-length for the main content.
 While that's larger than most mobile devices,
 the site will flex to fit them as well.</p>
 
-<p>Think of this setting as a max-width
-for your initial linear layout.</p>
+<p>We've set <code>$column-width: 4em</code>,
+but Susy doesn't apply that directly.
+That will be used to determine the outer container width
+(using <code>max-width</code> unless <a href="http://susy.oddbird.net/guides/reference/#ref-container-override">otherwise instructed</a>),
+and then to figure out percentages internally.</p>
+
+<p>Think of these settings as a max-width
+for your initial layout.</p>
 
 <h3><a href="#demo-mobile" id="demo-mobile">Mobile Layout</a></h3>
 
@@ -105,7 +111,7 @@ and add it back in as padding to the footer:</p>
 
 <div class="highlight">
 <pre><span class="nc">.contentinfo</span> <span class="p">{</span>
-  <span class="na">margin</span><span class="o">:</span> <span class="mi">0</span> <span class="mi">0</span> <span class="o">-</span> <span class="nv">$grid-padding</span><span class="p">;</span>
+  <span class="na">margin</span><span class="o">:</span> <span class="mi">0</span> <span class="o">-</span> <span class="nv">$grid-padding</span><span class="p">;</span>
   <span class="na">padding</span><span class="o">:</span> <span class="mi">0</span> <span class="nv">$grid-padding</span><span class="p">;</span>
 <span class="p">}</span>
 </pre>
@@ -202,11 +208,15 @@ inside a breakpoint:</p>
 
 <div class="highlight">
 <pre><span class="k">@include</span><span class="nd"> at-breakpoint</span><span class="p">(</span><span class="nv">$break</span><span class="p">)</span> <span class="p">{</span>
-  <span class="nc">.banner</span> <span class="p">{</span> <span class="k">@include</span><span class="nd"> prefix</span><span class="p">(</span><span class="mi">2</span><span class="o">,</span><span class="mi">12</span><span class="p">);</span> <span class="p">}</span>
+  <span class="nc">.banner</span> <span class="p">{</span> <span class="k">@include</span><span class="nd"> prefix</span><span class="p">(</span><span class="mi">2</span><span class="o">,</span><span class="nv">$break</span><span class="p">);</span> <span class="p">}</span>
 <span class="p">}</span>
 </pre>
 </div>
 
+
+<p>Notice that I'm using <code>$break</code> as the <code>context</code> argument.
+That way if I decide to change it,
+I won't have to worry about updating all the contexts.</p>
 
 <p>Next comes the pagenav,
 which we want to set as a sidebar
@@ -216,8 +226,8 @@ we already created.</p>
 
 <div class="highlight">
 <pre><span class="k">@include</span><span class="nd"> at-breakpoint</span><span class="p">(</span><span class="nv">$break</span><span class="p">)</span> <span class="p">{</span>
-  <span class="nc">.banner</span> <span class="p">{</span> <span class="k">@include</span><span class="nd"> prefix</span><span class="p">(</span><span class="mi">2</span><span class="o">,</span><span class="mi">12</span><span class="p">);</span> <span class="p">}</span>
-  <span class="nc">.pagenav</span> <span class="p">{</span> <span class="k">@include</span><span class="nd"> span-columns</span><span class="p">(</span><span class="mi">2</span><span class="o">,</span><span class="mi">12</span><span class="p">);</span> <span class="p">}</span>
+  <span class="nc">.banner</span> <span class="p">{</span> <span class="k">@include</span><span class="nd"> prefix</span><span class="p">(</span><span class="mi">2</span><span class="o">,</span><span class="nv">$break</span><span class="p">);</span> <span class="p">}</span>
+  <span class="nc">.pagenav</span> <span class="p">{</span> <span class="k">@include</span><span class="nd"> span-columns</span><span class="p">(</span><span class="mi">2</span><span class="o">,</span><span class="nv">$break</span><span class="p">);</span> <span class="p">}</span>
 <span class="p">}</span>
 </pre>
 </div>
@@ -230,9 +240,9 @@ Adding that to what we have:</p>
 
 <div class="highlight">
 <pre><span class="k">@include</span><span class="nd"> at-breakpoint</span><span class="p">(</span><span class="nv">$break</span><span class="p">)</span> <span class="p">{</span>
-  <span class="nc">.banner</span> <span class="p">{</span> <span class="k">@include</span><span class="nd"> prefix</span><span class="p">(</span><span class="mi">2</span><span class="o">,</span><span class="mi">12</span><span class="p">);</span> <span class="p">}</span>
-  <span class="nc">.pagenav</span> <span class="p">{</span> <span class="k">@include</span><span class="nd"> span-columns</span><span class="p">(</span><span class="mi">2</span><span class="o">,</span><span class="mi">12</span><span class="p">);</span> <span class="p">}</span>
-  <span class="nc">.main</span> <span class="p">{</span> <span class="k">@include</span><span class="nd"> span-columns</span><span class="p">(</span><span class="mi">10</span> <span class="n">omega</span><span class="o">,</span> <span class="mi">12</span><span class="p">);</span> <span class="p">}</span>
+  <span class="nc">.banner</span> <span class="p">{</span> <span class="k">@include</span><span class="nd"> prefix</span><span class="p">(</span><span class="mi">2</span><span class="o">,</span><span class="nv">$break</span><span class="p">);</span> <span class="p">}</span>
+  <span class="nc">.pagenav</span> <span class="p">{</span> <span class="k">@include</span><span class="nd"> span-columns</span><span class="p">(</span><span class="mi">2</span><span class="o">,</span><span class="nv">$break</span><span class="p">);</span> <span class="p">}</span>
+  <span class="nc">.main</span> <span class="p">{</span> <span class="k">@include</span><span class="nd"> span-columns</span><span class="p">(</span><span class="mi">10</span> <span class="n">omega</span><span class="o">,</span> <span class="nv">$break</span><span class="p">);</span> <span class="p">}</span>
 <span class="p">}</span>
 </pre>
 </div>
@@ -246,17 +256,20 @@ while the summary spans the remaining 3 (omega) of 10:</p>
 
 <div class="highlight">
 <pre><span class="k">@include</span><span class="nd"> at-breakpoint</span><span class="p">(</span><span class="nv">$break</span><span class="p">)</span> <span class="p">{</span>
-  <span class="nc">.banner</span> <span class="p">{</span> <span class="k">@include</span><span class="nd"> prefix</span><span class="p">(</span><span class="mi">2</span><span class="o">,</span><span class="mi">12</span><span class="p">);</span> <span class="p">}</span>
-  <span class="nc">.pagenav</span> <span class="p">{</span> <span class="k">@include</span><span class="nd"> span-columns</span><span class="p">(</span><span class="mi">2</span><span class="o">,</span><span class="mi">12</span><span class="p">);</span> <span class="p">}</span>
+  <span class="nc">.banner</span> <span class="p">{</span> <span class="k">@include</span><span class="nd"> prefix</span><span class="p">(</span><span class="mi">2</span><span class="o">,</span><span class="nv">$break</span><span class="p">);</span> <span class="p">}</span>
+  <span class="nc">.pagenav</span> <span class="p">{</span> <span class="k">@include</span><span class="nd"> span-columns</span><span class="p">(</span><span class="mi">2</span><span class="o">,</span><span class="nv">$break</span><span class="p">);</span> <span class="p">}</span>
   <span class="nc">.main</span> <span class="p">{</span>
-    <span class="k">@include</span><span class="nd"> span-columns</span><span class="p">(</span><span class="mi">10</span> <span class="n">omega</span><span class="o">,</span> <span class="mi">12</span><span class="p">);</span>
-    <span class="nc">.content</span> <span class="p">{</span> <span class="k">@include</span><span class="nd"> span-columns</span><span class="p">(</span><span class="mi">7</span><span class="o">,</span><span class="mi">10</span><span class="p">)</span> <span class="p">}</span>
-    <span class="nc">.summary</span> <span class="p">{</span> <span class="k">@include</span><span class="nd"> span-columns</span><span class="p">(</span><span class="mi">3</span> <span class="n">omega</span><span class="o">,</span> <span class="mi">10</span><span class="p">)</span> <span class="p">}</span>
+    <span class="na">$main-columns</span><span class="o">:</span> <span class="mi">10</span><span class="p">;</span>
+    <span class="k">@include</span><span class="nd"> span-columns</span><span class="p">(</span><span class="nv">$main-columns</span> <span class="n">omega</span><span class="o">,</span> <span class="nv">$break</span><span class="p">);</span>
+    <span class="nc">.content</span> <span class="p">{</span> <span class="k">@include</span><span class="nd"> span-columns</span><span class="p">(</span><span class="mi">7</span><span class="o">,</span><span class="nv">$main-columns</span><span class="p">)</span> <span class="p">}</span>
+    <span class="nc">.summary</span> <span class="p">{</span> <span class="k">@include</span><span class="nd"> span-columns</span><span class="p">(</span><span class="mi">3</span> <span class="n">omega</span><span class="o">,</span> <span class="nv">$main-columns</span><span class="p">)</span> <span class="p">}</span>
   <span class="p">}</span>
 <span class="p">}</span>
 </pre>
 </div>
 
+
+<p>(Again, notice I'm using <code>$main-columns</code> for defining columns and contexts.)</p>
 
 <p>That works, even though the summary comes first in our source.
 Applying <code>omega</code> to an element 
@@ -272,13 +285,13 @@ We also need to clear the floated content above,
 which is easy enough with plain CSS:</p>
 
 <div class="highlight">
-<pre><span class="o">[</span><span class="nt">role</span><span class="o">=</span><span class="s2">"contentinfo"</span><span class="o">]</span> <span class="p">{</span>
+<pre><span class="nc">.contentinfo</span> <span class="p">{</span>
   <span class="na">margin</span><span class="o">:</span> <span class="mi">0</span> <span class="mi">0</span> <span class="o">-</span> <span class="nv">$grid-padding</span><span class="p">;</span>
   <span class="na">padding</span><span class="o">:</span> <span class="mi">0</span> <span class="nv">$grid-padding</span><span class="p">;</span>
   <span class="k">@include</span><span class="nd"> at-breakpoint</span><span class="p">(</span><span class="nv">$break</span><span class="p">)</span> <span class="p">{</span>
     <span class="na">clear</span><span class="o">:</span> <span class="no">both</span><span class="p">;</span>
     <span class="na">margin</span><span class="o">:</span> <span class="mi">0</span><span class="p">;</span>
-    <span class="k">@include</span><span class="nd"> pad</span><span class="p">(</span><span class="mi">2</span><span class="o">,</span><span class="mi">3</span><span class="o">,</span><span class="mi">12</span><span class="p">);</span>
+    <span class="k">@include</span><span class="nd"> pad</span><span class="p">(</span><span class="mi">2</span><span class="o">,</span><span class="mi">3</span><span class="o">,</span><span class="nv">$break</span><span class="p">);</span>
   <span class="p">}</span>
 <span class="p">}</span>
 </pre>
@@ -313,22 +326,23 @@ without doing any math at all:</p>
 <span class="c1">// Layout</span>
 
 <span class="k">@include</span><span class="nd"> at-breakpoint</span><span class="p">(</span><span class="nv">$break</span><span class="p">)</span> <span class="p">{</span>
-  <span class="nc">.banner</span> <span class="p">{</span> <span class="k">@include</span><span class="nd"> prefix</span><span class="p">(</span><span class="mi">2</span><span class="o">,</span><span class="mi">12</span><span class="p">);</span> <span class="p">}</span>
-  <span class="nc">.pagenav</span> <span class="p">{</span> <span class="k">@include</span><span class="nd"> span-columns</span><span class="p">(</span><span class="mi">2</span><span class="o">,</span><span class="mi">12</span><span class="p">);</span> <span class="p">}</span>
+  <span class="nc">.banner</span> <span class="p">{</span> <span class="k">@include</span><span class="nd"> prefix</span><span class="p">(</span><span class="mi">2</span><span class="o">,</span><span class="nv">$break</span><span class="p">);</span> <span class="p">}</span>
+  <span class="nc">.pagenav</span> <span class="p">{</span> <span class="k">@include</span><span class="nd"> span-columns</span><span class="p">(</span><span class="mi">2</span><span class="o">,</span><span class="nv">$break</span><span class="p">);</span> <span class="p">}</span>
   <span class="nc">.main</span> <span class="p">{</span>
-    <span class="k">@include</span><span class="nd"> span-columns</span><span class="p">(</span><span class="mi">10</span> <span class="n">omega</span><span class="o">,</span> <span class="mi">12</span><span class="p">);</span>
-    <span class="nc">.content</span> <span class="p">{</span> <span class="k">@include</span><span class="nd"> span-columns</span><span class="p">(</span><span class="mi">7</span><span class="o">,</span><span class="mi">10</span><span class="p">)</span> <span class="p">}</span>
-    <span class="nc">.summary</span> <span class="p">{</span> <span class="k">@include</span><span class="nd"> span-columns</span><span class="p">(</span><span class="mi">3</span> <span class="n">omega</span><span class="o">,</span> <span class="mi">10</span><span class="p">)</span> <span class="p">}</span>
+    <span class="na">$main-columns</span><span class="o">:</span> <span class="mi">10</span><span class="p">;</span>
+    <span class="k">@include</span><span class="nd"> span-columns</span><span class="p">(</span><span class="nv">$main-columns</span> <span class="n">omega</span><span class="o">,</span> <span class="nv">$break</span><span class="p">);</span>
+    <span class="nc">.content</span> <span class="p">{</span> <span class="k">@include</span><span class="nd"> span-columns</span><span class="p">(</span><span class="mi">7</span><span class="o">,</span><span class="nv">$main-columns</span><span class="p">)</span> <span class="p">}</span>
+    <span class="nc">.summary</span> <span class="p">{</span> <span class="k">@include</span><span class="nd"> span-columns</span><span class="p">(</span><span class="mi">3</span> <span class="n">omega</span><span class="o">,</span> <span class="nv">$main-columns</span><span class="p">)</span> <span class="p">}</span>
   <span class="p">}</span>
 <span class="p">}</span>
 
 <span class="nc">.contentinfo</span> <span class="p">{</span>
   <span class="na">clear</span><span class="o">:</span> <span class="no">both</span><span class="p">;</span>
-  <span class="na">margin</span><span class="o">:</span> <span class="mi">0</span> <span class="mi">0</span> <span class="o">-</span> <span class="nv">$grid-padding</span><span class="p">;</span>
+  <span class="na">margin</span><span class="o">:</span> <span class="mi">0</span> <span class="o">-</span> <span class="nv">$grid-padding</span><span class="p">;</span>
   <span class="na">padding</span><span class="o">:</span> <span class="mi">0</span> <span class="nv">$grid-padding</span><span class="p">;</span>
   <span class="k">@include</span><span class="nd"> at-breakpoint</span><span class="p">(</span><span class="nv">$break</span><span class="p">)</span> <span class="p">{</span>
     <span class="na">margin</span><span class="o">:</span> <span class="mi">0</span><span class="p">;</span>
-    <span class="k">@include</span><span class="nd"> pad</span><span class="p">(</span><span class="mi">2</span><span class="o">,</span><span class="mi">3</span><span class="o">,</span><span class="mi">12</span><span class="p">);</span>
+    <span class="k">@include</span><span class="nd"> pad</span><span class="p">(</span><span class="mi">2</span><span class="o">,</span><span class="mi">3</span><span class="o">,</span><span class="nv">$break</span><span class="p">);</span>
   <span class="p">}</span>
 <span class="p">}</span>
 </pre>

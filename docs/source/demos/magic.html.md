@@ -84,7 +84,7 @@ and add it back in as padding to the footer:
 
     :::scss
     .contentinfo {
-      margin: 0 0 - $grid-padding;
+      margin: 0 - $grid-padding;
       padding: 0 $grid-padding;
     }
 
@@ -172,8 +172,12 @@ inside a breakpoint:
 
     :::scss
     @include at-breakpoint($break) {
-      .banner { @include prefix(2,12); }
+      .banner { @include prefix(2,$break); }
     }
+
+Notice that I'm using `$break` as the `context` argument.
+That way if I decide to change it,
+I won't have to worry about updating all the contexts.
 
 Next comes the pagenav,
 which we want to set as a sidebar
@@ -183,8 +187,8 @@ we already created.
 
     :::scss
     @include at-breakpoint($break) {
-      .banner { @include prefix(2,12); }
-      .pagenav { @include span-columns(2,12); }
+      .banner { @include prefix(2,$break); }
+      .pagenav { @include span-columns(2,$break); }
     }
 
 The main content will fill the remaining space,
@@ -194,9 +198,9 @@ Adding that to what we have:
 
     :::scss
     @include at-breakpoint($break) {
-      .banner { @include prefix(2,12); }
-      .pagenav { @include span-columns(2,12); }
-      .main { @include span-columns(10 omega, 12); }
+      .banner { @include prefix(2,$break); }
+      .pagenav { @include span-columns(2,$break); }
+      .main { @include span-columns(10 omega, $break); }
     }
 
 Inside the main content
@@ -207,14 +211,17 @@ while the summary spans the remaining 3 (omega) of 10:
 
     :::scss
     @include at-breakpoint($break) {
-      .banner { @include prefix(2,12); }
-      .pagenav { @include span-columns(2,12); }
+      .banner { @include prefix(2,$break); }
+      .pagenav { @include span-columns(2,$break); }
       .main {
-        @include span-columns(10 omega, 12);
-        .content { @include span-columns(7,10) }
-        .summary { @include span-columns(3 omega, 10) }
+        $main-columns: 10;
+        @include span-columns($main-columns omega, $break);
+        .content { @include span-columns(7,$main-columns) }
+        .summary { @include span-columns(3 omega, $main-columns) }
       }
     }
+
+(Again, notice I'm using `$main-columns` for defining columns and contexts.)
 
 That works, even though the summary comes first in our source.
 Applying `omega` to an element 
@@ -230,13 +237,13 @@ We also need to clear the floated content above,
 which is easy enough with plain CSS:
 
     :::scss
-    [role="contentinfo"] {
+    .contentinfo {
       margin: 0 0 - $grid-padding;
       padding: 0 $grid-padding;
       @include at-breakpoint($break) {
         clear: both;
         margin: 0;
-        @include pad(2,3,12);
+        @include pad(2,3,$break);
       }
     }
 
@@ -273,22 +280,23 @@ without doing any math at all:
     // Layout
 
     @include at-breakpoint($break) {
-      .banner { @include prefix(2,12); }
-      .pagenav { @include span-columns(2,12); }
+      .banner { @include prefix(2,$break); }
+      .pagenav { @include span-columns(2,$break); }
       .main {
-        @include span-columns(10 omega, 12);
-        .content { @include span-columns(7,10) }
-        .summary { @include span-columns(3 omega, 10) }
+        $main-columns: 10;
+        @include span-columns($main-columns omega, $break);
+        .content { @include span-columns(7,$main-columns) }
+        .summary { @include span-columns(3 omega, $main-columns) }
       }
     }
 
     .contentinfo {
       clear: both;
-      margin: 0 0 - $grid-padding;
+      margin: 0 - $grid-padding;
       padding: 0 $grid-padding;
       @include at-breakpoint($break) {
         margin: 0;
-        @include pad(2,3,12);
+        @include pad(2,3,$break);
       }
     }
 

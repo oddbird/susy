@@ -195,6 +195,11 @@ Resets an element to default block behaviour.
                                 // for use with IE conditional comments 
                                 // on the <html> tag.
 
+**Note:** 
+The IE-fallback class does not include a leading "`.`" signifier, 
+but is simply the class name:
+"`lt-ie9`", not "`.lt-ie9`".
+
 ### <a href="#ref-responsive-mixins" id="ref-responsive-mixins">Responsive Mixins</a>
 
 #### <a href="#ref-at-breakpoint" id="ref-at-breakpoint">At-Breakpoint</a>

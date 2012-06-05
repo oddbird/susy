@@ -51,8 +51,16 @@ was a good line-length for the main content.
 While that's larger than most mobile devices,
 the site will flex to fit them as well.
 
-Think of this setting as a max-width
-for your initial linear layout.
+We've set `$column-width: 4em`,
+but Susy doesn't apply that directly.
+That will be used to determine the outer container width
+(using `max-width` unless [otherwise instructed][overrides]),
+and then to figure out percentages internally.
+
+Think of these settings as a max-width
+for your initial layout.
+
+[overrides]: http://susy.oddbird.net/guides/reference/#ref-container-override
 
 ### <a href="#demo-mobile" id="demo-mobile">Mobile Layout</a>
 

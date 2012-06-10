@@ -121,16 +121,16 @@ $browser-default-font-size-pt       : 12pt;
 ){
   $unit: unit($font-size);
   @if $unit == 'px' {
-    @return $font-size / $browser-default-font-size-px * 1em;
+    @return $font-size / $browser-default-font-size-px * $ems;
   }
   @else if $unit == '%' {
-    @return $font-size / $browser-default-font-size-percent * 1em;
+    @return $font-size / $browser-default-font-size-percent * $ems;
   }
   @else if $unit == 'em' {
-    @return $font-size;
+    @return $font-size / 1em * $ems;
   }
   @else if $unit == 'pt' {
-    @return $font-size / $browser-default-font-size-pt * 1em;
+    @return $font-size / $browser-default-font-size-pt * $ems;
   }
   @else {
     @warn 'Variable $base-font-size does not have a valid font unit. Valid units for fonts in CSS are px, pt, em, and %.';

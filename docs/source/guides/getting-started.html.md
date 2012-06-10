@@ -192,13 +192,13 @@ Create an ``.rvmrc`` file at your site's root:
 
 Now whenever you ``cd`` into your site's root, RVM will pick up and use that Gemset.
 
-``cd`` to your site and install Bundler:
+``cd`` to your site and install [Bundler](http://gembundler.com/):
 
     :::bash
     # command line
     gem install bundler
     
-Add Susy to your ``Gemfile``:
+Add Susy to your ``Gemfile`` ([more info on Gemfiles](http://gembundler.com/gemfile.html)):
 
     :::ruby
     gem "susy", "~> 1.0.rc.1"

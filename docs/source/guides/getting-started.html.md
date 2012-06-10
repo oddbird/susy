@@ -161,6 +161,8 @@ Check the [reference documentation][reference] for details.
 
 We recommend you use [RVM](http://rvm.io) for using Susy with Rails projects. Why? It has become the standard gem management system for Rails, it is very easy to install and use, and helps create and manage Gemsets among different developers working on different branches.
 
+New to [RVM](http://rvm.io)? [Here are some RVM best practices](http://rvm.io/rvm/best-practices/).
+
 If you have installed Susy in the past, make sure you've uninstalled older versions:
 
     :::bash

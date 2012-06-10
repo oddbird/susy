@@ -15,6 +15,12 @@ side_content: >
     <li><a href="#start-responsive">Responsive Grids</a></li>
     <li><a href="#start-advanced">Advanced</a></li>
   </ul>
+  <h2><a href="#troubleshooting">Troubleshooting</a></h2>
+  <ul>
+    <li><a href="#troubleshooting-installation-compass">Installation: Compass</a></li>
+    <li><a href="#troubleshooting-installation-codekit">Installation: Codekit</a></li>
+    <li><a href="#troubleshooting-installation-rails">Installation: Rails</a></li>
+  </ul>
 ---
 
 ## <a href="#start-install" id="start-install">Installation</a>
@@ -144,3 +150,61 @@ Check the [reference documentation][reference] for details.
 [at-breakpoint]: ../reference/#ref-at-breakpoint
 [push]: ../reference/#ref-push
 [pull]: ../reference/#ref-pull
+
+## <a href="#troubleshooting" id="troubleshooting">Troubleshooting</a>
+
+### <a href="#troubleshooting-installation-compass" id="troubleshooting-installation-compass">Installation: Compass</a>
+
+### <a href="#troubleshooting-installation-codekit" id="troubleshooting-installation-codekit">Installation: Codekit</a>
+
+### <a href="#troubleshooting-installation-rails" id="troubleshooting-installation-rails">Installation: Rails 3.x</a>
+
+We recommend you use [RVM](http://rvm.io) for using Susy with Rails projects. Why? It has become the standard gem management system for Rails, it is very easy to install and use, and helps create and manage Gemsets among different developers working on different branches.
+
+If you have installed Susy in the past, make sure you've uninstalled older versions:
+
+    :::bash
+    # command line
+    # from your system's root:
+    gem uninstall compass-susy-plugin
+    # "compass-susy-plugin" was the gem name for 0.9.x and lower
+    # Susy 1.0 switches to "susy" as the gem name
+    
+[Install RVM](http://rvm.io/rvm/install/) (These are basics, if you do not have Ruby and Rails already installed in your environment, we [recommend you use RVM's installation instructions](http://rvm.io/rvm/install/)):
+
+    :::bash
+    # command line
+    # from your system's root:
+    curl -L get.rvm.io | bash -s stable
+    
+Create a gemset for your site:
+
+    :::bash
+    # command line
+    rvm gemset create fooBar
+    
+Create an ``.rvmrc`` file at your site's root:
+    
+    :::bash
+    # .rvmrc
+    rvm use 1.9.3@fooBar
+    # Use whatever Ruby version number your app uses
+
+Now whenever you ``cd`` into your site's root, RVM will pick up and use that Gemset.
+
+``cd`` to your site and install Bundler:
+
+    :::bash
+    # command line
+    gem install bundler
+    
+Add Susy to your ``Gemfile``:
+
+    :::ruby
+    gem "susy", "~> 1.0.rc.1"
+
+And finally run your bundle:
+
+    :::bash
+    # command line
+    bundle

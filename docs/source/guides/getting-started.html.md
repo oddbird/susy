@@ -204,7 +204,7 @@ Proceed at your own risk.
 **Note:** Your milage may vary.
 Updates to the CodeKit app will likely overwrite these modifications.
 
-### <a href="#troubleshooting-rails-install" id="troubleshooting-rails-install">Rails 3.x</a>
+### <a href="#troubleshooting-rails-install" id="troubleshooting-rails-install">Rails 3.x Install</a>
 
 We recommend you use [RVM](http://rvm.io)
 for using Susy with Rails projects.

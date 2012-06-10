@@ -156,7 +156,7 @@ Check the [reference documentation][reference] for details.
 ### <a href="#troubleshooting-compass-install" id="troubleshooting-compass-install">Compass Install</a>
 
 The old gem and the new gem have different names,
-but but are required simply as 'susy'.
+but are required simply as ``susy``.
 That can cause a conflict if both gems are present.
 
 If you have installed Susy in the past,

@@ -167,6 +167,14 @@ make sure you've uninstalled older versions:
     gem uninstall compass-susy-plugin
     # "compass-susy-plugin" was the gem name for 0.9.x and lower
     # Susy 1.0 switches to "susy" as the gem name
+    
+And then install 1.0:
+
+    :::bash
+    # command line
+    gem install susy
+    
+Then use Compass as normal.
 
 ### <a href="#troubleshooting-codekit-install" id="troubleshooting-codekit-install">CodeKit Install</a>
 

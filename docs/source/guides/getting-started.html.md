@@ -17,6 +17,7 @@ side_content: >
   </ul>
   <h2><a href="#troubleshooting">Troubleshooting</a></h2>
   <ul>
+    <li><a href="#troubleshooting-use-rvm">Use RVM</a></li>
     <li><a href="#troubleshooting-compass-install">Compass Install</a></li>
     <li><a href="#troubleshooting-codekit-install">CodeKit Install</a></li>
     <li><a href="#troubleshooting-rails-install">Rails 3.x  Install</a></li>
@@ -152,6 +153,21 @@ Check the [reference documentation][reference] for details.
 [pull]: ../reference/#ref-pull
 
 ## <a href="#troubleshooting" id="troubleshooting">Troubleshooting</a>
+
+### <a href="#troubleshooting-use-rvm" id="troubleshooting-use-rvm">Using the command line? Use RVM.</a>
+
+We'll address a few installation and upgrading
+issues you might run into with [Compass](#troubleshooting-compass-install), 
+[CodeKit](#troubleshooting-codekit-install) and
+[Rails](#troubleshooting-rails-install), but for
+Susy (or any gem), your best bet for keeping gems
+and dependencies tidy and separate - especially if 
+you are using the command line - is by using 
+[RVM](http://rvm.io/), which we recommend.
+
+See our [Rails troubleshooting](#troubleshooting-rails-install)
+below for some basic instructions, or
+[dig into RVM's installation instructions](http://rvm.io/rvm/install/).
 
 ### <a href="#troubleshooting-compass-install" id="troubleshooting-compass-install">Compass Install</a>
 

@@ -17,7 +17,7 @@ side_content: >
   </ul>
   <h2><a href="#troubleshooting">Troubleshooting</a></h2>
   <ul>
-    <li><a href="#troubleshooting-use-rvm">Use RVM</a></li>
+    <li><a href="#troubleshooting-versions">Version Management</a></li>
     <li><a href="#troubleshooting-compass-install">Compass Install</a></li>
     <li><a href="#troubleshooting-codekit-install">CodeKit Install</a></li>
     <li><a href="#troubleshooting-rails-install">Rails 3.x  Install</a></li>
@@ -154,20 +154,29 @@ Check the [reference documentation][reference] for details.
 
 ## <a href="#troubleshooting" id="troubleshooting">Troubleshooting</a>
 
-### <a href="#troubleshooting-use-rvm" id="troubleshooting-use-rvm">Using the command line? Use RVM.</a>
+### <a href="#troubleshooting-versions" id="troubleshooting-versions">Version Management</a>
 
-We'll address a few installation and upgrading
-issues you might run into with [Compass](#troubleshooting-compass-install), 
-[CodeKit](#troubleshooting-codekit-install) and
-[Rails](#troubleshooting-rails-install), but for
-Susy (or any gem), your best bet for keeping gems
-and dependencies tidy and separate - especially if 
-you are using the command line - is by using 
-[RVM](http://rvm.io/), which we recommend.
+When you are working with bundled gems and dependencies
+across a number of different projects,
+managing gem versions can become an issue.
 
+If you are working in a **Ruby** environment,
+we recommend using [RVM](http://rvm.io/rvm/install/).
 See our [Rails troubleshooting](#troubleshooting-rails-install)
 below for some basic instructions, or
 [dig into RVM's installation instructions](http://rvm.io/rvm/install/).
+
+In a **Python** environment,
+we recommend [virtualenv](http://www.virtualenv.org/en/latest/index.html)
+in conjunction with these
+["postactivate" and "predeactivate" scripts](https://gist.github.com/1078601)
+to add support for Ruby gems.
+
+Once you have that in place,
+[Bundler](http://gembundler.com/)
+can be used in either environment
+to manage the actual installation
+and updating of the gems.
 
 ### <a href="#troubleshooting-compass-install" id="troubleshooting-compass-install">Compass Install</a>
 
@@ -183,13 +192,13 @@ make sure you've uninstalled older versions:
     gem uninstall compass-susy-plugin
     # "compass-susy-plugin" was the gem name for 0.9.x and lower
     # Susy 1.0 switches to "susy" as the gem name
-    
+
 And then install 1.0:
 
     :::bash
     # command line
     gem install susy
-    
+
 Then use Compass as normal.
 
 ### <a href="#troubleshooting-codekit-install" id="troubleshooting-codekit-install">CodeKit Install</a>

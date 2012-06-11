@@ -5,7 +5,9 @@
 @import "compass/typography/vertical_rhythm";
 
 // For now, we also need this...
-$browser-default-font-size  : 16px;
+$browser-default-font-size-px       : 16px;
+$browser-default-font-size-percent  : 100%;
+$browser-default-font-size-pt       : 12pt;
 
 // ---------------------------------------------------------------------------
 // Grid Functions
@@ -111,15 +113,27 @@ $browser-default-font-size  : 16px;
 // Note: This only works if actual sizes are set relative to browser defaults.
 //
 // $ems         : The initial value to be converted.
-// $font-size   : The current font-size in px.
+// $font-size   : The current font-size in.
 @function absolute-ems(
   $ems,
   $font-size: $base-font-size
 ){
-  @if ($font-size != $browser-default-font-size) {
-    $ems: $ems * ($font-size / $browser-default-font-size);
+  $unit: unit($font-size);
+  @if $unit == 'px' {
+    @return $font-size / $browser-default-font-size-px * $ems;
   }
-  @return $ems;
+  @else if $unit == '%' {
+    @return $font-size / $browser-default-font-size-percent * $ems;
+  }
+  @else if $unit == 'em' {
+    @return $font-size / 1em * $ems;
+  }
+  @else if $unit == 'pt' {
+    @return $font-size / $browser-default-font-size-pt * $ems;
+  }
+  @else {
+    @warn 'Variable $base-font-size does not have a valid font unit. Valid units for fonts in CSS are px, pt, em, and %.';
+  }
 }
 
 // Return a length, after any em-values have been sent through absolute-ems().

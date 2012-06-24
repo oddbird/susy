@@ -58,7 +58,9 @@ You may also need:
 
     :::ruby
     # Gemfile
-    gem "compass-rails", ">= 1.0.0.rc.4"
+    gem 'compass', '>= 0.13.alpha.0'
+    gem 'compass-rails', '>= 1.0.2'
+
 
 And run:
 

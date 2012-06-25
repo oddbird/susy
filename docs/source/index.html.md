@@ -1,15 +1,15 @@
 <div class="intro">
   <p>
-    The web is a responsive place, 
-    from your lithe <span class="amp">&</span> lively development process 
-    to your end-user's super-tablet-multi-magic-lap-phone. 
-    You need grids that are powerful yet custom, 
+    The web is a responsive place,
+    from your lithe <span class="amp">&</span> lively development process
+    to your end-user's super-tablet-multi-magic-lap-phone.
+    You need grids that are powerful yet custom,
     reliable yet responsive.
   </p>
   <p>
-    Susy grids are fluid on the inside, 
-    ready to respond at any moment, 
-    but contained in the candy shell of your choice, 
+    Susy grids are fluid on the inside,
+    ready to respond at any moment,
+    but contained in the candy shell of your choice,
     so they respond how and when and where you want them to.
   </p>
   <p>
@@ -20,7 +20,7 @@
 <section class="info">
   <div class="v1-0">
     <h2>
-      <a href="https://rubygems.org/gems/susy">Version 1.0<i>.rc.1</i></a>
+      <a href="https://rubygems.org/gems/susy">Version 1.0<i>.rc.2</i></a>
     </h2>
     <div class="highlight">
       <pre>gem install susy --pre</pre>
@@ -47,10 +47,10 @@
   <h2>Why is 1.0 a release candidate?</h2>
   <p>
     Susy 1.0 is stable, tested, <span class="amp">&</span> feature complete;
-    but our launch depends on unreleased Compass and Sass features.
+    but our launch depends on unreleased Sass features.
     We think those features are stable as well,
-    and you should <a href="guides/getting-started/">get started</a> 
-    with Susy 1.0 RC right now. 
+    and you should <a href="guides/getting-started/">get started</a>
+    with Susy 1.0 RC right now.
     We'll make sure the final upgrade is as painless as possible.
   </p>
 </section>
@@ -92,10 +92,10 @@
   <p>
     Quickly add media-query breakpoints for new layouts with
     <a href="guides/reference/#ref-at-breakpoint">at-breakpoint</a>,
-    or create your own custom math 
-    using Susy's full array of 
-    <a href="guides/reference/#ref-helper">grid helpers</a>. 
-    Build a one-off site in minutes, 
+    or create your own custom math
+    using Susy's full array of
+    <a href="guides/reference/#ref-helper">grid helpers</a>.
+    Build a one-off site in minutes,
     or create your own scalable object-oriented grid library
     for large projects.
   </p>

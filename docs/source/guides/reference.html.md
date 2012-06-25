@@ -2,7 +2,7 @@
 title: Reference
 class: guide
 side_content: >
-  <p class="version">Version <span>1.0.rc.1</span></p>
+  <p class="version">Version <span>1.0.rc.2</span></p>
   <h2><a href="#ref-basic">Basic Usage</a></h2>
   <h3><a href="#ref-basic-settings">Basic Settings</a></h3>
   <ul>
@@ -87,11 +87,11 @@ side_content: >
 The number of Columns in your default Grid Layout.
 
     :::scss
-    // $total-columns: <number>; 
-    $total-columns: 12; 
+    // $total-columns: <number>;
+    $total-columns: 12;
 
 - `<number>`: Unitless number.
-  
+
 #### <a href="#ref-column-width" id="ref-column-width">Column Width</a>
 The width of a single Column in your Grid.
 
@@ -99,7 +99,7 @@ The width of a single Column in your Grid.
     // $column-width: <length>;
     $column-width: 4em;
 
-- `<length>`: Length in any unit of measurement (em, px, %, etc). 
+- `<length>`: Length in any unit of measurement (em, px, %, etc).
 
 #### <a href="#ref-gutter-width"id="ref-gutter-width">Gutter Width</a>
 The space between Columns.
@@ -108,7 +108,7 @@ The space between Columns.
     // $gutter-width: <length>;
     $gutter-width: 1em;
 
-- `<length>`: Units must match `$column-width`. 
+- `<length>`: Units must match `$column-width`.
 
 #### <a href="#ref-grid-padding" id="ref-grid-padding">Grid Padding</a>
 Padding on the left and right of a Grid Container.
@@ -117,8 +117,8 @@ Padding on the left and right of a Grid Container.
     // $grid-padding: <length>;
     $grid-padding: $gutter-width;  // 1em
 
-- `<length>`: Units must match `$column-width`. 
-  
+- `<length>`: Units must match `$column-width`.
+
 ### <a href="#ref-basic-mixins" id="ref-basic-mixins">Basic Mixins</a>
 
 #### <a href="#ref-container" id="ref-container">Container</a>
@@ -128,7 +128,7 @@ Establish the outer grid-containing element.
     // container([$<media-layout>]*)
     .page { @include container; }
 
-- `<$media-layout>`: Optional media-layout shortcuts 
+- `<$media-layout>`: Optional media-layout shortcuts
   (see '[Responsive Grids][responsive]' below).
   Default: `$total-columns`.
 
@@ -154,7 +154,7 @@ Apply to any omega element as an override.
 
     :::scss
     // omega([<$from>])
-    .gallery-image { 
+    .gallery-image {
       @include span-columns(3,9); // each gallery-image is 3 of 9 cols.
       &:nth-child(3n) { @include omega; } // every third image completes a row.
     }
@@ -192,11 +192,11 @@ Resets an element to default block behaviour.
     $media-layout: 30em 12 60em;// Use 12 cols between min 30em & max 60em.
     $media-layout: 60em 12 30em;// Same. Larger length will always be max-width.
     $media-layout : 12 lt-ie9;  // Output is included under `.lt-ie9` class,
-                                // for use with IE conditional comments 
+                                // for use with IE conditional comments
                                 // on the <html> tag.
 
-**Note:** 
-The IE-fallback class does not include a leading "`.`" signifier, 
+**Note:**
+The IE-fallback class does not include a leading "`.`" signifier,
 but is simply the class name:
 "`lt-ie9`", not "`.lt-ie9`".
 
@@ -204,7 +204,7 @@ but is simply the class name:
 
 #### <a href="#ref-at-breakpoint" id="ref-at-breakpoint">At-Breakpoint</a>
 At a given min- or max-width Breakpoint, use a given Layout.
-    
+
     :::scss
     // at-breakpoint(<$media-layout> [, <$font-size>]) { <@content> }
     @include at-breakpoint(30em 12) {
@@ -312,7 +312,7 @@ Add columns of empty space as margin after an element.
 - `<$columns>`: The number of _Columns_ to be added as `margin` after.
 - `<$context>`: The _Context_.
   Default: `$total-columns`.
-- `<$from>`: The origin direction of your document flow. 
+- `<$from>`: The origin direction of your document flow.
   Default: `$from-direction`.
 
 #### <a href="#ref-squish" id="ref-squish">Squish</a>
@@ -324,9 +324,9 @@ Shortcut to add empty space as margin before and after an element.
 
 - `<$pre>`: The number of _Columns_ to be added as `margin` before.
 - `<$post>`: The number of _Columns_ to be added as `margin` after.
-- `<$context>`: The _Context_. 
+- `<$context>`: The _Context_.
   Default: `$total-columns`.
-- `<$from>`: The origin direction of your document flow. 
+- `<$from>`: The origin direction of your document flow.
   Default: `$from-direction`.
 
 #### <a href="#ref-push" id="ref-push">Push</a>
@@ -367,18 +367,18 @@ Show the Susy Grid as a background-image on any container.
 
 ### <a href="#ref-helper-functions" id="ref-helper-functions">Functions</a>
 
-Where a mixin returns property/value pairs, functions return simple values 
+Where a mixin returns property/value pairs, functions return simple values
 that you can put where you want, and use for advanced math.
 
 #### <a href="#ref-columns" id="ref-columns">Columns</a>
-Similar to [span-columns](#ref-span-columns) mixin, 
+Similar to [span-columns](#ref-span-columns) mixin,
 but returns the math-ready `%` multiplier.
 
     :::scss
     // columns(<$columns> [, <$context>])
     .item { width: columns(3,6); }
 
-- `<$columns>`: The number of _Columns_ to span, 
+- `<$columns>`: The number of _Columns_ to span,
 - `<$context>`: The _Context_.
   Default: `$total-columns`.
 
@@ -399,7 +399,7 @@ Total `%` space taken by Columns, including internal AND external gutters.
     // space(<$columns> [, <$context>])
     .item { margin-right: space(3,6); }
 
-- `<$columns>`: The number of _Columns_ to span, 
+- `<$columns>`: The number of _Columns_ to span,
 - `<$context>`: The _Context_.
   Default: `$total-columns`.
 
@@ -456,7 +456,7 @@ The direction that Omega elements should be floated.
 ### <a href="#ref-compass-options" id="ref-compass-options">Compass Options</a>
 
 #### <a href="#ref-base-font-size" id="ref-base-font-size">Base Font Size</a>
-From the [Compass Vertical Rhythm][rhythm] module, 
+From the [Compass Vertical Rhythm][rhythm] module,
 Susy uses your base font size to help manage
 em-based media-queries.
 
@@ -464,8 +464,8 @@ em-based media-queries.
     // $base-font-size: <px-size>;
     $base-font-size: 16px;
 
-- `<px-size>`: Any length in `px`. 
-  This will not actually effect your font size 
+- `<px-size>`: Any length in `px`.
+  This will not actually effect your font size
   unless you use other Vertical Rhythm tools,
   we just need to know.
   See [Compass Docs][base-font-size] for further usage details.

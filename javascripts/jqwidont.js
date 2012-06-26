@@ -1,1 +1,1 @@
-jQuery(function(a){a("h1,h2,h3,li,p").each(function(){a(this).html(a(this).html().replace(/\s([^\s<]+)\s*$/,"&nbsp;$1"))})});
+jQuery(function(e){e("h1,h2,h3,li,p").each(function(){e(this).html(e(this).html().replace(/\s([^\s<]+)\s*$/,"&nbsp;$1"))})});

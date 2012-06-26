@@ -12,7 +12,7 @@
 <link href="images/splash-iphone4.png" media="screen and (max-device-width: 480px) and (-webkit-min-device-pixel-ratio: 2)" rel="apple-touch-startup-image">
 <link href="images/splash-portrait.png" media="screen and (min-device-width: 768px) and (orientation: portrait)" rel="apple-touch-startup-image">
 <link href="images/splash-landscape.png" media="screen and (min-device-width: 768px) and (orientation: landscape)" rel="apple-touch-startup-image">
-<link type="text/css" href="../../stylesheets/site.css" media="screen" rel="stylesheet">
+<link media="screen" type="text/css" href="../../stylesheets/site.css" rel="stylesheet">
 <script type="text/javascript" src="../../javascripts/modernizr-2.5.3.min.js"></script><script type="text/javascript" src="../../javascripts/modernizr.selectors.js"></script>
 </head>
 <body class="guides guides_reference guides_reference_index" id="susy-oddbird-net">
@@ -67,8 +67,8 @@
 <p>The number of Columns in your default Grid Layout.</p>
 
 <div class="highlight">
-<pre><span class="c1">// $total-columns: &lt;number&gt;; </span>
-<span class="na">$total-columns</span><span class="o">:</span> <span class="mi">12</span><span class="p">;</span> 
+<pre><span class="c1">// $total-columns: &lt;number&gt;;</span>
+<span class="na">$total-columns</span><span class="o">:</span> <span class="mi">12</span><span class="p">;</span>
 </pre>
 </div>
 
@@ -90,7 +90,7 @@
 
 <ul>
 <li>
-<code>&lt;length&gt;</code>: Length in any unit of measurement (em, px, %, etc). </li>
+<code>&lt;length&gt;</code>: Length in any unit of measurement (em, px, %, etc).</li>
 </ul>
 <h4><a href="#ref-gutter-width" id="ref-gutter-width">Gutter Width</a></h4>
 
@@ -105,7 +105,7 @@
 
 <ul>
 <li>
-<code>&lt;length&gt;</code>: Units must match <code>$column-width</code>. </li>
+<code>&lt;length&gt;</code>: Units must match <code>$column-width</code>.</li>
 </ul>
 <h4><a href="#ref-grid-padding" id="ref-grid-padding">Grid Padding</a></h4>
 
@@ -120,7 +120,7 @@
 
 <ul>
 <li>
-<code>&lt;length&gt;</code>: Units must match <code>$column-width</code>. </li>
+<code>&lt;length&gt;</code>: Units must match <code>$column-width</code>.</li>
 </ul>
 <h3><a href="#ref-basic-mixins" id="ref-basic-mixins">Basic Mixins</a></h3>
 
@@ -137,7 +137,7 @@
 
 <ul>
 <li>
-<code>&lt;$media-layout&gt;</code>: Optional media-layout shortcuts 
+<code>&lt;$media-layout&gt;</code>: Optional media-layout shortcuts
 (see '<a href="#ref-responsive">Responsive Grids</a>' below).
 Default: <code>$total-columns</code>.</li>
 </ul>
@@ -175,7 +175,7 @@ Default: <code>$from-direction</code>.</li>
 
 <div class="highlight">
 <pre><span class="c1">// omega([&lt;$from&gt;])</span>
-<span class="nc">.gallery-image</span> <span class="p">{</span> 
+<span class="nc">.gallery-image</span> <span class="p">{</span>
   <span class="k">@include</span><span class="nd"> span-columns</span><span class="p">(</span><span class="mi">3</span><span class="o">,</span><span class="mi">9</span><span class="p">);</span> <span class="c1">// each gallery-image is 3 of 9 cols.</span>
   <span class="k">&amp;</span><span class="nd">:nth-child</span><span class="o">(</span><span class="nt">3n</span><span class="o">)</span> <span class="p">{</span> <span class="k">@include</span><span class="nd"> omega</span><span class="p">;</span> <span class="p">}</span> <span class="c1">// every third image completes a row.</span>
 <span class="p">}</span>
@@ -227,14 +227,14 @@ Default: <code>$from-direction</code>.</li>
 <span class="na">$media-layout</span><span class="o">:</span> <span class="mi">30</span><span class="kt">em</span> <span class="mi">12</span> <span class="mi">60</span><span class="kt">em</span><span class="p">;</span><span class="c1">// Use 12 cols between min 30em &amp; max 60em.</span>
 <span class="na">$media-layout</span><span class="o">:</span> <span class="mi">60</span><span class="kt">em</span> <span class="mi">12</span> <span class="mi">30</span><span class="kt">em</span><span class="p">;</span><span class="c1">// Same. Larger length will always be max-width.</span>
 <span class="na">$media-layout</span><span class="o"> :</span> <span class="mi">12</span> <span class="n">lt-ie9</span><span class="p">;</span>  <span class="c1">// Output is included under `.lt-ie9` class,</span>
-                            <span class="c1">// for use with IE conditional comments </span>
+                            <span class="c1">// for use with IE conditional comments</span>
                             <span class="c1">// on the &lt;html&gt; tag.</span>
 </pre>
 </div>
 
 
-<p><strong>Note:</strong> 
-The IE-fallback class does not include a leading "<code>.</code>" signifier, 
+<p><strong>Note:</strong>
+The IE-fallback class does not include a leading "<code>.</code>" signifier,
 but is simply the class name:
 "<code>lt-ie9</code>", not "<code>.lt-ie9</code>".</p>
 
@@ -412,7 +412,7 @@ Default: <code>$from-direction</code>.</li>
 <code>&lt;$context&gt;</code>: The <em>Context</em>.
 Default: <code>$total-columns</code>.</li>
 <li>
-<code>&lt;$from&gt;</code>: The origin direction of your document flow. 
+<code>&lt;$from&gt;</code>: The origin direction of your document flow.
 Default: <code>$from-direction</code>.</li>
 </ul>
 <h4><a href="#ref-squish" id="ref-squish">Squish</a></h4>
@@ -432,10 +432,10 @@ Default: <code>$from-direction</code>.</li>
 <li>
 <code>&lt;$post&gt;</code>: The number of <em>Columns</em> to be added as <code>margin</code> after.</li>
 <li>
-<code>&lt;$context&gt;</code>: The <em>Context</em>. 
+<code>&lt;$context&gt;</code>: The <em>Context</em>.
 Default: <code>$total-columns</code>.</li>
 <li>
-<code>&lt;$from&gt;</code>: The origin direction of your document flow. 
+<code>&lt;$from&gt;</code>: The origin direction of your document flow.
 Default: <code>$from-direction</code>.</li>
 </ul>
 <h4><a href="#ref-push" id="ref-push">Push</a></h4>
@@ -493,12 +493,12 @@ Susy columns tend to be more accurate than gradient grid-backgrounds.</li>
 </ul>
 <h3><a href="#ref-helper-functions" id="ref-helper-functions">Functions</a></h3>
 
-<p>Where a mixin returns property/value pairs, functions return simple values 
+<p>Where a mixin returns property/value pairs, functions return simple values
 that you can put where you want, and use for advanced math.</p>
 
 <h4><a href="#ref-columns" id="ref-columns">Columns</a></h4>
 
-<p>Similar to <a href="#ref-span-columns">span-columns</a> mixin, 
+<p>Similar to <a href="#ref-span-columns">span-columns</a> mixin,
 but returns the math-ready <code>%</code> multiplier.</p>
 
 <div class="highlight">
@@ -510,7 +510,7 @@ but returns the math-ready <code>%</code> multiplier.</p>
 
 <ul>
 <li>
-<code>&lt;$columns&gt;</code>: The number of <em>Columns</em> to span, </li>
+<code>&lt;$columns&gt;</code>: The number of <em>Columns</em> to span,</li>
 <li>
 <code>&lt;$context&gt;</code>: The <em>Context</em>.
 Default: <code>$total-columns</code>.</li>
@@ -544,7 +544,7 @@ Default: <code>$total-columns</code>.</li>
 
 <ul>
 <li>
-<code>&lt;$columns&gt;</code>: The number of <em>Columns</em> to span, </li>
+<code>&lt;$columns&gt;</code>: The number of <em>Columns</em> to span,</li>
 <li>
 <code>&lt;$context&gt;</code>: The <em>Context</em>.
 Default: <code>$total-columns</code>.</li>
@@ -637,7 +637,7 @@ For ltr documents, this is the left.</p>
 
 <h4><a href="#ref-base-font-size" id="ref-base-font-size">Base Font Size</a></h4>
 
-<p>From the <a href="http://compass-style.org/reference/compass/typography/vertical_rhythm/">Compass Vertical Rhythm</a> module, 
+<p>From the <a href="http://compass-style.org/reference/compass/typography/vertical_rhythm/">Compass Vertical Rhythm</a> module,
 Susy uses your base font size to help manage
 em-based media-queries.</p>
 
@@ -650,8 +650,8 @@ em-based media-queries.</p>
 
 <ul>
 <li>
-<code>&lt;px-size&gt;</code>: Any length in <code>px</code>. 
-This will not actually effect your font size 
+<code>&lt;px-size&gt;</code>: Any length in <code>px</code>.
+This will not actually effect your font size
 unless you use other Vertical Rhythm tools,
 we just need to know.
 See <a href="http://compass-style.org/reference/compass/typography/vertical_rhythm/#const-base-font-size">Compass Docs</a> for further usage details.</li>
@@ -676,7 +676,7 @@ although only IE6 and IE7 have special cases attached to them currently.</p>
 <li>
 <code>&lt;boolean&gt;</code>: <code>true</code> | <code>false</code>
 </li>
-</ul></section><aside class="secondary"><p class="version">Version <span>1.0.rc.1</span></p> <h2><a href="#ref-basic">Basic Usage</a></h2> <h3><a href="#ref-basic-settings">Basic Settings</a></h3> <ul>
+</ul></section><aside class="secondary"><p class="version">Version <span>1.0.rc.2</span></p> <h2><a href="#ref-basic">Basic Usage</a></h2> <h3><a href="#ref-basic-settings">Basic Settings</a></h3> <ul>
 <li><a href="#ref-total-columns">$total-columns</a></li>
   <li><a href="#ref-column-width">$column-width</a></li>
   <li><a href="#ref-gutter-width">$gutter-width</a></li>
@@ -729,20 +729,20 @@ although only IE6 and IE7 have special cases attached to them currently.</p>
   <li><a href="#ref-browser-support">$legacy-support-for-...</a></li>
 </ul></aside><footer role="contentinfo"><div class="colophon">
   <p>
-    Susy is based on Natalie Downe's 
-    <a href="http://www.slideshare.net/nataliedowne/css-systems-presentation">CSS Systems</a>, 
-    made possible by <a href="http://www.sass-lang.com/">Sass</a>, 
-    and made easy with <a href="http://www.compass-style.org/">Compass</a>. 
+    Susy is based on Natalie Downe's
+    <a href="http://www.slideshare.net/nataliedowne/css-systems-presentation">CSS Systems</a>,
+    made possible by <a href="http://www.sass-lang.com/">Sass</a>,
+    and made easy with <a href="http://www.compass-style.org/">Compass</a>.
     You can use it anywhere,
     from static sites to Django, Rails, Wordpress and more.
-    It even comes packaged as part of 
+    It even comes packaged as part of
     <a href="http://www.middlemanapp.com/">Middleman</a>, to make your life easy.
   </p>
   <p>
-    This site was built with <span class="caps">HTML5</span> and 
-    <span class="caps">CSS3</span> 
-    using <a href="http://www.middlemanapp.com/">Middleman</a>, 
-    <a href="http://www.compass-style.org/">Compass</a>, 
+    This site was built with <span class="caps">HTML5</span> and
+    <span class="caps">CSS3</span>
+    using <a href="http://www.middlemanapp.com/">Middleman</a>,
+    <a href="http://www.compass-style.org/">Compass</a>,
     <a href="http://www.sass-lang.com/">Sass</a>,
     <a href="/">Susy</a>,
     <a href="http://html5boilerplate.com/">HTML5 Boilerplate</a>,
@@ -751,8 +751,18 @@ although only IE6 and IE7 have special cases attached to them currently.</p>
     <a href="http://ethanschoonover.com/solarized">Solarized</a> colors,
     <a href="http://pygments.org/">Pygments</a> syntax highlighting,
     <a href="http://fortawesome.github.com/Font-Awesome/">Font Awesome</a> icons,
-    and Franklin Gothic with Century OldStyle from 
+    and Franklin Gothic with Century OldStyle from
     <a href="http://www.fontspring.com/">Fontspring</a>.
+  </p>
+  <p>
+    Susy was created by
+    <a href="http://github.com/ericam">Eric A. Meyer</a>
+    <span class="amp">&amp;</span> <a href="http://oddbird.net">OddBird</a>,
+    and is maintained with the help of
+    <a href="http://www.dannypose.com">Danny Palmer</a>,
+    and a number of wonderful
+    <a href="https://github.com/ericam/susy/graphs/contributors">contributors</a>.
+    <a href="http://github.com/ericam/susy/">Get involved</a>!
   </p>
 </div>
 

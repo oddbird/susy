@@ -2,19 +2,19 @@
 
 Susy is a semantic CSS grid system with a responsive twist.
 
-The web is a responsive place, 
-from your lithe & lively development process 
-to your end user's super-tablet-multi-magic-lap-phone. 
-You need grids that are powerful, but custom; 
+The web is a responsive place,
+from your lithe & lively development process
+to your end user's super-tablet-multi-magic-lap-phone.
+You need grids that are powerful, but custom;
 reliable, but responsive.
 
-Susy grids are fluid on the inside, 
-ready to respond at any moment, 
-but contained in the candy shell of your choice, 
+Susy grids are fluid on the inside,
+ready to respond at any moment,
+but contained in the candy shell of your choice,
 so they respond how and when and where you want them to.
 
-This isn't another one-size-fits-all grid framework 
-that will make your sites look identical 
+This isn't another one-size-fits-all grid framework
+that will make your sites look identical
 and litter your markup with meaningless "col2of5" jargon.
 We don't design your site or write your markup,
 we just do the math and get out of your way.
@@ -30,8 +30,8 @@ we just do the math and get out of your way.
 ## Why is 1.0 a release candidate?
 
 Susy 1.0 is stable and tested, all the features are in,
-and we're ready to launch. 
-But our 1.0 depends on unreleased Compass and Sass features.
+and we're ready to launch.
+But our 1.0 depends on unreleased Sass features.
 We think those features are stable as well,
 and we'll do what it takes to stay on top of any changes they make,
 but we can't officially land until they do.

@@ -143,7 +143,7 @@ Here's a mobile-first example:
 Susy is built to handle your unique markup, and any number of edge cases.
 It includes the standard [push()][push] and [pull()][pull] mixins,
 along with other useful functions and shortcuts,
-supoprt for various grid styles,
+support for various grid styles,
 and even bi-directional grids for multi-lingual sites.
 Check the [reference documentation][reference] for details.
 

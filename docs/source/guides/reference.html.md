@@ -16,6 +16,7 @@ side_content: >
     <li><a href="#ref-container">container()</a></li>
     <li><a href="#ref-span-columns">span-columns()</a></li>
     <li><a href="#ref-omega">omega()</a></li>
+    <li><a href="#ref-remove-omega">remove-omega()</a></li>
     <li><a href="#ref-reset-columns">reset-columns()</a></li>
   </ul>
   <h2><a href="#ref-responsive">Responsive Grids</a></h2>
@@ -159,6 +160,24 @@ Apply to any omega element as an override.
       &:nth-child(3n) { @include omega; } // every third image completes a row.
     }
 
+- `<$from>`: The origin direction of your document flow.
+  Default: `$from-direction`.
+
+#### <a href="#ref-remove-omega" id="ref-remove-omega">Remove-Omega</a>
+Apply to any previously-omega element
+to reset it's float direction and margins
+like any non-omega element.
+Note that unlike omega,
+this requires a context when nested.
+
+    :::scss
+    // remove-omega([<$context>, <$from>])
+    .gallery-image {
+      &:nth-child(3n) { @include remove-omega; } // 3rd images no longer complete rows.
+    }
+
+- `<$context>`: Current nesting _Context_.
+  Default: `$total-columns`.
 - `<$from>`: The origin direction of your document flow.
   Default: `$from-direction`.
 

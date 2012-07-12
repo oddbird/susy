@@ -86,14 +86,14 @@
   $to       : opposite-position($from);
   $pos      : split-columns-value($columns,position);
   $cols     : split-columns-value($columns,columns);
-  
+
   width: columns($cols, $context);
 
   @if ($pos == 'omega') {
     @include omega($from);
-  } @else {  
+  } @else {
     float: $from;
-    margin-#{$to}: gutter($context);      
+    margin-#{$to}: gutter($context);
     @if $legacy-support-for-ie6 {
       display: inline;
     }
@@ -109,13 +109,33 @@
 ) {
   $to     : opposite-position($from);
   $hack   : opposite-position($omega-float);
-  
+
   float: $omega-float;
   margin-#{$to}: 0;
 
   @if $legacy-support-for-ie6 or $legacy-support-for-ie7 {
     #margin-#{$hack}: - $gutter-width;
     @if $legacy-support-for-ie6 { display: inline; }
+  }
+}
+
+// Apply to elements previously set as omega.
+// This will return floats and margins back to non-omega settigns.
+//
+// $context : [optional] The context (columns spanned by parent).
+// $from    : The start-direction for your document.
+@mixin remove-omega(
+  $context  : $total-columns,
+  $from     : $from-direction
+) {
+  $to     : opposite-position($from);
+  $hack   : opposite-position($omega-float);
+
+  float: $from;
+  margin-#{$to}: gutter($context);
+
+  @if $legacy-support-for-ie6 or $legacy-support-for-ie7 {
+    #margin-#{$hack}: 0;
   }
 }
 
@@ -134,7 +154,7 @@
   float: none;
   width: auto;
   margin-#{$to}: auto;
-  
+
   @if $legacy-support-for-ie6 or $legacy-support-for-ie7 {
     #margin-#{$hack}: auto;
     @if $legacy-support-for-ie6 { display: block; }

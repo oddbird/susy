@@ -33,7 +33,7 @@ $container-width    : false           !default;
 // 'static' - Forces the grid container to remain static at all times.
 // 'fluid'  - Forces the grid to remain fluid at all times.
 //            (this will overrule any static $container-width settings)
-$container-style    : mixed           !default;
+$container-style    : magic           !default;
 
 // ---------------------------------------------------------------------------
 // IE Settings

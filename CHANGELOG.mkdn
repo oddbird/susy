@@ -20,6 +20,16 @@ New Features:
 * All mixins respect your `$legacy-support-for-ie` settings.
 * The `space` function can be used anywhere you need column+gutter math.
 * `push`, `pull`, `pre`, `post`, and `squish` add margin left/right shortcuts.
+* The `nth-omega` mixin can be used to set omega on any nth-child, nth-of-type,
+  first, last, or only element - using pseudo-class selectors.
+* `remove-omega` and `remove-nth-omega` will remove the omega-specific styles
+  from an element, returning it to the regular grid flow.
+* `$container-width` and `$container-style` settings will override the width
+  and type (magic, fluid, fixed, static, etc) of your grid container.
+* `$breakpoint-media-output` and `$breakpoint-media-output` allow you to turn
+  on and off the different outputs from `at-breakpoint`.
+  This is useful when you have IE-overrides living in a file of their own.
+* Unit tests live in the `/test/` directory.
 
 Changed API:
 

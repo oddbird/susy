@@ -13,7 +13,7 @@ $browser-default-font-size-pt       : 12pt;
 // Grid Functions
 
 // Returns the full width of a grid based on your grid settings.
-// 
+//
 //  $columns  : The number of columns to get width for.
 @function columns-width(
   $columns  : $total-columns
@@ -40,7 +40,7 @@ $browser-default-font-size-pt       : 12pt;
 }
 
 // Return the percentage width of multiple 'columns' in a given 'context'.
-// 
+//
 //  $columns  : The number of columns to get relative width for.
 //  $context  : The grid context in columns, if nested.
 @function columns(
@@ -51,7 +51,7 @@ $browser-default-font-size-pt       : 12pt;
 }
 
 // Return the percentage width of a single gutter in a given 'context'.
-// 
+//
 //  $context  : The grid context in columns, if nested.
 @function gutter(
   $context : $total-columns
@@ -61,7 +61,7 @@ $browser-default-font-size-pt       : 12pt;
 
 // Return the total space occupied by multiple columns and associated gutters.
 // Useful for adding padding or margins (preifx, suffix, push, pull, etc.)
-// 
+//
 //  $columns  : The number of columns to get relative space for.
 //  $context  : The grid context in columns, if nested.
 @function space(
@@ -92,7 +92,7 @@ $browser-default-font-size-pt       : 12pt;
       } @else {
         @warn '"#{$var}" is not a valid part of "$columns: #{$columns}" in the columns() mixin.';
       }
-    } 
+    }
   }
 
   @if $request == 'columns' {
@@ -104,6 +104,22 @@ $browser-default-font-size-pt       : 12pt;
       @warn '"#{$request}"" is not a valid value for $request';
     }
   }
+}
+
+// Accept nth-selector variables, and format them as a valid CSS3 selector.
+//
+// $n         : [first | only | last | <equation>]
+// $selector  : [child | last-child | of-type | last-of-type ]
+@function format-nth(
+  $n        : last,
+  $selector : child
+) {
+  @if ($n == 'last') or ($n =='first') or ($n =='only') {
+    $selector: '#{$n}-#{$selector}';
+  } @else {
+    $selector: 'nth-#{$selector}(#{$n})';
+  }
+  @return $selector;
 }
 
 // ---------------------------------------------------------------------------
@@ -260,8 +276,8 @@ $browser-default-font-size-pt       : 12pt;
   $layout-cols  : nth($media-layout,2);
   $max          : nth($media-layout,3);
 
-  @if $min or $max { 
-    @return false; 
+  @if $min or $max {
+    @return false;
   } @else {
     @return if($layout-cols == $total-columns,true,false);
   }

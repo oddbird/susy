@@ -119,6 +119,41 @@
   }
 }
 
+// Shortcut to apply omega to a specific subset of elements.
+//
+// $n         : [first | only | last | <equation>]
+// $selector  : [child | last-child | of-type | last-of-type ]
+// $from      : The start-direction for your document.
+@mixin nth-omega(
+  $n        : last,
+  $selector : child,
+  $from     : $from-direction
+) {
+  &:#{format-nth($n,$selector)} { @include omega($from); }
+}
+
+// ---------------------------------------------------------------------------
+// Resets
+
+// Reset a '+columns' grid element to default block behavior
+//
+// $from  : The start direction of your layout (e.g. 'left' for ltr languages)
+@mixin reset-columns(
+  $from: $from-direction
+) {
+  $to     : opposite-position($from);
+  $hack   : opposite-position($omega-float);
+
+  float: none;
+  width: auto;
+  margin-#{$to}: auto;
+
+  @if $legacy-support-for-ie6 or $legacy-support-for-ie7 {
+    #margin-#{$hack}: auto;
+    @if $legacy-support-for-ie6 { display: block; }
+  }
+}
+
 // Apply to elements previously set as omega.
 // This will return floats and margins back to non-omega settigns.
 //
@@ -139,24 +174,17 @@
   }
 }
 
-// ---------------------------------------------------------------------------
-// Reset Columns
-
-// Reset a '+columns' grid element to default block behavior
+// Shortcut to apply remove-omega to a specific subset of elements.
 //
-// $from  : The start direction of your layout (e.g. 'left' for ltr languages)
-@mixin reset-columns(
-  $from: $from-direction
+// $n         : [first | only | last | <equation>]
+// $selector  : [child | last-child | of-type | last-of-type ]
+// $context   : [optional] The context (columns spanned by parent).
+// $from      : The start-direction for your document.
+@mixin remove-nth-omega(
+  $n        : last,
+  $selector : child,
+  $context  : $total-columns,
+  $from     : $from-direction
 ) {
-  $to     : opposite-position($from);
-  $hack   : opposite-position($omega-float);
-
-  float: none;
-  width: auto;
-  margin-#{$to}: auto;
-
-  @if $legacy-support-for-ie6 or $legacy-support-for-ie7 {
-    #margin-#{$hack}: auto;
-    @if $legacy-support-for-ie6 { display: block; }
-  }
+  &:#{format-nth($n,$selector)} { @include remove-omega($context,$from); }
 }

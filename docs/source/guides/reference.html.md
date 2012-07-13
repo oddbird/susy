@@ -16,8 +16,7 @@ side_content: >
     <li><a href="#ref-container">container()</a></li>
     <li><a href="#ref-span-columns">span-columns()</a></li>
     <li><a href="#ref-omega">omega()</a></li>
-    <li><a href="#ref-remove-omega">remove-omega()</a></li>
-    <li><a href="#ref-reset-columns">reset-columns()</a></li>
+    <li><a href="#ref-nth-omega">nth-omega()</a></li>
   </ul>
   <h2><a href="#ref-responsive">Responsive Grids</a></h2>
   <ul>
@@ -43,6 +42,12 @@ side_content: >
     <li><a href="#ref-squish">squish()</a></li>
     <li><a href="#ref-push">push()</a></li>
     <li><a href="#ref-pull">pull()</a></li>
+  </ul>
+  <h3><a href="#ref-helper-reset">Reset Mixins</a></h3>
+  <ul>
+    <li><a href="#ref-reset-columns">reset-columns()</a></li>
+    <li><a href="#ref-remove-omega">remove-omega()</a></li>
+    <li><a href="#ref-remove-nth-omega">remove-nth-omega()</a></li>
   </ul>
   <h3><a href="#ref-helper-other">Other Mixins</a></h3>
   <ul>
@@ -163,33 +168,25 @@ Apply to any omega element as an override.
 - `<$from>`: The origin direction of your document flow.
   Default: `$from-direction`.
 
-#### <a href="#ref-remove-omega" id="ref-remove-omega">Remove-Omega</a>
-Apply to any previously-omega element
-to reset it's float direction and margins
-like any non-omega element.
-Note that unlike omega,
-this requires a context when nested.
+#### <a href="#ref-omega" id="ref-nth-omega">Nth-Omega</a>
+Apply to any element as an nth-child omega shortcut.
+Defaults to `:last-child`.
 
     :::scss
-    // remove-omega([<$context>, <$from>])
+    // nth-omega([<$n>, <$selector>, <$from>])
     .gallery-image {
-      &:nth-child(3n) { @include remove-omega; } // 3rd images no longer complete rows.
+      @include span-columns(3,9); // each gallery-image is 3 of 9 cols.
+      @include nth-omega(3n); // same as omega example above.
     }
 
-- `<$context>`: Current nesting _Context_.
-  Default: `$total-columns`.
-- `<$from>`: The origin direction of your document flow.
-  Default: `$from-direction`.
-
-#### <a href="#ref-reset-columns" id="ref-reset-columns">Reset Columns</a>
-Resets an element to default block behaviour.
-
-    :::scss
-    // reset-columns([<$from>])
-    article { @include span-columns(6); }     // articles are 6 cols wide
-    #news article { @include reset-columns; } // but news span the full width
-                                              // of their container
-
+- `<$n>`: The keyword or equation to select: `[first | only | last | <equation>]`.
+  An equation could be e.g. `3` or `3n` or `'3n+1'`.
+  Note that quotes are needed to keep complex equations
+  from being simplified by Compass.
+  Default: `last`.
+- `<$selector>`: The type of element, and direction to count from:
+  `[child | last-child | of-type | last-of-type ]`.
+  Default: `child`.
 - `<$from>`: The origin direction of your document flow.
   Default: `$from-direction`.
 
@@ -364,6 +361,64 @@ Add negative margins before an element, to pull it against the flow.
 
 - `<$columns>`: The number of _Columns_ to be subtracted as `margin` before.
 - `<$context>`: The _Context_.
+  Default: `$total-columns`.
+- `<$from>`: The origin direction of your document flow.
+  Default: `$from-direction`.
+
+### <a href="#ref-helper-reset" id="ref-helper-reset">Reset Mixins</a>
+
+#### <a href="#ref-reset-columns" id="ref-reset-columns">Reset Columns</a>
+Resets an element to default block behaviour.
+
+    :::scss
+    // reset-columns([<$from>])
+    article { @include span-columns(6); }     // articles are 6 cols wide
+    #news article { @include reset-columns; } // but news span the full width
+                                              // of their container
+
+- `<$from>`: The origin direction of your document flow.
+  Default: `$from-direction`.
+
+
+#### <a href="#ref-remove-omega" id="ref-remove-omega">Remove-Omega</a>
+Apply to any previously-omega element
+to reset it's float direction and margins
+to match non-omega grid elements.
+Note that unlike omega,
+this requires a context when nested.
+
+    :::scss
+    // remove-omega([<$context>, <$from>])
+    .gallery-image {
+      &:nth-child(3n) { @include remove-omega; } // 3rd images no longer complete rows.
+    }
+
+- `<$context>`: Current nesting _Context_.
+  Default: `$total-columns`.
+- `<$from>`: The origin direction of your document flow.
+  Default: `$from-direction`.
+
+#### <a href="#ref-remove-nth-omega" id="ref-remove-nth-omega">Remove Nth-Omega</a>
+Apply to any previously nth-omega element
+to reset it's float direction and margins
+to match non-omega grid elements.
+Note that unlike omega,
+this requires a context when nested.
+
+    :::scss
+    // remove-nth-omega([<$n>, <$selector>, <$context>, <$from>])
+    .gallery-image {
+      @include remove-nth-omega(3n); // same as remove-omega example above.
+    }
+
+- `<$n>`: The keyword or equation to select: `[first | only | last | <equation>]`.
+  An equation could be e.g. `3` or `3n` or `'3n+1'`.
+  Note that quotes are needed to keep a complext equation from being simplified by Compass.
+  Default: `last`.
+- `<$selector>`: The type of element, and direction to count from:
+  `[child | last-child | of-type | last-of-type ]`.
+  Default: `child`.
+- `<$context>`: Current nesting _Context_.
   Default: `$total-columns`.
 - `<$from>`: The origin direction of your document flow.
   Default: `$from-direction`.

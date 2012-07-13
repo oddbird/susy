@@ -1,7 +1,7 @@
 CHANGELOG.mkdn
 LICENSE.txt
 Manifest
-README.mkdn
+README.md
 Rakefile
 VERSION
 lib/susy.rb
@@ -17,3 +17,14 @@ susy.gemspec
 templates/project/_base.scss
 templates/project/manifest.rb
 templates/project/screen.scss
+test/config.rb
+test/css/background.css
+test/css/grid.css
+test/css/margin.css
+test/css/media.css
+test/css/padding.css
+test/scss/background.scss
+test/scss/grid.scss
+test/scss/margin.scss
+test/scss/media.scss
+test/scss/padding.scss

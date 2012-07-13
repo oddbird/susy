@@ -2,7 +2,7 @@
 title: Reference
 class: guide
 side_content: >
-  <p class="version">Version <span>1.0.rc.2</span></p>
+  <p class="version">Version <span>1.0.rc.3</span></p>
   <h2><a href="#ref-basic">Basic Usage</a></h2>
   <h3><a href="#ref-basic-settings">Basic Settings</a></h3>
   <ul>

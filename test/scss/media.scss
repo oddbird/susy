@@ -1,0 +1,21 @@
+// ---------------------------------------------------------------------------
+// Imports
+
+@import "../../sass/susy";
+
+// ---------------------------------------------------------------------------
+// Media
+
+@include layout(4) {
+  .layout { @include container; }
+}
+
+.breakpoint{
+  @include at-breakpoint(6) {
+    .break6 { @include container; }
+  }
+
+  @include at-breakpoint(60em 8 30em) {
+    .break60-8-30 { @include set-container-width; }
+  }
+}

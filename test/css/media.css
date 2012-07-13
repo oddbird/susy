@@ -1,0 +1,37 @@
+.layout {
+  *zoom: 1;
+  max-width: 19em;
+  _width: 19em;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1em;
+  padding-right: 1em;
+}
+.layout:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+@media (min-width: 31em) {
+  .breakpoint .break6 {
+    *zoom: 1;
+    max-width: 29em;
+    _width: 29em;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1em;
+    padding-right: 1em;
+  }
+  .breakpoint .break6:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+@media (min-width: 30em) and (max-width: 60em) {
+  .breakpoint .break60-8-30 {
+    max-width: 39em;
+    _width: 39em;
+  }
+}

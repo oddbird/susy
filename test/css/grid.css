@@ -1,0 +1,77 @@
+.container {
+  *zoom: 1;
+  max-width: 59em;
+  _width: 59em;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1em;
+  padding-right: 1em;
+}
+.container:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.complex-container {
+  *zoom: 1;
+  max-width: 59em;
+  _width: 59em;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1em;
+  padding-right: 1em;
+}
+.complex-container:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+@media (min-width: 71em) {
+  .complex-container {
+    max-width: 69em;
+    _width: 69em;
+  }
+}
+
+.span-columns {
+  width: 49.153%;
+  float: right;
+  margin-right: 0;
+  #margin-left: -1em;
+  display: inline;
+}
+
+.reset-columns {
+  float: none;
+  width: auto;
+  margin-right: auto;
+  #margin-left: auto;
+  display: block;
+}
+
+.omega {
+  float: right;
+  margin-right: 0;
+  #margin-left: -1em;
+  display: inline;
+}
+
+.nth-omega:last-child {
+  float: right;
+  margin-right: 0;
+  #margin-left: -1em;
+  display: inline;
+}
+
+.remove-omega {
+  float: left;
+  margin-right: 1.695%;
+  #margin-left: 0;
+}
+
+.remove-nth-omega:last-child {
+  float: left;
+  margin-right: 1.695%;
+  #margin-left: 0;
+}

@@ -28,9 +28,19 @@ $omega-float        : opposite-position($from-direction)    !default;
 $container-width    : false           !default;
 
 // Container Style:
-// 'magic'  - Static (fixed or elastic) when there's enough space, 
+// 'magic'  - Static (fixed or elastic) when there's enough space,
 //            fluid when there isn't. This is the SUSY MAGIC SAUCE(TM).
 // 'static' - Forces the grid container to remain static at all times.
 // 'fluid'  - Forces the grid to remain fluid at all times.
 //            (this will overrule any static $container-width settings)
 $container-style    : mixed           !default;
+
+// ---------------------------------------------------------------------------
+// IE Settings
+
+// When you are using a seperate IE stylesheet,
+// you can use these settings to control the output of at-breakpoint.
+// By default, at-breakpoint will output media-queries as well as
+// any defined ie-fallback classes.
+$breakpoint-media-output  : true;
+$breakpoint-ie-output     : true;

@@ -74,6 +74,11 @@ side_content: >
     <li><a href="#ref-base-font-size">$base-font-size</a></li>
     <li><a href="#ref-browser-support">$legacy-support-for-...</a></li>
   </ul>
+  <h3><a href="#ref-compass-options">Breakpoint Output</a></h3>
+  <ul>
+    <li><a href="#ref-media-output">$breakpoint-media-output</a></li>
+    <li><a href="#ref-ie-output">$breakpoint-ie-output</a></li>
+  </ul>
 ---
 
 ## <a href="#ref-basic" id="ref-basic">Basic Usage</a>
@@ -562,3 +567,28 @@ although only IE6 and IE7 have special cases attached to them currently.
 - `<boolean>`: `true` | `false`
 
 [support]: http://compass-style.org/reference/compass/support/
+
+### <a href="#ref-compass-options" id="ref-compass-options">Breakpoint Output</a>
+If you are compiling seperate files for IE-fallbacks,
+it can be useful to output only the modern code in one file
+and only the fallbacks in another file.
+You can make `at-breakpoint` do exactly that
+by using the following settings.
+
+#### <a href="#ref-media-output" id="ref-media-output">$breakpoint-media-output</a>
+Turn off media-query output for IE-only stylesheets.
+
+    :::scss
+    // $breakpoint-media-output: <boolean>;
+    $breakpoint-media-output: true;
+
+- `<boolean>`: `true` | `false`
+
+#### <a href="#ref-ie-output" id="ref-ie-output">$breakpoint-ie-output</a>
+Turn off media-query fallback output for non-IE stylesheets.
+
+    :::scss
+    // $breakpoint-ie-output: <boolean>;
+    $breakpoint-ie-output: true;
+
+- `<boolean>`: `true` | `false`

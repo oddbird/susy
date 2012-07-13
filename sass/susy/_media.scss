@@ -36,6 +36,10 @@
   $max          : nth($media-layout,3);
   $ie           : nth($media-layout,4);
 
+  @if not $breakpoint-media-output and not $breakpoint-ie-output {
+    @warn "Either $breakpoint-media-output or $breakpoint-ie-output must be true for at-breakpoint to work.";
+  }
+
   // We need to have either a min-width breakpoint or a layout in order to proceed.
   @if $min or $layout or $max {
 
@@ -48,31 +52,33 @@
     @if $layout {
       // Set our new layout context.
       @include layout($layout) {
-        @if $min and $max {
-          // Both $min and $max
-          @media (min-width: $min) and (max-width: $max) {
-            @content;
-          }
-        } @else {
-          @if (not $min) and (not $max) {
-            // Neither $min nor $max:
-            // We can create a breakpoint based on the number of columns in the layout.
-            $min: fix-ems(container-outer-width());
-          }
-          @if $min {
-            // Min only:
-            @media (min-width: $min) {
+        @if $breakpoint-media-output {
+          @if $min and $max {
+            // Both $min and $max
+            @media (min-width: $min) and (max-width: $max) {
               @content;
             }
           } @else {
-            // Max only: 
-            @media (max-width: $max) {
-              @content;
-            }              
+            @if (not $min) and (not $max) {
+              // Neither $min nor $max:
+              // We can create a breakpoint based on the number of columns in the layout.
+              $min: fix-ems(container-outer-width());
+            }
+            @if $min {
+              // Min only:
+              @media (min-width: $min) {
+                @content;
+              }
+            } @else {
+              // Max only:
+              @media (max-width: $max) {
+                @content;
+              }
+            }
           }
         }
         // Set an IE fallback
-        @if $ie {
+        @if $ie and $breakpoint-ie-output {
           @if (type-of($ie) == 'bool') {
             $ie: 'lt-ie9';
           }

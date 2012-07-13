@@ -12,8 +12,8 @@
 <link href="images/splash-iphone4.png" media="screen and (max-device-width: 480px) and (-webkit-min-device-pixel-ratio: 2)" rel="apple-touch-startup-image">
 <link href="images/splash-portrait.png" media="screen and (min-device-width: 768px) and (orientation: portrait)" rel="apple-touch-startup-image">
 <link href="images/splash-landscape.png" media="screen and (min-device-width: 768px) and (orientation: landscape)" rel="apple-touch-startup-image">
-<link media="screen" type="text/css" href="../../stylesheets/site.css" rel="stylesheet">
-<script type="text/javascript" src="../../javascripts/modernizr-2.5.3.min.js"></script><script type="text/javascript" src="../../javascripts/modernizr.selectors.js"></script>
+<link type="text/css" rel="stylesheet" media="screen" href="../../stylesheets/site.css?1340673619">
+<script type="text/javascript" src="../../javascripts/modernizr-2.5.3.min.js?1340673619"></script><script type="text/javascript" src="../../javascripts/modernizr.selectors.js?1340673619"></script>
 </head>
 <body class="guides guides_reference guides_reference_index" id="susy-oddbird-net">
     <div class="page">
@@ -188,20 +188,32 @@ Default: <code>$from-direction</code>.</li>
 <code>&lt;$from&gt;</code>: The origin direction of your document flow.
 Default: <code>$from-direction</code>.</li>
 </ul>
-<h4><a href="#ref-reset-columns" id="ref-reset-columns">Reset Columns</a></h4>
+<h4><a href="#ref-omega" id="ref-nth-omega">Nth-Omega</a></h4>
 
-<p>Resets an element to default block behaviour.</p>
+<p>Apply to any element as an nth-child omega shortcut.
+Defaults to <code>:last-child</code>.</p>
 
 <div class="highlight">
-<pre><span class="c1">// reset-columns([&lt;$from&gt;])</span>
-<span class="nt">article</span> <span class="p">{</span> <span class="k">@include</span><span class="nd"> span-columns</span><span class="p">(</span><span class="mi">6</span><span class="p">);</span> <span class="p">}</span>     <span class="c1">// articles are 6 cols wide</span>
-<span class="nn">#news</span> <span class="nt">article</span> <span class="p">{</span> <span class="k">@include</span><span class="nd"> reset-columns</span><span class="p">;</span> <span class="p">}</span> <span class="c1">// but news span the full width</span>
-                                          <span class="c1">// of their container</span>
+<pre><span class="c1">// nth-omega([&lt;$n&gt;, &lt;$selector&gt;, &lt;$from&gt;])</span>
+<span class="nc">.gallery-image</span> <span class="p">{</span>
+  <span class="k">@include</span><span class="nd"> span-columns</span><span class="p">(</span><span class="mi">3</span><span class="o">,</span><span class="mi">9</span><span class="p">);</span> <span class="c1">// each gallery-image is 3 of 9 cols.</span>
+  <span class="k">@include</span><span class="nd"> nth-omega</span><span class="p">(</span><span class="mi">3</span><span class="kt">n</span><span class="p">);</span> <span class="c1">// same as omega example above.</span>
+<span class="p">}</span>
 </pre>
 </div>
 
 
 <ul>
+<li>
+<code>&lt;$n&gt;</code>: The keyword or equation to select: <code>[first | only | last | &lt;equation&gt;]</code>.
+An equation could be e.g. <code>3</code> or <code>3n</code> or <code>'3n+1'</code>.
+Note that quotes are needed to keep complex equations
+from being simplified by Compass.
+Default: <code>last</code>.</li>
+<li>
+<code>&lt;$selector&gt;</code>: The type of element, and direction to count from:
+<code>[child | last-child | of-type | last-of-type ]</code>.
+Default: <code>child</code>.</li>
 <li>
 <code>&lt;$from&gt;</code>: The origin direction of your document flow.
 Default: <code>$from-direction</code>.</li>
@@ -470,6 +482,85 @@ Default: <code>$total-columns</code>.</li>
 <code>&lt;$from&gt;</code>: The origin direction of your document flow.
 Default: <code>$from-direction</code>.</li>
 </ul>
+<h3><a href="#ref-helper-reset" id="ref-helper-reset">Reset Mixins</a></h3>
+
+<h4><a href="#ref-reset-columns" id="ref-reset-columns">Reset Columns</a></h4>
+
+<p>Resets an element to default block behaviour.</p>
+
+<div class="highlight">
+<pre><span class="c1">// reset-columns([&lt;$from&gt;])</span>
+<span class="nt">article</span> <span class="p">{</span> <span class="k">@include</span><span class="nd"> span-columns</span><span class="p">(</span><span class="mi">6</span><span class="p">);</span> <span class="p">}</span>     <span class="c1">// articles are 6 cols wide</span>
+<span class="nn">#news</span> <span class="nt">article</span> <span class="p">{</span> <span class="k">@include</span><span class="nd"> reset-columns</span><span class="p">;</span> <span class="p">}</span> <span class="c1">// but news span the full width</span>
+                                          <span class="c1">// of their container</span>
+</pre>
+</div>
+
+
+<ul>
+<li>
+<code>&lt;$from&gt;</code>: The origin direction of your document flow.
+Default: <code>$from-direction</code>.</li>
+</ul>
+<h4><a href="#ref-remove-omega" id="ref-remove-omega">Remove-Omega</a></h4>
+
+<p>Apply to any previously-omega element
+to reset it's float direction and margins
+to match non-omega grid elements.
+Note that unlike omega,
+this requires a context when nested.</p>
+
+<div class="highlight">
+<pre><span class="c1">// remove-omega([&lt;$context&gt;, &lt;$from&gt;])</span>
+<span class="nc">.gallery-image</span> <span class="p">{</span>
+  <span class="k">&amp;</span><span class="nd">:nth-child</span><span class="o">(</span><span class="nt">3n</span><span class="o">)</span> <span class="p">{</span> <span class="k">@include</span><span class="nd"> remove-omega</span><span class="p">;</span> <span class="p">}</span> <span class="c1">// 3rd images no longer complete rows.</span>
+<span class="p">}</span>
+</pre>
+</div>
+
+
+<ul>
+<li>
+<code>&lt;$context&gt;</code>: Current nesting <em>Context</em>.
+Default: <code>$total-columns</code>.</li>
+<li>
+<code>&lt;$from&gt;</code>: The origin direction of your document flow.
+Default: <code>$from-direction</code>.</li>
+</ul>
+<h4><a href="#ref-remove-nth-omega" id="ref-remove-nth-omega">Remove Nth-Omega</a></h4>
+
+<p>Apply to any previously nth-omega element
+to reset it's float direction and margins
+to match non-omega grid elements.
+Note that unlike omega,
+this requires a context when nested.</p>
+
+<div class="highlight">
+<pre><span class="c1">// remove-nth-omega([&lt;$n&gt;, &lt;$selector&gt;, &lt;$context&gt;, &lt;$from&gt;])</span>
+<span class="nc">.gallery-image</span> <span class="p">{</span>
+  <span class="k">@include</span><span class="nd"> remove-nth-omega</span><span class="p">(</span><span class="mi">3</span><span class="kt">n</span><span class="p">);</span> <span class="c1">// same as remove-omega example above.</span>
+<span class="p">}</span>
+</pre>
+</div>
+
+
+<ul>
+<li>
+<code>&lt;$n&gt;</code>: The keyword or equation to select: <code>[first | only | last | &lt;equation&gt;]</code>.
+An equation could be e.g. <code>3</code> or <code>3n</code> or <code>'3n+1'</code>.
+Note that quotes are needed to keep a complext equation from being simplified by Compass.
+Default: <code>last</code>.</li>
+<li>
+<code>&lt;$selector&gt;</code>: The type of element, and direction to count from:
+<code>[child | last-child | of-type | last-of-type ]</code>.
+Default: <code>child</code>.</li>
+<li>
+<code>&lt;$context&gt;</code>: Current nesting <em>Context</em>.
+Default: <code>$total-columns</code>.</li>
+<li>
+<code>&lt;$from&gt;</code>: The origin direction of your document flow.
+Default: <code>$from-direction</code>.</li>
+</ul>
 <h3><a href="#ref-helper-other" id="ref-helper-other">Other Mixins</a></h3>
 
 <h4><a href="#ref-grid-background" id="ref-grid-background">Susy Grid Background</a></h4>
@@ -676,7 +767,47 @@ although only IE6 and IE7 have special cases attached to them currently.</p>
 <li>
 <code>&lt;boolean&gt;</code>: <code>true</code> | <code>false</code>
 </li>
-</ul></section><aside class="secondary"><p class="version">Version <span>1.0.rc.2</span></p> <h2><a href="#ref-basic">Basic Usage</a></h2> <h3><a href="#ref-basic-settings">Basic Settings</a></h3> <ul>
+</ul>
+<h3><a href="#ref-compass-options" id="ref-compass-options">Breakpoint Output</a></h3>
+
+<p>If you are compiling seperate files for IE-fallbacks,
+it can be useful to output only the modern code in one file
+and only the fallbacks in another file.
+You can make <code>at-breakpoint</code> do exactly that
+by using the following settings.</p>
+
+<h4><a href="#ref-media-output" id="ref-media-output">$breakpoint-media-output</a></h4>
+
+<p>Turn off media-query output for IE-only stylesheets.</p>
+
+<div class="highlight">
+<pre><span class="c1">// $breakpoint-media-output: &lt;boolean&gt;;</span>
+<span class="na">$breakpoint-media-output</span><span class="o">:</span> <span class="n-Pseudo">true</span><span class="p">;</span>
+</pre>
+</div>
+
+
+<ul>
+<li>
+<code>&lt;boolean&gt;</code>: <code>true</code> | <code>false</code>
+</li>
+</ul>
+<h4><a href="#ref-ie-output" id="ref-ie-output">$breakpoint-ie-output</a></h4>
+
+<p>Turn off media-query fallback output for non-IE stylesheets.</p>
+
+<div class="highlight">
+<pre><span class="c1">// $breakpoint-ie-output: &lt;boolean&gt;;</span>
+<span class="na">$breakpoint-ie-output</span><span class="o">:</span> <span class="n-Pseudo">true</span><span class="p">;</span>
+</pre>
+</div>
+
+
+<ul>
+<li>
+<code>&lt;boolean&gt;</code>: <code>true</code> | <code>false</code>
+</li>
+</ul></section><aside class="secondary"><p class="version">Version <span>1.0.rc.3</span></p> <h2><a href="#ref-basic">Basic Usage</a></h2> <h3><a href="#ref-basic-settings">Basic Settings</a></h3> <ul>
 <li><a href="#ref-total-columns">$total-columns</a></li>
   <li><a href="#ref-column-width">$column-width</a></li>
   <li><a href="#ref-gutter-width">$gutter-width</a></li>
@@ -686,7 +817,7 @@ although only IE6 and IE7 have special cases attached to them currently.</p>
 <li><a href="#ref-container">container()</a></li>
   <li><a href="#ref-span-columns">span-columns()</a></li>
   <li><a href="#ref-omega">omega()</a></li>
-  <li><a href="#ref-reset-columns">reset-columns()</a></li>
+  <li><a href="#ref-nth-omega">nth-omega()</a></li>
 </ul>
 <h2><a href="#ref-responsive">Responsive Grids</a></h2> <ul>
 <li><a href="#ref-media-layouts">$media-layout</a></li>
@@ -708,6 +839,11 @@ although only IE6 and IE7 have special cases attached to them currently.</p>
   <li><a href="#ref-push">push()</a></li>
   <li><a href="#ref-pull">pull()</a></li>
 </ul>
+<h3><a href="#ref-helper-reset">Reset Mixins</a></h3> <ul>
+<li><a href="#ref-reset-columns">reset-columns()</a></li>
+  <li><a href="#ref-remove-omega">remove-omega()</a></li>
+  <li><a href="#ref-remove-nth-omega">remove-nth-omega()</a></li>
+</ul>
 <h3><a href="#ref-helper-other">Other Mixins</a></h3> <ul>
 <li><a href="#ref-grid-background">susy-grid-background()</a></li>
 </ul>
@@ -727,6 +863,10 @@ although only IE6 and IE7 have special cases attached to them currently.</p>
 <h3><a href="#ref-compass-options">Compass Options</a></h3> <ul>
 <li><a href="#ref-base-font-size">$base-font-size</a></li>
   <li><a href="#ref-browser-support">$legacy-support-for-...</a></li>
+</ul>
+<h3><a href="#ref-compass-options">Breakpoint Output</a></h3> <ul>
+<li><a href="#ref-media-output">$breakpoint-media-output</a></li>
+  <li><a href="#ref-ie-output">$breakpoint-ie-output</a></li>
 </ul></aside><footer role="contentinfo"><div class="colophon">
   <p>
     Susy is based on Natalie Downe's
@@ -782,7 +922,7 @@ although only IE6 and IE7 have special cases attached to them currently.</p>
         </li>
       </ul>
 </div>
-    <script type="text/javascript" src="../../javascripts/jquery-1.7.1.min.js"></script><script type="text/javascript" src="../../javascripts/jqwidont.js"></script><script type="text/javascript" src="../../javascripts/viewport.js"></script><script type="text/javascript">
+    <script type="text/javascript" src="../../javascripts/jquery-1.7.1.min.js?1340673619"></script><script type="text/javascript" src="../../javascripts/jqwidont.js?1340673619"></script><script type="text/javascript" src="../../javascripts/viewport.js?1340673619"></script><script type="text/javascript">
         //<![CDATA[
           var _gaq=[['_setAccount','UA-30497331-1'],['_trackPageview']];
           (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];

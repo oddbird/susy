@@ -102,7 +102,7 @@ To run the development server:
 
 ```bash
 # command line
-bundle exec middleman serve
+middleman
 ```
 
 The server should now be running at `localhost:4567`.

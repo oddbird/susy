@@ -35,7 +35,7 @@
 }
 
 .span-columns {
-  width: 49.153%;
+  width: 49.15254%;
   float: right;
   margin-right: 0;
   #margin-left: -1em;
@@ -66,12 +66,12 @@
 
 .remove-omega {
   float: left;
-  margin-right: 1.695%;
+  margin-right: 1.69492%;
   #margin-left: 0;
 }
 
 .remove-nth-omega:last-child {
   float: left;
-  margin-right: 1.695%;
+  margin-right: 1.69492%;
   #margin-left: 0;
 }

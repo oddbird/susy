@@ -19,3 +19,7 @@
     .break60-8-30 { @include set-container-width; }
   }
 }
+
+@include with-grid-settings(6,3em,2em,1em) {
+  .with-settings6-3-2-1 { @include container; }
+}

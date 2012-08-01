@@ -32,3 +32,18 @@
     max-width: 39em;
   }
 }
+
+.with-settings6-3-2-1 {
+  *zoom: 1;
+  max-width: 28em;
+  _width: 28em;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1em;
+  padding-right: 1em;
+}
+.with-settings6-3-2-1:after {
+  content: "";
+  display: table;
+  clear: both;
+}

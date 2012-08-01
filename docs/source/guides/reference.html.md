@@ -27,6 +27,7 @@ side_content: >
     <li><a href="#ref-at-breakpoint">at-breakpoint()</a></li>
     <li><a href="#ref-layout">layout()</a></li>
     <li><a href="#ref-container-width">set-container-width()</a></li>
+    <li><a href="#ref-with-settings">with-grid-settings()</a></li>
   </ul>
   <h2><a href="#ref-helper">Grid Helpers</a></h2>
   <h3><a href="#ref-helper-sizing">Box Sizing</a></h3>
@@ -273,6 +274,23 @@ for DRYer output than simply using `container` again.
 
 - `<$columns>`: The number of _Columns_ to be contained.
   Default: Current value of `$total-columns` depending on _Layout_.
+
+#### <a href="#ref-with-settings" id="ref-with-settings">With Grid Settings</a>
+Use different grid settings for a block of code -
+whether the same grid at a different breakpoint,
+or a different grid altogether.
+
+    :::scss
+    // with-grid-settings([<columns>, <width>, <gutter>, <padding>]) { <@content> }
+    @include with-grid-settings(12,4em,1.5em,1em) {
+      .new-grid { @include container; }
+    };
+
+- `<$columns>`: Overrides the `$total-columns` setting for all contained elements.
+- `<$width>`: Overrides the `$column-width` setting for all contained elements.
+- `<$gutter>`: Overrides the `$gutter-width` setting for all contained elements.
+- `<$padding>`: Overrides the `$grid-padding` setting for all contained elements.
+- `<@content>`: Nested `@content` block will use the given grid settings.
 
 ## <a href="#ref-helper" id="ref-helper">Grid Helpers</a>
 

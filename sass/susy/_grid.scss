@@ -205,3 +205,34 @@
 ) {
   &:#{format-nth($n,$selector)} { @include remove-omega($context,$from); }
 }
+
+// ---------------------------------------------------------------------------
+// Change Settings
+
+@mixin with-grid-settings(
+  $columns: $total-columns,
+  $width: $column-width,
+  $gutter: $gutter-width,
+  $padding: $grid-padding
+) {
+  // keep the defaults around
+  $default-columns: $total-columns;
+  $default-width: $column-width;
+  $default-gutter: $gutter-width;
+  $default-padding: $grid-padding;
+
+  // use the new settings
+  $total-columns: $columns;
+  $column-width: $width;
+  $gutter-width: $gutter;
+  $grid-padding: $padding;
+
+  // apply to contents
+  @content;
+
+  // re-instate the defaults
+  $total-columns: $default-columns;
+  $column-width: $default-width;
+  $gutter-width: $default-gutter;
+  $grid-padding: $default-padding;
+}

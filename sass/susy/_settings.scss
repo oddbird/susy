@@ -35,6 +35,13 @@ $container-width    : false           !default;
 //            (this will overrule any static $container-width settings)
 $container-style    : magic           !default;
 
+// Border-Box Sizing
+// Adjust the grid math appropriately for box-sizing: border-box;
+// Warning: This does not actually apply the new box model!
+// In most cases you can ignore this setting,
+// and simply apply the border-box-sizing mixin.
+$border-box-sizing  : false           !default;
+
 // ---------------------------------------------------------------------------
 // IE Settings
 

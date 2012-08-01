@@ -4,11 +4,28 @@
 @import "compass/utilities/general/clearfix";
 
 // ---------------------------------------------------------------------------
+// Border-Box Sizing
+
+// Apply the border-box sizing model to all elements
+// and adjust the grid math appropriately.
+@mixin border-box-sizing {
+  $border-box-sizing: true;
+  * { @include box-sizing(border-box); }
+}
+
+// ---------------------------------------------------------------------------
 // Container
 
 // Set the width of a container
 @mixin set-container-width(){
   $width: if($container-width, $container-width, columns-width());
+  @if $border-box-sizing {
+    @if comparable($width, $grid-padding) {
+      $width: $width + ($grid-padding*2);
+    } @else {
+      @warn "$grid-padding must be set in units comparable to column and gutter widths, in order for $border-box-sizing to work properly.";
+    }
+  }
 
   @if $container-style == 'static' {
     width: $width;

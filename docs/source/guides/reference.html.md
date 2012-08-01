@@ -29,6 +29,10 @@ side_content: >
     <li><a href="#ref-container-width">set-container-width()</a></li>
   </ul>
   <h2><a href="#ref-helper">Grid Helpers</a></h2>
+  <h3><a href="#ref-helper-sizing">Box Sizing</a></h3>
+  <ul>
+    <li><a href="#ref-border-box-mixin">border-box-sizing()</a></li>
+  </ul>
   <h3><a href="#ref-helper-padding">Padding Mixins</a></h3>
   <ul>
     <li><a href="#ref-prefix">prefix()</a></li>
@@ -271,6 +275,22 @@ for DRYer output than simply using `container` again.
   Default: Current value of `$total-columns` depending on _Layout_.
 
 ## <a href="#ref-helper" id="ref-helper">Grid Helpers</a>
+
+### <a href="#ref-helper-sizing" id="ref-helper-sizing">Box Sizing</a>
+
+#### <a href="#ref-border-box-mixin" id="ref-border-box-mixin">Border-Box Sizing</a>
+Set the default box-model to `border-box`,
+and adjust the grid math accordingly.
+
+    :::scss
+    // border-box-sizing()
+    @include border-box-sizing;
+
+This will apply border-box model to all elements
+(using the star selector)
+and set `$border-box-sizing` to `true`.
+You can use the variable on it's own to adjust the grid math,
+in cases where you want to apply the box-model seperately.
 
 ### <a href="#ref-helper-padding" id="ref-helper-padding">Padding Mixins</a>
 

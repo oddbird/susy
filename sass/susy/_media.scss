@@ -47,8 +47,8 @@
   $max          : nth($media-layout,3);
   $ie           : nth($media-layout,4);
 
-  @if not $breakpoint-media-output and not $breakpoint-ie-output {
-    @warn "Either $breakpoint-media-output or $breakpoint-ie-output must be true for at-breakpoint to work.";
+  @if (not $breakpoint-media-output) and (not $breakpoint-ie-output) and (not $breakpoint-raw-output) {
+    @warn "Either $breakpoint-media-output, $breakpoint-ie-output, or $breakpoint-raw-output must be true for at-breakpoint to work.";
   }
 
   // We need to have either a min-width breakpoint or a layout in order to proceed.
@@ -105,6 +105,10 @@
           .#{$ie} & {
             @content;
           }
+        }
+
+        @if $breakpoint-raw-output {
+          @content;
         }
       }
     } @else {

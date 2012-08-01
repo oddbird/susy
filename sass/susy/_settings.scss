@@ -44,3 +44,6 @@ $container-style    : magic           !default;
 // any defined ie-fallback classes.
 $breakpoint-media-output  : true;
 $breakpoint-ie-output     : true;
+
+// Danger Zone! Only set as 'true' in IE-specific style sheets.
+$breakpoint-raw-output    : false;

@@ -36,14 +36,14 @@ Changed API:
 * `$total-cols` => `$total-columns`
 * `$col-width` => `$column-width`
 * `$side-gutter-width` => `$grid-padding`
-* `+un-column` & `+reset-column` => `+reset-columns`
-* `+columns` => `+span-columns`
+* `@include un-column` & `@include reset-column` => `@include reset-columns`
+* `@include columns` => `@include span-columns`
 
 Removed:
 
-* `alpha` is no longer needed.
-* `+omega` no longer accepts the `$context` argument.
-* `full` can be replaced by a simple `clear: both;` when needed.
+* `@include alpha` is no longer needed.
+* `@include omega` no longer accepts the `$context` argument.
+* `@include full` can be replaced by a simple `clear: both;` when needed.
 * `side-gutter()` is no longer needed. Use `$grid-padding` instead.
 
 Other:

@@ -78,6 +78,7 @@ side_content: >
   <ul>
     <li><a href="#ref-media-output">$breakpoint-media-output</a></li>
     <li><a href="#ref-ie-output">$breakpoint-ie-output</a></li>
+    <li><a href="#ref-raw-output">$breakpoint-raw-output</a></li>
   </ul>
 ---
 
@@ -595,5 +596,16 @@ Turn off media-query fallback output for non-IE stylesheets.
     :::scss
     // $breakpoint-ie-output: <boolean>;
     $breakpoint-ie-output: true;
+
+- `<boolean>`: `true` | `false`
+
+#### <a href="#ref-raw-output" id="ref-raw-output">$breakpoint-raw-output</a>
+Pass through raw output
+without media-queries or fallback classes
+for IE-only stylesheets.
+
+    :::scss
+    // $breakpoint-raw-output: <boolean>;
+    $breakpoint-raw-output: false;
 
 - `<boolean>`: `true` | `false`

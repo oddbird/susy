@@ -204,7 +204,7 @@ Defaults to `:last-child`.
 
     :::scss
     // $media-layout: <min-width> <layout> <max-width> <ie-fallback>;
-    // - You must supply either <min> or <layout>.
+    // - You must supply either <min-width> or <layout>.
     $media-layout: 12;          // Use 12-col layout at matching min-width.
     $media-layout: 30em;        // At min 30em, use closest fitting layout.
     $media-layout: 30em 12;     // At min 30em, use 12-col layout.
@@ -216,10 +216,15 @@ Defaults to `:last-child`.
                                 // for use with IE conditional comments
                                 // on the <html> tag.
 
-**Note:**
-The IE-fallback class does not include a leading "`.`" signifier,
-but is simply the class name:
-"`lt-ie9`", not "`.lt-ie9`".
+- `<$min/max-width>`: Any length with units, used to set media breakpoints.
+- `<$layout>`: Any (unitless) number of columns to use for the grid
+  at a given breakpoint.
+- `<$ie-fallback>`: Any string to use as a fallback class
+  when mediaqueries are not available.
+  Do not include a leading "`.`" class-signifier,
+  simply the class name ("`lt-ie9`", not "`.lt-ie9`").
+  This can be anything you want:
+  "`no-mediaqueries`", "`ie8`", "`popcorn`", etc.
 
 ### <a href="#ref-responsive-mixins" id="ref-responsive-mixins">Responsive Mixins</a>
 

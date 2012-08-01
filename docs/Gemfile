@@ -1,7 +1,10 @@
 source "http://rubygems.org"
 
 gem "middleman", "~> 3.0.0"
+gem "sass", "~> 3.2.0.alpha.261"
+gem "compass", "~> 0.13.alpha.0"
 gem "susy", "~> 1.0.rc.3"
+
 gem "modular-scale", "~> 0.0.5"
 gem "redcarpet"
 gem "rack-codehighlighter", :git => "git://github.com/wbzyl/rack-codehighlighter.git"

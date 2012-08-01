@@ -12,7 +12,7 @@
 <link href="images/splash-iphone4.png" media="screen and (max-device-width: 480px) and (-webkit-min-device-pixel-ratio: 2)" rel="apple-touch-startup-image">
 <link href="images/splash-portrait.png" media="screen and (min-device-width: 768px) and (orientation: portrait)" rel="apple-touch-startup-image">
 <link href="images/splash-landscape.png" media="screen and (min-device-width: 768px) and (orientation: landscape)" rel="apple-touch-startup-image">
-<link type="text/css" rel="stylesheet" media="screen" href="../../stylesheets/site.css?1340673619">
+<link type="text/css" media="screen" href="../../stylesheets/site.css?1343788773" rel="stylesheet">
 <script type="text/javascript" src="../../javascripts/modernizr-2.5.3.min.js?1340673619"></script><script type="text/javascript" src="../../javascripts/modernizr.selectors.js?1340673619"></script>
 </head>
 <body class="guides guides_reference guides_reference_index" id="susy-oddbird-net">
@@ -230,7 +230,7 @@ Default: <code>$from-direction</code>.</li>
 
 <div class="highlight">
 <pre><span class="c1">// $media-layout: &lt;min-width&gt; &lt;layout&gt; &lt;max-width&gt; &lt;ie-fallback&gt;;</span>
-<span class="c1">// - You must supply either &lt;min&gt; or &lt;layout&gt;.</span>
+<span class="c1">// - You must supply either &lt;min-width&gt; or &lt;layout&gt;.</span>
 <span class="na">$media-layout</span><span class="o">:</span> <span class="mi">12</span><span class="p">;</span>          <span class="c1">// Use 12-col layout at matching min-width.</span>
 <span class="na">$media-layout</span><span class="o">:</span> <span class="mi">30</span><span class="kt">em</span><span class="p">;</span>        <span class="c1">// At min 30em, use closest fitting layout.</span>
 <span class="na">$media-layout</span><span class="o">:</span> <span class="mi">30</span><span class="kt">em</span> <span class="mi">12</span><span class="p">;</span>     <span class="c1">// At min 30em, use 12-col layout.</span>
@@ -245,11 +245,20 @@ Default: <code>$from-direction</code>.</li>
 </div>
 
 
-<p><strong>Note:</strong>
-The IE-fallback class does not include a leading "<code>.</code>" signifier,
-but is simply the class name:
-"<code>lt-ie9</code>", not "<code>.lt-ie9</code>".</p>
-
+<ul>
+<li>
+<code>&lt;$min/max-width&gt;</code>: Any length with units, used to set media breakpoints.</li>
+<li>
+<code>&lt;$layout&gt;</code>: Any (unitless) number of columns to use for the grid
+at a given breakpoint.</li>
+<li>
+<code>&lt;$ie-fallback&gt;</code>: Any string to use as a fallback class
+when mediaqueries are not available.
+Do not include a leading "<code>.</code>" class-signifier,
+simply the class name ("<code>lt-ie9</code>", not "<code>.lt-ie9</code>").
+This can be anything you want:
+"<code>no-mediaqueries</code>", "<code>ie8</code>", "<code>popcorn</code>", etc.</li>
+</ul>
 <h3><a href="#ref-responsive-mixins" id="ref-responsive-mixins">Responsive Mixins</a></h3>
 
 <h4><a href="#ref-at-breakpoint" id="ref-at-breakpoint">At-Breakpoint</a></h4>

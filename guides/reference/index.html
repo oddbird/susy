@@ -12,7 +12,7 @@
 <link href="images/splash-iphone4.png" media="screen and (max-device-width: 480px) and (-webkit-min-device-pixel-ratio: 2)" rel="apple-touch-startup-image">
 <link href="images/splash-portrait.png" media="screen and (min-device-width: 768px) and (orientation: portrait)" rel="apple-touch-startup-image">
 <link href="images/splash-landscape.png" media="screen and (min-device-width: 768px) and (orientation: landscape)" rel="apple-touch-startup-image">
-<link type="text/css" media="screen" href="../../stylesheets/site.css?1343788773" rel="stylesheet">
+<link type="text/css" media="screen" href="../../stylesheets/site.css?1343951073" rel="stylesheet">
 <script type="text/javascript" src="../../javascripts/modernizr-2.5.3.min.js?1340673619"></script><script type="text/javascript" src="../../javascripts/modernizr.selectors.js?1340673619"></script>
 </head>
 <body class="guides guides_reference guides_reference_index" id="susy-oddbird-net">
@@ -323,7 +323,54 @@ for DRYer output than simply using <code>container</code> again.</p>
 <code>&lt;$columns&gt;</code>: The number of <em>Columns</em> to be contained.
 Default: Current value of <code>$total-columns</code> depending on <em>Layout</em>.</li>
 </ul>
+<h4><a href="#ref-with-settings" id="ref-with-settings">With Grid Settings</a></h4>
+
+<p>Use different grid settings for a block of code -
+whether the same grid at a different breakpoint,
+or a different grid altogether.</p>
+
+<div class="highlight">
+<pre><span class="c1">// with-grid-settings([&lt;columns&gt;, &lt;width&gt;, &lt;gutter&gt;, &lt;padding&gt;]) { &lt;@content&gt; }</span>
+<span class="k">@include</span><span class="nd"> with-grid-settings</span><span class="p">(</span><span class="mi">12</span><span class="o">,</span><span class="mi">4</span><span class="kt">em</span><span class="o">,</span><span class="mi">1</span><span class="mf">.5</span><span class="kt">em</span><span class="o">,</span><span class="mi">1</span><span class="kt">em</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nc">.new-grid</span> <span class="p">{</span> <span class="k">@include</span><span class="nd"> container</span><span class="p">;</span> <span class="p">}</span>
+<span class="p">}</span><span class="o">;</span>
+</pre>
+</div>
+
+
+<ul>
+<li>
+<code>&lt;$columns&gt;</code>: Overrides the <code>$total-columns</code> setting for all contained elements.</li>
+<li>
+<code>&lt;$width&gt;</code>: Overrides the <code>$column-width</code> setting for all contained elements.</li>
+<li>
+<code>&lt;$gutter&gt;</code>: Overrides the <code>$gutter-width</code> setting for all contained elements.</li>
+<li>
+<code>&lt;$padding&gt;</code>: Overrides the <code>$grid-padding</code> setting for all contained elements.</li>
+<li>
+<code>&lt;@content&gt;</code>: Nested <code>@content</code> block will use the given grid settings.</li>
+</ul>
 <h2><a href="#ref-helper" id="ref-helper">Grid Helpers</a></h2>
+
+<h3><a href="#ref-helper-sizing" id="ref-helper-sizing">Box Sizing</a></h3>
+
+<h4><a href="#ref-border-box-mixin" id="ref-border-box-mixin">Border-Box Sizing</a></h4>
+
+<p>Set the default box-model to <code>border-box</code>,
+and adjust the grid math accordingly.</p>
+
+<div class="highlight">
+<pre><span class="c1">// border-box-sizing()</span>
+<span class="k">@include</span><span class="nd"> border-box-sizing</span><span class="p">;</span>
+</pre>
+</div>
+
+
+<p>This will apply border-box model to all elements
+(using the star selector)
+and set <code>$border-box-sizing</code> to <code>true</code>.
+You can use the variable on it's own to adjust the grid math,
+in cases where you want to apply the box-model seperately.</p>
 
 <h3><a href="#ref-helper-padding" id="ref-helper-padding">Padding Mixins</a></h3>
 
@@ -816,7 +863,25 @@ by using the following settings.</p>
 <li>
 <code>&lt;boolean&gt;</code>: <code>true</code> | <code>false</code>
 </li>
-</ul></section><aside class="secondary"><p class="version">Version <span>1.0.rc.3</span></p> <h2><a href="#ref-basic">Basic Usage</a></h2> <h3><a href="#ref-basic-settings">Basic Settings</a></h3> <ul>
+</ul>
+<h4><a href="#ref-raw-output" id="ref-raw-output">$breakpoint-raw-output</a></h4>
+
+<p>Pass through raw output
+without media-queries or fallback classes
+for IE-only stylesheets.</p>
+
+<div class="highlight">
+<pre><span class="c1">// $breakpoint-raw-output: &lt;boolean&gt;;</span>
+<span class="na">$breakpoint-raw-output</span><span class="o">:</span> <span class="n-Pseudo">false</span><span class="p">;</span>
+</pre>
+</div>
+
+
+<ul>
+<li>
+<code>&lt;boolean&gt;</code>: <code>true</code> | <code>false</code>
+</li>
+</ul></section><aside class="secondary"><p class="version">Version <span>1.0.rc.4</span></p> <h2><a href="#ref-basic">Basic Usage</a></h2> <h3><a href="#ref-basic-settings">Basic Settings</a></h3> <ul>
 <li><a href="#ref-total-columns">$total-columns</a></li>
   <li><a href="#ref-column-width">$column-width</a></li>
   <li><a href="#ref-gutter-width">$gutter-width</a></li>
@@ -835,8 +900,12 @@ by using the following settings.</p>
 <li><a href="#ref-at-breakpoint">at-breakpoint()</a></li>
   <li><a href="#ref-layout">layout()</a></li>
   <li><a href="#ref-container-width">set-container-width()</a></li>
+  <li><a href="#ref-with-settings">with-grid-settings()</a></li>
 </ul>
-<h2><a href="#ref-helper">Grid Helpers</a></h2> <h3><a href="#ref-helper-padding">Padding Mixins</a></h3> <ul>
+<h2><a href="#ref-helper">Grid Helpers</a></h2> <h3><a href="#ref-helper-sizing">Box Sizing</a></h3> <ul>
+<li><a href="#ref-border-box-mixin">border-box-sizing()</a></li>
+</ul>
+<h3><a href="#ref-helper-padding">Padding Mixins</a></h3> <ul>
 <li><a href="#ref-prefix">prefix()</a></li>
   <li><a href="#ref-suffix">suffix()</a></li>
   <li><a href="#ref-pad">pad()</a></li>
@@ -876,6 +945,7 @@ by using the following settings.</p>
 <h3><a href="#ref-compass-options">Breakpoint Output</a></h3> <ul>
 <li><a href="#ref-media-output">$breakpoint-media-output</a></li>
   <li><a href="#ref-ie-output">$breakpoint-ie-output</a></li>
+  <li><a href="#ref-raw-output">$breakpoint-raw-output</a></li>
 </ul></aside><footer role="contentinfo"><div class="colophon">
   <p>
     Susy is based on Natalie Downe's

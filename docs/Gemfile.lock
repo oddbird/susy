@@ -108,7 +108,7 @@ GEM
     sprockets-sass (0.8.0)
       sprockets (~> 2.0)
       tilt (~> 1.1)
-    susy (1.0.rc.3)
+    susy (1.0.rc.4)
       compass (>= 0.12.2)
       sass (>= 3.2.0.alpha.247)
     syntax (1.0.0)
@@ -131,4 +131,4 @@ DEPENDENCIES
   rack-codehighlighter!
   redcarpet
   sass (~> 3.2.0.alpha.261)
-  susy (~> 1.0.rc.3)
+  susy (~> 1.0.rc.4)

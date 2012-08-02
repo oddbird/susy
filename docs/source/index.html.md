@@ -20,7 +20,7 @@
 <section class="info">
   <div class="v1-0">
     <h2>
-      <a href="https://rubygems.org/gems/susy">Version 1.0<i>.rc.3</i></a>
+      <a href="https://rubygems.org/gems/susy">Version 1.0<i>.rc.4</i></a>
     </h2>
     <div class="highlight">
       <pre>gem install susy --pre</pre>

@@ -33,6 +33,7 @@ New Features:
 * Apply the `border-box-sizing` mixin at the root of your document
   to set the border-box model on all elements (universal selector),
   and Susy will make all the necessary grid adjustments.
+* Change the grid settings for a block of code using the `with-grid-settings` mixin.
 
 Changed API:
 

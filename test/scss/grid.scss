@@ -18,6 +18,10 @@
   @include span-columns(6 omega,12);
 }
 
+.span-columns-with-padding {
+  @include span-columns(6 omega,12,1em 2em);
+}
+
 .reset-columns {
   @include reset-columns;
 }

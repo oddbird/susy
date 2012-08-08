@@ -155,7 +155,7 @@ Establish the outer grid-containing element.
 Align an element to the Susy Grid.
 
     :::scss
-    // span-columns(<$columns> [<omega> , <$context>, <$from>])
+    // span-columns(<$columns> [<omega> , <$context>, <$padding>, <$from>])
     nav { @include span-columns(3,12); }
     article { @include span-columns(9 omega,12); }
 
@@ -163,6 +163,8 @@ Align an element to the Susy Grid.
   - `<omega>`: Optional flag to signal the last element in a row.
 - `<$context>`: Current nesting _Context_.
   Default: `$total-columns`.
+- `<$padding>`: Inner padding on grids.
+  Default: `0`.
 - `<$from>`: The origin direction of your document flow.
   Default: `$from-direction`.
 

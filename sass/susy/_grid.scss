@@ -99,7 +99,7 @@
 @mixin span-columns(
   $columns,
   $context       : $total-columns,
-  $padding       : 0em,
+  $padding       : 0 * $gutter-width, // forces use of $gutter-width unit without producing a string
   $from          : $from-direction
 ) {
   $to       : opposite-position($from);
@@ -109,13 +109,13 @@
   $pad-to   : 0;
 
   @if length($padding) > 1 {
-      $pad-to: nth($padding, 2);
+    $pad-to: nth($padding, 2);
   } @else {
-      $pad-to: $pad-from;
+    $pad-to: $pad-from;
   }
 
-  $pad-to   :  relative-width($pad-to, $context);
-  $pad-from :  relative-width($pad-from, $context);
+  $pad-to   : relative-width($pad-to, $context);
+  $pad-from : relative-width($pad-from, $context);
 
   width: columns($cols, $context) - $pad-to - $pad-from;
 

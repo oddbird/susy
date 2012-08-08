@@ -35,6 +35,18 @@
 
 .span-columns {
   width: 49.15254%;
+  padding-left: 0%;
+  padding-right: 0%;
+  float: right;
+  margin-right: 0;
+  #margin-left: -1em;
+  display: inline;
+}
+
+.span-columns-with-padding {
+  width: 44.0678%;
+  padding-left: 1.69492%;
+  padding-right: 3.38983%;
   float: right;
   margin-right: 0;
   #margin-left: -1em;

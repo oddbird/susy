@@ -36,7 +36,8 @@ $browser-default-font-size-pt       : 12pt;
 @function column(
   $context : $total-columns
 ) {
-  @return percentage($column-width / columns-width($context));
+  @return relative-width($column-width, $context);
+
 }
 
 // Return the percentage width of multiple 'columns' in a given 'context'.
@@ -47,7 +48,7 @@ $browser-default-font-size-pt       : 12pt;
   $columns,
   $context : $total-columns
 ) {
-  @return percentage(columns-width($columns) / columns-width($context));
+  @return relative-width(columns-width($columns), $context);
 }
 
 // Return the percentage width of a single gutter in a given 'context'.
@@ -56,7 +57,18 @@ $browser-default-font-size-pt       : 12pt;
 @function gutter(
   $context : $total-columns
 ) {
-  @return percentage($gutter-width / columns-width($context));
+  @return relative-width($gutter-width, $context);
+}
+
+// Return the percentage width of a given value in a given 'context'.
+//
+//  $width    : Any given width value.
+//  $context  : The grid context in columns, if nested.
+@function relative-width(
+  $width,
+  $context : $total-columns
+) {
+  @return percentage($width / columns-width($context));
 }
 
 // Return the total space occupied by multiple columns and associated gutters.

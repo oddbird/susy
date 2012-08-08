@@ -99,28 +99,32 @@
 @mixin span-columns(
   $columns,
   $context       : $total-columns,
-  $padding       : 0 * $gutter-width, // forces use of $gutter-width unit without producing a string
+  $padding       : false, 
   $from          : $from-direction
 ) {
   $to       : opposite-position($from);
   $pos      : split-columns-value($columns,position);
   $cols     : split-columns-value($columns,columns);
-  $pad-from : nth($padding, 1);
-  $pad-to   : 0;
+  $pad-from : relative-width(0 * $gutter-width, $context);
+  $pad-to   : relative-width(0 * $gutter-width, $context);
 
-  @if length($padding) > 1 {
-    $pad-to: nth($padding, 2);
-  } @else {
-    $pad-to: $pad-from;
+  @if $padding != false {
+    $pad-from : nth($padding, 1);
+
+    @if length($padding) > 1 {
+      $pad-to: nth($padding, 2);
+    } @else {
+      $pad-to: $pad-from;
+    }
+
+    $pad-from : relative-width($pad-from, $context);
+    $pad-to   : relative-width($pad-to, $context);
+    
+    padding-#{$from}: $pad-from;
+    padding-#{$to}: $pad-to;
   }
 
-  $pad-to   : relative-width($pad-to, $context);
-  $pad-from : relative-width($pad-from, $context);
-
   width: columns($cols, $context) - $pad-to - $pad-from;
-
-  padding-#{$from}: $pad-from;
-  padding-#{$to}: $pad-to;
 
   @if ($pos == 'omega') {
     @include omega($from);

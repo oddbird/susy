@@ -19,7 +19,7 @@
 }
 
 .span-columns-with-padding {
-  @include span-columns(6 omega,12,1em 2em);
+  @include span-columns(6 omega,12,1 * $gutter-width 2 * $gutter-width);
 }
 
 .reset-columns {

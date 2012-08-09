@@ -41,6 +41,16 @@
   display: inline;
 }
 
+.span-columns-with-padding {
+  padding-left: 1.69492%;
+  padding-right: 3.38983%;
+  width: 44.0678%;
+  float: right;
+  margin-right: 0;
+  #margin-left: -1em;
+  display: inline;
+}
+
 .reset-columns {
   float: none;
   width: auto;

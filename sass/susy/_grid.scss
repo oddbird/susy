@@ -94,6 +94,9 @@
 // $context : [optional] The context (columns spanned by parent).
 //          : Context is required on any nested elements.
 //          : Context MUST NOT be declared on a root element.
+// $padding : [optional] Padding applied to the inside of individual grid columns.
+//          : Padding is only output if one or two values are specified (e.g. 1em or 10px 20px)
+//          : Padding values are applied only on the horizontal axis in from-to order
 // $from    : The start direction of your layout (e.g. 'left' for ltr languages)
 
 @mixin span-columns(

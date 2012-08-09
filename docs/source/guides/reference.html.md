@@ -164,7 +164,7 @@ Align an element to the Susy Grid.
 - `<$context>`: Current nesting _Context_.
   Default: `$total-columns`.
 - `<$padding>`: Padding applied inside of an individual grid element
-  Default: `0`.
+  Default: `false`.
 - `<$from>`: The origin direction of your document flow.
   Default: `$from-direction`.
 

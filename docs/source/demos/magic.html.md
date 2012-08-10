@@ -146,10 +146,10 @@ using [at-breakpoint][at-breakpoint]:
       }
     }
 
-However, the shorthand also performs some optomizations for us,
+However, the shorthand also performs some optimizations for us,
 using `set-container-width` instead of `container` inside the breakpoint.
 Since we know the other container settings are already in place,
-all we need to override is the containers width.
+all we need to override is the container's width.
 you can also do that longhand too, if you like:
 
     :::scss
@@ -161,7 +161,7 @@ you can also do that longhand too, if you like:
     }
 
 The longhand can be useful 
-if you have other opperations to perform inside the breakpoint.
+if you have other operations to perform inside the breakpoint.
 In our case, we can move on to laying out our 12-column grid.
 
 [breakpoint]: http://susy.oddbird.net/guides/reference/#ref-media-layouts

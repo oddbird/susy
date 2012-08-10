@@ -118,7 +118,7 @@ The width of a single Column in your Grid.
 
 - `<length>`: Length in any unit of measurement (em, px, %, etc).
 
-#### <a href="#ref-gutter-width"id="ref-gutter-width">Gutter Width</a>
+#### <a href="#ref-gutter-width" id="ref-gutter-width">Gutter Width</a>
 The space between Columns.
 
     :::scss
@@ -310,7 +310,7 @@ This will apply border-box model to all elements
 (using the star selector)
 and set `$border-box-sizing` to `true`.
 You can use the variable on it's own to adjust the grid math,
-in cases where you want to apply the box-model seperately.
+in cases where you want to apply the box-model separately.
 
 ### <a href="#ref-helper-padding" id="ref-helper-padding">Padding Mixins</a>
 
@@ -464,7 +464,7 @@ this requires a context when nested.
 
 - `<$n>`: The keyword or equation to select: `[first | only | last | <equation>]`.
   An equation could be e.g. `3` or `3n` or `'3n+1'`.
-  Note that quotes are needed to keep a complext equation from being simplified by Compass.
+  Note that quotes are needed to keep a complex equation from being simplified by Compass.
   Default: `last`.
 - `<$selector>`: The type of element, and direction to count from:
   `[child | last-child | of-type | last-of-type ]`.

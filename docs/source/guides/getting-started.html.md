@@ -116,7 +116,7 @@ Here's a simple page layout:
 
 ### <a href="#start-responsive" id="start-responsive">Responsive Grids</a>
 Responsive Susy grids allow you to change the number of columns in a layout
-at different window sizes, using @media-quries with min and max widths.
+at different window sizes, using @media-queries with min and max widths.
 This requires one more mixin:
 
 - Use [at-breakpoint()][at-breakpoint] to set different layouts

@@ -1,2 +1,2 @@
-Susy Doucmentation: Bugs
+Susy Documentation: Bugs
 =====================

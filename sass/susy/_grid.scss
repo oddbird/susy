@@ -2,6 +2,7 @@
 // Imports
 
 @import "compass/utilities/general/clearfix";
+@import "compass/css3/box-sizing";
 
 // ---------------------------------------------------------------------------
 // Border-Box Sizing
@@ -102,7 +103,7 @@
 @mixin span-columns(
   $columns,
   $context       : $total-columns,
-  $padding       : false, 
+  $padding       : false,
   $from          : $from-direction
 ) {
   $to       : opposite-position($from);
@@ -122,12 +123,12 @@
 
     $pad-from : relative-width($pad-from, $context);
     $pad-to   : relative-width($pad-to, $context);
-    
+
     padding-#{$from}: $pad-from;
     padding-#{$to}: $pad-to;
   }
 
-  width: columns($cols, $context) - $pad-to - $pad-from;
+  width: columns($cols, $context) - if($border-box-sizing, 0, $pad-to + $pad-from);
 
   @if ($pos == 'omega') {
     @include omega($from);

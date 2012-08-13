@@ -41,3 +41,19 @@
 .remove-nth-omega {
   @include remove-nth-omega;
 }
+
+/* ---------------------------------------------------------------------------
+/* Border-Box Sizing */
+
+@include border-box-sizing;
+
+.container {
+  @include container;
+}
+
+.span-columns-with-padding {
+  @include span-columns(6 omega,12,1 * $gutter-width 2 * $gutter-width);
+}
+
+// Reset $border-box-sizing so it doesn't have other effects
+$border-box-sizing: false;

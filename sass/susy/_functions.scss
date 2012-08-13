@@ -18,7 +18,7 @@ $browser-default-font-size-pt       : 12pt;
 @function columns-width(
   $columns  : $total-columns
 ) {
-  @return ($columns * $column-width) + (ceil($columns - 1) * $gutter-width);
+  @return ($columns * $column-width) + (if($columns >= 1, ceil($columns - 1), 0) * $gutter-width);
 }
 
 // Return the full outer width of a Container element.
@@ -80,7 +80,7 @@ $browser-default-font-size-pt       : 12pt;
   $columns,
   $context : $total-columns
 ) {
-  @return columns($columns, $context) + gutter($context);
+  @return columns($columns, $context) + if($columns >= 1, gutter($context), 0);
 }
 
 // Accept a list including column-count and (optional) position.

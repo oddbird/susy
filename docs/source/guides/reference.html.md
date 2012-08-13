@@ -163,7 +163,9 @@ Align an element to the Susy Grid.
   - `<omega>`: Optional flag to signal the last element in a row.
 - `<$context>`: Current nesting _Context_.
   Default: `$total-columns`.
-- `<$padding>`: Padding applied inside of an individual grid element
+- `<$padding>`: Optional padding applied inside an individual grid element.
+  Given as a length (same units as the grid)
+  or a list of lengths (from-direction to-direction).
   Default: `false`.
 - `<$from>`: The origin direction of your document flow.
   Default: `$from-direction`.

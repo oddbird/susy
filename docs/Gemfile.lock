@@ -13,15 +13,15 @@ GEM
       i18n (~> 0.6)
       multi_json (~> 1.0)
     blankslate (2.1.2.4)
-    chunky_png (1.2.5)
+    chunky_png (1.2.6)
     coffee-script (2.2.0)
       coffee-script-source
       execjs
     coffee-script-source (1.3.3)
-    compass (0.13.alpha.0)
+    compass (0.12.2)
       chunky_png (~> 1.2)
       fssm (>= 0.2.7)
-      sass (~> 3.2.0.alpha.93)
+      sass (~> 3.1)
     execjs (1.4.0)
       multi_json (~> 1.0)
     ffi (1.0.11)
@@ -95,7 +95,7 @@ GEM
     rubypython (0.5.3)
       blankslate (>= 2.1.2.3)
       ffi (~> 1.0.7)
-    sass (3.2.0.alpha.277)
+    sass (3.2.0)
     sinatra (1.3.2)
       rack (~> 1.3, >= 1.3.6)
       rack-protection (~> 1.2)
@@ -124,11 +124,11 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  compass (~> 0.13.alpha.0)
+  compass (~> 0.12.2)
   middleman (~> 3.0.0)
   modular-scale (~> 0.0.5)
   pygments.rb
   rack-codehighlighter!
   redcarpet
-  sass (~> 3.2.0.alpha.261)
+  sass (~> 3.2.0)
   susy (~> 1.0.rc.4)

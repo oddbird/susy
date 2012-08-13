@@ -2,7 +2,7 @@
 title: Getting Started
 class: guide
 side_content: >
-  <p class="version">Version <span>1.0.rc.4</span></p>
+  <p class="version">Version <span>1.0</span></p>
   <h2><a href="#start-install">Installation</a></h2>
   <ul>
     <li><a href="#start-compass">Compass</a></li>
@@ -32,7 +32,7 @@ Install from the command line:
 
     :::bash
     # command line
-    sudo gem install susy --pre
+    sudo gem install susy
 
 Create a new [Compass][compass] project:
 
@@ -58,8 +58,8 @@ You may also need:
 
     :::ruby
     # Gemfile
-    gem 'compass', '>= 0.13.alpha.0'
-    gem 'compass-rails', '>= 1.0.2'
+    gem 'compass', '>= 0.12.2'
+    gem 'compass-rails', '>= 1.0.3'
 
 
 And run:
@@ -222,7 +222,7 @@ Proceed at your own risk.
 5. Navigate to `Contents/Resources/engines/`.
 6. You will see a `compass` folder and an `scss` folder.
 7. Copy the contents of the Sass and Compass files from your install into these folders.
-   (on my machine: `/Library/Ruby/Gems/1.8/gems/compass-0.12.2` and `/sass-3.2.0.alpha.247`)
+   (on my machine: `/Library/Ruby/Gems/1.8/gems/compass-0.12.2` and `/sass-3.2.0`)
 8. Match the contents of these folders
    with the contents of the corresponding folders inside CodeKit app and copy them over.
    There may be a few extra items in the machine's install.
@@ -282,7 +282,7 @@ Add Susy to your ``Gemfile``
 ([more info on Gemfiles](http://gembundler.com/gemfile.html)):
 
     :::ruby
-    gem "susy", "~> 1.0.rc.4"
+    gem "susy", "~> 1.0"
 
 And finally run your bundle:
 

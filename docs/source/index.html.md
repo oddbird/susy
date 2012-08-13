@@ -20,10 +20,10 @@
 <section class="info">
   <div class="v1-0">
     <h2>
-      <a href="https://rubygems.org/gems/susy">Version 1.0<i>.rc.4</i></a>
+      <a href="https://rubygems.org/gems/susy">Version 1.0</a>
     </h2>
     <div class="highlight">
-      <pre>gem install susy --pre</pre>
+      <pre>gem install susy</pre>
     </div>
     <ul>
       <li><a href="https://github.com/ericam/susy/blob/master/CHANGELOG.mkdn">What's changed</a></li>
@@ -42,17 +42,6 @@
       <li><a href="https://gist.github.com/1163463">Tutorial</a></li>
     </ul>
   </div>
-</section>
-<section class="why">
-  <h2>Why is 1.0 a release candidate?</h2>
-  <p>
-    Susy 1.0 is stable, tested, <span class="amp">&</span> feature complete;
-    but our launch depends on unreleased Sass features.
-    We think those features are stable as well,
-    and you should <a href="guides/getting-started/">get started</a>
-    with Susy 1.0 RC right now.
-    We'll make sure the final upgrade is as painless as possible.
-  </p>
 </section>
 <figure class="ag-test">
   <figcaption>

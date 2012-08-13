@@ -7,7 +7,7 @@
 // Size Settings
 
 $base-size    : 16px;
-$ratio        : $major-third $fifth;
+$ratio        : major-third() fifth();
 
 $norm         : 1;
 $xxxsmall     : ms(-4,$norm);

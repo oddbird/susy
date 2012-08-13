@@ -41,7 +41,7 @@ Changed API:
 * `$col-width` => `$column-width`
 * `$side-gutter-width` => `$grid-padding`
 * `@include un-column` & `@include reset-column` => `@include reset-columns`
-* `@include columns` => `@include span-columns`
+* `@include columns($columns, $context, $from)` => `@include span-columns($columns, $context, $padding, $from)`
 
 Removed:
 

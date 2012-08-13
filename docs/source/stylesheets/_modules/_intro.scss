@@ -47,6 +47,11 @@
     list-style: circle;
     padding-left: rhythm(1);
   }
+  i {
+    @include opacity(.75);
+    color: $susy-bodycopy;
+    font-weight: normal;
+  }
 }
 
 .v1-0 {

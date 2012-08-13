@@ -1,7 +1,7 @@
 Susy Changelog
 ==============
 
-v1.0
+v1.0 [UNRELEASED]
 -----------------
 
 This release is loaded with new features, but don't let that fool you. Susy

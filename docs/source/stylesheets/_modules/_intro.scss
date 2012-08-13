@@ -12,7 +12,7 @@
 .intro {
   @extend .serif-type;
   @include trailer(1,$medpx);
-  p { 
+  p {
     &:first-child { color: $susy-bodycopy-dark-20; }
     &:last-child { font-style: italic; }
   }
@@ -26,9 +26,9 @@
   @include rhythm-borders(1px,1);
   border-color: $susy-background-dark-20;
   background: $susy-background-dark-10;
-  > div { 
+  > div {
     @include clearfix;
-    @include trailer; 
+    @include trailer;
   }
   @include at-breakpoint($break) {
     @include span-columns(4 omega);
@@ -36,14 +36,14 @@
   h2 {
     @extend .caps;
     letter-spacing: .1em;
-    a { 
+    a {
       @extend .icon;
       @include font-icon-image($icon-pushpin);
       font-weight: bold;
       &::before { margin-right: $xxxsmallpx; }
     }
   }
-  ul { 
+  ul {
     list-style: circle;
     padding-left: rhythm(1);
   }
@@ -60,38 +60,10 @@
   }
 }
 
-.why {
-  @extend .serif-type;
-  @include h-borders(3px,1,$medpx);
-  @include trailer(1,$medpx);
-  clear: both;
-  border-color: $susy-highlight;
-  a {
-    #{$link} { 
-      font-family: $caps-stack;
-      text-transform: uppercase; 
-    }
-  }
-  @include at-breakpoint($break) {
-    @include trailer(2,$medpx);
-    @include h-borders(3px,1.5,$medpx);
-    @include pad(2,2);
-    position: relative;
-    @include font-icon($icon-question-sign) {
-      @include adjust-font-size-to($xxxlargepx);
-      position: absolute;
-      left: 0;
-      top: rhythm(-.5,$xxxlargepx);
-      color: $susy-background-dark-5;
-      z-index: -1;
-    }
-  }
-}
-
 .andmore {
   @extend .serif-type;
   p:last-child { font-style: italic; }
-  @include at-breakpoint(50em 10) { 
-    @include span-columns(5 omega,10); 
+  @include at-breakpoint(50em 10) {
+    @include span-columns(5 omega,10);
   }
 }

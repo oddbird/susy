@@ -43,17 +43,6 @@
     </ul>
   </div>
 </section>
-<section class="why">
-  <h2>Why is 1.0 a release candidate?</h2>
-  <p>
-    Susy 1.0 is stable, tested, <span class="amp">&</span> feature complete;
-    but our launch depends on unreleased Sass features.
-    We think those features are stable as well,
-    and you should <a href="guides/getting-started/">get started</a>
-    with Susy 1.0 RC right now.
-    We'll make sure the final upgrade is as painless as possible.
-  </p>
-</section>
 <figure class="ag-test">
   <figcaption>
     <p>10-column <a href="http://oocss.org/grids_docs.html">complex nested grid AG test</a></p>

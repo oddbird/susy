@@ -55,7 +55,7 @@ Other:
 * Fix bug in susy-background-grid for fluid sites.
 * Fix minor bug with repeated 'display' properties.
 * Lower Compass dependency to 0.12.2
-* Add Sass dependency at 3.2.0.alpha.247
+* Add Sass dependency at 3.2.0
 
 ### Upgrade:
 

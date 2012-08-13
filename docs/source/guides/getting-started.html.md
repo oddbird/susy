@@ -222,7 +222,7 @@ Proceed at your own risk.
 5. Navigate to `Contents/Resources/engines/`.
 6. You will see a `compass` folder and an `scss` folder.
 7. Copy the contents of the Sass and Compass files from your install into these folders.
-   (on my machine: `/Library/Ruby/Gems/1.8/gems/compass-0.12.2` and `/sass-3.2.0.alpha.247`)
+   (on my machine: `/Library/Ruby/Gems/1.8/gems/compass-0.12.2` and `/sass-3.2.0`)
 8. Match the contents of these folders
    with the contents of the corresponding folders inside CodeKit app and copy them over.
    There may be a few extra items in the machine's install.

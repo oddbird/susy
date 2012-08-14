@@ -20,26 +20,14 @@
 <section class="info">
   <div class="v1-0">
     <h2>
-      <a href="https://rubygems.org/gems/susy">Version 1.0<i>.rc.4</i></a>
+      <a href="https://rubygems.org/gems/susy">Version 1.0</a>
     </h2>
     <div class="highlight">
-      <pre>gem install susy --pre</pre>
+      <pre>gem install susy</pre>
     </div>
     <ul>
-      <li><a href="https://github.com/ericam/susy/blob/master/CHANGELOG.mkdn">What's changed</a></li>
-      <li><a href="https://github.com/ericam/susy/blob/master/CHANGELOG.mkdn#upgrade">Upgrade</a></li>
-    </ul>
-  </div>
-  <div class="v0-9">
-    <h2>
-      <a href="https://rubygems.org/gems/compass-susy-plugin">Version 0.9</a> (deprecated)
-    </h2>
-    <div class="highlight">
-      <pre>gem install compass-susy-plugin</pre>
-    </div>
-    <ul>
-      <li><a href="https://gist.github.com/1163918">Reference</a></li>
-      <li><a href="https://gist.github.com/1163463">Tutorial</a></li>
+      <li><a href="https://github.com/ericam/susy/blob/master/CHANGELOG.mkdn">What's Changed</a></li>
+      <li><a href="/guides/upgrade-1-0/">Upgrade Instructions</a></li>
     </ul>
   </div>
 </section>

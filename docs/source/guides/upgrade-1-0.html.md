@@ -1,7 +1,7 @@
 ---
 title: Upgrade to Susy 1.0
 side_content: >
-  <p class="version">Version <span>1.0.rc.4</span></p>
+  <p class="version">Version <span>1.0</span></p>
   <h2>Upgrading from 0.9</h2>
   <ul>
     <li><a href="#ref-gem">the gem</a></li>
@@ -164,7 +164,7 @@ For such-and-such media, use such-and-such layout.
 
 You can also apply `layout` to use an arbitrary layout,
 or `with-grid-settings` to change any grid settings.
-You can also add breakpoint media-layouts directly to your `container`as a shortcut,
+You can also add breakpoint media-layouts directly to your `container` as a shortcut,
 or use `set-container-width` inside breakpoints
 to adjust the container to it's new context
 without the repetative output from multiple applications of `container`.

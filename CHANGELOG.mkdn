@@ -1,77 +1,83 @@
 Susy Changelog
 ==============
 
-v1.0 [UNRELEASED]
------------------
+v1.0 [Aug 14, 2012]
+-------------------
 
 This release is loaded with new features, but don't let that fool you. Susy
 just became shockingly simple to use. See the [website][site] for details.
 
-Note that the gem name has changed from `compass-susy-plugin` to `susy`.
+The gem name has changed from `compass-susy-plugin` to `susy`.
+First uninstall the old gem, then install the new one.
+If you have both gems installed, you will get errors.
 
 [site]: http://susy.oddbird.net/
 
-New Features:
+Semantics:
 
-* `omega` can now be set directly through the `columns` mixin for much
-  more compact output.
-* Create responsive grid break-points using `at-breakpoint` and `layout`.
-* `container` mixin now accepts one or more grids/breakpoints as a shortcut.
-* All mixins respect your `$legacy-support-for-ie` settings.
-* The `space` function can be used anywhere you need column+gutter math.
-* `push`, `pull`, `pre`, `post`, and `squish` add margin left/right shortcuts.
-* The `nth-omega` mixin can be used to set omega on any nth-child, nth-of-type,
-  first, last, or only element - using pseudo-class selectors.
-* `remove-omega` and `remove-nth-omega` will remove the omega-specific styles
-  from an element, returning it to the regular grid flow.
-* `$container-width` and `$container-style` settings will override the width
-  and type (magic, fluid, fixed, static, etc) of your grid container.
-* `$breakpoint-media-output`, `$breakpoint-ie-output`, and `$breakpoint-raw-output`
-  allow you to turn on and off the different outputs from `at-breakpoint`.
-  This is useful when you have IE-overrides living in a file of their own.
-* Unit tests live in the `/test/` directory.
-* Apply the `border-box-sizing` mixin at the root of your document
-  to set the border-box model on all elements (universal selector),
-  and Susy will make all the necessary grid adjustments.
-* Change the grid settings for a block of code using the `with-grid-settings` mixin.
+We re-arranged the code
+in order to make the syntax simpler and more consistent:
 
-Changed API:
+* `$total-cols` is now `$total-columns`.
+* `$col-width` is now `$column-width`.
+* `$side-gutter-width` is now `$grid-padding`
+  and gets applied directly to the grid container.
+* `un-column` & `reset-column` mixins have merged into `reset-columns`.
+* `columns` has been renamed `span-columns` to resolve the conflict with CSS3 columns.
+  See other improvements to span-columns below.
 
-* `$total-cols` => `$total-columns`
-* `$col-width` => `$column-width`
-* `$side-gutter-width` => `$grid-padding`
-* `@include un-column` & `@include reset-column` => `@include reset-columns`
-* `@include columns($columns, $context, $from)` => `@include span-columns($columns, $context, $padding, $from)`
+We also removed several bothersome requirements:
 
-Removed:
+* The `alpha` mixin is no longer needed. Ever.
+* The `omega` no longer takes a `$context` argument.
+* `full` has been removed entirely.
+  Elements will be full-width by default.
+  You can add `clear: both;` back in as needed.
+* `side-gutter()` is no longer needed.
+  You can use the `$grid-padding` setting directly.
 
-* `@include alpha` is no longer needed.
-* `@include omega` no longer accepts the `$context` argument.
-* `@include full` can be replaced by a simple `clear: both;` when needed.
-* `side-gutter()` is no longer needed. Use `$grid-padding` instead.
+Upgrade:
 
-Other:
+That's all you need in order to upgrade from Susy 0.9.
 
-* Fix bug in susy-background-grid for fluid sites.
-* Fix minor bug with repeated 'display' properties.
-* Lower Compass dependency to 0.12.2
-* Add Sass dependency at 3.2.0
-
-### Upgrade:
-
-1. Uninstall `compass-susy-plugin` and install `susy` in it's place.
-2. Find and replace the 5 simple "Changed API's" listed above.
-3. Remove the `$context` argument from all `omega` mixins.
-4. Remove any mention of `alpha` and `full` in your code.
-   * Replace `full` with `clear: both;` where necessary.
-5. Remove any mention of `side-gutter()`.
-   * This may require some refactoring, depending on your uses.
-6. [Optional] Any time 'columns' and 'omega' are declared in the same block,
-   they can now be joined together. `@include columns(3); @include omega();`
-   can become `@include columns(3 omega)`.
+1. Uninstall and re-install the gem.
+2. Find and replace the semantic changes listed above.
 
 You're done! Stop worrying about all that "nested vs. root" bullshit,
 and start playing with the new toys!
+
+If you use the `$from` directional arguments
+directly in the `span-columns` mixin,
+there may be one more change to make.
+See below:
+
+New Features:
+
+* `span-columns` supports new features:
+  - "omega" can be applied directly through the `$columns` argument.
+  - Internal padding can be added through the `$padding` argument.
+  - This pushes the `$from` argument from third position into fourth.
+* `at-breakpoint` allows you to change layouts at media breakpoints.
+* `container` accepts multiple media-layout combinations as a shortcut.
+* `layout` allows you to use a different layout at any time.
+* `with-grid-settings` allows you to change any or all grid settings.
+* `set-container-width` does what it says, without the other container code.
+* `$breakpoint-media-output`, `$breakpoint-ie-output`, and `$breakpoint-raw-output`
+  settings help manage the different outputs from `at-breakpoint`
+  when you have IE-overrides living in a file of their own.
+* `border-box-sizing` will  apply the popular `* { box-sizing: border-box }`
+  universal box-model fix, as well as changing the Susy `$border-box-model` setting for you,
+  so Susy knows to adjust some math.
+* The `space()` function can be used anywhere you need column+gutter math.
+* `push`, `pull`, `pre`, `post`, and `squish` mixins help manage margins.
+* use the `nth-omega` mixin to set omega on any nth-child, nth-of-type,
+  first, last, or only element.
+* `remove-omega` and `remove-nth-omega` will remove
+  the omega-specific styles from an element.
+* `$container-width` will override the width of your container
+  with any arbitrary length.
+* `$container-style` will override the type of grid container
+  (magic, fluid, fixed, static, etc) to use.
 
 v0.9 [Apr 25 2011]
 ------------------

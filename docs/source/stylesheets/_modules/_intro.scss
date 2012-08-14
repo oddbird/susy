@@ -35,6 +35,7 @@
   }
   h2 {
     @extend .caps;
+    @include trailer(1,$largepx);
     letter-spacing: .1em;
     a {
       @extend .icon;
@@ -43,9 +44,10 @@
       &::before { margin-right: $xxxsmallpx; }
     }
   }
-  ul {
-    list-style: circle;
-    padding-left: rhythm(1);
+  .highlight { @include trailer(.5); }
+  pre {
+    @include adjust-font-size-to($normpx);
+    font-weight: bold;
   }
 }
 

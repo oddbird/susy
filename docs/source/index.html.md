@@ -25,10 +25,7 @@
     <div class="highlight">
       <pre>gem install susy</pre>
     </div>
-    <ul>
-      <li><a href="https://github.com/ericam/susy/blob/master/CHANGELOG.mkdn">What's Changed</a></li>
-      <li><a href="/guides/upgrade-1-0/">Upgrade Instructions</a></li>
-    </ul>
+    <p><a href="/guides/upgrade-1-0/">Changes <span class="amp">&</span> upgrade instructions »</a></p>
   </div>
 </section>
 <figure class="ag-test">

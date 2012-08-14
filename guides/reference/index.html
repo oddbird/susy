@@ -12,7 +12,7 @@
 <link href="images/splash-iphone4.png" media="screen and (max-device-width: 480px) and (-webkit-min-device-pixel-ratio: 2)" rel="apple-touch-startup-image">
 <link href="images/splash-portrait.png" media="screen and (min-device-width: 768px) and (orientation: portrait)" rel="apple-touch-startup-image">
 <link href="images/splash-landscape.png" media="screen and (min-device-width: 768px) and (orientation: landscape)" rel="apple-touch-startup-image">
-<link type="text/css" media="screen" href="../../stylesheets/site.css?1343951073" rel="stylesheet">
+<link type="text/css" href="../../stylesheets/site.css?1344925829" media="screen" rel="stylesheet">
 <script type="text/javascript" src="../../javascripts/modernizr-2.5.3.min.js?1340673619"></script><script type="text/javascript" src="../../javascripts/modernizr.selectors.js?1340673619"></script>
 </head>
 <body class="guides guides_reference guides_reference_index" id="susy-oddbird-net">
@@ -146,7 +146,7 @@ Default: <code>$total-columns</code>.</li>
 <p>Align an element to the Susy Grid.</p>
 
 <div class="highlight">
-<pre><span class="c1">// span-columns(&lt;$columns&gt; [&lt;omega&gt; , &lt;$context&gt;, &lt;$from&gt;])</span>
+<pre><span class="c1">// span-columns(&lt;$columns&gt; [&lt;omega&gt; , &lt;$context&gt;, &lt;$padding&gt;, &lt;$from&gt;])</span>
 <span class="nt">nav</span> <span class="p">{</span> <span class="k">@include</span><span class="nd"> span-columns</span><span class="p">(</span><span class="mi">3</span><span class="o">,</span><span class="mi">12</span><span class="p">);</span> <span class="p">}</span>
 <span class="nt">article</span> <span class="p">{</span> <span class="k">@include</span><span class="nd"> span-columns</span><span class="p">(</span><span class="mi">9</span> <span class="n">omega</span><span class="o">,</span><span class="mi">12</span><span class="p">);</span> <span class="p">}</span>
 </pre>
@@ -165,6 +165,11 @@ Default: <code>$total-columns</code>.</li>
 <li>
 <code>&lt;$context&gt;</code>: Current nesting <em>Context</em>.
 Default: <code>$total-columns</code>.</li>
+<li>
+<code>&lt;$padding&gt;</code>: Optional padding applied inside an individual grid element.
+Given as a length (same units as the grid)
+or a list of lengths (from-direction to-direction).
+Default: <code>false</code>.</li>
 <li>
 <code>&lt;$from&gt;</code>: The origin direction of your document flow.
 Default: <code>$from-direction</code>.</li>
@@ -370,7 +375,7 @@ and adjust the grid math accordingly.</p>
 (using the star selector)
 and set <code>$border-box-sizing</code> to <code>true</code>.
 You can use the variable on it's own to adjust the grid math,
-in cases where you want to apply the box-model seperately.</p>
+in cases where you want to apply the box-model separately.</p>
 
 <h3><a href="#ref-helper-padding" id="ref-helper-padding">Padding Mixins</a></h3>
 
@@ -604,7 +609,7 @@ this requires a context when nested.</p>
 <li>
 <code>&lt;$n&gt;</code>: The keyword or equation to select: <code>[first | only | last | &lt;equation&gt;]</code>.
 An equation could be e.g. <code>3</code> or <code>3n</code> or <code>'3n+1'</code>.
-Note that quotes are needed to keep a complext equation from being simplified by Compass.
+Note that quotes are needed to keep a complex equation from being simplified by Compass.
 Default: <code>last</code>.</li>
 <li>
 <code>&lt;$selector&gt;</code>: The type of element, and direction to count from:
@@ -881,7 +886,7 @@ for IE-only stylesheets.</p>
 <li>
 <code>&lt;boolean&gt;</code>: <code>true</code> | <code>false</code>
 </li>
-</ul></section><aside class="secondary"><p class="version">Version <span>1.0.rc.4</span></p> <h2><a href="#ref-basic">Basic Usage</a></h2> <h3><a href="#ref-basic-settings">Basic Settings</a></h3> <ul>
+</ul></section><aside class="secondary"><p class="version">Version <span>1.0</span></p> <h2><a href="#ref-basic">Basic Usage</a></h2> <h3><a href="#ref-basic-settings">Basic Settings</a></h3> <ul>
 <li><a href="#ref-total-columns">$total-columns</a></li>
   <li><a href="#ref-column-width">$column-width</a></li>
   <li><a href="#ref-gutter-width">$gutter-width</a></li>

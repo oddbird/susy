@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]--><!--[if IE 7]> <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]--><!--[if IE 8]> <html class="no-js lt-ie9" lang="en"> <![endif]--><!--[if gt IE 8]> ><! <![endif]--><html class="no-js" lang="en">
+<!-- <![endif] --><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+<title>Susy: Upgrade to Susy 1.0</title>
+<meta content="Susy: Semantic grids with a responsive touch." name="description">
+<meta content="width=device-width" name="viewport">
+<meta content="yes" name="apple-mobile-web-app-capable">
+<link href="images/splash-iphone.png" media="screen and (max-device-width: 480px) and not (-webkit-min-device-pixel-ratio: 2)" rel="apple-touch-startup-image">
+<link href="images/splash-iphone4.png" media="screen and (max-device-width: 480px) and (-webkit-min-device-pixel-ratio: 2)" rel="apple-touch-startup-image">
+<link href="images/splash-portrait.png" media="screen and (min-device-width: 768px) and (orientation: portrait)" rel="apple-touch-startup-image">
+<link href="images/splash-landscape.png" media="screen and (min-device-width: 768px) and (orientation: landscape)" rel="apple-touch-startup-image">
+<link type="text/css" href="../../stylesheets/site.css?1344925829" media="screen" rel="stylesheet">
+<script type="text/javascript" src="../../javascripts/modernizr-2.5.3.min.js?1340673619"></script><script type="text/javascript" src="../../javascripts/modernizr.selectors.js?1340673619"></script>
+</head>
+<body class="guides guides_upgrade-1-0 guides_upgrade-1-0_index" id="susy-oddbird-net">
+    <div class="page">
+      <header role="banner"><h1>
+          <a class="home" href="/"><b>S</b><span>usy</span></a>
+        </h1>
+        <h2>Responsive grids for <a href="http://www.compass-style.org/">Compass</a>.</h2>
+      </header><nav role="navigation"><ul>
+<li>
+            <a href="/guides/getting-started/">Getting Started</a>
+          </li>
+          <li>
+            <a href="/guides/reference/">Reference</a>
+          </li>
+          <li>
+            <a href="/demos/">Demos</a>
+          </li>
+          <li>
+            <a href="/sites-using-susy/">Sites using Susy</a>
+          </li>
+          <li>
+            <a href="https://github.com/ericam/susy">Contribute on Github</a>
+          </li>
+          <li>
+            <a href="http://twitter.com/compasssusy/">Follow on Twitter</a>
+          </li>
+        </ul></nav><section role="main"><h2>Upgrade to Susy 1.0</h2>
+
+<p>This release is loaded with new features,
+but don't let that fool you.
+Susy has become shockingly simple to use.</p>
+
+<p>The interface and syntax have been simplified
+so that the language is consistent and easy to understand.
+We also cleaned-up the output,
+taking into account your Compass browser-support settings,
+and giving you more control over exactly how your grids are built.
+Then we added a load of responsive tools
+and optional new settings
+to make Susy as absolutely flexible as possible.</p>
+
+<p>I'll cover the basics here, but you should
+check out the <a href="http://susy.oddbird.net/guides/reference/">reference docs</a> and <a href="http://susy.oddbird.net/demos/">demos</a>
+for more detail.</p>
+
+<h3><a href="#ref-gem" id="ref-gem">The Gem</a></h3>
+
+<p>To start with,
+the gem name has changed from <code>compass-susy-plugin</code>
+to simply <code>susy</code>.</p>
+
+<div class="highlight">
+<pre><span class="c"># uninstall the old gem !important</span>
+gem uninstall compass-susy-plugin
+
+<span class="c"># install the new gem</span>
+gem install susy
+</pre>
+</div>
+
+
+<p>If you don't uninstall the old gem, you will get errors.</p>
+
+<p>This new gem depends on <a href="http://compass-style.org/">Compass 0.12.2</a>
+and <a href="http://sass-lang.com/">Sass 3.2.0</a>.
+However, Compass 0.13.0 alpha
+has <a href="https://github.com/ericam/susy/issues/27">some advantages</a>
+when it comes to Vertical Rhythms
+and em-based media-queries.</p>
+
+<h3><a href="#ref-semantics" id="ref-semantics">Semantic Simplifications</a></h3>
+
+<p>We re-arranged the code
+in order to make the syntax simpler and more consistent:</p>
+
+<ul>
+<li>
+<code>$total-cols</code> is now <code>$total-columns</code>.</li>
+<li>
+<code>$col-width</code> is now <code>$column-width</code>.</li>
+<li>
+<code>$side-gutter-width</code> is now <code>$grid-padding</code>
+and gets applied directly to the grid container.</li>
+<li>
+<code>un-column</code> &amp; <code>reset-column</code> mixins have merged into <code>reset-columns</code>.</li>
+<li>
+<code>columns</code> has been renamed <code>span-columns</code> to resolve the conflict with CSS3 columns.
+See other improvements to span-columns below.</li>
+</ul>
+<p>We also removed several bothersome requirements:</p>
+
+<ul>
+<li>The <code>alpha</code> mixin is no longer needed. Ever.</li>
+<li>The <code>omega</code> no longer takes a <code>$context</code> argument.</li>
+<li>
+<code>full</code> has been removed entirely.
+Elements will be full-width by default.
+You can add <code>clear: both;</code> back in as needed.</li>
+<li>
+<code>side-gutter()</code> is no longer needed.
+You can use the <code>$grid-padding</code> setting directly.</li>
+</ul>
+<h3><a href="#ref-upgrade" id="ref-upgrade">Upgrade</a></h3>
+
+<p>That's all you need in order to upgrade from Susy 0.9.</p>
+
+<ol>
+<li>Uninstall and re-install the gem.</li>
+<li>Find and replace the "semantic simplifications" listed above.</li>
+</ol>
+<p>You're done! Stop worrying about all that "nested vs. root" bullshit,
+and start playing with the new toys!</p>
+
+<p>If you use the <code>$from</code> directional arguments
+directly in the <code>span-columns</code> mixin,
+there may be one more change to make.
+See below:</p>
+
+<h3><a href="#ref-span-columns" id="ref-span-columns">Span Columns</a></h3>
+
+<p>The <code>span-columns</code> mixin now handles many additional use-cases:</p>
+
+<div class="highlight">
+<pre><span class="c1">// span-columns(&lt;$columns&gt; [&lt;omega&gt; , &lt;$context&gt;, &lt;$padding&gt;, &lt;$from&gt;])</span>
+<span class="nt">article</span> <span class="p">{</span> <span class="k">@include</span><span class="nd"> span-columns</span><span class="p">(</span><span class="mi">9</span><span class="p">);</span> <span class="p">}</span>
+</pre>
+</div>
+
+
+<p>This means "omega" can be applied directly through the <code>$columns</code> argument,
+for much more compact input and output:</p>
+
+<div class="highlight">
+<pre><span class="c1">// The OLD way</span>
+<span class="k">@include</span><span class="nd"> columns</span><span class="p">(</span><span class="mi">4</span><span class="p">);</span>
+<span class="k">@include</span><span class="nd"> omega</span><span class="p">;</span>
+
+<span class="c1">// The NEW way</span>
+<span class="k">@include</span><span class="nd"> span-columns</span><span class="p">(</span><span class="mi">4</span> <span class="n">omega</span><span class="p">);</span>
+</pre>
+</div>
+
+
+<p>The <code>omega</code> mixin still exists as a stand-alone option when needed.</p>
+
+<p>Internal padding can also be added to the element
+through the <code>$padding</code> argument,
+without breaking the set column width:</p>
+
+<div class="highlight">
+<pre><span class="c1">// The units for $padding must match your grid setup</span>
+<span class="k">@include</span><span class="nd"> span-columns</span><span class="p">(</span><span class="mi">4</span><span class="o">,</span> <span class="mi">12</span><span class="o">,</span> <span class="mi">3</span><span class="kt">em</span><span class="p">);</span>
+
+<span class="c1">// You can also pass two values for different left and right padding:</span>
+<span class="c1">// The first value will be from-direction, the second is the to-direction.</span>
+<span class="k">@include</span><span class="nd"> span-columns</span><span class="p">(</span><span class="mi">4</span><span class="o">,</span> <span class="mi">12</span><span class="o">,</span> <span class="mi">3</span><span class="kt">em</span> <span class="mf">.5</span><span class="kt">em</span><span class="p">);</span>
+</pre>
+</div>
+
+
+<p>This pushes the <code>$from</code> argument from third position into fourth.
+If you were using e.g. <code>span-columns(6,8,right)</code>,
+you will need to adjust slightly to accompodate the new argument.
+This should not be a common problem.</p>
+
+<h3><a href="#ref-rwd" id="ref-rwd">Responsive Web Design</a></h3>
+
+<p>Version 1.0 is loaded with responsive tools.
+The main feature is the <code>at-breakpoint</code> mixin,
+which can be used to set media-layout combinations:
+For such-and-such media, use such-and-such layout.</p>
+
+<div class="highlight">
+<pre><span class="c1">// at-breakpoint(&lt;$media-layout&gt; [, &lt;$font-size&gt;]) { &lt;@content&gt; }</span>
+<span class="c1">// - example: a 12-column grid at the media-query min-width of 30em.</span>
+<span class="k">@include</span><span class="nd"> at-breakpoint</span><span class="p">(</span><span class="mi">30</span><span class="kt">em</span> <span class="mi">12</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nc">.page</span> <span class="p">{</span> <span class="k">@include</span><span class="nd"> container</span><span class="p">;</span> <span class="p">}</span>
+<span class="p">}</span>
+</pre>
+</div>
+
+
+<p>You can also apply <code>layout</code> to use an arbitrary layout,
+or <code>with-grid-settings</code> to change any grid settings.
+You can also add breakpoint media-layouts directly to your <code>container</code> as a shortcut,
+or use <code>set-container-width</code> inside breakpoints
+to adjust the container to it's new context
+without the repetative output from multiple applications of <code>container</code>.</p>
+
+<p>Use the global
+<code>$breakpoint-media-output</code>, <code>$breakpoint-ie-output</code>, and <code>$breakpoint-raw-output</code>
+settings
+to turn on and off the different outputs from <code>at-breakpoint</code>.
+This is useful when you have IE-overrides living in a file of their own.</p>
+
+<p><a href="https://twitter.com/codingdesigner/">Mason Wendell</a> and <a href="http://twitter.com/snugug/">Sam Richard</a>
+have created their own <a href="http://github.com/canarymason/breakpoint">breakpoint</a> plugin
+based on the same ideas.
+It's the perfect complement,
+for quickly handling your non-grid media-query needs
+without learning a whole new syntax.</p>
+
+<h3><a href="#ref-box-sizing" id="ref-box-sizing">Border-Box Sizing</a></h3>
+
+<p>Apply the <code>border-box-sizing</code> mixin at the root of your document
+(before any other grid mixins)
+to set the border-box model on all elements.</p>
+
+<div class="highlight">
+<pre><span class="k">@include</span><span class="nd"> border-box-sizing</span><span class="p">;</span>
+
+<span class="c1">// other grid code should come after...</span>
+</pre>
+</div>
+
+
+<p>This will apply the popular
+<code>* { box-sizing: border-box }</code>
+universal box-model fix,
+as well as changing the Susy
+<code>$border-box-model</code> setting to <code>true</code> for you.
+Susy will make all the necessary grid adjustments from there.</p>
+
+<h3><a href="#ref-grid" id="ref-grid">Grid Shortcuts</a></h3>
+
+<p>The <code>space()</code> function can be used anywhere you need column+gutter math.
+Unlike the <code>columns()</code> function,
+this math will include the column-adjacent gutter.</p>
+
+<div class="highlight">
+<pre><span class="nt">article</span> <span class="p">{</span>
+  <span class="na">position</span><span class="o">:</span> <span class="no">absolute</span><span class="p">;</span>
+  <span class="na">left</span><span class="o">:</span> <span class="nf">space</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span>
+<span class="p">}</span>
+</pre>
+</div>
+
+
+<p>In addition to the padding mixins
+(<code>prefix</code>, <code>suffix</code>, and <code>pad</code>),
+you can now manage margins with
+<code>push</code>, <code>pull</code>, <code>pre</code>, <code>post</code>, and <code>squish</code>.</p>
+
+<h3><a href="#ref-omega" id="ref-omega">Omega Shortcuts</a></h3>
+
+<p>Omega is often applied to the <code>nth</code> element in a set.</p>
+
+<div class="highlight">
+<pre><span class="nc">.item</span> <span class="p">{</span>
+  <span class="k">@include</span><span class="nd"> span-columns</span><span class="p">(</span><span class="mi">3</span><span class="o">,</span><span class="mi">12</span><span class="p">);</span>
+  <span class="k">&amp;</span><span class="nd">:nth-child</span><span class="o">(</span><span class="nt">4</span><span class="o">)</span> <span class="p">{</span>
+    <span class="k">@include</span><span class="nd"> omega</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre>
+</div>
+
+
+<p>Now you can use the <code>nth-omega</code> mixin
+to set omega on any
+nth-child, nth-of-type, first, last, or only element.</p>
+
+<div class="highlight">
+<pre><span class="c1">// nth-omega([&lt;$n&gt;, &lt;$selector&gt;, &lt;$from&gt;])</span>
+<span class="c1">// $selector options: child (default), last-child, of-type, last-of-type, only.</span>
+<span class="nc">.item</span> <span class="p">{</span>
+  <span class="k">@include</span><span class="nd"> span-columns</span><span class="p">(</span><span class="mi">3</span><span class="o">,</span><span class="mi">12</span><span class="p">);</span>
+  <span class="k">@include</span><span class="nd"> nth-omega</span><span class="p">(</span><span class="mi">4</span><span class="p">);</span>
+<span class="p">}</span>
+</pre>
+</div>
+
+
+<p>You can also remove the omega-specific styles from an element,
+returning it to the regular grid flow,
+with <code>remove-omega</code> and <code>remove-nth-omega</code>.</p>
+
+<h3><a href="#ref-container" id="ref-container">Container Settings</a></h3>
+
+<ul>
+<li>
+<code>$container-width</code> will override the width of your container
+with any arbitrary length.</li>
+<li>
+<code>$container-style</code> will override the type of grid container
+(magic, fluid, fixed, static, etc) to use.
+All the internals remain fluid,
+no matter what container style you choose.
+That's the entire reason Susy exists.</li>
+</ul>
+<h3>That's All</h3>
+
+<p>We want Susy to be the most flexible,
+semantic, and responsive grid system available.
+While the other systems
+focus on speed by cutting corners
+and making decisions for you,
+our goal is to do the math and get out of your way.</p>
+
+<p>If you see bugs,
+or have ideas for an important new feature,
+or simply have questions,
+come talk to us.
+You can message us on <a href="http://twitter.com/CompassSusy/">twitter</a>,
+or file an issue on <a href="https://github.com/ericam/susy/">github</a>.
+Even better, submit a patch!</p>
+
+<p>Happy coding!</p>
+      </section><aside class="secondary"><p class="version">Version <span>1.0</span></p> <h2>Upgrading from 0.9</h2> <ul>
+<li><a href="#ref-gem">the gem</a></li>
+          <li><a href="#ref-semantics">semantics</a></li>
+          <li><a href="#ref-upgrade">upgrade</a></li>
+        </ul>
+<h2>New Features</h2> <ul>
+<li><a href="#ref-span-columns">span-columns</a></li>
+          <li><a href="#ref-rwd">responsive grids</a></li>
+          <li><a href="#ref-box-sizing">border-box sizing</a></li>
+          <li><a href="#ref-grid">grid shortcuts</a></li>
+          <li><a href="#ref-omega">omega shortcuts</a></li>
+          <li><a href="#ref-container">container settings</a></li>
+        </ul></aside><footer role="contentinfo"><div class="colophon">
+  <p>
+    Susy is based on Natalie Downe's
+    <a href="http://www.slideshare.net/nataliedowne/css-systems-presentation">CSS Systems</a>,
+    made possible by <a href="http://www.sass-lang.com/">Sass</a>,
+    and made easy with <a href="http://www.compass-style.org/">Compass</a>.
+    You can use it anywhere,
+    from static sites to Django, Rails, Wordpress and more.
+    It even comes packaged as part of
+    <a href="http://www.middlemanapp.com/">Middleman</a>, to make your life easy.
+  </p>
+  <p>
+    This site was built with <span class="caps">HTML5</span> and
+    <span class="caps">CSS3</span>
+    using <a href="http://www.middlemanapp.com/">Middleman</a>,
+    <a href="http://www.compass-style.org/">Compass</a>,
+    <a href="http://www.sass-lang.com/">Sass</a>,
+    <a href="/">Susy</a>,
+    <a href="http://html5boilerplate.com/">HTML5 Boilerplate</a>,
+    <a href="http://www.modernizr.com/">Modernizr</a>,
+    <a href="https://github.com/scottkellum/modular-scale">Modular Scale</a>,
+    <a href="http://ethanschoonover.com/solarized">Solarized</a> colors,
+    <a href="http://pygments.org/">Pygments</a> syntax highlighting,
+    <a href="http://fortawesome.github.com/Font-Awesome/">Font Awesome</a> icons,
+    and Franklin Gothic with Century OldStyle from
+    <a href="http://www.fontspring.com/">Fontspring</a>.
+  </p>
+  <p>
+    Susy was created by
+    <a href="http://github.com/ericam">Eric A. Meyer</a>
+    <span class="amp">&amp;</span> <a href="http://oddbird.net">OddBird</a>,
+    and is maintained with the help of
+    <a href="http://www.dannypose.com">Danny Palmer</a>,
+    and a number of wonderful
+    <a href="https://github.com/ericam/susy/graphs/contributors">contributors</a>.
+    <a href="http://github.com/ericam/susy/">Get involved</a>!
+  </p>
+</div>
+
+<p class="license">
+  <a href="https://github.com/ericam/susy/blob/master/LICENSE.txt">
+    Copyright © 2012
+  </a>
+  <a href="http://eric.andmeyer.com/">Eric A. Meyer</a><br>
+  An <a href="http://oddbird.net/">OddBird</a> project.
+</p>
+      </footer><ul class="grid-toggle">
+<li class="on">
+          <a href="#susy-oddbird-net">show grid</a>
+        </li>
+        <li class="off">
+          <a href="#">hide grid</a>
+        </li>
+      </ul>
+</div>
+    <script type="text/javascript" src="../../javascripts/jquery-1.7.1.min.js?1340673619"></script><script type="text/javascript" src="../../javascripts/jqwidont.js?1340673619"></script><script type="text/javascript" src="../../javascripts/viewport.js?1340673619"></script><script type="text/javascript">
+      //<![CDATA[
+        var _gaq=[['_setAccount','UA-30497331-1'],['_trackPageview']];
+        (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+        g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+        s.parentNode.insertBefore(g,s)}(document,'script'));
+      //]]>
+    </script>
+</body>
+</html>

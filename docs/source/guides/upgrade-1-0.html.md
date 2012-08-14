@@ -55,14 +55,18 @@ to simply `susy`.
     # install the new gem
     gem install susy
 
-This new gem depends on [Compass 0.12.2][compass]
-(though some features work even better with 0.13.0 alpha)
-and [Sass 3.2.0][sass].
-
 If you don't uninstall the old gem, you will get errors.
+
+This new gem depends on [Compass 0.12.2][compass]
+and [Sass 3.2.0][sass].
+However, Compass 0.13.0 alpha
+has [some advantages][13]
+when it comes to Vertical Rhythms
+and em-based media-queries.
 
 [compass]: http://compass-style.org/
 [sass]: http://sass-lang.com/
+[13]: https://github.com/ericam/susy/issues/27
 
 ### <a href="#ref-semantics" id="ref-semantics">Semantic Simplifications</a>
 

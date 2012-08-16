@@ -3,10 +3,10 @@ title: Grid Types
 stylesheet: "grid-types.css"
 pagenav: >
   <ul>
-    <li><a href="#demo-magic">magic</a></li>
-    <li><a href="#demo-fluid">fluid</a></li>
-    <li><a href="#demo-static">static</a></li>
-    <li><a href="#demo-mix">mixing <span class="amp">&</span> matching</a></li>
+    <li><a href="#demo-magic">Magic</a></li>
+    <li><a href="#demo-fluid">Fluid</a></li>
+    <li><a href="#demo-static">Static</a></li>
+    <li><a href="#demo-mix">Mixing <span class="amp">&</span> Matching</a></li>
   </ul>
 ---
 

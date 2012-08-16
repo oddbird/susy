@@ -1,0 +1,88 @@
+//-----------------------------------------------------------------------------
+// Expanded Container Mixin
+
+@mixin demo-container {
+  @include container;
+  background: $base2;
+  &:hover {
+    @include susy-grid-background;
+    background-color: transparent;
+  }
+}
+
+//-----------------------------------------------------------------------------
+// Magic Grid
+
+$total-columns: 12;
+$column-width: 4em;
+$gutter-width: 1em;
+$grid-padding: 1em;
+
+$container-width: false;
+$container-style: magic;
+
+.magic-container { @include demo-container; }
+
+//-----------------------------------------------------------------------------
+// Fluid Grid
+
+$total-columns: 12;
+$column-width: 60px;
+$gutter-width: 20px;
+$grid-padding: 10px;
+
+$container-width: false;
+$container-style: fluid;
+
+.fluid-container { @include demo-container; }
+
+$container-width: 60%;
+$container-style: fluid;
+
+.fluid-60-container { @include demo-container; }
+
+//-----------------------------------------------------------------------------
+// Static Grid
+
+$total-columns: 12;
+$column-width: 4em;
+$gutter-width: 1em;
+$grid-padding: 1em;
+
+$container-width: false;
+$container-style: static;
+
+.static-container { @include demo-container; }
+
+//-----------------------------------------------------------------------------
+// Mixing and Matching
+
+$total-columns: 12;
+$column-width: 60px;
+$gutter-width: 20px;
+$grid-padding: 10px;
+
+$container-style: static;
+$container-width: 1140px;
+
+.larger-960-container { @include demo-container; }
+
+$total-columns: 12;
+$column-width: 60px;
+$gutter-width: 20px;
+$grid-padding: 10px;
+
+$container-style: magic;
+$container-width: 60em;
+
+.elastic-960-container { @include demo-container; }
+
+$total-columns: 12;
+$column-width: 6%;
+$gutter-width: 2%;
+$grid-padding: 1%;
+
+$container-style: magic;
+$container-width: 50em;
+
+.elastic-percentage-container { @include demo-container; }

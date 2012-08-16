@@ -4,10 +4,11 @@ title: Demos
 
 ## Demos
 
-- [Building a mobile-first "magic" grid](magic)
+- [Different grid types](grid-types)
+- [Mobile-first "magic" grids](magic)
 
-Have a tutorial you'd like to see? 
-[Contact us][twitter], 
+Have a tutorial you'd like to see?
+[Contact us][twitter],
 or [write it yourself][github].
 
 [twitter]: http://twitter.com/compasssusy

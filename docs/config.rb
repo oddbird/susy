@@ -8,7 +8,7 @@ set :build_dir, "../../susy-pages/"
 
 require 'rack/codehighlighter'
 require "pygments"
-use Rack::Codehighlighter, 
+use Rack::Codehighlighter,
   :pygments,
   :element => "pre>code",
   :pattern => /\A:::([-_+\w]+)\s*\n/,
@@ -17,7 +17,7 @@ use Rack::Codehighlighter,
 require "lib/guide_helpers"
 helpers GuideHelpers
 
-### 
+###
 # Compass
 ###
 
@@ -50,19 +50,20 @@ require 'modular-scale'
 ###
 
 # Per-page layout changes:
-# 
+#
 # With no layout
 # page "/path/to/file.html", :layout => false
-# 
+#
 # With alternative layout
 # page "/path/to/file.html", :layout => :otherlayout
-# 
+#
 # A path which all have the same layout
 # with_layout :admin do
 #   page "/admin/*"
 # end
 
 page "/demos/magic.html", :layout => "magic"
+page "/demos/grid-types.html", :layout => "grid-types"
 
 # Proxy (fake) files
 # page "/this-page-has-no-template.html", :proxy => "/template-file.html" do
@@ -99,21 +100,21 @@ activate :directory_indexes
 configure :build do
   # For example, change the Compass output style for deployment
   activate :minify_css
-  
+
   # Minify Javascript on build
   activate :minify_javascript
-  
+
   # Enable cache buster
   activate :cache_buster
-  
+
   # Use relative URLs
   activate :relative_assets
-  
+
   # Compress PNGs after build
   # First: gem install middleman-smusher
   # require "middleman-smusher"
   # activate :smusher
-  
+
   # Or use a different image path
   # set :http_path, "/Content/images/"
 end

@@ -1,0 +1,57 @@
+//-----------------------------------------------------------------------------
+// The Basics
+
+$total-columns: 6;
+$column-width: 4em;
+$gutter-width: 1em;
+$grid-padding: 1em;
+
+$container-width: 500px;
+
+[role="main"] {
+  @extend %type;
+  @include trailer(5);
+  h2, h3, > p, div { @include container; }
+  aside {
+    border: 1px solid $base2;
+    text-align: center;
+    b { font-weight: bold; }
+    p { @include trailer(2); }
+  }
+}
+
+//-----------------------------------------------------------------------------
+// Banner
+
+[role='banner'] {
+  @include container;
+  @include sans;
+  @include leader;
+  @include trailer;
+  font-weight: bold;
+  h1 {
+    @include adjust-font-size-to($xlargepx);
+    color: $red;
+  }
+  h2 {
+    text-transform: uppercase;
+  }
+}
+
+$total-columns: 9;
+$container-width: false;
+
+.pagenav {
+  @include container;
+  @include trailer;
+  @include sans;
+  background: $base2;
+  text-align: center;
+  ul { @include inline-block-list; }
+  a {
+    display: block;
+    padding: rhythm(.5) rhythm(1);
+    font-weight: bold;
+    text-transform: capitalize;
+  }
+}

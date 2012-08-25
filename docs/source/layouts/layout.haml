@@ -2,10 +2,11 @@
 /[if lt IE 7] <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en">
 /[if IE 7] <html class="no-js lt-ie9 lt-ie8" lang="en">
 /[if IE 8] <html class="no-js lt-ie9" lang="en">
-/ [if gt IE 8]><!
+:plain
+  <!--[if (gt IE 8)|!(IE)]><!-->
 %html.no-js{:lang => "en"}
   / <![endif]
-  
+
   = partial "partials/head"
 
   %body{ :id => "susy-oddbird-net", :class => page_classes }
@@ -13,20 +14,20 @@
     %div.page
 
       %header{ :role => "banner" }
-        %h1 
+        %h1
           %a.home{ :href => "/"} <b>S</b><span>usy</span>
         %h2 Responsive grids for <a href="http://www.compass-style.org/">Compass</a>.
-    
+
       %nav{ :role => "navigation" }
         = partial "partials/navigation"
-      
+
       %section{ :role => "main" }
-      
+
         ~ yield
-      
+
       -if page_side_content
         %aside.secondary= page_side_content
-      
+
       %footer{ :role => "contentinfo" }
         = partial "partials/contentinfo"
 
@@ -35,5 +36,5 @@
           %a{ :href => "#susy-oddbird-net" } show grid
         %li.off
           %a{ :href => "#" } hide grid
-    
+
     = partial "partials/javascripts"

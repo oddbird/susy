@@ -251,35 +251,6 @@ gem install susy
 
 <p>Then use Compass as normal.</p>
 
-<h3><a href="#troubleshooting-codekit-install" id="troubleshooting-codekit-install">CodeKit Install</a></h3>
-
-<p>CodeKit has its own built-in Sass and Compass builds,
-which it uses in place of the versions you install.</p>
-
-<p><a href="https://groups.google.com/d/msg/compass-users/YSV9w-OMILk/xOKvcpak2mAJ">This solution</a>
-from <a href="https://twitter.com/#!/actualgabe">Gabriel Luethje</a>
-seems to work in most cases.
-It involves opening the CodeKit app contents
-and changing the files within.
-Proceed at your own risk.</p>
-
-<ol>
-<li>Install the correct Susy, Sass, and Compass gems on your machine.</li>
-<li>Close CodeKit.</li>
-<li>Make a copy of CodeKit app, just in case.</li>
-<li>Right click on the CodeKit file and choose "Show Package Contents".</li>
-<li>Navigate to <code>Contents/Resources/engines/</code>.</li>
-<li>You will see a <code>compass</code> folder and an <code>scss</code> folder.</li>
-<li>Copy the contents of the Sass and Compass files from your install into these folders.
-(on my machine: <code>/Library/Ruby/Gems/1.8/gems/compass-0.12.2</code> and <code>/sass-3.2.0</code>)</li>
-<li>Match the contents of these folders
-with the contents of the corresponding folders inside CodeKit app and copy them over.
-There may be a few extra items in the machine's install.</li>
-<li>Restart CodeKit.</li>
-</ol>
-<p><strong>Note:</strong> Your milage may vary.
-Updates to the CodeKit app will likely overwrite these modifications.</p>
-
 <h3><a href="#troubleshooting-rails-install" id="troubleshooting-rails-install">Rails 3.x Install</a></h3>
 
 <p>We recommend you use <a href="http://rvm.io">RVM</a>
@@ -358,20 +329,19 @@ bundle
 
       </section><aside class="secondary"><p class="version">Version <span>1.0</span></p> <h2><a href="#start-install">Installation</a></h2> <ul>
 <li><a href="#start-compass">Compass</a></li>
-  <li><a href="#start-rails">Rails 3.x</a></li>
-</ul>
+          <li><a href="#start-rails">Rails 3.x</a></li>
+        </ul>
 <h2><a href="#start-usage">Usage</a></h2> <ul>
 <li><a href="#start-settings">Settings</a></li>
-  <li><a href="#start-basic">Basic Grids</a></li>
-  <li><a href="#start-responsive">Responsive Grids</a></li>
-  <li><a href="#start-advanced">Advanced</a></li>
-</ul>
+          <li><a href="#start-basic">Basic Grids</a></li>
+          <li><a href="#start-responsive">Responsive Grids</a></li>
+          <li><a href="#start-advanced">Advanced</a></li>
+        </ul>
 <h2><a href="#troubleshooting">Troubleshooting</a></h2> <ul>
 <li><a href="#troubleshooting-versions">Version Management</a></li>
-  <li><a href="#troubleshooting-compass-install">Compass Install</a></li>
-  <li><a href="#troubleshooting-codekit-install">CodeKit Install</a></li>
-  <li><a href="#troubleshooting-rails-install">Rails 3.x  Install</a></li>
-</ul></aside><footer role="contentinfo"><div class="colophon">
+          <li><a href="#troubleshooting-compass-install">Compass Install</a></li>
+          <li><a href="#troubleshooting-rails-install">Rails 3.x  Install</a></li>
+        </ul></aside><footer role="contentinfo"><div class="colophon">
   <p>
     Susy is based on Natalie Downe's
     <a href="http://www.slideshare.net/nataliedowne/css-systems-presentation">CSS Systems</a>,
@@ -427,12 +397,12 @@ bundle
       </ul>
 </div>
     <script type="text/javascript" src="../../javascripts/jquery-1.7.1.min.js?1340673619"></script><script type="text/javascript" src="../../javascripts/jqwidont.js?1340673619"></script><script type="text/javascript" src="../../javascripts/viewport.js?1340673619"></script><script type="text/javascript">
-        //<![CDATA[
-          var _gaq=[['_setAccount','UA-30497331-1'],['_trackPageview']];
-          (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
-          g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
-          s.parentNode.insertBefore(g,s)}(document,'script'));
-        //]]>
-      </script>
+      //<![CDATA[
+        var _gaq=[['_setAccount','UA-30497331-1'],['_trackPageview']];
+        (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+        g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+        s.parentNode.insertBefore(g,s)}(document,'script'));
+      //]]>
+    </script>
 </body>
 </html>

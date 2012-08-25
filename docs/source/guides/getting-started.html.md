@@ -19,7 +19,6 @@ side_content: >
   <ul>
     <li><a href="#troubleshooting-versions">Version Management</a></li>
     <li><a href="#troubleshooting-compass-install">Compass Install</a></li>
-    <li><a href="#troubleshooting-codekit-install">CodeKit Install</a></li>
     <li><a href="#troubleshooting-rails-install">Rails 3.x  Install</a></li>
   </ul>
 ---
@@ -202,34 +201,6 @@ And then install 1.0:
     gem install susy
 
 Then use Compass as normal.
-
-### <a href="#troubleshooting-codekit-install" id="troubleshooting-codekit-install">CodeKit Install</a>
-
-CodeKit has its own built-in Sass and Compass builds,
-which it uses in place of the versions you install.
-
-[This solution](https://groups.google.com/d/msg/compass-users/YSV9w-OMILk/xOKvcpak2mAJ)
-from [Gabriel Luethje](https://twitter.com/#!/actualgabe)
-seems to work in most cases.
-It involves opening the CodeKit app contents
-and changing the files within.
-Proceed at your own risk.
-
-1. Install the correct Susy, Sass, and Compass gems on your machine.
-2. Close CodeKit.
-3. Make a copy of CodeKit app, just in case.
-4. Right click on the CodeKit file and choose "Show Package Contents".
-5. Navigate to `Contents/Resources/engines/`.
-6. You will see a `compass` folder and an `scss` folder.
-7. Copy the contents of the Sass and Compass files from your install into these folders.
-   (on my machine: `/Library/Ruby/Gems/1.8/gems/compass-0.12.2` and `/sass-3.2.0`)
-8. Match the contents of these folders
-   with the contents of the corresponding folders inside CodeKit app and copy them over.
-   There may be a few extra items in the machine's install.
-9. Restart CodeKit.
-
-**Note:** Your milage may vary.
-Updates to the CodeKit app will likely overwrite these modifications.
 
 ### <a href="#troubleshooting-rails-install" id="troubleshooting-rails-install">Rails 3.x Install</a>
 

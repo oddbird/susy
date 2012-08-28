@@ -5,37 +5,34 @@
   display: none;
   position: absolute;
   top: .5em;
-  right: .5em;
+  right: $grid-padding;
   .target & { display: block; }
 }
 
 .on, .off {
   a {
     #{$link} {
-      @extend .icon;
-      @include font-icon($icon-align-justify) { @include rotate(90deg); }
-      @include hide-text;
+      @extend %icon-replace;
+      @extend %icon-list-2;
       @include transition(all 300ms);
-      font-size: 1.5em;
-      width: 1.5em;
-      height: 1.5em;
+      @include adjust-font-size-to($medpx);
       position: relative;
+      width: rhythm(1.5,$medpx);
       color: $susy-background-dark-20;
     }
     #{$focus} {
       color: $susy-bodycopy;
     }
     &::before {
-      position: absolute;
-      top: 0;
-      right: 0;
+      @include rotate(90deg);
+      @include stretch;
       text-indent: 0;
     }
   }
 }
-.off a { 
+.off a {
   #{$link} {
-    display: none; 
+    display: none;
     color: $susy-highlight;
   }
 }

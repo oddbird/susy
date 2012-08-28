@@ -18,15 +18,13 @@
   </p>
 </div>
 <section class="info">
-  <div class="v1-0">
-    <h2>
-      <a href="https://rubygems.org/gems/susy">Version 1.0</a>
-    </h2>
-    <div class="highlight">
-      <pre>gem install susy</pre>
-    </div>
-    <p><a href="/guides/upgrade-1-0/">Changes <span class="amp">&</span> upgrade instructions »</a></p>
+  <h2 class="version">
+    <a href="https://rubygems.org/gems/susy">Version 1.0</a>
+  </h2>
+  <div class="highlight">
+    <pre>gem install susy</pre>
   </div>
+  <p><a href="/guides/upgrade-1-0/">Changes <span class="amp">&</span> upgrade instructions »</a></p>
 </section>
 <figure class="ag-test">
   <figcaption>

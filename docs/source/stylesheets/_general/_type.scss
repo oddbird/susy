@@ -44,9 +44,11 @@
   h1, h2, h3, h4, h5, h6 {
     a {
       #{$link} {
+        @extend %icon;
+        @extend %icon-bookmark;
         position: relative;
         display: inline-block;
-        @include font-icon($icon-bookmark) {
+        &::before {
           @include transition(all 300ms);
           @include opacity(0);
           position: absolute;
@@ -105,6 +107,8 @@
   em { font-style: italic; }
 
   a[href^="http"] {
-    @include font-icon($icon-external-link,after){ font-size: .75em; }
+    @extend %icon-after;
+    @extend %icon-out;
+    &::after { font-size: .75em; }
   }
 }

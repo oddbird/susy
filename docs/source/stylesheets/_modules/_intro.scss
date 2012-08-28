@@ -22,29 +22,31 @@
 }
 
 .info {
-  @include trailer;
-  @include rhythm-borders(1px,1);
+  @include box-sizing(border-box);
+  @include rhythm-borders(1px,2);
   border-color: $susy-background-dark-20;
   background: $susy-background-dark-10;
-  > div {
-    @include clearfix;
-    @include trailer;
-  }
+  text-align: center;
+
   @include at-breakpoint($break) {
-    @include span-columns(4 omega);
+    @include span-columns(5 omega);
   }
-  h2 {
+
+  $version-size : $largepx;
+
+  .version {
     @extend .caps;
-    @include trailer(1,$largepx);
-    letter-spacing: .1em;
+    @include adjust-font-size-to($version-size);
+    @include leader(0);
+    @include trailer(.5,$version-size);
+    font-weight: bold;
     a {
-      @extend .icon;
-      @include font-icon-image($icon-pushpin);
-      font-weight: bold;
-      &::before { margin-right: $xxxsmallpx; }
+      @extend %icon;
+      @extend %icon-pin;
     }
   }
-  .highlight { @include trailer(.5); }
+
+  .highlight { @include trailer(1); }
   pre {
     @include adjust-font-size-to($normpx);
     font-weight: bold;

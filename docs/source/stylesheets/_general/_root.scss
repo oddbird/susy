@@ -3,9 +3,9 @@
 
 @import "compass/reset";
 @import "../_vendor/pygments/solarized";
-@import "font-awesome";
 
 @import "fonts";
+@import "icons";
 
 //-----------------------------------------------------------------------------
 // Variables
@@ -17,11 +17,11 @@ $focus  : '&:hover, &:focus, &:active';
 // Root
 
 @include establish-baseline;
-html { 
+html {
   @include text-shadow(rgba(white,.5) 0 1px 0);
   color: $susy-bodycopy;
   background: $susy-background;
-  font-family: $font-stack; 
+  font-family: $font-stack;
 }
 
 b, i { font-weight: normal; font-style: normal; }
@@ -67,10 +67,10 @@ pre {
 // Simple Pages
 
 %simple {
-  [role="main"] { 
+  [role="main"] {
     @extend %type;
     @include at-breakpoint($break) {
-      @include pad(1,1); 
+      @include pad(1,1);
     }
   }
 }

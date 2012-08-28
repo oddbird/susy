@@ -18,10 +18,10 @@
   color: $base1;
   font-style: italic;
   a {
-    #{$link} { 
-      @extend .icon;
-      @include font-icon-image($icon-arrow-left);
-      color: $base2; 
+    #{$link} {
+      @extend %icon;
+      @extend %icon-arrow-left;
+      color: $base2;
     }
     #{$focus} { color: $base3; }
   }

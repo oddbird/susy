@@ -1,0 +1,86 @@
+@include font-face (
+  'susy',
+  font-files(
+    'susy.svg#susy', svg,
+    'susy.woff', woff,
+    'susy.ttf', truetype
+  ),
+  'susy.eot',
+  normal,
+  normal
+);
+
+/* Use the following CSS code if you want to have a class per icon */
+%icon-content {
+  font-family: 'susy';
+  font-style: normal;
+  font-weight: normal;
+  speak: none;
+}
+
+%icon:before {
+  @extend %icon-content;
+  margin-right: .4em;
+}
+
+%icon-after::after {
+  @extend %icon-content;
+  margin-left: .4em;
+}
+
+%icon-replace {
+  @extend %icon;
+  position: relative;
+  min-width: 1em;
+  text-indent: -9999px;
+  &:before{
+    position: absolute;
+    top: 0;
+    left: 0;
+    text-indent: 0;
+    margin-right: 0;
+  }
+}
+
+/* Use the following CSS code if you want to use data attributes for inserting your icons */
+[data-icon]:before {
+  @extend %icon-content;
+  content: attr(data-icon);
+}
+
+%icon-switch:before {
+  content: "\e000";
+}
+%icon-list:before {
+  content: "\e001";
+}
+%icon-cog:before {
+  content: "\e002";
+}
+%icon-twitter:before {
+  content: "\e005";
+}
+%icon-pin:before {
+  content: "\e007";
+}
+%icon-bookmark:before {
+  content: "\e008";
+}
+%icon-out:after {
+  content: "\e009";
+}
+%icon-list-2:before {
+  content: "\e00a";
+}
+%icon-arrow-left:before {
+  content: "\e00b";
+}
+%icon-pictures:before {
+  content: "\e00c";
+}
+%icon-comment:before {
+  content: "\e003";
+}
+%icon-github:before {
+  content: "\e004";
+}

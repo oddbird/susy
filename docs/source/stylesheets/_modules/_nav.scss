@@ -9,28 +9,29 @@
 
   ul { @include inline-block-list; }
 
-  a { 
+  a {
     #{$link} {
-      @extend .icon;
+      @extend %icon;
       display: block;
-      padding: rhythm(.25) rhythm(.5); 
+      padding: rhythm(.25) rhythm(.5);
       color: $susy-bodycopy;
-      &[href*='github'] { @include font-icon-image($icon-github-sign); }
-      &[href*='twitter'] { @include font-icon-image($icon-twitter-sign); }
-      &[href*='getting-started'] { 
-        @include font-icon-image($icon-off); 
+      &[href*='github'] { @extend %icon-github; }
+      &[href*='twitter'] { @extend %icon-twitter; }
+      &[href*='stackoverflow'] { @extend %icon-comment; }
+      &[href*='getting-started'] {
+        @extend %icon-switch;
         .guides_getting-started &, .tutorial & { color: $susy-bodycopy-dark-10; }
       }
-      &[href*='reference'] { 
-        @include font-icon-image($icon-list); 
+      &[href*='reference'] {
+        @extend %icon-list;
         .guides_reference & { color: $susy-bodycopy-dark-10; }
       }
-      &[href*='sites-using-susy'] { 
-        @include font-icon-image($icon-picture); 
+      &[href*='sites-using-susy'] {
+        @extend %icon-pictures;
         .sites-using-susy & { color: $susy-bodycopy-dark-10; }
       }
-      &[href*='demos'] { 
-        @include font-icon-image($icon-cogs); 
+      &[href*='demos'] {
+        @extend %icon-cog;
         .demos & { color: $susy-bodycopy-dark-10; }
       }
     }

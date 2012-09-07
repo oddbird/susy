@@ -1,0 +1,77 @@
+By downloading and/or installing font software from Fontspring, you agree to be bound by the terms of this Agreement. This Agreement, in conjunction with the receipt that accompanies each purchase from Fontspring or its distributors, constitutes the complete Agreement between you and Fontspring.
+
+1. Allowed Uses
+
+You may use the licensed fonts to create graphics for display on any surface including computer screens, television screens, paper, t-shirts and any other surface where the image will be a fixed size.
+
+You may also embed or link the licensed fonts in accordance with the rules described in Section Four of this license.
+
+You may not create alphabet or letterform products for resale where the product consists of individual letterforms, including rubber stamps, die-cut products, stencil products, or adhesive sticker alphabet products where the likeness of the licensed fonts can be reproduced and the end-user of said products can create their own typesetting.
+
+2. Number of Users
+
+The licensed font may be used by no more than the number of users specified in the receipt you received for the licensed font. If the licensed font is permanently installed on the hard disk or other storage device of a computer (other than a network server) and the licensed user uses that computer more than 80 percent of the time it is in use, then that person may also use the licensed font on a portable or home computer. See Section Four for exceptions for embedding and linking.
+
+3. Third parties and Transferability
+
+You may provide the font to a printer or other outputting service that is working on your behalf only if they agree to use the font exclusively for your work, agree to the terms of this license, and retain no copies of the font on completion of the work.
+
+You may not distribute the font to third parties or make the font publicly accessible except by embedding or linking in accordance with the rules described in Section Four.
+
+4. Embedding and Linking
+
+4a. Adobe Portable Document Format ("PDF") Embedding
+
+You may embed the licensed fonts into any read-only PDF you send to third parties. Such documents may only be viewable and printable (but not editable) by the recipients.
+
+4b. Flash and Silverlight Embedding
+
+You may embed the licensed fonts into Flash or Silverlight with the following restrictions:
+
+1. The fonts must be subset to include only the glyphs necessary for displaying the work.
+
+2. The text rendered in the licensed font must not be manipulatable by an end user.
+
+3. All care must be taken to prevent unauthorized users from accessing the fonts.
+
+4b. @font-face Cascading Style Sheet ("CSS") Linking
+
+You may not link the licensed font to web sites using the @font-face selector in CSS. A license addendum allowing @font-face usage is required.
+
+4c. Other Web Site Linking
+
+You may not convert or embed the licensed font with any other technology. This includes Javascript methods such as Cufón and Typeface.js.
+
+4d. Enterprise, Application and Game Embedding
+
+Please contact FontSite Inc [info@fontsite.com] directly to discuss additional licensing options.
+
+5. Modifications
+
+You may import and alter the bezier outlines of the licensed font in a drawing program.
+
+You may not modify the licensed font or create derivative works based on the licensed font without prior written consent of the owning foundry except to generate computer files necessary for embedding or linking only as described in Section Four.
+
+6. Copyright
+
+You agree that the licensed font is the exclusive property of the owning foundry and is protected by copyright and intellectual property laws. You may be held legally responsible for any infringements on the foundry's rights caused by your failure to abide by the terms of this Agreement.
+
+7. Termination
+
+You agree that The Agreement shall automatically terminate, without notice from Fontspring or the owning foundry, if you fail to comply with any provision contained herein.
+
+8. Disclaimer and Limited Warranty
+
+Fontspring warrants the Product to be free from defects in materials and workmanship under normal use for a period of twenty one (21) days from the date of delivery as shown on your receipt. Fontspring's entire liability and your exclusive remedy as to a defective product shall be, at Fontspring's option, either return of purchase price or replacement of any such product that is returned to Fontspring with a copy of the invoice. Fontspring shall have no responsibility to replace the product or refund the purchase price if failure results from accident, abuse or misapplication, or if any product is lost or damaged due to theft, fire, or negligence. Any replacement product will be warranted for twenty one (21) days. This warranty gives you specific legal rights. You may have other rights, which vary from state to state.
+
+EXCEPT AS EXPRESSLY PROVIDED ABOVE, THE PRODUCT, IS PROVIDED "AS IS". Fontspring MAKES NO WARRANTY OF ANY KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING, BUT NOT LIMITED TO THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.
+
+The entire risk as to the quality and performance of the Product rests upon you. Neither Fontspring nor the Foundry warrants that the functions contained in the Product will meet your requirements or that the operation of the software will be uninterrupted or error free.
+
+Fontspring SHALL NOT BE LIABLE FOR ANY DIRECT, INDIRECT, CONSEQUENTIAL, OR INCIDENTAL DAMAGES (INCLUDING DAMAGES FROM LOSS OF BUSINESS PROFITS, BUSINESS INTERRUPTION, LOSS OF BUSINESS INFORMATION, AND THE LIKE) ARISING OUT OF THE USE OF OR INABILITY TO USE THE PRODUCT EVEN IF Fontspring OR THE FOUNDRY HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
+
+Because some states do not allow the exclusion or limitation of liability for consequential or incidental damages, the above limitation may not apply to you.
+
+9. Governing Law
+
+This Agreement is governed by the laws of the United States of America and the State of Delaware. 

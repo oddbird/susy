@@ -211,7 +211,7 @@
   margin-#{$to}: gutter($context);
 
   @if $legacy-support-for-ie6 or $legacy-support-for-ie7 {
-    #margin-#{$hack}: 0;
+    #margin-#{$hack}: auto;
   }
 }
 

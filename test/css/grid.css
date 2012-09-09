@@ -76,13 +76,13 @@
 .remove-omega {
   float: left;
   margin-right: 1.69492%;
-  #margin-left: 0;
+  #margin-left: auto;
 }
 
 .remove-nth-omega:last-child {
   float: left;
   margin-right: 1.69492%;
-  #margin-left: 0;
+  #margin-left: auto;
 }
 
 /* ---------------------------------------------------------------------------

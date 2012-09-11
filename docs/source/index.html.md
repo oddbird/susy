@@ -7,23 +7,12 @@
     reliable yet responsive.
   </p>
   <p>
-    Susy grids are fluid on the inside,
-    ready to respond at any moment,
-    but contained in the candy shell of your choice,
-    so they respond how and when and where you want them to.
-  </p>
-  <p>
     We don't design your site or dictate your markup,
     we just do the math and get out of your way.
   </p>
 </div>
 <section class="info">
-  <h2 class="version">
-    <a href="https://rubygems.org/gems/susy">Version 1.0</a>
-  </h2>
-  <div class="highlight">
-    <pre>gem install susy</pre>
-  </div>
+  <div class="highlight"><pre>gem install susy</pre></div>
   <p><a href="/guides/upgrade-1-0/">Changes <span class="amp">&</span> upgrade instructions »</a></p>
 </section>
 <figure class="ag-test">

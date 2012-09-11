@@ -1,10 +1,27 @@
 GIT
+  remote: git://github.com/chriseppstein/compass.git
+  revision: d4db12f8f07748cf01e98d07d7abc478f2e3da3a
+  branch: master
+  specs:
+    compass (0.13.alpha.0.d4db12f)
+      chunky_png (~> 1.2)
+      fssm (>= 0.2.7)
+      sass (~> 3.2.0.alpha.93)
+
+GIT
   remote: git://github.com/wbzyl/rack-codehighlighter.git
   revision: 64bf50520cb1d563432832ae30d85bbd94cec5bd
   specs:
     rack-codehighlighter (0.5.0)
       nokogiri (>= 1.4.1)
       rack (>= 1.0.0)
+
+PATH
+  remote: ../
+  specs:
+    susy (1.0.1)
+      compass (>= 0.12.2)
+      sass (>= 3.2.0)
 
 GEM
   remote: http://rubygems.org/
@@ -18,10 +35,6 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.3.3)
-    compass (0.13.alpha.0)
-      chunky_png (~> 1.2)
-      fssm (>= 0.2.7)
-      sass (~> 3.2.0.alpha.93)
     execjs (1.4.0)
       multi_json (~> 1.0)
     ffi (1.0.11)
@@ -31,26 +44,25 @@ GEM
     http_router (0.10.2)
       rack (>= 1.0.0)
       url_mount (~> 0.2.1)
-    i18n (0.6.0)
-    listen (0.4.7)
-      rb-fchange (~> 0.0.5)
-      rb-fsevent (~> 0.9.1)
-      rb-inotify (~> 0.8.8)
+    i18n (0.6.1)
+    listen (0.5.0)
     maruku (0.6.0)
       syntax (>= 1.0.0)
-    middleman (3.0.0)
-      middleman-core (= 3.0.0)
-      middleman-more (= 3.0.0)
-      middleman-sprockets (= 3.0.0)
-    middleman-core (3.0.0)
+    middleman (3.0.2)
+      middleman-core (= 3.0.2)
+      middleman-more (= 3.0.2)
+      middleman-sprockets (~> 3.0.1)
+    middleman-core (3.0.2)
       activesupport (~> 3.2.6)
       bundler (~> 1.1)
-      listen (~> 0.4.7)
+      listen (~> 0.5.0)
       rack (~> 1.4.1)
       rack-test (~> 0.6.1)
+      rb-fsevent (~> 0.9.1)
+      rb-inotify (~> 0.8.8)
       thor (~> 0.15.4)
       tilt (~> 1.3.1)
-    middleman-more (3.0.0)
+    middleman-more (3.0.2)
       coffee-script (~> 2.2.0)
       coffee-script-source (~> 1.3.3)
       compass (>= 0.12.2)
@@ -58,12 +70,12 @@ GEM
       haml (>= 3.1.6)
       i18n (~> 0.6.0)
       maruku (~> 0.6.0)
-      middleman-core (= 3.0.0)
+      middleman-core (= 3.0.2)
       padrino-helpers (= 0.10.7)
       sass (>= 3.1.20)
       uglifier (~> 1.2.6)
-    middleman-sprockets (3.0.0)
-      middleman-more (= 3.0.0)
+    middleman-sprockets (3.0.1)
+      middleman-more (~> 3.0.1)
       sprockets (~> 2.1)
       sprockets-sass (~> 0.8.0)
     modular-scale (1.0.2)
@@ -87,8 +99,6 @@ GEM
       rack
     rack-test (0.6.1)
       rack (>= 1.0)
-    rb-fchange (0.0.5)
-      ffi
     rb-fsevent (0.9.1)
     rb-inotify (0.8.8)
       ffi (>= 0.5.0)
@@ -96,14 +106,14 @@ GEM
     rubypython (0.5.3)
       blankslate (>= 2.1.2.3)
       ffi (~> 1.0.7)
-    sass (3.2.0)
+    sass (3.2.1)
     sassy-math (1.2)
       compass (~> 0.11)
-    sinatra (1.3.2)
+    sinatra (1.3.3)
       rack (~> 1.3, >= 1.3.6)
       rack-protection (~> 1.2)
       tilt (~> 1.3, >= 1.3.3)
-    sprockets (2.4.5)
+    sprockets (2.5.0)
       hike (~> 1.2)
       multi_json (~> 1.0)
       rack (~> 1.0)
@@ -111,9 +121,6 @@ GEM
     sprockets-sass (0.8.0)
       sprockets (~> 2.0)
       tilt (~> 1.1)
-    susy (1.0)
-      compass (>= 0.12.2)
-      sass (>= 3.2.0)
     syntax (1.0.0)
     thor (0.15.4)
     tilt (1.3.3)
@@ -127,11 +134,11 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  compass (~> 0.13.0.alpha.0)
-  middleman (~> 3.0.0)
+  compass!
+  middleman (~> 3.0.2)
   modular-scale (~> 1.0.2)
   pygments.rb
   rack-codehighlighter!
   redcarpet
-  sass (~> 3.2.0)
-  susy (~> 1.0)
+  sass (~> 3.2.1)
+  susy!

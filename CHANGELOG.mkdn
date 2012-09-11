@@ -1,6 +1,13 @@
 Susy Changelog
 ==============
 
+v1.0.1 [Sept 12, 2012]
+----------------------
+
+* Fix a bug in the relationship between `$container-width` and `$border-box-sizing`,
+  so that grid-padding is subtracted from the width in certain cases.
+* Reset right margin to `auto` rather than `0` with `remove-omega`.
+
 v1.0 [Aug 14, 2012]
 -------------------
 

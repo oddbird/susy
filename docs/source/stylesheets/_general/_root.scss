@@ -17,6 +17,8 @@ $focus  : '&:hover, &:focus, &:active';
 // Root
 
 @include establish-baseline;
+@include border-box-sizing;
+
 html {
   @include text-shadow(rgba(white,.5) 0 1px 0);
   color: $susy-bodycopy;

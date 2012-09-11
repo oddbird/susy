@@ -134,7 +134,8 @@ Padding on the left and right of a Grid Container.
     // $grid-padding: <length>;
     $grid-padding: $gutter-width;  // 1em
 
-- `<length>`: Units must match `$column-width`.
+- `<length>`: Units should match the container width
+  (`$column-width` unless `$container-width` is set directly).
 
 ### <a href="#ref-basic-mixins" id="ref-basic-mixins">Basic Mixins</a>
 

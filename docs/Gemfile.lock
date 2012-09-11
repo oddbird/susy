@@ -29,7 +29,7 @@ GEM
     activesupport (3.2.8)
       i18n (~> 0.6)
       multi_json (~> 1.0)
-    blankslate (2.1.2.4)
+    blankslate (3.1.2)
     chunky_png (1.2.6)
     coffee-script (2.2.0)
       coffee-script-source

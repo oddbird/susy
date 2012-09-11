@@ -27,7 +27,7 @@
   display: table;
   clear: both;
 }
-@media (min-width: 71em) {
+@media (min-width: 69em) {
   .complex-container {
     max-width: 69em;
   }

@@ -13,7 +13,7 @@
   clear: both;
 }
 
-@media (min-width: 31em) {
+@media (min-width: 29em) {
   .breakpoint .break6 {
     max-width: 29em;
     margin-left: auto;

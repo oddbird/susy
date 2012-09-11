@@ -18,15 +18,12 @@
 // Container
 
 // Set the width of a container
-@mixin set-container-width(){
-  $width: if($container-width, $container-width, columns-width());
-  @if $border-box-sizing {
-    @if comparable($width, $grid-padding) {
-      $width: $width + ($grid-padding*2);
-    } @else {
-      @warn "$grid-padding must be set in units comparable to column and gutter widths, in order for $border-box-sizing to work properly.";
-    }
-  }
+//
+//  $columns  : The number of columns in the Grid Layout.
+@mixin set-container-width(
+  $columns  : $total-columns
+){
+  $width: container-outer-width($columns);
 
   @if $container-style == 'static' {
     width: $width;
@@ -35,17 +32,19 @@
       width: if(unit($width) == '%', $width, auto);
     } @else {
       max-width: $width;
-      @if $legacy-support-for-ie6 {
-        _width: $width;
-      }
+      @if $legacy-support-for-ie6 { _width: $width; }
     }
   }
 }
 
 // Set the outer grid-containing element(s).
-@mixin apply-container(){
+//
+//  $columns  : The number of columns in the container.
+@mixin apply-container(
+  $columns  : $total-columns
+){
   @include pie-clearfix;
-  @include set-container-width;
+  @include set-container-width($columns);
   margin: { left: auto; right: auto; }
   padding: { left: $grid-padding; right: $grid-padding; }
 }

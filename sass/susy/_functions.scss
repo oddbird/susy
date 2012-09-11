@@ -25,13 +25,41 @@ $browser-default-font-size-pt       : 12pt;
   @return ($columns * $column-width) + (if($columns >= 1, ceil($columns - 1), 0) * $gutter-width);
 }
 
+// Return the grid width after adding or subtracting grid padding
+//
+// $width     : the width of the grid without padding;
+// $operation : ( add | subtract ) if padding should be added or subtracted;
+@function handle-grid-padding(
+  $width,
+  $operation : subtract
+) {
+  $pad: $grid-padding*2;
+
+  @if comparable($width, $grid-padding) {
+    $width: if($operation == subtract, $width - $pad, $width + $pad);
+  } @else {
+    @warn "$grid-padding must be set in units comparable to the container width.";
+  }
+
+  @return $width;
+}
+
 // Return the full outer width of a Container element.
 //
 //  $columns  : The number of columns in the Grid Layout.
 @function container-outer-width(
   $columns  : $total-columns
 ) {
-  @return columns-width($columns) + $grid-padding*2;
+  $width: columns-width();
+
+  @if $container-width {
+    $width: $container-width;
+    @if not $border-box-sizing { $width: handle-grid-padding($width, subtract); }
+  } @else {
+    @if $border-box-sizing { $width: handle-grid-padding($width, add); }
+  }
+
+  @return $width;
 }
 
 // Return the percentage width of a single column in a given 'context'.
@@ -41,7 +69,6 @@ $browser-default-font-size-pt       : 12pt;
   $context : $total-columns
 ) {
   @return relative-width($column-width, $context);
-
 }
 
 // Return the percentage width of multiple 'columns' in a given 'context'.
@@ -259,21 +286,18 @@ $browser-default-font-size-pt       : 12pt;
 @function get-layout (
   $min
 ) {
-  $default-layout : $total-columns;
-  $total-columns  : 1;
-  $layout-width   : container-outer-width();
+  $columns        : 1;
+  $layout-width   : container-outer-width($columns);
   $return         : false;
   $min            : fix-ems($min);
 
   @if comparable($min, $layout-width) {
     @while $min >= $layout-width {
-      $total-columns  : $total-columns + 1;
-      $layout-width   : container-outer-width();
+      $columns        : $columns + 1;
+      $layout-width   : container-outer-width($columns);
     }
-    $return : $total-columns;
+    $return : $columns;
   }
-
-  $total-columns : $default-layout;
 
   @return $return;
 }

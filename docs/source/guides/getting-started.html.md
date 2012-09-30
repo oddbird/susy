@@ -31,7 +31,7 @@ Install from the command line:
 
     :::bash
     # command line
-    sudo gem install susy
+    gem install susy
 
 Create a new [Compass][compass] project:
 

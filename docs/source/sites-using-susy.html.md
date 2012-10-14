@@ -18,5 +18,6 @@ title: Sites using Susy
 - [Waldorf camp](http://waldorfcamp.net/) [[source](https://github.com/jimick/waldorfcamp "Waldorf source")]
 - [Matthew Balaam](http://www.matthewbalaam.co.uk/)
 - [Starrt](http://starrt.dk/)
+- [Jeremy Peters](http://jeremypeters.co.uk/)
 
 Have a site to add? [Let us know](http://twitter.com/compasssusy/) or [fork and add your site on GitHub](https://github.com/ericam/susy).

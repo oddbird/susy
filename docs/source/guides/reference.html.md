@@ -249,7 +249,11 @@ At a given min- or max-width Breakpoint, use a given Layout.
     }
 
 - `<$media-layout>`: The _Breakpoint/Layout_ combo to use (see above).
-- `<$font-size>`: When using EMs for your grid, the font size is important.
+- `<$font-size>`: Browsers interpret em-based media-queries
+  using the browser default font size (`16px` in most cases).
+  If you have a different base font size for your site,
+  we have to adjust for the difference.
+  Tell us your base font size, and we'll do the conversion.
   Default: `$base-font-size`.
 - `<@content>`: Nested `@content` block will use the given _Layout_.
 

@@ -1,0 +1,15 @@
+// ---------------------------------------------------------------------------
+// Imports
+
+@import "../../sass/susy";
+
+// ---------------------------------------------------------------------------
+// Functions
+
+.container-outer-width-default {
+  width: container-outer-width();
+}
+
+.container-outer-width-explicit {
+  width: container-outer-width(8);
+}

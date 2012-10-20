@@ -50,7 +50,7 @@ $browser-default-font-size-pt       : 12pt;
 @function container-outer-width(
   $columns  : $total-columns
 ) {
-  $width: columns-width();
+  $width: columns-width($columns);
 
   @if $container-width {
     $width: $container-width;

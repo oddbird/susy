@@ -69,8 +69,6 @@
 .nth-omega:last-child {
   float: right;
   margin-right: 0;
-  #margin-left: -1em;
-  display: inline;
 }
 
 .remove-omega {
@@ -82,7 +80,6 @@
 .remove-nth-omega:last-child {
   float: left;
   margin-right: 1.69492%;
-  #margin-left: auto;
 }
 
 /* ---------------------------------------------------------------------------

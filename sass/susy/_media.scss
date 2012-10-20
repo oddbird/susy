@@ -1,15 +1,4 @@
 // ---------------------------------------------------------------------------
-// Imports
-
-// Change the legacy-support-for-ie* settings in specific contexts.
-// Here temporarily, until it lands in compass.
-@mixin set-legacy-ie-support($ie6: false, $ie7: false, $ie8: false) {
-  $legacy-support-for-ie6: $ie6;
-  $legacy-support-for-ie7: $ie7;
-  $legacy-support-for-ie8: $ie8;
-}
-
-// ---------------------------------------------------------------------------
 // Media Mixins
 
 // Create a new layout context for (@content) descendants.
@@ -64,38 +53,31 @@
       // Set our new layout context.
       @include layout($layout) {
         @if $breakpoint-media-output {
-          // dont need to support old IE inside media-queries
-          $initial-legacy-support-for-ie6: $legacy-support-for-ie6;
-          $initial-legacy-support-for-ie7: $legacy-support-for-ie7;
-          $initial-legacy-support-for-ie8: $legacy-support-for-ie8;
-          @include set-legacy-ie-support(false, false, false);
-
-          @if $min and $max {
-            // Both $min and $max
-            @media (min-width: $min) and (max-width: $max) {
-              @content;
-            }
-          } @else {
-            @if (not $min) and (not $max) {
-              // Neither $min nor $max:
-              // We can create a breakpoint based on the number of columns in the layout.
-              $min: fix-ems(container-outer-width());
-            }
-            @if $min {
-              // Min only:
-              @media (min-width: $min) {
+          @include adjust-support-for($legacy-ie: false) {
+            @if $min and $max {
+              // Both $min and $max
+              @media (min-width: $min) and (max-width: $max) {
                 @content;
               }
             } @else {
-              // Max only:
-              @media (max-width: $max) {
-                @content;
+              @if (not $min) and (not $max) {
+                // Neither $min nor $max:
+                // We can create a breakpoint based on the number of columns in the layout.
+                $min: fix-ems(container-outer-width());
+              }
+              @if $min {
+                // Min only:
+                @media (min-width: $min) {
+                  @content;
+                }
+              } @else {
+                // Max only:
+                @media (max-width: $max) {
+                  @content;
+                }
               }
             }
           }
-
-          // return IE support to its initial setting
-          @include set-legacy-ie-support($initial-legacy-support-for-ie6, $initial-legacy-support-for-ie7, $initial-legacy-support-for-ie8);
         }
         // Set an IE fallback
         @if $ie and $breakpoint-ie-output {

@@ -1,4 +1,20 @@
 // ---------------------------------------------------------------------------
+// Helpers
+
+@mixin adjust-support-for(
+    $moz: $experimental-support-for-mozilla,
+    $webkit: $experimental-support-for-webkit,
+    $ms: $experimental-support-for-microsoft,
+    $o: $experimental-support-for-opera,
+    $khtml: $experimental-support-for-khtml,
+    $legacy-ie: $legacy-support-for-ie
+) {
+  @include with-only-support-for($moz, $webkit, $ms, $o, $khtml, $legacy-ie) {
+    @content;
+  }
+}
+
+// ---------------------------------------------------------------------------
 // Partials
 
 @import "susy/settings";

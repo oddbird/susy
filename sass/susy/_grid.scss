@@ -169,7 +169,10 @@
   $selector : child,
   $from     : $from-direction
 ) {
-  &:#{format-nth($n,$selector)} { @include omega($from); }
+  $ie: if($n == "first", true, false);
+  @include adjust-support-for($legacy-ie: $ie) {
+    &:#{format-nth($n,$selector)} { @include omega($from); }
+  }
 }
 
 // ---------------------------------------------------------------------------
@@ -226,7 +229,10 @@
   $context  : $total-columns,
   $from     : $from-direction
 ) {
-  &:#{format-nth($n,$selector)} { @include remove-omega($context,$from); }
+  $ie: if($n == "first", true, false);
+  @include adjust-support-for($legacy-ie: $ie) {
+    &:#{format-nth($n,$selector)} { @include remove-omega($context,$from); }
+  }
 }
 
 // ---------------------------------------------------------------------------

@@ -19,5 +19,10 @@ title: Sites using Susy
 - [Matthew Balaam](http://www.matthewbalaam.co.uk/)
 - [Starrt](http://starrt.dk/)
 - [Jeremy Peters](http://jeremypeters.co.uk/)
+- [Avoid Payday Loans](http://avoidpaydayloans.com/)
+- [Fake Images Please](http://fakeimg.pl/)
+- [Viggle](http://www.viggle.com/)
+- [Studio Daniel Libeskind](http://daniel-libeskind.com/)
+- [Devtroit](http://devtroit.com/)
 
 Have a site to add? [Let us know](http://twitter.com/compasssusy/) or [fork and add your site on GitHub](https://github.com/ericam/susy).

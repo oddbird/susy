@@ -287,7 +287,11 @@ This can be anything you want:
 <li>
 <code>&lt;$media-layout&gt;</code>: The <em>Breakpoint/Layout</em> combo to use (see above).</li>
 <li>
-<code>&lt;$font-size&gt;</code>: When using EMs for your grid, the font size is important.
+<code>&lt;$font-size&gt;</code>: Browsers interpret em-based media-queries
+using the browser default font size (<code>16px</code> in most cases).
+If you have a different base font size for your site,
+we have to adjust for the difference.
+Tell us your base font size, and we'll do the conversion.
 Default: <code>$base-font-size</code>.</li>
 <li>
 <code>&lt;@content&gt;</code>: Nested <code>@content</code> block will use the given <em>Layout</em>.</li>

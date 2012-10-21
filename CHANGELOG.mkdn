@@ -1,6 +1,12 @@
 Susy Changelog
 ==============
 
+v1.0.2 [Oct 20, 2012]
+---------------------
+
+* Fix a bug with `container-outer-width` ignoring `$columns` argument.
+* Turn off legacy-ie support inside CSS3 selectors (`nth-omega` etc).
+
 v1.0.1 [Sept 12, 2012]
 ----------------------
 

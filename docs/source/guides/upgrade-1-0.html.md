@@ -1,7 +1,7 @@
 ---
 title: Upgrade to Susy 1.0
 side_content: >
-  <p class="version">Version <span>1.0.2</span></p>
+  <p class="version">Version <span>1.0.3</span></p>
   <h2>Upgrading from 0.9</h2>
   <ul>
     <li><a href="#ref-gem">the gem</a></li>

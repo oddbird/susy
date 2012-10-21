@@ -2,7 +2,7 @@
 title: Getting Started
 class: guide
 side_content: >
-  <p class="version">Version <span>1.0.2</span></p>
+  <p class="version">Version <span>1.0.3</span></p>
   <h2><a href="#start-install">Installation</a></h2>
   <ul>
     <li><a href="#start-compass">Compass</a></li>
@@ -253,7 +253,7 @@ Add Susy to your ``Gemfile``
 ([more info on Gemfiles](http://gembundler.com/gemfile.html)):
 
     :::ruby
-    gem "susy", "~> 1.0.2"
+    gem "susy", "~> 1.0.3"
 
 And finally run your bundle:
 

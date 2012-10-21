@@ -15,7 +15,6 @@
 
 @media (min-width: 29em) {
   .breakpoint .break6 {
-    *zoom: 1;
     max-width: 29em;
     margin-left: auto;
     margin-right: auto;

@@ -170,7 +170,7 @@
   $from     : $from-direction
 ) {
   $ie: if($n == "first", true, false);
-  @include adjust-support-for($legacy-ie: $ie) {
+  @include adjust-support-for($ie6: $ie, $ie7: $ie, $ie8: $ie) {
     &:#{format-nth($n,$selector)} { @include omega($from); }
   }
 }
@@ -230,7 +230,7 @@
   $from     : $from-direction
 ) {
   $ie: if($n == "first", true, false);
-  @include adjust-support-for($legacy-ie: $ie) {
+  @include adjust-support-for($ie6: $ie, $ie7: $ie, $ie8: $ie) {
     &:#{format-nth($n,$selector)} { @include remove-omega($context,$from); }
   }
 }

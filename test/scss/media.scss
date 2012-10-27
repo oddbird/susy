@@ -13,6 +13,7 @@
 .breakpoint{
   @include at-breakpoint(6) {
     .break6 { @include container; }
+    .nth-omega { @include nth-omega(3n); }
   }
 
   @include at-breakpoint(60em 8 30em) {

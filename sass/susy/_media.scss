@@ -53,31 +53,33 @@
       // Set our new layout context.
       @include layout($layout) {
         @if $breakpoint-media-output {
-          @include adjust-support-for($legacy-ie: false) {
-            @if $min and $max {
-              // Both $min and $max
-              @media (min-width: $min) and (max-width: $max) {
+          // Remove legacy-ie support
+          @include capture-and-adjust-legacy-ie(false, false, false);
+          @if $min and $max {
+            // Both $min and $max
+            @media (min-width: $min) and (max-width: $max) {
+              @content;
+            }
+          } @else {
+            @if (not $min) and (not $max) {
+              // Neither $min nor $max:
+              // We can create a breakpoint based on the number of columns in the layout.
+              $min: fix-ems(container-outer-width());
+            }
+            @if $min {
+              // Min only:
+              @media (min-width: $min) {
                 @content;
               }
             } @else {
-              @if (not $min) and (not $max) {
-                // Neither $min nor $max:
-                // We can create a breakpoint based on the number of columns in the layout.
-                $min: fix-ems(container-outer-width());
-              }
-              @if $min {
-                // Min only:
-                @media (min-width: $min) {
-                  @content;
-                }
-              } @else {
-                // Max only:
-                @media (max-width: $max) {
-                  @content;
-                }
+              // Max only:
+              @media (max-width: $max) {
+                @content;
               }
             }
           }
+          // Return legacy-ie support to original
+          @include set-legacy-ie-support($legacy-ie-matrix...);
         }
         // Set an IE fallback
         @if $ie and $breakpoint-ie-output {

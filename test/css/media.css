@@ -26,6 +26,10 @@
     display: table;
     clear: both;
   }
+  .breakpoint .nth-omega:nth-child(3n) {
+    float: right;
+    margin-right: 0;
+  }
 }
 @media (min-width: 30em) and (max-width: 60em) {
   .breakpoint .break60-8-30 {

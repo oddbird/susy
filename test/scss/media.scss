@@ -2,6 +2,7 @@
 // Imports
 
 @import "../../sass/susy";
+@import "compass/css3/border-radius";
 
 // ---------------------------------------------------------------------------
 // Media
@@ -18,6 +19,14 @@
 
   @include at-breakpoint(60em 8 30em) {
     .break60-8-30 { @include set-container-width; }
+  }
+
+  @include at-breakpoint(24 lt-ie9) {
+    .break-ltie9 {
+      @include set-container-width;
+      @include has-layout; // test adjustments to experimental support
+      @include border-radius; // test adjustments to experimental support
+    }
   }
 }
 

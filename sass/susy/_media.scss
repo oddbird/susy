@@ -53,8 +53,10 @@
       // Set our new layout context.
       @include layout($layout) {
         @if $breakpoint-media-output {
-          // Remove legacy-ie support
-          @include capture-and-adjust-legacy-ie(false, false, false);
+          // Capture current state of ie support and set new
+          $atbreak-legacy-ie-matrix: capture-legacy-ie-matrix();
+          @include set-legacy-ie-support;
+
           @if $min and $max {
             // Both $min and $max
             @media (min-width: $min) and (max-width: $max) {
@@ -79,7 +81,7 @@
             }
           }
           // Return legacy-ie support to original
-          @include set-legacy-ie-support($legacy-ie-matrix...);
+          @include set-legacy-ie-support($atbreak-legacy-ie-matrix...);
         }
         // Set an IE fallback
         @if $ie and $breakpoint-ie-output {
@@ -87,7 +89,10 @@
             $ie: 'lt-ie9';
           }
           .#{$ie} & {
+            $atbreak-experimental-matrix: capture-experimental-matrix();
+            @include set-experimental-support($ms: true);
             @content;
+            @include set-experimental-support($atbreak-experimental-matrix...);
           }
         }
 

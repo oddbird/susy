@@ -1,6 +1,12 @@
 Susy Changelog
 ==============
 
+v1.0.4 [Nov 3, 2012]
+---------------------
+
+* Fix bug in nested mixins that adjust support (e.g. `nth-omeg` inside `at-breakpoint`).
+* Remove non-ie experimental support in `at-breakpoint` ie-fallback output.
+
 v1.0.3 [Oct 20, 2012]
 ---------------------
 

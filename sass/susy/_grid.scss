@@ -26,13 +26,19 @@
   $width: container-outer-width($columns);
 
   @if $container-style == 'static' {
-    width: $width;
+    @include if-rem(width, $width);
   } @else {
     @if $container-style == 'fluid' {
-      width: if(unit($width) == '%', $width, auto);
+      @include if-rem(width, if(unit($width) == '%', $width, auto));
     } @else {
-      max-width: $width;
-      @if $legacy-support-for-ie6 { _width: $width; }
+      @include if-rem(max-width, $width);
+      @if $legacy-support-for-ie6 {
+        @if unit($width) == 'rem' {
+          _width: round(convert-length($width, px));
+        } @else {
+          _width: $width;
+        }
+      }
     }
   }
 }
@@ -45,8 +51,9 @@
 ){
   @include pie-clearfix;
   @include set-container-width($columns);
+  @include if-rem(padding-left, $grid-padding);
+  @include if-rem(padding-right, $grid-padding);
   margin: { left: auto; right: auto; }
-  padding: { left: $grid-padding; right: $grid-padding; }
 }
 
 // Set one or more layouts on a grid-containing element at any number of media-query breakpoints.

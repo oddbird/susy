@@ -12,7 +12,7 @@
   $columns,
   $context  : $total-columns,
   $from     : $from-direction
-) {  
+) {
   margin-#{$from}: space($columns,$context);
 }
 

@@ -14,6 +14,7 @@ sass/susy/_media.scss
 sass/susy/_padding.scss
 sass/susy/_settings.scss
 sass/susy/_support.scss
+sass/susy/_units.scss
 susy.gemspec
 templates/project/_base.scss
 templates/project/manifest.rb

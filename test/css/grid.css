@@ -2,10 +2,10 @@
   *zoom: 1;
   max-width: 59em;
   _width: 59em;
-  margin-left: auto;
-  margin-right: auto;
   padding-left: 1em;
   padding-right: 1em;
+  margin-left: auto;
+  margin-right: auto;
 }
 .container:after {
   content: "";
@@ -17,10 +17,10 @@
   *zoom: 1;
   max-width: 59em;
   _width: 59em;
-  margin-left: auto;
-  margin-right: auto;
   padding-left: 1em;
   padding-right: 1em;
+  margin-left: auto;
+  margin-right: auto;
 }
 .complex-container:after {
   content: "";
@@ -94,10 +94,10 @@
   *zoom: 1;
   max-width: 61em;
   _width: 61em;
-  margin-left: auto;
-  margin-right: auto;
   padding-left: 1em;
   padding-right: 1em;
+  margin-left: auto;
+  margin-right: auto;
 }
 .container:after {
   content: "";

@@ -33,3 +33,18 @@
 @include with-grid-settings(6,3em,2em,1em) {
   .with-settings6-3-2-1 { @include container; }
 }
+
+$base-font-size: 18px;
+
+@include with-grid-settings(6,3rem,2rem,1rem) {
+  .with-settings6-3r-2r-1r { @include container; }
+
+  @include at-breakpoint(60rem 8 30rem) {
+    .break60r-8-30r { @include set-container-width; }
+  }
+  @include at-breakpoint(60em 8 30em) {
+    .break60-8-30 { @include set-container-width; }
+  }
+}
+
+$base-font-size: 16px;

@@ -12,6 +12,7 @@
   $context  : $total-columns,
   $from     : $from-direction
 ) {
+  $from           : unquote($from);
   padding-#{$from}: space($columns, $context);
 }
 
@@ -26,6 +27,7 @@
   $context  : $total-columns,
   $from     : $from-direction
 ) {
+  $from         : unquote($from);
   $to           : opposite-position($from);
   padding-#{$to}: space($columns, $context);
 }
@@ -42,6 +44,7 @@
   $context  : $total-columns,
   $from     : $from-direction
 ) {
+  $from     : unquote($from);
   @if $prefix {
     @include prefix($prefix, $context, $from);
   }

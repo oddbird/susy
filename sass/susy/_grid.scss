@@ -112,6 +112,7 @@
   $padding       : false,
   $from          : $from-direction
 ) {
+  $from     : unquote($from);
   $to       : opposite-position($from);
   $pos      : split-columns-value($columns,position);
   $cols     : split-columns-value($columns,columns);
@@ -154,6 +155,7 @@
 @mixin omega(
   $from     : $from-direction
 ) {
+  $from   : unquote($from);
   $to     : opposite-position($from);
   $hack   : opposite-position($omega-float);
 
@@ -176,6 +178,7 @@
   $selector : child,
   $from     : $from-direction
 ) {
+  $from     : unquote($from);
   $ie: if($n == "first", true, false);
   @include adjust-support-for($ie6: $ie, $ie7: $ie, $ie8: $ie) {
     &:#{format-nth($n,$selector)} { @include omega($from); }
@@ -191,6 +194,7 @@
 @mixin reset-columns(
   $from: $from-direction
 ) {
+  $from   : unquote($from);
   $to     : opposite-position($from);
   $hack   : opposite-position($omega-float);
 
@@ -213,6 +217,7 @@
   $context  : $total-columns,
   $from     : $from-direction
 ) {
+  $from   : unquote($from);
   $to     : opposite-position($from);
   $hack   : opposite-position($omega-float);
 
@@ -236,6 +241,7 @@
   $context  : $total-columns,
   $from     : $from-direction
 ) {
+  $from     : unquote($from);
   $ie: if($n == "first", true, false);
   @include adjust-support-for($ie6: $ie, $ie7: $ie, $ie8: $ie) {
     &:#{format-nth($n,$selector)} { @include remove-omega($context,$from); }

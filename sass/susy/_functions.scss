@@ -68,9 +68,10 @@ $rem-with-px-fallback               : true !default;
 //
 //  $context  : The grid context in columns, if nested.
 @function column(
-  $context : $total-columns
+  $context  : $total-columns,
+  $style    : $container-style
 ) {
-  @return relative-width($column-width, $context);
+  @return if($style == static, $column-width, relative-width($column-width, $context));
 }
 
 // Return the percentage width of multiple 'columns' in a given 'context'.

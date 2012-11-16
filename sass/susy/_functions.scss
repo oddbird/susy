@@ -79,18 +79,20 @@ $rem-with-px-fallback               : true !default;
 //  $context  : The grid context in columns, if nested.
 @function columns(
   $columns,
-  $context : $total-columns
+  $context : $total-columns,
+  $fixed: false
 ) {
-  @return relative-width(columns-width($columns), $context);
+  @return if($fixed, fixed-width(columns-width($columns), $context), relative-width(columns-width($columns), $context));
 }
 
 // Return the percentage width of a single gutter in a given 'context'.
 //
 //  $context  : The grid context in columns, if nested.
 @function gutter(
-  $context : $total-columns
+  $context : $total-columns,
+  $fixed: false
 ) {
-  @return relative-width($gutter-width, $context);
+  @return if($fixed, fixed-width($gutter-width, $context), relative-width($gutter-width, $context));
 }
 
 // Return the percentage width of a given value in a given 'context'.
@@ -102,6 +104,17 @@ $rem-with-px-fallback               : true !default;
   $context : $total-columns
 ) {
   @return percentage($width / columns-width($context));
+}
+
+// Return the fixed width of a given value in a given 'context'.
+//
+//  $width    : Any given width value.
+//  $context  : The grid context in columns, if nested.
+@function fixed-width(
+  $width,
+  $context : $total-columns
+) {
+  @return $width;
 }
 
 // Return the total space occupied by multiple columns and associated gutters.

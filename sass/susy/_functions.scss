@@ -67,6 +67,7 @@ $rem-with-px-fallback               : true !default;
 // Return the percentage width of a single column in a given 'context'.
 //
 //  $context  : The grid context in columns, if nested.
+//  $style    : The container style to use.
 @function column(
   $context  : $total-columns,
   $style    : $container-style
@@ -78,6 +79,7 @@ $rem-with-px-fallback               : true !default;
 //
 //  $columns  : The number of columns to get relative width for.
 //  $context  : The grid context in columns, if nested.
+//  $style    : The container style to use.
 @function columns(
   $columns,
   $context  : $total-columns,
@@ -89,6 +91,7 @@ $rem-with-px-fallback               : true !default;
 // Return the percentage width of a single gutter in a given 'context'.
 //
 //  $context  : The grid context in columns, if nested.
+//  $style    : The container style to use.
 @function gutter(
   $context  : $total-columns,
   $style    : $container-style
@@ -108,15 +111,17 @@ $rem-with-px-fallback               : true !default;
 }
 
 // Return the total space occupied by multiple columns and associated gutters.
-// Useful for adding padding or margins (preifx, suffix, push, pull, etc.)
+// Useful for adding padding or margins (prefix, suffix, push, pull, etc.)
 //
 //  $columns  : The number of columns to get relative space for.
 //  $context  : The grid context in columns, if nested.
+//  $style    : The container style to use.
 @function space(
   $columns,
-  $context : $total-columns
+  $context  : $total-columns,
+  $style    : $container-style
 ) {
-  @return columns($columns, $context) + if($columns >= 1, gutter($context), 0);
+  @return columns($columns, $context, $style) + if($columns >= 1, gutter($context), 0);
 }
 
 // Accept a list including column-count and (optional) position.

@@ -105,6 +105,7 @@
 //          : Padding is only output if one or two values are specified (e.g. 1em or 10px 20px)
 //          : Padding values are applied only on the horizontal axis in from-to order
 // $from    : The start direction of your layout (e.g. 'left' for ltr languages)
+// $style   : The container style to use.
 
 @mixin span-columns(
   $columns,
@@ -129,8 +130,8 @@
       $pad-to: $pad-from;
     }
 
-    $pad-from : if($style == static, fixed-width($pad-from, $context), relative-width($pad-from, $context));
-    $pad-to   : if($style == static, fixed-width($pad-to, $context), relative-width($pad-to, $context));
+    $pad-from : if($style == static, $pad-from, relative-width($pad-from, $context));
+    $pad-to   : if($style == static, $pad-to, relative-width($pad-to, $context));
 
     padding-#{$from}: $pad-from;
     padding-#{$to}: $pad-to;

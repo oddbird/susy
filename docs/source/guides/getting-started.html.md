@@ -7,6 +7,7 @@ side_content: >
   <ul>
     <li><a href="#start-compass">Compass</a></li>
     <li><a href="#start-rails">Rails 3.x</a></li>
+    <li><a href="#start-simple">Manual Start</a></li>
   </ul>
   <h2><a href="#start-usage">Usage</a></h2>
   <ul>
@@ -67,10 +68,24 @@ And run:
     # command line
     bundle install
 
+
+### <a href="#start-manual" id="start-manual">Manual Start</a>
+You can use this method if you're not using Compass from Terminal and/or Rails. This is going to work with CodeKit.
+
+* Simply <a href="https://github.com/ericam/susy/archive/master.zip">download</a> the zip file from GitHub   
+* Copy the contents of the "sass" folder *feel free to remove everything else  
+* Paste the files in your projects "sass" folder (or whatever you call it)  
+* And import Susy! ( See <a href="#start-usage">Usage</a> )  
+And you're good to go!  
+
+
+
 ## <a href="#start-usage" id="start-usage">Usage</a>
 
     :::scss
     @import "susy";
+
+
 
 ### <a href="#start-settings" id="start-settings">Settings</a>
 Set up your default grid values: total columns, column width, and gutter width.

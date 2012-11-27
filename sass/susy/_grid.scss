@@ -29,7 +29,7 @@
     @include if-rem(width, $width);
   } @else {
     @if $container-style == 'fluid' {
-      @include if-rem(width, if(unit($width) == '%', $width, auto));
+      @if unit($width) == '%' { @include if-rem(width, $width); }
     } @else {
       @include if-rem(max-width, $width);
       @if $legacy-support-for-ie6 {

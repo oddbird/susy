@@ -2,7 +2,7 @@
 title: Getting Started
 class: guide
 side_content: >
-  <p class="version">Version <span>1.0.4</span></p>
+  <p class="version">Version <span>1.0.5</span></p>
   <h2><a href="#start-install">Installation</a></h2>
   <ul>
     <li><a href="#start-compass">Compass</a></li>
@@ -72,11 +72,11 @@ And run:
 ### <a href="#start-manual" id="start-manual">Manual Start</a>
 You can use this method if you're not using Compass from Terminal and/or Rails. This is going to work with CodeKit.
 
-* Simply <a href="https://github.com/ericam/susy/archive/master.zip">download</a> the zip file from GitHub   
-* Copy the contents of the "sass" folder *feel free to remove everything else  
-* Paste the files in your projects "sass" folder (or whatever you call it)  
-* And import Susy! ( See <a href="#start-usage">Usage</a> )  
-And you're good to go!  
+* Simply <a href="https://github.com/ericam/susy/archive/master.zip">download</a> the zip file from GitHub
+* Copy the contents of the "sass" folder *feel free to remove everything else
+* Paste the files in your projects "sass" folder (or whatever you call it)
+* And import Susy! ( See <a href="#start-usage">Usage</a> )
+And you're good to go!
 
 
 
@@ -268,7 +268,7 @@ Add Susy to your ``Gemfile``
 ([more info on Gemfiles](http://gembundler.com/gemfile.html)):
 
     :::ruby
-    gem "susy", "~> 1.0.4"
+    gem "susy", "~> 1.0.5"
 
 And finally run your bundle:
 

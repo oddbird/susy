@@ -1,6 +1,13 @@
 Susy Changelog
 ==============
 
+v1.0.5 [Nov 27, 2012]
+---------------------
+
+* Add support for rem-units.
+* Clean-up quoted arguments.
+* Fix a few bugs related to the override settings.
+
 v1.0.4 [Nov 3, 2012]
 ---------------------
 

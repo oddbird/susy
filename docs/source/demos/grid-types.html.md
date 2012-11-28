@@ -185,7 +185,7 @@ updated to 1140px?
     .larger-960-container { @include container; }
 
 <aside class="larger-960-container">
-  <h4>Larger 906-based grid: <b>.larger-960-container</b></h4>
+  <h4>Larger 960-based grid: <b>.larger-960-container</b></h4>
   <p>
     12 columns,
     60px width,

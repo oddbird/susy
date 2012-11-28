@@ -50,18 +50,18 @@ $rem-with-px-fallback               : true !default;
 //
 //  $columns  : The number of columns in the Grid Layout.
 @function container-outer-width(
-  $columns  : $total-columns
+  $columns  : $total-columns,
+  $width    : $container-width
 ) {
-  $width: columns-width($columns);
+  $outerwidth: if($width, $width, columns-width($columns));
 
-  @if $container-width {
-    $width: $container-width;
-    @if not $border-box-sizing { $width: handle-grid-padding($width, subtract); }
+  @if $width {
+    @if not $border-box-sizing { $outerwidth: handle-grid-padding($outerwidth, subtract); }
   } @else {
-    @if $border-box-sizing { $width: handle-grid-padding($width, add); }
+    @if $border-box-sizing { $outerwidth: handle-grid-padding($outerwidth, add); }
   }
 
-  @return $width;
+  @return $outerwidth;
 }
 
 // Return the percentage width of a single column in a given 'context'.

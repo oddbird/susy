@@ -21,14 +21,15 @@
 //
 //  $columns  : The number of columns in the Grid Layout.
 @mixin set-container-width(
-  $columns  : $total-columns
+  $columns  : $total-columns,
+  $style    : $container-style
 ){
   $width: container-outer-width($columns);
 
-  @if $container-style == 'static' {
+  @if $style == 'static' {
     @include if-rem(width, $width);
   } @else {
-    @if $container-style == 'fluid' {
+    @if $style == 'fluid' {
       @if unit($width) == '%' { @include if-rem(width, $width); }
     } @else {
       @include if-rem(max-width, $width);

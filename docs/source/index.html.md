@@ -1,4 +1,7 @@
+
+<pre class="download">gem install susy</pre>
 <div class="intro">
+  <p class="highlight">Your markup. Your design. Our math.</p>
   <p>
     The web is a responsive place,
     from your lithe <span class="amp">&</span> lively development process
@@ -6,14 +9,26 @@
     You need grids that are powerful yet custom,
     reliable yet responsive.
   </p>
-  <p>
-    We don't design your site or dictate your markup,
-    we just do the math and get out of your way.
-  </p>
 </div>
 <section class="info">
-  <div class="highlight"><pre>gem install susy</pre></div>
-  <p><a href="/guides/upgrade-1-0/">Changes <span class="amp">&</span> upgrade instructions »</a></p>
+  <p class="highlight">Recent News:</p>
+  <ul class="news">
+    <li class="newsitem">
+      <a href="http://oddbird.net/2012/11/27/susy-off-canvas/">
+        <strong>Tutorial:</strong> Off-Canvas Layout with Susy
+      </a>
+    </li>
+    <li class="newsitem">
+      <a href="https://rubygems.org/gems/susy/versions/1.0.5">
+        <strong>v1.0.5:</strong> Added support for rem units.
+      </a>
+    </li>
+    <li class="newsitem">
+      <a href="http://net.tutsplus.com/tutorials/html-css-techniques/responsive-grids-with-susy/">
+        <strong>Nettuts+ Tutorial:</strong> Responsive Grids With Susy
+      </a>
+    </li>
+  </ul>
 </section>
 <figure class="ag-test">
   <figcaption>

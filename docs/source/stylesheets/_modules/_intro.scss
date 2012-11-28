@@ -1,7 +1,7 @@
 //-----------------------------------------------------------------------------
 // Intro
 
-.serif-type {
+%serif-type {
   @include adjust-font-size-to($medpx);
   h2 { @include adjust-font-size-to($largepx,1.5,$medpx); }
   p { @include trailer(1,$medpx); }
@@ -9,58 +9,43 @@
   em { font-style: italic; }
 }
 
+.download {
+  @include adjust-font-size-to($medpx);
+  @include rhythm-borders(1px,.5,$medpx);
+  @include leader(-.5,$medpx);
+  @include trailer(1,$medpx);
+  @include box-sizing(border-box);
+  border-color: $susy-background-dark-20;
+  background: $susy-background-dark-10;
+  font-weight: bold;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  @include at-breakpoint($break) { @include span-columns(5 omega); }
+}
+
+.highlight {
+  color: $susy-bodycopy-dark-20;
+  font-weight: bold;
+}
+
 .intro {
-  @extend .serif-type;
+  @extend %serif-type;
   @include trailer(1,$medpx);
   p {
-    &:first-child { color: $susy-bodycopy-dark-20; }
     &:last-child { font-style: italic; }
   }
-  @include at-breakpoint($break) {
-    @include span-columns(5);
-  }
+  @include at-breakpoint($break) { @include span-columns(5); }
 }
 
 .info {
-  @include box-sizing(border-box);
-  @include rhythm-borders(1px,2);
-  border-color: $susy-background-dark-20;
-  background: $susy-background-dark-10;
-  text-align: center;
-
-  @include at-breakpoint($break) {
-    @include span-columns(5 omega);
-  }
-
-  $version-size : $largepx;
-
-  .version {
-    @extend .caps;
-    @include adjust-font-size-to($version-size);
-    @include leader(0);
-    @include trailer(.5,$version-size);
-    font-weight: bold;
-    a {
-      @extend %icon;
-      @extend %icon-pin;
-    }
-  }
-
-  .highlight { @include trailer(1); }
-  pre {
-    @include adjust-font-size-to($normpx);
-    font-weight: bold;
-  }
-}
-
-.v1-0 {
-  h2 {
-    @include adjust-font-size-to($medpx);
-  }
+  p { margin: 0; }
+  strong { color: $susy-bodycopy-dark-10; }
+  @include at-breakpoint($break) { @include span-columns(5 omega); }
 }
 
 .andmore {
-  @extend .serif-type;
+  @extend %serif-type;
   p:last-child { font-style: italic; }
   @include at-breakpoint(50em 10) {
     @include span-columns(5 omega,10);

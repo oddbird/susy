@@ -42,17 +42,19 @@
 //          : Context is required on any nested elements.
 //          : Context MUST NOT be declared on a root element.
 // $from    : The start direction of your layout (e.g. 'left' for ltr languages)
+// $style   : The container style to use.
 @mixin pad(
   $prefix   : false,
   $suffix   : false,
   $context  : $total-columns,
-  $from     : $from-direction
+  $from     : $from-direction,
+  $style    : $container-style
 ) {
   $from     : unquote($from);
   @if $prefix {
-    @include prefix($prefix, $context, $from);
+    @include prefix($prefix, $context, $from, $style);
   }
   @if $suffix {
-    @include suffix($suffix, $context, $from);
+    @include suffix($suffix, $context, $from, $style);
   }
 }

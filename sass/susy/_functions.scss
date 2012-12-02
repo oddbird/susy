@@ -85,7 +85,7 @@ $rem-with-px-fallback               : true !default;
   $context  : $total-columns,
   $style    : $container-style
 ) {
-  @return if(($style == static), columns-width($columns), relative-width(columns-width($columns), $context));
+  @return if($style == static, columns-width($columns), relative-width(columns-width($columns), $context));
 }
 
 // Return the percentage width of a single gutter in a given 'context'.
@@ -96,7 +96,7 @@ $rem-with-px-fallback               : true !default;
   $context  : $total-columns,
   $style    : $container-style
 ) {
-  @return if(($style == static), $gutter-width, relative-width($gutter-width, $context));
+  @return if($style == static, $gutter-width, relative-width($gutter-width, $context));
 }
 
 // Return the percentage width of a given value in a given 'context'.

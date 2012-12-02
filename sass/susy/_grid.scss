@@ -107,7 +107,6 @@
 //          : Padding values are applied only on the horizontal axis in from-to order
 // $from    : The start direction of your layout (e.g. 'left' for ltr languages)
 // $style   : The container style to use.
-
 @mixin span-columns(
   $columns,
   $context       : $total-columns,
@@ -145,9 +144,7 @@
   } @else {
     float: $from;
     margin-#{$to}: gutter($context, $style);
-    @if $legacy-support-for-ie6 {
-      display: inline;
-    }
+    @if $legacy-support-for-ie6 { display: inline; }
   }
 }
 
@@ -216,16 +213,18 @@
 //
 // $context : [optional] The context (columns spanned by parent).
 // $from    : The start-direction for your document.
+// $style   : The container style to use.
 @mixin remove-omega(
   $context  : $total-columns,
-  $from     : $from-direction
+  $from     : $from-direction,
+  $style    : $container-style
 ) {
   $from   : unquote($from);
   $to     : opposite-position($from);
   $hack   : opposite-position($omega-float);
 
   float: $from;
-  margin-#{$to}: gutter($context);
+  margin-#{$to}: gutter($context, $style);
 
   @if $legacy-support-for-ie6 or $legacy-support-for-ie7 {
     #margin-#{$hack}: auto;
@@ -238,16 +237,20 @@
 // $selector  : [child | last-child | of-type | last-of-type ]
 // $context   : [optional] The context (columns spanned by parent).
 // $from      : The start-direction for your document.
+// $style     : The container style to use.
 @mixin remove-nth-omega(
   $n        : last,
   $selector : child,
   $context  : $total-columns,
-  $from     : $from-direction
+  $from     : $from-direction,
+  $style    : $container-style
 ) {
   $from     : unquote($from);
   $ie: if($n == "first", true, false);
   @include adjust-support-for($ie6: $ie, $ie7: $ie, $ie8: $ie) {
-    &:#{format-nth($n,$selector)} { @include remove-omega($context,$from); }
+    &:#{format-nth($n,$selector)} {
+      @include remove-omega($context, $from, $style);
+    }
   }
 }
 

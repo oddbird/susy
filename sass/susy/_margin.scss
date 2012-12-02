@@ -23,7 +23,8 @@
 @mixin push(
   $columns,
   $context  : $total-columns,
-  $from     : $from-direction
+  $from     : $from-direction,
+  $style    : $container-style
 ) {
   $from     : unquote($from);
   @include pre($columns,$context,$from)
@@ -74,17 +75,19 @@
 //          : Context is required on any nested elements.
 //          : Context MUST NOT be declared on a root element.
 // $from    : The start direction of your layout (e.g. 'left' for ltr languages)
+// $style   : The container style to use.
 @mixin squish(
   $pre      : false,
   $post     : false,
   $context  : $total-columns,
-  $from     : $from-direction
+  $from     : $from-direction,
+  $style    : $container-style
 ) {
   $from     : unquote($from);
   @if $pre {
-    @include pre($pre,$context,$from)
+    @include pre($pre, $context, $from, $style)
   }
   @if $post {
-    @include post($post,$context,$from)
+    @include post($post, $context, $from, $style)
   }
 }

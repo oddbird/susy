@@ -18,7 +18,6 @@ $grid-padding       : $gutter-width   !default;
 // From Direction:
 // Controls for right-to-left or bi-directional sites.
 $from-direction     : left            !default;
-$from-direction     : unquote($from-direction);
 
 // Omega Float Direction:
 // The direction that +omega elements are floated by deafult.
@@ -50,8 +49,8 @@ $border-box-sizing  : false           !default;
 // you can use these settings to control the output of at-breakpoint.
 // By default, at-breakpoint will output media-queries as well as
 // any defined ie-fallback classes.
-$breakpoint-media-output  : true;
-$breakpoint-ie-output     : true;
+$breakpoint-media-output  : true      !default;
+$breakpoint-ie-output     : true      !default;
 
 // Danger Zone! Only set as 'true' in IE-specific style sheets.
-$breakpoint-raw-output    : false;
+$breakpoint-raw-output    : false     !default;

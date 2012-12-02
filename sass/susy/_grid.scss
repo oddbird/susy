@@ -106,19 +106,21 @@
 //          : Padding is only output if one or two values are specified (e.g. 1em or 10px 20px)
 //          : Padding values are applied only on the horizontal axis in from-to order
 // $from    : The start direction of your layout (e.g. 'left' for ltr languages)
+// $style   : The container style to use.
 
 @mixin span-columns(
   $columns,
   $context       : $total-columns,
   $padding       : false,
-  $from          : $from-direction
+  $from          : $from-direction,
+  $style         : $container-style
 ) {
   $from     : unquote($from);
   $to       : opposite-position($from);
   $pos      : split-columns-value($columns,position);
   $cols     : split-columns-value($columns,columns);
-  $pad-from : relative-width(0 * $gutter-width, $context);
-  $pad-to   : relative-width(0 * $gutter-width, $context);
+  $pad-from : if($style == static, 0 * $gutter-width, relative-width(0 * $gutter-width, $context));
+  $pad-to   : if($style == static, 0 * $gutter-width, relative-width(0 * $gutter-width, $context));
 
   @if $padding != false {
     $pad-from : nth($padding, 1);
@@ -129,20 +131,20 @@
       $pad-to: $pad-from;
     }
 
-    $pad-from : relative-width($pad-from, $context);
-    $pad-to   : relative-width($pad-to, $context);
+    $pad-from : if($style == static, $pad-from, relative-width($pad-from, $context));
+    $pad-to   : if($style == static, $pad-to, relative-width($pad-to, $context));
 
     padding-#{$from}: $pad-from;
     padding-#{$to}: $pad-to;
   }
 
-  width: columns($cols, $context) - if($border-box-sizing, 0, $pad-to + $pad-from);
+  width: columns($cols, $context, $style) - if($border-box-sizing, 0, $pad-to + $pad-from);
 
   @if ($pos == 'omega') {
     @include omega($from);
   } @else {
     float: $from;
-    margin-#{$to}: gutter($context);
+    margin-#{$to}: gutter($context, $style);
     @if $legacy-support-for-ie6 {
       display: inline;
     }

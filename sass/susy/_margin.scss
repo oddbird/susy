@@ -8,13 +8,15 @@
 //          : Context is required on any nested elements.
 //          : Context MUST NOT be declared on a root element.
 // $from    : The start direction of your layout (e.g. 'left' for ltr languages)
+// $style   : The container style to use.
 @mixin pre(
   $columns,
   $context  : $total-columns,
-  $from     : $from-direction
+  $from     : $from-direction,
+  $style    : $container-style
 ) {
   $from     : unquote($from);
-  margin-#{$from}: space($columns,$context);
+  margin-#{$from}: space($columns, $context, $style);
 }
 
 // 'push' is a synonymn for 'pre'
@@ -34,13 +36,15 @@
 //          : Context is required on any nested elements.
 //          : Context MUST NOT be declared on a root element.
 // $from    : The start direction of your layout (e.g. 'left' for ltr languages)
+// $style   : The container style to use.
 @mixin pull(
   $columns,
   $context  : $total-columns,
-  $from     : $from-direction
+  $from     : $from-direction,
+  $style    : $container-style
 ) {
   $from     : unquote($from);
-  margin-#{$from}: 0 - space($columns, $context);
+  margin-#{$from}: 0 - space($columns, $context, $style);
 }
 
 // Apply 'columns' margin after an element to contain it in a grid.
@@ -50,14 +54,16 @@
 //          : Context is required on any nested elements.
 //          : Context MUST NOT be declared on a root element.
 // $from    : The start direction of your layout (e.g. 'left' for ltr languages)
+// $style   : The container style to use.
 @mixin post(
   $columns,
   $context  : $total-columns,
-  $from     : $from-direction
+  $from     : $from-direction,
+  $style    : $container-style
 ) {
   $from     : unquote($from);
   $to : opposite-position($from);
-  margin-#{$to}: space($columns,$context);
+  margin-#{$to}: space($columns, $context, $style);
 }
 
 // Apply 'columns' before and/or after an element to contain it on a grid.

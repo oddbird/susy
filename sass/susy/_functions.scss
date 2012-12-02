@@ -12,6 +12,24 @@ $browser-default-font-size-pt       : 12pt;
 $rem-with-px-fallback               : true !default;
 
 // ---------------------------------------------------------------------------
+// Sass list Functions
+
+// Return a list with specific items removed
+//
+// filter($list, $target)
+// - $list    : The list to filter.
+// - $target  : An item to be removed from the list.
+@function filter($list, $target) {
+  $clean: compact();
+  @if index($list, $target) {
+    @each $item in $list {
+      $clean: if($item == $target, $clean, append($clean, $item));
+    }
+  } @else { $clean: $list; }
+  @return $clean;
+}
+
+// ---------------------------------------------------------------------------
 // Grid Functions
 
 // Returns the full width of a grid based on your grid settings.

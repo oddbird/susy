@@ -7,13 +7,15 @@
 //          : Context is required on any nested elements.
 //          : Context MUST NOT be declared on a root element.
 // $from    : The start direction of your layout (e.g. 'left' for ltr languages)
+// $style   : The container style to use.
 @mixin prefix(
   $columns,
   $context  : $total-columns,
-  $from     : $from-direction
+  $from     : $from-direction,
+  $style    : $container-style
 ) {
   $from           : unquote($from);
-  padding-#{$from}: space($columns, $context);
+  padding-#{$from}: space($columns, $context, $style);
 }
 
 // add empty colums as padding after an element.
@@ -22,14 +24,16 @@
 //          : Context is required on any nested elements.
 //          : Context MUST NOT be declared on a root element.
 // $from    : The start direction of your layout (e.g. 'left' for ltr languages)
+// $style   : The container style to use.
 @mixin suffix(
   $columns,
   $context  : $total-columns,
-  $from     : $from-direction
+  $from     : $from-direction,
+  $style    : $container-style
 ) {
   $from         : unquote($from);
   $to           : opposite-position($from);
-  padding-#{$to}: space($columns, $context);
+  padding-#{$to}: space($columns, $context, $style);
 }
 
 // add empty colums as padding before and after an element.

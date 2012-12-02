@@ -12,7 +12,7 @@
 // Uses all your settings to create a grid background for a container element.
 // Note: Sub-pixel rounding can lead to several pixels of variation between browsers.
 @mixin susy-grid-background(){
-  @include column-grid-background($total-columns, column(), gutter(), 0%);
+  @include column-grid-background($total-columns, column(), gutter(), 0);
   @include background-origin(content-box);
   @include background-clip(content-box);
 }

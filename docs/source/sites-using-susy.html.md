@@ -24,5 +24,6 @@ title: Sites using Susy
 - [Viggle](http://www.viggle.com/)
 - [Studio Daniel Libeskind](http://daniel-libeskind.com/)
 - [Devtroit](http://devtroit.com/)
+- [Patrick Marsceill](http://patrickmarsceill.com)
 
 Have a site to add? [Let us know](http://twitter.com/compasssusy/) or [fork and add your site on GitHub](https://github.com/ericam/susy).

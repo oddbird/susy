@@ -12,7 +12,7 @@
 <link href="images/splash-iphone4.png" media="screen and (max-device-width: 480px) and (-webkit-min-device-pixel-ratio: 2)" rel="apple-touch-startup-image">
 <link href="images/splash-portrait.png" media="screen and (min-device-width: 768px) and (orientation: portrait)" rel="apple-touch-startup-image">
 <link href="images/splash-landscape.png" media="screen and (min-device-width: 768px) and (orientation: landscape)" rel="apple-touch-startup-image">
-<link href="../../stylesheets/site.css?1354093223" type="text/css" media="screen" rel="stylesheet">
+<link type="text/css" rel="stylesheet" href="../../stylesheets/site.css?1356048735" media="screen">
 <script type="text/javascript" src="../../javascripts/modernizr-2.5.3.min.js?1340673619"></script><script type="text/javascript" src="../../javascripts/modernizr.selectors.js?1340673619"></script>
 </head>
 <body class="guides guides_upgrade-1-0 guides_upgrade-1-0_index" id="susy-oddbird-net">
@@ -68,15 +68,12 @@ for more detail.</p>
 the gem name has changed from <code>compass-susy-plugin</code>
 to simply <code>susy</code>.</p>
 
-<div class="highlight">
-<pre><span class="c"># uninstall the old gem !important</span>
+<div class="highlight"><pre><span class="c"># uninstall the old gem !important</span>
 gem uninstall compass-susy-plugin
 
 <span class="c"># install the new gem</span>
 gem install susy
-</pre>
-</div>
-
+</pre></div>
 
 <p>If you don't uninstall the old gem, you will get errors.</p>
 
@@ -139,26 +136,20 @@ See below:</p>
 
 <p>The <code>span-columns</code> mixin now handles many additional use-cases:</p>
 
-<div class="highlight">
-<pre><span class="c1">// span-columns(&lt;$columns&gt; [&lt;omega&gt; , &lt;$context&gt;, &lt;$padding&gt;, &lt;$from&gt;])</span>
+<div class="highlight"><pre><span class="c1">// span-columns(&lt;$columns&gt; [&lt;omega&gt; , &lt;$context&gt;, &lt;$padding&gt;, &lt;$from&gt;])</span>
 <span class="nt">article</span> <span class="p">{</span> <span class="k">@include</span><span class="nd"> span-columns</span><span class="p">(</span><span class="mi">9</span><span class="p">);</span> <span class="p">}</span>
-</pre>
-</div>
-
+</pre></div>
 
 <p>This means "omega" can be applied directly through the <code>$columns</code> argument,
 for much more compact input and output:</p>
 
-<div class="highlight">
-<pre><span class="c1">// The OLD way</span>
+<div class="highlight"><pre><span class="c1">// The OLD way</span>
 <span class="k">@include</span><span class="nd"> columns</span><span class="p">(</span><span class="mi">4</span><span class="p">);</span>
 <span class="k">@include</span><span class="nd"> omega</span><span class="p">;</span>
 
 <span class="c1">// The NEW way</span>
 <span class="k">@include</span><span class="nd"> span-columns</span><span class="p">(</span><span class="mi">4</span> <span class="n">omega</span><span class="p">);</span>
-</pre>
-</div>
-
+</pre></div>
 
 <p>The <code>omega</code> mixin still exists as a stand-alone option when needed.</p>
 
@@ -166,16 +157,13 @@ for much more compact input and output:</p>
 through the <code>$padding</code> argument,
 without breaking the set column width:</p>
 
-<div class="highlight">
-<pre><span class="c1">// The units for $padding must match your grid setup</span>
+<div class="highlight"><pre><span class="c1">// The units for $padding must match your grid setup</span>
 <span class="k">@include</span><span class="nd"> span-columns</span><span class="p">(</span><span class="mi">4</span><span class="o">,</span> <span class="mi">12</span><span class="o">,</span> <span class="mi">3</span><span class="kt">em</span><span class="p">);</span>
 
 <span class="c1">// You can also pass two values for different left and right padding:</span>
 <span class="c1">// The first value will be from-direction, the second is the to-direction.</span>
 <span class="k">@include</span><span class="nd"> span-columns</span><span class="p">(</span><span class="mi">4</span><span class="o">,</span> <span class="mi">12</span><span class="o">,</span> <span class="mi">3</span><span class="kt">em</span> <span class="mf">.5</span><span class="kt">em</span><span class="p">);</span>
-</pre>
-</div>
-
+</pre></div>
 
 <p>This pushes the <code>$from</code> argument from third position into fourth.
 If you were using e.g. <code>span-columns(6,8,right)</code>,
@@ -189,15 +177,12 @@ The main feature is the <code>at-breakpoint</code> mixin,
 which can be used to set media-layout combinations:
 For such-and-such media, use such-and-such layout.</p>
 
-<div class="highlight">
-<pre><span class="c1">// at-breakpoint(&lt;$media-layout&gt; [, &lt;$font-size&gt;]) { &lt;@content&gt; }</span>
+<div class="highlight"><pre><span class="c1">// at-breakpoint(&lt;$media-layout&gt; [, &lt;$font-size&gt;]) { &lt;@content&gt; }</span>
 <span class="c1">// - example: a 12-column grid at the media-query min-width of 30em.</span>
 <span class="k">@include</span><span class="nd"> at-breakpoint</span><span class="p">(</span><span class="mi">30</span><span class="kt">em</span> <span class="mi">12</span><span class="p">)</span> <span class="p">{</span>
   <span class="nc">.page</span> <span class="p">{</span> <span class="k">@include</span><span class="nd"> container</span><span class="p">;</span> <span class="p">}</span>
 <span class="p">}</span>
-</pre>
-</div>
-
+</pre></div>
 
 <p>You can also apply <code>layout</code> to use an arbitrary layout,
 or <code>with-grid-settings</code> to change any grid settings.
@@ -225,13 +210,10 @@ without learning a whole new syntax.</p>
 (before any other grid mixins)
 to set the border-box model on all elements.</p>
 
-<div class="highlight">
-<pre><span class="k">@include</span><span class="nd"> border-box-sizing</span><span class="p">;</span>
+<div class="highlight"><pre><span class="k">@include</span><span class="nd"> border-box-sizing</span><span class="p">;</span>
 
 <span class="c1">// other grid code should come after...</span>
-</pre>
-</div>
-
+</pre></div>
 
 <p>This will apply the popular
 <code>* { box-sizing: border-box }</code>
@@ -246,14 +228,11 @@ Susy will make all the necessary grid adjustments from there.</p>
 Unlike the <code>columns()</code> function,
 this math will include the column-adjacent gutter.</p>
 
-<div class="highlight">
-<pre><span class="nt">article</span> <span class="p">{</span>
+<div class="highlight"><pre><span class="nt">article</span> <span class="p">{</span>
   <span class="na">position</span><span class="o">:</span> <span class="no">absolute</span><span class="p">;</span>
   <span class="na">left</span><span class="o">:</span> <span class="nf">space</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span>
 <span class="p">}</span>
-</pre>
-</div>
-
+</pre></div>
 
 <p>In addition to the padding mixins
 (<code>prefix</code>, <code>suffix</code>, and <code>pad</code>),
@@ -264,31 +243,25 @@ you can now manage margins with
 
 <p>Omega is often applied to the <code>nth</code> element in a set.</p>
 
-<div class="highlight">
-<pre><span class="nc">.item</span> <span class="p">{</span>
+<div class="highlight"><pre><span class="nc">.item</span> <span class="p">{</span>
   <span class="k">@include</span><span class="nd"> span-columns</span><span class="p">(</span><span class="mi">3</span><span class="o">,</span><span class="mi">12</span><span class="p">);</span>
   <span class="k">&amp;</span><span class="nd">:nth-child</span><span class="o">(</span><span class="nt">4</span><span class="o">)</span> <span class="p">{</span>
     <span class="k">@include</span><span class="nd"> omega</span><span class="p">;</span>
   <span class="p">}</span>
 <span class="p">}</span>
-</pre>
-</div>
-
+</pre></div>
 
 <p>Now you can use the <code>nth-omega</code> mixin
 to set omega on any
 nth-child, nth-of-type, first, last, or only element.</p>
 
-<div class="highlight">
-<pre><span class="c1">// nth-omega([&lt;$n&gt;, &lt;$selector&gt;, &lt;$from&gt;])</span>
+<div class="highlight"><pre><span class="c1">// nth-omega([&lt;$n&gt;, &lt;$selector&gt;, &lt;$from&gt;])</span>
 <span class="c1">// $selector options: child (default), last-child, of-type, last-of-type, only.</span>
 <span class="nc">.item</span> <span class="p">{</span>
   <span class="k">@include</span><span class="nd"> span-columns</span><span class="p">(</span><span class="mi">3</span><span class="o">,</span><span class="mi">12</span><span class="p">);</span>
   <span class="k">@include</span><span class="nd"> nth-omega</span><span class="p">(</span><span class="mi">4</span><span class="p">);</span>
 <span class="p">}</span>
-</pre>
-</div>
-
+</pre></div>
 
 <p>You can also remove the omega-specific styles from an element,
 returning it to the regular grid flow,

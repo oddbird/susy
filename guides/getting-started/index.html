@@ -12,7 +12,7 @@
 <link href="images/splash-iphone4.png" media="screen and (max-device-width: 480px) and (-webkit-min-device-pixel-ratio: 2)" rel="apple-touch-startup-image">
 <link href="images/splash-portrait.png" media="screen and (min-device-width: 768px) and (orientation: portrait)" rel="apple-touch-startup-image">
 <link href="images/splash-landscape.png" media="screen and (min-device-width: 768px) and (orientation: landscape)" rel="apple-touch-startup-image">
-<link href="../../stylesheets/site.css?1354093223" type="text/css" media="screen" rel="stylesheet">
+<link type="text/css" rel="stylesheet" href="../../stylesheets/site.css?1356048735" media="screen">
 <script type="text/javascript" src="../../javascripts/modernizr-2.5.3.min.js?1340673619"></script><script type="text/javascript" src="../../javascripts/modernizr.selectors.js?1340673619"></script>
 </head>
 <body class="guides guides_getting-started guides_getting-started_index" id="susy-oddbird-net">
@@ -49,58 +49,40 @@
 
 <p>Install from the command line:</p>
 
-<div class="highlight">
-<pre><span class="c"># command line</span>
+<div class="highlight"><pre><span class="c"># command line</span>
 gem install susy
-</pre>
-</div>
-
+</pre></div>
 
 <p>Create a new <a href="http://compass-style.org/">Compass</a> project:</p>
 
-<div class="highlight">
-<pre><span class="c"># command line</span>
+<div class="highlight"><pre><span class="c"># command line</span>
 compass create &lt;project name&gt; -r susy -u susy
-</pre>
-</div>
-
+</pre></div>
 
 <p>Or update an existing <a href="http://compass-style.org/">Compass</a> project:</p>
 
-<div class="highlight">
-<pre><span class="c1"># config.rb</span>
+<div class="highlight"><pre><span class="c1"># config.rb</span>
 <span class="nb">require</span> <span class="s2">"susy"</span>
-</pre>
-</div>
-
+</pre></div>
 
 <h3><a href="#start-rails" id="start-rails">Rails 3.x</a></h3>
 
-<div class="highlight">
-<pre><span class="c1"># Gemfile</span>
+<div class="highlight"><pre><span class="c1"># Gemfile</span>
 <span class="n">gem</span> <span class="s2">"susy"</span>
-</pre>
-</div>
-
+</pre></div>
 
 <p>You may also need:</p>
 
-<div class="highlight">
-<pre><span class="c1"># Gemfile</span>
+<div class="highlight"><pre><span class="c1"># Gemfile</span>
 <span class="n">gem</span> <span class="s1">'compass'</span><span class="p">,</span> <span class="s1">'&gt;= 0.12.2'</span>
 <span class="n">gem</span> <span class="s1">'compass-rails'</span><span class="p">,</span> <span class="s1">'&gt;= 1.0.3'</span>
-</pre>
-</div>
-
+</pre></div>
 
 <p>And run:</p>
 
-<div class="highlight">
-<pre><span class="c"># command line</span>
+<div class="highlight"><pre><span class="c"># command line</span>
 bundle install
-</pre>
-</div>
-
+</pre></div>
 
 <h3><a href="#start-manual" id="start-manual">Manual Start</a></h3>
 
@@ -115,24 +97,18 @@ And you're good to go!</li>
 </ul>
 <h2><a href="#start-usage" id="start-usage">Usage</a></h2>
 
-<div class="highlight">
-<pre><span class="k">@import</span> <span class="s2">"susy"</span><span class="p">;</span>
-</pre>
-</div>
-
+<div class="highlight"><pre><span class="k">@import</span> <span class="s2">"susy"</span><span class="p">;</span>
+</pre></div>
 
 <h3><a href="#start-settings" id="start-settings">Settings</a></h3>
 
 <p>Set up your default grid values: total columns, column width, and gutter width.</p>
 
-<div class="highlight">
-<pre><span class="na">$total-columns</span><span class="o">  :</span> <span class="mi">12</span><span class="p">;</span>             <span class="c1">// a 12-column grid</span>
+<div class="highlight"><pre><span class="na">$total-columns</span><span class="o">  :</span> <span class="mi">12</span><span class="p">;</span>             <span class="c1">// a 12-column grid</span>
 <span class="na">$column-width</span><span class="o">   :</span> <span class="mi">4</span><span class="kt">em</span><span class="p">;</span>            <span class="c1">// each column is 4em wide</span>
 <span class="na">$gutter-width</span><span class="o">   :</span> <span class="mi">1</span><span class="kt">em</span><span class="p">;</span>            <span class="c1">// 1em gutters between columns</span>
 <span class="na">$grid-padding</span><span class="o">   :</span> <span class="nv">$gutter-width</span><span class="p">;</span>  <span class="c1">// grid-padding equal to gutters</span>
-</pre>
-</div>
-
+</pre></div>
 
 <h3><a href="#start-basic" id="start-basic">Basic Grids</a></h3>
 
@@ -145,8 +121,7 @@ the width of an element on the grid.</li>
 </ul>
 <p>Here's a simple page layout:</p>
 
-<div class="highlight">
-<pre><span class="nc">.page</span> <span class="p">{</span>
+<div class="highlight"><pre><span class="nc">.page</span> <span class="p">{</span>
   <span class="c1">// page acts as a container for our grid.</span>
   <span class="k">@include</span><span class="nd"> container</span><span class="p">;</span>
 
@@ -167,9 +142,7 @@ the width of an element on the grid.</li>
     <span class="nc">.secondary</span> <span class="p">{</span> <span class="k">@include</span><span class="nd"> span-columns</span><span class="p">(</span><span class="mi">3</span> <span class="n">omega</span><span class="o">,</span><span class="mi">9</span><span class="p">);</span> <span class="p">}</span>
   <span class="p">}</span>
 <span class="p">}</span>
-</pre>
-</div>
-
+</pre></div>
 
 <h3><a href="#start-responsive" id="start-responsive">Responsive Grids</a></h3>
 
@@ -183,8 +156,7 @@ at min- and max-width breakpoints.</li>
 </ul>
 <p>Here's a mobile-first example:</p>
 
-<div class="highlight">
-<pre><span class="na">$total-columns</span><span class="o">:</span> <span class="mi">4</span><span class="p">;</span>
+<div class="highlight"><pre><span class="na">$total-columns</span><span class="o">:</span> <span class="mi">4</span><span class="p">;</span>
 
 <span class="nc">.page</span> <span class="p">{</span>
   <span class="c1">// Establish our default 4-column grid container.</span>
@@ -197,9 +169,7 @@ at min- and max-width breakpoints.</li>
     <span class="k">@include</span><span class="nd"> container</span><span class="p">;</span>
   <span class="p">}</span>
 <span class="p">}</span>
-</pre>
-</div>
-
+</pre></div>
 
 <h3><a href="#start-advanced" id="start-advanced">Advanced</a></h3>
 
@@ -245,23 +215,17 @@ That can cause a conflict if both gems are present.</p>
 <p>If you have installed Susy in the past,
 make sure you've uninstalled older versions:</p>
 
-<div class="highlight">
-<pre><span class="c"># command line</span>
+<div class="highlight"><pre><span class="c"># command line</span>
 gem uninstall compass-susy-plugin
 <span class="c"># "compass-susy-plugin" was the gem name for 0.9.x and lower</span>
 <span class="c"># Susy 1.0 switches to "susy" as the gem name</span>
-</pre>
-</div>
-
+</pre></div>
 
 <p>And then install 1.0:</p>
 
-<div class="highlight">
-<pre><span class="c"># command line</span>
+<div class="highlight"><pre><span class="c"># command line</span>
 gem install susy
-</pre>
-</div>
-
+</pre></div>
 
 <p>Then use Compass as normal.</p>
 
@@ -285,62 +249,44 @@ See <a href="#troubleshooting-compass-install">Compass Install</a> above.</p>
 if you do not have Ruby and Rails already installed in your environment,
 we <a href="http://rvm.io/rvm/install/">recommend you use RVM's installation instructions</a>):</p>
 
-<div class="highlight">
-<pre><span class="c"># command line</span>
+<div class="highlight"><pre><span class="c"># command line</span>
 <span class="c"># from your system's root:</span>
 curl -L get.rvm.io | bash -s stable
-</pre>
-</div>
-
+</pre></div>
 
 <p>Create a gemset for your site:</p>
 
-<div class="highlight">
-<pre><span class="c"># command line</span>
+<div class="highlight"><pre><span class="c"># command line</span>
 rvm gemset create fooBar
-</pre>
-</div>
-
+</pre></div>
 
 <p>Create an <code>.rvmrc</code> file at your site's root:</p>
 
-<div class="highlight">
-<pre><span class="c"># .rvmrc</span>
+<div class="highlight"><pre><span class="c"># .rvmrc</span>
 rvm use 1.9.3@fooBar
 <span class="c"># Use whatever Ruby version number your app uses</span>
-</pre>
-</div>
-
+</pre></div>
 
 <p>Now whenever you <code>cd</code> into your site's root,
 RVM will pick up and use that Gemset.</p>
 
 <p><code>cd</code> to your site and install <a href="http://gembundler.com/">Bundler</a>:</p>
 
-<div class="highlight">
-<pre><span class="c"># command line</span>
+<div class="highlight"><pre><span class="c"># command line</span>
 gem install bundler
-</pre>
-</div>
-
+</pre></div>
 
 <p>Add Susy to your <code>Gemfile</code>
 (<a href="http://gembundler.com/gemfile.html">more info on Gemfiles</a>):</p>
 
-<div class="highlight">
-<pre><span class="n">gem</span> <span class="s2">"susy"</span><span class="p">,</span> <span class="s2">"~&gt; 1.0.5"</span>
-</pre>
-</div>
-
+<div class="highlight"><pre><span class="n">gem</span> <span class="s2">"susy"</span><span class="p">,</span> <span class="s2">"~&gt; 1.0.5"</span>
+</pre></div>
 
 <p>And finally run your bundle:</p>
 
-<div class="highlight">
-<pre><span class="c"># command line</span>
+<div class="highlight"><pre><span class="c"># command line</span>
 bundle
-</pre>
-</div>
-
+</pre></div>
       </section><aside class="secondary"><p class="version">Version <span>1.0.5</span></p> <h2><a href="#start-install">Installation</a></h2> <ul>
 <li><a href="#start-compass">Compass</a></li>
           <li><a href="#start-rails">Rails 3.x</a></li>

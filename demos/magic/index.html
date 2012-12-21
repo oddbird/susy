@@ -12,7 +12,7 @@
 <link href="images/splash-iphone4.png" media="screen and (max-device-width: 480px) and (-webkit-min-device-pixel-ratio: 2)" rel="apple-touch-startup-image">
 <link href="images/splash-portrait.png" media="screen and (min-device-width: 768px) and (orientation: portrait)" rel="apple-touch-startup-image">
 <link href="images/splash-landscape.png" media="screen and (min-device-width: 768px) and (orientation: landscape)" rel="apple-touch-startup-image">
-<link href="../../stylesheets/magic.css?1354051738" type="text/css" media="screen" rel="stylesheet">
+<link type="text/css" rel="stylesheet" href="../../stylesheets/magic.css?1356048734" media="screen">
 <script type="text/javascript" src="../../javascripts/modernizr-2.5.3.min.js?1340673619"></script><script type="text/javascript" src="../../javascripts/modernizr.selectors.js?1340673619"></script>
 </head>
 <body class="demos demos_magic demos_magic_index" id="susy-oddbird-net">
@@ -52,14 +52,11 @@ our mobile-first grid.
 We'll keep the default grid sizes,
 and just change the number of columns used:</p>
 
-<div class="highlight">
-<pre><span class="na">$total-columns</span><span class="o">  :</span> <span class="mi">7</span><span class="p">;</span>
+<div class="highlight"><pre><span class="na">$total-columns</span><span class="o">  :</span> <span class="mi">7</span><span class="p">;</span>
 <span class="na">$column-width</span><span class="o">   :</span> <span class="mi">4</span><span class="kt">em</span><span class="p">;</span>
 <span class="na">$gutter-width</span><span class="o">   :</span> <span class="mi">1</span><span class="kt">em</span><span class="p">;</span>
 <span class="na">$grid-padding</span><span class="o">   :</span> <span class="nv">$gutter-width</span><span class="p">;</span>
-</pre>
-</div>
-
+</pre></div>
 
 <p>In this case I decided that 7 columns
 was a good line-length for the main content.
@@ -80,27 +77,21 @@ for your initial layout.</p>
 <p>The first step in applying our Susy grid is to 
 define our <a href="http://susy.oddbird.net/guides/reference/#ref-container">container</a>:</p>
 
-<div class="highlight">
-<pre><span class="nc">.page</span> <span class="p">{</span> <span class="k">@include</span><span class="nd"> container</span><span class="p">;</span> <span class="p">}</span>
-</pre>
-</div>
-
+<div class="highlight"><pre><span class="nc">.page</span> <span class="p">{</span> <span class="k">@include</span><span class="nd"> container</span><span class="p">;</span> <span class="p">}</span>
+</pre></div>
 
 <p>I wrote the source order in a way
 that makes sense to me
 even when the sidebars move inline with the main content.</p>
 
-<div class="highlight">
-<pre><span class="p-Indicator">-</span> <span class="l-Scalar-Plain">.page</span>
+<div class="highlight"><pre><span class="p-Indicator">-</span> <span class="l-Scalar-Plain">.page</span>
   <span class="l-Scalar-Plain">- .banner</span>
   <span class="l-Scalar-Plain">- .pagenav</span>
   <span class="l-Scalar-Plain">- .main</span>
     <span class="l-Scalar-Plain">- .summary</span>
     <span class="l-Scalar-Plain">- .content</span>
   <span class="l-Scalar-Plain">- .contentinfo</span>
-</pre>
-</div>
-
+</pre></div>
 
 <p>We're going to keep the mobile layout simple and linear,
 but I want the footer to have a red background
@@ -109,14 +100,11 @@ In order to do that,
 I apply negative margins equal to <code>$grid-padding</code>,
 and add it back in as padding to the footer:</p>
 
-<div class="highlight">
-<pre><span class="nc">.contentinfo</span> <span class="p">{</span>
+<div class="highlight"><pre><span class="nc">.contentinfo</span> <span class="p">{</span>
   <span class="na">margin</span><span class="o">:</span> <span class="mi">0</span> <span class="mi">0</span> <span class="o">-</span> <span class="nv">$grid-padding</span><span class="p">;</span>
   <span class="na">padding</span><span class="o">:</span> <span class="mi">0</span> <span class="nv">$grid-padding</span><span class="p">;</span>
 <span class="p">}</span>
-</pre>
-</div>
-
+</pre></div>
 
 <p>Add in some style and typography, 
 and we're done with the mobile layout.</p>
@@ -133,11 +121,8 @@ and bring our two sidebars into play.</p>
 <p>Let's set that breakpoint as a variable,
 since we'll need it several times:</p>
 
-<div class="highlight">
-<pre><span class="nv">$break</span><span class="o">:</span> <span class="mi">12</span><span class="p">;</span>
-</pre>
-</div>
-
+<div class="highlight"><pre><span class="nv">$break</span><span class="o">:</span> <span class="mi">12</span><span class="p">;</span>
+</pre></div>
 
 <p>We could get more complex,
 switching to 12 columns at an arbitrary min-width (<code>$break: 40em 12</code>),
@@ -147,13 +132,10 @@ but I don't think we need either one in this case.</p>
 <p>Let's update the container
 to respond to our new breakpoint:</p>
 
-<div class="highlight">
-<pre><span class="nc">.page</span> <span class="p">{</span>
+<div class="highlight"><pre><span class="nc">.page</span> <span class="p">{</span>
   <span class="k">@include</span><span class="nd"> container</span><span class="p">(</span><span class="nv">$total-columns</span><span class="o">,</span> <span class="nv">$break</span><span class="p">);</span>
 <span class="p">}</span>
-</pre>
-</div>
-
+</pre></div>
 
 <p>We're using the shortcut here,
 setting multiple containers in a single command.
@@ -163,16 +145,13 @@ the second uses our 12-column breakpoint.
 This serves the same function as the longhand
 using <a href="http://susy.oddbird.net/guides/reference/#ref-at-breakpoint">at-breakpoint</a>:</p>
 
-<div class="highlight">
-<pre><span class="nc">.page</span> <span class="p">{</span>
+<div class="highlight"><pre><span class="nc">.page</span> <span class="p">{</span>
   <span class="k">@include</span><span class="nd"> container</span><span class="p">;</span>
   <span class="k">@include</span><span class="nd"> at-breakpoint</span><span class="p">(</span><span class="nv">$break</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">@include</span><span class="nd"> container</span><span class="p">;</span>
   <span class="p">}</span>
 <span class="p">}</span>
-</pre>
-</div>
-
+</pre></div>
 
 <p>However, the shorthand also performs some optimizations for us,
 using <code>set-container-width</code> instead of <code>container</code> inside the breakpoint.
@@ -180,16 +159,13 @@ Since we know the other container settings are already in place,
 all we need to override is the container's width.
 you can also do that longhand too, if you like:</p>
 
-<div class="highlight">
-<pre><span class="nc">.page</span> <span class="p">{</span>
+<div class="highlight"><pre><span class="nc">.page</span> <span class="p">{</span>
   <span class="k">@include</span><span class="nd"> container</span><span class="p">;</span>
   <span class="k">@include</span><span class="nd"> at-breakpoint</span><span class="p">(</span><span class="nv">$break</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">@include</span><span class="nd"> set-container-width</span><span class="p">;</span>
   <span class="p">}</span>
 <span class="p">}</span>
-</pre>
-</div>
-
+</pre></div>
 
 <p>The longhand can be useful 
 if you have other operations to perform inside the breakpoint.
@@ -206,13 +182,10 @@ in our mobile layout,
 we can place the entire selector block
 inside a breakpoint:</p>
 
-<div class="highlight">
-<pre><span class="k">@include</span><span class="nd"> at-breakpoint</span><span class="p">(</span><span class="nv">$break</span><span class="p">)</span> <span class="p">{</span>
+<div class="highlight"><pre><span class="k">@include</span><span class="nd"> at-breakpoint</span><span class="p">(</span><span class="nv">$break</span><span class="p">)</span> <span class="p">{</span>
   <span class="nc">.banner</span> <span class="p">{</span> <span class="k">@include</span><span class="nd"> prefix</span><span class="p">(</span><span class="mi">2</span><span class="o">,</span><span class="nv">$break</span><span class="p">);</span> <span class="p">}</span>
 <span class="p">}</span>
-</pre>
-</div>
-
+</pre></div>
 
 <p>Notice that I'm using <code>$break</code> as the <code>context</code> argument.
 That way if I decide to change it,
@@ -224,29 +197,23 @@ which we want to set as a sidebar
 We can add that to the same breakpoint block
 we already created.</p>
 
-<div class="highlight">
-<pre><span class="k">@include</span><span class="nd"> at-breakpoint</span><span class="p">(</span><span class="nv">$break</span><span class="p">)</span> <span class="p">{</span>
+<div class="highlight"><pre><span class="k">@include</span><span class="nd"> at-breakpoint</span><span class="p">(</span><span class="nv">$break</span><span class="p">)</span> <span class="p">{</span>
   <span class="nc">.banner</span> <span class="p">{</span> <span class="k">@include</span><span class="nd"> prefix</span><span class="p">(</span><span class="mi">2</span><span class="o">,</span><span class="nv">$break</span><span class="p">);</span> <span class="p">}</span>
   <span class="nc">.pagenav</span> <span class="p">{</span> <span class="k">@include</span><span class="nd"> span-columns</span><span class="p">(</span><span class="mi">2</span><span class="o">,</span><span class="nv">$break</span><span class="p">);</span> <span class="p">}</span>
 <span class="p">}</span>
-</pre>
-</div>
-
+</pre></div>
 
 <p>The main content will fill the remaining space,
 spanning 10 of 12 columns,
 including the final right-most "<a href="http://susy.oddbird.net/guides/reference/#ref-omega">omega</a>" column.
 Adding that to what we have:</p>
 
-<div class="highlight">
-<pre><span class="k">@include</span><span class="nd"> at-breakpoint</span><span class="p">(</span><span class="nv">$break</span><span class="p">)</span> <span class="p">{</span>
+<div class="highlight"><pre><span class="k">@include</span><span class="nd"> at-breakpoint</span><span class="p">(</span><span class="nv">$break</span><span class="p">)</span> <span class="p">{</span>
   <span class="nc">.banner</span> <span class="p">{</span> <span class="k">@include</span><span class="nd"> prefix</span><span class="p">(</span><span class="mi">2</span><span class="o">,</span><span class="nv">$break</span><span class="p">);</span> <span class="p">}</span>
   <span class="nc">.pagenav</span> <span class="p">{</span> <span class="k">@include</span><span class="nd"> span-columns</span><span class="p">(</span><span class="mi">2</span><span class="o">,</span><span class="nv">$break</span><span class="p">);</span> <span class="p">}</span>
   <span class="nc">.main</span> <span class="p">{</span> <span class="k">@include</span><span class="nd"> span-columns</span><span class="p">(</span><span class="mi">10</span> <span class="n">omega</span><span class="o">,</span> <span class="nv">$break</span><span class="p">);</span> <span class="p">}</span>
 <span class="p">}</span>
-</pre>
-</div>
-
+</pre></div>
 
 <p>Inside the main content
 we have a summary (which becomes a second sidebar),
@@ -254,8 +221,7 @@ and content that occupies the main area.
 The content spans 7 of the main 10,
 while the summary spans the remaining 3 (omega) of 10:</p>
 
-<div class="highlight">
-<pre><span class="k">@include</span><span class="nd"> at-breakpoint</span><span class="p">(</span><span class="nv">$break</span><span class="p">)</span> <span class="p">{</span>
+<div class="highlight"><pre><span class="k">@include</span><span class="nd"> at-breakpoint</span><span class="p">(</span><span class="nv">$break</span><span class="p">)</span> <span class="p">{</span>
   <span class="nc">.banner</span> <span class="p">{</span> <span class="k">@include</span><span class="nd"> prefix</span><span class="p">(</span><span class="mi">2</span><span class="o">,</span><span class="nv">$break</span><span class="p">);</span> <span class="p">}</span>
   <span class="nc">.pagenav</span> <span class="p">{</span> <span class="k">@include</span><span class="nd"> span-columns</span><span class="p">(</span><span class="mi">2</span><span class="o">,</span><span class="nv">$break</span><span class="p">);</span> <span class="p">}</span>
   <span class="nc">.main</span> <span class="p">{</span>
@@ -265,9 +231,7 @@ while the summary spans the remaining 3 (omega) of 10:</p>
     <span class="nc">.summary</span> <span class="p">{</span> <span class="k">@include</span><span class="nd"> span-columns</span><span class="p">(</span><span class="mi">3</span> <span class="n">omega</span><span class="o">,</span> <span class="nv">$main-columns</span><span class="p">)</span> <span class="p">}</span>
   <span class="p">}</span>
 <span class="p">}</span>
-</pre>
-</div>
-
+</pre></div>
 
 <p>(Again, notice I'm using <code>$main-columns</code> for defining columns and contexts.)</p>
 
@@ -284,8 +248,7 @@ inside the footer block we already have.
 We also need to clear the floated content above,
 which is easy enough with plain CSS:</p>
 
-<div class="highlight">
-<pre><span class="nc">.contentinfo</span> <span class="p">{</span>
+<div class="highlight"><pre><span class="nc">.contentinfo</span> <span class="p">{</span>
   <span class="na">margin</span><span class="o">:</span> <span class="mi">0</span> <span class="mi">0</span> <span class="o">-</span> <span class="nv">$grid-padding</span><span class="p">;</span>
   <span class="na">padding</span><span class="o">:</span> <span class="mi">0</span> <span class="nv">$grid-padding</span><span class="p">;</span>
   <span class="k">@include</span><span class="nd"> at-breakpoint</span><span class="p">(</span><span class="nv">$break</span><span class="p">)</span> <span class="p">{</span>
@@ -294,9 +257,7 @@ which is easy enough with plain CSS:</p>
     <span class="k">@include</span><span class="nd"> pad</span><span class="p">(</span><span class="mi">2</span><span class="o">,</span><span class="mi">3</span><span class="o">,</span><span class="nv">$break</span><span class="p">);</span>
   <span class="p">}</span>
 <span class="p">}</span>
-</pre>
-</div>
-
+</pre></div>
 
 <p>And we're done. The rest is <a href="https://github.com/ericam/susy/blob/master/docs/source/stylesheets/_demos/magic/_style.scss">stylish icing</a>.</p>
 
@@ -307,8 +268,7 @@ we have an entirely responsive layout
 defined in just a few simple and meaningful lines,
 without doing any math at all:</p>
 
-<div class="highlight">
-<pre><span class="c1">// Settings</span>
+<div class="highlight"><pre><span class="c1">// Settings</span>
 
 <span class="na">$total-columns</span><span class="o">  :</span> <span class="mi">7</span><span class="p">;</span>
 <span class="na">$column-width</span><span class="o">   :</span> <span class="mi">4</span><span class="kt">em</span><span class="p">;</span>
@@ -345,9 +305,7 @@ without doing any math at all:</p>
     <span class="k">@include</span><span class="nd"> pad</span><span class="p">(</span><span class="mi">2</span><span class="o">,</span><span class="mi">3</span><span class="o">,</span><span class="nv">$break</span><span class="p">);</span>
   <span class="p">}</span>
 <span class="p">}</span>
-</pre>
-</div>
-
+</pre></div>
 
 <p><strong>Note</strong>:
 Due to a known Sass bug,

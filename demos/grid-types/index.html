@@ -12,7 +12,7 @@
 <link href="images/splash-iphone4.png" media="screen and (max-device-width: 480px) and (-webkit-min-device-pixel-ratio: 2)" rel="apple-touch-startup-image">
 <link href="images/splash-portrait.png" media="screen and (min-device-width: 768px) and (orientation: portrait)" rel="apple-touch-startup-image">
 <link href="images/splash-landscape.png" media="screen and (min-device-width: 768px) and (orientation: landscape)" rel="apple-touch-startup-image">
-<link href="../../stylesheets/grid-types.css?1354054555" type="text/css" media="screen" rel="stylesheet">
+<link type="text/css" rel="stylesheet" href="../../stylesheets/grid-types.css?1356048735" media="screen">
 <script type="text/javascript" src="../../javascripts/modernizr-2.5.3.min.js?1340673619"></script><script type="text/javascript" src="../../javascripts/modernizr.selectors.js?1340673619"></script>
 </head>
 <body class="demos demos_grid-types demos_grid-types_index" id="susy-oddbird-net">
@@ -48,17 +48,14 @@ with an elastic container max-width.
 The em-width makes it responsive to font sizes,
 while the max-width setting makes it responsive to window sizes.</p>
 
-<div class="highlight">
-<pre><span class="c1">// Setting up the Magic Grid</span>
+<div class="highlight"><pre><span class="c1">// Setting up the Magic Grid</span>
 <span class="na">$total-columns</span><span class="o">:</span> <span class="mi">12</span><span class="p">;</span> <span class="c1">// 12 columns</span>
 <span class="na">$column-width</span><span class="o">:</span> <span class="mi">4</span><span class="kt">em</span><span class="p">;</span> <span class="c1">// columns are 4em wide</span>
 <span class="na">$gutter-width</span><span class="o">:</span> <span class="mi">1</span><span class="kt">em</span><span class="p">;</span> <span class="c1">// with 1em gutters</span>
 <span class="na">$grid-padding</span><span class="o">:</span> <span class="mi">1</span><span class="kt">em</span><span class="p">;</span> <span class="c1">// and 1em padding on the grid container</span>
 
 <span class="nc">.magic-container</span> <span class="p">{</span> <span class="k">@include</span><span class="nd"> container</span><span class="p">;</span> <span class="p">}</span>
-</pre>
-</div>
-
+</pre></div>
 
 <p><aside class="magic-container"><h4>Magic grid: <b>.magic-container</b>
 </h4>
@@ -99,28 +96,22 @@ Let me show you some easier options.</p>
 <p>Say you want to build a fluid grid
 based on the <a href="http://960.gs/">960gs</a> dimensions:</p>
 
-<div class="highlight">
-<pre><span class="c1">// A Fluid Grid based on 960gs</span>
+<div class="highlight"><pre><span class="c1">// A Fluid Grid based on 960gs</span>
 <span class="na">$total-columns</span><span class="o">:</span> <span class="mi">12</span><span class="p">;</span>
 <span class="na">$column-width</span><span class="o">:</span> <span class="mi">60</span><span class="kt">px</span><span class="p">;</span>
 <span class="na">$gutter-width</span><span class="o">:</span> <span class="mi">20</span><span class="kt">px</span><span class="p">;</span>
 <span class="na">$grid-padding</span><span class="o">:</span> <span class="mi">10</span><span class="kt">px</span><span class="p">;</span>
-</pre>
-</div>
-
+</pre></div>
 
 <p>That's a good start.
 We now have a 960px magic grid.
 Turning that into a fluid grid is simple:</p>
 
-<div class="highlight">
-<pre><span class="c1">// Make it fluid!</span>
+<div class="highlight"><pre><span class="c1">// Make it fluid!</span>
 <span class="na">$container-style</span><span class="o">:</span> <span class="n">fluid</span><span class="p">;</span>
 
 <span class="nc">.fluid-container</span> <span class="p">{</span> <span class="k">@include</span><span class="nd"> container</span><span class="p">;</span> <span class="p">}</span>
-</pre>
-</div>
-
+</pre></div>
 
 <p><aside class="fluid-container"><h4>Fluid grid #1: <b>.fluid-container</b>
 </h4>
@@ -139,14 +130,11 @@ based on the dimensions of the 960gs.
 By default the container is set to 100% width,
 but you can override that as well:</p>
 
-<div class="highlight">
-<pre><span class="c1">// Make it smaller</span>
+<div class="highlight"><pre><span class="c1">// Make it smaller</span>
 <span class="na">$container-width</span><span class="o">:</span> <span class="mi">60</span><span class="kt">%</span><span class="p">;</span>
 
 <span class="nc">.fluid-60-container</span> <span class="p">{</span> <span class="k">@include</span><span class="nd"> container</span><span class="p">;</span> <span class="p">}</span>
-</pre>
-</div>
-
+</pre></div>
 
 <p><aside class="fluid-60-container"><h4>Fluid grid #2: <b>.fluid-60-container</b>
 </h4>
@@ -167,8 +155,7 @@ Unlike the magic grid, it doesn't collapse.</p>
 
 <p>Let's take our first grid and make it static:</p>
 
-<div class="highlight">
-<pre><span class="c1">// Setting up the Static Grid</span>
+<div class="highlight"><pre><span class="c1">// Setting up the Static Grid</span>
 <span class="na">$total-columns</span><span class="o">:</span> <span class="mi">12</span><span class="p">;</span>
 <span class="na">$column-width</span><span class="o">:</span> <span class="mi">4</span><span class="kt">em</span><span class="p">;</span>
 <span class="na">$gutter-width</span><span class="o">:</span> <span class="mi">1</span><span class="kt">em</span><span class="p">;</span>
@@ -177,9 +164,7 @@ Unlike the magic grid, it doesn't collapse.</p>
 <span class="na">$container-style</span><span class="o">:</span> <span class="no">static</span><span class="p">;</span>
 
 <span class="nc">.static-container</span> <span class="p">{</span> <span class="k">@include</span><span class="nd"> container</span><span class="p">;</span> <span class="p">}</span>
-</pre>
-</div>
-
+</pre></div>
 
 <p><aside class="static-container"><h4>Static elastic grid: <b>.static-container</b>
 </h4>
@@ -201,8 +186,7 @@ you can create nearly any grid without doing any math.</p>
 <p>Want the 960 grid system
 updated to 1140px?</p>
 
-<div class="highlight">
-<pre><span class="c1">// The 960gs in 1140px</span>
+<div class="highlight"><pre><span class="c1">// The 960gs in 1140px</span>
 <span class="na">$total-columns</span><span class="o">:</span> <span class="mi">12</span><span class="p">;</span>
 <span class="na">$column-width</span><span class="o">:</span> <span class="mi">60</span><span class="kt">px</span><span class="p">;</span>
 <span class="na">$gutter-width</span><span class="o">:</span> <span class="mi">20</span><span class="kt">px</span><span class="p">;</span>
@@ -212,9 +196,7 @@ updated to 1140px?</p>
 <span class="na">$container-width</span><span class="o">:</span> <span class="mi">1140</span><span class="kt">px</span><span class="p">;</span>
 
 <span class="nc">.larger-960-container</span> <span class="p">{</span> <span class="k">@include</span><span class="nd"> container</span><span class="p">;</span> <span class="p">}</span>
-</pre>
-</div>
-
+</pre></div>
 
 <p><aside class="larger-960-container"><h4>Larger 960-based grid: <b>.larger-960-container</b>
 </h4>
@@ -230,8 +212,7 @@ updated to 1140px?</p>
 
 <p>Why not make it elastic and magic?</p>
 
-<div class="highlight">
-<pre><span class="c1">// The 960gs in ems</span>
+<div class="highlight"><pre><span class="c1">// The 960gs in ems</span>
 <span class="na">$total-columns</span><span class="o">:</span> <span class="mi">12</span><span class="p">;</span>
 <span class="na">$column-width</span><span class="o">:</span> <span class="mi">60</span><span class="kt">px</span><span class="p">;</span>
 <span class="na">$gutter-width</span><span class="o">:</span> <span class="mi">20</span><span class="kt">px</span><span class="p">;</span>
@@ -241,9 +222,7 @@ updated to 1140px?</p>
 <span class="na">$container-width</span><span class="o">:</span> <span class="mi">60</span><span class="kt">em</span><span class="p">;</span>
 
 <span class="nc">.elastic-960-container</span> <span class="p">{</span> <span class="k">@include</span><span class="nd"> container</span><span class="p">;</span> <span class="p">}</span>
-</pre>
-</div>
-
+</pre></div>
 
 <p><aside class="elastic-960-container"><h4>Elastic 960 grid: <b>.elastic-960-container</b>
 </h4>
@@ -260,8 +239,7 @@ updated to 1140px?</p>
 <p>Or we can make a magic-elastic grid,
 defined in percentages:</p>
 
-<div class="highlight">
-<pre><span class="c1">// Elastic grid as percentages</span>
+<div class="highlight"><pre><span class="c1">// Elastic grid as percentages</span>
 <span class="na">$total-columns</span><span class="o">:</span> <span class="mi">12</span><span class="p">;</span>
 <span class="na">$column-width</span><span class="o">:</span> <span class="mi">6</span><span class="kt">%</span><span class="p">;</span>
 <span class="na">$gutter-width</span><span class="o">:</span> <span class="mi">2</span><span class="kt">%</span><span class="p">;</span>
@@ -271,9 +249,7 @@ defined in percentages:</p>
 <span class="na">$container-width</span><span class="o">:</span> <span class="mi">50</span><span class="kt">em</span><span class="p">;</span>
 
 <span class="nc">.elastic-percentage-container</span> <span class="p">{</span> <span class="k">@include</span><span class="nd"> container</span><span class="p">;</span> <span class="p">}</span>
-</pre>
-</div>
-
+</pre></div>
 
 <p><aside class="elastic-percentage-container"><h4>Elastic magic grid, defined as percentages: <b>.elastic-percentage-container</b>
 </h4>

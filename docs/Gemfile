@@ -1,7 +1,7 @@
 source "http://rubygems.org"
 
-gem "middleman", "~> 3.0.2"
-gem "sass", "~> 3.2.1"
+gem "middleman", "~> 3.0.7"
+gem "sass", "~> 3.2.3"
 gem "compass", :git => "git://github.com/chriseppstein/compass.git", :branch => "master"
 gem "susy", :path => "../"
 

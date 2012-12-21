@@ -7,7 +7,7 @@ title: Sites using Susy
 - [Ben Frain](http://benfrain.com/)
 - [Leo Burnett](http://leoburnett.co.uk/)
 - [Renault TV](http://renault.tv/)
-- [Tiga Minimal WordPress Theme](http://satrya.me/demo/tiga/)
+- [Tiga Minimal WordPress Theme](http://wordpress.org/extend/themes/tiga) [[source](https://github.com/satrya/tiga/downloads)]
 - [Mozilla MozTrap](https://moztrap.mozilla.org/) [[source](https://github.com/mozilla/moztrap "MozTrap source")]
 - [Cassie Greer](http://www.cassiegreer.com)
 - [HR &hearts; PE](http://www.hrlovespe.com/)

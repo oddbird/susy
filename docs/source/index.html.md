@@ -14,8 +14,13 @@
   <p class="highlight">Recent News:</p>
   <ul class="news">
     <li class="newsitem">
+      <a href="http://cognition.happycog.com/article/its-alive-prototyping-in-the-browser">
+        <strong>Happy Cog Article:</strong> "It’s Alive: Prototyping in the Browser"
+      </a>
+    </li>
+    <li class="newsitem">
       <a href="http://oddbird.net/2012/11/27/susy-off-canvas/">
-        <strong>Tutorial:</strong> Off-Canvas Layout with Susy
+        <strong>Tutorial:</strong> "Off-Canvas Layout with Susy"
       </a>
     </li>
     <li class="newsitem">
@@ -25,7 +30,7 @@
     </li>
     <li class="newsitem">
       <a href="http://net.tutsplus.com/tutorials/html-css-techniques/responsive-grids-with-susy/">
-        <strong>Nettuts+ Tutorial:</strong> Responsive Grids With Susy
+        <strong>Nettuts+ Tutorial:</strong> "Responsive Grids With Susy"
       </a>
     </li>
   </ul>

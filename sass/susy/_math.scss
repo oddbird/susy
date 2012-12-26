@@ -3,7 +3,7 @@
 // this is the language that is passed into the math functions, not nessisarily user-facing.
 
 $context: 960px, 100%, 40em !default;
-$columns: 20px 20px 20px 20px 20px 20px 20px !default;
+$columns: 12 !default;
 $gutter: 10px !default;
 $margin: 10px !default;
 
@@ -61,7 +61,7 @@ $margin: 10px !default;
 @function find-context($columns, $guter, $margin) {
 
   // If auto columns exist, context needs to be calculated.
-  @if query-list($columns, auto) != false or type-of(columns) == number {
+  @if query-list($columns, auto) != false or length(columns) == 1 {
     @return nth($context, nth(query-list($context, unit($gutter), unit), 1));
   }
   @else {
@@ -81,4 +81,3 @@ $margin: 10px !default;
     @return $column-sum + $gutter-sum + $margin-sum;
   }
 }
-

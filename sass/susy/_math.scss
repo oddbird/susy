@@ -1,0 +1,41 @@
+// ---------------------------------------------------------------------------
+// Global math variables
+// this is the language that is passed into the math functions, not nessisarily user-facing.
+
+$susy-context: 12;
+$susy-columns: 12;
+$susy-guter: .2;
+$susy-margin: .5 .5;
+
+// ---------------------------------------------------------------------------
+// Helper functions
+
+// Query where things are in a string.
+@function query-list($list, $query) {
+  // blank list
+  $return: ();
+  // loop through list
+  @for $i from 1 through length($list) {
+    // if the list item matches the query, write where it is to the list.
+    @if nth($list, $i) == $query {
+      $return: append($return, $i);
+    }
+  }
+  // if nothing matches then return false.
+  @if $return == () {
+    $return: false;
+  }
+
+  // return list.
+  @return $return;
+}
+
+// Find context
+@function find-context($susy-columns, $susy-guter, $susy-margin) {
+  @if query-list($susy-columns, auto) == false {
+    
+  }
+  @else {
+    
+  }
+}

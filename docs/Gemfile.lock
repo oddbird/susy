@@ -76,7 +76,7 @@ GEM
       middleman-more (>= 3.0.1)
       sprockets (~> 2.1, < 2.5)
       sprockets-sass (~> 0.9.0)
-    modular-scale (1.0.2)
+    modular-scale (1.0.3)
       compass (>= 0.11.5)
       sassy-math (>= 1.2)
     multi_json (1.5.0)
@@ -134,7 +134,7 @@ PLATFORMS
 DEPENDENCIES
   compass!
   middleman (~> 3.0.7)
-  modular-scale (~> 1.0.2)
+  modular-scale (~> 1.0.3)
   pygments.rb
   rack-codehighlighter!
   redcarpet

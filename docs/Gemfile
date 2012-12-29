@@ -5,7 +5,7 @@ gem "sass", "~> 3.2.3"
 gem "compass", :git => "git://github.com/chriseppstein/compass.git", :branch => "master"
 gem "susy", :path => "../"
 
-gem "modular-scale", "~> 1.0.2"
+gem "modular-scale", "~> 1.0.3"
 gem "redcarpet"
 gem "rack-codehighlighter", :git => "git://github.com/wbzyl/rack-codehighlighter.git"
 gem "pygments.rb"

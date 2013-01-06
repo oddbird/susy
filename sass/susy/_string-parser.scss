@@ -1,3 +1,69 @@
 // ---------------------------------------------------------------------------
-// Global math variables
+// String parser
 // Parsing of width and location string is handled here.
+
+
+// Break a list into sub-lists.
+//
+// break-list($list)
+// $list  : <list>
+//        - May contain strings (keywords) and values.
+@function break-list($list) {
+
+  // blank list.
+  $return: ();
+  $sublist: ();
+
+  // loop through list.
+  @for $i from 1 through length($list) {
+    $item: nth($list, $i);
+    @if type-of($item) == string {
+      // If it's a string start a new list.
+      $return: append($return, $sublist, comma);
+      $sublist: $item;
+      @if $i == length($list) {
+        // If it's the last item add it.
+        $return: append($return, $item, comma);
+      }
+    }
+    @else {
+      // If not a string append to the current list.
+      $sublist: join($sublist, $item, space);
+      @if $i == length($list) {
+        // If it's the last item add the sub-list.
+        $return: append($return, $sublist, comma);
+      }
+    }
+  }
+
+  @return $return;
+}
+
+// Extract a sub-list from a list.
+//
+// extract-list($list, $str)
+// $list  : <list>
+//        - May contain strings (keywords) and values.
+// $str  : <string>
+//        - The keyword to look for.
+@function extract-list($list, $str) {
+
+  // blank list.
+  $return: ();
+  $found: false;
+
+  // loop through list.
+  @each $item in $list {
+    // If reached a keyword after $str was already found return the list.
+    @if type-of($item) == string and $found == true{
+      @return $return;
+    }
+    // If it's the string we're looking for start appending.
+    @elseif $item == $str or $found == true {
+      $return: append($return, $item);
+      $found: true;
+    }
+  }
+
+  @return $return;
+}

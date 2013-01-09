@@ -8,53 +8,23 @@ $gutter: 10px !default;
 $margin: 10px !default;
 
 // ---------------------------------------------------------------------------
-// Helper functions
+// Columns & Context
 
-// Find column count
-@function column-count($columns) {
+// Return the number of columns in a given grid.
+//
+// column-count($columns)
+// - $columns   : <intiger> | <list>
+//              - unitless integer represents symmetric column count.
+//              - list represents set of asymmetric column ratios.
+@function column-count(
+  $columns
+) {
   @if type-of($columns) == number {
     @return $columns;
   }
   @if type-of($columns) == list {
     @return length($columns);
   }
-}
-
-// Query where things are in a string.
-@function query-list($list, $query, $mode: none) {
-  // blank list
-  $return: ();
-  // loop through list
-  @for $i from 1 through length($list) {
-    @if $mode == unit {
-      // if the list item matches the query, write where it is to the list.
-      @if unit(nth($list, $i)) == $query {
-        $return: append($return, $i);
-      }
-    }
-    @else {
-      // if the list item matches the query, write where it is to the list.
-      @if nth(nth($list, $i), 1) == $query {
-        $return: append($return, $i);
-      }
-    }
-  }
-  // if nothing matches then return false.
-  @if $return == () {
-    $return: false;
-  }
-
-  // return list.
-  @return $return;
-}
-
-// Find the sum of lists
-@function list-sum($list) {
-  $sum: 0;
-  @each $item in $list {
-    $sum: $sum + $item;
-  }
-  @return $sum;
 }
 
 // Find context
@@ -81,26 +51,3 @@ $margin: 10px !default;
     @return $column-sum + $gutter-sum + $margin-sum;
   }
 }
-
-// Grid span funciton
-// need string parsing before hooking this up.
-// @function grid-span($arg) {
-// 
-// }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

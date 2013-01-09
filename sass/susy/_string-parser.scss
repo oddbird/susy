@@ -1,7 +1,5 @@
 // ---------------------------------------------------------------------------
 // String parser
-// Parsing of width and location string is handled here.
-
 
 // Break a list into sub-lists.
 //
@@ -41,12 +39,12 @@
 
 // Extract a sub-list from a list.
 //
-// extract-list($list, $str)
+// extract-list($list, $key)
 // $list  : <list>
 //        - May contain strings (keywords) and values.
-// $str  : <string>
+// $key  : <string>
 //        - The keyword to look for.
-@function extract-list($list, $str) {
+@function extract-list($list, $key) {
 
   // blank list.
   $return: ();
@@ -54,12 +52,12 @@
 
   // loop through list.
   @each $item in $list {
-    // If reached a keyword after $str was already found return the list.
+    // If reached a keyword after $key was already found return the list.
     @if type-of($item) == string and $found == true{
       @return $return;
     }
     // If it's the string we're looking for start appending.
-    @elseif $item == $str or $found == true {
+    @elseif $item == $key or $found == true {
       $return: append($return, $item);
       $found: true;
     }
@@ -67,3 +65,4 @@
 
   @return $return;
 }
+

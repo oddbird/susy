@@ -1,0 +1,65 @@
+// ---------------------------------------------------------------------------
+// Layout API
+//
+// The basic building blocks of a Susy layout.
+// - Container & Span
+// - Edges
+
+// ---------------------------------------------------------------------------
+// Container & Span
+
+// Establish a container element.
+//
+// container($width)
+// - $width     : <length> | <grid>
+//              - An arbitrary length to be used as the container width, or
+//              - Enough grid settings to calculate a container width.
+@mixin container(
+  $width
+) {
+  // Output:
+  // - max-width | width
+  // - auto margins for centering (optional?)
+  // - clearfix (optional?)
+}
+
+// Establish a spanning element.
+//
+// span($span [, $modifiers])
+// $span        : <length> | "full" | <columns> [<keywords>]
+//              - "of" for context
+//              - "at" for asymmetric selection
+//              - "first/alpha" | "last/omega" for edge handling
+//              - "push/pull" for relative float location
+//              - "isolate" for isolation location
+//              - "prefix/suffix" for padding ??
+//              - "pre/post" for margins ??
+// $modifiers   : TBD
+@mixin span(
+  $span,
+  $modifiers: false
+) {
+  // Output:
+  // - float
+  // - width
+  // - optional margin/padding
+}
+
+// ---------------------------------------------------------------------------
+// Edges
+
+// Establish an element at the edge of it's container.
+//
+// edge($edge)
+// - $edge  : "first" | "last" | "alpha" | "omega"
+//          - An element touching the first and/or last edge of it's container.
+//          - Default: "last"
+@mixin edge(
+  $edge: last
+) {
+  // Output:
+  // - float adjustment
+  // - margin adjustment
+}
+
+// we can create first/last/nth shortcuts etc...

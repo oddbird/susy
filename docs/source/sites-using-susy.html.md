@@ -4,6 +4,7 @@ title: Sites using Susy
 
 ## Sites Using Susy
 
+- [Integrating Design](http://hholz.com/) [[source](https://github.com/hilary/hilary.github.com)]
 - [Ben Frain](http://benfrain.com/)
 - [Leo Burnett](http://leoburnett.co.uk/)
 - [Renault TV](http://renault.tv/)

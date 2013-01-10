@@ -51,3 +51,79 @@ $margin: 10px !default;
     @return $column-sum + $gutter-sum + $margin-sum;
   }
 }
+
+// ---------------------------------------------------------------------------
+// Grid Span
+
+// Just find the width of a portion of the grid.
+//
+// column-count($columns)
+// - $span      : <intiger>
+// - $location  : <intiger>
+//              - location on the grid where a span begins. Only nessisary for non-uniform columns.
+// - $columns   : <intiger> | <list>
+//              - unitless integer represents symmetric column count.
+//              - list represents set of asymmetric column ratios.
+// - $gutter    : <value>
+//              - A value comparable to the context or columns.
+// - $margin    : <value>
+//              - A value comparable to the context or columns.
+@function grid-span-width($span, $location, $columns, $gutter, $margin) {
+  
+}
+
+
+// VARIABLES ARE PLACEHOLDERS UNTIL PROPER GIRD PARSING CAN BE DONE
+// SYNTAX SUBJECT TO CHANGE
+@function grid-span($string) {
+  // Identify @media context.
+  
+  // Parse variables out of context and the mixin string.
+  
+  // Write name-spaced local variables from the context defined above.
+  // $grid-span-span     : $span
+  // $grid-span-location : $location
+  // $grid-span-columns  : $columns
+  // $grid-span-gutter   : $gutter
+  // $grid-span-margin   : $margin
+
+  // Return the width based on those parsed values.
+  // @return grid-span-width($grid-span-span, $grid-span-location, $grid-span-columns, $grid-span-gutter, $grid-span-margin);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -4,8 +4,8 @@
 
 $context: 960, 960px, 100%, 40em !default;
 $columns: 12 !default;
-$gutter: 10px !default;
-$margin: 10px !default;
+$gutter: 0 !default;
+$margin: 0 !default;
 
 // ---------------------------------------------------------------------------
 // Columns & Context
@@ -111,8 +111,6 @@ $margin: 10px !default;
   }
 }
 
-@debug column-widths(90px auto auto, 20px, 20px);
-
 // ---------------------------------------------------------------------------
 // Grid Span
 
@@ -138,12 +136,29 @@ $margin: 10px !default;
     $context: find-context($columns, $gutter, $margin);
   }
 
-  // Find column list.
+  // Find column widths.
+  $column-widths: column-widths($columns, $gutter, $margin, $context);
 
-  @return "";
+  // Define zero width to be overritten or added onto.
+  $width: 0;
+
+  // Write width simply if column width is uniform.
+  @if length($column-widths) == 1 {
+    $width: ($column-widths * $span) + ($gutter * ($span - 1));
+  }
+
+  // Loop through columns from location if not.
+  @else {
+    @for $i from $location to ($location + $span) {
+      $width: $width + nth($column-widths, $i);
+    }
+    // Add on gutters
+    $width: $width + ($gutter * ($span - 1));
+  }
+
+  // Return a percentage value of width/context
+  @return percentage($width / $context);
 }
-
-@debug grid-span-width(1, 1, 12, 2%);
 
 // VARIABLES ARE PLACEHOLDERS UNTIL PROPER GIRD PARSING CAN BE DONE
 // SYNTAX SUBJECT TO CHANGE
@@ -163,40 +178,3 @@ $margin: 10px !default;
   // Return the width based on those parsed values.
   // @return grid-span-width($grid-span-span, $grid-span-location, $grid-span-columns, $grid-span-gutter, $grid-span-margin);
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -2,7 +2,7 @@
 // Global math variables
 // this is the language that is passed into the math functions, not nessisarily user-facing.
 
-$context: 960px, 100%, 40em !default;
+$context: 960, 960px, 100%, 40em !default;
 $columns: 12 !default;
 $gutter: 10px !default;
 $margin: 10px !default;
@@ -16,9 +16,7 @@ $margin: 10px !default;
 // - $columns   : <intiger> | <list>
 //              - unitless integer represents symmetric column count.
 //              - list represents set of asymmetric column ratios.
-@function column-count(
-  $columns
-) {
+@function column-count($columns) {
   @if type-of($columns) == number {
     @return $columns;
   }
@@ -28,7 +26,7 @@ $margin: 10px !default;
 }
 
 // Find context
-@function find-context($columns, $guter, $margin) {
+@function find-context($columns, $gutter, $margin) {
 
   // If auto columns exist, context needs to be calculated.
   @if query-list($columns, auto) != false or length(columns) == 1 {
@@ -52,6 +50,69 @@ $margin: 10px !default;
   }
 }
 
+// Find column widths
+@function column-widths($columns, $gutter, $margin, $context: false) {
+
+  // If 
+  @if type-of($columns) == list and query-list($columns, auto) == false {
+    @return $columns;
+  }
+
+  // Calculate column width if needed
+  @else  {
+    // Find the sum of all columns minus the margins and columns.
+    $margin-sum: list-sum($margin);
+    @if type-of($margin) == number {
+      $margin-sum: $margin * 2;
+    }
+    $gutter-sum: $gutter * (column-count($columns) - 1);
+
+    @if $context == false {
+      $context: find-context($columns, $gutter, $margin);
+    }
+    
+    $column-sum: $context - $margin-sum - $gutter-sum;
+
+    // For uniform columns, write a single value.
+    @if length($columns) == 1 {
+      @return $column-sum / column-count($columns);
+    }
+
+    // If non-uniform columns
+    @else {
+
+      $sum: 0;
+      $auto: query-list($columns, auto);
+
+      // Find the sum of defined columns
+      @for $i from 1 through column-count($columns) {
+        @if query-list($auto, $i) == false {
+          $sum: $sum + nth($columns, $i);
+        }
+      }
+      
+      // Auto clumn width:
+      $auto-column: ($column-sum - $sum) / length(query-list($columns, auto));
+      
+      // Re-write list filling auto in based on context.
+      $list: ();
+      @each $column in $columns {
+        @if $column == auto {
+          $list: append($list, $auto-column);
+        }
+        @else {
+          $list: append($list, $column);
+        }
+      }
+
+      @return $list;
+
+    }
+  }
+}
+
+@debug column-widths(90px auto auto, 20px, 20px);
+
 // ---------------------------------------------------------------------------
 // Grid Span
 
@@ -66,12 +127,23 @@ $margin: 10px !default;
 //              - list represents set of asymmetric column ratios.
 // - $gutter    : <value>
 //              - A value comparable to the context or columns.
-// - $margin    : <value>
+// - $margin    : <optional> | <value>
 //              - A value comparable to the context or columns.
-@function grid-span-width($span, $location, $columns, $gutter, $margin) {
+// - $context   : <optional> | <value>
+//              - A value comparable to the context or columns.
+@function grid-span-width($span, $location, $columns, $gutter, $margin: $margin, $context: false) {
   
+  // If the context isn’t explicitly defined, find it.
+  @if $context == false {
+    $context: find-context($columns, $gutter, $margin);
+  }
+
+  // Find column list.
+
+  @return "";
 }
 
+@debug grid-span-width(1, 1, 12, 2%);
 
 // VARIABLES ARE PLACEHOLDERS UNTIL PROPER GIRD PARSING CAN BE DONE
 // SYNTAX SUBJECT TO CHANGE
@@ -86,6 +158,7 @@ $margin: 10px !default;
   // $grid-span-columns  : $columns
   // $grid-span-gutter   : $gutter
   // $grid-span-margin   : $margin
+  // $grid-span-context  : $context
 
   // Return the width based on those parsed values.
   // @return grid-span-width($grid-span-span, $grid-span-location, $grid-span-columns, $grid-span-gutter, $grid-span-margin);

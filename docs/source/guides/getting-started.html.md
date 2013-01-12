@@ -7,6 +7,7 @@ side_content: >
   <ul>
     <li><a href="#start-compass">Compass</a></li>
     <li><a href="#start-rails">Rails 3.x</a></li>
+    <li><a href="#start-yeoman">Yeoman</a></li>
     <li><a href="#start-simple">Manual Start</a></li>
   </ul>
   <h2><a href="#start-usage">Usage</a></h2>
@@ -68,6 +69,26 @@ And run:
     # command line
     bundle install
 
+### <a href="#start-yeoman" id="start-yeoman">Yeoman</a>
+Edit your **Gruntfile.js** at the root level of your project and look for the Compass related rules, add the following inside the options object:
+
+    :::javascript
+    // Gruntfile.js
+    compass: {
+      dist: {
+        options: {
+          config: '.config.rb'
+        }
+      }
+    }
+
+Now create a **.config.rb** file at the same level as your Gruntfile with this:
+
+    :::ruby
+    # .config.rb
+    require "susy"
+
+And you are good to go!
 
 ### <a href="#start-manual" id="start-manual">Manual Start</a>
 You can use this method if you're not using Compass from Terminal and/or Rails. This is going to work with CodeKit.

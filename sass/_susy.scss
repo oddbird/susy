@@ -1,6 +1,27 @@
-// ---------------------------------------------------------------------------
-// Partials
+//////////////////////////////
+// Default Variables
+//////////////////////////////
 
-@import "susy/helpers";
-@import "susy/math";
+// The grids being used
+$grids: () !default;
+
+// The margins of the inner columns of the grid
+$margins: .25 !default;
+
+// The direction of the grid. Can be 'ltr', 'left to right', 'rtl', 'right to left', or 'both'
+// Will write [dir=ltr] or [dir=rtl]
+$grid-direction: 'left to right' !default;
+// Will either attach direction using &selector or selector &
+$direction-attachment: 'parent' !default;
+
+// Specifies whether or not you're building mobile-first grids. Defaults to true
+$mobile-first: true;
+
+// Default output style.
+$output: 'float' !default;
+
 @import "susy/string-parser";
+@import "susy/grids";
+
+// @import "susy/helpers";
+// @import "susy/math";

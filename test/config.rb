@@ -25,4 +25,19 @@ module Sass::Script::Functions
       Sass::Script::List.new(items.map{|i| Sass::Script::String.new(i)}, :comma)
     end
   end
+
+  # def add_grid(gridDef)
+  #   gridSplit = split_string(gridDef, Sass::Script::String.new('at'))
+  #   puts gridSplit
+  # end
+
+  # def grid_sort(grids)
+  #   grids.value.each_with_index do |elem, i|
+  #     puts elem
+  #     if i > 0
+  #       elem[1]
+  #     end
+  #   end
+  #   Sass::Script::String.new("hello")
+  # end
 end

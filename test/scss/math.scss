@@ -3,3 +3,19 @@
 
 @import "susy";
 
+// $columns: 5 4 3 2 1;
+// $gutter: 1;
+// $margin: 0;
+
+// @debug column-count($columns);
+// @debug grid-span-width(1, 1, $columns, $gutter, $margin);
+
+$grids: add-grid('3');
+$grids: add-grid('1 3 at 400px');
+$grids: add-grid('1 2 3 4 5 at 723px');
+$grids: add-grid('12 at 960px');
+
+@debug $grids;
+
+// @debug length($grids);
+// @debug add-grid('1 2 3 4 5 at 500px');

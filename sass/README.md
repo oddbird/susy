@@ -10,6 +10,8 @@ Susy Next is designed to be a defining next-generation grid system, allowing for
 * We shall not assume an output style, it shall always be user defined
 * We shall design the system to be future friendly
 * We shall design the system to be cross-browser compatible
+* We shall not assume source HTML
+  * One exception: `[dir=LNG]` for direction, as it is the only standard way to set language direction in HTML
 
 ## A Separation of Concerns
 

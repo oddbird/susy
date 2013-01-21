@@ -59,3 +59,13 @@
   // return list.
   @return $return;
 }
+
+// Reverses direction of a list
+@function reverse($list) {
+  $length: length($list);
+  $return: ();
+  @for $i from 0 to $length {
+    $return: append($return, nth($list, $length - $i), comma);
+  }
+  @return $return;
+}

@@ -1,4 +1,9 @@
 //////////////////////////////
+// Import Required Extensions
+//////////////////////////////
+@import "breakpoint";
+
+//////////////////////////////
 // Default Variables
 //////////////////////////////
 
@@ -19,6 +24,8 @@ $mobile-first: true;
 
 // Default output style.
 $output: 'float' !default;
+
+@import "susy/helpers";
 
 @import "susy/string-parser";
 @import "susy/grids";

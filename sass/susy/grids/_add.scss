@@ -1,12 +1,14 @@
 @function add-grid($grid-definition) {
-  $grid-split: split_string($grid-definition, 'at');
+  $grid-split: split_string($grid-definition, ' at ');
 
   @if $grid-split == false and length($grids) == 0 {
     @return unquote($grid-definition);
   }
   @else {
-    $holder: append($grids, (nth($grid-split, 1) (nth($grid-split, 2))), 'comma');
-    $holder: grid-sort($holder);
-    @return $holder;
+    $grid-holder: append($grids, (nth($grid-split, 1) (nth($grid-split, 2))), 'comma');
+
+    // $sorted: grid-sort($grid-holder);
+
+    @return $grid-holder;
   }
 }

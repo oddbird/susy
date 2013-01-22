@@ -1,0 +1,74 @@
+@import "compass/css3/images";
+
+@mixin background-grid($columns: false, $margin: false, $color: rgba(#69aedb, .5)) {
+
+  $background-length: length($grids);
+
+  @if not ($columns) {
+    @for $i from 1 through $background-length {
+      @if $i == 1 {
+        @include background-build($columns, $margin, $color);
+      }
+      @else {
+        $mq: nth(nth($grids, $i), 2);
+        $mq-num: nth(grid-to-numbers($mq), 1);
+
+        $unit: 1px;
+        @if str-pos('em', $mq) >= 0 {
+          $unit: 1em;
+        }
+
+        $mq-num: $mq-num * $unit;
+
+        // $mq-unit: ;
+        $grid: grid-to-numbers(nth(nth($grids, $i), 1));
+        @include breakpoint($mq-num) {
+          @include background-build($grid, $margin, $color);
+        }
+      }
+    }
+  }
+}
+
+@mixin background-build($columns, $margin, $color) {
+  $columns: find-grid($columns);
+  $margin: find-margin($margin);
+
+  $stops: background-gradient-stops($columns, $margin, $color);
+
+  @include background(
+    linear-gradient(
+      left, $stops
+    )
+  );
+}
+
+//////////////////////////////
+// Get the stops of the gradient
+//////////////////////////////
+@function background-gradient-stops($columns, $margin, $color) {
+  $bkg: ();
+  $count: column-count($columns);
+
+  @for $i from 1 through column-count($columns) {
+    $bkg: join($bkg, background-column-gradient($i, $columns, $margin, $color), comma);
+  }
+
+  @return $bkg;
+}
+
+//////////////////////////////
+// Get the columns
+//////////////////////////////
+@function background-column-gradient($location, $columns, $margin, $color) {
+
+  @if $location == 1 {
+    @return $color 0%, $color column-span(1, 1, $columns), transparentize($color, 1) column-span(1, 1, $columns);
+  }
+  @if $location == column-count($columns) {
+    @return transparentize($color, 1) column-span($location - 1, 1, $columns) + margin-span($margin, $columns), $color column-span($location - 1, 1, $columns) + margin-span($margin, $columns), $color 100%;
+  }
+  @if $location > 1 {
+    @return transparentize($color, 1) column-span($location - 1, 1, $columns) + margin-span($margin, $columns), $color column-span($location - 1, 1, $columns) + margin-span($margin, $columns), $color column-span($location, 1, $columns), transparentize($color, 1) column-span($location, 1, $columns);
+  }
+}

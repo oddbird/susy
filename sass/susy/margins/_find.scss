@@ -62,10 +62,10 @@
 
     }
     @else {
-      @return nth($margins, 1);
+      @return grid-to-numbers(nth($margins, 1));
     }
   }
   @else {
-    @return nth($margins, 1);
+    @return grid-to-numbers(nth($margins, 1));
   }
 }

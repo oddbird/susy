@@ -19,16 +19,18 @@ $margins: add-margin('.25 at 900px');
 
 #foo {
   @extend %clearfix;
-  background: green;
+  background: rgba(red, .5);
   height: 60px;
   @include breakpoint(1000px) {
-    @include grid-span(6, 1);
+    @include grid-span(5, 1);
+    // @include push(1, 1);
+    @include isolate(1, 1);
   }
 }
 
 #bar {
   @extend %clearfix;
-  background: green;
+  background: rgba(green, .5);
   height: 30px;
   @include breakpoint(1000px) {
     @include grid-span(6, 'omega');
@@ -37,9 +39,10 @@ $margins: add-margin('.25 at 900px');
 
 #baz {
   @extend %clearfix;
-  background: green;
+  background: rgba(blue, .5);
   height: 30px;
   @include breakpoint(1000px) {
     @include grid-span(9, 1);
+    @include push(2, 1);
   }
 }

@@ -1,0 +1,29 @@
+@mixin output-float($span, $location, $columns, $margin) {
+  $location-holder: $columns;
+
+  @if type-of($columns) != 'number' {
+    $location-holder: 1;
+  }
+
+  $margin: find-margin($margin);
+
+  width: column-span($span, $location-holder, $columns, $margin);
+  clear: right;
+  // @include clearfix;
+
+  @if end-row($span, $location, $columns) {
+    float: right;
+  }
+  @else {
+    float: left;
+    margin-right: column-span($margin, $location-holder, $columns, $margin);
+  }
+
+  @if $include-border-box {
+    @include box-sizing('border-box');
+  }
+
+  @if $include-clearfix {
+    @include clearfix;
+  }
+}

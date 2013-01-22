@@ -1,0 +1,20 @@
+@mixin grid-span($span, $location, $grid: false, $margin: false, $output-style: $output) {
+
+  @if $output-style == 'float' {
+    @include output-float($span, $location, $grid, $margin);
+  }
+  @else if $output-style == 'float-structure' {
+    @debug 'Isolation';
+  }
+  @else if $output-style == 'isolation' {
+    @debug 'Isolation';
+  }
+  @else if $output-style == "isolation-structure" {
+
+  }
+}
+
+@import "api/float";
+@import "api/float-structure";
+@import "api/isolation";
+@import "api/isolation-structure";

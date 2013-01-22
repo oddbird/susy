@@ -1,52 +1,27 @@
-// ---------------------------------------------------------------------------
+//////////////////////////////
 // Imports
-
+//////////////////////////////
 @import "susy";
 
-// $columns: 5 4 3 2 1;
-// $gutter: 1;
-// $margin: 0;
-
-// @debug column-count($columns);
-// @debug grid-span-width(1, 1, $columns, $gutter, $margin);
-
+// Grids
 $grids: add-grid('3');
 $grids: add-grid('1 3 at 400px');
 $grids: add-grid('1 2 3 4 5 at 723px');
 $grids: add-grid('12 at 960px');
 
+// Margins
+$margins: add-margin('.25');
+$margins: add-margin('.3 at 300px');
+$margins: add-margin('.4 at 500px');
+$margins: add-margin('.25 at 900px');
+
 // @debug $grids;
 
 #foo {
-  @include breakpoint(300px) {
+  @include breakpoint(800px) {
     @media (orientation: portriat) {
+      @debug column-span(2, 1);
       background: green;
     }
   }
 }
-
-// @debug $grids;
-// $grids: add-grid('15 between 970px and 980px');
-
-// @debug length($grids);
-// @debug add-grid('1 2 3 4 5 at 500px');
-
-// @function bubble-sort($array) {
-
-// }
-
-// @function swap($array, $a, $b) {
-//   $tmp = nth($array, $a);
-//   $array
-// }
-
-
-// $array: 1 3 2 8 5 7 4 0;
-// @debug 'Before Sorting';
-// @debug $array;
-
-
-
-// // $array: bubble-sort($array);
-// @debug 'After Sorting';
-// @debug $array;

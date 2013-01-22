@@ -19,11 +19,39 @@
     margin-right: column-span($margin, $location-holder, $columns, $margin);
   }
 
-  @if $include-border-box {
-    @include box-sizing('border-box');
-  }
+  @include span-shared;
+}
 
-  @if $include-clearfix {
-    @include clearfix;
-  }
+@mixin push-float($span, $location, $columns: false, $margin: false) {
+
+  // Find the columns and margins
+  $columns: find-grid($columns);
+  $margin: find-margin($margin);
+
+  // Combine the columns and margins
+  $margin: column-span($span, $location, $columns, $margin) + margin-span($margin, $columns);
+
+  margin-left: $margin;
+}
+
+@mixin pull-float($span, $location, $columns: false, $margin: false) {
+
+  // Find the columns and margins
+  $columns: find-grid($columns);
+  $margin: find-margin($margin);
+
+  // Combine the columns and margins
+  $margin: column-span($span, $location, $columns, $margin) + margin-span($margin, $columns) * -1;
+
+  margin-left: $margin;
+}
+
+@mixin isolate-float($span, $location, $columns: false, $margin: false) {
+
+  // Find the columns and margins
+  $columns: find-grid($columns);
+  $margin: find-margin($margin);
+
+  @include push-float($span, $location, $columns, $margin);
+  margin-right: -100%;
 }

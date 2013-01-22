@@ -1,0 +1,65 @@
+//////////////////////////////
+// Find width, in percentages, of the column span
+//////////////////////////////
+@function column-span($span, $location, $columns: false, $margin: false) {
+  // Find the columns and margins
+  $columns: find-grid($columns);
+  $margin: find-margin($margin);
+
+  // Combine the columns and margins
+  $columns-and-margins: column-sum($columns, $margin);
+
+  // Equal width columns are easy! Deal with them!
+  @if type-of($columns) == 'number' or length($columns) == 1 {
+    $span-and-margins: $span + (($span - 1) * $margin);
+    @return $span-and-margins / $columns-and-margins * 100%;
+  }
+  // Asymmetric lists are harder, so we're going to treat them as their own columns
+  @else if type-of($columns) == 'list' or length($columns) > 1 {
+    // Build a fake column set
+    $sum: 0;
+    $holder: ();
+
+    @for $i from $location to ($location + $span) {
+      $holder: append($holder, nth(nth($columns, $i), 1), comma);
+    }
+
+    // Get sub-column sum
+    $span-and-margins: column-sum($holder, $margin);
+    @return $span-and-margins / $columns-and-margins * 100%;
+  }
+  @else {
+    @warn "Can't find a working set of columns! That's terrible!";
+    @return false;
+  }
+}
+
+//////////////////////////////
+// Find the total sum of the columns
+//////////////////////////////
+@function column-sum($columns, $margin) {
+  @if type-of($columns) == 'number' or length($columns) == 1 {
+
+    @return nth($columns, 1) + ((column-count(nth($columns, 1)) - 1) * $margin);
+  }
+  @else if type-of($columns) == 'list' {
+    $sum: 0;
+    @each $column in $columns {
+      $sum: $sum + nth($column, 1);
+    }
+    $sum: $sum + (column-count($columns) - 1) * $margin;
+    @return $sum;
+  }
+}
+
+//////////////////////////////
+// Find the number of columns
+//////////////////////////////
+@function column-count($columns) {
+  @if type-of($columns) == 'number' {
+    @return $columns;
+  }
+  @if type-of($columns) == 'list' {
+    @return length($columns);
+  }
+}

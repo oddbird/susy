@@ -24,6 +24,9 @@ $mobile-first: true;
 
 // Default output style.
 $output: 'float' !default;
+// Whether or not to include border-box or clearfix with all spans
+$include-border-box: false !default;
+$include-clearfix: false !default;
 
 //////////////////////////////
 // Import Helpers
@@ -44,3 +47,8 @@ $output: 'float' !default;
 // Import Math
 //////////////////////////////
 @import "susy/math";
+
+//////////////////////////////
+// Import APIs
+//////////////////////////////
+@import "susy/api";

@@ -7,9 +7,19 @@
   );
 
   @if $bs == 'border-box' {
-    *behavior: url("../behaviors/box-sizing/boxsizing.php");
+    @if $legacy-support-for-ie6 or $legacy-support-for-ie7 {
+      *behavior: url("../behaviors/box-sizing/boxsizing.php");
+    }
   }
   @else {
     *behavior: none;
   }
+}
+
+%border-box {
+  @include box-sizing('border-box');
+}
+
+%content-box {
+  @include box-sizing('content-box');
 }

@@ -1,4 +1,4 @@
-@media (min-width: 300px) and (orientation: portriat) {
+@media (min-width: 800px) and (orientation: portriat) {
   #foo {
     background: green;
   }

@@ -7,5 +7,5 @@
   // Combine the columns and margins
   $columns-and-margins: column-sum($columns, $margin);
 
-  @return ($margin / $columns-and-margins) * 100%
+  @return (nth($margin, 1) / $columns-and-margins) * 100%
 }

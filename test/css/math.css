@@ -1,5 +1,51 @@
-@media (min-width: 800px) and (orientation: portriat) {
+#foo, #bar, #baz {
+  /* for IE 6/7 */
+  *zoom: expression(this.runtimeStyle.zoom="1", this.appendChild(document.createElement("br")).style.cssText="clear:both;font:0/0 serif");
+  /* non-JS fallback */
+  *zoom: 1;
+}
+#foo:before, #bar:before, #baz:before, #foo:after, #bar:after, #baz:after {
+  content: "";
+  display: table;
+}
+#foo:after, #bar:after, #baz:after {
+  clear: both;
+}
+
+#foo {
+  background: green;
+  height: 60px;
+}
+@media (min-width: 1000px) {
   #foo {
-    background: green;
+    width: 49.15254%;
+    clear: right;
+    float: left;
+    margin-right: 0.42373%;
+  }
+}
+
+#bar {
+  background: green;
+  height: 30px;
+}
+@media (min-width: 1000px) {
+  #bar {
+    width: 49.15254%;
+    clear: right;
+    float: right;
+  }
+}
+
+#baz {
+  background: green;
+  height: 30px;
+}
+@media (min-width: 1000px) {
+  #baz {
+    width: 74.57627%;
+    clear: right;
+    float: left;
+    margin-right: 0.42373%;
   }
 }

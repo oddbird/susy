@@ -44,18 +44,18 @@
 
       // If it's smallest than the smallest MQ, use the 1st grid
       @if mq-compare($context, $smallest, nth($direction, 1)) {
-        @return nth($grids, 1);
+        @return grid-to-numbers(nth($grids, 1));
       }
       // If it's larger than or equal to the largest MQ, use the last grid
       @else if mq-compare($context, $largest, nth($direction, 2)) {
-        @return nth(nth($reverse-grid, 1), 1);
+        @return grid-to-numbers(nth(nth($reverse-grid, 1), 1));
       }
       @else {
         // Loop through each MQ. If the MQ is greather than or equal to the the MQ in question, use it!
         @for $j from 1 through $rg-length {
           $query: nth(nth($reverse-grid, $j), 2);
           @if mq-compare($context, $query, nth($direction, 2)) {
-            @return nth(nth($reverse-grid, $j), 1);
+            @return grid-to-numbers(nth(nth($reverse-grid, $j), 1));
           }
         }
       }

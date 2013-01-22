@@ -3,18 +3,27 @@
   @if $output-style == 'float' {
     @include output-float($span, $location, $grid, $margin);
   }
-  @else if $output-style == 'float-structure' {
-    @debug 'Isolation';
-  }
-  @else if $output-style == 'isolation' {
-    @debug 'Isolation';
-  }
-  @else if $output-style == "isolation-structure" {
+}
 
+@mixin push($span, $location, $grid: false, $margin: false, $output-style: $output) {
+
+  @if $output-style == 'float' {
+    @include push-float($span, $location, $grid, $margin);
+  }
+}
+
+@mixin pull($span, $location, $grid: false, $margin: false, $output-style: $output) {
+
+  @if $output-style == 'float' {
+    @include pull-float($span, $location, $grid, $margin);
+  }
+}
+
+@mixin isolate($span, $location, $grid: false, $margin: false, $output-style: $output) {
+
+  @if $output-style == 'float' {
+    @include isolate-float($span, $location, $grid, $margin);
   }
 }
 
 @import "api/float";
-@import "api/float-structure";
-@import "api/isolation";
-@import "api/isolation-structure";

@@ -2,6 +2,7 @@
 // Find width, in percentages, of the column span
 //////////////////////////////
 @function column-span($span, $location, $columns: false, $margin: false) {
+
   // Find the columns and margins
   $columns: find-grid($columns);
   $margin: find-margin($margin);
@@ -60,6 +61,11 @@
     @return $columns;
   }
   @if type-of($columns) == 'list' {
-    @return length($columns);
+    @if length($columns) == 1 {
+      @return nth($columns, 1);
+    }
+    @else {
+      @return length($columns);
+    }
   }
 }

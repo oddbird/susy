@@ -44,4 +44,10 @@ module Sass::Script::Functions
       end
     end
   end
+
+  # Convert a grid piece from strings to numbers
+  def grid_to_numbers(piece)
+    items = piece.to_s.split(' ')
+    Sass::Script::List.new(items.map{|i| Sass::Script::Number.new(i.to_f)}, :comma)
+  end
 end

@@ -49,6 +49,12 @@ module Sass::Script::Functions
       end
     end
   end
+
+  def grid_to_numbers(columns)
+    items = columns.to_s.split(' ')
+    Sass::Script::List.new(items.map{|i| Sass::Script::Number.new(i.to_f)}, :comma)
+  end
+
   # def str_replace(needle, replace, haystack)
   #   result = haystack.value.gsub(needle.value, replace.value)
   #   Sass::Script::String.new(result)

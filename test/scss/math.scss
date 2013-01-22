@@ -18,10 +18,28 @@ $margins: add-margin('.25 at 900px');
 // @debug $grids;
 
 #foo {
-  @include breakpoint(800px) {
-    @media (orientation: portriat) {
-      @debug column-span(2, 1);
-      background: green;
-    }
+  @extend %clearfix;
+  background: green;
+  height: 60px;
+  @include breakpoint(1000px) {
+    @include grid-span(6, 1);
+  }
+}
+
+#bar {
+  @extend %clearfix;
+  background: green;
+  height: 30px;
+  @include breakpoint(1000px) {
+    @include grid-span(6, 'omega');
+  }
+}
+
+#baz {
+  @extend %clearfix;
+  background: green;
+  height: 30px;
+  @include breakpoint(1000px) {
+    @include grid-span(9, 1);
   }
 }

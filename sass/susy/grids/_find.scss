@@ -30,42 +30,34 @@
       $largest: nth(nth($reverse-grid, 1), 2);
       $context: $query-min;
 
-
-      // Figure out the direction of the grids
-      $direction: ();
-
-      @if $mobile-first {
-        $direction: 'lt', 'gte';
-      }
-      @else {
-        $direction: 'gt', 'lte';
-        $context: $query-max;
-      }
+      // @if not ($mobile-first) {
+      //   $context: $query-max;
+      // }
 
       // If it's smallest than the smallest MQ, use the 1st grid
-      @if mq-compare($context, $smallest, nth($direction, 1)) {
-        @return grid-to-numbers(nth($grids, 1));
+      @if $context < $smallest {
+        @return nth($grids, 1);
       }
       // If it's larger than or equal to the largest MQ, use the last grid
-      @else if mq-compare($context, $largest, nth($direction, 2)) {
-        @return grid-to-numbers(nth(nth($reverse-grid, 1), 1));
+      @else if $context >= $largest {
+        @return nth(nth($reverse-grid, 1), 1);
       }
       @else {
         // Loop through each MQ. If the MQ is greather than or equal to the the MQ in question, use it!
         @for $j from 1 through $rg-length {
           $query: nth(nth($reverse-grid, $j), 2);
-          @if mq-compare($context, $query, nth($direction, 2)) {
-            @return grid-to-numbers(nth(nth($reverse-grid, $j), 1));
+          @if $context >= $query {
+            @return nth(nth($reverse-grid, $j), 1);
           }
         }
       }
 
     }
     @else {
-      @return grid-to-numbers(nth($grids, 1));
+      @return nth($grids, 1);
     }
   }
   @else {
-    @return grid-to-numbers(nth($grids, 1));
+    @return nth($grids, 1);
   }
 }

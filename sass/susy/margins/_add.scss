@@ -1,11 +1,24 @@
 @function add-margin($margin-definition) {
-  $margin-split: split_string($margin-definition, ' at ');
+  $margin-split: split-string($margin-definition, ' at ');
 
   @if $margin-split == false and length($margins) == 0 {
-    @return unquote($margin-definition);
+    $margin-holder: grid-to-numbers(unquote($margin-definition));
+    @if length($margin-holder) == 1 {
+      $margin-holder: nth($margin-holder, 1);
+    }
+    @return $margin-holder;
   }
   @else {
-    $margin-holder: append($margins, (nth($margin-split, 1) (nth($margin-split, 2))), 'comma');
+    $margin-holder: grid-to-numbers(unquote(nth($margin-split, 1)));
+    @if length($margin-holder) == 1 {
+      $margin-holder: nth($margin-holder, 1);
+    }
+
+    $mq-holder: str-to-number(nth($margin-split, 2));
+
+    $margin-holder: append($margins, ($margin-holder $mq-holder), 'comma');
+
+    // $sorted: margin-sort($margin-holder);
 
     @return $margin-holder;
   }

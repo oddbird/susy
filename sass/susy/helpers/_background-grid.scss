@@ -11,18 +11,9 @@
       }
       @else {
         $mq: nth(nth($grids, $i), 2);
-        $mq-num: nth(grid-to-numbers($mq), 1);
 
-        $unit: 1px;
-        @if str-pos('em', $mq) >= 0 {
-          $unit: 1em;
-        }
-
-        $mq-num: $mq-num * $unit;
-
-        // $mq-unit: ;
-        $grid: grid-to-numbers(nth(nth($grids, $i), 1));
-        @include breakpoint($mq-num) {
+        $grid: nth(nth($grids, $i), 1);
+        @include breakpoint($mq) {
           @include background-build($grid, $margin, $color);
         }
       }

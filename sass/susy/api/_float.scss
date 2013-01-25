@@ -41,7 +41,7 @@
   $margin: find-margin($margin);
 
   // Combine the columns and margins
-  $margin: column-span($span, $location, $columns, $margin) + margin-span($margin, $columns) * -1;
+  $margin: (column-span($span, $location, $columns, $margin) + margin-span($margin, $columns)) * -1;
 
   margin-left: $margin;
 }

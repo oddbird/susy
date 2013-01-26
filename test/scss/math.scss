@@ -7,13 +7,15 @@
 $grids: add-grid('3');
 $grids: add-grid('1 3 at 550px');
 $grids: add-grid('1 2 3 4 5 at 723px');
-$grids: add-grid('12 at 960px');
+$grids: add-grid('1 2 3 1 2 3 1 2 3 1 2 3 at 960px');
 
-// Margins
-$margins: add-margin('.25');
-$margins: add-margin('.3 at 300px');
-$margins: add-margin('.4 at 500px');
-$margins: add-margin('.25 at 900px');
+// gutters
+$gutters: add-gutter('.25');
+$gutters: add-gutter('.3 at 300px');
+$gutters: add-gutter('.4 at 500px');
+$gutters: add-gutter('.25 at 900px');
+
+$output: 'isolation';
 
 // @debug $grids;
 
@@ -30,7 +32,7 @@ body {
   @include breakpoint(1000px) {
     @include grid-span(5, 1);
     // @include push(1, 1);
-    @include isolate(1, 1);
+    // @include isolate(1, 1);
   }
 }
 
@@ -49,6 +51,24 @@ body {
   height: 30px;
   @include breakpoint(1000px) {
     @include grid-span(9, 1);
-    @include push(2, 1);
+    @include push(1, 1);
+  }
+}
+
+#qux {
+  @extend %clearfix;
+  background: rgba(yellow, .5);
+  height: 30px;
+  @include breakpoint(1000px) {
+    @include grid-span(3, 1, 9);
+    @include push(2, 1, (2 3 1 2 3 1 2 3 1));
+    // @include pull(1, 1, (2 3 1 2 3 1 2 3 1));
+    // $column-pull: column-span(1, 1);
+    // $gutter-pull: gutter-span(1);
+    // $column-context: column-span(3, 1, 9);
+    // @debug $column-pull;
+    // @debug $gutter-pull;
+    // @debug context($column-pull, $column-context);
+    // @debug context($gutter-pull, $column-context);
   }
 }

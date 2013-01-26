@@ -1,0 +1,16 @@
+@mixin output-isolation($span, $location, $columns, $gutter) {
+  @include output-float($span, $location, $columns, $gutter);
+
+  @if not end-row($span, $location, $columns) {
+    @include isolate-float($location - 1, 1, $columns, $gutter);
+  }
+
+}
+
+@mixin push-isolation($span, $location, $columns: false, $gutter: false) {
+  @include push-float($span, $location, $columns, $gutter);
+}
+
+@mixin pull-isolation($span, $location, $columns: false, $gutter: false) {
+  @include pull-float($span, $location, $columns, $gutter);
+}

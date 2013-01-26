@@ -1,19 +1,19 @@
 //////////////////////////////
 // Find width, in percentages, of the column span
 //////////////////////////////
-@function column-span($span, $location, $columns: false, $margin: false) {
+@function column-span($span, $location, $columns: false, $gutter: false) {
 
-  // Find the columns and margins
+  // Find the columns and gutters
   $columns: find-grid($columns);
-  $margin: find-margin($margin);
+  $gutter: find-gutter($gutter);
 
-  // Combine the columns and margins
-  $columns-and-margins: column-sum($columns, $margin);
+  // Combine the columns and gutters
+  $columns-and-gutters: column-sum($columns, $gutter);
 
   // Equal width columns are easy! Deal with them!
   @if type-of($columns) == 'number' or length($columns) == 1 {
-    $span-and-margins: $span + (($span - 1) * nth($margin, 1));
-    @return $span-and-margins / $columns-and-margins * 100%;
+    $span-and-gutters: $span + (($span - 1) * nth($gutter, 1));
+    @return $span-and-gutters / $columns-and-gutters * 100%;
   }
   // Asymmetric lists are harder, so we're going to treat them as their own columns
   @else if type-of($columns) == 'list' or length($columns) > 1 {
@@ -26,8 +26,8 @@
     }
 
     // Get sub-column sum
-    $span-and-margins: column-sum($holder, $margin);
-    @return $span-and-margins / $columns-and-margins * 100%;
+    $span-and-gutters: column-sum($holder, $gutter);
+    @return $span-and-gutters / $columns-and-gutters * 100%;
   }
   @else {
     @warn "Can't find a working set of columns! That's terrible!";
@@ -38,16 +38,16 @@
 //////////////////////////////
 // Find the total sum of the columns
 //////////////////////////////
-@function column-sum($columns, $margin) {
+@function column-sum($columns, $gutter) {
   @if type-of($columns) == 'number' or length($columns) == 1 {
-    @return nth($columns, 1) + ((column-count(nth($columns, 1)) - 1) * nth($margin, 1));
+    @return nth($columns, 1) + ((column-count(nth($columns, 1)) - 1) * nth($gutter, 1));
   }
   @else if type-of($columns) == 'list' {
     $sum: 0;
     @each $column in $columns {
       $sum: $sum + nth($column, 1);
     }
-    $sum: $sum + (column-count($columns) - 1) * nth($margin, 1);
+    $sum: $sum + (column-count($columns) - 1) * nth($gutter, 1);
     @return $sum;
   }
 }

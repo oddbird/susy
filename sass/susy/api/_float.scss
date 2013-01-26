@@ -1,13 +1,20 @@
-@mixin output-float($span, $location, $columns, $margin) {
-  $location-holder: $columns;
+@mixin output-float($span, $location, $columns, $gutter) {
 
-  @if type-of($columns) != 'number' {
-    $location-holder: 1;
+  $location-holder: $location;
+
+  @if type-of($location) == string {
+    @if end-row($span, $location, $columns) {
+      $grid-length: length(find-grid($columns));
+      $location-holder: $grid-length - $span;
+    }
+    @else {
+      $location-holder: 1;
+    }
   }
 
-  $margin: find-margin($margin);
+  $gutter: find-gutter($gutter);
 
-  width: column-span($span, $location-holder, $columns, $margin);
+  width: column-span($span, $location-holder, $columns, $gutter);
   clear: right;
   // @include clearfix;
 
@@ -16,42 +23,50 @@
   }
   @else {
     float: left;
-    margin-right: column-span($margin, $location-holder, $columns, $margin);
+    margin-right: gutter-span($gutter, $columns);
   }
 
   @include span-shared;
 }
 
-@mixin push-float($span, $location, $columns: false, $margin: false) {
+@mixin push-float($span, $location, $columns: false, $gutter: false) {
 
-  // Find the columns and margins
+  @if type-of($location) == string {
+    $location: 1;
+  }
+
+  // Find the columns and gutters
   $columns: find-grid($columns);
-  $margin: find-margin($margin);
+  $gutter: find-gutter($gutter);
 
-  // Combine the columns and margins
-  $margin: column-span($span, $location, $columns, $margin) + margin-span($margin, $columns);
+  // Combine the columns and gutters
+  $gutter: column-span($span, $location, $columns, $gutter) + gutter-span($gutter, $columns);
 
-  margin-left: $margin;
+  margin-left: $gutter;
 }
 
-@mixin pull-float($span, $location, $columns: false, $margin: false) {
+@mixin pull-float($span, $location, $columns: false, $gutter: false) {
 
-  // Find the columns and margins
+  @if type-of($location) == string {
+    $location: 1;
+  }
+
+  // Find the columns and gutters
   $columns: find-grid($columns);
-  $margin: find-margin($margin);
+  $gutter: find-gutter($gutter);
 
-  // Combine the columns and margins
-  $margin: (column-span($span, $location, $columns, $margin) + margin-span($margin, $columns)) * -1;
+  // Combine the columns and gutters
+  $gutter: (column-span($span, $location, $columns, $gutter) + gutter-span($gutter, $columns)) * -1;
 
-  margin-left: $margin;
+  margin-left: $gutter;
 }
 
-@mixin isolate-float($span, $location, $columns: false, $margin: false) {
+@mixin isolate-float($span, $location, $columns: false, $gutter: false) {
 
-  // Find the columns and margins
+  // Find the columns and gutters
   $columns: find-grid($columns);
-  $margin: find-margin($margin);
+  $gutter: find-gutter($gutter);
 
-  @include push-float($span, $location, $columns, $margin);
+  @include push-float($span, $location, $columns, $gutter);
   margin-right: -100%;
 }

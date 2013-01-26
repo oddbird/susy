@@ -10,8 +10,8 @@
 // The grids being used
 $grids: () !default;
 
-// The margins of the inner columns of the grid
-$margins: () !default;
+// The gutters of the inner columns of the grid
+$gutters: () !default;
 
 // The direction of the grid. Can be 'ltr', 'left to right', 'rtl', 'right to left', or 'both'
 // Will write [dir=ltr] or [dir=rtl]
@@ -25,8 +25,9 @@ $mobile-first: true;
 // Default output style.
 $output: 'float' !default;
 // Whether or not to include border-box or clearfix with all spans
-$include-border-box: false !default;
-$include-clearfix: false !default;
+$include-border-box:  false !default;
+$include-clearfix:    false !default;
+$include-clear:       true  !default;
 
 //////////////////////////////
 // Import Helpers
@@ -39,9 +40,9 @@ $include-clearfix: false !default;
 @import "susy/grids";
 
 //////////////////////////////
-// Import Margins Helpers
+// Import Gutters Helpers
 //////////////////////////////
-@import "susy/margins";
+@import "susy/gutters";
 
 //////////////////////////////
 // Import Math

@@ -1,29 +1,39 @@
-@mixin grid-span($span, $location, $grid: false, $margin: false, $output-style: $output) {
+@mixin grid-span($span, $location, $grid: false, $gutter: false, $output-style: $output) {
 
   @if $output-style == 'float' {
-    @include output-float($span, $location, $grid, $margin);
+    @include output-float($span, $location, $grid, $gutter);
+  }
+  @else if $output-style == 'isolation' {
+    @include output-isolation($span, $location, $grid, $gutter);
   }
 }
 
-@mixin push($span, $location, $grid: false, $margin: false, $output-style: $output) {
+@mixin push($span, $location, $grid: false, $gutter: false, $output-style: $output) {
 
   @if $output-style == 'float' {
-    @include push-float($span, $location, $grid, $margin);
+    @include push-float($span, $location, $grid, $gutter);
+  }
+  @else if $output-style == 'isolation' {
+    @include push-isolation($span, $location, $grid, $gutter);
   }
 }
 
-@mixin pull($span, $location, $grid: false, $margin: false, $output-style: $output) {
+@mixin pull($span, $location, $grid: false, $gutter: false, $output-style: $output) {
 
   @if $output-style == 'float' {
-    @include pull-float($span, $location, $grid, $margin);
+    @include pull-float($span, $location, $grid, $gutter);
+  }
+  @else if $output-style == 'isolation' {
+    @include pull-isolation($span, $location, $grid, $gutter);
   }
 }
 
-@mixin isolate($span, $location, $grid: false, $margin: false, $output-style: $output) {
+@mixin isolate($span, $location, $grid: false, $gutter: false, $output-style: $output) {
 
   @if $output-style == 'float' {
-    @include isolate-float($span, $location, $grid, $margin);
+    @include isolate-float($span, $location, $grid, $gutter);
   }
 }
 
 @import "api/float";
+@import "api/isolation";

@@ -6,58 +6,5 @@
 // Must be using Breakpoint to work properly
 //////////////////////////////
 @function find-grid($user-columns: false) {
-  $length: length($grids);
-
-  @if $user-columns != false {
-    @return $user-columns;
-  }
-  @else if $length > 1 {
-    $query-min: breakpoint-get-context('min-width');
-    $query-max: breakpoint-get-context('max-width');
-
-    // If we've got a min-width or max-width
-    @if $query-min or $query-max {
-      // Reverse the grid so we can step through it
-      $reverse-grid: ();
-      @for $i from 2 through $length {
-        $reverse-grid: append($reverse-grid, nth($grids, $i), comma);
-      }
-      $reverse-grid: reverse($reverse-grid);
-      $rg-length: $length - 1;
-
-      // Grab the largest and smallest MQs
-      $smallest: nth(nth($grids, 2), 2);
-      $largest: nth(nth($reverse-grid, 1), 2);
-      $context: $query-min;
-
-      // @if not ($mobile-first) {
-      //   $context: $query-max;
-      // }
-
-      // If it's smallest than the smallest MQ, use the 1st grid
-      @if $context < $smallest {
-        @return nth($grids, 1);
-      }
-      // If it's larger than or equal to the largest MQ, use the last grid
-      @else if $context >= $largest {
-        @return nth(nth($reverse-grid, 1), 1);
-      }
-      @else {
-        // Loop through each MQ. If the MQ is greather than or equal to the the MQ in question, use it!
-        @for $j from 1 through $rg-length {
-          $query: nth(nth($reverse-grid, $j), 2);
-          @if $context >= $query {
-            @return nth(nth($reverse-grid, $j), 1);
-          }
-        }
-      }
-
-    }
-    @else {
-      @return nth($grids, 1);
-    }
-  }
-  @else {
-    @return nth($grids, 1);
-  }
+  @return find-object($grids, $user-columns);
 }

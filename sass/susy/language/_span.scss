@@ -1,0 +1,20 @@
+//////////////////////////////
+// "Natural Language" Parsing
+//
+// Keywords:
+//  span:     Column Span
+//  at:       Column Location
+//  using:    Grid
+//  gutters:  Gutters
+//  output:   Output
+//////////////////////////////
+@mixin span($input) {
+  $span:      nth($input, 1);
+
+  $location:  parse-span-list('at', $input);
+  $columns:   parse-span-list('using', $input);
+  $gutter:    parse-span-list('gutters', $input);
+  $output:    parse-span-list('output', $input);
+
+  @include grid-span($span, $location, $columns, $gutter, $output)
+}

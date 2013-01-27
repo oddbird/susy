@@ -1,6 +1,4 @@
 require 'compass'
-require 'sassy-strings'
-require 'sassy-math'
 require 'breakpoint'
 Compass::Frameworks.register('susy',
                              :stylesheets_directory => File.join(File.dirname(__FILE__), '..', 'sass'),

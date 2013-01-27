@@ -1,21 +1,23 @@
 SUSY NEXT
 ============================
 
-## Basic Guiding Tenants
+## Guiding Principles
 
-Susy Next is designed to be a defining next-generation grid system, allowing for a single, unified input API that utilizes natural language input to create any grid you could possibly want. With this in mind, we adhere to the following tenants:
+Susy Next is a next-generation css layout system,
+allowing a single natural-language input API
+to create any structural output you might want.
 
-* We shall design the input API to be output system agnostic 
-* We shall design an input API that is easy to use
-* We shall not assume an output style, it shall always be user defined
-* We shall design the system to be future friendly
-* We shall design the system to be cross-browser compatible
-* We shall not assume source HTML
-  * One exception: `[dir=LNG]` for direction, as it is the only standard way to set language direction in HTML
+* The input API must be output-system agnostic.
+* The input API must be easy to use.
+* The output style must always be defined by the user.
+* The system must be future friendly.
+* The system must be cross-browser compatible.
+* We will not assume anything about the source HTML.
 
 ## A Separation of Concerns
 
-In order to accomplish our stated tenants, we shall need to separate the Susy architecture into different segments. The segments are as follows:
+In order to accomplish that flexibility,
+we need to split the Susy architecture into segments:
 
 1. Input Layer
    * User facing

@@ -4,20 +4,31 @@
 @import "susy";
 
 // Grids
-$grids: add-grid('3');
-$grids: add-grid('1 3 at 550px');
-$grids: add-grid('1 2 3 4 5 at 723px');
-$grids: add-grid('1 2 3 1 2 3 1 2 3 1 2 3 at 960px');
+$grids: add-grid(3);
+$grids: add-grid(1 3 at 550px);
+$grids: add-grid(1 2 3 4 5 at 723px);
+$grids: add-grid(1 2 3 1 2 3 1 2 3 1 2 3 at 960px);
 
 // gutters
-$gutters: add-gutter('.25');
-$gutters: add-gutter('.3 at 300px');
-$gutters: add-gutter('.4 at 500px');
-$gutters: add-gutter('.25 at 900px');
+$gutters: add-gutter(.25);
+$gutters: add-gutter(.3 at 300px);
+$gutters: add-gutter(.4 at 500px);
+$gutters: add-gutter(.25 at 900px);
 
-$output: 'isolation';
+// $output: 'isolation';
 
 // @debug $grids;
+// @debug $gutters;
+
+#waldo {
+  @include span(1 at last using 1 3 3 gutters .25 output isolation);
+}
+
+#babar {
+  @include grid-span(1, 'last', (1 3 3), .25, $output-style: 'isolation');
+}
+// @include span(3 at 5 using 1 3 3 gutters .25 output float);
+
 
 body {
   margin: 0;

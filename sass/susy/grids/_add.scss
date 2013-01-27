@@ -1,25 +1,10 @@
 @function add-grid($grid-definition) {
-  $grid-split: split-string($grid-definition, ' at ');
+  $parsed: parse-add($grid-definition);
 
-  @if $grid-split == false and length($grids) == 0 {
-    $grid-holder: grid-to-numbers(unquote($grid-definition));
-    @if length($grid-holder) == 1 {
-      $grid-holder: nth($grid-holder, 1);
-    }
-    @return $grid-holder;
+  @if nth($parsed, 2) == false and length($grids) == 0 {
+    @return nth($parsed, 1);
   }
   @else {
-    $grid-holder: grid-to-numbers(unquote(nth($grid-split, 1)));
-    @if length($grid-holder) == 1 {
-      $grid-holder: nth($grid-holder, 1);
-    }
-
-    $mq-holder: str-to-number(nth($grid-split, 2));
-
-    $grid-holder: append($grids, ($grid-holder $mq-holder), 'comma');
-
-    // $sorted: grid-sort($grid-holder);
-
-    @return $grid-holder;
+    @return append($grids, (nth($parsed, 1) nth($parsed, 2)), 'comma');
   }
 }

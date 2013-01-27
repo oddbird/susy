@@ -1,25 +1,10 @@
 @function add-gutter($gutter-definition) {
-  $gutter-split: split-string($gutter-definition, ' at ');
+  $parsed: parse-add($gutter-definition);
 
-  @if $gutter-split == false and length($gutters) == 0 {
-    $gutter-holder: grid-to-numbers(unquote($gutter-definition));
-    @if length($gutter-holder) == 1 {
-      $gutter-holder: nth($gutter-holder, 1);
-    }
-    @return $gutter-holder;
+  @if nth($parsed, 2) == false and length($gutters) == 0 {
+    @return nth($parsed, 1);
   }
   @else {
-    $gutter-holder: grid-to-numbers(unquote(nth($gutter-split, 1)));
-    @if length($gutter-holder) == 1 {
-      $gutter-holder: nth($gutter-holder, 1);
-    }
-
-    $mq-holder: str-to-number(nth($gutter-split, 2));
-
-    $gutter-holder: append($gutters, ($gutter-holder $mq-holder), 'comma');
-
-    // $sorted: gutter-sort($gutter-holder);
-
-    @return $gutter-holder;
+    @return append($gutters, (nth($parsed, 1) nth($parsed, 2)), 'comma');
   }
 }

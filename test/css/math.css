@@ -4,6 +4,18 @@
   clear: both;
 }
 
+#waldo {
+  width: 46.66667%;
+  clear: right;
+  float: right;
+}
+
+#babar {
+  width: 46.66667%;
+  clear: right;
+  float: right;
+}
+
 body {
   margin: 0;
   padding: 0;

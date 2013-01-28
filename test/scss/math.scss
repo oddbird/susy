@@ -21,13 +21,13 @@ $gutters: add-gutter(.25 at 900px);
 // @debug $gutters;
 
 #waldo {
-  @include span(1 at last using 1 3 3 gutters .25 output isolation);
+  @include span(1 at last of 1 3 3 gutters .25 output isolation);
 }
 
 #babar {
   @include grid-span(1, 'last', (1 3 3), .25, $output-style: 'isolation');
 }
-// @include span(3 at 5 using 1 3 3 gutters .25 output float);
+// @include span(3 at 5 of 1 3 3 gutters .25 output float);
 
 
 body {

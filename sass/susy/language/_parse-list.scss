@@ -29,7 +29,7 @@
     }
 
     // Special handling for Grids
-    @else if $item == $var and $var == 'using' {
+    @else if $item == $var and $var == 'of' {
       $found: 'grid';
     }
 

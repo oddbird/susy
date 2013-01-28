@@ -13,17 +13,12 @@ $grids: () !default;
 // The gutters of the inner columns of the grid
 $gutters: () !default;
 
-// The direction of the grid. Can be 'ltr', 'left to right', 'rtl', 'right to left', or 'both'
-// Will write [dir=ltr] or [dir=rtl]
-$grid-direction: 'left to right' !default;
-// Will either attach direction using &selector or selector &
-$direction-attachment: 'parent' !default;
-
 // Specifies whether or not you're building mobile-first grids. Defaults to true
-$mobile-first: true;
+// $mobile-first: true;
 
 // Default output style.
 $output: 'float' !default;
+
 // Whether or not to include border-box or clearfix with all spans
 $include-border-box:  false !default;
 $include-clearfix:    false !default;

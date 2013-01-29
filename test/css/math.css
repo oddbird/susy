@@ -1,16 +1,16 @@
-#foo:after, #bar:after, #baz:after, #qux:after {
+.foo:after, .bar:after, .baz:after, .qux:after {
   content: "";
   display: table;
   clear: both;
 }
 
-#waldo {
+.span {
   width: 46.66667%;
   clear: right;
   float: right;
 }
 
-#babar {
+.grid-span {
   width: 46.66667%;
   clear: right;
   float: right;
@@ -53,12 +53,11 @@ body {
   }
 }
 
-#foo {
+.foo {
   background: rgba(255, 0, 0, 0.5);
-  height: 60px;
 }
 @media (min-width: 1000px) {
-  #foo {
+  .foo {
     width: 37.38318%;
     clear: right;
     float: left;
@@ -68,24 +67,22 @@ body {
   }
 }
 
-#bar {
+.bar {
   background: rgba(0, 128, 0, 0.5);
-  height: 30px;
 }
 @media (min-width: 1000px) {
-  #bar {
+  .bar {
     width: 49.53271%;
     clear: right;
     float: right;
   }
 }
 
-#baz {
+.baz {
   background: rgba(0, 0, 255, 0.5);
-  height: 30px;
 }
 @media (min-width: 1000px) {
-  #baz {
+  .baz {
     width: 74.76636%;
     clear: right;
     float: left;
@@ -96,12 +93,11 @@ body {
   }
 }
 
-#qux {
+.qux {
   background: rgba(255, 255, 0, 0.5);
-  height: 30px;
 }
 @media (min-width: 1000px) {
-  #qux {
+  .qux {
     width: 31.81818%;
     clear: right;
     float: left;
@@ -110,4 +106,11 @@ body {
     margin-right: -100%;
     margin-left: 27.5%;
   }
+}
+
+div {
+  min-height: 3em;
+  background: rgba(0, 0, 0, 0.1);
+  text-transform: uppercase;
+  text-align: center;
 }

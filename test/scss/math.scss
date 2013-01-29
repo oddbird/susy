@@ -1,34 +1,50 @@
-//////////////////////////////
+//-----------------------------
 // Imports
-//////////////////////////////
+
 @import "susy";
 
+//-----------------------------
+// Settings
+
+// $output: 'isolation';
+
+//-----------------------------
 // Grids
+
 $grids: add-grid(3);
 $grids: add-grid(1 3 at 550px);
 $grids: add-grid(1 2 3 4 5 at 723px);
 $grids: add-grid(1 2 3 1 2 3 1 2 3 1 2 3 at 960px);
 
-// gutters
+//-----------------------------
+// Gutters
+
 $gutters: add-gutter(.25);
 $gutters: add-gutter(.3 at 300px);
 $gutters: add-gutter(.4 at 500px);
 $gutters: add-gutter(.25 at 900px);
 
-// $output: 'isolation';
+//-----------------------------
+// Debug
 
 // @debug $grids;
 // @debug $gutters;
 
-#waldo {
+//-----------------------------
+// Syntax
+//
+// These two mixins should provide identical output.
+
+.span {
   @include span(1 at last of 1 3 3 gutters .25 output isolation);
 }
 
-#babar {
+.grid-span {
   @include grid-span(1, 'last', (1 3 3), .25, $output-style: 'isolation');
 }
-// @include span(3 at 5 of 1 3 3 gutters .25 output float);
 
+//-----------------------------
+// Demo
 
 body {
   margin: 0;
@@ -36,50 +52,47 @@ body {
   @include background-grid;
 }
 
-#foo {
+.foo {
   @extend %clearfix;
   background: rgba(red, .5);
-  height: 60px;
   @include breakpoint(1000px) {
     @include grid-span(5, 1);
-    // @include push(1, 1);
-    // @include isolate(1, 1);
   }
 }
 
-#bar {
+.bar {
   @extend %clearfix;
   background: rgba(green, .5);
-  height: 30px;
   @include breakpoint(1000px) {
     @include grid-span(6, 'omega');
   }
 }
 
-#baz {
+.baz {
   @extend %clearfix;
   background: rgba(blue, .5);
-  height: 30px;
   @include breakpoint(1000px) {
     @include grid-span(9, 1);
     @include push(1, 1);
   }
 }
 
-#qux {
+.qux {
   @extend %clearfix;
   background: rgba(yellow, .5);
-  height: 30px;
   @include breakpoint(1000px) {
     @include grid-span(3, 1, 9);
     @include push(2, 1, (2 3 1 2 3 1 2 3 1));
-    // @include pull(1, 1, (2 3 1 2 3 1 2 3 1));
-    // $column-pull: column-span(1, 1);
-    // $gutter-pull: gutter-span(1);
-    // $column-context: column-span(3, 1, 9);
-    // @debug $column-pull;
-    // @debug $gutter-pull;
-    // @debug context($column-pull, $column-context);
-    // @debug context($gutter-pull, $column-context);
   }
 }
+
+//-----------------------------
+// so you can see it happen
+
+div {
+  min-height: 3em;
+  background: rgba(black,.1);
+  text-transform: uppercase;
+  text-align: center;
+}
+

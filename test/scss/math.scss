@@ -43,14 +43,21 @@ $gutters: add-gutter(.25 at 900px);
   @include grid-span(1, 'last', (1 3 3), .25, $output-style: 'isolation');
 }
 
+@mixin test-grid {
+  [data-development-grid="show"] {
+    @include background-grid;
+  }
+}
+
 //-----------------------------
 // Demo
 
 body {
   margin: 0;
   padding: 0;
-  @include background-grid;
 }
+
+@include test-grid;
 
 .foo {
   @extend %clearfix;

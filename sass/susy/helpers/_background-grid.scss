@@ -1,31 +1,31 @@
 @import "compass/css3/images";
 
-@mixin background-grid($columns: false, $gutter: false, $color: rgba(#69aedb, .5)) {
+@mixin background-grid($columns: false, $gutter: false, $color1: rgba(#E3CDA4, .5), $color2: rgba(#C77966, .5)) {
 
   $background-length: length($grids);
 
   @if not ($columns) {
     @for $i from 1 through $background-length {
       @if $i == 1 {
-        @include background-build($columns, $gutter, $color);
+        @include background-build($columns, $gutter, $color1, $color2);
       }
       @else {
         $mq: nth(nth($grids, $i), 2);
 
         $grid: nth(nth($grids, $i), 1);
         @include breakpoint($mq) {
-          @include background-build($grid, $gutter, $color);
+          @include background-build($grid, $gutter, $color1, $color2);
         }
       }
     }
   }
 }
 
-@mixin background-build($columns, $gutter, $color) {
+@mixin background-build($columns, $gutter, $color1, $color2) {
   $columns: find-grid($columns);
   $gutter: find-gutter($gutter);
 
-  $stops: background-gradient-stops($columns, $gutter, $color);
+  $stops: background-gradient-stops($columns, $gutter, $color1, $color2);
 
   @include background(
     linear-gradient(
@@ -37,12 +37,12 @@
 //////////////////////////////
 // Get the stops of the gradient
 //////////////////////////////
-@function background-gradient-stops($columns, $gutter, $color) {
+@function background-gradient-stops($columns, $gutter, $color1, $color2) {
   $bkg: ();
   $count: column-count($columns);
 
   @for $i from 1 through column-count($columns) {
-    $bkg: join($bkg, background-column-gradient($i, $columns, $gutter, $color), comma);
+    $bkg: join($bkg, background-column-gradient($i, $columns, $gutter, $color1, $color2), comma);
   }
 
   @return $bkg;
@@ -51,23 +51,23 @@
 //////////////////////////////
 // Get the columns
 //////////////////////////////
-@function background-column-gradient($location, $columns, $gutter, $color) {
+@function background-column-gradient($location, $columns, $gutter, $color1, $color2) {
 
   @if $location == 1 {
-    @return $color 0%, $color column-span(1, 1, $columns), transparentize($color, 1) column-span(1, 1, $columns);
+    @return $color1 0%, $color2 column-span(1, 1, $columns), transparentize($color1, 1) column-span(1, 1, $columns);
   }
   @if $location == column-count($columns) {
-    @return transparentize($color, 1) column-span($location - 1, 1, $columns) + gutter-span($gutter, $columns), $color column-span($location - 1, 1, $columns) + gutter-span($gutter, $columns), $color 100%;
+    @return transparentize($color1, 1) column-span($location - 1, 1, $columns) + gutter-span($gutter, $columns), $color1 column-span($location - 1, 1, $columns) + gutter-span($gutter, $columns), $color2 100%;
   }
   @if $location > 1 {
-    @return transparentize($color, 1) column-span($location - 1, 1, $columns) + gutter-span($gutter, $columns), $color column-span($location - 1, 1, $columns) + gutter-span($gutter, $columns), $color column-span($location, 1, $columns), transparentize($color, 1) column-span($location, 1, $columns);
+    @return transparentize($color1, 1) column-span($location - 1, 1, $columns) + gutter-span($gutter, $columns), $color1 column-span($location - 1, 1, $columns) + gutter-span($gutter, $columns), $color2 column-span($location, 1, $columns), transparentize($color1, 1) column-span($location, 1, $columns);
   }
 }
 
 //////////////////////////////
 // Add a switch
 //////////////////////////////
-@mixin background-grid-switch($horz: bottom, $vert: left, $columns: false, $gutter: false, $color: rgba(#69aedb, .5)) {
+@mixin background-grid-switch($horz: bottom, $vert: left, $columns: false, $gutter: false, $color1: rgba(#E3CDA4, .5), $color2: rgba(#C77966, .5)) {
 
   head {
     display: block;
@@ -95,7 +95,7 @@
     bottom: 0;
     height: auto;
     width: auto;
-    @include background-grid($columns, $gutter, $color);
+    @include background-grid($columns, $gutter, $color1, $color2);
   }
 
 }

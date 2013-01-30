@@ -67,17 +67,17 @@
 //////////////////////////////
 // Add a switch
 //////////////////////////////
-@mixin background-grid-switch($columns: false, $gutter: false, $color: rgba(#69aedb, .5)) {
+@mixin background-grid-switch($horz: bottom, $vert: left, $columns: false, $gutter: false, $color: rgba(#69aedb, .5)) {
 
   head {
     display: block;
     position: fixed;
-    left: 10px;
-    bottom: 10px;
+    #{$horz}: 10px;
+    #{$vert}: 10px;
     color: #333;
     background: #eee;
     border: 0;
-    border-left: 3px solid #D84A38;
+    border-#{$vert}: 3px solid #D84A38;
     box-shadow: inset 0 1px 8px rgba(0, 0, 0, 0.25);
   }
   head::before {

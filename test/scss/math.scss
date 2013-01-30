@@ -58,6 +58,7 @@ body {
 }
 
 @include test-grid;
+@include background-grid-switch;
 
 .foo {
   @extend %clearfix;

@@ -1,6 +1,6 @@
 @import "compass/css3/images";
 
-@mixin background-grid($columns: false, $gutter: false, $color1: rgba(#E3CDA4, .5), $color2: rgba(#C77966, .5)) {
+@mixin background-grid($columns: false, $gutter: false, $color1: rgba(#f60, .5), $color2: rgba(#f90, .5)) {
 
   $background-length: length($grids);
 

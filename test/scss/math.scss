@@ -58,7 +58,10 @@ body {
 }
 
 @include test-grid;
-@include background-grid-switch;
+
+@include grid-overlay;
+// @include grid-overlay('.bar');
+// @include grid-overlay('.foo');
 
 .foo {
   @extend %clearfix;

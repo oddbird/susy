@@ -1,31 +1,129 @@
-@import "compass/css3/images";
+// -----------------------------------------------
+// Grid Overlay & Background
+//
+// Uses all your settings to create a grid background for a container element.
+// There are two ways you can display a grid:
+// 
+// 1. Manually apply the background to the element - 
+//        
+//        .container {
+//          @include background-grid;
+//        }
+//  
+// 2. Add a switch to toggle an overlay -
+// 
+//        @include grid-overlay('.container');
+// 
+// The first will apply a grid background to your container calculated using your
+// grid settings, media breakpoints etc.
+// The second will add a switch to your page which allows you to view a grid 
+// overlay over your container (or <body> if none is provided) by hovering over
+// the switch. if you need your mouse for other things you can toggle the overlay
+// on permanently by inspecting <head> and checking :hover in your styles panel.
+// 
+// Note: Sub-pixel rounding can lead to several pixels of variation between browsers.
 
-@mixin background-grid($columns: false, $gutter: false, $color1: rgba(#f60, .5), $color2: rgba(#f90, .5)) {
+
+// -----------------------------------------------
+// Imports
+@import "compass/css3";
+
+// -----------------------------------------------
+// Grid Overlay
+
+// The overlay is painted over your container's ::after pseudo-element, so we must
+// give position to the container itself, if relative doesn't suit your layout
+// it can be replaced by absolute/fixed.
+$overlay-position: relative !default;
+
+// Set the position of the switch.
+$overlay-switch-position: left bottom !default;
+
+@mixin grid-overlay (
+  $selector: 'body',
+  $columns: false,
+  $gutter: false,
+  $color: rgba(Chocolate, .5)
+) {
+
+  $vert: nth($overlay-switch-position, 1);
+  $horz: nth($overlay-switch-position, 2);
+
+  head {
+    display: block;
+    position: fixed;
+    #{$horz}: 10px;
+    #{$vert}: 10px;
+    z-index: 99;
+    color: #333;
+    text-shadow: 0 0 3px #fff;
+    @include transition(all .4s);
+    &::before {
+      content: "||||";
+      display: block;
+      padding: 10px 14px;
+      letter-spacing: -1;
+      font: {
+        family: sans-serif;
+        size: 26px;
+        weight: bold;
+      }
+    }
+    &:hover {
+      color: #333;
+      text-shadow: 1px 1px #fff;
+      ~ body #{$selector} {
+        position: unquote($overlay-position);
+      }
+      ~ #{$selector}::after,
+      ~ body #{$selector}::after {
+        content: " ";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 100%;
+        width: 100%;
+        @include background-grid($columns, $gutter, $color);
+      }
+    }
+  }
+}
+
+// -----------------------------------------------
+// Grid Background
+
+@mixin background-grid(
+  $columns: false,
+  $gutter: false,
+  $color: rgba(Chocolate, .5)
+) {
 
   $background-length: length($grids);
 
   @if not ($columns) {
     @for $i from 1 through $background-length {
       @if $i == 1 {
-        @include background-build($columns, $gutter, $color1, $color2);
+        @include background-build($columns, $gutter, $color);
       }
       @else {
         $mq: nth(nth($grids, $i), 2);
 
         $grid: nth(nth($grids, $i), 1);
         @include breakpoint($mq) {
-          @include background-build($grid, $gutter, $color1, $color2);
+          @include background-build($grid, $gutter, $color);
         }
       }
     }
   }
 }
 
-@mixin background-build($columns, $gutter, $color1, $color2) {
+@mixin background-build($columns, $gutter, $color) {
   $columns: find-grid($columns);
   $gutter: find-gutter($gutter);
 
-  $stops: background-gradient-stops($columns, $gutter, $color1, $color2);
+  $stops: background-gradient-stops($columns, $gutter, $color);
 
   @include background(
     linear-gradient(
@@ -37,12 +135,12 @@
 //////////////////////////////
 // Get the stops of the gradient
 //////////////////////////////
-@function background-gradient-stops($columns, $gutter, $color1, $color2) {
+@function background-gradient-stops($columns, $gutter, $color) {
   $bkg: ();
   $count: column-count($columns);
 
   @for $i from 1 through column-count($columns) {
-    $bkg: join($bkg, background-column-gradient($i, $columns, $gutter, $color1, $color2), comma);
+    $bkg: join($bkg, background-column-gradient($i, $columns, $gutter, $color), comma);
   }
 
   @return $bkg;
@@ -51,51 +149,15 @@
 //////////////////////////////
 // Get the columns
 //////////////////////////////
-@function background-column-gradient($location, $columns, $gutter, $color1, $color2) {
+@function background-column-gradient($location, $columns, $gutter, $color) {
 
   @if $location == 1 {
-    @return $color1 0%, $color2 column-span(1, 1, $columns), transparentize($color1, 1) column-span(1, 1, $columns);
+    @return lighten($color, 5%) 0%, darken($color, 5%) column-span(1, 1, $columns), lighten($color, 30%) column-span(1, 1, $columns);
   }
   @if $location == column-count($columns) {
-    @return transparentize($color1, 1) column-span($location - 1, 1, $columns) + gutter-span($gutter, $columns), $color1 column-span($location - 1, 1, $columns) + gutter-span($gutter, $columns), $color2 100%;
+    @return lighten($color, 30%) column-span($location - 1, 1, $columns) + gutter-span($gutter, $columns), lighten($color, 5%) column-span($location - 1, 1, $columns) + gutter-span($gutter, $columns), darken($color, 5%) 100%;
   }
   @if $location > 1 {
-    @return transparentize($color1, 1) column-span($location - 1, 1, $columns) + gutter-span($gutter, $columns), $color1 column-span($location - 1, 1, $columns) + gutter-span($gutter, $columns), $color2 column-span($location, 1, $columns), transparentize($color1, 1) column-span($location, 1, $columns);
+    @return lighten($color, 30%) column-span($location - 1, 1, $columns) + gutter-span($gutter, $columns), lighten($color, 5%) column-span($location - 1, 1, $columns) + gutter-span($gutter, $columns), darken($color, 5%) column-span($location, 1, $columns), lighten($color, 30%) column-span($location, 1, $columns);
   }
-}
-
-//////////////////////////////
-// Add a switch
-//////////////////////////////
-@mixin background-grid-switch($horz: bottom, $vert: left, $columns: false, $gutter: false, $color1: rgba(#E3CDA4, .5), $color2: rgba(#C77966, .5)) {
-
-  head {
-    display: block;
-    position: fixed;
-    #{$horz}: 10px;
-    #{$vert}: 10px;
-    color: #333;
-    background: #eee;
-    border: 0;
-    border-#{$vert}: 3px solid #D84A38;
-    box-shadow: inset 0 1px 8px rgba(0, 0, 0, 0.25);
-  }
-  head::before {
-    content: "||||";
-    font-family: sans-serif;
-    padding: 10px 14px;
-    display: block;
-  }
-  head:hover::after {
-    content: " ";
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    height: auto;
-    width: auto;
-    @include background-grid($columns, $gutter, $color1, $color2);
-  }
-
 }

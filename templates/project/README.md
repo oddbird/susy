@@ -3,16 +3,6 @@
 *This document currently represents the plans for Susy Next syntax,
 and not necessarily the existing functionality.*
 
-## Output Settings
-
-**Document direction:**
-- `$layout-direction: 'left to right' !default;`
-- 'ltr' | 'left to right' | 'rtl' | 'right to left' | 'both'
-
-**Default output style:**
-- `$output-style: 'float' !default;`
-- 'float' | 'isolate' | *others TBD?*
-
 ## Defining Layouts
 
 *We should avoid the "grid" terminology
@@ -28,13 +18,49 @@ For grids, we need:
 - width/ratio of columns
 - width/ratio of gutters
 
-*(?) Do we really need to manage outer margins at all? Or can they be handled easily by the user?*
+Layout styles to support:
+- ltr, rtl, mixed-direction
+- content-box or border-box sizing
+- gutters inside (padding) or outside (margin)
+- gutters before, after, or split
+
+
+*(?) Do we really need to manage grid margins at all? Or can they be handled easily by the user?*
 
 Any solution should support:
 - Arbitrary non-grid layouts
 - Figuring widths based on ratios or vice versa
 - Symmetric and asymmetric grids
 - Any arbitrary breakpoints (min/max/both)
+
+## Functions
+
+- Need to access the width of a certain number of columns
+  - Symmetric or asymmetric
+  - With or without edge gutters (inner or outer width)
+  - In context
+
+```scss
+// symmetric
+width: span(4);
+width: span(4 of 3);
+width: span(4 of 3 outer);
+
+// asymmetric
+width: span(4 at 2);
+width: span(4 at 2 of 3 4 5 4 3);
+width: span(4 at 2 of 3 4 5 4 3 outer);
+```
+
+- Need to access the width of a single gutter
+  - In context
+  - *Are asymmetric gutters special in any way?*
+
+```scss
+// symmetric
+width: gutter();
+width: gutter(3);
+```
 
 ## Container
 

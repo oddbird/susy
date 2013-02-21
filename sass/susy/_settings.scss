@@ -54,3 +54,6 @@ $breakpoint-ie-output     : true      !default;
 
 // Danger Zone! Only set as 'true' in IE-specific style sheets.
 $breakpoint-raw-output    : false     !default;
+
+// Prefix used on IE6/7 property hacks
+$ie-property-hack-prefix  : '#'       !default; 

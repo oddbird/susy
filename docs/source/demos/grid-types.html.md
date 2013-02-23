@@ -13,10 +13,10 @@ pagenav: >
 ## Different Grid Types
 
 You can build grids of all kinds with Susy.
-Define you grid using any unit of measurement
+Define your grid using any unit of measurement
 (ems, pixels, percentages, inches, etc.)
 and then determine how and when
-you want that grid responding to the viewport.
+you want that grid to respond to the viewport.
 
 Susy converts all internal grid-widths into percentages,
 so that once you have a grid
@@ -62,7 +62,7 @@ making this a magic grid.
 You can also have px-based magic grids,
 and so on,
 though I find them somewhat less magical.
-What make it a magic grid
+What makes it a magic grid
 is the fact that it collapses with the browser at smaller sizes,
 but remains set-width at larger sizes.
 

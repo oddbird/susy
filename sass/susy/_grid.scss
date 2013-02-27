@@ -163,7 +163,7 @@
   margin-#{$to}: 0;
 
   @if $legacy-support-for-ie6 or $legacy-support-for-ie7 {
-    #{$ie-property-hack-prefix}margin-#{$hack}: - $gutter-width;
+    *margin-#{$hack}: - $gutter-width;
     @if $legacy-support-for-ie6 { display: inline; }
   }
 }
@@ -203,7 +203,7 @@
   margin-#{$to}: auto;
 
   @if $legacy-support-for-ie6 or $legacy-support-for-ie7 {
-    #{$ie-property-hack-prefix}margin-#{$hack}: auto;
+    *margin-#{$hack}: auto;
     @if $legacy-support-for-ie6 { display: block; }
   }
 }
@@ -227,7 +227,7 @@
   margin-#{$to}: gutter($context, $style);
 
   @if $legacy-support-for-ie6 or $legacy-support-for-ie7 {
-    #{$ie-property-hack-prefix}margin-#{$hack}: auto;
+    *margin-#{$hack}: auto;
   }
 }
 

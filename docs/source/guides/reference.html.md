@@ -10,7 +10,6 @@ side_content: >
     <li><a href="#ref-column-width">$column-width</a></li>
     <li><a href="#ref-gutter-width">$gutter-width</a></li>
     <li><a href="#ref-grid-padding">$grid-padding</a></li>
-    <li><a href="#ref-ie-property-hack-prefix">$ie-property-hack-prefix</a></li>
   </ul>
   <h3><a href="#ref-basic-mixins">Basic Mixins</a></h3>
   <ul>
@@ -137,15 +136,6 @@ Padding on the left and right of a Grid Container.
 
 - `<length>`: Units should match the container width
   (`$column-width` unless `$container-width` is set directly).
-
-#### <a href="#ref-ie-property-hack-prefix" id="ref-ie-property-hack-prefix">IE6/7 Property Hack Prefix</a>
-This string is prefixed to properties targeting IE6 and IE7 only.
-
-    :::scss
-    // $ie-property-hack-prefix: <prefix>;
-    $ie-property-hack-prefix: '#';
-
-- `<prefix>`: String to prepend to IE6/7 specific properties
 
 ### <a href="#ref-basic-mixins" id="ref-basic-mixins">Basic Mixins</a>
 

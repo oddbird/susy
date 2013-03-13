@@ -2,25 +2,34 @@
 // Grid Overlay & Background
 //
 // Uses all your settings to create a grid background for a container element.
-// There are two ways you can display a grid:
-// 
-// 1. Manually apply the background to the element - 
-//        
+// There are three ways you can display a grid:
+//
+// 1. Manually apply the background to the element -
+//
 //        .container {
 //          @include background-grid;
 //        }
-//  
+//
 // 2. Add a switch to toggle an overlay -
-// 
+//
 //        @include grid-overlay('.container');
-// 
+//
+// 3. Toggle grid with JavaScript
+//
+//        @include grid-toggle;
+//        Add [data-development-grid="show"] to item you want grid applied to
+//        Add "grid.min.js" to your HTML
+//
 // The first will apply a grid background to your container calculated using your
 // grid settings, media breakpoints etc.
-// The second will add a switch to your page which allows you to view a grid 
+//
+// The second will add a switch to your page which allows you to view a grid
 // overlay over your container (or <body> if none is provided) by hovering over
 // the switch. if you need your mouse for other things you can toggle the overlay
 // on permanently by inspecting <head> and checking :hover in your styles panel.
-// 
+//
+// The thid will allow you to toggle your background grid on and off by pressing the 'g' on your keyboard.
+//
 // Note: Sub-pixel rounding can lead to several pixels of variation between browsers.
 
 
@@ -88,6 +97,20 @@ $overlay-switch-position: left bottom !default;
         @include background-grid($columns, $gutter, $color);
       }
     }
+  }
+}
+
+// -----------------------------------------------
+// Grid Toggle
+
+@mixin grid-toggle(
+  $columns: false
+  $gutter: false,
+  $color: rgba(Chocolate, .5)
+  ) {
+
+  [data-development-grid="show"] {
+    @include background-grid;
   }
 }
 

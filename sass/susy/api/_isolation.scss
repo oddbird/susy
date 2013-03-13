@@ -1,8 +1,14 @@
-@mixin output-isolation($span, $location, $columns, $gutter) {
+@mixin output-isolation($span, $location, $columns, $gutter, $options: false) {
   @include output-float($span, $location, $columns, $gutter);
 
-  @if not end-row($span, $location, $columns) {
+  clear: none;
+
+  @if not end-row($span, $location, $columns) and $location != 1 {
     @include isolate-float($location - 1, 1, $columns, $gutter);
+  }
+  @else {
+    margin-right: 0%;
+    margin-left: -100%;
   }
 
 }

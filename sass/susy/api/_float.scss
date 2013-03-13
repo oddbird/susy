@@ -1,4 +1,4 @@
-@mixin output-float($span, $location, $columns, $gutter) {
+@mixin output-float($span, $location, $columns, $gutter, $options: false) {
 
   $location-holder: $location;
 

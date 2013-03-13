@@ -1,10 +1,10 @@
-@mixin grid-span($span, $location, $context: false, $gutter: false, $output-style: $output) {
+@mixin grid-span($span, $location, $context: false, $gutter: false, $output-style: $output, $options: false) {
 
   @if $output-style == 'float' {
-    @include output-float($span, $location, $context, $gutter);
+    @include output-float($span, $location, $context, $gutter, $options);
   }
   @else if $output-style == 'isolation' {
-    @include output-isolation($span, $location, $context, $gutter);
+    @include output-isolation($span, $location, $context, $gutter, $options);
   }
 }
 

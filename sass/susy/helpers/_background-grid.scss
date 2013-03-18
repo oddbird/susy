@@ -104,7 +104,7 @@ $overlay-switch-position: left bottom !default;
 // Grid Toggle
 
 @mixin grid-toggle(
-  $columns: false
+  $columns: false,
   $gutter: false,
   $color: rgba(Chocolate, .5)
   ) {

@@ -30,20 +30,21 @@ side_content: >
     <li><a href="#ref-with-settings">with-grid-settings()</a></li>
   </ul>
   <h2><a href="#ref-helper">Grid Helpers</a></h2>
-  <h3><a href="#ref-helper-isolation">Isolation</a></h3>
-  <ul>
-    <li><a href="#ref-isolate">isolate</a></li>
-    <li><a href="#ref-isolate-grid">isolate-grid</a></li>
-  </ul>
   <h3><a href="#ref-helper-sizing">Box Sizing</a></h3>
   <ul>
     <li><a href="#ref-border-box-mixin">border-box-sizing()</a></li>
+  </ul>
+  <h3><a href="#ref-helper-isolation">Isolation</a></h3>
+  <ul>
+    <li><a href="#ref-isolate">isolate()</a></li>
+    <li><a href="#ref-isolate-grid">isolate-grid()</a></li>
   </ul>
   <h3><a href="#ref-helper-padding">Padding Mixins</a></h3>
   <ul>
     <li><a href="#ref-prefix">prefix()</a></li>
     <li><a href="#ref-suffix">suffix()</a></li>
     <li><a href="#ref-pad">pad()</a></li>
+    <li><a href="#ref-bleed">bleed()</a></li>
   </ul>
   <h3><a href="#ref-helper-margin">Margin Mixins</a></h3>
   <ul>
@@ -308,6 +309,22 @@ or a different grid altogether.
 
 ## <a href="#ref-helper" id="ref-helper">Grid Helpers</a>
 
+### <a href="#ref-helper-sizing" id="ref-helper-sizing">Box Sizing</a>
+
+#### <a href="#ref-border-box-mixin" id="ref-border-box-mixin">Border-Box Sizing</a>
+Set the default box-model to `border-box`,
+and adjust the grid math accordingly.
+
+    :::scss
+    // border-box-sizing()
+    @include border-box-sizing;
+
+This will apply border-box model to all elements
+(using the star selector)
+and set `$border-box-sizing` to `true`.
+You can use the variable on it's own to adjust the grid math,
+in cases where you want to apply the box-model separately.
+
 ### <a href="#ref-helper-isolation" id="ref-helper-isolation">Isolation</a>
 
 #### <a href="#ref-isolate" id="ref-isolate">Isolate</a>
@@ -343,22 +360,6 @@ and Susy will determine the positioning for you.
   Default: `$total-columns`.
 - `<$from>`: The origin direction of your document flow.
   Default: `$from-direction`.
-
-### <a href="#ref-helper-sizing" id="ref-helper-sizing">Box Sizing</a>
-
-#### <a href="#ref-border-box-mixin" id="ref-border-box-mixin">Border-Box Sizing</a>
-Set the default box-model to `border-box`,
-and adjust the grid math accordingly.
-
-    :::scss
-    // border-box-sizing()
-    @include border-box-sizing;
-
-This will apply border-box model to all elements
-(using the star selector)
-and set `$border-box-sizing` to `true`.
-You can use the variable on it's own to adjust the grid math,
-in cases where you want to apply the box-model separately.
 
 ### <a href="#ref-helper-padding" id="ref-helper-padding">Padding Mixins</a>
 
@@ -401,6 +402,21 @@ Shortcut for adding both Prefix and Suffix `padding`.
   Default: `$total-columns`.
 - `<$from>`: The origin direction of your document flow.
   Default: `$from-direction`.
+
+#### <a href="#ref-bleed" id="ref-bleed">Bleed</a>
+Add negative margins and matching positive padding to an element,
+so that its background "bleeds" outside its natural position.
+
+    :::scss
+    // bleed(<$width> [<$sides>, <$style>])
+    @include bleed(2);
+
+- `<$width>`: The number of _Columns_ or arbitrary length to bleed.
+  Use `2 of 12` syntax for context in nested situations.
+- `<$sides>`: The sides of the element that should bleed.
+  Default: `left right`.
+- `<$style>`: Optionally return `static` lengths for grid calculations.
+  Default: `$container-style`.
 
 ### <a href="#ref-helper-margin" id="ref-helper-margin">Margin Mixins</a>
 

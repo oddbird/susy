@@ -37,7 +37,7 @@
   width: 49.15254%;
   float: right;
   margin-right: 0;
-  #margin-left: -1em;
+  *margin-left: -1em;
   display: inline;
 }
 
@@ -47,7 +47,7 @@
   width: 44.0678%;
   float: right;
   margin-right: 0;
-  #margin-left: -1em;
+  *margin-left: -1em;
   display: inline;
 }
 
@@ -55,14 +55,14 @@
   float: none;
   width: auto;
   margin-right: auto;
-  #margin-left: auto;
+  *margin-left: auto;
   display: block;
 }
 
 .omega {
   float: right;
   margin-right: 0;
-  #margin-left: -1em;
+  *margin-left: -1em;
   display: inline;
 }
 
@@ -74,7 +74,7 @@
 .remove-omega {
   float: left;
   margin-right: 1.69492%;
-  #margin-left: auto;
+  *margin-left: auto;
 }
 
 .remove-nth-omega:last-child {
@@ -111,6 +111,6 @@
   width: 49.15254%;
   float: right;
   margin-right: 0;
-  #margin-left: -1em;
+  *margin-left: -1em;
   display: inline;
 }

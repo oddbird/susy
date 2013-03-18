@@ -14,6 +14,11 @@
   <p class="highlight">Recent News:</p>
   <ul class="news">
     <li class="newsitem">
+      <a href="https://rubygems.org/gems/susy/versions/1.0.6">
+        <strong>v1.0.6:</strong> Added bleed and isolation mixins.
+      </a>
+    </li>
+    <li class="newsitem">
       <a href="http://cognition.happycog.com/article/its-alive-prototyping-in-the-browser">
         <strong>Happy Cog Article:</strong> "It’s Alive: Prototyping in the Browser"
       </a>

@@ -30,6 +30,11 @@ side_content: >
     <li><a href="#ref-with-settings">with-grid-settings()</a></li>
   </ul>
   <h2><a href="#ref-helper">Grid Helpers</a></h2>
+  <h3><a href="#ref-helper-isolation">Isolation</a></h3>
+  <ul>
+    <li><a href="#ref-isolate">isolate</a></li>
+    <li><a href="#ref-isolate-grid">isolate-grid</a></li>
+  </ul>
   <h3><a href="#ref-helper-sizing">Box Sizing</a></h3>
   <ul>
     <li><a href="#ref-border-box-mixin">border-box-sizing()</a></li>
@@ -290,7 +295,7 @@ whether the same grid at a different breakpoint,
 or a different grid altogether.
 
     :::scss
-    // with-grid-settings([<columns>, <width>, <gutter>, <padding>]) { <@content> }
+    // with-grid-settings([$<columns>, $<width>, <$gutter>, <$padding>]) { <@content> }
     @include with-grid-settings(12,4em,1.5em,1em) {
       .new-grid { @include container; }
     };
@@ -302,6 +307,42 @@ or a different grid altogether.
 - `<@content>`: Nested `@content` block will use the given grid settings.
 
 ## <a href="#ref-helper" id="ref-helper">Grid Helpers</a>
+
+### <a href="#ref-helper-isolation" id="ref-helper-isolation">Isolation</a>
+
+#### <a href="#ref-isolate" id="ref-isolate">Isolate</a>
+Isolate the position of a grid element relative to the container.
+This should be used in addition to `span-columns`
+as a way of minimizing sub-pixel rounding errors in specific trouble locations.
+
+    :::scss
+    // isolate(<$location> [, <$context>, <$from>])
+    @include span-columns(4); // 4-columns wide
+    @include isolate(2); // positioned in the second column
+
+- `<$location>`: The container-relative column number to position on.
+- `<$context>`: Current nesting _Context_.
+  Default: `$total-columns`.
+- `<$from>`: The origin direction of your document flow.
+  Default: `$from-direction`.
+
+#### <a href="#ref-isolate-grid" id="ref-isolate-grid">Isolate Grid</a>
+Isolate a group of elements in an grid (such as an image gallery)
+using nth-child for positioning.
+Provide the column-width of each element,
+and Susy will determine the positioning for you.
+
+    :::scss
+    // isolate-grid(<$columns> [, <$context>, <$from>])
+    .gallery-item {
+      @include isolate-grid(3);
+    }
+
+- `<$columns>`: The number of _Columns_ for each item to span.
+- `<$context>`: Current nesting _Context_.
+  Default: `$total-columns`.
+- `<$from>`: The origin direction of your document flow.
+  Default: `$from-direction`.
 
 ### <a href="#ref-helper-sizing" id="ref-helper-sizing">Box Sizing</a>
 

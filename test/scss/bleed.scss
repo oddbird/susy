@@ -1,0 +1,19 @@
+// ---------------------------------------------------------------------------
+// Imports
+
+@import "../../sass/susy";
+
+// ---------------------------------------------------------------------------
+// Bleed
+
+.bleed-columns {
+  @include bleed(3);
+}
+
+.bleed-length {
+  @include bleed(3em);
+}
+
+.bleed-sides {
+  @include bleed(4%, top bottom);
+}

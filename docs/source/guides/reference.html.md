@@ -79,7 +79,7 @@ side_content: >
     <li><a href="#ref-base-font-size">$base-font-size</a></li>
     <li><a href="#ref-browser-support">$legacy-support-for-...</a></li>
   </ul>
-  <h3><a href="#ref-compass-options">Breakpoint Output</a></h3>
+  <h3><a href="#ref-breakpoint-output">Breakpoint Output</a></h3>
   <ul>
     <li><a href="#ref-media-output">$breakpoint-media-output</a></li>
     <li><a href="#ref-ie-output">$breakpoint-ie-output</a></li>
@@ -621,7 +621,7 @@ although only IE6 and IE7 have special cases attached to them currently.
 
 [support]: http://compass-style.org/reference/compass/support/
 
-### <a href="#ref-compass-options" id="ref-compass-options">Breakpoint Output</a>
+### <a href="#ref-breakpoint-output" id="ref-breakpoint-output">Breakpoint Output</a>
 If you are compiling seperate files for IE-fallbacks,
 it can be useful to output only the modern code in one file
 and only the fallbacks in another file.

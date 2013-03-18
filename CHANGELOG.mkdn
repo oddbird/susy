@@ -1,6 +1,15 @@
 Susy Changelog
 ==============
 
+v1.0.6 [March 18, 2013]
+---------------------
+
+* Add `isolate` and `isolate-grid` mixins.
+* Add `bleed` mixin.
+* Add `$style` argument to grid mixins.
+* Fix documentation typos.
+* Switch from `#` to `*` in legacy-ie hacks.
+
 v1.0.5 [Nov 27, 2012]
 ---------------------
 

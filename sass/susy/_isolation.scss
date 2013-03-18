@@ -6,10 +6,15 @@
 // $location  : The grid column to isolate in, relative to the container;
 // $context   : [optional] The context (columns spanned by parent).
 // $from      : The start direction of your layout (e.g. 'left' for ltr languages)
-@mixin isolate($location, $context: $total-columns, $from: $from-direction) {
+@mixin isolate(
+  $location,
+  $context: $total-columns,
+  $from: $from-direction,
+  $style: $container-style
+) {
   $to: opposite-position($from);
   margin-#{$to}: -100%;
-  margin-#{$from}: space($location - 1, $context);
+  margin-#{$from}: space($location - 1, $context, $style);
 }
 
 // Isolate a group of elements in a grid, using nth-child selectors
@@ -17,18 +22,23 @@
 // $columns   : The column-width of each item on the grid;
 // $context   : [optional] The context (columns spanned by parent).
 // $from      : The start direction of your layout (e.g. 'left' for ltr languages)
-@mixin isolate-grid($columns, $context: $total-columns, $from: $from-direction) {
+@mixin isolate-grid(
+  $columns,
+  $context: $total-columns,
+  $from: $from-direction,
+  $style: $container-style
+) {
   $to: opposite-position($from);
   $location: 1;
   $line: floor($context / $columns);
 
-  @include span-columns($columns, $context, $from: $from);
+  @include span-columns($columns, $context, $from: $from, $style: $style);
   margin-#{$to}: -100%;
 
   @for $item from 1 through $line {
     $nth: '#{$line}n + #{$item}';
     &:nth-child(#{$nth}) {
-      margin-#{$from}: space($location - 1, $context);
+      margin-#{$from}: space($location - 1, $context, $style);
       @if $location == 1 { clear: $from; }
 
       $location: $location + $columns;

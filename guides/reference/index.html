@@ -12,7 +12,7 @@
 <link href="images/splash-iphone4.png" media="screen and (max-device-width: 480px) and (-webkit-min-device-pixel-ratio: 2)" rel="apple-touch-startup-image">
 <link href="images/splash-portrait.png" media="screen and (min-device-width: 768px) and (orientation: portrait)" rel="apple-touch-startup-image">
 <link href="images/splash-landscape.png" media="screen and (min-device-width: 768px) and (orientation: landscape)" rel="apple-touch-startup-image">
-<link type="text/css" rel="stylesheet" href="../../stylesheets/site.css?1356048735" media="screen">
+<link type="text/css" href="../../stylesheets/site.css?1363716541" rel="stylesheet" media="screen">
 <script type="text/javascript" src="../../javascripts/modernizr-2.5.3.min.js?1340673619"></script><script type="text/javascript" src="../../javascripts/modernizr.selectors.js?1340673619"></script>
 </head>
 <body class="guides guides_reference guides_reference_index" id="susy-oddbird-net">
@@ -131,7 +131,7 @@ Default: <code>$total-columns</code>.</li>
 
 <p>Align an element to the Susy Grid.</p>
 
-<div class="highlight"><pre><span class="c1">// span-columns(&lt;$columns&gt; [&lt;omega&gt; , &lt;$context&gt;, &lt;$padding&gt;, &lt;$from&gt;])</span>
+<div class="highlight"><pre><span class="c1">// span-columns(&lt;$columns&gt; [&lt;omega&gt; , &lt;$context&gt;, &lt;$padding&gt;, &lt;$from&gt;, &lt;$style&gt;])</span>
 <span class="nt">nav</span> <span class="p">{</span> <span class="k">@include</span><span class="nd"> span-columns</span><span class="p">(</span><span class="mi">3</span><span class="o">,</span><span class="mi">12</span><span class="p">);</span> <span class="p">}</span>
 <span class="nt">article</span> <span class="p">{</span> <span class="k">@include</span><span class="nd"> span-columns</span><span class="p">(</span><span class="mi">9</span> <span class="n">omega</span><span class="o">,</span><span class="mi">12</span><span class="p">);</span> <span class="p">}</span>
 </pre></div>
@@ -156,6 +156,9 @@ Default: <code>false</code>.</li>
 <li>
 <code>&lt;$from&gt;</code>: The origin direction of your document flow.
 Default: <code>$from-direction</code>.</li>
+<li>
+<code>&lt;$style&gt;</code>: Optionally return <code>static</code> lengths for grid calculations.
+Default: <code>$container-style</code>.</li>
 </ul>
 <h4><a href="#ref-omega" id="ref-omega">Omega</a></h4>
 
@@ -285,7 +288,7 @@ Default: <code>$base-font-size</code>.</li>
 Can be used when <code>container()</code> has already been applied to an element,
 for DRYer output than simply using <code>container</code> again.</p>
 
-<div class="highlight"><pre><span class="c1">// set-container-width([&lt;$columns&gt;])</span>
+<div class="highlight"><pre><span class="c1">// set-container-width([&lt;$columns&gt;, &lt;$style&gt;])</span>
 <span class="k">@include</span><span class="nd"> container</span><span class="p">;</span>
 <span class="k">@include</span><span class="nd"> at-breakpoint</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span> <span class="p">{</span>
   <span class="k">@include</span><span class="nd"> set-container-width</span><span class="p">;</span>
@@ -296,6 +299,9 @@ for DRYer output than simply using <code>container</code> again.</p>
 <li>
 <code>&lt;$columns&gt;</code>: The number of <em>Columns</em> to be contained.
 Default: Current value of <code>$total-columns</code> depending on <em>Layout</em>.</li>
+<li>
+<code>&lt;$style&gt;</code>: Optionally return <code>static</code> lengths for grid calculations.
+Default: <code>$container-style</code>.</li>
 </ul>
 <h4><a href="#ref-with-settings" id="ref-with-settings">With Grid Settings</a></h4>
 
@@ -303,7 +309,7 @@ Default: Current value of <code>$total-columns</code> depending on <em>Layout</e
 whether the same grid at a different breakpoint,
 or a different grid altogether.</p>
 
-<div class="highlight"><pre><span class="c1">// with-grid-settings([&lt;columns&gt;, &lt;width&gt;, &lt;gutter&gt;, &lt;padding&gt;]) { &lt;@content&gt; }</span>
+<div class="highlight"><pre><span class="c1">// with-grid-settings([$&lt;columns&gt;, $&lt;width&gt;, &lt;$gutter&gt;, &lt;$padding&gt;]) { &lt;@content&gt; }</span>
 <span class="k">@include</span><span class="nd"> with-grid-settings</span><span class="p">(</span><span class="mi">12</span><span class="o">,</span><span class="mi">4</span><span class="kt">em</span><span class="o">,</span><span class="mi">1</span><span class="mf">.5</span><span class="kt">em</span><span class="o">,</span><span class="mi">1</span><span class="kt">em</span><span class="p">)</span> <span class="p">{</span>
   <span class="nc">.new-grid</span> <span class="p">{</span> <span class="k">@include</span><span class="nd"> container</span><span class="p">;</span> <span class="p">}</span>
 <span class="p">}</span><span class="o">;</span>
@@ -340,13 +346,65 @@ and set <code>$border-box-sizing</code> to <code>true</code>.
 You can use the variable on it's own to adjust the grid math,
 in cases where you want to apply the box-model separately.</p>
 
+<h3><a href="#ref-helper-isolation" id="ref-helper-isolation">Isolation</a></h3>
+
+<h4><a href="#ref-isolate" id="ref-isolate">Isolate</a></h4>
+
+<p>Isolate the position of a grid element relative to the container.
+This should be used in addition to <code>span-columns</code>
+as a way of minimizing sub-pixel rounding errors in specific trouble locations.</p>
+
+<div class="highlight"><pre><span class="c1">// isolate(&lt;$location&gt; [, &lt;$context&gt;, &lt;$from&gt;, &lt;$style&gt;])</span>
+<span class="k">@include</span><span class="nd"> span-columns</span><span class="p">(</span><span class="mi">4</span><span class="p">);</span> <span class="c1">// 4-columns wide</span>
+<span class="k">@include</span><span class="nd"> isolate</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span> <span class="c1">// positioned in the second column</span>
+</pre></div>
+
+<ul>
+<li>
+<code>&lt;$location&gt;</code>: The container-relative column number to position on.</li>
+<li>
+<code>&lt;$context&gt;</code>: Current nesting <em>Context</em>.
+Default: <code>$total-columns</code>.</li>
+<li>
+<code>&lt;$from&gt;</code>: The origin direction of your document flow.
+Default: <code>$from-direction</code>.</li>
+<li>
+<code>&lt;$style&gt;</code>: Optionally return <code>static</code> lengths for grid calculations.
+Default: <code>$container-style</code>.</li>
+</ul>
+<h4><a href="#ref-isolate-grid" id="ref-isolate-grid">Isolate Grid</a></h4>
+
+<p>Isolate a group of elements in an grid (such as an image gallery)
+using nth-child for positioning.
+Provide the column-width of each element,
+and Susy will determine the positioning for you.</p>
+
+<div class="highlight"><pre><span class="c1">// isolate-grid(&lt;$columns&gt; [, &lt;$context&gt;, &lt;$from&gt;, &lt;$style&gt;])</span>
+<span class="nc">.gallery-item</span> <span class="p">{</span>
+  <span class="k">@include</span><span class="nd"> isolate-grid</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+
+<ul>
+<li>
+<code>&lt;$columns&gt;</code>: The number of <em>Columns</em> for each item to span.</li>
+<li>
+<code>&lt;$context&gt;</code>: Current nesting <em>Context</em>.
+Default: <code>$total-columns</code>.</li>
+<li>
+<code>&lt;$from&gt;</code>: The origin direction of your document flow.
+Default: <code>$from-direction</code>.</li>
+<li>
+<code>&lt;$style&gt;</code>: Optionally return <code>static</code> lengths for grid calculations.
+Default: <code>$container-style</code>.</li>
+</ul>
 <h3><a href="#ref-helper-padding" id="ref-helper-padding">Padding Mixins</a></h3>
 
 <h4><a href="#ref-prefix" id="ref-prefix">Prefix</a></h4>
 
 <p>Add Columns of empty space as <code>padding</code> before an element.</p>
 
-<div class="highlight"><pre><span class="c1">// prefix(&lt;$columns&gt; [, &lt;$context&gt;, &lt;$from&gt;])</span>
+<div class="highlight"><pre><span class="c1">// prefix(&lt;$columns&gt; [, &lt;$context&gt;, &lt;$from&gt;, &lt;$style&gt;])</span>
 <span class="nc">.box</span> <span class="p">{</span> <span class="k">@include</span><span class="nd"> prefix</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span> <span class="p">}</span>
 </pre></div>
 
@@ -359,12 +417,15 @@ Default: <code>$total-columns</code>.</li>
 <li>
 <code>&lt;$from&gt;</code>: The origin direction of your document flow.
 Default: <code>$from-direction</code>.</li>
+<li>
+<code>&lt;$style&gt;</code>: Optionally return <code>static</code> lengths for grid calculations.
+Default: <code>$container-style</code>.</li>
 </ul>
 <h4><a href="#ref-suffix" id="ref-suffix">Suffix</a></h4>
 
 <p>Add columns of empty space as padding after an element.</p>
 
-<div class="highlight"><pre><span class="c1">// suffix(&lt;$columns&gt; [, &lt;$context&gt;, &lt;$from&gt;])</span>
+<div class="highlight"><pre><span class="c1">// suffix(&lt;$columns&gt; [, &lt;$context&gt;, &lt;$from&gt;, &lt;$style&gt;])</span>
 <span class="nc">.box</span> <span class="p">{</span> <span class="k">@include</span><span class="nd"> suffix</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span> <span class="p">}</span>
 </pre></div>
 
@@ -377,12 +438,15 @@ Default: <code>$total-columns</code>.</li>
 <li>
 <code>&lt;$from&gt;</code>: The origin direction of your document flow.
 Default: <code>$from-direction</code>.</li>
+<li>
+<code>&lt;$style&gt;</code>: Optionally return <code>static</code> lengths for grid calculations.
+Default: <code>$container-style</code>.</li>
 </ul>
 <h4><a href="#ref-pad" id="ref-pad">Pad</a></h4>
 
 <p>Shortcut for adding both Prefix and Suffix <code>padding</code>.</p>
 
-<div class="highlight"><pre><span class="c1">// pad([&lt;$prefix&gt;, &lt;$suffix&gt;, &lt;$context&gt;, &lt;$from&gt;])</span>
+<div class="highlight"><pre><span class="c1">// pad([&lt;$prefix&gt;, &lt;$suffix&gt;, &lt;$context&gt;, &lt;$from&gt;, &lt;$style&gt;])</span>
 <span class="nc">.box</span> <span class="p">{</span> <span class="k">@include</span><span class="nd"> pad</span><span class="p">(</span><span class="mi">3</span><span class="o">,</span><span class="mi">2</span><span class="p">);</span> <span class="p">}</span>
 </pre></div>
 
@@ -397,6 +461,32 @@ Default: <code>$total-columns</code>.</li>
 <li>
 <code>&lt;$from&gt;</code>: The origin direction of your document flow.
 Default: <code>$from-direction</code>.</li>
+<li>
+<code>&lt;$style&gt;</code>: Optionally return <code>static</code> lengths for grid calculations.
+Default: <code>$container-style</code>.</li>
+</ul>
+<h4><a href="#ref-bleed" id="ref-bleed">Bleed</a></h4>
+
+<p>Add negative margins and matching positive padding to an element,
+so that its background "bleeds" outside its natural position.</p>
+
+<div class="highlight"><pre><span class="c1">// bleed(&lt;$width&gt; [&lt;$sides&gt;, &lt;$style&gt;])</span>
+<span class="k">@include</span><span class="nd"> bleed</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+</pre></div>
+
+<ul>
+<li>
+<code>&lt;$width&gt;</code>: The number of <em>Columns</em> or arbitrary length to bleed.
+Use <code>2 of 12</code> syntax for context in nested situations.</li>
+<li>
+<code>&lt;$sides&gt;</code>: The sides of the element that should bleed.
+Default: <code>left right</code>.</li>
+<li>
+<code>&lt;$style&gt;</code>: Optionally return <code>static</code> lengths for grid calculations.
+Default: <code>$container-style</code>.</li>
+<li>
+<code>&lt;$style&gt;</code>: Optionally return <code>static</code> lengths for grid calculations.
+Default: <code>$container-style</code>.</li>
 </ul>
 <h3><a href="#ref-helper-margin" id="ref-helper-margin">Margin Mixins</a></h3>
 
@@ -404,7 +494,7 @@ Default: <code>$from-direction</code>.</li>
 
 <p>Add columns of empty space as margin before an element.</p>
 
-<div class="highlight"><pre><span class="c1">// pre(&lt;$columns&gt; [, &lt;$context&gt;, &lt;$from&gt;])</span>
+<div class="highlight"><pre><span class="c1">// pre(&lt;$columns&gt; [, &lt;$context&gt;, &lt;$from&gt;, &lt;$style&gt;])</span>
 <span class="nc">.box</span> <span class="p">{</span> <span class="k">@include</span><span class="nd"> pre</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span> <span class="p">}</span>
 </pre></div>
 
@@ -417,12 +507,15 @@ Default: <code>$total-columns</code>.</li>
 <li>
 <code>&lt;$from&gt;</code>: The origin direction of your document flow.
 Default: <code>$from-direction</code>.</li>
+<li>
+<code>&lt;$style&gt;</code>: Optionally return <code>static</code> lengths for grid calculations.
+Default: <code>$container-style</code>.</li>
 </ul>
 <h4><a href="#ref-post" id="ref-post">Post</a></h4>
 
 <p>Add columns of empty space as margin after an element.</p>
 
-<div class="highlight"><pre><span class="c1">// post(&lt;$columns&gt; [, &lt;$context&gt;, &lt;$from&gt;])</span>
+<div class="highlight"><pre><span class="c1">// post(&lt;$columns&gt; [, &lt;$context&gt;, &lt;$from&gt;, &lt;$style&gt;])</span>
 <span class="nc">.box</span> <span class="p">{</span> <span class="k">@include</span><span class="nd"> post</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span> <span class="p">}</span>
 </pre></div>
 
@@ -435,12 +528,15 @@ Default: <code>$total-columns</code>.</li>
 <li>
 <code>&lt;$from&gt;</code>: The origin direction of your document flow.
 Default: <code>$from-direction</code>.</li>
+<li>
+<code>&lt;$style&gt;</code>: Optionally return <code>static</code> lengths for grid calculations.
+Default: <code>$container-style</code>.</li>
 </ul>
 <h4><a href="#ref-squish" id="ref-squish">Squish</a></h4>
 
 <p>Shortcut to add empty space as margin before and after an element.</p>
 
-<div class="highlight"><pre><span class="c1">// squish([&lt;$pre&gt;, &lt;$post&gt;, &lt;$context&gt;, &lt;$from&gt;])</span>
+<div class="highlight"><pre><span class="c1">// squish([&lt;$pre&gt;, &lt;$post&gt;, &lt;$context&gt;, &lt;$from&gt;, &lt;$style&gt;])</span>
 <span class="nc">.box</span> <span class="p">{</span> <span class="k">@include</span><span class="nd"> squish</span><span class="p">(</span><span class="mi">2</span><span class="o">,</span><span class="mi">3</span><span class="p">);</span> <span class="p">}</span>
 </pre></div>
 
@@ -455,12 +551,15 @@ Default: <code>$total-columns</code>.</li>
 <li>
 <code>&lt;$from&gt;</code>: The origin direction of your document flow.
 Default: <code>$from-direction</code>.</li>
+<li>
+<code>&lt;$style&gt;</code>: Optionally return <code>static</code> lengths for grid calculations.
+Default: <code>$container-style</code>.</li>
 </ul>
 <h4><a href="#ref-push" id="ref-push">Push</a></h4>
 
 <p>Identical to <a href="#ref-pre">pre</a>.</p>
 
-<div class="highlight"><pre><span class="c1">// push(&lt;$columns&gt; [, &lt;$context&gt;, &lt;$from&gt;])</span>
+<div class="highlight"><pre><span class="c1">// push(&lt;$columns&gt; [, &lt;$context&gt;, &lt;$from&gt;, &lt;$style&gt;])</span>
 <span class="nc">.box</span> <span class="p">{</span> <span class="k">@include</span><span class="nd"> push</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span> <span class="p">}</span>
 </pre></div>
 
@@ -468,7 +567,7 @@ Default: <code>$from-direction</code>.</li>
 
 <p>Add negative margins before an element, to pull it against the flow.</p>
 
-<div class="highlight"><pre><span class="c1">// pull(&lt;$columns&gt; [, &lt;$context&gt;, &lt;$from&gt;])</span>
+<div class="highlight"><pre><span class="c1">// pull(&lt;$columns&gt; [, &lt;$context&gt;, &lt;$from&gt;, &lt;$style&gt;])</span>
 <span class="nc">.box</span> <span class="p">{</span> <span class="k">@include</span><span class="nd"> pull</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span> <span class="p">}</span>
 </pre></div>
 
@@ -481,6 +580,9 @@ Default: <code>$total-columns</code>.</li>
 <li>
 <code>&lt;$from&gt;</code>: The origin direction of your document flow.
 Default: <code>$from-direction</code>.</li>
+<li>
+<code>&lt;$style&gt;</code>: Optionally return <code>static</code> lengths for grid calculations.
+Default: <code>$container-style</code>.</li>
 </ul>
 <h3><a href="#ref-helper-reset" id="ref-helper-reset">Reset Mixins</a></h3>
 
@@ -507,7 +609,7 @@ to match non-omega grid elements.
 Note that unlike omega,
 this requires a context when nested.</p>
 
-<div class="highlight"><pre><span class="c1">// remove-omega([&lt;$context&gt;, &lt;$from&gt;])</span>
+<div class="highlight"><pre><span class="c1">// remove-omega([&lt;$context&gt;, &lt;$from&gt;, &lt;$style&gt;])</span>
 <span class="nc">.gallery-image</span> <span class="p">{</span>
   <span class="k">&amp;</span><span class="nd">:nth-child</span><span class="o">(</span><span class="nt">3n</span><span class="o">)</span> <span class="p">{</span> <span class="k">@include</span><span class="nd"> remove-omega</span><span class="p">;</span> <span class="p">}</span> <span class="c1">// 3rd images no longer complete rows.</span>
 <span class="p">}</span>
@@ -520,6 +622,9 @@ Default: <code>$total-columns</code>.</li>
 <li>
 <code>&lt;$from&gt;</code>: The origin direction of your document flow.
 Default: <code>$from-direction</code>.</li>
+<li>
+<code>&lt;$style&gt;</code>: Optionally return <code>static</code> lengths for grid calculations.
+Default: <code>$container-style</code>.</li>
 </ul>
 <h4><a href="#ref-remove-nth-omega" id="ref-remove-nth-omega">Remove Nth-Omega</a></h4>
 
@@ -529,7 +634,7 @@ to match non-omega grid elements.
 Note that unlike omega,
 this requires a context when nested.</p>
 
-<div class="highlight"><pre><span class="c1">// remove-nth-omega([&lt;$n&gt;, &lt;$selector&gt;, &lt;$context&gt;, &lt;$from&gt;])</span>
+<div class="highlight"><pre><span class="c1">// remove-nth-omega([&lt;$n&gt;, &lt;$selector&gt;, &lt;$context&gt;, &lt;$from&gt;, &lt;$style&gt;])</span>
 <span class="nc">.gallery-image</span> <span class="p">{</span>
   <span class="k">@include</span><span class="nd"> remove-nth-omega</span><span class="p">(</span><span class="mi">3</span><span class="kt">n</span><span class="p">);</span> <span class="c1">// same as remove-omega example above.</span>
 <span class="p">}</span>
@@ -551,6 +656,9 @@ Default: <code>$total-columns</code>.</li>
 <li>
 <code>&lt;$from&gt;</code>: The origin direction of your document flow.
 Default: <code>$from-direction</code>.</li>
+<li>
+<code>&lt;$style&gt;</code>: Optionally return <code>static</code> lengths for grid calculations.
+Default: <code>$container-style</code>.</li>
 </ul>
 <h3><a href="#ref-helper-other" id="ref-helper-other">Other Mixins</a></h3>
 
@@ -580,7 +688,7 @@ that you can put where you want, and use for advanced math.</p>
 <p>Similar to <a href="#ref-span-columns">span-columns</a> mixin,
 but returns the math-ready <code>%</code> multiplier.</p>
 
-<div class="highlight"><pre><span class="c1">// columns(&lt;$columns&gt; [, &lt;$context&gt;])</span>
+<div class="highlight"><pre><span class="c1">// columns(&lt;$columns&gt; [, &lt;$context&gt;, &lt;$style&gt;])</span>
 <span class="nc">.item</span> <span class="p">{</span> <span class="na">width</span><span class="o">:</span> <span class="nf">columns</span><span class="p">(</span><span class="mi">3</span><span class="o">,</span><span class="mi">6</span><span class="p">);</span> <span class="p">}</span>
 </pre></div>
 
@@ -590,12 +698,15 @@ but returns the math-ready <code>%</code> multiplier.</p>
 <li>
 <code>&lt;$context&gt;</code>: The <em>Context</em>.
 Default: <code>$total-columns</code>.</li>
+<li>
+<code>&lt;$style&gt;</code>: Optionally return <code>static</code> lengths for grid calculations.
+Default: <code>$container-style</code>.</li>
 </ul>
 <h4><a href="#ref-gutter" id="ref-gutter">Gutter</a></h4>
 
 <p>The <code>%</code> width of one gutter in any given context.</p>
 
-<div class="highlight"><pre><span class="c1">// gutter([&lt;$context&gt;])</span>
+<div class="highlight"><pre><span class="c1">// gutter([&lt;$context&gt;, &lt;$style&gt;])</span>
 <span class="nc">.item</span> <span class="p">{</span> <span class="na">margin-right</span><span class="o">:</span> <span class="nf">gutter</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span> <span class="o">+</span> <span class="nf">columns</span><span class="p">(</span><span class="mi">3</span><span class="o">,</span><span class="mi">6</span><span class="p">);</span> <span class="p">}</span>
 </pre></div>
 
@@ -603,12 +714,15 @@ Default: <code>$total-columns</code>.</li>
 <li>
 <code>&lt;$context&gt;</code>: The <em>Context</em>.
 Default: <code>$total-columns</code>.</li>
+<li>
+<code>&lt;$style&gt;</code>: Optionally return <code>static</code> lengths for grid calculations.
+Default: <code>$container-style</code>.</li>
 </ul>
 <h4><a href="#ref-space" id="ref-space">Space</a></h4>
 
 <p>Total <code>%</code> space taken by Columns, including internal AND external gutters.</p>
 
-<div class="highlight"><pre><span class="c1">// space(&lt;$columns&gt; [, &lt;$context&gt;])</span>
+<div class="highlight"><pre><span class="c1">// space(&lt;$columns&gt; [, &lt;$context&gt;, &lt;$style&gt;])</span>
 <span class="nc">.item</span> <span class="p">{</span> <span class="na">margin-right</span><span class="o">:</span> <span class="nf">space</span><span class="p">(</span><span class="mi">3</span><span class="o">,</span><span class="mi">6</span><span class="p">);</span> <span class="p">}</span>
 </pre></div>
 
@@ -618,6 +732,9 @@ Default: <code>$total-columns</code>.</li>
 <li>
 <code>&lt;$context&gt;</code>: The <em>Context</em>.
 Default: <code>$total-columns</code>.</li>
+<li>
+<code>&lt;$style&gt;</code>: Optionally return <code>static</code> lengths for grid calculations.
+Default: <code>$container-style</code>.</li>
 </ul>
 <h3><a href="#ref-container-override" id="ref-container-override">Container Override Settings</a></h3>
 
@@ -729,7 +846,7 @@ although only IE6 and IE7 have special cases attached to them currently.</p>
 <code>&lt;boolean&gt;</code>: <code>true</code> | <code>false</code>
 </li>
 </ul>
-<h3><a href="#ref-compass-options" id="ref-compass-options">Breakpoint Output</a></h3>
+<h3><a href="#ref-breakpoint-output" id="ref-breakpoint-output">Breakpoint Output</a></h3>
 
 <p>If you are compiling seperate files for IE-fallbacks,
 it can be useful to output only the modern code in one file
@@ -777,7 +894,7 @@ for IE-only stylesheets.</p>
 <li>
 <code>&lt;boolean&gt;</code>: <code>true</code> | <code>false</code>
 </li>
-</ul></section><aside class="secondary"><p class="version">Version <span>1.0.5</span></p> <h2><a href="#ref-basic">Basic Usage</a></h2> <h3><a href="#ref-basic-settings">Basic Settings</a></h3> <ul>
+</ul></section><aside class="secondary"><p class="version">Version <span>1.0.6</span></p> <h2><a href="#ref-basic">Basic Usage</a></h2> <h3><a href="#ref-basic-settings">Basic Settings</a></h3> <ul>
 <li><a href="#ref-total-columns">$total-columns</a></li>
   <li><a href="#ref-column-width">$column-width</a></li>
   <li><a href="#ref-gutter-width">$gutter-width</a></li>
@@ -801,10 +918,15 @@ for IE-only stylesheets.</p>
 <h2><a href="#ref-helper">Grid Helpers</a></h2> <h3><a href="#ref-helper-sizing">Box Sizing</a></h3> <ul>
 <li><a href="#ref-border-box-mixin">border-box-sizing()</a></li>
 </ul>
+<h3><a href="#ref-helper-isolation">Isolation</a></h3> <ul>
+<li><a href="#ref-isolate">isolate()</a></li>
+  <li><a href="#ref-isolate-grid">isolate-grid()</a></li>
+</ul>
 <h3><a href="#ref-helper-padding">Padding Mixins</a></h3> <ul>
 <li><a href="#ref-prefix">prefix()</a></li>
   <li><a href="#ref-suffix">suffix()</a></li>
   <li><a href="#ref-pad">pad()</a></li>
+  <li><a href="#ref-bleed">bleed()</a></li>
 </ul>
 <h3><a href="#ref-helper-margin">Margin Mixins</a></h3> <ul>
 <li><a href="#ref-pre">pre()</a></li>
@@ -838,7 +960,7 @@ for IE-only stylesheets.</p>
 <li><a href="#ref-base-font-size">$base-font-size</a></li>
   <li><a href="#ref-browser-support">$legacy-support-for-...</a></li>
 </ul>
-<h3><a href="#ref-compass-options">Breakpoint Output</a></h3> <ul>
+<h3><a href="#ref-breakpoint-output">Breakpoint Output</a></h3> <ul>
 <li><a href="#ref-media-output">$breakpoint-media-output</a></li>
   <li><a href="#ref-ie-output">$breakpoint-ie-output</a></li>
   <li><a href="#ref-raw-output">$breakpoint-raw-output</a></li>
@@ -850,8 +972,6 @@ for IE-only stylesheets.</p>
     and made easy with <a href="http://www.compass-style.org/">Compass</a>.
     You can use it anywhere,
     from static sites to Django, Rails, Wordpress and more.
-    It even comes packaged as part of
-    <a href="http://www.middlemanapp.com/">Middleman</a>, to make your life easy.
   </p>
   <p>
     This site was built with <span class="caps">HTML5</span> and

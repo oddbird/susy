@@ -12,7 +12,7 @@
 <link href="images/splash-iphone4.png" media="screen and (max-device-width: 480px) and (-webkit-min-device-pixel-ratio: 2)" rel="apple-touch-startup-image">
 <link href="images/splash-portrait.png" media="screen and (min-device-width: 768px) and (orientation: portrait)" rel="apple-touch-startup-image">
 <link href="images/splash-landscape.png" media="screen and (min-device-width: 768px) and (orientation: landscape)" rel="apple-touch-startup-image">
-<link type="text/css" rel="stylesheet" href="../stylesheets/site.css?1356048735" media="screen">
+<link type="text/css" href="../stylesheets/site.css?1363716541" rel="stylesheet" media="screen">
 <script type="text/javascript" src="../javascripts/modernizr-2.5.3.min.js?1340673619"></script><script type="text/javascript" src="../javascripts/modernizr.selectors.js?1340673619"></script>
 </head>
 <body class="guides guides_index" id="susy-oddbird-net">
@@ -83,6 +83,28 @@ compass create &lt;project name&gt; -r susy -u susy
 <div class="highlight"><pre><span class="c"># command line</span>
 bundle install
 </pre></div>
+
+<h3><a href="#start-yeoman" id="start-yeoman">Yeoman</a></h3>
+
+<p>Edit your <strong>Gruntfile.js</strong> at the root level of your project and look for the Compass related rules, add the following inside the options object:</p>
+
+<div class="highlight"><pre><span class="c1">// Gruntfile.js</span>
+<span class="nx">compass</span><span class="o">:</span> <span class="p">{</span>
+  <span class="nx">dist</span><span class="o">:</span> <span class="p">{</span>
+    <span class="nx">options</span><span class="o">:</span> <span class="p">{</span>
+      <span class="nx">config</span><span class="o">:</span> <span class="s1">'.config.rb'</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+<p>Now create a <strong>.config.rb</strong> file at the same level as your Gruntfile with this:</p>
+
+<div class="highlight"><pre><span class="c1"># .config.rb</span>
+<span class="nb">require</span> <span class="s2">"susy"</span>
+</pre></div>
+
+<p>And you are good to go!</p>
 
 <h3><a href="#start-manual" id="start-manual">Manual Start</a></h3>
 
@@ -279,7 +301,7 @@ gem install bundler
 <p>Add Susy to your <code>Gemfile</code>
 (<a href="http://gembundler.com/gemfile.html">more info on Gemfiles</a>):</p>
 
-<div class="highlight"><pre><span class="n">gem</span> <span class="s2">"susy"</span><span class="p">,</span> <span class="s2">"~&gt; 1.0.5"</span>
+<div class="highlight"><pre><span class="n">gem</span> <span class="s2">"susy"</span><span class="p">,</span> <span class="s2">"~&gt; 1.0.6"</span>
 </pre></div>
 
 <p>And finally run your bundle:</p>
@@ -287,9 +309,10 @@ gem install bundler
 <div class="highlight"><pre><span class="c"># command line</span>
 bundle
 </pre></div>
-      </section><aside class="secondary"><p class="version">Version <span>1.0.5</span></p> <h2><a href="#start-install">Installation</a></h2> <ul>
+      </section><aside class="secondary"><p class="version">Version <span>1.0.6</span></p> <h2><a href="#start-install">Installation</a></h2> <ul>
 <li><a href="#start-compass">Compass</a></li>
           <li><a href="#start-rails">Rails 3.x</a></li>
+          <li><a href="#start-yeoman">Yeoman</a></li>
           <li><a href="#start-simple">Manual Start</a></li>
         </ul>
 <h2><a href="#start-usage">Usage</a></h2> <ul>
@@ -310,8 +333,6 @@ bundle
     and made easy with <a href="http://www.compass-style.org/">Compass</a>.
     You can use it anywhere,
     from static sites to Django, Rails, Wordpress and more.
-    It even comes packaged as part of
-    <a href="http://www.middlemanapp.com/">Middleman</a>, to make your life easy.
   </p>
   <p>
     This site was built with <span class="caps">HTML5</span> and

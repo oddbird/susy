@@ -30,6 +30,24 @@ $rem-with-px-fallback               : true !default;
 }
 
 // ---------------------------------------------------------------------------
+// Don't use static output when it will break things
+
+// Switch element-level output to fluid, when container-width is wrong for static
+//
+// fix-static-misalignment([$style, $width])
+// - $style: $container-style.
+// - $width: $container-width.
+@function fix-static-misalignment(
+  $style: $container-style,
+  $width: $container-width
+) {
+  @if $container-width and $container-width != container-outer-width($width: false) {
+    $style: fluid;
+  }
+  @return $style;
+}
+
+// ---------------------------------------------------------------------------
 // Grid Functions
 
 // Returns the full width of a grid based on your grid settings.
@@ -88,7 +106,7 @@ $rem-with-px-fallback               : true !default;
 //  $style    : The container style to use.
 @function column(
   $context  : $total-columns,
-  $style    : $container-style
+  $style    : fix-static-misalignment()
 ) {
   @return if($style == static, $column-width, relative-width($column-width, $context));
 }
@@ -101,7 +119,7 @@ $rem-with-px-fallback               : true !default;
 @function columns(
   $columns,
   $context  : $total-columns,
-  $style    : $container-style
+  $style    : fix-static-misalignment()
 ) {
   @return if($style == static, columns-width($columns), relative-width(columns-width($columns), $context));
 }
@@ -112,7 +130,7 @@ $rem-with-px-fallback               : true !default;
 //  $style    : The container style to use.
 @function gutter(
   $context  : $total-columns,
-  $style    : $container-style
+  $style    : fix-static-misalignment()
 ) {
   @return if($style == static, $gutter-width, relative-width($gutter-width, $context));
 }
@@ -137,7 +155,7 @@ $rem-with-px-fallback               : true !default;
 @function space(
   $columns,
   $context  : $total-columns,
-  $style    : $container-style
+  $style    : fix-static-misalignment()
 ) {
   @return columns($columns, $context, $style) + if($columns >= 1, gutter($context), 0);
 }

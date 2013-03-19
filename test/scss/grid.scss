@@ -57,3 +57,20 @@
 
 // Reset $border-box-sizing so it doesn't have other effects
 $border-box-sizing: false;
+
+/* ---------------------------------------------------------------------------
+/* Static output */
+
+$container-style: static;
+
+.static {
+  @include span-columns(2);
+}
+
+.force-fluid {
+  $container-width: 960px;
+  @include span-columns(2);
+  $container-width: false;
+}
+
+$container-style: magic;

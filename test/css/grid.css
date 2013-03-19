@@ -114,3 +114,19 @@
   *margin-left: -1em;
   display: inline;
 }
+
+/* ---------------------------------------------------------------------------
+/* Static output */
+.static {
+  width: 9em;
+  float: left;
+  margin-right: 1em;
+  display: inline;
+}
+
+.force-fluid {
+  width: 15.25424%;
+  float: left;
+  margin-right: 1.69492%;
+  display: inline;
+}

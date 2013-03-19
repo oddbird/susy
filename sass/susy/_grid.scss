@@ -112,7 +112,7 @@
   $context       : $total-columns,
   $padding       : false,
   $from          : $from-direction,
-  $style         : $container-style
+  $style         : fix-static-misalignment()
 ) {
   $from     : unquote($from);
   $to       : opposite-position($from);

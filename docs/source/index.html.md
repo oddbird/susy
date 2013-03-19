@@ -10,7 +10,7 @@
     reliable yet responsive.
   </p>
 </div>
-<section class="info">
+<div class="info">
   <p class="highlight">Recent News:</p>
   <ul class="news">
     <li class="newsitem">
@@ -39,11 +39,9 @@
       </a>
     </li>
   </ul>
-</section>
-<figure class="ag-test">
-  <figcaption>
-    <p>10-column <a href="http://oocss.org/grids_docs.html">complex nested grid AG test</a></p>
-  </figcaption>
+</div>
+<div class="ag-test">
+  <h2>10-column <a href="http://oocss.org/grids_docs.html">complex nested grid AG test</a></h2>
   <div class="ag1"><p><strong>ag1</strong> 2 of 10</p></div>
   <div class="ag2">
     <p><strong>ag2</strong> 6 of 10</p>
@@ -58,7 +56,7 @@
     </div>
   </div>
   <div class="ag3"><p><strong>ag3</strong> 2 of 10 (omega)</p></div>
-</figure>
+</div>
 
     :::scss
     // Complex AG grid, brought to you by Susy:
@@ -73,20 +71,20 @@
     .ag9 { @include span-columns(2 omega,4); }
     .ag10 { clear: both; }
 
-<section class="andmore">
+<div class="andmore">
   <h2>We're just getting warmed up.</h2>
   <p>
     Quickly add media-query breakpoints for new layouts with
     <a href="guides/reference/#ref-at-breakpoint">at-breakpoint</a>,
-    or create your own custom math
-    using Susy's full array of
+    or create your own math
+    using Susy's array of
     <a href="guides/reference/#ref-helper">grid helpers</a>.
     Build a one-off site in minutes,
-    or create your own scalable object-oriented grid library
+    or create your own scalable grid library
     for large projects.
   </p>
   <p>
     Susy provides the power-tools,
     what you build is up to you.
   </p>
-</section>
+</div>

@@ -8,13 +8,16 @@
   clear: both;
   background: $susy-background-dark-5;
 
-  div { 
+  div {
     @include border-radius(.25em);
-    min-height: rhythm(4); 
+    min-height: rhythm(4);
   }
-  figcaption p { 
+  h2 {
+    padding: rhythm(.5) rhythm(.25);
     font-size: 1em;
-    font-weight: bold; 
+    font-weight: bold;
+    color: $susy-bodycopy-dark-20;
+    text-align: center;
   }
   p {
     @include adjust-font-size-to($smallpx);
@@ -52,8 +55,8 @@
   .ag10 { clear: both; }
 
   + .highlight {
-    @include at-breakpoint(50em 10) { 
-      @include span-columns(5,10); 
+    @include at-breakpoint(50em 10) {
+      @include span-columns(5,10);
     }
   }
 }

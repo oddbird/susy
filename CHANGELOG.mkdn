@@ -1,8 +1,13 @@
 Susy Changelog
 ==============
 
+v1.0.7 [March 19, 2013]
+-----------------------
+
+* Fix edge-case where `$container-style` and `$container-width` cause conflict.
+
 v1.0.6 [March 18, 2013]
----------------------
+-----------------------
 
 * Add `isolate` and `isolate-grid` mixins.
 * Add `bleed` mixin.

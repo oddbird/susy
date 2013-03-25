@@ -27,7 +27,7 @@
   $style    : $container-style
 ) {
   $from     : unquote($from);
-  @include pre($columns,$context,$from)
+  @include pre($columns, $context, $from, $style);
 }
 
 // Apply negative 'columns' margin before an element to pull it along the grid.

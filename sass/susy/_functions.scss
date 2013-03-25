@@ -157,7 +157,7 @@ $rem-with-px-fallback               : true !default;
   $context  : $total-columns,
   $style    : fix-static-misalignment()
 ) {
-  @return columns($columns, $context, $style) + if($columns >= 1, gutter($context), 0);
+  @return columns($columns, $context, $style) + if($columns >= 1, gutter($context, $style), 0);
 }
 
 // Accept a list including column-count and (optional) position.

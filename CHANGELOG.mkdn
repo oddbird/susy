@@ -1,6 +1,11 @@
 Susy Changelog
 ==============
 
+v1.0.8 [March 25, 2013]
+-----------------------
+
+* Fix more edge mixed-unit conflicts with `container-style: static`.
+
 v1.0.7 [March 19, 2013]
 -----------------------
 

@@ -12,11 +12,11 @@ $amp-stack  : "BaskervilleAmp", $font-stack;
 @include font-face (
   'CenturyOldStyleFS',
   font-files(
-    'CenturyOldStyle-Regular-webfont.woff', 'woff',
-    'CenturyOldStyle-Regular-webfont.ttf', 'truetype',
-    'CenturyOldStyle-Regular-webfont.svg#webfont', 'svg'
+    'cos/CenturyOldStyle-Regular-webfont.woff', 'woff',
+    'cos/CenturyOldStyle-Regular-webfont.ttf', 'truetype',
+    'cos/CenturyOldStyle-Regular-webfont.svg#webfont', 'svg'
   ),
-  'CenturyOldStyle-Regular-webfont.eot',
+  'cos/CenturyOldStyle-Regular-webfont.eot',
   normal,
   normal
 );
@@ -24,11 +24,11 @@ $amp-stack  : "BaskervilleAmp", $font-stack;
 @include font-face (
   'CenturyOldStyleFS',
   font-files(
-    'CenturyOldStyle-Bold-webfont.woff', 'woff',
-    'CenturyOldStyle-Bold-webfont.ttf', 'truetype',
-    'CenturyOldStyle-Bold-webfont.svg#webfont', 'svg'
+    'cos/CenturyOldStyle-Bold-webfont.woff', 'woff',
+    'cos/CenturyOldStyle-Bold-webfont.ttf', 'truetype',
+    'cos/CenturyOldStyle-Bold-webfont.svg#webfont', 'svg'
   ),
-  'CenturyOldStyle-Bold-webfont.eot',
+  'cos/CenturyOldStyle-Bold-webfont.eot',
   bold,
   normal
 );
@@ -36,11 +36,11 @@ $amp-stack  : "BaskervilleAmp", $font-stack;
 @include font-face (
   'CenturyOldStyleFS',
   font-files(
-    'CenturyOldStyle-Italic-webfont.woff', 'woff',
-    'CenturyOldStyle-Italic-webfont.ttf', 'truetype',
-    'CenturyOldStyle-Italic-webfont.svg#webfont', 'svg'
+    'cos/CenturyOldStyle-Italic-webfont.woff', 'woff',
+    'cos/CenturyOldStyle-Italic-webfont.ttf', 'truetype',
+    'cos/CenturyOldStyle-Italic-webfont.svg#webfont', 'svg'
   ),
-  'CenturyOldStyle-Italic-webfont.eot',
+  'cos/CenturyOldStyle-Italic-webfont.eot',
   normal,
   italic
 );
@@ -48,11 +48,11 @@ $amp-stack  : "BaskervilleAmp", $font-stack;
 @include font-face (
   'CenturyOldStyleFSCaps',
   font-files(
-    'CenturyOldStyleCaps-Regular-webfont.woff', 'woff',
-    'CenturyOldStyleCaps-Regular-webfont.ttf', 'truetype',
-    'CenturyOldStyleCaps-Regular-webfont.svg#webfont', 'svg'
+    'cos/CenturyOldStyleCaps-Regular-webfont.woff', 'woff',
+    'cos/CenturyOldStyleCaps-Regular-webfont.ttf', 'truetype',
+    'cos/CenturyOldStyleCaps-Regular-webfont.svg#webfont', 'svg'
   ),
-  'CenturyOldStyleCaps-Regular-webfont.eot',
+  'cos/CenturyOldStyleCaps-Regular-webfont.eot',
   normal,
   normal
 );
@@ -60,11 +60,11 @@ $amp-stack  : "BaskervilleAmp", $font-stack;
 @include font-face (
   'BaskervilleAmp',
   font-files(
-    'Baskerville-amp-webfont.woff', 'woff',
-    'Baskerville-amp-webfont.ttf', 'truetype',
-    'Baskerville-amp-webfont.svg#webfont', 'svg'
+    'amp/Baskerville-amp-webfont.woff', 'woff',
+    'amp/Baskerville-amp-webfont.ttf', 'truetype',
+    'amp/Baskerville-amp-webfont.svg#webfont', 'svg'
   ),
-  'Baskerville-amp-webfont.eot',
+  'amp/Baskerville-amp-webfont.eot',
   normal,
   normal
 );

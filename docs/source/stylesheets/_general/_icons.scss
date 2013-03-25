@@ -1,11 +1,11 @@
 @include font-face (
   'susy',
   font-files(
-    'susy.svg#susy', svg,
-    'susy.woff', woff,
-    'susy.ttf', truetype
+    'icons/susy.svg#susy', svg,
+    'icons/susy.woff', woff,
+    'icons/susy.ttf', truetype
   ),
-  'susy.eot',
+  'icons/susy.eot',
   normal,
   normal
 );

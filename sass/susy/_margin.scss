@@ -13,7 +13,7 @@
   $columns,
   $context  : $total-columns,
   $from     : $from-direction,
-  $style    : $container-style
+  $style    : fix-static-misalignment()
 ) {
   $from     : unquote($from);
   margin-#{$from}: space($columns, $context, $style);
@@ -24,7 +24,7 @@
   $columns,
   $context  : $total-columns,
   $from     : $from-direction,
-  $style    : $container-style
+  $style    : fix-static-misalignment()
 ) {
   $from     : unquote($from);
   @include pre($columns, $context, $from, $style);
@@ -42,7 +42,7 @@
   $columns,
   $context  : $total-columns,
   $from     : $from-direction,
-  $style    : $container-style
+  $style    : fix-static-misalignment()
 ) {
   $from     : unquote($from);
   margin-#{$from}: 0 - space($columns, $context, $style);
@@ -60,7 +60,7 @@
   $columns,
   $context  : $total-columns,
   $from     : $from-direction,
-  $style    : $container-style
+  $style    : fix-static-misalignment()
 ) {
   $from     : unquote($from);
   $to : opposite-position($from);
@@ -81,7 +81,7 @@
   $post     : false,
   $context  : $total-columns,
   $from     : $from-direction,
-  $style    : $container-style
+  $style    : fix-static-misalignment()
 ) {
   $from     : unquote($from);
   @if $pre {

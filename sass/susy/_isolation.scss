@@ -10,7 +10,7 @@
   $location,
   $context: $total-columns,
   $from: $from-direction,
-  $style: $container-style
+  $style: fix-static-misalignment()
 ) {
   $to: opposite-position($from);
   margin-#{$to}: -100%;
@@ -26,7 +26,7 @@
   $columns,
   $context: $total-columns,
   $from: $from-direction,
-  $style: $container-style
+  $style: fix-static-misalignment()
 ) {
   $to: opposite-position($from);
   $location: 1;

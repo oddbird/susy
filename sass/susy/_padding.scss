@@ -12,7 +12,7 @@
   $columns,
   $context  : $total-columns,
   $from     : $from-direction,
-  $style    : $container-style
+  $style    : fix-static-misalignment()
 ) {
   $from           : unquote($from);
   padding-#{$from}: space($columns, $context, $style);
@@ -29,7 +29,7 @@
   $columns,
   $context  : $total-columns,
   $from     : $from-direction,
-  $style    : $container-style
+  $style    : fix-static-misalignment()
 ) {
   $from         : unquote($from);
   $to           : opposite-position($from);
@@ -48,7 +48,7 @@
   $suffix   : false,
   $context  : $total-columns,
   $from     : $from-direction,
-  $style    : $container-style
+  $style    : fix-static-misalignment()
 ) {
   $from     : unquote($from);
   @if $prefix {
@@ -69,7 +69,7 @@
 @mixin bleed(
   $width: $grid-padding,
   $sides: left right,
-  $style: $container-style
+  $style: fix-static-misalignment()
 ) {
   @if $border-box-sizing { @include box-sizing(content-box) }
 

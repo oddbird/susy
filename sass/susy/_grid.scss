@@ -217,7 +217,7 @@
 @mixin remove-omega(
   $context  : $total-columns,
   $from     : $from-direction,
-  $style    : $container-style
+  $style    : fix-static-misalignment()
 ) {
   $from   : unquote($from);
   $to     : opposite-position($from);
@@ -243,7 +243,7 @@
   $selector : child,
   $context  : $total-columns,
   $from     : $from-direction,
-  $style    : $container-style
+  $style    : fix-static-misalignment()
 ) {
   $from     : unquote($from);
   $ie: if($n == "first", true, false);

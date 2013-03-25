@@ -12,7 +12,7 @@
 <link href="images/splash-iphone4.png" media="screen and (max-device-width: 480px) and (-webkit-min-device-pixel-ratio: 2)" rel="apple-touch-startup-image">
 <link href="images/splash-portrait.png" media="screen and (min-device-width: 768px) and (orientation: portrait)" rel="apple-touch-startup-image">
 <link href="images/splash-landscape.png" media="screen and (min-device-width: 768px) and (orientation: landscape)" rel="apple-touch-startup-image">
-<link type="text/css" href="../stylesheets/site.css?1363738063" rel="stylesheet" media="screen">
+<link type="text/css" rel="stylesheet" href="../stylesheets/site.css?1364240694" media="screen">
 <script type="text/javascript" src="../javascripts/modernizr-2.5.3.min.js?1340673619"></script><script type="text/javascript" src="../javascripts/modernizr.selectors.js?1340673619"></script>
 </head>
 <body class="tutorial tutorial_index" id="susy-oddbird-net">
@@ -44,51 +44,51 @@
             <a href="http://twitter.com/compasssusy/">Twitter</a>
           </li>
         </ul></nav><section role="main"><h2><a href="#start-install" id="start-install">Installation</a></h2>
-
-<h3><a href="#start-compass" id="start-compass">Compass</a></h3>
-
-<p>Install from the command line:</p>
-
-<div class="highlight"><pre><span class="c"># command line</span>
+        
+        <h3><a href="#start-compass" id="start-compass">Compass</a></h3>
+        
+        <p>Install from the command line:</p>
+        
+        <div class="highlight"><pre><span class="c"># command line</span>
 gem install susy
 </pre></div>
-
-<p>Create a new <a href="http://compass-style.org/">Compass</a> project:</p>
-
-<div class="highlight"><pre><span class="c"># command line</span>
+        
+        <p>Create a new <a href="http://compass-style.org/">Compass</a> project:</p>
+        
+        <div class="highlight"><pre><span class="c"># command line</span>
 compass create &lt;project name&gt; -r susy -u susy
 </pre></div>
-
-<p>Or update an existing <a href="http://compass-style.org/">Compass</a> project:</p>
-
-<div class="highlight"><pre><span class="c1"># config.rb</span>
+        
+        <p>Or update an existing <a href="http://compass-style.org/">Compass</a> project:</p>
+        
+        <div class="highlight"><pre><span class="c1"># config.rb</span>
 <span class="nb">require</span> <span class="s2">"susy"</span>
 </pre></div>
-
-<h3><a href="#start-rails" id="start-rails">Rails 3.x</a></h3>
-
-<div class="highlight"><pre><span class="c1"># Gemfile</span>
+        
+        <h3><a href="#start-rails" id="start-rails">Rails 3.x</a></h3>
+        
+        <div class="highlight"><pre><span class="c1"># Gemfile</span>
 <span class="n">gem</span> <span class="s2">"susy"</span>
 </pre></div>
-
-<p>You may also need:</p>
-
-<div class="highlight"><pre><span class="c1"># Gemfile</span>
+        
+        <p>You may also need:</p>
+        
+        <div class="highlight"><pre><span class="c1"># Gemfile</span>
 <span class="n">gem</span> <span class="s1">'compass'</span><span class="p">,</span> <span class="s1">'&gt;= 0.12.2'</span>
 <span class="n">gem</span> <span class="s1">'compass-rails'</span><span class="p">,</span> <span class="s1">'&gt;= 1.0.3'</span>
 </pre></div>
-
-<p>And run:</p>
-
-<div class="highlight"><pre><span class="c"># command line</span>
+        
+        <p>And run:</p>
+        
+        <div class="highlight"><pre><span class="c"># command line</span>
 bundle install
 </pre></div>
-
-<h3><a href="#start-yeoman" id="start-yeoman">Yeoman</a></h3>
-
-<p>Edit your <strong>Gruntfile.js</strong> at the root level of your project and look for the Compass related rules, add the following inside the options object:</p>
-
-<div class="highlight"><pre><span class="c1">// Gruntfile.js</span>
+        
+        <h3><a href="#start-yeoman" id="start-yeoman">Yeoman</a></h3>
+        
+        <p>Edit your <strong>Gruntfile.js</strong> at the root level of your project and look for the Compass related rules, add the following inside the options object:</p>
+        
+        <div class="highlight"><pre><span class="c1">// Gruntfile.js</span>
 <span class="nx">compass</span><span class="o">:</span> <span class="p">{</span>
   <span class="nx">dist</span><span class="o">:</span> <span class="p">{</span>
     <span class="nx">options</span><span class="o">:</span> <span class="p">{</span>
@@ -97,53 +97,53 @@ bundle install
   <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
-
-<p>Now create a <strong>.config.rb</strong> file at the same level as your Gruntfile with this:</p>
-
-<div class="highlight"><pre><span class="c1"># .config.rb</span>
+        
+        <p>Now create a <strong>.config.rb</strong> file at the same level as your Gruntfile with this:</p>
+        
+        <div class="highlight"><pre><span class="c1"># .config.rb</span>
 <span class="nb">require</span> <span class="s2">"susy"</span>
 </pre></div>
-
-<p>And you are good to go!</p>
-
-<h3><a href="#start-manual" id="start-manual">Manual Start</a></h3>
-
-<p>You can use this method if you're not using Compass from Terminal and/or Rails. This is going to work with CodeKit.</p>
-
-<ul>
+        
+        <p>And you are good to go!</p>
+        
+        <h3><a href="#start-manual" id="start-manual">Manual Start</a></h3>
+        
+        <p>You can use this method if you're not using Compass from Terminal and/or Rails. This is going to work with CodeKit.</p>
+        
+        <ul>
 <li>Simply <a href="https://github.com/ericam/susy/archive/master.zip">download</a> the zip file from GitHub</li>
-<li>Copy the contents of the "sass" folder *feel free to remove everything else</li>
-<li>Paste the files in your projects "sass" folder (or whatever you call it)</li>
-<li>And import Susy! ( See <a href="#start-usage">Usage</a> )
-And you're good to go!</li>
-</ul>
+        <li>Copy the contents of the "sass" folder *feel free to remove everything else</li>
+        <li>Paste the files in your projects "sass" folder (or whatever you call it)</li>
+        <li>And import Susy! ( See <a href="#start-usage">Usage</a> )
+        And you're good to go!</li>
+        </ul>
 <h2><a href="#start-usage" id="start-usage">Usage</a></h2>
-
-<div class="highlight"><pre><span class="k">@import</span> <span class="s2">"susy"</span><span class="p">;</span>
+        
+        <div class="highlight"><pre><span class="k">@import</span> <span class="s2">"susy"</span><span class="p">;</span>
 </pre></div>
-
-<h3><a href="#start-settings" id="start-settings">Settings</a></h3>
-
-<p>Set up your default grid values: total columns, column width, and gutter width.</p>
-
-<div class="highlight"><pre><span class="na">$total-columns</span><span class="o">  :</span> <span class="mi">12</span><span class="p">;</span>             <span class="c1">// a 12-column grid</span>
-<span class="na">$column-width</span><span class="o">   :</span> <span class="mi">4</span><span class="kt">em</span><span class="p">;</span>            <span class="c1">// each column is 4em wide</span>
-<span class="na">$gutter-width</span><span class="o">   :</span> <span class="mi">1</span><span class="kt">em</span><span class="p">;</span>            <span class="c1">// 1em gutters between columns</span>
-<span class="na">$grid-padding</span><span class="o">   :</span> <span class="nv">$gutter-width</span><span class="p">;</span>  <span class="c1">// grid-padding equal to gutters</span>
+        
+        <h3><a href="#start-settings" id="start-settings">Settings</a></h3>
+        
+        <p>Set up your default grid values: total columns, column width, and gutter width.</p>
+        
+        <div class="highlight"><pre><span class="nv">$total-columns</span><span class="o">  :</span> <span class="mi">12</span><span class="p">;</span>             <span class="c1">// a 12-column grid</span>
+<span class="nv">$column-width</span><span class="o">   :</span> <span class="mi">4</span><span class="kt">em</span><span class="p">;</span>            <span class="c1">// each column is 4em wide</span>
+<span class="nv">$gutter-width</span><span class="o">   :</span> <span class="mi">1</span><span class="kt">em</span><span class="p">;</span>            <span class="c1">// 1em gutters between columns</span>
+<span class="nv">$grid-padding</span><span class="o">   :</span> <span class="nv">$gutter-width</span><span class="p">;</span>  <span class="c1">// grid-padding equal to gutters</span>
 </pre></div>
-
-<h3><a href="#start-basic" id="start-basic">Basic Grids</a></h3>
-
-<p>The basic Susy grid is composed using two simple mixins:</p>
-
-<ul>
+        
+        <h3><a href="#start-basic" id="start-basic">Basic Grids</a></h3>
+        
+        <p>The basic Susy grid is composed using two simple mixins:</p>
+        
+        <ul>
 <li>Use the <a href="../reference/#ref-container">container()</a> mixin to create your initial grid context.</li>
-<li>Use the <a href="../reference/#ref-span-columns">span-columns()</a> mixin to declare
-the width of an element on the grid.</li>
-</ul>
+        <li>Use the <a href="../reference/#ref-span-columns">span-columns()</a> mixin to declare
+        the width of an element on the grid.</li>
+        </ul>
 <p>Here's a simple page layout:</p>
-
-<div class="highlight"><pre><span class="nc">.page</span> <span class="p">{</span>
+        
+        <div class="highlight"><pre><span class="nc">.page</span> <span class="p">{</span>
   <span class="c1">// page acts as a container for our grid.</span>
   <span class="k">@include</span><span class="nd"> container</span><span class="p">;</span>
 
@@ -165,20 +165,20 @@ the width of an element on the grid.</li>
   <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
-
-<h3><a href="#start-responsive" id="start-responsive">Responsive Grids</a></h3>
-
-<p>Responsive Susy grids allow you to change the number of columns in a layout
-at different window sizes, using @media-queries with min and max widths.
-This requires one more mixin:</p>
-
-<ul>
+        
+        <h3><a href="#start-responsive" id="start-responsive">Responsive Grids</a></h3>
+        
+        <p>Responsive Susy grids allow you to change the number of columns in a layout
+        at different window sizes, using @media-queries with min and max widths.
+        This requires one more mixin:</p>
+        
+        <ul>
 <li>Use <a href="../reference/#ref-at-breakpoint">at-breakpoint()</a> to set different layouts
-at min- and max-width breakpoints.</li>
-</ul>
+        at min- and max-width breakpoints.</li>
+        </ul>
 <p>Here's a mobile-first example:</p>
-
-<div class="highlight"><pre><span class="na">$total-columns</span><span class="o">:</span> <span class="mi">4</span><span class="p">;</span>
+        
+        <div class="highlight"><pre><span class="nv">$total-columns</span><span class="o">:</span> <span class="mi">4</span><span class="p">;</span>
 
 <span class="nc">.page</span> <span class="p">{</span>
   <span class="c1">// Establish our default 4-column grid container.</span>
@@ -192,124 +192,124 @@ at min- and max-width breakpoints.</li>
   <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
-
-<h3><a href="#start-advanced" id="start-advanced">Advanced</a></h3>
-
-<p>Susy is built to handle your unique markup, and any number of edge cases.
-It includes the standard <a href="../reference/#ref-push">push()</a> and <a href="../reference/#ref-pull">pull()</a> mixins,
-along with other useful functions and shortcuts,
-support for various grid styles,
-and even bi-directional grids for multi-lingual sites.
-Check the <a href="../reference/">reference documentation</a> for details.</p>
-
-<h2><a href="#troubleshooting" id="troubleshooting">Troubleshooting</a></h2>
-
-<h3><a href="#troubleshooting-versions" id="troubleshooting-versions">Version Management</a></h3>
-
-<p>When you are working with bundled gems and dependencies
-across a number of different projects,
-managing gem versions can become an issue.</p>
-
-<p>If you are working in a <strong>Ruby</strong> environment,
-we recommend using <a href="http://rvm.io/rvm/install/">RVM</a>.
-See our <a href="#troubleshooting-rails-install">Rails troubleshooting</a>
-below for some basic instructions, or
-<a href="http://rvm.io/rvm/install/">dig into RVM's installation instructions</a>.</p>
-
-<p>In a <strong>Python</strong> environment,
-we recommend <a href="http://www.virtualenv.org/en/latest/index.html">virtualenv</a>
-in conjunction with these
-<a href="https://gist.github.com/1078601">"postactivate" and "predeactivate" scripts</a>
-to add support for Ruby gems.</p>
-
-<p>Once you have that in place,
-<a href="http://gembundler.com/">Bundler</a>
-can be used in either environment
-to manage the actual installation
-and updating of the gems.</p>
-
-<h3><a href="#troubleshooting-compass-install" id="troubleshooting-compass-install">Compass Install</a></h3>
-
-<p>The old gem and the new gem have different names,
-but are required simply as <code>susy</code>.
-That can cause a conflict if both gems are present.</p>
-
-<p>If you have installed Susy in the past,
-make sure you've uninstalled older versions:</p>
-
-<div class="highlight"><pre><span class="c"># command line</span>
+        
+        <h3><a href="#start-advanced" id="start-advanced">Advanced</a></h3>
+        
+        <p>Susy is built to handle your unique markup, and any number of edge cases.
+        It includes the standard <a href="../reference/#ref-push">push()</a> and <a href="../reference/#ref-pull">pull()</a> mixins,
+        along with other useful functions and shortcuts,
+        support for various grid styles,
+        and even bi-directional grids for multi-lingual sites.
+        Check the <a href="../reference/">reference documentation</a> for details.</p>
+        
+        <h2><a href="#troubleshooting" id="troubleshooting">Troubleshooting</a></h2>
+        
+        <h3><a href="#troubleshooting-versions" id="troubleshooting-versions">Version Management</a></h3>
+        
+        <p>When you are working with bundled gems and dependencies
+        across a number of different projects,
+        managing gem versions can become an issue.</p>
+        
+        <p>If you are working in a <strong>Ruby</strong> environment,
+        we recommend using <a href="http://rvm.io/rvm/install/">RVM</a>.
+        See our <a href="#troubleshooting-rails-install">Rails troubleshooting</a>
+        below for some basic instructions, or
+        <a href="http://rvm.io/rvm/install/">dig into RVM's installation instructions</a>.</p>
+        
+        <p>In a <strong>Python</strong> environment,
+        we recommend <a href="http://www.virtualenv.org/en/latest/index.html">virtualenv</a>
+        in conjunction with these
+        <a href="https://gist.github.com/1078601">"postactivate" and "predeactivate" scripts</a>
+        to add support for Ruby gems.</p>
+        
+        <p>Once you have that in place,
+        <a href="http://gembundler.com/">Bundler</a>
+        can be used in either environment
+        to manage the actual installation
+        and updating of the gems.</p>
+        
+        <h3><a href="#troubleshooting-compass-install" id="troubleshooting-compass-install">Compass Install</a></h3>
+        
+        <p>The old gem and the new gem have different names,
+        but are required simply as <code>susy</code>.
+        That can cause a conflict if both gems are present.</p>
+        
+        <p>If you have installed Susy in the past,
+        make sure you've uninstalled older versions:</p>
+        
+        <div class="highlight"><pre><span class="c"># command line</span>
 gem uninstall compass-susy-plugin
 <span class="c"># "compass-susy-plugin" was the gem name for 0.9.x and lower</span>
 <span class="c"># Susy 1.0 switches to "susy" as the gem name</span>
 </pre></div>
-
-<p>And then install 1.0:</p>
-
-<div class="highlight"><pre><span class="c"># command line</span>
+        
+        <p>And then install 1.0:</p>
+        
+        <div class="highlight"><pre><span class="c"># command line</span>
 gem install susy
 </pre></div>
-
-<p>Then use Compass as normal.</p>
-
-<h3><a href="#troubleshooting-rails-install" id="troubleshooting-rails-install">Rails 3.x Install</a></h3>
-
-<p>We recommend you use <a href="http://rvm.io">RVM</a>
-for using Susy with Rails projects.
-It has become the standard gem management system for Rails,
-it's very easy to install and use,
-and it helps create and manage Gemsets
-among different developers working on different branches.</p>
-
-<p><a href="http://rvm.io/rvm/best-practices/">Here are some RVM best practices</a>:</p>
-
-<p>If you have installed Susy in the past,
-make sure you've uninstalled older versions.
-See <a href="#troubleshooting-compass-install">Compass Install</a> above.</p>
-
-<p><a href="http://rvm.io/rvm/install/">Install RVM</a>
-(These are basics,
-if you do not have Ruby and Rails already installed in your environment,
-we <a href="http://rvm.io/rvm/install/">recommend you use RVM's installation instructions</a>):</p>
-
-<div class="highlight"><pre><span class="c"># command line</span>
+        
+        <p>Then use Compass as normal.</p>
+        
+        <h3><a href="#troubleshooting-rails-install" id="troubleshooting-rails-install">Rails 3.x Install</a></h3>
+        
+        <p>We recommend you use <a href="http://rvm.io">RVM</a>
+        for using Susy with Rails projects.
+        It has become the standard gem management system for Rails,
+        it's very easy to install and use,
+        and it helps create and manage Gemsets
+        among different developers working on different branches.</p>
+        
+        <p><a href="http://rvm.io/rvm/best-practices/">Here are some RVM best practices</a>:</p>
+        
+        <p>If you have installed Susy in the past,
+        make sure you've uninstalled older versions.
+        See <a href="#troubleshooting-compass-install">Compass Install</a> above.</p>
+        
+        <p><a href="http://rvm.io/rvm/install/">Install RVM</a>
+        (These are basics,
+        if you do not have Ruby and Rails already installed in your environment,
+        we <a href="http://rvm.io/rvm/install/">recommend you use RVM's installation instructions</a>):</p>
+        
+        <div class="highlight"><pre><span class="c"># command line</span>
 <span class="c"># from your system's root:</span>
 curl -L get.rvm.io | bash -s stable
 </pre></div>
-
-<p>Create a gemset for your site:</p>
-
-<div class="highlight"><pre><span class="c"># command line</span>
+        
+        <p>Create a gemset for your site:</p>
+        
+        <div class="highlight"><pre><span class="c"># command line</span>
 rvm gemset create fooBar
 </pre></div>
-
-<p>Create an <code>.rvmrc</code> file at your site's root:</p>
-
-<div class="highlight"><pre><span class="c"># .rvmrc</span>
+        
+        <p>Create an <code>.rvmrc</code> file at your site's root:</p>
+        
+        <div class="highlight"><pre><span class="c"># .rvmrc</span>
 rvm use 1.9.3@fooBar
 <span class="c"># Use whatever Ruby version number your app uses</span>
 </pre></div>
-
-<p>Now whenever you <code>cd</code> into your site's root,
-RVM will pick up and use that Gemset.</p>
-
-<p><code>cd</code> to your site and install <a href="http://gembundler.com/">Bundler</a>:</p>
-
-<div class="highlight"><pre><span class="c"># command line</span>
+        
+        <p>Now whenever you <code>cd</code> into your site's root,
+        RVM will pick up and use that Gemset.</p>
+        
+        <p><code>cd</code> to your site and install <a href="http://gembundler.com/">Bundler</a>:</p>
+        
+        <div class="highlight"><pre><span class="c"># command line</span>
 gem install bundler
 </pre></div>
-
-<p>Add Susy to your <code>Gemfile</code>
-(<a href="http://gembundler.com/gemfile.html">more info on Gemfiles</a>):</p>
-
-<div class="highlight"><pre><span class="n">gem</span> <span class="s2">"susy"</span><span class="p">,</span> <span class="s2">"~&gt; 1.0.7"</span>
+        
+        <p>Add Susy to your <code>Gemfile</code>
+        (<a href="http://gembundler.com/gemfile.html">more info on Gemfiles</a>):</p>
+        
+        <div class="highlight"><pre><span class="n">gem</span> <span class="s2">"susy"</span><span class="p">,</span> <span class="s2">"~&gt; 1.0.8"</span>
 </pre></div>
-
-<p>And finally run your bundle:</p>
-
-<div class="highlight"><pre><span class="c"># command line</span>
+        
+        <p>And finally run your bundle:</p>
+        
+        <div class="highlight"><pre><span class="c"># command line</span>
 bundle
 </pre></div>
-      </section><aside class="secondary"><p class="version">Version <span>1.0.7</span></p> <h2><a href="#start-install">Installation</a></h2> <ul>
+      </section><aside class="secondary"><p class="version">Version <span>1.0.8</span></p> <h2><a href="#start-install">Installation</a></h2> <ul>
 <li><a href="#start-compass">Compass</a></li>
           <li><a href="#start-rails">Rails 3.x</a></li>
           <li><a href="#start-yeoman">Yeoman</a></li>
@@ -326,49 +326,49 @@ bundle
           <li><a href="#troubleshooting-compass-install">Compass Install</a></li>
           <li><a href="#troubleshooting-rails-install">Rails 3.x  Install</a></li>
         </ul></aside><footer role="contentinfo"><div class="colophon">
-  <p>
-    Susy is based on Natalie Downe's
-    <a href="http://www.slideshare.net/nataliedowne/css-systems-presentation">CSS Systems</a>,
-    made possible by <a href="http://www.sass-lang.com/">Sass</a>,
-    and made easy with <a href="http://www.compass-style.org/">Compass</a>.
-    You can use it anywhere,
-    from static sites to Django, Rails, Wordpress and more.
-  </p>
-  <p>
-    This site was built with <span class="caps">HTML5</span> and
-    <span class="caps">CSS3</span>
-    using <a href="http://www.middlemanapp.com/">Middleman</a>,
-    <a href="http://www.compass-style.org/">Compass</a>,
-    <a href="http://www.sass-lang.com/">Sass</a>,
-    <a href="/">Susy</a>,
-    <a href="http://html5boilerplate.com/">HTML5 Boilerplate</a>,
-    <a href="http://www.modernizr.com/">Modernizr</a>,
-    <a href="https://github.com/scottkellum/modular-scale">Modular Scale</a>,
-    <a href="http://ethanschoonover.com/solarized">Solarized</a> colors,
-    <a href="http://pygments.org/">Pygments</a> syntax highlighting,
-    <a href="http://keyamoon.com/icomoon/">IcoMoon</a> icons,
-    and Franklin Gothic with Century OldStyle from
-    <a href="http://www.fontspring.com/">Fontspring</a>.
-  </p>
-  <p>
-    Susy was created by
-    <a href="http://github.com/ericam">Eric A. Meyer</a>
-    <span class="amp">&amp;</span> <a href="http://oddbird.net">OddBird</a>,
-    and is maintained with the help of
-    <a href="http://www.dannyprose.com">Danny Palmer</a>,
-    and a number of wonderful
-    <a href="https://github.com/ericam/susy/graphs/contributors">contributors</a>.
-    <a href="http://github.com/ericam/susy/">Get involved</a>!
-  </p>
-</div>
-
-<p class="license">
-  <a href="https://github.com/ericam/susy/blob/master/LICENSE.txt">
-    Copyright © 2012
-  </a>
-  <a href="http://eric.andmeyer.com/">Eric A. Meyer</a><br>
-  An <a href="http://oddbird.net/">OddBird</a> project.
-</p>
+          <p>
+            Susy is based on Natalie Downe's
+            <a href="http://www.slideshare.net/nataliedowne/css-systems-presentation">CSS Systems</a>,
+            made possible by <a href="http://www.sass-lang.com/">Sass</a>,
+            and made easy with <a href="http://www.compass-style.org/">Compass</a>.
+            You can use it anywhere,
+            from static sites to Django, Rails, Wordpress and more.
+          </p>
+          <p>
+            This site was built with <span class="caps">HTML5</span> and
+            <span class="caps">CSS3</span>
+            using <a href="http://www.middlemanapp.com/">Middleman</a>,
+            <a href="http://www.compass-style.org/">Compass</a>,
+            <a href="http://www.sass-lang.com/">Sass</a>,
+            <a href="/">Susy</a>,
+            <a href="http://html5boilerplate.com/">HTML5 Boilerplate</a>,
+            <a href="http://www.modernizr.com/">Modernizr</a>,
+            <a href="https://github.com/scottkellum/modular-scale">Modular Scale</a>,
+            <a href="http://ethanschoonover.com/solarized">Solarized</a> colors,
+            <a href="http://pygments.org/">Pygments</a> syntax highlighting,
+            <a href="http://keyamoon.com/icomoon/">IcoMoon</a> icons,
+            and Franklin Gothic with Century OldStyle from
+            <a href="http://www.fontspring.com/">Fontspring</a>.
+          </p>
+          <p>
+            Susy was created by
+            <a href="http://github.com/ericam">Eric A. Meyer</a>
+            <span class="amp">&amp;</span> <a href="http://oddbird.net">OddBird</a>,
+            and is maintained with the help of
+            <a href="http://www.dannyprose.com">Danny Palmer</a>,
+            and a number of wonderful
+            <a href="https://github.com/ericam/susy/graphs/contributors">contributors</a>.
+            <a href="http://github.com/ericam/susy/">Get involved</a>!
+          </p>
+        </div>
+        
+        <p class="license">
+          <a href="https://github.com/ericam/susy/blob/master/LICENSE.txt">
+            Copyright © 2012
+          </a>
+          <a href="http://eric.andmeyer.com/">Eric A. Meyer</a><br>
+          An <a href="http://oddbird.net/">OddBird</a> project.
+        </p>
       </footer><ul class="grid-toggle">
 <li class="on">
           <a href="#susy-oddbird-net">show grid</a>
@@ -378,13 +378,11 @@ bundle
         </li>
       </ul>
 </div>
-    <script type="text/javascript" src="../javascripts/jquery-1.7.1.min.js?1340673619"></script><script type="text/javascript" src="../javascripts/jqwidont.js?1340673619"></script><script type="text/javascript" src="../javascripts/viewport.js?1340673619"></script><script type="text/javascript">
-      //<![CDATA[
-        var _gaq=[['_setAccount','UA-30497331-1'],['_trackPageview']];
-        (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
-        g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
-        s.parentNode.insertBefore(g,s)}(document,'script'));
-      //]]>
+    <script type="text/javascript" src="../javascripts/jquery-1.7.1.min.js?1340673619"></script><script type="text/javascript" src="../javascripts/jqwidont.js?1340673619"></script><script type="text/javascript" src="../javascripts/viewport.js?1340673619"></script><script>
+      var _gaq=[['_setAccount','UA-30497331-1'],['_trackPageview']];
+      (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+      g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+      s.parentNode.insertBefore(g,s)}(document,'script'));
     </script>
 </body>
 </html>

@@ -19,13 +19,15 @@
 
 // Isolate a group of elements in a grid, using nth-child selectors
 //
-// $columns   : The column-width of each item on the grid;
-// $context   : [optional] The context (columns spanned by parent).
-// $from      : The start direction of your layout (e.g. 'left' for ltr languages)
+// $columns       : The column-width of each item on the grid;
+// $context       : [optional] The context (columns spanned by parent).
+// $from          : The start direction of your layout (e.g. 'left' for ltr languages)
+// $nth-selector  : [optional] change between 'child' or 'of-type' (default is 'child')
 @mixin isolate-grid(
   $columns,
   $context: $total-columns,
   $from: $from-direction,
+  $nth-selector: 'child',
   $style: fix-static-misalignment()
 ) {
   $to: opposite-position($from);
@@ -37,7 +39,7 @@
 
   @for $item from 1 through $line {
     $nth: '#{$line}n + #{$item}';
-    &:nth-child(#{$nth}) {
+    &:nth-#{$nth-selector}(#{$nth}) {
       margin-#{$from}: space($location - 1, $context, $style);
       @if $location == 1 { clear: $from; }
 

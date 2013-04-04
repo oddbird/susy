@@ -26,7 +26,7 @@ side_content: >
   <ul>
     <li><a href="#ref-at-breakpoint">at-breakpoint()</a></li>
     <li><a href="#ref-layout">layout()</a></li>
-    <li><a href="#ref-container-width">set-container-width()</a></li>
+    <li><a href="#ref-set-container-width">set-container-width()</a></li>
     <li><a href="#ref-with-settings">with-grid-settings()</a></li>
   </ul>
   <h2><a href="#ref-helper">Grid Helpers</a></h2>
@@ -277,7 +277,7 @@ Set an arbitrary Layout to use with any block of content.
 - `<$layout-cols>`: The number of _Columns_ to use in the _Layout_.
 - `<@content>`: Nested `@content` block will use the given _Layout_.
 
-#### <a href="#ref-container-width" id="ref-container-width">Set Container Width</a>
+#### <a href="#ref-set-container-width" id="ref-set-container-width">Set Container Width</a>
 Reset the width of a Container for a new Layout context.
 Can be used when `container()` has already been applied to an element,
 for DRYer output than simply using `container` again.

@@ -356,7 +356,7 @@ Provide the column-width of each element,
 and Susy will determine the positioning for you.
 
     :::scss
-    // isolate-grid(<$columns> [, <$context>, <$from>, <$nth-selector>, <$style>])
+    // isolate-grid(<$columns> [, <$context>, <$selector>, <$from>, <$style>])
     .gallery-item {
       @include isolate-grid(3);
     }
@@ -364,10 +364,10 @@ and Susy will determine the positioning for you.
 - `<$columns>`: The number of _Columns_ for each item to span.
 - `<$context>`: Current nesting _Context_.
   Default: `$total-columns`.
+- `<$selector>`: either 'child' or 'of-type'.
+  Default: `child`.
 - `<$from>`: The origin direction of your document flow.
   Default: `$from-direction`.
-- `<$nth-selector>`: either 'child' or 'of-type'.
-  Default: `child`.
 - `<$style>`: Optionally return `static` lengths for grid calculations.
   Default: `$container-style`.
 

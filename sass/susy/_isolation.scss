@@ -21,13 +21,13 @@
 //
 // $columns       : The column-width of each item on the grid;
 // $context       : [optional] The context (columns spanned by parent).
+// $selector      : [child | of-type | last-of-type ] (default is 'child')
 // $from          : The start direction of your layout (e.g. 'left' for ltr languages)
-// $nth-selector  : [optional] change between 'child' or 'of-type' (default is 'child')
 @mixin isolate-grid(
   $columns,
   $context: $total-columns,
+  $selector: 'child',
   $from: $from-direction,
-  $nth-selector: 'child',
   $style: fix-static-misalignment()
 ) {
   $to: opposite-position($from);
@@ -39,7 +39,7 @@
 
   @for $item from 1 through $line {
     $nth: '#{$line}n + #{$item}';
-    &:nth-#{$nth-selector}(#{$nth}) {
+    &:#{format-nth($nth,$selector)} {
       margin-#{$from}: space($location - 1, $context, $style);
       @if $location == 1 { clear: $from; }
 

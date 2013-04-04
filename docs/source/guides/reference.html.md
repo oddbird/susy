@@ -351,12 +351,12 @@ as a way of minimizing sub-pixel rounding errors in specific trouble locations.
 
 #### <a href="#ref-isolate-grid" id="ref-isolate-grid">Isolate Grid</a>
 Isolate a group of elements in an grid (such as an image gallery)
-using nth-child for positioning.
+using nth-child or nth-of-type for positioning.
 Provide the column-width of each element,
 and Susy will determine the positioning for you.
 
     :::scss
-    // isolate-grid(<$columns> [, <$context>, <$from>, <$style>])
+    // isolate-grid(<$columns> [, <$context>, <$selector>, <$from>, <$style>])
     .gallery-item {
       @include isolate-grid(3);
     }
@@ -364,6 +364,8 @@ and Susy will determine the positioning for you.
 - `<$columns>`: The number of _Columns_ for each item to span.
 - `<$context>`: Current nesting _Context_.
   Default: `$total-columns`.
+- `<$selector>`: either 'child' or 'of-type'.
+  Default: `child`.
 - `<$from>`: The origin direction of your document flow.
   Default: `$from-direction`.
 - `<$style>`: Optionally return `static` lengths for grid calculations.

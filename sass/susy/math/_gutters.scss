@@ -1,11 +1,12 @@
-@function gutter-span($gutter: false, $columns: false) {
+// -----------
+// Gutter math
 
-  // Find the columns and gutters
-  $columns: find-grid($columns);
-  $gutter: find-gutter($gutter);
+// Find relative width of a gutter
+@function relative-gutter-span(
+  $columns: $columns,
+  $gutters: $gutters
+) {
+  $context: column-sum($columns, $gutters);
 
-  // Combine the columns and gutters
-  $columns-and-gutters: column-sum($columns, $gutter);
-
-  @return (nth($gutter, 1) / $columns-and-gutters) * 100%
+  @return percentage($gutters / $context);
 }

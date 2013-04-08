@@ -1,70 +1,58 @@
-//////////////////////////////
-// Find width, in percentages, of the column span
-//////////////////////////////
-@function column-span($span, $location, $columns: false, $gutter: false) {
+// -----------
+// Column math
 
-  // Find the columns and gutters
-  $columns: find-grid($columns);
-  $gutter: find-gutter($gutter);
-
-  // Combine the columns and gutters
-  $columns-and-gutters: column-sum($columns, $gutter);
-
-  // Equal width columns are easy! Deal with them!
-  @if type-of($columns) == 'number' or length($columns) == 1 {
-    $span-and-gutters: $span + (($span - 1) * nth($gutter, 1));
-    @return $span-and-gutters / $columns-and-gutters * 100%;
+// Find the number of columns in a given layout
+@function column-count(
+  $columns: $columns
+) {
+  @if length($columns) == 1 {
+    @return $columns;
+  } @else {
+    @return length($columns);
   }
-  // Asymmetric lists are harder, so we're going to treat them as their own columns
-  @else if type-of($columns) == 'list' or length($columns) > 1 {
-    // Build a fake column set
-    $sum: 0;
-    $holder: ();
+}
+
+// Find the total sum of column-units in a layout
+@function column-sum(
+  $columns: $columns,
+  $gutters: $gutters
+) {
+  $column-sum: 0;
+  $gutter-sum: (column-count($columns) - 1) * $gutters;
+
+  @if length($columns) == 1 {
+    $column-sum: $columns;
+  } @else {
+    @each $column in $columns {
+      $column-sum: $column-sum + $column;
+    }
+  }
+
+  @return $column-sum + $gutter-sum;
+}
+
+// Find relative width of the column span
+@function relative-column-span(
+  $span,
+  $location : false,
+  $columns  : $columns,
+  $gutters  : $gutters
+) {
+  $span-sum : false;
+  $context  : column-sum($columns, $gutters);
+
+  @if length($columns) == 1 {
+    $span-sum: column-sum($span, $gutters);
+  } @else {
+    $span-columns: ();
+    $location: if($location, $location, 1);
 
     @for $i from $location to ($location + $span) {
-      $holder: append($holder, nth(nth($columns, $i), 1), comma);
+      $span-columns: append($span-columns, nth($columns, $i));
     }
 
-    // Get sub-column sum
-    $span-and-gutters: column-sum($holder, $gutter);
-    @return $span-and-gutters / $columns-and-gutters * 100%;
+    $span-sum: column-sum($span-columns, $gutters);
   }
-  @else {
-    @warn "Can't find a working set of columns! That's terrible!";
-    @return false;
-  }
-}
 
-//////////////////////////////
-// Find the total sum of the columns
-//////////////////////////////
-@function column-sum($columns, $gutter) {
-  @if type-of($columns) == 'number' or length($columns) == 1 {
-    @return nth($columns, 1) + ((column-count(nth($columns, 1)) - 1) * nth($gutter, 1));
-  }
-  @else if type-of($columns) == 'list' {
-    $sum: 0;
-    @each $column in $columns {
-      $sum: $sum + nth($column, 1);
-    }
-    $sum: $sum + (column-count($columns) - 1) * nth($gutter, 1);
-    @return $sum;
-  }
-}
-
-//////////////////////////////
-// Find the number of columns
-//////////////////////////////
-@function column-count($columns) {
-  @if type-of($columns) == 'number' {
-    @return $columns;
-  }
-  @if type-of($columns) == 'list' {
-    @if length($columns) == 1 {
-      @return nth($columns, 1);
-    }
-    @else {
-      @return length($columns);
-    }
-  }
+  @return percentage($span-sum / $context);
 }

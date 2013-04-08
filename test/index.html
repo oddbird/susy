@@ -1,17 +1,24 @@
 <html>
 <head>
-  <title>Susy Test</title>
-  <link rel="stylesheet" type="text/css" href="css/math.css">
-  <script src="js/grid.min.js"></script>
+  <title>Susy AG Test</title>
+  <link rel="stylesheet" type="text/css" href="css/ag.css">
 </head>
-<body data-development-grid="show">
-
-<div class="foo"><p>foo</p></div>
-<div class="bar"><p>bar</p></div>
-<div class="baz">
-  <p>baz</p>
-  <div class="qux"><p>qux</p></div>
-</div>
-
+<body>
+  <div class="container">
+    <div class="size1of5 grid-element"><h2>1/5</h2></div>
+    <div class="size1of5 grid-element"><h2>1/5</h2></div>
+    <div class="size3of5">
+      <div class="size1of2 grid-element"><h2>1/2</h2></div>
+      <div class="size1of2 grid-element"><h2>1/2</h2></div>
+      <div class="full">
+        <div class="size1of3 grid-element"><h2>1/3</h2></div>
+        <div class="size2of3">
+          <div class="size1of2 grid-element"><h2>1/2</h2></div>
+          <div class="size1of2 grid-element"><h2>1/2</h2></div>
+          <div class="full grid-element"><h2>1</h2></div>
+        </div>
+      </div>
+    </div>
+  </div>
 </body>
 </html>

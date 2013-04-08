@@ -1,72 +1,17 @@
-@mixin output-float($span, $location, $columns, $gutter, $options: false) {
+@mixin float-span-relative(
+  $span,
+  $location: false,
+  $columns: $columns,
+  $gutters: $gutters
+) {
 
-  $location-holder: $location;
+  width: relative-column-span($span, $location, $columns, $gutters);
 
-  @if type-of($location) == string {
-    @if end-row($span, $location, $columns) {
-      $grid-length: length(find-grid($columns));
-      $location-holder: $grid-length - $span;
-    }
-    @else {
-      $location-holder: 1;
-    }
-  }
-
-  $gutter: find-gutter($gutter);
-
-  width: column-span($span, $location-holder, $columns, $gutter);
-  clear: right;
-  // @include clearfix;
-
-  @if end-row($span, $location, $columns) {
+  @if is-last($span,$location,$columns) {
     float: right;
-  }
-  @else {
+  } @else {
     float: left;
-    margin-right: gutter-span($gutter, $columns);
+    margin-right: relative-gutter-span($columns, $gutters);
   }
 
-  @include span-shared;
-}
-
-@mixin push-float($span, $location, $columns: false, $gutter: false) {
-
-  @if type-of($location) == string {
-    $location: 1;
-  }
-
-  // Find the columns and gutters
-  $columns: find-grid($columns);
-  $gutter: find-gutter($gutter);
-
-  // Combine the columns and gutters
-  $gutter: column-span($span, $location, $columns, $gutter) + gutter-span($gutter, $columns);
-
-  margin-left: $gutter;
-}
-
-@mixin pull-float($span, $location, $columns: false, $gutter: false) {
-
-  @if type-of($location) == string {
-    $location: 1;
-  }
-
-  // Find the columns and gutters
-  $columns: find-grid($columns);
-  $gutter: find-gutter($gutter);
-
-  // Combine the columns and gutters
-  $gutter: (column-span($span, $location, $columns, $gutter) + gutter-span($gutter, $columns)) * -1;
-
-  margin-left: $gutter;
-}
-
-@mixin isolate-float($span, $location, $columns: false, $gutter: false) {
-
-  // Find the columns and gutters
-  $columns: find-grid($columns);
-  $gutter: find-gutter($gutter);
-
-  @include push-float($span, $location, $columns, $gutter);
-  margin-right: -100%;
 }

@@ -1,55 +1,6 @@
-//////////////////////////////
-// Import Required Extensions
-//////////////////////////////
-@import "breakpoint";
+//--------------
+// Susy partials
 
-//////////////////////////////
-// Default Variables
-//////////////////////////////
-
-// The grids being used
-$grids: () !default;
-
-// The gutters of the inner columns of the grid
-$gutters: () !default;
-
-// Specifies whether or not you're building mobile-first grids. Defaults to true
-// $mobile-first: true;
-
-// Default output style.
-$output: 'float' !default;
-
-// Whether or not to include border-box or clearfix with all spans
-$include-border-box:  false !default;
-$include-clearfix:    false !default;
-$include-clear:       true  !default;
-
-//////////////////////////////
-// Import General Helpers
-//////////////////////////////
 @import "susy/helpers";
-
-//////////////////////////////
-// Import Language Helpers
-//////////////////////////////
-@import "susy/language";
-
-//////////////////////////////
-// Import Math
-//////////////////////////////
 @import "susy/math";
-
-//////////////////////////////
-// Import Grid Helpers
-//////////////////////////////
-@import "susy/grids";
-
-//////////////////////////////
-// Import Gutters Helpers
-//////////////////////////////
-@import "susy/gutters";
-
-//////////////////////////////
-// Import APIs
-//////////////////////////////
 @import "susy/api";

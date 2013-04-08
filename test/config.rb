@@ -1,6 +1,4 @@
 # Compass CSS framework config file
-require "sassy-strings"
-require "breakpoint"
 add_import_path '../sass'
 
 project_type = :stand_alone

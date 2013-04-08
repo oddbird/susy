@@ -1,109 +1,32 @@
-//-----------------------------
+//--------
 // Imports
 
 @import "susy";
 
-//-----------------------------
-// Settings
+//-----------------
+// Symmetrical math
 
-// $output: 'isolation';
+$columns: 9;
+$gutters: .25;
 
-//-----------------------------
-// Grids
-
-$grids: add-grid(3);
-$grids: add-grid(1 3 at 550px);
-$grids: add-grid(1 2 3 4 5 at 723px);
-$grids: add-grid(1 2 3 1 2 3 1 2 3 1 2 3 at 960px);
-
-//-----------------------------
-// Gutters
-
-$gutters: add-gutter(.25);
-$gutters: add-gutter(.3 at 300px);
-$gutters: add-gutter(.4 at 500px);
-$gutters: add-gutter(.25 at 900px);
-
-//-----------------------------
-// Debug
-
-// @debug $grids;
-// @debug $gutters;
-
-//-----------------------------
-// Syntax
-//
-// These two mixins should provide identical output.
+@debug column-count() if(column-count() == 9, true, false);
+@debug column-sum() if(column-sum() == 11, true, false);
+@debug relative-column-span(5) if(relative-column-span(2,1) == 54.54545%, true, false);
 
 .span {
-  @include span(1 at last of 1 3 3 gutters .25 output isolation);
+  @include float-span-relative(5);
 }
 
-.grid-span {
-  @include grid-span(1, 'last', (1 3 3), .25, $output-style: 'isolation');
+//------------------
+// Asymmetrical math
+
+$columns: 2 3 1 2 1;
+$gutters: .5;
+
+@debug column-count() if(column-count() == 5, true, false);
+@debug column-sum() if(column-sum() == 11, true, false);
+@debug relative-column-span(2,1) if(relative-column-span(2,1) == 50%, true, false);
+
+.span {
+  @include float-span-relative(2,1);
 }
-
-@mixin test-grid {
-  [data-development-grid="show"] {
-    @include background-grid;
-  }
-}
-
-//-----------------------------
-// Demo
-
-body {
-  margin: 0;
-  padding: 0;
-}
-
-@include test-grid;
-
-@include grid-overlay;
-// @include grid-overlay('.bar');
-// @include grid-overlay('.foo');
-
-.foo {
-  @extend %clearfix;
-  background: rgba(red, .5);
-  @include breakpoint(1000px) {
-    @include grid-span(5, 1);
-  }
-}
-
-.bar {
-  @extend %clearfix;
-  background: rgba(green, .5);
-  @include breakpoint(1000px) {
-    @include grid-span(6, 'omega');
-  }
-}
-
-.baz {
-  @extend %clearfix;
-  background: rgba(blue, .5);
-  @include breakpoint(1000px) {
-    @include grid-span(9, 1);
-    @include push(1, 1);
-  }
-}
-
-.qux {
-  @extend %clearfix;
-  background: rgba(yellow, .5);
-  @include breakpoint(1000px) {
-    @include grid-span(3, 1, 9);
-    @include push(2, 1, (2 3 1 2 3 1 2 3 1));
-  }
-}
-
-//-----------------------------
-// so you can see it happen
-
-div {
-  min-height: 3em;
-  background: rgba(black,.1);
-  text-transform: uppercase;
-  text-align: center;
-}
-

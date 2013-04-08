@@ -1,17 +1,24 @@
-//--------
+// -------
 // Imports
 
 @import "susy";
 
-//-----------------
+// --------
+// Settings
+
+$debug: false;
+
+// ----------------
 // Symmetrical math
 
 $columns: 9;
 $gutters: .25;
 
-@debug column-count() if(column-count() == 9, true, false);
-@debug column-sum() if(column-sum() == 11, true, false);
-@debug relative-column-span(5) if(round(relative-column-span(5)) == 55%, true, false);
+@if $debug {
+  @debug column-count() if(column-count() == 9, true, false);
+  @debug column-sum() if(column-sum() == 11, true, false);
+  @debug relative-column-span(5) if(round(relative-column-span(5)) == 55%, true, false);
+}
 
 .span {
   @include float-span-relative(5);
@@ -21,15 +28,17 @@ $gutters: .25;
   @include float-span-relative(2,last);
 }
 
-//------------------
+// -----------------
 // Asymmetrical math
 
 $columns: 2 3 1 2 1;
 $gutters: .5;
 
-@debug column-count() if(column-count() == 5, true, false);
-@debug column-sum() if(column-sum() == 11, true, false);
-@debug relative-column-span(2,1) if(relative-column-span(2,1) == 50%, true, false);
+@if $debug {
+  @debug column-count() if(column-count() == 5, true, false);
+  @debug column-sum() if(column-sum() == 11, true, false);
+  @debug relative-column-span(2,1) if(relative-column-span(2,1) == 50%, true, false);
+}
 
 .span {
   @include float-span-relative(2,1);

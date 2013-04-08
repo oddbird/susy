@@ -6,7 +6,7 @@
   $columns: $columns
 ) {
   @if length($columns) == 1 {
-    @return $columns;
+    @return nth($columns,1);
   } @else {
     @return length($columns);
   }
@@ -18,10 +18,14 @@
   $gutters: $gutters
 ) {
   $column-sum: 0;
-  $gutter-sum: (column-count($columns) - 1) * $gutters;
+  $gutter-sum: 0;
+
+  @if column-count($columns) > 1 {
+    $gutter-sum: (column-count($columns) - 1) * $gutters;
+  }
 
   @if length($columns) == 1 {
-    $column-sum: $columns;
+    $column-sum: nth($columns,1);
   } @else {
     @each $column in $columns {
       $column-sum: $column-sum + $column;
@@ -31,6 +35,28 @@
   @return $column-sum + $gutter-sum;
 }
 
+// Return a subset of columns at a given location
+@function get-columns(
+  $span,
+  $location,
+  $columns: $columns
+) {
+  $location     : get-location-position($span, $location, $columns);
+  $sub-columns  : ();
+
+  @if length($columns) == 1 {
+    $sub-columns: nth($span,1);
+  } @else {
+    $location: if($location, $location, 1);
+
+    @for $i from $location to ($location + $span) {
+      $sub-columns: append($sub-columns, nth($columns, $i));
+    }
+  }
+
+  @return $sub-columns;
+}
+
 // Find relative width of the column span
 @function relative-column-span(
   $span,
@@ -38,20 +64,13 @@
   $columns  : $columns,
   $gutters  : $gutters
 ) {
-  $location : get-location-position($span, $location, $columns);
   $span-sum : false;
   $context  : column-sum($columns, $gutters);
 
   @if length($columns) == 1 {
     $span-sum: column-sum($span, $gutters);
   } @else {
-    $span-columns: ();
-    $location: if($location, $location, 1);
-
-    @for $i from $location to ($location + $span) {
-      $span-columns: append($span-columns, nth($columns, $i));
-    }
-
+    $span-columns: get-columns($span, $location, $columns);
     $span-sum: column-sum($span-columns, $gutters);
   }
 

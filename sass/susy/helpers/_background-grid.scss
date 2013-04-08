@@ -48,11 +48,28 @@ $overlay-position: relative !default;
 // Set the position of the switch.
 $overlay-switch-position: left bottom !default;
 
+%grid-overlay-container {
+  position: unquote($overlay-position);
+}
+
+%grid-overlay {
+  content: " ";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 999;
+}
+
+// A $grid includes 3 parts:
+// - container selector
+// - columns
+// - gutters
 @mixin grid-overlay (
-  $selector: 'body',
-  $columns: false,
-  $gutter: false,
-  $color: rgba(Chocolate, .5)
+  $color, $grids...
 ) {
 
   $vert: nth($overlay-switch-position, 1);
@@ -81,20 +98,19 @@ $overlay-switch-position: left bottom !default;
     &:hover {
       color: #333;
       text-shadow: 1px 1px #fff;
-      ~ body #{$selector} {
-        position: unquote($overlay-position);
-      }
-      ~ #{$selector}::after,
-      ~ body #{$selector}::after {
-        content: " ";
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        height: 100%;
-        width: 100%;
-        @include background-grid($columns, $gutter, $color);
+      @each $grid in $grids {
+        $selector: '.#{nth($grid, 1)}';
+        $this-columns: nth($grid, 2);
+        $this-gutters: nth($grid, 3);
+
+        ~ body #{$selector} {
+          @extend %grid-overlay-container;
+        }
+        ~ #{$selector}::after,
+        ~ body #{$selector}::after {
+          @extend %grid-overlay;
+          @include background-grid($this-columns, $this-gutters, $color);
+        }
       }
     }
   }
@@ -103,10 +119,10 @@ $overlay-switch-position: left bottom !default;
 // -----------------------------------------------
 // Grid Toggle
 
-@mixin grid-toggle(
-  $columns: false,
-  $gutter: false,
-  $color: rgba(Chocolate, .5)
+@mixin grid-toggle (
+  $columns: $columns,
+  $gutters: $gutters,
+  $color: rgba(lightblue, .25)
   ) {
 
   [data-development-grid="show"] {
@@ -117,70 +133,62 @@ $overlay-switch-position: left bottom !default;
 // -----------------------------------------------
 // Grid Background
 
-@mixin background-grid(
-  $columns: false,
-  $gutter: false,
-  $color: rgba(Chocolate, .5)
+@mixin background-grid (
+  $columns: $columns,
+  $gutters: $gutters,
+  $color: rgba(lightblue, .25)
 ) {
-
-  $background-length: length($grids);
-
-  @if not ($columns) {
-    @for $i from 1 through $background-length {
-      @if $i == 1 {
-        @include background-build($columns, $gutter, $color);
-      }
-      @else {
-        $mq: nth(nth($grids, $i), 2);
-
-        $grid: nth(nth($grids, $i), 1);
-        @include breakpoint($mq) {
-          @include background-build($grid, $gutter, $color);
-        }
-      }
-    }
-  }
-}
-
-@mixin background-build($columns, $gutter, $color) {
-  $columns: find-grid($columns);
-  $gutter: find-gutter($gutter);
-
-  $stops: background-gradient-stops($columns, $gutter, $color);
+  $stops: background-gradient-stops($columns, $gutters, $color);
 
   @include background(
-    linear-gradient(
-      left, $stops
-    )
+    linear-gradient(left, $stops...)
   );
 }
 
-//////////////////////////////
+// -----------------------------
 // Get the stops of the gradient
-//////////////////////////////
-@function background-gradient-stops($columns, $gutter, $color) {
-  $bkg: ();
-  $count: column-count($columns);
+@function background-gradient-stops (
+  $columns: $columns,
+  $gutters: $gutters,
+  $color: rgba(lightblue, .25)
+) {
+  $stops: compact();
 
   @for $i from 1 through column-count($columns) {
-    $bkg: join($bkg, background-column-gradient($i, $columns, $gutter, $color), comma);
+    $stops: join($stops, background-column-gradient($i, $columns, $gutters, $color), comma);
   }
 
-  @return $bkg;
+  @return $stops;
 }
 
-//////////////////////////////
+// ---------------
 // Get the columns
-//////////////////////////////
-@function background-column-gradient($location, $columns, $gutter, $color) {
+@function background-column-gradient (
+  $location,
+  $columns: $columns,
+  $gutters: $gutters,
+  $color: rgba(lightblue, .25)
+) {
+  $stops  : compact();
 
-  @if $location == 1 {
-    @return lighten($color, 5%) 0%, darken($color, 5%) column-span(1, 1, $columns), lighten($color, 30%) column-span(1, 1, $columns);
-  }
-  @if $location == column-count($columns) {
-    @return lighten($color, 30%) column-span($location - 1, 1, $columns) + gutter-span($gutter, $columns), lighten($color, 5%) column-span($location - 1, 1, $columns) + gutter-span($gutter, $columns), darken($color, 5%) 100%;
-  }
+  $trans  : transparent;
+  $light  : lighten($color, 5%);
+
+  $gutter : relative-gutter-span($columns, $gutters);
+
   @if $location > 1 {
-    @return lighten($color, 30%) column-span($location - 1, 1, $columns) + gutter-span($gutter, $columns), lighten($color, 5%) column-span($location - 1, 1, $columns) + gutter-span($gutter, $columns), darken($color, 5%) column-span($location, 1, $columns), lighten($color, 30%) column-span($location, 1, $columns);
+    $start: relative-column-span($location - 1, 1, $columns, $gutters) + $gutter;
+    $stops: append($stops, $color $start, comma);
   }
+
+  @if $location < column-count($columns) {
+    $end: relative-column-span($location, 1, $columns, $gutters);
+    $stops: append($stops, $light $end, comma);
+    $stops: append($stops, $trans $end, comma);
+    $stops: append($stops, $trans $end + $gutter, comma);
+  } @else {
+    $stops: append($stops, $light 100%, comma);
+  }
+
+  @return $stops;
 }

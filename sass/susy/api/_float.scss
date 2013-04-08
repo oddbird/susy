@@ -15,3 +15,11 @@
   }
 
 }
+
+@mixin float-last(
+  $columns: $columns,
+  $gutters: $gutters
+) {
+  float: right;
+  margin-right: 0;
+}

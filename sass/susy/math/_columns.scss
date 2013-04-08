@@ -38,6 +38,7 @@
   $columns  : $columns,
   $gutters  : $gutters
 ) {
+  $location : get-location-position($span, $location, $columns);
   $span-sum : false;
   $context  : column-sum($columns, $gutters);
 

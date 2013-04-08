@@ -4,8 +4,18 @@
   margin-right: 2.27273%;
 }
 
+.span-omega {
+  width: 20.45455%;
+  float: right;
+}
+
 .span {
   width: 50%;
   float: left;
   margin-right: 4.54545%;
+}
+
+.span-omega {
+  width: 45.45455%;
+  float: right;
 }

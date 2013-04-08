@@ -11,10 +11,14 @@ $gutters: .25;
 
 @debug column-count() if(column-count() == 9, true, false);
 @debug column-sum() if(column-sum() == 11, true, false);
-@debug relative-column-span(5) if(relative-column-span(2,1) == 54.54545%, true, false);
+@debug relative-column-span(5) if(round(relative-column-span(5)) == 55%, true, false);
 
 .span {
   @include float-span-relative(5);
+}
+
+.span-omega {
+  @include float-span-relative(2,last);
 }
 
 //------------------
@@ -29,4 +33,8 @@ $gutters: .5;
 
 .span {
   @include float-span-relative(2,1);
+}
+
+.span-omega {
+  @include float-span-relative(3,omega);
 }

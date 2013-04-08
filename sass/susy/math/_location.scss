@@ -30,3 +30,19 @@
     @return false;
   }
 }
+
+@function get-location-position(
+  $span,
+  $location,
+  $columns: $columns
+) {
+  @if type-of($location) == number {
+    @return $location;
+  } @else if $location == first or $location == alpha {
+    @return 1;
+  } @else if $location == last or $location == omega {
+    @return column-count($columns) - $span + 1;
+  } @else {
+    @return false;
+  }
+}

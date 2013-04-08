@@ -21,7 +21,7 @@ $gutters: .25;
 }
 
 .span {
-  @include float-span-relative(5);
+  @include span(5);
 }
 
 .span-omega {

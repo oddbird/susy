@@ -6,15 +6,18 @@
 //  at:       Column Location
 //  of:       Context
 //  gutters:  Gutters
-//  output:   Output
+//  isolate:  Isolate
 //////////////////////////////
 @mixin span($input) {
   $span:      nth($input, 1);
 
-  $location:  parse-span-list('at', $input);
-  $context:   parse-span-list('of', $input);
-  $gutter:    parse-span-list('gutters', $input);
-  $output:    parse-span-list('output', $input);
+  $location:  parse-string('at', $input);
+  $context:   parse-string('of', $input);
+  $gutter:    parse-string('gutters', $input);
+  $isolate:   parse-string('isolate', $input);
 
-  @include grid-span($span, $location, $context, $gutter, $output)
+  @if not $context { $context: $columns; }
+  @if not $gutter { $gutter: $gutters; }
+
+  @include float-span-relative($span, $location, $context, $gutter, $isolate);
 }

@@ -17,7 +17,8 @@ $gutters: .25 !default;
 @mixin ag-test(
   $class,
   $c,
-  $g
+  $g,
+  $isolate: false
 ) {
   $columns: $c;
   $gutters: $g;
@@ -29,14 +30,14 @@ $gutters: .25 !default;
 
     > .size1of5 {
       min-height: rhythm(10);
-      &:first-of-type { @include float-span-relative(2, 1); }
-      ~ .size1of5 { @include float-span-relative(2, last); }
+      &:first-of-type { @include float-span-relative(2, 1, $isolate: $isolate); }
+      ~ .size1of5 { @include float-span-relative(2, last, $isolate: $isolate); }
     }
     > .size3of5 {
-      @include float-span-relative(6,3);
+      @include float-span-relative(6,3, $isolate: $isolate);
       > .size1of2 {
-        &:first-child { @include float-span-relative(3, 1, get-columns(6,3)); }
-        + .size1of2 { @include float-span-relative(3, last, get-columns(6,3)); }
+        &:first-child { @include float-span-relative(3, 1, get-columns(6,3), $isolate: $isolate); }
+        + .size1of2 { @include float-span-relative(3, last, get-columns(6,3), $isolate: $isolate); }
       }
       > .full {
         clear: both;
@@ -46,22 +47,26 @@ $gutters: .25 !default;
 
     .full {
       .size1of3 {
-        @include float-span-relative(2, 1, get-columns(6,3));
+        @include float-span-relative(2, 1, get-columns(6,3), $isolate: $isolate);
         min-height: rhythm(6.5);
       }
       .size2of3 {
-        @include float-span-relative(4, last, get-columns(6,3));
+        @include float-span-relative(4, last, get-columns(6,3), $isolate: $isolate);
       }
     }
 
     .size2of3 {
       .size1of2 {
-        &:first-child { @include float-span-relative(2, 1, get-columns(4,5)); }
-        + .size1of2 { @include float-span-relative(2, last, get-columns(4,5)); }
+        &:first-child { @include float-span-relative(2, 1, get-columns(4,5), $isolate: $isolate); }
+        + .size1of2 { @include float-span-relative(2, last, get-columns(4,5), $isolate: $isolate); }
       }
       .full {
         clear: both;
       }
+    }
+
+    .isolation div {
+      @include isolate-grid(2, $columns, $gutters);
     }
   }
 }
@@ -73,7 +78,7 @@ $a-class    : symmetrical;
 $a-columns  : 10;
 $a-gutters  : .25;
 
-@include ag-test($a-class, $a-columns, $a-gutters);
+@include ag-test($a-class, $a-columns, $a-gutters, true);
 
 // ------------
 // Asymmetrical
@@ -121,4 +126,12 @@ h1, h2 {
 .size1of3 { background: orange; }
 .full.grid-element { background: pink; }
 
-
+.isolation {
+  @include clearfix;
+  clear: both;
+  div {
+    @include trailer(.5);
+    height: rhythm(1);
+    background: red;
+  }
+}

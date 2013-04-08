@@ -2,18 +2,28 @@
   $span,
   $location: false,
   $columns: $columns,
-  $gutters: $gutters
+  $gutters: $gutters,
+  $isolate: false
 ) {
+  $gutter: relative-gutter-span($columns, $gutters);
 
   width: relative-column-span($span, $location, $columns, $gutters);
 
-  @if is-last($span,$location,$columns) {
-    float: right;
-  } @else {
+  @if $isolate {
     float: left;
-    margin-right: relative-gutter-span($columns, $gutters);
+    $push: get-location-position($span, $location, $columns) - 1;
+    @if $push > 0 {
+      margin-left: relative-column-span($push, 1, $columns, $gutters) + $gutter;
+    }
+    margin-right: -100%;
+  } @else {
+    @if is-last($span,$location,$columns) {
+      float: right;
+    } @else {
+      float: left;
+      margin-right: $gutter;
+    }
   }
-
 }
 
 @mixin float-last(
@@ -22,4 +32,26 @@
 ) {
   float: right;
   margin-right: 0;
+}
+
+@mixin isolate-grid(
+  $span,
+  $columns: $columns,
+  $gutters: $gutters,
+  $selector: 'child'
+) {
+  $location: 1;
+  $context: column-count($columns);
+  $line: floor($context / $span);
+
+  @for $item from 1 through $line {
+    $nth: '#{$line}n + #{$item}';
+    &:#{format-nth($nth,$selector)} {
+      @include float-span-relative($span, $location, $columns, $gutters, true);
+      @if $location == 1 { clear: left; }
+
+      $location: $location + $span;
+      @if $location > $context { $location: 1; }
+    }
+  }
 }

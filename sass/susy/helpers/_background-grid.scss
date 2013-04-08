@@ -61,7 +61,7 @@ $overlay-switch-position: left bottom !default;
   bottom: 0;
   height: 100%;
   width: 100%;
-  z-index: 999;
+  z-index: 998;
 }
 
 // A $grid includes 3 parts:
@@ -80,7 +80,7 @@ $overlay-switch-position: left bottom !default;
     position: fixed;
     #{$horz}: 10px;
     #{$vert}: 10px;
-    z-index: 99;
+    z-index: 999;
     color: #333;
     text-shadow: 0 0 3px #fff;
     @include transition(all .4s);

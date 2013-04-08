@@ -1,0 +1,11 @@
+@function format-nth(
+  $n        : last,
+  $selector : child
+) {
+  @if ($n == 'last') or ($n =='first') or ($n =='only') {
+    $selector: '#{$n}-#{$selector}';
+  } @else {
+    $selector: 'nth-#{$selector}(#{$n})';
+  }
+  @return $selector;
+}

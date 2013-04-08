@@ -13,7 +13,7 @@ head:hover ~ body .asymmetrical::after {
   bottom: 0;
   height: 100%;
   width: 100%;
-  z-index: 999;
+  z-index: 998;
 }
 
 html, body, div, span, applet, object, iframe,
@@ -84,25 +84,30 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 .symmetrical > .size1of5:first-of-type {
   width: 18.36735%;
   float: left;
-  margin-right: 2.04082%;
+  margin-right: -100%;
 }
 .symmetrical > .size1of5 ~ .size1of5 {
   width: 18.36735%;
-  float: right;
+  float: left;
+  margin-left: 81.63265%;
+  margin-right: -100%;
 }
 .symmetrical > .size3of5 {
   width: 59.18367%;
   float: left;
-  margin-right: 2.04082%;
+  margin-left: 20.40816%;
+  margin-right: -100%;
 }
 .symmetrical > .size3of5 > .size1of2:first-child {
   width: 48.27586%;
   float: left;
-  margin-right: 3.44828%;
+  margin-right: -100%;
 }
 .symmetrical > .size3of5 > .size1of2 + .size1of2 {
   width: 48.27586%;
-  float: right;
+  float: left;
+  margin-left: 51.72414%;
+  margin-right: -100%;
 }
 .symmetrical > .size3of5 > .full {
   clear: both;
@@ -111,24 +116,58 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 .symmetrical .full .size1of3 {
   width: 31.03448%;
   float: left;
-  margin-right: 3.44828%;
+  margin-right: -100%;
   min-height: 9.75em;
 }
 .symmetrical .full .size2of3 {
   width: 65.51724%;
-  float: right;
+  float: left;
+  margin-left: 34.48276%;
+  margin-right: -100%;
 }
 .symmetrical .size2of3 .size1of2:first-child {
   width: 47.36842%;
   float: left;
-  margin-right: 5.26316%;
+  margin-right: -100%;
 }
 .symmetrical .size2of3 .size1of2 + .size1of2 {
   width: 47.36842%;
-  float: right;
+  float: left;
+  margin-left: 52.63158%;
+  margin-right: -100%;
 }
 .symmetrical .size2of3 .full {
   clear: both;
+}
+.symmetrical .isolation div:nth-child(5n + 1) {
+  width: 18.36735%;
+  float: left;
+  margin-right: -100%;
+  clear: left;
+}
+.symmetrical .isolation div:nth-child(5n + 2) {
+  width: 18.36735%;
+  float: left;
+  margin-left: 20.40816%;
+  margin-right: -100%;
+}
+.symmetrical .isolation div:nth-child(5n + 3) {
+  width: 18.36735%;
+  float: left;
+  margin-left: 40.81633%;
+  margin-right: -100%;
+}
+.symmetrical .isolation div:nth-child(5n + 4) {
+  width: 18.36735%;
+  float: left;
+  margin-left: 61.22449%;
+  margin-right: -100%;
+}
+.symmetrical .isolation div:nth-child(5n + 5) {
+  width: 18.36735%;
+  float: left;
+  margin-left: 81.63265%;
+  margin-right: -100%;
 }
 
 .asymmetrical {
@@ -189,13 +228,43 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 .asymmetrical .size2of3 .full {
   clear: both;
 }
+.asymmetrical .isolation div:nth-child(5n + 1) {
+  width: 12.5%;
+  float: left;
+  margin-right: -100%;
+  clear: left;
+}
+.asymmetrical .isolation div:nth-child(5n + 2) {
+  width: 11.45833%;
+  float: left;
+  margin-left: 14.58333%;
+  margin-right: -100%;
+}
+.asymmetrical .isolation div:nth-child(5n + 3) {
+  width: 22.91667%;
+  float: left;
+  margin-left: 28.125%;
+  margin-right: -100%;
+}
+.asymmetrical .isolation div:nth-child(5n + 4) {
+  width: 22.91667%;
+  float: left;
+  margin-left: 53.125%;
+  margin-right: -100%;
+}
+.asymmetrical .isolation div:nth-child(5n + 5) {
+  width: 21.875%;
+  float: left;
+  margin-left: 78.125%;
+  margin-right: -100%;
+}
 
 head {
   display: block;
   position: fixed;
   bottom: 10px;
   left: 10px;
-  z-index: 99;
+  z-index: 999;
   color: #333;
   text-shadow: 0 0 3px #fff;
   -webkit-transition: all 0.4s;
@@ -277,4 +346,15 @@ h1, h2 {
 
 .full.grid-element {
   background: pink;
+}
+
+.isolation {
+  overflow: hidden;
+  *zoom: 1;
+  clear: both;
+}
+.isolation div {
+  margin-bottom: 0.75em;
+  height: 1.5em;
+  background: red;
 }

@@ -9,6 +9,13 @@
   float: right;
 }
 
+.isolate {
+  width: 54.54545%;
+  float: left;
+  margin-left: 11.36364%;
+  margin-right: -100%;
+}
+
 .span {
   width: 50%;
   float: left;
@@ -18,4 +25,11 @@
 .span-omega {
   width: 45.45455%;
   float: right;
+}
+
+.isolate {
+  width: 63.63636%;
+  float: left;
+  margin-left: 27.27273%;
+  margin-right: -100%;
 }

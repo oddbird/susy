@@ -28,6 +28,10 @@ $gutters: .25;
   @include float-span-relative(2,last);
 }
 
+.isolate {
+  @include float-span-relative(5, 2, $isolate: true);
+}
+
 // -----------------
 // Asymmetrical math
 
@@ -46,4 +50,8 @@ $gutters: .5;
 
 .span-omega {
   @include float-span-relative(3,omega);
+}
+
+.isolate {
+  @include float-span-relative(3, 2, $isolate: true);
 }

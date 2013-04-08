@@ -93,7 +93,6 @@ $b-gutters  : .5;
 // Grid background
 
 @include grid-overlay(
-  rgba(lightblue,.25),
   $a-class $a-columns $a-gutters,
   $b-class $b-columns $b-gutters
 );

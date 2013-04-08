@@ -1,13 +1,13 @@
-//////////////////////////////
-// "Natural Language" Parsing
+// ---------------------
+// Span language parsing
 //
 // Keywords:
-//  span:     Column Span
-//  at:       Column Location
-//  of:       Context
-//  gutters:  Gutters
-//  isolate:  Isolate
-//////////////////////////////
+// - span:     Column Span
+// - at:       Column Location
+// - of:       Context
+// - gutters:  Gutters
+// - isolate:  Isolate
+
 @mixin span($input) {
   $span:      nth($input, 1);
 

@@ -54,7 +54,6 @@ width: span(4 at 2 of 3 4 5 4 3 outer);
 
 - Need to access the width of a single gutter
   - In context
-  - *Are asymmetric gutters special in any way?*
 
 ```scss
 // symmetric

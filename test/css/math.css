@@ -16,6 +16,11 @@
   margin-right: -100%;
 }
 
+.isolate-override {
+  margin-right: -100%;
+  margin-left: 11.36364%;
+}
+
 .span {
   width: 50%;
   float: left;
@@ -32,4 +37,9 @@
   float: left;
   margin-left: 27.27273%;
   margin-right: -100%;
+}
+
+.isolate-override {
+  margin-right: -100%;
+  margin-left: 27.27273%;
 }

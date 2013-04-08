@@ -1,15 +1,4 @@
-//-------------------
-// Set legacy support
-//
-// If you need support for IE6 or IE7, you should install the Box Sizing polyfill
-// In your project's folder from the command line, type the following:
-// compass install susy/box-sizing
-
-$legacy-support-for-ie6       : false;
-$legacy-support-for-ie7       : false;
-$legacy-support-for-mozilla   : false;
-
-//--------
+// -------
 // Imports
 
 @import "susy";

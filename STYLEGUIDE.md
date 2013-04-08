@@ -12,15 +12,13 @@ _susy.scss
 susy
 |-- _api.scss
 |-- api
-|   |-- _settings.scss
-|   |-- _functions.scss
-|   |-- _layout.scss
-|   |-- _rwd.scss
+|   |-- _float.scss
+|   |-- _background-grids.scss
 |-- _helpers.scss
 |-- helpers
 |   |-- _sass-lists.scss
 |-- _math.scss
-|-- _string-parser.scss
+|-- _language.scss
 ```
 
 ## Code
@@ -54,7 +52,7 @@ broadly for modules, and more narrowly for each mixin or function.
 Each document should begin with a title, and a table of sub-sections:
 
 ```scss
-// ---------------------------------------------------------------------------
+// ------
 // Layout
 //
 // - Settings
@@ -67,7 +65,7 @@ With any variable settings as the first section:
 
 
 ```scss
-// ---------------------------------------------------------------------------
+// --------
 // Settings
 
 $layout: 960px;
@@ -77,7 +75,7 @@ $columns: 12;
 Followed by sections of function and mixin definitions:
 
 ```scss
-// ----------------------------------------------------------------------------
+// -------------
 // Section Title
 
 // Description of this function or mixin purpose.
@@ -93,7 +91,7 @@ Followed by sections of function and mixin definitions:
   /* ...logic... */
 }
 
-// ----------------------------------------------------------------------------
+// -------
 // Example
 
 // Return the number of columns in a grid.

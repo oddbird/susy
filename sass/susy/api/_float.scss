@@ -1,3 +1,7 @@
+// ---------
+// Float API
+
+// Relative Span
 @mixin float-span-relative(
   $span,
   $location: false,
@@ -26,6 +30,7 @@
   }
 }
 
+// Last Unit
 @mixin float-last(
   $columns: $columns,
   $gutters: $gutters
@@ -34,6 +39,18 @@
   margin-right: 0;
 }
 
+// Isolation Override
+@mixin isolate(
+  $location,
+  $columns: $columns,
+  $gutters: $gutters
+) {
+  $push: relative-column-span($location - 1, 1, $columns, $gutters) + relative-gutter-span($columns, $gutters);
+  margin-right: -100%;
+  margin-left: $push;
+}
+
+// Isolate Grid
 @mixin isolate-grid(
   $span,
   $columns: $columns,

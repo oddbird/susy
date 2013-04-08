@@ -1,52 +1,44 @@
-// -----------------------------------------------
+// -------------------------
 // Grid Overlay & Background
-//
-// Uses all your settings to create a grid background for a container element.
-// There are three ways you can display a grid:
-//
-// 1. Manually apply the background to the element -
-//
-//        .container {
-//          @include background-grid;
-//        }
-//
-// 2. Add a switch to toggle an overlay -
-//
-//        @include grid-overlay('.container');
-//
-// 3. Toggle grid with JavaScript
-//
-//        @include grid-toggle;
-//        Add [data-development-grid="show"] to item you want grid applied to
-//        Add "grid.min.js" to your HTML
-//
-// The first will apply a grid background to your container calculated using your
-// grid settings, media breakpoints etc.
-//
-// The second will add a switch to your page which allows you to view a grid
-// overlay over your container (or <body> if none is provided) by hovering over
-// the switch. if you need your mouse for other things you can toggle the overlay
-// on permanently by inspecting <head> and checking :hover in your styles panel.
-//
-// The thid will allow you to toggle your background grid on and off by pressing the 'g' on your keyboard.
 //
 // Note: Sub-pixel rounding can lead to several pixels of variation between browsers.
 
-
-// -----------------------------------------------
+// -------
 // Imports
+
 @import "compass/css3";
 
-// -----------------------------------------------
-// Grid Overlay
+// --------
+// Defaults
 
-// The overlay is painted over your container's ::after pseudo-element, so we must
-// give position to the container itself, if relative doesn't suit your layout
-// it can be replaced by absolute/fixed.
+// Set the color of background grids/
+$background-grid-color: rgba(lightblue, .25) !default;
+
+// The overlay is painted over your container's ::after pseudo-element,
+// so we must give position to the container itself.
+// If relative doesn't suit your layout, it can be replaced by absolute/fixed.
 $overlay-position: relative !default;
 
-// Set the position of the switch.
-$overlay-switch-position: left bottom !default;
+// Set the location of the switch.
+$overlay-switch-location: left bottom !default;
+
+// ---------------
+// Grid Background
+
+@mixin background-grid (
+  $columns: $columns,
+  $gutters: $gutters,
+  $color: $background-grid-color
+) {
+  $stops: background-gradient-stops($columns, $gutters, $color);
+
+  @include background(
+    linear-gradient(left, $stops...)
+  );
+}
+
+// ------------
+// Grid Overlay
 
 %grid-overlay-container {
   position: unquote($overlay-position);
@@ -64,16 +56,44 @@ $overlay-switch-position: left bottom !default;
   z-index: 998;
 }
 
+@function parse-background-grid($grid) {
+  $selector: false;
+  $this-columns: false;
+  $this-gutters: false;
+  $color: $background-grid-color;
+
+  @each $item in $grid {
+    @if type-of($item) == 'color' {
+      $color: $item;
+    } @else if type-of($item) == 'string' {
+      $selector: $item;
+    } @else if type-of($item) == 'list' {
+      $this-columns: $item;
+    } @else if type-of($item) == 'number' {
+      @if $this-columns {
+        $this-gutters: $item;
+      } @else {
+        $this-columns: $item;
+      }
+    }
+  }
+
+  $this-columns: if($this-columns, $this-columns, $columns);
+  $this-gutters: if($this-gutters, $this-gutters, $gutters);
+
+  @return $selector $this-columns $this-gutters $color;
+}
+
 // A $grid includes 3 parts:
 // - container selector
 // - columns
 // - gutters
 @mixin grid-overlay (
-  $color, $grids...
+  $grids...
 ) {
 
-  $vert: nth($overlay-switch-position, 1);
-  $horz: nth($overlay-switch-position, 2);
+  $vert: nth($overlay-switch-location, 1);
+  $horz: nth($overlay-switch-location, 2);
 
   head {
     display: block;
@@ -99,9 +119,11 @@ $overlay-switch-position: left bottom !default;
       color: #333;
       text-shadow: 1px 1px #fff;
       @each $grid in $grids {
+        $grid: parse-background-grid($grid);
         $selector: '.#{nth($grid, 1)}';
         $this-columns: nth($grid, 2);
         $this-gutters: nth($grid, 3);
+        $color: nth($grid, 4);
 
         ~ body #{$selector} {
           @extend %grid-overlay-container;
@@ -116,41 +138,13 @@ $overlay-switch-position: left bottom !default;
   }
 }
 
-// -----------------------------------------------
-// Grid Toggle
-
-@mixin grid-toggle (
-  $columns: $columns,
-  $gutters: $gutters,
-  $color: rgba(lightblue, .25)
-  ) {
-
-  [data-development-grid="show"] {
-    @include background-grid;
-  }
-}
-
-// -----------------------------------------------
-// Grid Background
-
-@mixin background-grid (
-  $columns: $columns,
-  $gutters: $gutters,
-  $color: rgba(lightblue, .25)
-) {
-  $stops: background-gradient-stops($columns, $gutters, $color);
-
-  @include background(
-    linear-gradient(left, $stops...)
-  );
-}
-
 // -----------------------------
 // Get the stops of the gradient
+
 @function background-gradient-stops (
   $columns: $columns,
   $gutters: $gutters,
-  $color: rgba(lightblue, .25)
+  $color: $background-grid-color
 ) {
   $stops: compact();
 
@@ -161,18 +155,19 @@ $overlay-switch-position: left bottom !default;
   @return $stops;
 }
 
-// ---------------
-// Get the columns
+// -----------------------------
+// Get the stops for each column
+
 @function background-column-gradient (
   $location,
   $columns: $columns,
   $gutters: $gutters,
-  $color: rgba(lightblue, .25)
+  $color: $background-grid-color
 ) {
   $stops  : compact();
 
   $trans  : transparent;
-  $light  : lighten($color, 5%);
+  $light  : lighten($color, 10%);
 
   $gutter : relative-gutter-span($columns, $gutters);
 

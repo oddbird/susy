@@ -28,7 +28,7 @@ $gutters: .25 !default;
     margin: rhythm(.5) auto;
 
     > .size1of5 {
-      min-height: rhythm(9);
+      min-height: rhythm(10);
       &:first-of-type { @include float-span-relative(2, 1); }
       ~ .size1of5 { @include float-span-relative(2, last); }
     }
@@ -47,7 +47,7 @@ $gutters: .25 !default;
     .full {
       .size1of3 {
         @include float-span-relative(2, 1, get-columns(6,3));
-        min-height: rhythm(6);
+        min-height: rhythm(6.5);
       }
       .size2of3 {
         @include float-span-relative(4, last, get-columns(6,3));

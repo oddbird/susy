@@ -1,0 +1,14 @@
+// ----------
+// Float ends
+
+// Last Unit
+@mixin float-last(
+  $columns  : $columns,
+  $gutters  : $gutters,
+  $flow     : $direction
+) {
+  $to: to($flow);
+
+  float: $to;
+  margin-#{$to}: 0;
+}

@@ -24,6 +24,7 @@ $gutters: .25 !default;
   $gutters: $g;
 
   .#{$class} {
+    @include background-grid;
     @include clearfix;
     max-width: 75em;
     margin: rhythm(.5) auto;

@@ -1,0 +1,25 @@
+// -----------------
+// Direction helpers
+
+@function get-direction(
+  $flow: $direction,
+  $key: from
+) {
+  $from: if($flow == rtl, right, left);
+  $to: if($flow == rtl, left, right);
+
+  @if $key == from { @return $from; }
+  @else if $key == to { @return $to; }
+}
+
+@function to(
+  $flow: $direction
+) {
+  @return get-direction($flow,to);
+}
+
+@function from(
+  $flow: $direction
+) {
+  @return get-direction($flow,from);
+}

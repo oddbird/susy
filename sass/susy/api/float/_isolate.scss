@@ -1,0 +1,72 @@
+// ---------------
+// Float isolation
+
+// Calculate isolation position
+@function get-isolation-position(
+  $span     : 1,
+  $location : 1,
+  $columns  : $columns,
+  $gutters  : $gutters
+) {
+  $push   : get-location-position($span, $location, $columns) - 1;
+  $gutter : relative-gutter-span($columns, $gutters);
+
+  @if $push > 0 {
+    @return relative-column-span($push, 1, $columns, $gutters) + $gutter;
+  } @else {
+    @return null;
+  }
+}
+
+// Isolation Override
+@mixin isolate(
+  $location,
+  $columns  : $columns,
+  $gutters  : $gutters,
+  $flow     : $direction
+) {
+  $to     : to($flow);
+  $from   : from($flow);
+
+  $before : get-isolation-position(1, $location, $columns, $gutters);
+  $after  : -100%;
+
+  margin-#{$from}: $before;
+  margin-#{$to}: $after;
+}
+
+// Isolation Grid
+@mixin isolate-grid(
+  $span,
+  $columns  : $columns,
+  $gutters  : $gutters,
+  $selector : child,
+  $flow     : $direction
+) {
+  $to       : to($flow);
+  $from     : from($flow);
+
+  $location : 1;
+  $context  : column-count($columns);
+  $line     : floor($context / $span);
+
+  $width    : relative-column-span($span, $location, $columns, $gutters);
+  $width    : if(is-symmetrical($columns), $width, null);
+
+  @include float-span-output($width, $from, null, -100%, $flow);
+
+  @for $item from 1 through $line {
+    $nth: '#{$line}n + #{$item}';
+    &:#{format-nth($nth,$selector)} {
+      $width: relative-column-span($span, $location, $columns, $gutters);
+      $width: if(is-symmetrical($columns), null, $width);
+      $before: get-isolation-position($span, $location, $columns, $gutters);
+
+      @include float-span-output($width, null, $before, null, $flow);
+
+      @if $location == 1 { clear: $from; }
+      $location: $location + $span;
+      @if $location > $context { $location: 1; }
+    }
+  }
+}

@@ -1,12 +1,23 @@
 // -----------
 // Column math
 
-// Find the number of columns in a given layout
-@function column-count(
+// Returns true if a grid is symmetrical
+@function is-symmetrical(
   $columns: $columns
 ) {
   @if length($columns) == 1 {
     @return nth($columns,1);
+  } @else {
+    @return null;
+  }
+}
+
+// Find the number of columns in a given layout
+@function column-count(
+  $columns: $columns
+) {
+  @if is-symmetrical($columns) {
+    @return is-symmetrical($columns);
   } @else {
     @return length($columns);
   }
@@ -24,8 +35,8 @@
     $gutter-sum: (column-count($columns) - 1) * $gutters;
   }
 
-  @if length($columns) == 1 {
-    $column-sum: nth($columns,1);
+  @if is-symmetrical($columns) {
+    $column-sum: is-symmetrical($columns);
   } @else {
     @each $column in $columns {
       $column-sum: $column-sum + $column;
@@ -44,7 +55,7 @@
   $location     : get-location-position($span, $location, $columns);
   $sub-columns  : ();
 
-  @if length($columns) == 1 {
+  @if is-symmetrical($columns) {
     $sub-columns: nth($span,1);
   } @else {
     $location: if($location, $location, 1);
@@ -67,7 +78,7 @@
   $span-sum : false;
   $context  : column-sum($columns, $gutters);
 
-  @if length($columns) == 1 {
+  @if is-symmetrical($columns) {
     $span-sum: column-sum($span, $gutters);
   } @else {
     $span-columns: get-columns($span, $location, $columns);

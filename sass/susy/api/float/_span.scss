@@ -1,0 +1,50 @@
+// ----------
+// Float span
+
+// Output span
+@mixin float-span-output(
+  $width,
+  $float      : from($direction),
+  $before     : null,
+  $after      : null,
+  $flow       : $direction
+) {
+  $to     : to($flow);
+  $from   : from($flow);
+
+  width: $width;
+  float: $float;
+  margin-#{$from}: $before;
+  margin-#{$to}: $after;
+}
+
+// Calculate relative span
+@mixin float-span-relative(
+  $span,
+  $location   : false,
+  $columns    : $columns,
+  $gutters    : $gutters,
+  $isolate    : false,
+  $flow       : $direction
+) {
+  $to     : to($flow);
+  $from   : from($flow);
+
+  $width  : relative-column-span($span, $location, $columns, $gutters);
+  $gutter : relative-gutter-span($columns, $gutters);
+
+  $float  : $from;
+
+  $before : null;
+  $after  : $gutter;
+
+  @if $isolate {
+    $before: get-isolation-position($span, $location, $columns, $gutters);
+    $after: -100%;
+  } @else if is-last($span, $location, $columns) {
+    $float: $to;
+    $after: null;
+  }
+
+  @include float-span-output($width, $float, $before, $after, $flow);
+}

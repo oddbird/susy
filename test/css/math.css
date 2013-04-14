@@ -1,45 +1,45 @@
 .span {
   width: 54.54545%;
-  float: right;
-  margin-left: 2.27273%;
+  float: left;
+  margin-right: 2.27273%;
 }
 
 .span-omega {
   width: 20.45455%;
-  float: left;
+  float: right;
 }
 
 .isolate {
   width: 54.54545%;
-  float: right;
-  margin-right: 11.36364%;
-  margin-left: -100%;
+  float: left;
+  margin-left: 11.36364%;
+  margin-right: -100%;
 }
 
 .isolate-override {
-  margin-right: 11.36364%;
-  margin-left: -100%;
+  margin-left: 11.36364%;
+  margin-right: -100%;
 }
 
 .span {
   width: 50%;
-  float: right;
-  margin-left: 4.54545%;
+  float: left;
+  margin-right: 4.54545%;
 }
 
 .span-omega {
   width: 45.45455%;
-  float: left;
+  float: right;
 }
 
 .isolate {
   width: 63.63636%;
-  float: right;
-  margin-right: 27.27273%;
-  margin-left: -100%;
+  float: left;
+  margin-left: 27.27273%;
+  margin-right: -100%;
 }
 
 .isolate-override {
-  margin-right: 27.27273%;
-  margin-left: -100%;
+  margin-left: 27.27273%;
+  margin-right: -100%;
 }

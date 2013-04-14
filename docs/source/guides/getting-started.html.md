@@ -182,12 +182,12 @@ support for various grid styles,
 and even bi-directional grids for multi-lingual sites.
 Check the [reference documentation][reference] for details.
 
-[reference]: ../reference/
-[container]: ../reference/#ref-container
-[span-columns]: ../reference/#ref-span-columns
-[at-breakpoint]: ../reference/#ref-at-breakpoint
-[push]: ../reference/#ref-push
-[pull]: ../reference/#ref-pull
+[reference]: /guides/reference/
+[container]: /guides/reference/#ref-container
+[span-columns]: /guides/reference/#ref-span-columns
+[at-breakpoint]: /guides/reference/#ref-at-breakpoint
+[push]: /guides/reference/#ref-push
+[pull]: /guides/reference/#ref-pull
 
 ## <a href="#troubleshooting" id="troubleshooting">Troubleshooting</a>
 

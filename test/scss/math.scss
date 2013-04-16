@@ -13,6 +13,7 @@ $debug: true;
 
 $columns: 9;
 $gutters: .25;
+$column-width: 4em;
 
 @if $debug {
   @debug column-count() if(column-count() == 9, true, false);
@@ -20,6 +21,7 @@ $gutters: .25;
   @debug relative-column-span(5) if(round(relative-column-span(5)) == 55%, true, false);
   @debug static-column-span(5) if(static-column-span(5) == 24em, true, false);
   @debug static-gutter-span() if(static-gutter-span() == 1em, true, false);
+  @debug calculate-container-width() if(calculate-container-width() == 44em, true, false);
 }
 
 .span {
@@ -43,6 +45,7 @@ $gutters: .25;
 
 $columns: 2 3 1 2 1;
 $gutters: .5;
+$column-width: 4em;
 
 @if $debug {
   @debug column-count() if(column-count() == 5, true, false);
@@ -50,6 +53,7 @@ $gutters: .5;
   @debug relative-column-span(2,1) if(relative-column-span(2,1) == 50%, true, false);
   @debug static-column-span(2,1) if(static-column-span(2,1) == 22em, true, false);
   @debug static-gutter-span() if(static-gutter-span() == 2em, true, false);
+  @debug calculate-container-width() if(calculate-container-width() == 44em, true, false);
 }
 
 .span {

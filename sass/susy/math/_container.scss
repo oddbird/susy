@@ -1,0 +1,11 @@
+// --------------
+// Container math
+
+// Calculate the width of a container based on columns and gutters
+@function calculate-container-width(
+  $columns: $columns,
+  $gutters: $gutters,
+  $column-width: $column-width
+) {
+  @return column-sum($columns, $gutters) * $column-width;
+}

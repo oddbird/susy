@@ -68,15 +68,14 @@
   @return $sub-columns;
 }
 
-// Find relative width of the column span
-@function relative-column-span(
+// Find the sum of a column-span
+@function get-column-span-sum(
   $span,
   $location : false,
   $columns  : $columns,
   $gutters  : $gutters
 ) {
   $span-sum : false;
-  $context  : column-sum($columns, $gutters);
 
   @if is-symmetrical($columns) {
     $span-sum: column-sum($span, $gutters);
@@ -84,6 +83,19 @@
     $span-columns: get-columns($span, $location, $columns);
     $span-sum: column-sum($span-columns, $gutters);
   }
+
+  @return $span-sum;
+}
+
+// Find relative width of the column span
+@function relative-column-span(
+  $span,
+  $location : false,
+  $columns  : $columns,
+  $gutters  : $gutters
+) {
+  $span-sum : get-column-span-sum($span, $location, $columns, $gutters);
+  $context  : column-sum($columns, $gutters);
 
   @return percentage($span-sum / $context);
 }
@@ -96,14 +108,7 @@
   $gutters      : $gutters,
   $column-width : $column-width
 ) {
-  $span-sum : false;
-
-  @if is-symmetrical($columns) {
-    $span-sum: column-sum($span, $gutters);
-  } @else {
-    $span-columns: get-columns($span, $location, $columns);
-    $span-sum: column-sum($span-columns, $gutters);
-  }
+  $span-sum : get-column-span-sum($span, $location, $columns, $gutters);
 
   @return $span-sum * $column-width;
 }

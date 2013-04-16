@@ -88,7 +88,7 @@
   @return percentage($span-sum / $context);
 }
 
-// Find relative width of the column span
+// Find static width of the column span
 @function static-column-span(
   $span,
   $location     : false,

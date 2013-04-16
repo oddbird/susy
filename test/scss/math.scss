@@ -6,7 +6,7 @@
 // --------
 // Settings
 
-$debug: false;
+$debug: true;
 
 // ----------------
 // Symmetrical math
@@ -19,6 +19,7 @@ $gutters: .25;
   @debug column-sum() if(column-sum() == 11, true, false);
   @debug relative-column-span(5) if(round(relative-column-span(5)) == 55%, true, false);
   @debug static-column-span(5) if(static-column-span(5) == 24em, true, false);
+  @debug static-gutter-span() if(static-gutter-span() == 1em, true, false);
 }
 
 .span {
@@ -48,6 +49,7 @@ $gutters: .5;
   @debug column-sum() if(column-sum() == 11, true, false);
   @debug relative-column-span(2,1) if(relative-column-span(2,1) == 50%, true, false);
   @debug static-column-span(2,1) if(static-column-span(2,1) == 22em, true, false);
+  @debug static-gutter-span() if(static-gutter-span() == 2em, true, false);
 }
 
 .span {

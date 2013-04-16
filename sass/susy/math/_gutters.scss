@@ -10,3 +10,11 @@
 
   @return percentage($gutters / $context);
 }
+
+// Find static width of a gutter
+@function static-gutter-span(
+  $gutters: $gutters,
+  $column-width: $column-width
+) {
+  @return $gutters * $column-width;
+}

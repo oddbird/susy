@@ -133,8 +133,8 @@ $overlay-switch-location: left bottom !default;
         ~ body #{$selector} {
           @extend %grid-overlay-container;
         }
-        ~ #{$selector}::after,
-        ~ body #{$selector}::after {
+        ~ #{$selector}::before,
+        ~ body #{$selector}::before {
           @extend %grid-overlay;
           @include background-grid($this-columns, $this-gutters, $color);
         }

@@ -1,0 +1,19 @@
+// Float container
+// ===============
+
+@mixin float-container(
+  $width        : $container-width,
+  $columns      : $columns,
+  $gutters      : $gutters,
+  $column-width : $column-width,
+  $property     : max-width
+) {
+  @if not $width {
+    $width: calculate-container-width($columns, $gutters, $column-width);
+  }
+
+  @include pie-clearfix;
+  #{$property}: $width;
+  margin-left: auto;
+  margin-right: auto;
+}

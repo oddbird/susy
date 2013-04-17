@@ -24,21 +24,21 @@ $gutters: .25 !default;
   $gutters: $g;
 
   .#{$class} {
+    @include float-container;
     @include background-grid;
-    @include clearfix;
-    max-width: 75em;
-    margin: rhythm(.5) auto;
+    @include leader(.5);
+    @include trailer(.5);
 
     > .size1of5 {
       min-height: rhythm(10);
-      &:first-of-type { @include float-span-relative(2, 1, $isolate: $isolate); }
-      ~ .size1of5 { @include float-span-relative(2, last, $isolate: $isolate); }
+      &:first-of-type { @include float-span(2, 1, $isolate: $isolate); }
+      ~ .size1of5 { @include float-span(2, last, $isolate: $isolate); }
     }
     > .size3of5 {
-      @include float-span-relative(6,3, $isolate: $isolate);
+      @include float-span(6,3, $isolate: $isolate);
       > .size1of2 {
-        &:first-child { @include float-span-relative(3, 1, get-columns(6,3), $isolate: $isolate); }
-        + .size1of2 { @include float-span-relative(3, last, get-columns(6,3), $isolate: $isolate); }
+        &:first-child { @include float-span(3, 1, get-columns(6,3), $isolate: $isolate); }
+        + .size1of2 { @include float-span(3, last, get-columns(6,3), $isolate: $isolate); }
       }
       > .full {
         clear: both;
@@ -48,18 +48,18 @@ $gutters: .25 !default;
 
     .full {
       .size1of3 {
-        @include float-span-relative(2, 1, get-columns(6,3), $isolate: $isolate);
+        @include float-span(2, 1, get-columns(6,3), $isolate: $isolate);
         min-height: rhythm(6.5);
       }
       .size2of3 {
-        @include float-span-relative(4, last, get-columns(6,3), $isolate: $isolate);
+        @include float-span(4, last, get-columns(6,3), $isolate: $isolate);
       }
     }
 
     .size2of3 {
       .size1of2 {
-        &:first-child { @include float-span-relative(2, 1, get-columns(4,5), $isolate: $isolate); }
-        + .size1of2 { @include float-span-relative(2, last, get-columns(4,5), $isolate: $isolate); }
+        &:first-child { @include float-span(2, 1, get-columns(4,5), $isolate: $isolate); }
+        + .size1of2 { @include float-span(2, last, get-columns(4,5), $isolate: $isolate); }
       }
       .full {
         clear: both;
@@ -75,18 +75,19 @@ $gutters: .25 !default;
 // Symmetrical
 // -----------
 
-$a-class    : symmetrical;
-$a-columns  : 10;
-$a-gutters  : .25;
+$a-class        : symmetrical;
+$a-columns      : 10;
+$a-gutters      : .25;
 
 @include ag-test($a-class, $a-columns, $a-gutters);
 
 // Asymmetrical
 // ------------
 
-$b-class    : asymmetrical;
-$b-columns  : .5 2 1.25 1 3.25 1.75 3 2 1 3.75;
-$b-gutters  : .5;
+$b-class          : asymmetrical;
+$b-columns        : .5 2 1.25 1 3.25 1.75 3 2 1 3.75;
+$b-gutters        : .5;
+$container-width  : 75%;
 
 @include ag-test($b-class, $b-columns, $b-gutters, true);
 

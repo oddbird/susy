@@ -19,21 +19,34 @@
 }
 
 // Calculate relative span
-@mixin float-span-relative(
+@mixin float-span(
   $span,
-  $location   : false,
-  $columns    : $columns,
-  $gutters    : $gutters,
-  $isolate    : false,
-  $flow       : $direction
+  $location       : false,
+  $columns        : $columns,
+  $gutters        : $gutters,
+  $isolate        : false,
+  $column-width   : $column-width,
+  $static         : $static-output,
+  $flow           : $direction
 ) {
   $to     : to($flow);
   $from   : from($flow);
 
-  $width  : relative-column-span($span, $location, $columns, $gutters);
+  $float  : $from;
+
+  $width  : false;
   $gutter : relative-gutter-span($columns, $gutters);
 
-  $float  : $from;
+  @if unitless($span) {
+    @if $static {
+      $width: static-column-span($span, $location, $columns, $gutters, $column-width);
+      $gutter: static-gutter-span($gutters, $column-width);
+    } @else {
+      $width: relative-column-span($span, $location, $columns, $gutters);
+    }
+  } @else {
+    $width: $span;
+  }
 
   $before : null;
   $after  : $gutter;

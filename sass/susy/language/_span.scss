@@ -19,5 +19,5 @@
   @if not $context { $context: $columns; }
   @if not $gutter { $gutter: $gutters; }
 
-  @include float-span-relative($span, $location, $context, $gutter, $isolate);
+  @include float-span($span, $location, $context, $gutter, $isolate);
 }

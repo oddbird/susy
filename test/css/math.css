@@ -27,6 +27,19 @@
   margin-right: -100%;
 }
 
+.margin-arbitrary {
+  margin-left: 12em;
+}
+
+.margin-relative {
+  margin-right: 56.81818%;
+}
+
+.margin-static {
+  margin-left: 25em;
+  margin-right: 25em;
+}
+
 .span {
   width: 50%;
   float: left;
@@ -54,4 +67,13 @@
 .isolate-override {
   margin-left: 27.27273%;
   margin-right: -100%;
+}
+
+.margin-relative {
+  margin-right: 54.54545%;
+}
+
+.margin-static {
+  margin-left: 24em;
+  margin-right: 24em;
 }

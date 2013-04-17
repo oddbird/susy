@@ -34,19 +34,8 @@
 
   $float  : $from;
 
-  $width  : false;
-  $gutter : relative-gutter-span($columns, $gutters);
-
-  @if unitless($span) {
-    @if $static {
-      $width: static-column-span($span, $location, $columns, $gutters, $column-width);
-      $gutter: static-gutter-span($gutters, $column-width);
-    } @else {
-      $width: relative-column-span($span, $location, $columns, $gutters);
-    }
-  } @else {
-    $width: $span;
-  }
+  $width  : get-span-width($span, $location, $columns, $gutters, $column-width, $static);
+  $gutter : get-gutter-width($columns, $gutters, $column-width, $static);
 
   $before : null;
   $after  : $gutter;

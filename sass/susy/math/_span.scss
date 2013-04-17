@@ -1,0 +1,71 @@
+// Span math
+// =========
+
+// Find relative width of the column span
+@function relative-column-span(
+  $span,
+  $location : false,
+  $columns  : $columns,
+  $gutters  : $gutters
+) {
+  $span-sum : get-column-span-sum($span, $location, $columns, $gutters);
+  $context  : column-sum($columns, $gutters);
+
+  @return percentage($span-sum / $context);
+}
+
+// Find static width of the column span
+@function static-column-span(
+  $span,
+  $location     : false,
+  $columns      : $columns,
+  $gutters      : $gutters,
+  $column-width : $column-width
+) {
+  $span-sum : get-column-span-sum($span, $location, $columns, $gutters);
+
+  @return $span-sum * $column-width;
+}
+
+// Calculate the span width - relative, static, or arbitrary
+@function get-span-width(
+  $span,
+  $location       : false,
+  $columns        : $columns,
+  $gutters        : $gutters,
+  $column-width   : $column-width,
+  $static         : $static-output
+) {
+  $width: false;
+
+  @if unitless($span) {
+    @if $static {
+      $width: static-column-span($span, $location, $columns, $gutters, $column-width);
+    } @else {
+      $width: relative-column-span($span, $location, $columns, $gutters);
+    }
+  } @else {
+    $width: $span;
+  }
+
+  @return $width;
+}
+
+// Calculate the outer span width, including outer gutter
+@function get-span-outer-width(
+  $span,
+  $location       : false,
+  $columns        : $columns,
+  $gutters        : $gutters,
+  $column-width   : $column-width,
+  $static         : $static-output
+) {
+  $width  : get-span-width($span, $location, $columns, $gutters, $column-width, $static);
+  $gutter : 0;
+
+  @if unitless($span) {
+    $gutter : get-gutter-width($columns, $gutters, $column-width, $static);
+  }
+
+  @return $width + $gutter;
+}

@@ -1,0 +1,51 @@
+// Padding
+// =======
+
+// Add padding before or after an element
+@mixin padding-output(
+  $span,
+  $location       : false,
+  $columns        : $columns,
+  $gutters        : $gutters,
+  $sides          : before after,
+  $column-width   : $column-width,
+  $static         : $static-output,
+  $flow           : $direction
+) {
+  $to: to($flow);
+  $from: from($flow);
+
+  $width: get-span-outer-width($span, $location, $columns, $gutters, $column-width, $static);
+
+  $before: if(index($sides, before), $width, null);
+  $after: if(index($sides, after), $width, null);
+
+  padding-#{$from}: $before;
+  padding-#{$to}: $after;
+}
+
+// Add padding before an element
+@mixin padding-before(
+  $span,
+  $location       : false,
+  $columns        : $columns,
+  $gutters        : $gutters,
+  $column-width   : $column-width,
+  $static         : $static-output,
+  $flow           : $direction
+) {
+  @include padding-output($span, $location, $columns, $gutters, before, $column-width, $static, $flow);
+}
+
+// Add padding after an element
+@mixin padding-after(
+  $span,
+  $location       : false,
+  $columns        : $columns,
+  $gutters        : $gutters,
+  $column-width   : $column-width,
+  $static         : $static-output,
+  $flow           : $direction
+) {
+  @include padding-output($span, $location, $columns, $gutters, after, $column-width, $static, $flow);
+}

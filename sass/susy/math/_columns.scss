@@ -86,29 +86,3 @@
 
   @return $span-sum;
 }
-
-// Find relative width of the column span
-@function relative-column-span(
-  $span,
-  $location : false,
-  $columns  : $columns,
-  $gutters  : $gutters
-) {
-  $span-sum : get-column-span-sum($span, $location, $columns, $gutters);
-  $context  : column-sum($columns, $gutters);
-
-  @return percentage($span-sum / $context);
-}
-
-// Find static width of the column span
-@function static-column-span(
-  $span,
-  $location     : false,
-  $columns      : $columns,
-  $gutters      : $gutters,
-  $column-width : $column-width
-) {
-  $span-sum : get-column-span-sum($span, $location, $columns, $gutters);
-
-  @return $span-sum * $column-width;
-}

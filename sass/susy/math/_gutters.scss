@@ -18,3 +18,21 @@
 ) {
   @return $gutters * $column-width;
 }
+
+// Return the width of a gutter - static or relative
+@function get-gutter-width(
+  $columns: $columns,
+  $gutters: $gutters,
+  $column-width: $column-width,
+  $static: $static-output
+) {
+  $gutter: null;
+
+  @if $static {
+    $gutter: static-gutter-span($gutters, $column-width);
+  } @else {
+    $gutter: relative-gutter-span($columns, $gutters);
+  }
+
+  @return $gutter;
+}

@@ -7,5 +7,13 @@
   $gutters: $gutters,
   $column-width: $column-width
 ) {
-  @return column-sum($columns, $gutters) * $column-width;
+  $width: null;
+
+  @if $column-width {
+    $width: column-sum($columns, $gutters) * $column-width;
+  } @else {
+    @warn "We need either `$column-width` or `$container-width` in order to calculate the width of your container"
+  }
+
+  @return $width;
 }

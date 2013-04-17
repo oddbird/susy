@@ -7,7 +7,7 @@
   $columns          : $columns,
   $gutters          : $gutters,
   $column-width     : $column-width,
-  $property         : max-width,
+  $property         : if($static-output, width, max-width),
   $background-grid  : $show-background-grids
 ) {
   @if not $width {

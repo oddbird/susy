@@ -1,6 +1,34 @@
 // Span math
 // =========
 
+@function fix-static-column-width(
+  $columns          : $columns,
+  $gutters          : $gutters,
+  $column-width     : $column-width,
+  $container-width  : $container-width
+) {
+  @if $container-width and unit($container-width) != '%' {
+    $re-calculate: false;
+    @if $column-width {
+      @if $container-width != calculate-container-width($columns, $gutters, $column-width) {
+        @warn "$container-width and $column-width don't match. Static grids require one or the other, or a matching pair.";
+      }
+    } @else {
+      $re-calculate: true;
+    }
+    @if $re-calculate {
+      $column-ratio: 1 / column-sum($columns, $gutters);
+      $column-width: $container-width * $column-ratio;
+    }
+  }
+
+  @if not $column-width {
+    @warn "Static output requires either $column-width or $container-width in order to correctly calculate widths.";
+  }
+
+  @return $column-width;
+}
+
 // Find relative width of the column span
 @function relative-column-span(
   $span,
@@ -17,14 +45,21 @@
 // Find static width of the column span
 @function static-column-span(
   $span,
-  $location     : false,
-  $columns      : $columns,
-  $gutters      : $gutters,
-  $column-width : $column-width
+  $location         : false,
+  $columns          : $columns,
+  $gutters          : $gutters,
+  $column-width     : $column-width,
+  $container-width  : $container-width
 ) {
-  $span-sum : get-column-span-sum($span, $location, $columns, $gutters);
+  $width: null;
+  $span-sum: get-column-span-sum($span, $location, $columns, $gutters);
+  $column-width: fix-static-column-width($columns, $gutters, $column-width, $container-width);
 
-  @return $span-sum * $column-width;
+  @if $column-width {
+    $width: $span-sum * $column-width;
+  }
+
+  @return $width;
 }
 
 // Calculate the span width - relative, static, or arbitrary

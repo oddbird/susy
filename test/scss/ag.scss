@@ -25,7 +25,6 @@ $gutters: .25 !default;
 
   .#{$class} {
     @include float-container;
-    @include background-grid;
     @include leader(.5);
     @include trailer(.5);
 
@@ -88,6 +87,7 @@ $b-class          : asymmetrical;
 $b-columns        : .5 2 1.25 1 3.25 1.75 3 2 1 3.75;
 $b-gutters        : .5;
 $container-width  : 75%;
+$show-background-grids: false;
 
 @include ag-test($b-class, $b-columns, $b-gutters, true);
 

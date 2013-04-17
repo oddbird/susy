@@ -2,18 +2,13 @@
 // ===============
 
 @mixin float-container(
-  $width        : $container-width,
-  $columns      : $columns,
-  $gutters      : $gutters,
-  $column-width : $column-width,
-  $property     : max-width
+  $width            : $container-width,
+  $columns          : $columns,
+  $gutters          : $gutters,
+  $column-width     : $column-width,
+  $property         : max-width,
+  $background-grid  : $show-background-grids
 ) {
-  @if not $width {
-    $width: calculate-container-width($columns, $gutters, $column-width);
-  }
-
   @include pie-clearfix;
-  #{$property}: $width;
-  margin-left: auto;
-  margin-right: auto;
+  @include container-output($width, $columns, $gutters, $column-width, $property, $background-grid);
 }

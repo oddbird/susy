@@ -1,0 +1,24 @@
+// Shared container output
+// =======================
+
+// Output container styles
+@mixin container-output(
+  $width            : $container-width,
+  $columns          : $columns,
+  $gutters          : $gutters,
+  $column-width     : $column-width,
+  $property         : max-width,
+  $background-grid  : $show-background-grids
+) {
+  @if not $width {
+    $width: calculate-container-width($columns, $gutters, $column-width);
+  }
+
+  @if $background-grid {
+    @include background-grid;
+  }
+
+  #{$property}: $width;
+  margin-left: auto;
+  margin-right: auto;
+}

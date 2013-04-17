@@ -1,12 +1,13 @@
 // Settings
 // ========
 
-$columns          : 4         !default;
-$gutters          : .25       !default;
+$columns                : 4         !default;
+$gutters                : .25       !default;
 
-$column-width     : 4em       !default;
-$container-width  : false     !default;
+$column-width           : 4em       !default;
+$container-width        : false     !default;
 
-$static-output    : false     !default;
-$direction        : ltr       !default;
+$static-output          : false     !default;
+$direction              : ltr       !default;
 
+$show-background-grids  : true      !default;

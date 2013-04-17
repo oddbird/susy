@@ -1,15 +1,15 @@
-// -------
-// Imports
+// Math tests
+// ==========
 
 @import "susy";
 
-// --------
 // Settings
+// --------
 
 $debug: true;
 
-// ----------------
 // Symmetrical math
+// ----------------
 
 $columns: 9;
 $gutters: .25;
@@ -40,8 +40,8 @@ $column-width: 4em;
   @include isolate(2);
 }
 
-// -----------------
 // Asymmetrical math
+// -----------------
 
 $columns: 2 3 1 2 1;
 $gutters: .5;

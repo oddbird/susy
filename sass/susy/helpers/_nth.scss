@@ -1,6 +1,7 @@
-// ------------
 // Nth- helpers
+// ============
 
+// Format various nth-selectors
 @function format-nth(
   $n        : last,
   $selector : child

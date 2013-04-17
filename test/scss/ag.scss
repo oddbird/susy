@@ -1,18 +1,18 @@
-// -------
-// Imports
+// AG tests
+// ========
 
 @import "compass";
 @import "susy";
 @import "compass/reset";
 
-// --------
 // Settings
+// --------
 
 $columns: 4   !default;
 $gutters: .25 !default;
 
-// ----------------
 // Complex AG tests
+// ----------------
 
 @mixin ag-test(
   $class,
@@ -72,8 +72,8 @@ $gutters: .25 !default;
   }
 }
 
-// -----------
 // Symmetrical
+// -----------
 
 $a-class    : symmetrical;
 $a-columns  : 10;
@@ -81,8 +81,8 @@ $a-gutters  : .25;
 
 @include ag-test($a-class, $a-columns, $a-gutters);
 
-// ------------
 // Asymmetrical
+// ------------
 
 $b-class    : asymmetrical;
 $b-columns  : .5 2 1.25 1 3.25 1.75 3 2 1 3.75;
@@ -90,16 +90,16 @@ $b-gutters  : .5;
 
 @include ag-test($b-class, $b-columns, $b-gutters, true);
 
-// ---------------
 // Grid background
+// ---------------
 
 @include grid-overlay(
   $a-class $a-columns $a-gutters,
   $b-class $b-columns $b-gutters
 );
 
-// ------
 // Styles
+// ------
 
 @include establish-baseline;
 

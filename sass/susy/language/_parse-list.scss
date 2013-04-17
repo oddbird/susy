@@ -1,15 +1,15 @@
+// List parsing
+// ============
+
 // Retrieve values from the natural language string.
-// column-count($var, $string)
-// - $var       : <name>
-//              - at, span, of, and other keywords.
-//              - span queries the unprefixed span declaration and at can query first, last, alpha, and omega.
-// - $string    : <list>
-//              - A list like this: last 5 of 12 push 3
 //
 // Useage:
 // Query the prefix, not the meaning of the prefix. For example, query "at" instead of "location".
 // parse-string(at, $string) will return "last" from the above string.
-@function parse-string($var, $string) {
+@function parse-string(
+  $var,
+  $string
+) {
 
   // Counter starts at 1
   $i: 1;

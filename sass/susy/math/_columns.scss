@@ -5,8 +5,8 @@
 @function is-symmetrical(
   $columns: $columns
 ) {
-  @if length($columns) == 1 {
-    @return nth($columns,1);
+  @if type-of($columns) == number {
+    @return $columns;
   } @else {
     @return null;
   }
@@ -16,11 +16,13 @@
 @function column-count(
   $columns: $columns
 ) {
-  @if is-symmetrical($columns) {
-    @return is-symmetrical($columns);
-  } @else {
-    @return length($columns);
+  $count: is-symmetrical($columns);
+
+  @if not $count {
+    $count: length($columns);
   }
+
+  @return $count;
 }
 
 // Find the total sum of column-units in a layout
@@ -71,9 +73,9 @@
 // Find the sum of a column-span
 @function get-column-span-sum(
   $span,
-  $location : false,
-  $columns  : $columns,
-  $gutters  : $gutters
+  $location     : false,
+  $columns      : $columns,
+  $gutters      : $gutters
 ) {
   $span-sum : false;
 

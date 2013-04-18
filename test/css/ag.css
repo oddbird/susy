@@ -401,8 +401,15 @@ h1, h2, h3 {
   background: rgba(255, 0, 0, 0.25);
 }
 .box .padding {
-  background: rgba(0, 128, 0, 0.25);
   height: 1.5em;
+  background: rgba(0, 128, 0, 0.25);
+}
+.box .bleed {
+  margin-left: -30%;
+  margin-right: -30%;
+  padding-left: 30%;
+  padding-right: 30%;
+  background: rgba(0, 0, 255, 0.25);
 }
 
 .static {

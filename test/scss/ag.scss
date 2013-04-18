@@ -144,6 +144,7 @@ h1, h2, h3 {
 // ---
 
 $columns: 1 2 3 .5 3 2 1.5 2 1 .5 2 1;
+// $columns: 12;
 $gutters: .25;
 $column-width: 3em;
 $container-width: false;
@@ -160,8 +161,13 @@ $container-width: false;
     background: rgba(red, .25);
   }
   .padding {
-    background: rgba(green, .25);
     height: rhythm(1);
+    background: rgba(green, .25);
+  }
+  .bleed {
+    @include bleed-output(30%);
+    // @include bleed-output(2,6);
+    background: rgba(blue, .25);
   }
 }
 

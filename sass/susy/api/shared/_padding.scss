@@ -15,7 +15,13 @@
   $to: to($flow);
   $from: from($flow);
 
-  $width: get-span-outer-width($span, $location, $columns, $gutters, $column-width, $static);
+  $width: null;
+
+  @if unitless($span) {
+    $width: get-span-outer-width($span, $location, $columns, $gutters, $column-width, $static);
+  } @else {
+    $width: $span;
+  }
 
   $before: if(index($sides, before), $width, null);
   $after: if(index($sides, after), $width, null);

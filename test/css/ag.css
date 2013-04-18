@@ -282,7 +282,7 @@ head {
   text-shadow: 0 0 3px #fff;
 }
 head::before {
-  content: "||||";
+  content: "|||";
   display: block;
   padding: 10px 14px;
   letter-spacing: -1;

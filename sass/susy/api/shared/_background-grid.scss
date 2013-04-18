@@ -109,7 +109,7 @@ $overlay-switch-location: left bottom !default;
     color: #333;
     text-shadow: 0 0 3px #fff;
     &::before {
-      content: "||||";
+      content: "|||";
       display: block;
       padding: 10px 14px;
       letter-spacing: -1;

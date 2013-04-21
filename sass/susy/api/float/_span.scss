@@ -4,57 +4,62 @@
 // Output span
 @mixin float-span-output(
   $width,
-  $float      : from($flow),
-  $before     : null,
-  $after      : null,
-  $flow       : $flow
+  $float            : from($flow),
+  $margin-before    : null,
+  $margin-after     : null,
+  $padding-before   : null,
+  $padding-after    : null,
+  $flow             : $flow
 ) {
   $to     : to($flow);
   $from   : from($flow);
 
   width: $width;
   float: $float;
-  margin-#{$from}: $before;
-  margin-#{$to}: $after;
+  margin-#{$from}: $margin-before;
+  margin-#{$to}: $margin-after;
+  padding-#{$from}: $padding-before;
+  padding-#{$to}: $padding-after;
 }
 
-// Calculate relative span
+// Calculate the properties for a floated span
 @mixin float-span(
   $span,
   $location       : false,
   $columns        : $columns,
   $gutters        : $gutters,
-  $isolate        : false,
   $column-width   : $column-width,
+  $isolate        : false,
   $static         : $static,
   $flow           : $flow
 ) {
-  $to     : to($flow);
-  $from   : from($flow);
+  $width            : null;
 
-  $float  : $from;
+  $float            : from($flow);
+  $gutter           : get-gutter-width($columns, $gutters, $column-width, $static);
 
-  $width  : $span;
-  $gutter : get-gutter-width($columns, $gutters, $column-width, $static);
+  $margin-before    : null;
+  $margin-after     : $gutter;
+  $padding-before   : null;
+  $padding-after    : null;
 
-  @if unitless($width) {
-    $width  : get-span-width($span, $location, $columns, $gutters, $column-width, $static);
+  @if unitless($span) {
+    $width: get-span-width($span, $location, $columns, $gutters, $column-width, $static);
+  } @else {
+    $width: $span;
   }
-
-  $before : null;
-  $after  : $gutter;
 
   @if $isolate {
     @if type-of($location) == number and not unitless($location) {
-      $before: $location;
+      $margin-before: $location;
     } @else {
-      $before: get-isolation-position($span, $location, $columns, $gutters);
+      $margin-before: get-isolation-position($span, $location, $columns, $gutters);
     }
-    $after: -100%;
+    $margin-after: -100%;
   } @else if is-last($span, $location, $columns) {
-    $float: $to;
-    $after: null;
+    $float: to($flow);
+    $margin-after: null;
   }
 
-  @include float-span-output($width, $float, $before, $after, $flow);
+  @include float-span-output($width, $float, $margin-before, $margin-after, $padding-before, $padding-after, $flow);
 }

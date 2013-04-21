@@ -61,7 +61,7 @@
     }
 
     .isolation div {
-      @include isolate-grid(2, $columns, $gutters);
+      @include isolate-grid-output(2, $columns, $gutters);
     }
   }
 }

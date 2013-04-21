@@ -25,7 +25,6 @@
     $container        : if($new-container, $new-container, $container);
     $column-width     : if($new-column-width, $new-column-width, $column-width);
     $static           : if($new-static, $new-static, $static);
-    $flow             : if($new-flow, $new-flow, $flow);
   }
 
   $columns            : $new-columns;
@@ -33,7 +32,7 @@
   $container          : $new-container;
   $column-width       : $new-column-width;
   $static             : $new-static;
-  $flow               : $new-flow;
+  $flow               : if($new-flow, $new-flow, $flow);
 }
 
 // Use an arbitrary grid for a section of code

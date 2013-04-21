@@ -25,42 +25,6 @@ $column-width: 4em;
   @debug calculate-container-width() if(calculate-container-width() == 44em, true, false);
 }
 
-.container {
-  @include container(hide);
-}
-
-.span {
-  @include span(5);
-}
-
-.span-static {
-  @include float-span(5, $static: true);
-}
-
-.span-omega {
-  @include float-span(2,last);
-}
-
-.isolate {
-  @include float-span(5, 2, $isolate: true);
-}
-
-.isolate-override {
-  @include isolate(2);
-}
-
-.margin-arbitrary {
-  @include margin-before(12em);
-}
-
-.margin-relative {
-  @include margin-after(5);
-}
-
-.margin-static {
-  @include margin-output(5, $static: true);
-}
-
 // Asymmetrical math
 // -----------------
 
@@ -75,32 +39,4 @@ $column-width: 4em;
   @debug static-column-span(2,1) if(static-column-span(2,1) == 22em, true, false);
   @debug static-gutter-span() if(static-gutter-span() == 2em, true, false);
   @debug calculate-container-width() if(calculate-container-width() == 44em, true, false);
-}
-
-.span {
-  @include float-span(2,1);
-}
-
-.span-static {
-  @include float-span(2,1, $static: true);
-}
-
-.span-omega {
-  @include float-span(3,omega);
-}
-
-.isolate {
-  @include float-span(3, 2, $isolate: true);
-}
-
-.isolate-override {
-  @include isolate(2);
-}
-
-.margin-relative {
-  @include margin-after(2,1);
-}
-
-.margin-static {
-  @include margin-output(2,1, $static: true);
 }

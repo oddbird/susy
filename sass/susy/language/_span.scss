@@ -1,5 +1,28 @@
 // Span language parsing
 // =====================
+//
+// Mixins:
+// - span()
+
+// Set a spanning element using shorthand syntax
+@mixin span(
+  $input
+) {
+  $input: parse-span($input);
+
+  $this-span          : nth($input,1);
+  $this-location      : nth($input,2);
+  $this-columns       : nth($input,3);
+  $this-gutters       : nth($input,4);
+  $this-column-width  : nth($input,5);
+  $this-isolate       : nth($input,6);
+  $this-static        : nth($input,7);
+
+  @include float-span($this-span, $this-location, $this-columns, $this-gutters, $this-isolate, $this-column-width, $this-static);
+}
+
+// Span Helpers
+// ------------
 
 // Parse the span shortcut syntax
 @function parse-span(
@@ -125,21 +148,4 @@
   }
 
   @return $value;
-}
-
-// Set a spanning element using shorthand syntax
-@mixin span(
-  $input
-) {
-  $input: parse-span($input);
-
-  $this-span          : nth($input,1);
-  $this-location      : nth($input,2);
-  $this-columns       : nth($input,3);
-  $this-gutters       : nth($input,4);
-  $this-column-width  : nth($input,5);
-  $this-isolate       : nth($input,6);
-  $this-static        : nth($input,7);
-
-  @include float-span($this-span, $this-location, $this-columns, $this-gutters, $this-isolate, $this-column-width, $this-static);
 }

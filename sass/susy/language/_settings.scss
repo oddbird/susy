@@ -1,5 +1,55 @@
 // Grid Syntax
 // ===========
+//
+// Mixins:
+// - set-grid()
+// - use-grid()
+
+// Set a new grid using a shorthand
+@mixin set-grid(
+  $grid,
+  $clean: false
+) {
+  $grid             : parse-grid($grid);
+
+  $new-columns        : nth($grid,1);
+  $new-gutters        : nth($grid,2);
+  $new-container      : nth($grid,3);
+  $new-column-width   : nth($grid,4);
+  $new-static         : nth($grid,5);
+  $new-flow           : nth($grid,6);
+
+  @if not $clean {
+    $columns          : if($new-columns, $new-columns, $columns);
+    $gutters          : if($new-gutters, $new-gutters, $gutters);
+    $container        : if($new-container, $new-container, $container);
+    $column-width     : if($new-column-width, $new-column-width, $column-width);
+    $static           : if($new-static, $new-static, $static);
+    $flow             : if($new-flow, $new-flow, $flow);
+  }
+
+  $columns            : $new-columns;
+  $gutters            : $new-gutters;
+  $container          : $new-container;
+  $column-width       : $new-column-width;
+  $static             : $new-static;
+  $flow               : $new-flow;
+}
+
+// Use an arbitrary grid for a section of code
+@mixin use-grid(
+  $grid,
+  $clean: false
+) {
+  $old-grid: get-grid();
+
+  @include set-grid($grid, $clean);
+  @content;
+  @include set-grid($old-grid, $clean);
+}
+
+// Grid helpers
+// ------------
 
 // Get the current grid settings as a shorthand list
 @function get-grid(
@@ -96,47 +146,4 @@
   }
 
   @return $value;
-}
-
-// Set a new grid using a shorthand
-@mixin set-grid(
-  $grid,
-  $clean: false
-) {
-  $grid             : parse-grid($grid);
-
-  $new-columns        : nth($grid,1);
-  $new-gutters        : nth($grid,2);
-  $new-container      : nth($grid,3);
-  $new-column-width   : nth($grid,4);
-  $new-static         : nth($grid,5);
-  $new-flow           : nth($grid,6);
-
-  @if not $clean {
-    $columns          : if($new-columns, $new-columns, $columns);
-    $gutters          : if($new-gutters, $new-gutters, $gutters);
-    $container        : if($new-container, $new-container, $container);
-    $column-width     : if($new-column-width, $new-column-width, $column-width);
-    $static           : if($new-static, $new-static, $static);
-    $flow             : if($new-flow, $new-flow, $flow);
-  }
-
-  $columns            : $new-columns;
-  $gutters            : $new-gutters;
-  $container          : $new-container;
-  $column-width       : $new-column-width;
-  $static             : $new-static;
-  $flow               : $new-flow;
-}
-
-// Use an arbitrary grid for a section of code
-@mixin use-grid(
-  $grid,
-  $clean: false
-) {
-  $old-grid: get-grid();
-
-  @include set-grid($grid, $clean);
-  @content;
-  @include set-grid($old-grid, $clean);
 }

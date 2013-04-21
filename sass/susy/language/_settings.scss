@@ -100,25 +100,43 @@
 
 // Set a new grid using a shorthand
 @mixin set-grid(
-  $grid
+  $grid,
+  $clean: false
 ) {
   $grid             : parse-grid($grid);
 
-  $columns          : nth($grid,1);
-  $gutters          : nth($grid,2);
-  $container        : nth($grid,3);
-  $column-width     : nth($grid,4);
-  $static           : nth($grid,5);
-  $flow             : nth($grid,6);
+  $new-columns        : nth($grid,1);
+  $new-gutters        : nth($grid,2);
+  $new-container      : nth($grid,3);
+  $new-column-width   : nth($grid,4);
+  $new-static         : nth($grid,5);
+  $new-flow           : nth($grid,6);
+
+  @if not $clean {
+    $columns          : if($new-columns, $new-columns, $columns);
+    $gutters          : if($new-gutters, $new-gutters, $gutters);
+    $container        : if($new-container, $new-container, $container);
+    $column-width     : if($new-column-width, $new-column-width, $column-width);
+    $static           : if($new-static, $new-static, $static);
+    $flow             : if($new-flow, $new-flow, $flow);
+  }
+
+  $columns            : $new-columns;
+  $gutters            : $new-gutters;
+  $container          : $new-container;
+  $column-width       : $new-column-width;
+  $static             : $new-static;
+  $flow               : $new-flow;
 }
 
 // Use an arbitrary grid for a section of code
 @mixin use-grid(
-  $grid
+  $grid,
+  $clean: false
 ) {
   $old-grid: get-grid();
 
-  @include set-grid($grid);
+  @include set-grid($grid, $clean);
   @content;
-  @include set-grid($old-grid);
+  @include set-grid($old-grid, $clean);
 }

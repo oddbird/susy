@@ -5,69 +5,108 @@
 @function parse-span(
   $string
 ) {
-  $span: false;
-  $location: false;
-  $context: false;
-  $isolate: false;
-  $static: false;
+  $new-span       : false;
+  $new-location   : false;
+  $new-context    : false;
+  $new-isolate    : false;
+  $new-static     : false;
 
-  // location keywords: first | last | alpha | omega
-  @if index($string, first) {
-    $location: 1;
-    $string: filter($string, first);
-  } @else if index($string, alpha) {
-    $location: 1;
-    $string: filter($string, alpha);
-  } @else if index($string, last) {
-    $location: last;
-    $string: filter($string, last);
-  } @else if index($string, omega) {
-    $location: last;
-    $string: filter($string, omega);
-  }
+  $new-columns      : false;
+  $new-gutters      : false;
+  $new-column-width : false;
 
-  // isolate
-  @if index($string, isolate) {
-    $isolate: true;
-    $string: filter($string, isolate);
-  }
+  $i: 1;
 
-  // static
-  @if index($string, static) {
-    $static: true;
-    $string: filter($string, static);
-  }
+  @while $i <= length($string) {
+    $value  : nth($string,$i);
+    $at     : false;
+    $of     : false;
 
-  // span
-  $span: nth($string,1);
-  $string: nth-filter($string,1);
+    // keywords
+    @if type-of($value) == string {
 
-  // location
-  @if not $location {
-    $at: index($string, at);
-    @if $at {
-      $location: nth($string, $at + 1);
-      $string: nth-filter($string, $at + 1);
-      $string: filter($string, at);
+      // location keywords: first | last | alpha | omega
+      @if $value == first or $value == alpha {
+        $new-location: 1;
+      } @else if $value == last or $value == omega {
+        $new-location: last;
+      }
+
+      // isolate
+      @else if $value == isolate {
+        $new-isolate: isolate;
+      }
+
+      // static | fluid
+      @else if $value == static {
+        $new-static: static;
+      } @else if $value == fluid {
+        $new-static: fluid;
+      }
+
+      // at
+      @else if $value == at {
+        $at: true;
+      }
+
+      // of
+      @else if $value == of {
+        $of: true;
+      }
+
+    // span
+    } @else if not $new-span and type-of($value) == number {
+      $new-span: $value;
     }
-  }
 
-  // context
-  $of: index($string, of);
-  @if $of {
-    $context: compact();
-    @while $of < length($string) {
-      $of: $of + 1;
-      @if type-of(nth($string,$of)) != string {
-        $context: append($context, nth($string,$of));
-      } @else {
-        $of: length($string + 1);
+    // location integer
+    @if $at {
+      $i: $i + 1;
+      $new-location: nth($string, $i);
+    }
+
+    // context
+    @if $of {
+      $i: $i + 1;
+      $new-context: compact();
+
+      @while $of and $i <= length($string) {
+        $this: nth($string,$i);
+        @if type-of($this) != string {
+          $new-context: append($new-context, $this);
+          $i: $i + 1;
+        } @else {
+          $of: false;
+          $i: $i - 1;
+        }
       }
     }
-    $string: filter($string, of);
+
+    $i: $i + 1;
   }
 
-  @return $span $location $context $isolate $static;
+  // parse the context
+  @if $new-context {
+    $new-columns: get-setting(columns, $new-context);
+    $new-gutters: get-setting(gutters, $new-context);
+    $new-column-width: get-setting(column-width, $new-context);
+  }
+
+  // use global values for empty grid settings
+  @if not $new-columns {
+    $new-columns: get-setting(columns);
+  }
+  @if not $new-gutters {
+    $new-gutters: get-setting(gutters);
+  }
+  @if not $new-column-width {
+    $new-column-width: get-setting(column-width);
+  }
+  @if not $new-static {
+    $new-static: get-setting(static);
+  }
+
+  @return $new-span $new-location $new-columns $new-gutters $new-column-width $new-isolate $new-static;
 }
 
 // Return one particular span setting from a list
@@ -78,7 +117,7 @@
   $span: parse-span($span);
   $value: false;
 
-  $options  : span location context isolate static;
+  $options  : span location columns gutters column-width isolate static;
   $key      : index($options, $setting);
 
   @if $key {
@@ -96,29 +135,11 @@
 
   $this-span          : nth($input,1);
   $this-location      : nth($input,2);
-  $this-context       : nth($input,3);
-  $this-isolate       : nth($input,4);
-  $this-static        : nth($input,5);
-
-  $this-columns       : false;
-  $this-gutters       : false;
-  $this-column-width  : false;
-
-  @if $this-context {
-    $this-columns: get-setting(columns, $this-context);
-    $this-gutters: get-setting(gutters, $this-context);
-    $this-column-width: get-setting(column-width, $this-context);
-  }
-
-  @if not $this-columns {
-    $this-columns: get-setting(columns);
-  }
-  @if not $this-gutters {
-    $this-gutters: get-setting(gutters);
-  }
-  @if not $this-column-width {
-    $this-column-width: get-setting(column-width);
-  }
+  $this-columns       : nth($input,3);
+  $this-gutters       : nth($input,4);
+  $this-column-width  : nth($input,5);
+  $this-isolate       : nth($input,6);
+  $this-static        : nth($input,7);
 
   @include float-span($this-span, $this-location, $this-columns, $this-gutters, $this-isolate, $this-column-width, $this-static);
 }

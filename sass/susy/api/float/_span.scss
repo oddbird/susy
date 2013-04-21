@@ -4,10 +4,10 @@
 // Output span
 @mixin float-span-output(
   $width,
-  $float      : from($direction),
+  $float      : from($flow),
   $before     : null,
   $after      : null,
-  $flow       : $direction
+  $flow       : $flow
 ) {
   $to     : to($flow);
   $from   : from($flow);
@@ -26,8 +26,8 @@
   $gutters        : $gutters,
   $isolate        : false,
   $column-width   : $column-width,
-  $static         : $static-output,
-  $flow           : $direction
+  $static         : $static,
+  $flow           : $flow
 ) {
   $to     : to($flow);
   $from   : from($flow);

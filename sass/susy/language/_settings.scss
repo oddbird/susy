@@ -1,0 +1,124 @@
+// Grid Syntax
+// ===========
+
+// Get the current grid settings as a shorthand list
+@function get-grid(
+) {
+  $gutter-setting: $gutters;
+  $static-setting: false;
+
+  // Use units for column/gutter ratio if available
+  @if $column-width {
+    $gutter-setting: $column-width $column-width * $gutters;
+  }
+
+  // Create keyword for static setting
+  @if $static {
+    $static-setting: static;
+  } @else {
+    $static-setting: fluid;
+  }
+
+  // Return grid shorthand
+  @return compact($container $columns $gutter-setting $static-setting $flow);
+}
+
+// Parse a shorthand grid, and return an ordered list of settings
+@function parse-grid(
+  $grid: get-grid()
+) {
+  $columns-setting        : false;
+  $gutters-setting        : false;
+  $container-setting      : false;
+  $column-width-setting   : false;
+  $static-setting         : false;
+  $flow-setting           : false;
+  $columns-check          : false;
+
+  // output: static | fluid
+  @if index($grid, static) {
+    $static-setting: true;
+    $grid: filter($grid, static);
+  } @else if index($grid, fluid) {
+    $static-setting: false;
+    $grid: filter($grid, fluid);
+  }
+
+  // flow: rtl | ltr
+  @if index($grid, rtl) {
+    $flow-setting: rtl;
+    $grid: filter($grid, rtl);
+  } @else if index($grid, ltr) {
+    $flow-setting: ltr;
+    $grid: filter($grid, ltr);
+  }
+
+  // the remainder
+  @each $item in $grid {
+    @if type-of($item) == number {
+      // container, columns, or gutters
+      @if not unitless($item) {
+        $container-setting: $item;
+      } @else if not $columns-check {
+        $columns-setting: $item;
+        $columns-check: true;
+      } @else {
+        $gutters-setting: $item;
+      }
+    } @else if type-of($item) == list {
+      @if unitless(nth($item,1)) {
+        $columns-setting: $item;
+        $columns-check: true;
+      } @else {
+        // gutters (with column-width)
+        $column-width-setting: nth($item,1);
+        $gutters-setting: nth($item,2) / nth($item,1);
+      }
+    }
+  }
+
+  @return $columns-setting $gutters-setting $container-setting $column-width-setting $static-setting $flow-setting;
+}
+
+// Return one setting from a shorhand grid
+@function get-setting(
+  $setting,
+  $grid: get-grid()
+) {
+  $grid     : parse-grid($grid);
+  $value    : false;
+
+  $options  : columns gutters container column-width static flow;
+  $key      : index($options, $setting);
+
+  @if $key {
+    $value: nth($grid, $key);
+  }
+
+  @return $value;
+}
+
+// Set a new grid using a shorthand
+@mixin set-grid(
+  $grid
+) {
+  $grid             : parse-grid($grid);
+
+  $columns          : nth($grid,1);
+  $gutters          : nth($grid,2);
+  $container        : nth($grid,3);
+  $column-width     : nth($grid,4);
+  $static           : nth($grid,5);
+  $flow             : nth($grid,6);
+}
+
+// Use an arbitrary grid for a section of code
+@mixin use-grid(
+  $grid
+) {
+  $old-grid: get-grid();
+
+  @include set-grid($grid);
+  @content;
+  @include set-grid($old-grid);
+}

@@ -15,10 +15,10 @@
 @function static-gutter-span(
   $gutters: $gutters,
   $column-width: $column-width,
-  $container-width: $container-width
+  $container: $container
 ) {
   $width: null;
-  $column-width: fix-static-column-width($columns, $gutters, $column-width, $container-width);
+  $column-width: fix-static-column-width($columns, $gutters, $column-width, $container);
 
   @if $column-width {
     $width: $gutters * $column-width;
@@ -32,7 +32,7 @@
   $columns: $columns,
   $gutters: $gutters,
   $column-width: $column-width,
-  $static: $static-output
+  $static: $static
 ) {
   $gutter: null;
 

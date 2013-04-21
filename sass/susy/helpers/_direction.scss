@@ -3,7 +3,7 @@
 
 // Return the 'from' or 'to' direction of a ltr or rtl flow.
 @function get-direction(
-  $flow: $direction,
+  $flow: $flow,
   $key: from
 ) {
   $from: if($flow == rtl, right, left);
@@ -15,14 +15,14 @@
 
 // Return the 'to' direction of a flow
 @function to(
-  $flow: $direction
+  $flow: $flow
 ) {
   @return get-direction($flow,to);
 }
 
 // Return the 'from' direction of a flow
 @function from(
-  $flow: $direction
+  $flow: $flow
 ) {
   @return get-direction($flow,from);
 }

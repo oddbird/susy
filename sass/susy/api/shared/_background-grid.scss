@@ -29,7 +29,7 @@ $overlay-switch-location: left bottom !default;
   $columns  : $columns,
   $gutters  : $gutters,
   $color    : $background-grid-color,
-  $flow     : $direction
+  $flow     : $flow
 ) {
   $to     : to($flow);
   $from   : from($flow);

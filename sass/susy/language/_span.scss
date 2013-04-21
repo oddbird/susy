@@ -1,23 +1,124 @@
 // Span language parsing
 // =====================
-//
-// Keywords:
-// - span:     Column Span
-// - at:       Column Location
-// - of:       Context
-// - gutters:  Gutters
-// - isolate:  Isolate
 
-@mixin span($input) {
-  $span:      nth($input, 1);
+// Parse the span shortcut syntax
+@function parse-span(
+  $string
+) {
+  $span: false;
+  $location: false;
+  $context: false;
+  $isolate: false;
+  $static: false;
 
-  $location:  parse-string('at', $input);
-  $context:   parse-string('of', $input);
-  $gutter:    parse-string('gutters', $input);
-  $isolate:   parse-string('isolate', $input);
+  // location keywords: first | last | alpha | omega
+  @if index($string, first) {
+    $location: 1;
+    $string: filter($string, first);
+  } @else if index($string, alpha) {
+    $location: 1;
+    $string: filter($string, alpha);
+  } @else if index($string, last) {
+    $location: last;
+    $string: filter($string, last);
+  } @else if index($string, omega) {
+    $location: last;
+    $string: filter($string, omega);
+  }
 
-  @if not $context { $context: $columns; }
-  @if not $gutter { $gutter: $gutters; }
+  // isolate
+  @if index($string, isolate) {
+    $isolate: true;
+    $string: filter($string, isolate);
+  }
 
-  @include float-span($span, $location, $context, $gutter, $isolate);
+  // static
+  @if index($string, static) {
+    $static: true;
+    $string: filter($string, static);
+  }
+
+  // span
+  $span: nth($string,1);
+  $string: nth-filter($string,1);
+
+  // location
+  @if not $location {
+    $at: index($string, at);
+    @if $at {
+      $location: nth($string, $at + 1);
+      $string: nth-filter($string, $at + 1);
+      $string: filter($string, at);
+    }
+  }
+
+  // context
+  $of: index($string, of);
+  @if $of {
+    $context: compact();
+    @while $of < length($string) {
+      $of: $of + 1;
+      @if type-of(nth($string,$of)) != string {
+        $context: append($context, nth($string,$of));
+      } @else {
+        $of: length($string + 1);
+      }
+    }
+    $string: filter($string, of);
+  }
+
+  @return $span $location $context $isolate $static;
+}
+
+// Return one particular span setting from a list
+@function get-span-setting(
+  $setting,
+  $span
+) {
+  $span: parse-span($span);
+  $value: false;
+
+  $options  : span location context isolate static;
+  $key      : index($options, $setting);
+
+  @if $key {
+    $value: nth($span, $key);
+  }
+
+  @return $value;
+}
+
+// Set a spanning element using shorthand syntax
+@mixin span(
+  $input
+) {
+  $input: parse-span($input);
+
+  $this-span          : nth($input,1);
+  $this-location      : nth($input,2);
+  $this-context       : nth($input,3);
+  $this-isolate       : nth($input,4);
+  $this-static        : nth($input,5);
+
+  $this-columns       : false;
+  $this-gutters       : false;
+  $this-column-width  : false;
+
+  @if $this-context {
+    $this-columns: get-setting(columns, $this-context);
+    $this-gutters: get-setting(gutters, $this-context);
+    $this-column-width: get-setting(column-width, $this-context);
+  }
+
+  @if not $this-columns {
+    $this-columns: get-setting(columns);
+  }
+  @if not $this-gutters {
+    $this-gutters: get-setting(gutters);
+  }
+  @if not $this-column-width {
+    $this-column-width: get-setting(column-width);
+  }
+
+  @include float-span($this-span, $this-location, $this-columns, $this-gutters, $this-isolate, $this-column-width, $this-static);
 }

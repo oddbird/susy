@@ -34,7 +34,7 @@
   @if $column-width {
     $width: column-sum($columns, $gutters) * $column-width;
   } @else {
-    @warn "We need either `$column-width` or `$container-width` in order to create your container."
+    @warn "We need either `$column-width` or `$container` in order to create your container."
   }
 
   @return $width;

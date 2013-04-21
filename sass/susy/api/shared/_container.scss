@@ -3,16 +3,16 @@
 
 // Output container styles
 @mixin container-output(
-  $width            : $container-width,
-  $property         : if($static-output, width, max-width),
-  $justify          : $container-position,
-  $background-grid  : $show-background-grids
+  $width        : $container,
+  $justify      : $container-position,
+  $show-grids   : $show-grids
 ) {
   $position   : parse-container-position($justify);
+  $property   : if($static, width, max-width);
   $left       : nth($position,1);
   $right      : nth($position,2);
 
-  @if $background-grid {
+  @if $show-grids {
     @include background-grid;
   }
 

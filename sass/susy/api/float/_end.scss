@@ -5,7 +5,7 @@
 @mixin float-last(
   $columns  : $columns,
   $gutters  : $gutters,
-  $flow     : $direction
+  $flow     : $flow
 ) {
   $to: to($flow);
 

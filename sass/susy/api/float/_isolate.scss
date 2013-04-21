@@ -23,7 +23,7 @@
   $location,
   $columns  : $columns,
   $gutters  : $gutters,
-  $flow     : $direction
+  $flow     : $flow
 ) {
   $to     : to($flow);
   $from   : from($flow);
@@ -41,7 +41,7 @@
   $columns  : $columns,
   $gutters  : $gutters,
   $selector : child,
-  $flow     : $direction
+  $flow     : $flow
 ) {
   $to       : to($flow);
   $from     : from($flow);

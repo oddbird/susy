@@ -5,39 +5,30 @@
 @import "susy";
 @import "compass/reset";
 
-// Settings
-// --------
-
-$columns: 4   !default;
-$gutters: .25 !default;
-
 // Complex AG tests
 // ----------------
 
+// $show-grids: false;
+
 @mixin ag-test(
   $class,
-  $c,
-  $g,
-  $isolate: false
+  $isolate: null
 ) {
-  $columns: $c;
-  $gutters: $g;
-
   .#{$class} {
-    @include float-container;
+    @include container;
     @include leader(.5);
     @include trailer(.5);
 
     > .size1of5 {
       min-height: rhythm(10);
-      &:first-of-type { @include float-span(2, 1, $isolate: $isolate); }
-      ~ .size1of5 { @include float-span(2, last, $isolate: $isolate); }
+      &:first-of-type { @include span(2 at 1 $isolate); }
+      ~ .size1of5 { @include span(last 2 $isolate); }
     }
     > .size3of5 {
-      @include float-span(6,3, $isolate: $isolate);
+      @include span(6 at 3 $isolate);
       > .size1of2 {
-        &:first-child { @include float-span(3, 1, get-columns(6,3), $isolate: $isolate); }
-        + .size1of2 { @include float-span(3, last, get-columns(6,3), $isolate: $isolate); }
+        &:first-child { @include span(3 at 1 of get-columns(6,3) $isolate); }
+        + .size1of2 { @include span(last 3 of get-columns(6,3) $isolate); }
       }
       > .full {
         clear: both;
@@ -47,18 +38,18 @@ $gutters: .25 !default;
 
     .full {
       .size1of3 {
-        @include float-span(2, 1, get-columns(6,3), $isolate: $isolate);
+        @include span(first 2 of get-columns(6,3) $isolate);
         min-height: rhythm(6.5);
       }
       .size2of3 {
-        @include float-span(4, last, get-columns(6,3), $isolate: $isolate);
+        @include span(4 omega of get-columns(6,3) $isolate);
       }
     }
 
     .size2of3 {
       .size1of2 {
-        &:first-child { @include float-span(2, 1, get-columns(4,5), $isolate: $isolate); }
-        + .size1of2 { @include float-span(2, last, get-columns(4,5), $isolate: $isolate); }
+        &:first-child { @include span(2 alpha of get-columns(4,5) $isolate); }
+        + .size1of2 { @include span(last 2 of get-columns(4,5) $isolate); }
       }
       .full {
         clear: both;
@@ -74,32 +65,20 @@ $gutters: .25 !default;
 // Symmetrical
 // -----------
 
-$a-class        : symmetrical;
-$a-columns      : 10;
-$a-gutters      : .25;
-$column-width: 4em;
-$show-background-grids: false;
+$a-grid: 10 (4em 1em);
 
-@include ag-test($a-class, $a-columns, $a-gutters);
+@include use-grid($a-grid) {
+  @include ag-test(symmetrical);
+}
 
 // Asymmetrical
 // ------------
 
-$b-class          : asymmetrical;
-$b-columns        : .5 2 1.25 1 3.25 1.75 3 2 1 3.75;
-$b-gutters        : .5;
-$container-width  : 80%;
-$show-background-grids: true;
+$b-grid: 80% (.5 2 1.25 1 3.25 1.75 3 2 1 3.75) .5;
 
-@include ag-test($b-class, $b-columns, $b-gutters, true);
-
-// Grid background
-// ---------------
-
-@include grid-overlay(
-  $a-class $a-columns $a-gutters,
-  $b-class $b-columns $b-gutters
-);
+@include use-grid($b-grid) {
+  @include ag-test(asymmetrical, isolate);
+}
 
 // Styles
 // ------
@@ -143,49 +122,46 @@ h1, h2, h3 {
 // Box
 // ---
 
-$columns: 1 2 3 .5 3 2 1.5 2 1 .5 2 1;
-// $columns: 12;
-$gutters: .25;
-$column-width: 3em;
-$container-width: false;
+@include use-grid((1 2 3 .5 3 2 1.5 2 1 .5 2 1) .25) {
 
-.box {
-  @include float-container;
-  @include trailer;
-  position: relative;
-  .margin {
-    @include margin-before(2,1);
-    @include margin-after(1,last);
-    @include padding-before(1,3);
-    @include padding-after(2,10);
-    background: rgba(red, .25);
+  .box {
+    @include float-container;
+    @include trailer;
+    position: relative;
+    .margin {
+      @include margin-before(2,1);
+      @include margin-after(1,last);
+      @include padding-before(1,3);
+      @include padding-after(2,10);
+      background: rgba(red, .25);
+    }
+    .padding {
+      height: rhythm(1);
+      background: rgba(green, .25);
+    }
+    .bleed {
+      @include bleed-output(30%);
+      // @include bleed-output(2,6);
+      background: rgba(blue, .25);
+    }
   }
-  .padding {
-    height: rhythm(1);
-    background: rgba(green, .25);
-  }
-  .bleed {
-    @include bleed-output(30%);
-    // @include bleed-output(2,6);
-    background: rgba(blue, .25);
-  }
+
 }
 
 // // Static
 // // ------
 
-$columns: 12;
-$gutter: .25;
-$column-width: false;
-$container-width: 960px;
-$static-output: true;
+@include use-grid(600px 12 .25 static) {
 
-.static {
-  @include float-container;
-  div {
-    @include float-span(3);
-    @include trailer;
-    min-height: rhythm(2);
-    background: rgba(blue,.25);
+  .static {
+    @include float-container;
+    div {
+      @include float-span(3);
+      @include trailer;
+      min-height: rhythm(2);
+      background: rgba(blue,.25);
+    }
   }
+
 }
+

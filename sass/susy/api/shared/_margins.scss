@@ -9,8 +9,8 @@
   $gutters        : $gutters,
   $sides          : before after,
   $column-width   : $column-width,
-  $static         : $static-output,
-  $flow           : $direction
+  $static         : $static,
+  $flow           : $flow
 ) {
   $to: to($flow);
   $from: from($flow);
@@ -37,8 +37,8 @@
   $columns        : $columns,
   $gutters        : $gutters,
   $column-width   : $column-width,
-  $static         : $static-output,
-  $flow           : $direction
+  $static         : $static,
+  $flow           : $flow
 ) {
   @include margin-output($span, $location, $columns, $gutters, before, $column-width, $static, $flow);
 }
@@ -50,8 +50,8 @@
   $columns        : $columns,
   $gutters        : $gutters,
   $column-width   : $column-width,
-  $static         : $static-output,
-  $flow           : $direction
+  $static         : $static,
+  $flow           : $flow
 ) {
   @include margin-output($span, $location, $columns, $gutters, after, $column-width, $static, $flow);
 }

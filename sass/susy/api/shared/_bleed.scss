@@ -7,8 +7,8 @@
   $gutters        : $gutters,
   $sides          : before after,
   $column-width   : $column-width,
-  $static         : $static-output,
-  $flow           : $direction
+  $static         : $static,
+  $flow           : $flow
 ) {
   $width: null;
 

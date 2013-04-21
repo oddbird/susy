@@ -6,9 +6,11 @@
   $list
 ) {
   $sum: 0;
+
   @each $item in $list {
     $sum: $sum + $item;
   }
+
   @return $sum;
 }
 
@@ -42,11 +44,47 @@
 }
 
 // Reverses direction of a list
-@function reverse($list) {
+@function reverse(
+  $list
+) {
   $length: length($list);
   $return: ();
+
   @for $i from 0 to $length {
     $return: append($return, nth($list, $length - $i), comma);
   }
+
   @return $return;
 }
+
+// Return a list with specific items removed
+@function filter(
+  $list,
+  $target
+) {
+  $clean: compact();
+
+  @if index($list, $target) {
+    @each $item in $list {
+      $clean: if($item == $target, $clean, append($clean, $item));
+    }
+  } @else {
+    $clean: $list;
+  }
+
+  @return $clean;
+}
+
+@function nth-filter(
+  $list,
+  $index
+) {
+  $clean: compact();
+
+  @each $item in $list {
+    $clean: if(index($list, $item) == $index, $clean, append($clean, $item));
+  }
+
+  @return $clean;
+}
+

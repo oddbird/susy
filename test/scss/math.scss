@@ -26,7 +26,7 @@ $column-width: 4em;
 }
 
 .container {
-  @include float-container($justify: null);
+  @include container(hide);
 }
 
 .span {

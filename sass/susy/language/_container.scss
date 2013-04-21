@@ -80,5 +80,5 @@
     }
   }
 
-  @include float-container($width, $justify, $show-grids);
+  @include float-container($width, $justify, $show);
 }

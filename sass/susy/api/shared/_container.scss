@@ -12,6 +12,10 @@
   $left       : nth($position,1);
   $right      : nth($position,2);
 
+  @if not $width {
+    $width: 100%;
+  }
+
   @if $show-grids {
     @include background-grid;
   }

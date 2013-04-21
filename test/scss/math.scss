@@ -1,6 +1,7 @@
 // Math tests
 // ==========
 
+@import "compass";
 @import "susy";
 
 // Settings
@@ -22,6 +23,10 @@ $column-width: 4em;
   @debug static-column-span(5) if(static-column-span(5) == 24em, true, false);
   @debug static-gutter-span() if(static-gutter-span() == 1em, true, false);
   @debug calculate-container-width() if(calculate-container-width() == 44em, true, false);
+}
+
+.container {
+  @include float-container($justify: null);
 }
 
 .span {

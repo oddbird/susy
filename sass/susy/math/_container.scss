@@ -5,19 +5,22 @@
 @function parse-container-position(
   $justify: $container-position
 ) {
-  $left   : auto;
-  $right  : auto;
+  $left   : null;
+  $right  : null;
 
   @if type-of($justify) == list {
     $left: nth($justify,1);
     $right: nth($justify,2);
-  } @else if type-of($justify) == number {
+  } @else if type-of($justify) == number and not unitless($justify) {
     $left: $justify;
     $right: $justify;
   } @else if $justify == left {
     $left: 0;
   } @else if $justify == right {
     $right: 0;
+  } @else if $justify == center {
+    $left: auto;
+    $right: auto;
   }
 
   @return $left $right;

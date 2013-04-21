@@ -129,7 +129,7 @@ h1, h2, h3 {
 @include use-grid((1 2 3 .5 3 2 1.5 2 1 .5 2 1) .25, clean) {
 
   .box {
-    @include float-container;
+    @include container;
     @include trailer;
     position: relative;
     .margin {
@@ -146,6 +146,7 @@ h1, h2, h3 {
     .bleed {
       @include bleed-output(30%);
       // @include bleed-output(2,6);
+      // @include span(50% at 3 of nested(6 at 4) isolate);
       background: rgba(blue, .25);
     }
   }

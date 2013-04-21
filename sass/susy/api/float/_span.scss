@@ -34,14 +34,22 @@
 
   $float  : $from;
 
-  $width  : get-span-width($span, $location, $columns, $gutters, $column-width, $static);
+  $width  : $span;
   $gutter : get-gutter-width($columns, $gutters, $column-width, $static);
+
+  @if unitless($width) {
+    $width  : get-span-width($span, $location, $columns, $gutters, $column-width, $static);
+  }
 
   $before : null;
   $after  : $gutter;
 
   @if $isolate {
-    $before: get-isolation-position($span, $location, $columns, $gutters);
+    @if type-of($location) == number and not unitless($location) {
+      $before: $location;
+    } @else {
+      $before: get-isolation-position($span, $location, $columns, $gutters);
+    }
     $after: -100%;
   } @else if is-last($span, $location, $columns) {
     $float: $to;

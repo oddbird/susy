@@ -1,13 +1,39 @@
 // Settings
 // ========
 
+// Grid basics
+// -----------
+
 $columns                : 4         !default;
 $gutters                : .25       !default;
+
+
+// Grid widths [optional]
+// ----------------------
+//
+// - Set EITHER $column-width OR $container-width
+// - We can determine one from the other, but we can't resolve conflicts
 
 $column-width           : false     !default;
 $container-width        : false     !default;
 
+
+// Defaults
+// --------
+
+// Default container justification
+// - left | center | right | <length-left> [<length-right>]
+$container-position     : center    !default;
+
+
+// Output
+// ------
+
 $static-output          : false     !default;
 $direction              : ltr       !default;
+
+
+// Debug
+// -----
 
 $show-background-grids  : true      !default;

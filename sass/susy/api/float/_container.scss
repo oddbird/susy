@@ -1,14 +1,30 @@
 // Float container
 // ===============
 
+// Output a know float container
+@mixin float-container-output(
+  $width            : $container-width,
+  $property         : if($static-output, width, max-width),
+  $justify          : $container-position,
+  $background-grid  : $show-background-grids
+) {
+  @include pie-clearfix;
+  @include container-output($width, $property, $justify, $background-grid);
+}
+
+// Find and output an unknown float container
 @mixin float-container(
   $width            : $container-width,
   $columns          : $columns,
   $gutters          : $gutters,
   $column-width     : $column-width,
   $property         : if($static-output, width, max-width),
+  $justify          : $container-position,
   $background-grid  : $show-background-grids
 ) {
-  @include pie-clearfix;
-  @include container-output($width, $columns, $gutters, $column-width, $property, $background-grid);
+  @if not $width {
+    $width: calculate-container-width($columns, $gutters, $column-width);
+  }
+
+  @include float-container-output($width, $property, $justify, $background-grid);
 }

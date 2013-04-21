@@ -1,18 +1,40 @@
 // Container math
 // ==============
 
+// Parse the $container-position into margin values
+@function parse-container-position(
+  $justify: $container-position
+) {
+  $left   : auto;
+  $right  : auto;
+
+  @if type-of($justify) == list {
+    $left: nth($justify,1);
+    $right: nth($justify,2);
+  } @else if type-of($justify) == number {
+    $left: $justify;
+    $right: $justify;
+  } @else if $justify == left {
+    $left: 0;
+  } @else if $justify == right {
+    $right: 0;
+  }
+
+  @return $left $right;
+}
+
 // Calculate the width of a container based on columns and gutters
 @function calculate-container-width(
-  $columns: $columns,
-  $gutters: $gutters,
-  $column-width: $column-width
+  $columns        : $columns,
+  $gutters        : $gutters,
+  $column-width   : $column-width
 ) {
   $width: null;
 
   @if $column-width {
     $width: column-sum($columns, $gutters) * $column-width;
   } @else {
-    @warn "We need either `$column-width` or `$container-width` in order to calculate the width of your container"
+    @warn "We need either `$column-width` or `$container-width` in order to create your container."
   }
 
   @return $width;

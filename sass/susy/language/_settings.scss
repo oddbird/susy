@@ -62,7 +62,7 @@
   }
 
   // Create keyword for static setting
-  @if $static {
+  @if $static and $static != fluid {
     $static-setting: static;
   } @else {
     $static-setting: fluid;

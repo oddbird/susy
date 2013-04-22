@@ -29,29 +29,3 @@
   margin-#{$from}: $before;
   margin-#{$to}: $after;
 }
-
-// Add margin before an element
-@mixin margin-before(
-  $span,
-  $location       : false,
-  $columns        : $columns,
-  $gutters        : $gutters,
-  $column-width   : $column-width,
-  $static         : $static,
-  $flow           : $flow
-) {
-  @include margin-output($span, $location, $columns, $gutters, before, $column-width, $static, $flow);
-}
-
-// Add margin after an element
-@mixin margin-after(
-  $span,
-  $location       : false,
-  $columns        : $columns,
-  $gutters        : $gutters,
-  $column-width   : $column-width,
-  $static         : $static,
-  $flow           : $flow
-) {
-  @include margin-output($span, $location, $columns, $gutters, after, $column-width, $static, $flow);
-}

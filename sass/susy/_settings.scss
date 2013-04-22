@@ -21,8 +21,13 @@ $container            : false     !default;
 // Output
 // ------
 
+// global toggle for static/fluid output
 $static               : false     !default;
-// $isolate              : false     !default;
+
+// global toggle for isolate/float output
+$isolate              : false     !default;
+
+// global toggle for ltr/rtl output
 $flow                 : ltr       !default;
 
 
@@ -30,11 +35,12 @@ $flow                 : ltr       !default;
 // --------
 
 // Default container justification
-// - left | center | right | <length-left> [<length-right>]
+// - left | center | right
 $container-position   : center    !default;
 
 
 // Debug
 // -----
 
-$show-grids           : true      !default;
+// global toggle to show/hide grids
+$show-grids           : show      !default;

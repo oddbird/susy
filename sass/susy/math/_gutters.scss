@@ -18,7 +18,7 @@
   $container: $container
 ) {
   $width: null;
-  $column-width: fix-static-column-width($columns, $gutters, $column-width, $container);
+  $column-width: calculate-column-width($columns, $gutters, $column-width, $container);
 
   @if $column-width {
     $width: $gutters * $column-width;
@@ -36,7 +36,7 @@
 ) {
   $gutter: null;
 
-  @if $static {
+  @if $static and $static != fluid {
     $gutter: static-gutter-span($gutters, $column-width);
   } @else {
     $gutter: relative-gutter-span($columns, $gutters);

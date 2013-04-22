@@ -1,7 +1,7 @@
 // Span math
 // =========
 
-@function fix-static-column-width(
+@function calculate-column-width(
   $columns          : $columns,
   $gutters          : $gutters,
   $column-width     : $column-width,
@@ -53,7 +53,7 @@
 ) {
   $width: null;
   $span-sum: get-column-span-sum($span, $location, $columns, $gutters);
-  $column-width: fix-static-column-width($columns, $gutters, $column-width, $container);
+  $column-width: calculate-column-width($columns, $gutters, $column-width, $container);
 
   @if $column-width {
     $width: $span-sum * $column-width;
@@ -74,7 +74,7 @@
   $width: false;
 
   @if unitless($span) {
-    @if $static {
+    @if $static and $static != fluid {
       $width: static-column-span($span, $location, $columns, $gutters, $column-width);
     } @else {
       $width: relative-column-span($span, $location, $columns, $gutters);

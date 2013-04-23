@@ -38,6 +38,10 @@ $flow                 : ltr       !default;
 // - left | center | right
 $container-position   : center    !default;
 
+// Default gutter handling
+// - before | after
+$gutter-placement     : after;
+
 
 // Debug
 // -----

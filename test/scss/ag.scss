@@ -68,7 +68,7 @@
 // Symmetrical
 // -----------
 
-$a-grid: 10 (4em 1em);
+$a-grid: 10 (4em 1em) before;
 
 @include use-grid($a-grid, clean) {
   @include ag-test(symmetrical);

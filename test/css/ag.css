@@ -394,3 +394,89 @@ h1, h2, h3 {
   height: 1.5em;
   background: red;
 }
+
+.susy1 {
+  *zoom: 1;
+  max-width: 59em;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 0.75em;
+  margin-bottom: 0.75em;
+}
+.susy1:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.susy1 > .size1of5 {
+  min-height: 15em;
+}
+.susy1 > .size1of5:first-of-type {
+  width: 18.64407%;
+  float: left;
+  margin-right: 1.69492%;
+}
+.susy1 > .size1of5 ~ .size1of5 {
+  width: 18.64407%;
+  float: right;
+}
+.susy1 > .size3of5 {
+  width: 59.32203%;
+  float: left;
+  margin-right: 1.69492%;
+}
+.susy1 > .size3of5 > .size1of2:first-child {
+  width: 48.57143%;
+  float: left;
+  margin-right: 2.85714%;
+}
+.susy1 > .size3of5 > .size1of2 + .size1of2 {
+  width: 48.57143%;
+  float: right;
+}
+.susy1 > .size3of5 > .full {
+  clear: both;
+  background: none;
+}
+.susy1 .full .size1of3 {
+  width: 31.42857%;
+  float: left;
+  margin-right: 2.85714%;
+  min-height: 9.75em;
+}
+.susy1 .full .size2of3 {
+  width: 65.71429%;
+  float: right;
+}
+.susy1 .size2of3 .size1of2:first-child {
+  width: 47.82609%;
+  float: left;
+  margin-right: 4.34783%;
+}
+.susy1 .size2of3 .size1of2 + .size1of2 {
+  width: 47.82609%;
+  float: right;
+}
+.susy1 .size2of3 .full {
+  clear: both;
+}
+.susy1 .isolation div {
+  width: 18.64407%;
+  float: left;
+  margin-right: -100%;
+}
+.susy1 .isolation div:nth-child(5n + 1) {
+  clear: left;
+}
+.susy1 .isolation div:nth-child(5n + 2) {
+  margin-left: 20.33898%;
+}
+.susy1 .isolation div:nth-child(5n + 3) {
+  margin-left: 40.67797%;
+}
+.susy1 .isolation div:nth-child(5n + 4) {
+  margin-left: 61.01695%;
+}
+.susy1 .isolation div:nth-child(5n + 5) {
+  margin-left: 81.35593%;
+}

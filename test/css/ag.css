@@ -251,6 +251,92 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   margin-left: 78.125%;
 }
 
+.static {
+  *zoom: 1;
+  width: 780px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 0.75em;
+  margin-bottom: 0.75em;
+}
+.static:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.static > .size1of5 {
+  min-height: 15em;
+}
+.static > .size1of5:first-of-type {
+  width: 140px;
+  float: left;
+  margin-right: 20px;
+}
+.static > .size1of5 ~ .size1of5 {
+  width: 140px;
+  float: right;
+}
+.static > .size3of5 {
+  width: 460.0px;
+  float: left;
+  margin-right: 20px;
+}
+.static > .size3of5 > .size1of2:first-child {
+  width: 220px;
+  float: left;
+  margin-right: 20px;
+}
+.static > .size3of5 > .size1of2 + .size1of2 {
+  width: 220px;
+  float: right;
+}
+.static > .size3of5 > .full {
+  clear: both;
+  background: none;
+}
+.static .full .size1of3 {
+  width: 140px;
+  float: left;
+  margin-right: 20px;
+  min-height: 9.75em;
+}
+.static .full .size2of3 {
+  width: 300px;
+  float: right;
+}
+.static .size2of3 .size1of2:first-child {
+  width: 140px;
+  float: left;
+  margin-right: 20px;
+}
+.static .size2of3 .size1of2 + .size1of2 {
+  width: 140px;
+  float: right;
+}
+.static .size2of3 .full {
+  clear: both;
+}
+.static .isolation div {
+  width: 17.94872%;
+  float: left;
+  margin-right: -100%;
+}
+.static .isolation div:nth-child(5n + 1) {
+  clear: left;
+}
+.static .isolation div:nth-child(5n + 2) {
+  margin-left: 20.51282%;
+}
+.static .isolation div:nth-child(5n + 3) {
+  margin-left: 41.02564%;
+}
+.static .isolation div:nth-child(5n + 4) {
+  margin-left: 61.53846%;
+}
+.static .isolation div:nth-child(5n + 5) {
+  margin-left: 82.05128%;
+}
+
 * html {
   font-size: 100%;
 }
@@ -307,30 +393,4 @@ h1, h2, h3 {
   margin-bottom: 0.75em;
   height: 1.5em;
   background: red;
-}
-
-.static {
-  *zoom: 1;
-  background: -webkit-gradient(linear, 0% 50%, 100% 50%, color-stop(6.77966%, rgba(212, 235, 242, 0.25)), color-stop(6.77966%, transparent), color-stop(8.47458%, transparent), color-stop(8.47458%, rgba(173, 216, 230, 0.25)), color-stop(15.25424%, rgba(212, 235, 242, 0.25)), color-stop(15.25424%, transparent), color-stop(16.94915%, transparent), color-stop(16.94915%, rgba(173, 216, 230, 0.25)), color-stop(23.72881%, rgba(212, 235, 242, 0.25)), color-stop(23.72881%, transparent), color-stop(25.42373%, transparent), color-stop(25.42373%, rgba(173, 216, 230, 0.25)), color-stop(32.20339%, rgba(212, 235, 242, 0.25)), color-stop(32.20339%, transparent), color-stop(33.89831%, transparent), color-stop(33.89831%, rgba(173, 216, 230, 0.25)), color-stop(40.67797%, rgba(212, 235, 242, 0.25)), color-stop(40.67797%, transparent), color-stop(42.37288%, transparent), color-stop(42.37288%, rgba(173, 216, 230, 0.25)), color-stop(49.15254%, rgba(212, 235, 242, 0.25)), color-stop(49.15254%, transparent), color-stop(50.84746%, transparent), color-stop(50.84746%, rgba(173, 216, 230, 0.25)), color-stop(57.62712%, rgba(212, 235, 242, 0.25)), color-stop(57.62712%, transparent), color-stop(59.32203%, transparent), color-stop(59.32203%, rgba(173, 216, 230, 0.25)), color-stop(66.10169%, rgba(212, 235, 242, 0.25)), color-stop(66.10169%, transparent), color-stop(67.79661%, transparent), color-stop(67.79661%, rgba(173, 216, 230, 0.25)), color-stop(74.57627%, rgba(212, 235, 242, 0.25)), color-stop(74.57627%, transparent), color-stop(76.27119%, transparent), color-stop(76.27119%, rgba(173, 216, 230, 0.25)), color-stop(83.05085%, rgba(212, 235, 242, 0.25)), color-stop(83.05085%, transparent), color-stop(84.74576%, transparent), color-stop(84.74576%, rgba(173, 216, 230, 0.25)), color-stop(91.52542%, rgba(212, 235, 242, 0.25)), color-stop(91.52542%, transparent), color-stop(93.22034%, transparent), color-stop(93.22034%, rgba(173, 216, 230, 0.25)), color-stop(100%, rgba(212, 235, 242, 0.25)));
-  background: -webkit-linear-gradient(left, rgba(212, 235, 242, 0.25) 6.77966%, transparent 6.77966%, transparent 8.47458%, rgba(173, 216, 230, 0.25) 8.47458%, rgba(212, 235, 242, 0.25) 15.25424%, transparent 15.25424%, transparent 16.94915%, rgba(173, 216, 230, 0.25) 16.94915%, rgba(212, 235, 242, 0.25) 23.72881%, transparent 23.72881%, transparent 25.42373%, rgba(173, 216, 230, 0.25) 25.42373%, rgba(212, 235, 242, 0.25) 32.20339%, transparent 32.20339%, transparent 33.89831%, rgba(173, 216, 230, 0.25) 33.89831%, rgba(212, 235, 242, 0.25) 40.67797%, transparent 40.67797%, transparent 42.37288%, rgba(173, 216, 230, 0.25) 42.37288%, rgba(212, 235, 242, 0.25) 49.15254%, transparent 49.15254%, transparent 50.84746%, rgba(173, 216, 230, 0.25) 50.84746%, rgba(212, 235, 242, 0.25) 57.62712%, transparent 57.62712%, transparent 59.32203%, rgba(173, 216, 230, 0.25) 59.32203%, rgba(212, 235, 242, 0.25) 66.10169%, transparent 66.10169%, transparent 67.79661%, rgba(173, 216, 230, 0.25) 67.79661%, rgba(212, 235, 242, 0.25) 74.57627%, transparent 74.57627%, transparent 76.27119%, rgba(173, 216, 230, 0.25) 76.27119%, rgba(212, 235, 242, 0.25) 83.05085%, transparent 83.05085%, transparent 84.74576%, rgba(173, 216, 230, 0.25) 84.74576%, rgba(212, 235, 242, 0.25) 91.52542%, transparent 91.52542%, transparent 93.22034%, rgba(173, 216, 230, 0.25) 93.22034%, rgba(212, 235, 242, 0.25) 100%);
-  background: -moz-linear-gradient(left, rgba(212, 235, 242, 0.25) 6.77966%, transparent 6.77966%, transparent 8.47458%, rgba(173, 216, 230, 0.25) 8.47458%, rgba(212, 235, 242, 0.25) 15.25424%, transparent 15.25424%, transparent 16.94915%, rgba(173, 216, 230, 0.25) 16.94915%, rgba(212, 235, 242, 0.25) 23.72881%, transparent 23.72881%, transparent 25.42373%, rgba(173, 216, 230, 0.25) 25.42373%, rgba(212, 235, 242, 0.25) 32.20339%, transparent 32.20339%, transparent 33.89831%, rgba(173, 216, 230, 0.25) 33.89831%, rgba(212, 235, 242, 0.25) 40.67797%, transparent 40.67797%, transparent 42.37288%, rgba(173, 216, 230, 0.25) 42.37288%, rgba(212, 235, 242, 0.25) 49.15254%, transparent 49.15254%, transparent 50.84746%, rgba(173, 216, 230, 0.25) 50.84746%, rgba(212, 235, 242, 0.25) 57.62712%, transparent 57.62712%, transparent 59.32203%, rgba(173, 216, 230, 0.25) 59.32203%, rgba(212, 235, 242, 0.25) 66.10169%, transparent 66.10169%, transparent 67.79661%, rgba(173, 216, 230, 0.25) 67.79661%, rgba(212, 235, 242, 0.25) 74.57627%, transparent 74.57627%, transparent 76.27119%, rgba(173, 216, 230, 0.25) 76.27119%, rgba(212, 235, 242, 0.25) 83.05085%, transparent 83.05085%, transparent 84.74576%, rgba(173, 216, 230, 0.25) 84.74576%, rgba(212, 235, 242, 0.25) 91.52542%, transparent 91.52542%, transparent 93.22034%, rgba(173, 216, 230, 0.25) 93.22034%, rgba(212, 235, 242, 0.25) 100%);
-  background: -o-linear-gradient(left, rgba(212, 235, 242, 0.25) 6.77966%, transparent 6.77966%, transparent 8.47458%, rgba(173, 216, 230, 0.25) 8.47458%, rgba(212, 235, 242, 0.25) 15.25424%, transparent 15.25424%, transparent 16.94915%, rgba(173, 216, 230, 0.25) 16.94915%, rgba(212, 235, 242, 0.25) 23.72881%, transparent 23.72881%, transparent 25.42373%, rgba(173, 216, 230, 0.25) 25.42373%, rgba(212, 235, 242, 0.25) 32.20339%, transparent 32.20339%, transparent 33.89831%, rgba(173, 216, 230, 0.25) 33.89831%, rgba(212, 235, 242, 0.25) 40.67797%, transparent 40.67797%, transparent 42.37288%, rgba(173, 216, 230, 0.25) 42.37288%, rgba(212, 235, 242, 0.25) 49.15254%, transparent 49.15254%, transparent 50.84746%, rgba(173, 216, 230, 0.25) 50.84746%, rgba(212, 235, 242, 0.25) 57.62712%, transparent 57.62712%, transparent 59.32203%, rgba(173, 216, 230, 0.25) 59.32203%, rgba(212, 235, 242, 0.25) 66.10169%, transparent 66.10169%, transparent 67.79661%, rgba(173, 216, 230, 0.25) 67.79661%, rgba(212, 235, 242, 0.25) 74.57627%, transparent 74.57627%, transparent 76.27119%, rgba(173, 216, 230, 0.25) 76.27119%, rgba(212, 235, 242, 0.25) 83.05085%, transparent 83.05085%, transparent 84.74576%, rgba(173, 216, 230, 0.25) 84.74576%, rgba(212, 235, 242, 0.25) 91.52542%, transparent 91.52542%, transparent 93.22034%, rgba(173, 216, 230, 0.25) 93.22034%, rgba(212, 235, 242, 0.25) 100%);
-  background: linear-gradient(left, rgba(212, 235, 242, 0.25) 6.77966%, transparent 6.77966%, transparent 8.47458%, rgba(173, 216, 230, 0.25) 8.47458%, rgba(212, 235, 242, 0.25) 15.25424%, transparent 15.25424%, transparent 16.94915%, rgba(173, 216, 230, 0.25) 16.94915%, rgba(212, 235, 242, 0.25) 23.72881%, transparent 23.72881%, transparent 25.42373%, rgba(173, 216, 230, 0.25) 25.42373%, rgba(212, 235, 242, 0.25) 32.20339%, transparent 32.20339%, transparent 33.89831%, rgba(173, 216, 230, 0.25) 33.89831%, rgba(212, 235, 242, 0.25) 40.67797%, transparent 40.67797%, transparent 42.37288%, rgba(173, 216, 230, 0.25) 42.37288%, rgba(212, 235, 242, 0.25) 49.15254%, transparent 49.15254%, transparent 50.84746%, rgba(173, 216, 230, 0.25) 50.84746%, rgba(212, 235, 242, 0.25) 57.62712%, transparent 57.62712%, transparent 59.32203%, rgba(173, 216, 230, 0.25) 59.32203%, rgba(212, 235, 242, 0.25) 66.10169%, transparent 66.10169%, transparent 67.79661%, rgba(173, 216, 230, 0.25) 67.79661%, rgba(212, 235, 242, 0.25) 74.57627%, transparent 74.57627%, transparent 76.27119%, rgba(173, 216, 230, 0.25) 76.27119%, rgba(212, 235, 242, 0.25) 83.05085%, transparent 83.05085%, transparent 84.74576%, rgba(173, 216, 230, 0.25) 84.74576%, rgba(212, 235, 242, 0.25) 91.52542%, transparent 91.52542%, transparent 93.22034%, rgba(173, 216, 230, 0.25) 93.22034%, rgba(212, 235, 242, 0.25) 100%);
-  background: linear-gradient(to right, rgba(212, 235, 242, 0.25) 6.77966%, transparent 6.77966%, transparent 8.47458%, rgba(173, 216, 230, 0.25) 8.47458%, rgba(212, 235, 242, 0.25) 15.25424%, transparent 15.25424%, transparent 16.94915%, rgba(173, 216, 230, 0.25) 16.94915%, rgba(212, 235, 242, 0.25) 23.72881%, transparent 23.72881%, transparent 25.42373%, rgba(173, 216, 230, 0.25) 25.42373%, rgba(212, 235, 242, 0.25) 32.20339%, transparent 32.20339%, transparent 33.89831%, rgba(173, 216, 230, 0.25) 33.89831%, rgba(212, 235, 242, 0.25) 40.67797%, transparent 40.67797%, transparent 42.37288%, rgba(173, 216, 230, 0.25) 42.37288%, rgba(212, 235, 242, 0.25) 49.15254%, transparent 49.15254%, transparent 50.84746%, rgba(173, 216, 230, 0.25) 50.84746%, rgba(212, 235, 242, 0.25) 57.62712%, transparent 57.62712%, transparent 59.32203%, rgba(173, 216, 230, 0.25) 59.32203%, rgba(212, 235, 242, 0.25) 66.10169%, transparent 66.10169%, transparent 67.79661%, rgba(173, 216, 230, 0.25) 67.79661%, rgba(212, 235, 242, 0.25) 74.57627%, transparent 74.57627%, transparent 76.27119%, rgba(173, 216, 230, 0.25) 76.27119%, rgba(212, 235, 242, 0.25) 83.05085%, transparent 83.05085%, transparent 84.74576%, rgba(173, 216, 230, 0.25) 84.74576%, rgba(212, 235, 242, 0.25) 91.52542%, transparent 91.52542%, transparent 93.22034%, rgba(173, 216, 230, 0.25) 93.22034%, rgba(212, 235, 242, 0.25) 100%);
-  width: 600px;
-  margin-left: auto;
-  margin-right: auto;
-}
-.static:after {
-  content: "";
-  display: table;
-  clear: both;
-}
-.static div {
-  width: 142.37288px;
-  float: left;
-  margin-right: 10.16949px;
-  margin-bottom: 1.5em;
-  min-height: 3em;
-  background: rgba(0, 0, 255, 0.25);
 }

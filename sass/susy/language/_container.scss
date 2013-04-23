@@ -7,7 +7,7 @@
   $show: false;
 
   // Create keyword for show-grids setting
-  @if $show-grids {
+  @if $show-grids and $show-grids != "hide" {
     $show: show;
   } @else {
     $show: hide;

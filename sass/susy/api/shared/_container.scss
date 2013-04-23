@@ -16,7 +16,7 @@
     $width: 100%;
   }
 
-  @if $show-grids {
+  @if $show-grids and $show-grids != hide {
     @include background-grid;
   }
 

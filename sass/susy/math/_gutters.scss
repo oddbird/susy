@@ -18,10 +18,11 @@
   $container: $container
 ) {
   $width: null;
-  $column-width: calculate-column-width($columns, $gutters, $column-width, $container);
 
   @if $column-width {
     $width: $gutters * $column-width;
+  } @else {
+    @warn "Please set a $column-width to use for static output."
   }
 
   @return $width;

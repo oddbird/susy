@@ -84,6 +84,14 @@ $b-grid: 80% (.5 2 1.25 1 3.25 1.75 3 2 1 3.75) .5;
   @include ag-test(asymmetrical, isolate);
 }
 
+// Static
+// ------
+
+@include use-grid(10 (60px 20px) static hide, clean) {
+  @include ag-test(static);
+}
+
+
 // Styles
 // ------
 
@@ -122,21 +130,3 @@ h1, h2, h3 {
     background: red;
   }
 }
-
-// // Static
-// // ------
-
-@include use-grid(600px 12 .25 static, clean) {
-
-  .static {
-    @include float-container;
-    div {
-      @include span(3);
-      @include trailer;
-      min-height: rhythm(2);
-      background: rgba(blue,.25);
-    }
-  }
-
-}
-

@@ -117,19 +117,22 @@
 
   // use global values for empty grid settings
   @if not $new-columns {
-    $new-columns: get-setting(columns);
+    $new-columns: $columns;
   }
   @if not $new-gutters {
-    $new-gutters: get-setting(gutters);
+    $new-gutters: $gutters;
   }
   @if not $new-column-width {
-    $new-column-width: get-setting(column-width);
+    $new-column-width: $column-width;
   }
   @if not $new-static {
-    $new-static: get-setting(static);
+    $new-static: $static;
+  }
+  @if not $new-isolate {
+    $new-isolate: $isolate;
   }
   @if not $new-flow {
-    $new-flow: get-setting(flow);
+    $new-flow: $flow;
   }
 
   @return $new-span $new-location $new-columns $new-gutters $new-column-width $new-isolate $new-static $new-flow;

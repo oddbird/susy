@@ -31,7 +31,8 @@
   $column-width   : $column-width,
   $isolate        : $isolate,
   $static         : $static,
-  $flow           : $flow
+  $flow           : $flow,
+  $gutter-place   : $gutter-placement
 ) {
   $width            : null;
 
@@ -39,9 +40,15 @@
   $gutter           : get-gutter-width($columns, $gutters, $column-width, $static);
 
   $margin-before    : null;
-  $margin-after     : $gutter;
+  $margin-after     : null;
   $padding-before   : null;
   $padding-after    : null;
+
+  @if index($gutter-place, before) {
+    $margin-before: $gutter;
+  } @else if index($gutter-place, after) {
+    $margin-after: $gutter;
+  }
 
   @if unitless($span) {
     $width: get-span-width($span, $location, $columns, $gutters, $column-width, $static);
@@ -56,9 +63,13 @@
       $margin-before: get-isolation-position($span, $location, $columns, $gutters);
     }
     $margin-after: -100%;
-  } @else if is-last($span, $location, $columns) {
-    $float: to($flow);
-    $margin-after: null;
+  } @else {
+    @if is-last($span, $location, $columns) {
+      $float: to($flow);
+      $margin-after: null;
+    } @else if is-first($location) {
+      $margin-before: null;
+    }
   }
 
   @include float-span-output($width, $float, $margin-before, $margin-after, $padding-before, $padding-after, $flow);

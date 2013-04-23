@@ -12,3 +12,14 @@
   float: $to;
   margin-#{$to}: 0;
 }
+
+// Last Unit
+@mixin float-first(
+  $columns  : $columns,
+  $gutters  : $gutters,
+  $flow     : $flow
+) {
+  $from: from($flow);
+
+  margin-#{$from}: 0;
+}

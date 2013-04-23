@@ -20,9 +20,7 @@
 
 // Find if a span covers the first columns
 @function is-first(
-  $span,
-  $location,
-  $columns: $columns
+  $location
 ) {
   @if $location == "first" or $location == "alpha" or $location == 1 {
     @return true;

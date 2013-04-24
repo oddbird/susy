@@ -3,9 +3,7 @@
 
 // Last Unit
 @mixin float-last(
-  $columns  : $columns,
-  $gutters  : $gutters,
-  $flow     : $flow
+  $flow: $flow
 ) {
   $to: to($flow);
 
@@ -15,9 +13,7 @@
 
 // Last Unit
 @mixin float-first(
-  $columns  : $columns,
-  $gutters  : $gutters,
-  $flow     : $flow
+  $flow: $flow
 ) {
   $from: from($flow);
 

@@ -129,15 +129,3 @@ h1, h2, h3 {
     background: red;
   }
 }
-
-// Translation
-// -----------
-
-@import "susy/translation/susy1";
-
-$total-columns: 10;
-$column-width: 5em;
-
-@include translate-susy1-settings;
-
-@include ag-test(susy1);

@@ -10,7 +10,6 @@
   $grid,
   $clean: false
 ) {
-
   $grid               : parse-grid($grid);
 
   $new-columns        : nth($grid,1);

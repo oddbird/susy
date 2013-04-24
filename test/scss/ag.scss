@@ -72,6 +72,12 @@ $a-grid: 10 (4em 1em) before;
 
 @include use-grid($a-grid, clean) {
   @include ag-test(symmetrical);
+
+  .nth div {
+    @include span(2);
+    @include nth-first('5n + 1');
+    @include nth-last(5n);
+  }
 }
 
 // Asymmetrical
@@ -120,7 +126,7 @@ h1, h2, h3 {
 .size1of3 { background: orange; }
 .full.grid-element { background: pink; }
 
-.isolation {
+.isolation, .nth {
   @include clearfix;
   clear: both;
   div {

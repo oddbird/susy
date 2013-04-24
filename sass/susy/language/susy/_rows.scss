@@ -28,6 +28,13 @@
   @include float-first($flow);
 }
 
+@mixin nth-first(
+  $value: first,
+  $type: child
+) {
+  &:#{format-nth($value,$type)} { @include first($flow); }
+}
+
 // First item
 // ----------
 
@@ -41,4 +48,11 @@
   $flow: $flow
 ) {
   @include float-last($flow);
+}
+
+@mixin nth-last(
+  $value: last,
+  $type: child
+) {
+  &:#{format-nth($value,$type)} { @include last($flow); }
 }

@@ -146,6 +146,19 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   margin-left: 81.63265%;
 }
 
+.nth div {
+  width: 18.36735%;
+  float: left;
+  margin-left: 2.04082%;
+}
+.nth div:nth-child(5n + 1) {
+  margin-left: 0;
+}
+.nth div:nth-child(5n) {
+  float: right;
+  margin-right: 0;
+}
+
 .asymmetrical {
   *zoom: 1;
   background: -webkit-gradient(linear, 0% 50%, 100% 50%, color-stop(2.08333%, rgba(212, 235, 242, 0.25)), color-stop(2.08333%, transparent), color-stop(4.16667%, transparent), color-stop(4.16667%, rgba(173, 216, 230, 0.25)), color-stop(12.5%, rgba(212, 235, 242, 0.25)), color-stop(12.5%, transparent), color-stop(14.58333%, transparent), color-stop(14.58333%, rgba(173, 216, 230, 0.25)), color-stop(19.79167%, rgba(212, 235, 242, 0.25)), color-stop(19.79167%, transparent), color-stop(21.875%, transparent), color-stop(21.875%, rgba(173, 216, 230, 0.25)), color-stop(26.04167%, rgba(212, 235, 242, 0.25)), color-stop(26.04167%, transparent), color-stop(28.125%, transparent), color-stop(28.125%, rgba(173, 216, 230, 0.25)), color-stop(41.66667%, rgba(212, 235, 242, 0.25)), color-stop(41.66667%, transparent), color-stop(43.75%, transparent), color-stop(43.75%, rgba(173, 216, 230, 0.25)), color-stop(51.04167%, rgba(212, 235, 242, 0.25)), color-stop(51.04167%, transparent), color-stop(53.125%, transparent), color-stop(53.125%, rgba(173, 216, 230, 0.25)), color-stop(65.625%, rgba(212, 235, 242, 0.25)), color-stop(65.625%, transparent), color-stop(67.70833%, transparent), color-stop(67.70833%, rgba(173, 216, 230, 0.25)), color-stop(76.04167%, rgba(212, 235, 242, 0.25)), color-stop(76.04167%, transparent), color-stop(78.125%, transparent), color-stop(78.125%, rgba(173, 216, 230, 0.25)), color-stop(82.29167%, rgba(212, 235, 242, 0.25)), color-stop(82.29167%, transparent), color-stop(84.375%, transparent), color-stop(84.375%, rgba(173, 216, 230, 0.25)), color-stop(100%, rgba(212, 235, 242, 0.25)));
@@ -384,12 +397,12 @@ h1, h2, h3 {
   background: pink;
 }
 
-.isolation {
+.isolation, .nth {
   overflow: hidden;
   *zoom: 1;
   clear: both;
 }
-.isolation div {
+.isolation div, .nth div {
   margin-bottom: 0.75em;
   height: 1.5em;
   background: red;

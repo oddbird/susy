@@ -5,7 +5,13 @@
 @mixin row(
   $flow: $flow
 ) {
-  clear: $flow;
+  $clear: $flow;
+
+  @if $flow == ltr or $flow == rtl {
+    $clear: from($flow);
+  }
+
+  clear: $clear;
 }
 
 // Cancel the row() effect, e.g. when using media queries.

@@ -12,16 +12,19 @@
 ) {
   $grid               : parse-grid($grid);
 
-  $new-columns        : nth($grid,1);
-  $new-gutters        : nth($grid,2);
-  $new-container      : nth($grid,3);
-  $new-column-width   : nth($grid,4);
-  $new-static         : nth($grid,5);
-  $new-isolate        : nth($grid,6);
-  $new-flow           : nth($grid,7);
-  $new-gutter-place   : nth($grid,8);
-  $new-show-grids     : nth($grid,9);
+  // get values
+  $new-columns        : get-setting(columns, $grid);
+  $new-gutters        : get-setting(gutters, $grid);
+  $new-container      : get-setting(container, $grid);
+  $new-column-width   : get-setting(column-width, $grid);
+  $new-static         : get-setting(static, $grid);
+  $new-isolate        : get-setting(isolate, $grid);
 
+  $new-flow           : get-setting(flow, $grid);
+  $new-gutter-place   : get-setting(gutter-placement, $grid);
+  $new-show-grids     : get-setting(show-grids, $grid);
+
+  // fill missing values
   @if not $clean {
     $new-columns          : if($new-columns, $new-columns, $columns);
     $new-gutters          : if($new-gutters, $new-gutters, $gutters);
@@ -31,12 +34,14 @@
     $new-isolate          : if($new-isolate, $new-isolate, $isolate);
   }
 
+  // set values
   $columns            : $new-columns;
   $gutters            : $new-gutters;
   $container          : $new-container;
   $column-width       : $new-column-width;
   $static             : $new-static;
   $isolate            : $new-isolate;
+
   $flow               : if($new-flow, $new-flow, $flow);
   $gutter-placement   : if($new-gutter-place, $new-gutter-place, $gutter-placement);
   $show-grids         : if($new-show-grids, $new-show-grids, $show-grids);
@@ -179,15 +184,18 @@
 // Return one setting from a shorhand grid
 @function get-setting(
   $setting,
-  $grid: get-grid()
+  $grid   : get-grid(),
+  $parse  : false
 ) {
-  $grid     : parse-grid($grid);
-  $value    : false;
-
   $options  : columns gutters container column-width static isolate flow gutter-placement show-grids;
   $key      : index($options, $setting);
+  $value    : false;
 
-  @if $key {
+  @if $parse {
+    $grid: parse-grid($grid);
+  }
+
+  @if $key and not ($key > length($grid)) {
     $value: nth($grid, $key);
   }
 

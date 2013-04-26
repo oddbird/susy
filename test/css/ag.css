@@ -197,14 +197,14 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   margin-right: -100%;
 }
 .asymmetrical .size2of3 .size1of2:first-child {
-  width: 47.82609%;
+  width: 45.45455%;
   float: left;
   margin-right: -100%;
 }
 .asymmetrical .size2of3 .size1of2 + .size1of2 {
-  width: 47.82609%;
+  width: 45.45455%;
   float: left;
-  margin-left: 52.17391%;
+  margin-left: 54.54545%;
   margin-right: -100%;
 }
 .asymmetrical .size2of3 .full {

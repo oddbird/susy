@@ -59,7 +59,7 @@
   $container: get-container()
 ) {
   $container  : parse-container($container);
-  $grid       : nth($container,1);
+  $grid       : parse-grid(nth($container,1));
   $justify    : nth($container,2);
   $show       : nth($container,3);
 

@@ -6,12 +6,14 @@
   $span: 1
 ) {
   $span               : parse-span($span);
-  $width              : nth($span,1);
-  $this-location      : nth($span,2);
-  $this-columns       : nth($span,3);
-  $this-gutters       : nth($span,4);
-  $this-column-width  : nth($span,5);
-  $this-static        : nth($span,7);
+
+  $width              : get-span-setting(width, $span);
+
+  $this-location      : get-span-setting(location, $span);
+  $this-columns       : get-span-setting(columns, $span);
+  $this-gutters       : get-span-setting(gutters, $span);
+  $this-column-width  : get-span-setting(column-width, $span);
+  $this-static        : get-span-setting(static, $span);
 
   $this-location      : if($this-location, $this-location, 1);
   $this-columns       : if($this-columns, $this-columns, $columns);
@@ -20,7 +22,7 @@
   $this-static        : if($this-static, $this-static, $static);
 
   @if unitless($width) {
-    $width: get-span-width($width, $this-location, $this-columns, $this-gutters, $this-column-width, $this-static);
+    // @@@ logic
   }
 
   @return $width;
@@ -30,17 +32,17 @@
 @function gutter(
   $context: get-grid()
 ) {
-  $this-columns       : get-setting(columns, $context);
-  $this-gutters       : get-setting(gutters, $context);
-  $this-column-width  : get-setting(column-width, $context);
-  $this-static        : get-setting(static, $context);
+  $this-columns       : get-span-setting(columns, $context);
+  $this-gutters       : get-span-setting(gutters, $context);
+  $this-column-width  : get-span-setting(column-width, $context);
+  $this-static        : get-span-setting(static, $context);
 
   $this-columns       : if($this-columns, $this-columns, $columns);
   $this-gutters       : if($this-gutters, $this-gutters, $gutters);
   $this-column-width  : if($this-column-width, $this-column-width, $column-width);
   $this-static        : if($this-static, $this-static, $static);
 
-  $width: get-gutter-width($this-columns, $this-gutters, $this-column-width, $this-static);
+  // @@@ logic
 
   @return $width;
 }
@@ -49,25 +51,8 @@
 @function outer-span(
   $span: 1
 ) {
-  $span               : parse-span($span);
-  $width              : nth($span,1);
-  $this-location      : nth($span,2);
-  $this-columns       : nth($span,3);
-  $this-gutters       : nth($span,4);
-  $this-column-width  : nth($span,5);
-  $this-static        : nth($span,7);
-
-  $this-location      : if($this-location, $this-location, 1);
-  $this-columns       : if($this-columns, $this-columns, $columns);
-  $this-gutters       : if($this-gutters, $this-gutters, $gutters);
-  $this-column-width  : if($this-column-width, $this-column-width, $column-width);
-  $this-static        : if($this-static, $this-static, $static);
-
-  @if unitless($width) {
-    $width: get-span-width($width, $this-location, $this-columns, $this-gutters, $this-column-width, $this-static);
-  }
-
-  $gutter: get-gutter-width($this-columns, $this-gutters, $this-column-width, $this-static);
+  $width    : span($span);
+  $gutter   : gutter($span);
 
   @return $width + $gutter;
 }

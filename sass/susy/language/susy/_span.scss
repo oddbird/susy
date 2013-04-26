@@ -154,13 +154,16 @@
 // Return one particular span setting from a list
 @function get-span-setting(
   $setting,
-  $span
+  $span,
+  $parse: false
 ) {
-  $span: parse-span($span);
-  $value: false;
-
   $options  : span location columns gutters column-width isolate static flow gutter-placement;
   $key      : index($options, $setting);
+  $value    : false;
+
+  @if $parse {
+    $span: parse-span($span);
+  }
 
   @if $key {
     $value: nth($span, $key);

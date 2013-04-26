@@ -1,0 +1,139 @@
+// Background Grids
+// ================
+
+// The overlay is painted over your container's ::after pseudo-element,
+// so we must give position to the container itself.
+// If relative doesn't suit your layout, it can be replaced by absolute/fixed.
+$overlay-position: relative !default;
+
+// Set the location of the switch.
+$overlay-switch-location: left bottom !default;
+
+// Grid Background
+// ---------------
+
+@mixin background-grid(
+
+) {
+  // nothing here yet...
+}
+
+// Grid Overlay
+// ------------
+
+%grid-overlay-container {
+  position: unquote($overlay-position);
+}
+
+%grid-overlay {
+  content: " ";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 998;
+}
+
+@mixin grid-overlay (
+  $grids...
+) {
+  $vert: nth($overlay-switch-location, 1);
+  $horz: nth($overlay-switch-location, 2);
+
+  head {
+    @include transition(all .4s);
+    @include border-radius(.25em);
+    display: block;
+    position: fixed;
+    #{$horz}: 10px;
+    #{$vert}: 10px;
+    z-index: 999;
+    color: #333;
+    text-shadow: 0 0 3px #fff;
+    &::before {
+      content: "|||";
+      display: block;
+      padding: 10px 14px;
+      letter-spacing: -1;
+      font: {
+        family: sans-serif;
+        size: 26px;
+        weight: bold;
+      }
+    }
+    &:hover {
+      @include box-shadow(0 0 3px rgba(#333,.5));
+      color: #333;
+      background: rgba(white,.5);
+      // @each $grid in $grids {
+      //   $grid: parse-background-grid($grid);
+      //   $selector: '.#{nth($grid, 1)}';
+      //   $this-columns: nth($grid, 2);
+      //   $this-gutters: nth($grid, 3);
+      //   $color: nth($grid, 4);
+
+      //   ~ body #{$selector} {
+      //     @extend %grid-overlay-container;
+      //   }
+      //   ~ #{$selector}::before,
+      //   ~ body #{$selector}::before {
+      //     @extend %grid-overlay;
+      //     @include background-grid($this-columns, $this-gutters, $color);
+      //   }
+      // }
+    }
+  }
+}
+
+// -----------------------------
+// Get the stops of the gradient
+
+// @function background-gradient-stops (
+//   $columns: $columns,
+//   $gutters: $gutters,
+//   $color: $background-grid-color
+// ) {
+//   $stops: compact();
+
+//   @for $i from 1 through column-count($columns) {
+//     $stops: join($stops, background-column-gradient($i, $columns, $gutters, $color), comma);
+//   }
+
+//   @return $stops;
+// }
+
+// -----------------------------
+// Get the stops for each column
+
+// @function background-column-gradient (
+//   $location,
+//   $columns: $columns,
+//   $gutters: $gutters,
+//   $color: $background-grid-color
+// ) {
+//   $stops  : compact();
+
+//   $trans  : transparent;
+//   $light  : lighten($color, 10%);
+
+//   $gutter : relative-gutter-span($columns, $gutters);
+
+//   @if $location > 1 {
+//     $start: relative-column-span($location - 1, 1, $columns, $gutters) + $gutter;
+//     $stops: append($stops, $color $start, comma);
+//   }
+
+//   @if $location < column-count($columns) {
+//     $end: relative-column-span($location, 1, $columns, $gutters);
+//     $stops: append($stops, $light $end, comma);
+//     $stops: append($stops, $trans $end, comma);
+//     $stops: append($stops, $trans $end + $gutter, comma);
+//   } @else {
+//     $stops: append($stops, $light 100%, comma);
+//   }
+
+//   @return $stops;
+// }

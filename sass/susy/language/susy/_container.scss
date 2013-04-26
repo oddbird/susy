@@ -80,5 +80,9 @@
     }
   }
 
+  @if $show and $show != hide {
+    @include background-grid;
+  }
+
   @include float-container($width, $justify, $show);
 }

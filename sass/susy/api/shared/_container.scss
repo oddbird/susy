@@ -16,10 +16,6 @@
     $width: 100%;
   }
 
-  @if $show-grids and $show-grids != hide {
-    @include background-grid;
-  }
-
   #{$property}: $width;
   margin-left: $left;
   margin-right: $right;

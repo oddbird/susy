@@ -6,11 +6,12 @@
 
 // Set a spanning element using shorthand syntax
 @mixin span(
-  $input
+  $span
 ) {
-  $input: parse-span($input);
+  $span: parse-span($span);
+  $output: span-math($span...);
 
-  @include float-span($input...);
+  @include float-span-output($output...);
 }
 
 // Span Helpers
@@ -166,4 +167,88 @@
   }
 
   @return $value;
+}
+
+// Get all the span results
+@function span-math(
+  $span,
+  $location,
+  $columns          : $columns,
+  $gutters          : $gutters,
+  $column-width     : $column-width,
+  $isolate          : $isolate,
+  $static           : $static,
+  $flow             : $flow,
+  $gutter-place     : $gutter-placement
+) {
+  $float            : from($flow);
+  $width            : $span;
+
+  $gutter           : null;
+  $column           : null;
+
+  $margin-before    : null;
+  $margin-after     : null;
+  $padding-before   : null;
+  $padding-after    : null;
+
+  $static           : if($static and $static != fluid, true, false);
+  $context          : column-sum($columns, $gutters);
+
+  //
+  @if $static {
+    @if not $column-width {
+      @warn "Please set a $column-width to use for static output.";
+    } @else {
+      $gutter: $gutters * $column-width;
+    }
+  } @else {
+    $gutter: percentage($gutters / $context);
+  }
+
+  // gutter placement
+  @if $gutter-place == before {
+    $margin-before: $gutter;
+  } @else if $gutter-place == after {
+    $margin-after: $gutter;
+  } @else if $gutter-place == split {
+    $margin-before: $gutter / 2;
+    $margin-after: $gutter / 2;
+  }
+
+  // span width
+  @if unitless($span) {
+    $span-sum: get-column-span-sum($span, $location, $columns, $gutters);
+
+    @if $static {
+      $width: $span-sum * $column-width;
+    } @else {
+      $width: percentage($span-sum / $context);
+    }
+  }
+
+  // special margin handling
+  @if $isolate and $isolate != float {
+    @if type-of($location) == number and not unitless($location) {
+      $margin-before: $location;
+    } @else {
+      $push: get-location-position($span, $location, $columns) - 1;
+      @if $push > 0 {
+        $push-sum: get-column-span-sum($push, 1, $columns, $gutters) + $gutters;
+        $margin-before: percentage($push-sum / $context);
+      } @else {
+        $margin-before: null;
+      }
+    }
+    $margin-after: -100%;
+  } @else {
+    @if is-last($span, $location, $columns) {
+      $float: to($flow);
+      $margin-after: null;
+    } @else if is-first($location) {
+      $margin-before: null;
+    }
+  }
+
+  @return $width $float $margin-before $margin-after $padding-before $padding-after $flow;
 }

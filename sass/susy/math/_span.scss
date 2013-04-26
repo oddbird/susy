@@ -29,7 +29,7 @@
   @if $column-width {
     $width: $span-sum * $column-width;
   } @else {
-    @warn "Please set a $column-width to use for static output."
+    @warn "Please set a $column-width to use for static output.";
   }
 
   @return $width;

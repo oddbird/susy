@@ -3,28 +3,12 @@
 
 // Add margin before or after an element
 @mixin margin-output(
-  $span,
-  $location       : false,
-  $columns        : $columns,
-  $gutters        : $gutters,
-  $sides          : before after,
-  $column-width   : $column-width,
-  $static         : $static,
-  $flow           : $flow
+  $before,
+  $after  : $before,
+  $flow   : $flow
 ) {
   $to: to($flow);
   $from: from($flow);
-
-  $width: null;
-
-  @if unitless($span) {
-    $width: get-span-outer-width($span, $location, $columns, $gutters, $column-width, $static);
-  } @else {
-    $width: $span;
-  }
-
-  $before: if(index($sides, before), $width, null);
-  $after: if(index($sides, after), $width, null);
 
   margin-#{$from}: $before;
   margin-#{$to}: $after;

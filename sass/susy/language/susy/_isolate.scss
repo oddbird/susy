@@ -1,0 +1,43 @@
+// Isolation Syntax
+// ================
+
+// Isolation Override
+@mixin isolate(
+  $span
+) {
+  // nothing...
+}
+
+// Isolation Gallery
+@mixin isolate-gallery(
+  $span,
+  $selector : child,
+  $grid     : get-grid()
+) {
+  // $to       : to($flow);
+  // $from     : from($flow);
+
+  // $location : 1;
+  // $context  : column-count($columns);
+  // $line     : floor($context / $span);
+
+  // $width    : relative-column-span($span, $location, $columns, $gutters);
+  // $width    : if(is-symmetrical($columns), $width, null);
+
+  // @include float-span-output($width, $from, null, -100%, null, null, $flow);
+
+  // @for $item from 1 through $line {
+  //   $nth: '#{$line}n + #{$item}';
+  //   &:#{format-nth($nth,$selector)} {
+  //     $width: relative-column-span($span, $location, $columns, $gutters);
+  //     $width: if(is-symmetrical($columns), null, $width);
+  //     $before: get-isolation-position($span, $location, $columns, $gutters);
+
+  //     @include float-span-output($width, null, $before, null, null, null, $flow);
+
+  //     @if $location == 1 { clear: $from; }
+  //     $location: $location + $span;
+  //     @if $location > $context { $location: 1; }
+  //   }
+  // }
+}

@@ -59,8 +59,11 @@
       }
     }
 
-    .isolation div {
-      @include isolate-grid-output(2, $columns, $gutters);
+    .isolation {
+      display: none;
+      // div {
+      //   @include isolate-grid-output(2, $columns, $gutters);
+      // }
     }
   }
 }

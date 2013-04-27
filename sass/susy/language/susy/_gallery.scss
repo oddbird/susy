@@ -17,7 +17,8 @@
 
 // Create a floated gallery
 @mixin nth-gallery(
-  $input
+  $input,
+  $selector: child
 ) {
   $this-input         : parse-span($input);
 
@@ -26,23 +27,19 @@
   $context            : column-count($this-columns);
   $line               : floor($context / $span);
 
-  @include span($input);
-
   @if is-symmetrical($this-columns) {
+    @include span($input);
     @include nth-first('#{$line}n + 1');
     @include nth-last('#{$line}n');
   } @else {
     $location           : 1;
-    $this-columns       : get-span-setting(columns, $this-input);
-    $this-gutters       : get-span-setting(gutters, $this-input);
-    $this-column-width  : get-span-setting(column-width, $this-input);
-    $this-static        : get-span-setting(static, $this-input);
 
     @for $item from 1 through $line {
       $nth: '#{$line}n + #{$item}';
       &:#{format-nth($nth,$selector)} {
+        $location-input: join($input, at $location);
 
-        width: span($span, $location, $this-columns, $this-gutters, $this-column-width, $this-static);
+        @include span($location-input);
 
         $location: $location + $span;
         @if $location > $context { $location: 1; }

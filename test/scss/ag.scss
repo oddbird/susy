@@ -61,7 +61,7 @@
 
     .gallery {
       div {
-        @include isolate-gallery(2);
+        @include gallery(2);
       }
     }
   }
@@ -79,7 +79,7 @@ $a-grid: 10 (4em 1em) before;
 // Asymmetrical
 // ------------
 
-$b-grid: 80% (.5 2 1.25 1 3.25 1.75 3 2 1 3.75) .5 isolate;
+$b-grid: 80% (.5 2 1.25 1 3.25 1.75 3 2 1 3.75) .5;
 
 @include use-grid($b-grid, clean) {
   @include ag-test(asymmetrical);

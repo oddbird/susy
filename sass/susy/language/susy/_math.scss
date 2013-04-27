@@ -1,0 +1,120 @@
+// Susy Math
+// =========
+
+// Get all the span results
+@function span-math(
+  $span,
+  $location,
+  $columns          : $columns,
+  $gutters          : $gutters,
+  $column-width     : $column-width,
+  $isolate          : $isolate,
+  $static           : $static,
+  $flow             : $flow,
+  $gutter-place     : $gutter-placement
+) {
+  $float            : from($flow);
+  $width            : $span;
+
+  $column           : null;
+
+  $static           : if($static and $static != fluid, true, false);
+  $isolate          : if($isolate and $isolate != float, true, false);
+
+  // calculations
+  $width            : get-span-width($span, $location, $columns, $gutters, $column-width, $static);
+
+  // gutter location
+  $gutter-location  : get-gutters($columns, $gutters, $column-width, $static, $gutter-place);
+  $margin-before    : nth($gutter-location,1);
+  $margin-after     : nth($gutter-location,2);
+  $padding-before   : null;
+  $padding-after    : null;
+
+  // special margin handling
+  @if $isolate {
+    $margin-before: get-isolation($span, $location, $columns, $gutters, $column-width, $static);
+    $margin-after: -100%;
+  } @else {
+    @if is-last($span, $location, $columns) {
+      $float: to($flow);
+      $margin-after: null;
+    } @else if is-first($location) {
+      $margin-before: null;
+    }
+  }
+
+  @return $width $float $margin-before $margin-after $padding-before $padding-after $flow;
+}
+
+// Return gutter width
+@function get-gutter-width(
+  $columns,
+  $gutters,
+  $column-width,
+  $static
+) {
+  $context  : column-sum($columns, $gutters);
+  $gutter   : null;
+
+  @if $static {
+    @if $column-width {
+      $gutter: $gutters * $column-width;
+    } @else {
+      @warn "Please set a $column-width to use for static output.";
+    }
+  } @else {
+    $gutter: percentage($gutters / $context);
+  }
+
+  @return $gutter;
+}
+
+@function get-gutters(
+  $columns,
+  $gutters,
+  $column-width,
+  $static,
+  $gutter-place: $gutter-placement
+) {
+  $gutter   : get-gutter-width($columns, $gutters, $column-width, $static);
+  $before   : null;
+  $after    : null;
+
+  @if $gutter-place == before {
+    $before: $gutter;
+  } @else if $gutter-place == after {
+    $after: $gutter;
+  } @else if $gutter-place == split {
+    $before: $gutter / 2;
+    $after: $gutter / 2;
+  }
+
+  @return $before $after;
+}
+
+// Return span width
+@function get-span-width(
+  $span,
+  $location,
+  $columns,
+  $gutters,
+  $column-width,
+  $static
+) {
+  $context  : column-sum($columns, $gutters);
+  $width    : null;
+
+  @if unitless($span) {
+    $span-sum: get-column-span-sum($span, $location, $columns, $gutters);
+
+    @if $static {
+      $width: $span-sum * $column-width;
+    } @else {
+      $width: percentage($span-sum / $context);
+    }
+  }
+
+  @return $width;
+}
+

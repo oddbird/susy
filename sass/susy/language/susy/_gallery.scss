@@ -1,0 +1,94 @@
+// Gallery Syntax
+// ==============
+
+// Create a gallery
+@mixin gallery(
+  $input,
+  $selector: child
+) {
+  $this-isolate: get-span-setting(isolate, $input, parse);
+
+  @if $this-isolate {
+    @include isolate-gallery($input);
+  } @else {
+    @include nth-gallery($input);
+  }
+}
+
+// Create a floated gallery
+@mixin nth-gallery(
+  $input
+) {
+  $this-input         : parse-span($input);
+
+  $span               : get-span-setting(span, $this-input);
+  $this-columns       : get-span-setting(columns, $this-input);
+  $context            : column-count($this-columns);
+  $line               : floor($context / $span);
+
+  @include span($input);
+
+  @if is-symmetrical($this-columns) {
+    @include nth-first('#{$line}n + 1');
+    @include nth-last('#{$line}n');
+  } @else {
+    $location           : 1;
+    $this-columns       : get-span-setting(columns, $this-input);
+    $this-gutters       : get-span-setting(gutters, $this-input);
+    $this-column-width  : get-span-setting(column-width, $this-input);
+    $this-static        : get-span-setting(static, $this-input);
+
+    @for $item from 1 through $line {
+      $nth: '#{$line}n + #{$item}';
+      &:#{format-nth($nth,$selector)} {
+
+        width: span($span, $location, $this-columns, $this-gutters, $this-column-width, $this-static);
+
+        $location: $location + $span;
+        @if $location > $context { $location: 1; }
+      }
+    }
+  }
+}
+
+// Create an isolated gallery
+@mixin isolate-gallery(
+  $input,
+  $selector: child
+) {
+  $input              : parse-span($input);
+  $width              : null;
+  $location           : 1;
+
+  $span               : get-span-setting(span, $input);
+  $this-columns       : get-span-setting(columns, $input);
+  $this-gutters       : get-span-setting(gutters, $input);
+  $this-column-width  : get-span-setting(column-width, $input);
+  $this-static        : get-span-setting(static, $input);
+  $this-flow          : get-span-setting(flow, $input);
+
+  $from               : from($this-flow);
+  $context            : column-count($this-columns);
+  $line               : floor($context / $span);
+
+  @if is-symmetrical($this-columns) {
+    $width: get-span-width($span, $location, $this-columns, $this-gutters, $this-column-width, $this-static);
+  }
+
+  @include float-span-output($width, $from, null, -100%, null, null, $this-flow);
+
+  @for $item from 1 through $line {
+    $nth: '#{$line}n + #{$item}';
+    &:#{format-nth($nth,$selector)} {
+      $width: get-span-width($span, $location, $this-columns, $this-gutters, $this-column-width, $this-static);
+      $width: if(is-symmetrical($columns), null, $width);
+      $before: get-isolation($span, $location, $this-columns, $this-gutters, $this-column-width, $this-static);
+
+      @include float-span-output($width, null, $before, null, null, null, $this-flow);
+
+      @if $location == 1 { clear: $from; }
+      $location: $location + $span;
+      @if $location > $context { $location: 1; }
+    }
+  }
+}

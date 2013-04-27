@@ -36,15 +36,15 @@
   $this-static        : get-span-setting(static, $input);
   $this-flow          : get-span-setting(flow, $input);
 
-  $from               : from($flow);
-  $context            : column-count($columns);
+  $from               : from($this-flow);
+  $context            : column-count($this-columns);
   $line               : floor($context / $span);
 
-  @if is-symmetrical($columns) {
-    $width: get-span-width($span, $location, $columns, $gutters, $this-column-width, $this-static);
+  @if is-symmetrical($this-columns) {
+    $width: get-span-width($span, $location, $this-columns, $this-gutters, $this-column-width, $this-static);
   }
 
-  @include float-span-output($width, $from, null, -100%, null, null, $flow);
+  @include float-span-output($width, $from, null, -100%, null, null, $this-flow);
 
   @for $item from 1 through $line {
     $nth: '#{$line}n + #{$item}';
@@ -53,7 +53,7 @@
       $width: if(is-symmetrical($columns), null, $width);
       $before: get-isolation($span, $location, $this-columns, $this-gutters, $this-column-width, $this-static);
 
-      @include float-span-output($width, null, $before, null, null, null, $flow);
+      @include float-span-output($width, null, $before, null, null, null, $this-flow);
 
       @if $location == 1 { clear: $from; }
       $location: $location + $span;

@@ -14,6 +14,20 @@
   @include float-span-output($output...);
 }
 
+// Gallery
+@mixin gallery(
+  $input,
+  $selector: child
+) {
+  $this-isolate: get-span-setting(isolate, $input, parse);
+
+  @if $this-isolate {
+    @include isolate-gallery($input);
+  } @else {
+    @include nth-gallery($input);
+  }
+}
+
 // Span Helpers
 // ------------
 
@@ -187,30 +201,20 @@
   $float            : from($flow);
   $width            : $span;
 
-  $gutter           : null;
   $column           : null;
-
-  $margin-before    : null;
-  $margin-after     : null;
-  $padding-before   : null;
-  $padding-after    : null;
 
   $static           : if($static and $static != fluid, true, false);
   $isolate          : if($isolate and $isolate != float, true, false);
 
   // calculations
-  $gutter           : get-gutter-width($columns, $gutters, $column-width, $static);
   $width            : get-span-width($span, $location, $columns, $gutters, $column-width, $static);
 
-  // gutter placement
-  @if $gutter-place == before {
-    $margin-before: $gutter;
-  } @else if $gutter-place == after {
-    $margin-after: $gutter;
-  } @else if $gutter-place == split {
-    $margin-before: $gutter / 2;
-    $margin-after: $gutter / 2;
-  }
+  // gutter location
+  $gutter-location  : get-gutters($columns, $gutters, $column-width, $static, $gutter-place);
+  $margin-before    : nth($gutter-location,1);
+  $margin-after     : nth($gutter-location,2);
+  $padding-before   : null;
+  $padding-after    : null;
 
   // special margin handling
   @if $isolate {
@@ -251,6 +255,29 @@
   @return $gutter;
 }
 
+@function get-gutters(
+  $columns,
+  $gutters,
+  $column-width,
+  $static,
+  $gutter-place: $gutter-placement
+) {
+  $gutter   : get-gutter-width($columns, $gutters, $column-width, $static);
+  $before   : null;
+  $after    : null;
+
+  @if $gutter-place == before {
+    $before: $gutter;
+  } @else if $gutter-place == after {
+    $after: $gutter;
+  } @else if $gutter-place == split {
+    $before: $gutter / 2;
+    $after: $gutter / 2;
+  }
+
+  @return $before $after;
+}
+
 // Return span width
 @function get-span-width(
   $span,
@@ -274,4 +301,40 @@
   }
 
   @return $width;
+}
+
+@mixin nth-gallery(
+  $input
+) {
+  $this-input         : parse-span($input);
+
+  $span               : get-span-setting(span, $this-input);
+  $this-columns       : get-span-setting(columns, $this-input);
+  $context            : column-count($this-columns);
+  $line               : floor($context / $span);
+
+  @include span($input);
+
+  @if is-symmetrical($this-columns) {
+    @include nth-first('#{$line}n + 1');
+    @include nth-last('#{$line}n');
+  } @else {
+    $location           : 1;
+    $this-columns       : get-span-setting(columns, $this-input);
+    $this-gutters       : get-span-setting(gutters, $this-input);
+    $this-column-width  : get-span-setting(column-width, $this-input);
+    $this-static        : get-span-setting(static, $this-input);
+
+    @for $item from 1 through $line {
+      $nth: '#{$line}n + #{$item}';
+      &:#{format-nth($nth,$selector)} {
+
+        width: span($span, $location, $this-columns, $this-gutters, $this-column-width, $this-static);
+
+        $location: $location + $span;
+        @if $location > $context { $location: 1; }
+      }
+    }
+  }
+
 }

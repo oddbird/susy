@@ -144,38 +144,25 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 .symmetrical .size2of3 .full {
   clear: both;
 }
-.symmetrical .isolation div {
+.symmetrical .gallery div {
   width: 18.36735%;
   float: left;
   margin-right: -100%;
 }
-.symmetrical .isolation div:nth-child(5n + 1) {
+.symmetrical .gallery div:nth-child(5n + 1) {
   clear: left;
 }
-.symmetrical .isolation div:nth-child(5n + 2) {
+.symmetrical .gallery div:nth-child(5n + 2) {
   margin-left: 20.40816%;
 }
-.symmetrical .isolation div:nth-child(5n + 3) {
+.symmetrical .gallery div:nth-child(5n + 3) {
   margin-left: 40.81633%;
 }
-.symmetrical .isolation div:nth-child(5n + 4) {
+.symmetrical .gallery div:nth-child(5n + 4) {
   margin-left: 61.22449%;
 }
-.symmetrical .isolation div:nth-child(5n + 5) {
+.symmetrical .gallery div:nth-child(5n + 5) {
   margin-left: 81.63265%;
-}
-
-.nth div {
-  width: 18.36735%;
-  float: left;
-  margin-left: 2.04082%;
-}
-.nth div:nth-child(5n + 1) {
-  margin-left: 0;
-}
-.nth div:nth-child(5n) {
-  float: right;
-  margin-right: 0;
 }
 
 .asymmetrical {
@@ -258,27 +245,27 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 .asymmetrical .size2of3 .full {
   clear: both;
 }
-.asymmetrical .isolation div {
+.asymmetrical .gallery div {
   float: left;
   margin-right: -100%;
 }
-.asymmetrical .isolation div:nth-child(5n + 1) {
+.asymmetrical .gallery div:nth-child(5n + 1) {
   width: 12.5%;
   clear: left;
 }
-.asymmetrical .isolation div:nth-child(5n + 2) {
+.asymmetrical .gallery div:nth-child(5n + 2) {
   width: 11.45833%;
   margin-left: 14.58333%;
 }
-.asymmetrical .isolation div:nth-child(5n + 3) {
+.asymmetrical .gallery div:nth-child(5n + 3) {
   width: 22.91667%;
   margin-left: 28.125%;
 }
-.asymmetrical .isolation div:nth-child(5n + 4) {
+.asymmetrical .gallery div:nth-child(5n + 4) {
   width: 22.91667%;
   margin-left: 53.125%;
 }
-.asymmetrical .isolation div:nth-child(5n + 5) {
+.asymmetrical .gallery div:nth-child(5n + 5) {
   width: 21.875%;
   margin-left: 78.125%;
 }
@@ -354,24 +341,24 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 .static .size2of3 .full {
   clear: both;
 }
-.static .isolation div {
+.static .gallery div {
   width: 140px;
   float: left;
   margin-right: -100%;
 }
-.static .isolation div:nth-child(5n + 1) {
+.static .gallery div:nth-child(5n + 1) {
   clear: left;
 }
-.static .isolation div:nth-child(5n + 2) {
+.static .gallery div:nth-child(5n + 2) {
   margin-left: 160.0px;
 }
-.static .isolation div:nth-child(5n + 3) {
+.static .gallery div:nth-child(5n + 3) {
   margin-left: 320px;
 }
-.static .isolation div:nth-child(5n + 4) {
+.static .gallery div:nth-child(5n + 4) {
   margin-left: 480.0px;
 }
-.static .isolation div:nth-child(5n + 5) {
+.static .gallery div:nth-child(5n + 5) {
   margin-left: 640px;
 }
 
@@ -475,12 +462,12 @@ h1, h2, h3 {
   background: pink;
 }
 
-.isolation, .nth {
+.gallery {
   overflow: hidden;
   *zoom: 1;
   clear: both;
 }
-.isolation div, .nth div {
+.gallery div {
   margin-bottom: 0.75em;
   height: 1.5em;
   background: red;

@@ -3,41 +3,92 @@
 
 // Isolation Override
 @mixin isolate(
-  $span
+  $input
 ) {
-  // nothing...
+  $input              : parse-span($input);
+
+  $span               : get-span-setting(span, $input);
+  $location           : get-span-setting(location, $input);
+  $this-columns       : get-span-setting(columns, $input);
+  $this-gutters       : get-span-setting(gutters, $input);
+  $this-column-width  : get-span-setting(column-width, $input);
+  $this-static        : get-span-setting(static, $input);
+  $this-flow          : get-span-setting(flow, $input);
+
+  $push: get-isolation($span, $location, $columns, $gutters, $column-width, $static);
+
+  @include isolate-output($push,$this-flow);
 }
 
 // Isolation Gallery
 @mixin isolate-gallery(
-  $span,
-  $selector : child,
-  $grid     : get-grid()
+  $input,
+  $selector: child
 ) {
-  // $to       : to($flow);
-  // $from     : from($flow);
+  $input              : parse-span($input);
+  $width              : null;
+  $location           : 1;
 
-  // $location : 1;
-  // $context  : column-count($columns);
-  // $line     : floor($context / $span);
+  $span               : get-span-setting(span, $input);
+  $this-columns       : get-span-setting(columns, $input);
+  $this-gutters       : get-span-setting(gutters, $input);
+  $this-column-width  : get-span-setting(column-width, $input);
+  $this-static        : get-span-setting(static, $input);
+  $this-flow          : get-span-setting(flow, $input);
 
-  // $width    : relative-column-span($span, $location, $columns, $gutters);
-  // $width    : if(is-symmetrical($columns), $width, null);
+  $from               : from($flow);
+  $context            : column-count($columns);
+  $line               : floor($context / $span);
 
-  // @include float-span-output($width, $from, null, -100%, null, null, $flow);
+  @if is-symmetrical($columns) {
+    $width: get-span-width($span, $location, $columns, $gutters, $this-column-width, $this-static);
+  }
 
-  // @for $item from 1 through $line {
-  //   $nth: '#{$line}n + #{$item}';
-  //   &:#{format-nth($nth,$selector)} {
-  //     $width: relative-column-span($span, $location, $columns, $gutters);
-  //     $width: if(is-symmetrical($columns), null, $width);
-  //     $before: get-isolation-position($span, $location, $columns, $gutters);
+  @include float-span-output($width, $from, null, -100%, null, null, $flow);
 
-  //     @include float-span-output($width, null, $before, null, null, null, $flow);
+  @for $item from 1 through $line {
+    $nth: '#{$line}n + #{$item}';
+    &:#{format-nth($nth,$selector)} {
+      $width: get-span-width($span, $location, $this-columns, $this-gutters, $this-column-width, $this-static);
+      $width: if(is-symmetrical($columns), null, $width);
+      $before: get-isolation($span, $location, $this-columns, $this-gutters, $this-column-width, $this-static);
 
-  //     @if $location == 1 { clear: $from; }
-  //     $location: $location + $span;
-  //     @if $location > $context { $location: 1; }
-  //   }
-  // }
+      @include float-span-output($width, null, $before, null, null, null, $flow);
+
+      @if $location == 1 { clear: $from; }
+      $location: $location + $span;
+      @if $location > $context { $location: 1; }
+    }
+  }
+}
+
+// Return the isolation position
+@function get-isolation(
+  $span,
+  $location,
+  $columns,
+  $gutters,
+  $column-width,
+  $static
+) {
+  $context  : column-sum($columns, $gutters);
+  $width    : null;
+
+  @if type-of($location) == number and not unitless($location) {
+    $width: $location;
+  } @else {
+    $push: get-location-position($span, $location, $columns) - 1;
+    @if $push > 0 {
+      $push-sum: get-column-span-sum($push, 1, $columns, $gutters) + $gutters;
+      @if $static {
+        $width: $push-sum * $column-width;
+      } @else {
+        $width: percentage($push-sum / $context);
+      }
+    } @else {
+      $width: null;
+    }
+  }
+
+  @return $width;
 }

@@ -275,34 +275,3 @@
 
   @return $width;
 }
-
-// Return the isolation position
-@function get-isolation(
-  $span,
-  $location,
-  $columns,
-  $gutters,
-  $column-width,
-  $static
-) {
-  $context  : column-sum($columns, $gutters);
-  $width    : null;
-
-  @if type-of($location) == number and not unitless($location) {
-    $width: $location;
-  } @else {
-    $push: get-location-position($span, $location, $columns) - 1;
-    @if $push > 0 {
-      $push-sum: get-column-span-sum($push, 1, $columns, $gutters) + $gutters;
-      @if $static {
-        $width: $push-sum * $column-width;
-      } @else {
-        $width: percentage($push-sum / $context);
-      }
-    } @else {
-      $width: null;
-    }
-  }
-
-  @return $width;
-}

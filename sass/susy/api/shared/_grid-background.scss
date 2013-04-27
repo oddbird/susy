@@ -9,12 +9,12 @@
 // --------
 
 // Set the color of background grids/
-$background-grid-color: rgba(lightblue, .25) !default;
+$grid-background-color: rgba(lightblue, .25) !default;
 
 // Grid Background Output
 // ----------------------
 
-@mixin background-grid-output (
+@mixin grid-background-output (
   $stops,
   $flow   : $flow
 ) {

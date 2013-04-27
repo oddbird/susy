@@ -7,16 +7,16 @@
 $overlay-position: relative !default;
 
 // Set the location of the switch.
-$overlay-switch-location: left bottom !default;
+$grid-toggle-position: left bottom !default;
 
 // Grid Background
 // ---------------
 
-@mixin background-grid(
+@mixin grid-background(
   $grid: parse-grid()
 ) {
   $stops  : compact();
-  $color  : $background-grid-color;
+  $color  : $grid-background-color;
 
   @if length($grid) == 2 and type-of(nth($grid,2)) == color {
     $color: nth($grid,2);
@@ -57,7 +57,7 @@ $overlay-switch-location: left bottom !default;
     $stops: join($stops, $this-stop, comma);
   }
 
-  @include background-grid-output($stops, $this-flow)
+  @include grid-background-output($stops, $this-flow)
 }
 
 // Grid Overlay
@@ -83,8 +83,8 @@ $overlay-switch-location: left bottom !default;
 @mixin grid-overlay (
   $grids...
 ) {
-  $vert: nth($overlay-switch-location, 1);
-  $horz: nth($overlay-switch-location, 2);
+  $vert: nth($grid-toggle-position, 1);
+  $horz: nth($grid-toggle-position, 2);
 
   head {
     @include transition(all .4s);
@@ -121,7 +121,7 @@ $overlay-switch-location: left bottom !default;
         ~ #{$selector}::before,
         ~ body #{$selector}::before {
           @extend %grid-overlay;
-          @include background-grid($grid);
+          @include grid-background($grid);
         }
       }
     }

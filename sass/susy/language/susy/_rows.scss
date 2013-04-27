@@ -41,8 +41,15 @@
   &:#{format-nth($value,$type)} { @include first($flow); }
 }
 
-// First item
-// ----------
+@mixin nth-alpha(
+  $value: first,
+  $type: child
+) {
+  @include nth-first($value, $type);
+}
+
+// Last item
+// ---------
 
 @mixin last(
   $flow: $flow
@@ -61,4 +68,11 @@
   $type: child
 ) {
   &:#{format-nth($value,$type)} { @include last($flow); }
+}
+
+@mixin nth-omega(
+  $value: last,
+  $type: child
+) {
+  @include nth-last($value, $type);
 }

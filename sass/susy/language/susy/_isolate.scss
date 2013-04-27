@@ -20,6 +20,9 @@
   @include isolate-output($push,$this-flow);
 }
 
+// Isolation Helpers
+// -----------------
+
 // Return the isolation position
 @function get-isolation(
   $span,

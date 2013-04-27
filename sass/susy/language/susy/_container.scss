@@ -81,7 +81,7 @@
   }
 
   @if $show and $show != hide {
-    @include background-grid;
+    @include background-grid($grid);
   }
 
   @include float-container($width, $justify, $show);

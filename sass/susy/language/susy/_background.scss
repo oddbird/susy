@@ -13,9 +13,51 @@ $overlay-switch-location: left bottom !default;
 // ---------------
 
 @mixin background-grid(
-
+  $grid: parse-grid()
 ) {
-  // nothing here yet...
+  $stops  : compact();
+  $color  : $background-grid-color;
+
+  @if length($grid) == 2 and type-of(nth($grid,2)) == color {
+    $color: nth($grid,2);
+    $grid: nth($grid,1);
+  }
+
+  $trans  : transparent;
+  $light  : lighten($color, 10%);
+
+  $this-columns       : get-setting(columns, $grid);
+  $this-gutters       : get-setting(gutters, $grid);
+  $this-column-width  : get-setting(column-width, $grid);
+  $this-static        : get-setting(static, $grid);
+  $this-gutter-place  : get-setting(gutter-placement, $grid);
+  $this-flow          : get-setting(flow, $grid);
+
+  $this-static        : if($this-static and $this-static != fluid, true, false);
+
+  @for $location from 1 through column-count($this-columns) {
+    $this-stop: compact();
+
+    @if $location > 1 {
+      $start: get-isolation(1, $location, $this-columns, $this-gutters, $this-column-width, $this-static);
+      $this-stop: append($this-stop, $color $start, comma);
+    }
+
+    @if $location == column-count($this-columns) {
+      $this-stop: append($this-stop, $light 100%, comma);
+    } @else {
+      $end: get-span-width($location, 1, $this-columns, $this-gutters, $this-column-width, $this-static);
+      $gutter: get-isolation(1, $location + 1, $this-columns, $this-gutters, $this-column-width, $this-static);
+
+      $this-stop: append($this-stop, $light $end, comma);
+      $this-stop: append($this-stop, $trans $end, comma);
+      $this-stop: append($this-stop, $trans $gutter, comma);
+    }
+
+    $stops: join($stops, $this-stop, comma);
+  }
+
+  @include background-grid-output($stops, $this-flow)
 }
 
 // Grid Overlay
@@ -35,6 +77,7 @@ $overlay-switch-location: left bottom !default;
   height: 100%;
   width: 100%;
   z-index: 998;
+  background-color: rgba(red,.25);
 }
 
 @mixin grid-overlay (
@@ -68,72 +111,19 @@ $overlay-switch-location: left bottom !default;
       @include box-shadow(0 0 3px rgba(#333,.5));
       color: #333;
       background: rgba(white,.5);
-      // @each $grid in $grids {
-      //   $grid: parse-background-grid($grid);
-      //   $selector: '.#{nth($grid, 1)}';
-      //   $this-columns: nth($grid, 2);
-      //   $this-gutters: nth($grid, 3);
-      //   $color: nth($grid, 4);
+      @each $grid in $grids {
+        $selector: nth($grid, 1);
+        $grid: parse-grid(nth($grid,2));
 
-      //   ~ body #{$selector} {
-      //     @extend %grid-overlay-container;
-      //   }
-      //   ~ #{$selector}::before,
-      //   ~ body #{$selector}::before {
-      //     @extend %grid-overlay;
-      //     @include background-grid($this-columns, $this-gutters, $color);
-      //   }
-      // }
+        ~ body #{$selector} {
+          @extend %grid-overlay-container;
+        }
+        ~ #{$selector}::before,
+        ~ body #{$selector}::before {
+          @extend %grid-overlay;
+          @include background-grid($grid);
+        }
+      }
     }
   }
 }
-
-// -----------------------------
-// Get the stops of the gradient
-
-// @function background-gradient-stops (
-//   $columns: $columns,
-//   $gutters: $gutters,
-//   $color: $background-grid-color
-// ) {
-//   $stops: compact();
-
-//   @for $i from 1 through column-count($columns) {
-//     $stops: join($stops, background-column-gradient($i, $columns, $gutters, $color), comma);
-//   }
-
-//   @return $stops;
-// }
-
-// -----------------------------
-// Get the stops for each column
-
-// @function background-column-gradient (
-//   $location,
-//   $columns: $columns,
-//   $gutters: $gutters,
-//   $color: $background-grid-color
-// ) {
-//   $stops  : compact();
-
-//   $trans  : transparent;
-//   $light  : lighten($color, 10%);
-
-//   $gutter : relative-gutter-span($columns, $gutters);
-
-//   @if $location > 1 {
-//     $start: relative-column-span($location - 1, 1, $columns, $gutters) + $gutter;
-//     $stops: append($stops, $color $start, comma);
-//   }
-
-//   @if $location < column-count($columns) {
-//     $end: relative-column-span($location, 1, $columns, $gutters);
-//     $stops: append($stops, $light $end, comma);
-//     $stops: append($stops, $trans $end, comma);
-//     $stops: append($stops, $trans $end + $gutter, comma);
-//   } @else {
-//     $stops: append($stops, $light 100%, comma);
-//   }
-
-//   @return $stops;
-// }

@@ -7,7 +7,7 @@
 ) {
   $span               : parse-span($span);
 
-  $width              : get-span-setting(width, $span);
+  $width              : get-span-setting(span, $span);
 
   $this-location      : get-span-setting(location, $span);
   $this-columns       : get-span-setting(columns, $span);
@@ -21,9 +21,7 @@
   $this-column-width  : if($this-column-width, $this-column-width, $column-width);
   $this-static        : if($this-static, $this-static, $static);
 
-  @if unitless($width) {
-    // @@@ logic
-  }
+  $width: get-span-width($width, $this-location, $this-columns, $this-gutters, $this-column-width, $this-static);
 
   @return $width;
 }
@@ -42,7 +40,7 @@
   $this-column-width  : if($this-column-width, $this-column-width, $column-width);
   $this-static        : if($this-static, $this-static, $static);
 
-  // @@@ logic
+  $width: get-gutter-width($this-columns, $this-gutters, $this-column-width, $this-static);
 
   @return $width;
 }

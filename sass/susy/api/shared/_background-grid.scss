@@ -16,7 +16,6 @@ $background-grid-color: rgba(lightblue, .25) !default;
 
 @mixin background-grid-output (
   $stops,
-  $color  : $background-grid-color,
   $flow   : $flow
 ) {
   $to     : to($flow);

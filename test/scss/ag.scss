@@ -95,10 +95,14 @@ $b-grid: 80% (.5 2 1.25 1 3.25 1.75 3 2 1 3.75) .5 isolate;
 // Static
 // ------
 
-@include use-grid(10 (60px 20px) static hide, clean) {
+@include use-grid(10 (60px 20px) static, clean) {
   @include ag-test(static);
 }
 
+// Grid Overlay
+// ------------
+
+@include grid-overlay('.symmetrical' $a-grid, '.asymmetrical' $b-grid);
 
 // Styles
 // ------

@@ -184,7 +184,7 @@
 // Return one setting from a shorhand grid
 @function get-setting(
   $setting,
-  $grid   : get-grid(),
+  $grid   : parse-grid(get-grid()),
   $parse  : false
 ) {
   $options  : columns gutters container column-width static isolate flow gutter-placement show-grids;

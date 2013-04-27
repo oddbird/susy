@@ -196,18 +196,11 @@
   $padding-after    : null;
 
   $static           : if($static and $static != fluid, true, false);
-  $context          : column-sum($columns, $gutters);
+  $isolate          : if($isolate and $isolate != float, true, false);
 
-  //
-  @if $static {
-    @if not $column-width {
-      @warn "Please set a $column-width to use for static output.";
-    } @else {
-      $gutter: $gutters * $column-width;
-    }
-  } @else {
-    $gutter: percentage($gutters / $context);
-  }
+  // calculations
+  $gutter           : get-gutter-width($columns, $gutters, $column-width, $static);
+  $width            : get-span-width($span, $location, $columns, $gutters, $column-width, $static);
 
   // gutter placement
   @if $gutter-place == before {
@@ -219,30 +212,9 @@
     $margin-after: $gutter / 2;
   }
 
-  // span width
-  @if unitless($span) {
-    $span-sum: get-column-span-sum($span, $location, $columns, $gutters);
-
-    @if $static {
-      $width: $span-sum * $column-width;
-    } @else {
-      $width: percentage($span-sum / $context);
-    }
-  }
-
   // special margin handling
-  @if $isolate and $isolate != float {
-    @if type-of($location) == number and not unitless($location) {
-      $margin-before: $location;
-    } @else {
-      $push: get-location-position($span, $location, $columns) - 1;
-      @if $push > 0 {
-        $push-sum: get-column-span-sum($push, 1, $columns, $gutters) + $gutters;
-        $margin-before: percentage($push-sum / $context);
-      } @else {
-        $margin-before: null;
-      }
-    }
+  @if $isolate {
+    $margin-before: get-isolation($span, $location, $columns, $gutters, $column-width, $static);
     $margin-after: -100%;
   } @else {
     @if is-last($span, $location, $columns) {
@@ -254,4 +226,83 @@
   }
 
   @return $width $float $margin-before $margin-after $padding-before $padding-after $flow;
+}
+
+// Return gutter width
+@function get-gutter-width(
+  $columns,
+  $gutters,
+  $column-width,
+  $static
+) {
+  $context  : column-sum($columns, $gutters);
+  $gutter   : null;
+
+  @if $static {
+    @if $column-width {
+      $gutter: $gutters * $column-width;
+    } @else {
+      @warn "Please set a $column-width to use for static output.";
+    }
+  } @else {
+    $gutter: percentage($gutters / $context);
+  }
+
+  @return $gutter;
+}
+
+// Return span width
+@function get-span-width(
+  $span,
+  $location,
+  $columns,
+  $gutters,
+  $column-width,
+  $static
+) {
+  $context  : column-sum($columns, $gutters);
+  $width    : null;
+
+  @if unitless($span) {
+    $span-sum: get-column-span-sum($span, $location, $columns, $gutters);
+
+    @if $static {
+      $width: $span-sum * $column-width;
+    } @else {
+      $width: percentage($span-sum / $context);
+    }
+  }
+
+  @return $width;
+}
+
+// Return the isolation position
+@function get-isolation(
+  $span,
+  $location,
+  $columns,
+  $gutters,
+  $column-width,
+  $static
+) {
+  $context  : column-sum($columns, $gutters);
+  $width    : null;
+
+  @if type-of($location) == number and not unitless($location) {
+    $width: $location;
+  } @else {
+    $push: get-location-position($span, $location, $columns) - 1;
+    @if $push > 0 {
+      $push-sum: get-column-span-sum($push, 1, $columns, $gutters) + $gutters;
+      @if $static {
+        $width: $push-sum * $column-width;
+      } @else {
+        $width: percentage($push-sum / $context);
+      }
+    } @else {
+      $width: null;
+    }
+  }
+
+  @return $width;
 }

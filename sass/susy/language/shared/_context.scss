@@ -13,9 +13,11 @@
 ) {
   $context: parse-span($context);
 
-  $this-span          : nth($context,1);
-  $this-location      : nth($context,2);
-  $this-columns       : nth($context,3);
+  $this-span          : get-span-setting(span, $context);
+  $this-location      : get-span-setting(location, $context);
+  $this-columns       : get-span-setting(columns, $context);
+
+  $this-columns       : if($this-columns, $this-columns, $columns);
 
   @return get-columns($this-span, $this-location, $this-columns);
 }

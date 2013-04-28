@@ -72,6 +72,8 @@
         $new-gutter-place: after;
       } @else if $value == before {
         $new-gutter-place: before;
+      } @else if $value == no-gutters {
+        $new-gutter-place: no-gutters;
       }
 
       // at

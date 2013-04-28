@@ -113,6 +113,8 @@
     } @else {
       $width: percentage($span-sum / $context);
     }
+  } @else {
+    $width: $span;
   }
 
   @return $width;

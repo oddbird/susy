@@ -146,11 +146,15 @@
         $show-setting: hide;
       }
 
-      // gutter-placement: before | after
+      // gutter-placement: before | after | split | no-gutters
       @if $value == before {
         $gutter-place-setting: before;
       } @else if $value == after {
         $gutter-place-setting: after;
+      } @else if $value == split {
+        $gutter-place-setting: split;
+      } @else if $value == no-gutters {
+        $gutter-place-setting: no-gutters;
       }
     }
 

@@ -1,9 +1,5 @@
 // Grid Syntax
 // ===========
-//
-// Mixins:
-// - set-grid()
-// - use-grid()
 
 // Set a new grid using a shorthand
 @mixin set-grid(
@@ -23,6 +19,7 @@
   $new-flow           : get-setting(flow, $grid);
   $new-gutter-place   : get-setting(gutter-placement, $grid);
   $new-show-grids     : get-setting(show-grids, $grid);
+  $new-box            : get-setting(box-sizing, $grid);
 
   // fill missing values
   @if not $clean {
@@ -32,6 +29,7 @@
     $new-column-width     : if($new-column-width, $new-column-width, $column-width);
     $new-static           : if($new-static, $new-static, $static);
     $new-isolate          : if($new-isolate, $new-isolate, $isolate);
+    $new-box              : if($new-box, $new-box, $box-sizing);
   }
 
   // set values
@@ -41,6 +39,7 @@
   $column-width       : $new-column-width;
   $static             : $new-static;
   $isolate            : $new-isolate;
+  $box-sizing         : $new-box;
 
   $flow               : if($new-flow, $new-flow, $flow);
   $gutter-placement   : if($new-gutter-place, $new-gutter-place, $gutter-placement);
@@ -97,7 +96,7 @@
   }
 
   // Return grid shorthand
-  @return compact($container $columns $gutter-setting $static-setting $isolate-setting $show-grids-setting $flow $gutter-placement);
+  @return compact($container $columns $gutter-setting $static-setting $isolate-setting $show-grids-setting $flow $gutter-placement $box-sizing);
 }
 
 // Parse a shorthand grid, and return an ordered list of settings
@@ -113,6 +112,7 @@
   $flow-setting           : false;
   $gutter-place-setting   : false;
   $show-setting           : false;
+  $box-setting            : false;
 
   $columns-check          : false;
 
@@ -156,6 +156,13 @@
       } @else if $value == no-gutters {
         $gutter-place-setting: no-gutters;
       }
+
+      // box-sizing: border-box | content-box
+      @if $value == border-box {
+        $box-setting: border-box;
+      } @else if $value == content-box {
+        $box-setting: content-box;
+      }
     }
 
     // container, columns, or gutters
@@ -182,7 +189,7 @@
     }
   }
 
-  @return $columns-setting $gutters-setting $container-setting $column-width-setting $static-setting $isolate-setting $flow-setting $gutter-place-setting $show-setting;
+  @return $columns-setting $gutters-setting $container-setting $column-width-setting $static-setting $isolate-setting $flow-setting $gutter-place-setting $show-setting $box-setting;
 }
 
 // Return one setting from a shorhand grid
@@ -191,7 +198,7 @@
   $grid   : parse-grid(get-grid()),
   $parse  : false
 ) {
-  $options  : columns gutters container column-width static isolate flow gutter-placement show-grids;
+  $options  : columns gutters container column-width static isolate flow gutter-placement show-grids box-sizing;
   $key      : index($options, $setting);
   $value    : false;
 

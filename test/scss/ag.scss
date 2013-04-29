@@ -92,7 +92,7 @@ $b-grid: 80% (.5 2 1.25 1 3.25 1.75 3 2 1 3.75) .5;
 
 // Split Gutters
 
-@include use-grid(10 (60px 20px) split, clean) {
+@include use-grid(10 (60px 20px) split border-box, clean) {
   @include ag-test(split);
 }
 

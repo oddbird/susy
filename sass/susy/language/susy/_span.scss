@@ -5,8 +5,15 @@
 @mixin span(
   $span
 ) {
-  $span: parse-span($span);
-  $output: span-math($span...);
+  $span     : parse-span($span);
+  $output   : span-math($span...);
+  $box      : get-span-setting(box-sizing, $span);
+
+  @if $box == border-box {
+    @include box-sizing(border-box);
+  } @else if $box == content-box {
+    @include box-sizing(content-box);
+  }
 
   @include float-span-output($output...);
 }

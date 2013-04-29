@@ -30,6 +30,8 @@ $isolate              : false     !default;
 // global toggle for ltr/rtl output
 $flow                 : ltr       !default;
 
+// global toggle for box-sizing
+$box-sizing           : false     !default;
 
 // Defaults
 // --------
@@ -39,7 +41,7 @@ $flow                 : ltr       !default;
 $container-position   : center    !default;
 
 // Default gutter handling
-// - before | after
+// - before | after | split
 $gutter-placement     : after;
 
 

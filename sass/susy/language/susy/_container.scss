@@ -9,6 +9,7 @@
   $grid       : parse-grid(nth($container,1));
   $justify    : nth($container,2);
   $show       : nth($container,3);
+  $box        : get-setting(box-sizing, $grid);
 
   // if there is a container width, use it
   $width      : get-setting(container, $grid);
@@ -29,6 +30,12 @@
 
   @if $show and $show != hide {
     @include grid-background($grid);
+  }
+
+  @if $box == border-box {
+    @include box-sizing(border-box);
+  } @else if $box == content-box {
+    @include box-sizing(content-box);
   }
 
   @include float-container($width, $justify, $show);

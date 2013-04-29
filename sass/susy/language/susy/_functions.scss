@@ -30,10 +30,12 @@
 @function gutter(
   $context: get-grid()
 ) {
-  $this-columns       : get-span-setting(columns, $context);
-  $this-gutters       : get-span-setting(gutters, $context);
-  $this-column-width  : get-span-setting(column-width, $context);
-  $this-static        : get-span-setting(static, $context);
+  $context            : parse-grid($context);
+
+  $this-columns       : get-setting(columns, $context);
+  $this-gutters       : get-setting(gutters, $context);
+  $this-column-width  : get-setting(column-width, $context);
+  $this-static        : get-setting(static, $context);
 
   $this-columns       : if($this-columns, $this-columns, $columns);
   $this-gutters       : if($this-gutters, $this-gutters, $gutters);

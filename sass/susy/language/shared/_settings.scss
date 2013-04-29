@@ -153,6 +153,8 @@
         $gutter-place-setting: after;
       } @else if $value == split {
         $gutter-place-setting: split;
+      } @else if $value == inside {
+        $gutter-place-setting: inside;
       } @else if $value == no-gutters {
         $gutter-place-setting: no-gutters;
       }

@@ -27,13 +27,16 @@
 
 // Find the total sum of column-units in a layout
 @function column-sum(
-  $columns: $columns,
-  $gutters: $gutters
+  $columns  : $columns,
+  $gutters  : $gutters,
+  $outer    : false
 ) {
   $column-sum: 0;
   $gutter-sum: 0;
 
-  @if column-count($columns) > 1 {
+  @if $outer {
+    $gutter-sum: column-count($columns) * $gutters;
+  } @else {
     $gutter-sum: (column-count($columns) - 1) * $gutters;
   }
 

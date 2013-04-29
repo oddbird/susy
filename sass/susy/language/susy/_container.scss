@@ -20,8 +20,9 @@
     @if $column-width-setting {
       $columns-setting: get-setting(columns, $grid);
       $gutters-setting: get-setting(gutters, $grid);
+      $outer: if(get-setting(gutter-placement, $grid) == inside, true, false);
 
-      $width: calculate-container-width($columns-setting, $gutters-setting, $column-width-setting);
+      $width: calculate-container-width($columns-setting, $gutters-setting, $column-width-setting, $outer);
     } @else {
       // if we have nothing, default to 100%
       $width: 100%;

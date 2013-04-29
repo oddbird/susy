@@ -8,8 +8,9 @@
   $span     : parse-span($span);
   $output   : span-math($span...);
   $box      : get-span-setting(box-sizing, $span);
+  $inside   : if(get-span-setting(gutter-placement, $span) == inside, true, false);
 
-  @if $box == border-box {
+  @if $box == border-box or $inside {
     @include box-sizing(border-box);
   } @else if $box == content-box {
     @include box-sizing(content-box);
@@ -35,6 +36,8 @@
   $new-column-width   : false;
   $new-flow           : false;
   $new-gutter-place   : false;
+
+  $is-container       : false;
 
   $i: 1;
 
@@ -74,15 +77,22 @@
         $new-flow: ltr;
       }
 
-      // after | before
+      // after | before | split | inside | no-gutters
       @else if $value == after {
         $new-gutter-place: after;
       } @else if $value == before {
         $new-gutter-place: before;
       } @else if $value == split {
         $new-gutter-place: split;
+      } @else if $value == inside {
+        $new-gutter-place: inside;
       } @else if $value == no-gutters {
         $new-gutter-place: no-gutters;
+      }
+
+      // container
+      @if $value == container {
+        $is-container: container;
       }
 
       // at
@@ -156,7 +166,7 @@
     $new-gutter-place: $gutter-placement;
   }
 
-  @return $new-span $new-location $new-columns $new-gutters $new-column-width $new-isolate $new-static $new-flow $new-gutter-place;
+  @return $new-span $new-location $new-columns $new-gutters $new-column-width $new-isolate $new-static $new-flow $new-gutter-place $is-container;
 }
 
 // Return one particular span setting from a list
@@ -165,7 +175,7 @@
   $span,
   $parse: false
 ) {
-  $options  : span location columns gutters column-width isolate static flow gutter-placement;
+  $options  : span location columns gutters column-width isolate static flow gutter-placement is-container;
   $key      : index($options, $setting);
   $value    : false;
 

@@ -344,11 +344,8 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   background: -o-linear-gradient(left, rgba(212, 235, 242, 0.25) 7.69231%, transparent 7.69231%, transparent 10.25641%, rgba(173, 216, 230, 0.25) 10.25641%, rgba(212, 235, 242, 0.25) 17.94872%, transparent 17.94872%, transparent 20.51282%, rgba(173, 216, 230, 0.25) 20.51282%, rgba(212, 235, 242, 0.25) 28.20513%, transparent 28.20513%, transparent 30.76923%, rgba(173, 216, 230, 0.25) 30.76923%, rgba(212, 235, 242, 0.25) 38.46154%, transparent 38.46154%, transparent 41.02564%, rgba(173, 216, 230, 0.25) 41.02564%, rgba(212, 235, 242, 0.25) 48.71795%, transparent 48.71795%, transparent 51.28205%, rgba(173, 216, 230, 0.25) 51.28205%, rgba(212, 235, 242, 0.25) 58.97436%, transparent 58.97436%, transparent 61.53846%, rgba(173, 216, 230, 0.25) 61.53846%, rgba(212, 235, 242, 0.25) 69.23077%, transparent 69.23077%, transparent 71.79487%, rgba(173, 216, 230, 0.25) 71.79487%, rgba(212, 235, 242, 0.25) 79.48718%, transparent 79.48718%, transparent 82.05128%, rgba(173, 216, 230, 0.25) 82.05128%, rgba(212, 235, 242, 0.25) 89.74359%, transparent 89.74359%, transparent 92.30769%, rgba(173, 216, 230, 0.25) 92.30769%, rgba(212, 235, 242, 0.25) 100%);
   background: linear-gradient(left, rgba(212, 235, 242, 0.25) 7.69231%, transparent 7.69231%, transparent 10.25641%, rgba(173, 216, 230, 0.25) 10.25641%, rgba(212, 235, 242, 0.25) 17.94872%, transparent 17.94872%, transparent 20.51282%, rgba(173, 216, 230, 0.25) 20.51282%, rgba(212, 235, 242, 0.25) 28.20513%, transparent 28.20513%, transparent 30.76923%, rgba(173, 216, 230, 0.25) 30.76923%, rgba(212, 235, 242, 0.25) 38.46154%, transparent 38.46154%, transparent 41.02564%, rgba(173, 216, 230, 0.25) 41.02564%, rgba(212, 235, 242, 0.25) 48.71795%, transparent 48.71795%, transparent 51.28205%, rgba(173, 216, 230, 0.25) 51.28205%, rgba(212, 235, 242, 0.25) 58.97436%, transparent 58.97436%, transparent 61.53846%, rgba(173, 216, 230, 0.25) 61.53846%, rgba(212, 235, 242, 0.25) 69.23077%, transparent 69.23077%, transparent 71.79487%, rgba(173, 216, 230, 0.25) 71.79487%, rgba(212, 235, 242, 0.25) 79.48718%, transparent 79.48718%, transparent 82.05128%, rgba(173, 216, 230, 0.25) 82.05128%, rgba(212, 235, 242, 0.25) 89.74359%, transparent 89.74359%, transparent 92.30769%, rgba(173, 216, 230, 0.25) 92.30769%, rgba(212, 235, 242, 0.25) 100%);
   background: linear-gradient(to right, rgba(212, 235, 242, 0.25) 7.69231%, transparent 7.69231%, transparent 10.25641%, rgba(173, 216, 230, 0.25) 10.25641%, rgba(212, 235, 242, 0.25) 17.94872%, transparent 17.94872%, transparent 20.51282%, rgba(173, 216, 230, 0.25) 20.51282%, rgba(212, 235, 242, 0.25) 28.20513%, transparent 28.20513%, transparent 30.76923%, rgba(173, 216, 230, 0.25) 30.76923%, rgba(212, 235, 242, 0.25) 38.46154%, transparent 38.46154%, transparent 41.02564%, rgba(173, 216, 230, 0.25) 41.02564%, rgba(212, 235, 242, 0.25) 48.71795%, transparent 48.71795%, transparent 51.28205%, rgba(173, 216, 230, 0.25) 51.28205%, rgba(212, 235, 242, 0.25) 58.97436%, transparent 58.97436%, transparent 61.53846%, rgba(173, 216, 230, 0.25) 61.53846%, rgba(212, 235, 242, 0.25) 69.23077%, transparent 69.23077%, transparent 71.79487%, rgba(173, 216, 230, 0.25) 71.79487%, rgba(212, 235, 242, 0.25) 79.48718%, transparent 79.48718%, transparent 82.05128%, rgba(173, 216, 230, 0.25) 82.05128%, rgba(212, 235, 242, 0.25) 89.74359%, transparent 89.74359%, transparent 92.30769%, rgba(173, 216, 230, 0.25) 92.30769%, rgba(212, 235, 242, 0.25) 100%);
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
   *zoom: 1;
-  max-width: 780px;
+  max-width: 800.0px;
   margin-left: auto;
   margin-right: auto;
   margin-top: 0.75em;
@@ -363,55 +360,100 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   min-height: 15em;
 }
 .split > .size1of5:first-of-type {
-  width: 17.94872%;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 20%;
   float: left;
-  margin-right: 1.28205%;
+  margin-right: -100%;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 .split > .size1of5 ~ .size1of5 {
-  width: 17.94872%;
-  float: right;
-  margin-left: 1.28205%;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 20%;
+  float: left;
+  margin-left: 82.05128%;
+  margin-right: -100%;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 .split > .size3of5 {
-  width: 58.97436%;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 60%;
   float: left;
-  margin-left: 1.28205%;
-  margin-right: 1.28205%;
+  margin-left: 20.51282%;
+  margin-right: -100%;
 }
 .split > .size3of5 > .size1of2:first-child {
-  width: 47.82609%;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 50%;
   float: left;
-  margin-right: 2.17391%;
+  margin-right: -100%;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 .split > .size3of5 > .size1of2 + .size1of2 {
-  width: 47.82609%;
-  float: right;
-  margin-left: 2.17391%;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 50%;
+  float: left;
+  margin-left: 52.17391%;
+  margin-right: -100%;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 .split > .size3of5 > .full {
   clear: both;
   background: none;
 }
 .split .full .size1of3 {
-  width: 30.43478%;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 33.33333%;
   float: left;
-  margin-right: 2.17391%;
+  margin-right: -100%;
+  padding-left: 10px;
+  padding-right: 10px;
   min-height: 9.75em;
 }
 .split .full .size2of3 {
-  width: 65.21739%;
-  float: right;
-  margin-left: 2.17391%;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 66.66667%;
+  float: left;
+  margin-left: 34.78261%;
+  margin-right: -100%;
 }
 .split .size2of3 .size1of2:first-child {
-  width: 46.66667%;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 50%;
   float: left;
-  margin-right: 3.33333%;
+  margin-right: -100%;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 .split .size2of3 .size1of2 + .size1of2 {
-  width: 46.66667%;
-  float: right;
-  margin-left: 3.33333%;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 50%;
+  float: left;
+  margin-left: 53.33333%;
+  margin-right: -100%;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 .split .size2of3 .full {
   clear: both;
@@ -419,15 +461,22 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 .split .gallery div {
   width: 17.94872%;
   float: left;
-  margin-left: 1.28205%;
-  margin-right: 1.28205%;
+  margin-right: -100%;
 }
 .split .gallery div:nth-child(5n + 1) {
-  margin-left: 0;
+  clear: left;
 }
-.split .gallery div:nth-child(5n) {
-  float: right;
-  margin-right: 0;
+.split .gallery div:nth-child(5n + 2) {
+  margin-left: 20.51282%;
+}
+.split .gallery div:nth-child(5n + 3) {
+  margin-left: 41.02564%;
+}
+.split .gallery div:nth-child(5n + 4) {
+  margin-left: 61.53846%;
+}
+.split .gallery div:nth-child(5n + 5) {
+  margin-left: 82.05128%;
 }
 
 head {

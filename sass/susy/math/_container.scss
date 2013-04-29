@@ -30,14 +30,15 @@
 @function calculate-container-width(
   $columns        : $columns,
   $gutters        : $gutters,
-  $column-width   : $column-width
+  $column-width   : $column-width,
+  $outer          : false
 ) {
   $width: null;
 
   @if $column-width {
-    $width: column-sum($columns, $gutters) * $column-width;
+    $width: column-sum($columns, $gutters, $outer) * $column-width;
   } @else {
-    @warn "We need either `$column-width` or `$container` in order to create your container."
+    @warn "We need either `$column-width` or `$container` in order to create your container.";
   }
 
   @return $width;

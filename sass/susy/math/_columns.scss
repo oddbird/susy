@@ -78,15 +78,16 @@
   $span,
   $location     : false,
   $columns      : $columns,
-  $gutters      : $gutters
+  $gutters      : $gutters,
+  $outer        : false
 ) {
   $span-sum : false;
 
   @if is-symmetrical($columns) {
-    $span-sum: column-sum($span, $gutters);
+    $span-sum: column-sum($span, $gutters, $outer);
   } @else {
     $span-columns: get-columns($span, $location, $columns);
-    $span-sum: column-sum($span-columns, $gutters);
+    $span-sum: column-sum($span-columns, $gutters, $outer);
   }
 
   @return $span-sum;

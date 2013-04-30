@@ -27,13 +27,7 @@
   $isolate          : if($isolate and $isolate != float, true, false);
 
   // calculations
-  @if $gutter-place == inside and unitless($span) {
-    $context: column-sum($columns, $gutters);
-    $this: column-sum($span, $gutters);
-    $width: percentage($span / $columns);
-  } @else {
-    $width: get-span-width($span, $location, $columns, $gutters, $column-width, $static);
-  }
+  $width: get-span-width($span, $location, $columns, $gutters, $column-width, $static, $gutter-place);
 
   // gutter location
   $gutter-location  : get-gutters($columns, $gutters, $column-width, $static, $gutter-place);
@@ -66,10 +60,10 @@
 
 // Return gutter width
 @function get-gutter-width(
-  $columns,
-  $gutters,
-  $column-width,
-  $static
+  $columns        : $columns,
+  $gutters        : $gutters,
+  $column-width   : $columns-width,
+  $static         : $static
 ) {
   $context  : column-sum($columns, $gutters);
   $gutter   : null;
@@ -88,13 +82,13 @@
 }
 
 @function get-gutters(
-  $columns,
-  $gutters,
-  $column-width,
-  $static,
-  $gutter-place: $gutter-placement
+  $columns        : $columns,
+  $gutters        : $gutters,
+  $column-width   : $column-width,
+  $static         : $static,
+  $gutter-place   : $gutter-placement
 ) {
-  $static   : if($gutter-place == inside, true, $static);
+  $static   : if($gutter-place == inside and $column-width, true, $static);
   $gutter   : get-gutter-width($columns, $gutters, $column-width, $static);
   $before   : null;
   $after    : null;
@@ -115,16 +109,26 @@
 @function get-span-width(
   $span,
   $location,
-  $columns,
-  $gutters,
-  $column-width,
-  $static
+  $columns        : $columns,
+  $gutters        : $gutters,
+  $column-width   : $column-width,
+  $static         : $static,
+  $gutter-place   : $gutter-placement,
+  $outer          : null
 ) {
-  $context  : column-sum($columns, $gutters);
+  $context  : null;
+  $span-sum : null;
   $width    : null;
 
   @if unitless($span) {
-    $span-sum: get-column-span-sum($span, $location, $columns, $gutters);
+    @if $gutter-place == inside {
+      $context: column-sum($columns, $gutters, outer);
+      $span-sum: column-sum(get-columns($span, $location, $columns), $gutters, outer);
+    } @else {
+      $context: column-sum($columns, $gutters);
+      $outer: if($outer, $gutters, 0);
+      $span-sum: get-column-span-sum($span, $location, $columns, $gutters) + $outer;
+    }
 
     @if $static {
       $width: $span-sum * $column-width;

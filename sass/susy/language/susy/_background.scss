@@ -46,7 +46,7 @@ $grid-toggle-position: left bottom !default;
     @if $location == column-count($this-columns) {
       $this-stop: append($this-stop, $light 100%, comma);
     } @else {
-      $end: get-span-width($location, 1, $this-columns, $this-gutters, $this-column-width, $this-static);
+      $end: get-span-width($location, 1, $this-columns, $this-gutters, $this-column-width, $this-static, $this-gutter-place);
       $gutter: get-isolation(1, $location + 1, $this-columns, $this-gutters, $this-column-width, $this-static);
 
       $this-stop: append($this-stop, $light $end, comma);

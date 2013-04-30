@@ -27,10 +27,11 @@
 @function get-isolation(
   $span,
   $location,
-  $columns,
-  $gutters,
-  $column-width,
-  $static
+  $columns        : $columns,
+  $gutters        : $gutters,
+  $column-width   : $column-width,
+  $static         : $static,
+  $gutter-place   : $gutter-placement
 ) {
   $context  : column-sum($columns, $gutters);
   $width    : null;
@@ -40,12 +41,7 @@
   } @else {
     $push: get-location-position($span, $location, $columns) - 1;
     @if $push > 0 {
-      $push-sum: get-column-span-sum($push, 1, $columns, $gutters) + $gutters;
-      @if $static {
-        $width: $push-sum * $column-width;
-      } @else {
-        $width: percentage($push-sum / $context);
-      }
+      $width: get-span-width($push, 1, $columns, $gutters, $column-width, $static, $gutter-place, outer);
     } @else {
       $width: null;
     }

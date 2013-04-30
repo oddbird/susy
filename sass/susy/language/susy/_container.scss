@@ -17,6 +17,7 @@
   @if not $width {
     // if we have a column width, calculate container from that
     $column-width-setting: get-setting(column-width, $grid);
+
     @if $column-width-setting {
       $columns-setting: get-setting(columns, $grid);
       $gutters-setting: get-setting(gutters, $grid);

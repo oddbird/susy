@@ -607,5 +607,6 @@ h1, h2, h3 {
 .gallery div {
   margin-bottom: 0.75em;
   height: 1.5em;
-  background: red;
+  background: rgba(255, 0, 0, 0.25);
+  outline: 1px dotted red;
 }

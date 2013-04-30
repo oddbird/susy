@@ -136,6 +136,7 @@ h1, h2, h3 {
   div {
     @include trailer(.5);
     height: rhythm(1);
-    background: red;
+    background: rgba(red,.25);
+    outline: 1px dotted red;
   }
 }

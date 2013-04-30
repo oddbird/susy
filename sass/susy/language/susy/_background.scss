@@ -9,6 +9,9 @@ $overlay-position: relative !default;
 // Set the location of the switch.
 $grid-toggle-position: left bottom !default;
 
+// Set the color of background grids/
+$grid-background-color: rgba(#66f, .25) !default;
+
 // Grid Background
 // ---------------
 
@@ -24,7 +27,7 @@ $grid-toggle-position: left bottom !default;
   }
 
   $trans  : transparent;
-  $light  : lighten($color, 10%);
+  $light  : lighten($color, 15%);
 
   $this-columns       : get-setting(columns, $grid);
   $this-gutters       : get-setting(gutters, $grid);

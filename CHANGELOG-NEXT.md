@@ -4,6 +4,8 @@ Susy Next Changelog
 2.0.0.alpha.2 [???, 2013]
 -------------------------
 
+* Added `gutter <length>`/`gutters <length>` to override the attached gutter width on a single span.
+  - NOTE: `gutters 0` is not the same as `no-gutters`. `0` is an output value, `no-gutters` removes output.
 * Added `container` span option to remove inside gutters from nesting containers.
 * Added gutter options: `before` | `after` | `split` | `inside` | `no-gutters`.
 * Added `gallery` mixin for auto-generating gallery layouts (floated or isolated).

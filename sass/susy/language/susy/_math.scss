@@ -106,8 +106,9 @@
   } @else if $gutter-place == after {
     $after: $gutter;
   } @else if $gutter-place == split or $gutter-place == inside {
-    $before: $gutter / 2;
-    $after: $gutter / 2;
+    $gutter: if($gutter-override, $gutter, $gutter / 2);
+    $before: $gutter;
+    $after: $gutter;
   }
 
   @return $before $after;

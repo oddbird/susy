@@ -4,6 +4,8 @@ Susy Next Changelog
 2.0.0.alpha.2 [???, 2013]
 -------------------------
 
+* Added `container` span option to remove inside gutters from nesting containers.
+* Added gutter options: `before` | `after` | `split` | `inside` | `no-gutters`.
 * Added `gallery` mixin for auto-generating gallery layouts (floated or isolated).
 * Moved grid-backgrounds into language layer, and made them syntax-aware.
 * Added `row`/`unrow`, `first`/`last`, `alpha`/`omega`, `nth-first`/`nth-last`, and `nth-alpha`/`nth-omega`.

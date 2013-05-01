@@ -12,7 +12,8 @@
   $static           : $static,
   $flow             : $flow,
   $gutter-place     : $gutter-placement,
-  $is-container     : false
+  $is-container     : false,
+  $gutter-override  : false
 ) {
   $float            : from($flow);
   $width            : $span;
@@ -30,7 +31,7 @@
   $width: get-span-width($span, $location, $columns, $gutters, $column-width, $static, $gutter-place);
 
   // gutter location
-  $gutter-location  : get-gutters($columns, $gutters, $column-width, $static, $gutter-place);
+  $gutter-location  : get-gutters($columns, $gutters, $column-width, $static, $gutter-place, $gutter-override);
 
   @if $gutter-place == inside {
     @if not $is-container {
@@ -82,16 +83,23 @@
 }
 
 @function get-gutters(
-  $columns        : $columns,
-  $gutters        : $gutters,
-  $column-width   : $column-width,
-  $static         : $static,
-  $gutter-place   : $gutter-placement
+  $columns          : $columns,
+  $gutters          : $gutters,
+  $column-width     : $column-width,
+  $static           : $static,
+  $gutter-place     : $gutter-placement,
+  $gutter-override  : false
 ) {
   $static   : if($gutter-place == inside and $column-width, true, $static);
-  $gutter   : get-gutter-width($columns, $gutters, $column-width, $static);
+  $gutter   : null;
   $before   : null;
   $after    : null;
+
+  @if $gutter-override {
+    $gutter: $gutter-override;
+  } @else {
+    $gutter: get-gutter-width($columns, $gutters, $column-width, $static);
+  }
 
   @if $gutter-place == before {
     $before: $gutter;

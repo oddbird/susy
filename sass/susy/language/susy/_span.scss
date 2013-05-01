@@ -36,6 +36,7 @@
   $new-column-width   : false;
   $new-flow           : false;
   $new-gutter-place   : false;
+  $gutter-override    : false;
 
   $is-container       : false;
 
@@ -45,6 +46,7 @@
     $value  : nth($string,$i);
     $at     : false;
     $of     : false;
+    $gutter : false;
 
     // keywords
     @if type-of($value) == string {
@@ -105,6 +107,11 @@
         $of: true;
       }
 
+      // gutter
+      @else if $value == gutter or $value == gutters {
+        $gutter: true;
+      }
+
     // span
     } @else if not $new-span and type-of($value) == number {
       $new-span: $value;
@@ -114,6 +121,12 @@
     @if $at {
       $i: $i + 1;
       $new-location: nth($string, $i);
+    }
+
+    // gutter override
+    @if $gutter {
+      $i: $i + 1;
+      $gutter-override: nth($string, $i);
     }
 
     // context
@@ -166,7 +179,7 @@
     $new-gutter-place: $gutter-placement;
   }
 
-  @return $new-span $new-location $new-columns $new-gutters $new-column-width $new-isolate $new-static $new-flow $new-gutter-place $is-container;
+  @return $new-span $new-location $new-columns $new-gutters $new-column-width $new-isolate $new-static $new-flow $new-gutter-place $is-container $gutter-override;
 }
 
 // Return one particular span setting from a list
@@ -175,7 +188,7 @@
   $span,
   $parse: false
 ) {
-  $options  : span location columns gutters column-width isolate static flow gutter-placement is-container;
+  $options  : span location columns gutters column-width isolate static flow gutter-placement is-container gutter-override;
   $key      : index($options, $setting);
   $value    : false;
 

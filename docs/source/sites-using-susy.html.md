@@ -4,6 +4,7 @@ title: Sites using Susy
 
 ## Sites Using Susy
 
+- [Sass and Compass Book](http://sassandcompass.com)
 - [Square Directory](https://squareup.com/directory)
 - [Slickbag](http://slickbag.se/)
 - [Wedge Detroit](http://wedgedetroit.com/)

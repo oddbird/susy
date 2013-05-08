@@ -15,6 +15,27 @@
   $to     : to($flow);
   $from   : from($flow);
 
-  @include background(linear-gradient($from, $stops...));
-  background: linear-gradient(to $to, $stops...);
+  @if $horizontal-grids == show and $vertical-grids == show {
+
+    // Both horizontal AND vertical.
+    @include background(linear-gradient($from, $stops...), get-baseline-gradient());
+    background: linear-gradient(to $to, $stops...), get-baseline-gradient();
+    @include background-size(100% $base-line-height);
+    background-position: left top;
+
+  } @else if $horizontal-grids == show {
+
+    // Horizontal only.
+    @include background(linear-gradient($from, $stops...));
+    background: linear-gradient(to $to, $stops...);
+
+  } @else if $vertical-grids == show {
+
+    // Vertical only.
+    @include background(get-baseline-gradient());
+    background: get-baseline-gradient();
+    @include background-size(100% $base-line-height);
+    background-position: left top;
+
+  }
 }

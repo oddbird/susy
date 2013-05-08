@@ -50,3 +50,9 @@ $gutter-placement     : after;
 
 // global toggle to show/hide grids
 $show-grids           : show      !default;
+
+// Optionally disable horizontal grids
+$horizontal-grids     : show      !default;
+
+// Optionally disable vertical grids
+$vertical-grids       : show      !default;

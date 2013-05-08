@@ -286,3 +286,5 @@ older…
 
 * not documented here.
 * check the commit log.
+* Susy was created.
+

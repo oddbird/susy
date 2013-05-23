@@ -54,3 +54,15 @@ $breakpoint-ie-output     : true      !default;
 
 // Danger Zone! Only set as 'true' in IE-specific style sheets.
 $breakpoint-raw-output    : false     !default;
+
+// [list | boolean ]
+// acts like $breakpoint-raw-output but includes only at-breakpoint content 
+// that has fallback support for IE actevated by setting it to true or giving
+// it a name.
+// if set to false or an empty list nothing will happen
+// if set to true, rawly include content of every at-breakpoint where $ie is set.
+// if set to list with entries, rawly include content of every at-breakpoint where
+// $ie is set but only if the value of $ie is an element of the list. If $ie is only
+// set to true, the default name 'lt-ie9' (See value of $default-IE-fallback-class) is assumed.
+$breakpoint-include-ie-classes  : false     !default;
+

@@ -433,8 +433,6 @@ so that its background "bleeds" outside its natural position.
   Default: `left right`.
 - `<$style>`: Optionally return `static` lengths for grid calculations.
   Default: `$container-style`.
-- `<$style>`: Optionally return `static` lengths for grid calculations.
-  Default: `$container-style`.
 
 ### <a href="#ref-helper-margin" id="ref-helper-margin">Margin Mixins</a>
 

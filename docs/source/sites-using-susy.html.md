@@ -20,7 +20,6 @@ title: Sites using Susy
 - [Volunteer Center Northumberland](https://volunteeringnorthumberland.org.uk/)
 - [Rita Konig](http://ritakonig.com/)
 - [Concordia discors](http://www.ffzg.unizg.hr/zbor/) [[source](https://github.com/silvenon/concordia-discors "discords source")]
-- [Waldorf camp](http://waldorfcamp.net/) [[source](https://github.com/jimick/waldorfcamp "Waldorf source")]
 - [Matthew Balaam](http://www.matthewbalaam.co.uk/)
 - [Starrt](http://starrt.dk/)
 - [Jeremy Peters](http://jeremypeters.co.uk/)

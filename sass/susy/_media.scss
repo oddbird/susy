@@ -1,6 +1,8 @@
 // ---------------------------------------------------------------------------
 // Media Mixins
 
+$default-IE-fallback-class:'lt-ie9';
+
 // Create a new layout context for (@content) descendants.
 //
 // $layout-cols : a (unitless) number of columns to use for this layout.
@@ -36,8 +38,8 @@
   $max          : nth($media-layout,3);
   $ie           : nth($media-layout,4);
 
-  @if (not $breakpoint-media-output) and (not $breakpoint-ie-output) and (not $breakpoint-raw-output) {
-    @warn "Either $breakpoint-media-output, $breakpoint-ie-output, or $breakpoint-raw-output must be true for at-breakpoint to work.";
+  @if (not $breakpoint-media-output) and (not $breakpoint-ie-output) and (not $breakpoint-raw-output) and (not $breakpoint-include-ie-classes) {
+    @warn "Either $breakpoint-media-output, $breakpoint-ie-output, or $breakpoint-raw-output or $breakpoint-include-ie-classes must be true for at-breakpoint to work.";
   }
 
   // We need to have either a min-width breakpoint or a layout in order to proceed.
@@ -83,10 +85,27 @@
           // Return legacy-ie support to original
           @include set-legacy-ie-support($atbreak-legacy-ie-matrix...);
         }
-        // Set an IE fallback
-        @if $ie and $breakpoint-ie-output {
+
+        // Check if content should be included raw
+				$include-raw:
+						 $breakpoint-raw-output
+					or $ie
+					and (
+						   type-of($breakpoint-include-ie-classes) == 'bool' and $breakpoint-include-ie-classes
+						or type-of($breakpoint-include-ie-classes) == 'list'
+							and length($breakpoint-include-ie-classes) > 0
+							and index($breakpoint-include-ie-classes, if(type-of($ie)=='bool', $default-IE-fallback-class, $ie) )
+					)
+					;
+					
+        @if $include-raw {
+          @content;
+        }
+        
+        // Set an IE fallback if content was not already included raw
+        @else if $ie and $breakpoint-ie-output {
           @if (type-of($ie) == 'bool') {
-            $ie: 'lt-ie9';
+            $ie: $default-IE-fallback-class;
           }
           .#{$ie} & {
             $atbreak-experimental-matrix: capture-experimental-matrix();
@@ -96,9 +115,6 @@
           }
         }
 
-        @if $breakpoint-raw-output {
-          @content;
-        }
       }
     } @else {
       @warn "Something went horribly wrong here. Try adjusting your variables.";

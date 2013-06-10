@@ -1,0 +1,27 @@
+GIT
+  remote: git://github.com/ericam/true
+  revision: 11ccdd39816c3103d9ac62685ed9c9489c994212
+  branch: master
+  specs:
+    true (0.1.4)
+      compass (>= 0.12.2)
+      sass (>= 3.2.0)
+
+GEM
+  remote: http://rubygems.org/
+  specs:
+    chunky_png (1.2.8)
+    compass (0.12.2)
+      chunky_png (~> 1.2)
+      fssm (>= 0.2.7)
+      sass (~> 3.1)
+    fssm (0.2.10)
+    sass (3.2.9)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  compass (~> 0.12.2)
+  sass (~> 3.2.9)
+  true!

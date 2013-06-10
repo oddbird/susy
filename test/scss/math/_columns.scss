@@ -1,0 +1,141 @@
+// Column Math Tests
+// =================
+
+@include test-module('Column Math') {
+
+  // Is Symmetrical
+  // --------------
+
+  @include test('[function] is-symmetrical()') {
+    $sym: 12;
+    $asym: 1 2 4 1 2 1;
+    $baz: compact(4);
+
+    // 12 is a symmetrical grid.
+    $s: is-symmetrical($sym);
+    @include assert-true($s,
+      'Simple number does not return as symmetrical grid setting.');
+
+    // (1 2 4 1 2 1) is not a symmetrical grid.
+    $a: is-symmetrical($asym);
+    @include assert-false($a,
+      'List does not return as asymmetrical grid setting.');
+
+    // compact(4) is not a symmetrical grid (because it is a list).
+    $b: is-symmetrical($baz);
+    @include assert-false($b,
+      'Single-item list returns as symmetrical grid setting.');
+  }
+
+
+  // Column Count
+  // ------------
+
+  @include test('[function] column-count()') {
+    $sym: 12;
+    $asym: 1 2 4 1 2 1;
+
+    // A symmetrical grid is equal to its column count.
+    $s-count: column-count($sym);
+    @include assert-equal($s-count, $sym,
+      'Symmetrical grid count is not equal to $columns setting.');
+
+    // An asymmetrical grid has a column-count equal to its length.
+    $a-count: column-count($asym);
+    $a-length: length($asym);
+    @include assert-equal($a-count, $a-length,
+      'Asymmetrical grid cound is not equal to $columns setting length.');
+  }
+
+
+  // Column Sum
+  // ----------
+
+  @include test('[function] symmetrical column-sum()') {
+    $sum    : column-sum(9, .5);
+    $outer  : column-sum(9, .5, outer);
+
+    @include assert-equal($sum, 13,
+      'Symmetrical column-sum is not being calculated properly.');
+
+    @include assert-equal($outer, 13.5,
+      'Symmetrical outer column-sum is not being calculated properly.');
+  }
+
+  @include test('[function] asymmetrical column-sum()') {
+    $sum    : column-sum(1 2 3 1 2, .25);
+    $outer  : column-sum(1 2 3 1 2, .25, outer);
+
+    @include assert-equal($sum, 10,
+      'Asymmetrical column-sum is not being calculated properly.');
+
+    @include assert-equal($outer, 10.25,
+      'Asymmetrical outer column-sum is not being calculated properly.');
+  }
+
+
+  // Get Columns
+  // -----------
+
+  @include test('[function] symmetrical get-columns()') {
+    $span: 3;
+    $context: 12;
+
+    // location number
+    $sub: get-columns($span, 4, $context);
+    @include assert-equal($sub, $span,
+      'Symmetrical get-columns subset is not equal to its span.');
+
+    // location keyword
+    $sub: get-columns($span, first, $context);
+    @include assert-equal($sub, $span,
+      'Symmetrical get-columns subset is not equal to its span.');
+  }
+
+  @include test('[function] asymmetrical get-columns()') {
+    $span: 3;
+    $context: 1 2 3 1 2;
+
+    // location number
+    $sub: get-columns($span, 2, $context);
+    @include assert-equal($sub, 2 3 1,
+      'Asymmetrical get-columns subset based on numbered location failing.');
+
+    // location keyword
+    $sub: get-columns($span, last, $context);
+    @include assert-equal($sub, 3 1 2,
+      'Asymmetrical get-columns subset based on keyword location failing.');
+  }
+
+
+  // Get Column Span Sum
+  // -------------------
+
+  @include test('[function] symmetrical get-column-span-sum()') {
+    $cols: 12;
+    $guts: 1/8;
+
+    $sum: get-column-span-sum(3, 2, $cols, $guts);
+    @include assert-equal($sum, 3.25,
+      'Symmetrical inner get-column-span-sum failing.');
+
+    $sum: get-column-span-sum(3, last, $cols, $guts, outer);
+    @include assert-equal($sum, 3.375,
+      'Symmetrical outer get-column-span-sum failing.');
+  }
+
+  @include test('[function] symmetrical get-column-span-sum()') {
+    $cols: 1 2 3 2 1 2 3;
+    $guts: 1/4;
+
+    $sum: get-column-span-sum(3, 2, $cols, $guts);
+    @include assert-equal($sum, 7.5,
+      'Asymmetrical inner get-column-span-sum failing.');
+
+    $sum: get-column-span-sum(3, last, $cols, $guts, outer);
+    @include assert-equal($sum, 6.75,
+      'Asymmetrical outer get-column-span-sum failing.');
+  }
+
+}
+

@@ -52,14 +52,16 @@
   // ----------
 
   @include test('[function] symmetrical column-sum()') {
-    $sum    : column-sum(9, .5);
-    $outer  : column-sum(9, .5, outer);
+    $cols   : 9;
+    $guts   : .5;
+    $sum    : column-sum($cols, $guts);
+    $outer  : column-sum($cols, $guts, outer);
 
     @include assert-equal($sum, 13,
-      'Symmetrical column-sum is not being calculated properly.');
+      'Column-sum for "9 .5" should be "13".');
 
     @include assert-equal($outer, 13.5,
-      'Symmetrical outer column-sum is not being calculated properly.');
+      'Outer column-sum for "9 .5" should be "13.5".');
   }
 
   @include test('[function] asymmetrical column-sum()') {
@@ -67,10 +69,10 @@
     $outer  : column-sum(1 2 3 1 2, .25, outer);
 
     @include assert-equal($sum, 10,
-      'Asymmetrical column-sum is not being calculated properly.');
+      'Column-sum for "(1 2 3 1 2) .25" should be "10".');
 
     @include assert-equal($outer, 10.25,
-      'Asymmetrical outer column-sum is not being calculated properly.');
+      'Outer column-sum for "(1 2 3 1 2) .25" should be "10.25".');
   }
 
 

@@ -1,7 +1,11 @@
 Susy Next Changelog
 ===================
 
-2.0.0.alpha.2 [???, 2013]
+2.0.0-alpha.3 [unreleased]
+--------------------------
+- Add `$vertical-grids` boolian setting for the grid-background feature.
+
+2.0.0.alpha.2 [May 7, 2013]
 -------------------------
 
 * Added `gutter <length>`/`gutters <length>` to override the attached gutter width on a single span.

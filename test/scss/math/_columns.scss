@@ -124,7 +124,7 @@
       'Symmetrical outer get-column-span-sum failing.');
   }
 
-  @include test('[function] symmetrical get-column-span-sum()') {
+  @include test('[function] asymmetrical get-column-span-sum()') {
     $cols: 1 2 3 2 1 2 3;
     $guts: 1/4;
 

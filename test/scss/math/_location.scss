@@ -12,26 +12,26 @@
     // keyword last
     $last: is-last(3, last, $cols);
     @include assert-true($last,
-      'The "last" keyword should return true for is-last()');
+      'The "last" keyword should return true for is-last().');
 
     // keyword omega
     $last: is-last(4, omega, $cols);
     @include assert-true($last,
-      'The "omega" keyword should return true for is-last()');
+      'The "omega" keyword should return true for is-last().');
 
     // keyword first
     $last: is-last(4, first, $cols);
     @include assert-false($last,
-      'The "first" keyword should return false for is-last()');
+      'The "first" keyword should return false for is-last().');
 
     // numbers
     $last: is-last(4, 9, $cols);
     @include assert-true($last,
-      '"4 at 9 of 12" should return true for is-last()');
+      '"4 at 9 of 12" should return true for is-last().');
 
     $not: is-last(6, 3, $cols);
     @include assert-false($not,
-      '"6 at 3 of 12" should return false for is-last()');
+      '"6 at 3 of 12" should return false for is-last().');
   }
 
 
@@ -42,34 +42,58 @@
     // keyword first
     $first: is-first(first);
     @include assert-true($first,
-      'The "first" keyword should return true for is-first()');
+      'The "first" keyword should return true for is-first().');
 
     // keyword alpha
     $first: is-first(alpha);
     @include assert-true($first,
-      'The "alpha" keyword should return true for is-first()');
+      'The "alpha" keyword should return true for is-first().');
 
     // keyword last
     $first: is-first(last);
     @include assert-false($first,
-      'The "last" keyword should return false for is-first()');
+      'The "last" keyword should return false for is-first().');
 
     // numbers
     $first: is-first(1);
     @include assert-true($first,
-      '"4 at 1 of 12" should return true for is-first()');
+      '"4 at 1 of 12" should return true for is-first().');
 
     $not: is-first(3);
     @include assert-false($not,
-      '"6 at 3 of 12" should return false for is-first()');
+      '"6 at 3 of 12" should return false for is-first().');
   }
 
 
   // Get Location Position
   // ---------------------
 
-  // @include test('[function] get-location-position') {
+  @include test('[function] get-location-position') {
+    $cols: 12;
 
-  // }
+    // number location
+    $location: 4;
+    $position: get-location-position(3, $location, $cols);
+    @include assert-equal($position, $location,
+      'A numbered location should be returned without any parsing.');
+
+    // first / alpha
+    $position: get-location-position(3, first, $cols);
+    @include assert-equal($position, 1,
+      'A "first" location should always be in position 1.');
+
+    $position: get-location-position(3, alpha, $cols);
+    @include assert-equal($position, 1,
+      'An "alpha" location should always be in position 1.');
+
+    // last / omega
+    $position: get-location-position(3, last, $cols);
+    @include assert-equal($position, 10,
+      '"last 3 of 12" should be in position 10.');
+
+    $position: get-location-position(6, omega, $cols);
+    @include assert-equal($position, 7,
+      '"omega 6 of 12" should be in position 7.');
+  }
 
 }

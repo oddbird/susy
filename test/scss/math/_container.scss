@@ -7,7 +7,6 @@
   // ------------------------
 
   @include test('[function] parse-container-position') {
-
     // 2-part list
     $pos: 10% auto;
     $parsed: parse-container-position($pos);
@@ -48,8 +47,20 @@
   // Calculate Container Width
   // -------------------------
 
-  // @include test('[function] calculate-container-width') {
+  @include test('[function] calculate-container-width') {
+    $c: 4;
+    $g: 1/4;
+    $w: 4em;
 
-  // }
+    // standard
+    $width: calculate-container-width($c, $g, $w);
+    @include assert-equal($width, 19em,
+      'A normal 4-column container with (4em 1em) columns should return 19em.');
+
+    // outer
+    $width: calculate-container-width($c, $g, $w, outer);
+    @include assert-equal($width, 20em,
+      'An outer 4-column container with (4em 1em) columns should return 20em.');
+  }
 
 }

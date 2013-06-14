@@ -33,13 +33,7 @@
   $column-width   : $column-width,
   $outer          : false
 ) {
-  $width: null;
-
-  @if $column-width {
-    $width: column-sum($columns, $gutters, $outer) * $column-width;
-  } @else {
-    @warn "We need either `$column-width` or `$container` in order to create your container.";
-  }
+  $width: column-sum($columns, $gutters, $outer) * $column-width;
 
   @return $width;
 }

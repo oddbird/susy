@@ -38,9 +38,31 @@
   // Is First
   // --------
 
-  // @include test('[function] is-first') {
+  @include test('[function] is-first') {
+    // keyword first
+    $first: is-first(first);
+    @include assert-true($first,
+      'The "first" keyword should return true for is-first()');
 
-  // }
+    // keyword alpha
+    $first: is-first(alpha);
+    @include assert-true($first,
+      'The "alpha" keyword should return true for is-first()');
+
+    // keyword last
+    $first: is-first(last);
+    @include assert-false($first,
+      'The "last" keyword should return false for is-first()');
+
+    // numbers
+    $first: is-first(1);
+    @include assert-true($first,
+      '"4 at 1 of 12" should return true for is-first()');
+
+    $not: is-first(3);
+    @include assert-false($not,
+      '"6 at 3 of 12" should return false for is-first()');
+  }
 
 
   // Get Location Position

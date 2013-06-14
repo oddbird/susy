@@ -6,14 +6,49 @@
   // Parse Container Position
   // ------------------------
 
-  // @include test('parse-container-position') {
+  @include test('[function] parse-container-position') {
 
-  // }
+    // 2-part list
+    $pos: 10% auto;
+    $parsed: parse-container-position($pos);
+    @include assert-equal($pos, $parsed,
+      'A 2-part list is already a valid container position.');
+
+    // left
+    $pos: left;
+    $parsed: parse-container-position($pos);
+    @include assert-equal($parsed, 0 null,
+      'A left-aligned container should have 0 margin-left, and null right.');
+
+    // right
+    $pos: right;
+    $parsed: parse-container-position($pos);
+    @include assert-equal($parsed, null 0,
+      'A right-aligned container should have 0 margin-right, and null left.');
+
+    // center
+    $pos: center;
+    $parsed: parse-container-position($pos);
+    @include assert-equal($parsed, auto auto,
+      'A centered container should have auto left and right margins.');
+
+    // number
+    $pos: 10%;
+    $parsed: parse-container-position($pos);
+    @include assert-equal($pos $pos, $parsed,
+      'A number should be used for both left and right container margins.');
+
+    // string
+    $pos: auto;
+    $parsed: parse-container-position($pos);
+    @include assert-equal($pos $pos, $parsed,
+      'A string should be used for both left and right container margins.');
+  }
 
   // Calculate Container Width
   // -------------------------
 
-  // @include test('calculate-container-width') {
+  // @include test('[function] calculate-container-width') {
 
   // }
 

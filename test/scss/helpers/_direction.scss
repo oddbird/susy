@@ -1,0 +1,62 @@
+// Column Math Tests
+// =================
+
+@include test-module('Column Math') {
+
+  // Get Direction
+  // -------------
+
+  @include test('[function] get-direction') {
+    // ltr from
+    $dir: get-direction(ltr, from);
+    @include assert-equal($dir, left,
+      'The from-direction for "ltr" should be "left".');
+
+    // ltr to
+    $dir: get-direction(ltr, to);
+    @include assert-equal($dir, right,
+      'The to-direction for "ltr" should be "right".');
+
+    // rtl from
+    $dir: get-direction(rtl, from);
+    @include assert-equal($dir, right,
+      'The from-direction for "rtl" should be "right".');
+
+    // rtl to
+    $dir: get-direction(rtl, to);
+    @include assert-equal($dir, left,
+      'The to-direction for "rtl" should be "left".');
+  }
+
+  // To
+  // --
+
+  @include test('[function] to') {
+    // ltr
+    $to: to(ltr);
+    @include assert-equal($to, right,
+      'The to-direction for "ltr" should be "right".');
+
+    // rtl
+    $to: to(rtl);
+    @include assert-equal($to, left,
+      'The to-direction for "rtl" should be "left".');
+  }
+
+  // // From
+  // // ----
+
+  @include test('[function] from') {
+    // ltr
+    $from: from(ltr);
+    @include assert-equal($from, left,
+      'The from-direction for "ltr" should be "left".');
+
+    // rtl
+    $from: from(rtl);
+    @include assert-equal($from, right,
+      'The from-direction for "rtl" should be "right".');
+  }
+
+}
+

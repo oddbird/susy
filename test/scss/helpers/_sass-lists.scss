@@ -1,0 +1,106 @@
+// Sass List Tests
+// ===============
+
+@include test-module('Sass List Helpers') {
+
+  // list-sum
+  // --------
+
+  @include test('[function] list-sum') {
+    $sum: list-sum(2 24 -3);
+    @include assert-equal($sum, 23,
+      'The sum of "2 24 -3" should be "23".');
+  }
+
+  // query-list
+  // ----------
+
+  @include test('[function] query-list') {
+    $list: 3 foo 2em bar foo 3 13em;
+
+    // number
+    $query: query-list($list, 3);
+    $expect: 1 6;
+    @include assert-equal($query, $expect,
+      'The locations of "3" in "#{$list}" should be "#{$expect}".');
+
+    // string
+    $query: query-list($list, bar);
+    $expect: append((), 4);
+    @include assert-equal($query, $expect,
+      'The locations of "bar" in "#{$list}" should be "#{$expect}".');
+
+    // unit
+    $list: 3px 4in 4em 2em 3px 5;
+    $query: query-list($list, em, unit);
+    $expect: 3 4;
+    @include assert-equal($query, $expect,
+      'The locations of "em" (unit) in "#{$list}" should be "#{$expect}".');
+  }
+
+  // reverse
+  // -------
+
+  @include test('[function] reverse') {
+    // auto
+    $list: foo 1 bar 2 baz;
+    $reverse: reverse($list);
+    $expect: baz 2 bar 1 foo;
+    @include assert-equal($reverse, $expect,
+      'The reverse of "#{$list}" should be "#{$expect}".');
+
+    // comma
+    $list: foo, 1, bar, 2, baz;
+    $reverse: reverse($list, comma);
+    $expect: baz, 2, bar, 1, foo;
+    @include assert-equal($reverse, $expect,
+      'The reverse of "#{$list}" (comma) should be "#{$expect}".');
+
+    // space
+    $list: foo, 1, bar, 2, baz;
+    $reverse: reverse($list, space);
+    $expect: baz 2 bar 1 foo;
+    @include assert-equal($reverse, $expect,
+      'The reverse of "#{$list}" (space) should be "#{$expect}".');
+  }
+
+  // filter
+  // ------
+
+  @include test('[function] filter') {
+    $list: foo, bar, baz;
+
+    // auto
+    $filter: filter($list, bar);
+    $expect: foo baz;
+    @include assert-equal($filter, $expect,
+      'Filtering "#{$list}" for "bar" should return "#{$expect}".');
+
+    // comma
+    $filter: filter($list, foo, comma);
+    $expect: bar, baz;
+    @include assert-equal($filter, $expect,
+      'Filtering "#{$list}" for "foo" (comma) should return "#{$expect}".');
+  }
+
+  // nth-filter
+  // ----------
+
+  @include test('[function] nth-filter') {
+    $list: foo, bar, baz;
+
+    // auto
+    $filter: nth-filter($list, 2);
+    $expect: foo baz;
+    @include assert-equal($filter, $expect,
+      'Filtering "#{$list}" for index of "2" should return "#{$expect}".');
+
+    // comma
+    $filter: nth-filter($list, 3, comma);
+    $expect: foo, bar;
+    @include assert-equal($filter, $expect,
+      'Filtering "#{$list}" for index of "3" (comma) should return "#{$expect}".');
+  }
+
+}
+

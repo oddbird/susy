@@ -45,13 +45,14 @@
 
 // Reverses direction of a list
 @function reverse(
-  $list
+  $list,
+  $separator: auto
 ) {
   $length: length($list);
   $return: ();
 
   @for $i from 0 to $length {
-    $return: append($return, nth($list, $length - $i), comma);
+    $return: append($return, nth($list, $length - $i), $separator);
   }
 
   @return $return;
@@ -60,13 +61,14 @@
 // Return a list with specific items removed
 @function filter(
   $list,
-  $target
+  $target,
+  $separator: auto
 ) {
-  $clean: compact();
+  $clean: ();
 
   @if index($list, $target) {
     @each $item in $list {
-      $clean: if($item == $target, $clean, append($clean, $item));
+      $clean: if($item == $target, $clean, append($clean, $item, $separator));
     }
   } @else {
     $clean: $list;
@@ -77,12 +79,13 @@
 
 @function nth-filter(
   $list,
-  $index
+  $index,
+  $separator: auto
 ) {
-  $clean: compact();
+  $clean: ();
 
   @each $item in $list {
-    $clean: if(index($list, $item) == $index, $clean, append($clean, $item));
+    $clean: if(index($list, $item) == $index, $clean, append($clean, $item, $separator));
   }
 
   @return $clean;

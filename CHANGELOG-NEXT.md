@@ -3,7 +3,8 @@ Susy Next Changelog
 
 2.0.0-alpha.3 [unreleased]
 --------------------------
-- Add `$vertical-grids` boolian setting for the grid-background feature.
+- Add `show-columns` and `show-baseline` keywords to `$show-grids` setting.
+  - NOTE: `show` will show both columns/baseline, default is `show-columns`.
 
 2.0.0.alpha.2 [May 7, 2013]
 -------------------------

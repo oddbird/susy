@@ -1,6 +1,37 @@
 // Grid Syntax
 // ===========
 
+// static/fluid output
+// - static | fluid
+$static               : fluid           !default;
+
+// isolate/float output
+// - isolate | float
+$isolate              : float           !default;
+
+// ltr/rtl flow
+// - ltr | rtl
+$flow                 : ltr             !default;
+
+// box-sizing
+// false | border-box | content-box
+$box-sizing           : false           !default;
+
+// container justification
+// - left | center | right
+$container-position   : center          !default;
+
+// gutter handling
+// - before | after | split
+$gutter-placement     : after           !default;
+
+// show/hide grids
+// show | show-columns | show-baseline | hide
+$show-grids           : show-columns    !default;
+
+// Helpers
+// -------
+
 // Set a new grid using a shorthand
 @mixin set-grid(
   $grid,
@@ -94,10 +125,14 @@
   }
 
   // Create keyword for show-grids setting
-  @if $show-grids and $show-grids != hide {
-    $show-grids-setting: show;
+  @if type-of($show-grids) == bool {
+    @if $show-grids {
+      $show-grids-setting: show;
+    } @else {
+      $show-grids-setting: hide;
+    }
   } @else {
-    $show-grids-setting: hide;
+    $show-grids-setting: $show-grids;
   }
 
   // Return grid shorthand
@@ -149,6 +184,10 @@
         $show-setting: show;
       } @else if $value == hide {
         $show-setting: hide;
+      } @else if $value == show-columns {
+        $show-setting: show-columns;
+      } @else if $value == show-baseline {
+        $show-setting: show-baseline;
       }
 
       // gutter-placement: before | after | split | no-gutters

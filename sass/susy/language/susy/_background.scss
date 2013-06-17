@@ -39,8 +39,10 @@ $base-line-height       : 24px            !default;
   $this-static        : get-setting(static, $grid);
   $this-gutter-place  : get-setting(gutter-placement, $grid);
   $this-flow          : get-setting(flow, $grid);
+  $this-show          : get-setting(show-grids, $grid);
 
   $this-static        : if($this-static and $this-static != fluid, true, false);
+  $this-show          : if(not $this-show, $show-grids, $this-show);
 
   @for $location from 1 through column-count($this-columns) {
     $this-stop: compact();
@@ -64,7 +66,7 @@ $base-line-height       : 24px            !default;
     $stops: join($stops, $this-stop, comma);
   }
 
-  @include grid-background-output($stops, $this-flow);
+  @include grid-background-output($stops, $this-show, $this-flow);
 }
 
 // Grid Overlay

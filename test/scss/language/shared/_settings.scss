@@ -116,7 +116,7 @@ $original-box-sizing          : $box-sizing;
       $this-box-sizing: border-box
     );
 
-    $grid: 12 (6em 1em);
+    $grid: 12 (6em 1em) show-baseline;
     @include set-grid($grid);
 
     @include assert-grid(
@@ -130,7 +130,7 @@ $original-box-sizing          : $box-sizing;
       // @@@ set-grid should be able to set container-position
       // $this-container-position: left,
       $this-gutter-placement: split,
-      $this-show-grids: hide,
+      $this-show-grids: show-baseline,
       $this-box-sizing: false
     );
 

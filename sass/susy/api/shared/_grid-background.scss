@@ -10,32 +10,28 @@
 
 @mixin grid-background-output (
   $stops,
+  $show   : $show-grids,
   $flow   : $flow
 ) {
   $to     : to($flow);
   $from   : from($flow);
 
-  @if $horizontal-grids == show and $vertical-grids == show {
+  // set the proper background gradient
+  $background: ();
 
-    // Both horizontal AND vertical.
-    @include background(linear-gradient($from, $stops...), get-baseline-gradient());
-    background: linear-gradient(to $to, $stops...), get-baseline-gradient();
+  @if $show-grids != show-baseline {
+    $background: append($background, linear-gradient($from, $stops...), comma);
+  }
+
+  @if $show-grids != show-columns {
+    $background: append($background, get-baseline-gradient(), comma);
+  }
+
+  // output styles
+  @include background($background);
+
+  @if $show-grids != show-columns {
     @include background-size(100% $base-line-height);
     background-position: left top;
-
-  } @else if $horizontal-grids == show {
-
-    // Horizontal only.
-    @include background(linear-gradient($from, $stops...));
-    background: linear-gradient(to $to, $stops...);
-
-  } @else if $vertical-grids == show {
-
-    // Vertical only.
-    @include background(get-baseline-gradient());
-    background: get-baseline-gradient();
-    @include background-size(100% $base-line-height);
-    background-position: left top;
-
   }
 }

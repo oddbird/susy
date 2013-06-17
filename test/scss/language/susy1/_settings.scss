@@ -1,0 +1,60 @@
+// Susy 1.0 Settings
+// =================
+
+$total-columns      : 12;
+$column-width       : 4em;
+$gutter-width       : 1em;
+$grid-padding       : $gutter-width;
+
+$from-direction     : left;
+$container-width    : false;
+
+$container-style    : magic;
+
+// no translation (yet)
+// --------------------
+
+// $omega-float        : opposite-position($from-direction);
+// $border-box-sizing  : false;
+
+// $breakpoint-media-output  : true;
+// $breakpoint-ie-output     : true;
+// $breakpoint-raw-output    : false;
+
+// from compass
+// ------------
+
+$show-column-grid-backgrounds: true;
+$show-grid-backgrounds: true;
+
+// translation mixin
+// -----------------
+
+@mixin translate-susy1-settings(
+) {
+  $columns: $total-columns;
+
+  $gutters: $gutter-width / $column-width;
+  $column-width: $column-width;
+  $flow: if($from-direction == right, rtl, ltr);
+
+  $isolate: false;
+  $gutter-placement: after;
+  $show-grids: $show-grid-backgrounds or $show-column-grid-backgrounds;
+
+  @if $container-style == static {
+    $static: static;
+    @if $container-width {
+      @warn "For static output, we use your $column-width setting and ignore any $container-width override.";
+    }
+  } @else {
+    $static: false;
+    $container: $container-width;
+
+    @if $container-width {
+      $column-width: false;
+    } @else if $container-style == fluid and unit($column-width) != '%' {
+      $container: 100%;
+    }
+  }
+}

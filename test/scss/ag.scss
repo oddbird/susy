@@ -70,7 +70,7 @@
 
 $a-grid: 10 (4em 1em) before;
 
-@include use-grid($a-grid, clean) {
+@include use-grid($a-grid) {
   @include ag-test(symmetrical);
 }
 
@@ -79,20 +79,20 @@ $a-grid: 10 (4em 1em) before;
 
 $b-grid: 80% (.5 2 1.25 1 3.25 1.75 3 2 1 3.75) .5 isolate;
 
-@include use-grid($b-grid, clean) {
+@include use-grid($b-grid) {
   @include ag-test(asymmetrical);
 }
 
 // Static
 // ------
 
-@include use-grid(10 (60px 20px) static, clean) {
+@include use-grid(10 (60px 20px) static) {
   @include ag-test(static);
 }
 
 // Split Gutters
 
-@include use-grid(60em (1 .5 1 3 1 .5 1 .5 1 4) .25 inside, clean) {
+@include use-grid(60em (1 .5 1 3 1 .5 1 .5 1 4) .25 inside) {
   @include ag-test(split);
 }
 

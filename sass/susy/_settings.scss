@@ -22,10 +22,10 @@ $container            : false     !default;
 // ------
 
 // global toggle for static/fluid output
-$static               : false     !default;
+$static               : fluid     !default;
 
 // global toggle for isolate/float output
-$isolate              : false     !default;
+$isolate              : float     !default;
 
 // global toggle for ltr/rtl output
 $flow                 : ltr       !default;

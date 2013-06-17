@@ -1,0 +1,51 @@
+// Isolation Syntax
+// ================
+
+// Isolation Override
+@mixin isolate(
+  $input
+) {
+  $input              : parse-span($input);
+
+  $span               : get-span-setting(span, $input);
+  $location           : get-span-setting(location, $input);
+  $this-columns       : get-span-setting(columns, $input);
+  $this-gutters       : get-span-setting(gutters, $input);
+  $this-column-width  : get-span-setting(column-width, $input);
+  $this-static        : get-span-setting(static, $input);
+  $this-flow          : get-span-setting(flow, $input);
+
+  $push: get-isolation($span, $location, $columns, $gutters, $column-width, $static);
+
+  @include isolate-output($push,$this-flow);
+}
+
+// Isolation Helpers
+// -----------------
+
+// Return the isolation position
+@function get-isolation(
+  $span,
+  $location,
+  $columns        : $columns,
+  $gutters        : $gutters,
+  $column-width   : $column-width,
+  $static         : $static,
+  $gutter-place   : $gutter-placement
+) {
+  $context  : column-sum($columns, $gutters);
+  $width    : null;
+
+  @if type-of($location) == number and not unitless($location) {
+    $width: $location;
+  } @else {
+    $push: get-location-position($span, $location, $columns) - 1;
+    @if $push > 0 {
+      $width: get-span-width($push, 1, $columns, $gutters, $column-width, $static, $gutter-place, outer);
+    } @else {
+      $width: null;
+    }
+  }
+
+  @return $width;
+}

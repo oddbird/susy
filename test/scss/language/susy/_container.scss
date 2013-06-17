@@ -1,0 +1,100 @@
+// Container Syntax
+// ================
+
+// Set a container element
+@mixin container(
+  $container: get-container()
+) {
+  $container  : parse-container($container);
+  $grid       : parse-grid(nth($container,1));
+  $justify    : nth($container,2);
+  $show       : nth($container,3);
+  $box        : get-setting(box-sizing, $grid);
+
+  // if there is a container width, use it
+  $width      : get-setting(container, $grid);
+
+  @if not $width {
+    // if we have a column width, calculate container from that
+    $column-width-setting: get-setting(column-width, $grid);
+
+    @if $column-width-setting {
+      $columns-setting: get-setting(columns, $grid);
+      $gutters-setting: get-setting(gutters, $grid);
+      $outer: if(get-setting(gutter-placement, $grid) == inside, true, false);
+
+      $width: calculate-container-width($columns-setting, $gutters-setting, $column-width-setting, $outer);
+    } @else {
+      // if we have nothing, default to 100%
+      $width: 100%;
+    }
+  }
+
+  @if $show and $show != hide {
+    @include grid-background($grid);
+  }
+
+  @if $box == border-box {
+    @include box-sizing(border-box);
+  } @else if $box == content-box {
+    @include box-sizing(content-box);
+  }
+
+  @include float-container($width, $justify, $show);
+}
+
+// Container Helpers
+// -----------------
+
+// Get the current container-related settings
+@function get-container(
+) {
+  $show: false;
+
+  // Create keyword for show-grids setting
+  @if $show-grids and $show-grids != "hide" {
+    $show: show;
+  } @else {
+    $show: hide;
+  }
+
+  @return get-grid() $container-position $show;
+}
+
+// parse the container shorthand syntax, and return an ordered list
+@function parse-container(
+  $container: get-container()
+) {
+  $grid     : false;
+  $justify  : $container-position;
+  $show     : $show-grids;
+
+  // justify: left | center | right
+  @if index($container, left) {
+    $justify: left;
+    $container: filter($container, left);
+  } @else if index($container, center) {
+    $justify: center;
+    $container: filter($container, center);
+  } @else if index($container, right) {
+    $justify: right;
+    $container: filter($container, right);
+  }
+
+  // show-grids: show | hide
+  @if index($container, show) {
+    $show: true;
+    $container: filter($container, show);
+  } @else if index($container, hide) {
+    $show: false;
+    $container: filter($container, hide);
+  }
+
+  @if length($container) == 1 {
+    $grid: nth($container,1);
+  } @else {
+    $grid: $container;
+  }
+
+  @return $grid $justify $show;
+}

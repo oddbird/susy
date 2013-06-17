@@ -37,6 +37,11 @@ $experimental-support-for-svg: false;
 @import "helpers/nth";
 @import "helpers/sass-lists";
 
+// Language
+// --------
+
+@import "language/shared";
+
 // API
 // ---
 

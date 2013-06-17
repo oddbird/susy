@@ -1,0 +1,78 @@
+// Row Start & End
+// ===============
+
+// Apply to any layout element that should force a new layout row.
+@mixin row(
+  $flow: $flow
+) {
+  $clear: $flow;
+
+  @if $flow == ltr or $flow == rtl {
+    $clear: from($flow);
+  }
+
+  clear: $clear;
+}
+
+// Cancel the row() effect, e.g. when using media queries.
+@mixin unrow {
+  clear: none;
+}
+
+// First item
+// ----------
+
+@mixin first(
+  $flow: $flow
+) {
+  @include float-first($flow);
+}
+
+@mixin alpha(
+  $flow: $flow
+) {
+  @include float-first($flow);
+}
+
+@mixin nth-first(
+  $value: first,
+  $type: child
+) {
+  &:#{format-nth($value,$type)} { @include first($flow); }
+}
+
+@mixin nth-alpha(
+  $value: first,
+  $type: child
+) {
+  @include nth-first($value, $type);
+}
+
+// Last item
+// ---------
+
+@mixin last(
+  $flow: $flow
+) {
+  @include float-last($flow);
+}
+
+@mixin omega(
+  $flow: $flow
+) {
+  @include float-last($flow);
+}
+
+@mixin nth-last(
+  $value: last,
+  $type: child
+) {
+  &:#{format-nth($value,$type)} { @include last($flow); }
+}
+
+@mixin nth-omega(
+  $value: last,
+  $type: child
+) {
+  @include nth-last($value, $type);
+}

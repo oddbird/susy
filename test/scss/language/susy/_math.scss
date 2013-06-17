@@ -69,7 +69,7 @@
   $context  : column-sum($columns, $gutters);
   $gutter   : null;
 
-  @if $static and $static != fluid {
+  @if $static {
     @if $column-width {
       $gutter: $gutters * $column-width;
     } @else {
@@ -139,7 +139,7 @@
       $span-sum: get-column-span-sum($span, $location, $columns, $gutters) + $outer;
     }
 
-    @if $static and $static != fluid {
+    @if $static {
       $width: $span-sum * $column-width;
     } @else {
       $width: percentage($span-sum / $context);

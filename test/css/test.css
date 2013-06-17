@@ -70,6 +70,28 @@
     - 5 Tests
     - 5 Passed
     - 0 Failed */
+/*  
+
+### Shared Grid-Settings Language ------ */
+/*  - Original-Grid Helpers (23 assertions, 23 passed, 0 failed) */
+/*  - [mixin] set-grid (33 assertions, 33 passed, 0 failed) */
+/*  - [mixin] use-grid (55 assertions, 55 passed, 0 failed) */
+/*  - [function] get-grid (24 assertions, 24 passed, 0 failed) */
+/*  - [function] parse-grid (2 assertions, 2 passed, 0 failed) */
+/*  - [function] get-setting (10 assertions, 10 passed, 0 failed) */
+/*  
+    Summary:
+    - 6 Tests
+    - 6 Passed
+    - 0 Failed */
+/*  
+
+### Shared Context Language ------ */
+/*  
+    Summary:
+    - 0 Tests
+    - 0 Passed
+    - 0 Failed */
 /*
 
 ### Shared Grid Background API ------ */

@@ -1,0 +1,58 @@
+// Math Functions
+// ==============
+
+// Return the width of a span
+@function span(
+  $span: 1
+) {
+  $span               : parse-span($span);
+
+  $width              : get-span-setting(span, $span);
+
+  $this-location      : get-span-setting(location, $span);
+  $this-columns       : get-span-setting(columns, $span);
+  $this-gutters       : get-span-setting(gutters, $span);
+  $this-column-width  : get-span-setting(column-width, $span);
+  $this-static        : get-span-setting(static, $span);
+
+  $this-location      : if($this-location, $this-location, 1);
+  $this-columns       : if($this-columns, $this-columns, $columns);
+  $this-gutters       : if($this-gutters, $this-gutters, $gutters);
+  $this-column-width  : if($this-column-width, $this-column-width, $column-width);
+  $this-static        : if($this-static, $this-static, $static);
+
+  $width: get-span-width($width, $this-location, $this-columns, $this-gutters, $this-column-width, $this-static);
+
+  @return $width;
+}
+
+// Return the width of a gutter
+@function gutter(
+  $context: get-grid()
+) {
+  $context            : parse-grid($context);
+
+  $this-columns       : get-setting(columns, $context);
+  $this-gutters       : get-setting(gutters, $context);
+  $this-column-width  : get-setting(column-width, $context);
+  $this-static        : get-setting(static, $context);
+
+  $this-columns       : if($this-columns, $this-columns, $columns);
+  $this-gutters       : if($this-gutters, $this-gutters, $gutters);
+  $this-column-width  : if($this-column-width, $this-column-width, $column-width);
+  $this-static        : if($this-static, $this-static, $static);
+
+  $width: get-gutter-width($this-columns, $this-gutters, $this-column-width, $this-static);
+
+  @return $width;
+}
+
+// Return the width of a span, plus any attached gutters
+@function outer-span(
+  $span: 1
+) {
+  $width    : span($span);
+  $gutter   : gutter($span);
+
+  @return $width + $gutter;
+}

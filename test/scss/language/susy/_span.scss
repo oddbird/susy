@@ -1,0 +1,204 @@
+// Span language parsing
+// =====================
+
+// Set a spanning element using shorthand syntax
+@mixin span(
+  $span
+) {
+  $span     : parse-span($span);
+  $output   : span-math($span...);
+  $box      : get-span-setting(box-sizing, $span);
+  $inside   : if(get-span-setting(gutter-placement, $span) == inside, true, false);
+
+  @if $box == border-box or $inside {
+    @include box-sizing(border-box);
+  } @else if $box == content-box {
+    @include box-sizing(content-box);
+  }
+
+  @include float-span-output($output...);
+}
+
+// Span Helpers
+// ------------
+
+// Parse the span shortcut syntax
+@function parse-span(
+  $string
+) {
+  $new-span           : false;
+  $new-location       : false;
+  $new-context        : false;
+  $new-isolate        : false;
+  $new-static         : false;
+  $new-columns        : false;
+  $new-gutters        : false;
+  $new-column-width   : false;
+  $new-flow           : false;
+  $new-gutter-place   : false;
+  $gutter-override    : false;
+
+  $is-container       : false;
+
+  $i: 1;
+
+  @while $i <= length($string) {
+    $value  : nth($string,$i);
+    $at     : false;
+    $of     : false;
+    $gutter : false;
+
+    // keywords
+    @if type-of($value) == string {
+
+      // location keywords: first | last | alpha | omega
+      @if $value == first or $value == alpha {
+        $new-location: 1;
+      } @else if $value == last or $value == omega {
+        $new-location: last;
+      }
+
+      // isolate
+      @else if $value == isolate {
+        $new-isolate: isolate;
+      } @else if $value == float {
+        $new-isolate: float;
+      }
+
+      // static | fluid
+      @else if $value == static {
+        $new-static: static;
+      } @else if $value == fluid {
+        $new-static: fluid;
+      }
+
+      // ltr | rtl
+      @else if $value == rtl {
+        $new-flow: rtl;
+      } @else if $value == ltr {
+        $new-flow: ltr;
+      }
+
+      // after | before | split | inside | no-gutters
+      @else if $value == after {
+        $new-gutter-place: after;
+      } @else if $value == before {
+        $new-gutter-place: before;
+      } @else if $value == split {
+        $new-gutter-place: split;
+      } @else if $value == inside {
+        $new-gutter-place: inside;
+      } @else if $value == no-gutters {
+        $new-gutter-place: no-gutters;
+      }
+
+      // container
+      @if $value == container {
+        $is-container: container;
+      }
+
+      // at
+      @else if $value == at {
+        $at: true;
+      }
+
+      // of
+      @else if $value == of {
+        $of: true;
+      }
+
+      // gutter
+      @else if $value == gutter or $value == gutters {
+        $gutter: true;
+      }
+
+    // span
+    } @else if not $new-span and type-of($value) == number {
+      $new-span: $value;
+    }
+
+    // location integer
+    @if $at {
+      $i: $i + 1;
+      $new-location: nth($string, $i);
+    }
+
+    // gutter override
+    @if $gutter {
+      $i: $i + 1;
+      $gutter-override: nth($string, $i);
+    }
+
+    // context
+    @if $of {
+      $i: $i + 1;
+      $new-context: compact();
+
+      @while $of and $i <= length($string) {
+        $this: nth($string,$i);
+        @if type-of($this) != string {
+          $new-context: append($new-context, $this);
+          $i: $i + 1;
+        } @else {
+          $of: false;
+          $i: $i - 1;
+        }
+      }
+    }
+
+    $i: $i + 1;
+  }
+
+  // parse the context
+  @if $new-context {
+    $new-columns: get-setting(columns, $new-context);
+    $new-gutters: get-setting(gutters, $new-context);
+    $new-column-width: get-setting(column-width, $new-context);
+  }
+
+  // use global values for empty grid settings
+  @if not $new-columns {
+    $new-columns: $columns;
+  }
+  @if not $new-gutters {
+    $new-gutters: $gutters;
+  }
+  @if not $new-column-width {
+    $new-column-width: $column-width;
+  }
+  @if not $new-static {
+    $new-static: $static;
+  }
+  @if not $new-isolate {
+    $new-isolate: $isolate;
+  }
+  @if not $new-flow {
+    $new-flow: $flow;
+  }
+  @if not $new-gutter-place {
+    $new-gutter-place: $gutter-placement;
+  }
+
+  @return $new-span $new-location $new-columns $new-gutters $new-column-width $new-isolate $new-static $new-flow $new-gutter-place $is-container $gutter-override;
+}
+
+// Return one particular span setting from a list
+@function get-span-setting(
+  $setting,
+  $span,
+  $parse: false
+) {
+  $options  : span location columns gutters column-width isolate static flow gutter-placement is-container gutter-override;
+  $key      : index($options, $setting);
+  $value    : false;
+
+  @if $parse {
+    $span: parse-span($span);
+  }
+
+  @if $key {
+    $value: nth($span, $key);
+  }
+
+  @return $value;
+}

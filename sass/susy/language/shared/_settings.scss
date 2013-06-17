@@ -4,7 +4,7 @@
 // Set a new grid using a shorthand
 @mixin set-grid(
   $grid,
-  $clean: false
+  $clean: true
 ) {
   $grid               : parse-grid($grid);
 
@@ -21,16 +21,25 @@
   $new-show-grids     : get-setting(show-grids, $grid);
   $new-box            : get-setting(box-sizing, $grid);
 
+  // Set required values
+  $columns            : if($new-columns, $new-columns, $columns);
+  $gutters            : if($new-gutters, $new-gutters, $gutters);
+  $flow               : if($new-flow, $new-flow, $flow);
+  $gutter-placement   : if($new-gutter-place, $new-gutter-place, $gutter-placement);
+  $show-grids         : if($new-show-grids, $new-show-grids, $show-grids);
+
   // fill missing values
   @if not $clean {
-    $new-columns          : if($new-columns, $new-columns, $columns);
-    $new-gutters          : if($new-gutters, $new-gutters, $gutters);
     $new-container        : if($new-container, $new-container, $container);
     $new-column-width     : if($new-column-width, $new-column-width, $column-width);
     $new-static           : if($new-static, $new-static, $static);
     $new-isolate          : if($new-isolate, $new-isolate, $isolate);
     $new-box              : if($new-box, $new-box, $box-sizing);
   }
+
+  // use keywords where possible
+  $new-static           : if($new-static, $new-static, fluid);
+  $new-isolate          : if($new-isolate, $new-isolate, float);
 
   // set values
   $columns            : $new-columns;
@@ -40,16 +49,12 @@
   $static             : $new-static;
   $isolate            : $new-isolate;
   $box-sizing         : $new-box;
-
-  $flow               : if($new-flow, $new-flow, $flow);
-  $gutter-placement   : if($new-gutter-place, $new-gutter-place, $gutter-placement);
-  $show-grids         : if($new-show-grids, $new-show-grids, $show-grids);
 }
 
 // Use an arbitrary grid for a section of code
 @mixin use-grid(
   $grid,
-  $clean: false
+  $clean: true
 ) {
   $old-grid: get-grid();
 

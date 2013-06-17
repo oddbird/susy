@@ -8,7 +8,7 @@
   $show-grids   : $show-grids
 ) {
   $position   : parse-container-position($justify);
-  $property   : if($static, width, max-width);
+  $property   : if($static and $static != fluid, width, max-width);
   $left       : nth($position,1);
   $right      : nth($position,2);
 

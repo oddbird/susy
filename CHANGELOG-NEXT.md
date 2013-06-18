@@ -3,8 +3,14 @@ Susy Next Changelog
 
 2.0.0-alpha.3 [unreleased]
 --------------------------
+- Renamed `$isolate` to `$layout-method`
+  - No longer accepts boolean.
+  - Accepts keywords `isolate` and (default) `float`.
+- Renamed `$static` to `$layout-math`
+  - No longer accepts boolean.
+  - Accepts keywords `static` (use given units) and (default) `fluid` (use % units).
 - Add `show-columns` and `show-baseline` keywords to `$show-grids` setting.
-  - NOTE: `show` will show both columns/baseline, default is `show-columns`.
+  - `show` will show both columns/baseline, default is `show-columns`.
 
 2.0.0.alpha.2 [May 7, 2013]
 -------------------------

@@ -5,8 +5,8 @@ $original-columns             : $columns;
 $original-gutters             : $gutters;
 $original-container           : $container;
 $original-column-width        : $column-width;
-$original-static              : $static;
-$original-isolate             : $isolate;
+$original-layout-math         : $layout-math;
+$original-layout-method       : $layout-method;
 $original-flow                : $flow;
 $original-container-position  : $container-position;
 $original-gutter-placement    : $gutter-placement;
@@ -18,8 +18,8 @@ $original-box-sizing          : $box-sizing;
   $gutters              : $original-gutters;
   $container            : $original-container;
   $column-width         : $original-column-width;
-  $static               : $original-static;
-  $isolate              : $original-isolate;
+  $layout-math          : $original-layout-math;
+  $layout-method        : $original-layout-method;
   $flow                 : $original-flow;
   $container-position   : $original-container-position;
   $gutter-placement     : $original-gutter-placement;
@@ -28,17 +28,17 @@ $original-box-sizing          : $box-sizing;
 }
 
 @mixin assert-grid(
-  $this-columns              : $original-columns,
-  $this-gutters              : $original-gutters,
-  $this-container            : $original-container,
-  $this-column-width         : $original-column-width,
-  $this-static               : $original-static,
-  $this-isolate              : $original-isolate,
-  $this-flow                 : $original-flow,
-  $this-container-position   : $original-container-position,
-  $this-gutter-placement     : $original-gutter-placement,
-  $this-show-grids           : $original-show-grids,
-  $this-box-sizing           : $original-box-sizing
+  $this-columns               : $original-columns,
+  $this-gutters               : $original-gutters,
+  $this-container             : $original-container,
+  $this-column-width          : $original-column-width,
+  $this-layout-math           : $original-layout-math,
+  $this-layout-method         : $original-layout-method,
+  $this-flow                  : $original-flow,
+  $this-container-position    : $original-container-position,
+  $this-gutter-placement      : $original-gutter-placement,
+  $this-show-grids            : $original-show-grids,
+  $this-box-sizing            : $original-box-sizing
 ) {
   @include assert-equal($columns, $this-columns,
     '$columns should be equal to #{$this-columns}');
@@ -48,10 +48,10 @@ $original-box-sizing          : $box-sizing;
     '$container should be equal to #{$this-container}');
   @include assert-equal($column-width, $this-column-width,
     '$column-width should be equal to #{$this-column-width}');
-  @include assert-equal($static, $this-static,
-    '$static should be equal to #{$this-static}');
-  @include assert-equal($isolate, $this-isolate,
-    '$isolate should be equal to #{$this-isolate}');
+  @include assert-equal($layout-math, $this-layout-math,
+    '$layout-math should be equal to #{$this-layout-math}');
+  @include assert-equal($layout-method, $this-layout-method,
+    '$layout-method should be equal to #{$this-layout-method}');
   @include assert-equal($flow, $this-flow,
     '$flow should be equal to #{$this-flow}');
   @include assert-equal($container-position, $this-container-position,
@@ -90,8 +90,8 @@ $original-box-sizing          : $box-sizing;
     $gutters              : 1/3;
     $container            : false;
     $column-width         : 6em;
-    $static               : false;
-    $isolate              : false;
+    $layout-math          : fluid;
+    $layout-method        : float;
     $flow                 : rtl;
     $container-position   : center;
     $gutter-placement     : after;
@@ -106,8 +106,8 @@ $original-box-sizing          : $box-sizing;
       $this-gutters: .25,
       $this-container: 960px,
       $this-column-width: false,
-      $this-static: static,
-      $this-isolate: isolate,
+      $this-layout-math: static,
+      $this-layout-method: isolate,
       $this-flow: ltr,
       // @@@ set-grid should be able to set container-position
       // $this-container-position: left,
@@ -124,8 +124,8 @@ $original-box-sizing          : $box-sizing;
       $this-gutters: 1/6,
       $this-container: false,
       $this-column-width: 6em,
-      $this-static: fluid,
-      $this-isolate: float,
+      $this-layout-math: fluid,
+      $this-layout-method: float,
       $this-flow: ltr,
       // @@@ set-grid should be able to set container-position
       // $this-container-position: left,
@@ -152,7 +152,7 @@ $original-box-sizing          : $box-sizing;
         $this-gutters: 2/6,
         $this-container: 960px,
         $this-column-width: false,
-        $this-static: static,
+        $this-layout-math: static,
         $this-gutter-placement: split
       );
 
@@ -169,7 +169,7 @@ $original-box-sizing          : $box-sizing;
         $this-gutters: 2/6,
         $this-container: false,
         $this-column-width: 6em,
-        $this-isolate: float,
+        $this-layout-method: float,
         $this-gutter-placement: split
       );
 
@@ -186,8 +186,8 @@ $original-box-sizing          : $box-sizing;
     $gutters              : 1/3;
     $container            : false;
     $column-width         : 6em;
-    $static               : false;
-    $isolate              : false;
+    $layout-math          : fluid;
+    $layout-method        : float;
     $flow                 : rtl;
     // @@@ get-setting should get container position
     // $container-position   : center;
@@ -200,8 +200,8 @@ $original-box-sizing          : $box-sizing;
       $this-gutters              : 1/3,
       $this-container            : false,
       $this-column-width         : 6em,
-      $this-static               : false,
-      $this-isolate              : false,
+      $this-layout-math          : fluid,
+      $this-layout-method        : float,
       $this-flow                 : rtl,
       // @@@ get-setting should get container position
       // $this-container-position   : center,
@@ -298,14 +298,14 @@ $original-box-sizing          : $box-sizing;
     @include assert-equal($test, $expect,
       'Column-width of "#{$grid}" should be "#{$expect}"');
 
-    // isolate
-    $test: get-setting(isolate, $grid, parse);
+    // layout-method
+    $test: get-setting(layout-method, $grid, parse);
     $expect: float;
     @include assert-equal($test, $expect,
       'Isolate of "#{$grid}" should be "#{$expect}"');
 
-    // static
-    $test: get-setting(static, $grid, parse);
+    // layout-math
+    $test: get-setting(layout-math, $grid, parse);
     $expect: false;
     @include assert-equal($test, $expect,
       'Static of "#{$grid}" should be "#{$expect}"');

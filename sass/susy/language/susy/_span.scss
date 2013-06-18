@@ -29,8 +29,8 @@
   $new-span           : false;
   $new-location       : false;
   $new-context        : false;
-  $new-isolate        : false;
-  $new-static         : false;
+  $new-layout-method        : false;
+  $new-layout-math         : false;
   $new-columns        : false;
   $new-gutters        : false;
   $new-column-width   : false;
@@ -58,18 +58,18 @@
         $new-location: last;
       }
 
-      // isolate
+      // layout-method
       @else if $value == isolate {
-        $new-isolate: isolate;
+        $new-layout-method: isolate;
       } @else if $value == float {
-        $new-isolate: float;
+        $new-layout-method: float;
       }
 
-      // static | fluid
+      // layout-math | fluid
       @else if $value == static {
-        $new-static: static;
+        $new-layout-math: static;
       } @else if $value == fluid {
-        $new-static: fluid;
+        $new-layout-math: fluid;
       }
 
       // ltr | rtl
@@ -166,11 +166,11 @@
   @if not $new-column-width {
     $new-column-width: $column-width;
   }
-  @if not $new-static {
-    $new-static: $static;
+  @if not $new-layout-math {
+    $new-layout-math: $layout-math;
   }
-  @if not $new-isolate {
-    $new-isolate: $isolate;
+  @if not $new-layout-method {
+    $new-layout-method: $layout-method;
   }
   @if not $new-flow {
     $new-flow: $flow;
@@ -179,7 +179,7 @@
     $new-gutter-place: $gutter-placement;
   }
 
-  @return $new-span $new-location $new-columns $new-gutters $new-column-width $new-isolate $new-static $new-flow $new-gutter-place $is-container $gutter-override;
+  @return $new-span $new-location $new-columns $new-gutters $new-column-width $new-layout-method $new-layout-math $new-flow $new-gutter-place $is-container $gutter-override;
 }
 
 // Return one particular span setting from a list
@@ -188,7 +188,7 @@
   $span,
   $parse: false
 ) {
-  $options  : span location columns gutters column-width isolate static flow gutter-placement is-container gutter-override;
+  $options  : span location columns gutters column-width layout-method layout-math flow gutter-placement is-container gutter-override;
   $key      : index($options, $setting);
   $value    : false;
 

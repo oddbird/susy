@@ -1,15 +1,15 @@
 // Grid Syntax
 // ===========
 
-// static/fluid output
+// layout math
 // - static | fluid
-$static               : fluid           !default;
+$layout-math          : fluid           !default;
 
-// isolate/float output
+// layout method
 // - isolate | float
-$isolate              : float           !default;
+$layout-method        : float           !default;
 
-// ltr/rtl flow
+// layout direction
 // - ltr | rtl
 $flow                 : ltr             !default;
 
@@ -44,8 +44,8 @@ $show-grids           : show-columns    !default;
   $new-gutters        : get-setting(gutters, $grid);
   $new-container      : get-setting(container, $grid);
   $new-column-width   : get-setting(column-width, $grid);
-  $new-static         : get-setting(static, $grid);
-  $new-isolate        : get-setting(isolate, $grid);
+  $new-layout-math    : get-setting(layout-math, $grid);
+  $new-layout-method  : get-setting(layout-method, $grid);
 
   $new-flow           : get-setting(flow, $grid);
   $new-gutter-place   : get-setting(gutter-placement, $grid);
@@ -63,22 +63,22 @@ $show-grids           : show-columns    !default;
   @if not $clean {
     $new-container        : if($new-container, $new-container, $container);
     $new-column-width     : if($new-column-width, $new-column-width, $column-width);
-    $new-static           : if($new-static, $new-static, $static);
-    $new-isolate          : if($new-isolate, $new-isolate, $isolate);
+    $new-layout-math      : if($new-layout-math, $new-layout-math, $layout-math);
+    $new-layout-method    : if($new-layout-method, $new-layout-method, $layout-method);
     $new-box              : if($new-box, $new-box, $box-sizing);
   }
 
   // use keywords where possible
-  $new-static           : if($new-static, $new-static, fluid);
-  $new-isolate          : if($new-isolate, $new-isolate, float);
+  $new-layout-math        : if($new-layout-math, $new-layout-math, fluid);
+  $new-layout-method      : if($new-layout-method, $new-layout-method, float);
 
   // set values
   $columns            : $new-columns;
   $gutters            : $new-gutters;
   $container          : $new-container;
   $column-width       : $new-column-width;
-  $static             : $new-static;
-  $isolate            : $new-isolate;
+  $layout-math        : $new-layout-math;
+  $layout-method      : $new-layout-method;
   $box-sizing         : $new-box;
 }
 
@@ -100,28 +100,12 @@ $show-grids           : show-columns    !default;
 // Get the current grid settings as a shorthand list
 @function get-grid(
 ) {
-  $gutter-setting       : $gutters;
-  $static-setting       : false;
-  $isolate-setting      : false;
-  $show-grids-setting   : false;
+  $gutter-setting         : $gutters;
+  $show-grids-setting     : false;
 
   // Use units for column/gutter ratio if available
   @if $column-width {
     $gutter-setting: $column-width $column-width * $gutters;
-  }
-
-  // Create keyword for static setting
-  @if $static and $static != fluid {
-    $static-setting: static;
-  } @else {
-    $static-setting: fluid;
-  }
-
-  // Create keyword for isolate setting
-  @if $isolate and $isolate != float {
-    $isolate-setting: isolate;
-  } @else {
-    $isolate-setting: float;
   }
 
   // Create keyword for show-grids setting
@@ -136,7 +120,7 @@ $show-grids           : show-columns    !default;
   }
 
   // Return grid shorthand
-  @return compact($container $columns $gutter-setting $static-setting $isolate-setting $show-grids-setting $flow $gutter-placement $box-sizing);
+  @return compact($container $columns $gutter-setting $layout-math $layout-method $show-grids-setting $flow $gutter-placement $box-sizing);
 }
 
 // Parse a shorthand grid, and return an ordered list of settings
@@ -147,8 +131,8 @@ $show-grids           : show-columns    !default;
   $gutters-setting        : false;
   $container-setting      : false;
   $column-width-setting   : false;
-  $static-setting         : false;
-  $isolate-setting        : false;
+  $layout-math-setting    : false;
+  $layout-method-setting  : false;
   $flow-setting           : false;
   $gutter-place-setting   : false;
   $show-setting           : false;
@@ -160,16 +144,16 @@ $show-grids           : show-columns    !default;
     @if type-of($value) == string {
       // output: static | fluid
       @if $value == static {
-        $static-setting: static;
+        $layout-math-setting: static;
       } @else if $value == fluid {
-        $static-setting: fluid;
+        $layout-math-setting: fluid;
       }
 
       // output: isolate | fluid
       @if $value == isolate {
-        $isolate-setting: isolate;
+        $layout-method-setting: isolate;
       } @else if $value == float {
-        $isolate-setting: float;
+        $layout-method-setting: float;
       }
 
       // flow: ltr | rtl
@@ -235,7 +219,7 @@ $show-grids           : show-columns    !default;
     }
   }
 
-  @return $columns-setting $gutters-setting $container-setting $column-width-setting $static-setting $isolate-setting $flow-setting $gutter-place-setting $show-setting $box-setting;
+  @return $columns-setting $gutters-setting $container-setting $column-width-setting $layout-math-setting $layout-method-setting $flow-setting $gutter-place-setting $show-setting $box-setting;
 }
 
 // Return one setting from a shorhand grid
@@ -244,7 +228,7 @@ $show-grids           : show-columns    !default;
   $grid   : parse-grid(get-grid()),
   $parse  : false
 ) {
-  $options  : columns gutters container column-width static isolate flow gutter-placement show-grids box-sizing;
+  $options  : columns gutters container column-width layout-math layout-method flow gutter-placement show-grids box-sizing;
   $key      : index($options, $setting);
   $value    : false;
 

@@ -49,37 +49,30 @@ $show-grids           : show-columns    !default;
 
   $new-flow           : get-setting(flow, $grid);
   $new-gutter-place   : get-setting(gutter-placement, $grid);
+  $new-position       : get-setting(container-position, $grid);
   $new-show-grids     : get-setting(show-grids, $grid);
   $new-box            : get-setting(box-sizing, $grid);
 
   // Set required values
   $columns            : if($new-columns, $new-columns, $columns);
   $gutters            : if($new-gutters, $new-gutters, $gutters);
+  $layout-math        : if($new-layout-math, $new-layout-math, $layout-math);
+  $layout-method      : if($new-layout-method, $new-layout-method, $layout-method);
   $flow               : if($new-flow, $new-flow, $flow);
   $gutter-placement   : if($new-gutter-place, $new-gutter-place, $gutter-placement);
+  $container-position : if($new-position, $new-position, $container-position);
   $show-grids         : if($new-show-grids, $new-show-grids, $show-grids);
 
-  // fill missing values
-  @if not $clean {
-    $new-container        : if($new-container, $new-container, $container);
-    $new-column-width     : if($new-column-width, $new-column-width, $column-width);
-    $new-layout-math      : if($new-layout-math, $new-layout-math, $layout-math);
-    $new-layout-method    : if($new-layout-method, $new-layout-method, $layout-method);
-    $new-box              : if($new-box, $new-box, $box-sizing);
+  // optionally fill values based on current grid
+  @if $clean {
+    $container        : $new-container;
+    $column-width     : $new-column-width;
+    $box-sizing       : $new-box;
+  } @else {
+    $container        : if($new-container, $new-container, $container);
+    $column-width     : if($new-column-width, $new-column-width, $column-width);
+    $box-sizing       : if($new-box, $new-box, $box-sizing);
   }
-
-  // use keywords where possible
-  $new-layout-math        : if($new-layout-math, $new-layout-math, fluid);
-  $new-layout-method      : if($new-layout-method, $new-layout-method, float);
-
-  // set values
-  $columns            : $new-columns;
-  $gutters            : $new-gutters;
-  $container          : $new-container;
-  $column-width       : $new-column-width;
-  $layout-math        : $new-layout-math;
-  $layout-method      : $new-layout-method;
-  $box-sizing         : $new-box;
 }
 
 // Use an arbitrary grid for a section of code
@@ -120,7 +113,7 @@ $show-grids           : show-columns    !default;
   }
 
   // Return grid shorthand
-  @return compact($container $columns $gutter-setting $layout-math $layout-method $show-grids-setting $flow $gutter-placement $box-sizing);
+  @return compact($container $columns $gutter-setting $layout-math $layout-method $container-position $show-grids-setting $flow $gutter-placement $box-sizing);
 }
 
 // Parse a shorthand grid, and return an ordered list of settings
@@ -133,6 +126,7 @@ $show-grids           : show-columns    !default;
   $column-width-setting   : false;
   $layout-math-setting    : false;
   $layout-method-setting  : false;
+  $position-setting       : false;
   $flow-setting           : false;
   $gutter-place-setting   : false;
   $show-setting           : false;
@@ -142,18 +136,27 @@ $show-grids           : show-columns    !default;
 
   @each $value in $grid {
     @if type-of($value) == string {
-      // output: static | fluid
+      // layout-math: static | fluid
       @if $value == static {
         $layout-math-setting: static;
       } @else if $value == fluid {
         $layout-math-setting: fluid;
       }
 
-      // output: isolate | fluid
+      // layout-method: isolate | fluid
       @if $value == isolate {
         $layout-method-setting: isolate;
       } @else if $value == float {
         $layout-method-setting: float;
+      }
+
+      // container-position: left | center | right
+      @if $value == left {
+        $position-setting: left;
+      } @else if $value == right {
+        $position-setting: right;
+      } @else if $value == center {
+        $position-setting: center;
       }
 
       // flow: ltr | rtl
@@ -219,7 +222,7 @@ $show-grids           : show-columns    !default;
     }
   }
 
-  @return $columns-setting $gutters-setting $container-setting $column-width-setting $layout-math-setting $layout-method-setting $flow-setting $gutter-place-setting $show-setting $box-setting;
+  @return $columns-setting $gutters-setting $container-setting $column-width-setting $layout-math-setting $layout-method-setting $position-setting $flow-setting $gutter-place-setting $show-setting $box-setting;
 }
 
 // Return one setting from a shorhand grid
@@ -228,7 +231,7 @@ $show-grids           : show-columns    !default;
   $grid   : parse-grid(get-grid()),
   $parse  : false
 ) {
-  $options  : columns gutters container column-width layout-math layout-method flow gutter-placement show-grids box-sizing;
+  $options  : columns gutters container column-width layout-math layout-method container-position flow gutter-placement show-grids box-sizing;
   $key      : index($options, $setting);
   $value    : false;
 

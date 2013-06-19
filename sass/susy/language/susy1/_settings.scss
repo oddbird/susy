@@ -38,17 +38,17 @@ $show-grid-backgrounds: true;
   $column-width: $column-width;
   $flow: if($from-direction == right, rtl, ltr);
 
-  $isolate: false;
+  $layout-method: false;
   $gutter-placement: after;
   $show-grids: $show-grid-backgrounds or $show-column-grid-backgrounds;
 
   @if $container-style == static {
-    $static: static;
+    $layout-math: static;
     @if $container-width {
       @warn "For static output, we use your $column-width setting and ignore any $container-width override.";
     }
   } @else {
-    $static: false;
+    $layout-math: false;
     $container: $container-width;
 
     @if $container-width {

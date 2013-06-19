@@ -12,10 +12,10 @@
   $this-columns       : get-span-setting(columns, $input);
   $this-gutters       : get-span-setting(gutters, $input);
   $this-column-width  : get-span-setting(column-width, $input);
-  $this-static        : get-span-setting(static, $input);
+  $this-layout-math   : get-span-setting(layout-math, $input);
   $this-flow          : get-span-setting(flow, $input);
 
-  $push: get-isolation($span, $location, $columns, $gutters, $column-width, $static);
+  $push: get-isolation($span, $location, $columns, $gutters, $column-width, $layout-math);
 
   @include isolate-output($push,$this-flow);
 }
@@ -30,7 +30,7 @@
   $columns        : $columns,
   $gutters        : $gutters,
   $column-width   : $column-width,
-  $static         : $static,
+  $layout-math    : $layout-math,
   $gutter-place   : $gutter-placement
 ) {
   $context  : column-sum($columns, $gutters);
@@ -41,7 +41,7 @@
   } @else {
     $push: get-location-position($span, $location, $columns) - 1;
     @if $push > 0 {
-      $width: get-span-width($push, 1, $columns, $gutters, $column-width, $static, $gutter-place, outer);
+      $width: get-span-width($push, 1, $columns, $gutters, $column-width, $layout-math, $gutter-place, outer);
     } @else {
       $width: null;
     }

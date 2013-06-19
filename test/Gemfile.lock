@@ -1,9 +1,9 @@
 GIT
   remote: git://github.com/ericam/true
-  revision: 11ccdd39816c3103d9ac62685ed9c9489c994212
+  revision: 7627a306be5474db27a5894d7b87c09b400c4e11
   branch: master
   specs:
-    true (0.1.4)
+    true (0.1.5)
       compass (>= 0.12.2)
       sass (>= 3.2.0)
 

@@ -13,7 +13,9 @@
     $right: nth($justify,2);
   } @else if $justify == left {
     $left: 0;
+    $right: auto;
   } @else if $justify == right {
+    $left: auto;
     $right: 0;
   } @else if $justify == center {
     $left: auto;

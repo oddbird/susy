@@ -13,15 +13,15 @@
   $this-columns       : get-span-setting(columns, $span);
   $this-gutters       : get-span-setting(gutters, $span);
   $this-column-width  : get-span-setting(column-width, $span);
-  $this-static        : get-span-setting(static, $span);
+  $this-layout-math   : get-span-setting(layout-math, $span);
 
   $this-location      : if($this-location, $this-location, 1);
   $this-columns       : if($this-columns, $this-columns, $columns);
   $this-gutters       : if($this-gutters, $this-gutters, $gutters);
   $this-column-width  : if($this-column-width, $this-column-width, $column-width);
-  $this-static        : if($this-static, $this-static, $static);
+  $this-layout-math   : if($this-layout-math, $this-layout-math, $layout-math);
 
-  $width: get-span-width($width, $this-location, $this-columns, $this-gutters, $this-column-width, $this-static);
+  $width: get-span-width($width, $this-location, $this-columns, $this-gutters, $this-column-width, $this-layout-math);
 
   @return $width;
 }
@@ -35,14 +35,14 @@
   $this-columns       : get-setting(columns, $context);
   $this-gutters       : get-setting(gutters, $context);
   $this-column-width  : get-setting(column-width, $context);
-  $this-static        : get-setting(static, $context);
+  $this-layout-math   : get-setting(layout-math, $context);
 
   $this-columns       : if($this-columns, $this-columns, $columns);
   $this-gutters       : if($this-gutters, $this-gutters, $gutters);
   $this-column-width  : if($this-column-width, $this-column-width, $column-width);
-  $this-static        : if($this-static, $this-static, $static);
+  $this-layout-math   : if($this-layout-math, $this-layout-math, $layout-math);
 
-  $width: get-gutter-width($this-columns, $this-gutters, $this-column-width, $this-static);
+  $width: get-gutter-width($this-columns, $this-gutters, $this-column-width, $this-layout-math);
 
   @return $width;
 }

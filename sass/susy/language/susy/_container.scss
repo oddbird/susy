@@ -3,12 +3,11 @@
 
 // Set a container element
 @mixin container(
-  $container: get-container()
+  $container: get-grid()
 ) {
-  $container  : parse-container($container);
-  $grid       : parse-grid(nth($container,1));
-  $justify    : nth($container,2);
-  $show       : nth($container,3);
+  $grid       : parse-grid($container);
+  $justify    : get-setting(container-position, $grid);
+  $show       : get-setting(show-grids, $grid);
   $box        : get-setting(box-sizing, $grid);
 
   // if there is a container width, use it
@@ -41,60 +40,4 @@
   }
 
   @include float-container($width, $justify, $show);
-}
-
-// Container Helpers
-// -----------------
-
-// Get the current container-related settings
-@function get-container(
-) {
-  $show: false;
-
-  // Create keyword for show-grids setting
-  @if $show-grids and $show-grids != "hide" {
-    $show: show;
-  } @else {
-    $show: hide;
-  }
-
-  @return get-grid() $container-position $show;
-}
-
-// parse the container shorthand syntax, and return an ordered list
-@function parse-container(
-  $container: get-container()
-) {
-  $grid     : false;
-  $justify  : $container-position;
-  $show     : $show-grids;
-
-  // justify: left | center | right
-  @if index($container, left) {
-    $justify: left;
-    $container: filter($container, left);
-  } @else if index($container, center) {
-    $justify: center;
-    $container: filter($container, center);
-  } @else if index($container, right) {
-    $justify: right;
-    $container: filter($container, right);
-  }
-
-  // show-grids: show | hide
-  @if index($container, show) {
-    $show: true;
-    $container: filter($container, show);
-  } @else if index($container, hide) {
-    $show: false;
-    $container: filter($container, hide);
-  }
-
-  @if length($container) == 1 {
-    $grid: nth($container,1);
-  } @else {
-    $grid: $container;
-  }
-
-  @return $grid $justify $show;
 }

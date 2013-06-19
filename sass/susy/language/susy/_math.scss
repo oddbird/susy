@@ -8,8 +8,8 @@
   $columns          : $columns,
   $gutters          : $gutters,
   $column-width     : $column-width,
-  $isolate          : $isolate,
-  $static           : $static,
+  $layout-method    : $layout-method,
+  $layout-math      : $layout-math,
   $flow             : $flow,
   $gutter-place     : $gutter-placement,
   $is-container     : false,
@@ -24,14 +24,11 @@
   $margin-before    : null;
   $margin-after     : null;
 
-  $static           : if($static and $static != fluid, true, false);
-  $isolate          : if($isolate and $isolate != float, true, false);
-
   // calculations
-  $width: get-span-width($span, $location, $columns, $gutters, $column-width, $static, $gutter-place);
+  $width: get-span-width($span, $location, $columns, $gutters, $column-width, $layout-math, $gutter-place);
 
   // gutter location
-  $gutter-location  : get-gutters($columns, $gutters, $column-width, $static, $gutter-place, $gutter-override);
+  $gutter-location  : get-gutters($columns, $gutters, $column-width, $layout-math, $gutter-place, $gutter-override);
 
   @if $gutter-place == inside {
     @if not $is-container {
@@ -44,8 +41,8 @@
   }
 
   // special margin handling
-  @if $isolate {
-    $margin-before: get-isolation($span, $location, $columns, $gutters, $column-width, $static);
+  @if $layout-method == isolate {
+    $margin-before: get-isolation($span, $location, $columns, $gutters, $column-width, $layout-math);
     $margin-after: -100%;
   } @else {
     @if is-last($span, $location, $columns) {
@@ -64,12 +61,12 @@
   $columns        : $columns,
   $gutters        : $gutters,
   $column-width   : $columns-width,
-  $static         : $static
+  $layout-math    : $layout-math
 ) {
   $context  : column-sum($columns, $gutters);
   $gutter   : null;
 
-  @if $static and $static != fluid {
+  @if $layout-math == static {
     @if $column-width {
       $gutter: $gutters * $column-width;
     } @else {
@@ -86,11 +83,10 @@
   $columns          : $columns,
   $gutters          : $gutters,
   $column-width     : $column-width,
-  $static           : $static,
+  $layout-math      : $layout-math,
   $gutter-place     : $gutter-placement,
   $gutter-override  : false
 ) {
-  $static   : if($gutter-place == inside and $column-width, true, $static);
   $gutter   : null;
   $before   : null;
   $after    : null;
@@ -98,7 +94,7 @@
   @if $gutter-override {
     $gutter: $gutter-override;
   } @else {
-    $gutter: get-gutter-width($columns, $gutters, $column-width, $static);
+    $gutter: get-gutter-width($columns, $gutters, $column-width, $layout-math);
   }
 
   @if $gutter-place == before {
@@ -121,7 +117,7 @@
   $columns        : $columns,
   $gutters        : $gutters,
   $column-width   : $column-width,
-  $static         : $static,
+  $layout-math    : $layout-math,
   $gutter-place   : $gutter-placement,
   $outer          : null
 ) {
@@ -139,7 +135,7 @@
       $span-sum: get-column-span-sum($span, $location, $columns, $gutters) + $outer;
     }
 
-    @if $static and $static != fluid {
+    @if $layout-math == static {
       $width: $span-sum * $column-width;
     } @else {
       $width: percentage($span-sum / $context);

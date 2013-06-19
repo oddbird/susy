@@ -174,7 +174,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   background-position: left top;
   *zoom: 1;
   max-width: 80%;
-  margin-left: auto;
+  margin-left: 0;
   margin-right: auto;
   margin-top: 0.75em;
   margin-bottom: 0.75em;
@@ -245,34 +245,29 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 .asymmetrical .size2of3 .full {
   clear: both;
 }
-.asymmetrical .gallery div:nth-child(5n + 1) {
-  width: 12.5%;
+.asymmetrical .gallery div {
   float: left;
   margin-right: -100%;
+}
+.asymmetrical .gallery div:nth-child(5n + 1) {
+  width: 12.5%;
+  clear: left;
 }
 .asymmetrical .gallery div:nth-child(5n + 2) {
   width: 11.45833%;
-  float: left;
   margin-left: 14.58333%;
-  margin-right: -100%;
 }
 .asymmetrical .gallery div:nth-child(5n + 3) {
   width: 22.91667%;
-  float: left;
   margin-left: 28.125%;
-  margin-right: -100%;
 }
 .asymmetrical .gallery div:nth-child(5n + 4) {
   width: 22.91667%;
-  float: left;
   margin-left: 53.125%;
-  margin-right: -100%;
 }
 .asymmetrical .gallery div:nth-child(5n + 5) {
   width: 21.875%;
-  float: left;
   margin-left: 78.125%;
-  margin-right: -100%;
 }
 
 .static {
@@ -367,7 +362,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   *zoom: 1;
   max-width: 60em;
   margin-left: auto;
-  margin-right: auto;
+  margin-right: 0;
   margin-top: 0.75em;
   margin-bottom: 0.75em;
 }

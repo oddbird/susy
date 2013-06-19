@@ -6,9 +6,9 @@
   $input,
   $selector: child
 ) {
-  $this-isolate: get-span-setting(isolate, $input, parse);
+  $this-laout-method: get-span-setting(layout-method, $input, parse);
 
-  @if $this-isolate and $this-isolate != float {
+  @if $this-laout-method == isolate {
     @include isolate-gallery($input);
   } @else {
     @include nth-gallery($input);

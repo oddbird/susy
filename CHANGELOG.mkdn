@@ -1,6 +1,12 @@
 Susy Changelog
 ==============
 
+v1.0.9 [June 19, 2013]
+----------------------
+
+* Fix clearing with `isolate-grid` mixin.
+* Allow changing nth-selectors in `isolate-grid` mixin.
+
 v1.0.8 [March 25, 2013]
 -----------------------
 

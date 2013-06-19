@@ -16,14 +16,14 @@
     // left
     $pos: left;
     $parsed: parse-container-position($pos);
-    @include assert-equal($parsed, 0 null,
-      'A left-aligned container should have 0 margin-left, and null right.');
+    @include assert-equal($parsed, 0 auto,
+      'A left-aligned container should have 0 margin-left, and auto right.');
 
     // right
     $pos: right;
     $parsed: parse-container-position($pos);
-    @include assert-equal($parsed, null 0,
-      'A right-aligned container should have 0 margin-right, and null left.');
+    @include assert-equal($parsed, auto 0,
+      'A right-aligned container should have 0 margin-right, and auto left.');
 
     // center
     $pos: center;

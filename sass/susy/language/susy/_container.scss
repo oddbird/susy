@@ -7,9 +7,22 @@
 ) {
   $grid       : parse-grid($container);
   $justify    : get-setting(container-position, $grid);
-  $show       : get-setting(show-grids, $grid);
   $box        : get-setting(box-sizing, $grid);
 
+  $width      : get-container-width($grid);
+
+  @if $box {
+    @include box-sizing($box);
+  }
+
+  @include float-container($width, $justify);
+  @include grid-background($grid);
+}
+
+// get the container width:
+@function get-container-width(
+  $grid: parse-grid()
+) {
   // if there is a container width, use it
   $width      : get-setting(container, $grid);
 
@@ -29,15 +42,5 @@
     }
   }
 
-  @if $show and $show != hide {
-    @include grid-background($grid);
-  }
-
-  @if $box == border-box {
-    @include box-sizing(border-box);
-  } @else if $box == content-box {
-    @include box-sizing(content-box);
-  }
-
-  @include float-container($width, $justify, $show);
+  @return $width;
 }

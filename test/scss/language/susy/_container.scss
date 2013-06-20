@@ -3,5 +3,32 @@
 
 @include test-module('Container Syntax') {
 
+  @include test('[function] get-container-width') {
+
+    // explicit
+    $grid: 960px 12 .25 left static;
+    $width: get-container-width(parse-grid($grid));
+    $expect: 960px;
+
+    @include assert-equal($width, $expect,
+      'The container-width of "#{$grid}" should be #{$expect}');
+
+    // calculated
+    $grid: 12 (6em 1em);
+    $width: get-container-width(parse-grid($grid));
+    $expect: 83em;
+
+    @include assert-equal($width, $expect,
+      'The container-width of "#{$grid}" should be #{$expect}');
+
+    // default
+    $grid: (1 3 4 2 1) .25;
+    $width: get-container-width(parse-grid($grid));
+    $expect: 100%;
+
+    @include assert-equal($width, $expect,
+      'The container-width of "#{$grid}" should be #{$expect}');
+
+  }
 
 }

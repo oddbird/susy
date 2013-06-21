@@ -113,7 +113,7 @@
 // Return span width
 @function get-span-width(
   $span,
-  $location,
+  $location       : 1,
   $columns        : $columns,
   $gutters        : $gutters,
   $column-width   : $column-width,

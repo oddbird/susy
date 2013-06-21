@@ -22,49 +22,11 @@ $base-line-height       : 24px            !default;
 @mixin grid-background(
   $grid: parse-grid()
 ) {
-  $stops  : compact();
-  $color  : $grid-background-color;
+  $this-flow    : get-setting(flow, $grid);
+  $this-show    : get-setting(show-grids, $grid);
+  $this-show    : if(not $this-show, $show-grids, $this-show);
 
-  @if length($grid) == 2 and type-of(nth($grid,2)) == color {
-    $color: nth($grid,2);
-    $grid: nth($grid,1);
-  }
-
-  $trans  : transparent;
-  $light  : lighten($color, 15%);
-
-  $this-columns       : get-setting(columns, $grid);
-  $this-gutters       : get-setting(gutters, $grid);
-  $this-column-width  : get-setting(column-width, $grid);
-  $this-static        : get-setting(static, $grid);
-  $this-gutter-place  : get-setting(gutter-placement, $grid);
-  $this-flow          : get-setting(flow, $grid);
-  $this-show          : get-setting(show-grids, $grid);
-
-  $this-static        : if($this-static and $this-static != fluid, true, false);
-  $this-show          : if(not $this-show, $show-grids, $this-show);
-
-  @for $location from 1 through column-count($this-columns) {
-    $this-stop: compact();
-
-    @if $location > 1 {
-      $start: get-isolation(1, $location, $this-columns, $this-gutters, $this-column-width, $this-static);
-      $this-stop: append($this-stop, $color $start, comma);
-    }
-
-    @if $location == column-count($this-columns) {
-      $this-stop: append($this-stop, $light 100%, comma);
-    } @else {
-      $end: get-span-width($location, 1, $this-columns, $this-gutters, $this-column-width, $this-static, $this-gutter-place);
-      $gutter: get-isolation(1, $location + 1, $this-columns, $this-gutters, $this-column-width, $this-static);
-
-      $this-stop: append($this-stop, $light $end, comma);
-      $this-stop: append($this-stop, $trans $end, comma);
-      $this-stop: append($this-stop, $trans $gutter, comma);
-    }
-
-    $stops: join($stops, $this-stop, comma);
-  }
+  $stops        : get-grid-color-stops($grid);
 
   @include grid-background-output($stops, $this-show, $this-flow);
 }
@@ -136,3 +98,51 @@ $base-line-height       : 24px            !default;
     }
   }
 }
+
+// get grid color-stops
+@function get-grid-color-stops(
+  $grid: parse-grid()
+) {
+  $stops  : ();
+  $color  : $grid-background-color;
+  $trans  : transparent;
+  $light  : lighten($color, 15%);
+
+  $this-columns       : get-setting(columns, $grid);
+  $this-gutters       : get-setting(gutters, $grid);
+  $this-column-width  : get-setting(column-width, $grid);
+  $this-layout-math   : get-setting(layout-math, $grid);
+  $this-gutter-place  : get-setting(gutter-placement, $grid);
+
+  @for $location from 1 through column-count($this-columns) {
+    $this-stop: compact();
+
+    @if $location == 1 {
+      $this-stop: append($this-stop, $color, comma);
+    } @else {
+      $start: get-isolation(1, $location, $this-columns, $this-gutters, $this-column-width, $this-layout-math);
+      $this-stop: append($this-stop, $color $start, comma);
+    }
+
+    @if $location == column-count($this-columns) {
+      $this-stop: append($this-stop, $light, comma);
+    } @else {
+      $end-color: $light;
+
+      @if $this-gutter-place != inside {
+        $gutter: get-span-width($location, 1, $this-columns, $this-gutters, $this-column-width, $this-layout-math, $this-gutter-place);
+        $this-stop: append($this-stop, $light $gutter, comma);
+        $this-stop: append($this-stop, $trans $gutter, comma);
+        $end-color: $trans;
+      }
+
+      $end: get-isolation(1, $location + 1, $this-columns, $this-gutters, $this-column-width, $this-layout-math);
+      $this-stop: append($this-stop, $end-color $end, comma);
+    }
+
+    $stops: join($stops, $this-stop, comma);
+  }
+
+  @return $stops;
+}
+

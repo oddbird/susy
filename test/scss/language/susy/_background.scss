@@ -1,2 +1,46 @@
 // Background Grids
 // ================
+
+@include test-module('Grid Background Syntax') {
+  $color  : $grid-background-color;
+  $trans  : transparent;
+  $light  : lighten($color, 15%);
+
+  // Get Grid Color-Stops
+  @include test('[function] get-grid-color-stops') {
+
+    // static
+    $grid: 4 (4em 1em) static;
+    $parse: parse-grid($grid);
+    $stops: get-grid-color-stops($parse);
+    $expect: $color, $light 4em, transparent 4em, transparent 5em, $color 5em, $light 9em, transparent 9em, transparent 10em, $color 10em, $light 14em, transparent 14em, transparent 15em, $color 15em, $light;
+    @include assert-equal($stops, $expect,
+      'Stops for "#{$grid}" should be "#{$expect}"');
+
+    // static inside
+    $grid: 4 (4em 1em) static inside;
+    $parse: parse-grid($grid);
+    $stops: get-grid-color-stops($parse);
+    $expect: $color, $light 5em, $color 5em, $light 10em, $color 10em, $light 15em, $color 15em, $light;
+    @include assert-equal($stops, $expect,
+      'Stops for "#{$grid}" should be "#{$expect}"');
+
+    // fluid
+    $grid: (1 2 3 2 1) .25 fluid;
+    $parse: parse-grid($grid);
+    $stops: get-grid-color-stops($parse);
+    $expect: $color, $light 10%, transparent 10%, transparent 12.5%, $color 12.5%, $light 32.5%, transparent 32.5%, transparent 35%, $color 35%, $light 65%, transparent 65%, transparent 67.5%, $color 67.5%, $light 87.5%, transparent 87.5%, transparent 90%, $color 90%, $light;
+    @include assert-equal($stops, $expect,
+      'Stops for "#{$grid}" should be "#{$expect}"');
+
+    // fluid inside
+    $grid: 7 .5 fluid inside;
+    $parse: parse-grid($grid);
+    $stops: get-grid-color-stops($parse);
+    $expect: $color, $light 15%, $color 15%, $light 30%, $color 30%, $light 45%, $color 45%, $light 60%, $color 60%, $light 75%, $color 75%, $light 90%, $color 90%, $light;
+    @include assert-equal($stops, $expect,
+      'Stops for "#{$grid}" should be "#{$expect}"');
+
+  }
+
+}

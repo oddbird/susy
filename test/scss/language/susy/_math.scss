@@ -1,2 +1,14 @@
 // Susy Math
 // =========
+
+@include test-module('Syntax Math') {
+  @include test('[function] get-span-width') {
+    // explicit
+    $span: 30%;
+    $width: get-span-width($span);
+    @include assert-equal($width, $span,
+      'The width of an explicit "30%" span should be "30%"');
+
+
+  }
+}

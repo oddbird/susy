@@ -37,42 +37,26 @@ $show-grids           : show-columns    !default;
   $grid,
   $clean: true
 ) {
-  $grid               : parse-grid($grid);
+
+  $grid           : get-adjusted-grid($grid, $clean);
 
   // get values
-  $new-columns        : get-setting(columns, $grid);
-  $new-gutters        : get-setting(gutters, $grid);
-  $new-container      : get-setting(container, $grid);
-  $new-column-width   : get-setting(column-width, $grid);
-  $new-layout-math    : get-setting(layout-math, $grid);
-  $new-layout-method  : get-setting(layout-method, $grid);
+  $columns              : get-setting(columns, $grid);
+  $gutters              : get-setting(gutters, $grid);
+  $container            : get-setting(container, $grid);
+  $column-width         : get-setting(column-width, $grid);
+  $layout-math          : get-setting(layout-math, $grid);
+  $layout-method        : get-setting(layout-method, $grid);
 
-  $new-flow           : get-setting(flow, $grid);
-  $new-gutter-place   : get-setting(gutter-placement, $grid);
-  $new-position       : get-setting(container-position, $grid);
-  $new-show-grids     : get-setting(show-grids, $grid);
-  $new-box            : get-setting(box-sizing, $grid);
+  $flow                 : get-setting(flow, $grid);
+  $gutter-placement     : get-setting(gutter-placement, $grid);
+  $container-position   : get-setting(container-position, $grid);
+  $show-grids           : get-setting(show-grids, $grid);
+  $box                  : get-setting(box-sizing, $grid);
 
-  // Set required values
-  $columns            : if($new-columns, $new-columns, $columns);
-  $gutters            : if($new-gutters, $new-gutters, $gutters);
-  $layout-math        : if($new-layout-math, $new-layout-math, $layout-math);
-  $layout-method      : if($new-layout-method, $new-layout-method, $layout-method);
-  $flow               : if($new-flow, $new-flow, $flow);
-  $gutter-placement   : if($new-gutter-place, $new-gutter-place, $gutter-placement);
-  $container-position : if($new-position, $new-position, $container-position);
-  $show-grids         : if($new-show-grids, $new-show-grids, $show-grids);
-
-  // optionally fill values based on current grid
-  @if $clean {
-    $container        : if($new-container, $new-container, auto);
-    $column-width     : $new-column-width;
-    $box-sizing       : $new-box;
-  } @else {
-    $container        : if($new-container, $new-container, $container);
-    $column-width     : if($new-column-width, $new-column-width, $column-width);
-    $box-sizing       : if($new-box, $new-box, $box-sizing);
-  }
+  $container            : get-setting(container, $grid);
+  $column-width         : get-setting(column-width, $grid);
+  $box-sizing           : get-setting(box-sizing, $grid);
 }
 
 // Use an arbitrary grid for a section of code
@@ -228,6 +212,51 @@ $show-grids           : show-columns    !default;
   }
 
   @return $columns-setting $gutters-setting $container-setting $column-width-setting $layout-math-setting $layout-method-setting $position-setting $flow-setting $gutter-place-setting $show-setting $box-setting;
+}
+
+// fill grid defaults
+@function get-adjusted-grid (
+  $grid: get-grid(),
+  $clean: false
+) {
+  $grid                   : parse-grid($grid);
+
+  $new-columns            : get-setting(columns, $grid);
+  $new-gutters            : get-setting(gutters, $grid);
+  $new-layout-math        : get-setting(layout-math, $grid);
+  $new-layout-method      : get-setting(layout-method, $grid);
+  $new-flow               : get-setting(flow, $grid);
+  $new-gutter-place       : get-setting(gutter-placement, $grid);
+  $new-container-position : get-setting(container-position, $grid);
+  $new-show-grids         : get-setting(show-grids, $grid);
+
+
+  // Set required values
+  $new-columns            : if($new-columns, $new-columns, $columns);
+  $new-gutters            : if($new-gutters, $new-gutters, $gutters);
+  $new-layout-math        : if($new-layout-math, $new-layout-math, $layout-math);
+  $new-layout-method      : if($new-layout-method, $new-layout-method, $layout-method);
+  $new-flow               : if($new-flow, $new-flow, $flow);
+  $new-gutter-place       : if($new-gutter-place, $new-gutter-place, $gutter-placement);
+  $new-container-position : if($new-container-position, $new-container-position, $container-position);
+  $new-show-grids         : if($new-show-grids, $new-show-grids, $show-grids);
+
+  // optionally fill values based on current grid
+  $new-container          : get-setting(container, $grid);
+  $new-column-width       : get-setting(column-width, $grid);
+  $new-box-sizing         : get-setting(box-sizing, $grid);
+
+  @if $clean {
+    $new-container        : if($new-container, $new-container, auto);
+    $new-column-width     : $new-column-width;
+    $new-box-sizing       : $new-box-sizing;
+  } @else {
+    $new-container        : if($new-container, $new-container, $container);
+    $new-column-width     : if($new-column-width, $new-column-width, $column-width);
+    $new-box-sizing       : if($new-box-sizing, $new-box-sizing, $box-sizing);
+  }
+
+  @return $new-columns $new-gutters $new-container $new-column-width $new-layout-math $new-layout-method $new-container-position $new-flow $new-gutter-place $new-show-grids $new-box-sizing;
 }
 
 // Return one setting from a shorhand grid

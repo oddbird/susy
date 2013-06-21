@@ -97,11 +97,14 @@
 /*  
 
 ### Syntax Math ------ */
-/*  - [function] get-span-width (1 assertions, 1 passed, 0 failed) */
+/*  - [function] get-span-width (6 assertions, 6 passed, 0 failed) */
+/*  - [function] get-gutter-width (2 assertions, 2 passed, 0 failed) */
+/*  - [function] get-gutters (6 assertions, 6 passed, 0 failed) */
+/*  - [function] span-math (7 assertions, 7 passed, 0 failed) */
 /*  
     Summary:
-    - 1 Tests
-    - 1 Passed
+    - 4 Tests
+    - 4 Passed
     - 0 Failed */
 /*  
 

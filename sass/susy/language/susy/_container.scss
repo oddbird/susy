@@ -6,10 +6,9 @@
   $container: get-grid()
 ) {
   $grid       : parse-grid($container);
+  $width      : get-container-width($grid);
   $justify    : get-setting(container-position, $grid);
   $box        : get-setting(box-sizing, $grid);
-
-  $width      : get-container-width($grid);
 
   @if $box {
     @include box-sizing($box);
@@ -25,8 +24,9 @@
 ) {
   // if there is a container width, use it
   $width      : get-setting(container, $grid);
+  $width      : if($width, $width, $container);
 
-  @if not $width {
+  @if $width == auto {
     // if we have a column width, calculate container from that
     $column-width-setting: get-setting(column-width, $grid);
 

@@ -65,7 +65,7 @@ $show-grids           : show-columns    !default;
 
   // optionally fill values based on current grid
   @if $clean {
-    $container        : $new-container;
+    $container        : if($new-container, $new-container, auto);
     $column-width     : $new-column-width;
     $box-sizing       : $new-box;
   } @else {
@@ -195,6 +195,11 @@ $show-grids           : show-columns    !default;
         $box-setting: border-box;
       } @else if $value == content-box {
         $box-setting: content-box;
+      }
+
+      // auto container
+      @if $value == auto {
+        $container-setting: auto;
       }
     }
 

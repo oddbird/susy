@@ -77,8 +77,8 @@
 /*  - [mixin] set-grid (33 assertions, 33 passed, 0 failed) */
 /*  - [mixin] use-grid (55 assertions, 55 passed, 0 failed) */
 /*  - [function] get-grid (24 assertions, 24 passed, 0 failed) */
-/*  - [function] parse-grid (2 assertions, 2 passed, 0 failed) */
-/*  - [function] get-setting (10 assertions, 10 passed, 0 failed) */
+/*  - [function] parse-grid (3 assertions, 3 passed, 0 failed) */
+/*  - [function] get-setting (11 assertions, 11 passed, 0 failed) */
 /*  
     Summary:
     - 6 Tests
@@ -118,7 +118,7 @@
 /*  
 
 ### Container Syntax ------ */
-/*  - [function] get-container-width (3 assertions, 3 passed, 0 failed) */
+/*  - [function] get-container-width (5 assertions, 5 passed, 0 failed) */
 /*  
     Summary:
     - 1 Tests

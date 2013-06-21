@@ -3,6 +3,7 @@ Susy Next Changelog
 
 2.0.0-alpha.3 [unreleased]
 --------------------------
+- Add `auto` keyword to override `$container-width`, otherwise respect existing width.
 - Renamed `$isolate` to `$layout-method`
   - No longer accepts boolean.
   - Accepts keywords `isolate` and (default) `float`.

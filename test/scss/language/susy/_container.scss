@@ -29,6 +29,17 @@
     @include assert-equal($width, $expect,
       'The container-width of "#{$grid}" should be #{$expect}');
 
+    @include use-grid(960px 12 .25) {
+      $width: get-container-width(parse-grid(isolate));
+      $expect: 960px;
+      @include assert-equal($width, $expect,
+        'Omitted grid-widths should still be respected.');
+
+      $width: get-container-width(parse-grid(auto 10));
+      $expect: 100%;
+      @include assert-equal($width, $expect,
+        'Auto container-width should override existing grid.');
+    }
   }
 
 }

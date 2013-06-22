@@ -100,19 +100,19 @@
       'A "15px inside" gutter should return "15px 15px" gutters');
 
     // before
-    $gutters: get-gutters($cols, $guts, $gutter-place: before);
+    $gutters: get-gutters($cols, $guts, $gutter-position: before);
     $expect: 5% null;
     @include assert-equal($gutters, $expect,
       'A relative gutter from "7 .5 before" should return "5% null" gutters');
 
     // after
-    $gutters: get-gutters($cols, $guts, $gutter-place: after);
+    $gutters: get-gutters($cols, $guts, $gutter-position: after);
     $expect: null 5%;
     @include assert-equal($gutters, $expect,
       'A relative gutter from "7 .5 after" should return "null 5%" gutters');
 
     // split
-    $gutters: get-gutters($cols, $guts, $gutter-place: split);
+    $gutters: get-gutters($cols, $guts, $gutter-position: split);
     $expect: 2.5% 2.5%;
     @include assert-equal($gutters, $expect,
       'A relative gutter from "7 .5 split" should return "2.5% 2.5%" gutters');

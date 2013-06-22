@@ -108,11 +108,11 @@ $base-line-height       : 24px            !default;
   $trans  : transparent;
   $light  : lighten($color, 15%);
 
-  $this-columns       : get-setting(columns, $grid);
-  $this-gutters       : get-setting(gutters, $grid);
-  $this-column-width  : get-setting(column-width, $grid);
-  $this-layout-math   : get-setting(layout-math, $grid);
-  $this-gutter-place  : get-setting(gutter-placement, $grid);
+  $this-columns           : get-setting(columns, $grid);
+  $this-gutters           : get-setting(gutters, $grid);
+  $this-column-width      : get-setting(column-width, $grid);
+  $this-layout-math       : get-setting(layout-math, $grid);
+  $this-gutter-position   : get-setting(gutter-position, $grid);
 
   @for $location from 1 through column-count($this-columns) {
     $this-stop: compact();
@@ -129,8 +129,8 @@ $base-line-height       : 24px            !default;
     } @else {
       $end-color: $light;
 
-      @if $this-gutter-place != inside {
-        $gutter: get-span-width($location, 1, $this-columns, $this-gutters, $this-column-width, $this-layout-math, $this-gutter-place);
+      @if $this-gutter-position != inside {
+        $gutter: get-span-width($location, 1, $this-columns, $this-gutters, $this-column-width, $this-layout-math, $this-gutter-position);
         $this-stop: append($this-stop, $light $gutter, comma);
         $this-stop: append($this-stop, $trans $gutter, comma);
         $end-color: $trans;

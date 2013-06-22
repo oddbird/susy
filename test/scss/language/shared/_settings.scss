@@ -9,7 +9,7 @@ $original-layout-math         : $layout-math;
 $original-layout-method       : $layout-method;
 $original-flow                : $flow;
 $original-container-position  : $container-position;
-$original-gutter-placement    : $gutter-placement;
+$original-gutter-position     : $gutter-position;
 $original-show-grids          : $show-grids;
 $original-box-sizing          : $box-sizing;
 
@@ -22,7 +22,7 @@ $original-box-sizing          : $box-sizing;
   $layout-method        : $original-layout-method;
   $flow                 : $original-flow;
   $container-position   : $original-container-position;
-  $gutter-placement     : $original-gutter-placement;
+  $gutter-position      : $original-gutter-position;
   $show-grids           : $original-show-grids;
   $box-sizing           : $original-box-sizing;
 }
@@ -37,7 +37,7 @@ $original-box-sizing          : $box-sizing;
   $this-layout-method         : $original-layout-method,
   $this-flow                  : $original-flow,
   $this-container-position    : $original-container-position,
-  $this-gutter-placement      : $original-gutter-placement,
+  $this-gutter-position       : $original-gutter-position,
   $this-show-grids            : $original-show-grids,
   $this-box-sizing            : $original-box-sizing
 ) {
@@ -57,8 +57,8 @@ $original-box-sizing          : $box-sizing;
     '[#{$name}] $flow should be equal to #{$this-flow}');
   @include assert-equal($container-position, $this-container-position,
     '[#{$name}] $container-position should be equal to #{$this-container-position}');
-  @include assert-equal($gutter-placement, $this-gutter-placement,
-    '[#{$name}] $gutter-placement should be equal to #{$this-gutter-placement}');
+  @include assert-equal($gutter-position, $this-gutter-position,
+    '[#{$name}] $gutter-position should be equal to #{$this-gutter-position}');
   @include assert-equal($show-grids, $this-show-grids,
     '[#{$name}] $show-grids should be equal to #{$this-show-grids}');
   @include assert-equal($box-sizing, $this-box-sizing,
@@ -97,7 +97,7 @@ $original-box-sizing          : $box-sizing;
     $layout-method        : float;
     $flow                 : rtl;
     $container-position   : center;
-    $gutter-placement     : after;
+    $gutter-position      : after;
     $show-grids           : show;
     $box-sizing           : false;
 
@@ -113,7 +113,7 @@ $original-box-sizing          : $box-sizing;
       $this-layout-method: isolate,
       $this-flow: ltr,
       $this-container-position: left,
-      $this-gutter-placement: split,
+      $this-gutter-position: split,
       $this-show-grids: hide,
       $this-box-sizing: border-box
     );
@@ -130,7 +130,7 @@ $original-box-sizing          : $box-sizing;
       $this-layout-method: float,
       $this-flow: ltr,
       $this-container-position: left,
-      $this-gutter-placement: split,
+      $this-gutter-position: split,
       $this-show-grids: show-baseline,
       $this-box-sizing: false
     );
@@ -154,7 +154,7 @@ $original-box-sizing          : $box-sizing;
         $this-container: 960px,
         $this-column-width: false,
         $this-layout-math: static,
-        $this-gutter-placement: split
+        $this-gutter-position: split
       );
 
     }
@@ -171,7 +171,7 @@ $original-box-sizing          : $box-sizing;
         $this-container: auto,
         $this-column-width: 6em,
         $this-layout-method: float,
-        $this-gutter-placement: split
+        $this-gutter-position: split
       );
 
     }
@@ -191,7 +191,7 @@ $original-box-sizing          : $box-sizing;
     $layout-method        : float;
     $flow                 : rtl;
     $container-position   : center;
-    $gutter-placement     : after;
+    $gutter-position      : after;
     $show-grids           : show;
     $box-sizing           : false;
 
@@ -204,7 +204,7 @@ $original-box-sizing          : $box-sizing;
       $this-layout-method        : float,
       $this-flow                 : rtl,
       $this-container-position   : center,
-      $this-gutter-placement     : after,
+      $this-gutter-position      : after,
       $this-show-grids           : show,
       $this-box-sizing           : false
     );

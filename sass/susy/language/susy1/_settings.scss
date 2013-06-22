@@ -39,7 +39,7 @@ $show-grid-backgrounds: true;
   $flow: if($from-direction == right, rtl, ltr);
 
   $layout-method: false;
-  $gutter-placement: after;
+  $gutter-position: after;
   $show-grids: $show-grid-backgrounds or $show-column-grid-backgrounds;
 
   @if $container-style == static {

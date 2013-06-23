@@ -35,7 +35,7 @@ $show-grids           : show-columns    !default;
 // Set a new grid using a shorthand
 @mixin set-grid(
   $grid,
-  $clean: true
+  $clean: false
 ) {
 
   $grid                 : get-adjusted-grid($grid, $clean);
@@ -62,7 +62,7 @@ $show-grids           : show-columns    !default;
 // Use an arbitrary grid for a section of code
 @mixin use-grid(
   $grid,
-  $clean: true
+  $clean: false
 ) {
   $old-grid: get-grid();
 
@@ -230,6 +230,9 @@ $show-grids           : show-columns    !default;
   $new-container-position : get-setting(container-position, $grid);
   $new-show-grids         : get-setting(show-grids, $grid);
 
+  $new-container          : get-setting(container, $grid);
+  $new-column-width       : get-setting(column-width, $grid);
+  $new-box-sizing         : get-setting(box-sizing, $grid);
 
   // Set required values
   $new-columns            : if($new-columns, $new-columns, $columns);
@@ -242,14 +245,8 @@ $show-grids           : show-columns    !default;
   $new-show-grids         : if($new-show-grids, $new-show-grids, $show-grids);
 
   // optionally fill values based on current grid
-  $new-container          : get-setting(container, $grid);
-  $new-column-width       : get-setting(column-width, $grid);
-  $new-box-sizing         : get-setting(box-sizing, $grid);
-
   @if $clean {
     $new-container        : if($new-container, $new-container, auto);
-    $new-column-width     : $new-column-width;
-    $new-box-sizing       : $new-box-sizing;
   } @else {
     $new-container        : if($new-container, $new-container, $container);
     $new-column-width     : if($new-column-width, $new-column-width, $column-width);
@@ -273,8 +270,10 @@ $show-grids           : show-columns    !default;
     $grid: parse-grid($grid);
   }
 
-  @if $key and not ($key > length($grid)) {
+  @if $key {
     $value: nth($grid, $key);
+  } @else {
+    @warn '"#{$setting}" is not a valid grid setting.';
   }
 
   @return $value;

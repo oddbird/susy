@@ -72,17 +72,18 @@
     - 0 Failed */
 /*  
 
-### Shared Grid-Settings Language ------ */
-/*  - Original-Grid Helpers (23 assertions, 23 passed, 0 failed) */
-/*  - [mixin] set-grid (33 assertions, 33 passed, 0 failed) */
-/*  - [mixin] use-grid (55 assertions, 55 passed, 0 failed) */
-/*  - [function] get-grid (24 assertions, 24 passed, 0 failed) */
-/*  - [function] parse-grid (3 assertions, 3 passed, 0 failed) */
-/*  - [function] get-setting (11 assertions, 11 passed, 0 failed) */
+### Settings Syntax ------ */
+/*  - [Test Helper] Original Grid (2 assertions, 2 passed, 0 failed) */
+/*  - [mixin] set-grid (10 assertions, 10 passed, 0 failed) */
+/*  - [mixin] use-grid (6 assertions, 6 passed, 0 failed) */
+/*  - [function] get-grid (3 assertions, 3 passed, 0 failed) */
+/*  - [function] parse-grid (44 assertions, 44 passed, 0 failed) */
+/*  - [function] get-adjusted-grid (44 assertions, 44 passed, 0 failed) */
+/*  - [function] get-setting (13 assertions, 13 passed, 0 failed) */
 /*  
     Summary:
-    - 6 Tests
-    - 6 Passed
+    - 7 Tests
+    - 7 Passed
     - 0 Failed */
 /*  
 
@@ -108,6 +109,14 @@
     - 0 Failed */
 /*  
 
+### Syntax Functions ------ */
+/*  
+    Summary:
+    - 0 Tests
+    - 0 Passed
+    - 0 Failed */
+/*  
+
 ### Grid Background Syntax ------ */
 /*  - [function] get-grid-color-stops (4 assertions, 4 passed, 0 failed) */
 /*  
@@ -123,6 +132,38 @@
     Summary:
     - 1 Tests
     - 1 Passed
+    - 0 Failed */
+/*  
+
+### Span Language Parsing ------ */
+/*  
+    Summary:
+    - 0 Tests
+    - 0 Passed
+    - 0 Failed */
+/*  
+
+### Isolation Syntax ------ */
+/*  
+    Summary:
+    - 0 Tests
+    - 0 Passed
+    - 0 Failed */
+/*  
+
+### Gallery Syntax ------ */
+/*  
+    Summary:
+    - 0 Tests
+    - 0 Passed
+    - 0 Failed */
+/*  
+
+### Row Syntax ------ */
+/*  
+    Summary:
+    - 0 Tests
+    - 0 Passed
     - 0 Failed */
 /*
 

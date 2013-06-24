@@ -75,8 +75,7 @@ $show-grids           : show-columns    !default;
 // ------------
 
 // Get the current grid settings as a shorthand list
-@function get-grid(
-) {
+@function get-grid() {
   $new-gutters        : $gutters;
   $new-show-grids     : false;
 
@@ -215,7 +214,7 @@ $show-grids           : show-columns    !default;
 }
 
 // fill grid defaults
-@function get-adjusted-grid (
+@function get-adjusted-grid(
   $grid: get-grid(),
   $clean: false
 ) {
@@ -253,7 +252,7 @@ $show-grids           : show-columns    !default;
     $new-box-sizing       : if($new-box-sizing, $new-box-sizing, $box-sizing);
   }
 
-  @return $new-columns $new-gutters $new-container $new-column-width $new-layout-math $new-layout-method $new-container-position $new-flow $new-gutter-place $new-show-grids $new-box-sizing;
+  @return $new-columns, $new-gutters, $new-container, $new-column-width, $new-layout-math, $new-layout-method, $new-container-position, $new-flow, $new-gutter-place, $new-show-grids, $new-box-sizing;
 }
 
 // Return one setting from a shorhand grid

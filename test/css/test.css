@@ -136,10 +136,12 @@
 /*  
 
 ### Span Language Parsing ------ */
+/*  - [function] parse-span (66 assertions, 66 passed, 0 failed) */
+/*  - [function] get-span-setting (12 assertions, 12 passed, 0 failed) */
 /*  
     Summary:
-    - 0 Tests
-    - 0 Passed
+    - 2 Tests
+    - 2 Passed
     - 0 Failed */
 /*  
 
@@ -165,34 +167,3 @@
     - 0 Tests
     - 0 Passed
     - 0 Failed */
-/*
-
-### Shared Grid Background API ------ */
-/* - [mixin] grid-background-output (ltr)
-
-EXPECT:
-.ltr-grid-background-output {
-  background: linear-gradient(left, #ff0000 30%, rgba(0, 0, 255, 0.5) 50%), linear-gradient(bottom, rgba(0, 0, 0, 0.5) 5%, rgba(0, 0, 0, 0) 5%);
-  background: linear-gradient(to right, #ff0000 30%, rgba(0, 0, 255, 0.5) 50%), linear-gradient(bottom, rgba(0, 0, 0, 0.5) 5%, rgba(0, 0, 0, 0) 5%);
-  background-size: 100% 24px;
-  background-position: left top;
-}
-
-*/
-.ltr-grid-background-output {
-  background: linear-gradient(left, #ff0000 30%, rgba(0, 0, 255, 0.5) 50%);
-}
-
-/* - [mixin] grid-background-ouput (rtl)
-
-EXPECT:
-.rtl-grid-background-output {
-  background: linear-gradient(right, #ff0000 30%, rgba(0, 0, 255, 0.5) 50%), linear-gradient(bottom, rgba(0, 0, 0, 0.5) 5%, rgba(0, 0, 0, 0) 5%);
-  background: linear-gradient(to left, #ff0000 30%, rgba(0, 0, 255, 0.5) 50%), linear-gradient(bottom, rgba(0, 0, 0, 0.5) 5%, rgba(0, 0, 0, 0) 5%);
-  background-size: 100% 24px;
-  background-position: left top;
-}
-*/
-.rtl-grid-background-output {
-  background: linear-gradient(left, #ff0000 30%, rgba(0, 0, 255, 0.5) 50%);
-}

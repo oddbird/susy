@@ -88,7 +88,7 @@
         $new-gutter-position: split;
       } @else if $value == inside {
         $new-gutter-position: inside;
-      } @else if $value == no-gutters {
+      } @else if $value == no-gutter or $value == no-gutters {
         $new-gutter-position: no-gutters;
       }
 
@@ -132,7 +132,7 @@
     // context
     @if $of {
       $i: $i + 1;
-      $new-context: compact();
+      $new-context: ();
 
       @while $of and $i <= length($string) {
         $this: nth($string,$i);
@@ -166,7 +166,7 @@
   $new-flow               : if($new-flow, $new-flow, $flow);
   $new-gutter-position    : if($new-gutter-position, $new-gutter-position, $gutter-position);
 
-  @return $new-span $new-location $new-columns $new-gutters $new-column-width $new-layout-method $new-layout-math $new-flow $new-gutter-position $is-container $gutter-override;
+  @return $new-span, $new-location, $new-columns, $new-gutters, $new-column-width, $new-layout-method, $new-layout-math, $new-flow, $new-gutter-position, $is-container, $gutter-override;
 }
 
 // Return one particular span setting from a list

@@ -82,39 +82,39 @@
     $guts: .5;
 
     // override before
-    $gutters: get-gutters($cols, $guts, false, fluid, before, 30%);
+    $test: get-gutters($cols, $guts, false, fluid, before, 30%);
     $expect: 30% null;
-    @include assert-equal($gutters, $expect,
+    @include assert-equal($test, $expect,
       'A "30% before" gutter should return "30% null" gutters');
 
     // override after
-    $gutters: get-gutters($cols, $guts, false, fluid, after, 2em);
+    $test: get-gutters($cols, $guts, false, fluid, after, 2em);
     $expect: null 2em;
-    @include assert-equal($gutters, $expect,
+    @include assert-equal($test, $expect,
       'A "2em after" gutter should return "null 2em" gutters');
 
     // override inside
-    $gutters: get-gutters($cols, $guts, false, fluid, inside, 15px);
+    $test: get-gutters($cols, $guts, false, fluid, inside, 15px);
     $expect: 15px 15px;
-    @include assert-equal($gutters, $expect,
+    @include assert-equal($test, $expect,
       'A "15px inside" gutter should return "15px 15px" gutters');
 
     // before
-    $gutters: get-gutters($cols, $guts, $gutter-position: before);
+    $test: get-gutters($cols, $guts, $gutter-position: before);
     $expect: 5% null;
-    @include assert-equal($gutters, $expect,
+    @include assert-equal($test, $expect,
       'A relative gutter from "7 .5 before" should return "5% null" gutters');
 
     // after
-    $gutters: get-gutters($cols, $guts, $gutter-position: after);
+    $test: get-gutters($cols, $guts, $gutter-position: after);
     $expect: null 5%;
-    @include assert-equal($gutters, $expect,
+    @include assert-equal($test, $expect,
       'A relative gutter from "7 .5 after" should return "null 5%" gutters');
 
     // split
-    $gutters: get-gutters($cols, $guts, $gutter-position: split);
+    $test: get-gutters($cols, $guts, $gutter-position: split);
     $expect: 2.5% 2.5%;
-    @include assert-equal($gutters, $expect,
+    @include assert-equal($test, $expect,
       'A relative gutter from "7 .5 split" should return "2.5% 2.5%" gutters');
   }
 

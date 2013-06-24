@@ -1,13 +1,162 @@
 // Span language parsing
 // =====================
 
+// test the output of a parsed grid
+@mixin test-parsed-span($name, $test, $expect) {
+  $options  : span location columns gutters column-width layout-method layout-math flow gutter-position is-container gutter-override;
+
+  @each $setting in $options {
+    $index: index($options, $setting);
+    $this-test: nth($test, $index);
+    $this-expect: nth($expect, $index);
+    @include assert-equal($this-test, $this-expect,
+      '[#{$name}] #{$setting} should be "#{$this-expect}"');
+  }
+}
+
 @include test-module('Span Language Parsing') {
   // span
   // ----
 
+  // @@@ need mixin tests
+
   // parse-span
   // ----------
 
+  @include test('[function] parse-span') {
+    // Span #1
+    $span: first 3 of 12 .25 after isolate fluid ltr;
+    $test: parse-span($span);
+    $expect: 3 1 12 0.25 false isolate fluid ltr after false false;
+
+    @include test-parsed-span('parse-span: #1', $test, $expect);
+
+    // Span #2
+    $span: last 4 of (1 2 3 2 1) (4em 1em) before float static rtl container;
+    $test: parse-span($span);
+    $expect: 4 last (1 2 3 2 1) 0.25 4em float static rtl before container false;
+
+    @include test-parsed-span('parse-span: #2', $test, $expect);
+
+    // Span #3
+    $span: 1 of 3 alpha split;
+    $test: parse-span($span);
+    $expect: 1 1 3 $gutters $column-width $layout-method $layout-math $flow split false false;
+
+    @include test-parsed-span('parse-span: #3', $test, $expect);
+
+    // Span #4
+    $span: omega 3 of 7 .5 inside;
+    $test: parse-span($span);
+    $expect: 3 last 7 .5 $column-width $layout-method $layout-math $flow inside false false;
+
+    @include test-parsed-span('parse-span: #4', $test, $expect);
+
+    // Span #5
+    $span: 3 at 2 no-gutters;
+    $test: parse-span($span);
+    $expect: 3 2 $columns $gutters $column-width $layout-method $layout-math $flow no-gutters false false;
+
+    @include test-parsed-span('parse-span: #5', $test, $expect);
+
+    // Span #6
+    $span: 2 gutter 5em;
+    $test: parse-span($span);
+    $expect: 2 false $columns $gutters $column-width $layout-method $layout-math $flow $gutter-position false 5em;
+
+    @include test-parsed-span('parse-span: #6', $test, $expect);
+
+  }
+
   // get-span-setting
   // ----------------
+
+  @include test('[function] get-span-setting') {
+    $span: first 3 of 12 (4em 1em) after isolate fluid ltr gutters 1em container;
+    $pre: parse-span($span);
+
+    $a: get-span-setting(span, $span, parse);
+    $b: get-span-setting(span, $pre);
+
+    @include assert-equal($a, $b,
+      'Get-span-setting should be the same whether pre-parsed or not');
+
+    // span
+    $test: get-span-setting(span, $pre);
+    $expect: 3;
+
+    @include assert-equal($test, $expect,
+      'Span of "#{$span}" should be "#{$expect}"');
+
+    // location
+    $test: get-span-setting(location, $pre);
+    $expect: 1;
+
+    @include assert-equal($test, $expect,
+      'Location of "#{$span}" should be "#{$expect}"');
+
+    // columns
+    $test: get-span-setting(columns, $pre);
+    $expect: 12;
+
+    @include assert-equal($test, $expect,
+      'Columns of "#{$span}" should be "#{$expect}"');
+
+    // gutters
+    $test: get-span-setting(gutters, $pre);
+    $expect: 0.25;
+
+    @include assert-equal($test, $expect,
+      'Gutters of "#{$span}" should be "#{$expect}"');
+
+    // column-width
+    $test: get-span-setting(column-width, $pre);
+    $expect: 4em;
+
+    @include assert-equal($test, $expect,
+      'Columns of "#{$span}" should be "#{$expect}"');
+
+    // layout-method
+    $test: get-span-setting(layout-method, $pre);
+    $expect: isolate;
+
+    @include assert-equal($test, $expect,
+      'Layout-method of "#{$span}" should be "#{$expect}"');
+
+    // layout-math
+    $test: get-span-setting(layout-math, $pre);
+    $expect: fluid;
+
+    @include assert-equal($test, $expect,
+      'Layout-math of "#{$span}" should be "#{$expect}"');
+
+    // flow
+    $test: get-span-setting(flow, $pre);
+    $expect: ltr;
+
+    @include assert-equal($test, $expect,
+      'Flow of "#{$span}" should be "#{$expect}"');
+
+    // gutter-position
+    $test: get-span-setting(gutter-position, $pre);
+    $expect: after;
+
+    @include assert-equal($test, $expect,
+      'Gutter-position of "#{$span}" should be "#{$expect}"');
+
+    // is-container
+    $test: get-span-setting(is-container, $pre);
+    $expect: container;
+
+    @include assert-equal($test, $expect,
+      'is-container of "#{$span}" should be "#{$expect}"');
+
+    // gutter-override
+    $test: get-span-setting(gutter-override, $pre);
+    $expect: 1em;
+
+    @include assert-equal($test, $expect,
+      'Gutter-override of "#{$span}" should be "#{$expect}"');
+
+  }
 }

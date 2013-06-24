@@ -23,6 +23,32 @@
   // span [function]
   // ---------------
 
+  @include test('[function] span') {
+    $columns: 7;
+    $gutters: .5;
+
+    // simple
+    $span: 5;
+    $test: span($span);
+    $expect: 70%;
+    @include assert-equal($test, $expect,
+      'Span "5" (of 7 .5) should be "#{$expect}"');
+
+    // explicit
+    $span: 5 of 7 .5 fluid;
+    $test2: span($span);
+    @include assert-equal($test, $test2,
+      'Span width should be the same with explicit or implicit values');
+
+    @include original-grid;
+
+    // fully explicit
+    $span: last 3 of (1 3 1 2 1) (2em 1em) static;
+    $test: span($span);
+    $expect: 10em;
+    @include assert-equal($test, $expect,
+      'Span "#{$span}" should be "#{$expect}"');
+  }
 
   // parse-span
   // ----------

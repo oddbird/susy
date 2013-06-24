@@ -1,5 +1,5 @@
-// Span language parsing
-// =====================
+// Span Syntax
+// ===========
 
 // test the output of a parsed grid
 @mixin test-parsed-span($name, $test, $expect) {
@@ -14,11 +14,15 @@
   }
 }
 
-@include test-module('Span Language Parsing') {
-  // span
-  // ----
+@include test-module('Span Syntax') {
+  // span [mixin]
+  // ------------
 
   // @@@ need mixin tests
+
+  // span [function]
+  // ---------------
+
 
   // parse-span
   // ----------

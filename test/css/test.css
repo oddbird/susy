@@ -109,14 +109,6 @@
     - 0 Failed */
 /*  
 
-### Syntax Functions ------ */
-/*  
-    Summary:
-    - 0 Tests
-    - 0 Passed
-    - 0 Failed */
-/*  
-
 ### Grid Background Syntax ------ */
 /*  - [function] get-grid-color-stops (4 assertions, 4 passed, 0 failed) */
 /*  
@@ -135,13 +127,21 @@
     - 0 Failed */
 /*  
 
-### Span Language Parsing ------ */
+### Span Syntax ------ */
 /*  - [function] parse-span (66 assertions, 66 passed, 0 failed) */
 /*  - [function] get-span-setting (12 assertions, 12 passed, 0 failed) */
 /*  
     Summary:
     - 2 Tests
     - 2 Passed
+    - 0 Failed */
+/*  
+
+### Gutters Syntax ------ */
+/*  
+    Summary:
+    - 0 Tests
+    - 0 Passed
     - 0 Failed */
 /*  
 

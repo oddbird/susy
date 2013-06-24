@@ -1,5 +1,5 @@
-// Span language parsing
-// =====================
+// Span Syntax
+// ===========
 
 // Set a spanning element using shorthand syntax
 @mixin span(
@@ -17,6 +17,31 @@
   }
 
   @include float-span-output($output...);
+}
+
+// Return the width of a span
+@function span(
+  $span
+) {
+  $span               : parse-span($span);
+
+  $width              : get-span-setting(span, $span);
+
+  $this-location      : get-span-setting(location, $span);
+  $this-columns       : get-span-setting(columns, $span);
+  $this-gutters       : get-span-setting(gutters, $span);
+  $this-column-width  : get-span-setting(column-width, $span);
+  $this-layout-math   : get-span-setting(layout-math, $span);
+
+  $this-location      : if($this-location, $this-location, 1);
+  $this-columns       : if($this-columns, $this-columns, $columns);
+  $this-gutters       : if($this-gutters, $this-gutters, $gutters);
+  $this-column-width  : if($this-column-width, $this-column-width, $column-width);
+  $this-layout-math   : if($this-layout-math, $this-layout-math, $layout-math);
+
+  $width: get-span-width($width, $this-location, $this-columns, $this-gutters, $this-column-width, $this-layout-math);
+
+  @return $width;
 }
 
 // Span Helpers

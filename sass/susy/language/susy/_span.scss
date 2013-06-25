@@ -33,12 +33,6 @@
   $this-column-width  : get-span-setting(column-width, $span);
   $this-layout-math   : get-span-setting(layout-math, $span);
 
-  $this-location      : if($this-location, $this-location, 1);
-  $this-columns       : if($this-columns, $this-columns, $columns);
-  $this-gutters       : if($this-gutters, $this-gutters, $gutters);
-  $this-column-width  : if($this-column-width, $this-column-width, $column-width);
-  $this-layout-math   : if($this-layout-math, $this-layout-math, $layout-math);
-
   $width: get-span-width($width, $this-location, $this-columns, $this-gutters, $this-column-width, $this-layout-math);
 
   @return $width;

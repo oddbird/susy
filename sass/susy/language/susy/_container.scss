@@ -5,8 +5,15 @@
 @mixin container(
   $container: get-grid()
 ) {
-  $grid       : parse-grid($container);
-  $width      : get-container-width($grid);
+  $grid                   : get-adjusted-grid($container);
+
+  $this-container         : get-setting(container, $grid);
+  $this-column-width      : get-setting(column-width, $grid);
+  $this-columns           : get-setting(columns, $grid);
+  $this-gutters           : get-setting(gutters, $grid);
+  $this-gutter-position   : get-setting(gutter-position, $grid);
+
+  $width      : get-container-width($this-container, $this-column-width, $this-columns, $this-gutters, $this-gutter-position);
   $justify    : get-setting(container-position, $grid);
   $box        : get-setting(box-sizing, $grid);
 
@@ -18,24 +25,37 @@
   @include grid-background($grid);
 }
 
+// Return container width
+@function container(
+  $container: get-grid()
+) {
+  $grid                   : get-adjusted-grid($container);
+
+  $this-container         : get-setting(container, $grid);
+  $this-column-width      : get-setting(column-width, $grid);
+  $this-columns           : get-setting(columns, $grid);
+  $this-gutters           : get-setting(gutters, $grid);
+  $this-gutter-position   : get-setting(gutter-position, $grid);
+
+  $width: get-container-width($this-container, $this-column-width, $this-columns, $this-gutters, $this-gutter-position);
+
+  @return $width;
+}
+
 // get the container width:
 @function get-container-width(
-  $grid: parse-grid()
+  $container        : $container,
+  $column-width     : $column-width,
+  $columns          : $columns,
+  $gutters          : $gutters,
+  $gutter-position  : $gutter-position
 ) {
-  // if there is a container width, use it
-  $width      : get-setting(container, $grid);
-  $width      : if($width, $width, $container);
+  $width: $container;
 
-  @if $width == auto {
-    // if we have a column width, calculate container from that
-    $column-width-setting: get-setting(column-width, $grid);
-
-    @if $column-width-setting {
-      $columns-setting: get-setting(columns, $grid);
-      $gutters-setting: get-setting(gutters, $grid);
-      $outer: if(get-setting(gutter-position, $grid) == inside, true, false);
-
-      $width: calculate-container-width($columns-setting, $gutters-setting, $column-width-setting, $outer);
+  @if not $width or $width == auto {
+    @if $column-width {
+      $outer: if($gutter-position == inside, true, false);
+      $width: calculate-container-width($columns, $gutters, $column-width, $outer);
     } @else {
       // if we have nothing, default to 100%
       $width: 100%;

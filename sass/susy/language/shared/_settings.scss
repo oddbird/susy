@@ -215,7 +215,7 @@ $show-grids           : show-columns    !default;
 
 // fill grid defaults
 @function get-adjusted-grid(
-  $grid: get-grid(),
+  $grid,
   $clean: false
 ) {
   $grid                   : parse-grid($grid);
@@ -258,7 +258,7 @@ $show-grids           : show-columns    !default;
 // Return one setting from a shorhand grid
 @function get-setting(
   $setting,
-  $grid   : parse-grid(get-grid()),
+  $grid   : parse-grid(),
   $parse  : false
 ) {
   $options  : columns gutters container column-width layout-math layout-method container-position flow gutter-position show-grids box-sizing;

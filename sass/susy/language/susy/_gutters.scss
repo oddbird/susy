@@ -5,17 +5,12 @@
 @function gutter(
   $context: get-grid()
 ) {
-  $context            : parse-grid($context);
+  $context            : get-adjusted-grid($context);
 
   $this-columns       : get-setting(columns, $context);
   $this-gutters       : get-setting(gutters, $context);
   $this-column-width  : get-setting(column-width, $context);
   $this-layout-math   : get-setting(layout-math, $context);
-
-  $this-columns       : if($this-columns, $this-columns, $columns);
-  $this-gutters       : if($this-gutters, $this-gutters, $gutters);
-  $this-column-width  : if($this-column-width, $this-column-width, $column-width);
-  $this-layout-math   : if($this-layout-math, $this-layout-math, $layout-math);
 
   $width: get-gutter-width($this-columns, $this-gutters, $this-column-width, $this-layout-math);
 

@@ -3,6 +3,9 @@ Susy Next Changelog
 
 2.0.0-alpha.3 [unreleased]
 --------------------------
+- Add comrehensive unit tests, using [true](http://eric.andmeyer.com/true/).
+- Improve fall-abck handling of ommitted arguments.
+- Add `container` function to return a given container's width.
 - Add `auto` keyword to override `$container-width`, otherwise respect existing width.
 - Renamed `$isolate` to `$layout-method`
   - No longer accepts boolean.

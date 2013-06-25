@@ -19,18 +19,18 @@
   // set the proper background gradient
   $background: ();
 
-  @if $show-grids != show-baseline {
+  @if $show != show-baseline {
     $background: append($background, linear-gradient($from, $stops...), comma);
   }
 
-  @if $show-grids != show-columns {
+  @if $show != show-columns {
     $background: append($background, get-baseline-gradient(), comma);
   }
 
   // output styles
   @include background($background);
 
-  @if $show-grids != show-columns {
+  @if $show != show-columns {
     @include background-size(100% $base-line-height);
     background-position: left top;
   }

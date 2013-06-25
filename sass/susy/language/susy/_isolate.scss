@@ -17,7 +17,7 @@
 
   $push: get-isolation($span, $location, $columns, $gutters, $column-width, $layout-math);
 
-  @include isolate-output($push,$this-flow);
+  @include isolate-output($push, $this-flow);
 }
 
 // Isolation Helpers
@@ -30,8 +30,7 @@
   $columns            : $columns,
   $gutters            : $gutters,
   $column-width       : $column-width,
-  $layout-math        : $layout-math,
-  $gutter-position    : $gutter-position
+  $layout-math        : $layout-math
 ) {
   $context  : column-sum($columns, $gutters);
   $width    : null;
@@ -41,7 +40,7 @@
   } @else {
     $push: get-location-position($span, $location, $columns) - 1;
     @if $push > 0 {
-      $width: get-span-width($push, 1, $columns, $gutters, $column-width, $layout-math, $gutter-position, outer);
+      $width: get-span-width($push, 1, $columns, $gutters, $column-width, $layout-math, $outer: outer);
     } @else {
       $width: null;
     }

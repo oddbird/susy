@@ -2,9 +2,35 @@
 // ================
 
 @include test-module('Isolation Syntax') {
+
   // isolate
   // -------
 
+  // @@@ need mixin tests
+
   // get-isolation
   // -------------
+
+  @include test('[function] get-isolation') {
+    // args: $span, $location [, $columns, $gutters, $column-width, $layout-math ]
+
+    // explicit
+    $test: get-isolation(1, 30%);
+    $expect: 30%;
+    @include assert-equal($test, $expect,
+      'Explicit isolation placements should be passed back unchanged.');
+
+    // first
+    $test: get-isolation(1, first);
+    $expect: null;
+    @include assert-equal($test, $expect,
+      'Isolation in the first column doesnt require any prefixed margins.');
+
+    // calculated
+    $test: get-isolation(2, last, 7, .5, 4em, static);
+    $expect: 30em;
+    @include assert-equal($test, $expect,
+      'Isolation for "last 2 of 7 (4em 2em) static" (5 outer) should be 30em.');
+
+  }
 }

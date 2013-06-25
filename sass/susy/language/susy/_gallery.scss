@@ -6,9 +6,9 @@
   $input,
   $selector: child
 ) {
-  $this-laout-method: get-span-setting(layout-method, $input, parse);
+  $this-layout-method: get-span-setting(layout-method, $input, parse);
 
-  @if $this-laout-method == isolate {
+  @if $this-layout-method == isolate {
     @include isolate-gallery($input);
   } @else {
     @include nth-gallery($input);
@@ -64,7 +64,7 @@
   $this-columns       : get-span-setting(columns, $input);
   $this-gutters       : get-span-setting(gutters, $input);
   $this-column-width  : get-span-setting(column-width, $input);
-  $this-static        : get-span-setting(static, $input);
+  $this-layout-math   : get-span-setting(layout-math, $input);
   $this-flow          : get-span-setting(flow, $input);
 
   $from               : from($this-flow);
@@ -72,7 +72,7 @@
   $line               : floor($context / $span);
 
   @if is-symmetrical($this-columns) {
-    $width: get-span-width($span, $location, $this-columns, $this-gutters, $this-column-width, $this-static);
+    $width: get-span-width($span, $location, $this-columns, $this-gutters, $this-column-width, $this-layout-math);
   }
 
   @include float-span-output($width, $from, null, -100%, null, null, $this-flow);
@@ -80,9 +80,9 @@
   @for $item from 1 through $line {
     $nth: '#{$line}n + #{$item}';
     &:#{format-nth($nth,$selector)} {
-      $width: get-span-width($span, $location, $this-columns, $this-gutters, $this-column-width, $this-static);
+      $width: get-span-width($span, $location, $this-columns, $this-gutters, $this-column-width, $this-layout-math);
       $width: if(is-symmetrical($columns), null, $width);
-      $before: get-isolation($span, $location, $this-columns, $this-gutters, $this-column-width, $this-static);
+      $before: get-isolation($span, $location, $this-columns, $this-gutters, $this-column-width, $this-layout-math);
 
       @include float-span-output($width, null, $before, null, null, null, $this-flow);
 

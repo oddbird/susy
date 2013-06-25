@@ -26,6 +26,7 @@
   @include test('[function] span') {
     $columns: 7;
     $gutters: .5;
+    $layout-math: fluid;
 
     // simple
     $span: 5;

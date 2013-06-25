@@ -1,8 +1,28 @@
 // Gutter Syntax
 // =============
 
-@include test-module('Gutters Syntax') {
+@include test-module('Gutter Syntax') {
+
   // gutter
   // ------
+
+  @include test('[function] gutter') {
+    $columns: 7;
+    $gutters: .5;
+    $layout-math: fluid;
+
+    // simple
+    $test: gutter();
+    $expect: 5%;
+    @include assert-equal($test, $expect,
+      'The default gutter for "7 .5 fluid" should be "#{$expect}"');
+
+    // explicit
+    $gutter: (1 2 3 2 1) (4em 1em) static;
+    $test: gutter($gutter);
+    $expect: 1em;
+    @include assert-equal($test, $expect,
+      'The gutter-width for "#{$gutter}" should be "#{$expect}"');
+  }
 
 }

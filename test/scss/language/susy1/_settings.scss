@@ -6,8 +6,26 @@
   // Translate Susy-1 Settings
   // -------------------------
 
-  // @include test('[mixin] translate-susy1-settings') {
+  @include test('[mixin] translate-susy1-settings') {
 
-  // }
+    // defaults
+    @include translate-susy1-settings;
+
+    @include assert-equal($columns, 12,
+      'Default Susy-1 settings have "12" columns');
+    @include assert-equal($gutters, .25,
+      'Default Susy-1 settings have ".25" gutters');
+    @include assert-equal($column-width, 4em,
+      'Default Susy-1 settings have "4em" column-width');
+    @include assert-equal($container, auto,
+      'Default Susy-1 settings have "auto" container');
+    @include assert-equal($flow, ltr,
+      'Default Susy-1 settings have "ltr" flow');
+    @include assert-equal($show-grids, show-columns,
+      'Default Susy-1 settings have "show-columns" shouw-grids');
+    @include assert-equal($layout-math, fluid,
+      'Default Susy-1 settings have "fluid" layout-math');
+
+  }
 
 }

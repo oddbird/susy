@@ -1,15 +1,15 @@
 // Susy 1.0 Settings
 // =================
 
-$total-columns      : 12;
-$column-width       : 4em;
-$gutter-width       : 1em;
-$grid-padding       : $gutter-width;
+$total-columns      : 12              !default;
+$column-width       : if($column-width, $column-width, 4em);
+$gutter-width       : 1em             !default;
+$grid-padding       : $gutter-width   !default;
 
-$from-direction     : left;
-$container-width    : false;
+$from-direction     : left            !default;
+$container-width    : false           !default;
 
-$container-style    : magic;
+$container-style    : magic           !default;
 
 // no translation (yet)
 // --------------------
@@ -17,15 +17,15 @@ $container-style    : magic;
 // $omega-float        : opposite-position($from-direction);
 // $border-box-sizing  : false;
 
-// $breakpoint-media-output  : true;
-// $breakpoint-ie-output     : true;
-// $breakpoint-raw-output    : false;
+// $breakpoint-media-output  : true       !default;
+// $breakpoint-ie-output     : true       !default;
+// $breakpoint-raw-output    : false      !default;
 
 // from compass
 // ------------
 
-$show-column-grid-backgrounds: true;
-$show-grid-backgrounds: true;
+$show-column-grid-backgrounds   : true    !default;
+$show-grid-backgrounds          : true    !default;
 
 // translation mixin
 // -----------------
@@ -38,9 +38,7 @@ $show-grid-backgrounds: true;
   $column-width: $column-width;
   $flow: if($from-direction == right, rtl, ltr);
 
-  $layout-method: false;
-  $gutter-position: after;
-  $show-grids: $show-grid-backgrounds or $show-column-grid-backgrounds;
+  $show-grids: if($show-grid-backgrounds or $show-column-grid-backgrounds, show-columns, hide);
 
   @if $container-style == static {
     $layout-math: static;
@@ -48,10 +46,10 @@ $show-grid-backgrounds: true;
       @warn "For static output, we use your $column-width setting and ignore any $container-width override.";
     }
   } @else {
-    $layout-math: false;
-    $container: $container-width;
+    $layout-math: fluid;
 
     @if $container-width {
+      $container: $container-width;
       $column-width: false;
     } @else if $container-style == fluid and unit($column-width) != '%' {
       $container: 100%;

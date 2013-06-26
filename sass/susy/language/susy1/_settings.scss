@@ -21,12 +21,6 @@ $container-style    : magic           !default;
 // $breakpoint-ie-output     : true       !default;
 // $breakpoint-raw-output    : false      !default;
 
-// from compass
-// ------------
-
-$show-column-grid-backgrounds   : true    !default;
-$show-grid-backgrounds          : true    !default;
-
 // translation mixin
 // -----------------
 
@@ -37,8 +31,6 @@ $show-grid-backgrounds          : true    !default;
   $gutters: $gutter-width / $column-width;
   $column-width: $column-width;
   $flow: if($from-direction == right, rtl, ltr);
-
-  $show-grids: if($show-grid-backgrounds or $show-column-grid-backgrounds, show-columns, hide);
 
   @if $container-style == static {
     $layout-math: static;

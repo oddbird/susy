@@ -1,6 +1,41 @@
 // Susy 1.0 Settings
 // =================
 
+// Capture Susy 2.0
+$original-columns             : $columns;
+$original-gutters             : $gutters;
+$original-container           : $container;
+$original-column-width        : $column-width;
+$original-layout-math         : $layout-math;
+$original-layout-method       : $layout-method;
+$original-flow                : $flow;
+$original-container-position  : $container-position;
+$original-gutter-position     : $gutter-position;
+$original-show-grids          : $show-grids;
+$original-box-sizing          : $box-sizing;
+
+// Capture Susy 1.0
+$original-container-style     : $container-style;
+$original-container-width     : $container-width;
+
+// reset the original grid
+@mixin original-grid {
+  $columns              : $original-columns;
+  $gutters              : $original-gutters;
+  $container            : $original-container;
+  $column-width         : $original-column-width;
+  $layout-math          : $original-layout-math;
+  $layout-method        : $original-layout-method;
+  $flow                 : $original-flow;
+  $container-position   : $original-container-position;
+  $gutter-position      : $original-gutter-position;
+  $show-grids           : $original-show-grids;
+  $box-sizing           : $original-box-sizing;
+
+  $container-style      : $original-container-style;
+  $container-width      : $original-container-width;
+}
+
 @include test-module('Susy 1.0 Settings') {
 
   // Translate Susy-1 Settings
@@ -21,11 +56,36 @@
       'Default Susy-1 settings have "auto" container');
     @include assert-equal($flow, ltr,
       'Default Susy-1 settings have "ltr" flow');
-    @include assert-equal($show-grids, show-columns,
-      'Default Susy-1 settings have "show-columns" shouw-grids');
     @include assert-equal($layout-math, fluid,
       'Default Susy-1 settings have "fluid" layout-math');
 
+    // static
+    $container-style: static;
+    @include translate-susy1-settings;
+
+    @include assert-equal($layout-math, static,
+      'Container-style "static" should trigger "static" layout-math');
+
+    // set width
+    $container-style: magic;
+    $container-width: 80em;
+    @include translate-susy1-settings;
+
+    @include assert-equal($layout-math, fluid,
+      'Container-style "magic" should trigger "fluid" layout-math');
+    @include assert-equal($container, 80em,
+      'Explicit container-width should be used for $container');
+
+    // fluid
+    $container-style: fluid;
+    $container-width: false;
+    $column-width: 4em;
+    @include translate-susy1-settings;
+
+    @include assert-equal($container, 100%,
+      'Fluid container (without fluid width) should default to "100%"');
+
+    @include original-grid;
   }
 
 }

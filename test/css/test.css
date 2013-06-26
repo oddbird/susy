@@ -117,11 +117,11 @@
 /*  
 
 ### Span Syntax ------ */
-/*  - [function] span (3 assertions, 3 passed, 0 failed) */
+/*  - [function] span (5 assertions, 5 passed, 0 failed) */
 /*  - [function] parse-span (66 assertions, 66 passed, 0 failed) */
-/*  - [function] get-span-setting (12 assertions, 12 passed, 0 failed) */
+/*  - [function] get-span-setting (13 assertions, 13 passed, 0 failed) */
 /*  - [function] get-span-width (6 assertions, 6 passed, 0 failed) */
-/*  - [function] span-math (7 assertions, 7 passed, 0 failed) */
+/*  - [function] span-math (9 assertions, 9 passed, 0 failed) */
 /*  
     Summary:
     - 5 Tests

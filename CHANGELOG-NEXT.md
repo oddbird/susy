@@ -3,6 +3,9 @@ Susy Next Changelog
 
 2.0.0-alpha.3 [unreleased]
 --------------------------
+- Add `outer` keyword to `span` syntax, to return span-width including gutters.
+  - Works with both span mixin and span function.
+  - Replaces Susy 1.0 `space` function.
 - Add comrehensive unit tests, using [true](http://eric.andmeyer.com/true/).
 - Improve fall-abck handling of ommitted arguments.
 - Add `container` function to return a given container's width.

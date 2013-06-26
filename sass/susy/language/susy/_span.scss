@@ -23,17 +23,19 @@
 @function span(
   $span
 ) {
-  $span               : parse-span($span);
+  $span                   : parse-span($span);
 
-  $width              : get-span-setting(span, $span);
+  $width                  : get-span-setting(span, $span);
 
-  $this-location      : get-span-setting(location, $span);
-  $this-columns       : get-span-setting(columns, $span);
-  $this-gutters       : get-span-setting(gutters, $span);
-  $this-column-width  : get-span-setting(column-width, $span);
-  $this-layout-math   : get-span-setting(layout-math, $span);
+  $this-location          : get-span-setting(location, $span);
+  $this-columns           : get-span-setting(columns, $span);
+  $this-gutters           : get-span-setting(gutters, $span);
+  $this-column-width      : get-span-setting(column-width, $span);
+  $this-layout-math       : get-span-setting(layout-math, $span);
+  $this-gutter-position   : get-span-setting(gutter-position, $span);
+  $outer                  : get-span-setting(outer, $span);
 
-  $width: get-span-width($width, $this-location, $this-columns, $this-gutters, $this-column-width, $this-layout-math);
+  $width: get-span-width($width, $this-location, $this-columns, $this-gutters, $this-column-width, $this-layout-math, $this-gutter-position, $outer);
 
   @return $width;
 }
@@ -53,6 +55,7 @@
   $new-columns            : false;
   $new-gutters            : false;
   $new-column-width       : false;
+  $outer                  : false;
   $new-flow               : false;
   $new-gutter-position    : false;
   $gutter-override        : false;
@@ -92,6 +95,11 @@
       }
 
       // ltr | rtl
+      @else if $value == outer {
+        $outer: outer;
+      }
+
+      // ltr | rtl
       @else if $value == rtl {
         $new-flow: rtl;
       } @else if $value == ltr {
@@ -112,7 +120,7 @@
       }
 
       // container
-      @if $value == container {
+      @else if $value == container {
         $is-container: container;
       }
 
@@ -185,7 +193,7 @@
   $new-flow               : if($new-flow, $new-flow, $flow);
   $new-gutter-position    : if($new-gutter-position, $new-gutter-position, $gutter-position);
 
-  @return $new-span, $new-location, $new-columns, $new-gutters, $new-column-width, $new-layout-method, $new-layout-math, $new-flow, $new-gutter-position, $is-container, $gutter-override;
+  @return $new-span, $new-location, $new-columns, $new-gutters, $new-column-width, $new-layout-method, $new-layout-math, $outer, $new-flow, $new-gutter-position, $is-container, $gutter-override;
 }
 
 // Return one particular span setting from a list
@@ -194,7 +202,7 @@
   $span,
   $parse: false
 ) {
-  $options  : span location columns gutters column-width layout-method layout-math flow gutter-position is-container gutter-override;
+  $options  : span location columns gutters column-width layout-method layout-math outer flow gutter-position is-container gutter-override;
   $key      : index($options, $setting);
   $value    : false;
 
@@ -221,6 +229,7 @@
   $column-width       : $column-width,
   $layout-method      : $layout-method,
   $layout-math        : $layout-math,
+  $outer              : $outer,
   $flow               : $flow,
   $gutter-position    : $gutter-position,
   $is-container       : false,
@@ -235,7 +244,7 @@
   $margin-after     : null;
 
   // calculate widths
-  $width: get-span-width($span, $location, $columns, $gutters, $column-width, $layout-math, $gutter-position);
+  $width: get-span-width($span, $location, $columns, $gutters, $column-width, $layout-math, $gutter-position, $outer);
   $this-gutters: get-gutters($columns, $gutters, $column-width, $layout-math, $gutter-position, $gutter-override);
 
   // apply gutters

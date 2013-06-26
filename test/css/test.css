@@ -97,18 +97,6 @@
     - 0 Failed */
 /*  
 
-### Syntax Math ------ */
-/*  - [function] get-span-width (6 assertions, 6 passed, 0 failed) */
-/*  - [function] get-gutter-width (2 assertions, 2 passed, 0 failed) */
-/*  - [function] get-gutters (6 assertions, 6 passed, 0 failed) */
-/*  - [function] span-math (7 assertions, 7 passed, 0 failed) */
-/*  
-    Summary:
-    - 4 Tests
-    - 4 Passed
-    - 0 Failed */
-/*  
-
 ### Grid Background Syntax ------ */
 /*  - [function] get-grid-color-stops (4 assertions, 4 passed, 0 failed) */
 /*  
@@ -132,19 +120,23 @@
 /*  - [function] span (3 assertions, 3 passed, 0 failed) */
 /*  - [function] parse-span (66 assertions, 66 passed, 0 failed) */
 /*  - [function] get-span-setting (12 assertions, 12 passed, 0 failed) */
+/*  - [function] get-span-width (6 assertions, 6 passed, 0 failed) */
+/*  - [function] span-math (7 assertions, 7 passed, 0 failed) */
 /*  
     Summary:
-    - 3 Tests
-    - 3 Passed
+    - 5 Tests
+    - 5 Passed
     - 0 Failed */
 /*  
 
 ### Gutter Syntax ------ */
 /*  - [function] gutter (3 assertions, 3 passed, 0 failed) */
+/*  - [function] get-gutter-width (2 assertions, 2 passed, 0 failed) */
+/*  - [function] get-gutters (6 assertions, 6 passed, 0 failed) */
 /*  
     Summary:
-    - 1 Tests
-    - 1 Passed
+    - 3 Tests
+    - 3 Passed
     - 0 Failed */
 /*  
 
@@ -166,6 +158,14 @@
 /*  
 
 ### Row Syntax ------ */
+/*  
+    Summary:
+    - 0 Tests
+    - 0 Passed
+    - 0 Failed */
+/*  
+
+### Susy 1.0 Settings ------ */
 /*  
     Summary:
     - 0 Tests

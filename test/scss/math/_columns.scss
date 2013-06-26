@@ -27,7 +27,6 @@
       'Single-item list should be asymmetrical grid.');
   }
 
-
   // Column Count
   // ------------
 
@@ -46,7 +45,6 @@
     @include assert-equal($a-count, $a-length,
       'Asymmetrical grid-count should equal $columns length.');
   }
-
 
   // Column Sum
   // ----------
@@ -75,7 +73,6 @@
       'Outer column-sum for "(1 2 3 1 2) .25" should be "10.25".');
   }
 
-
   // Get Columns
   // -----------
 
@@ -96,7 +93,6 @@
     @include assert-equal($sub, 2 3 1,
       'Get-columns subset for "3 of (1 2 3 1 2) at 2" should be "2 3 1".');
   }
-
 
   // Get Column Span Sum
   // -------------------

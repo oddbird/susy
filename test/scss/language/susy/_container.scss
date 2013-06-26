@@ -3,8 +3,13 @@
 
 @include test-module('Container Syntax') {
 
-  // container
-  // ---------
+  // container [mixin]
+  // -----------------
+
+  // @@@ need mixin tests
+
+  // container [function]
+  // --------------------
 
   @include test('[function] container') {
 

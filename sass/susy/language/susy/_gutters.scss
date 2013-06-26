@@ -16,3 +16,57 @@
 
   @return $width;
 }
+
+// Gutter Math
+// -----------
+
+// Return gutter width
+@function get-gutter-width(
+  $columns        : $columns,
+  $gutters        : $gutters,
+  $column-width   : $column-width,
+  $layout-math    : $layout-math
+) {
+  $context  : column-sum($columns, $gutters);
+  $gutter   : null;
+
+  @if $layout-math == static {
+    $gutter: $gutters * $column-width;
+  } @else {
+    $gutter: percentage($gutters / $context);
+  }
+
+  @return $gutter;
+}
+
+// return left and right gutter values
+@function get-gutters(
+  $columns            : $columns,
+  $gutters            : $gutters,
+  $column-width       : $column-width,
+  $layout-math        : $layout-math,
+  $gutter-position    : $gutter-position,
+  $gutter-override    : false
+) {
+  $gutter   : null;
+  $before   : null;
+  $after    : null;
+
+  @if $gutter-override {
+    $gutter: $gutter-override;
+  } @else {
+    $gutter: get-gutter-width($columns, $gutters, $column-width, $layout-math);
+  }
+
+  @if $gutter-position == before {
+    $before: $gutter;
+  } @else if $gutter-position == after {
+    $after: $gutter;
+  } @else if $gutter-position == split or $gutter-position == inside {
+    $gutter: if($gutter-override, $gutter, $gutter / 2);
+    $before: $gutter;
+    $after: $gutter;
+  }
+
+  @return $before $after;
+}

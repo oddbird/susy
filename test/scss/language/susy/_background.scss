@@ -2,11 +2,24 @@
 // ================
 
 @include test-module('Grid Background Syntax') {
+
+  // Grid Background
+  // ---------------
+
+  // @@@ need mixin tests
+
+  // Grid Overlay
+  // ------------
+
+  // @@@ need mixin tests
+
+  // Get Grid Color-Stops
+  // --------------------
+
   $color  : $grid-background-color;
   $trans  : transparent;
   $light  : lighten($color, 15%);
 
-  // Get Grid Color-Stops
   @include test('[function] get-grid-color-stops') {
 
     // static

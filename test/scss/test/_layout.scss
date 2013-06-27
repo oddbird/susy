@@ -1,0 +1,68 @@
+// Output Test Layout
+// ==================
+
+@import "compass/reset";
+
+$base-font-size: 16px;
+$base-line-height: 24px;
+$rhythm-unit: rem;
+
+@include establish-baseline;
+
+html { font-family: sans-serif; }
+body { padding: rhythm(1); }
+
+[role="banner"] {
+  @include adjust-font-size-to(24px);
+  @include trailing-border(1px,.25);
+  @include trailer;
+}
+
+h1 {
+  font-weight: bold;
+}
+
+.results { display: none; }
+
+.test-module {
+  @include trailing-border();
+  > h1 {
+    @include adjust-font-size-to(18px);
+    @include trailer(.5);
+  }
+}
+
+[class^="test__"] {
+  @include trailer(.5);
+
+  h1 {
+    padding: rhythm(.25);
+    background: #333;
+    color: #eee;
+    font-weight: normal;
+    font-family: monospace, sans-serif;
+  }
+}
+
+[class^="assert__"] {
+  @include padding-leader(.5);
+  @include trailer(.5);
+
+  div {
+    @include rhythm(0,.25,.25,.5);
+    @include adjust-font-size-to(14px);
+    outline: 1px solid rgba(red,.25);
+    outline-offset: -1px;
+    background: rgba(white,.5);
+    text-align: center;
+  }
+
+  .nest {
+    @include padding-leader(.5);
+  }
+  .spacer {
+    height: rhythm(3.5);
+    outline: 1px solid rgba(#444,.25);
+    background: rgba(#444,.125);
+  }
+}

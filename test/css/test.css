@@ -1,5 +1,142 @@
 /* Susy Tests */
 /* ========== */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  vertical-align: baseline;
+}
+
+html {
+  line-height: 1;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+caption, th, td {
+  text-align: left;
+  font-weight: normal;
+  vertical-align: middle;
+}
+
+q, blockquote {
+  quotes: none;
+}
+q:before, q:after, blockquote:before, blockquote:after {
+  content: "";
+  content: none;
+}
+
+a img {
+  border: none;
+}
+
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary {
+  display: block;
+}
+
+* html {
+  font-size: 100%;
+}
+
+html {
+  font-size: 16px;
+  line-height: 1.5em;
+}
+
+html {
+  font-family: sans-serif;
+}
+
+body {
+  padding: 1.5em;
+}
+
+[role="banner"] {
+  font-size: 1.5em;
+  line-height: 2em;
+  border-bottom-style: solid;
+  border-bottom-width: 0.0625em;
+  padding-bottom: 0.3125em;
+  margin-bottom: 1.5em;
+}
+
+h1 {
+  font-weight: bold;
+}
+
+.results {
+  display: none;
+}
+
+.test-module {
+  border-bottom-style: solid;
+  border-bottom-width: 0.0625em;
+  padding-bottom: 1.4375em;
+}
+.test-module > h1 {
+  font-size: 1.125em;
+  line-height: 1.33333em;
+  margin-bottom: 0.75em;
+}
+
+[class^="test__"] {
+  margin-bottom: 0.75em;
+}
+[class^="test__"] h1 {
+  padding: 0.375em;
+  background: #333;
+  color: #eee;
+  font-weight: normal;
+  font-family: monospace, sans-serif;
+}
+
+[class^="assert__"] {
+  padding-top: 0.75em;
+  margin-bottom: 0.75em;
+}
+[class^="assert__"] div {
+  margin-top: 0em;
+  padding-top: 0.375em;
+  padding-bottom: 0.375em;
+  margin-bottom: 0.75em;
+  font-size: 0.875em;
+  line-height: 1.71429em;
+  outline: 1px solid rgba(255, 0, 0, 0.25);
+  outline-offset: -1px;
+  background: rgba(255, 255, 255, 0.5);
+  text-align: center;
+}
+[class^="assert__"] .nest {
+  padding-top: 0.825em;
+}
+[class^="assert__"] .spacer {
+  height: 5.25em;
+  outline: 1px solid rgba(68, 68, 68, 0.25);
+  background: rgba(68, 68, 68, 0.125);
+}
+
 /*  
 
 ### Column Math ------ */
@@ -158,6 +295,152 @@
 /*  
 
 ### Row Syntax ------ */
+/*  
+    Summary:
+    - 0 Tests
+    - 0 Passed
+    - 0 Failed */
+/*  
+
+### Margin Syntax ------ */
+.assert__pre {
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  background: -webkit-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, transparent 10%, transparent 15%, rgba(102, 102, 255, 0.25) 15%, rgba(179, 179, 255, 0.25) 25%, transparent 25%, transparent 30%, rgba(102, 102, 255, 0.25) 30%, rgba(179, 179, 255, 0.25) 40%, transparent 40%, transparent 45%, rgba(102, 102, 255, 0.25) 45%, rgba(179, 179, 255, 0.25) 55.0%, transparent 55.0%, transparent 60%, rgba(102, 102, 255, 0.25) 60%, rgba(179, 179, 255, 0.25) 70%, transparent 70%, transparent 75%, rgba(102, 102, 255, 0.25) 75%, rgba(179, 179, 255, 0.25) 85%, transparent 85%, transparent 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
+  background: -moz-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, transparent 10%, transparent 15%, rgba(102, 102, 255, 0.25) 15%, rgba(179, 179, 255, 0.25) 25%, transparent 25%, transparent 30%, rgba(102, 102, 255, 0.25) 30%, rgba(179, 179, 255, 0.25) 40%, transparent 40%, transparent 45%, rgba(102, 102, 255, 0.25) 45%, rgba(179, 179, 255, 0.25) 55.0%, transparent 55.0%, transparent 60%, rgba(102, 102, 255, 0.25) 60%, rgba(179, 179, 255, 0.25) 70%, transparent 70%, transparent 75%, rgba(102, 102, 255, 0.25) 75%, rgba(179, 179, 255, 0.25) 85%, transparent 85%, transparent 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
+  background: linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, transparent 10%, transparent 15%, rgba(102, 102, 255, 0.25) 15%, rgba(179, 179, 255, 0.25) 25%, transparent 25%, transparent 30%, rgba(102, 102, 255, 0.25) 30%, rgba(179, 179, 255, 0.25) 40%, transparent 40%, transparent 45%, rgba(102, 102, 255, 0.25) 45%, rgba(179, 179, 255, 0.25) 55.0%, transparent 55.0%, transparent 60%, rgba(102, 102, 255, 0.25) 60%, rgba(179, 179, 255, 0.25) 70%, transparent 70%, transparent 75%, rgba(102, 102, 255, 0.25) 75%, rgba(179, 179, 255, 0.25) 85%, transparent 85%, transparent 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
+}
+.assert__pre:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.assert__pre .test {
+  margin-left: 45%;
+}
+.assert__pre .expect {
+  margin-left: 45%;
+}
+
+.assert__post {
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  background: -webkit-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, transparent 10%, transparent 12.5%, rgba(102, 102, 255, 0.25) 12.5%, rgba(179, 179, 255, 0.25) 32.5%, transparent 32.5%, transparent 35%, rgba(102, 102, 255, 0.25) 35%, rgba(179, 179, 255, 0.25) 65%, transparent 65%, transparent 67.5%, rgba(102, 102, 255, 0.25) 67.5%, rgba(179, 179, 255, 0.25) 87.5%, transparent 87.5%, transparent 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
+  background: -moz-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, transparent 10%, transparent 12.5%, rgba(102, 102, 255, 0.25) 12.5%, rgba(179, 179, 255, 0.25) 32.5%, transparent 32.5%, transparent 35%, rgba(102, 102, 255, 0.25) 35%, rgba(179, 179, 255, 0.25) 65%, transparent 65%, transparent 67.5%, rgba(102, 102, 255, 0.25) 67.5%, rgba(179, 179, 255, 0.25) 87.5%, transparent 87.5%, transparent 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
+  background: linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, transparent 10%, transparent 12.5%, rgba(102, 102, 255, 0.25) 12.5%, rgba(179, 179, 255, 0.25) 32.5%, transparent 32.5%, transparent 35%, rgba(102, 102, 255, 0.25) 35%, rgba(179, 179, 255, 0.25) 65%, transparent 65%, transparent 67.5%, rgba(102, 102, 255, 0.25) 67.5%, rgba(179, 179, 255, 0.25) 87.5%, transparent 87.5%, transparent 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
+}
+.assert__post:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.assert__post .test {
+  margin-right: 35%;
+}
+.assert__post .expect {
+  margin-right: 35%;
+}
+
+.assert__push {
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  background: -webkit-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, transparent 10%, transparent 12.5%, rgba(102, 102, 255, 0.25) 12.5%, rgba(179, 179, 255, 0.25) 32.5%, transparent 32.5%, transparent 35%, rgba(102, 102, 255, 0.25) 35%, rgba(179, 179, 255, 0.25) 65%, transparent 65%, transparent 67.5%, rgba(102, 102, 255, 0.25) 67.5%, rgba(179, 179, 255, 0.25) 87.5%, transparent 87.5%, transparent 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
+  background: -moz-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, transparent 10%, transparent 12.5%, rgba(102, 102, 255, 0.25) 12.5%, rgba(179, 179, 255, 0.25) 32.5%, transparent 32.5%, transparent 35%, rgba(102, 102, 255, 0.25) 35%, rgba(179, 179, 255, 0.25) 65%, transparent 65%, transparent 67.5%, rgba(102, 102, 255, 0.25) 67.5%, rgba(179, 179, 255, 0.25) 87.5%, transparent 87.5%, transparent 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
+  background: linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, transparent 10%, transparent 12.5%, rgba(102, 102, 255, 0.25) 12.5%, rgba(179, 179, 255, 0.25) 32.5%, transparent 32.5%, transparent 35%, rgba(102, 102, 255, 0.25) 35%, rgba(179, 179, 255, 0.25) 65%, transparent 65%, transparent 67.5%, rgba(102, 102, 255, 0.25) 67.5%, rgba(179, 179, 255, 0.25) 87.5%, transparent 87.5%, transparent 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
+}
+.assert__push:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.assert__push .test {
+  margin-left: 35%;
+}
+.assert__push .expect {
+  margin-left: 35%;
+}
+
+.assert__pull {
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  background: -webkit-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, transparent 10%, transparent 12.5%, rgba(102, 102, 255, 0.25) 12.5%, rgba(179, 179, 255, 0.25) 32.5%, transparent 32.5%, transparent 35%, rgba(102, 102, 255, 0.25) 35%, rgba(179, 179, 255, 0.25) 65%, transparent 65%, transparent 67.5%, rgba(102, 102, 255, 0.25) 67.5%, rgba(179, 179, 255, 0.25) 87.5%, transparent 87.5%, transparent 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
+  background: -moz-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, transparent 10%, transparent 12.5%, rgba(102, 102, 255, 0.25) 12.5%, rgba(179, 179, 255, 0.25) 32.5%, transparent 32.5%, transparent 35%, rgba(102, 102, 255, 0.25) 35%, rgba(179, 179, 255, 0.25) 65%, transparent 65%, transparent 67.5%, rgba(102, 102, 255, 0.25) 67.5%, rgba(179, 179, 255, 0.25) 87.5%, transparent 87.5%, transparent 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
+  background: linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, transparent 10%, transparent 12.5%, rgba(102, 102, 255, 0.25) 12.5%, rgba(179, 179, 255, 0.25) 32.5%, transparent 32.5%, transparent 35%, rgba(102, 102, 255, 0.25) 35%, rgba(179, 179, 255, 0.25) 65%, transparent 65%, transparent 67.5%, rgba(102, 102, 255, 0.25) 67.5%, rgba(179, 179, 255, 0.25) 87.5%, transparent 87.5%, transparent 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
+}
+.assert__pull:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.assert__pull .spacer {
+  width: 32.5%;
+  float: left;
+  margin-right: 2.5%;
+}
+.assert__pull .test, .assert__pull .expect {
+  width: 75%;
+  float: left;
+  margin-right: 2.5%;
+}
+.assert__pull .test {
+  margin-left: -22.5%;
+}
+.assert__pull .expect {
+  margin-left: -22.5%;
+}
+
+.assert__squish {
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  background: -webkit-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, transparent 10%, transparent 12.5%, rgba(102, 102, 255, 0.25) 12.5%, rgba(179, 179, 255, 0.25) 32.5%, transparent 32.5%, transparent 35%, rgba(102, 102, 255, 0.25) 35%, rgba(179, 179, 255, 0.25) 65%, transparent 65%, transparent 67.5%, rgba(102, 102, 255, 0.25) 67.5%, rgba(179, 179, 255, 0.25) 87.5%, transparent 87.5%, transparent 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
+  background: -moz-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, transparent 10%, transparent 12.5%, rgba(102, 102, 255, 0.25) 12.5%, rgba(179, 179, 255, 0.25) 32.5%, transparent 32.5%, transparent 35%, rgba(102, 102, 255, 0.25) 35%, rgba(179, 179, 255, 0.25) 65%, transparent 65%, transparent 67.5%, rgba(102, 102, 255, 0.25) 67.5%, rgba(179, 179, 255, 0.25) 87.5%, transparent 87.5%, transparent 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
+  background: linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, transparent 10%, transparent 12.5%, rgba(102, 102, 255, 0.25) 12.5%, rgba(179, 179, 255, 0.25) 32.5%, transparent 32.5%, transparent 35%, rgba(102, 102, 255, 0.25) 35%, rgba(179, 179, 255, 0.25) 65%, transparent 65%, transparent 67.5%, rgba(102, 102, 255, 0.25) 67.5%, rgba(179, 179, 255, 0.25) 87.5%, transparent 87.5%, transparent 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
+}
+.assert__squish:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.assert__squish .test {
+  margin-left: 35%;
+  margin-right: 35%;
+}
+.assert__squish .expect {
+  margin-left: 35%;
+  margin-right: 35%;
+}
+
+.assert__squish-nested {
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  background: -webkit-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 7.69231%, transparent 7.69231%, transparent 11.53846%, rgba(102, 102, 255, 0.25) 11.53846%, rgba(179, 179, 255, 0.25) 19.23077%, transparent 19.23077%, transparent 23.07692%, rgba(102, 102, 255, 0.25) 23.07692%, rgba(179, 179, 255, 0.25) 30.76923%, transparent 30.76923%, transparent 34.61538%, rgba(102, 102, 255, 0.25) 34.61538%, rgba(179, 179, 255, 0.25) 42.30769%, transparent 42.30769%, transparent 46.15385%, rgba(102, 102, 255, 0.25) 46.15385%, rgba(179, 179, 255, 0.25) 53.84615%, transparent 53.84615%, transparent 57.69231%, rgba(102, 102, 255, 0.25) 57.69231%, rgba(179, 179, 255, 0.25) 65.38462%, transparent 65.38462%, transparent 69.23077%, rgba(102, 102, 255, 0.25) 69.23077%, rgba(179, 179, 255, 0.25) 76.92308%, transparent 76.92308%, transparent 80.76923%, rgba(102, 102, 255, 0.25) 80.76923%, rgba(179, 179, 255, 0.25) 88.46154%, transparent 88.46154%, transparent 92.30769%, rgba(102, 102, 255, 0.25) 92.30769%, rgba(179, 179, 255, 0.25));
+  background: -moz-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 7.69231%, transparent 7.69231%, transparent 11.53846%, rgba(102, 102, 255, 0.25) 11.53846%, rgba(179, 179, 255, 0.25) 19.23077%, transparent 19.23077%, transparent 23.07692%, rgba(102, 102, 255, 0.25) 23.07692%, rgba(179, 179, 255, 0.25) 30.76923%, transparent 30.76923%, transparent 34.61538%, rgba(102, 102, 255, 0.25) 34.61538%, rgba(179, 179, 255, 0.25) 42.30769%, transparent 42.30769%, transparent 46.15385%, rgba(102, 102, 255, 0.25) 46.15385%, rgba(179, 179, 255, 0.25) 53.84615%, transparent 53.84615%, transparent 57.69231%, rgba(102, 102, 255, 0.25) 57.69231%, rgba(179, 179, 255, 0.25) 65.38462%, transparent 65.38462%, transparent 69.23077%, rgba(102, 102, 255, 0.25) 69.23077%, rgba(179, 179, 255, 0.25) 76.92308%, transparent 76.92308%, transparent 80.76923%, rgba(102, 102, 255, 0.25) 80.76923%, rgba(179, 179, 255, 0.25) 88.46154%, transparent 88.46154%, transparent 92.30769%, rgba(102, 102, 255, 0.25) 92.30769%, rgba(179, 179, 255, 0.25));
+  background: linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 7.69231%, transparent 7.69231%, transparent 11.53846%, rgba(102, 102, 255, 0.25) 11.53846%, rgba(179, 179, 255, 0.25) 19.23077%, transparent 19.23077%, transparent 23.07692%, rgba(102, 102, 255, 0.25) 23.07692%, rgba(179, 179, 255, 0.25) 30.76923%, transparent 30.76923%, transparent 34.61538%, rgba(102, 102, 255, 0.25) 34.61538%, rgba(179, 179, 255, 0.25) 42.30769%, transparent 42.30769%, transparent 46.15385%, rgba(102, 102, 255, 0.25) 46.15385%, rgba(179, 179, 255, 0.25) 53.84615%, transparent 53.84615%, transparent 57.69231%, rgba(102, 102, 255, 0.25) 57.69231%, rgba(179, 179, 255, 0.25) 65.38462%, transparent 65.38462%, transparent 69.23077%, rgba(102, 102, 255, 0.25) 69.23077%, rgba(179, 179, 255, 0.25) 76.92308%, transparent 76.92308%, transparent 80.76923%, rgba(102, 102, 255, 0.25) 80.76923%, rgba(179, 179, 255, 0.25) 88.46154%, transparent 88.46154%, transparent 92.30769%, rgba(102, 102, 255, 0.25) 92.30769%, rgba(179, 179, 255, 0.25));
+}
+.assert__squish-nested:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.assert__squish-nested .nest {
+  margin-left: 11.53846%;
+  margin-right: 11.53846%;
+}
+.assert__squish-nested .test {
+  margin-left: 15%;
+  margin-right: 30%;
+}
+.assert__squish-nested .expect {
+  margin-left: 15%;
+  margin-right: 30%;
+}
+
 /*  
     Summary:
     - 0 Tests

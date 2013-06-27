@@ -1,8 +1,8 @@
 <!doctype html>
 <html>
 <head>
-  <title>Susy AG Test</title>
-  <link rel="stylesheet" type="text/css" href="css/ag.css">
+  <title>Susy Output Tests</title>
+  <link rel="stylesheet" type="text/css" href="css/test.css">
 
   <!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame -->
   <meta http-equiv="cleartype" content="on">
@@ -16,101 +16,75 @@
 </head>
 <body>
 
-<div class="container symmetrical">
-  <h1>Symmetrical</h1>
-  <h2>AG Test</h2>
-  <div class="size1of5 grid-element"><h3>1/5</h3></div>
-  <div class="size1of5 grid-element"><h3>1/5</h3></div>
-  <div class="size3of5">
-    <div class="size1of2 grid-element"><h3>1/2</h3></div>
-    <div class="size1of2 grid-element"><h3>1/2</h3></div>
-    <div class="full">
-      <div class="size1of3 grid-element"><h3>1/3</h3></div>
-      <div class="size2of3">
-        <div class="size1of2 grid-element"><h3>1/2</h3></div>
-        <div class="size1of2 grid-element"><h3>1/2</h3></div>
-        <div class="full grid-element"><h3>1</h3></div>
-      </div>
-    </div>
-  </div>
-  <h2>Gallery</h2>
-  <div class="gallery">
-    <div></div><div></div><div></div><div></div><div></div>
-    <div></div><div></div><div></div><div></div><div></div>
-  </div>
-</div>
+<h1 role="banner">Susy Tests</h1>
 
-<div class="container asymmetrical">
-  <h1>Asymmetrical</h1>
-  <h2>AG Test</h2>
-  <div class="size1of5 grid-element"><h3>1/5</h3></div>
-  <div class="size1of5 grid-element"><h3>1/5</h3></div>
-  <div class="size3of5">
-    <div class="size1of2 grid-element"><h3>1/2</h3></div>
-    <div class="size1of2 grid-element"><h3>1/2</h3></div>
-    <div class="full">
-      <div class="size1of3 grid-element"><h3>1/3</h3></div>
-      <div class="size2of3">
-        <div class="size1of2 grid-element"><h3>1/2</h3></div>
-        <div class="size1of2 grid-element"><h3>1/2</h3></div>
-        <div class="full grid-element"><h3>1</h3></div>
-      </div>
-    </div>
-  </div>
-  <h2>Gallery</h2>
-  <div class="gallery">
-    <div></div><div></div><div></div><div></div><div></div>
-    <div></div><div></div><div></div><div></div><div></div>
-  </div>
-</div>
+<article class="results">
+  <h1>Test Summary</h1>
+</article>
 
-<div class="container static">
-  <h1>Static</h1>
-  <h2>AG Test</h2>
-  <div class="size1of5 grid-element"><h3>1/5</h3></div>
-  <div class="size1of5 grid-element"><h3>1/5</h3></div>
-  <div class="size3of5">
-    <div class="size1of2 grid-element"><h3>1/2</h3></div>
-    <div class="size1of2 grid-element"><h3>1/2</h3></div>
-    <div class="full">
-      <div class="size1of3 grid-element"><h3>1/3</h3></div>
-      <div class="size2of3">
-        <div class="size1of2 grid-element"><h3>1/2</h3></div>
-        <div class="size1of2 grid-element"><h3>1/2</h3></div>
-        <div class="full grid-element"><h3>1</h3></div>
-      </div>
-    </div>
-  </div>
-  <h2>Gallery</h2>
-  <div class="gallery">
-    <div></div><div></div><div></div><div></div><div></div>
-    <div></div><div></div><div></div><div></div><div></div>
-  </div>
-</div>
+<!--
+    Margin Syntax Tests
+    ------------------- -->
 
-<div class="container split">
-  <h1>Split Gutters</h1>
-  <h2>AG Test</h2>
-  <div class="size1of5 grid-element"><h3>1/5</h3></div>
-  <div class="size1of5 grid-element"><h3>1/5</h3></div>
-  <div class="size3of5">
-    <div class="size1of2 grid-element"><h3>1/2</h3></div>
-    <div class="size1of2 grid-element"><h3>1/2</h3></div>
-    <div class="full">
-      <div class="size1of3 grid-element"><h3>1/3</h3></div>
-      <div class="size2of3">
-        <div class="size1of2 grid-element"><h3>1/2</h3></div>
-        <div class="size1of2 grid-element"><h3>1/2</h3></div>
-        <div class="full grid-element"><h3>1</h3></div>
+<article class="test-module">
+  <h1>Margin Syntax Tests</h1>
+
+  <!-- pre -->
+  <section class="test__pre">
+    <h1>@include pre($span)</h1>
+    <div class="assert__pre">
+      <div class="test">pre</div>
+      <div class="expect">expect</div>
+    </div>
+  </section>
+
+  <!-- post -->
+  <section class="test__post">
+    <h1>@include post($span)</h1>
+    <div class="assert__post">
+      <div class="test">post</div>
+      <div class="expect">expect</div>
+    </div>
+  </section>
+
+  <!-- push -->
+  <section class="test__push">
+    <h1>@include push($span)</h1>
+    <div class="assert__push">
+      <div class="test">push</div>
+      <div class="expect">expect</div>
+    </div>
+  </section>
+
+  <!-- pull -->
+  <section class="test__pull">
+    <h1>@include pull($span)</h1>
+    <div class="assert__pull">
+      <div class="spacer"></div>
+      <div class="test">pull</div>
+      <div class="expect">expect</div>
+    </div>
+  </section>
+
+  <!-- squish -->
+  <section class="test__squish">
+    <h1>@include squish($span)</h1>
+
+    <div class="assert__squish">
+      <div class="test">squish</div>
+      <div class="expect">expect</div>
+    </div>
+
+    <div class="assert__squish-nested">
+      <div class="nest">
+        <div class="test">squish</div>
+        <div class="expect">expect</div>
       </div>
     </div>
-  </div>
-  <h2>Gallery</h2>
-  <div class="gallery">
-    <div></div><div></div><div></div><div></div><div></div>
-    <div></div><div></div><div></div><div></div><div></div>
-  </div>
-</div>
+  </section>
+
+</article>
+
 
 </body>
 </html>

@@ -1,0 +1,78 @@
+// Margin Syntax
+// =============
+
+// Pre
+// ---
+
+@mixin pre(
+  $span
+) {
+  $span: if(index($span, outer), $span, append($span, outer));
+  $from: from(get-span-setting(flow, $span, parse));
+
+  margin-#{$from}: span($span);
+}
+
+// Post
+// ----
+
+@mixin post(
+  $span
+) {
+  $span: if(index($span, outer), $span, append($span, outer));
+  $to: to(get-span-setting(flow, $span, parse));
+
+  margin-#{$to}: span($span);
+}
+
+// Push
+// ----
+
+@mixin push(
+  $span
+) {
+  @include pre($span);
+}
+
+// Pull
+// ----
+
+@mixin pull(
+  $span
+) {
+  $span: if(index($span, outer), $span, append($span, outer));
+  $from: from(get-span-setting(flow, $span, parse));
+
+  margin-#{$from}: - span($span);
+}
+
+// Squish
+// ------
+
+@mixin squish(
+  $pre,
+  $post: $pre
+) {
+  $get-pre: parse-span($pre);
+  $get-post: parse-span($post);
+
+  $default-context: $columns $gutters;
+  $pre-context: get-span-setting(columns, $get-pre) get-span-setting(gutters, $get-pre);
+  $post-context: get-span-setting(columns, $get-post) get-span-setting(gutters, $get-post);
+
+  $this-context: false;
+
+  // if the contexts don't line up, and only the post has changed, we use it for both
+  @if $pre-context != $post-context and $default-context == $pre-context {
+    $this-context: $post-context;
+
+    @include use-grid($this-context) {
+      @include pre($pre);
+      @include post($post);
+    }
+  } @else {
+    @include pre($pre);
+    @include post($post);
+  }
+
+}

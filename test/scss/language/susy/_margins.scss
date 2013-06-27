@@ -1,0 +1,83 @@
+// Margin Syntax Tests
+// ===================
+
+@include test-module('Margin Syntax') {
+
+  // pre
+  // ---
+
+  .assert__pre {
+    @include use-grid(7 .5) {
+      @include output-test;
+      .test { @include pre(3); }
+      .expect { margin-left: 45%; }
+    }
+  }
+
+  // post
+  // ----
+
+  .assert__post {
+    @include use-grid((1 2 3 2 1) .25) {
+      @include output-test;
+      .test { @include post(last 2); }
+      .expect { margin-right: 35%; }
+    }
+  }
+
+  // push
+  // ----
+
+  .assert__push {
+    @include use-grid((1 2 3 2 1) .25) {
+      @include output-test;
+      .test { @include push(first 2); }
+      .expect { margin-left: 35%; }
+    }
+  }
+
+  // pull
+  // ----
+
+  .assert__pull {
+    @include use-grid((1 2 3 2 1) .25) {
+      // setup
+      @include output-test;
+      .spacer { @include span(first 2); }
+      .test, .expect { @include span(3 at 2); }
+
+      // test
+      .test { @include pull(1 at 2); }
+      .expect { margin-left: -22.5%; }
+    }
+  }
+
+  // squish
+  // ------
+
+  .assert__squish {
+    @include use-grid((1 2 3 2 1) .25) {
+      @include output-test;
+      .test { @include squish(first 2, last 2); }
+      .expect {
+        margin-left: 35%;
+        margin-right: 35%;
+      }
+    }
+  }
+
+  // nested
+  .assert__squish-nested {
+    @include use-grid(9 .5) {
+      @include output-test;
+      .nest { @include squish(1); }
+      .test { @include squish(1, 2 of 7); }
+      .expect {
+        margin-left: 15%;
+        margin-right: 30%;
+      }
+    }
+  }
+
+
+}

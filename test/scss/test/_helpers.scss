@@ -1,0 +1,14 @@
+// Test Helpers
+// ============
+
+@mixin output-test(
+  $grid: get-grid()
+) {
+  $experimental-support-for-mozilla: true;
+  $experimental-support-for-webkit: true;
+
+  @include container(show-columns);
+
+  $experimental-support-for-mozilla: false;
+  $experimental-support-for-webkit: false;
+}

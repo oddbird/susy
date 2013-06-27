@@ -5,23 +5,12 @@
 @import "susy";
 @import "true";
 
-// Settings
-// --------
-// No need to test compass hacks in general.
-// We can turn these on for specific tests as needed.
+// Testing
+// -------
 
-$legacy-support-for-ie: false;
-$legacy-support-for-ie6: false;
-$legacy-support-for-ie7: false;
-$legacy-support-for-ie8: false;
-
-$experimental-support-for-mozilla: false;
-$experimental-support-for-webkit: false;
-$support-for-original-webkit-gradients: false;
-$experimental-support-for-opera: false;
-$experimental-support-for-microsoft: false;
-$experimental-support-for-khtml: false;
-$experimental-support-for-svg: false;
+@import "test/settings";
+@import "test/helpers";
+@import "test/layout";
 
 // Math
 // ----

@@ -3,6 +3,11 @@
 
 @include test-module('Gutter Syntax') {
 
+  // gutters
+  // -------
+
+  // @@@ need mixin tests
+
   // gutter
   // ------
 
@@ -17,12 +22,23 @@
     @include assert-equal($test, $expect,
       'The default gutter for "7 .5 fluid" should be "#{$expect}"');
 
+    // inside
+    $test: gutter(inside);
+    $expect: 2.5%;
+    @include assert-equal($test, $expect,
+      'The default gutter for "7 .5 fluid inside" should be "#{$expect}"');
+
+    // split
+    $test: gutter(split);
+    $expect: 2.5%;
+    @include assert-equal($test, $expect,
+      'The default gutter for "7 .5 fluid split" should be "#{$expect}"');
+
     // partial
     $test: gutter(7);
     $expect: 5%;
     @include assert-equal($test, $expect,
       'The gutter for "7" (.5 fluid) should be "#{$expect}"');
-
 
     // explicit
     $gutter: (1 2 3 2 1) (4em 1em) static;

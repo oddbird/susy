@@ -1,6 +1,29 @@
 // Gutter Syntax
 // =============
 
+// Set gutters on an element
+@mixin gutters(
+  $context: get-grid()
+) {
+  $context: get-adjusted-grid($context);
+
+  $this-columns           : get-setting(columns, $context);
+  $this-gutters           : get-setting(gutters, $context);
+  $this-column-width      : get-setting(column-width, $context);
+  $this-layout-math       : get-setting(layout-math, $context);
+  $this-gutter-position   : get-setting(gutter-position, $context);
+  $this-flow              : get-setting(flow, $context);
+
+  $from: from($this-flow);
+  $to: to($this-flow);
+
+  $this-gutters: get-gutters($this-columns, $this-gutters, $this-column-width, $this-layout-math, $this-gutter-position);
+  $property: if($this-gutter-position == inside, padding, margin);
+
+  #{$property}-#{$from}: nth($this-gutters, 1);
+  #{$property}-#{$to}: nth($this-gutters, 2);
+}
+
 // Return the width of a gutter
 @function gutter(
   $context: get-grid()
@@ -11,8 +34,13 @@
   $this-gutters       : get-setting(gutters, $context);
   $this-column-width  : get-setting(column-width, $context);
   $this-layout-math   : get-setting(layout-math, $context);
+  $this-gutter-position   : get-setting(gutter-position, $context);
 
   $width: get-gutter-width($this-columns, $this-gutters, $this-column-width, $this-layout-math);
+
+  @if $this-gutter-position == inside or $this-gutter-position == split {
+    $width: $width / 2;
+  }
 
   @return $width;
 }

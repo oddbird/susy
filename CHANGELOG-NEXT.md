@@ -3,6 +3,8 @@ Susy Next Changelog
 
 2.0.0-alpha.3 [unreleased]
 --------------------------
+- New `gutters` mixin adds gutters to an element.
+- `gutter` function now returns half-widths when using split/inside gutters.
 - Add `outer` keyword to `span` syntax, to return span-width including gutters.
   - Works with both span mixin and span function.
   - Replaces Susy 1.0 `space` function.

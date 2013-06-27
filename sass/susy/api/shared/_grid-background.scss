@@ -19,19 +19,23 @@
   // set the proper background gradient
   $background: ();
 
-  @if $show != show-baseline {
-    $background: append($background, linear-gradient($from, $stops...), comma);
-  }
+  @if $show and $show != hide {
 
-  @if $show != show-columns {
-    $background: append($background, get-baseline-gradient(), comma);
-  }
+    @if $show != show-baseline {
+      $background: append($background, linear-gradient($from, $stops...), comma);
+    }
 
-  // output styles
-  @include background($background);
+    @if $show != show-columns {
+      $background: append($background, get-baseline-gradient(), comma);
+    }
 
-  @if $show != show-columns {
-    @include background-size(100% $base-line-height);
-    background-position: left top;
+    // output styles
+    @include background($background);
+
+    @if $show != show-columns {
+      @include background-size(100% $base-line-height);
+      background-position: left top;
+    }
+
   }
 }

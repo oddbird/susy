@@ -290,3 +290,26 @@
   display: table;
   clear: both;
 }
+
+/*
+
+### Float End API ------ */
+/* - [mixin] float-last */
+/* "Items should float flush right." */
+.test__float-last .assert__float-last .test {
+  float: right;
+  margin-right: 0;
+}
+.test__float-last .assert__float-last .expect {
+  float: right;
+  margin-right: 0;
+}
+
+/* - [mixin] float-first */
+/* "Items should float flush left." */
+.test__float-first .assert__float-first .test {
+  margin-left: 0;
+}
+.test__float-first .assert__float-first .expect {
+  margin-left: 0;
+}

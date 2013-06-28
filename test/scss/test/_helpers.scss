@@ -38,6 +38,11 @@ $output-assert-slug: null;
         }
       }
     }
+  } @else if $output {
+    .test__#{$output-test-slug} .assert__#{$output-assert-slug} {
+      @include clearfix;
+      background: rgba(#ccf, .5);
+    }
   }
 
   @if $output {

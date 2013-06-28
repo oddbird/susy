@@ -426,11 +426,55 @@ h1 {
 ### Float Container API ------ */
 /* - [mixin] float-container */
 .test__float-container .assert__float-container {
-  background: rgba(238, 238, 238, 0.5);
+  overflow: hidden;
+  background: rgba(204, 204, 255, 0.5);
 }
 
 .test__float-container .assert__float-container::before {
   content: "Containers should be 30em wide, flush left.";
+  display: block;
+  padding: 0.375rem 0.75rem;
+  text-align: left;
+  font-style: italic;
+}
+
+/*
+
+### Float End API ------ */
+/* - [mixin] float-last */
+.test__float-last .assert__float-last {
+  overflow: hidden;
+  background: rgba(204, 204, 255, 0.5);
+}
+
+.test__float-last .assert__float-last .test, .test__float-last .assert__float-last .expect {
+  float: left;
+  width: 75%;
+  margin-right: 5%;
+}
+
+.test__float-last .assert__float-last::before {
+  content: "Items should float flush right.";
+  display: block;
+  padding: 0.375rem 0.75rem;
+  text-align: left;
+  font-style: italic;
+}
+
+/* - [mixin] float-first */
+.test__float-first .assert__float-first {
+  overflow: hidden;
+  background: rgba(204, 204, 255, 0.5);
+}
+
+.test__float-first .assert__float-first .test, .test__float-first .assert__float-first .expect {
+  float: left;
+  width: 75%;
+  margin-left: 5%;
+}
+
+.test__float-first .assert__float-first::before {
+  content: "Items should float flush left.";
   display: block;
   padding: 0.375rem 0.75rem;
   text-align: left;

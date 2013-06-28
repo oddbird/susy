@@ -7,7 +7,7 @@
   // ---------------
 
   @include output-test('float-container') {
-    @include assert-setup { background: rgba(#eee, .5); }
+    @include assert-setup;
     @include assert-output(
       'Containers should be 30em wide, flush left.'
     ) {

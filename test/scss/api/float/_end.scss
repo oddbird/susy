@@ -1,12 +1,50 @@
 // Float End API Tests
 // ===================
 
-// Float Last
-// ----------
+@include output-test-module('Float End API') {
 
-// @@@ need mixin tests
+  // Float Last
+  // ----------
 
-// Float First
-// -----------
+  @include output-test('float-last') {
+    @include assert-setup {
+      .test, .expect {
+        float: left;
+        width: 75%;
+        margin-right: 5%;
+      }
+    }
+    @include assert-output(
+      'Items should float flush right.'
+    ) {
+      .test { @include float-last; }
+      .expect {
+        float: right;
+        margin-right: 0;
+      }
+    }
+  }
 
-// @@@ need mixin tests
+  // Float First
+  // -----------
+
+  @include output-test('float-first') {
+    @include assert-setup {
+      .test, .expect {
+        float: left;
+        width: 75%;
+        margin-left: 5%;
+      }
+    }
+    @include assert-output(
+      'Items should float flush left.'
+    ) {
+      .test { @include float-first; }
+      .expect {
+        margin-left: 0;
+      }
+    }
+
+  }
+
+}

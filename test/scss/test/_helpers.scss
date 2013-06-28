@@ -4,6 +4,12 @@
 $output-test-context: true;
 $output-test-results: true;
 
+$output-test-slug: null;
+$output-assert-slug: null;
+
+// Test Output Module
+// ------------------
+
 @mixin output-test-module($name) {
 /*
 
@@ -13,43 +19,80 @@ $output-test-results: true;
   }
 }
 
-@mixin output-test-setup(
-  $show: show-columns,
+// Output Test Setup/Teardown
+// --------------------------
+
+@mixin assert-setup(
+  $slug: $output-test-slug,
+  $grid: false,
   $output: $output-test-context
 ) {
-  @if $output {
-    $experimental-support-for-mozilla: true;
-    $experimental-support-for-webkit: true;
+  $output-assert-slug: $slug;
 
-    @include container($show);
-    @content;
-
-    $experimental-support-for-mozilla: false;
-    $experimental-support-for-webkit: false;
+  @if $grid {
+    @include set-grid($grid);
+    @if $output {
+      @include with-only-support-for(-moz, -webkit) {
+        .test__#{$output-test-slug} .assert__#{$output-assert-slug} {
+          @include container;
+        }
+      }
+    }
   }
-}
 
-@mixin output-test(
-  $slug,
-  $grid,
-  $name: '[mixin] #{$slug}',
-  $output-context: $output-test-context,
-  $output-results: $output-test-results
-) {
-  @include use-grid($grid) {
-
-    /* - #{$name} */
-    .assert__#{$slug} {
+  @if $output {
+    .test__#{$output-test-slug} .assert__#{$output-assert-slug} {
       @content;
     }
-
   }
 }
 
-@mixin assert-output(
-  $output: $output-test-results
+@mixin assert-teardown(
 ) {
-  @if $output {
-    @content;
+  $output-assert-slug: null;
+  @include original-grid;
+}
+
+// Output Test
+// -----------
+
+@mixin output-test(
+  $slug
+) {
+  $output-test-slug: $slug;
+
+  /* - [mixin] #{$output-test-slug} */
+  @content;
+
+  $output-test-slug: null;
+}
+
+// Assert Output
+// -------------
+
+@mixin assert-output(
+  $message: null,
+  $output-test-results: $output-test-results,
+  $output-test-context: $output-test-context
+) {
+  @if $output-test-results {
+    /* "#{$message}" */
   }
+
+  .test__#{$output-test-slug} .assert__#{$output-assert-slug} {
+    @if $output-test-context and $message {
+      &::before {
+        content: $message;
+        display: block;
+        padding: rhythm(.25) rhythm(.5);
+        text-align: left;
+        font-style: italic;
+      }
+    }
+    @if $output-test-results {
+      @content;
+    }
+  }
+
+  @include assert-teardown;
 }

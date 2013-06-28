@@ -6,13 +6,11 @@
   // pre
   // ---
 
-  $slug: 'pre';
-  $grid: 7 .5;
-
-  @include output-test($slug, $grid, '[mixin] pre') {
-    @include output-test-setup;
-
-    @include assert-output {
+  @include output-test('pre') {
+    @include assert-setup($grid: 7 .5);
+    @include assert-output(
+      'Items should have 3-columns margin before.'
+    ) {
       .test { @include pre(3); }
       .expect { margin-left: 45%; }
     }
@@ -21,13 +19,11 @@
   // post
   // ----
 
-  $slug: 'post';
-  $grid: (1 2 3 2 1) .25;
-
-  @include output-test($slug, $grid, '[mixin] post') {
-    @include output-test-setup;
-
-    @include assert-output {
+  @include output-test('post') {
+    @include assert-setup($grid: (1 2 3 2 1) .25);
+    @include assert-output(
+      'Items should have 2-columns margin after.'
+    ) {
       .test { @include post(last 2); }
       .expect { margin-right: 35%; }
     }
@@ -36,13 +32,11 @@
   // push
   // ----
 
-  $slug: 'push';
-  $grid: (1 2 3 2 1) .25;
-
-  @include output-test($slug, $grid, '[mixin] push') {
-    @include output-test-setup;
-
-    @include assert-output {
+  @include output-test('push') {
+    @include assert-setup($grid: (1 2 3 2 1) .25);
+    @include assert-output(
+      'Items should have 2-columns margin before.'
+    ) {
       .test { @include push(first 2); }
       .expect { margin-left: 35%; }
     }
@@ -51,16 +45,14 @@
   // pull
   // ----
 
-  $slug: 'pull';
-  $grid: (1 2 3 2 1) .25;
-
-  @include output-test($slug, $grid, '[mixin] push') {
-    @include output-test-setup {
+  @include output-test('pull') {
+    @include assert-setup($grid: (1 2 3 2 1) .25) {
       .spacer { @include span(first 2); }
       .test, .expect { @include span(3 at 2); }
     }
-
-    @include assert-output {
+    @include assert-output(
+      'Items should pull 1-column, overlapping the spacer.'
+    ) {
       .test { @include pull(1 at 2); }
       .expect { margin-left: -22.5%; }
     }
@@ -69,33 +61,26 @@
   // squish
   // ------
 
-  $slug: 'squish';
-  $grid: (1 2 3 2 1) .25;
-
-  @include output-test($slug, $grid, '[mixin] squish') {
-    @include output-test-setup;
-
-    @include assert-output {
+  @include output-test('squish') {
+    // simple
+    @include assert-setup('simple', $grid: (1 2 3 2 1) .25);
+    @include assert-output(
+      'Items should have 2-columns margin before and after.'
+    ) {
       .test { @include squish(first 2, last 2); }
       .expect {
         margin-left: 35%;
         margin-right: 35%;
       }
     }
-  }
 
-  // squish: nested
-  // --------------
-
-  $slug: 'squish-nested';
-  $grid: 9 .5;
-
-  @include output-test($slug, $grid, '[mixin] squish: nested') {
-    @include output-test-setup {
+    // nested
+    @include assert-setup('nested', $grid: 9 .5) {
       .nest { @include squish(1); }
     }
-
-    @include assert-output {
+    @include assert-output(
+      'Items should have 1-column margin before, and 2 after - nested.'
+    ) {
       .test { @include squish(1, 2 of 7); }
       .expect {
         margin-left: 15%;
@@ -103,5 +88,6 @@
       }
     }
   }
+
 
 }

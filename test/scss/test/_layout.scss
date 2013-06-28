@@ -60,7 +60,6 @@ h1 { font-weight: bold; }
 }
 
 [class^="assert__"] {
-  @include padding-leader(.5);
   @include trailer(.5);
   text-align: center;
 

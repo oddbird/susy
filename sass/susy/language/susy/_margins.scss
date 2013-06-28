@@ -7,10 +7,11 @@
 @mixin pre(
   $span
 ) {
-  $span: if(index($span, outer), $span, append($span, outer));
-  $from: from(get-span-setting(flow, $span, parse));
+  $span   : if(index($span, outer), $span, append($span, outer));
+  $flow   : get-span-setting(flow, $span, parse);
+  $width  : span($span);
 
-  margin-#{$from}: span($span);
+  @include margin-output($width, null, $flow);
 }
 
 // Post
@@ -19,10 +20,11 @@
 @mixin post(
   $span
 ) {
-  $span: if(index($span, outer), $span, append($span, outer));
-  $to: to(get-span-setting(flow, $span, parse));
+  $span   : if(index($span, outer), $span, append($span, outer));
+  $flow   : get-span-setting(flow, $span, parse);
+  $width  : span($span);
 
-  margin-#{$to}: span($span);
+  @include margin-output(null, $width, $flow);
 }
 
 // Push
@@ -40,10 +42,11 @@
 @mixin pull(
   $span
 ) {
-  $span: if(index($span, outer), $span, append($span, outer));
-  $from: from(get-span-setting(flow, $span, parse));
+  $span   : if(index($span, outer), $span, append($span, outer));
+  $flow   : get-span-setting(flow, $span, parse);
+  $width  : 0 - span($span);
 
-  margin-#{$from}: - span($span);
+  @include margin-output($width, null, $flow);
 }
 
 // Squish
@@ -53,26 +56,31 @@
   $pre,
   $post: $pre
 ) {
-  $get-pre: parse-span($pre);
-  $get-post: parse-span($post);
+  $pre    : if(index($pre, outer), $pre, append($pre, outer));
+  $post   : if(index($post, outer), $post, append($post, outer));
 
-  $default-context: $columns $gutters;
-  $pre-context: get-span-setting(columns, $get-pre) get-span-setting(gutters, $get-pre);
-  $post-context: get-span-setting(columns, $get-post) get-span-setting(gutters, $get-post);
+  $get-pre    : parse-span($pre);
+  $get-post   : parse-span($post);
 
-  $this-context: false;
+  $flow     : get-span-setting(flow, $get-pre);
+  $before   : null;
+  $after    : null;
+
+  // get the various contexts
+  $default-context  : $columns $gutters;
+  $pre-context      : get-span-setting(columns, $get-pre) get-span-setting(gutters, $get-pre);
+  $post-context     : get-span-setting(columns, $get-post) get-span-setting(gutters, $get-post);
 
   // if the contexts don't line up, and only the post has changed, we use it for both
   @if $pre-context != $post-context and $default-context == $pre-context {
-    $this-context: $post-context;
-
-    @include use-grid($this-context) {
-      @include pre($pre);
-      @include post($post);
+    @include use-grid($post-context) {
+      $before: span($pre);
+      $after: span($post);
     }
   } @else {
-    @include pre($pre);
-    @include post($post);
+    $before: span($pre);
+    $after: span($post);
   }
 
+  @include margin-output($before, $after, $flow);
 }

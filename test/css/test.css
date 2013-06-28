@@ -129,7 +129,7 @@ h1 {
   text-align: center;
 }
 [class^="assert__"] .nest {
-  padding-top: 0.825em;
+  padding-top: 0.75em;
 }
 [class^="assert__"] .spacer {
   height: 5.25em;

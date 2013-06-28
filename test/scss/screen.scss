@@ -15,6 +15,10 @@
 // Output
 // ------
 
+$default-module-output: false;
+$default-test-output: false;
+$default-final-output: false;
+
 $output-test-context: true;
 $output-test-results: false;
 
@@ -48,8 +52,6 @@ $output-test-results: false;
 // ------
 
 .results{
-  @include report;
-
   @if nth($total-test-results, 3) < 1 {
     background: rgba(green, .25);
     border-color: green;

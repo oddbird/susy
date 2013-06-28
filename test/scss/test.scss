@@ -14,6 +14,8 @@
 // Output
 // ------
 
+$default-module-output: css;
+
 $output-test-context: false;
 $output-test-results: true;
 
@@ -42,3 +44,8 @@ $output-test-results: true;
 
 @import "api/shared";
 @import "api/float";
+
+// Report
+// ------
+
+@include report;

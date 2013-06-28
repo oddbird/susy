@@ -1,14 +1,55 @@
 // Test Helpers
 // ============
 
-@mixin output-test(
-  $grid: get-grid()
+$output-test-context: true;
+$output-test-results: true;
+
+@mixin output-test-module($name) {
+/*
+
+### #{$name} ------ */
+  @include test-module($name, false) {
+    @content;
+  }
+}
+
+@mixin output-test-setup(
+  $show: show-columns,
+  $output: $output-test-context
 ) {
-  $experimental-support-for-mozilla: true;
-  $experimental-support-for-webkit: true;
+  @if $output {
+    $experimental-support-for-mozilla: true;
+    $experimental-support-for-webkit: true;
 
-  @include container(show-columns);
+    @include container($show);
+    @content;
 
-  $experimental-support-for-mozilla: false;
-  $experimental-support-for-webkit: false;
+    $experimental-support-for-mozilla: false;
+    $experimental-support-for-webkit: false;
+  }
+}
+
+@mixin output-test(
+  $slug,
+  $grid,
+  $name: '[mixin] #{$slug}',
+  $output-context: $output-test-context,
+  $output-results: $output-test-results
+) {
+  @include use-grid($grid) {
+
+    /* - #{$name} */
+    .assert__#{$slug} {
+      @content;
+    }
+
+  }
+}
+
+@mixin assert-output(
+  $output: $output-test-results
+) {
+  @if $output {
+    @content;
+  }
 }

@@ -1,5 +1,5 @@
-/* Susy Tests */
-/* ========== */
+// Test Layout
+// ===========
 
 @import "compass";
 @import "susy";
@@ -10,12 +10,13 @@
 
 @import "test/settings";
 @import "test/helpers";
+@import "test/layout";
 
 // Output
 // ------
 
-$output-test-context: false;
-$output-test-results: true;
+$output-test-context: true;
+$output-test-results: false;
 
 // Math
 // ----
@@ -42,3 +43,19 @@ $output-test-results: true;
 
 @import "api/shared";
 @import "api/float";
+
+// Report
+// ------
+
+.results{
+  @include report;
+
+  @if nth($total-test-results, 3) < 1 {
+    background: rgba(green, .25);
+    border-color: green;
+  }
+
+  &::after {
+    content: report();
+  }
+}

@@ -3,24 +3,24 @@ Susy Next Changelog
 
 2.0.0-alpha.3 [unreleased]
 --------------------------
-- Add padding-span syntax: `prefix`, `suffix`, and `pad`.
-- Add margin-span syntax: `pre`, `post`, `push`, `pull`, and `squish`.
-- New `gutters` mixin adds gutters to an element.
-- `gutter` function now returns half-widths when using split/inside gutters.
-- Add `outer` keyword to `span` syntax, to return span-width including gutters.
+* Add padding-span syntax: `prefix`, `suffix`, and `pad`.
+* Add margin-span syntax: `pre`, `post`, `push`, `pull`, and `squish`.
+* New `gutters` mixin adds gutters to an element.
+* `gutter` function now returns half-widths when using split/inside gutters.
+* Add `outer` keyword to `span` syntax, to return span-width including gutters.
   - Works with both span mixin and span function.
   - Replaces Susy 1.0 `space` function.
-- Add comrehensive unit tests, using [true](http://eric.andmeyer.com/true/).
-- Improve fall-abck handling of ommitted arguments.
-- Add `container` function to return a given container's width.
-- Add `auto` keyword to override `$container-width`, otherwise respect existing width.
-- Renamed `$isolate` to `$layout-method`
+* Add comrehensive unit tests, using [true](http://eric.andmeyer.com/true/).
+* Improve fall-abck handling of ommitted arguments.
+* Add `container` function to return a given container's width.
+* Add `auto` keyword to override `$container-width`, otherwise respect existing width.
+* Renamed `$isolate` to `$layout-method`
   - No longer accepts boolean.
   - Accepts keywords `isolate` and (default) `float`.
-- Renamed `$static` to `$layout-math`
+* Renamed `$static` to `$layout-math`
   - No longer accepts boolean.
   - Accepts keywords `static` (use given units) and (default) `fluid` (use % units).
-- Add `show-columns` and `show-baseline` keywords to `$show-grids` setting.
+* Add `show-columns` and `show-baseline` keywords to `$show-grids` setting.
   - `show` will show both columns/baseline, default is `show-columns`.
 
 2.0.0.alpha.2 [May 7, 2013]

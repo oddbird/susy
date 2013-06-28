@@ -1,14 +1,18 @@
-// Margin Syntax Tests
-// ===================
+// Padding Syntax Tests
+// ====================
 
-@include test-module('Margin Syntax') {
+@include output-test-module('Padding Syntax') {
 
   // prefix
   // ------
 
-  .assert__prefix {
-    @include use-grid(7 .5) {
-      @include output-test;
+  $slug: 'prefix';
+  $grid: 7 .5;
+
+  @include output-test($slug, $grid, '[mixin] prefix') {
+    @include output-test-setup;
+
+    @include assert-output {
       .test { @include prefix(3); }
       .expect { padding-left: 45%; }
     }
@@ -17,9 +21,13 @@
   // suffix
   // ------
 
-  .assert__suffix {
-    @include use-grid((1 2 3 2 1) .25) {
-      @include output-test;
+  $slug: 'suffix';
+  $grid: (1 2 3 2 1) .25;
+
+  @include output-test($slug, $grid, '[mixin] suffix') {
+    @include output-test-setup;
+
+    @include assert-output {
       .test { @include suffix(last 2); }
       .expect { padding-right: 35%; }
     }
@@ -28,9 +36,13 @@
   // pad
   // ---
 
-  .assert__pad {
-    @include use-grid((1 2 3 2 1) .25) {
-      @include output-test;
+  $slug: 'pad';
+  $grid: (1 2 3 2 1) .25;
+
+  @include output-test($slug, $grid, '[mixin] pad') {
+    @include output-test-setup;
+
+    @include assert-output {
       .test { @include pad(first 2, last 2); }
       .expect {
         padding-left: 35%;
@@ -39,11 +51,18 @@
     }
   }
 
-  // nested
-  .assert__pad-nested {
-    @include use-grid(9 .5) {
-      @include output-test;
+  // pad: nested
+  // -----------
+
+  $slug: 'pad-nested';
+  $grid: 9 .5;
+
+  @include output-test($slug, $grid, '[mixin] pad: nested') {
+    @include output-test-setup {
       .nest { @include pad(1); }
+    }
+
+    @include assert-output {
       .test { @include pad(1, 2 of 7); }
       .expect {
         padding-left: 15%;
@@ -51,6 +70,5 @@
       }
     }
   }
-
 
 }

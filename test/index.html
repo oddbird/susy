@@ -68,7 +68,7 @@
 
   <!-- squish -->
   <section class="test__squish">
-    <h1>@include squish($span)</h1>
+    <h1>@include squish($pre, $post)</h1>
 
     <div class="assert__squish">
       <div class="test">squish</div>
@@ -85,6 +85,49 @@
 
 </article>
 
+<!--
+    Padding Syntax Tests
+    -------------------- -->
+
+<article class="test-module">
+  <h1>Padding Syntax Tests</h1>
+
+  <!-- prefix -->
+  <section class="test__prefix">
+    <h1>@include prefix($span)</h1>
+    <div class="assert__prefix">
+      <div class="test">prefix</div>
+      <div class="expect">expect</div>
+    </div>
+  </section>
+
+  <!-- suffix -->
+  <section class="test__suffix">
+    <h1>@include suffix($span)</h1>
+    <div class="assert__suffix">
+      <div class="test">suffix</div>
+      <div class="expect">expect</div>
+    </div>
+  </section>
+
+  <!-- pad -->
+  <section class="test__pad">
+    <h1>@include pad($pre, $post)</h1>
+
+    <div class="assert__pad">
+      <div class="test">pad</div>
+      <div class="expect">expect</div>
+    </div>
+
+    <div class="assert__pad-nested">
+      <div class="nest">
+        <div class="test">pad</div>
+        <div class="expect">expect</div>
+      </div>
+    </div>
+  </section>
+
+</article>
 
 </body>
 </html>

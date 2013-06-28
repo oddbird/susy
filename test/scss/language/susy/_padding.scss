@@ -1,0 +1,56 @@
+// Margin Syntax Tests
+// ===================
+
+@include test-module('Margin Syntax') {
+
+  // prefix
+  // ------
+
+  .assert__prefix {
+    @include use-grid(7 .5) {
+      @include output-test;
+      .test { @include prefix(3); }
+      .expect { padding-left: 45%; }
+    }
+  }
+
+  // suffix
+  // ------
+
+  .assert__suffix {
+    @include use-grid((1 2 3 2 1) .25) {
+      @include output-test;
+      .test { @include suffix(last 2); }
+      .expect { padding-right: 35%; }
+    }
+  }
+
+  // pad
+  // ---
+
+  .assert__pad {
+    @include use-grid((1 2 3 2 1) .25) {
+      @include output-test;
+      .test { @include pad(first 2, last 2); }
+      .expect {
+        padding-left: 35%;
+        padding-right: 35%;
+      }
+    }
+  }
+
+  // nested
+  .assert__pad-nested {
+    @include use-grid(9 .5) {
+      @include output-test;
+      .nest { @include pad(1); }
+      .test { @include pad(1, 2 of 7); }
+      .expect {
+        padding-left: 15%;
+        padding-right: 30%;
+      }
+    }
+  }
+
+
+}

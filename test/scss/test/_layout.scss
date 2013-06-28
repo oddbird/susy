@@ -25,7 +25,8 @@ h1 {
 .results { display: none; }
 
 .test-module {
-  @include trailing-border();
+  @include trailing-border;
+  @include trailer;
   > h1 {
     @include adjust-font-size-to(18px);
     @include trailer(.5);
@@ -51,14 +52,17 @@ h1 {
   div {
     @include rhythm(0,.25,.25,.5);
     @include adjust-font-size-to(14px);
+    @include background(
+      linear-gradient(to left, rgba(white,.75), rgba(white,.75)), rgba(#fcc,.25));
+    @include background-clip(content-box, border-box);
     outline: 1px solid rgba(red,.25);
     outline-offset: -1px;
-    background: rgba(white,.5);
     text-align: center;
   }
 
   .nest {
     @include padding-leader(.5);
+    background: rgba(white,.25);
   }
   .spacer {
     height: rhythm(3.5);

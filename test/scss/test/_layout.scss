@@ -11,24 +11,38 @@ $rhythm-unit: rem;
 
 html { font-family: sans-serif; }
 body { padding: rhythm(1); }
+h1 { font-weight: bold; }
 
-[role="banner"] {
-  @include adjust-font-size-to(24px);
-  @include trailing-border(1px,.25);
-  @include trailer;
+[role="banner"] { @include adjust-font-size-to(24px); }
+
+.results {
+  @include rhythm-margins(1);
+  @include rhythm-borders(1px,1);
+  background-color: rgba(red, .25);
+  border-color: red;
+
+  &::before {
+    content: 'Unit Tests: ';
+    font-weight: bold;
+  }
+
+  &::before, &::after {
+    display: inline;
+  }
 }
-
-h1 {
-  font-weight: bold;
-}
-
-.results { display: none; }
 
 .test-module {
-  @include trailing-border;
-  @include trailer;
+  @include trailing-border(6px);
+  @include trailer(.5);
+  border-style: dotted;
+
+  &:last-of-type {
+    padding-bottom: 0;
+    border: 0;
+  }
+
   > h1 {
-    @include adjust-font-size-to(18px);
+    @include adjust-font-size-to(24px);
     @include trailer(.5);
   }
 }
@@ -37,8 +51,8 @@ h1 {
   @include trailer(.5);
 
   h1 {
-    padding: rhythm(.25);
-    background: #333;
+    padding: rhythm(.25) rhythm(.5);
+    background: #666;
     color: #eee;
     font-weight: normal;
     font-family: monospace, sans-serif;
@@ -48,22 +62,25 @@ h1 {
 [class^="assert__"] {
   @include padding-leader(.5);
   @include trailer(.5);
+  text-align: center;
 
   div {
-    @include rhythm(0,.25,.25,.5);
-    @include adjust-font-size-to(14px);
-    @include background(
-      linear-gradient(to left, rgba(white,.75), rgba(white,.75)), rgba(#fcc,.25));
-    @include background-clip(content-box, border-box);
+    background: rgba(white,.25);
     outline: 1px solid rgba(red,.25);
     outline-offset: -1px;
-    text-align: center;
   }
 
-  .nest {
-    @include padding-leader(.5);
-    background: rgba(white,.25);
+  .test, .expect {
+    @include trailer(.5);
+    @include adjust-font-size-to(14px);
+    @include background(
+      linear-gradient(to left, rgba(white,.75), rgba(white,.75)), rgba(#fcc,.5));
+    @include background-clip(content-box, border-box);
   }
+
+  .test { outline-color: red; }
+  .expect { outline-color: green; }
+
   .spacer {
     height: rhythm(3.5);
     outline: 1px solid rgba(#444,.25);

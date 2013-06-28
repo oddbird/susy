@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/ericam/true
-  revision: 7627a306be5474db27a5894d7b87c09b400c4e11
+  revision: 78612d2c2f65d6d97416495e73ffe3767b3824c0
   branch: master
   specs:
     true (0.1.5)

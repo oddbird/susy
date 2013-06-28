@@ -69,42 +69,57 @@ body {
   padding: 1.5rem;
 }
 
+h1 {
+  font-weight: bold;
+}
+
 [role="banner"] {
   font-size: 24px;
   font-size: 1.5rem;
   line-height: 48px;
   line-height: 3rem;
-  border-bottom-width: 1px;
-  border-bottom-width: 0.0625rem;
-  border-bottom-style: solid;
-  padding-bottom: 5px;
-  padding-bottom: 0.3125rem;
-  margin-bottom: 24px;
-  margin-bottom: 1.5rem;
-}
-
-h1 {
-  font-weight: bold;
 }
 
 .results {
-  display: none;
+  margin-top: 24px;
+  margin-top: 1.5rem;
+  margin-bottom: 24px;
+  margin-bottom: 1.5rem;
+  border-width: 1px;
+  border-width: 0.0625rem;
+  border-style: solid;
+  padding: 23px;
+  padding: 1.4375rem;
+  background-color: rgba(255, 0, 0, 0.25);
+  border-color: red;
+}
+.results::before {
+  content: 'Unit Tests: ';
+  font-weight: bold;
+}
+.results::before, .results::after {
+  display: inline;
 }
 
 .test-module {
-  border-bottom-width: 1px;
-  border-bottom-width: 0.0625rem;
+  border-bottom-width: 6px;
+  border-bottom-width: 0.375rem;
   border-bottom-style: solid;
-  padding-bottom: 23px;
-  padding-bottom: 1.4375rem;
-  margin-bottom: 24px;
-  margin-bottom: 1.5rem;
+  padding-bottom: 18px;
+  padding-bottom: 1.125rem;
+  margin-bottom: 12px;
+  margin-bottom: 0.75rem;
+  border-style: dotted;
+}
+.test-module:last-of-type {
+  padding-bottom: 0;
+  border: 0;
 }
 .test-module > h1 {
-  font-size: 18px;
-  font-size: 1.125rem;
-  line-height: 24px;
-  line-height: 1.5rem;
+  font-size: 24px;
+  font-size: 1.5rem;
+  line-height: 48px;
+  line-height: 3rem;
   margin-bottom: 12px;
   margin-bottom: 0.75rem;
 }
@@ -114,8 +129,8 @@ h1 {
   margin-bottom: 0.75rem;
 }
 [class^="test__"] h1 {
-  padding: 0.375rem;
-  background: #333;
+  padding: 0.375rem 0.75rem;
+  background: #666;
   color: #eee;
   font-weight: normal;
   font-family: monospace, sans-serif;
@@ -126,30 +141,28 @@ h1 {
   padding-top: 0.75rem;
   margin-bottom: 12px;
   margin-bottom: 0.75rem;
+  text-align: center;
 }
 [class^="assert__"] div {
-  margin-top: 0px;
-  margin-top: 0rem;
-  padding-top: 6px;
-  padding-top: 0.375rem;
-  padding-bottom: 6px;
-  padding-bottom: 0.375rem;
+  background: rgba(255, 255, 255, 0.25);
+  outline: 1px solid rgba(255, 0, 0, 0.25);
+  outline-offset: -1px;
+}
+[class^="assert__"] .test, [class^="assert__"] .expect {
   margin-bottom: 12px;
   margin-bottom: 0.75rem;
   font-size: 14px;
   font-size: 0.875rem;
   line-height: 24px;
   line-height: 1.5rem;
-  background: linear-gradient(to left, rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0.75)), rgba(255, 204, 204, 0.25);
+  background: linear-gradient(to left, rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0.75)), rgba(255, 204, 204, 0.5);
   background-clip: content-box, border-box;
-  outline: 1px solid rgba(255, 0, 0, 0.25);
-  outline-offset: -1px;
-  text-align: center;
 }
-[class^="assert__"] .nest {
-  padding-top: 12px;
-  padding-top: 0.75rem;
-  background: rgba(255, 255, 255, 0.25);
+[class^="assert__"] .test {
+  outline-color: red;
+}
+[class^="assert__"] .expect {
+  outline-color: green;
 }
 [class^="assert__"] .spacer {
   height: 5.25rem;
@@ -562,3 +575,10 @@ h1 {
     - 0 Tests
     - 0 Passed
     - 0 Failed */
+.results {
+  background: rgba(0, 128, 0, 0.25);
+  border-color: green;
+}
+.results::after {
+  content: "43 Tests, 43 Passed, 0 Failed";
+}

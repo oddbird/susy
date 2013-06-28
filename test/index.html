@@ -17,21 +17,18 @@
 <body>
 
 <h1 role="banner">Susy Tests</h1>
-
-<article class="results">
-  <h1>Test Summary</h1>
-</article>
+<div class="results"></div>
 
 <!--
-    Margin Syntax Tests
-    ------------------- -->
+    Margin Syntax
+    ------------- -->
 
 <article class="test-module">
-  <h1>Margin Syntax Tests</h1>
+  <h1>Margin Syntax</h1>
 
   <!-- pre -->
   <section class="test__pre">
-    <h1>@include pre($span)</h1>
+    <h1>pre [mixin]</h1>
     <div class="assert__pre">
       <div class="test">pre</div>
       <div class="expect">expect</div>
@@ -40,7 +37,7 @@
 
   <!-- post -->
   <section class="test__post">
-    <h1>@include post($span)</h1>
+    <h1>post [mixin]</h1>
     <div class="assert__post">
       <div class="test">post</div>
       <div class="expect">expect</div>
@@ -49,7 +46,7 @@
 
   <!-- push -->
   <section class="test__push">
-    <h1>@include push($span)</h1>
+    <h1>push [mixin]</h1>
     <div class="assert__push">
       <div class="test">push</div>
       <div class="expect">expect</div>
@@ -58,7 +55,7 @@
 
   <!-- pull -->
   <section class="test__pull">
-    <h1>@include pull($span)</h1>
+    <h1>pull [mixin]</h1>
     <div class="assert__pull">
       <div class="spacer"></div>
       <div class="test">pull</div>
@@ -68,7 +65,7 @@
 
   <!-- squish -->
   <section class="test__squish">
-    <h1>@include squish($pre, $post)</h1>
+    <h1>squish [mixin]</h1>
 
     <div class="assert__squish">
       <div class="test">squish</div>
@@ -86,15 +83,15 @@
 </article>
 
 <!--
-    Padding Syntax Tests
-    -------------------- -->
+    Padding Syntax
+    -------------- -->
 
 <article class="test-module">
-  <h1>Padding Syntax Tests</h1>
+  <h1>Padding Syntax</h1>
 
   <!-- prefix -->
   <section class="test__prefix">
-    <h1>@include prefix($span)</h1>
+    <h1>prefix [mixin]</h1>
     <div class="assert__prefix">
       <div class="test">prefix</div>
       <div class="expect">expect</div>
@@ -103,7 +100,7 @@
 
   <!-- suffix -->
   <section class="test__suffix">
-    <h1>@include suffix($span)</h1>
+    <h1>suffix [mixin]</h1>
     <div class="assert__suffix">
       <div class="test">suffix</div>
       <div class="expect">expect</div>
@@ -112,7 +109,7 @@
 
   <!-- pad -->
   <section class="test__pad">
-    <h1>@include pad($pre, $post)</h1>
+    <h1>pad [mixin]</h1>
 
     <div class="assert__pad">
       <div class="test">pad</div>

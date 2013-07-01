@@ -313,3 +313,17 @@
 .test__float-first .assert__float-first .expect {
   margin-left: 0;
 }
+
+/*
+
+### Float Container API ------ */
+/* - [mixin] isolate-output */
+/* "Isolation at 30%, has 30% left margin and -100% right margin." */
+.test__isolate-output .assert__isolate-output .test {
+  margin-left: 30%;
+  margin-right: -100%;
+}
+.test__isolate-output .assert__isolate-output .expect {
+  margin-left: 30%;
+  margin-right: -100%;
+}

@@ -75,7 +75,7 @@
     $width: get-span-width($span, $location, $this-columns, $this-gutters, $this-column-width, $this-layout-math);
   }
 
-  @include float-span-output($width, $from, null, -100%, null, null, $this-flow);
+  @include float-span-output($width, from, null, -100%, null, null, $this-flow);
 
   @for $item from 1 through $line {
     $nth: '#{$line}n + #{$item}';

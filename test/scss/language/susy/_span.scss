@@ -270,7 +270,7 @@
   @include test('[function] span-math') {
     // after
     $span: span-math(5, 2, 7, .5, 4em, float, fluid, false, ltr, after);
-    $expect: 70% left null 5% null null ltr;
+    $expect: 70% from null 5% null null ltr;
     @include assert-equal($span, $expect,
       'The span output for "5 at 2 of 7 .5" should be "#{$expect}"');
 
@@ -317,8 +317,8 @@
     @include assert-equal($margins, $expect,
       'The margins for "last after" should be "#{$expect}"');
 
-    @include assert-equal($float, right,
-      'The float for "last after" should be "right');
+    @include assert-equal($float, to,
+      'The float for "last after" should be "to');
 
     // before first (margins)
     $span: span-math(3, 1, (1 2 3 2 1), .5, 4em, float, static, false, ltr, before);

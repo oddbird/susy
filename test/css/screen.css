@@ -440,6 +440,57 @@ h1 {
 
 /*
 
+### Float Span API ------ */
+/* - [mixin] float-span-output */
+.test__float-span-output .assert__full {
+  overflow: hidden;
+  background: rgba(204, 204, 255, 0.5);
+}
+
+.test__float-span-output .assert__full .expect {
+  clear: both;
+}
+
+.test__float-span-output .assert__full::before {
+  content: "Output should be 25%, floated left, with matching margins/padding";
+  display: block;
+  padding: 0.375rem 0.75rem;
+  text-align: left;
+  font-style: italic;
+}
+
+.test__float-span-output .assert__float-to {
+  overflow: hidden;
+  background: rgba(204, 204, 255, 0.5);
+}
+
+.test__float-span-output .assert__float-to .expect {
+  clear: both;
+}
+
+.test__float-span-output .assert__float-to::before {
+  content: "Output should be 25%, floated right";
+  display: block;
+  padding: 0.375rem 0.75rem;
+  text-align: left;
+  font-style: italic;
+}
+
+.test__float-span-output .assert__float-null {
+  overflow: hidden;
+  background: rgba(204, 204, 255, 0.5);
+}
+
+.test__float-span-output .assert__float-null::before {
+  content: "Output should be 25%, not floated";
+  display: block;
+  padding: 0.375rem 0.75rem;
+  text-align: left;
+  font-style: italic;
+}
+
+/*
+
 ### Float End API ------ */
 /* - [mixin] float-last */
 .test__float-last .assert__float-last {
@@ -483,7 +534,7 @@ h1 {
 
 /*
 
-### Float Container API ------ */
+### Isolation API ------ */
 /* - [mixin] isolate-output */
 .test__isolate-output .assert__isolate-output {
   overflow: hidden;

@@ -293,6 +293,46 @@
 
 /*
 
+### Float Span API ------ */
+/* - [mixin] float-span-output */
+/* "Output should be 25%, floated left, with matching margins/padding" */
+.test__float-span-output .assert__full .test {
+  width: 25%;
+  float: left;
+  margin-left: 5em;
+  margin-right: 2em;
+  padding-left: 3em;
+  padding-right: 4em;
+}
+.test__float-span-output .assert__full .expect {
+  width: 25%;
+  float: left;
+  margin-left: 5em;
+  margin-right: 2em;
+  padding-left: 3em;
+  padding-right: 4em;
+}
+
+/* "Output should be 25%, floated right" */
+.test__float-span-output .assert__float-to .test {
+  width: 25%;
+  float: right;
+}
+.test__float-span-output .assert__float-to .expect {
+  width: 25%;
+  float: right;
+}
+
+/* "Output should be 25%, not floated" */
+.test__float-span-output .assert__float-null .test {
+  width: 25%;
+}
+.test__float-span-output .assert__float-null .expect {
+  width: 25%;
+}
+
+/*
+
 ### Float End API ------ */
 /* - [mixin] float-last */
 /* "Items should float flush right." */
@@ -316,7 +356,7 @@
 
 /*
 
-### Float Container API ------ */
+### Isolation API ------ */
 /* - [mixin] isolate-output */
 /* "Isolation at 30%, has 30% left margin and -100% right margin." */
 .test__isolate-output .assert__isolate-output .test {

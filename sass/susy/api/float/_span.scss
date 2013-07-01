@@ -4,7 +4,7 @@
 // Output span
 @mixin float-span-output(
   $width,
-  $float            : from($flow),
+  $float            : from,
   $margin-before    : null,
   $margin-after     : null,
   $padding-before   : null,
@@ -13,6 +13,12 @@
 ) {
   $to     : to($flow);
   $from   : from($flow);
+
+  @if $float {
+    $float: if($float == to, $to, $from);
+  } @else {
+    $float: null;
+  }
 
   width: $width;
   float: $float;

@@ -4,7 +4,8 @@
 // Output container styles
 @mixin container-output(
   $width        : $container,
-  $justify      : $container-position
+  $justify      : $container-position,
+  $layout-math  : $layout-math
 ) {
   $position   : parse-container-position($justify);
   $property   : if($layout-math == static, width, max-width);

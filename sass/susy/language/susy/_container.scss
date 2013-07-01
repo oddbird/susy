@@ -12,6 +12,7 @@
   $this-columns           : get-setting(columns, $grid);
   $this-gutters           : get-setting(gutters, $grid);
   $this-gutter-position   : get-setting(gutter-position, $grid);
+  $this-layout-math       : get-setting(layout-math, $grid);
 
   $width      : get-container-width($this-container, $this-column-width, $this-columns, $this-gutters, $this-gutter-position);
   $justify    : get-setting(container-position, $grid);
@@ -21,7 +22,7 @@
     @include box-sizing($box);
   }
 
-  @include float-container($width, $justify);
+  @include float-container($width, $justify, $this-layout-math);
   @include grid-background($grid);
 }
 

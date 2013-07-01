@@ -4,8 +4,9 @@
 // Output a know float container
 @mixin float-container(
   $width        : $container,
-  $justify      : $container-position
+  $justify      : $container-position,
+  $layout-math  : $layout-math
 ) {
   @include pie-clearfix;
-  @include container-output($width, $justify);
+  @include container-output($width, $justify, $layout-math);
 }

@@ -423,6 +423,36 @@ h1 {
 
 /*
 
+### Shared Container API ------ */
+/* - [mixin] container-output */
+.test__container-output .assert__fluid {
+  overflow: hidden;
+  background: rgba(204, 204, 255, 0.5);
+}
+
+.test__container-output .assert__fluid::before {
+  content: "Containers should have 60em max-width, centered.";
+  display: block;
+  padding: 0.375rem 0.75rem;
+  text-align: left;
+  font-style: italic;
+}
+
+.test__container-output .assert__static {
+  overflow: hidden;
+  background: rgba(204, 204, 255, 0.5);
+}
+
+.test__container-output .assert__static::before {
+  content: "Containers should have 30em width, flush right.";
+  display: block;
+  padding: 0.375rem 0.75rem;
+  text-align: left;
+  font-style: italic;
+}
+
+/*
+
 ### Float Container API ------ */
 /* - [mixin] float-container */
 .test__float-container .assert__float-container {

@@ -267,6 +267,34 @@
 
 /*
 
+### Shared Container API ------ */
+/* - [mixin] container-output */
+/* "Containers should have 60em max-width, centered." */
+.test__container-output .assert__fluid .test {
+  max-width: 60em;
+  margin-left: auto;
+  margin-right: auto;
+}
+.test__container-output .assert__fluid .expect {
+  max-width: 60em;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* "Containers should have 30em width, flush right." */
+.test__container-output .assert__static .test {
+  width: 30em;
+  margin-left: auto;
+  margin-right: 0;
+}
+.test__container-output .assert__static .expect {
+  width: 30em;
+  margin-left: auto;
+  margin-right: 0;
+}
+
+/*
+
 ### Float Container API ------ */
 /* - [mixin] float-container */
 /* "Containers should be 30em wide, flush left." */

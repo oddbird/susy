@@ -128,6 +128,30 @@
 </article>
 
 <!--
+    Shared Container API
+    -------------------- -->
+
+<article class="test-module">
+  <h1>Shared Container API</h1>
+
+  <!-- float-span-output -->
+  <section class="test__container-output">
+    <h1>container-output [mixin]</h1>
+
+    <div class="assert__fluid">
+      <div class="test">container-output</div>
+      <div class="expect">expect</div>
+    </div>
+
+    <div class="assert__static">
+      <div class="test">container-output</div>
+      <div class="expect">expect</div>
+    </div>
+  </section>
+
+</article>
+
+<!--
     Float Container API
     ------------------- -->
 
@@ -139,6 +163,35 @@
     <h1>float-container [mixin]</h1>
     <div class="assert__float-container">
       <div class="test">float-container</div>
+      <div class="expect">expect</div>
+    </div>
+  </section>
+
+</article>
+
+<!--
+    Float Span API
+    -------------- -->
+
+<article class="test-module">
+  <h1>Float Span API</h1>
+
+  <!-- float-span-output -->
+  <section class="test__float-span-output">
+    <h1>float-span-output [mixin]</h1>
+
+    <div class="assert__full">
+      <div class="test">float-span-output</div>
+      <div class="expect">expect</div>
+    </div>
+
+    <div class="assert__float-to">
+      <div class="test">float-span-output</div>
+      <div class="expect">expect</div>
+    </div>
+
+    <div class="assert__float-null">
+      <div class="test">float-span-output</div>
       <div class="expect">expect</div>
     </div>
   </section>
@@ -184,35 +237,6 @@
     <h1>isolate-output [mixin]</h1>
     <div class="assert__isolate-output">
       <div class="test">isolate-output</div>
-      <div class="expect">expect</div>
-    </div>
-  </section>
-
-</article>
-
-<!--
-    Float Span API
-    -------------- -->
-
-<article class="test-module">
-  <h1>Float Span API</h1>
-
-  <!-- float-span-output -->
-  <section class="test__float-span-output">
-    <h1>float-span-output [mixin]</h1>
-
-    <div class="assert__full">
-      <div class="test">float-span-output</div>
-      <div class="expect">expect</div>
-    </div>
-
-    <div class="assert__float-to">
-      <div class="test">float-span-output</div>
-      <div class="expect">expect</div>
-    </div>
-
-    <div class="assert__float-null">
-      <div class="test">float-span-output</div>
       <div class="expect">expect</div>
     </div>
   </section>

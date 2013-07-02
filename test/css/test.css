@@ -201,6 +201,171 @@
 /*  
 
 ### Gallery Syntax ------ */
+/* - [mixin] gallery */
+/* "Items should create 3x symmetrical isolated gallery." */
+.test__gallery .assert__sym .test {
+  width: 28.0%;
+  float: left;
+  margin-right: -100%;
+}
+.test__gallery .assert__sym .test:nth-child(3n + 1) {
+  margin-left: 0;
+  clear: left;
+}
+.test__gallery .assert__sym .test:nth-child(3n + 2) {
+  margin-left: 36%;
+  clear: none;
+}
+.test__gallery .assert__sym .test:nth-child(3n + 3) {
+  margin-left: 72%;
+  clear: none;
+}
+.test__gallery .assert__sym .expect {
+  width: 28.0%;
+  float: left;
+  margin-right: -100%;
+}
+.test__gallery .assert__sym .expect:nth-child(3n + 1) {
+  margin-left: 0;
+  clear: left;
+}
+.test__gallery .assert__sym .expect:nth-child(3n + 2) {
+  margin-left: 36%;
+  clear: none;
+}
+.test__gallery .assert__sym .expect:nth-child(3n + 3) {
+  margin-left: 72%;
+  clear: none;
+}
+
+/* "Items should create 3x isolated gallery with inside-gutters." */
+.test__gallery .assert__inside .test {
+  box-sizing: border-box;
+  width: 33.33333%;
+  float: left;
+  margin-right: -100%;
+  padding-left: 4%;
+  padding-right: 4%;
+}
+.test__gallery .assert__inside .test:nth-child(3n + 1) {
+  margin-left: 0;
+  clear: left;
+}
+.test__gallery .assert__inside .test:nth-child(3n + 2) {
+  margin-left: 33.33333%;
+  clear: none;
+}
+.test__gallery .assert__inside .test:nth-child(3n + 3) {
+  margin-left: 66.66667%;
+  clear: none;
+}
+.test__gallery .assert__inside .expect {
+  box-sizing: border-box;
+  width: 33.33333%;
+  float: left;
+  margin-right: -100%;
+  padding-left: 4%;
+  padding-right: 4%;
+}
+.test__gallery .assert__inside .expect:nth-child(3n + 1) {
+  margin-left: 0;
+  clear: left;
+}
+.test__gallery .assert__inside .expect:nth-child(3n + 2) {
+  margin-left: 33.33333%;
+  clear: none;
+}
+.test__gallery .assert__inside .expect:nth-child(3n + 3) {
+  margin-left: 66.66667%;
+  clear: none;
+}
+
+/* "Items should create 3x isolated asymmetrical gallery." */
+.test__gallery .assert__asym .test {
+  float: left;
+  margin-right: -100%;
+}
+.test__gallery .assert__asym .test:nth-child(3n + 1) {
+  width: 32%;
+  margin-left: 0;
+  clear: left;
+}
+.test__gallery .assert__asym .test:nth-child(3n + 2) {
+  width: 32%;
+  margin-left: 34%;
+  clear: none;
+}
+.test__gallery .assert__asym .test:nth-child(3n + 3) {
+  width: 32%;
+  margin-left: 68%;
+  clear: none;
+}
+.test__gallery .assert__asym .expect {
+  float: left;
+  margin-right: -100%;
+}
+.test__gallery .assert__asym .expect:nth-child(3n + 1) {
+  width: 32%;
+  margin-left: 0;
+  clear: left;
+}
+.test__gallery .assert__asym .expect:nth-child(3n + 2) {
+  width: 32%;
+  margin-left: 34%;
+  clear: none;
+}
+.test__gallery .assert__asym .expect:nth-child(3n + 3) {
+  width: 32%;
+  margin-left: 68%;
+  clear: none;
+}
+
+/* "Items should create 3x isolated asymmetrical gallery, with inside gutters." */
+.test__gallery .assert__asym-inside .test {
+  box-sizing: border-box;
+  float: left;
+  margin-right: -100%;
+  padding-left: 1%;
+  padding-right: 1%;
+}
+.test__gallery .assert__asym-inside .test:nth-child(3n + 1) {
+  width: 33.33333%;
+  margin-left: 0;
+  clear: left;
+}
+.test__gallery .assert__asym-inside .test:nth-child(3n + 2) {
+  width: 33.33333%;
+  margin-left: 33.33333%;
+  clear: none;
+}
+.test__gallery .assert__asym-inside .test:nth-child(3n + 3) {
+  width: 33.33333%;
+  margin-left: 66.66667%;
+  clear: none;
+}
+.test__gallery .assert__asym-inside .expect {
+  box-sizing: border-box;
+  float: left;
+  margin-right: -100%;
+  padding-left: 1%;
+  padding-right: 1%;
+}
+.test__gallery .assert__asym-inside .expect:nth-child(3n + 1) {
+  width: 33.33333%;
+  margin-left: 0;
+  clear: left;
+}
+.test__gallery .assert__asym-inside .expect:nth-child(3n + 2) {
+  width: 33.33333%;
+  margin-left: 33.33333%;
+  clear: none;
+}
+.test__gallery .assert__asym-inside .expect:nth-child(3n + 3) {
+  width: 33.33333%;
+  margin-left: 66.66667%;
+  clear: none;
+}
+
 /*  
     Summary:
     - 0 Tests

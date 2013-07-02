@@ -141,14 +141,27 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 .symmetrical .gallery div {
   width: 18.36735%;
   float: left;
-  margin-left: 2.04082%;
+  margin-right: -100%;
 }
 .symmetrical .gallery div:nth-child(5n + 1) {
   margin-left: 0;
+  clear: left;
 }
-.symmetrical .gallery div:nth-child(5n) {
-  float: right;
-  margin-right: 0;
+.symmetrical .gallery div:nth-child(5n + 2) {
+  margin-left: 20.40816%;
+  clear: none;
+}
+.symmetrical .gallery div:nth-child(5n + 3) {
+  margin-left: 40.81633%;
+  clear: none;
+}
+.symmetrical .gallery div:nth-child(5n + 4) {
+  margin-left: 61.22449%;
+  clear: none;
+}
+.symmetrical .gallery div:nth-child(5n + 5) {
+  margin-left: 81.63265%;
+  clear: none;
 }
 
 .asymmetrical {
@@ -240,23 +253,28 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 }
 .asymmetrical .gallery div:nth-child(5n + 1) {
   width: 12.5%;
+  margin-left: 0;
   clear: left;
 }
 .asymmetrical .gallery div:nth-child(5n + 2) {
   width: 11.45833%;
   margin-left: 14.58333%;
+  clear: none;
 }
 .asymmetrical .gallery div:nth-child(5n + 3) {
   width: 22.91667%;
   margin-left: 28.125%;
+  clear: none;
 }
 .asymmetrical .gallery div:nth-child(5n + 4) {
   width: 22.91667%;
   margin-left: 53.125%;
+  clear: none;
 }
 .asymmetrical .gallery div:nth-child(5n + 5) {
   width: 21.875%;
   margin-left: 78.125%;
+  clear: none;
 }
 
 .static {
@@ -331,14 +349,27 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 .static .gallery div {
   width: 140px;
   float: left;
-  margin-right: 20px;
+  margin-right: -100%;
 }
 .static .gallery div:nth-child(5n + 1) {
   margin-left: 0;
+  clear: left;
 }
-.static .gallery div:nth-child(5n) {
-  float: right;
-  margin-right: 0;
+.static .gallery div:nth-child(5n + 2) {
+  margin-left: 160px;
+  clear: none;
+}
+.static .gallery div:nth-child(5n + 3) {
+  margin-left: 320px;
+  clear: none;
+}
+.static .gallery div:nth-child(5n + 4) {
+  margin-left: 480px;
+  clear: none;
+}
+.static .gallery div:nth-child(5n + 5) {
+  margin-left: 640px;
+  clear: none;
 }
 
 .split {
@@ -446,50 +477,39 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 .split .size2of3 .full {
   clear: both;
 }
-.split .gallery div:nth-child(5n + 1) {
+.split .gallery div {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
-  width: 12.5%;
   float: left;
+  margin-right: -100%;
   padding-left: 0.79365%;
   padding-right: 0.79365%;
+}
+.split .gallery div:nth-child(5n + 1) {
+  width: 12.5%;
+  margin-left: 0;
+  clear: left;
 }
 .split .gallery div:nth-child(5n + 2) {
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
   width: 28.125%;
-  float: left;
-  padding-left: 0.79365%;
-  padding-right: 0.79365%;
+  margin-left: 12.5%;
+  clear: none;
 }
 .split .gallery div:nth-child(5n + 3) {
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
   width: 12.5%;
-  float: left;
-  padding-left: 0.79365%;
-  padding-right: 0.79365%;
+  margin-left: 40.625%;
+  clear: none;
 }
 .split .gallery div:nth-child(5n + 4) {
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
   width: 12.5%;
-  float: left;
-  padding-left: 0.79365%;
-  padding-right: 0.79365%;
+  margin-left: 53.125%;
+  clear: none;
 }
 .split .gallery div:nth-child(5n + 5) {
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
   width: 34.375%;
-  float: right;
-  padding-left: 0.79365%;
-  padding-right: 0.79365%;
+  margin-left: 65.625%;
+  clear: none;
 }
 
 head {

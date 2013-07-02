@@ -1,81 +1,50 @@
 // Gallery Syntax
 // ==============
 
-// Create a gallery
+// Create an isolated gallery
 @mixin gallery(
   $input,
   $selector: child
 ) {
-  $this-layout-method: get-span-setting(layout-method, $input, parse);
+  $input                  : parse-span($input);
+  $width                  : null;
+  $location               : 1;
 
-  @if $this-layout-method == isolate {
-    @include isolate-gallery($input);
-  } @else {
-    @include nth-gallery($input);
+  $span                   : get-span-setting(span, $input);
+  $this-columns           : get-span-setting(columns, $input);
+  $this-gutters           : get-span-setting(gutters, $input);
+  $this-column-width      : get-span-setting(column-width, $input);
+  $this-layout-math       : get-span-setting(layout-math, $input);
+  $this-gutter-position   : get-span-setting(gutter-position, $input);
+  $this-flow              : get-span-setting(flow, $input);
+
+  $box                    : get-span-setting(box-sizing, $input);
+  $inside                 : if(get-span-setting(gutter-position, $input) == inside, true, false);
+
+  $from                   : from($this-flow);
+  $context                : column-count($this-columns);
+  $line                   : floor($context / $span);
+
+  $padding-before         : null;
+  $padding-after          : null;
+
+  @if $inside {
+    $inside-gutter: get-gutters($this-columns, $this-gutters, $this-column-width, $this-layout-math, $this-gutter-position);
+    $padding-before: nth($inside-gutter, 1);
+    $padding-after: nth($inside-gutter, 2);
   }
-}
 
-// Gallery Helpers
-// ---------------
-
-// Create a floated gallery
-@mixin nth-gallery(
-  $input,
-  $selector: child
-) {
-  $this-input         : parse-span($input);
-
-  $span               : get-span-setting(span, $this-input);
-  $this-columns       : get-span-setting(columns, $this-input);
-  $context            : column-count($this-columns);
-  $line               : floor($context / $span);
-
-  @if is-symmetrical($this-columns) {
-    @include span($input);
-    @include nth-first('#{$line}n + 1');
-    @include nth-last('#{$line}n');
-  } @else {
-    $location           : 1;
-
-    @for $item from 1 through $line {
-      $nth: '#{$line}n + #{$item}';
-      &:#{format-nth($nth,$selector)} {
-        $location-input: join($input, at $location);
-
-        @include span($location-input);
-
-        $location: $location + $span;
-        @if $location > $context { $location: 1; }
-      }
-    }
+  @if $box == border-box or $inside {
+    @include box-sizing(border-box);
+  } @else if $box == content-box {
+    @include box-sizing(content-box);
   }
-}
-
-// Create an isolated gallery
-@mixin isolate-gallery(
-  $input,
-  $selector: child
-) {
-  $input              : parse-span($input);
-  $width              : null;
-  $location           : 1;
-
-  $span               : get-span-setting(span, $input);
-  $this-columns       : get-span-setting(columns, $input);
-  $this-gutters       : get-span-setting(gutters, $input);
-  $this-column-width  : get-span-setting(column-width, $input);
-  $this-layout-math   : get-span-setting(layout-math, $input);
-  $this-flow          : get-span-setting(flow, $input);
-
-  $from               : from($this-flow);
-  $context            : column-count($this-columns);
-  $line               : floor($context / $span);
 
   @if is-symmetrical($this-columns) {
     $width: get-span-width($span, $location, $this-columns, $this-gutters, $this-column-width, $this-layout-math);
   }
 
-  @include float-span-output($width, from, null, -100%, null, null, $this-flow);
+  @include float-span-output($width, from, null, -100%, $padding-before, $padding-after, $this-flow);
 
   @for $item from 1 through $line {
     $nth: '#{$line}n + #{$item}';
@@ -86,7 +55,13 @@
 
       @include float-span-output($width, null, $before, null, null, null, $this-flow);
 
-      @if $location == 1 { clear: $from; }
+      @if is-first($location) {
+        @include first;
+        clear: $from;
+      } @else {
+        clear: none;
+      }
+
       $location: $location + $span;
       @if $location > $context { $location: 1; }
     }

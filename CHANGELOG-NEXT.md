@@ -3,6 +3,8 @@ Susy Next Changelog
 
 2.0.0-alpha.3 [unreleased]
 --------------------------
+* `gallery` output should override previous gallery settings.
+* Removed `nth-gallery` and `isolate-gallery` in favor of single, isolated `gallery` mixin.
 * Add padding-span syntax: `prefix`, `suffix`, and `pad`.
 * Add margin-span syntax: `pre`, `post`, `push`, `pull`, and `squish`.
 * New `gutters` mixin adds gutters to an element.

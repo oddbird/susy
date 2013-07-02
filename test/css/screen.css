@@ -453,6 +453,40 @@ h1 {
 
 /*
 
+### Shared Margin API ------ */
+/* - [mixin] margin-output */
+.test__margin-output .assert__margin-output {
+  overflow: hidden;
+  background: rgba(204, 204, 255, 0.5);
+}
+
+.test__margin-output .assert__margin-output::before {
+  content: "Elements should have 25% right margin, 8em left.";
+  display: block;
+  padding: 0.375rem 0.75rem;
+  text-align: left;
+  font-style: italic;
+}
+
+/*
+
+### Shared Padding API ------ */
+/* - [mixin] padding-output */
+.test__padding-output .assert__padding-output {
+  overflow: hidden;
+  background: rgba(204, 204, 255, 0.5);
+}
+
+.test__padding-output .assert__padding-output::before {
+  content: "Elements should have 25% right padding, 8em left.";
+  display: block;
+  padding: 0.375rem 0.75rem;
+  text-align: left;
+  font-style: italic;
+}
+
+/*
+
 ### Float Container API ------ */
 /* - [mixin] float-container */
 .test__float-container .assert__float-container {

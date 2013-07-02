@@ -5,6 +5,14 @@
 @import "susy/language/susy1";
 @import "true";
 
+// Output
+// ------
+
+$default-module-output: css;
+
+$output-test-context: false;
+$output-test-results: true;
+
 // Language
 // --------
 

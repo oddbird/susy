@@ -6,7 +6,18 @@
   // gutters
   // -------
 
-  // @@@ need mixin tests
+  @include output-test('gutters') {
+    @include assert-setup($grid: 7 .5 inside);
+    @include assert-output(
+      'Item should have 2.5% padding-gutters added before and after'
+    ) {
+      .test { @include gutters; }
+      .expect {
+        padding-left: 2.5%;
+        padding-right: 2.5%;
+      }
+    }
+  }
 
   // gutter
   // ------

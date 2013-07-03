@@ -181,6 +181,17 @@
 /*  
 
 ### Gutter Syntax ------ */
+/* - [mixin] gutters */
+/* "Item should have 2.5% padding-gutters added before and after" */
+.test__gutters .assert__gutters .test {
+  padding-left: 2.5%;
+  padding-right: 2.5%;
+}
+.test__gutters .assert__gutters .expect {
+  padding-left: 2.5%;
+  padding-right: 2.5%;
+}
+
 /*  - [function] gutter (5 assertions, 5 passed, 0 failed) */
 /*  - [function] get-gutter-width (2 assertions, 2 passed, 0 failed) */
 /*  - [function] get-gutters (6 assertions, 6 passed, 0 failed) */

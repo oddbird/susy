@@ -398,6 +398,124 @@
 /*  
 
 ### Row Syntax ------ */
+/* - [mixin] row */
+/* "Rows should clear preceeding floats, and contain inner floats" */
+.test__row .assert__row .test {
+  clear: left;
+}
+.test__row .assert__row .test:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.test__row .assert__row .expect {
+  clear: left;
+}
+.test__row .assert__row .expect:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* - [mixin] unrow */
+/* "Non-rows should not clear or wrap floated elements" */
+.test__unrow .assert__unrow .test {
+  clear: none;
+}
+.test__unrow .assert__unrow .test:after {
+  content: none;
+  display: inline;
+  clear: none;
+}
+.test__unrow .assert__unrow .expect {
+  clear: none;
+}
+.test__unrow .assert__unrow .expect:after {
+  content: none;
+  display: inline;
+  clear: none;
+}
+
+/* - [mixin] first */
+/* "First items should have left margins removed" */
+.test__first .assert__first .test {
+  margin-left: 0;
+}
+.test__first .assert__first .expect {
+  margin-left: 0;
+}
+
+/* - [mixin] alpha */
+/* "Alpha items should have left margins removed" */
+.test__alpha .assert__alpha .test {
+  margin-left: 0;
+}
+.test__alpha .assert__alpha .expect {
+  margin-left: 0;
+}
+
+/* - [mixin] nth-first */
+/* "Nth-first (first-child) items should have left margins removed" */
+.test__nth-first .assert__nth-first .test:first-child {
+  margin-left: 0;
+}
+.test__nth-first .assert__nth-first .expect {
+  margin-left: 0;
+}
+
+/* - [mixin] nth-alpha */
+/* "Nth-alpha (first-child) items should have left margins removed" */
+.test__nth-alpha .assert__nth-alpha .test:first-child {
+  margin-left: 0;
+}
+.test__nth-alpha .assert__nth-alpha .expect {
+  margin-left: 0;
+}
+
+/* - [mixin] last */
+/* "Last items should float right, with right margins removed" */
+.test__last .assert__last .test {
+  float: right;
+  margin-right: 0;
+}
+.test__last .assert__last .expect {
+  float: right;
+  margin-right: 0;
+}
+
+/* - [mixin] omega */
+/* "Omega items should float right, with right margins removed" */
+.test__omega .assert__omega .test {
+  float: right;
+  margin-right: 0;
+}
+.test__omega .assert__omega .expect {
+  float: right;
+  margin-right: 0;
+}
+
+/* - [mixin] nth-last */
+/* "nth-last(2, last-child) items should float right, with right margins removed" */
+.test__nth-last .assert__nth-last .test:nth-last-child(2) {
+  float: right;
+  margin-right: 0;
+}
+.test__nth-last .assert__nth-last .expect {
+  float: right;
+  margin-right: 0;
+}
+
+/* - [mixin] nth-omega */
+/* "nth-omega(2, last-child) items should float right, with right margins removed" */
+.test__nth-omega .assert__nth-omega .test:nth-last-child(2) {
+  float: right;
+  margin-right: 0;
+}
+.test__nth-omega .assert__nth-omega .expect {
+  float: right;
+  margin-right: 0;
+}
+
 /*  
     Summary:
     - 0 Tests

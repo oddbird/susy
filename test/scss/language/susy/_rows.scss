@@ -6,51 +6,198 @@
   // row
   // ---
 
-  // @@@ need mixin tests
+  @include output-test('row') {
+    @include assert-setup($grid: 7 .5 inside) {
+      .spacer { @include span(2); }
+    }
+    @include assert-output(
+      'Rows should clear preceeding floats, and contain inner floats'
+    ) {
+      .test { @include row; }
+      .expect {
+        @include pie-clearfix;
+        clear: left;
+      }
+    }
+  }
 
   // unrow
   // -----
 
-  // @@@ need mixin tests
+  @include output-test('unrow') {
+    @include assert-setup($grid: 7 .5 inside) {
+      .spacer { @include span(2); }
+      .test, .expect { @include row; }
+    }
+    @include assert-output(
+      'Non-rows should not clear or wrap floated elements'
+    ) {
+      .test { @include unrow; }
+      .expect {
+        clear: none;
+        &:after {
+          content: none;
+          display: inline;
+          clear: none;
+        }
+      }
+    }
+  }
 
   // first
   // -----
 
-  // @@@ need mixin tests
+  @include output-test('first') {
+    @include assert-setup($grid: 7 .5 split) {
+      .test, .expect {
+        @include span(2);
+        clear: left;
+      }
+    }
+    @include assert-output(
+      'First items should have left margins removed'
+    ) {
+      .test { @include first; }
+      .expect { margin-left: 0; }
+    }
+  }
 
   // alpha
   // -----
 
-  // @@@ need mixin tests
+  @include output-test('alpha') {
+    @include assert-setup($grid: 7 .5 split) {
+      .test, .expect {
+        @include span(2);
+        clear: left;
+      }
+    }
+    @include assert-output(
+      'Alpha items should have left margins removed'
+    ) {
+      .test { @include alpha; }
+      .expect { margin-left: 0; }
+    }
+  }
 
   // nth-first
   // ---------
 
-  // @@@ need mixin tests
+  @include output-test('nth-first') {
+    @include assert-setup($grid: 7 .5 split) {
+      .test, .expect {
+        @include span(2);
+        clear: left;
+      }
+    }
+    @include assert-output(
+      'Nth-first (first-child) items should have left margins removed'
+    ) {
+      .test { @include nth-first; }
+      .expect { margin-left: 0; }
+    }
+  }
 
   // nth-alpha
   // ---------
 
-  // @@@ need mixin tests
+  @include output-test('nth-alpha') {
+    @include assert-setup($grid: 7 .5 split) {
+      .test, .expect {
+        @include span(2);
+        clear: left;
+      }
+    }
+    @include assert-output(
+      'Nth-alpha (first-child) items should have left margins removed'
+    ) {
+      .test { @include nth-alpha; }
+      .expect { margin-left: 0; }
+    }
+  }
 
   // last
   // ----
 
-  // @@@ need mixin tests
+  @include output-test('last') {
+    @include assert-setup($grid: 7 .5 split) {
+      .test, .expect {
+        @include span(2);
+        clear: both;
+      }
+    }
+    @include assert-output(
+      'Last items should float right, with right margins removed'
+    ) {
+      .test { @include last; }
+      .expect {
+        float: right;
+        margin-right: 0;
+      }
+    }
+  }
 
   // omega
   // -----
 
-  // @@@ need mixin tests
+  @include output-test('omega') {
+    @include assert-setup($grid: 7 .5 split) {
+      .test, .expect {
+        @include span(2);
+        clear: both;
+      }
+    }
+    @include assert-output(
+      'Omega items should float right, with right margins removed'
+    ) {
+      .test { @include omega; }
+      .expect {
+        float: right;
+        margin-right: 0;
+      }
+    }
+  }
 
   // nth-last
   // --------
 
-  // @@@ need mixin tests
+  @include output-test('nth-last') {
+    @include assert-setup($grid: 7 .5 split) {
+      .test, .expect {
+        @include span(2);
+        clear: both;
+      }
+    }
+    @include assert-output(
+      'nth-last(2, last-child) items should float right, with right margins removed'
+    ) {
+      .test { @include nth-last(2, last-child); }
+      .expect {
+        float: right;
+        margin-right: 0;
+      }
+    }
+  }
 
   // nth-omega
   // ---------
 
-  // @@@ need mixin tests
+  @include output-test('nth-omega') {
+    @include assert-setup($grid: 7 .5 split) {
+      .test, .expect {
+        @include span(2);
+        clear: both;
+      }
+    }
+    @include assert-output(
+      'nth-omega(2, last-child) items should float right, with right margins removed'
+    ) {
+      .test { @include nth-omega(2, last-child); }
+      .expect {
+        float: right;
+        margin-right: 0;
+      }
+    }
+  }
 
 }

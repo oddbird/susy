@@ -5,12 +5,18 @@
 @mixin row(
   $flow: $flow
 ) {
+  @include pie-clearfix;
   clear: from($flow);
 }
 
 // Cancel the row() effect, e.g. when using media queries.
 @mixin unrow {
   clear: none;
+  &:after {
+    content: none;
+    display: inline;
+    clear: none;
+  }
 }
 
 // First item

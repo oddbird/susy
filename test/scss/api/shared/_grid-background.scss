@@ -1,7 +1,79 @@
 // Shared Grid Background API Tests
 // ================================
 
-// Grid Background Output
-// ----------------------
+@include output-test-module('Grid Background API') {
 
-// @@@ need mixin tests
+  // Grid Background Output
+  // ----------------------
+
+  @include output-test('grid-background-output') {
+    $stops: #fcc, #cfc 25%, #ccf;
+
+    // show
+    @include assert-setup('show') {
+      .test, .expect {
+        @include rhythm-padding(1);
+        background: none;
+      }
+    }
+    @include assert-output(
+      'Elements should show a horizontal red-green-blue gradient, and a vertical baseline'
+    ) {
+      .test { @include grid-background-output($stops, show); }
+      .expect {
+        @include background(
+          get-baseline-gradient(),
+          linear-gradient(left, $stops...)
+        );
+        @include background-size(100% $base-line-height);
+        background-position: left top;
+      }
+    }
+
+    // show-columns
+    @include assert-setup('show-columns') {
+      .test, .expect {
+        @include rhythm-padding(1);
+        background: none;
+      }
+    }
+    @include assert-output(
+      'Elements should show a horizontal red-green-blue gradient, with no baseline'
+    ) {
+      .test { @include grid-background-output($stops, show-columns); }
+      .expect { @include background(linear-gradient(left, $stops...)); }
+    }
+
+    // show-baseline
+    @include assert-setup('show-baseline') {
+      .test, .expect {
+        @include rhythm-padding(1);
+        background: none;
+      }
+    }
+    @include assert-output(
+      'Elements should show a vertical baseline'
+    ) {
+      .test { @include grid-background-output($stops, show-baseline); }
+      .expect {
+        @include background(get-baseline-gradient());
+        @include background-size(100% $base-line-height);
+        background-position: left top;
+      }
+    }
+
+    // hide
+    @include assert-setup('hide') {
+      .test, .expect {
+        @include rhythm-padding(1);
+        background: none;
+      }
+    }
+    @include assert-output(
+      'Elements should not show any grid background'
+    ) {
+      .test { @include grid-background-output($stops, hide); }
+      .expect { }
+    }
+  }
+}

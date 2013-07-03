@@ -419,6 +419,9 @@ h1 {
   font-style: italic;
 }
 
+/*
+
+### Row Syntax ------ */
 /* - [mixin] row */
 .test__row .assert__row {
   max-width: 100%;
@@ -986,6 +989,94 @@ h1 {
 
 .test__pad .assert__nested::before {
   content: "Items should have 1 column padding before, and 2 after - nested.";
+  display: block;
+  padding: 0.375rem 0.75rem;
+  text-align: left;
+  font-style: italic;
+}
+
+/*
+
+### Grid Background API ------ */
+/* - [mixin] grid-background-output */
+.test__grid-background-output .assert__show {
+  overflow: hidden;
+  background: rgba(204, 204, 255, 0.5);
+}
+
+.test__grid-background-output .assert__show .test, .test__grid-background-output .assert__show .expect {
+  padding-top: 24px;
+  padding-top: 1.5rem;
+  padding-bottom: 24px;
+  padding-bottom: 1.5rem;
+  background: none;
+}
+
+.test__grid-background-output .assert__show::before {
+  content: "Elements should show a horizontal red-green-blue gradient, and a vertical baseline";
+  display: block;
+  padding: 0.375rem 0.75rem;
+  text-align: left;
+  font-style: italic;
+}
+
+.test__grid-background-output .assert__show-columns {
+  overflow: hidden;
+  background: rgba(204, 204, 255, 0.5);
+}
+
+.test__grid-background-output .assert__show-columns .test, .test__grid-background-output .assert__show-columns .expect {
+  padding-top: 24px;
+  padding-top: 1.5rem;
+  padding-bottom: 24px;
+  padding-bottom: 1.5rem;
+  background: none;
+}
+
+.test__grid-background-output .assert__show-columns::before {
+  content: "Elements should show a horizontal red-green-blue gradient, with no baseline";
+  display: block;
+  padding: 0.375rem 0.75rem;
+  text-align: left;
+  font-style: italic;
+}
+
+.test__grid-background-output .assert__show-baseline {
+  overflow: hidden;
+  background: rgba(204, 204, 255, 0.5);
+}
+
+.test__grid-background-output .assert__show-baseline .test, .test__grid-background-output .assert__show-baseline .expect {
+  padding-top: 24px;
+  padding-top: 1.5rem;
+  padding-bottom: 24px;
+  padding-bottom: 1.5rem;
+  background: none;
+}
+
+.test__grid-background-output .assert__show-baseline::before {
+  content: "Elements should show a vertical baseline";
+  display: block;
+  padding: 0.375rem 0.75rem;
+  text-align: left;
+  font-style: italic;
+}
+
+.test__grid-background-output .assert__hide {
+  overflow: hidden;
+  background: rgba(204, 204, 255, 0.5);
+}
+
+.test__grid-background-output .assert__hide .test, .test__grid-background-output .assert__hide .expect {
+  padding-top: 24px;
+  padding-top: 1.5rem;
+  padding-bottom: 24px;
+  padding-bottom: 1.5rem;
+  background: none;
+}
+
+.test__grid-background-output .assert__hide::before {
+  content: "Elements should not show any grid background";
   display: block;
   padding: 0.375rem 0.75rem;
   text-align: left;

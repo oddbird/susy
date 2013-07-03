@@ -424,7 +424,7 @@
     - 0 Tests
     - 0 Passed
     - 0 Failed */
-/*  
+/*
 
 ### Row Syntax ------ */
 /* - [mixin] row */
@@ -545,11 +545,6 @@
   margin-right: 0;
 }
 
-/*  
-    Summary:
-    - 0 Tests
-    - 0 Passed
-    - 0 Failed */
 /*
 
 ### Margin Syntax ------ */
@@ -652,6 +647,43 @@
   padding-right: 30%;
 }
 
+/*
+
+### Grid Background API ------ */
+/* - [mixin] grid-background-output */
+/* "Elements should show a horizontal red-green-blue gradient, and a vertical baseline" */
+.test__grid-background-output .assert__show .test {
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.5) 5%, rgba(0, 0, 0, 0) 5%), linear-gradient(to right, #ffcccc, #ccffcc 25%, #ccccff);
+  background-size: 100% 24px;
+  background-position: left top;
+}
+.test__grid-background-output .assert__show .expect {
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.5) 5%, rgba(0, 0, 0, 0) 5%), linear-gradient(to right, #ffcccc, #ccffcc 25%, #ccccff);
+  background-size: 100% 24px;
+  background-position: left top;
+}
+
+/* "Elements should show a horizontal red-green-blue gradient, with no baseline" */
+.test__grid-background-output .assert__show-columns .test {
+  background: linear-gradient(to right, #ffcccc, #ccffcc 25%, #ccccff);
+}
+.test__grid-background-output .assert__show-columns .expect {
+  background: linear-gradient(to right, #ffcccc, #ccffcc 25%, #ccccff);
+}
+
+/* "Elements should show a vertical baseline" */
+.test__grid-background-output .assert__show-baseline .test {
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.5) 5%, rgba(0, 0, 0, 0) 5%);
+  background-size: 100% 24px;
+  background-position: left top;
+}
+.test__grid-background-output .assert__show-baseline .expect {
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.5) 5%, rgba(0, 0, 0, 0) 5%);
+  background-size: 100% 24px;
+  background-position: left top;
+}
+
+/* "Elements should not show any grid background" */
 /*
 
 ### Shared Container API ------ */

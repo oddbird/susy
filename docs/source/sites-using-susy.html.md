@@ -7,6 +7,9 @@ title: Sites using Susy
 - [Sass and Compass book](http://sassandcompass.com)
 - [Square Directory](https://squareup.com/directory)
 - [Slickbag](http://slickbag.se/)
+- [Renault TV](http://uk.renault.tv/)
+- [Project Evolution](http://www.projectevolution.com/)
+- [Ready Lets](http://www.readylets.co.uk)
 - [Wedge Detroit](http://wedgedetroit.com/)
 - [Triquanta Drupal Specialist](http://www.triquanta.nl/)
 - [Barcelona Ruby Conference 2013](http://www.baruco.org/)
@@ -38,9 +41,3 @@ Have a site to add? [Let us know](http://twitter.com/compasssusy/) or [fork and 
 
 - [Agile Designers](http://www.agiledesigners.com/resources/coding-tools/susy)
 - [CSSDB](http://cssdb.co/search?q=susy)
-
-<!--
-[Renault TV](http://renault.tv/)
-[HR &hearts; PE](http://www.hrlovespe.com/)
-[My job would be easier if...](http://www.myjobwouldbeeasierif.com/)
- -->

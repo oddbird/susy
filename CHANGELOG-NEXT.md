@@ -3,6 +3,7 @@ Susy Next Changelog
 
 2.0.0-alpha.3 [unreleased]
 --------------------------
+* `row` now includes clearfix, and `unrow` removes clearfix.
 * `gallery` output should override previous gallery settings.
 * Removed `nth-gallery` and `isolate-gallery` in favor of single, isolated `gallery` mixin.
 * Add padding-span syntax: `prefix`, `suffix`, and `pad`.

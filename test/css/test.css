@@ -168,6 +168,35 @@
 /*  
 
 ### Span Syntax ------ */
+/* - [mixin] span */
+/* "Span should set width (75%), float (left), and gutter (5% margin-right)" */
+.test__span .assert__default .test {
+  width: 70%;
+  float: left;
+  margin-right: 5%;
+}
+.test__span .assert__default .expect {
+  width: 70%;
+  float: left;
+  margin-right: 5%;
+}
+
+/* "Span should set width, float, inside gutter, and border-box" */
+.test__span .assert__inside .test {
+  box-sizing: border-box;
+  width: 71.42857%;
+  float: left;
+  padding-left: 2.5%;
+  padding-right: 2.5%;
+}
+.test__span .assert__inside .expect {
+  box-sizing: border-box;
+  width: 71.42857%;
+  float: left;
+  padding-left: 2.5%;
+  padding-right: 2.5%;
+}
+
 /*  - [function] span (5 assertions, 5 passed, 0 failed) */
 /*  - [function] parse-span (66 assertions, 66 passed, 0 failed) */
 /*  - [function] get-span-setting (13 assertions, 13 passed, 0 failed) */

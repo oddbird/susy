@@ -193,6 +193,59 @@ h1 {
   font-style: italic;
 }
 
+/* - [mixin] span */
+.test__span .assert__default {
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  background: -webkit-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, transparent 10%, transparent 15%, rgba(102, 102, 255, 0.25) 15%, rgba(179, 179, 255, 0.25) 25%, transparent 25%, transparent 30%, rgba(102, 102, 255, 0.25) 30%, rgba(179, 179, 255, 0.25) 40%, transparent 40%, transparent 45%, rgba(102, 102, 255, 0.25) 45%, rgba(179, 179, 255, 0.25) 55.0%, transparent 55.0%, transparent 60%, rgba(102, 102, 255, 0.25) 60%, rgba(179, 179, 255, 0.25) 70%, transparent 70%, transparent 75%, rgba(102, 102, 255, 0.25) 75%, rgba(179, 179, 255, 0.25) 85%, transparent 85%, transparent 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
+  background: -moz-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, transparent 10%, transparent 15%, rgba(102, 102, 255, 0.25) 15%, rgba(179, 179, 255, 0.25) 25%, transparent 25%, transparent 30%, rgba(102, 102, 255, 0.25) 30%, rgba(179, 179, 255, 0.25) 40%, transparent 40%, transparent 45%, rgba(102, 102, 255, 0.25) 45%, rgba(179, 179, 255, 0.25) 55.0%, transparent 55.0%, transparent 60%, rgba(102, 102, 255, 0.25) 60%, rgba(179, 179, 255, 0.25) 70%, transparent 70%, transparent 75%, rgba(102, 102, 255, 0.25) 75%, rgba(179, 179, 255, 0.25) 85%, transparent 85%, transparent 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
+  background: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, transparent 10%, transparent 15%, rgba(102, 102, 255, 0.25) 15%, rgba(179, 179, 255, 0.25) 25%, transparent 25%, transparent 30%, rgba(102, 102, 255, 0.25) 30%, rgba(179, 179, 255, 0.25) 40%, transparent 40%, transparent 45%, rgba(102, 102, 255, 0.25) 45%, rgba(179, 179, 255, 0.25) 55.0%, transparent 55.0%, transparent 60%, rgba(102, 102, 255, 0.25) 60%, rgba(179, 179, 255, 0.25) 70%, transparent 70%, transparent 75%, rgba(102, 102, 255, 0.25) 75%, rgba(179, 179, 255, 0.25) 85%, transparent 85%, transparent 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
+}
+.test__span .assert__default:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.test__span .assert__default .test, .test__span .assert__default .expect {
+  clear: both;
+}
+
+.test__span .assert__default::before {
+  content: "Span should set width (75%), float (left), and gutter (5% margin-right)";
+  display: block;
+  padding: 0.375rem 0.75rem;
+  text-align: left;
+  font-style: italic;
+}
+
+.test__span .assert__inside {
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  background: -webkit-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 14.28571%, rgba(102, 102, 255, 0.25) 14.28571%, rgba(179, 179, 255, 0.25) 28.57143%, rgba(102, 102, 255, 0.25) 28.57143%, rgba(179, 179, 255, 0.25) 42.85714%, rgba(102, 102, 255, 0.25) 42.85714%, rgba(179, 179, 255, 0.25) 57.14286%, rgba(102, 102, 255, 0.25) 57.14286%, rgba(179, 179, 255, 0.25) 71.42857%, rgba(102, 102, 255, 0.25) 71.42857%, rgba(179, 179, 255, 0.25) 85.71429%, rgba(102, 102, 255, 0.25) 85.71429%, rgba(179, 179, 255, 0.25));
+  background: -moz-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 14.28571%, rgba(102, 102, 255, 0.25) 14.28571%, rgba(179, 179, 255, 0.25) 28.57143%, rgba(102, 102, 255, 0.25) 28.57143%, rgba(179, 179, 255, 0.25) 42.85714%, rgba(102, 102, 255, 0.25) 42.85714%, rgba(179, 179, 255, 0.25) 57.14286%, rgba(102, 102, 255, 0.25) 57.14286%, rgba(179, 179, 255, 0.25) 71.42857%, rgba(102, 102, 255, 0.25) 71.42857%, rgba(179, 179, 255, 0.25) 85.71429%, rgba(102, 102, 255, 0.25) 85.71429%, rgba(179, 179, 255, 0.25));
+  background: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 14.28571%, rgba(102, 102, 255, 0.25) 14.28571%, rgba(179, 179, 255, 0.25) 28.57143%, rgba(102, 102, 255, 0.25) 28.57143%, rgba(179, 179, 255, 0.25) 42.85714%, rgba(102, 102, 255, 0.25) 42.85714%, rgba(179, 179, 255, 0.25) 57.14286%, rgba(102, 102, 255, 0.25) 57.14286%, rgba(179, 179, 255, 0.25) 71.42857%, rgba(102, 102, 255, 0.25) 71.42857%, rgba(179, 179, 255, 0.25) 85.71429%, rgba(102, 102, 255, 0.25) 85.71429%, rgba(179, 179, 255, 0.25));
+}
+.test__span .assert__inside:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.test__span .assert__inside .test, .test__span .assert__inside .expect {
+  clear: both;
+}
+
+.test__span .assert__inside::before {
+  content: "Span should set width, float, inside gutter, and border-box";
+  display: block;
+  padding: 0.375rem 0.75rem;
+  text-align: left;
+  font-style: italic;
+}
+
 /* - [mixin] gutters */
 .test__gutters .assert__gutters {
   max-width: 100%;

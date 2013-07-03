@@ -18,7 +18,39 @@
   // span [mixin]
   // ------------
 
-  // @@@ need mixin tests
+  @include output-test('span') {
+    // default
+    @include assert-setup('default', $grid: 7 .5 after) {
+      .test, .expect { clear: both; }
+    }
+    @include assert-output(
+      'Span should set width (75%), float (left), and gutter (5% margin-right)'
+    ) {
+      .test { @include span(5); }
+      .expect {
+        width: 70%;
+        float: left;
+        margin-right: 5%;
+      }
+    }
+
+    // inside
+    @include assert-setup('inside', $grid: 7 .5 inside) {
+      .test, .expect { clear: both; }
+    }
+    @include assert-output(
+      'Span should set width, float, inside gutter, and border-box'
+    ) {
+      .test { @include span(5); }
+      .expect {
+        @include box-sizing(border-box);
+        width: 71.42857%;
+        float: left;
+        padding-left: 2.5%;
+        padding-right: 2.5%;
+      }
+    }
+  }
 
   // span [function]
   // ---------------

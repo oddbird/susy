@@ -9,6 +9,7 @@
   $to     : to($flow);
   $from   : from($flow);
 
+  float: $from;
   margin-#{$from}: $push;
   margin-#{$to}: -100%;
 }

@@ -16,6 +16,7 @@
     ) {
       .test { @include isolate-output(30%, ltr); }
       .expect {
+        float: left;
         margin-left: 30%;
         margin-right: -100%;
       }

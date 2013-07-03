@@ -203,6 +203,19 @@
 /*  
 
 ### Isolation Syntax ------ */
+/* - [mixin] isolate */
+/* "Item should be isolated in the last 2 columns, right-to-left" */
+.test__isolate .assert__isolate .test {
+  float: right;
+  margin-right: 75%;
+  margin-left: -100%;
+}
+.test__isolate .assert__isolate .expect {
+  float: right;
+  margin-right: 75%;
+  margin-left: -100%;
+}
+
 /*  - [function] get-isolation (3 assertions, 3 passed, 0 failed) */
 /*  
     Summary:
@@ -643,10 +656,12 @@
 /* - [mixin] isolate-output */
 /* "Isolation at 30%, has 30% left margin and -100% right margin." */
 .test__isolate-output .assert__isolate-output .test {
+  float: left;
   margin-left: 30%;
   margin-right: -100%;
 }
 .test__isolate-output .assert__isolate-output .expect {
+  float: left;
   margin-left: 30%;
   margin-right: -100%;
 }

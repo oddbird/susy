@@ -6,7 +6,24 @@
   // isolate
   // -------
 
-  // @@@ need mixin tests
+  @include output-test('isolate') {
+    @include assert-setup($grid: 7 .5 rtl) {
+      .test, .expect {
+        @include span(last 2);
+        clear: both;
+      }
+    }
+    @include assert-output(
+      'Item should be isolated in the last 2 columns, right-to-left'
+    ) {
+      .test { @include isolate(last 2); }
+      .expect {
+        float: right;
+        margin-right: 75%;
+        margin-left: -100%;
+      }
+    }
+  }
 
   // get-isolation
   // -------------

@@ -98,6 +98,15 @@
 /*  
 
 ### Grid Background Syntax ------ */
+/* - [mixin] grid-background */
+/* "Background-grid should show 7 columns with .5 gutters" */
+.test__grid-background .assert__grid-background .test {
+  background: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, transparent 10%, transparent 15%, rgba(102, 102, 255, 0.25) 15%, rgba(179, 179, 255, 0.25) 25%, transparent 25%, transparent 30%, rgba(102, 102, 255, 0.25) 30%, rgba(179, 179, 255, 0.25) 40%, transparent 40%, transparent 45%, rgba(102, 102, 255, 0.25) 45%, rgba(179, 179, 255, 0.25) 55.0%, transparent 55.0%, transparent 60%, rgba(102, 102, 255, 0.25) 60%, rgba(179, 179, 255, 0.25) 70%, transparent 70%, transparent 75%, rgba(102, 102, 255, 0.25) 75%, rgba(179, 179, 255, 0.25) 85%, transparent 85%, transparent 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
+}
+.test__grid-background .assert__grid-background .expect {
+  background: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, transparent 10%, transparent 15%, rgba(102, 102, 255, 0.25) 15%, rgba(179, 179, 255, 0.25) 25%, transparent 25%, transparent 30%, rgba(102, 102, 255, 0.25) 30%, rgba(179, 179, 255, 0.25) 40%, transparent 40%, transparent 45%, rgba(102, 102, 255, 0.25) 45%, rgba(179, 179, 255, 0.25) 55%, transparent 55%, transparent 60%, rgba(102, 102, 255, 0.25) 60%, rgba(179, 179, 255, 0.25) 70%, transparent 70%, transparent 75%, rgba(102, 102, 255, 0.25) 75%, rgba(179, 179, 255, 0.25) 85%, transparent 85%, transparent 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
+}
+
 /*  - [function] get-grid-color-stops (4 assertions, 4 passed, 0 failed) */
 /*  
     Summary:

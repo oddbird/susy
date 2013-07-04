@@ -34,10 +34,6 @@ $base-line-height       : 24px            !default;
 // Grid Overlay
 // ------------
 
-%grid-overlay-container {
-  position: unquote($overlay-position);
-}
-
 %grid-overlay {
   content: " ";
   position: absolute;
@@ -87,7 +83,7 @@ $base-line-height       : 24px            !default;
         $grid: parse-grid(nth($grid,2));
 
         ~ body #{$selector} {
-          @extend %grid-overlay-container;
+          position: unquote($overlay-position);
         }
         ~ #{$selector}::before,
         ~ body #{$selector}::before {

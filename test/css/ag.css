@@ -1,7 +1,3 @@
-head:hover ~ body .symmetrical, head:hover ~ body .asymmetrical {
-  position: relative;
-}
-
 head:hover ~ .symmetrical::before,
 head:hover ~ body .symmetrical::before, head:hover ~ .asymmetrical::before,
 head:hover ~ body .asymmetrical::before {
@@ -544,6 +540,9 @@ head:hover {
   color: #333;
   background: rgba(255, 255, 255, 0.5);
 }
+head:hover ~ body .symmetrical {
+  position: relative;
+}
 head:hover ~ .symmetrical::before,
 head:hover ~ body .symmetrical::before {
   background: -webkit-linear-gradient(bottom, rgba(0, 0, 0, 0.5) 5%, rgba(0, 0, 0, 0) 5%), -webkit-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 8.16327%, transparent 8.16327%, transparent 10.20408%, rgba(102, 102, 255, 0.25) 10.20408%, rgba(179, 179, 255, 0.25) 18.36735%, transparent 18.36735%, transparent 20.40816%, rgba(102, 102, 255, 0.25) 20.40816%, rgba(179, 179, 255, 0.25) 28.57143%, transparent 28.57143%, transparent 30.61224%, rgba(102, 102, 255, 0.25) 30.61224%, rgba(179, 179, 255, 0.25) 38.77551%, transparent 38.77551%, transparent 40.81633%, rgba(102, 102, 255, 0.25) 40.81633%, rgba(179, 179, 255, 0.25) 48.97959%, transparent 48.97959%, transparent 51.02041%, rgba(102, 102, 255, 0.25) 51.02041%, rgba(179, 179, 255, 0.25) 59.18367%, transparent 59.18367%, transparent 61.22449%, rgba(102, 102, 255, 0.25) 61.22449%, rgba(179, 179, 255, 0.25) 69.38776%, transparent 69.38776%, transparent 71.42857%, rgba(102, 102, 255, 0.25) 71.42857%, rgba(179, 179, 255, 0.25) 79.59184%, transparent 79.59184%, transparent 81.63265%, rgba(102, 102, 255, 0.25) 81.63265%, rgba(179, 179, 255, 0.25) 89.79592%, transparent 89.79592%, transparent 91.83673%, rgba(102, 102, 255, 0.25) 91.83673%, rgba(179, 179, 255, 0.25));
@@ -555,6 +554,9 @@ head:hover ~ body .symmetrical::before {
   -o-background-size: 100% 24px;
   background-size: 100% 24px;
   background-position: left top;
+}
+head:hover ~ body .asymmetrical {
+  position: relative;
 }
 head:hover ~ .asymmetrical::before,
 head:hover ~ body .asymmetrical::before {

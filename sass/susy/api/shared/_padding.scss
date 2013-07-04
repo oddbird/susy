@@ -1,7 +1,11 @@
-// Padding
-// =======
+// Padding API
+// ===========
 
-// Add padding before or after an element
+// Padding Output
+// --------------
+// - $before  : <length>
+// - $after   : <length>
+// - [$flow]  : ltr | rtl
 @mixin padding-output(
   $before,
   $after,

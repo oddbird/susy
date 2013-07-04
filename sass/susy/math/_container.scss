@@ -1,7 +1,10 @@
 // Container math
 // ==============
 
-// Parse the $container-position into margin values
+// Parse Container Position
+// ------------------------
+// Parse the $container-position into margin values.
+// - [$justify]   : left | center | right | <length> [<length>]
 @function parse-container-position(
   $justify: $container-position
 ) {
@@ -28,7 +31,13 @@
   @return $left $right;
 }
 
-// Calculate the width of a container based on columns and gutters
+// Calculate Container Width
+// -------------------------
+// Calculate the width of a container based on columns and gutters.
+// - [$columns]       : <number> | <list>
+// - [$gutters]       : <ratio>
+// - [$column-width]  : <length>
+// - [$outer]         : <boolean>
 @function calculate-container-width(
   $columns        : $columns,
   $gutters        : $gutters,

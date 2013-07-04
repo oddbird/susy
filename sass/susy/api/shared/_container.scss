@@ -1,7 +1,11 @@
-// Shared container output
-// =======================
+// Shared Container API
+// ====================
 
-// Output container styles
+// Container Output
+// ----------------
+// - [$width]         : <length>
+// - [$justify]       : left | center | right
+// - [$layout-math]   : fluid | static
 @mixin container-output(
   $width        : $container,
   $justify      : $container-position,

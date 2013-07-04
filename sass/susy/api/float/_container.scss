@@ -1,7 +1,11 @@
-// Float container
-// ===============
+// Float Container API
+// ===================
 
-// Output a know float container
+// Float Container
+// ---------------
+// - [$width]         : <length>
+// - [$justify]       : left | center | right
+// - [$layout-math]   : fluid | static
 @mixin float-container(
   $width        : $container,
   $justify      : $container-position,

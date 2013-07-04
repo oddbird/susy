@@ -1,17 +1,16 @@
 // Settings
 // ========
 
-// Grid basics
+// Grid Basics
 // -----------
 
 $columns              : 4         !default;
 $gutters              : .25       !default;
 
-
-// Grid widths [optional]
+// Grid Widths [optional]
 // ----------------------
-//
 // - Set EITHER $column-width OR $container
+// - Use $column-width for static layouts
 // - We can determine one from the other, but we can't resolve conflicts
 
 $column-width         : false     !default;

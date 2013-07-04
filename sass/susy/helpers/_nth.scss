@@ -1,7 +1,11 @@
 // Nth- helpers
 // ============
 
+// Format Nth
+// ----------
 // Format various nth-selectors
+// - [$n]         : first | last | only | <math>
+// - [$selector]  : child | of-type | last-child | last-of-type
 @function format-nth(
   $n        : last,
   $selector : child

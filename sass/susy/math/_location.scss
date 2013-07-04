@@ -1,7 +1,12 @@
 // Location math
 // =============
 
+// Is Last
+// -------
 // Find if a span covers the last columns
+// - $span        : <number>
+// - $location    : first | last | <number>
+// - [$columns]   : <number> | <list>
 @function is-last(
   $span,
   $location,
@@ -18,7 +23,10 @@
   @return $is-last;
 }
 
+// Is First
+// --------
 // Find if a span covers the first columns
+// - $location    : first | last | <number>
 @function is-first(
   $location
 ) {
@@ -29,7 +37,12 @@
   }
 }
 
+// Get Location Position
+// ---------------------
 // Return a numeric location, even if a first/last keyword is used
+// - $span        : <number>
+// - $location    : first | last | <number>
+// - [$columns]   : <number> | <list>
 @function get-location-position(
   $span,
   $location,

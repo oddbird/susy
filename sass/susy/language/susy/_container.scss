@@ -1,11 +1,14 @@
 // Container Syntax
 // ================
 
+// Container [mixin]
+// -----------------
 // Set a container element
+// - [$grid]  : <settings>
 @mixin container(
-  $container: get-grid()
+  $grid: get-grid()
 ) {
-  $grid                   : get-adjusted-grid($container);
+  $grid                   : get-adjusted-grid($grid);
 
   $this-container         : get-setting(container, $grid);
   $this-column-width      : get-setting(column-width, $grid);
@@ -26,11 +29,14 @@
   @include grid-background($grid);
 }
 
+// Container [function]
+// --------------------
 // Return container width
+// - [$grid]  : <settings>
 @function container(
-  $container: get-grid()
+  $grid: get-grid()
 ) {
-  $grid                   : get-adjusted-grid($container);
+  $grid                   : get-adjusted-grid($grid);
 
   $this-container         : get-setting(container, $grid);
   $this-column-width      : get-setting(column-width, $grid);
@@ -43,7 +49,14 @@
   @return $width;
 }
 
-// get the container width:
+// Get Container Width
+// -------------------
+// Calculate the container width
+// - [$container]         : <length> | false
+// - [$column-width]      : <length> | false
+// - [$columns]           : <columns>
+// - [$gutters]           : <ratio>
+// - [$gutter-position]   : before | after | split | inside
 @function get-container-width(
   $container        : $container,
   $column-width     : $column-width,

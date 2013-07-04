@@ -1311,5 +1311,5 @@ h1 {
   border-color: green;
 }
 .results::after {
-  content: "43 Tests, 43 Passed, 0 Failed";
+  content: "38 Tests, 38 Passed, 0 Failed";
 }

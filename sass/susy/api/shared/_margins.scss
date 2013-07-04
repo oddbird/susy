@@ -1,7 +1,11 @@
-// Margins
-// =======
+// Margins API
+// ===========
 
-// Add margin before or after an element
+// Margin Output
+// -------------
+// - $before  : <length>
+// - $after   : <length>
+// - [$flow]  : ltr | rtl
 @mixin margin-output(
   $before,
   $after,

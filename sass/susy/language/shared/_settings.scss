@@ -29,10 +29,11 @@ $gutter-position      : after           !default;
 // show | show-columns | show-baseline | hide
 $show-grids           : show-columns    !default;
 
-// Helpers
-// -------
-
+// Set Grid
+// --------
 // Set a new grid using a shorthand
+// - $grid      : <settings>
+// - [$clean]   : true | false (resets container, column-width, & box-sizing)
 @mixin set-grid(
   $grid,
   $clean: false
@@ -59,7 +60,11 @@ $show-grids           : show-columns    !default;
   $box-sizing           : get-setting(box-sizing, $grid);
 }
 
+// Use Grid
+// --------
 // Use an arbitrary grid for a section of code
+// - $grid      : <settings>
+// - [$clean]   : true | false (resets container, column-width, & box-sizing)
 @mixin use-grid(
   $grid,
   $clean: false
@@ -71,11 +76,11 @@ $show-grids           : show-columns    !default;
   @include set-grid($old-grid, $clean);
 }
 
-// Grid helpers
-// ------------
-
+// Get Grid
+// --------
 // Get the current grid settings as a shorthand list
-@function get-grid() {
+@function get-grid(
+) {
   $new-gutters        : $gutters;
   $new-show-grids     : false;
 
@@ -99,7 +104,10 @@ $show-grids           : show-columns    !default;
   @return compact($container $columns $new-gutters $layout-math $layout-method $container-position $new-show-grids $flow $gutter-position $box-sizing);
 }
 
+// Parse Grid
+// ----------
 // Parse a shorthand grid, and return an ordered list of settings
+// - [$grid]  : <settings>
 @function parse-grid(
   $grid: get-grid()
 ) {
@@ -213,7 +221,11 @@ $show-grids           : show-columns    !default;
   @return $new-columns $new-gutters $new-container $new-column-width $new-layout-math $new-layout-method $new-container-position $new-flow $new-gutter-position $new-show-grids $new-box-sizing;
 }
 
-// fill grid defaults
+// Get Adjusted Grid
+// -----------------
+// Fill missing grid values based on global settings
+// - $grid      : <settings>
+// - [$clean]   : true | false (resets container, column-width, & box-sizing)
 @function get-adjusted-grid(
   $grid,
   $clean: false
@@ -255,7 +267,12 @@ $show-grids           : show-columns    !default;
   @return $new-columns, $new-gutters, $new-container, $new-column-width, $new-layout-math, $new-layout-method, $new-container-position, $new-flow, $new-gutter-place, $new-show-grids, $new-box-sizing;
 }
 
+// Get Setting
+// -----------
 // Return one setting from a shorhand grid
+// - setting    : <keyword> (see $options below)
+// - $grid      : <settings>
+// - [$parse]   : true | false
 @function get-setting(
   $setting,
   $grid   : parse-grid(),

@@ -1,7 +1,10 @@
 // Gutter Syntax
 // =============
 
-// Set gutters on an element
+// Gutters
+// -------
+// Set gutters on an element.
+// - [$context]   : <settings>
 @mixin gutters(
   $context: get-grid()
 ) {
@@ -24,7 +27,10 @@
   #{$property}-#{$to}: nth($this-gutters, 2);
 }
 
-// Return the width of a gutter
+// Gutter
+// ------
+// Return the width of a gutter.
+// - [$context]   : <settings>
 @function gutter(
   $context: get-grid()
 ) {
@@ -45,10 +51,13 @@
   @return $width;
 }
 
-// Gutter Math
-// -----------
-
-// Return gutter width
+// Get Gutter Width
+// ----------------
+// Return gutter width.
+// - [$columns]       : <number> | <list>
+// - [$gutters]       : <ratio>
+// - [$column-width]  : <length>
+// - [$layout-math]   : fluid | static
 @function get-gutter-width(
   $columns        : $columns,
   $gutters        : $gutters,
@@ -67,7 +76,15 @@
   @return $gutter;
 }
 
-// return left and right gutter values
+// Get Gutters
+// -----------
+// Return before and after gutter values.
+// - [$columns]           : <number> | <list>
+// - [$gutters]           : <ratio>
+// - [$column-width]      : <length>
+// - [$layout-math]       : fluid | static
+// - [$gutter-position]   : before | after |split | inside
+// - [$gutter-override]   : <length>
 @function get-gutters(
   $columns            : $columns,
   $gutters            : $gutters,

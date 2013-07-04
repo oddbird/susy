@@ -1,7 +1,10 @@
 // Column math
 // ===========
 
-// Returns true if a grid is symmetrical
+// Is Symmetrical
+// --------------
+// Returns true if a grid is symmetrical.
+// - [$columns]   : <number> | <list>
 @function is-symmetrical(
   $columns: $columns
 ) {
@@ -12,7 +15,10 @@
   }
 }
 
+// Columns Count
+// -------------
 // Find the number of columns in a given layout
+// - [$columns]   : <number> | <list>
 @function column-count(
   $columns: $columns
 ) {
@@ -25,7 +31,12 @@
   @return $count;
 }
 
+// Column Sum
+// ----------
 // Find the total sum of column-units in a layout
+// - [$columns]   : <number> | <list>
+// - [$gutters]   : <ratio>
+// - [$outer]     : <boolean>
 @function column-sum(
   $columns  : $columns,
   $gutters  : $gutters,
@@ -51,7 +62,12 @@
   @return $column-sum + $gutter-sum;
 }
 
-// Return a subset of columns at a given location
+// Get Columns
+// -----------
+// Return a subset of columns at a given location.
+// - $span        : <number>
+// - $location    : first | last | <number>
+// - [$columns]   : <number> | <list>
 @function get-columns(
   $span,
   $location,
@@ -73,7 +89,14 @@
   @return $sub-columns;
 }
 
-// Find the sum of a column-span
+// Get Column Span Sum
+// -------------------
+// Find the sum of a column-span.
+// - $span        : <number>
+// - $location    : first | last | <number>
+// - [$columns]   : <number> | <list>
+// - [$gutters]   : <ratio>
+// - [$outer]     : <boolean>
 @function get-column-span-sum(
   $span,
   $location     : false,

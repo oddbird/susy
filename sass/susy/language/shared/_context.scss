@@ -1,13 +1,10 @@
-// Context syntax
+// Context Syntax
 // ==============
-//
-// Functions:
-// - nested()
-//
-// Mixins:
-// - nested()
 
-// return the subset grid for nested context
+// Nested [function]
+// -----------------
+// Return a subset grid for nested context.
+// - $context   : <span>
 @function nested(
   $context
 ) {
@@ -22,7 +19,11 @@
   @return get-columns($this-span, $this-location, $this-columns);
 }
 
-// use the subset grid for a nested context
+// Nested [mixin]
+// --------------
+// Use a subset grid for a nested context
+// - $context   : <span>
+// - @content   : <content>
 @mixin nested(
   $context
 ) {

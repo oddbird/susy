@@ -1,7 +1,11 @@
 // Gallery Syntax
 // ==============
 
+// Gallery
+// -------
 // Create an isolated gallery
+// - $input       : <span>
+// - [$selector]  : child | of-type
 @mixin gallery(
   $input,
   $selector: child

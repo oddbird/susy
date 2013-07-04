@@ -1,7 +1,11 @@
-// Direction helpers
+// Direction Helpers
 // =================
 
+// Get Direction
+// -------------
 // Return the 'from' or 'to' direction of a ltr or rtl flow.
+// - [$flow]  : ltr | rtl
+// - [$key]   : from | to
 @function get-direction(
   $flow: $flow,
   $key: from
@@ -13,14 +17,20 @@
   @else if $key == to { @return $to; }
 }
 
+// To
+// --
 // Return the 'to' direction of a flow
+// - [$flow]  : ltr | rtl
 @function to(
   $flow: $flow
 ) {
   @return get-direction($flow,to);
 }
 
+// From
+// ----
 // Return the 'from' direction of a flow
+// - [$flow]  : ltr | rtl
 @function from(
   $flow: $flow
 ) {

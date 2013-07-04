@@ -1,7 +1,9 @@
-// Float ends
-// ==========
+// Float Ends API
+// ==============
 
-// Last Unit
+// Float Last
+// ----------
+// - [$flow]  : ltr | rtl
 @mixin float-last(
   $flow: $flow
 ) {
@@ -11,7 +13,9 @@
   margin-#{$to}: 0;
 }
 
-// Last Unit
+// Float First
+// -----------
+// - [$flow]  : ltr | rtl
 @mixin float-first(
   $flow: $flow
 ) {

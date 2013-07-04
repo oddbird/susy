@@ -1,7 +1,10 @@
 // Isolation Syntax
 // ================
 
-// Isolation Override
+// Isolate
+// -------
+// Set isolation as an override.
+// - $input   : <span>
 @mixin isolate(
   $input
 ) {
@@ -20,10 +23,15 @@
   @include isolate-output($push, $this-flow);
 }
 
-// Isolation Helpers
-// -----------------
-
-// Return the isolation position
+// Get Isolation
+// -------------
+// Return the isolation offset width
+// - $span            : <length> | <number>
+// - $location        : <number>
+// - [$columns]       : <number> | <list>
+// - [$gutters]       : <ratio>
+// - [$column-width]  : <length>
+// - [$layout-math]   : fluid | static
 @function get-isolation(
   $span,
   $location,

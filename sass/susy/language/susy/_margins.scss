@@ -3,7 +3,8 @@
 
 // Pre
 // ---
-
+// Add spanning-margins before an element.
+// - $span  : <span>
 @mixin pre(
   $span
 ) {
@@ -16,7 +17,8 @@
 
 // Post
 // ----
-
+// Add spanning-margins after an element.
+// - $span  : <span>
 @mixin post(
   $span
 ) {
@@ -29,7 +31,8 @@
 
 // Push
 // ----
-
+// Simple synonymn for pre.
+// - $span  : <span>
 @mixin push(
   $span
 ) {
@@ -38,7 +41,8 @@
 
 // Pull
 // ----
-
+// Add negative spanning-margins before an element.
+// - $span  : <span>
 @mixin pull(
   $span
 ) {
@@ -51,7 +55,9 @@
 
 // Squish
 // ------
-
+// Add spanning-margins before and after an element.
+// - $pre     : <span>
+// - [$post]  : <span>
 @mixin squish(
   $pre,
   $post: $pre

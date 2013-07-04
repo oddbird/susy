@@ -1,7 +1,10 @@
 // Span Syntax
 // ===========
 
-// Set a spanning element using shorthand syntax
+// Span [mixin]
+// ------------
+// Set a spanning element using shorthand syntax.
+// - $span  : <span>
 @mixin span(
   $span
 ) {
@@ -19,7 +22,10 @@
   @include float-span-output($output...);
 }
 
-// Return the width of a span
+// Span [function]
+// ---------------
+// Return the width of a span.
+// - $span  : <span>
 @function span(
   $span
 ) {
@@ -40,10 +46,10 @@
   @return $width;
 }
 
-// Span Parsing
-// ------------
-
-// Parse the span shortcut syntax
+// Parse Span
+// ----------
+// Parse the span shortcut syntax.
+// - $string  : <span>
 @function parse-span(
   $string
 ) {
@@ -196,7 +202,12 @@
   @return $new-span, $new-location, $new-columns, $new-gutters, $new-column-width, $new-layout-method, $new-layout-math, $outer, $new-flow, $new-gutter-position, $is-container, $gutter-override;
 }
 
-// Return one particular span setting from a list
+// Get Span Setting
+// ----------------
+// Return one particular span setting from a list.
+// - $setting   : <keyword> (see $options below)
+// - $span      : <span>
+// - $parse     : <boolean>
 @function get-span-setting(
   $setting,
   $span,
@@ -219,8 +230,19 @@
 
 // Span Math
 // ---------
-
-// Get all the span results
+// Get all the span results.
+// - $span                : <length> | <number>
+// - $location            : first | last | <length> | <number>
+// - [$columns]           : <number> | <list>
+// - [$gutters]           : <ratio>
+// - [$column-width]      : <length>
+// - [$layout-method]     : float | isolate
+// - [$layout-math]       : fluid | static
+// - [$outer]             : <boolean>
+// - [$flow]              : ltr | rtl
+// - [$gutter-position]   : before | after | split | inside
+// - [$is-container]      : <boolean>
+// - [$gutter-override]   : <length>
 @function span-math(
   $span,
   $location,
@@ -272,7 +294,17 @@
   @return $width $float $margin-before $margin-after $padding-before $padding-after $flow;
 }
 
-// Return span width
+// Get Span Width
+// --------------
+// Return span width.
+// - $span                : <length> | <number>
+// - $location            : first | last | <length> | <number>
+// - [$columns]           : <number> | <list>
+// - [$gutters]           : <ratio>
+// - [$column-width]      : <length>
+// - [$layout-math]       : fluid | static
+// - [$gutter-position]   : before | after | split | inside
+// - [$outer]             : <boolean>
 @function get-span-width(
   $span,
   $location           : 1,

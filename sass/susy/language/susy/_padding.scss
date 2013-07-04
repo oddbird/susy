@@ -3,7 +3,8 @@
 
 // Prefix
 // ------
-
+// Add spanning-padding before an element.
+// - $span  : <span>
 @mixin prefix(
   $span
 ) {
@@ -16,7 +17,8 @@
 
 // Suffix
 // ------
-
+// Add spanning-padding after an element.
+// - $span  : <span>
 @mixin suffix(
   $span
 ) {
@@ -29,7 +31,9 @@
 
 // Pad
 // ---
-
+// Add spanning-padding before and after an element.
+// - $pre     : <span>
+// - [$post]  : <span>
 @mixin pad(
   $pre,
   $post: $pre

@@ -1,13 +1,15 @@
-// -------------------------
-// Grid Overlay & Background
-//
-// Note: Sub-pixel rounding can lead to several pixels of variation between browsers.
+// Grid Background API
+// ===================
+// - Sub-pixel rounding can lead to several pixels variation between browsers.
 
 @import "compass/css3";
+@import "compass/layout/grid-background";
 
 // Grid Background Output
 // ----------------------
-
+// $stops     : <list> (gradient color-stops)
+// [$show]    : show | show-columns | show-gutters | hide
+// [$flow]    : ltr | rtl
 @mixin grid-background-output (
   $stops,
   $show   : $show-grids,

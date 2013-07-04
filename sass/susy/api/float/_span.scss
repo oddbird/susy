@@ -1,7 +1,15 @@
-// Float span
-// ==========
+// Float Span API
+// ==============
 
-// Output span
+// Float Span Output
+// -----------------
+// - $width             : <length>
+// - [$float]           : from | to
+// - [$margin-before]   : <length>
+// - [$margin-after]    : <length>
+// - [$padding-before]  : <length>
+// - [$padding-after]   : <length>
+// - [$flow]            : ltr | rtl
 @mixin float-span-output(
   $width,
   $float            : from,

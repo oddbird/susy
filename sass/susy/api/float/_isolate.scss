@@ -1,7 +1,10 @@
-// Float Isolation
-// ===============
+// Float Isolation API
+// ===================
 
-// Isolation Override
+// Isolate Output
+// --------------
+// - $push    : <length>
+// - [$flow]  : ltr | rtl
 @mixin isolate-output(
   $push,
   $flow     : $flow

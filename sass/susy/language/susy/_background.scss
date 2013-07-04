@@ -1,5 +1,7 @@
-// Background Grids
-// ================
+// Background Grid Syntax
+// ======================
+
+@import "compass/layout/stretching";
 
 // The overlay is painted over your container's ::after pseudo-element,
 // so we must give position to the container itself.
@@ -17,7 +19,8 @@ $base-line-height       : 24px            !default;
 
 // Grid Background
 // ---------------
-
+// Show a grid background on any element.
+// - [$grid]  : <settings>
 @mixin grid-background(
   $grid: get-grid()
 ) {
@@ -33,20 +36,8 @@ $base-line-height       : 24px            !default;
 
 // Grid Overlay
 // ------------
-
-%grid-overlay {
-  content: " ";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  height: 100%;
-  width: 100%;
-  z-index: 998;
-  background-color: rgba(red,.25);
-}
-
+// Generate an icon to trigger grid-overlays on any given elements.
+// $grids...  : <selector> [<settings>] [, <selector>]*
 @mixin grid-overlay (
   $grids...
 ) {
@@ -54,7 +45,6 @@ $base-line-height       : 24px            !default;
   $horz: nth($grid-toggle-position, 2);
 
   head {
-    @include transition(all .4s);
     @include border-radius(.25em);
     display: block;
     position: fixed;
@@ -76,18 +66,19 @@ $base-line-height       : 24px            !default;
     }
     &:hover {
       @include box-shadow(0 0 3px rgba(#333,.5));
-      color: #333;
       background: rgba(white,.5);
       @each $grid in $grids {
         $selector: nth($grid, 1);
-        $grid: parse-grid(nth($grid,2));
+        $grid: get-adjusted-grid(
+          if(length($grid) > 1, nth($grid, 2), get-grid())
+        );
 
         ~ body #{$selector} {
           position: unquote($overlay-position);
         }
         ~ #{$selector}::before,
         ~ body #{$selector}::before {
-          @extend %grid-overlay;
+          @extend %grid-overlay-base;
           @include grid-background($grid);
         }
       }
@@ -95,9 +86,16 @@ $base-line-height       : 24px            !default;
   }
 }
 
+%grid-overlay-base {
+  @include stretch;
+  content: " ";
+  z-index: 998;
+}
+
 // Grid Color-Stops
 // ----------------
-
+// Calculate the color-stops needed for a particular grid.
+// - $grid  : <settings>
 @function get-grid-color-stops(
   $grid: parse-grid()
 ) {

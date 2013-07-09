@@ -532,6 +532,7 @@ head:hover {
   box-shadow: 0 0 3px rgba(51, 51, 51, 0.5);
   background: rgba(255, 255, 255, 0.5);
 }
+head:hover ~ .symmetrical,
 head:hover ~ body .symmetrical {
   position: relative;
 }
@@ -547,6 +548,7 @@ head:hover ~ body .symmetrical::before {
   background-size: 100% 24px;
   background-position: left top;
 }
+head:hover ~ .asymmetrical,
 head:hover ~ body .asymmetrical {
   position: relative;
 }

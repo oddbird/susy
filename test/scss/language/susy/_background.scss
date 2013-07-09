@@ -29,7 +29,60 @@
   // Grid Overlay
   // ------------
 
-  // @@@ not sure how to test this...
+  @include output-test('grid-overlay') {
+    $asym: (1 2 3 2 1) (4em 1em) static;
+
+    // There is no visible output from this test.
+    // Compare the tested/expected css output for results.
+    // Check the AG test to make sure it is functioning.
+    @include assert-setup;
+    @include assert-output(
+      '.test and .expect should have same output.'
+    ) {
+      .test { @include grid-overlay('.sym' (7 .5), '.asym' $asym); }
+      .expect {
+        head {
+          border-radius: 0.25em;
+          display: block;
+          position: fixed;
+          bottom: 10px;
+          left: 10px;
+          z-index: 999;
+          color: #333;
+          text-shadow: 0 0 3px #fff;
+          &::before {
+            content: "|||";
+            display: block;
+            padding: 10px 14px;
+            letter-spacing: -1;
+            font-family: sans-serif;
+            font-size: 26px;
+            font-weight: bold;
+          }
+          &:hover {
+            box-shadow: 0 0 3px rgba(51, 51, 51, 0.5);
+            background: rgba(255, 255, 255, 0.5);
+            ~ .sym,
+            ~ body .sym {
+              position: relative;
+              &::before {
+                @extend %grid-overlay-base;
+                @include grid-background(7 .5);
+              }
+            }
+            ~ .asym,
+            ~ body .asym {
+              position: relative;
+              &::before {
+                @extend %grid-overlay-base;
+                @include grid-background((1 2 3 2 1) (4em 1em) static);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
 
   // Get Grid Color-Stops
   // --------------------

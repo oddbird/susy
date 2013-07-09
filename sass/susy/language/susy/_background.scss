@@ -69,17 +69,15 @@ $base-line-height       : 24px            !default;
       background: rgba(white,.5);
       @each $grid in $grids {
         $selector: nth($grid, 1);
-        $grid: get-adjusted-grid(
-          if(length($grid) > 1, nth($grid, 2), get-grid())
-        );
+        $grid: if(length($grid) > 1, nth($grid, 2), get-grid());
 
+        ~ #{$selector},
         ~ body #{$selector} {
           position: unquote($overlay-position);
-        }
-        ~ #{$selector}::before,
-        ~ body #{$selector}::before {
-          @extend %grid-overlay-base;
-          @include grid-background($grid);
+          &::before {
+            @extend %grid-overlay-base;
+            @include grid-background($grid);
+          }
         }
       }
     }

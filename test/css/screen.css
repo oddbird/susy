@@ -188,6 +188,20 @@ h1 {
   font-style: italic;
 }
 
+/* - [mixin] grid-overlay */
+.test__grid-overlay .assert__grid-overlay {
+  overflow: hidden;
+  background: rgba(204, 204, 255, 0.5);
+}
+
+.test__grid-overlay .assert__grid-overlay::before {
+  content: ".test and .expect should have same output.";
+  display: block;
+  padding: 0.375rem 0.75rem;
+  text-align: left;
+  font-style: italic;
+}
+
 /* - [mixin] container */
 .test__container .assert__default-box {
   overflow: hidden;

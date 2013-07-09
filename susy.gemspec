@@ -3,12 +3,12 @@
 Gem::Specification.new do |s|
   # General Project Information
   s.name = "susy"
-  s.version = "2.0.0.alpha.2"
-  s.date = "2013-05-03"
+  s.version = "2.0.0.alpha.3"
+  s.date = "2013-07-09"
 
   # RubyForge Information
   s.rubyforge_project = "susy"
-  s.rubygems_version = "1.8.24"
+  s.rubygems_version = "2.0.3"
   s.required_rubygems_version = Gem::Requirement.new(">= 1.2") if s.respond_to? :required_rubygems_version=
 
   # Author Information

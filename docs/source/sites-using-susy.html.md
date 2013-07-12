@@ -5,7 +5,7 @@ title: Sites using Susy
 ## Sites Using Susy
 
 - [Sass and Compass book](http://sassandcompass.com)
-- [Square Directory](https://squareup.com/directory)
+- [Square Market](https://squareup.com/market)
 - [Slickbag](http://slickbag.se/)
 - [Renault TV](http://uk.renault.tv/)
 - [Project Evolution](http://www.projectevolution.com/)
@@ -34,6 +34,7 @@ title: Sites using Susy
 - [Patrick Marsceill](http://patrickmarsceill.com)
 - [The Italian](http://theitalian.com.au)
 - [Zwoio](http://www.zwoio.de)
+- [Kelisto](http://www.kelisto.es/)
 
 Have a site to add? [Let us know](http://twitter.com/compasssusy/) or [fork and add your site on GitHub](https://github.com/ericam/susy).
 

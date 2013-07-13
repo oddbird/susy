@@ -4,23 +4,26 @@
 // Gutters
 // -------
 // Set gutters on an element.
-// - [$context]   : <settings>
+// - [$span]   : <settings>
 @mixin gutters(
-  $context: get-grid()
+  $span: join(of, get-grid())
 ) {
-  $context: get-adjusted-grid($context);
+  $span: parse-span($span);
 
-  $this-columns           : get-setting(columns, $context);
-  $this-gutters           : get-setting(gutters, $context);
-  $this-column-width      : get-setting(column-width, $context);
-  $this-layout-math       : get-setting(layout-math, $context);
-  $this-gutter-position   : get-setting(gutter-position, $context);
-  $this-flow              : get-setting(flow, $context);
+  $override: get-span-setting(span, $span);
+  $override: if(unitless($override), false, $override);
+
+  $this-columns           : get-span-setting(columns, $span);
+  $this-gutters           : get-span-setting(gutters, $span);
+  $this-column-width      : get-span-setting(column-width, $span);
+  $this-layout-math       : get-span-setting(layout-math, $span);
+  $this-gutter-position   : get-span-setting(gutter-position, $span);
+  $this-flow              : get-span-setting(flow, $span);
 
   $from: from($this-flow);
   $to: to($this-flow);
 
-  $this-gutters: get-gutters($this-columns, $this-gutters, $this-column-width, $this-layout-math, $this-gutter-position);
+  $this-gutters: get-gutters($this-columns, $this-gutters, $this-column-width, $this-layout-math, $this-gutter-position, $override);
   $property: if($this-gutter-position == inside, padding, margin);
 
   #{$property}-#{$from}: nth($this-gutters, 1);
@@ -108,7 +111,7 @@
   } @else if $gutter-position == after {
     $after: $gutter;
   } @else if $gutter-position == split or $gutter-position == inside {
-    $gutter: if($gutter-override, $gutter, $gutter / 2);
+    $gutter: $gutter / 2;
     $before: $gutter;
     $after: $gutter;
   }

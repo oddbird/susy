@@ -283,7 +283,7 @@ h1 {
 }
 
 /* - [mixin] gutters */
-.test__gutters .assert__gutters {
+.test__gutters .assert__auto {
   max-width: 100%;
   margin-left: auto;
   margin-right: auto;
@@ -291,14 +291,36 @@ h1 {
   background: -moz-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 14.28571%, rgba(102, 102, 255, 0.25) 14.28571%, rgba(179, 179, 255, 0.25) 28.57143%, rgba(102, 102, 255, 0.25) 28.57143%, rgba(179, 179, 255, 0.25) 42.85714%, rgba(102, 102, 255, 0.25) 42.85714%, rgba(179, 179, 255, 0.25) 57.14286%, rgba(102, 102, 255, 0.25) 57.14286%, rgba(179, 179, 255, 0.25) 71.42857%, rgba(102, 102, 255, 0.25) 71.42857%, rgba(179, 179, 255, 0.25) 85.71429%, rgba(102, 102, 255, 0.25) 85.71429%, rgba(179, 179, 255, 0.25));
   background: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 14.28571%, rgba(102, 102, 255, 0.25) 14.28571%, rgba(179, 179, 255, 0.25) 28.57143%, rgba(102, 102, 255, 0.25) 28.57143%, rgba(179, 179, 255, 0.25) 42.85714%, rgba(102, 102, 255, 0.25) 42.85714%, rgba(179, 179, 255, 0.25) 57.14286%, rgba(102, 102, 255, 0.25) 57.14286%, rgba(179, 179, 255, 0.25) 71.42857%, rgba(102, 102, 255, 0.25) 71.42857%, rgba(179, 179, 255, 0.25) 85.71429%, rgba(102, 102, 255, 0.25) 85.71429%, rgba(179, 179, 255, 0.25));
 }
-.test__gutters .assert__gutters:after {
+.test__gutters .assert__auto:after {
   content: "";
   display: table;
   clear: both;
 }
 
-.test__gutters .assert__gutters::before {
+.test__gutters .assert__auto::before {
   content: "Item should have 2.5% padding-gutters added before and after";
+  display: block;
+  padding: 0.375rem 0.75rem;
+  text-align: left;
+  font-style: italic;
+}
+
+.test__gutters .assert__explicit {
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  background: -webkit-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 14.28571%, rgba(102, 102, 255, 0.25) 14.28571%, rgba(179, 179, 255, 0.25) 28.57143%, rgba(102, 102, 255, 0.25) 28.57143%, rgba(179, 179, 255, 0.25) 42.85714%, rgba(102, 102, 255, 0.25) 42.85714%, rgba(179, 179, 255, 0.25) 57.14286%, rgba(102, 102, 255, 0.25) 57.14286%, rgba(179, 179, 255, 0.25) 71.42857%, rgba(102, 102, 255, 0.25) 71.42857%, rgba(179, 179, 255, 0.25) 85.71429%, rgba(102, 102, 255, 0.25) 85.71429%, rgba(179, 179, 255, 0.25));
+  background: -moz-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 14.28571%, rgba(102, 102, 255, 0.25) 14.28571%, rgba(179, 179, 255, 0.25) 28.57143%, rgba(102, 102, 255, 0.25) 28.57143%, rgba(179, 179, 255, 0.25) 42.85714%, rgba(102, 102, 255, 0.25) 42.85714%, rgba(179, 179, 255, 0.25) 57.14286%, rgba(102, 102, 255, 0.25) 57.14286%, rgba(179, 179, 255, 0.25) 71.42857%, rgba(102, 102, 255, 0.25) 71.42857%, rgba(179, 179, 255, 0.25) 85.71429%, rgba(102, 102, 255, 0.25) 85.71429%, rgba(179, 179, 255, 0.25));
+  background: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 14.28571%, rgba(102, 102, 255, 0.25) 14.28571%, rgba(179, 179, 255, 0.25) 28.57143%, rgba(102, 102, 255, 0.25) 28.57143%, rgba(179, 179, 255, 0.25) 42.85714%, rgba(102, 102, 255, 0.25) 42.85714%, rgba(179, 179, 255, 0.25) 57.14286%, rgba(102, 102, 255, 0.25) 57.14286%, rgba(179, 179, 255, 0.25) 71.42857%, rgba(102, 102, 255, 0.25) 71.42857%, rgba(179, 179, 255, 0.25) 85.71429%, rgba(102, 102, 255, 0.25) 85.71429%, rgba(179, 179, 255, 0.25));
+}
+.test__gutters .assert__explicit:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.test__gutters .assert__explicit::before {
+  content: "Item should have 5em padding-gutters added before and after";
   display: block;
   padding: 0.375rem 0.75rem;
   text-align: left;

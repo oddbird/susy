@@ -1,8 +1,15 @@
 Susy Next Changelog
 ===================
 
-2.0.0-alpha.3 [unreleased]
+2.0.0-alpha.4 [unreleased]
 --------------------------
+
+* `gutters` mixin uses span syntax, accepts explicit gutter span.
+* Explicit gutter-overrides are divided when gutters are `split`/`inside`.
+
+2.0.0-alpha.3 [July 9, 2013]
+----------------------------
+
 * `row` now includes clearfix, and `unrow` removes clearfix.
 * `gallery` output should override previous gallery settings.
 * Removed `nth-gallery` and `isolate-gallery` in favor of single, isolated `gallery` mixin.

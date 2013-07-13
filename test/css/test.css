@@ -303,13 +303,23 @@
 ### Gutter Syntax ------ */
 /* - [mixin] gutters */
 /* "Item should have 2.5% padding-gutters added before and after" */
-.test__gutters .assert__gutters .test {
+.test__gutters .assert__auto .test {
   padding-left: 2.5%;
   padding-right: 2.5%;
 }
-.test__gutters .assert__gutters .expect {
+.test__gutters .assert__auto .expect {
   padding-left: 2.5%;
   padding-right: 2.5%;
+}
+
+/* "Item should have 5em padding-gutters added before and after" */
+.test__gutters .assert__explicit .test {
+  padding-left: 5em;
+  padding-right: 5em;
+}
+.test__gutters .assert__explicit .expect {
+  padding-left: 5em;
+  padding-right: 5em;
 }
 
 /*  - [function] gutter (5 assertions, 5 passed, 0 failed) */

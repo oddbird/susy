@@ -7,7 +7,7 @@
   // -------
 
   @include output-test('gutters') {
-    @include assert-setup($grid: 7 .5 inside);
+    @include assert-setup('auto', $grid: 7 .5 inside);
     @include assert-output(
       'Item should have 2.5% padding-gutters added before and after'
     ) {
@@ -15,6 +15,17 @@
       .expect {
         padding-left: 2.5%;
         padding-right: 2.5%;
+      }
+    }
+
+    @include assert-setup('explicit', $grid: 7 .5 inside);
+    @include assert-output(
+      'Item should have 5em padding-gutters added before and after'
+    ) {
+      .test { @include gutters(10em); }
+      .expect {
+        padding-left: 5em;
+        padding-right: 5em;
       }
     }
   }
@@ -99,10 +110,10 @@
       'A "2em after" gutter should return "null 2em" gutters');
 
     // override inside
-    $test: get-gutters($cols, $guts, false, fluid, inside, 15px);
+    $test: get-gutters($cols, $guts, false, fluid, inside, 30px);
     $expect: 15px 15px;
     @include assert-equal($test, $expect,
-      'A "15px inside" gutter should return "15px 15px" gutters');
+      'A "30px inside" gutter should return "15px 15px" gutters');
 
     // before
     $test: get-gutters($cols, $guts, $gutter-position: before);

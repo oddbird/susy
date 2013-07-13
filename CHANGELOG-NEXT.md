@@ -1,7 +1,7 @@
 Susy Next Changelog
 ===================
 
-2.0.0-alpha.4 [unreleased]
+2.0.0.alpha.4 [unreleased]
 --------------------------
 
 * `$gutter-position` has been split into two settings:
@@ -10,7 +10,7 @@ Susy Next Changelog
 * `gutters` mixin uses span syntax, accepts explicit gutter span.
 * Explicit gutter-overrides are divided when gutters are `split`.
 
-2.0.0-alpha.3 [July 9, 2013]
+2.0.0.alpha.3 [July 9, 2013]
 ----------------------------
 
 * `row` now includes clearfix, and `unrow` removes clearfix.
@@ -37,7 +37,7 @@ Susy Next Changelog
   - `show` will show both columns/baseline, default is `show-columns`.
 
 2.0.0.alpha.2 [May 7, 2013]
--------------------------
+---------------------------
 
 * Added `gutter <length>`/`gutters <length>` to override the attached gutter width on a single span.
   - NOTE: `gutters 0` is not the same as `no-gutters`. `0` is an output value, `no-gutters` removes output.

@@ -86,7 +86,7 @@
   // -------------------
 
   @include test('[function] get-container-width') {
-    // args: $container, $column-width, $columns, $gutters, $gutter-position
+    // args: $container, $column-width, $columns, $gutters, $gutter-flow
 
     // explicit
     $test: get-container-width(80em);
@@ -106,17 +106,17 @@
     @include assert-equal($test, $expect,
       'An auto container with no specified widths should return 100%.');
 
-    // calculated (outside-gutters)
-    $test: get-container-width(auto, 4em, 7, .5, after);
+    // calculated (single-gutters)
+    $test: get-container-width(auto, 4em, 7, .5, inside, after);
     $expect: 40em;
     @include assert-equal($test, $expect,
       'The container for "7 (4em 2em) after" should return 40em.');
 
-    // calculated (inside-gutters)
-    $test: get-container-width(auto, 4em, 7, .5, inside);
+    // calculated (split-gutters)
+    $test: get-container-width(auto, 4em, 7, .5, inside, split);
     $expect: 42em;
     @include assert-equal($test, $expect,
-      'The container for "7 (4em 2em) inside" should return 42em.');
+      'The container for "7 (4em 2em) split" should return 42em.');
 
   }
 

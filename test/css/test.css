@@ -78,9 +78,9 @@
 /*  - [mixin] set-grid (10 assertions, 10 passed, 0 failed) */
 /*  - [mixin] use-grid (6 assertions, 6 passed, 0 failed) */
 /*  - [function] get-grid (3 assertions, 3 passed, 0 failed) */
-/*  - [function] parse-grid (48 assertions, 48 passed, 0 failed) */
-/*  - [function] get-adjusted-grid (48 assertions, 48 passed, 0 failed) */
-/*  - [function] get-setting (14 assertions, 14 passed, 0 failed) */
+/*  - [function] parse-grid (44 assertions, 44 passed, 0 failed) */
+/*  - [function] get-adjusted-grid (44 assertions, 44 passed, 0 failed) */
+/*  - [function] get-setting (13 assertions, 13 passed, 0 failed) */
 /*  
     Summary:
     - 7 Tests
@@ -289,10 +289,10 @@
 }
 
 /*  - [function] span (5 assertions, 5 passed, 0 failed) */
-/*  - [function] parse-span (72 assertions, 72 passed, 0 failed) */
-/*  - [function] get-span-setting (14 assertions, 14 passed, 0 failed) */
+/*  - [function] parse-span (66 assertions, 66 passed, 0 failed) */
+/*  - [function] get-span-setting (13 assertions, 13 passed, 0 failed) */
 /*  - [function] get-span-width (6 assertions, 6 passed, 0 failed) */
-/*  - [function] span-math (10 assertions, 10 passed, 0 failed) */
+/*  - [function] span-math (9 assertions, 9 passed, 0 failed) */
 /*  
     Summary:
     - 5 Tests
@@ -312,14 +312,14 @@
   padding-right: 2.5%;
 }
 
-/* "Item should have 5em margin-gutters added before and after" */
+/* "Item should have 5em padding-gutters added before and after" */
 .test__gutters .assert__explicit .test {
-  margin-left: 5em;
-  margin-right: 5em;
+  padding-left: 5em;
+  padding-right: 5em;
 }
 .test__gutters .assert__explicit .expect {
-  margin-left: 5em;
-  margin-right: 5em;
+  padding-left: 5em;
+  padding-right: 5em;
 }
 
 /*  - [function] gutter (5 assertions, 5 passed, 0 failed) */
@@ -392,7 +392,7 @@
   clear: none;
 }
 
-/* "Items should create 3x isolated gallery with inside-split gutters." */
+/* "Items should create 3x isolated gallery with inside-gutters." */
 .test__gallery .assert__inside .test {
   box-sizing: border-box;
   width: 33.33333%;
@@ -479,7 +479,8 @@
   box-sizing: border-box;
   float: left;
   margin-right: -100%;
-  padding-right: 2%;
+  padding-left: 1%;
+  padding-right: 1%;
 }
 .test__gallery .assert__asym-inside .test:nth-child(3n + 1) {
   width: 33.33333%;
@@ -500,7 +501,8 @@
   box-sizing: border-box;
   float: left;
   margin-right: -100%;
-  padding-right: 2%;
+  padding-left: 1%;
+  padding-right: 1%;
 }
 .test__gallery .assert__asym-inside .expect:nth-child(3n + 1) {
   width: 33.33333%;

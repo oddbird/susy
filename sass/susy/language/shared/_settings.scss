@@ -21,13 +21,9 @@ $box-sizing           : false           !default;
 // - left | center | right
 $container-position   : center          !default;
 
-// gutter type
-// - inside | outside | no-gutters
-$gutter-type          : outside         !default;
-
-// gutter flow
+// gutter handling
 // - before | after | split
-$gutter-flow          : after           !default;
+$gutter-position      : after           !default;
 
 // show/hide grids
 // show | show-columns | show-baseline | hide
@@ -54,8 +50,7 @@ $show-grids           : show-columns    !default;
   $layout-method        : get-setting(layout-method, $grid);
 
   $flow                 : get-setting(flow, $grid);
-  $gutter-type          : get-setting(gutter-type, $grid);
-  $gutter-flow          : get-setting(gutter-flow, $grid);
+  $gutter-position      : get-setting(gutter-position, $grid);
   $container-position   : get-setting(container-position, $grid);
   $show-grids           : get-setting(show-grids, $grid);
   $box                  : get-setting(box-sizing, $grid);
@@ -106,7 +101,7 @@ $show-grids           : show-columns    !default;
   }
 
   // Return grid shorthand
-  @return compact($container $columns $new-gutters $layout-math $layout-method $container-position $new-show-grids $flow $gutter-type $gutter-flow $box-sizing);
+  @return compact($container $columns $new-gutters $layout-math $layout-method $container-position $new-show-grids $flow $gutter-position $box-sizing);
 }
 
 // Parse Grid
@@ -124,8 +119,7 @@ $show-grids           : show-columns    !default;
   $new-layout-method        : false;
   $new-container-position   : false;
   $new-flow                 : false;
-  $new-gutter-type          : false;
-  $new-gutter-flow          : false;
+  $new-gutter-position      : false;
   $new-show-grids           : false;
   $new-box-sizing           : false;
 
@@ -174,22 +168,17 @@ $show-grids           : show-columns    !default;
         $new-show-grids: show-baseline;
       }
 
-      // gutter-type: inside | outside | no-gutters
-      @if $value == inside {
-        $new-gutter-type: inside;
-      } @else if $value == outside {
-        $new-gutter-type: outside;
-      } @else if $value == no-gutters {
-        $new-gutter-type: no-gutters;
-      }
-
-      // gutter-flow: before | after | split
+      // gutter-position: before | after | split | no-gutters
       @if $value == before {
-        $new-gutter-flow: before;
+        $new-gutter-position: before;
       } @else if $value == after {
-        $new-gutter-flow: after;
+        $new-gutter-position: after;
       } @else if $value == split {
-        $new-gutter-flow: split;
+        $new-gutter-position: split;
+      } @else if $value == inside {
+        $new-gutter-position: inside;
+      } @else if $value == no-gutters {
+        $new-gutter-position: no-gutters;
       }
 
       // box-sizing: border-box | content-box
@@ -229,7 +218,7 @@ $show-grids           : show-columns    !default;
     }
   }
 
-  @return $new-columns $new-gutters $new-container $new-column-width $new-layout-math $new-layout-method $new-container-position $new-flow $new-gutter-type $new-gutter-flow $new-show-grids $new-box-sizing;
+  @return $new-columns $new-gutters $new-container $new-column-width $new-layout-math $new-layout-method $new-container-position $new-flow $new-gutter-position $new-show-grids $new-box-sizing;
 }
 
 // Get Adjusted Grid
@@ -248,8 +237,7 @@ $show-grids           : show-columns    !default;
   $new-layout-math        : get-setting(layout-math, $grid);
   $new-layout-method      : get-setting(layout-method, $grid);
   $new-flow               : get-setting(flow, $grid);
-  $new-gutter-type        : get-setting(gutter-type, $grid);
-  $new-gutter-flow        : get-setting(gutter-flow, $grid);
+  $new-gutter-place       : get-setting(gutter-position, $grid);
   $new-container-position : get-setting(container-position, $grid);
   $new-show-grids         : get-setting(show-grids, $grid);
 
@@ -263,8 +251,7 @@ $show-grids           : show-columns    !default;
   $new-layout-math        : if($new-layout-math, $new-layout-math, $layout-math);
   $new-layout-method      : if($new-layout-method, $new-layout-method, $layout-method);
   $new-flow               : if($new-flow, $new-flow, $flow);
-  $new-gutter-type        : if($new-gutter-type, $new-gutter-type, $gutter-type);
-  $new-gutter-flow        : if($new-gutter-flow, $new-gutter-flow, $gutter-flow);
+  $new-gutter-place       : if($new-gutter-place, $new-gutter-place, $gutter-position);
   $new-container-position : if($new-container-position, $new-container-position, $container-position);
   $new-show-grids         : if($new-show-grids, $new-show-grids, $show-grids);
 
@@ -277,7 +264,7 @@ $show-grids           : show-columns    !default;
     $new-box-sizing       : if($new-box-sizing, $new-box-sizing, $box-sizing);
   }
 
-  @return $new-columns, $new-gutters, $new-container, $new-column-width, $new-layout-math, $new-layout-method, $new-container-position, $new-flow, $new-gutter-type, $new-gutter-flow, $new-show-grids, $new-box-sizing;
+  @return $new-columns, $new-gutters, $new-container, $new-column-width, $new-layout-math, $new-layout-method, $new-container-position, $new-flow, $new-gutter-place, $new-show-grids, $new-box-sizing;
 }
 
 // Get Setting
@@ -291,7 +278,7 @@ $show-grids           : show-columns    !default;
   $grid   : parse-grid(),
   $parse  : false
 ) {
-  $options  : columns gutters container column-width layout-math layout-method container-position flow gutter-type gutter-flow show-grids box-sizing;
+  $options  : columns gutters container column-width layout-math layout-method container-position flow gutter-position show-grids box-sizing;
   $key      : index($options, $setting);
   $value    : false;
 

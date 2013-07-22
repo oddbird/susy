@@ -14,11 +14,10 @@
   $this-column-width      : get-setting(column-width, $grid);
   $this-columns           : get-setting(columns, $grid);
   $this-gutters           : get-setting(gutters, $grid);
-  $this-gutter-type       : get-setting(gutter-type, $grid);
-  $this-gutter-flow       : get-setting(gutter-flow, $grid);
+  $this-gutter-position   : get-setting(gutter-position, $grid);
   $this-layout-math       : get-setting(layout-math, $grid);
 
-  $width      : get-container-width($this-container, $this-column-width, $this-columns, $this-gutters, $this-gutter-type, $this-gutter-flow);
+  $width      : get-container-width($this-container, $this-column-width, $this-columns, $this-gutters, $this-gutter-position);
   $justify    : get-setting(container-position, $grid);
   $box        : get-setting(box-sizing, $grid);
 
@@ -43,10 +42,9 @@
   $this-column-width      : get-setting(column-width, $grid);
   $this-columns           : get-setting(columns, $grid);
   $this-gutters           : get-setting(gutters, $grid);
-  $this-gutter-type       : get-setting(gutter-type, $grid);
-  $this-gutter-flow       : get-setting(gutter-flow, $grid);
+  $this-gutter-position   : get-setting(gutter-position, $grid);
 
-  $width: get-container-width($this-container, $this-column-width, $this-columns, $this-gutters, $this-gutter-type, $this-gutter-flow);
+  $width: get-container-width($this-container, $this-column-width, $this-columns, $this-gutters, $this-gutter-position);
 
   @return $width;
 }
@@ -58,20 +56,19 @@
 // - [$column-width]      : <length> | false
 // - [$columns]           : <columns>
 // - [$gutters]           : <ratio>
-// - [$gutter-flow]       : outside | inside
+// - [$gutter-position]   : before | after | split | inside
 @function get-container-width(
   $container        : $container,
   $column-width     : $column-width,
   $columns          : $columns,
   $gutters          : $gutters,
-  $gutter-type      : $gutter-type,
-  $gutter-flow      : $gutter-flow
+  $gutter-position  : $gutter-position
 ) {
   $width: $container;
 
   @if not $width or $width == auto {
     @if $column-width {
-      $outer: if($gutter-flow == split and $gutter-type == inside, true, false);
+      $outer: if($gutter-position == inside, true, false);
       $width: calculate-container-width($columns, $gutters, $column-width, $outer);
     } @else {
       // if we have nothing, default to 100%

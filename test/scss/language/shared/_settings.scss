@@ -10,8 +10,7 @@ $original-layout-math         : $layout-math;
 $original-layout-method       : $layout-method;
 $original-flow                : $flow;
 $original-container-position  : $container-position;
-$original-gutter-type         : $gutter-type;
-$original-gutter-flow         : $gutter-flow;
+$original-gutter-position     : $gutter-position;
 $original-show-grids          : $show-grids;
 $original-box-sizing          : $box-sizing;
 
@@ -25,15 +24,14 @@ $original-box-sizing          : $box-sizing;
   $layout-method        : $original-layout-method;
   $flow                 : $original-flow;
   $container-position   : $original-container-position;
-  $gutter-type          : $original-gutter-type;
-  $gutter-flow          : $original-gutter-flow;
+  $gutter-position      : $original-gutter-position;
   $show-grids           : $original-show-grids;
   $box-sizing           : $original-box-sizing;
 }
 
 // test the output of a parsed grid
 @mixin test-parsed-grid($name, $test, $expect) {
-  $options: columns gutters container column-width layout-math layout-method container-position flow gutter-type gutter-flow show-grids box-sizing;
+  $options: columns gutters container column-width layout-math layout-method container-position flow gutter-position show-grids box-sizing;
 
   @each $setting in $options {
     $index: index($options, $setting);
@@ -76,8 +74,8 @@ $original-box-sizing          : $box-sizing;
       'New columns setting should still be the default');
     @include assert-equal($box-sizing, border-box,
       'New box-sizing should be "border-box"');
-    @include assert-equal($gutter-type, inside,
-      'New gutter-type should be "inside"');
+    @include assert-equal($gutter-position, inside,
+      'New gutter-position should be "inside"');
 
     // without cleaning
     @include set-grid(12);
@@ -116,9 +114,9 @@ $original-box-sizing          : $box-sizing;
 
     @include use-grid(auto 12) {
       @include assert-equal($columns, 12,
-        'Switch to 12 columns for use-grid content');
+        'Switch to 12 columns, inside use-grid');
       @include assert-equal($container, auto,
-        'Switch to auto container for use-grid content');
+        'Switch to auto container, inside use-grid');
     }
 
     @include assert-equal($columns, $original-columns,
@@ -136,7 +134,7 @@ $original-box-sizing          : $box-sizing;
 
     // defaults
     $grid: get-grid();
-    $expect: auto 4 0.25 fluid float center show-columns ltr outside after;
+    $expect: auto 4 0.25 fluid float center show-columns ltr after;
     @include assert-equal($grid, $expect,
       'Shorthand for default grid should be "#{$expect}"');
 
@@ -145,7 +143,7 @@ $original-box-sizing          : $box-sizing;
     $show-grids: true;
 
     $grid: get-grid();
-    $expect: auto 4 (4em 1em) fluid float center show ltr outside after;
+    $expect: auto 4 (4em 1em) fluid float center show ltr after;
     @include assert-equal($grid, $expect,
       'Shorthand grid with $column-width and $show-grids should be "#{$expect}"');
 
@@ -153,7 +151,7 @@ $original-box-sizing          : $box-sizing;
     $show-grids: false;
 
     $grid: get-grid();
-    $expect: auto 4 (4em 1em) fluid float center hide ltr outside after;
+    $expect: auto 4 (4em 1em) fluid float center hide ltr after;
     @include assert-equal($grid, $expect,
       'Shorthand without $show-grids should be "#{$expect}"');
 
@@ -165,30 +163,30 @@ $original-box-sizing          : $box-sizing;
 
   @include test('[function] parse-grid') {
     // Grid #1
-    $grid: 960px 9 .25 static before show inside float right ltr;
+    $grid: 960px 9 .25 static before show float right ltr;
     $test: parse-grid($grid);
-    $expect: 9 0.25 960px false static float right ltr inside before show false;
+    $expect: 9 0.25 960px false static float right ltr before show false;
 
     @include test-parsed-grid('parse-grid: #1', $test, $expect);
 
     // Grid #2
-    $grid: auto (1 2 3 2 1) (4em 1em) fluid isolate show-columns border-box left rtl outside after;
+    $grid: auto (1 2 3 2 1) (4em 1em) fluid isolate show-columns border-box left rtl after;
     $test: parse-grid($grid);
-    $expect: (1 2 3 2 1) 0.25 auto 4em fluid isolate left rtl outside after show-columns border-box;
+    $expect: (1 2 3 2 1) 0.25 auto 4em fluid isolate left rtl after show-columns border-box;
 
     @include test-parsed-grid('parse-grid: #2', $test, $expect);
 
     // Grid #3
     $grid: center split content-box hide;
     $test: parse-grid($grid);
-    $expect: false false false false false false center false false split hide content-box;
+    $expect: false false false false false false center false split hide content-box;
 
     @include test-parsed-grid('parse-grid: #3', $test, $expect);
 
     // Grid #4
-    $grid: no-gutters show-baseline;
+    $grid: inside show-baseline;
     $test: parse-grid($grid);
-    $expect: false false false false false false false false no-gutters false show-baseline false;
+    $expect: false false false false false false false false inside show-baseline false;
 
     @include test-parsed-grid('parse-grid: #4', $test, $expect);
   }
@@ -206,36 +204,35 @@ $original-box-sizing          : $box-sizing;
     $layout-method        : float;
     $flow                 : ltr;
     $container-position   : center;
-    $gutter-type          : outside;
-    $gutter-flow          : after;
+    $gutter-position      : after;
     $show-grids           : show;
     $box-sizing           : false;
 
     // override $container only
     $grid: 960px;
     $test: get-adjusted-grid($grid);
-    $expect: 7 0.5 960px false fluid float center ltr outside after show false;
+    $expect: 7 0.5 960px false fluid float center ltr after show false;
 
     @include test-parsed-grid('get-adjusted-grid #1', $test, $expect);
 
     // override all but container
-    $grid: (1 2 3 2) .25 static isolate left rtl inside split hide border-box;
+    $grid: (1 2 3 2) .25 static isolate left rtl split hide border-box;
     $test: get-adjusted-grid($grid);
-    $expect: (1 2 3 2) 0.25 80em false static isolate left rtl inside split hide border-box;
+    $expect: (1 2 3 2) 0.25 80em false static isolate left rtl split hide border-box;
 
     @include test-parsed-grid('get-adjusted-grid #2', $test, $expect);
 
     // clean override of optional settings
     $grid: 960px 12 (4em 1em) content-box;
     $test: get-adjusted-grid($grid, clean);
-    $expect: 12 0.25 960px 4em fluid float center ltr outside after show content-box;
+    $expect: 12 0.25 960px 4em fluid float center ltr after show content-box;
 
     @include test-parsed-grid('get-adjusted-grid #3', $test, $expect);
 
     // clean without optional overrides
     $grid: 4;
     $test: get-adjusted-grid($grid, clean);
-    $expect: 4 0.5 auto false fluid float center ltr outside after show false;
+    $expect: 4 0.5 auto false fluid float center ltr after show false;
 
     @include test-parsed-grid('get-adjusted-grid #4', $test, $expect);
 
@@ -247,7 +244,7 @@ $original-box-sizing          : $box-sizing;
   // ----------------------
 
   @include test('[function] get-setting') {
-    $grid: 960px 4 1/4 right border-box float fluid inside before show-columns rtl;
+    $grid: 960px 4 1/4 right border-box float fluid before show-columns rtl;
     $pre: parse-grid($grid);
 
     $a: get-setting(box-sizing, $grid, parse);
@@ -289,43 +286,37 @@ $original-box-sizing          : $box-sizing;
     $test: get-setting(layout-method, $pre);
     $expect: float;
     @include assert-equal($test, $expect,
-      'Layout-method of "#{$grid}" should be "#{$expect}"');
+      'Isolate of "#{$grid}" should be "#{$expect}"');
 
     // layout-math
     $test: get-setting(layout-math, $pre);
     $expect: fluid;
     @include assert-equal($test, $expect,
-      'Layout-math of "#{$grid}" should be "#{$expect}"');
+      'Static of "#{$grid}" should be "#{$expect}"');
 
     // flow
     $test: get-setting(flow, $pre);
     $expect: rtl;
     @include assert-equal($test, $expect,
-      'Flow of "#{$grid}" should be "#{$expect}"');
+      'Static of "#{$grid}" should be "#{$expect}"');
 
     // container-position
     $test: get-setting(container-position, $pre);
     $expect: right;
     @include assert-equal($test, $expect,
-      'Container-position of "#{$grid}" should be "#{$expect}"');
+      'Static of "#{$grid}" should be "#{$expect}"');
 
-    // gutter-type
-    $test: get-setting(gutter-type, $pre);
-    $expect: inside;
-    @include assert-equal($test, $expect,
-      'gutter-type of "#{$grid}" should be "#{$expect}"');
-
-    // gutter-flow
-    $test: get-setting(gutter-flow, $pre);
+    // gutter-position
+    $test: get-setting(gutter-position, $pre);
     $expect: before;
     @include assert-equal($test, $expect,
-      'gutter-flow of "#{$grid}" should be "#{$expect}"');
+      'Static of "#{$grid}" should be "#{$expect}"');
 
     // show-grids
     $test: get-setting(show-grids, $pre);
     $expect: show-columns;
     @include assert-equal($test, $expect,
-      'Show-grids of "#{$grid}" should be "#{$expect}"');
+      'Static of "#{$grid}" should be "#{$expect}"');
 
     // auto container
     $grid: auto;

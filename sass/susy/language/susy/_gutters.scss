@@ -17,15 +17,14 @@
   $this-gutters           : get-span-setting(gutters, $span);
   $this-column-width      : get-span-setting(column-width, $span);
   $this-layout-math       : get-span-setting(layout-math, $span);
-  $this-gutter-type       : get-span-setting(gutter-type, $span);
-  $this-gutter-flow       : get-span-setting(gutter-flow, $span);
+  $this-gutter-position   : get-span-setting(gutter-position, $span);
   $this-flow              : get-span-setting(flow, $span);
 
   $from: from($this-flow);
   $to: to($this-flow);
 
-  $this-gutters: get-gutters($this-columns, $this-gutters, $this-column-width, $this-layout-math, $this-gutter-flow, $override);
-  $property: if($this-gutter-type == inside, padding, margin);
+  $this-gutters: get-gutters($this-columns, $this-gutters, $this-column-width, $this-layout-math, $this-gutter-position, $override);
+  $property: if($this-gutter-position == inside, padding, margin);
 
   #{$property}-#{$from}: nth($this-gutters, 1);
   #{$property}-#{$to}: nth($this-gutters, 2);
@@ -44,11 +43,11 @@
   $this-gutters       : get-setting(gutters, $context);
   $this-column-width  : get-setting(column-width, $context);
   $this-layout-math   : get-setting(layout-math, $context);
-  $this-gutter-flow   : get-setting(gutter-flow, $context);
+  $this-gutter-position   : get-setting(gutter-position, $context);
 
   $width: get-gutter-width($this-columns, $this-gutters, $this-column-width, $this-layout-math);
 
-  @if $this-gutter-flow == split {
+  @if $this-gutter-position == inside or $this-gutter-position == split {
     $width: $width / 2;
   }
 
@@ -87,14 +86,14 @@
 // - [$gutters]           : <ratio>
 // - [$column-width]      : <length>
 // - [$layout-math]       : fluid | static
-// - [$gutter-flow]       : before | after |split
+// - [$gutter-position]   : before | after |split | inside
 // - [$gutter-override]   : <length>
 @function get-gutters(
   $columns            : $columns,
   $gutters            : $gutters,
   $column-width       : $column-width,
   $layout-math        : $layout-math,
-  $gutter-flow        : $gutter-flow,
+  $gutter-position    : $gutter-position,
   $gutter-override    : false
 ) {
   $gutter   : null;
@@ -107,11 +106,11 @@
     $gutter: get-gutter-width($columns, $gutters, $column-width, $layout-math);
   }
 
-  @if $gutter-flow == before {
+  @if $gutter-position == before {
     $before: $gutter;
-  } @else if $gutter-flow == after {
+  } @else if $gutter-position == after {
     $after: $gutter;
-  } @else if $gutter-flow == split {
+  } @else if $gutter-position == split or $gutter-position == inside {
     $gutter: $gutter / 2;
     $before: $gutter;
     $after: $gutter;

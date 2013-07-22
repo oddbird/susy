@@ -11,7 +11,7 @@
   $span     : parse-span($span);
   $output   : span-math($span...);
   $box      : get-span-setting(box-sizing, $span);
-  $inside   : if(get-span-setting(gutter-type, $span) == inside, true, false);
+  $inside   : if(get-span-setting(gutter-position, $span) == inside, true, false);
 
   @if $box == border-box or $inside {
     @include box-sizing(border-box);
@@ -38,10 +38,10 @@
   $this-gutters           : get-span-setting(gutters, $span);
   $this-column-width      : get-span-setting(column-width, $span);
   $this-layout-math       : get-span-setting(layout-math, $span);
-  $this-gutter-type       : get-span-setting(gutter-type, $span);
+  $this-gutter-position   : get-span-setting(gutter-position, $span);
   $outer                  : get-span-setting(outer, $span);
 
-  $width: get-span-width($width, $this-location, $this-columns, $this-gutters, $this-column-width, $this-layout-math, $this-gutter-type, $outer);
+  $width: get-span-width($width, $this-location, $this-columns, $this-gutters, $this-column-width, $this-layout-math, $this-gutter-position, $outer);
 
   @return $width;
 }
@@ -63,8 +63,7 @@
   $new-column-width       : false;
   $outer                  : false;
   $new-flow               : false;
-  $new-gutter-type        : false;
-  $new-gutter-flow        : false;
+  $new-gutter-position    : false;
   $gutter-override        : false;
 
   $is-container           : false;
@@ -113,22 +112,17 @@
         $new-flow: ltr;
       }
 
-      // gutter-type: inside | outside | no-gutters
-      @else if $value == inside {
-        $new-gutter-type: inside;
-      } @else if $value == outside {
-        $new-gutter-type: outside;
-      } @else if $value == no-gutters {
-        $new-gutter-type: no-gutters;
-      }
-
-      // gutter-flow: before | after | split
-      @else if $value == before {
-        $new-gutter-flow: before;
-      } @else if $value == after {
-        $new-gutter-flow: after;
+      // after | before | split | inside | no-gutters
+      @else if $value == after {
+        $new-gutter-position: after;
+      } @else if $value == before {
+        $new-gutter-position: before;
       } @else if $value == split {
-        $new-gutter-flow: split;
+        $new-gutter-position: split;
+      } @else if $value == inside {
+        $new-gutter-position: inside;
+      } @else if $value == no-gutter or $value == no-gutters {
+        $new-gutter-position: no-gutters;
       }
 
       // container
@@ -203,10 +197,9 @@
   $new-layout-math        : if($new-layout-math, $new-layout-math, $layout-math);
   $new-layout-method      : if($new-layout-method, $new-layout-method, $layout-method);
   $new-flow               : if($new-flow, $new-flow, $flow);
-  $new-gutter-type        : if($new-gutter-type, $new-gutter-type, $gutter-type);
-  $new-gutter-flow        : if($new-gutter-flow, $new-gutter-flow, $gutter-flow);
+  $new-gutter-position    : if($new-gutter-position, $new-gutter-position, $gutter-position);
 
-  @return $new-span, $new-location, $new-columns, $new-gutters, $new-column-width, $new-layout-method, $new-layout-math, $outer, $new-flow, $new-gutter-type, $new-gutter-flow, $is-container, $gutter-override;
+  @return $new-span, $new-location, $new-columns, $new-gutters, $new-column-width, $new-layout-method, $new-layout-math, $outer, $new-flow, $new-gutter-position, $is-container, $gutter-override;
 }
 
 // Get Span Setting
@@ -220,7 +213,7 @@
   $span,
   $parse: false
 ) {
-  $options  : span location columns gutters column-width layout-method layout-math outer flow gutter-type gutter-flow is-container gutter-override;
+  $options  : span location columns gutters column-width layout-method layout-math outer flow gutter-position is-container gutter-override;
   $key      : index($options, $setting);
   $value    : false;
 
@@ -247,8 +240,7 @@
 // - [$layout-math]       : fluid | static
 // - [$outer]             : <boolean>
 // - [$flow]              : ltr | rtl
-// - [$gutter-type]       : outside | inside
-// - [$gutter-flow]       : before | after | split
+// - [$gutter-position]   : before | after | split | inside
 // - [$is-container]      : <boolean>
 // - [$gutter-override]   : <length>
 @function span-math(
@@ -261,8 +253,7 @@
   $layout-math        : $layout-math,
   $outer              : $outer,
   $flow               : $flow,
-  $gutter-type        : $gutter-type,
-  $gutter-flow        : $gutter-flow,
+  $gutter-position    : $gutter-position,
   $is-container       : false,
   $gutter-override    : false
 ) {
@@ -275,14 +266,14 @@
   $margin-after     : null;
 
   // calculate widths
-  $width: get-span-width($span, $location, $columns, $gutters, $column-width, $layout-math, $gutter-type, $outer);
-  $this-gutters: get-gutters($columns, $gutters, $column-width, $layout-math, $gutter-flow, $gutter-override);
+  $width: get-span-width($span, $location, $columns, $gutters, $column-width, $layout-math, $gutter-position, $outer);
+  $this-gutters: get-gutters($columns, $gutters, $column-width, $layout-math, $gutter-position, $gutter-override);
 
   // apply gutters
-  @if $gutter-type == inside and not $is-container {
+  @if $gutter-position == inside and not $is-container {
     $padding-before: nth($this-gutters,1);
     $padding-after: nth($this-gutters,2);
-  } @else if $gutter-type == outside and not $outer {
+  } @else if $gutter-position != inside {
     $margin-before: nth($this-gutters,1);
     $margin-after: nth($this-gutters,2);
   }
@@ -312,7 +303,7 @@
 // - [$gutters]           : <ratio>
 // - [$column-width]      : <length>
 // - [$layout-math]       : fluid | static
-// - [$gutter-type]       : outside | inside
+// - [$gutter-position]   : before | after | split | inside
 // - [$outer]             : <boolean>
 @function get-span-width(
   $span,
@@ -321,7 +312,7 @@
   $gutters            : $gutters,
   $column-width       : $column-width,
   $layout-math        : $layout-math,
-  $gutter-type        : $gutter-type,
+  $gutter-position    : $gutter-position,
   $outer              : null
 ) {
   $context  : null;
@@ -329,7 +320,7 @@
   $width    : null;
 
   @if unitless($span) {
-    @if $gutter-type == inside {
+    @if $gutter-position == inside {
       $context: column-sum($columns, $gutters, outer);
       $span-sum: get-column-span-sum($span, $location, $columns, $gutters, outer);
     } @else {

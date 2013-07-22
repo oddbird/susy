@@ -19,12 +19,11 @@
   $this-gutters           : get-span-setting(gutters, $input);
   $this-column-width      : get-span-setting(column-width, $input);
   $this-layout-math       : get-span-setting(layout-math, $input);
-  $this-gutter-type       : get-span-setting(gutter-type, $input);
-  $this-gutter-flow       : get-span-setting(gutter-flow, $input);
+  $this-gutter-position   : get-span-setting(gutter-position, $input);
   $this-flow              : get-span-setting(flow, $input);
 
   $box                    : get-span-setting(box-sizing, $input);
-  $inside                 : if(get-span-setting(gutter-type, $input) == inside, true, false);
+  $inside                 : if(get-span-setting(gutter-position, $input) == inside, true, false);
 
   $from                   : from($this-flow);
   $context                : column-count($this-columns);
@@ -34,7 +33,7 @@
   $padding-after          : null;
 
   @if $inside {
-    $inside-gutter: get-gutters($this-columns, $this-gutters, $this-column-width, $this-layout-math, $this-gutter-flow);
+    $inside-gutter: get-gutters($this-columns, $this-gutters, $this-column-width, $this-layout-math, $this-gutter-position);
     $padding-before: nth($inside-gutter, 1);
     $padding-after: nth($inside-gutter, 2);
   }

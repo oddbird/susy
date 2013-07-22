@@ -10,8 +10,7 @@ $original-layout-math         : $layout-math;
 $original-layout-method       : $layout-method;
 $original-flow                : $flow;
 $original-container-position  : $container-position;
-$original-gutter-type         : $gutter-type;
-$original-gutter-flow         : $gutter-flow;
+$original-gutter-position     : $gutter-position;
 $original-show-grids          : $show-grids;
 $original-box-sizing          : $box-sizing;
 
@@ -29,8 +28,7 @@ $original-container-width     : $container-width;
   $layout-method        : $original-layout-method;
   $flow                 : $original-flow;
   $container-position   : $original-container-position;
-  $gutter-type          : $original-gutter-type;
-  $gutter-flow          : $original-gutter-flow;
+  $gutter-position      : $original-gutter-position;
   $show-grids           : $original-show-grids;
   $box-sizing           : $original-box-sizing;
 
@@ -60,10 +58,6 @@ $original-container-width     : $container-width;
       'Default Susy-1 settings have "ltr" flow');
     @include assert-equal($layout-math, fluid,
       'Default Susy-1 settings have "fluid" layout-math');
-    @include assert-equal($gutter-type, outside,
-      'Default Susy-1 settings have "outside" gutter-type');
-    @include assert-equal($gutter-flow, after,
-      'Default Susy-1 settings have "after" gutter-flow');
 
     // static
     $container-style: static;

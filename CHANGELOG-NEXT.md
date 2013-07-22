@@ -4,11 +4,8 @@ Susy Next Changelog
 2.0.0.alpha.4 [unreleased]
 --------------------------
 
-* `$gutter-position` has been split into two settings:
-  - `$gutter-type` can be set to `outside`, `inside`, or `no-gutters`.
-  - `$gutter-flow` can be set to `before`, `after`, or `split`.
 * `gutters` mixin uses span syntax, accepts explicit gutter span.
-* Explicit gutter-overrides are divided when gutters are `split`.
+* Explicit gutter-overrides are divided when gutters are `split`/`inside`.
 
 2.0.0.alpha.3 [July 9, 2013]
 ----------------------------

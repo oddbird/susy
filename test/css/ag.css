@@ -505,6 +505,142 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   clear: none;
 }
 
+.inside-static {
+  *zoom: 1;
+  max-width: 78em;
+  margin-left: auto;
+  margin-right: auto;
+  background: -webkit-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, rgba(102, 102, 255, 0.25) 10%, rgba(179, 179, 255, 0.25) 20%, rgba(102, 102, 255, 0.25) 20%, rgba(179, 179, 255, 0.25) 30.0%, rgba(102, 102, 255, 0.25) 30.0%, rgba(179, 179, 255, 0.25) 40%, rgba(102, 102, 255, 0.25) 40%, rgba(179, 179, 255, 0.25) 50%, rgba(102, 102, 255, 0.25) 50%, rgba(179, 179, 255, 0.25) 60.0%, rgba(102, 102, 255, 0.25) 60.0%, rgba(179, 179, 255, 0.25) 70%, rgba(102, 102, 255, 0.25) 70%, rgba(179, 179, 255, 0.25) 80%, rgba(102, 102, 255, 0.25) 80%, rgba(179, 179, 255, 0.25) 90.0%, rgba(102, 102, 255, 0.25) 90.0%, rgba(179, 179, 255, 0.25));
+  background: -moz-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, rgba(102, 102, 255, 0.25) 10%, rgba(179, 179, 255, 0.25) 20%, rgba(102, 102, 255, 0.25) 20%, rgba(179, 179, 255, 0.25) 30.0%, rgba(102, 102, 255, 0.25) 30.0%, rgba(179, 179, 255, 0.25) 40%, rgba(102, 102, 255, 0.25) 40%, rgba(179, 179, 255, 0.25) 50%, rgba(102, 102, 255, 0.25) 50%, rgba(179, 179, 255, 0.25) 60.0%, rgba(102, 102, 255, 0.25) 60.0%, rgba(179, 179, 255, 0.25) 70%, rgba(102, 102, 255, 0.25) 70%, rgba(179, 179, 255, 0.25) 80%, rgba(102, 102, 255, 0.25) 80%, rgba(179, 179, 255, 0.25) 90.0%, rgba(102, 102, 255, 0.25) 90.0%, rgba(179, 179, 255, 0.25));
+  background: -o-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, rgba(102, 102, 255, 0.25) 10%, rgba(179, 179, 255, 0.25) 20%, rgba(102, 102, 255, 0.25) 20%, rgba(179, 179, 255, 0.25) 30.0%, rgba(102, 102, 255, 0.25) 30.0%, rgba(179, 179, 255, 0.25) 40%, rgba(102, 102, 255, 0.25) 40%, rgba(179, 179, 255, 0.25) 50%, rgba(102, 102, 255, 0.25) 50%, rgba(179, 179, 255, 0.25) 60.0%, rgba(102, 102, 255, 0.25) 60.0%, rgba(179, 179, 255, 0.25) 70%, rgba(102, 102, 255, 0.25) 70%, rgba(179, 179, 255, 0.25) 80%, rgba(102, 102, 255, 0.25) 80%, rgba(179, 179, 255, 0.25) 90.0%, rgba(102, 102, 255, 0.25) 90.0%, rgba(179, 179, 255, 0.25));
+  background: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, rgba(102, 102, 255, 0.25) 10%, rgba(179, 179, 255, 0.25) 20%, rgba(102, 102, 255, 0.25) 20%, rgba(179, 179, 255, 0.25) 30.0%, rgba(102, 102, 255, 0.25) 30.0%, rgba(179, 179, 255, 0.25) 40%, rgba(102, 102, 255, 0.25) 40%, rgba(179, 179, 255, 0.25) 50%, rgba(102, 102, 255, 0.25) 50%, rgba(179, 179, 255, 0.25) 60.0%, rgba(102, 102, 255, 0.25) 60.0%, rgba(179, 179, 255, 0.25) 70%, rgba(102, 102, 255, 0.25) 70%, rgba(179, 179, 255, 0.25) 80%, rgba(102, 102, 255, 0.25) 80%, rgba(179, 179, 255, 0.25) 90.0%, rgba(102, 102, 255, 0.25) 90.0%, rgba(179, 179, 255, 0.25));
+  margin-top: 0.75em;
+  margin-bottom: 0.75em;
+}
+.inside-static:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.inside-static > .size1of5 {
+  min-height: 15em;
+}
+.inside-static > .size1of5:first-of-type {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 20%;
+  float: left;
+  padding-left: 1em;
+  padding-right: 1em;
+}
+.inside-static > .size1of5 ~ .size1of5 {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 20%;
+  float: right;
+  padding-left: 1em;
+  padding-right: 1em;
+}
+.inside-static > .size3of5 {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 60.0%;
+  float: left;
+}
+.inside-static > .size3of5 > .size1of2:first-child {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 50%;
+  float: left;
+  padding-left: 1em;
+  padding-right: 1em;
+}
+.inside-static > .size3of5 > .size1of2 + .size1of2 {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 50%;
+  float: right;
+  padding-left: 1em;
+  padding-right: 1em;
+}
+.inside-static > .size3of5 > .full {
+  clear: both;
+  background: none;
+}
+.inside-static .full .size1of3 {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 33.33333%;
+  float: left;
+  padding-left: 1em;
+  padding-right: 1em;
+  min-height: 9.75em;
+}
+.inside-static .full .size2of3 {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 66.66667%;
+  float: right;
+}
+.inside-static .size2of3 .size1of2:first-child {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 50%;
+  float: left;
+  padding-left: 1em;
+  padding-right: 1em;
+}
+.inside-static .size2of3 .size1of2 + .size1of2 {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 50%;
+  float: right;
+  padding-left: 1em;
+  padding-right: 1em;
+}
+.inside-static .size2of3 .full {
+  clear: both;
+}
+.inside-static .gallery div {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 20%;
+  float: left;
+  margin-right: -100%;
+  padding-left: 1em;
+  padding-right: 1em;
+}
+.inside-static .gallery div:nth-child(5n + 1) {
+  margin-left: 0;
+  clear: left;
+}
+.inside-static .gallery div:nth-child(5n + 2) {
+  margin-left: 20%;
+  clear: none;
+}
+.inside-static .gallery div:nth-child(5n + 3) {
+  margin-left: 40%;
+  clear: none;
+}
+.inside-static .gallery div:nth-child(5n + 4) {
+  margin-left: 60.0%;
+  clear: none;
+}
+.inside-static .gallery div:nth-child(5n + 5) {
+  margin-left: 80%;
+  clear: none;
+}
+
 head {
   -webkit-border-radius: 0.25em;
   -moz-border-radius: 0.25em;

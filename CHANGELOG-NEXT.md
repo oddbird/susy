@@ -4,6 +4,7 @@ Susy Next Changelog
 2.0.0.alpha.4 [unreleased]
 --------------------------
 
+* Added `inside-static` option for static gutters in otherwise fluid grids.
 * `gutters` mixin uses span syntax, accepts explicit gutter span.
 * Explicit gutter-overrides are divided when gutters are `split`/`inside`.
 

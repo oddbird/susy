@@ -124,6 +124,14 @@
     $expect: $color, $light 15%, $color 15%, $light 30%, $color 30%, $light 45%, $color 45%, $light 60%, $color 60%, $light 75%, $color 75%, $light 90%, $color 90%, $light;
     @include assert-equal($stops, $expect,
       'Stops for "#{$grid}" should be "#{$expect}"');
+
+    // fluid inside-static
+    $grid: 7 .5 fluid inside-static;
+    $parse: parse-grid($grid);
+    $stops: get-grid-color-stops($parse);
+    $expect: $color, $light 15%, $color 15%, $light 30%, $color 30%, $light 45%, $color 45%, $light 60%, $color 60%, $light 75%, $color 75%, $light 90%, $color 90%, $light;
+    @include assert-equal($stops, $expect,
+      'Stops for "#{$grid}" should be "#{$expect}"');
   }
 
 }

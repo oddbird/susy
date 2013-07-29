@@ -23,7 +23,7 @@
   $this-flow              : get-span-setting(flow, $input);
 
   $box                    : get-span-setting(box-sizing, $input);
-  $inside                 : if(get-span-setting(gutter-position, $input) == inside, true, false);
+  $inside                 : if($this-gutter-position == inside or $this-gutter-position == inside-static, true, false);
 
   $from                   : from($this-flow);
   $context                : column-count($this-columns);

@@ -52,6 +52,25 @@
     }
   }
 
+  @include test('[mixin] span') {
+    $columns: 12;
+
+    .span-content-test {
+      @include span(8 of 12) {
+        @include assert-equal($columns, 8,
+          'Span @content should use nested context');
+
+        @include span(3 of 8) {
+          @include assert-equal($columns, 3,
+            'Nested span @content should use new nested context');
+        }
+      }
+
+      @include assert-equal($columns, 12,
+        'After nesting, column-count should be restored');
+    }
+  }
+
   // span [function]
   // ---------------
 

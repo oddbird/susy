@@ -288,6 +288,16 @@
   padding-right: 2.5%;
 }
 
+.span-content-test {
+  width: 66.10169%;
+  float: left;
+  margin-right: 1.69492%;
+  width: 35.89744%;
+  float: left;
+  margin-right: 2.5641%;
+}
+
+/*  - [mixin] span (3 assertions, 3 passed, 0 failed) */
 /*  - [function] span (5 assertions, 5 passed, 0 failed) */
 /*  - [function] parse-span (66 assertions, 66 passed, 0 failed) */
 /*  - [function] get-span-setting (13 assertions, 13 passed, 0 failed) */
@@ -295,8 +305,8 @@
 /*  - [function] span-math (9 assertions, 9 passed, 0 failed) */
 /*  
     Summary:
-    - 5 Tests
-    - 5 Passed
+    - 6 Tests
+    - 6 Passed
     - 0 Failed */
 /*  
 

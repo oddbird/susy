@@ -4,6 +4,7 @@ Susy Next Changelog
 2.0.0.alpha.4 [unreleased]
 --------------------------
 
+* `span` mixing accepts nested `@content`, and uses nested context.
 * `gutters` mixin uses span syntax, accepts explicit gutter span.
 * Explicit gutter-overrides are divided when gutters are `split`/`inside`.
 

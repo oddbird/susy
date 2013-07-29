@@ -282,6 +282,15 @@ h1 {
   font-style: italic;
 }
 
+.span-content-test {
+  width: 66.10169%;
+  float: left;
+  margin-right: 1.69492%;
+  width: 35.89744%;
+  float: left;
+  margin-right: 2.5641%;
+}
+
 /* - [mixin] gutters */
 .test__gutters .assert__auto {
   max-width: 100%;
@@ -1347,5 +1356,5 @@ h1 {
   border-color: green;
 }
 .results::after {
-  content: "38 Tests, 38 Passed, 0 Failed";
+  content: "39 Tests, 39 Passed, 0 Failed";
 }

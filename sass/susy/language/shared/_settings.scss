@@ -22,7 +22,7 @@ $box-sizing           : false           !default;
 $container-position   : center          !default;
 
 // gutter handling
-// - before | after | split
+// - before | after | split | inside | inside-static | no-gutters
 $gutter-position      : after           !default;
 
 // show/hide grids
@@ -177,6 +177,8 @@ $show-grids           : show-columns    !default;
         $new-gutter-position: split;
       } @else if $value == inside {
         $new-gutter-position: inside;
+      } @else if $value == inside-static {
+        $new-gutter-position: inside-static;
       } @else if $value == no-gutters {
         $new-gutter-position: no-gutters;
       }

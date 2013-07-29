@@ -78,7 +78,7 @@
 /*  - [mixin] set-grid (10 assertions, 10 passed, 0 failed) */
 /*  - [mixin] use-grid (6 assertions, 6 passed, 0 failed) */
 /*  - [function] get-grid (3 assertions, 3 passed, 0 failed) */
-/*  - [function] parse-grid (44 assertions, 44 passed, 0 failed) */
+/*  - [function] parse-grid (55 assertions, 55 passed, 0 failed) */
 /*  - [function] get-adjusted-grid (44 assertions, 44 passed, 0 failed) */
 /*  - [function] get-setting (13 assertions, 13 passed, 0 failed) */
 /*  
@@ -189,7 +189,7 @@
   background: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 4em, transparent 4em, transparent 5em, rgba(102, 102, 255, 0.25) 5em, rgba(179, 179, 255, 0.25) 13em, transparent 13em, transparent 14em, rgba(102, 102, 255, 0.25) 14em, rgba(179, 179, 255, 0.25) 26em, transparent 26em, transparent 27em, rgba(102, 102, 255, 0.25) 27em, rgba(179, 179, 255, 0.25) 35em, transparent 35em, transparent 36em, rgba(102, 102, 255, 0.25) 36em, rgba(179, 179, 255, 0.25));
 }
 
-/*  - [function] get-grid-color-stops (4 assertions, 4 passed, 0 failed) */
+/*  - [function] get-grid-color-stops (5 assertions, 5 passed, 0 failed) */
 /*  
     Summary:
     - 1 Tests
@@ -288,10 +288,10 @@
   padding-right: 2.5%;
 }
 
-/*  - [function] span (5 assertions, 5 passed, 0 failed) */
-/*  - [function] parse-span (66 assertions, 66 passed, 0 failed) */
+/*  - [function] span (6 assertions, 6 passed, 0 failed) */
+/*  - [function] parse-span (84 assertions, 84 passed, 0 failed) */
 /*  - [function] get-span-setting (13 assertions, 13 passed, 0 failed) */
-/*  - [function] get-span-width (6 assertions, 6 passed, 0 failed) */
+/*  - [function] get-span-width (7 assertions, 7 passed, 0 failed) */
 /*  - [function] span-math (9 assertions, 9 passed, 0 failed) */
 /*  
     Summary:
@@ -324,7 +324,7 @@
 
 /*  - [function] gutter (5 assertions, 5 passed, 0 failed) */
 /*  - [function] get-gutter-width (2 assertions, 2 passed, 0 failed) */
-/*  - [function] get-gutters (6 assertions, 6 passed, 0 failed) */
+/*  - [function] get-gutters (8 assertions, 8 passed, 0 failed) */
 /*  
     Summary:
     - 3 Tests
@@ -430,6 +430,48 @@
   clear: none;
 }
 .test__gallery .assert__inside .expect:nth-child(3n + 3) {
+  margin-left: 66.66667%;
+  clear: none;
+}
+
+/* "Items should create 3x isolated gallery with inside-static gutters." */
+.test__gallery .assert__inside-static .test {
+  box-sizing: border-box;
+  width: 33.33333%;
+  float: left;
+  margin-right: -100%;
+  padding-left: 2em;
+  padding-right: 2em;
+}
+.test__gallery .assert__inside-static .test:nth-child(3n + 1) {
+  margin-left: 0;
+  clear: left;
+}
+.test__gallery .assert__inside-static .test:nth-child(3n + 2) {
+  margin-left: 33.33333%;
+  clear: none;
+}
+.test__gallery .assert__inside-static .test:nth-child(3n + 3) {
+  margin-left: 66.66667%;
+  clear: none;
+}
+.test__gallery .assert__inside-static .expect {
+  box-sizing: border-box;
+  width: 33.33333%;
+  float: left;
+  margin-right: -100%;
+  padding-left: 2em;
+  padding-right: 2em;
+}
+.test__gallery .assert__inside-static .expect:nth-child(3n + 1) {
+  margin-left: 0;
+  clear: left;
+}
+.test__gallery .assert__inside-static .expect:nth-child(3n + 2) {
+  margin-left: 33.33333%;
+  clear: none;
+}
+.test__gallery .assert__inside-static .expect:nth-child(3n + 3) {
   margin-left: 66.66667%;
   clear: none;
 }

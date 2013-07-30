@@ -40,7 +40,6 @@
         float: left;
         margin-right: 5%;
         .inner {
-          @include box-sizing(border-box);
           width: percentage(2.5/7);
           float: left;
           margin-right: percentage(.5/7);

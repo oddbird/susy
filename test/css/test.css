@@ -277,7 +277,6 @@
   margin-right: 5%;
 }
 .test__span .assert__default .expect .inner {
-  box-sizing: border-box;
   width: 35.71429%;
   float: left;
   margin-right: 7.14286%;

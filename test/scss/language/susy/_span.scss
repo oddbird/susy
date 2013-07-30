@@ -21,16 +21,29 @@
   @include output-test('span') {
     // default
     @include assert-setup('default', $grid: 7 .5 after) {
-      .test, .expect { clear: both; }
+      .test, .expect {
+        @include clearfix;
+        clear: both;
+        .inner { background: rgba(yellow, .25); }
+      }
     }
     @include assert-output(
       'Span should set width (75%), float (left), and gutter (5% margin-right)'
     ) {
-      .test { @include span(5); }
+      .test {
+        @include span(5) {
+          .inner { @include span(2); }
+        }
+      }
       .expect {
         width: 70%;
         float: left;
         margin-right: 5%;
+        .inner {
+          width: percentage(2.5/7);
+          float: left;
+          margin-right: percentage(.5/7);
+        }
       }
     }
 
@@ -49,6 +62,25 @@
         padding-left: 2.5%;
         padding-right: 2.5%;
       }
+    }
+  }
+
+  @include test('[mixin] span') {
+    $columns: 12;
+
+    .span-content-test {
+      @include span(8 of 12) {
+        @include assert-equal($columns, 8,
+          'Span @content should use nested context');
+
+        @include span(3 of 8) {
+          @include assert-equal($columns, 3,
+            'Nested span @content should use new nested context');
+        }
+      }
+
+      @include assert-equal($columns, 12,
+        'After nesting, column-count should be restored');
     }
   }
 

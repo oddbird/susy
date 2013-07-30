@@ -266,10 +266,20 @@
   float: left;
   margin-right: 5%;
 }
+.test__span .assert__default .test .inner {
+  width: 35.71429%;
+  float: left;
+  margin-right: 7.14286%;
+}
 .test__span .assert__default .expect {
   width: 70%;
   float: left;
   margin-right: 5%;
+}
+.test__span .assert__default .expect .inner {
+  width: 35.71429%;
+  float: left;
+  margin-right: 7.14286%;
 }
 
 /* "Span should set width, float, inside gutter, and border-box" */
@@ -288,6 +298,16 @@
   padding-right: 2.5%;
 }
 
+.span-content-test {
+  width: 66.10169%;
+  float: left;
+  margin-right: 1.69492%;
+  width: 35.89744%;
+  float: left;
+  margin-right: 2.5641%;
+}
+
+/*  - [mixin] span (3 assertions, 3 passed, 0 failed) */
 /*  - [function] span (6 assertions, 6 passed, 0 failed) */
 /*  - [function] parse-span (84 assertions, 84 passed, 0 failed) */
 /*  - [function] get-span-setting (13 assertions, 13 passed, 0 failed) */
@@ -295,8 +315,8 @@
 /*  - [function] span-math (9 assertions, 9 passed, 0 failed) */
 /*  
     Summary:
-    - 5 Tests
-    - 5 Passed
+    - 6 Tests
+    - 6 Passed
     - 0 Failed */
 /*  
 

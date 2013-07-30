@@ -22,6 +22,8 @@
   }
 
   @include float-span-output($output...);
+
+  @include nested($span) { @content; }
 }
 
 // Span [function]

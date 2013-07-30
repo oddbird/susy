@@ -11,7 +11,9 @@
   $span     : parse-span($span);
   $output   : span-math($span...);
   $box      : get-span-setting(box-sizing, $span);
-  $inside   : if(get-span-setting(gutter-position, $span) == inside, true, false);
+
+  $this-gutter-position: get-span-setting(gutter-position, $span);
+  $inside   : if($this-gutter-position == inside or $this-gutter-position == inside-static, true, false);
 
   @if $box == border-box or $inside {
     @include box-sizing(border-box);
@@ -123,6 +125,8 @@
         $new-gutter-position: split;
       } @else if $value == inside {
         $new-gutter-position: inside;
+      } @else if $value == inside-static {
+        $new-gutter-position: inside-static;
       } @else if $value == no-gutter or $value == no-gutters {
         $new-gutter-position: no-gutters;
       }
@@ -271,11 +275,15 @@
   $width: get-span-width($span, $location, $columns, $gutters, $column-width, $layout-math, $gutter-position, $outer);
   $this-gutters: get-gutters($columns, $gutters, $column-width, $layout-math, $gutter-position, $gutter-override);
 
+  $inside: if($gutter-position == inside or $gutter-position == inside-static, true, false);
+
   // apply gutters
-  @if $gutter-position == inside and not $is-container {
-    $padding-before: nth($this-gutters,1);
-    $padding-after: nth($this-gutters,2);
-  } @else if $gutter-position != inside {
+  @if $inside {
+    @if not $is-container {
+      $padding-before: nth($this-gutters,1);
+      $padding-after: nth($this-gutters,2);
+    }
+  } @else {
     $margin-before: nth($this-gutters,1);
     $margin-after: nth($this-gutters,2);
   }
@@ -321,8 +329,10 @@
   $span-sum : null;
   $width    : null;
 
+  $inside: if($gutter-position == inside or $gutter-position == inside-static, true, false);
+
   @if unitless($span) {
-    @if $gutter-position == inside {
+    @if $inside {
       $context: column-sum($columns, $gutters, outer);
       $span-sum: get-column-span-sum($span, $location, $columns, $gutters, outer);
     } @else {

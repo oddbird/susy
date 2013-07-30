@@ -103,6 +103,7 @@
   @if $gutter-override {
     $gutter: $gutter-override;
   } @else {
+    $layout-math: if($gutter-position == inside-static, static, $layout-math);
     $gutter: get-gutter-width($columns, $gutters, $column-width, $layout-math);
   }
 
@@ -110,7 +111,7 @@
     $before: $gutter;
   } @else if $gutter-position == after {
     $after: $gutter;
-  } @else if $gutter-position == split or $gutter-position == inside {
+  } @else if $gutter-position == split or $gutter-position == inside or $gutter-position == inside-static {
     $gutter: $gutter / 2;
     $before: $gutter;
     $after: $gutter;

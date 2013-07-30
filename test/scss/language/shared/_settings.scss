@@ -189,6 +189,13 @@ $original-box-sizing          : $box-sizing;
     $expect: false false false false false false false false inside show-baseline false;
 
     @include test-parsed-grid('parse-grid: #4', $test, $expect);
+
+    // Grid #5
+    $grid: inside-static;
+    $test: parse-grid($grid);
+    $expect: false false false false false false false false inside-static false false;
+
+    @include test-parsed-grid('parse-grid: #5', $test, $expect);
   }
 
   // [function] get-adjusted-grid

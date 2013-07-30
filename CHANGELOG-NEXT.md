@@ -5,6 +5,7 @@ Susy Next Changelog
 --------------------------
 
 * `span` mixing accepts nested `@content`, and uses nested context.
+* Added `inside-static` option for static gutters in otherwise fluid grids.
 * `gutters` mixin uses span syntax, accepts explicit gutter span.
 * Explicit gutter-overrides are divided when gutters are `split`/`inside`.
 

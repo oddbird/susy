@@ -122,8 +122,9 @@ $base-line-height       : 24px            !default;
       $this-stop: append($this-stop, $light, comma);
     } @else {
       $end-color: $light;
+      $inside: if($this-gutter-position == inside or $this-gutter-position == inside-static, true, false);
 
-      @if $this-gutter-position != inside {
+      @if not $inside {
         $gutter: get-span-width($location, 1, $this-columns, $this-gutters, $this-column-width, $this-layout-math, $this-gutter-position);
         $this-stop: append($this-stop, $light $gutter, comma);
         $this-stop: append($this-stop, $trans $gutter, comma);

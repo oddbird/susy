@@ -132,6 +132,17 @@
     $expect: 2.5% 2.5%;
     @include assert-equal($test, $expect,
       'A relative gutter from "7 .5 split" should return "2.5% 2.5%" gutters');
+
+    // inside
+    $test: get-gutters($cols, $guts, $gutter-position: inside);
+    @include assert-equal($test, $expect,
+      'A relative gutter from "7 .5 inside" should return "2.5% 2.5%" gutters');
+
+    // inside-static
+    $test: get-gutters($cols, $guts, 4em, fluid, inside-static);
+    $expect: 1em 1em;
+    @include assert-equal($test, $expect,
+      'A gutter from "7 (4em 2em) inside-static" should return "1em 1em" gutters');
   }
 
 }

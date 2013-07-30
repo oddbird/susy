@@ -245,7 +245,11 @@ h1 {
 }
 
 .test__span .assert__default .test, .test__span .assert__default .expect {
+  overflow: hidden;
   clear: both;
+}
+.test__span .assert__default .test .inner, .test__span .assert__default .expect .inner {
+  background: rgba(255, 255, 0, 0.25);
 }
 
 .test__span .assert__default::before {

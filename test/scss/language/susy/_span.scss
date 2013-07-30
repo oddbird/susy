@@ -21,16 +21,30 @@
   @include output-test('span') {
     // default
     @include assert-setup('default', $grid: 7 .5 after) {
-      .test, .expect { clear: both; }
+      .test, .expect {
+        @include clearfix;
+        clear: both;
+        .inner { background: rgba(yellow, .25); }
+      }
     }
     @include assert-output(
       'Span should set width (75%), float (left), and gutter (5% margin-right)'
     ) {
-      .test { @include span(5); }
+      .test {
+        @include span(5) {
+          .inner { @include span(2); }
+        }
+      }
       .expect {
         width: 70%;
         float: left;
         margin-right: 5%;
+        .inner {
+          @include box-sizing(border-box);
+          width: percentage(2.5/7);
+          float: left;
+          margin-right: percentage(.5/7);
+        }
       }
     }
 

@@ -266,10 +266,21 @@
   float: left;
   margin-right: 5%;
 }
+.test__span .assert__default .test .inner {
+  width: 35.71429%;
+  float: left;
+  margin-right: 7.14286%;
+}
 .test__span .assert__default .expect {
   width: 70%;
   float: left;
   margin-right: 5%;
+}
+.test__span .assert__default .expect .inner {
+  box-sizing: border-box;
+  width: 35.71429%;
+  float: left;
+  margin-right: 7.14286%;
 }
 
 /* "Span should set width, float, inside gutter, and border-box" */

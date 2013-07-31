@@ -15,3 +15,9 @@ $gutters              : .25       !default;
 
 $column-width         : false     !default;
 $container            : auto      !default;
+
+// Last Flow
+// ---------
+// - Last/Omega float-direction, relative to the document flow
+// from | to
+$last-flow            : to        !default;

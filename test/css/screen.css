@@ -1320,19 +1320,44 @@ h1 {
 
 ### Float End API ------ */
 /* - [mixin] float-last */
-.test__float-last .assert__float-last {
+.test__float-last .assert__default {
   overflow: hidden;
   background: rgba(204, 204, 255, 0.5);
 }
 
-.test__float-last .assert__float-last .test, .test__float-last .assert__float-last .expect {
+.test__float-last .assert__default .test, .test__float-last .assert__default .expect {
   float: left;
   width: 75%;
   margin-right: 5%;
 }
 
-.test__float-last .assert__float-last::before {
+.test__float-last .assert__default::before {
   content: "Items should float flush right.";
+  display: block;
+  padding: 0.375rem 0.75rem;
+  text-align: left;
+  font-style: italic;
+}
+
+.test__float-last .assert__last-flow-from {
+  overflow: hidden;
+  background: rgba(204, 204, 255, 0.5);
+}
+
+.test__float-last .assert__last-flow-from .test, .test__float-last .assert__last-flow-from .expect {
+  float: left;
+  width: 75%;
+  margin-right: 5%;
+}
+.test__float-last .assert__last-flow-from .expect {
+  clear: both;
+}
+.test__float-last .assert__last-flow-from .spacer {
+  overflow: hidden;
+}
+
+.test__float-last .assert__last-flow-from::before {
+  content: "Items should not have any right margin.";
   display: block;
   padding: 0.375rem 0.75rem;
   text-align: left;

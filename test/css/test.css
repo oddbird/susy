@@ -974,12 +974,20 @@
 ### Float End API ------ */
 /* - [mixin] float-last */
 /* "Items should float flush right." */
-.test__float-last .assert__float-last .test {
+.test__float-last .assert__default .test {
   float: right;
   margin-right: 0;
 }
-.test__float-last .assert__float-last .expect {
+.test__float-last .assert__default .expect {
   float: right;
+  margin-right: 0;
+}
+
+/* "Items should not have any right margin." */
+.test__float-last .assert__last-flow-from .test {
+  margin-right: 0;
+}
+.test__float-last .assert__last-flow-from .expect {
   margin-right: 0;
 }
 

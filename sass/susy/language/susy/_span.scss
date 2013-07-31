@@ -263,7 +263,8 @@
   $flow               : $flow,
   $gutter-position    : $gutter-position,
   $is-container       : false,
-  $gutter-override    : false
+  $gutter-override    : false,
+  $last-flow          : $last-flow
 ) {
   $float            : from;
   $width            : $span;
@@ -296,7 +297,7 @@
     $margin-after: -100%;
   } @else {
     @if is-last($span, $location, $columns) {
-      $float: to;
+      $float: $last-flow;
       $margin-after: null;
     } @else if is-first($location) {
       $margin-before: null;

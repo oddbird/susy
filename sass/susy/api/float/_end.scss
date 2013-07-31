@@ -5,11 +5,15 @@
 // ----------
 // - [$flow]  : ltr | rtl
 @mixin float-last(
-  $flow: $flow
+  $flow: $flow,
+  $last-flow: $last-flow
 ) {
   $to: to($flow);
 
-  float: $to;
+  @if $last-flow == to {
+    float: $to;
+  }
+
   margin-#{$to}: 0;
 }
 

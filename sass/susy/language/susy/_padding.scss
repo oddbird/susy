@@ -38,15 +38,15 @@
   $pre,
   $post: $pre
 ) {
-  $pre    : if(index($pre, outer), $pre, append($pre, outer));
-  $post   : if(index($post, outer), $post, append($post, outer));
+  $pre        : if(index($pre, outer), $pre, append($pre, outer));
+  $post       : if(index($post, outer), $post, append($post, outer));
 
   $get-pre    : parse-span($pre);
   $get-post   : parse-span($post);
 
-  $flow     : get-span-setting(flow, $get-pre);
-  $before   : null;
-  $after    : null;
+  $flow       : get-span-setting(flow, $get-pre);
+  $before     : null;
+  $after      : null;
 
   // get the various contexts
   $default-context  : $columns $gutters;

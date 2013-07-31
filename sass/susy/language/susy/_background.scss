@@ -1,6 +1,8 @@
 // Background Grid Syntax
 // ======================
 
+@import "compass/css3/border-radius";
+@import "compass/css3/box-shadow";
 @import "compass/layout/stretching";
 
 // The overlay is painted over your container's ::after pseudo-element,
@@ -12,16 +14,13 @@ $overlay-position       : relative        !default;
 $grid-toggle-position   : left bottom     !default;
 
 // Set the color of background grids.
-$grid-background-color  : rgba(#66f, .25) !default;
-
-// Set the line height for your vertical rhythm.
-$base-line-height       : 24px            !default;
+$grid-color             : rgba(#66f, .25) !default;
 
 // Grid Background
 // ---------------
 // Show a grid background on any element.
 // - [$grid]  : <settings>
-@mixin grid-background(
+@mixin background-grid(
   $grid: get-grid()
 ) {
   $grid         : get-adjusted-grid($grid);
@@ -31,14 +30,14 @@ $base-line-height       : 24px            !default;
 
   $stops        : get-grid-color-stops($grid);
 
-  @include grid-background-output($stops, $this-show, $this-flow);
+  @include background-grid-output($stops, $show: $this-show, $flow: $this-flow);
 }
 
 // Grid Overlay
 // ------------
 // Generate an icon to trigger grid-overlays on any given elements.
 // $grids...  : <selector> [<settings>] [, <selector>]*
-@mixin grid-overlay (
+@mixin overlay-grid (
   $grids...
 ) {
   $vert: nth($grid-toggle-position, 1);
@@ -76,7 +75,7 @@ $base-line-height       : 24px            !default;
           position: unquote($overlay-position);
           &::before {
             @extend %grid-overlay-base;
-            @include grid-background($grid);
+            @include background-grid($grid);
           }
         }
       }
@@ -98,7 +97,7 @@ $base-line-height       : 24px            !default;
   $grid: parse-grid()
 ) {
   $stops  : ();
-  $color  : $grid-background-color;
+  $color  : $grid-color;
   $trans  : transparent;
   $light  : lighten($color, 15%);
 

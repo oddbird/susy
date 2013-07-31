@@ -26,7 +26,7 @@
   }
 
   @include float-container($width, $justify, $this-layout-math);
-  @include grid-background($grid);
+  @include background-grid($grid);
 }
 
 // Container [function]

@@ -6,7 +6,7 @@
   // Grid Background
   // ---------------
 
-  @include output-test('grid-background') {
+  @include output-test('background-grid') {
     $col: rgba(102, 102, 255, 0.25);
     $light: rgba(179, 179, 255, 0.25);
 
@@ -19,7 +19,7 @@
     @include assert-output(
       'Background-grid should show 7 columns with .5 gutters'
     ) {
-      .test { @include grid-background(7 .5); }
+      .test { @include background-grid(7 .5); }
       .expect {
         background: linear-gradient(to right, $col, $light 10%, transparent 10%, transparent 15%, $col 15%, $light 25%, transparent 25%, transparent 30%, $col 30%, $light 40%, transparent 40%, transparent 45%, $col 45%, $light 55.0%, transparent 55.0%, transparent 60%, $col 60%, $light 70%, transparent 70%, transparent 75%, $col 75%, $light 85%, transparent 85%, transparent 90%, $col 90%, $light);
       }
@@ -29,7 +29,7 @@
   // Grid Overlay
   // ------------
 
-  @include output-test('grid-overlay') {
+  @include output-test('overlay-grid') {
     $asym: (1 2 3 2 1) (4em 1em) static;
 
     // There is no visible output from this test.
@@ -39,7 +39,7 @@
     @include assert-output(
       '.test and .expect should have same output.'
     ) {
-      .test { @include grid-overlay('.sym' (7 .5), '.asym' $asym); }
+      .test { @include overlay-grid('.sym' (7 .5), '.asym' $asym); }
       .expect {
         head {
           border-radius: 0.25em;
@@ -67,7 +67,7 @@
               position: relative;
               &::before {
                 @extend %grid-overlay-base;
-                @include grid-background(7 .5);
+                @include background-grid(7 .5);
               }
             }
             ~ .asym,
@@ -75,7 +75,7 @@
               position: relative;
               &::before {
                 @extend %grid-overlay-base;
-                @include grid-background((1 2 3 2 1) (4em 1em) static);
+                @include background-grid((1 2 3 2 1) (4em 1em) static);
               }
             }
           }
@@ -87,7 +87,7 @@
   // Get Grid Color-Stops
   // --------------------
 
-  $color  : $grid-background-color;
+  $color  : $grid-color;
   $trans  : transparent;
   $light  : lighten($color, 15%);
 

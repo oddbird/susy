@@ -6,7 +6,7 @@
   // Grid Background Output
   // ----------------------
 
-  @include output-test('grid-background-output') {
+  @include output-test('background-grid-output') {
     $stops: #fcc, #cfc 25%, #ccf;
 
     // show
@@ -19,7 +19,7 @@
     @include assert-output(
       'Elements should show a horizontal red-green-blue gradient, and a vertical baseline'
     ) {
-      .test { @include grid-background-output($stops, show); }
+      .test { @include background-grid-output($stops, show); }
       .expect {
         @include background(
           get-baseline-gradient(),
@@ -40,7 +40,7 @@
     @include assert-output(
       'Elements should show a horizontal red-green-blue gradient, with no baseline'
     ) {
-      .test { @include grid-background-output($stops, show-columns); }
+      .test { @include background-grid-output($stops, show-columns); }
       .expect { @include background(linear-gradient(left, $stops...)); }
     }
 
@@ -54,7 +54,7 @@
     @include assert-output(
       'Elements should show a vertical baseline'
     ) {
-      .test { @include grid-background-output($stops, show-baseline); }
+      .test { @include background-grid-output($stops, show-baseline); }
       .expect {
         @include background(get-baseline-gradient());
         @include background-size(100% $base-line-height);
@@ -72,7 +72,7 @@
     @include assert-output(
       'Elements should not show any grid background'
     ) {
-      .test { @include grid-background-output($stops, hide); }
+      .test { @include background-grid-output($stops, hide); }
       .expect { }
     }
   }

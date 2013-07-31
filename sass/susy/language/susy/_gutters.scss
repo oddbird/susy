@@ -37,12 +37,12 @@
 @function gutter(
   $context: get-grid()
 ) {
-  $context            : get-adjusted-grid($context);
+  $context                : get-adjusted-grid($context);
 
-  $this-columns       : get-setting(columns, $context);
-  $this-gutters       : get-setting(gutters, $context);
-  $this-column-width  : get-setting(column-width, $context);
-  $this-layout-math   : get-setting(layout-math, $context);
+  $this-columns           : get-setting(columns, $context);
+  $this-gutters           : get-setting(gutters, $context);
+  $this-column-width      : get-setting(column-width, $context);
+  $this-layout-math       : get-setting(layout-math, $context);
   $this-gutter-position   : get-setting(gutter-position, $context);
 
   $width: get-gutter-width($this-columns, $this-gutters, $this-column-width, $this-layout-math);

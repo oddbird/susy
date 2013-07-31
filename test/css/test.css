@@ -1,10 +1,10 @@
 /* Susy Tests */
 /* ========== */
-.test__grid-overlay .assert__grid-overlay .test head:hover ~ .sym::before,
-.test__grid-overlay .assert__grid-overlay .test head:hover ~ body .sym::before, .test__grid-overlay .assert__grid-overlay .test head:hover ~ .asym::before,
-.test__grid-overlay .assert__grid-overlay .test head:hover ~ body .asym::before, .test__grid-overlay .assert__grid-overlay .expect head:hover ~ .sym::before,
-.test__grid-overlay .assert__grid-overlay .expect head:hover ~ body .sym::before, .test__grid-overlay .assert__grid-overlay .expect head:hover ~ .asym::before,
-.test__grid-overlay .assert__grid-overlay .expect head:hover ~ body .asym::before {
+.test__overlay-grid .assert__overlay-grid .test head:hover ~ .sym::before,
+.test__overlay-grid .assert__overlay-grid .test head:hover ~ body .sym::before, .test__overlay-grid .assert__overlay-grid .test head:hover ~ .asym::before,
+.test__overlay-grid .assert__overlay-grid .test head:hover ~ body .asym::before, .test__overlay-grid .assert__overlay-grid .expect head:hover ~ .sym::before,
+.test__overlay-grid .assert__overlay-grid .expect head:hover ~ body .sym::before, .test__overlay-grid .assert__overlay-grid .expect head:hover ~ .asym::before,
+.test__overlay-grid .assert__overlay-grid .expect head:hover ~ body .asym::before {
   position: absolute;
   top: 0;
   bottom: 0;
@@ -99,18 +99,18 @@
 /*  
 
 ### Grid Background Syntax ------ */
-/* - [mixin] grid-background */
+/* - [mixin] background-grid */
 /* "Background-grid should show 7 columns with .5 gutters" */
-.test__grid-background .assert__grid-background .test {
+.test__background-grid .assert__background-grid .test {
   background: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, transparent 10%, transparent 15%, rgba(102, 102, 255, 0.25) 15%, rgba(179, 179, 255, 0.25) 25%, transparent 25%, transparent 30%, rgba(102, 102, 255, 0.25) 30%, rgba(179, 179, 255, 0.25) 40%, transparent 40%, transparent 45%, rgba(102, 102, 255, 0.25) 45%, rgba(179, 179, 255, 0.25) 55.0%, transparent 55.0%, transparent 60%, rgba(102, 102, 255, 0.25) 60%, rgba(179, 179, 255, 0.25) 70%, transparent 70%, transparent 75%, rgba(102, 102, 255, 0.25) 75%, rgba(179, 179, 255, 0.25) 85%, transparent 85%, transparent 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
 }
-.test__grid-background .assert__grid-background .expect {
+.test__background-grid .assert__background-grid .expect {
   background: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, transparent 10%, transparent 15%, rgba(102, 102, 255, 0.25) 15%, rgba(179, 179, 255, 0.25) 25%, transparent 25%, transparent 30%, rgba(102, 102, 255, 0.25) 30%, rgba(179, 179, 255, 0.25) 40%, transparent 40%, transparent 45%, rgba(102, 102, 255, 0.25) 45%, rgba(179, 179, 255, 0.25) 55%, transparent 55%, transparent 60%, rgba(102, 102, 255, 0.25) 60%, rgba(179, 179, 255, 0.25) 70%, transparent 70%, transparent 75%, rgba(102, 102, 255, 0.25) 75%, rgba(179, 179, 255, 0.25) 85%, transparent 85%, transparent 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
 }
 
-/* - [mixin] grid-overlay */
+/* - [mixin] overlay-grid */
 /* ".test and .expect should have same output." */
-.test__grid-overlay .assert__grid-overlay .test head {
+.test__overlay-grid .assert__overlay-grid .test head {
   border-radius: 0.25em;
   display: block;
   position: fixed;
@@ -120,7 +120,7 @@
   color: #333;
   text-shadow: 0 0 3px #fff;
 }
-.test__grid-overlay .assert__grid-overlay .test head::before {
+.test__overlay-grid .assert__overlay-grid .test head::before {
   content: "|||";
   display: block;
   padding: 10px 14px;
@@ -129,27 +129,27 @@
   font-size: 26px;
   font-weight: bold;
 }
-.test__grid-overlay .assert__grid-overlay .test head:hover {
+.test__overlay-grid .assert__overlay-grid .test head:hover {
   box-shadow: 0 0 3px rgba(51, 51, 51, 0.5);
   background: rgba(255, 255, 255, 0.5);
 }
-.test__grid-overlay .assert__grid-overlay .test head:hover ~ .sym,
-.test__grid-overlay .assert__grid-overlay .test head:hover ~ body .sym {
+.test__overlay-grid .assert__overlay-grid .test head:hover ~ .sym,
+.test__overlay-grid .assert__overlay-grid .test head:hover ~ body .sym {
   position: relative;
 }
-.test__grid-overlay .assert__grid-overlay .test head:hover ~ .sym::before,
-.test__grid-overlay .assert__grid-overlay .test head:hover ~ body .sym::before {
+.test__overlay-grid .assert__overlay-grid .test head:hover ~ .sym::before,
+.test__overlay-grid .assert__overlay-grid .test head:hover ~ body .sym::before {
   background: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, transparent 10%, transparent 15%, rgba(102, 102, 255, 0.25) 15%, rgba(179, 179, 255, 0.25) 25%, transparent 25%, transparent 30%, rgba(102, 102, 255, 0.25) 30%, rgba(179, 179, 255, 0.25) 40%, transparent 40%, transparent 45%, rgba(102, 102, 255, 0.25) 45%, rgba(179, 179, 255, 0.25) 55.0%, transparent 55.0%, transparent 60%, rgba(102, 102, 255, 0.25) 60%, rgba(179, 179, 255, 0.25) 70%, transparent 70%, transparent 75%, rgba(102, 102, 255, 0.25) 75%, rgba(179, 179, 255, 0.25) 85%, transparent 85%, transparent 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
 }
-.test__grid-overlay .assert__grid-overlay .test head:hover ~ .asym,
-.test__grid-overlay .assert__grid-overlay .test head:hover ~ body .asym {
+.test__overlay-grid .assert__overlay-grid .test head:hover ~ .asym,
+.test__overlay-grid .assert__overlay-grid .test head:hover ~ body .asym {
   position: relative;
 }
-.test__grid-overlay .assert__grid-overlay .test head:hover ~ .asym::before,
-.test__grid-overlay .assert__grid-overlay .test head:hover ~ body .asym::before {
+.test__overlay-grid .assert__overlay-grid .test head:hover ~ .asym::before,
+.test__overlay-grid .assert__overlay-grid .test head:hover ~ body .asym::before {
   background: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 4em, transparent 4em, transparent 5em, rgba(102, 102, 255, 0.25) 5em, rgba(179, 179, 255, 0.25) 13em, transparent 13em, transparent 14em, rgba(102, 102, 255, 0.25) 14em, rgba(179, 179, 255, 0.25) 26em, transparent 26em, transparent 27em, rgba(102, 102, 255, 0.25) 27em, rgba(179, 179, 255, 0.25) 35em, transparent 35em, transparent 36em, rgba(102, 102, 255, 0.25) 36em, rgba(179, 179, 255, 0.25));
 }
-.test__grid-overlay .assert__grid-overlay .expect head {
+.test__overlay-grid .assert__overlay-grid .expect head {
   border-radius: 0.25em;
   display: block;
   position: fixed;
@@ -159,7 +159,7 @@
   color: #333;
   text-shadow: 0 0 3px #fff;
 }
-.test__grid-overlay .assert__grid-overlay .expect head::before {
+.test__overlay-grid .assert__overlay-grid .expect head::before {
   content: "|||";
   display: block;
   padding: 10px 14px;
@@ -168,24 +168,24 @@
   font-size: 26px;
   font-weight: bold;
 }
-.test__grid-overlay .assert__grid-overlay .expect head:hover {
+.test__overlay-grid .assert__overlay-grid .expect head:hover {
   box-shadow: 0 0 3px rgba(51, 51, 51, 0.5);
   background: rgba(255, 255, 255, 0.5);
 }
-.test__grid-overlay .assert__grid-overlay .expect head:hover ~ .sym,
-.test__grid-overlay .assert__grid-overlay .expect head:hover ~ body .sym {
+.test__overlay-grid .assert__overlay-grid .expect head:hover ~ .sym,
+.test__overlay-grid .assert__overlay-grid .expect head:hover ~ body .sym {
   position: relative;
 }
-.test__grid-overlay .assert__grid-overlay .expect head:hover ~ .sym::before,
-.test__grid-overlay .assert__grid-overlay .expect head:hover ~ body .sym::before {
+.test__overlay-grid .assert__overlay-grid .expect head:hover ~ .sym::before,
+.test__overlay-grid .assert__overlay-grid .expect head:hover ~ body .sym::before {
   background: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, transparent 10%, transparent 15%, rgba(102, 102, 255, 0.25) 15%, rgba(179, 179, 255, 0.25) 25%, transparent 25%, transparent 30%, rgba(102, 102, 255, 0.25) 30%, rgba(179, 179, 255, 0.25) 40%, transparent 40%, transparent 45%, rgba(102, 102, 255, 0.25) 45%, rgba(179, 179, 255, 0.25) 55.0%, transparent 55.0%, transparent 60%, rgba(102, 102, 255, 0.25) 60%, rgba(179, 179, 255, 0.25) 70%, transparent 70%, transparent 75%, rgba(102, 102, 255, 0.25) 75%, rgba(179, 179, 255, 0.25) 85%, transparent 85%, transparent 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
 }
-.test__grid-overlay .assert__grid-overlay .expect head:hover ~ .asym,
-.test__grid-overlay .assert__grid-overlay .expect head:hover ~ body .asym {
+.test__overlay-grid .assert__overlay-grid .expect head:hover ~ .asym,
+.test__overlay-grid .assert__overlay-grid .expect head:hover ~ body .asym {
   position: relative;
 }
-.test__grid-overlay .assert__grid-overlay .expect head:hover ~ .asym::before,
-.test__grid-overlay .assert__grid-overlay .expect head:hover ~ body .asym::before {
+.test__overlay-grid .assert__overlay-grid .expect head:hover ~ .asym::before,
+.test__overlay-grid .assert__overlay-grid .expect head:hover ~ body .asym::before {
   background: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 4em, transparent 4em, transparent 5em, rgba(102, 102, 255, 0.25) 5em, rgba(179, 179, 255, 0.25) 13em, transparent 13em, transparent 14em, rgba(102, 102, 255, 0.25) 14em, rgba(179, 179, 255, 0.25) 26em, transparent 26em, transparent 27em, rgba(102, 102, 255, 0.25) 27em, rgba(179, 179, 255, 0.25) 35em, transparent 35em, transparent 36em, rgba(102, 102, 255, 0.25) 36em, rgba(179, 179, 255, 0.25));
 }
 
@@ -813,40 +813,40 @@
 /*
 
 ### Grid Background API ------ */
-/* - [mixin] grid-background-output */
+/* - [mixin] background-grid-output */
 /* "Elements should show a horizontal red-green-blue gradient, and a vertical baseline" */
-.test__grid-background-output .assert__show .test {
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.5) 5%, rgba(0, 0, 0, 0) 5%), linear-gradient(to right, #ffcccc, #ccffcc 25%, #ccccff);
-  background-size: 100% 24px;
-  background-position: left top;
+.test__background-grid-output .assert__show .test {
+  background: linear-gradient(to right, #ffcccc, #ccffcc 25%, #ccccff);
 }
-.test__grid-background-output .assert__show .expect {
+.test__background-grid-output .assert__show .expect {
   background: linear-gradient(to top, rgba(0, 0, 0, 0.5) 5%, rgba(0, 0, 0, 0) 5%), linear-gradient(to right, #ffcccc, #ccffcc 25%, #ccccff);
   background-size: 100% 24px;
   background-position: left top;
 }
 
 /* "Elements should show a horizontal red-green-blue gradient, with no baseline" */
-.test__grid-background-output .assert__show-columns .test {
+.test__background-grid-output .assert__show-columns .test {
   background: linear-gradient(to right, #ffcccc, #ccffcc 25%, #ccccff);
 }
-.test__grid-background-output .assert__show-columns .expect {
+.test__background-grid-output .assert__show-columns .expect {
   background: linear-gradient(to right, #ffcccc, #ccffcc 25%, #ccccff);
 }
 
 /* "Elements should show a vertical baseline" */
-.test__grid-background-output .assert__show-baseline .test {
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.5) 5%, rgba(0, 0, 0, 0) 5%);
-  background-size: 100% 24px;
-  background-position: left top;
+.test__background-grid-output .assert__show-baseline .test {
+  background: linear-gradient(to right, #ffcccc, #ccffcc 25%, #ccccff);
 }
-.test__grid-background-output .assert__show-baseline .expect {
+.test__background-grid-output .assert__show-baseline .expect {
   background: linear-gradient(to top, rgba(0, 0, 0, 0.5) 5%, rgba(0, 0, 0, 0) 5%);
   background-size: 100% 24px;
   background-position: left top;
 }
 
 /* "Elements should not show any grid background" */
+.test__background-grid-output .assert__hide .test {
+  background: linear-gradient(to right, #ffcccc, #ccffcc 25%, #ccccff);
+}
+
 /*
 
 ### Shared Container API ------ */

@@ -4,6 +4,13 @@ Susy Next Changelog
 2.0.0.alpha.4 [unreleased]
 --------------------------
 
+* Compass modules are imported as needed.
+* `grid-background`, `grid-overlay`, `grid-background-output`, & `$grid-background-color`
+  have been renamed to remiain consistent and avoid conflicts with Compass:
+  - `grid-background` => `background-grid`
+  - `grid-overlay` => `overlay-grid`
+  - `grid-background-output` => `background-grid-output`
+  - `$grid-background-color` => `$grid-color`
 * `span` mixing accepts nested `@content`, and uses nested context.
 * Added `inside-static` option for static gutters in otherwise fluid grids.
 * `gutters` mixin uses span syntax, accepts explicit gutter span.

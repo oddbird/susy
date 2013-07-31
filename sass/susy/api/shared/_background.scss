@@ -2,18 +2,23 @@
 // ===================
 // - Sub-pixel rounding can lead to several pixels variation between browsers.
 
-@import "compass/css3";
 @import "compass/layout/grid-background";
+@import "compass/css3/images";
+@import "compass/css3/background-size";
+
+// Set the line height for your vertical rhythm.
+$base-line-height       : 24px            !default;
 
 // Grid Background Output
 // ----------------------
 // $stops     : <list> (gradient color-stops)
 // [$show]    : show | show-columns | show-gutters | hide
 // [$flow]    : ltr | rtl
-@mixin grid-background-output (
+@mixin background-grid-output (
   $stops,
-  $show   : $show-grids,
-  $flow   : $flow
+  $line-height  : $base-line-height,
+  $show         : $show-grids,
+  $flow         : $flow
 ) {
   $to     : to($flow);
   $from   : from($flow);
@@ -35,7 +40,7 @@
     @include background($background);
 
     @if $show != show-columns {
-      @include background-size(100% $base-line-height);
+      @include background-size(100% $line-height);
       background-position: left top;
     }
 

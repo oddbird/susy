@@ -166,13 +166,13 @@ h1 {
   background: rgba(68, 68, 68, 0.125);
 }
 
-/* - [mixin] grid-background */
-.test__grid-background .assert__grid-background {
+/* - [mixin] background-grid */
+.test__background-grid .assert__background-grid {
   overflow: hidden;
   background: rgba(204, 204, 255, 0.5);
 }
 
-.test__grid-background .assert__grid-background .test, .test__grid-background .assert__grid-background .expect {
+.test__background-grid .assert__background-grid .test, .test__background-grid .assert__background-grid .expect {
   padding-top: 24px;
   padding-top: 1.5rem;
   padding-bottom: 24px;
@@ -180,7 +180,7 @@ h1 {
   background: none;
 }
 
-.test__grid-background .assert__grid-background::before {
+.test__background-grid .assert__background-grid::before {
   content: "Background-grid should show 7 columns with .5 gutters";
   display: block;
   padding: 0.375rem 0.75rem;
@@ -188,13 +188,13 @@ h1 {
   font-style: italic;
 }
 
-/* - [mixin] grid-overlay */
-.test__grid-overlay .assert__grid-overlay {
+/* - [mixin] overlay-grid */
+.test__overlay-grid .assert__overlay-grid {
   overflow: hidden;
   background: rgba(204, 204, 255, 0.5);
 }
 
-.test__grid-overlay .assert__grid-overlay::before {
+.test__overlay-grid .assert__overlay-grid::before {
   content: ".test and .expect should have same output.";
   display: block;
   padding: 0.375rem 0.75rem;
@@ -1099,13 +1099,13 @@ h1 {
 /*
 
 ### Grid Background API ------ */
-/* - [mixin] grid-background-output */
-.test__grid-background-output .assert__show {
+/* - [mixin] background-grid-output */
+.test__background-grid-output .assert__show {
   overflow: hidden;
   background: rgba(204, 204, 255, 0.5);
 }
 
-.test__grid-background-output .assert__show .test, .test__grid-background-output .assert__show .expect {
+.test__background-grid-output .assert__show .test, .test__background-grid-output .assert__show .expect {
   padding-top: 24px;
   padding-top: 1.5rem;
   padding-bottom: 24px;
@@ -1113,7 +1113,7 @@ h1 {
   background: none;
 }
 
-.test__grid-background-output .assert__show::before {
+.test__background-grid-output .assert__show::before {
   content: "Elements should show a horizontal red-green-blue gradient, and a vertical baseline";
   display: block;
   padding: 0.375rem 0.75rem;
@@ -1121,12 +1121,12 @@ h1 {
   font-style: italic;
 }
 
-.test__grid-background-output .assert__show-columns {
+.test__background-grid-output .assert__show-columns {
   overflow: hidden;
   background: rgba(204, 204, 255, 0.5);
 }
 
-.test__grid-background-output .assert__show-columns .test, .test__grid-background-output .assert__show-columns .expect {
+.test__background-grid-output .assert__show-columns .test, .test__background-grid-output .assert__show-columns .expect {
   padding-top: 24px;
   padding-top: 1.5rem;
   padding-bottom: 24px;
@@ -1134,7 +1134,7 @@ h1 {
   background: none;
 }
 
-.test__grid-background-output .assert__show-columns::before {
+.test__background-grid-output .assert__show-columns::before {
   content: "Elements should show a horizontal red-green-blue gradient, with no baseline";
   display: block;
   padding: 0.375rem 0.75rem;
@@ -1142,12 +1142,12 @@ h1 {
   font-style: italic;
 }
 
-.test__grid-background-output .assert__show-baseline {
+.test__background-grid-output .assert__show-baseline {
   overflow: hidden;
   background: rgba(204, 204, 255, 0.5);
 }
 
-.test__grid-background-output .assert__show-baseline .test, .test__grid-background-output .assert__show-baseline .expect {
+.test__background-grid-output .assert__show-baseline .test, .test__background-grid-output .assert__show-baseline .expect {
   padding-top: 24px;
   padding-top: 1.5rem;
   padding-bottom: 24px;
@@ -1155,7 +1155,7 @@ h1 {
   background: none;
 }
 
-.test__grid-background-output .assert__show-baseline::before {
+.test__background-grid-output .assert__show-baseline::before {
   content: "Elements should show a vertical baseline";
   display: block;
   padding: 0.375rem 0.75rem;
@@ -1163,12 +1163,12 @@ h1 {
   font-style: italic;
 }
 
-.test__grid-background-output .assert__hide {
+.test__background-grid-output .assert__hide {
   overflow: hidden;
   background: rgba(204, 204, 255, 0.5);
 }
 
-.test__grid-background-output .assert__hide .test, .test__grid-background-output .assert__hide .expect {
+.test__background-grid-output .assert__hide .test, .test__background-grid-output .assert__hide .expect {
   padding-top: 24px;
   padding-top: 1.5rem;
   padding-bottom: 24px;
@@ -1176,7 +1176,7 @@ h1 {
   background: none;
 }
 
-.test__grid-background-output .assert__hide::before {
+.test__background-grid-output .assert__hide::before {
   content: "Elements should not show any grid background";
   display: block;
   padding: 0.375rem 0.75rem;

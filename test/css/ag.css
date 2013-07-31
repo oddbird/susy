@@ -1,80 +1,752 @@
-/*
-Syntax error: Undefined mixin 'grid-overlay'.
-        on line 111 of /Users/eric/Sites/susy/test/scss/ag.scss, in `grid-overlay'
-        from line 111 of /Users/eric/Sites/susy/test/scss/ag.scss
+head:hover ~ .symmetrical::before,
+head:hover ~ body .symmetrical::before, head:hover ~ .asymmetrical::before,
+head:hover ~ body .asymmetrical::before {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  content: " ";
+  z-index: 998;
+}
 
-Backtrace:
-/Users/eric/Sites/susy/test/scss/ag.scss:111:in `grid-overlay'
-/Users/eric/Sites/susy/test/scss/ag.scss:111
-/Users/eric/Sites/.venvs/susy/rubygems/gems/sass-3.2.9/lib/sass/../sass/tree/visitors/perform.rb:253:in `visit_mixin'
-/Users/eric/Sites/.venvs/susy/rubygems/gems/sass-3.2.9/lib/sass/../sass/tree/visitors/base.rb:37:in `send'
-/Users/eric/Sites/.venvs/susy/rubygems/gems/sass-3.2.9/lib/sass/../sass/tree/visitors/base.rb:37:in `visit'
-/Users/eric/Sites/.venvs/susy/rubygems/gems/sass-3.2.9/lib/sass/../sass/tree/visitors/perform.rb:100:in `visit'
-/Users/eric/Sites/.venvs/susy/rubygems/gems/sass-3.2.9/lib/sass/../sass/tree/visitors/base.rb:53:in `visit_children'
-/Users/eric/Sites/.venvs/susy/rubygems/gems/sass-3.2.9/lib/sass/../sass/tree/visitors/base.rb:53:in `map'
-/Users/eric/Sites/.venvs/susy/rubygems/gems/sass-3.2.9/lib/sass/../sass/tree/visitors/base.rb:53:in `visit_children'
-/Users/eric/Sites/.venvs/susy/rubygems/gems/sass-3.2.9/lib/sass/../sass/tree/visitors/perform.rb:109:in `visit_children'
-/Users/eric/Sites/.venvs/susy/rubygems/gems/sass-3.2.9/lib/sass/../sass/tree/visitors/perform.rb:121:in `with_environment'
-/Users/eric/Sites/.venvs/susy/rubygems/gems/sass-3.2.9/lib/sass/../sass/tree/visitors/perform.rb:108:in `visit_children'
-/Users/eric/Sites/.venvs/susy/rubygems/gems/sass-3.2.9/lib/sass/../sass/tree/visitors/base.rb:37:in `visit'
-/Users/eric/Sites/.venvs/susy/rubygems/gems/sass-3.2.9/lib/sass/../sass/tree/visitors/perform.rb:128:in `visit_root'
-/Users/eric/Sites/.venvs/susy/rubygems/gems/sass-3.2.9/lib/sass/../sass/tree/visitors/base.rb:37:in `send'
-/Users/eric/Sites/.venvs/susy/rubygems/gems/sass-3.2.9/lib/sass/../sass/tree/visitors/base.rb:37:in `visit'
-/Users/eric/Sites/.venvs/susy/rubygems/gems/sass-3.2.9/lib/sass/../sass/tree/visitors/perform.rb:100:in `visit'
-/Users/eric/Sites/.venvs/susy/rubygems/gems/sass-3.2.9/lib/sass/../sass/tree/visitors/perform.rb:7:in `send'
-/Users/eric/Sites/.venvs/susy/rubygems/gems/sass-3.2.9/lib/sass/../sass/tree/visitors/perform.rb:7:in `visit'
-/Users/eric/Sites/.venvs/susy/rubygems/gems/sass-3.2.9/lib/sass/../sass/tree/root_node.rb:20:in `render'
-/Users/eric/Sites/.venvs/susy/rubygems/gems/sass-3.2.9/lib/sass/../sass/engine.rb:315:in `_render'
-/Users/eric/Sites/.venvs/susy/rubygems/gems/sass-3.2.9/lib/sass/../sass/engine.rb:262:in `render'
-/Users/eric/Sites/.venvs/susy/rubygems/gems/compass-0.13.alpha.4/lib/compass/compiler.rb:146:in `compile'
-/Users/eric/Sites/.venvs/susy/rubygems/gems/compass-0.13.alpha.4/lib/compass/compiler.rb:132:in `timed'
-/Users/eric/Sites/.venvs/susy/rubygems/gems/compass-0.13.alpha.4/lib/compass/compiler.rb:145:in `compile'
-/Users/eric/Sites/.venvs/susy/rubygems/gems/compass-0.13.alpha.4/lib/compass/logger.rb:46:in `red'
-/Users/eric/Sites/.venvs/susy/rubygems/gems/compass-0.13.alpha.4/lib/compass/compiler.rb:144:in `compile'
-/Users/eric/Sites/.venvs/susy/rubygems/gems/compass-0.13.alpha.4/lib/compass/compiler.rb:124:in `compile_if_required'
-/Users/eric/Sites/.venvs/susy/rubygems/gems/compass-0.13.alpha.4/lib/compass/compiler.rb:109:in `run'
-/Users/eric/Sites/.venvs/susy/rubygems/gems/compass-0.13.alpha.4/lib/compass/compiler.rb:107:in `each'
-/Users/eric/Sites/.venvs/susy/rubygems/gems/compass-0.13.alpha.4/lib/compass/compiler.rb:107:in `run'
-/Users/eric/Sites/.venvs/susy/rubygems/gems/compass-0.13.alpha.4/lib/compass/compiler.rb:132:in `timed'
-/Users/eric/Sites/.venvs/susy/rubygems/gems/compass-0.13.alpha.4/lib/compass/compiler.rb:106:in `run'
-/Users/eric/Sites/.venvs/susy/rubygems/gems/compass-0.13.alpha.4/lib/compass/watcher/compiler.rb:24:in `compile'
-(__FORWARDABLE__):3:in `__send__'
-(__FORWARDABLE__):3:in `compile'
-/Users/eric/Sites/.venvs/susy/rubygems/gems/compass-0.13.alpha.4/lib/compass/watcher/project_watcher.rb:92:in `sass_modified'
-/Users/eric/Sites/.venvs/susy/rubygems/gems/compass-0.13.alpha.4/lib/compass/watcher/project_watcher.rb:85:in `sass_callback'
-/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/forwardable.rb:148:in `to_proc'
-/Users/eric/Sites/.venvs/susy/rubygems/gems/compass-0.13.alpha.4/lib/compass/watcher/watch.rb:17:in `call'
-/Users/eric/Sites/.venvs/susy/rubygems/gems/compass-0.13.alpha.4/lib/compass/watcher/watch.rb:17:in `run_callback'
-/Users/eric/Sites/.venvs/susy/rubygems/gems/compass-0.13.alpha.4/lib/compass/watcher/project_watcher.rb:78:in `listen_callback'
-/Users/eric/Sites/.venvs/susy/rubygems/gems/compass-0.13.alpha.4/lib/compass/watcher/project_watcher.rb:77:in `each'
-/Users/eric/Sites/.venvs/susy/rubygems/gems/compass-0.13.alpha.4/lib/compass/watcher/project_watcher.rb:77:in `listen_callback'
-/Users/eric/Sites/.venvs/susy/rubygems/gems/compass-0.13.alpha.4/lib/compass/watcher/project_watcher.rb:76:in `each'
-/Users/eric/Sites/.venvs/susy/rubygems/gems/compass-0.13.alpha.4/lib/compass/watcher/project_watcher.rb:76:in `listen_callback'
-/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/forwardable.rb:148:in `to_proc'
-/Users/eric/Sites/.venvs/susy/rubygems/gems/listen-0.7.3/lib/listen/listener.rb:212:in `call'
-/Users/eric/Sites/.venvs/susy/rubygems/gems/listen-0.7.3/lib/listen/listener.rb:212:in `on_change'
-/Users/eric/Sites/.venvs/susy/rubygems/gems/listen-0.7.3/lib/listen/listener.rb:221:in `initialize_adapter'
-/Users/eric/Sites/.venvs/susy/rubygems/gems/listen-0.7.3/lib/listen/adapter.rb:198:in `call'
-/Users/eric/Sites/.venvs/susy/rubygems/gems/listen-0.7.3/lib/listen/adapter.rb:198:in `report_changes'
-/Users/eric/Sites/.venvs/susy/rubygems/gems/listen-0.7.3/lib/listen/adapter.rb:210:in `poll_changed_dirs'
-/Users/eric/Sites/.venvs/susy/rubygems/gems/listen-0.7.3/lib/listen/adapters/darwin.rb:38:in `start'
-/Users/eric/Sites/.venvs/susy/rubygems/gems/listen-0.7.3/lib/listen/adapters/darwin.rb:38:in `initialize'
-/Users/eric/Sites/.venvs/susy/rubygems/gems/listen-0.7.3/lib/listen/adapters/darwin.rb:38:in `new'
-/Users/eric/Sites/.venvs/susy/rubygems/gems/listen-0.7.3/lib/listen/adapters/darwin.rb:38:in `start'
-/Users/eric/Sites/.venvs/susy/rubygems/gems/listen-0.7.3/lib/listen/listener.rb:49:in `start'
-/Users/eric/Sites/.venvs/susy/rubygems/gems/compass-0.13.alpha.4/lib/compass/watcher/project_watcher.rb:31:in `watch!'
-/Users/eric/Sites/.venvs/susy/rubygems/gems/compass-0.13.alpha.4/lib/compass/commands/watch_project.rb:48:in `perform'
-/Users/eric/Sites/.venvs/susy/rubygems/gems/compass-0.13.alpha.4/lib/compass/commands/base.rb:18:in `execute'
-/Users/eric/Sites/.venvs/susy/rubygems/gems/compass-0.13.alpha.4/lib/compass/commands/project_base.rb:19:in `execute'
-/Users/eric/Sites/.venvs/susy/rubygems/gems/compass-0.13.alpha.4/lib/compass/exec/sub_command_ui.rb:43:in `perform!'
-/Users/eric/Sites/.venvs/susy/rubygems/gems/compass-0.13.alpha.4/lib/compass/exec/sub_command_ui.rb:15:in `run!'
-/Users/eric/Sites/.venvs/susy/rubygems/gems/compass-0.13.alpha.4/bin/compass:30
-/Users/eric/Sites/.venvs/susy/rubygems/gems/compass-0.13.alpha.4/bin/compass:44:in `call'
-/Users/eric/Sites/.venvs/susy/rubygems/gems/compass-0.13.alpha.4/bin/compass:44
-/Users/eric/Sites/.venvs/susy/rubygems/bin/compass:23:in `load'
-/Users/eric/Sites/.venvs/susy/rubygems/bin/compass:23
-*/
-body:before {
-  white-space: pre;
-  font-family: monospace;
-  content: "Syntax error: Undefined mixin 'grid-overlay'.\A         on line 111 of /Users/eric/Sites/susy/test/scss/ag.scss, in `grid-overlay'\A         from line 111 of /Users/eric/Sites/susy/test/scss/ag.scss"; }
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  vertical-align: baseline;
+}
+
+html {
+  line-height: 1;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+caption, th, td {
+  text-align: left;
+  font-weight: normal;
+  vertical-align: middle;
+}
+
+q, blockquote {
+  quotes: none;
+}
+q:before, q:after, blockquote:before, blockquote:after {
+  content: "";
+  content: none;
+}
+
+a img {
+  border: none;
+}
+
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary {
+  display: block;
+}
+
+.symmetrical {
+  *zoom: 1;
+  max-width: 49em;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 0.75em;
+  margin-bottom: 0.75em;
+}
+.symmetrical:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.symmetrical > .size1of5 {
+  min-height: 15em;
+}
+.symmetrical > .size1of5:first-of-type {
+  width: 18.36735%;
+  float: left;
+}
+.symmetrical > .size1of5 ~ .size1of5 {
+  width: 18.36735%;
+  float: right;
+  margin-left: 2.04082%;
+}
+.symmetrical > .size3of5 {
+  width: 59.18367%;
+  float: left;
+  margin-left: 2.04082%;
+}
+.symmetrical > .size3of5 > .size1of2:first-child {
+  width: 48.27586%;
+  float: left;
+}
+.symmetrical > .size3of5 > .size1of2 + .size1of2 {
+  width: 48.27586%;
+  float: right;
+  margin-left: 3.44828%;
+}
+.symmetrical > .size3of5 > .full {
+  clear: both;
+  background: none;
+}
+.symmetrical .full .size1of3 {
+  width: 31.03448%;
+  float: left;
+  min-height: 9.75em;
+}
+.symmetrical .full .size2of3 {
+  width: 65.51724%;
+  float: right;
+  margin-left: 3.44828%;
+}
+.symmetrical .size2of3 .size1of2:first-child {
+  width: 47.36842%;
+  float: left;
+}
+.symmetrical .size2of3 .size1of2 + .size1of2 {
+  width: 47.36842%;
+  float: right;
+  margin-left: 5.26316%;
+}
+.symmetrical .size2of3 .full {
+  clear: both;
+}
+.symmetrical .gallery div {
+  width: 18.36735%;
+  float: left;
+  margin-right: -100%;
+}
+.symmetrical .gallery div:nth-child(5n + 1) {
+  margin-left: 0;
+  clear: left;
+}
+.symmetrical .gallery div:nth-child(5n + 2) {
+  margin-left: 20.40816%;
+  clear: none;
+}
+.symmetrical .gallery div:nth-child(5n + 3) {
+  margin-left: 40.81633%;
+  clear: none;
+}
+.symmetrical .gallery div:nth-child(5n + 4) {
+  margin-left: 61.22449%;
+  clear: none;
+}
+.symmetrical .gallery div:nth-child(5n + 5) {
+  margin-left: 81.63265%;
+  clear: none;
+}
+
+.asymmetrical {
+  *zoom: 1;
+  max-width: 80%;
+  margin-left: 0;
+  margin-right: auto;
+  background: -webkit-linear-gradient(bottom, rgba(0, 0, 0, 0.5) 5%, rgba(0, 0, 0, 0) 5%);
+  background: -moz-linear-gradient(bottom, rgba(0, 0, 0, 0.5) 5%, rgba(0, 0, 0, 0) 5%);
+  background: -o-linear-gradient(bottom, rgba(0, 0, 0, 0.5) 5%, rgba(0, 0, 0, 0) 5%);
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.5) 5%, rgba(0, 0, 0, 0) 5%);
+  -webkit-background-size: 100% 24px;
+  -moz-background-size: 100% 24px;
+  -o-background-size: 100% 24px;
+  background-size: 100% 24px;
+  background-position: left top;
+  margin-top: 0.75em;
+  margin-bottom: 0.75em;
+}
+.asymmetrical:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.asymmetrical > .size1of5 {
+  min-height: 15em;
+}
+.asymmetrical > .size1of5:first-of-type {
+  width: 12.5%;
+  float: left;
+  margin-right: -100%;
+}
+.asymmetrical > .size1of5 ~ .size1of5 {
+  width: 21.875%;
+  float: left;
+  margin-left: 78.125%;
+  margin-right: -100%;
+}
+.asymmetrical > .size3of5 {
+  width: 61.45833%;
+  float: left;
+  margin-left: 14.58333%;
+  margin-right: -100%;
+}
+.asymmetrical > .size3of5 > .size1of2:first-child {
+  width: 44.0678%;
+  float: left;
+  margin-right: -100%;
+}
+.asymmetrical > .size3of5 > .size1of2 + .size1of2 {
+  width: 52.54237%;
+  float: left;
+  margin-left: 47.45763%;
+  margin-right: -100%;
+}
+.asymmetrical > .size3of5 > .full {
+  clear: both;
+  background: none;
+}
+.asymmetrical .full .size1of3 {
+  width: 18.64407%;
+  float: left;
+  margin-right: -100%;
+  min-height: 9.75em;
+}
+.asymmetrical .full .size2of3 {
+  width: 77.9661%;
+  float: left;
+  margin-left: 22.0339%;
+  margin-right: -100%;
+}
+.asymmetrical .size2of3 .size1of2:first-child {
+  width: 47.82609%;
+  float: left;
+  margin-right: -100%;
+}
+.asymmetrical .size2of3 .size1of2 + .size1of2 {
+  width: 47.82609%;
+  float: left;
+  margin-left: 52.17391%;
+  margin-right: -100%;
+}
+.asymmetrical .size2of3 .full {
+  clear: both;
+}
+.asymmetrical .gallery div {
+  float: left;
+  margin-right: -100%;
+}
+.asymmetrical .gallery div:nth-child(5n + 1) {
+  width: 12.5%;
+  margin-left: 0;
+  clear: left;
+}
+.asymmetrical .gallery div:nth-child(5n + 2) {
+  width: 11.45833%;
+  margin-left: 14.58333%;
+  clear: none;
+}
+.asymmetrical .gallery div:nth-child(5n + 3) {
+  width: 22.91667%;
+  margin-left: 28.125%;
+  clear: none;
+}
+.asymmetrical .gallery div:nth-child(5n + 4) {
+  width: 22.91667%;
+  margin-left: 53.125%;
+  clear: none;
+}
+.asymmetrical .gallery div:nth-child(5n + 5) {
+  width: 21.875%;
+  margin-left: 78.125%;
+  clear: none;
+}
+
+.static {
+  *zoom: 1;
+  width: 780px;
+  margin-left: auto;
+  margin-right: auto;
+  background: -webkit-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 60px, transparent 60px, transparent 80px, rgba(102, 102, 255, 0.25) 80px, rgba(179, 179, 255, 0.25) 140px, transparent 140px, transparent 160px, rgba(102, 102, 255, 0.25) 160px, rgba(179, 179, 255, 0.25) 220px, transparent 220px, transparent 240px, rgba(102, 102, 255, 0.25) 240px, rgba(179, 179, 255, 0.25) 300px, transparent 300px, transparent 320px, rgba(102, 102, 255, 0.25) 320px, rgba(179, 179, 255, 0.25) 380px, transparent 380px, transparent 400.0px, rgba(102, 102, 255, 0.25) 400.0px, rgba(179, 179, 255, 0.25) 460.0px, transparent 460.0px, transparent 480px, rgba(102, 102, 255, 0.25) 480px, rgba(179, 179, 255, 0.25) 540px, transparent 540px, transparent 560.0px, rgba(102, 102, 255, 0.25) 560.0px, rgba(179, 179, 255, 0.25) 620.0px, transparent 620.0px, transparent 640px, rgba(102, 102, 255, 0.25) 640px, rgba(179, 179, 255, 0.25) 700px, transparent 700px, transparent 720px, rgba(102, 102, 255, 0.25) 720px, rgba(179, 179, 255, 0.25));
+  background: -moz-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 60px, transparent 60px, transparent 80px, rgba(102, 102, 255, 0.25) 80px, rgba(179, 179, 255, 0.25) 140px, transparent 140px, transparent 160px, rgba(102, 102, 255, 0.25) 160px, rgba(179, 179, 255, 0.25) 220px, transparent 220px, transparent 240px, rgba(102, 102, 255, 0.25) 240px, rgba(179, 179, 255, 0.25) 300px, transparent 300px, transparent 320px, rgba(102, 102, 255, 0.25) 320px, rgba(179, 179, 255, 0.25) 380px, transparent 380px, transparent 400.0px, rgba(102, 102, 255, 0.25) 400.0px, rgba(179, 179, 255, 0.25) 460.0px, transparent 460.0px, transparent 480px, rgba(102, 102, 255, 0.25) 480px, rgba(179, 179, 255, 0.25) 540px, transparent 540px, transparent 560.0px, rgba(102, 102, 255, 0.25) 560.0px, rgba(179, 179, 255, 0.25) 620.0px, transparent 620.0px, transparent 640px, rgba(102, 102, 255, 0.25) 640px, rgba(179, 179, 255, 0.25) 700px, transparent 700px, transparent 720px, rgba(102, 102, 255, 0.25) 720px, rgba(179, 179, 255, 0.25));
+  background: -o-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 60px, transparent 60px, transparent 80px, rgba(102, 102, 255, 0.25) 80px, rgba(179, 179, 255, 0.25) 140px, transparent 140px, transparent 160px, rgba(102, 102, 255, 0.25) 160px, rgba(179, 179, 255, 0.25) 220px, transparent 220px, transparent 240px, rgba(102, 102, 255, 0.25) 240px, rgba(179, 179, 255, 0.25) 300px, transparent 300px, transparent 320px, rgba(102, 102, 255, 0.25) 320px, rgba(179, 179, 255, 0.25) 380px, transparent 380px, transparent 400.0px, rgba(102, 102, 255, 0.25) 400.0px, rgba(179, 179, 255, 0.25) 460.0px, transparent 460.0px, transparent 480px, rgba(102, 102, 255, 0.25) 480px, rgba(179, 179, 255, 0.25) 540px, transparent 540px, transparent 560.0px, rgba(102, 102, 255, 0.25) 560.0px, rgba(179, 179, 255, 0.25) 620.0px, transparent 620.0px, transparent 640px, rgba(102, 102, 255, 0.25) 640px, rgba(179, 179, 255, 0.25) 700px, transparent 700px, transparent 720px, rgba(102, 102, 255, 0.25) 720px, rgba(179, 179, 255, 0.25));
+  background: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 60px, transparent 60px, transparent 80px, rgba(102, 102, 255, 0.25) 80px, rgba(179, 179, 255, 0.25) 140px, transparent 140px, transparent 160px, rgba(102, 102, 255, 0.25) 160px, rgba(179, 179, 255, 0.25) 220px, transparent 220px, transparent 240px, rgba(102, 102, 255, 0.25) 240px, rgba(179, 179, 255, 0.25) 300px, transparent 300px, transparent 320px, rgba(102, 102, 255, 0.25) 320px, rgba(179, 179, 255, 0.25) 380px, transparent 380px, transparent 400.0px, rgba(102, 102, 255, 0.25) 400.0px, rgba(179, 179, 255, 0.25) 460.0px, transparent 460.0px, transparent 480px, rgba(102, 102, 255, 0.25) 480px, rgba(179, 179, 255, 0.25) 540px, transparent 540px, transparent 560.0px, rgba(102, 102, 255, 0.25) 560.0px, rgba(179, 179, 255, 0.25) 620.0px, transparent 620.0px, transparent 640px, rgba(102, 102, 255, 0.25) 640px, rgba(179, 179, 255, 0.25) 700px, transparent 700px, transparent 720px, rgba(102, 102, 255, 0.25) 720px, rgba(179, 179, 255, 0.25));
+  margin-top: 0.75em;
+  margin-bottom: 0.75em;
+}
+.static:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.static > .size1of5 {
+  min-height: 15em;
+}
+.static > .size1of5:first-of-type {
+  width: 140px;
+  float: left;
+  margin-right: 20px;
+}
+.static > .size1of5 ~ .size1of5 {
+  width: 140px;
+  float: right;
+}
+.static > .size3of5 {
+  width: 460.0px;
+  float: left;
+  margin-right: 20px;
+}
+.static > .size3of5 > .size1of2:first-child {
+  width: 220px;
+  float: left;
+  margin-right: 20px;
+}
+.static > .size3of5 > .size1of2 + .size1of2 {
+  width: 220px;
+  float: right;
+}
+.static > .size3of5 > .full {
+  clear: both;
+  background: none;
+}
+.static .full .size1of3 {
+  width: 140px;
+  float: left;
+  margin-right: 20px;
+  min-height: 9.75em;
+}
+.static .full .size2of3 {
+  width: 300px;
+  float: right;
+}
+.static .size2of3 .size1of2:first-child {
+  width: 140px;
+  float: left;
+  margin-right: 20px;
+}
+.static .size2of3 .size1of2 + .size1of2 {
+  width: 140px;
+  float: right;
+}
+.static .size2of3 .full {
+  clear: both;
+}
+.static .gallery div {
+  width: 140px;
+  float: left;
+  margin-right: -100%;
+}
+.static .gallery div:nth-child(5n + 1) {
+  margin-left: 0;
+  clear: left;
+}
+.static .gallery div:nth-child(5n + 2) {
+  margin-left: 160px;
+  clear: none;
+}
+.static .gallery div:nth-child(5n + 3) {
+  margin-left: 320px;
+  clear: none;
+}
+.static .gallery div:nth-child(5n + 4) {
+  margin-left: 480px;
+  clear: none;
+}
+.static .gallery div:nth-child(5n + 5) {
+  margin-left: 640px;
+  clear: none;
+}
+
+.split {
+  *zoom: 1;
+  max-width: 60em;
+  margin-left: auto;
+  margin-right: 0;
+  background: -webkit-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 7.8125%, rgba(102, 102, 255, 0.25) 7.8125%, rgba(179, 179, 255, 0.25) 12.5%, rgba(102, 102, 255, 0.25) 12.5%, rgba(179, 179, 255, 0.25) 20.3125%, rgba(102, 102, 255, 0.25) 20.3125%, rgba(179, 179, 255, 0.25) 40.625%, rgba(102, 102, 255, 0.25) 40.625%, rgba(179, 179, 255, 0.25) 48.4375%, rgba(102, 102, 255, 0.25) 48.4375%, rgba(179, 179, 255, 0.25) 53.125%, rgba(102, 102, 255, 0.25) 53.125%, rgba(179, 179, 255, 0.25) 60.9375%, rgba(102, 102, 255, 0.25) 60.9375%, rgba(179, 179, 255, 0.25) 65.625%, rgba(102, 102, 255, 0.25) 65.625%, rgba(179, 179, 255, 0.25) 73.4375%, rgba(102, 102, 255, 0.25) 73.4375%, rgba(179, 179, 255, 0.25));
+  background: -moz-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 7.8125%, rgba(102, 102, 255, 0.25) 7.8125%, rgba(179, 179, 255, 0.25) 12.5%, rgba(102, 102, 255, 0.25) 12.5%, rgba(179, 179, 255, 0.25) 20.3125%, rgba(102, 102, 255, 0.25) 20.3125%, rgba(179, 179, 255, 0.25) 40.625%, rgba(102, 102, 255, 0.25) 40.625%, rgba(179, 179, 255, 0.25) 48.4375%, rgba(102, 102, 255, 0.25) 48.4375%, rgba(179, 179, 255, 0.25) 53.125%, rgba(102, 102, 255, 0.25) 53.125%, rgba(179, 179, 255, 0.25) 60.9375%, rgba(102, 102, 255, 0.25) 60.9375%, rgba(179, 179, 255, 0.25) 65.625%, rgba(102, 102, 255, 0.25) 65.625%, rgba(179, 179, 255, 0.25) 73.4375%, rgba(102, 102, 255, 0.25) 73.4375%, rgba(179, 179, 255, 0.25));
+  background: -o-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 7.8125%, rgba(102, 102, 255, 0.25) 7.8125%, rgba(179, 179, 255, 0.25) 12.5%, rgba(102, 102, 255, 0.25) 12.5%, rgba(179, 179, 255, 0.25) 20.3125%, rgba(102, 102, 255, 0.25) 20.3125%, rgba(179, 179, 255, 0.25) 40.625%, rgba(102, 102, 255, 0.25) 40.625%, rgba(179, 179, 255, 0.25) 48.4375%, rgba(102, 102, 255, 0.25) 48.4375%, rgba(179, 179, 255, 0.25) 53.125%, rgba(102, 102, 255, 0.25) 53.125%, rgba(179, 179, 255, 0.25) 60.9375%, rgba(102, 102, 255, 0.25) 60.9375%, rgba(179, 179, 255, 0.25) 65.625%, rgba(102, 102, 255, 0.25) 65.625%, rgba(179, 179, 255, 0.25) 73.4375%, rgba(102, 102, 255, 0.25) 73.4375%, rgba(179, 179, 255, 0.25));
+  background: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 7.8125%, rgba(102, 102, 255, 0.25) 7.8125%, rgba(179, 179, 255, 0.25) 12.5%, rgba(102, 102, 255, 0.25) 12.5%, rgba(179, 179, 255, 0.25) 20.3125%, rgba(102, 102, 255, 0.25) 20.3125%, rgba(179, 179, 255, 0.25) 40.625%, rgba(102, 102, 255, 0.25) 40.625%, rgba(179, 179, 255, 0.25) 48.4375%, rgba(102, 102, 255, 0.25) 48.4375%, rgba(179, 179, 255, 0.25) 53.125%, rgba(102, 102, 255, 0.25) 53.125%, rgba(179, 179, 255, 0.25) 60.9375%, rgba(102, 102, 255, 0.25) 60.9375%, rgba(179, 179, 255, 0.25) 65.625%, rgba(102, 102, 255, 0.25) 65.625%, rgba(179, 179, 255, 0.25) 73.4375%, rgba(102, 102, 255, 0.25) 73.4375%, rgba(179, 179, 255, 0.25));
+  margin-top: 0.75em;
+  margin-bottom: 0.75em;
+}
+.split:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.split > .size1of5 {
+  min-height: 15em;
+}
+.split > .size1of5:first-of-type {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 12.5%;
+  float: left;
+  padding-left: 0.79365%;
+  padding-right: 0.79365%;
+}
+.split > .size1of5 ~ .size1of5 {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 34.375%;
+  float: right;
+  padding-left: 0.79365%;
+  padding-right: 0.79365%;
+}
+.split > .size3of5 {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 53.125%;
+  float: left;
+}
+.split > .size3of5 > .size1of2:first-child {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 67.64706%;
+  float: left;
+  padding-left: 1.51515%;
+  padding-right: 1.51515%;
+}
+.split > .size3of5 > .size1of2 + .size1of2 {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 32.35294%;
+  float: right;
+  padding-left: 1.51515%;
+  padding-right: 1.51515%;
+}
+.split > .size3of5 > .full {
+  clear: both;
+  background: none;
+}
+.split .full .size1of3 {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 52.94118%;
+  float: left;
+  padding-left: 1.51515%;
+  padding-right: 1.51515%;
+  min-height: 9.75em;
+}
+.split .full .size2of3 {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 47.05882%;
+  float: right;
+}
+.split .size2of3 .size1of2:first-child {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 50%;
+  float: left;
+  padding-left: 3.33333%;
+  padding-right: 3.33333%;
+}
+.split .size2of3 .size1of2 + .size1of2 {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 50%;
+  float: right;
+  padding-left: 3.33333%;
+  padding-right: 3.33333%;
+}
+.split .size2of3 .full {
+  clear: both;
+}
+.split .gallery div {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  float: left;
+  margin-right: -100%;
+  padding-left: 0.79365%;
+  padding-right: 0.79365%;
+}
+.split .gallery div:nth-child(5n + 1) {
+  width: 12.5%;
+  margin-left: 0;
+  clear: left;
+}
+.split .gallery div:nth-child(5n + 2) {
+  width: 28.125%;
+  margin-left: 12.5%;
+  clear: none;
+}
+.split .gallery div:nth-child(5n + 3) {
+  width: 12.5%;
+  margin-left: 40.625%;
+  clear: none;
+}
+.split .gallery div:nth-child(5n + 4) {
+  width: 12.5%;
+  margin-left: 53.125%;
+  clear: none;
+}
+.split .gallery div:nth-child(5n + 5) {
+  width: 34.375%;
+  margin-left: 65.625%;
+  clear: none;
+}
+
+.inside-static {
+  *zoom: 1;
+  max-width: 78em;
+  margin-left: auto;
+  margin-right: auto;
+  background: -webkit-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, rgba(102, 102, 255, 0.25) 10%, rgba(179, 179, 255, 0.25) 20%, rgba(102, 102, 255, 0.25) 20%, rgba(179, 179, 255, 0.25) 30.0%, rgba(102, 102, 255, 0.25) 30.0%, rgba(179, 179, 255, 0.25) 40%, rgba(102, 102, 255, 0.25) 40%, rgba(179, 179, 255, 0.25) 50%, rgba(102, 102, 255, 0.25) 50%, rgba(179, 179, 255, 0.25) 60.0%, rgba(102, 102, 255, 0.25) 60.0%, rgba(179, 179, 255, 0.25) 70%, rgba(102, 102, 255, 0.25) 70%, rgba(179, 179, 255, 0.25) 80%, rgba(102, 102, 255, 0.25) 80%, rgba(179, 179, 255, 0.25) 90.0%, rgba(102, 102, 255, 0.25) 90.0%, rgba(179, 179, 255, 0.25));
+  background: -moz-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, rgba(102, 102, 255, 0.25) 10%, rgba(179, 179, 255, 0.25) 20%, rgba(102, 102, 255, 0.25) 20%, rgba(179, 179, 255, 0.25) 30.0%, rgba(102, 102, 255, 0.25) 30.0%, rgba(179, 179, 255, 0.25) 40%, rgba(102, 102, 255, 0.25) 40%, rgba(179, 179, 255, 0.25) 50%, rgba(102, 102, 255, 0.25) 50%, rgba(179, 179, 255, 0.25) 60.0%, rgba(102, 102, 255, 0.25) 60.0%, rgba(179, 179, 255, 0.25) 70%, rgba(102, 102, 255, 0.25) 70%, rgba(179, 179, 255, 0.25) 80%, rgba(102, 102, 255, 0.25) 80%, rgba(179, 179, 255, 0.25) 90.0%, rgba(102, 102, 255, 0.25) 90.0%, rgba(179, 179, 255, 0.25));
+  background: -o-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, rgba(102, 102, 255, 0.25) 10%, rgba(179, 179, 255, 0.25) 20%, rgba(102, 102, 255, 0.25) 20%, rgba(179, 179, 255, 0.25) 30.0%, rgba(102, 102, 255, 0.25) 30.0%, rgba(179, 179, 255, 0.25) 40%, rgba(102, 102, 255, 0.25) 40%, rgba(179, 179, 255, 0.25) 50%, rgba(102, 102, 255, 0.25) 50%, rgba(179, 179, 255, 0.25) 60.0%, rgba(102, 102, 255, 0.25) 60.0%, rgba(179, 179, 255, 0.25) 70%, rgba(102, 102, 255, 0.25) 70%, rgba(179, 179, 255, 0.25) 80%, rgba(102, 102, 255, 0.25) 80%, rgba(179, 179, 255, 0.25) 90.0%, rgba(102, 102, 255, 0.25) 90.0%, rgba(179, 179, 255, 0.25));
+  background: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, rgba(102, 102, 255, 0.25) 10%, rgba(179, 179, 255, 0.25) 20%, rgba(102, 102, 255, 0.25) 20%, rgba(179, 179, 255, 0.25) 30.0%, rgba(102, 102, 255, 0.25) 30.0%, rgba(179, 179, 255, 0.25) 40%, rgba(102, 102, 255, 0.25) 40%, rgba(179, 179, 255, 0.25) 50%, rgba(102, 102, 255, 0.25) 50%, rgba(179, 179, 255, 0.25) 60.0%, rgba(102, 102, 255, 0.25) 60.0%, rgba(179, 179, 255, 0.25) 70%, rgba(102, 102, 255, 0.25) 70%, rgba(179, 179, 255, 0.25) 80%, rgba(102, 102, 255, 0.25) 80%, rgba(179, 179, 255, 0.25) 90.0%, rgba(102, 102, 255, 0.25) 90.0%, rgba(179, 179, 255, 0.25));
+  margin-top: 0.75em;
+  margin-bottom: 0.75em;
+}
+.inside-static:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.inside-static > .size1of5 {
+  min-height: 15em;
+}
+.inside-static > .size1of5:first-of-type {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 20%;
+  float: left;
+  padding-left: 1em;
+  padding-right: 1em;
+}
+.inside-static > .size1of5 ~ .size1of5 {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 20%;
+  float: right;
+  padding-left: 1em;
+  padding-right: 1em;
+}
+.inside-static > .size3of5 {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 60.0%;
+  float: left;
+}
+.inside-static > .size3of5 > .size1of2:first-child {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 50%;
+  float: left;
+  padding-left: 1em;
+  padding-right: 1em;
+}
+.inside-static > .size3of5 > .size1of2 + .size1of2 {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 50%;
+  float: right;
+  padding-left: 1em;
+  padding-right: 1em;
+}
+.inside-static > .size3of5 > .full {
+  clear: both;
+  background: none;
+}
+.inside-static .full .size1of3 {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 33.33333%;
+  float: left;
+  padding-left: 1em;
+  padding-right: 1em;
+  min-height: 9.75em;
+}
+.inside-static .full .size2of3 {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 66.66667%;
+  float: right;
+}
+.inside-static .size2of3 .size1of2:first-child {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 50%;
+  float: left;
+  padding-left: 1em;
+  padding-right: 1em;
+}
+.inside-static .size2of3 .size1of2 + .size1of2 {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 50%;
+  float: right;
+  padding-left: 1em;
+  padding-right: 1em;
+}
+.inside-static .size2of3 .full {
+  clear: both;
+}
+.inside-static .gallery div {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 20%;
+  float: left;
+  margin-right: -100%;
+  padding-left: 1em;
+  padding-right: 1em;
+}
+.inside-static .gallery div:nth-child(5n + 1) {
+  margin-left: 0;
+  clear: left;
+}
+.inside-static .gallery div:nth-child(5n + 2) {
+  margin-left: 20%;
+  clear: none;
+}
+.inside-static .gallery div:nth-child(5n + 3) {
+  margin-left: 40%;
+  clear: none;
+}
+.inside-static .gallery div:nth-child(5n + 4) {
+  margin-left: 60.0%;
+  clear: none;
+}
+.inside-static .gallery div:nth-child(5n + 5) {
+  margin-left: 80%;
+  clear: none;
+}
+
+head {
+  -webkit-border-radius: 0.25em;
+  -moz-border-radius: 0.25em;
+  border-radius: 0.25em;
+  display: block;
+  position: fixed;
+  bottom: 10px;
+  left: 10px;
+  z-index: 999;
+  color: #333;
+  text-shadow: 0 0 3px #fff;
+}
+head::before {
+  content: "|||";
+  display: block;
+  padding: 10px 14px;
+  letter-spacing: -1;
+  font-family: sans-serif;
+  font-size: 26px;
+  font-weight: bold;
+}
+head:hover {
+  -webkit-box-shadow: 0 0 3px rgba(51, 51, 51, 0.5);
+  -moz-box-shadow: 0 0 3px rgba(51, 51, 51, 0.5);
+  box-shadow: 0 0 3px rgba(51, 51, 51, 0.5);
+  background: rgba(255, 255, 255, 0.5);
+}
+head:hover ~ .symmetrical,
+head:hover ~ body .symmetrical {
+  position: relative;
+}
+head:hover ~ .symmetrical::before,
+head:hover ~ body .symmetrical::before {
+  background: -webkit-linear-gradient(bottom, rgba(0, 0, 0, 0.5) 5%, rgba(0, 0, 0, 0) 5%), -webkit-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 8.16327%, transparent 8.16327%, transparent 10.20408%, rgba(102, 102, 255, 0.25) 10.20408%, rgba(179, 179, 255, 0.25) 18.36735%, transparent 18.36735%, transparent 20.40816%, rgba(102, 102, 255, 0.25) 20.40816%, rgba(179, 179, 255, 0.25) 28.57143%, transparent 28.57143%, transparent 30.61224%, rgba(102, 102, 255, 0.25) 30.61224%, rgba(179, 179, 255, 0.25) 38.77551%, transparent 38.77551%, transparent 40.81633%, rgba(102, 102, 255, 0.25) 40.81633%, rgba(179, 179, 255, 0.25) 48.97959%, transparent 48.97959%, transparent 51.02041%, rgba(102, 102, 255, 0.25) 51.02041%, rgba(179, 179, 255, 0.25) 59.18367%, transparent 59.18367%, transparent 61.22449%, rgba(102, 102, 255, 0.25) 61.22449%, rgba(179, 179, 255, 0.25) 69.38776%, transparent 69.38776%, transparent 71.42857%, rgba(102, 102, 255, 0.25) 71.42857%, rgba(179, 179, 255, 0.25) 79.59184%, transparent 79.59184%, transparent 81.63265%, rgba(102, 102, 255, 0.25) 81.63265%, rgba(179, 179, 255, 0.25) 89.79592%, transparent 89.79592%, transparent 91.83673%, rgba(102, 102, 255, 0.25) 91.83673%, rgba(179, 179, 255, 0.25));
+  background: -moz-linear-gradient(bottom, rgba(0, 0, 0, 0.5) 5%, rgba(0, 0, 0, 0) 5%), -moz-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 8.16327%, transparent 8.16327%, transparent 10.20408%, rgba(102, 102, 255, 0.25) 10.20408%, rgba(179, 179, 255, 0.25) 18.36735%, transparent 18.36735%, transparent 20.40816%, rgba(102, 102, 255, 0.25) 20.40816%, rgba(179, 179, 255, 0.25) 28.57143%, transparent 28.57143%, transparent 30.61224%, rgba(102, 102, 255, 0.25) 30.61224%, rgba(179, 179, 255, 0.25) 38.77551%, transparent 38.77551%, transparent 40.81633%, rgba(102, 102, 255, 0.25) 40.81633%, rgba(179, 179, 255, 0.25) 48.97959%, transparent 48.97959%, transparent 51.02041%, rgba(102, 102, 255, 0.25) 51.02041%, rgba(179, 179, 255, 0.25) 59.18367%, transparent 59.18367%, transparent 61.22449%, rgba(102, 102, 255, 0.25) 61.22449%, rgba(179, 179, 255, 0.25) 69.38776%, transparent 69.38776%, transparent 71.42857%, rgba(102, 102, 255, 0.25) 71.42857%, rgba(179, 179, 255, 0.25) 79.59184%, transparent 79.59184%, transparent 81.63265%, rgba(102, 102, 255, 0.25) 81.63265%, rgba(179, 179, 255, 0.25) 89.79592%, transparent 89.79592%, transparent 91.83673%, rgba(102, 102, 255, 0.25) 91.83673%, rgba(179, 179, 255, 0.25));
+  background: -o-linear-gradient(bottom, rgba(0, 0, 0, 0.5) 5%, rgba(0, 0, 0, 0) 5%), -o-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 8.16327%, transparent 8.16327%, transparent 10.20408%, rgba(102, 102, 255, 0.25) 10.20408%, rgba(179, 179, 255, 0.25) 18.36735%, transparent 18.36735%, transparent 20.40816%, rgba(102, 102, 255, 0.25) 20.40816%, rgba(179, 179, 255, 0.25) 28.57143%, transparent 28.57143%, transparent 30.61224%, rgba(102, 102, 255, 0.25) 30.61224%, rgba(179, 179, 255, 0.25) 38.77551%, transparent 38.77551%, transparent 40.81633%, rgba(102, 102, 255, 0.25) 40.81633%, rgba(179, 179, 255, 0.25) 48.97959%, transparent 48.97959%, transparent 51.02041%, rgba(102, 102, 255, 0.25) 51.02041%, rgba(179, 179, 255, 0.25) 59.18367%, transparent 59.18367%, transparent 61.22449%, rgba(102, 102, 255, 0.25) 61.22449%, rgba(179, 179, 255, 0.25) 69.38776%, transparent 69.38776%, transparent 71.42857%, rgba(102, 102, 255, 0.25) 71.42857%, rgba(179, 179, 255, 0.25) 79.59184%, transparent 79.59184%, transparent 81.63265%, rgba(102, 102, 255, 0.25) 81.63265%, rgba(179, 179, 255, 0.25) 89.79592%, transparent 89.79592%, transparent 91.83673%, rgba(102, 102, 255, 0.25) 91.83673%, rgba(179, 179, 255, 0.25));
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.5) 5%, rgba(0, 0, 0, 0) 5%), linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 8.16327%, transparent 8.16327%, transparent 10.20408%, rgba(102, 102, 255, 0.25) 10.20408%, rgba(179, 179, 255, 0.25) 18.36735%, transparent 18.36735%, transparent 20.40816%, rgba(102, 102, 255, 0.25) 20.40816%, rgba(179, 179, 255, 0.25) 28.57143%, transparent 28.57143%, transparent 30.61224%, rgba(102, 102, 255, 0.25) 30.61224%, rgba(179, 179, 255, 0.25) 38.77551%, transparent 38.77551%, transparent 40.81633%, rgba(102, 102, 255, 0.25) 40.81633%, rgba(179, 179, 255, 0.25) 48.97959%, transparent 48.97959%, transparent 51.02041%, rgba(102, 102, 255, 0.25) 51.02041%, rgba(179, 179, 255, 0.25) 59.18367%, transparent 59.18367%, transparent 61.22449%, rgba(102, 102, 255, 0.25) 61.22449%, rgba(179, 179, 255, 0.25) 69.38776%, transparent 69.38776%, transparent 71.42857%, rgba(102, 102, 255, 0.25) 71.42857%, rgba(179, 179, 255, 0.25) 79.59184%, transparent 79.59184%, transparent 81.63265%, rgba(102, 102, 255, 0.25) 81.63265%, rgba(179, 179, 255, 0.25) 89.79592%, transparent 89.79592%, transparent 91.83673%, rgba(102, 102, 255, 0.25) 91.83673%, rgba(179, 179, 255, 0.25));
+  -webkit-background-size: 100% 24px;
+  -moz-background-size: 100% 24px;
+  -o-background-size: 100% 24px;
+  background-size: 100% 24px;
+  background-position: left top;
+}
+head:hover ~ .asymmetrical,
+head:hover ~ body .asymmetrical {
+  position: relative;
+}
+head:hover ~ .asymmetrical::before,
+head:hover ~ body .asymmetrical::before {
+  background: -webkit-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 2.08333%, transparent 2.08333%, transparent 4.16667%, rgba(102, 102, 255, 0.25) 4.16667%, rgba(179, 179, 255, 0.25) 12.5%, transparent 12.5%, transparent 14.58333%, rgba(102, 102, 255, 0.25) 14.58333%, rgba(179, 179, 255, 0.25) 19.79167%, transparent 19.79167%, transparent 21.875%, rgba(102, 102, 255, 0.25) 21.875%, rgba(179, 179, 255, 0.25) 26.04167%, transparent 26.04167%, transparent 28.125%, rgba(102, 102, 255, 0.25) 28.125%, rgba(179, 179, 255, 0.25) 41.66667%, transparent 41.66667%, transparent 43.75%, rgba(102, 102, 255, 0.25) 43.75%, rgba(179, 179, 255, 0.25) 51.04167%, transparent 51.04167%, transparent 53.125%, rgba(102, 102, 255, 0.25) 53.125%, rgba(179, 179, 255, 0.25) 65.625%, transparent 65.625%, transparent 67.70833%, rgba(102, 102, 255, 0.25) 67.70833%, rgba(179, 179, 255, 0.25) 76.04167%, transparent 76.04167%, transparent 78.125%, rgba(102, 102, 255, 0.25) 78.125%, rgba(179, 179, 255, 0.25) 82.29167%, transparent 82.29167%, transparent 84.375%, rgba(102, 102, 255, 0.25) 84.375%, rgba(179, 179, 255, 0.25));
+  background: -moz-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 2.08333%, transparent 2.08333%, transparent 4.16667%, rgba(102, 102, 255, 0.25) 4.16667%, rgba(179, 179, 255, 0.25) 12.5%, transparent 12.5%, transparent 14.58333%, rgba(102, 102, 255, 0.25) 14.58333%, rgba(179, 179, 255, 0.25) 19.79167%, transparent 19.79167%, transparent 21.875%, rgba(102, 102, 255, 0.25) 21.875%, rgba(179, 179, 255, 0.25) 26.04167%, transparent 26.04167%, transparent 28.125%, rgba(102, 102, 255, 0.25) 28.125%, rgba(179, 179, 255, 0.25) 41.66667%, transparent 41.66667%, transparent 43.75%, rgba(102, 102, 255, 0.25) 43.75%, rgba(179, 179, 255, 0.25) 51.04167%, transparent 51.04167%, transparent 53.125%, rgba(102, 102, 255, 0.25) 53.125%, rgba(179, 179, 255, 0.25) 65.625%, transparent 65.625%, transparent 67.70833%, rgba(102, 102, 255, 0.25) 67.70833%, rgba(179, 179, 255, 0.25) 76.04167%, transparent 76.04167%, transparent 78.125%, rgba(102, 102, 255, 0.25) 78.125%, rgba(179, 179, 255, 0.25) 82.29167%, transparent 82.29167%, transparent 84.375%, rgba(102, 102, 255, 0.25) 84.375%, rgba(179, 179, 255, 0.25));
+  background: -o-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 2.08333%, transparent 2.08333%, transparent 4.16667%, rgba(102, 102, 255, 0.25) 4.16667%, rgba(179, 179, 255, 0.25) 12.5%, transparent 12.5%, transparent 14.58333%, rgba(102, 102, 255, 0.25) 14.58333%, rgba(179, 179, 255, 0.25) 19.79167%, transparent 19.79167%, transparent 21.875%, rgba(102, 102, 255, 0.25) 21.875%, rgba(179, 179, 255, 0.25) 26.04167%, transparent 26.04167%, transparent 28.125%, rgba(102, 102, 255, 0.25) 28.125%, rgba(179, 179, 255, 0.25) 41.66667%, transparent 41.66667%, transparent 43.75%, rgba(102, 102, 255, 0.25) 43.75%, rgba(179, 179, 255, 0.25) 51.04167%, transparent 51.04167%, transparent 53.125%, rgba(102, 102, 255, 0.25) 53.125%, rgba(179, 179, 255, 0.25) 65.625%, transparent 65.625%, transparent 67.70833%, rgba(102, 102, 255, 0.25) 67.70833%, rgba(179, 179, 255, 0.25) 76.04167%, transparent 76.04167%, transparent 78.125%, rgba(102, 102, 255, 0.25) 78.125%, rgba(179, 179, 255, 0.25) 82.29167%, transparent 82.29167%, transparent 84.375%, rgba(102, 102, 255, 0.25) 84.375%, rgba(179, 179, 255, 0.25));
+  background: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 2.08333%, transparent 2.08333%, transparent 4.16667%, rgba(102, 102, 255, 0.25) 4.16667%, rgba(179, 179, 255, 0.25) 12.5%, transparent 12.5%, transparent 14.58333%, rgba(102, 102, 255, 0.25) 14.58333%, rgba(179, 179, 255, 0.25) 19.79167%, transparent 19.79167%, transparent 21.875%, rgba(102, 102, 255, 0.25) 21.875%, rgba(179, 179, 255, 0.25) 26.04167%, transparent 26.04167%, transparent 28.125%, rgba(102, 102, 255, 0.25) 28.125%, rgba(179, 179, 255, 0.25) 41.66667%, transparent 41.66667%, transparent 43.75%, rgba(102, 102, 255, 0.25) 43.75%, rgba(179, 179, 255, 0.25) 51.04167%, transparent 51.04167%, transparent 53.125%, rgba(102, 102, 255, 0.25) 53.125%, rgba(179, 179, 255, 0.25) 65.625%, transparent 65.625%, transparent 67.70833%, rgba(102, 102, 255, 0.25) 67.70833%, rgba(179, 179, 255, 0.25) 76.04167%, transparent 76.04167%, transparent 78.125%, rgba(102, 102, 255, 0.25) 78.125%, rgba(179, 179, 255, 0.25) 82.29167%, transparent 82.29167%, transparent 84.375%, rgba(102, 102, 255, 0.25) 84.375%, rgba(179, 179, 255, 0.25));
+}
+
+html {
+  font-size: 100%;
+  line-height: 1.5em;
+}
+
+body {
+  font-family: sans-serif;
+}
+
+h1 {
+  background: #333;
+  color: #eee;
+  text-transform: uppercase;
+}
+
+h1, h2, h3 {
+  clear: both;
+  padding: 0.75em;
+  font-weight: bold;
+}
+
+.grid-element {
+  margin-bottom: 0.75em;
+  opacity: .5;
+  min-height: 4.5em;
+}
+
+.size1of2 {
+  background: #f99;
+}
+
+.size1of5 {
+  background: #aef;
+}
+
+.size1of3 {
+  background: orange;
+}
+
+.full.grid-element {
+  background: pink;
+}
+
+.gallery {
+  overflow: hidden;
+  *zoom: 1;
+  clear: both;
+}
+.gallery div {
+  margin-bottom: 0.75em;
+  height: 1.5em;
+  background: rgba(255, 0, 0, 0.25);
+  outline: 1px dotted red;
+}

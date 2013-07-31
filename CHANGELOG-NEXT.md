@@ -4,6 +4,7 @@ Susy Next Changelog
 2.0.0.alpha.4 [unreleased]
 --------------------------
 
+* `background-grid-output` now accepts `$line-height` argument.
 * Compass modules are imported as needed.
 * `grid-background`, `grid-overlay`, `grid-background-output`, & `$grid-background-color`
   have been renamed to remiain consistent and avoid conflicts with Compass:

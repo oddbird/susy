@@ -48,7 +48,9 @@
   $this-layout-math: if($this-gutter-position == inside-static, static, $this-layout-math);
   $width: get-gutter-width($this-columns, $this-gutters, $this-column-width, $this-layout-math);
 
-  @if $this-gutter-position == inside or $this-gutter-position == split {
+  $split: if($this-gutter-position == before or $this-gutter-position == after, false, true);
+
+  @if $split {
     $width: $width / 2;
   }
 

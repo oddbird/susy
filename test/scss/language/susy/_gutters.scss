@@ -53,7 +53,7 @@
 
     // inside-static
     $test: gutter(inside-static);
-    $expect: 2em;
+    $expect: 1em;
     @include assert-equal($test, $expect,
       'The default gutter for "7 (4em 2em) fluid inside-static" should be "#{$expect}"');
 

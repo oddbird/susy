@@ -322,14 +322,24 @@
 
 ### Gutter Syntax ------ */
 /* - [mixin] gutters */
-/* "Item should have 2.5% padding-gutters added before and after" */
+/* "Item should have 2.5% margin-gutters added before and after" */
 .test__gutters .assert__auto .test {
-  padding-left: 2.5%;
-  padding-right: 2.5%;
+  margin-left: 2.5%;
+  margin-right: 2.5%;
 }
 .test__gutters .assert__auto .expect {
-  padding-left: 2.5%;
-  padding-right: 2.5%;
+  margin-left: 2.5%;
+  margin-right: 2.5%;
+}
+
+/* "Item should have 1em padding-gutters added before and after" */
+.test__gutters .assert__inside-static .test {
+  padding-left: 1em;
+  padding-right: 1em;
+}
+.test__gutters .assert__inside-static .expect {
+  padding-left: 1em;
+  padding-right: 1em;
 }
 
 /* "Item should have 5em padding-gutters added before and after" */

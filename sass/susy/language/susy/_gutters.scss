@@ -24,7 +24,7 @@
   $to: to($this-flow);
 
   $this-gutters: get-gutters($this-columns, $this-gutters, $this-column-width, $this-layout-math, $this-gutter-position, $override);
-  $property: if($this-gutter-position == inside, padding, margin);
+  $property: if($this-gutter-position == inside or $this-gutter-position == inside-static, padding, margin);
 
   #{$property}-#{$from}: nth($this-gutters, 1);
   #{$property}-#{$to}: nth($this-gutters, 2);

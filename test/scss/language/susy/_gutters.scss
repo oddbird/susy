@@ -7,14 +7,25 @@
   // -------
 
   @include output-test('gutters') {
-    @include assert-setup('auto', $grid: 7 .5 inside);
+    @include assert-setup('auto', $grid: 7 .5 split);
     @include assert-output(
-      'Item should have 2.5% padding-gutters added before and after'
+      'Item should have 2.5% margin-gutters added before and after'
     ) {
       .test { @include gutters; }
       .expect {
-        padding-left: 2.5%;
-        padding-right: 2.5%;
+        margin-left: 2.5%;
+        margin-right: 2.5%;
+      }
+    }
+
+    @include assert-setup('inside-static', $grid: 7 (4em 2em) inside-static);
+    @include assert-output(
+      'Item should have 1em padding-gutters added before and after'
+    ) {
+      .test { @include gutters; }
+      .expect {
+        padding-left: 1em;
+        padding-right: 1em;
       }
     }
 

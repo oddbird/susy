@@ -45,6 +45,7 @@
   $this-layout-math       : get-setting(layout-math, $context);
   $this-gutter-position   : get-setting(gutter-position, $context);
 
+  $this-layout-math: if($this-gutter-position == inside-static, static, $this-layout-math);
   $width: get-gutter-width($this-columns, $this-gutters, $this-column-width, $this-layout-math);
 
   @if $this-gutter-position == inside or $this-gutter-position == split {

@@ -36,6 +36,7 @@
   @include test('[function] gutter') {
     $columns: 7;
     $gutters: .5;
+    $column-width: 4em;
     $layout-math: fluid;
 
     // simple
@@ -49,6 +50,12 @@
     $expect: 2.5%;
     @include assert-equal($test, $expect,
       'The default gutter for "7 .5 fluid inside" should be "#{$expect}"');
+
+    // inside-static
+    $test: gutter(inside-static);
+    $expect: 2em;
+    @include assert-equal($test, $expect,
+      'The default gutter for "7 (4em 2em) fluid inside-static" should be "#{$expect}"');
 
     // split
     $test: gutter(split);
@@ -68,6 +75,8 @@
     $expect: 1em;
     @include assert-equal($test, $expect,
       'The gutter-width for "#{$gutter}" should be "#{$expect}"');
+
+    @include original-grid;
   }
 
   // get-gutter-width

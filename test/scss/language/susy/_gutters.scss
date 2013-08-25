@@ -11,7 +11,7 @@
     @include assert-output(
       'Item should have 2.5% margin-gutters added before and after'
     ) {
-      .test { @include gutters; }
+      .test { @include gutters(of 7); }
       .expect {
         margin-left: 2.5%;
         margin-right: 2.5%;

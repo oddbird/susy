@@ -57,10 +57,10 @@
       'The default gutter for "7 .5 fluid" should be "#{$expect}"');
 
     // inside
-    $test: gutter(inside);
-    $expect: 2.5%;
+    $test: gutter(8 .25 inside);
+    $expect: 1.25%;
     @include assert-equal($test, $expect,
-      'The default gutter for "7 .5 fluid inside" should be "#{$expect}"');
+      'The default gutter for "8 .25 fluid inside" should be "#{$expect}"');
 
     // inside-static
     $test: gutter(inside-static);
@@ -108,6 +108,12 @@
     $expect: 2.5%;
     @include assert-equal($gutter, $expect,
       'The static gutter-width of "(1 2 3 2 1) .25" should be "2.5%"');
+
+    // inside
+    $gutter: get-gutter-width(8, .25, $gutter-position: inside);
+    $expect: 2.5%;
+    @include assert-equal($gutter, $expect,
+      'The static gutter-width of "8 .25" should be "2.5%"');
   }
 
   // get-gutters
@@ -154,9 +160,10 @@
       'A relative gutter from "7 .5 split" should return "2.5% 2.5%" gutters');
 
     // inside
-    $test: get-gutters($cols, $guts, $gutter-position: inside);
+    $test: get-gutters(8, .25, $gutter-position: inside);
+    $expect: 1.25% 1.25%;
     @include assert-equal($test, $expect,
-      'A relative gutter from "7 .5 inside" should return "2.5% 2.5%" gutters');
+      'A relative gutter from "8 .25 inside" should return "1.25% 1.25%" gutters');
 
     // inside-static
     $test: get-gutters($cols, $guts, 4em, fluid, inside-static);

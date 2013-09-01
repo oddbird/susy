@@ -391,8 +391,8 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   box-sizing: border-box;
   width: 12.5%;
   float: left;
-  padding-left: 0.79365%;
-  padding-right: 0.79365%;
+  padding-left: 0.78125%;
+  padding-right: 0.78125%;
 }
 .split > .size1of5 ~ .size1of5 {
   -webkit-box-sizing: border-box;
@@ -400,8 +400,8 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   box-sizing: border-box;
   width: 34.375%;
   float: right;
-  padding-left: 0.79365%;
-  padding-right: 0.79365%;
+  padding-left: 0.78125%;
+  padding-right: 0.78125%;
 }
 .split > .size3of5 {
   -webkit-box-sizing: border-box;
@@ -416,8 +416,8 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   box-sizing: border-box;
   width: 67.64706%;
   float: left;
-  padding-left: 1.51515%;
-  padding-right: 1.51515%;
+  padding-left: 1.47059%;
+  padding-right: 1.47059%;
 }
 .split > .size3of5 > .size1of2 + .size1of2 {
   -webkit-box-sizing: border-box;
@@ -425,8 +425,8 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   box-sizing: border-box;
   width: 32.35294%;
   float: right;
-  padding-left: 1.51515%;
-  padding-right: 1.51515%;
+  padding-left: 1.47059%;
+  padding-right: 1.47059%;
 }
 .split > .size3of5 > .full {
   clear: both;
@@ -438,8 +438,8 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   box-sizing: border-box;
   width: 52.94118%;
   float: left;
-  padding-left: 1.51515%;
-  padding-right: 1.51515%;
+  padding-left: 1.47059%;
+  padding-right: 1.47059%;
   min-height: 9.75em;
 }
 .split .full .size2of3 {
@@ -455,8 +455,8 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   box-sizing: border-box;
   width: 50%;
   float: left;
-  padding-left: 3.33333%;
-  padding-right: 3.33333%;
+  padding-left: 3.125%;
+  padding-right: 3.125%;
 }
 .split .size2of3 .size1of2 + .size1of2 {
   -webkit-box-sizing: border-box;
@@ -464,8 +464,8 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   box-sizing: border-box;
   width: 50%;
   float: right;
-  padding-left: 3.33333%;
-  padding-right: 3.33333%;
+  padding-left: 3.125%;
+  padding-right: 3.125%;
 }
 .split .size2of3 .full {
   clear: both;
@@ -476,8 +476,8 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   box-sizing: border-box;
   float: left;
   margin-right: -100%;
-  padding-left: 0.79365%;
-  padding-right: 0.79365%;
+  padding-left: 0.78125%;
+  padding-right: 0.78125%;
 }
 .split .gallery div:nth-child(5n + 1) {
   width: 12.5%;

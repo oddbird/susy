@@ -216,13 +216,15 @@
 // - $setting   : <keyword> (see $options below)
 // - $span      : <span>
 // - $parse     : <boolean>
+
+$susy-span-options: span location columns gutters column-width layout-method layout-math outer flow gutter-position is-container gutter-override;
+
 @function get-span-setting(
   $setting,
   $span,
   $parse: false
 ) {
-  $options  : span location columns gutters column-width layout-method layout-math outer flow gutter-position is-container gutter-override;
-  $key      : index($options, $setting);
+  $key      : index($susy-span-options, $setting);
   $value    : false;
 
   @if $parse {
@@ -354,3 +356,34 @@
 
   @return $width;
 }
+
+// Get Span Context
+// ----------------
+// - $span: <span>
+@function get-span-context(
+  $span
+) {
+  $parsed: parse-span($span);
+  $context: compact();
+
+  $width: get-span-setting(span, $parsed);
+  $location: get-span-setting(location, $parsed);
+
+  $removed-width: false;
+  $removed-location: false;
+
+  @each $setting in $span {
+    @if $setting != of and $setting != at {
+      @if $setting == $width and not $removed-width {
+        $removed-width: true;
+      } @else if $setting == $location and not $removed-location {
+        $removed-location: true;
+      } @else {
+        $context: append($context, $setting, space);
+      }
+    }
+  }
+
+  @return $context;
+}
+

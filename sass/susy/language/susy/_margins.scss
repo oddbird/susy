@@ -90,3 +90,39 @@
 
   @include margin-output($before, $after, $flow);
 }
+
+// Bleed
+// -----
+// Add negative margins, and equal positive padding to create bleed.
+// - $span  : <span>
+// - $sides : [ top | right | bottom | left | all ]
+@mixin bleed(
+  $span   : gutter(),
+  $sides  : left right
+) {
+  $margin: span(append($span, outer));
+  $padding: $margin;
+
+  $context: get-span-context($span);
+
+  $this-gutter-position: get-span-setting(gutter-position, $span, parse);
+  $inside: if($this-gutter-position == inside or $this-gutter-position == inside-static, true, false);
+  $gutter-width: gutter($context);
+
+  @if $inside and comparable($padding, $gutter-width) {
+    $padding: $padding + $gutter-width;
+  }
+
+  @if $box-sizing == border-box { @include box-sizing(content-box); }
+
+  @if $sides == all {
+    margin: 0 - $margin;
+    padding: $padding;
+  } @else {
+    @each $side in $sides {
+      margin-#{$side}: 0 - $margin;
+      padding-#{$side}: $padding;
+    }
+  }
+}
+

@@ -48,7 +48,7 @@
     }
 
     // inside
-    @include assert-setup('inside', $grid: 7 .5 inside) {
+    @include assert-setup('inside', $grid: 8 .25 inside) {
       .test, .expect { clear: both; }
     }
     @include assert-output(
@@ -57,10 +57,10 @@
       .test { @include span(5); }
       .expect {
         @include box-sizing(border-box);
-        width: 71.42857%;
+        width: 62.5%;
         float: left;
-        padding-left: 2.5%;
-        padding-right: 2.5%;
+        padding-left: 1.25%;
+        padding-right: 1.25%;
       }
     }
   }
@@ -359,11 +359,11 @@
       'The span output for "5 at 2 of 7 .5" should be "#{$expect}"');
 
     // inside (padding)
-    $span: span-math(5, 2, 7, .5, 4em, float, fluid, false, ltr, inside, false);
+    $span: span-math(5, 2, 8, .25, 4em, float, fluid, false, ltr, inside, false);
     $padding: nth($span, 5) nth($span, 6);
-    $expect: 2.5% 2.5%;
+    $expect: 1.25% 1.25%;
     @include assert-equal($padding, $expect,
-      'The padding for "5 at 2 of 7 .5 inside" should be "#{$expect}"');
+      'The padding for "5 at 2 of 8 .25 inside" should be "#{$expect}"');
 
     // inside (width)
     $span: span-math(6, 2, 7, .5, 4em, float, static, false, ltr, inside);
@@ -412,4 +412,11 @@
       'The margins for "first before" should be "#{$expect}"');
   }
 
+  @include test('[function] get-span-context') {
+    $span: 3 of 7 .5 inside static;
+    $test: get-span-context($span);
+    $expect: 7 .5 inside static;
+    @include assert-equal($test, $expect,
+      'The context of "#{$span}" should be "#{$expect}"');
+  }
 }

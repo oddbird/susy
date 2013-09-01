@@ -36,31 +36,35 @@
     }
 
     // inside
-    @include assert-setup('inside', $grid: 6 .8 inside) {
+    @include assert-setup('inside', $grid: 8 .25 inside) {
       .nest { @include clearfix; }
       .test, .expect { @include trailer(0); }
     }
     @include assert-output(
-      'Items should create 3x isolated gallery with inside-gutters.'
+      'Items should create 4x isolated gallery with inside-gutters.'
     ) {
       .test { @include gallery(2); }
       .expect {
         box-sizing: border-box;
-        width: 33.33333%;
+        width: 25.0%;
         float: left;
         margin-right: -100%;
-        padding-left: 4%;
-        padding-right: 4%;
-        &:nth-child(3n + 1) {
+        padding-left: 1.25%;
+        padding-right: 1.25%;
+        &:nth-child(4n + 1) {
           margin-left: 0;
           clear: left;
         }
-        &:nth-child(3n + 2) {
-          margin-left: 33.33333%;
+        &:nth-child(4n + 2) {
+          margin-left: 25%;
           clear: none;
         }
-        &:nth-child(3n + 3) {
-          margin-left: 66.66667%;
+        &:nth-child(4n + 3) {
+          margin-left: 50%;
+          clear: none;
+        }
+        &:nth-child(4n + 4) {
+          margin-left: 75%;
           clear: none;
         }
       }
@@ -128,33 +132,28 @@
     }
 
     // asymmetrical inside
-    @include assert-setup('asym-inside', $grid: (1 2 1 2 2 1) 1/5 inside) {
+    @include assert-setup('asym-inside', $grid: (1 2 4 1) .5 inside) {
       .nest { @include clearfix; }
       .test, .expect { @include trailer(0); }
     }
     @include assert-output(
-      'Items should create 3x isolated asymmetrical gallery, with inside gutters.'
+      'Items should create 2x isolated asymmetrical gallery, with inside gutters.'
     ) {
       .test { @include gallery(2); }
       .expect {
         box-sizing: border-box;
         float: left;
         margin-right: -100%;
-        padding-left: 1%;
-        padding-right: 1%;
-        &:nth-child(3n + 1) {
-          width: 33.33333%;
+        padding-left: 2.5%;
+        padding-right: 2.5%;
+        &:nth-child(2n + 1) {
+          width: 40%;
           margin-left: 0;
           clear: left;
         }
-        &:nth-child(3n + 2) {
-          width: 33.33333%;
-          margin-left: 33.33333%;
-          clear: none;
-        }
-        &:nth-child(3n + 3) {
-          width: 33.33333%;
-          margin-left: 66.66667%;
+        &:nth-child(2n + 2) {
+          width: 60%;
+          margin-left: 40%;
           clear: none;
         }
       }

@@ -4,6 +4,8 @@ Susy Next Changelog
 2.0.0.alpha.4 [unreleased]
 --------------------------
 
+* Add `bleed` mixin.
+* Fix bug with fluid inside-gutter calculations.
 * `$last-flow` setting controls the flow direction (to/from) of row-ending elements.
 * `background-grid-output` now accepts `$line-height` argument.
 * Compass modules are imported as needed.
@@ -14,7 +16,7 @@ Susy Next Changelog
   - `grid-background-output` => `background-grid-output`
   - `$grid-background-color` => `$grid-color`
 * `span` mixing accepts nested `@content`, and uses nested context.
-* Added `inside-static` option for static gutters in otherwise fluid grids.
+* Add `inside-static` option for static gutters in otherwise fluid grids.
 * `gutters` mixin uses span syntax, accepts explicit gutter span.
 * Explicit gutter-overrides are divided when gutters are `split`/`inside`.
 

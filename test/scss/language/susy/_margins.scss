@@ -75,19 +75,74 @@
     }
 
     // nested
-    @include assert-setup('nested', $grid: 9 .5) {
+    @include assert-setup('nested', $grid: 7 1/5 inside) {
       .nest { @include squish(1); }
     }
     @include assert-output(
       'Items should have 1-column margin before, and 2 after - nested.'
     ) {
-      .test { @include squish(1, 2 of 7); }
+      .test { @include squish(1, 2 of 5); }
       .expect {
-        margin-left: 15%;
-        margin-right: 30%;
+        margin-left: 20%;
+        margin-right: 40%;
       }
     }
   }
 
+  // bleed
+  // -----
+
+  @include output-test('bleed') {
+
+    // simple
+    @include assert-setup('simple', $grid: 9 .5) {
+      .nest { @include squish(1); }
+    }
+    @include assert-output(
+      'Items should bleed 1 column outside their nested context'
+    ) {
+      .test { @include bleed(1 of 7); }
+      .expect {
+        margin-left: -15%;
+        padding-left: 15%;
+        margin-right: -15%;
+        padding-right: 15%;
+      }
+    }
+
+    // inside
+    @include assert-setup('inside', $grid: 10 .25 inside) {
+      .nest { @include squish(1); }
+    }
+    @include assert-output(
+      'Items should bleed 1 column, and retain their gutters'
+    ) {
+      .test { @include bleed(1 of 8); }
+      .expect {
+        margin-left: -12.5%;
+        padding-left: 13.75%;
+        margin-right: -12.5%;
+        padding-right: 13.75%;
+      }
+    }
+
+    // explicit inside-static
+    @include assert-setup('explicit', $grid: 10 (4em 1em) inside-static) {
+      .nest {
+        @include leader;
+        @include trailer;
+        @include squish(1);
+      }
+    }
+    @include assert-output(
+      'Items should bleed 1em on all sides, and retain their static gutters'
+    ) {
+      .test { @include bleed(1em of 8, all); }
+      .expect {
+        margin: -1em;
+        padding: 1.5em;
+      }
+    }
+  }
 
 }

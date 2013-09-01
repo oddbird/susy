@@ -6,7 +6,7 @@
 // Set gutters on an element.
 // - [$context]   : <settings>
 @mixin gutters(
-  $context: join((0, of), get-grid())
+  $context: join((of), get-grid())
 ) {
   $context                : parse-span($context);
 
@@ -46,7 +46,7 @@
   $this-gutter-position   : get-setting(gutter-position, $context);
 
   $this-layout-math: if($this-gutter-position == inside-static, static, $this-layout-math);
-  $width: get-gutter-width($this-columns, $this-gutters, $this-column-width, $this-layout-math);
+  $width: get-gutter-width($this-columns, $this-gutters, $this-column-width, $this-layout-math, $this-gutter-position);
 
   $split: if($this-gutter-position == before or $this-gutter-position == after, false, true);
 
@@ -65,17 +65,25 @@
 // - [$column-width]  : <length>
 // - [$layout-math]   : fluid | static
 @function get-gutter-width(
-  $columns        : $columns,
-  $gutters        : $gutters,
-  $column-width   : $column-width,
-  $layout-math    : $layout-math
+  $columns          : $columns,
+  $gutters          : $gutters,
+  $column-width     : $column-width,
+  $layout-math      : $layout-math,
+  $gutter-position  : $gutter-position
 ) {
-  $context  : column-sum($columns, $gutters);
+  $context  : null;
   $gutter   : null;
+
+  $inside: if($gutter-position == inside or $gutter-position == inside-static, true, false);
 
   @if $layout-math == static {
     $gutter: $gutters * $column-width;
   } @else {
+    @if $inside {
+      $context: column-sum($columns, $gutters, outer);
+    } @else {
+      $context: column-sum($columns, $gutters);
+    }
     $gutter: percentage($gutters / $context);
   }
 
@@ -107,7 +115,7 @@
     $gutter: $gutter-override;
   } @else {
     $layout-math: if($gutter-position == inside-static, static, $layout-math);
-    $gutter: get-gutter-width($columns, $gutters, $column-width, $layout-math);
+    $gutter: get-gutter-width($columns, $gutters, $column-width, $layout-math, $gutter-position);
   }
 
   @if $gutter-position == before {

@@ -867,7 +867,7 @@ h1 {
 
 ### Margin Syntax ------ */
 /* - [mixin] pre */
-.test__pre .assert__pre {
+.test__pre .assert__gutters {
   max-width: 100%;
   margin-left: auto;
   margin-right: auto;
@@ -875,14 +875,56 @@ h1 {
   background: -moz-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, transparent 10%, transparent 15%, rgba(102, 102, 255, 0.25) 15%, rgba(179, 179, 255, 0.25) 25%, transparent 25%, transparent 30%, rgba(102, 102, 255, 0.25) 30%, rgba(179, 179, 255, 0.25) 40%, transparent 40%, transparent 45%, rgba(102, 102, 255, 0.25) 45%, rgba(179, 179, 255, 0.25) 55.0%, transparent 55.0%, transparent 60%, rgba(102, 102, 255, 0.25) 60%, rgba(179, 179, 255, 0.25) 70%, transparent 70%, transparent 75%, rgba(102, 102, 255, 0.25) 75%, rgba(179, 179, 255, 0.25) 85%, transparent 85%, transparent 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
   background: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, transparent 10%, transparent 15%, rgba(102, 102, 255, 0.25) 15%, rgba(179, 179, 255, 0.25) 25%, transparent 25%, transparent 30%, rgba(102, 102, 255, 0.25) 30%, rgba(179, 179, 255, 0.25) 40%, transparent 40%, transparent 45%, rgba(102, 102, 255, 0.25) 45%, rgba(179, 179, 255, 0.25) 55.0%, transparent 55.0%, transparent 60%, rgba(102, 102, 255, 0.25) 60%, rgba(179, 179, 255, 0.25) 70%, transparent 70%, transparent 75%, rgba(102, 102, 255, 0.25) 75%, rgba(179, 179, 255, 0.25) 85%, transparent 85%, transparent 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
 }
-.test__pre .assert__pre:after {
+.test__pre .assert__gutters:after {
   content: "";
   display: table;
   clear: both;
 }
 
-.test__pre .assert__pre::before {
-  content: "Items should have 3-columns margin before.";
+.test__pre .assert__gutters .spacer {
+  width: 10%;
+  float: left;
+}
+.test__pre .assert__gutters .test, .test__pre .assert__gutters .expect {
+  width: 40%;
+  float: left;
+  margin-left: 5%;
+}
+
+.test__pre .assert__gutters::before {
+  content: "Items should have 2-columns margin before.";
+  display: block;
+  padding: 0.375rem 0.75rem;
+  text-align: left;
+  font-style: italic;
+}
+
+.test__pre .assert__no-gutters {
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  background: -webkit-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, transparent 10%, transparent 15%, rgba(102, 102, 255, 0.25) 15%, rgba(179, 179, 255, 0.25) 25%, transparent 25%, transparent 30%, rgba(102, 102, 255, 0.25) 30%, rgba(179, 179, 255, 0.25) 40%, transparent 40%, transparent 45%, rgba(102, 102, 255, 0.25) 45%, rgba(179, 179, 255, 0.25) 55.0%, transparent 55.0%, transparent 60%, rgba(102, 102, 255, 0.25) 60%, rgba(179, 179, 255, 0.25) 70%, transparent 70%, transparent 75%, rgba(102, 102, 255, 0.25) 75%, rgba(179, 179, 255, 0.25) 85%, transparent 85%, transparent 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
+  background: -moz-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, transparent 10%, transparent 15%, rgba(102, 102, 255, 0.25) 15%, rgba(179, 179, 255, 0.25) 25%, transparent 25%, transparent 30%, rgba(102, 102, 255, 0.25) 30%, rgba(179, 179, 255, 0.25) 40%, transparent 40%, transparent 45%, rgba(102, 102, 255, 0.25) 45%, rgba(179, 179, 255, 0.25) 55.0%, transparent 55.0%, transparent 60%, rgba(102, 102, 255, 0.25) 60%, rgba(179, 179, 255, 0.25) 70%, transparent 70%, transparent 75%, rgba(102, 102, 255, 0.25) 75%, rgba(179, 179, 255, 0.25) 85%, transparent 85%, transparent 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
+  background: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, transparent 10%, transparent 15%, rgba(102, 102, 255, 0.25) 15%, rgba(179, 179, 255, 0.25) 25%, transparent 25%, transparent 30%, rgba(102, 102, 255, 0.25) 30%, rgba(179, 179, 255, 0.25) 40%, transparent 40%, transparent 45%, rgba(102, 102, 255, 0.25) 45%, rgba(179, 179, 255, 0.25) 55.0%, transparent 55.0%, transparent 60%, rgba(102, 102, 255, 0.25) 60%, rgba(179, 179, 255, 0.25) 70%, transparent 70%, transparent 75%, rgba(102, 102, 255, 0.25) 75%, rgba(179, 179, 255, 0.25) 85%, transparent 85%, transparent 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
+}
+.test__pre .assert__no-gutters:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.test__pre .assert__no-gutters .spacer {
+  width: 15%;
+  float: left;
+}
+.test__pre .assert__no-gutters .test, .test__pre .assert__no-gutters .expect {
+  width: 40%;
+  float: left;
+  margin-left: 5%;
+}
+
+.test__pre .assert__no-gutters::before {
+  content: "Items should have 2-columns margin before.";
   display: block;
   padding: 0.375rem 0.75rem;
   text-align: left;
@@ -890,7 +932,7 @@ h1 {
 }
 
 /* - [mixin] post */
-.test__post .assert__post {
+.test__post .assert__gutters {
   max-width: 100%;
   margin-left: auto;
   margin-right: auto;
@@ -898,13 +940,47 @@ h1 {
   background: -moz-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, transparent 10%, transparent 12.5%, rgba(102, 102, 255, 0.25) 12.5%, rgba(179, 179, 255, 0.25) 32.5%, transparent 32.5%, transparent 35%, rgba(102, 102, 255, 0.25) 35%, rgba(179, 179, 255, 0.25) 65%, transparent 65%, transparent 67.5%, rgba(102, 102, 255, 0.25) 67.5%, rgba(179, 179, 255, 0.25) 87.5%, transparent 87.5%, transparent 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
   background: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, transparent 10%, transparent 12.5%, rgba(102, 102, 255, 0.25) 12.5%, rgba(179, 179, 255, 0.25) 32.5%, transparent 32.5%, transparent 35%, rgba(102, 102, 255, 0.25) 35%, rgba(179, 179, 255, 0.25) 65%, transparent 65%, transparent 67.5%, rgba(102, 102, 255, 0.25) 67.5%, rgba(179, 179, 255, 0.25) 87.5%, transparent 87.5%, transparent 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
 }
-.test__post .assert__post:after {
+.test__post .assert__gutters:after {
   content: "";
   display: table;
   clear: both;
 }
 
-.test__post .assert__post::before {
+.test__post .assert__gutters .spacer {
+  width: 20%;
+  float: left;
+  margin-right: 2.5%;
+  height: 1.5rem;
+}
+.test__post .assert__gutters .test, .test__post .assert__gutters .expect {
+  width: 32.5%;
+  float: left;
+  margin-right: 2.5%;
+}
+
+.test__post .assert__gutters::before {
+  content: "Items should have 2-columns margin after.";
+  display: block;
+  padding: 0.375rem 0.75rem;
+  text-align: left;
+  font-style: italic;
+}
+
+.test__post .assert__no-gutters {
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  background: -webkit-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, transparent 10%, transparent 12.5%, rgba(102, 102, 255, 0.25) 12.5%, rgba(179, 179, 255, 0.25) 32.5%, transparent 32.5%, transparent 35%, rgba(102, 102, 255, 0.25) 35%, rgba(179, 179, 255, 0.25) 65%, transparent 65%, transparent 67.5%, rgba(102, 102, 255, 0.25) 67.5%, rgba(179, 179, 255, 0.25) 87.5%, transparent 87.5%, transparent 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
+  background: -moz-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, transparent 10%, transparent 12.5%, rgba(102, 102, 255, 0.25) 12.5%, rgba(179, 179, 255, 0.25) 32.5%, transparent 32.5%, transparent 35%, rgba(102, 102, 255, 0.25) 35%, rgba(179, 179, 255, 0.25) 65%, transparent 65%, transparent 67.5%, rgba(102, 102, 255, 0.25) 67.5%, rgba(179, 179, 255, 0.25) 87.5%, transparent 87.5%, transparent 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
+  background: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, transparent 10%, transparent 12.5%, rgba(102, 102, 255, 0.25) 12.5%, rgba(179, 179, 255, 0.25) 32.5%, transparent 32.5%, transparent 35%, rgba(102, 102, 255, 0.25) 35%, rgba(179, 179, 255, 0.25) 65%, transparent 65%, transparent 67.5%, rgba(102, 102, 255, 0.25) 67.5%, rgba(179, 179, 255, 0.25) 87.5%, transparent 87.5%, transparent 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
+}
+.test__post .assert__no-gutters:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.test__post .assert__no-gutters::before {
   content: "Items should have 2-columns margin after.";
   display: block;
   padding: 0.375rem 0.75rem;
@@ -936,7 +1012,7 @@ h1 {
 }
 
 /* - [mixin] pull */
-.test__pull .assert__pull {
+.test__pull .assert__gutters {
   max-width: 100%;
   margin-left: auto;
   margin-right: auto;
@@ -944,24 +1020,55 @@ h1 {
   background: -moz-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, transparent 10%, transparent 12.5%, rgba(102, 102, 255, 0.25) 12.5%, rgba(179, 179, 255, 0.25) 32.5%, transparent 32.5%, transparent 35%, rgba(102, 102, 255, 0.25) 35%, rgba(179, 179, 255, 0.25) 65%, transparent 65%, transparent 67.5%, rgba(102, 102, 255, 0.25) 67.5%, rgba(179, 179, 255, 0.25) 87.5%, transparent 87.5%, transparent 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
   background: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, transparent 10%, transparent 12.5%, rgba(102, 102, 255, 0.25) 12.5%, rgba(179, 179, 255, 0.25) 32.5%, transparent 32.5%, transparent 35%, rgba(102, 102, 255, 0.25) 35%, rgba(179, 179, 255, 0.25) 65%, transparent 65%, transparent 67.5%, rgba(102, 102, 255, 0.25) 67.5%, rgba(179, 179, 255, 0.25) 87.5%, transparent 87.5%, transparent 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
 }
-.test__pull .assert__pull:after {
+.test__pull .assert__gutters:after {
   content: "";
   display: table;
   clear: both;
 }
 
-.test__pull .assert__pull .spacer {
+.test__pull .assert__gutters .spacer {
   width: 32.5%;
   float: left;
-  margin-right: 2.5%;
 }
-.test__pull .assert__pull .test, .test__pull .assert__pull .expect {
+.test__pull .assert__gutters .test, .test__pull .assert__gutters .expect {
   width: 75%;
   float: left;
-  margin-right: 2.5%;
+  margin-left: 2.5%;
 }
 
-.test__pull .assert__pull::before {
+.test__pull .assert__gutters::before {
+  content: "Items should pull 1-column, overlapping the spacer.";
+  display: block;
+  padding: 0.375rem 0.75rem;
+  text-align: left;
+  font-style: italic;
+}
+
+.test__pull .assert__no-gutters {
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  background: -webkit-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, transparent 10%, transparent 12.5%, rgba(102, 102, 255, 0.25) 12.5%, rgba(179, 179, 255, 0.25) 32.5%, transparent 32.5%, transparent 35%, rgba(102, 102, 255, 0.25) 35%, rgba(179, 179, 255, 0.25) 65%, transparent 65%, transparent 67.5%, rgba(102, 102, 255, 0.25) 67.5%, rgba(179, 179, 255, 0.25) 87.5%, transparent 87.5%, transparent 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
+  background: -moz-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, transparent 10%, transparent 12.5%, rgba(102, 102, 255, 0.25) 12.5%, rgba(179, 179, 255, 0.25) 32.5%, transparent 32.5%, transparent 35%, rgba(102, 102, 255, 0.25) 35%, rgba(179, 179, 255, 0.25) 65%, transparent 65%, transparent 67.5%, rgba(102, 102, 255, 0.25) 67.5%, rgba(179, 179, 255, 0.25) 87.5%, transparent 87.5%, transparent 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
+  background: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, transparent 10%, transparent 12.5%, rgba(102, 102, 255, 0.25) 12.5%, rgba(179, 179, 255, 0.25) 32.5%, transparent 32.5%, transparent 35%, rgba(102, 102, 255, 0.25) 35%, rgba(179, 179, 255, 0.25) 65%, transparent 65%, transparent 67.5%, rgba(102, 102, 255, 0.25) 67.5%, rgba(179, 179, 255, 0.25) 87.5%, transparent 87.5%, transparent 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
+}
+.test__pull .assert__no-gutters:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.test__pull .assert__no-gutters .spacer {
+  width: 35%;
+  float: left;
+}
+.test__pull .assert__no-gutters .test, .test__pull .assert__no-gutters .expect {
+  width: 75%;
+  float: left;
+  margin-left: 2.5%;
+}
+
+.test__pull .assert__no-gutters::before {
   content: "Items should pull 1-column, overlapping the spacer.";
   display: block;
   padding: 0.375rem 0.75rem;
@@ -1020,7 +1127,7 @@ h1 {
 }
 
 /* - [mixin] bleed */
-.test__bleed .assert__simple {
+.test__bleed .assert__no-gutters {
   max-width: 100%;
   margin-left: auto;
   margin-right: auto;
@@ -1028,18 +1135,18 @@ h1 {
   background: -moz-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 7.69231%, transparent 7.69231%, transparent 11.53846%, rgba(102, 102, 255, 0.25) 11.53846%, rgba(179, 179, 255, 0.25) 19.23077%, transparent 19.23077%, transparent 23.07692%, rgba(102, 102, 255, 0.25) 23.07692%, rgba(179, 179, 255, 0.25) 30.76923%, transparent 30.76923%, transparent 34.61538%, rgba(102, 102, 255, 0.25) 34.61538%, rgba(179, 179, 255, 0.25) 42.30769%, transparent 42.30769%, transparent 46.15385%, rgba(102, 102, 255, 0.25) 46.15385%, rgba(179, 179, 255, 0.25) 53.84615%, transparent 53.84615%, transparent 57.69231%, rgba(102, 102, 255, 0.25) 57.69231%, rgba(179, 179, 255, 0.25) 65.38462%, transparent 65.38462%, transparent 69.23077%, rgba(102, 102, 255, 0.25) 69.23077%, rgba(179, 179, 255, 0.25) 76.92308%, transparent 76.92308%, transparent 80.76923%, rgba(102, 102, 255, 0.25) 80.76923%, rgba(179, 179, 255, 0.25) 88.46154%, transparent 88.46154%, transparent 92.30769%, rgba(102, 102, 255, 0.25) 92.30769%, rgba(179, 179, 255, 0.25));
   background: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 7.69231%, transparent 7.69231%, transparent 11.53846%, rgba(102, 102, 255, 0.25) 11.53846%, rgba(179, 179, 255, 0.25) 19.23077%, transparent 19.23077%, transparent 23.07692%, rgba(102, 102, 255, 0.25) 23.07692%, rgba(179, 179, 255, 0.25) 30.76923%, transparent 30.76923%, transparent 34.61538%, rgba(102, 102, 255, 0.25) 34.61538%, rgba(179, 179, 255, 0.25) 42.30769%, transparent 42.30769%, transparent 46.15385%, rgba(102, 102, 255, 0.25) 46.15385%, rgba(179, 179, 255, 0.25) 53.84615%, transparent 53.84615%, transparent 57.69231%, rgba(102, 102, 255, 0.25) 57.69231%, rgba(179, 179, 255, 0.25) 65.38462%, transparent 65.38462%, transparent 69.23077%, rgba(102, 102, 255, 0.25) 69.23077%, rgba(179, 179, 255, 0.25) 76.92308%, transparent 76.92308%, transparent 80.76923%, rgba(102, 102, 255, 0.25) 80.76923%, rgba(179, 179, 255, 0.25) 88.46154%, transparent 88.46154%, transparent 92.30769%, rgba(102, 102, 255, 0.25) 92.30769%, rgba(179, 179, 255, 0.25));
 }
-.test__bleed .assert__simple:after {
+.test__bleed .assert__no-gutters:after {
   content: "";
   display: table;
   clear: both;
 }
 
-.test__bleed .assert__simple .nest {
+.test__bleed .assert__no-gutters .nest {
   margin-left: 11.53846%;
   margin-right: 11.53846%;
 }
 
-.test__bleed .assert__simple::before {
+.test__bleed .assert__no-gutters::before {
   content: "Items should bleed 1 column outside their nested context";
   display: block;
   padding: 0.375rem 0.75rem;
@@ -1067,6 +1174,45 @@ h1 {
 }
 
 .test__bleed .assert__inside::before {
+  content: "Items should bleed 1 column, and retain their gutters";
+  display: block;
+  padding: 0.375rem 0.75rem;
+  text-align: left;
+  font-style: italic;
+}
+
+.test__bleed .assert__outside {
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  background: -webkit-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, transparent 10%, transparent 15%, rgba(102, 102, 255, 0.25) 15%, rgba(179, 179, 255, 0.25) 25%, transparent 25%, transparent 30%, rgba(102, 102, 255, 0.25) 30%, rgba(179, 179, 255, 0.25) 40%, transparent 40%, transparent 45%, rgba(102, 102, 255, 0.25) 45%, rgba(179, 179, 255, 0.25) 55.0%, transparent 55.0%, transparent 60%, rgba(102, 102, 255, 0.25) 60%, rgba(179, 179, 255, 0.25) 70%, transparent 70%, transparent 75%, rgba(102, 102, 255, 0.25) 75%, rgba(179, 179, 255, 0.25) 85%, transparent 85%, transparent 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
+  background: -moz-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, transparent 10%, transparent 15%, rgba(102, 102, 255, 0.25) 15%, rgba(179, 179, 255, 0.25) 25%, transparent 25%, transparent 30%, rgba(102, 102, 255, 0.25) 30%, rgba(179, 179, 255, 0.25) 40%, transparent 40%, transparent 45%, rgba(102, 102, 255, 0.25) 45%, rgba(179, 179, 255, 0.25) 55.0%, transparent 55.0%, transparent 60%, rgba(102, 102, 255, 0.25) 60%, rgba(179, 179, 255, 0.25) 70%, transparent 70%, transparent 75%, rgba(102, 102, 255, 0.25) 75%, rgba(179, 179, 255, 0.25) 85%, transparent 85%, transparent 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
+  background: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, transparent 10%, transparent 15%, rgba(102, 102, 255, 0.25) 15%, rgba(179, 179, 255, 0.25) 25%, transparent 25%, transparent 30%, rgba(102, 102, 255, 0.25) 30%, rgba(179, 179, 255, 0.25) 40%, transparent 40%, transparent 45%, rgba(102, 102, 255, 0.25) 45%, rgba(179, 179, 255, 0.25) 55.0%, transparent 55.0%, transparent 60%, rgba(102, 102, 255, 0.25) 60%, rgba(179, 179, 255, 0.25) 70%, transparent 70%, transparent 75%, rgba(102, 102, 255, 0.25) 75%, rgba(179, 179, 255, 0.25) 85%, transparent 85%, transparent 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
+}
+.test__bleed .assert__outside:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.test__bleed .assert__outside .nest {
+  clear: both;
+}
+.test__bleed .assert__outside .spacer {
+  width: 10%;
+  float: left;
+  margin-right: 5%;
+  height: 2.25rem;
+  margin-bottom: 12px;
+  margin-bottom: 0.75rem;
+}
+.test__bleed .assert__outside .test, .test__bleed .assert__outside .expect {
+  width: 40%;
+  float: left;
+  margin-right: 5%;
+}
+
+.test__bleed .assert__outside::before {
   content: "Items should bleed 1 column, and retain their gutters";
   display: block;
   padding: 0.375rem 0.75rem;

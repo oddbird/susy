@@ -331,8 +331,15 @@
   <!-- pre -->
   <section class="test__pre">
     <h1>pre [mixin]</h1>
-    <div class="assert__pre">
-      <div class="test">pre</div>
+    <div class="assert__gutters">
+      <div class="spacer"></div>
+      <div class="test">pre [gutters]</div>
+      <div class="expect">expect</div>
+    </div>
+
+    <div class="assert__no-gutters">
+      <div class="spacer"></div>
+      <div class="test">pre [no-gutters]</div>
       <div class="expect">expect</div>
     </div>
   </section>
@@ -340,8 +347,15 @@
   <!-- post -->
   <section class="test__post">
     <h1>post [mixin]</h1>
-    <div class="assert__post">
-      <div class="test">post</div>
+    <div class="assert__gutters">
+      <div class="test">post [gutters]</div>
+      <div class="spacer"></div>
+      <div class="expect">expect</div>
+      <div class="spacer"></div>
+    </div>
+
+    <div class="assert__no-gutters">
+      <div class="test">post [no-gutters]</div>
       <div class="expect">expect</div>
     </div>
   </section>
@@ -358,9 +372,15 @@
   <!-- pull -->
   <section class="test__pull">
     <h1>pull [mixin]</h1>
-    <div class="assert__pull">
+    <div class="assert__gutters">
       <div class="spacer"></div>
-      <div class="test">pull</div>
+      <div class="test">pull [gutters]</div>
+      <div class="expect">expect</div>
+    </div>
+
+    <div class="assert__no-gutters">
+      <div class="spacer"></div>
+      <div class="test">pull [no-gutters]</div>
       <div class="expect">expect</div>
     </div>
   </section>
@@ -386,23 +406,36 @@
   <section class="test__bleed">
     <h1>bleed [mixin]</h1>
 
-    <div class="assert__simple">
+    <div class="assert__no-gutters">
       <div class="nest">
-        <div class="test">bleed</div>
+        <div class="test">bleed [no-gutters]</div>
         <div class="expect">expect</div>
       </div>
     </div>
 
     <div class="assert__inside">
       <div class="nest">
-        <div class="test">bleed</div>
+        <div class="test">bleed [inside]</div>
         <div class="expect">expect</div>
+      </div>
+    </div>
+
+    <div class="assert__outside">
+      <div class="nest">
+        <div class="spacer"></div>
+        <div class="test">bleed [outside]</div>
+        <div class="spacer"></div>
+      </div>
+      <div class="nest">
+        <div class="spacer"></div>
+        <div class="expect">expect</div>
+        <div class="spacer"></div>
       </div>
     </div>
 
     <div class="assert__explicit">
       <div class="nest">
-        <div class="test">bleed</div>
+        <div class="test">bleed [explicit]</div>
         <div class="expect">expect</div>
       </div>
     </div>

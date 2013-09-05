@@ -1,8 +1,8 @@
 Susy Next Changelog
 ===================
 
-2.0.0.alpha.4 [unreleased]
---------------------------
+2.0.0.alpha.4 [Sept 4, 2013]
+----------------------------
 
 * Add `bleed` mixin.
 * Fix bug with fluid inside-gutter calculations.

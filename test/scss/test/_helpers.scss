@@ -7,6 +7,8 @@ $output-test-results: true;
 $output-test-slug: null;
 $output-assert-slug: null;
 
+$supported-browsers: firefox chrome;
+
 // Test Output Module
 // ------------------
 
@@ -32,10 +34,8 @@ $output-assert-slug: null;
   @if $grid {
     @include set-grid($grid);
     @if $output {
-      @include with-only-support-for(-moz, -webkit) {
-        .test__#{$output-test-slug} .assert__#{$output-assert-slug} {
-          @include container;
-        }
+      .test__#{$output-test-slug} .assert__#{$output-assert-slug} {
+        @include container;
       }
     }
   } @else if $output {

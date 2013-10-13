@@ -1,1527 +1,223 @@
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed,
-figure, figcaption, footer, header, hgroup,
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  font: inherit;
-  font-size: 100%;
-  vertical-align: baseline;
-}
-
-html {
-  line-height: 1;
-}
-
-ol, ul {
-  list-style: none;
-}
-
-table {
-  border-collapse: collapse;
-  border-spacing: 0;
-}
-
-caption, th, td {
-  text-align: left;
-  font-weight: normal;
-  vertical-align: middle;
-}
-
-q, blockquote {
-  quotes: none;
-}
-q:before, q:after, blockquote:before, blockquote:after {
-  content: "";
-  content: none;
-}
-
-a img {
-  border: none;
-}
-
-article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary {
-  display: block;
-}
-
-html {
-  font-size: 100%;
-  line-height: 1.5em;
-}
-
-html {
-  font-family: sans-serif;
-}
-
-body {
-  padding: 1.5rem;
-}
-
-h1 {
-  font-weight: bold;
-}
-
-[role="banner"] {
-  font-size: 24px;
-  font-size: 1.5rem;
-  line-height: 48px;
-  line-height: 3rem;
-}
-
-.results {
-  margin-top: 24px;
-  margin-top: 1.5rem;
-  margin-bottom: 24px;
-  margin-bottom: 1.5rem;
-  border-width: 1px;
-  border-width: 0.0625rem;
-  border-style: solid;
-  padding: 23px;
-  padding: 1.4375rem;
-  background-color: rgba(255, 0, 0, 0.25);
-  border-color: red;
-}
-.results::before {
-  content: 'Unit Tests: ';
-  font-weight: bold;
-}
-.results::before, .results::after {
-  display: inline;
-}
-
-.test-module {
-  border-bottom-width: 6px;
-  border-bottom-width: 0.375rem;
-  border-bottom-style: solid;
-  padding-bottom: 18px;
-  padding-bottom: 1.125rem;
-  margin-bottom: 12px;
-  margin-bottom: 0.75rem;
-  border-style: dotted;
-}
-.test-module:last-of-type {
-  padding-bottom: 0;
-  border: 0;
-}
-.test-module > h1 {
-  font-size: 24px;
-  font-size: 1.5rem;
-  line-height: 48px;
-  line-height: 3rem;
-  margin-bottom: 12px;
-  margin-bottom: 0.75rem;
-}
-
-[class^="test__"] {
-  margin-bottom: 12px;
-  margin-bottom: 0.75rem;
-}
-[class^="test__"] h1 {
-  padding: 0.375rem 0.75rem;
-  background: #666;
-  color: #eee;
-  font-weight: normal;
-  font-family: monospace, sans-serif;
-}
-
-[class^="assert__"] {
-  margin-bottom: 12px;
-  margin-bottom: 0.75rem;
-  text-align: center;
-}
-[class^="assert__"] div {
-  background: rgba(255, 255, 255, 0.25);
-  outline: 1px solid rgba(255, 0, 0, 0.25);
-  outline-offset: -1px;
-}
-[class^="assert__"] .test, [class^="assert__"] .expect {
-  margin-bottom: 12px;
-  margin-bottom: 0.75rem;
-  font-size: 14px;
-  font-size: 0.875rem;
-  line-height: 24px;
-  line-height: 1.5rem;
-  background: linear-gradient(to left, rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0.75)), rgba(255, 204, 204, 0.5);
-  background-clip: content-box, border-box;
-}
-[class^="assert__"] .test {
-  outline-color: red;
-}
-[class^="assert__"] .expect {
-  outline-color: green;
-}
-[class^="assert__"] .spacer {
-  height: 3.75rem;
-  outline: 1px solid rgba(68, 68, 68, 0.25);
-  background: rgba(68, 68, 68, 0.125);
-}
-
-/* - [mixin] background-grid */
-.test__background-grid .assert__background-grid {
-  overflow: hidden;
-  background: rgba(204, 204, 255, 0.5);
-}
-
-.test__background-grid .assert__background-grid .test, .test__background-grid .assert__background-grid .expect {
-  padding-top: 24px;
-  padding-top: 1.5rem;
-  padding-bottom: 24px;
-  padding-bottom: 1.5rem;
-  background: none;
-}
-
-.test__background-grid .assert__background-grid::before {
-  content: "Background-grid should show 7 columns with .5 gutters";
-  display: block;
-  padding: 0.375rem 0.75rem;
-  text-align: left;
-  font-style: italic;
-}
-
-/* - [mixin] overlay-grid */
-.test__overlay-grid .assert__overlay-grid {
-  overflow: hidden;
-  background: rgba(204, 204, 255, 0.5);
-}
-
-.test__overlay-grid .assert__overlay-grid::before {
-  content: ".test and .expect should have same output.";
-  display: block;
-  padding: 0.375rem 0.75rem;
-  text-align: left;
-  font-style: italic;
-}
-
-/* - [mixin] container */
-.test__container .assert__default-box {
-  overflow: hidden;
-  background: rgba(204, 204, 255, 0.5);
-}
-
-.test__container .assert__default-box::before {
-  content: "Containers should have 80% max-width and show a 7 .5 grid.";
-  display: block;
-  padding: 0.375rem 0.75rem;
-  text-align: left;
-  font-style: italic;
-}
-
-.test__container .assert__border-box {
-  overflow: hidden;
-  background: rgba(204, 204, 255, 0.5);
-}
-
-.test__container .assert__border-box::before {
-  content: "Containers should have 40em max-width, border-box-sizing, and show a (1 2 3 2 1) (4em 2em) grid, flush left.";
-  display: block;
-  padding: 0.375rem 0.75rem;
-  text-align: left;
-  font-style: italic;
-}
-
-/* - [mixin] span */
-.test__span .assert__default {
-  max-width: 100%;
-  margin-left: auto;
-  margin-right: auto;
-  background: -webkit-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, transparent 10%, transparent 15%, rgba(102, 102, 255, 0.25) 15%, rgba(179, 179, 255, 0.25) 25%, transparent 25%, transparent 30%, rgba(102, 102, 255, 0.25) 30%, rgba(179, 179, 255, 0.25) 40%, transparent 40%, transparent 45%, rgba(102, 102, 255, 0.25) 45%, rgba(179, 179, 255, 0.25) 55.0%, transparent 55.0%, transparent 60%, rgba(102, 102, 255, 0.25) 60%, rgba(179, 179, 255, 0.25) 70%, transparent 70%, transparent 75%, rgba(102, 102, 255, 0.25) 75%, rgba(179, 179, 255, 0.25) 85%, transparent 85%, transparent 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
-  background: -moz-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, transparent 10%, transparent 15%, rgba(102, 102, 255, 0.25) 15%, rgba(179, 179, 255, 0.25) 25%, transparent 25%, transparent 30%, rgba(102, 102, 255, 0.25) 30%, rgba(179, 179, 255, 0.25) 40%, transparent 40%, transparent 45%, rgba(102, 102, 255, 0.25) 45%, rgba(179, 179, 255, 0.25) 55.0%, transparent 55.0%, transparent 60%, rgba(102, 102, 255, 0.25) 60%, rgba(179, 179, 255, 0.25) 70%, transparent 70%, transparent 75%, rgba(102, 102, 255, 0.25) 75%, rgba(179, 179, 255, 0.25) 85%, transparent 85%, transparent 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
-  background: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, transparent 10%, transparent 15%, rgba(102, 102, 255, 0.25) 15%, rgba(179, 179, 255, 0.25) 25%, transparent 25%, transparent 30%, rgba(102, 102, 255, 0.25) 30%, rgba(179, 179, 255, 0.25) 40%, transparent 40%, transparent 45%, rgba(102, 102, 255, 0.25) 45%, rgba(179, 179, 255, 0.25) 55.0%, transparent 55.0%, transparent 60%, rgba(102, 102, 255, 0.25) 60%, rgba(179, 179, 255, 0.25) 70%, transparent 70%, transparent 75%, rgba(102, 102, 255, 0.25) 75%, rgba(179, 179, 255, 0.25) 85%, transparent 85%, transparent 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
-}
-.test__span .assert__default:after {
-  content: "";
-  display: table;
-  clear: both;
-}
-
-.test__span .assert__default .test, .test__span .assert__default .expect {
-  overflow: hidden;
-  clear: both;
-}
-.test__span .assert__default .test .inner, .test__span .assert__default .expect .inner {
-  background: rgba(255, 255, 0, 0.25);
-}
-
-.test__span .assert__default::before {
-  content: "Span should set width (75%), float (left), and gutter (5% margin-right)";
-  display: block;
-  padding: 0.375rem 0.75rem;
-  text-align: left;
-  font-style: italic;
-}
-
-.test__span .assert__inside {
-  max-width: 100%;
-  margin-left: auto;
-  margin-right: auto;
-  background: -webkit-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 12.5%, rgba(102, 102, 255, 0.25) 12.5%, rgba(179, 179, 255, 0.25) 25%, rgba(102, 102, 255, 0.25) 25%, rgba(179, 179, 255, 0.25) 37.5%, rgba(102, 102, 255, 0.25) 37.5%, rgba(179, 179, 255, 0.25) 50%, rgba(102, 102, 255, 0.25) 50%, rgba(179, 179, 255, 0.25) 62.5%, rgba(102, 102, 255, 0.25) 62.5%, rgba(179, 179, 255, 0.25) 75%, rgba(102, 102, 255, 0.25) 75%, rgba(179, 179, 255, 0.25) 87.5%, rgba(102, 102, 255, 0.25) 87.5%, rgba(179, 179, 255, 0.25));
-  background: -moz-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 12.5%, rgba(102, 102, 255, 0.25) 12.5%, rgba(179, 179, 255, 0.25) 25%, rgba(102, 102, 255, 0.25) 25%, rgba(179, 179, 255, 0.25) 37.5%, rgba(102, 102, 255, 0.25) 37.5%, rgba(179, 179, 255, 0.25) 50%, rgba(102, 102, 255, 0.25) 50%, rgba(179, 179, 255, 0.25) 62.5%, rgba(102, 102, 255, 0.25) 62.5%, rgba(179, 179, 255, 0.25) 75%, rgba(102, 102, 255, 0.25) 75%, rgba(179, 179, 255, 0.25) 87.5%, rgba(102, 102, 255, 0.25) 87.5%, rgba(179, 179, 255, 0.25));
-  background: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 12.5%, rgba(102, 102, 255, 0.25) 12.5%, rgba(179, 179, 255, 0.25) 25%, rgba(102, 102, 255, 0.25) 25%, rgba(179, 179, 255, 0.25) 37.5%, rgba(102, 102, 255, 0.25) 37.5%, rgba(179, 179, 255, 0.25) 50%, rgba(102, 102, 255, 0.25) 50%, rgba(179, 179, 255, 0.25) 62.5%, rgba(102, 102, 255, 0.25) 62.5%, rgba(179, 179, 255, 0.25) 75%, rgba(102, 102, 255, 0.25) 75%, rgba(179, 179, 255, 0.25) 87.5%, rgba(102, 102, 255, 0.25) 87.5%, rgba(179, 179, 255, 0.25));
-}
-.test__span .assert__inside:after {
-  content: "";
-  display: table;
-  clear: both;
-}
-
-.test__span .assert__inside .test, .test__span .assert__inside .expect {
-  clear: both;
-}
-
-.test__span .assert__inside::before {
-  content: "Span should set width, float, inside gutter, and border-box";
-  display: block;
-  padding: 0.375rem 0.75rem;
-  text-align: left;
-  font-style: italic;
-}
-
-.span-content-test {
-  width: 66.10169%;
-  float: left;
-  margin-right: 1.69492%;
-  width: 35.89744%;
-  float: left;
-  margin-right: 2.5641%;
-}
-
-/* - [mixin] gutters */
-.test__gutters .assert__auto {
-  max-width: 100%;
-  margin-left: auto;
-  margin-right: auto;
-  background: -webkit-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, transparent 10%, transparent 15%, rgba(102, 102, 255, 0.25) 15%, rgba(179, 179, 255, 0.25) 25%, transparent 25%, transparent 30%, rgba(102, 102, 255, 0.25) 30%, rgba(179, 179, 255, 0.25) 40%, transparent 40%, transparent 45%, rgba(102, 102, 255, 0.25) 45%, rgba(179, 179, 255, 0.25) 55.0%, transparent 55.0%, transparent 60%, rgba(102, 102, 255, 0.25) 60%, rgba(179, 179, 255, 0.25) 70%, transparent 70%, transparent 75%, rgba(102, 102, 255, 0.25) 75%, rgba(179, 179, 255, 0.25) 85%, transparent 85%, transparent 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
-  background: -moz-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, transparent 10%, transparent 15%, rgba(102, 102, 255, 0.25) 15%, rgba(179, 179, 255, 0.25) 25%, transparent 25%, transparent 30%, rgba(102, 102, 255, 0.25) 30%, rgba(179, 179, 255, 0.25) 40%, transparent 40%, transparent 45%, rgba(102, 102, 255, 0.25) 45%, rgba(179, 179, 255, 0.25) 55.0%, transparent 55.0%, transparent 60%, rgba(102, 102, 255, 0.25) 60%, rgba(179, 179, 255, 0.25) 70%, transparent 70%, transparent 75%, rgba(102, 102, 255, 0.25) 75%, rgba(179, 179, 255, 0.25) 85%, transparent 85%, transparent 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
-  background: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, transparent 10%, transparent 15%, rgba(102, 102, 255, 0.25) 15%, rgba(179, 179, 255, 0.25) 25%, transparent 25%, transparent 30%, rgba(102, 102, 255, 0.25) 30%, rgba(179, 179, 255, 0.25) 40%, transparent 40%, transparent 45%, rgba(102, 102, 255, 0.25) 45%, rgba(179, 179, 255, 0.25) 55.0%, transparent 55.0%, transparent 60%, rgba(102, 102, 255, 0.25) 60%, rgba(179, 179, 255, 0.25) 70%, transparent 70%, transparent 75%, rgba(102, 102, 255, 0.25) 75%, rgba(179, 179, 255, 0.25) 85%, transparent 85%, transparent 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
-}
-.test__gutters .assert__auto:after {
-  content: "";
-  display: table;
-  clear: both;
-}
-
-.test__gutters .assert__auto::before {
-  content: "Item should have 2.5% margin-gutters added before and after";
-  display: block;
-  padding: 0.375rem 0.75rem;
-  text-align: left;
-  font-style: italic;
-}
-
-.test__gutters .assert__inside-static {
-  max-width: 40em;
-  margin-left: auto;
-  margin-right: auto;
-  background: -webkit-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 14.28571%, rgba(102, 102, 255, 0.25) 14.28571%, rgba(179, 179, 255, 0.25) 28.57143%, rgba(102, 102, 255, 0.25) 28.57143%, rgba(179, 179, 255, 0.25) 42.85714%, rgba(102, 102, 255, 0.25) 42.85714%, rgba(179, 179, 255, 0.25) 57.14286%, rgba(102, 102, 255, 0.25) 57.14286%, rgba(179, 179, 255, 0.25) 71.42857%, rgba(102, 102, 255, 0.25) 71.42857%, rgba(179, 179, 255, 0.25) 85.71429%, rgba(102, 102, 255, 0.25) 85.71429%, rgba(179, 179, 255, 0.25));
-  background: -moz-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 14.28571%, rgba(102, 102, 255, 0.25) 14.28571%, rgba(179, 179, 255, 0.25) 28.57143%, rgba(102, 102, 255, 0.25) 28.57143%, rgba(179, 179, 255, 0.25) 42.85714%, rgba(102, 102, 255, 0.25) 42.85714%, rgba(179, 179, 255, 0.25) 57.14286%, rgba(102, 102, 255, 0.25) 57.14286%, rgba(179, 179, 255, 0.25) 71.42857%, rgba(102, 102, 255, 0.25) 71.42857%, rgba(179, 179, 255, 0.25) 85.71429%, rgba(102, 102, 255, 0.25) 85.71429%, rgba(179, 179, 255, 0.25));
-  background: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 14.28571%, rgba(102, 102, 255, 0.25) 14.28571%, rgba(179, 179, 255, 0.25) 28.57143%, rgba(102, 102, 255, 0.25) 28.57143%, rgba(179, 179, 255, 0.25) 42.85714%, rgba(102, 102, 255, 0.25) 42.85714%, rgba(179, 179, 255, 0.25) 57.14286%, rgba(102, 102, 255, 0.25) 57.14286%, rgba(179, 179, 255, 0.25) 71.42857%, rgba(102, 102, 255, 0.25) 71.42857%, rgba(179, 179, 255, 0.25) 85.71429%, rgba(102, 102, 255, 0.25) 85.71429%, rgba(179, 179, 255, 0.25));
-}
-.test__gutters .assert__inside-static:after {
-  content: "";
-  display: table;
-  clear: both;
-}
-
-.test__gutters .assert__inside-static::before {
-  content: "Item should have 1em padding-gutters added before and after";
-  display: block;
-  padding: 0.375rem 0.75rem;
-  text-align: left;
-  font-style: italic;
-}
-
-.test__gutters .assert__explicit {
-  max-width: 100%;
-  margin-left: auto;
-  margin-right: auto;
-  background: -webkit-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 14.28571%, rgba(102, 102, 255, 0.25) 14.28571%, rgba(179, 179, 255, 0.25) 28.57143%, rgba(102, 102, 255, 0.25) 28.57143%, rgba(179, 179, 255, 0.25) 42.85714%, rgba(102, 102, 255, 0.25) 42.85714%, rgba(179, 179, 255, 0.25) 57.14286%, rgba(102, 102, 255, 0.25) 57.14286%, rgba(179, 179, 255, 0.25) 71.42857%, rgba(102, 102, 255, 0.25) 71.42857%, rgba(179, 179, 255, 0.25) 85.71429%, rgba(102, 102, 255, 0.25) 85.71429%, rgba(179, 179, 255, 0.25));
-  background: -moz-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 14.28571%, rgba(102, 102, 255, 0.25) 14.28571%, rgba(179, 179, 255, 0.25) 28.57143%, rgba(102, 102, 255, 0.25) 28.57143%, rgba(179, 179, 255, 0.25) 42.85714%, rgba(102, 102, 255, 0.25) 42.85714%, rgba(179, 179, 255, 0.25) 57.14286%, rgba(102, 102, 255, 0.25) 57.14286%, rgba(179, 179, 255, 0.25) 71.42857%, rgba(102, 102, 255, 0.25) 71.42857%, rgba(179, 179, 255, 0.25) 85.71429%, rgba(102, 102, 255, 0.25) 85.71429%, rgba(179, 179, 255, 0.25));
-  background: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 14.28571%, rgba(102, 102, 255, 0.25) 14.28571%, rgba(179, 179, 255, 0.25) 28.57143%, rgba(102, 102, 255, 0.25) 28.57143%, rgba(179, 179, 255, 0.25) 42.85714%, rgba(102, 102, 255, 0.25) 42.85714%, rgba(179, 179, 255, 0.25) 57.14286%, rgba(102, 102, 255, 0.25) 57.14286%, rgba(179, 179, 255, 0.25) 71.42857%, rgba(102, 102, 255, 0.25) 71.42857%, rgba(179, 179, 255, 0.25) 85.71429%, rgba(102, 102, 255, 0.25) 85.71429%, rgba(179, 179, 255, 0.25));
-}
-.test__gutters .assert__explicit:after {
-  content: "";
-  display: table;
-  clear: both;
-}
-
-.test__gutters .assert__explicit::before {
-  content: "Item should have 5em padding-gutters added before and after";
-  display: block;
-  padding: 0.375rem 0.75rem;
-  text-align: left;
-  font-style: italic;
-}
-
-/* - [mixin] isolate */
-.test__isolate .assert__isolate {
-  max-width: 100%;
-  margin-left: auto;
-  margin-right: auto;
-  background: -webkit-linear-gradient(right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, transparent 10%, transparent 15%, rgba(102, 102, 255, 0.25) 15%, rgba(179, 179, 255, 0.25) 25%, transparent 25%, transparent 30%, rgba(102, 102, 255, 0.25) 30%, rgba(179, 179, 255, 0.25) 40%, transparent 40%, transparent 45%, rgba(102, 102, 255, 0.25) 45%, rgba(179, 179, 255, 0.25) 55.0%, transparent 55.0%, transparent 60%, rgba(102, 102, 255, 0.25) 60%, rgba(179, 179, 255, 0.25) 70%, transparent 70%, transparent 75%, rgba(102, 102, 255, 0.25) 75%, rgba(179, 179, 255, 0.25) 85%, transparent 85%, transparent 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
-  background: -moz-linear-gradient(right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, transparent 10%, transparent 15%, rgba(102, 102, 255, 0.25) 15%, rgba(179, 179, 255, 0.25) 25%, transparent 25%, transparent 30%, rgba(102, 102, 255, 0.25) 30%, rgba(179, 179, 255, 0.25) 40%, transparent 40%, transparent 45%, rgba(102, 102, 255, 0.25) 45%, rgba(179, 179, 255, 0.25) 55.0%, transparent 55.0%, transparent 60%, rgba(102, 102, 255, 0.25) 60%, rgba(179, 179, 255, 0.25) 70%, transparent 70%, transparent 75%, rgba(102, 102, 255, 0.25) 75%, rgba(179, 179, 255, 0.25) 85%, transparent 85%, transparent 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
-  background: linear-gradient(to left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, transparent 10%, transparent 15%, rgba(102, 102, 255, 0.25) 15%, rgba(179, 179, 255, 0.25) 25%, transparent 25%, transparent 30%, rgba(102, 102, 255, 0.25) 30%, rgba(179, 179, 255, 0.25) 40%, transparent 40%, transparent 45%, rgba(102, 102, 255, 0.25) 45%, rgba(179, 179, 255, 0.25) 55.0%, transparent 55.0%, transparent 60%, rgba(102, 102, 255, 0.25) 60%, rgba(179, 179, 255, 0.25) 70%, transparent 70%, transparent 75%, rgba(102, 102, 255, 0.25) 75%, rgba(179, 179, 255, 0.25) 85%, transparent 85%, transparent 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
-}
-.test__isolate .assert__isolate:after {
-  content: "";
-  display: table;
-  clear: both;
-}
-
-.test__isolate .assert__isolate .test, .test__isolate .assert__isolate .expect {
-  width: 25%;
-  float: left;
-  clear: both;
-}
-
-.test__isolate .assert__isolate::before {
-  content: "Item should be isolated in the last 2 columns, right-to-left";
-  display: block;
-  padding: 0.375rem 0.75rem;
-  text-align: left;
-  font-style: italic;
-}
-
-/* - [mixin] gallery */
-.test__gallery .assert__sym {
-  max-width: 100%;
-  margin-left: auto;
-  margin-right: auto;
-  background: -webkit-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, transparent 10%, transparent 18%, rgba(102, 102, 255, 0.25) 18%, rgba(179, 179, 255, 0.25) 28.0%, transparent 28.0%, transparent 36%, rgba(102, 102, 255, 0.25) 36%, rgba(179, 179, 255, 0.25) 46%, transparent 46%, transparent 54%, rgba(102, 102, 255, 0.25) 54%, rgba(179, 179, 255, 0.25) 64%, transparent 64%, transparent 72%, rgba(102, 102, 255, 0.25) 72%, rgba(179, 179, 255, 0.25) 82%, transparent 82%, transparent 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
-  background: -moz-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, transparent 10%, transparent 18%, rgba(102, 102, 255, 0.25) 18%, rgba(179, 179, 255, 0.25) 28.0%, transparent 28.0%, transparent 36%, rgba(102, 102, 255, 0.25) 36%, rgba(179, 179, 255, 0.25) 46%, transparent 46%, transparent 54%, rgba(102, 102, 255, 0.25) 54%, rgba(179, 179, 255, 0.25) 64%, transparent 64%, transparent 72%, rgba(102, 102, 255, 0.25) 72%, rgba(179, 179, 255, 0.25) 82%, transparent 82%, transparent 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
-  background: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, transparent 10%, transparent 18%, rgba(102, 102, 255, 0.25) 18%, rgba(179, 179, 255, 0.25) 28.0%, transparent 28.0%, transparent 36%, rgba(102, 102, 255, 0.25) 36%, rgba(179, 179, 255, 0.25) 46%, transparent 46%, transparent 54%, rgba(102, 102, 255, 0.25) 54%, rgba(179, 179, 255, 0.25) 64%, transparent 64%, transparent 72%, rgba(102, 102, 255, 0.25) 72%, rgba(179, 179, 255, 0.25) 82%, transparent 82%, transparent 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
-}
-.test__gallery .assert__sym:after {
-  content: "";
-  display: table;
-  clear: both;
-}
-
-.test__gallery .assert__sym .nest {
-  overflow: hidden;
-}
-.test__gallery .assert__sym .test, .test__gallery .assert__sym .expect {
-  margin-bottom: 0px;
-  margin-bottom: 0rem;
-}
-
-.test__gallery .assert__sym::before {
-  content: "Items should create 3x symmetrical isolated gallery.";
-  display: block;
-  padding: 0.375rem 0.75rem;
-  text-align: left;
-  font-style: italic;
-}
-
-.test__gallery .assert__inside {
-  max-width: 100%;
-  margin-left: auto;
-  margin-right: auto;
-  background: -webkit-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 12.5%, rgba(102, 102, 255, 0.25) 12.5%, rgba(179, 179, 255, 0.25) 25%, rgba(102, 102, 255, 0.25) 25%, rgba(179, 179, 255, 0.25) 37.5%, rgba(102, 102, 255, 0.25) 37.5%, rgba(179, 179, 255, 0.25) 50%, rgba(102, 102, 255, 0.25) 50%, rgba(179, 179, 255, 0.25) 62.5%, rgba(102, 102, 255, 0.25) 62.5%, rgba(179, 179, 255, 0.25) 75%, rgba(102, 102, 255, 0.25) 75%, rgba(179, 179, 255, 0.25) 87.5%, rgba(102, 102, 255, 0.25) 87.5%, rgba(179, 179, 255, 0.25));
-  background: -moz-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 12.5%, rgba(102, 102, 255, 0.25) 12.5%, rgba(179, 179, 255, 0.25) 25%, rgba(102, 102, 255, 0.25) 25%, rgba(179, 179, 255, 0.25) 37.5%, rgba(102, 102, 255, 0.25) 37.5%, rgba(179, 179, 255, 0.25) 50%, rgba(102, 102, 255, 0.25) 50%, rgba(179, 179, 255, 0.25) 62.5%, rgba(102, 102, 255, 0.25) 62.5%, rgba(179, 179, 255, 0.25) 75%, rgba(102, 102, 255, 0.25) 75%, rgba(179, 179, 255, 0.25) 87.5%, rgba(102, 102, 255, 0.25) 87.5%, rgba(179, 179, 255, 0.25));
-  background: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 12.5%, rgba(102, 102, 255, 0.25) 12.5%, rgba(179, 179, 255, 0.25) 25%, rgba(102, 102, 255, 0.25) 25%, rgba(179, 179, 255, 0.25) 37.5%, rgba(102, 102, 255, 0.25) 37.5%, rgba(179, 179, 255, 0.25) 50%, rgba(102, 102, 255, 0.25) 50%, rgba(179, 179, 255, 0.25) 62.5%, rgba(102, 102, 255, 0.25) 62.5%, rgba(179, 179, 255, 0.25) 75%, rgba(102, 102, 255, 0.25) 75%, rgba(179, 179, 255, 0.25) 87.5%, rgba(102, 102, 255, 0.25) 87.5%, rgba(179, 179, 255, 0.25));
-}
-.test__gallery .assert__inside:after {
-  content: "";
-  display: table;
-  clear: both;
-}
-
-.test__gallery .assert__inside .nest {
-  overflow: hidden;
-}
-.test__gallery .assert__inside .test, .test__gallery .assert__inside .expect {
-  margin-bottom: 0px;
-  margin-bottom: 0rem;
-}
-
-.test__gallery .assert__inside::before {
-  content: "Items should create 4x isolated gallery with inside-gutters.";
-  display: block;
-  padding: 0.375rem 0.75rem;
-  text-align: left;
-  font-style: italic;
-}
-
-.test__gallery .assert__inside-static {
-  max-width: 100%;
-  margin-left: auto;
-  margin-right: auto;
-  background: -webkit-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 16.66667%, rgba(102, 102, 255, 0.25) 16.66667%, rgba(179, 179, 255, 0.25) 33.33333%, rgba(102, 102, 255, 0.25) 33.33333%, rgba(179, 179, 255, 0.25) 50%, rgba(102, 102, 255, 0.25) 50%, rgba(179, 179, 255, 0.25) 66.66667%, rgba(102, 102, 255, 0.25) 66.66667%, rgba(179, 179, 255, 0.25) 83.33333%, rgba(102, 102, 255, 0.25) 83.33333%, rgba(179, 179, 255, 0.25));
-  background: -moz-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 16.66667%, rgba(102, 102, 255, 0.25) 16.66667%, rgba(179, 179, 255, 0.25) 33.33333%, rgba(102, 102, 255, 0.25) 33.33333%, rgba(179, 179, 255, 0.25) 50%, rgba(102, 102, 255, 0.25) 50%, rgba(179, 179, 255, 0.25) 66.66667%, rgba(102, 102, 255, 0.25) 66.66667%, rgba(179, 179, 255, 0.25) 83.33333%, rgba(102, 102, 255, 0.25) 83.33333%, rgba(179, 179, 255, 0.25));
-  background: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 16.66667%, rgba(102, 102, 255, 0.25) 16.66667%, rgba(179, 179, 255, 0.25) 33.33333%, rgba(102, 102, 255, 0.25) 33.33333%, rgba(179, 179, 255, 0.25) 50%, rgba(102, 102, 255, 0.25) 50%, rgba(179, 179, 255, 0.25) 66.66667%, rgba(102, 102, 255, 0.25) 66.66667%, rgba(179, 179, 255, 0.25) 83.33333%, rgba(102, 102, 255, 0.25) 83.33333%, rgba(179, 179, 255, 0.25));
-}
-.test__gallery .assert__inside-static:after {
-  content: "";
-  display: table;
-  clear: both;
-}
-
-.test__gallery .assert__inside-static .nest {
-  overflow: hidden;
-}
-.test__gallery .assert__inside-static .test, .test__gallery .assert__inside-static .expect {
-  margin-bottom: 0px;
-  margin-bottom: 0rem;
-}
-
-.test__gallery .assert__inside-static::before {
-  content: "Items should create 3x isolated gallery with inside-static gutters.";
-  display: block;
-  padding: 0.375rem 0.75rem;
-  text-align: left;
-  font-style: italic;
-}
-
-.test__gallery .assert__asym {
-  max-width: 100%;
-  margin-left: auto;
-  margin-right: auto;
-  background: -webkit-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, transparent 10%, transparent 12%, rgba(102, 102, 255, 0.25) 12%, rgba(179, 179, 255, 0.25) 32%, transparent 32%, transparent 34%, rgba(102, 102, 255, 0.25) 34%, rgba(179, 179, 255, 0.25) 44.0%, transparent 44.0%, transparent 46%, rgba(102, 102, 255, 0.25) 46%, rgba(179, 179, 255, 0.25) 66.0%, transparent 66.0%, transparent 68%, rgba(102, 102, 255, 0.25) 68%, rgba(179, 179, 255, 0.25) 88.0%, transparent 88.0%, transparent 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
-  background: -moz-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, transparent 10%, transparent 12%, rgba(102, 102, 255, 0.25) 12%, rgba(179, 179, 255, 0.25) 32%, transparent 32%, transparent 34%, rgba(102, 102, 255, 0.25) 34%, rgba(179, 179, 255, 0.25) 44.0%, transparent 44.0%, transparent 46%, rgba(102, 102, 255, 0.25) 46%, rgba(179, 179, 255, 0.25) 66.0%, transparent 66.0%, transparent 68%, rgba(102, 102, 255, 0.25) 68%, rgba(179, 179, 255, 0.25) 88.0%, transparent 88.0%, transparent 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
-  background: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, transparent 10%, transparent 12%, rgba(102, 102, 255, 0.25) 12%, rgba(179, 179, 255, 0.25) 32%, transparent 32%, transparent 34%, rgba(102, 102, 255, 0.25) 34%, rgba(179, 179, 255, 0.25) 44.0%, transparent 44.0%, transparent 46%, rgba(102, 102, 255, 0.25) 46%, rgba(179, 179, 255, 0.25) 66.0%, transparent 66.0%, transparent 68%, rgba(102, 102, 255, 0.25) 68%, rgba(179, 179, 255, 0.25) 88.0%, transparent 88.0%, transparent 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
-}
-.test__gallery .assert__asym:after {
-  content: "";
-  display: table;
-  clear: both;
-}
-
-.test__gallery .assert__asym .nest {
-  overflow: hidden;
-}
-.test__gallery .assert__asym .test, .test__gallery .assert__asym .expect {
-  margin-bottom: 0px;
-  margin-bottom: 0rem;
-}
-
-.test__gallery .assert__asym::before {
-  content: "Items should create 3x isolated asymmetrical gallery.";
-  display: block;
-  padding: 0.375rem 0.75rem;
-  text-align: left;
-  font-style: italic;
-}
-
-.test__gallery .assert__asym-inside {
-  max-width: 100%;
-  margin-left: auto;
-  margin-right: auto;
-  background: -webkit-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 15%, rgba(102, 102, 255, 0.25) 15%, rgba(179, 179, 255, 0.25) 40%, rgba(102, 102, 255, 0.25) 40%, rgba(179, 179, 255, 0.25) 85%, rgba(102, 102, 255, 0.25) 85%, rgba(179, 179, 255, 0.25));
-  background: -moz-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 15%, rgba(102, 102, 255, 0.25) 15%, rgba(179, 179, 255, 0.25) 40%, rgba(102, 102, 255, 0.25) 40%, rgba(179, 179, 255, 0.25) 85%, rgba(102, 102, 255, 0.25) 85%, rgba(179, 179, 255, 0.25));
-  background: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 15%, rgba(102, 102, 255, 0.25) 15%, rgba(179, 179, 255, 0.25) 40%, rgba(102, 102, 255, 0.25) 40%, rgba(179, 179, 255, 0.25) 85%, rgba(102, 102, 255, 0.25) 85%, rgba(179, 179, 255, 0.25));
-}
-.test__gallery .assert__asym-inside:after {
-  content: "";
-  display: table;
-  clear: both;
-}
-
-.test__gallery .assert__asym-inside .nest {
-  overflow: hidden;
-}
-.test__gallery .assert__asym-inside .test, .test__gallery .assert__asym-inside .expect {
-  margin-bottom: 0px;
-  margin-bottom: 0rem;
-}
-
-.test__gallery .assert__asym-inside::before {
-  content: "Items should create 2x isolated asymmetrical gallery, with inside gutters.";
-  display: block;
-  padding: 0.375rem 0.75rem;
-  text-align: left;
-  font-style: italic;
-}
-
 /*
-
-### Row Syntax ------ */
-/* - [mixin] row */
-.test__row .assert__row {
-  max-width: 100%;
-  margin-left: auto;
-  margin-right: auto;
-  background: -webkit-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 14.28571%, rgba(102, 102, 255, 0.25) 14.28571%, rgba(179, 179, 255, 0.25) 28.57143%, rgba(102, 102, 255, 0.25) 28.57143%, rgba(179, 179, 255, 0.25) 42.85714%, rgba(102, 102, 255, 0.25) 42.85714%, rgba(179, 179, 255, 0.25) 57.14286%, rgba(102, 102, 255, 0.25) 57.14286%, rgba(179, 179, 255, 0.25) 71.42857%, rgba(102, 102, 255, 0.25) 71.42857%, rgba(179, 179, 255, 0.25) 85.71429%, rgba(102, 102, 255, 0.25) 85.71429%, rgba(179, 179, 255, 0.25));
-  background: -moz-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 14.28571%, rgba(102, 102, 255, 0.25) 14.28571%, rgba(179, 179, 255, 0.25) 28.57143%, rgba(102, 102, 255, 0.25) 28.57143%, rgba(179, 179, 255, 0.25) 42.85714%, rgba(102, 102, 255, 0.25) 42.85714%, rgba(179, 179, 255, 0.25) 57.14286%, rgba(102, 102, 255, 0.25) 57.14286%, rgba(179, 179, 255, 0.25) 71.42857%, rgba(102, 102, 255, 0.25) 71.42857%, rgba(179, 179, 255, 0.25) 85.71429%, rgba(102, 102, 255, 0.25) 85.71429%, rgba(179, 179, 255, 0.25));
-  background: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 14.28571%, rgba(102, 102, 255, 0.25) 14.28571%, rgba(179, 179, 255, 0.25) 28.57143%, rgba(102, 102, 255, 0.25) 28.57143%, rgba(179, 179, 255, 0.25) 42.85714%, rgba(102, 102, 255, 0.25) 42.85714%, rgba(179, 179, 255, 0.25) 57.14286%, rgba(102, 102, 255, 0.25) 57.14286%, rgba(179, 179, 255, 0.25) 71.42857%, rgba(102, 102, 255, 0.25) 71.42857%, rgba(179, 179, 255, 0.25) 85.71429%, rgba(102, 102, 255, 0.25) 85.71429%, rgba(179, 179, 255, 0.25));
-}
-.test__row .assert__row:after {
-  content: "";
-  display: table;
-  clear: both;
-}
-
-.test__row .assert__row .spacer {
-  box-sizing: border-box;
-  width: 28.57143%;
-  float: left;
-  padding-left: 2.38095%;
-  padding-right: 2.38095%;
-}
-
-.test__row .assert__row::before {
-  content: "Rows should clear preceeding floats, and contain inner floats";
-  display: block;
-  padding: 0.375rem 0.75rem;
-  text-align: left;
-  font-style: italic;
-}
-
-/* - [mixin] unrow */
-.test__unrow .assert__unrow {
-  max-width: 100%;
-  margin-left: auto;
-  margin-right: auto;
-  background: -webkit-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 14.28571%, rgba(102, 102, 255, 0.25) 14.28571%, rgba(179, 179, 255, 0.25) 28.57143%, rgba(102, 102, 255, 0.25) 28.57143%, rgba(179, 179, 255, 0.25) 42.85714%, rgba(102, 102, 255, 0.25) 42.85714%, rgba(179, 179, 255, 0.25) 57.14286%, rgba(102, 102, 255, 0.25) 57.14286%, rgba(179, 179, 255, 0.25) 71.42857%, rgba(102, 102, 255, 0.25) 71.42857%, rgba(179, 179, 255, 0.25) 85.71429%, rgba(102, 102, 255, 0.25) 85.71429%, rgba(179, 179, 255, 0.25));
-  background: -moz-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 14.28571%, rgba(102, 102, 255, 0.25) 14.28571%, rgba(179, 179, 255, 0.25) 28.57143%, rgba(102, 102, 255, 0.25) 28.57143%, rgba(179, 179, 255, 0.25) 42.85714%, rgba(102, 102, 255, 0.25) 42.85714%, rgba(179, 179, 255, 0.25) 57.14286%, rgba(102, 102, 255, 0.25) 57.14286%, rgba(179, 179, 255, 0.25) 71.42857%, rgba(102, 102, 255, 0.25) 71.42857%, rgba(179, 179, 255, 0.25) 85.71429%, rgba(102, 102, 255, 0.25) 85.71429%, rgba(179, 179, 255, 0.25));
-  background: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 14.28571%, rgba(102, 102, 255, 0.25) 14.28571%, rgba(179, 179, 255, 0.25) 28.57143%, rgba(102, 102, 255, 0.25) 28.57143%, rgba(179, 179, 255, 0.25) 42.85714%, rgba(102, 102, 255, 0.25) 42.85714%, rgba(179, 179, 255, 0.25) 57.14286%, rgba(102, 102, 255, 0.25) 57.14286%, rgba(179, 179, 255, 0.25) 71.42857%, rgba(102, 102, 255, 0.25) 71.42857%, rgba(179, 179, 255, 0.25) 85.71429%, rgba(102, 102, 255, 0.25) 85.71429%, rgba(179, 179, 255, 0.25));
-}
-.test__unrow .assert__unrow:after {
-  content: "";
-  display: table;
-  clear: both;
-}
-
-.test__unrow .assert__unrow .spacer {
-  box-sizing: border-box;
-  width: 28.57143%;
-  float: left;
-  padding-left: 2.38095%;
-  padding-right: 2.38095%;
-}
-.test__unrow .assert__unrow .test, .test__unrow .assert__unrow .expect {
-  clear: left;
-}
-.test__unrow .assert__unrow .test:after, .test__unrow .assert__unrow .expect:after {
-  content: "";
-  display: table;
-  clear: both;
-}
-
-.test__unrow .assert__unrow::before {
-  content: "Non-rows should not clear or wrap floated elements";
-  display: block;
-  padding: 0.375rem 0.75rem;
-  text-align: left;
-  font-style: italic;
-}
-
-/* - [mixin] first */
-.test__first .assert__first {
-  max-width: 100%;
-  margin-left: auto;
-  margin-right: auto;
-  background: -webkit-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, transparent 10%, transparent 15%, rgba(102, 102, 255, 0.25) 15%, rgba(179, 179, 255, 0.25) 25%, transparent 25%, transparent 30%, rgba(102, 102, 255, 0.25) 30%, rgba(179, 179, 255, 0.25) 40%, transparent 40%, transparent 45%, rgba(102, 102, 255, 0.25) 45%, rgba(179, 179, 255, 0.25) 55.0%, transparent 55.0%, transparent 60%, rgba(102, 102, 255, 0.25) 60%, rgba(179, 179, 255, 0.25) 70%, transparent 70%, transparent 75%, rgba(102, 102, 255, 0.25) 75%, rgba(179, 179, 255, 0.25) 85%, transparent 85%, transparent 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
-  background: -moz-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, transparent 10%, transparent 15%, rgba(102, 102, 255, 0.25) 15%, rgba(179, 179, 255, 0.25) 25%, transparent 25%, transparent 30%, rgba(102, 102, 255, 0.25) 30%, rgba(179, 179, 255, 0.25) 40%, transparent 40%, transparent 45%, rgba(102, 102, 255, 0.25) 45%, rgba(179, 179, 255, 0.25) 55.0%, transparent 55.0%, transparent 60%, rgba(102, 102, 255, 0.25) 60%, rgba(179, 179, 255, 0.25) 70%, transparent 70%, transparent 75%, rgba(102, 102, 255, 0.25) 75%, rgba(179, 179, 255, 0.25) 85%, transparent 85%, transparent 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
-  background: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, transparent 10%, transparent 15%, rgba(102, 102, 255, 0.25) 15%, rgba(179, 179, 255, 0.25) 25%, transparent 25%, transparent 30%, rgba(102, 102, 255, 0.25) 30%, rgba(179, 179, 255, 0.25) 40%, transparent 40%, transparent 45%, rgba(102, 102, 255, 0.25) 45%, rgba(179, 179, 255, 0.25) 55.0%, transparent 55.0%, transparent 60%, rgba(102, 102, 255, 0.25) 60%, rgba(179, 179, 255, 0.25) 70%, transparent 70%, transparent 75%, rgba(102, 102, 255, 0.25) 75%, rgba(179, 179, 255, 0.25) 85%, transparent 85%, transparent 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
-}
-.test__first .assert__first:after {
-  content: "";
-  display: table;
-  clear: both;
-}
-
-.test__first .assert__first .test, .test__first .assert__first .expect {
-  width: 25%;
-  float: left;
-  margin-left: 2.5%;
-  margin-right: 2.5%;
-  clear: left;
-}
-
-.test__first .assert__first::before {
-  content: "First items should have left margins removed";
-  display: block;
-  padding: 0.375rem 0.75rem;
-  text-align: left;
-  font-style: italic;
-}
-
-/* - [mixin] alpha */
-.test__alpha .assert__alpha {
-  max-width: 100%;
-  margin-left: auto;
-  margin-right: auto;
-  background: -webkit-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, transparent 10%, transparent 15%, rgba(102, 102, 255, 0.25) 15%, rgba(179, 179, 255, 0.25) 25%, transparent 25%, transparent 30%, rgba(102, 102, 255, 0.25) 30%, rgba(179, 179, 255, 0.25) 40%, transparent 40%, transparent 45%, rgba(102, 102, 255, 0.25) 45%, rgba(179, 179, 255, 0.25) 55.0%, transparent 55.0%, transparent 60%, rgba(102, 102, 255, 0.25) 60%, rgba(179, 179, 255, 0.25) 70%, transparent 70%, transparent 75%, rgba(102, 102, 255, 0.25) 75%, rgba(179, 179, 255, 0.25) 85%, transparent 85%, transparent 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
-  background: -moz-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, transparent 10%, transparent 15%, rgba(102, 102, 255, 0.25) 15%, rgba(179, 179, 255, 0.25) 25%, transparent 25%, transparent 30%, rgba(102, 102, 255, 0.25) 30%, rgba(179, 179, 255, 0.25) 40%, transparent 40%, transparent 45%, rgba(102, 102, 255, 0.25) 45%, rgba(179, 179, 255, 0.25) 55.0%, transparent 55.0%, transparent 60%, rgba(102, 102, 255, 0.25) 60%, rgba(179, 179, 255, 0.25) 70%, transparent 70%, transparent 75%, rgba(102, 102, 255, 0.25) 75%, rgba(179, 179, 255, 0.25) 85%, transparent 85%, transparent 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
-  background: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, transparent 10%, transparent 15%, rgba(102, 102, 255, 0.25) 15%, rgba(179, 179, 255, 0.25) 25%, transparent 25%, transparent 30%, rgba(102, 102, 255, 0.25) 30%, rgba(179, 179, 255, 0.25) 40%, transparent 40%, transparent 45%, rgba(102, 102, 255, 0.25) 45%, rgba(179, 179, 255, 0.25) 55.0%, transparent 55.0%, transparent 60%, rgba(102, 102, 255, 0.25) 60%, rgba(179, 179, 255, 0.25) 70%, transparent 70%, transparent 75%, rgba(102, 102, 255, 0.25) 75%, rgba(179, 179, 255, 0.25) 85%, transparent 85%, transparent 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
-}
-.test__alpha .assert__alpha:after {
-  content: "";
-  display: table;
-  clear: both;
-}
-
-.test__alpha .assert__alpha .test, .test__alpha .assert__alpha .expect {
-  width: 25%;
-  float: left;
-  margin-left: 2.5%;
-  margin-right: 2.5%;
-  clear: left;
-}
-
-.test__alpha .assert__alpha::before {
-  content: "Alpha items should have left margins removed";
-  display: block;
-  padding: 0.375rem 0.75rem;
-  text-align: left;
-  font-style: italic;
-}
-
-/* - [mixin] nth-first */
-.test__nth-first .assert__nth-first {
-  max-width: 100%;
-  margin-left: auto;
-  margin-right: auto;
-  background: -webkit-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, transparent 10%, transparent 15%, rgba(102, 102, 255, 0.25) 15%, rgba(179, 179, 255, 0.25) 25%, transparent 25%, transparent 30%, rgba(102, 102, 255, 0.25) 30%, rgba(179, 179, 255, 0.25) 40%, transparent 40%, transparent 45%, rgba(102, 102, 255, 0.25) 45%, rgba(179, 179, 255, 0.25) 55.0%, transparent 55.0%, transparent 60%, rgba(102, 102, 255, 0.25) 60%, rgba(179, 179, 255, 0.25) 70%, transparent 70%, transparent 75%, rgba(102, 102, 255, 0.25) 75%, rgba(179, 179, 255, 0.25) 85%, transparent 85%, transparent 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
-  background: -moz-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, transparent 10%, transparent 15%, rgba(102, 102, 255, 0.25) 15%, rgba(179, 179, 255, 0.25) 25%, transparent 25%, transparent 30%, rgba(102, 102, 255, 0.25) 30%, rgba(179, 179, 255, 0.25) 40%, transparent 40%, transparent 45%, rgba(102, 102, 255, 0.25) 45%, rgba(179, 179, 255, 0.25) 55.0%, transparent 55.0%, transparent 60%, rgba(102, 102, 255, 0.25) 60%, rgba(179, 179, 255, 0.25) 70%, transparent 70%, transparent 75%, rgba(102, 102, 255, 0.25) 75%, rgba(179, 179, 255, 0.25) 85%, transparent 85%, transparent 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
-  background: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, transparent 10%, transparent 15%, rgba(102, 102, 255, 0.25) 15%, rgba(179, 179, 255, 0.25) 25%, transparent 25%, transparent 30%, rgba(102, 102, 255, 0.25) 30%, rgba(179, 179, 255, 0.25) 40%, transparent 40%, transparent 45%, rgba(102, 102, 255, 0.25) 45%, rgba(179, 179, 255, 0.25) 55.0%, transparent 55.0%, transparent 60%, rgba(102, 102, 255, 0.25) 60%, rgba(179, 179, 255, 0.25) 70%, transparent 70%, transparent 75%, rgba(102, 102, 255, 0.25) 75%, rgba(179, 179, 255, 0.25) 85%, transparent 85%, transparent 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
-}
-.test__nth-first .assert__nth-first:after {
-  content: "";
-  display: table;
-  clear: both;
-}
-
-.test__nth-first .assert__nth-first .test, .test__nth-first .assert__nth-first .expect {
-  width: 25%;
-  float: left;
-  margin-left: 2.5%;
-  margin-right: 2.5%;
-  clear: left;
-}
-
-.test__nth-first .assert__nth-first::before {
-  content: "Nth-first (first-child) items should have left margins removed";
-  display: block;
-  padding: 0.375rem 0.75rem;
-  text-align: left;
-  font-style: italic;
-}
-
-/* - [mixin] nth-alpha */
-.test__nth-alpha .assert__nth-alpha {
-  max-width: 100%;
-  margin-left: auto;
-  margin-right: auto;
-  background: -webkit-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, transparent 10%, transparent 15%, rgba(102, 102, 255, 0.25) 15%, rgba(179, 179, 255, 0.25) 25%, transparent 25%, transparent 30%, rgba(102, 102, 255, 0.25) 30%, rgba(179, 179, 255, 0.25) 40%, transparent 40%, transparent 45%, rgba(102, 102, 255, 0.25) 45%, rgba(179, 179, 255, 0.25) 55.0%, transparent 55.0%, transparent 60%, rgba(102, 102, 255, 0.25) 60%, rgba(179, 179, 255, 0.25) 70%, transparent 70%, transparent 75%, rgba(102, 102, 255, 0.25) 75%, rgba(179, 179, 255, 0.25) 85%, transparent 85%, transparent 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
-  background: -moz-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, transparent 10%, transparent 15%, rgba(102, 102, 255, 0.25) 15%, rgba(179, 179, 255, 0.25) 25%, transparent 25%, transparent 30%, rgba(102, 102, 255, 0.25) 30%, rgba(179, 179, 255, 0.25) 40%, transparent 40%, transparent 45%, rgba(102, 102, 255, 0.25) 45%, rgba(179, 179, 255, 0.25) 55.0%, transparent 55.0%, transparent 60%, rgba(102, 102, 255, 0.25) 60%, rgba(179, 179, 255, 0.25) 70%, transparent 70%, transparent 75%, rgba(102, 102, 255, 0.25) 75%, rgba(179, 179, 255, 0.25) 85%, transparent 85%, transparent 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
-  background: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, transparent 10%, transparent 15%, rgba(102, 102, 255, 0.25) 15%, rgba(179, 179, 255, 0.25) 25%, transparent 25%, transparent 30%, rgba(102, 102, 255, 0.25) 30%, rgba(179, 179, 255, 0.25) 40%, transparent 40%, transparent 45%, rgba(102, 102, 255, 0.25) 45%, rgba(179, 179, 255, 0.25) 55.0%, transparent 55.0%, transparent 60%, rgba(102, 102, 255, 0.25) 60%, rgba(179, 179, 255, 0.25) 70%, transparent 70%, transparent 75%, rgba(102, 102, 255, 0.25) 75%, rgba(179, 179, 255, 0.25) 85%, transparent 85%, transparent 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
-}
-.test__nth-alpha .assert__nth-alpha:after {
-  content: "";
-  display: table;
-  clear: both;
-}
-
-.test__nth-alpha .assert__nth-alpha .test, .test__nth-alpha .assert__nth-alpha .expect {
-  width: 25%;
-  float: left;
-  margin-left: 2.5%;
-  margin-right: 2.5%;
-  clear: left;
-}
-
-.test__nth-alpha .assert__nth-alpha::before {
-  content: "Nth-alpha (first-child) items should have left margins removed";
-  display: block;
-  padding: 0.375rem 0.75rem;
-  text-align: left;
-  font-style: italic;
-}
-
-/* - [mixin] last */
-.test__last .assert__last {
-  max-width: 100%;
-  margin-left: auto;
-  margin-right: auto;
-  background: -webkit-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, transparent 10%, transparent 15%, rgba(102, 102, 255, 0.25) 15%, rgba(179, 179, 255, 0.25) 25%, transparent 25%, transparent 30%, rgba(102, 102, 255, 0.25) 30%, rgba(179, 179, 255, 0.25) 40%, transparent 40%, transparent 45%, rgba(102, 102, 255, 0.25) 45%, rgba(179, 179, 255, 0.25) 55.0%, transparent 55.0%, transparent 60%, rgba(102, 102, 255, 0.25) 60%, rgba(179, 179, 255, 0.25) 70%, transparent 70%, transparent 75%, rgba(102, 102, 255, 0.25) 75%, rgba(179, 179, 255, 0.25) 85%, transparent 85%, transparent 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
-  background: -moz-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, transparent 10%, transparent 15%, rgba(102, 102, 255, 0.25) 15%, rgba(179, 179, 255, 0.25) 25%, transparent 25%, transparent 30%, rgba(102, 102, 255, 0.25) 30%, rgba(179, 179, 255, 0.25) 40%, transparent 40%, transparent 45%, rgba(102, 102, 255, 0.25) 45%, rgba(179, 179, 255, 0.25) 55.0%, transparent 55.0%, transparent 60%, rgba(102, 102, 255, 0.25) 60%, rgba(179, 179, 255, 0.25) 70%, transparent 70%, transparent 75%, rgba(102, 102, 255, 0.25) 75%, rgba(179, 179, 255, 0.25) 85%, transparent 85%, transparent 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
-  background: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, transparent 10%, transparent 15%, rgba(102, 102, 255, 0.25) 15%, rgba(179, 179, 255, 0.25) 25%, transparent 25%, transparent 30%, rgba(102, 102, 255, 0.25) 30%, rgba(179, 179, 255, 0.25) 40%, transparent 40%, transparent 45%, rgba(102, 102, 255, 0.25) 45%, rgba(179, 179, 255, 0.25) 55.0%, transparent 55.0%, transparent 60%, rgba(102, 102, 255, 0.25) 60%, rgba(179, 179, 255, 0.25) 70%, transparent 70%, transparent 75%, rgba(102, 102, 255, 0.25) 75%, rgba(179, 179, 255, 0.25) 85%, transparent 85%, transparent 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
-}
-.test__last .assert__last:after {
-  content: "";
-  display: table;
-  clear: both;
-}
-
-.test__last .assert__last .test, .test__last .assert__last .expect {
-  width: 25%;
-  float: left;
-  margin-left: 2.5%;
-  margin-right: 2.5%;
-  clear: both;
-}
-
-.test__last .assert__last::before {
-  content: "Last items should float right, with right margins removed";
-  display: block;
-  padding: 0.375rem 0.75rem;
-  text-align: left;
-  font-style: italic;
-}
-
-/* - [mixin] omega */
-.test__omega .assert__omega {
-  max-width: 100%;
-  margin-left: auto;
-  margin-right: auto;
-  background: -webkit-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, transparent 10%, transparent 15%, rgba(102, 102, 255, 0.25) 15%, rgba(179, 179, 255, 0.25) 25%, transparent 25%, transparent 30%, rgba(102, 102, 255, 0.25) 30%, rgba(179, 179, 255, 0.25) 40%, transparent 40%, transparent 45%, rgba(102, 102, 255, 0.25) 45%, rgba(179, 179, 255, 0.25) 55.0%, transparent 55.0%, transparent 60%, rgba(102, 102, 255, 0.25) 60%, rgba(179, 179, 255, 0.25) 70%, transparent 70%, transparent 75%, rgba(102, 102, 255, 0.25) 75%, rgba(179, 179, 255, 0.25) 85%, transparent 85%, transparent 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
-  background: -moz-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, transparent 10%, transparent 15%, rgba(102, 102, 255, 0.25) 15%, rgba(179, 179, 255, 0.25) 25%, transparent 25%, transparent 30%, rgba(102, 102, 255, 0.25) 30%, rgba(179, 179, 255, 0.25) 40%, transparent 40%, transparent 45%, rgba(102, 102, 255, 0.25) 45%, rgba(179, 179, 255, 0.25) 55.0%, transparent 55.0%, transparent 60%, rgba(102, 102, 255, 0.25) 60%, rgba(179, 179, 255, 0.25) 70%, transparent 70%, transparent 75%, rgba(102, 102, 255, 0.25) 75%, rgba(179, 179, 255, 0.25) 85%, transparent 85%, transparent 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
-  background: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, transparent 10%, transparent 15%, rgba(102, 102, 255, 0.25) 15%, rgba(179, 179, 255, 0.25) 25%, transparent 25%, transparent 30%, rgba(102, 102, 255, 0.25) 30%, rgba(179, 179, 255, 0.25) 40%, transparent 40%, transparent 45%, rgba(102, 102, 255, 0.25) 45%, rgba(179, 179, 255, 0.25) 55.0%, transparent 55.0%, transparent 60%, rgba(102, 102, 255, 0.25) 60%, rgba(179, 179, 255, 0.25) 70%, transparent 70%, transparent 75%, rgba(102, 102, 255, 0.25) 75%, rgba(179, 179, 255, 0.25) 85%, transparent 85%, transparent 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
-}
-.test__omega .assert__omega:after {
-  content: "";
-  display: table;
-  clear: both;
-}
-
-.test__omega .assert__omega .test, .test__omega .assert__omega .expect {
-  width: 25%;
-  float: left;
-  margin-left: 2.5%;
-  margin-right: 2.5%;
-  clear: both;
-}
-
-.test__omega .assert__omega::before {
-  content: "Omega items should float right, with right margins removed";
-  display: block;
-  padding: 0.375rem 0.75rem;
-  text-align: left;
-  font-style: italic;
-}
-
-/* - [mixin] nth-last */
-.test__nth-last .assert__nth-last {
-  max-width: 100%;
-  margin-left: auto;
-  margin-right: auto;
-  background: -webkit-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, transparent 10%, transparent 15%, rgba(102, 102, 255, 0.25) 15%, rgba(179, 179, 255, 0.25) 25%, transparent 25%, transparent 30%, rgba(102, 102, 255, 0.25) 30%, rgba(179, 179, 255, 0.25) 40%, transparent 40%, transparent 45%, rgba(102, 102, 255, 0.25) 45%, rgba(179, 179, 255, 0.25) 55.0%, transparent 55.0%, transparent 60%, rgba(102, 102, 255, 0.25) 60%, rgba(179, 179, 255, 0.25) 70%, transparent 70%, transparent 75%, rgba(102, 102, 255, 0.25) 75%, rgba(179, 179, 255, 0.25) 85%, transparent 85%, transparent 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
-  background: -moz-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, transparent 10%, transparent 15%, rgba(102, 102, 255, 0.25) 15%, rgba(179, 179, 255, 0.25) 25%, transparent 25%, transparent 30%, rgba(102, 102, 255, 0.25) 30%, rgba(179, 179, 255, 0.25) 40%, transparent 40%, transparent 45%, rgba(102, 102, 255, 0.25) 45%, rgba(179, 179, 255, 0.25) 55.0%, transparent 55.0%, transparent 60%, rgba(102, 102, 255, 0.25) 60%, rgba(179, 179, 255, 0.25) 70%, transparent 70%, transparent 75%, rgba(102, 102, 255, 0.25) 75%, rgba(179, 179, 255, 0.25) 85%, transparent 85%, transparent 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
-  background: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, transparent 10%, transparent 15%, rgba(102, 102, 255, 0.25) 15%, rgba(179, 179, 255, 0.25) 25%, transparent 25%, transparent 30%, rgba(102, 102, 255, 0.25) 30%, rgba(179, 179, 255, 0.25) 40%, transparent 40%, transparent 45%, rgba(102, 102, 255, 0.25) 45%, rgba(179, 179, 255, 0.25) 55.0%, transparent 55.0%, transparent 60%, rgba(102, 102, 255, 0.25) 60%, rgba(179, 179, 255, 0.25) 70%, transparent 70%, transparent 75%, rgba(102, 102, 255, 0.25) 75%, rgba(179, 179, 255, 0.25) 85%, transparent 85%, transparent 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
-}
-.test__nth-last .assert__nth-last:after {
-  content: "";
-  display: table;
-  clear: both;
-}
-
-.test__nth-last .assert__nth-last .test, .test__nth-last .assert__nth-last .expect {
-  width: 25%;
-  float: left;
-  margin-left: 2.5%;
-  margin-right: 2.5%;
-  clear: both;
-}
-
-.test__nth-last .assert__nth-last::before {
-  content: "nth-last(2, last-child) items should float right, with right margins removed";
-  display: block;
-  padding: 0.375rem 0.75rem;
-  text-align: left;
-  font-style: italic;
-}
-
-/* - [mixin] nth-omega */
-.test__nth-omega .assert__nth-omega {
-  max-width: 100%;
-  margin-left: auto;
-  margin-right: auto;
-  background: -webkit-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, transparent 10%, transparent 15%, rgba(102, 102, 255, 0.25) 15%, rgba(179, 179, 255, 0.25) 25%, transparent 25%, transparent 30%, rgba(102, 102, 255, 0.25) 30%, rgba(179, 179, 255, 0.25) 40%, transparent 40%, transparent 45%, rgba(102, 102, 255, 0.25) 45%, rgba(179, 179, 255, 0.25) 55.0%, transparent 55.0%, transparent 60%, rgba(102, 102, 255, 0.25) 60%, rgba(179, 179, 255, 0.25) 70%, transparent 70%, transparent 75%, rgba(102, 102, 255, 0.25) 75%, rgba(179, 179, 255, 0.25) 85%, transparent 85%, transparent 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
-  background: -moz-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, transparent 10%, transparent 15%, rgba(102, 102, 255, 0.25) 15%, rgba(179, 179, 255, 0.25) 25%, transparent 25%, transparent 30%, rgba(102, 102, 255, 0.25) 30%, rgba(179, 179, 255, 0.25) 40%, transparent 40%, transparent 45%, rgba(102, 102, 255, 0.25) 45%, rgba(179, 179, 255, 0.25) 55.0%, transparent 55.0%, transparent 60%, rgba(102, 102, 255, 0.25) 60%, rgba(179, 179, 255, 0.25) 70%, transparent 70%, transparent 75%, rgba(102, 102, 255, 0.25) 75%, rgba(179, 179, 255, 0.25) 85%, transparent 85%, transparent 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
-  background: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, transparent 10%, transparent 15%, rgba(102, 102, 255, 0.25) 15%, rgba(179, 179, 255, 0.25) 25%, transparent 25%, transparent 30%, rgba(102, 102, 255, 0.25) 30%, rgba(179, 179, 255, 0.25) 40%, transparent 40%, transparent 45%, rgba(102, 102, 255, 0.25) 45%, rgba(179, 179, 255, 0.25) 55.0%, transparent 55.0%, transparent 60%, rgba(102, 102, 255, 0.25) 60%, rgba(179, 179, 255, 0.25) 70%, transparent 70%, transparent 75%, rgba(102, 102, 255, 0.25) 75%, rgba(179, 179, 255, 0.25) 85%, transparent 85%, transparent 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
-}
-.test__nth-omega .assert__nth-omega:after {
-  content: "";
-  display: table;
-  clear: both;
-}
-
-.test__nth-omega .assert__nth-omega .test, .test__nth-omega .assert__nth-omega .expect {
-  width: 25%;
-  float: left;
-  margin-left: 2.5%;
-  margin-right: 2.5%;
-  clear: both;
-}
-
-.test__nth-omega .assert__nth-omega::before {
-  content: "nth-omega(2, last-child) items should float right, with right margins removed";
-  display: block;
-  padding: 0.375rem 0.75rem;
-  text-align: left;
-  font-style: italic;
-}
-
-/*
-
-### Margin Syntax ------ */
-/* - [mixin] pre */
-.test__pre .assert__pre {
-  max-width: 100%;
-  margin-left: auto;
-  margin-right: auto;
-  background: -webkit-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, transparent 10%, transparent 15%, rgba(102, 102, 255, 0.25) 15%, rgba(179, 179, 255, 0.25) 25%, transparent 25%, transparent 30%, rgba(102, 102, 255, 0.25) 30%, rgba(179, 179, 255, 0.25) 40%, transparent 40%, transparent 45%, rgba(102, 102, 255, 0.25) 45%, rgba(179, 179, 255, 0.25) 55.0%, transparent 55.0%, transparent 60%, rgba(102, 102, 255, 0.25) 60%, rgba(179, 179, 255, 0.25) 70%, transparent 70%, transparent 75%, rgba(102, 102, 255, 0.25) 75%, rgba(179, 179, 255, 0.25) 85%, transparent 85%, transparent 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
-  background: -moz-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, transparent 10%, transparent 15%, rgba(102, 102, 255, 0.25) 15%, rgba(179, 179, 255, 0.25) 25%, transparent 25%, transparent 30%, rgba(102, 102, 255, 0.25) 30%, rgba(179, 179, 255, 0.25) 40%, transparent 40%, transparent 45%, rgba(102, 102, 255, 0.25) 45%, rgba(179, 179, 255, 0.25) 55.0%, transparent 55.0%, transparent 60%, rgba(102, 102, 255, 0.25) 60%, rgba(179, 179, 255, 0.25) 70%, transparent 70%, transparent 75%, rgba(102, 102, 255, 0.25) 75%, rgba(179, 179, 255, 0.25) 85%, transparent 85%, transparent 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
-  background: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, transparent 10%, transparent 15%, rgba(102, 102, 255, 0.25) 15%, rgba(179, 179, 255, 0.25) 25%, transparent 25%, transparent 30%, rgba(102, 102, 255, 0.25) 30%, rgba(179, 179, 255, 0.25) 40%, transparent 40%, transparent 45%, rgba(102, 102, 255, 0.25) 45%, rgba(179, 179, 255, 0.25) 55.0%, transparent 55.0%, transparent 60%, rgba(102, 102, 255, 0.25) 60%, rgba(179, 179, 255, 0.25) 70%, transparent 70%, transparent 75%, rgba(102, 102, 255, 0.25) 75%, rgba(179, 179, 255, 0.25) 85%, transparent 85%, transparent 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
-}
-.test__pre .assert__pre:after {
-  content: "";
-  display: table;
-  clear: both;
-}
-
-.test__pre .assert__pre::before {
-  content: "Items should have 3-columns margin before.";
-  display: block;
-  padding: 0.375rem 0.75rem;
-  text-align: left;
-  font-style: italic;
-}
-
-/* - [mixin] post */
-.test__post .assert__post {
-  max-width: 100%;
-  margin-left: auto;
-  margin-right: auto;
-  background: -webkit-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, transparent 10%, transparent 12.5%, rgba(102, 102, 255, 0.25) 12.5%, rgba(179, 179, 255, 0.25) 32.5%, transparent 32.5%, transparent 35%, rgba(102, 102, 255, 0.25) 35%, rgba(179, 179, 255, 0.25) 65%, transparent 65%, transparent 67.5%, rgba(102, 102, 255, 0.25) 67.5%, rgba(179, 179, 255, 0.25) 87.5%, transparent 87.5%, transparent 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
-  background: -moz-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, transparent 10%, transparent 12.5%, rgba(102, 102, 255, 0.25) 12.5%, rgba(179, 179, 255, 0.25) 32.5%, transparent 32.5%, transparent 35%, rgba(102, 102, 255, 0.25) 35%, rgba(179, 179, 255, 0.25) 65%, transparent 65%, transparent 67.5%, rgba(102, 102, 255, 0.25) 67.5%, rgba(179, 179, 255, 0.25) 87.5%, transparent 87.5%, transparent 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
-  background: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, transparent 10%, transparent 12.5%, rgba(102, 102, 255, 0.25) 12.5%, rgba(179, 179, 255, 0.25) 32.5%, transparent 32.5%, transparent 35%, rgba(102, 102, 255, 0.25) 35%, rgba(179, 179, 255, 0.25) 65%, transparent 65%, transparent 67.5%, rgba(102, 102, 255, 0.25) 67.5%, rgba(179, 179, 255, 0.25) 87.5%, transparent 87.5%, transparent 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
-}
-.test__post .assert__post:after {
-  content: "";
-  display: table;
-  clear: both;
-}
-
-.test__post .assert__post::before {
-  content: "Items should have 2-columns margin after.";
-  display: block;
-  padding: 0.375rem 0.75rem;
-  text-align: left;
-  font-style: italic;
-}
-
-/* - [mixin] push */
-.test__push .assert__push {
-  max-width: 100%;
-  margin-left: auto;
-  margin-right: auto;
-  background: -webkit-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, transparent 10%, transparent 12.5%, rgba(102, 102, 255, 0.25) 12.5%, rgba(179, 179, 255, 0.25) 32.5%, transparent 32.5%, transparent 35%, rgba(102, 102, 255, 0.25) 35%, rgba(179, 179, 255, 0.25) 65%, transparent 65%, transparent 67.5%, rgba(102, 102, 255, 0.25) 67.5%, rgba(179, 179, 255, 0.25) 87.5%, transparent 87.5%, transparent 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
-  background: -moz-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, transparent 10%, transparent 12.5%, rgba(102, 102, 255, 0.25) 12.5%, rgba(179, 179, 255, 0.25) 32.5%, transparent 32.5%, transparent 35%, rgba(102, 102, 255, 0.25) 35%, rgba(179, 179, 255, 0.25) 65%, transparent 65%, transparent 67.5%, rgba(102, 102, 255, 0.25) 67.5%, rgba(179, 179, 255, 0.25) 87.5%, transparent 87.5%, transparent 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
-  background: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, transparent 10%, transparent 12.5%, rgba(102, 102, 255, 0.25) 12.5%, rgba(179, 179, 255, 0.25) 32.5%, transparent 32.5%, transparent 35%, rgba(102, 102, 255, 0.25) 35%, rgba(179, 179, 255, 0.25) 65%, transparent 65%, transparent 67.5%, rgba(102, 102, 255, 0.25) 67.5%, rgba(179, 179, 255, 0.25) 87.5%, transparent 87.5%, transparent 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
-}
-.test__push .assert__push:after {
-  content: "";
-  display: table;
-  clear: both;
-}
-
-.test__push .assert__push::before {
-  content: "Items should have 2-columns margin before.";
-  display: block;
-  padding: 0.375rem 0.75rem;
-  text-align: left;
-  font-style: italic;
-}
-
-/* - [mixin] pull */
-.test__pull .assert__pull {
-  max-width: 100%;
-  margin-left: auto;
-  margin-right: auto;
-  background: -webkit-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, transparent 10%, transparent 12.5%, rgba(102, 102, 255, 0.25) 12.5%, rgba(179, 179, 255, 0.25) 32.5%, transparent 32.5%, transparent 35%, rgba(102, 102, 255, 0.25) 35%, rgba(179, 179, 255, 0.25) 65%, transparent 65%, transparent 67.5%, rgba(102, 102, 255, 0.25) 67.5%, rgba(179, 179, 255, 0.25) 87.5%, transparent 87.5%, transparent 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
-  background: -moz-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, transparent 10%, transparent 12.5%, rgba(102, 102, 255, 0.25) 12.5%, rgba(179, 179, 255, 0.25) 32.5%, transparent 32.5%, transparent 35%, rgba(102, 102, 255, 0.25) 35%, rgba(179, 179, 255, 0.25) 65%, transparent 65%, transparent 67.5%, rgba(102, 102, 255, 0.25) 67.5%, rgba(179, 179, 255, 0.25) 87.5%, transparent 87.5%, transparent 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
-  background: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, transparent 10%, transparent 12.5%, rgba(102, 102, 255, 0.25) 12.5%, rgba(179, 179, 255, 0.25) 32.5%, transparent 32.5%, transparent 35%, rgba(102, 102, 255, 0.25) 35%, rgba(179, 179, 255, 0.25) 65%, transparent 65%, transparent 67.5%, rgba(102, 102, 255, 0.25) 67.5%, rgba(179, 179, 255, 0.25) 87.5%, transparent 87.5%, transparent 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
-}
-.test__pull .assert__pull:after {
-  content: "";
-  display: table;
-  clear: both;
-}
-
-.test__pull .assert__pull .spacer {
-  width: 32.5%;
-  float: left;
-  margin-right: 2.5%;
-}
-.test__pull .assert__pull .test, .test__pull .assert__pull .expect {
-  width: 75%;
-  float: left;
-  margin-right: 2.5%;
-}
-
-.test__pull .assert__pull::before {
-  content: "Items should pull 1-column, overlapping the spacer.";
-  display: block;
-  padding: 0.375rem 0.75rem;
-  text-align: left;
-  font-style: italic;
-}
-
-/* - [mixin] squish */
-.test__squish .assert__simple {
-  max-width: 100%;
-  margin-left: auto;
-  margin-right: auto;
-  background: -webkit-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, transparent 10%, transparent 12.5%, rgba(102, 102, 255, 0.25) 12.5%, rgba(179, 179, 255, 0.25) 32.5%, transparent 32.5%, transparent 35%, rgba(102, 102, 255, 0.25) 35%, rgba(179, 179, 255, 0.25) 65%, transparent 65%, transparent 67.5%, rgba(102, 102, 255, 0.25) 67.5%, rgba(179, 179, 255, 0.25) 87.5%, transparent 87.5%, transparent 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
-  background: -moz-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, transparent 10%, transparent 12.5%, rgba(102, 102, 255, 0.25) 12.5%, rgba(179, 179, 255, 0.25) 32.5%, transparent 32.5%, transparent 35%, rgba(102, 102, 255, 0.25) 35%, rgba(179, 179, 255, 0.25) 65%, transparent 65%, transparent 67.5%, rgba(102, 102, 255, 0.25) 67.5%, rgba(179, 179, 255, 0.25) 87.5%, transparent 87.5%, transparent 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
-  background: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, transparent 10%, transparent 12.5%, rgba(102, 102, 255, 0.25) 12.5%, rgba(179, 179, 255, 0.25) 32.5%, transparent 32.5%, transparent 35%, rgba(102, 102, 255, 0.25) 35%, rgba(179, 179, 255, 0.25) 65%, transparent 65%, transparent 67.5%, rgba(102, 102, 255, 0.25) 67.5%, rgba(179, 179, 255, 0.25) 87.5%, transparent 87.5%, transparent 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
-}
-.test__squish .assert__simple:after {
-  content: "";
-  display: table;
-  clear: both;
-}
-
-.test__squish .assert__simple::before {
-  content: "Items should have 2-columns margin before and after.";
-  display: block;
-  padding: 0.375rem 0.75rem;
-  text-align: left;
-  font-style: italic;
-}
-
-.test__squish .assert__nested {
-  max-width: 100%;
-  margin-left: auto;
-  margin-right: auto;
-  background: -webkit-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 14.28571%, rgba(102, 102, 255, 0.25) 14.28571%, rgba(179, 179, 255, 0.25) 28.57143%, rgba(102, 102, 255, 0.25) 28.57143%, rgba(179, 179, 255, 0.25) 42.85714%, rgba(102, 102, 255, 0.25) 42.85714%, rgba(179, 179, 255, 0.25) 57.14286%, rgba(102, 102, 255, 0.25) 57.14286%, rgba(179, 179, 255, 0.25) 71.42857%, rgba(102, 102, 255, 0.25) 71.42857%, rgba(179, 179, 255, 0.25) 85.71429%, rgba(102, 102, 255, 0.25) 85.71429%, rgba(179, 179, 255, 0.25));
-  background: -moz-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 14.28571%, rgba(102, 102, 255, 0.25) 14.28571%, rgba(179, 179, 255, 0.25) 28.57143%, rgba(102, 102, 255, 0.25) 28.57143%, rgba(179, 179, 255, 0.25) 42.85714%, rgba(102, 102, 255, 0.25) 42.85714%, rgba(179, 179, 255, 0.25) 57.14286%, rgba(102, 102, 255, 0.25) 57.14286%, rgba(179, 179, 255, 0.25) 71.42857%, rgba(102, 102, 255, 0.25) 71.42857%, rgba(179, 179, 255, 0.25) 85.71429%, rgba(102, 102, 255, 0.25) 85.71429%, rgba(179, 179, 255, 0.25));
-  background: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 14.28571%, rgba(102, 102, 255, 0.25) 14.28571%, rgba(179, 179, 255, 0.25) 28.57143%, rgba(102, 102, 255, 0.25) 28.57143%, rgba(179, 179, 255, 0.25) 42.85714%, rgba(102, 102, 255, 0.25) 42.85714%, rgba(179, 179, 255, 0.25) 57.14286%, rgba(102, 102, 255, 0.25) 57.14286%, rgba(179, 179, 255, 0.25) 71.42857%, rgba(102, 102, 255, 0.25) 71.42857%, rgba(179, 179, 255, 0.25) 85.71429%, rgba(102, 102, 255, 0.25) 85.71429%, rgba(179, 179, 255, 0.25));
-}
-.test__squish .assert__nested:after {
-  content: "";
-  display: table;
-  clear: both;
-}
-
-.test__squish .assert__nested .nest {
-  margin-left: 14.28571%;
-  margin-right: 14.28571%;
-}
-
-.test__squish .assert__nested::before {
-  content: "Items should have 1-column margin before, and 2 after - nested.";
-  display: block;
-  padding: 0.375rem 0.75rem;
-  text-align: left;
-  font-style: italic;
-}
-
-/* - [mixin] bleed */
-.test__bleed .assert__simple {
-  max-width: 100%;
-  margin-left: auto;
-  margin-right: auto;
-  background: -webkit-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 7.69231%, transparent 7.69231%, transparent 11.53846%, rgba(102, 102, 255, 0.25) 11.53846%, rgba(179, 179, 255, 0.25) 19.23077%, transparent 19.23077%, transparent 23.07692%, rgba(102, 102, 255, 0.25) 23.07692%, rgba(179, 179, 255, 0.25) 30.76923%, transparent 30.76923%, transparent 34.61538%, rgba(102, 102, 255, 0.25) 34.61538%, rgba(179, 179, 255, 0.25) 42.30769%, transparent 42.30769%, transparent 46.15385%, rgba(102, 102, 255, 0.25) 46.15385%, rgba(179, 179, 255, 0.25) 53.84615%, transparent 53.84615%, transparent 57.69231%, rgba(102, 102, 255, 0.25) 57.69231%, rgba(179, 179, 255, 0.25) 65.38462%, transparent 65.38462%, transparent 69.23077%, rgba(102, 102, 255, 0.25) 69.23077%, rgba(179, 179, 255, 0.25) 76.92308%, transparent 76.92308%, transparent 80.76923%, rgba(102, 102, 255, 0.25) 80.76923%, rgba(179, 179, 255, 0.25) 88.46154%, transparent 88.46154%, transparent 92.30769%, rgba(102, 102, 255, 0.25) 92.30769%, rgba(179, 179, 255, 0.25));
-  background: -moz-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 7.69231%, transparent 7.69231%, transparent 11.53846%, rgba(102, 102, 255, 0.25) 11.53846%, rgba(179, 179, 255, 0.25) 19.23077%, transparent 19.23077%, transparent 23.07692%, rgba(102, 102, 255, 0.25) 23.07692%, rgba(179, 179, 255, 0.25) 30.76923%, transparent 30.76923%, transparent 34.61538%, rgba(102, 102, 255, 0.25) 34.61538%, rgba(179, 179, 255, 0.25) 42.30769%, transparent 42.30769%, transparent 46.15385%, rgba(102, 102, 255, 0.25) 46.15385%, rgba(179, 179, 255, 0.25) 53.84615%, transparent 53.84615%, transparent 57.69231%, rgba(102, 102, 255, 0.25) 57.69231%, rgba(179, 179, 255, 0.25) 65.38462%, transparent 65.38462%, transparent 69.23077%, rgba(102, 102, 255, 0.25) 69.23077%, rgba(179, 179, 255, 0.25) 76.92308%, transparent 76.92308%, transparent 80.76923%, rgba(102, 102, 255, 0.25) 80.76923%, rgba(179, 179, 255, 0.25) 88.46154%, transparent 88.46154%, transparent 92.30769%, rgba(102, 102, 255, 0.25) 92.30769%, rgba(179, 179, 255, 0.25));
-  background: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 7.69231%, transparent 7.69231%, transparent 11.53846%, rgba(102, 102, 255, 0.25) 11.53846%, rgba(179, 179, 255, 0.25) 19.23077%, transparent 19.23077%, transparent 23.07692%, rgba(102, 102, 255, 0.25) 23.07692%, rgba(179, 179, 255, 0.25) 30.76923%, transparent 30.76923%, transparent 34.61538%, rgba(102, 102, 255, 0.25) 34.61538%, rgba(179, 179, 255, 0.25) 42.30769%, transparent 42.30769%, transparent 46.15385%, rgba(102, 102, 255, 0.25) 46.15385%, rgba(179, 179, 255, 0.25) 53.84615%, transparent 53.84615%, transparent 57.69231%, rgba(102, 102, 255, 0.25) 57.69231%, rgba(179, 179, 255, 0.25) 65.38462%, transparent 65.38462%, transparent 69.23077%, rgba(102, 102, 255, 0.25) 69.23077%, rgba(179, 179, 255, 0.25) 76.92308%, transparent 76.92308%, transparent 80.76923%, rgba(102, 102, 255, 0.25) 80.76923%, rgba(179, 179, 255, 0.25) 88.46154%, transparent 88.46154%, transparent 92.30769%, rgba(102, 102, 255, 0.25) 92.30769%, rgba(179, 179, 255, 0.25));
-}
-.test__bleed .assert__simple:after {
-  content: "";
-  display: table;
-  clear: both;
-}
-
-.test__bleed .assert__simple .nest {
-  margin-left: 11.53846%;
-  margin-right: 11.53846%;
-}
-
-.test__bleed .assert__simple::before {
-  content: "Items should bleed 1 column outside their nested context";
-  display: block;
-  padding: 0.375rem 0.75rem;
-  text-align: left;
-  font-style: italic;
-}
-
-.test__bleed .assert__inside {
-  max-width: 100%;
-  margin-left: auto;
-  margin-right: auto;
-  background: -webkit-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, rgba(102, 102, 255, 0.25) 10%, rgba(179, 179, 255, 0.25) 20%, rgba(102, 102, 255, 0.25) 20%, rgba(179, 179, 255, 0.25) 30%, rgba(102, 102, 255, 0.25) 30%, rgba(179, 179, 255, 0.25) 40%, rgba(102, 102, 255, 0.25) 40%, rgba(179, 179, 255, 0.25) 50%, rgba(102, 102, 255, 0.25) 50%, rgba(179, 179, 255, 0.25) 60%, rgba(102, 102, 255, 0.25) 60%, rgba(179, 179, 255, 0.25) 70%, rgba(102, 102, 255, 0.25) 70%, rgba(179, 179, 255, 0.25) 80%, rgba(102, 102, 255, 0.25) 80%, rgba(179, 179, 255, 0.25) 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
-  background: -moz-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, rgba(102, 102, 255, 0.25) 10%, rgba(179, 179, 255, 0.25) 20%, rgba(102, 102, 255, 0.25) 20%, rgba(179, 179, 255, 0.25) 30%, rgba(102, 102, 255, 0.25) 30%, rgba(179, 179, 255, 0.25) 40%, rgba(102, 102, 255, 0.25) 40%, rgba(179, 179, 255, 0.25) 50%, rgba(102, 102, 255, 0.25) 50%, rgba(179, 179, 255, 0.25) 60%, rgba(102, 102, 255, 0.25) 60%, rgba(179, 179, 255, 0.25) 70%, rgba(102, 102, 255, 0.25) 70%, rgba(179, 179, 255, 0.25) 80%, rgba(102, 102, 255, 0.25) 80%, rgba(179, 179, 255, 0.25) 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
-  background: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, rgba(102, 102, 255, 0.25) 10%, rgba(179, 179, 255, 0.25) 20%, rgba(102, 102, 255, 0.25) 20%, rgba(179, 179, 255, 0.25) 30%, rgba(102, 102, 255, 0.25) 30%, rgba(179, 179, 255, 0.25) 40%, rgba(102, 102, 255, 0.25) 40%, rgba(179, 179, 255, 0.25) 50%, rgba(102, 102, 255, 0.25) 50%, rgba(179, 179, 255, 0.25) 60%, rgba(102, 102, 255, 0.25) 60%, rgba(179, 179, 255, 0.25) 70%, rgba(102, 102, 255, 0.25) 70%, rgba(179, 179, 255, 0.25) 80%, rgba(102, 102, 255, 0.25) 80%, rgba(179, 179, 255, 0.25) 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
-}
-.test__bleed .assert__inside:after {
-  content: "";
-  display: table;
-  clear: both;
-}
-
-.test__bleed .assert__inside .nest {
-  margin-left: 10%;
-  margin-right: 10%;
-}
-
-.test__bleed .assert__inside::before {
-  content: "Items should bleed 1 column, and retain their gutters";
-  display: block;
-  padding: 0.375rem 0.75rem;
-  text-align: left;
-  font-style: italic;
-}
-
-.test__bleed .assert__explicit {
-  max-width: 49em;
-  margin-left: auto;
-  margin-right: auto;
-  background: -webkit-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, rgba(102, 102, 255, 0.25) 10%, rgba(179, 179, 255, 0.25) 20%, rgba(102, 102, 255, 0.25) 20%, rgba(179, 179, 255, 0.25) 30%, rgba(102, 102, 255, 0.25) 30%, rgba(179, 179, 255, 0.25) 40%, rgba(102, 102, 255, 0.25) 40%, rgba(179, 179, 255, 0.25) 50%, rgba(102, 102, 255, 0.25) 50%, rgba(179, 179, 255, 0.25) 60%, rgba(102, 102, 255, 0.25) 60%, rgba(179, 179, 255, 0.25) 70%, rgba(102, 102, 255, 0.25) 70%, rgba(179, 179, 255, 0.25) 80%, rgba(102, 102, 255, 0.25) 80%, rgba(179, 179, 255, 0.25) 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
-  background: -moz-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, rgba(102, 102, 255, 0.25) 10%, rgba(179, 179, 255, 0.25) 20%, rgba(102, 102, 255, 0.25) 20%, rgba(179, 179, 255, 0.25) 30%, rgba(102, 102, 255, 0.25) 30%, rgba(179, 179, 255, 0.25) 40%, rgba(102, 102, 255, 0.25) 40%, rgba(179, 179, 255, 0.25) 50%, rgba(102, 102, 255, 0.25) 50%, rgba(179, 179, 255, 0.25) 60%, rgba(102, 102, 255, 0.25) 60%, rgba(179, 179, 255, 0.25) 70%, rgba(102, 102, 255, 0.25) 70%, rgba(179, 179, 255, 0.25) 80%, rgba(102, 102, 255, 0.25) 80%, rgba(179, 179, 255, 0.25) 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
-  background: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, rgba(102, 102, 255, 0.25) 10%, rgba(179, 179, 255, 0.25) 20%, rgba(102, 102, 255, 0.25) 20%, rgba(179, 179, 255, 0.25) 30%, rgba(102, 102, 255, 0.25) 30%, rgba(179, 179, 255, 0.25) 40%, rgba(102, 102, 255, 0.25) 40%, rgba(179, 179, 255, 0.25) 50%, rgba(102, 102, 255, 0.25) 50%, rgba(179, 179, 255, 0.25) 60%, rgba(102, 102, 255, 0.25) 60%, rgba(179, 179, 255, 0.25) 70%, rgba(102, 102, 255, 0.25) 70%, rgba(179, 179, 255, 0.25) 80%, rgba(102, 102, 255, 0.25) 80%, rgba(179, 179, 255, 0.25) 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
-}
-.test__bleed .assert__explicit:after {
-  content: "";
-  display: table;
-  clear: both;
-}
-
-.test__bleed .assert__explicit .nest {
-  margin-top: 24px;
-  margin-top: 1.5rem;
-  margin-bottom: 24px;
-  margin-bottom: 1.5rem;
-  margin-left: 10%;
-  margin-right: 10%;
-}
-
-.test__bleed .assert__explicit::before {
-  content: "Items should bleed 1em on all sides, and retain their static gutters";
-  display: block;
-  padding: 0.375rem 0.75rem;
-  text-align: left;
-  font-style: italic;
-}
-
-/*
-
-### Padding Syntax ------ */
-/* - [mixin] prefix */
-.test__prefix .assert__prefix {
-  max-width: 100%;
-  margin-left: auto;
-  margin-right: auto;
-  background: -webkit-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, transparent 10%, transparent 15%, rgba(102, 102, 255, 0.25) 15%, rgba(179, 179, 255, 0.25) 25%, transparent 25%, transparent 30%, rgba(102, 102, 255, 0.25) 30%, rgba(179, 179, 255, 0.25) 40%, transparent 40%, transparent 45%, rgba(102, 102, 255, 0.25) 45%, rgba(179, 179, 255, 0.25) 55.0%, transparent 55.0%, transparent 60%, rgba(102, 102, 255, 0.25) 60%, rgba(179, 179, 255, 0.25) 70%, transparent 70%, transparent 75%, rgba(102, 102, 255, 0.25) 75%, rgba(179, 179, 255, 0.25) 85%, transparent 85%, transparent 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
-  background: -moz-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, transparent 10%, transparent 15%, rgba(102, 102, 255, 0.25) 15%, rgba(179, 179, 255, 0.25) 25%, transparent 25%, transparent 30%, rgba(102, 102, 255, 0.25) 30%, rgba(179, 179, 255, 0.25) 40%, transparent 40%, transparent 45%, rgba(102, 102, 255, 0.25) 45%, rgba(179, 179, 255, 0.25) 55.0%, transparent 55.0%, transparent 60%, rgba(102, 102, 255, 0.25) 60%, rgba(179, 179, 255, 0.25) 70%, transparent 70%, transparent 75%, rgba(102, 102, 255, 0.25) 75%, rgba(179, 179, 255, 0.25) 85%, transparent 85%, transparent 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
-  background: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, transparent 10%, transparent 15%, rgba(102, 102, 255, 0.25) 15%, rgba(179, 179, 255, 0.25) 25%, transparent 25%, transparent 30%, rgba(102, 102, 255, 0.25) 30%, rgba(179, 179, 255, 0.25) 40%, transparent 40%, transparent 45%, rgba(102, 102, 255, 0.25) 45%, rgba(179, 179, 255, 0.25) 55.0%, transparent 55.0%, transparent 60%, rgba(102, 102, 255, 0.25) 60%, rgba(179, 179, 255, 0.25) 70%, transparent 70%, transparent 75%, rgba(102, 102, 255, 0.25) 75%, rgba(179, 179, 255, 0.25) 85%, transparent 85%, transparent 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
-}
-.test__prefix .assert__prefix:after {
-  content: "";
-  display: table;
-  clear: both;
-}
-
-.test__prefix .assert__prefix::before {
-  content: "Items should have 3 columns padding before.";
-  display: block;
-  padding: 0.375rem 0.75rem;
-  text-align: left;
-  font-style: italic;
-}
-
-/* - [mixin] suffix */
-.test__suffix .assert__suffix {
-  max-width: 100%;
-  margin-left: auto;
-  margin-right: auto;
-  background: -webkit-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, transparent 10%, transparent 12.5%, rgba(102, 102, 255, 0.25) 12.5%, rgba(179, 179, 255, 0.25) 32.5%, transparent 32.5%, transparent 35%, rgba(102, 102, 255, 0.25) 35%, rgba(179, 179, 255, 0.25) 65%, transparent 65%, transparent 67.5%, rgba(102, 102, 255, 0.25) 67.5%, rgba(179, 179, 255, 0.25) 87.5%, transparent 87.5%, transparent 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
-  background: -moz-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, transparent 10%, transparent 12.5%, rgba(102, 102, 255, 0.25) 12.5%, rgba(179, 179, 255, 0.25) 32.5%, transparent 32.5%, transparent 35%, rgba(102, 102, 255, 0.25) 35%, rgba(179, 179, 255, 0.25) 65%, transparent 65%, transparent 67.5%, rgba(102, 102, 255, 0.25) 67.5%, rgba(179, 179, 255, 0.25) 87.5%, transparent 87.5%, transparent 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
-  background: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, transparent 10%, transparent 12.5%, rgba(102, 102, 255, 0.25) 12.5%, rgba(179, 179, 255, 0.25) 32.5%, transparent 32.5%, transparent 35%, rgba(102, 102, 255, 0.25) 35%, rgba(179, 179, 255, 0.25) 65%, transparent 65%, transparent 67.5%, rgba(102, 102, 255, 0.25) 67.5%, rgba(179, 179, 255, 0.25) 87.5%, transparent 87.5%, transparent 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
-}
-.test__suffix .assert__suffix:after {
-  content: "";
-  display: table;
-  clear: both;
-}
-
-.test__suffix .assert__suffix::before {
-  content: "Items should have 2 columns padding after.";
-  display: block;
-  padding: 0.375rem 0.75rem;
-  text-align: left;
-  font-style: italic;
-}
-
-/* - [mixin] pad */
-.test__pad .assert__simple {
-  max-width: 100%;
-  margin-left: auto;
-  margin-right: auto;
-  background: -webkit-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, transparent 10%, transparent 12.5%, rgba(102, 102, 255, 0.25) 12.5%, rgba(179, 179, 255, 0.25) 32.5%, transparent 32.5%, transparent 35%, rgba(102, 102, 255, 0.25) 35%, rgba(179, 179, 255, 0.25) 65%, transparent 65%, transparent 67.5%, rgba(102, 102, 255, 0.25) 67.5%, rgba(179, 179, 255, 0.25) 87.5%, transparent 87.5%, transparent 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
-  background: -moz-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, transparent 10%, transparent 12.5%, rgba(102, 102, 255, 0.25) 12.5%, rgba(179, 179, 255, 0.25) 32.5%, transparent 32.5%, transparent 35%, rgba(102, 102, 255, 0.25) 35%, rgba(179, 179, 255, 0.25) 65%, transparent 65%, transparent 67.5%, rgba(102, 102, 255, 0.25) 67.5%, rgba(179, 179, 255, 0.25) 87.5%, transparent 87.5%, transparent 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
-  background: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, transparent 10%, transparent 12.5%, rgba(102, 102, 255, 0.25) 12.5%, rgba(179, 179, 255, 0.25) 32.5%, transparent 32.5%, transparent 35%, rgba(102, 102, 255, 0.25) 35%, rgba(179, 179, 255, 0.25) 65%, transparent 65%, transparent 67.5%, rgba(102, 102, 255, 0.25) 67.5%, rgba(179, 179, 255, 0.25) 87.5%, transparent 87.5%, transparent 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
-}
-.test__pad .assert__simple:after {
-  content: "";
-  display: table;
-  clear: both;
-}
-
-.test__pad .assert__simple::before {
-  content: "Items should have 2 columns padding before and after.";
-  display: block;
-  padding: 0.375rem 0.75rem;
-  text-align: left;
-  font-style: italic;
-}
-
-.test__pad .assert__nested {
-  max-width: 100%;
-  margin-left: auto;
-  margin-right: auto;
-  background: -webkit-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 7.69231%, transparent 7.69231%, transparent 11.53846%, rgba(102, 102, 255, 0.25) 11.53846%, rgba(179, 179, 255, 0.25) 19.23077%, transparent 19.23077%, transparent 23.07692%, rgba(102, 102, 255, 0.25) 23.07692%, rgba(179, 179, 255, 0.25) 30.76923%, transparent 30.76923%, transparent 34.61538%, rgba(102, 102, 255, 0.25) 34.61538%, rgba(179, 179, 255, 0.25) 42.30769%, transparent 42.30769%, transparent 46.15385%, rgba(102, 102, 255, 0.25) 46.15385%, rgba(179, 179, 255, 0.25) 53.84615%, transparent 53.84615%, transparent 57.69231%, rgba(102, 102, 255, 0.25) 57.69231%, rgba(179, 179, 255, 0.25) 65.38462%, transparent 65.38462%, transparent 69.23077%, rgba(102, 102, 255, 0.25) 69.23077%, rgba(179, 179, 255, 0.25) 76.92308%, transparent 76.92308%, transparent 80.76923%, rgba(102, 102, 255, 0.25) 80.76923%, rgba(179, 179, 255, 0.25) 88.46154%, transparent 88.46154%, transparent 92.30769%, rgba(102, 102, 255, 0.25) 92.30769%, rgba(179, 179, 255, 0.25));
-  background: -moz-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 7.69231%, transparent 7.69231%, transparent 11.53846%, rgba(102, 102, 255, 0.25) 11.53846%, rgba(179, 179, 255, 0.25) 19.23077%, transparent 19.23077%, transparent 23.07692%, rgba(102, 102, 255, 0.25) 23.07692%, rgba(179, 179, 255, 0.25) 30.76923%, transparent 30.76923%, transparent 34.61538%, rgba(102, 102, 255, 0.25) 34.61538%, rgba(179, 179, 255, 0.25) 42.30769%, transparent 42.30769%, transparent 46.15385%, rgba(102, 102, 255, 0.25) 46.15385%, rgba(179, 179, 255, 0.25) 53.84615%, transparent 53.84615%, transparent 57.69231%, rgba(102, 102, 255, 0.25) 57.69231%, rgba(179, 179, 255, 0.25) 65.38462%, transparent 65.38462%, transparent 69.23077%, rgba(102, 102, 255, 0.25) 69.23077%, rgba(179, 179, 255, 0.25) 76.92308%, transparent 76.92308%, transparent 80.76923%, rgba(102, 102, 255, 0.25) 80.76923%, rgba(179, 179, 255, 0.25) 88.46154%, transparent 88.46154%, transparent 92.30769%, rgba(102, 102, 255, 0.25) 92.30769%, rgba(179, 179, 255, 0.25));
-  background: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 7.69231%, transparent 7.69231%, transparent 11.53846%, rgba(102, 102, 255, 0.25) 11.53846%, rgba(179, 179, 255, 0.25) 19.23077%, transparent 19.23077%, transparent 23.07692%, rgba(102, 102, 255, 0.25) 23.07692%, rgba(179, 179, 255, 0.25) 30.76923%, transparent 30.76923%, transparent 34.61538%, rgba(102, 102, 255, 0.25) 34.61538%, rgba(179, 179, 255, 0.25) 42.30769%, transparent 42.30769%, transparent 46.15385%, rgba(102, 102, 255, 0.25) 46.15385%, rgba(179, 179, 255, 0.25) 53.84615%, transparent 53.84615%, transparent 57.69231%, rgba(102, 102, 255, 0.25) 57.69231%, rgba(179, 179, 255, 0.25) 65.38462%, transparent 65.38462%, transparent 69.23077%, rgba(102, 102, 255, 0.25) 69.23077%, rgba(179, 179, 255, 0.25) 76.92308%, transparent 76.92308%, transparent 80.76923%, rgba(102, 102, 255, 0.25) 80.76923%, rgba(179, 179, 255, 0.25) 88.46154%, transparent 88.46154%, transparent 92.30769%, rgba(102, 102, 255, 0.25) 92.30769%, rgba(179, 179, 255, 0.25));
-}
-.test__pad .assert__nested:after {
-  content: "";
-  display: table;
-  clear: both;
-}
-
-.test__pad .assert__nested .nest {
-  padding-left: 11.53846%;
-  padding-right: 11.53846%;
-}
-
-.test__pad .assert__nested::before {
-  content: "Items should have 1 column padding before, and 2 after - nested.";
-  display: block;
-  padding: 0.375rem 0.75rem;
-  text-align: left;
-  font-style: italic;
-}
-
-/*
-
-### Grid Background API ------ */
-/* - [mixin] background-grid-output */
-.test__background-grid-output .assert__show {
-  overflow: hidden;
-  background: rgba(204, 204, 255, 0.5);
-}
-
-.test__background-grid-output .assert__show .test, .test__background-grid-output .assert__show .expect {
-  padding-top: 24px;
-  padding-top: 1.5rem;
-  padding-bottom: 24px;
-  padding-bottom: 1.5rem;
-  background: none;
-}
-
-.test__background-grid-output .assert__show::before {
-  content: "Elements should show a horizontal red-green-blue gradient, and a vertical baseline";
-  display: block;
-  padding: 0.375rem 0.75rem;
-  text-align: left;
-  font-style: italic;
-}
-
-.test__background-grid-output .assert__show-columns {
-  overflow: hidden;
-  background: rgba(204, 204, 255, 0.5);
-}
-
-.test__background-grid-output .assert__show-columns .test, .test__background-grid-output .assert__show-columns .expect {
-  padding-top: 24px;
-  padding-top: 1.5rem;
-  padding-bottom: 24px;
-  padding-bottom: 1.5rem;
-  background: none;
-}
-
-.test__background-grid-output .assert__show-columns::before {
-  content: "Elements should show a horizontal red-green-blue gradient, with no baseline";
-  display: block;
-  padding: 0.375rem 0.75rem;
-  text-align: left;
-  font-style: italic;
-}
-
-.test__background-grid-output .assert__show-baseline {
-  overflow: hidden;
-  background: rgba(204, 204, 255, 0.5);
-}
-
-.test__background-grid-output .assert__show-baseline .test, .test__background-grid-output .assert__show-baseline .expect {
-  padding-top: 24px;
-  padding-top: 1.5rem;
-  padding-bottom: 24px;
-  padding-bottom: 1.5rem;
-  background: none;
-}
-
-.test__background-grid-output .assert__show-baseline::before {
-  content: "Elements should show a vertical baseline";
-  display: block;
-  padding: 0.375rem 0.75rem;
-  text-align: left;
-  font-style: italic;
-}
-
-.test__background-grid-output .assert__hide {
-  overflow: hidden;
-  background: rgba(204, 204, 255, 0.5);
-}
-
-.test__background-grid-output .assert__hide .test, .test__background-grid-output .assert__hide .expect {
-  padding-top: 24px;
-  padding-top: 1.5rem;
-  padding-bottom: 24px;
-  padding-bottom: 1.5rem;
-  background: none;
-}
-
-.test__background-grid-output .assert__hide::before {
-  content: "Elements should not show any grid background";
-  display: block;
-  padding: 0.375rem 0.75rem;
-  text-align: left;
-  font-style: italic;
-}
-
-/*
-
-### Shared Container API ------ */
-/* - [mixin] container-output */
-.test__container-output .assert__fluid {
-  overflow: hidden;
-  background: rgba(204, 204, 255, 0.5);
-}
-
-.test__container-output .assert__fluid::before {
-  content: "Containers should have 60em max-width, centered.";
-  display: block;
-  padding: 0.375rem 0.75rem;
-  text-align: left;
-  font-style: italic;
-}
-
-.test__container-output .assert__static {
-  overflow: hidden;
-  background: rgba(204, 204, 255, 0.5);
-}
-
-.test__container-output .assert__static::before {
-  content: "Containers should have 30em width, flush right.";
-  display: block;
-  padding: 0.375rem 0.75rem;
-  text-align: left;
-  font-style: italic;
-}
-
-/*
-
-### Shared Margin API ------ */
-/* - [mixin] margin-output */
-.test__margin-output .assert__margin-output {
-  overflow: hidden;
-  background: rgba(204, 204, 255, 0.5);
-}
-
-.test__margin-output .assert__margin-output::before {
-  content: "Elements should have 25% right margin, 8em left.";
-  display: block;
-  padding: 0.375rem 0.75rem;
-  text-align: left;
-  font-style: italic;
-}
-
-/*
-
-### Shared Padding API ------ */
-/* - [mixin] padding-output */
-.test__padding-output .assert__padding-output {
-  overflow: hidden;
-  background: rgba(204, 204, 255, 0.5);
-}
-
-.test__padding-output .assert__padding-output::before {
-  content: "Elements should have 25% right padding, 8em left.";
-  display: block;
-  padding: 0.375rem 0.75rem;
-  text-align: left;
-  font-style: italic;
-}
-
-/*
-
-### Float Container API ------ */
-/* - [mixin] float-container */
-.test__float-container .assert__float-container {
-  overflow: hidden;
-  background: rgba(204, 204, 255, 0.5);
-}
-
-.test__float-container .assert__float-container::before {
-  content: "Containers should be 30em wide, flush left.";
-  display: block;
-  padding: 0.375rem 0.75rem;
-  text-align: left;
-  font-style: italic;
-}
-
-/*
-
-### Float Span API ------ */
-/* - [mixin] float-span-output */
-.test__float-span-output .assert__full {
-  overflow: hidden;
-  background: rgba(204, 204, 255, 0.5);
-}
-
-.test__float-span-output .assert__full .expect {
-  clear: both;
-}
-
-.test__float-span-output .assert__full::before {
-  content: "Output should be 25%, floated left, with matching margins/padding";
-  display: block;
-  padding: 0.375rem 0.75rem;
-  text-align: left;
-  font-style: italic;
-}
-
-.test__float-span-output .assert__float-to {
-  overflow: hidden;
-  background: rgba(204, 204, 255, 0.5);
-}
-
-.test__float-span-output .assert__float-to .expect {
-  clear: both;
-}
-
-.test__float-span-output .assert__float-to::before {
-  content: "Output should be 25%, floated right";
-  display: block;
-  padding: 0.375rem 0.75rem;
-  text-align: left;
-  font-style: italic;
-}
-
-.test__float-span-output .assert__float-null {
-  overflow: hidden;
-  background: rgba(204, 204, 255, 0.5);
-}
-
-.test__float-span-output .assert__float-null::before {
-  content: "Output should be 25%, not floated";
-  display: block;
-  padding: 0.375rem 0.75rem;
-  text-align: left;
-  font-style: italic;
-}
-
-/*
-
-### Float End API ------ */
-/* - [mixin] float-last */
-.test__float-last .assert__default {
-  overflow: hidden;
-  background: rgba(204, 204, 255, 0.5);
-}
-
-.test__float-last .assert__default .test, .test__float-last .assert__default .expect {
-  float: left;
-  width: 75%;
-  margin-right: 5%;
-}
-
-.test__float-last .assert__default::before {
-  content: "Items should float flush right.";
-  display: block;
-  padding: 0.375rem 0.75rem;
-  text-align: left;
-  font-style: italic;
-}
-
-.test__float-last .assert__last-flow-from {
-  overflow: hidden;
-  background: rgba(204, 204, 255, 0.5);
-}
-
-.test__float-last .assert__last-flow-from .test, .test__float-last .assert__last-flow-from .expect {
-  float: left;
-  width: 75%;
-  margin-right: 5%;
-}
-.test__float-last .assert__last-flow-from .expect {
-  clear: both;
-}
-.test__float-last .assert__last-flow-from .spacer {
-  overflow: hidden;
-}
-
-.test__float-last .assert__last-flow-from::before {
-  content: "Items should not have any right margin.";
-  display: block;
-  padding: 0.375rem 0.75rem;
-  text-align: left;
-  font-style: italic;
-}
-
-/* - [mixin] float-first */
-.test__float-first .assert__float-first {
-  overflow: hidden;
-  background: rgba(204, 204, 255, 0.5);
-}
-
-.test__float-first .assert__float-first .test, .test__float-first .assert__float-first .expect {
-  float: left;
-  width: 75%;
-  margin-left: 5%;
-}
-
-.test__float-first .assert__float-first::before {
-  content: "Items should float flush left.";
-  display: block;
-  padding: 0.375rem 0.75rem;
-  text-align: left;
-  font-style: italic;
-}
-
-/*
-
-### Isolation API ------ */
-/* - [mixin] isolate-output */
-.test__isolate-output .assert__isolate-output {
-  overflow: hidden;
-  background: rgba(204, 204, 255, 0.5);
-}
-
-.test__isolate-output .assert__isolate-output .test, .test__isolate-output .assert__isolate-output .expect {
-  width: 40%;
-  float: left;
-  margin-right: 5.26316%;
-}
-.test__isolate-output .assert__isolate-output .expect {
-  clear: both;
-}
-
-.test__isolate-output .assert__isolate-output::before {
-  content: "Isolation at 30%, has 30% left margin and -100% right margin.";
-  display: block;
-  padding: 0.375rem 0.75rem;
-  text-align: left;
-  font-style: italic;
-}
-
-.results {
-  background: rgba(0, 128, 0, 0.25);
-  border-color: green;
-}
-.results::after {
-  content: "40 Tests, 40 Passed, 0 Failed";
-}
+Syntax error: Undefined mixin 'with-only-support-for'.
+        on line 35 of /Users/eric/Sites/susy/test/scss/test/_helpers.scss, in `with-only-support-for'
+        from line 35 of /Users/eric/Sites/susy/test/scss/test/_helpers.scss, in `assert-setup'
+        from line 23 of /Users/eric/Sites/susy/test/scss/language/susy/_span.scss, in `@content'
+        from line 70 of /Users/eric/Sites/susy/test/scss/test/_helpers.scss, in `output-test'
+        from line 21 of /Users/eric/Sites/susy/test/scss/language/susy/_span.scss, in `@content'
+        from line 25 of /Users/eric/Sites/.venvs/susy/rubygems/bundler/gems/true-1b0951399ee7/sass/true/_modules.scss, in `test-module'
+        from line 17 of /Users/eric/Sites/susy/test/scss/language/susy/_span.scss
+        from line 6 of /Users/eric/Sites/susy/test/scss/language/_susy.scss
+        from line 41 of /Users/eric/Sites/susy/test/scss/screen.scss
+
+Backtrace:
+/Users/eric/Sites/susy/test/scss/test/_helpers.scss:35:in `with-only-support-for'
+/Users/eric/Sites/susy/test/scss/test/_helpers.scss:35:in `assert-setup'
+/Users/eric/Sites/susy/test/scss/language/susy/_span.scss:23:in `@content'
+/Users/eric/Sites/susy/test/scss/test/_helpers.scss:70:in `output-test'
+/Users/eric/Sites/susy/test/scss/language/susy/_span.scss:21:in `@content'
+/Users/eric/Sites/.venvs/susy/rubygems/bundler/gems/true-1b0951399ee7/sass/true/_modules.scss:25:in `test-module'
+/Users/eric/Sites/susy/test/scss/language/susy/_span.scss:17
+/Users/eric/Sites/susy/test/scss/language/_susy.scss:6
+/Users/eric/Sites/susy/test/scss/screen.scss:41
+/Users/eric/Sites/.venvs/susy/rubygems/gems/sass-3.3.0.rc.1/lib/sass/tree/visitors/perform.rb:321:in `visit_mixin'
+/Users/eric/Sites/.venvs/susy/rubygems/gems/sass-3.3.0.rc.1/lib/sass/stack.rb:98:in `with_mixin'
+/Users/eric/Sites/.venvs/susy/rubygems/gems/sass-3.3.0.rc.1/lib/sass/stack.rb:115:in `with_frame'
+/Users/eric/Sites/.venvs/susy/rubygems/gems/sass-3.3.0.rc.1/lib/sass/stack.rb:98:in `with_mixin'
+/Users/eric/Sites/.venvs/susy/rubygems/gems/sass-3.3.0.rc.1/lib/sass/tree/visitors/perform.rb:319:in `visit_mixin'
+/Users/eric/Sites/.venvs/susy/rubygems/gems/sass-3.3.0.rc.1/lib/sass/tree/visitors/base.rb:37:in `send'
+/Users/eric/Sites/.venvs/susy/rubygems/gems/sass-3.3.0.rc.1/lib/sass/tree/visitors/base.rb:37:in `visit'
+/Users/eric/Sites/.venvs/susy/rubygems/gems/sass-3.3.0.rc.1/lib/sass/tree/visitors/perform.rb:153:in `visit'
+/Users/eric/Sites/.venvs/susy/rubygems/gems/sass-3.3.0.rc.1/lib/sass/stack.rb:79:in `with_base'
+/Users/eric/Sites/.venvs/susy/rubygems/gems/sass-3.3.0.rc.1/lib/sass/stack.rb:115:in `with_frame'
+/Users/eric/Sites/.venvs/susy/rubygems/gems/sass-3.3.0.rc.1/lib/sass/stack.rb:79:in `with_base'
+/Users/eric/Sites/.venvs/susy/rubygems/gems/sass-3.3.0.rc.1/lib/sass/tree/visitors/perform.rb:153:in `visit'
+/Users/eric/Sites/.venvs/susy/rubygems/gems/sass-3.3.0.rc.1/lib/sass/tree/visitors/base.rb:53:in `visit_children'
+/Users/eric/Sites/.venvs/susy/rubygems/gems/sass-3.3.0.rc.1/lib/sass/tree/visitors/base.rb:53:in `map'
+/Users/eric/Sites/.venvs/susy/rubygems/gems/sass-3.3.0.rc.1/lib/sass/tree/visitors/base.rb:53:in `visit_children'
+/Users/eric/Sites/.venvs/susy/rubygems/gems/sass-3.3.0.rc.1/lib/sass/tree/visitors/perform.rb:162:in `visit_children'
+/Users/eric/Sites/.venvs/susy/rubygems/gems/sass-3.3.0.rc.1/lib/sass/tree/visitors/perform.rb:174:in `with_environment'
+/Users/eric/Sites/.venvs/susy/rubygems/gems/sass-3.3.0.rc.1/lib/sass/tree/visitors/perform.rb:161:in `visit_children'
+/Users/eric/Sites/.venvs/susy/rubygems/gems/sass-3.3.0.rc.1/lib/sass/tree/visitors/base.rb:37:in `visit'
+/Users/eric/Sites/.venvs/susy/rubygems/gems/sass-3.3.0.rc.1/lib/sass/tree/visitors/perform.rb:266:in `visit_if'
+/Users/eric/Sites/.venvs/susy/rubygems/gems/sass-3.3.0.rc.1/lib/sass/tree/visitors/base.rb:37:in `send'
+/Users/eric/Sites/.venvs/susy/rubygems/gems/sass-3.3.0.rc.1/lib/sass/tree/visitors/base.rb:37:in `visit'
+/Users/eric/Sites/.venvs/susy/rubygems/gems/sass-3.3.0.rc.1/lib/sass/tree/visitors/perform.rb:153:in `visit'
+/Users/eric/Sites/.venvs/susy/rubygems/gems/sass-3.3.0.rc.1/lib/sass/stack.rb:79:in `with_base'
+/Users/eric/Sites/.venvs/susy/rubygems/gems/sass-3.3.0.rc.1/lib/sass/stack.rb:115:in `with_frame'
+/Users/eric/Sites/.venvs/susy/rubygems/gems/sass-3.3.0.rc.1/lib/sass/stack.rb:79:in `with_base'
+/Users/eric/Sites/.venvs/susy/rubygems/gems/sass-3.3.0.rc.1/lib/sass/tree/visitors/perform.rb:153:in `visit'
+/Users/eric/Sites/.venvs/susy/rubygems/gems/sass-3.3.0.rc.1/lib/sass/tree/visitors/base.rb:53:in `visit_children'
+/Users/eric/Sites/.venvs/susy/rubygems/gems/sass-3.3.0.rc.1/lib/sass/tree/visitors/base.rb:53:in `map'
+/Users/eric/Sites/.venvs/susy/rubygems/gems/sass-3.3.0.rc.1/lib/sass/tree/visitors/base.rb:53:in `visit_children'
+/Users/eric/Sites/.venvs/susy/rubygems/gems/sass-3.3.0.rc.1/lib/sass/tree/visitors/perform.rb:162:in `visit_children'
+/Users/eric/Sites/.venvs/susy/rubygems/gems/sass-3.3.0.rc.1/lib/sass/tree/visitors/perform.rb:174:in `with_environment'
+/Users/eric/Sites/.venvs/susy/rubygems/gems/sass-3.3.0.rc.1/lib/sass/tree/visitors/perform.rb:161:in `visit_children'
+/Users/eric/Sites/.venvs/susy/rubygems/gems/sass-3.3.0.rc.1/lib/sass/tree/visitors/base.rb:37:in `visit'
+/Users/eric/Sites/.venvs/susy/rubygems/gems/sass-3.3.0.rc.1/lib/sass/tree/visitors/perform.rb:266:in `visit_if'
+/Users/eric/Sites/.venvs/susy/rubygems/gems/sass-3.3.0.rc.1/lib/sass/tree/visitors/base.rb:37:in `send'
+/Users/eric/Sites/.venvs/susy/rubygems/gems/sass-3.3.0.rc.1/lib/sass/tree/visitors/base.rb:37:in `visit'
+/Users/eric/Sites/.venvs/susy/rubygems/gems/sass-3.3.0.rc.1/lib/sass/tree/visitors/perform.rb:153:in `visit'
+/Users/eric/Sites/.venvs/susy/rubygems/gems/sass-3.3.0.rc.1/lib/sass/stack.rb:79:in `with_base'
+/Users/eric/Sites/.venvs/susy/rubygems/gems/sass-3.3.0.rc.1/lib/sass/stack.rb:115:in `with_frame'
+/Users/eric/Sites/.venvs/susy/rubygems/gems/sass-3.3.0.rc.1/lib/sass/stack.rb:79:in `with_base'
+/Users/eric/Sites/.venvs/susy/rubygems/gems/sass-3.3.0.rc.1/lib/sass/tree/visitors/perform.rb:153:in `visit'
+/Users/eric/Sites/.venvs/susy/rubygems/gems/sass-3.3.0.rc.1/lib/sass/tree/visitors/perform.rb:336:in `visit_mixin'
+/Users/eric/Sites/.venvs/susy/rubygems/gems/sass-3.3.0.rc.1/lib/sass/tree/visitors/perform.rb:336:in `map'
+/Users/eric/Sites/.venvs/susy/rubygems/gems/sass-3.3.0.rc.1/lib/sass/tree/visitors/perform.rb:336:in `visit_mixin'
+/Users/eric/Sites/.venvs/susy/rubygems/gems/sass-3.3.0.rc.1/lib/sass/tree/visitors/perform.rb:174:in `with_environment'
+/Users/eric/Sites/.venvs/susy/rubygems/gems/sass-3.3.0.rc.1/lib/sass/tree/visitors/perform.rb:336:in `visit_mixin'
+/Users/eric/Sites/.venvs/susy/rubygems/gems/sass-3.3.0.rc.1/lib/sass/tree/visitors/perform.rb:79:in `perform_arguments'
+/Users/eric/Sites/.venvs/susy/rubygems/gems/sass-3.3.0.rc.1/lib/sass/tree/visitors/perform.rb:331:in `visit_mixin'
+/Users/eric/Sites/.venvs/susy/rubygems/gems/sass-3.3.0.rc.1/lib/sass/stack.rb:98:in `with_mixin'
+/Users/eric/Sites/.venvs/susy/rubygems/gems/sass-3.3.0.rc.1/lib/sass/stack.rb:115:in `with_frame'
+/Users/eric/Sites/.venvs/susy/rubygems/gems/sass-3.3.0.rc.1/lib/sass/stack.rb:98:in `with_mixin'
+/Users/eric/Sites/.venvs/susy/rubygems/gems/sass-3.3.0.rc.1/lib/sass/tree/visitors/perform.rb:319:in `visit_mixin'
+/Users/eric/Sites/.venvs/susy/rubygems/gems/sass-3.3.0.rc.1/lib/sass/tree/visitors/base.rb:37:in `send'
+/Users/eric/Sites/.venvs/susy/rubygems/gems/sass-3.3.0.rc.1/lib/sass/tree/visitors/base.rb:37:in `visit'
+/Users/eric/Sites/.venvs/susy/rubygems/gems/sass-3.3.0.rc.1/lib/sass/tree/visitors/perform.rb:153:in `visit'
+/Users/eric/Sites/.venvs/susy/rubygems/gems/sass-3.3.0.rc.1/lib/sass/stack.rb:79:in `with_base'
+/Users/eric/Sites/.venvs/susy/rubygems/gems/sass-3.3.0.rc.1/lib/sass/stack.rb:115:in `with_frame'
+/Users/eric/Sites/.venvs/susy/rubygems/gems/sass-3.3.0.rc.1/lib/sass/stack.rb:79:in `with_base'
+/Users/eric/Sites/.venvs/susy/rubygems/gems/sass-3.3.0.rc.1/lib/sass/tree/visitors/perform.rb:153:in `visit'
+/Users/eric/Sites/.venvs/susy/rubygems/gems/sass-3.3.0.rc.1/lib/sass/tree/visitors/perform.rb:356:in `visit_content'
+/Users/eric/Sites/.venvs/susy/rubygems/gems/sass-3.3.0.rc.1/lib/sass/tree/visitors/perform.rb:356:in `map'
+/Users/eric/Sites/.venvs/susy/rubygems/gems/sass-3.3.0.rc.1/lib/sass/tree/visitors/perform.rb:356:in `visit_content'
+/Users/eric/Sites/.venvs/susy/rubygems/gems/sass-3.3.0.rc.1/lib/sass/tree/visitors/perform.rb:174:in `with_environment'
+/Users/eric/Sites/.venvs/susy/rubygems/gems/sass-3.3.0.rc.1/lib/sass/tree/visitors/perform.rb:355:in `visit_content'
+/Users/eric/Sites/.venvs/susy/rubygems/gems/sass-3.3.0.rc.1/lib/sass/stack.rb:98:in `with_mixin'
+/Users/eric/Sites/.venvs/susy/rubygems/gems/sass-3.3.0.rc.1/lib/sass/stack.rb:115:in `with_frame'
+/Users/eric/Sites/.venvs/susy/rubygems/gems/sass-3.3.0.rc.1/lib/sass/stack.rb:98:in `with_mixin'
+/Users/eric/Sites/.venvs/susy/rubygems/gems/sass-3.3.0.rc.1/lib/sass/tree/visitors/perform.rb:351:in `visit_content'
+/Users/eric/Sites/.venvs/susy/rubygems/gems/sass-3.3.0.rc.1/lib/sass/tree/visitors/base.rb:37:in `send'
+/Users/eric/Sites/.venvs/susy/rubygems/gems/sass-3.3.0.rc.1/lib/sass/tree/visitors/base.rb:37:in `visit'
+/Users/eric/Sites/.venvs/susy/rubygems/gems/sass-3.3.0.rc.1/lib/sass/tree/visitors/perform.rb:153:in `visit'
+/Users/eric/Sites/.venvs/susy/rubygems/gems/sass-3.3.0.rc.1/lib/sass/stack.rb:79:in `with_base'
+/Users/eric/Sites/.venvs/susy/rubygems/gems/sass-3.3.0.rc.1/lib/sass/stack.rb:115:in `with_frame'
+/Users/eric/Sites/.venvs/susy/rubygems/gems/sass-3.3.0.rc.1/lib/sass/stack.rb:79:in `with_base'
+/Users/eric/Sites/.venvs/susy/rubygems/gems/sass-3.3.0.rc.1/lib/sass/tree/visitors/perform.rb:153:in `visit'
+/Users/eric/Sites/.venvs/susy/rubygems/gems/sass-3.3.0.rc.1/lib/sass/tree/visitors/perform.rb:336:in `visit_mixin'
+/Users/eric/Sites/.venvs/susy/rubygems/gems/sass-3.3.0.rc.1/lib/sass/tree/visitors/perform.rb:336:in `map'
+/Users/eric/Sites/.venvs/susy/rubygems/gems/sass-3.3.0.rc.1/lib/sass/tree/visitors/perform.rb:336:in `visit_mixin'
+/Users/eric/Sites/.venvs/susy/rubygems/gems/sass-3.3.0.rc.1/lib/sass/tree/visitors/perform.rb:174:in `with_environment'
+/Users/eric/Sites/.venvs/susy/rubygems/gems/sass-3.3.0.rc.1/lib/sass/tree/visitors/perform.rb:336:in `visit_mixin'
+/Users/eric/Sites/.venvs/susy/rubygems/gems/sass-3.3.0.rc.1/lib/sass/tree/visitors/perform.rb:79:in `perform_arguments'
+/Users/eric/Sites/.venvs/susy/rubygems/gems/sass-3.3.0.rc.1/lib/sass/tree/visitors/perform.rb:331:in `visit_mixin'
+/Users/eric/Sites/.venvs/susy/rubygems/gems/sass-3.3.0.rc.1/lib/sass/stack.rb:98:in `with_mixin'
+/Users/eric/Sites/.venvs/susy/rubygems/gems/sass-3.3.0.rc.1/lib/sass/stack.rb:115:in `with_frame'
+/Users/eric/Sites/.venvs/susy/rubygems/gems/sass-3.3.0.rc.1/lib/sass/stack.rb:98:in `with_mixin'
+/Users/eric/Sites/.venvs/susy/rubygems/gems/sass-3.3.0.rc.1/lib/sass/tree/visitors/perform.rb:319:in `visit_mixin'
+/Users/eric/Sites/.venvs/susy/rubygems/gems/sass-3.3.0.rc.1/lib/sass/tree/visitors/base.rb:37:in `send'
+/Users/eric/Sites/.venvs/susy/rubygems/gems/sass-3.3.0.rc.1/lib/sass/tree/visitors/base.rb:37:in `visit'
+/Users/eric/Sites/.venvs/susy/rubygems/gems/sass-3.3.0.rc.1/lib/sass/tree/visitors/perform.rb:153:in `visit'
+/Users/eric/Sites/.venvs/susy/rubygems/gems/sass-3.3.0.rc.1/lib/sass/stack.rb:79:in `with_base'
+/Users/eric/Sites/.venvs/susy/rubygems/gems/sass-3.3.0.rc.1/lib/sass/stack.rb:115:in `with_frame'
+/Users/eric/Sites/.venvs/susy/rubygems/gems/sass-3.3.0.rc.1/lib/sass/stack.rb:79:in `with_base'
+/Users/eric/Sites/.venvs/susy/rubygems/gems/sass-3.3.0.rc.1/lib/sass/tree/visitors/perform.rb:153:in `visit'
+/Users/eric/Sites/.venvs/susy/rubygems/gems/sass-3.3.0.rc.1/lib/sass/tree/visitors/perform.rb:356:in `visit_content'
+/Users/eric/Sites/.venvs/susy/rubygems/gems/sass-3.3.0.rc.1/lib/sass/tree/visitors/perform.rb:356:in `map'
+/Users/eric/Sites/.venvs/susy/rubygems/gems/sass-3.3.0.rc.1/lib/sass/tree/visitors/perform.rb:356:in `visit_content'
+/Users/eric/Sites/.venvs/susy/rubygems/gems/sass-3.3.0.rc.1/lib/sass/tree/visitors/perform.rb:174:in `with_environment'
+/Users/eric/Sites/.venvs/susy/rubygems/gems/sass-3.3.0.rc.1/lib/sass/tree/visitors/perform.rb:355:in `visit_content'
+/Users/eric/Sites/.venvs/susy/rubygems/gems/sass-3.3.0.rc.1/lib/sass/stack.rb:98:in `with_mixin'
+/Users/eric/Sites/.venvs/susy/rubygems/gems/sass-3.3.0.rc.1/lib/sass/stack.rb:115:in `with_frame'
+/Users/eric/Sites/.venvs/susy/rubygems/gems/sass-3.3.0.rc.1/lib/sass/stack.rb:98:in `with_mixin'
+/Users/eric/Sites/.venvs/susy/rubygems/gems/sass-3.3.0.rc.1/lib/sass/tree/visitors/perform.rb:351:in `visit_content'
+/Users/eric/Sites/.venvs/susy/rubygems/gems/sass-3.3.0.rc.1/lib/sass/tree/visitors/base.rb:37:in `send'
+/Users/eric/Sites/.venvs/susy/rubygems/gems/sass-3.3.0.rc.1/lib/sass/tree/visitors/base.rb:37:in `visit'
+/Users/eric/Sites/.venvs/susy/rubygems/gems/sass-3.3.0.rc.1/lib/sass/tree/visitors/perform.rb:153:in `visit'
+/Users/eric/Sites/.venvs/susy/rubygems/gems/sass-3.3.0.rc.1/lib/sass/stack.rb:79:in `with_base'
+/Users/eric/Sites/.venvs/susy/rubygems/gems/sass-3.3.0.rc.1/lib/sass/stack.rb:115:in `with_frame'
+/Users/eric/Sites/.venvs/susy/rubygems/gems/sass-3.3.0.rc.1/lib/sass/stack.rb:79:in `with_base'
+/Users/eric/Sites/.venvs/susy/rubygems/gems/sass-3.3.0.rc.1/lib/sass/tree/visitors/perform.rb:153:in `visit'
+/Users/eric/Sites/.venvs/susy/rubygems/gems/sass-3.3.0.rc.1/lib/sass/tree/visitors/perform.rb:336:in `visit_mixin'
+/Users/eric/Sites/.venvs/susy/rubygems/gems/sass-3.3.0.rc.1/lib/sass/tree/visitors/perform.rb:336:in `map'
+/Users/eric/Sites/.venvs/susy/rubygems/gems/sass-3.3.0.rc.1/lib/sass/tree/visitors/perform.rb:336:in `visit_mixin'
+/Users/eric/Sites/.venvs/susy/rubygems/gems/sass-3.3.0.rc.1/lib/sass/tree/visitors/perform.rb:174:in `with_environment'
+/Users/eric/Sites/.venvs/susy/rubygems/gems/sass-3.3.0.rc.1/lib/sass/tree/visitors/perform.rb:336:in `visit_mixin'
+/Users/eric/Sites/.venvs/susy/rubygems/gems/sass-3.3.0.rc.1/lib/sass/tree/visitors/perform.rb:79:in `perform_arguments'
+/Users/eric/Sites/.venvs/susy/rubygems/gems/sass-3.3.0.rc.1/lib/sass/tree/visitors/perform.rb:331:in `visit_mixin'
+/Users/eric/Sites/.venvs/susy/rubygems/gems/sass-3.3.0.rc.1/lib/sass/stack.rb:98:in `with_mixin'
+/Users/eric/Sites/.venvs/susy/rubygems/gems/sass-3.3.0.rc.1/lib/sass/stack.rb:115:in `with_frame'
+/Users/eric/Sites/.venvs/susy/rubygems/gems/sass-3.3.0.rc.1/lib/sass/stack.rb:98:in `with_mixin'
+/Users/eric/Sites/.venvs/susy/rubygems/gems/sass-3.3.0.rc.1/lib/sass/tree/visitors/perform.rb:319:in `visit_mixin'
+/Users/eric/Sites/.venvs/susy/rubygems/gems/sass-3.3.0.rc.1/lib/sass/tree/visitors/base.rb:37:in `send'
+/Users/eric/Sites/.venvs/susy/rubygems/gems/sass-3.3.0.rc.1/lib/sass/tree/visitors/base.rb:37:in `visit'
+/Users/eric/Sites/.venvs/susy/rubygems/gems/sass-3.3.0.rc.1/lib/sass/tree/visitors/perform.rb:153:in `visit'
+/Users/eric/Sites/.venvs/susy/rubygems/gems/sass-3.3.0.rc.1/lib/sass/stack.rb:79:in `with_base'
+/Users/eric/Sites/.venvs/susy/rubygems/gems/sass-3.3.0.rc.1/lib/sass/stack.rb:115:in `with_frame'
+/Users/eric/Sites/.venvs/susy/rubygems/gems/sass-3.3.0.rc.1/lib/sass/stack.rb:79:in `with_base'
+/Users/eric/Sites/.venvs/susy/rubygems/gems/sass-3.3.0.rc.1/lib/sass/tree/visitors/perform.rb:153:in `visit'
+/Users/eric/Sites/.venvs/susy/rubygems/gems/sass-3.3.0.rc.1/lib/sass/tree/visitors/perform.rb:292:in `visit_import'
+/Users/eric/Sites/.venvs/susy/rubygems/gems/sass-3.3.0.rc.1/lib/sass/tree/visitors/perform.rb:292:in `map'
+/Users/eric/Sites/.venvs/susy/rubygems/gems/sass-3.3.0.rc.1/lib/sass/tree/visitors/perform.rb:292:in `visit_import'
+/Users/eric/Sites/.venvs/susy/rubygems/gems/sass-3.3.0.rc.1/lib/sass/stack.rb:88:in `with_import'
+/Users/eric/Sites/.venvs/susy/rubygems/gems/sass-3.3.0.rc.1/lib/sass/stack.rb:115:in `with_frame'
+/Users/eric/Sites/.venvs/susy/rubygems/gems/sass-3.3.0.rc.1/lib/sass/stack.rb:88:in `with_import'
+/Users/eric/Sites/.venvs/susy/rubygems/gems/sass-3.3.0.rc.1/lib/sass/tree/visitors/perform.rb:289:in `visit_import'
+/Users/eric/Sites/.venvs/susy/rubygems/gems/sass-3.3.0.rc.1/lib/sass/tree/visitors/base.rb:37:in `send'
+/Users/eric/Sites/.venvs/susy/rubygems/gems/sass-3.3.0.rc.1/lib/sass/tree/visitors/base.rb:37:in `visit'
+/Users/eric/Sites/.venvs/susy/rubygems/gems/sass-3.3.0.rc.1/lib/sass/tree/visitors/perform.rb:153:in `visit'
+/Users/eric/Sites/.venvs/susy/rubygems/gems/sass-3.3.0.rc.1/lib/sass/stack.rb:79:in `with_base'
+/Users/eric/Sites/.venvs/susy/rubygems/gems/sass-3.3.0.rc.1/lib/sass/stack.rb:115:in `with_frame'
+/Users/eric/Sites/.venvs/susy/rubygems/gems/sass-3.3.0.rc.1/lib/sass/stack.rb:79:in `with_base'
+/Users/eric/Sites/.venvs/susy/rubygems/gems/sass-3.3.0.rc.1/lib/sass/tree/visitors/perform.rb:153:in `visit'
+/Users/eric/Sites/.venvs/susy/rubygems/gems/sass-3.3.0.rc.1/lib/sass/tree/visitors/perform.rb:292:in `visit_import'
+/Users/eric/Sites/.venvs/susy/rubygems/gems/sass-3.3.0.rc.1/lib/sass/tree/visitors/perform.rb:292:in `map'
+/Users/eric/Sites/.venvs/susy/rubygems/gems/sass-3.3.0.rc.1/lib/sass/tree/visitors/perform.rb:292:in `visit_import'
+/Users/eric/Sites/.venvs/susy/rubygems/gems/sass-3.3.0.rc.1/lib/sass/stack.rb:88:in `with_import'
+/Users/eric/Sites/.venvs/susy/rubygems/gems/sass-3.3.0.rc.1/lib/sass/stack.rb:115:in `with_frame'
+/Users/eric/Sites/.venvs/susy/rubygems/gems/sass-3.3.0.rc.1/lib/sass/stack.rb:88:in `with_import'
+/Users/eric/Sites/.venvs/susy/rubygems/gems/sass-3.3.0.rc.1/lib/sass/tree/visitors/perform.rb:289:in `visit_import'
+/Users/eric/Sites/.venvs/susy/rubygems/gems/sass-3.3.0.rc.1/lib/sass/tree/visitors/base.rb:37:in `send'
+/Users/eric/Sites/.venvs/susy/rubygems/gems/sass-3.3.0.rc.1/lib/sass/tree/visitors/base.rb:37:in `visit'
+/Users/eric/Sites/.venvs/susy/rubygems/gems/sass-3.3.0.rc.1/lib/sass/tree/visitors/perform.rb:153:in `visit'
+/Users/eric/Sites/.venvs/susy/rubygems/gems/sass-3.3.0.rc.1/lib/sass/stack.rb:79:in `with_base'
+/Users/eric/Sites/.venvs/susy/rubygems/gems/sass-3.3.0.rc.1/lib/sass/stack.rb:115:in `with_frame'
+/Users/eric/Sites/.venvs/susy/rubygems/gems/sass-3.3.0.rc.1/lib/sass/stack.rb:79:in `with_base'
+/Users/eric/Sites/.venvs/susy/rubygems/gems/sass-3.3.0.rc.1/lib/sass/tree/visitors/perform.rb:153:in `visit'
+/Users/eric/Sites/.venvs/susy/rubygems/gems/sass-3.3.0.rc.1/lib/sass/tree/visitors/base.rb:53:in `visit_children'
+/Users/eric/Sites/.venvs/susy/rubygems/gems/sass-3.3.0.rc.1/lib/sass/tree/visitors/base.rb:53:in `map'
+/Users/eric/Sites/.venvs/susy/rubygems/gems/sass-3.3.0.rc.1/lib/sass/tree/visitors/base.rb:53:in `visit_children'
+/Users/eric/Sites/.venvs/susy/rubygems/gems/sass-3.3.0.rc.1/lib/sass/tree/visitors/perform.rb:162:in `visit_children'
+/Users/eric/Sites/.venvs/susy/rubygems/gems/sass-3.3.0.rc.1/lib/sass/tree/visitors/perform.rb:174:in `with_environment'
+/Users/eric/Sites/.venvs/susy/rubygems/gems/sass-3.3.0.rc.1/lib/sass/tree/visitors/perform.rb:161:in `visit_children'
+/Users/eric/Sites/.venvs/susy/rubygems/gems/sass-3.3.0.rc.1/lib/sass/tree/visitors/base.rb:37:in `visit'
+/Users/eric/Sites/.venvs/susy/rubygems/gems/sass-3.3.0.rc.1/lib/sass/tree/visitors/perform.rb:181:in `visit_root'
+/Users/eric/Sites/.venvs/susy/rubygems/gems/sass-3.3.0.rc.1/lib/sass/tree/visitors/base.rb:37:in `send'
+/Users/eric/Sites/.venvs/susy/rubygems/gems/sass-3.3.0.rc.1/lib/sass/tree/visitors/base.rb:37:in `visit'
+/Users/eric/Sites/.venvs/susy/rubygems/gems/sass-3.3.0.rc.1/lib/sass/tree/visitors/perform.rb:152:in `visit'
+/Users/eric/Sites/.venvs/susy/rubygems/gems/sass-3.3.0.rc.1/lib/sass/tree/visitors/perform.rb:8:in `send'
+/Users/eric/Sites/.venvs/susy/rubygems/gems/sass-3.3.0.rc.1/lib/sass/tree/visitors/perform.rb:8:in `visit'
+/Users/eric/Sites/.venvs/susy/rubygems/gems/sass-3.3.0.rc.1/lib/sass/tree/root_node.rb:36:in `css_tree'
+/Users/eric/Sites/.venvs/susy/rubygems/gems/sass-3.3.0.rc.1/lib/sass/tree/root_node.rb:20:in `render'
+/Users/eric/Sites/.venvs/susy/rubygems/gems/sass-3.3.0.rc.1/lib/sass/engine.rb:277:in `render'
+/Users/eric/Sites/.venvs/susy/rubygems/gems/compass-0.13.alpha.7/lib/compass/compiler.rb:146:in `compile'
+/Users/eric/Sites/.venvs/susy/rubygems/gems/compass-0.13.alpha.7/lib/compass/compiler.rb:132:in `timed'
+/Users/eric/Sites/.venvs/susy/rubygems/gems/compass-0.13.alpha.7/lib/compass/compiler.rb:145:in `compile'
+/Users/eric/Sites/.venvs/susy/rubygems/gems/compass-0.13.alpha.7/lib/compass/logger.rb:46:in `red'
+/Users/eric/Sites/.venvs/susy/rubygems/gems/compass-0.13.alpha.7/lib/compass/compiler.rb:144:in `compile'
+/Users/eric/Sites/.venvs/susy/rubygems/gems/compass-0.13.alpha.7/lib/compass/compiler.rb:124:in `compile_if_required'
+/Users/eric/Sites/.venvs/susy/rubygems/gems/compass-0.13.alpha.7/lib/compass/compiler.rb:109:in `run'
+/Users/eric/Sites/.venvs/susy/rubygems/gems/compass-0.13.alpha.7/lib/compass/compiler.rb:107:in `each'
+/Users/eric/Sites/.venvs/susy/rubygems/gems/compass-0.13.alpha.7/lib/compass/compiler.rb:107:in `run'
+/Users/eric/Sites/.venvs/susy/rubygems/gems/compass-0.13.alpha.7/lib/compass/compiler.rb:132:in `timed'
+/Users/eric/Sites/.venvs/susy/rubygems/gems/compass-0.13.alpha.7/lib/compass/compiler.rb:106:in `run'
+/Users/eric/Sites/.venvs/susy/rubygems/gems/compass-0.13.alpha.7/lib/compass/watcher/compiler.rb:24:in `compile'
+(__FORWARDABLE__):3:in `__send__'
+(__FORWARDABLE__):3:in `compile'
+/Users/eric/Sites/.venvs/susy/rubygems/gems/compass-0.13.alpha.7/lib/compass/commands/watch_project.rb:47:in `perform'
+/Users/eric/Sites/.venvs/susy/rubygems/gems/compass-0.13.alpha.7/lib/compass/commands/base.rb:18:in `execute'
+/Users/eric/Sites/.venvs/susy/rubygems/gems/compass-0.13.alpha.7/lib/compass/commands/project_base.rb:19:in `execute'
+/Users/eric/Sites/.venvs/susy/rubygems/gems/compass-0.13.alpha.7/lib/compass/exec/sub_command_ui.rb:43:in `perform!'
+/Users/eric/Sites/.venvs/susy/rubygems/gems/compass-0.13.alpha.7/lib/compass/exec/sub_command_ui.rb:15:in `run!'
+/Users/eric/Sites/.venvs/susy/rubygems/gems/compass-0.13.alpha.7/bin/compass:30
+/Users/eric/Sites/.venvs/susy/rubygems/gems/compass-0.13.alpha.7/bin/compass:44:in `call'
+/Users/eric/Sites/.venvs/susy/rubygems/gems/compass-0.13.alpha.7/bin/compass:44
+/Users/eric/Sites/.venvs/susy/rubygems/bin/compass:23:in `load'
+/Users/eric/Sites/.venvs/susy/rubygems/bin/compass:23
+*/
+body:before {
+  white-space: pre;
+  font-family: monospace;
+  content: "Syntax error: Undefined mixin 'with-only-support-for'.\A         on line 35 of /Users/eric/Sites/susy/test/scss/test/_helpers.scss, in `with-only-support-for'\A         from line 35 of /Users/eric/Sites/susy/test/scss/test/_helpers.scss, in `assert-setup'\A         from line 23 of /Users/eric/Sites/susy/test/scss/language/susy/_span.scss, in `@content'\A         from line 70 of /Users/eric/Sites/susy/test/scss/test/_helpers.scss, in `output-test'\A         from line 21 of /Users/eric/Sites/susy/test/scss/language/susy/_span.scss, in `@content'\A         from line 25 of /Users/eric/Sites/.venvs/susy/rubygems/bundler/gems/true-1b0951399ee7/sass/true/_modules.scss, in `test-module'\A         from line 17 of /Users/eric/Sites/susy/test/scss/language/susy/_span.scss\A         from line 6 of /Users/eric/Sites/susy/test/scss/language/_susy.scss\A         from line 41 of /Users/eric/Sites/susy/test/scss/screen.scss"; }

@@ -4,6 +4,7 @@ title: Sites using Susy
 
 ## Sites Using Susy
 
+- [Sass](http://sass-lang.com/)
 - [Ben Frain](http://benfrain.com/)
 - [Leo Burnett](http://leoburnett.co.uk/)
 - [Renault TV](http://renault.tv/)

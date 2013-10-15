@@ -38,7 +38,7 @@ title: Sites using Susy
 - [Kelisto](http://www.kelisto.es)
 - [Causes](https://www.causes.com)
 - [Do](http://do.com)
-- [Q](http://qltd.com)
+- [Q LTD](http://qltd.com)
 - [Turn It Responsive](http://turnitresponsive.com)
 
 Have a site to add? [Let us know](http://twitter.com/compasssusy) or [fork and add your site on GitHub](https://github.com/ericam/susy).

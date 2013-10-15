@@ -4,6 +4,7 @@ title: Sites using Susy
 
 ## Sites Using Susy
 
+- [Sass](http://sass-lang.com)
 - [Sass and Compass book](http://sassandcompass.com)
 - [Square Market](https://squareup.com/market)
 - [Slickbag](http://slickbag.se)
@@ -36,6 +37,7 @@ title: Sites using Susy
 - [Zwoio](http://www.zwoio.de)
 - [Kelisto](http://www.kelisto.es)
 - [Causes](https://www.causes.com)
+- [Do](http://do.com)
 
 Have a site to add? [Let us know](http://twitter.com/compasssusy) or [fork and add your site on GitHub](https://github.com/ericam/susy).
 

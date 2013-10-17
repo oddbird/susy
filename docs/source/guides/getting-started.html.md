@@ -75,18 +75,14 @@ Edit your **Gruntfile.js** at the root level of your project and look for the Co
     :::javascript
     // Gruntfile.js
     compass: {
-      dist: {
         options: {
-          config: '.config.rb'
+          require: 'susy',
+          ...
         }
       }
     }
 
-Now create a **.config.rb** file at the same level as your Gruntfile with this:
-
-    :::ruby
-    # .config.rb
-    require "susy"
+Assuming you've already installed Susy, it will now be added to the project and will not clash with Yeomans grunt rules.
 
 And you are good to go!
 

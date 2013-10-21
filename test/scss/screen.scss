@@ -7,7 +7,6 @@
 // Testing
 // -------
 
-@import "test/settings";
 @import "test/helpers";
 @import "test/layout";
 
@@ -50,7 +49,7 @@ $output-test-results: false;
 // ------
 
 .results{
-  @if nth($total-test-results, 3) < 1 {
+  @if map-get($true-results, fail) < 1 {
     background: rgba(green, .25);
     border-color: green;
   }

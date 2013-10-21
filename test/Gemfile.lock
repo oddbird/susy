@@ -1,23 +1,21 @@
-GIT
-  remote: git://github.com/ericam/true
-  revision: 1b0951399ee787afec64cfd5bc79cd597d41fdf2
-  branch: master
+PATH
+  remote: /Users/eric/Sites/true
   specs:
-    true (0.1.5)
-      compass (>= 0.12.2)
-      sass (>= 3.2.0)
+    true (0.2.0)
+      compass (~> 0.13.alpha.7)
+      sass (~> 3.3.0.rc.1)
 
 GEM
   remote: http://rubygems.org/
   specs:
-    chunky_png (1.2.8)
+    chunky_png (1.2.9)
     compass (0.13.alpha.7)
       chunky_png (~> 1.2)
       json
       listen (~> 1.1.0)
       sass (~> 3.3.0.rc.1)
     ffi (1.9.0)
-    json (1.8.0)
+    json (1.8.1)
     listen (1.1.6)
       rb-fsevent (>= 0.9.3)
       rb-inotify (>= 0.9)

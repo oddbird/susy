@@ -17,83 +17,76 @@
 /*  
 
 ### Column Math ------ */
-/*  - [function] is-symmetrical() (3 assertions, 3 passed, 0 failed) */
-/*  - [function] column-count() (2 assertions, 2 passed, 0 failed) */
-/*  - [function] symmetrical column-sum() (2 assertions, 2 passed, 0 failed) */
-/*  - [function] asymmetrical column-sum() (2 assertions, 2 passed, 0 failed) */
-/*  - [function] symmetrical get-columns() (1 assertions, 1 passed, 0 failed) */
-/*  - [function] asymmetrical get-columns() (1 assertions, 1 passed, 0 failed) */
-/*  - [function] symmetrical get-column-span-sum() (2 assertions, 2 passed, 0 failed) */
-/*  - [function] asymmetrical get-column-span-sum() (2 assertions, 2 passed, 0 failed) */
+/*  - [function] is-symmetrical() (3 Assertions, 3 Passed, 0 Failed) */
+/*  - [function] column-count() (2 Assertions, 2 Passed, 0 Failed) */
+/*  - [function] symmetrical column-sum() (2 Assertions, 2 Passed, 0 Failed) */
+/*  - [function] asymmetrical column-sum() (2 Assertions, 2 Passed, 0 Failed) */
+/*  - [function] symmetrical get-columns() (1 Assertions, 1 Passed, 0 Failed) */
+/*  - [function] asymmetrical get-columns() (1 Assertions, 1 Passed, 0 Failed) */
+/*  - [function] symmetrical get-column-span-sum() (2 Assertions, 2 Passed, 0 Failed) */
+/*  - [function] asymmetrical get-column-span-sum() (2 Assertions, 2 Passed, 0 Failed) */
 /*  
-    Summary:
-    - 8 Tests
+    8 Tests:
     - 8 Passed
     - 0 Failed */
 /*  
 
 ### Container Math ------ */
-/*  - [function] parse-container-position (6 assertions, 6 passed, 0 failed) */
-/*  - [function] calculate-container-width (2 assertions, 2 passed, 0 failed) */
+/*  - [function] parse-container-position (6 Assertions, 6 Passed, 0 Failed) */
+/*  - [function] calculate-container-width (2 Assertions, 2 Passed, 0 Failed) */
 /*  
-    Summary:
-    - 2 Tests
+    2 Tests:
     - 2 Passed
     - 0 Failed */
 /*  
 
 ### Location Math ------ */
-/*  - [function] is-last (5 assertions, 5 passed, 0 failed) */
-/*  - [function] is-first (5 assertions, 5 passed, 0 failed) */
-/*  - [function] get-location-position (5 assertions, 5 passed, 0 failed) */
+/*  - [function] is-last (5 Assertions, 5 Passed, 0 Failed) */
+/*  - [function] is-first (5 Assertions, 5 Passed, 0 Failed) */
+/*  - [function] get-location-position (5 Assertions, 5 Passed, 0 Failed) */
 /*  
-    Summary:
-    - 3 Tests
+    3 Tests:
     - 3 Passed
     - 0 Failed */
 /*  
 
 ### Direction Helpers ------ */
-/*  - [function] get-direction (4 assertions, 4 passed, 0 failed) */
-/*  - [function] to (2 assertions, 2 passed, 0 failed) */
-/*  - [function] from (2 assertions, 2 passed, 0 failed) */
+/*  - [function] get-direction (4 Assertions, 4 Passed, 0 Failed) */
+/*  - [function] to (2 Assertions, 2 Passed, 0 Failed) */
+/*  - [function] from (2 Assertions, 2 Passed, 0 Failed) */
 /*  
-    Summary:
-    - 3 Tests
+    3 Tests:
     - 3 Passed
     - 0 Failed */
 /*  
 
 ### Nth- Helpers ------ */
-/*  - [function] format-nth (5 assertions, 5 passed, 0 failed) */
+/*  - [function] format-nth (5 Assertions, 5 Passed, 0 Failed) */
 /*  
-    Summary:
-    - 1 Tests
+    1 Tests:
     - 1 Passed
     - 0 Failed */
 /*  
 
 ### Settings Syntax ------ */
-/*  - [Test Helper] Original Grid (2 assertions, 2 passed, 0 failed) */
-/*  - [mixin] set-grid (10 assertions, 10 passed, 0 failed) */
-/*  - [mixin] use-grid (6 assertions, 6 passed, 0 failed) */
-/*  - [function] get-grid (3 assertions, 3 passed, 0 failed) */
-/*  - [function] parse-grid (55 assertions, 55 passed, 0 failed) */
-/*  - [function] get-adjusted-grid (44 assertions, 44 passed, 0 failed) */
-/*  - [function] get-setting (13 assertions, 13 passed, 0 failed) */
+/*  - [Test Helper] Original Grid (2 Assertions, 2 Passed, 0 Failed) */
+/*  - [mixin] set-grid (10 Assertions, 10 Passed, 0 Failed) */
+/*  - [mixin] use-grid (6 Assertions, 6 Passed, 0 Failed) */
+/*  - [function] get-grid (3 Assertions, 3 Passed, 0 Failed) */
+/*  - [function] parse-grid (55 Assertions, 55 Passed, 0 Failed) */
+/*  - [function] get-adjusted-grid (44 Assertions, 44 Passed, 0 Failed) */
+/*  - [function] get-setting (13 Assertions, 13 Passed, 0 Failed) */
 /*  
-    Summary:
-    - 7 Tests
+    7 Tests:
     - 7 Passed
     - 0 Failed */
 /*  
 
 ### Shared Context Language ------ */
-/*  - [function] nested (3 assertions, 3 passed, 0 failed) */
-/*  - [mixin] nested (2 assertions, 2 passed, 0 failed) */
+/*  - [function] nested (3 Assertions, 3 Passed, 0 Failed) */
+/*  - [mixin] nested (2 Assertions, 2 Passed, 0 Failed) */
 /*  
-    Summary:
-    - 2 Tests
+    2 Tests:
     - 2 Passed
     - 0 Failed */
 /*  
@@ -103,7 +96,6 @@
 /* "Background-grid should show 7 columns with .5 gutters" */
 .test__background-grid .assert__background-grid .test {
   background: -moz-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, rgba(0, 0, 0, 0) 10%, rgba(0, 0, 0, 0) 15%, rgba(102, 102, 255, 0.25) 15%, rgba(179, 179, 255, 0.25) 25%, rgba(0, 0, 0, 0) 25%, rgba(0, 0, 0, 0) 30%, rgba(102, 102, 255, 0.25) 30%, rgba(179, 179, 255, 0.25) 40%, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0) 45%, rgba(102, 102, 255, 0.25) 45%, rgba(179, 179, 255, 0.25) 55.0%, rgba(0, 0, 0, 0) 55.0%, rgba(0, 0, 0, 0) 60%, rgba(102, 102, 255, 0.25) 60%, rgba(179, 179, 255, 0.25) 70%, rgba(0, 0, 0, 0) 70%, rgba(0, 0, 0, 0) 75%, rgba(102, 102, 255, 0.25) 75%, rgba(179, 179, 255, 0.25) 85%, rgba(0, 0, 0, 0) 85%, rgba(0, 0, 0, 0) 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
-  background: -o-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, rgba(0, 0, 0, 0) 10%, rgba(0, 0, 0, 0) 15%, rgba(102, 102, 255, 0.25) 15%, rgba(179, 179, 255, 0.25) 25%, rgba(0, 0, 0, 0) 25%, rgba(0, 0, 0, 0) 30%, rgba(102, 102, 255, 0.25) 30%, rgba(179, 179, 255, 0.25) 40%, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0) 45%, rgba(102, 102, 255, 0.25) 45%, rgba(179, 179, 255, 0.25) 55.0%, rgba(0, 0, 0, 0) 55.0%, rgba(0, 0, 0, 0) 60%, rgba(102, 102, 255, 0.25) 60%, rgba(179, 179, 255, 0.25) 70%, rgba(0, 0, 0, 0) 70%, rgba(0, 0, 0, 0) 75%, rgba(102, 102, 255, 0.25) 75%, rgba(179, 179, 255, 0.25) 85%, rgba(0, 0, 0, 0) 85%, rgba(0, 0, 0, 0) 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
   background: -webkit-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, rgba(0, 0, 0, 0) 10%, rgba(0, 0, 0, 0) 15%, rgba(102, 102, 255, 0.25) 15%, rgba(179, 179, 255, 0.25) 25%, rgba(0, 0, 0, 0) 25%, rgba(0, 0, 0, 0) 30%, rgba(102, 102, 255, 0.25) 30%, rgba(179, 179, 255, 0.25) 40%, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0) 45%, rgba(102, 102, 255, 0.25) 45%, rgba(179, 179, 255, 0.25) 55.0%, rgba(0, 0, 0, 0) 55.0%, rgba(0, 0, 0, 0) 60%, rgba(102, 102, 255, 0.25) 60%, rgba(179, 179, 255, 0.25) 70%, rgba(0, 0, 0, 0) 70%, rgba(0, 0, 0, 0) 75%, rgba(102, 102, 255, 0.25) 75%, rgba(179, 179, 255, 0.25) 85%, rgba(0, 0, 0, 0) 85%, rgba(0, 0, 0, 0) 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
   background: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, rgba(0, 0, 0, 0) 10%, rgba(0, 0, 0, 0) 15%, rgba(102, 102, 255, 0.25) 15%, rgba(179, 179, 255, 0.25) 25%, rgba(0, 0, 0, 0) 25%, rgba(0, 0, 0, 0) 30%, rgba(102, 102, 255, 0.25) 30%, rgba(179, 179, 255, 0.25) 40%, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0) 45%, rgba(102, 102, 255, 0.25) 45%, rgba(179, 179, 255, 0.25) 55.0%, rgba(0, 0, 0, 0) 55.0%, rgba(0, 0, 0, 0) 60%, rgba(102, 102, 255, 0.25) 60%, rgba(179, 179, 255, 0.25) 70%, rgba(0, 0, 0, 0) 70%, rgba(0, 0, 0, 0) 75%, rgba(102, 102, 255, 0.25) 75%, rgba(179, 179, 255, 0.25) 85%, rgba(0, 0, 0, 0) 85%, rgba(0, 0, 0, 0) 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
 }
@@ -147,7 +139,6 @@
 .test__overlay-grid .assert__overlay-grid .test head:hover ~ .sym::before,
 .test__overlay-grid .assert__overlay-grid .test head:hover ~ body .sym::before {
   background: -moz-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, rgba(0, 0, 0, 0) 10%, rgba(0, 0, 0, 0) 15%, rgba(102, 102, 255, 0.25) 15%, rgba(179, 179, 255, 0.25) 25%, rgba(0, 0, 0, 0) 25%, rgba(0, 0, 0, 0) 30%, rgba(102, 102, 255, 0.25) 30%, rgba(179, 179, 255, 0.25) 40%, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0) 45%, rgba(102, 102, 255, 0.25) 45%, rgba(179, 179, 255, 0.25) 55.0%, rgba(0, 0, 0, 0) 55.0%, rgba(0, 0, 0, 0) 60%, rgba(102, 102, 255, 0.25) 60%, rgba(179, 179, 255, 0.25) 70%, rgba(0, 0, 0, 0) 70%, rgba(0, 0, 0, 0) 75%, rgba(102, 102, 255, 0.25) 75%, rgba(179, 179, 255, 0.25) 85%, rgba(0, 0, 0, 0) 85%, rgba(0, 0, 0, 0) 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
-  background: -o-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, rgba(0, 0, 0, 0) 10%, rgba(0, 0, 0, 0) 15%, rgba(102, 102, 255, 0.25) 15%, rgba(179, 179, 255, 0.25) 25%, rgba(0, 0, 0, 0) 25%, rgba(0, 0, 0, 0) 30%, rgba(102, 102, 255, 0.25) 30%, rgba(179, 179, 255, 0.25) 40%, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0) 45%, rgba(102, 102, 255, 0.25) 45%, rgba(179, 179, 255, 0.25) 55.0%, rgba(0, 0, 0, 0) 55.0%, rgba(0, 0, 0, 0) 60%, rgba(102, 102, 255, 0.25) 60%, rgba(179, 179, 255, 0.25) 70%, rgba(0, 0, 0, 0) 70%, rgba(0, 0, 0, 0) 75%, rgba(102, 102, 255, 0.25) 75%, rgba(179, 179, 255, 0.25) 85%, rgba(0, 0, 0, 0) 85%, rgba(0, 0, 0, 0) 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
   background: -webkit-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, rgba(0, 0, 0, 0) 10%, rgba(0, 0, 0, 0) 15%, rgba(102, 102, 255, 0.25) 15%, rgba(179, 179, 255, 0.25) 25%, rgba(0, 0, 0, 0) 25%, rgba(0, 0, 0, 0) 30%, rgba(102, 102, 255, 0.25) 30%, rgba(179, 179, 255, 0.25) 40%, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0) 45%, rgba(102, 102, 255, 0.25) 45%, rgba(179, 179, 255, 0.25) 55.0%, rgba(0, 0, 0, 0) 55.0%, rgba(0, 0, 0, 0) 60%, rgba(102, 102, 255, 0.25) 60%, rgba(179, 179, 255, 0.25) 70%, rgba(0, 0, 0, 0) 70%, rgba(0, 0, 0, 0) 75%, rgba(102, 102, 255, 0.25) 75%, rgba(179, 179, 255, 0.25) 85%, rgba(0, 0, 0, 0) 85%, rgba(0, 0, 0, 0) 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
   background: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, rgba(0, 0, 0, 0) 10%, rgba(0, 0, 0, 0) 15%, rgba(102, 102, 255, 0.25) 15%, rgba(179, 179, 255, 0.25) 25%, rgba(0, 0, 0, 0) 25%, rgba(0, 0, 0, 0) 30%, rgba(102, 102, 255, 0.25) 30%, rgba(179, 179, 255, 0.25) 40%, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0) 45%, rgba(102, 102, 255, 0.25) 45%, rgba(179, 179, 255, 0.25) 55.0%, rgba(0, 0, 0, 0) 55.0%, rgba(0, 0, 0, 0) 60%, rgba(102, 102, 255, 0.25) 60%, rgba(179, 179, 255, 0.25) 70%, rgba(0, 0, 0, 0) 70%, rgba(0, 0, 0, 0) 75%, rgba(102, 102, 255, 0.25) 75%, rgba(179, 179, 255, 0.25) 85%, rgba(0, 0, 0, 0) 85%, rgba(0, 0, 0, 0) 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
 }
@@ -158,7 +149,6 @@
 .test__overlay-grid .assert__overlay-grid .test head:hover ~ .asym::before,
 .test__overlay-grid .assert__overlay-grid .test head:hover ~ body .asym::before {
   background: -moz-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 4em, rgba(0, 0, 0, 0) 4em, rgba(0, 0, 0, 0) 5em, rgba(102, 102, 255, 0.25) 5em, rgba(179, 179, 255, 0.25) 13em, rgba(0, 0, 0, 0) 13em, rgba(0, 0, 0, 0) 14em, rgba(102, 102, 255, 0.25) 14em, rgba(179, 179, 255, 0.25) 26em, rgba(0, 0, 0, 0) 26em, rgba(0, 0, 0, 0) 27em, rgba(102, 102, 255, 0.25) 27em, rgba(179, 179, 255, 0.25) 35em, rgba(0, 0, 0, 0) 35em, rgba(0, 0, 0, 0) 36em, rgba(102, 102, 255, 0.25) 36em, rgba(179, 179, 255, 0.25));
-  background: -o-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 4em, rgba(0, 0, 0, 0) 4em, rgba(0, 0, 0, 0) 5em, rgba(102, 102, 255, 0.25) 5em, rgba(179, 179, 255, 0.25) 13em, rgba(0, 0, 0, 0) 13em, rgba(0, 0, 0, 0) 14em, rgba(102, 102, 255, 0.25) 14em, rgba(179, 179, 255, 0.25) 26em, rgba(0, 0, 0, 0) 26em, rgba(0, 0, 0, 0) 27em, rgba(102, 102, 255, 0.25) 27em, rgba(179, 179, 255, 0.25) 35em, rgba(0, 0, 0, 0) 35em, rgba(0, 0, 0, 0) 36em, rgba(102, 102, 255, 0.25) 36em, rgba(179, 179, 255, 0.25));
   background: -webkit-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 4em, rgba(0, 0, 0, 0) 4em, rgba(0, 0, 0, 0) 5em, rgba(102, 102, 255, 0.25) 5em, rgba(179, 179, 255, 0.25) 13em, rgba(0, 0, 0, 0) 13em, rgba(0, 0, 0, 0) 14em, rgba(102, 102, 255, 0.25) 14em, rgba(179, 179, 255, 0.25) 26em, rgba(0, 0, 0, 0) 26em, rgba(0, 0, 0, 0) 27em, rgba(102, 102, 255, 0.25) 27em, rgba(179, 179, 255, 0.25) 35em, rgba(0, 0, 0, 0) 35em, rgba(0, 0, 0, 0) 36em, rgba(102, 102, 255, 0.25) 36em, rgba(179, 179, 255, 0.25));
   background: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 4em, rgba(0, 0, 0, 0) 4em, rgba(0, 0, 0, 0) 5em, rgba(102, 102, 255, 0.25) 5em, rgba(179, 179, 255, 0.25) 13em, rgba(0, 0, 0, 0) 13em, rgba(0, 0, 0, 0) 14em, rgba(102, 102, 255, 0.25) 14em, rgba(179, 179, 255, 0.25) 26em, rgba(0, 0, 0, 0) 26em, rgba(0, 0, 0, 0) 27em, rgba(102, 102, 255, 0.25) 27em, rgba(179, 179, 255, 0.25) 35em, rgba(0, 0, 0, 0) 35em, rgba(0, 0, 0, 0) 36em, rgba(102, 102, 255, 0.25) 36em, rgba(179, 179, 255, 0.25));
 }
@@ -192,7 +182,6 @@
 .test__overlay-grid .assert__overlay-grid .expect head:hover ~ .sym::before,
 .test__overlay-grid .assert__overlay-grid .expect head:hover ~ body .sym::before {
   background: -moz-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, rgba(0, 0, 0, 0) 10%, rgba(0, 0, 0, 0) 15%, rgba(102, 102, 255, 0.25) 15%, rgba(179, 179, 255, 0.25) 25%, rgba(0, 0, 0, 0) 25%, rgba(0, 0, 0, 0) 30%, rgba(102, 102, 255, 0.25) 30%, rgba(179, 179, 255, 0.25) 40%, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0) 45%, rgba(102, 102, 255, 0.25) 45%, rgba(179, 179, 255, 0.25) 55.0%, rgba(0, 0, 0, 0) 55.0%, rgba(0, 0, 0, 0) 60%, rgba(102, 102, 255, 0.25) 60%, rgba(179, 179, 255, 0.25) 70%, rgba(0, 0, 0, 0) 70%, rgba(0, 0, 0, 0) 75%, rgba(102, 102, 255, 0.25) 75%, rgba(179, 179, 255, 0.25) 85%, rgba(0, 0, 0, 0) 85%, rgba(0, 0, 0, 0) 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
-  background: -o-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, rgba(0, 0, 0, 0) 10%, rgba(0, 0, 0, 0) 15%, rgba(102, 102, 255, 0.25) 15%, rgba(179, 179, 255, 0.25) 25%, rgba(0, 0, 0, 0) 25%, rgba(0, 0, 0, 0) 30%, rgba(102, 102, 255, 0.25) 30%, rgba(179, 179, 255, 0.25) 40%, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0) 45%, rgba(102, 102, 255, 0.25) 45%, rgba(179, 179, 255, 0.25) 55.0%, rgba(0, 0, 0, 0) 55.0%, rgba(0, 0, 0, 0) 60%, rgba(102, 102, 255, 0.25) 60%, rgba(179, 179, 255, 0.25) 70%, rgba(0, 0, 0, 0) 70%, rgba(0, 0, 0, 0) 75%, rgba(102, 102, 255, 0.25) 75%, rgba(179, 179, 255, 0.25) 85%, rgba(0, 0, 0, 0) 85%, rgba(0, 0, 0, 0) 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
   background: -webkit-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, rgba(0, 0, 0, 0) 10%, rgba(0, 0, 0, 0) 15%, rgba(102, 102, 255, 0.25) 15%, rgba(179, 179, 255, 0.25) 25%, rgba(0, 0, 0, 0) 25%, rgba(0, 0, 0, 0) 30%, rgba(102, 102, 255, 0.25) 30%, rgba(179, 179, 255, 0.25) 40%, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0) 45%, rgba(102, 102, 255, 0.25) 45%, rgba(179, 179, 255, 0.25) 55.0%, rgba(0, 0, 0, 0) 55.0%, rgba(0, 0, 0, 0) 60%, rgba(102, 102, 255, 0.25) 60%, rgba(179, 179, 255, 0.25) 70%, rgba(0, 0, 0, 0) 70%, rgba(0, 0, 0, 0) 75%, rgba(102, 102, 255, 0.25) 75%, rgba(179, 179, 255, 0.25) 85%, rgba(0, 0, 0, 0) 85%, rgba(0, 0, 0, 0) 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
   background: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, rgba(0, 0, 0, 0) 10%, rgba(0, 0, 0, 0) 15%, rgba(102, 102, 255, 0.25) 15%, rgba(179, 179, 255, 0.25) 25%, rgba(0, 0, 0, 0) 25%, rgba(0, 0, 0, 0) 30%, rgba(102, 102, 255, 0.25) 30%, rgba(179, 179, 255, 0.25) 40%, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0) 45%, rgba(102, 102, 255, 0.25) 45%, rgba(179, 179, 255, 0.25) 55.0%, rgba(0, 0, 0, 0) 55.0%, rgba(0, 0, 0, 0) 60%, rgba(102, 102, 255, 0.25) 60%, rgba(179, 179, 255, 0.25) 70%, rgba(0, 0, 0, 0) 70%, rgba(0, 0, 0, 0) 75%, rgba(102, 102, 255, 0.25) 75%, rgba(179, 179, 255, 0.25) 85%, rgba(0, 0, 0, 0) 85%, rgba(0, 0, 0, 0) 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
 }
@@ -203,15 +192,13 @@
 .test__overlay-grid .assert__overlay-grid .expect head:hover ~ .asym::before,
 .test__overlay-grid .assert__overlay-grid .expect head:hover ~ body .asym::before {
   background: -moz-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 4em, rgba(0, 0, 0, 0) 4em, rgba(0, 0, 0, 0) 5em, rgba(102, 102, 255, 0.25) 5em, rgba(179, 179, 255, 0.25) 13em, rgba(0, 0, 0, 0) 13em, rgba(0, 0, 0, 0) 14em, rgba(102, 102, 255, 0.25) 14em, rgba(179, 179, 255, 0.25) 26em, rgba(0, 0, 0, 0) 26em, rgba(0, 0, 0, 0) 27em, rgba(102, 102, 255, 0.25) 27em, rgba(179, 179, 255, 0.25) 35em, rgba(0, 0, 0, 0) 35em, rgba(0, 0, 0, 0) 36em, rgba(102, 102, 255, 0.25) 36em, rgba(179, 179, 255, 0.25));
-  background: -o-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 4em, rgba(0, 0, 0, 0) 4em, rgba(0, 0, 0, 0) 5em, rgba(102, 102, 255, 0.25) 5em, rgba(179, 179, 255, 0.25) 13em, rgba(0, 0, 0, 0) 13em, rgba(0, 0, 0, 0) 14em, rgba(102, 102, 255, 0.25) 14em, rgba(179, 179, 255, 0.25) 26em, rgba(0, 0, 0, 0) 26em, rgba(0, 0, 0, 0) 27em, rgba(102, 102, 255, 0.25) 27em, rgba(179, 179, 255, 0.25) 35em, rgba(0, 0, 0, 0) 35em, rgba(0, 0, 0, 0) 36em, rgba(102, 102, 255, 0.25) 36em, rgba(179, 179, 255, 0.25));
   background: -webkit-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 4em, rgba(0, 0, 0, 0) 4em, rgba(0, 0, 0, 0) 5em, rgba(102, 102, 255, 0.25) 5em, rgba(179, 179, 255, 0.25) 13em, rgba(0, 0, 0, 0) 13em, rgba(0, 0, 0, 0) 14em, rgba(102, 102, 255, 0.25) 14em, rgba(179, 179, 255, 0.25) 26em, rgba(0, 0, 0, 0) 26em, rgba(0, 0, 0, 0) 27em, rgba(102, 102, 255, 0.25) 27em, rgba(179, 179, 255, 0.25) 35em, rgba(0, 0, 0, 0) 35em, rgba(0, 0, 0, 0) 36em, rgba(102, 102, 255, 0.25) 36em, rgba(179, 179, 255, 0.25));
   background: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 4em, rgba(0, 0, 0, 0) 4em, rgba(0, 0, 0, 0) 5em, rgba(102, 102, 255, 0.25) 5em, rgba(179, 179, 255, 0.25) 13em, rgba(0, 0, 0, 0) 13em, rgba(0, 0, 0, 0) 14em, rgba(102, 102, 255, 0.25) 14em, rgba(179, 179, 255, 0.25) 26em, rgba(0, 0, 0, 0) 26em, rgba(0, 0, 0, 0) 27em, rgba(102, 102, 255, 0.25) 27em, rgba(179, 179, 255, 0.25) 35em, rgba(0, 0, 0, 0) 35em, rgba(0, 0, 0, 0) 36em, rgba(102, 102, 255, 0.25) 36em, rgba(179, 179, 255, 0.25));
 }
 
-/*  - [function] get-grid-color-stops (5 assertions, 5 passed, 0 failed) */
+/*  - [function] get-grid-color-stops (5 Assertions, 5 Passed, 0 Failed) */
 /*  
-    Summary:
-    - 1 Tests
+    1 Tests:
     - 1 Passed
     - 0 Failed */
 /*  
@@ -225,7 +212,6 @@
   margin-left: auto;
   margin-right: auto;
   background: -moz-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, rgba(0, 0, 0, 0) 10%, rgba(0, 0, 0, 0) 15%, rgba(102, 102, 255, 0.25) 15%, rgba(179, 179, 255, 0.25) 25%, rgba(0, 0, 0, 0) 25%, rgba(0, 0, 0, 0) 30%, rgba(102, 102, 255, 0.25) 30%, rgba(179, 179, 255, 0.25) 40%, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0) 45%, rgba(102, 102, 255, 0.25) 45%, rgba(179, 179, 255, 0.25) 55.0%, rgba(0, 0, 0, 0) 55.0%, rgba(0, 0, 0, 0) 60%, rgba(102, 102, 255, 0.25) 60%, rgba(179, 179, 255, 0.25) 70%, rgba(0, 0, 0, 0) 70%, rgba(0, 0, 0, 0) 75%, rgba(102, 102, 255, 0.25) 75%, rgba(179, 179, 255, 0.25) 85%, rgba(0, 0, 0, 0) 85%, rgba(0, 0, 0, 0) 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
-  background: -o-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, rgba(0, 0, 0, 0) 10%, rgba(0, 0, 0, 0) 15%, rgba(102, 102, 255, 0.25) 15%, rgba(179, 179, 255, 0.25) 25%, rgba(0, 0, 0, 0) 25%, rgba(0, 0, 0, 0) 30%, rgba(102, 102, 255, 0.25) 30%, rgba(179, 179, 255, 0.25) 40%, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0) 45%, rgba(102, 102, 255, 0.25) 45%, rgba(179, 179, 255, 0.25) 55.0%, rgba(0, 0, 0, 0) 55.0%, rgba(0, 0, 0, 0) 60%, rgba(102, 102, 255, 0.25) 60%, rgba(179, 179, 255, 0.25) 70%, rgba(0, 0, 0, 0) 70%, rgba(0, 0, 0, 0) 75%, rgba(102, 102, 255, 0.25) 75%, rgba(179, 179, 255, 0.25) 85%, rgba(0, 0, 0, 0) 85%, rgba(0, 0, 0, 0) 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
   background: -webkit-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, rgba(0, 0, 0, 0) 10%, rgba(0, 0, 0, 0) 15%, rgba(102, 102, 255, 0.25) 15%, rgba(179, 179, 255, 0.25) 25%, rgba(0, 0, 0, 0) 25%, rgba(0, 0, 0, 0) 30%, rgba(102, 102, 255, 0.25) 30%, rgba(179, 179, 255, 0.25) 40%, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0) 45%, rgba(102, 102, 255, 0.25) 45%, rgba(179, 179, 255, 0.25) 55.0%, rgba(0, 0, 0, 0) 55.0%, rgba(0, 0, 0, 0) 60%, rgba(102, 102, 255, 0.25) 60%, rgba(179, 179, 255, 0.25) 70%, rgba(0, 0, 0, 0) 70%, rgba(0, 0, 0, 0) 75%, rgba(102, 102, 255, 0.25) 75%, rgba(179, 179, 255, 0.25) 85%, rgba(0, 0, 0, 0) 85%, rgba(0, 0, 0, 0) 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
   background: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, rgba(0, 0, 0, 0) 10%, rgba(0, 0, 0, 0) 15%, rgba(102, 102, 255, 0.25) 15%, rgba(179, 179, 255, 0.25) 25%, rgba(0, 0, 0, 0) 25%, rgba(0, 0, 0, 0) 30%, rgba(102, 102, 255, 0.25) 30%, rgba(179, 179, 255, 0.25) 40%, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0) 45%, rgba(102, 102, 255, 0.25) 45%, rgba(179, 179, 255, 0.25) 55.0%, rgba(0, 0, 0, 0) 55.0%, rgba(0, 0, 0, 0) 60%, rgba(102, 102, 255, 0.25) 60%, rgba(179, 179, 255, 0.25) 70%, rgba(0, 0, 0, 0) 70%, rgba(0, 0, 0, 0) 75%, rgba(102, 102, 255, 0.25) 75%, rgba(179, 179, 255, 0.25) 85%, rgba(0, 0, 0, 0) 85%, rgba(0, 0, 0, 0) 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
 }
@@ -257,7 +243,6 @@
   margin-left: 0;
   margin-right: auto;
   background: -moz-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, rgba(0, 0, 0, 0) 10%, rgba(0, 0, 0, 0) 12.5%, rgba(102, 102, 255, 0.25) 12.5%, rgba(179, 179, 255, 0.25) 32.5%, rgba(0, 0, 0, 0) 32.5%, rgba(0, 0, 0, 0) 35%, rgba(102, 102, 255, 0.25) 35%, rgba(179, 179, 255, 0.25) 65%, rgba(0, 0, 0, 0) 65%, rgba(0, 0, 0, 0) 67.5%, rgba(102, 102, 255, 0.25) 67.5%, rgba(179, 179, 255, 0.25) 87.5%, rgba(0, 0, 0, 0) 87.5%, rgba(0, 0, 0, 0) 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
-  background: -o-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, rgba(0, 0, 0, 0) 10%, rgba(0, 0, 0, 0) 12.5%, rgba(102, 102, 255, 0.25) 12.5%, rgba(179, 179, 255, 0.25) 32.5%, rgba(0, 0, 0, 0) 32.5%, rgba(0, 0, 0, 0) 35%, rgba(102, 102, 255, 0.25) 35%, rgba(179, 179, 255, 0.25) 65%, rgba(0, 0, 0, 0) 65%, rgba(0, 0, 0, 0) 67.5%, rgba(102, 102, 255, 0.25) 67.5%, rgba(179, 179, 255, 0.25) 87.5%, rgba(0, 0, 0, 0) 87.5%, rgba(0, 0, 0, 0) 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
   background: -webkit-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, rgba(0, 0, 0, 0) 10%, rgba(0, 0, 0, 0) 12.5%, rgba(102, 102, 255, 0.25) 12.5%, rgba(179, 179, 255, 0.25) 32.5%, rgba(0, 0, 0, 0) 32.5%, rgba(0, 0, 0, 0) 35%, rgba(102, 102, 255, 0.25) 35%, rgba(179, 179, 255, 0.25) 65%, rgba(0, 0, 0, 0) 65%, rgba(0, 0, 0, 0) 67.5%, rgba(102, 102, 255, 0.25) 67.5%, rgba(179, 179, 255, 0.25) 87.5%, rgba(0, 0, 0, 0) 87.5%, rgba(0, 0, 0, 0) 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
   background: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, rgba(0, 0, 0, 0) 10%, rgba(0, 0, 0, 0) 12.5%, rgba(102, 102, 255, 0.25) 12.5%, rgba(179, 179, 255, 0.25) 32.5%, rgba(0, 0, 0, 0) 32.5%, rgba(0, 0, 0, 0) 35%, rgba(102, 102, 255, 0.25) 35%, rgba(179, 179, 255, 0.25) 65%, rgba(0, 0, 0, 0) 65%, rgba(0, 0, 0, 0) 67.5%, rgba(102, 102, 255, 0.25) 67.5%, rgba(179, 179, 255, 0.25) 87.5%, rgba(0, 0, 0, 0) 87.5%, rgba(0, 0, 0, 0) 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
 }
@@ -282,11 +267,10 @@
   clear: both;
 }
 
-/*  - [function] container (5 assertions, 5 passed, 0 failed) */
-/*  - [function] get-container-width (5 assertions, 5 passed, 0 failed) */
+/*  - [function] container (5 Assertions, 5 Passed, 0 Failed) */
+/*  - [function] get-container-width (5 Assertions, 5 Passed, 0 Failed) */
 /*  
-    Summary:
-    - 2 Tests
+    2 Tests:
     - 2 Passed
     - 0 Failed */
 /*  
@@ -344,16 +328,15 @@
   margin-right: 2.5641%;
 }
 
-/*  - [mixin] span (3 assertions, 3 passed, 0 failed) */
-/*  - [function] span (6 assertions, 6 passed, 0 failed) */
-/*  - [function] parse-span (84 assertions, 84 passed, 0 failed) */
-/*  - [function] get-span-setting (13 assertions, 13 passed, 0 failed) */
-/*  - [function] get-span-width (7 assertions, 7 passed, 0 failed) */
-/*  - [function] span-math (9 assertions, 9 passed, 0 failed) */
-/*  - [function] get-span-context (1 assertions, 1 passed, 0 failed) */
+/*  - [mixin] span (3 Assertions, 3 Passed, 0 Failed) */
+/*  - [function] span (6 Assertions, 6 Passed, 0 Failed) */
+/*  - [function] parse-span (84 Assertions, 84 Passed, 0 Failed) */
+/*  - [function] get-span-setting (13 Assertions, 13 Passed, 0 Failed) */
+/*  - [function] get-span-width (7 Assertions, 7 Passed, 0 Failed) */
+/*  - [function] span-math (9 Assertions, 9 Passed, 0 Failed) */
+/*  - [function] get-span-context (1 Assertions, 1 Passed, 0 Failed) */
 /*  
-    Summary:
-    - 7 Tests
+    7 Tests:
     - 7 Passed
     - 0 Failed */
 /*  
@@ -390,12 +373,11 @@
   padding-right: 5em;
 }
 
-/*  - [function] gutter (6 assertions, 6 passed, 0 failed) */
-/*  - [function] get-gutter-width (3 assertions, 3 passed, 0 failed) */
-/*  - [function] get-gutters (8 assertions, 8 passed, 0 failed) */
+/*  - [function] gutter (6 Assertions, 6 Passed, 0 Failed) */
+/*  - [function] get-gutter-width (3 Assertions, 3 Passed, 0 Failed) */
+/*  - [function] get-gutters (8 Assertions, 8 Passed, 0 Failed) */
 /*  
-    Summary:
-    - 3 Tests
+    3 Tests:
     - 3 Passed
     - 0 Failed */
 /*  
@@ -414,10 +396,9 @@
   margin-left: -100%;
 }
 
-/*  - [function] get-isolation (3 assertions, 3 passed, 0 failed) */
+/*  - [function] get-isolation (3 Assertions, 3 Passed, 0 Failed) */
 /*  
-    Summary:
-    - 1 Tests
+    1 Tests:
     - 1 Passed
     - 0 Failed */
 /*  
@@ -635,8 +616,7 @@
 }
 
 /*  
-    Summary:
-    - 0 Tests
+    0 Tests:
     - 0 Passed
     - 0 Failed */
 /*
@@ -910,17 +890,14 @@
 /* "Elements should show a horizontal red-green-blue gradient, and a vertical baseline" */
 .test__background-grid-output .assert__show .test {
   background: -moz-linear-gradient(left, #ffcccc, #ccffcc 25%, #ccccff);
-  background: -o-linear-gradient(left, #ffcccc, #ccffcc 25%, #ccccff);
   background: -webkit-linear-gradient(left, #ffcccc, #ccffcc 25%, #ccccff);
   background: linear-gradient(to right, #ffcccc, #ccffcc 25%, #ccccff);
 }
 .test__background-grid-output .assert__show .expect {
   background: -moz-linear-gradient(bottom, rgba(0, 0, 0, 0.5) 5%, rgba(0, 0, 0, 0) 5%), -moz-linear-gradient(left, #ffcccc, #ccffcc 25%, #ccccff);
-  background: -o-linear-gradient(bottom, rgba(0, 0, 0, 0.5) 5%, rgba(0, 0, 0, 0) 5%), -o-linear-gradient(left, #ffcccc, #ccffcc 25%, #ccccff);
   background: -webkit-linear-gradient(bottom, rgba(0, 0, 0, 0.5) 5%, rgba(0, 0, 0, 0) 5%), -webkit-linear-gradient(left, #ffcccc, #ccffcc 25%, #ccccff);
   background: linear-gradient(to top, rgba(0, 0, 0, 0.5) 5%, rgba(0, 0, 0, 0) 5%), linear-gradient(to right, #ffcccc, #ccffcc 25%, #ccccff);
   -moz-background-size: 100% 24px;
-  -o-background-size: 100% 24px;
   -webkit-background-size: 100% 24px;
   background-size: 100% 24px;
   background-position: left top;
@@ -929,13 +906,11 @@
 /* "Elements should show a horizontal red-green-blue gradient, with no baseline" */
 .test__background-grid-output .assert__show-columns .test {
   background: -moz-linear-gradient(left, #ffcccc, #ccffcc 25%, #ccccff);
-  background: -o-linear-gradient(left, #ffcccc, #ccffcc 25%, #ccccff);
   background: -webkit-linear-gradient(left, #ffcccc, #ccffcc 25%, #ccccff);
   background: linear-gradient(to right, #ffcccc, #ccffcc 25%, #ccccff);
 }
 .test__background-grid-output .assert__show-columns .expect {
   background: -moz-linear-gradient(left, #ffcccc, #ccffcc 25%, #ccccff);
-  background: -o-linear-gradient(left, #ffcccc, #ccffcc 25%, #ccccff);
   background: -webkit-linear-gradient(left, #ffcccc, #ccffcc 25%, #ccccff);
   background: linear-gradient(to right, #ffcccc, #ccffcc 25%, #ccccff);
 }
@@ -943,17 +918,14 @@
 /* "Elements should show a vertical baseline" */
 .test__background-grid-output .assert__show-baseline .test {
   background: -moz-linear-gradient(left, #ffcccc, #ccffcc 25%, #ccccff);
-  background: -o-linear-gradient(left, #ffcccc, #ccffcc 25%, #ccccff);
   background: -webkit-linear-gradient(left, #ffcccc, #ccffcc 25%, #ccccff);
   background: linear-gradient(to right, #ffcccc, #ccffcc 25%, #ccccff);
 }
 .test__background-grid-output .assert__show-baseline .expect {
   background: -moz-linear-gradient(bottom, rgba(0, 0, 0, 0.5) 5%, rgba(0, 0, 0, 0) 5%);
-  background: -o-linear-gradient(bottom, rgba(0, 0, 0, 0.5) 5%, rgba(0, 0, 0, 0) 5%);
   background: -webkit-linear-gradient(bottom, rgba(0, 0, 0, 0.5) 5%, rgba(0, 0, 0, 0) 5%);
   background: linear-gradient(to top, rgba(0, 0, 0, 0.5) 5%, rgba(0, 0, 0, 0) 5%);
   -moz-background-size: 100% 24px;
-  -o-background-size: 100% 24px;
   -webkit-background-size: 100% 24px;
   background-size: 100% 24px;
   background-position: left top;
@@ -962,7 +934,6 @@
 /* "Elements should not show any grid background" */
 .test__background-grid-output .assert__hide .test {
   background: -moz-linear-gradient(left, #ffcccc, #ccffcc 25%, #ccccff);
-  background: -o-linear-gradient(left, #ffcccc, #ccffcc 25%, #ccccff);
   background: -webkit-linear-gradient(left, #ffcccc, #ccffcc 25%, #ccccff);
   background: linear-gradient(to right, #ffcccc, #ccffcc 25%, #ccccff);
 }

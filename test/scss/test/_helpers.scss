@@ -29,7 +29,7 @@ $supported-browsers: firefox chrome;
   $grid: false,
   $output: $output-test-context
 ) {
-  $output-assert-slug: $slug;
+  $output-assert-slug: $slug !global;
 
   @if $grid {
     @include set-grid($grid);
@@ -54,7 +54,7 @@ $supported-browsers: firefox chrome;
 
 @mixin assert-teardown(
 ) {
-  $output-assert-slug: null;
+  $output-assert-slug: null !global;
   @include original-grid;
 }
 
@@ -64,12 +64,12 @@ $supported-browsers: firefox chrome;
 @mixin output-test(
   $slug
 ) {
-  $output-test-slug: $slug;
+  $output-test-slug: $slug !global;
 
   /* - [mixin] #{$output-test-slug} */
   @content;
 
-  $output-test-slug: null;
+  $output-test-slug: null !global;
 }
 
 // Assert Output

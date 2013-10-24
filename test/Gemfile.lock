@@ -1,15 +1,8 @@
-PATH
-  remote: /Users/eric/Sites/true
-  specs:
-    true (0.2.0)
-      compass (~> 0.13.alpha.7)
-      sass (~> 3.3.0.rc.1)
-
 GEM
   remote: http://rubygems.org/
   specs:
     chunky_png (1.2.9)
-    compass (0.13.alpha.7)
+    compass (0.13.alpha.10)
       chunky_png (~> 1.2)
       json
       listen (~> 1.1.0)
@@ -27,12 +20,15 @@ GEM
       ffi (>= 0.5.0)
     sass (3.3.0.rc.1)
       listen (~> 1.1.0)
+    true (0.2.0.rc.1)
+      compass (~> 0.13.alpha.7)
+      sass (~> 3.3.0.rc.1)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
-  compass (~> 0.13.alpha.7)
+  compass (~> 0.13.alpha.10)
   rb-fsevent (~> 0.9)
   sass (~> 3.3.0.rc.1)
-  true!
+  true (~> 0.2.0.rc.1)

@@ -10,7 +10,7 @@
 @function is-last(
   $span,
   $location,
-  $columns: $columns
+  $columns: susy-get(columns)
 ) {
   $is-last: false;
 
@@ -46,7 +46,7 @@
 @function get-location-position(
   $span,
   $location,
-  $columns: $columns
+  $columns: susy-get(columns)
 ) {
   @if type-of($location) == number {
     @return $location;

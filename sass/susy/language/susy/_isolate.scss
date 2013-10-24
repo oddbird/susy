@@ -35,10 +35,10 @@
 @function get-isolation(
   $span,
   $location,
-  $columns            : $columns,
-  $gutters            : $gutters,
-  $column-width       : $column-width,
-  $layout-math        : $layout-math
+  $columns            : susy-get(columns),
+  $gutters            : susy-get(gutters),
+  $column-width       : susy-get(column-width),
+  $layout-math        : susy-get(layout-math)
 ) {
   $context  : column-sum($columns, $gutters);
   $width    : null;

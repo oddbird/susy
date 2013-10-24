@@ -7,9 +7,9 @@
 // - [$justify]       : left | center | right
 // - [$layout-math]   : fluid | static
 @mixin container-output(
-  $width        : $container,
-  $justify      : $container-position,
-  $layout-math  : $layout-math
+  $width        : susy-get(container),
+  $justify      : susy-get(container-position),
+  $layout-math  : susy-get(layout-math)
 ) {
   $position   : parse-container-position($justify);
   $property   : if($layout-math == static, width, max-width);

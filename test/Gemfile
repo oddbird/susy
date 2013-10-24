@@ -1,8 +1,7 @@
 source "http://rubygems.org"
 
 gem "sass", '~> 3.3.0.rc.1'
-gem "compass", '~> 0.13.alpha.7'
-# gem "true", :git => "git://github.com/ericam/true", :branch => "master"
-gem "true", :path => "/Users/eric/Sites/true"
+gem "compass", '~> 0.13.alpha.10'
+gem "true", '~> 0.2.0.rc.1'
 
 gem 'rb-fsevent', '~> 0.9'

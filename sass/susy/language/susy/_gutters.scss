@@ -39,11 +39,11 @@
 ) {
   $context                : get-adjusted-grid($context);
 
-  $this-columns           : get-setting(columns, $context);
-  $this-gutters           : get-setting(gutters, $context);
-  $this-column-width      : get-setting(column-width, $context);
-  $this-layout-math       : get-setting(layout-math, $context);
-  $this-gutter-position   : get-setting(gutter-position, $context);
+  $this-columns           : susy-get(columns, $context);
+  $this-gutters           : susy-get(gutters, $context);
+  $this-column-width      : susy-get(column-width, $context);
+  $this-layout-math       : susy-get(layout-math, $context);
+  $this-gutter-position   : susy-get(gutter-position, $context);
 
   $this-layout-math: if($this-gutter-position == inside-static, static, $this-layout-math);
   $width: get-gutter-width($this-columns, $this-gutters, $this-column-width, $this-layout-math, $this-gutter-position);

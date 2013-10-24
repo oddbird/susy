@@ -6,27 +6,28 @@
 // Set a container element
 // - [$grid]  : <settings>
 @mixin container(
-  $grid: get-grid()
+  $grid
 ) {
-  $grid                   : get-adjusted-grid($grid);
+  $pre                : $grid;
+  $grid               : parse-grid($grid);
 
-  $this-container         : get-setting(container, $grid);
-  $this-column-width      : get-setting(column-width, $grid);
-  $this-columns           : get-setting(columns, $grid);
-  $this-gutters           : get-setting(gutters, $grid);
-  $this-gutter-position   : get-setting(gutter-position, $grid);
-  $this-layout-math       : get-setting(layout-math, $grid);
+  $container          : susy-get(container, $grid);
+  $column-width       : susy-get(column-width, $grid);
+  $columns            : susy-get(columns, $grid);
+  $gutters            : susy-get(gutters, $grid);
+  $gutter-position    : susy-get(gutter-position, $grid);
+  $layout-math        : susy-get(layout-math, $grid);
 
-  $width      : get-container-width($this-container, $this-column-width, $this-columns, $this-gutters, $this-gutter-position);
-  $justify    : get-setting(container-position, $grid);
-  $box        : get-setting(box-sizing, $grid);
+  $width      : get-container-width($container, $column-width, $columns, $gutters, $gutter-position);
+  $justify    : susy-get(container-position, $grid);
+  $box        : susy-get(box-sizing, $grid);
 
   @if $box {
     @include box-sizing($box);
   }
 
-  @include float-container($width, $justify, $this-layout-math);
-  @include background-grid($grid);
+  @include float-container($width, $justify, $layout-math);
+  @include background-grid($pre);
 }
 
 // Container [function]
@@ -34,17 +35,17 @@
 // Return container width
 // - [$grid]  : <settings>
 @function container(
-  $grid: get-grid()
+  $grid
 ) {
-  $grid                   : get-adjusted-grid($grid);
+  $grid               : parse-grid($grid);
 
-  $this-container         : get-setting(container, $grid);
-  $this-column-width      : get-setting(column-width, $grid);
-  $this-columns           : get-setting(columns, $grid);
-  $this-gutters           : get-setting(gutters, $grid);
-  $this-gutter-position   : get-setting(gutter-position, $grid);
+  $container          : susy-get(container, $grid);
+  $column-width       : susy-get(column-width, $grid);
+  $columns            : susy-get(columns, $grid);
+  $gutters            : susy-get(gutters, $grid);
+  $gutter-position    : susy-get(gutter-position, $grid);
 
-  $width: get-container-width($this-container, $this-column-width, $this-columns, $this-gutters, $this-gutter-position);
+  $width: get-container-width($container, $column-width, $columns, $gutters, $gutter-position);
 
   @return $width;
 }
@@ -58,11 +59,11 @@
 // - [$gutters]           : <ratio>
 // - [$gutter-position]   : before | after | split | inside
 @function get-container-width(
-  $container        : $container,
-  $column-width     : $column-width,
-  $columns          : $columns,
-  $gutters          : $gutters,
-  $gutter-position  : $gutter-position
+  $container        : susy-get(container),
+  $column-width     : susy-get(column-width),
+  $columns          : susy-get(columns),
+  $gutters          : susy-get(gutters),
+  $gutter-position  : susy-get(gutter-position)
 ) {
   $width: $container;
 

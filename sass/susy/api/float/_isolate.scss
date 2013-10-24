@@ -7,7 +7,7 @@
 // - [$flow]  : ltr | rtl
 @mixin isolate-output(
   $push,
-  $flow     : $flow
+  $flow     : susy-get(flow)
 ) {
   $to     : to($flow);
   $from   : from($flow);

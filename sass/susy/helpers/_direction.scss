@@ -7,7 +7,7 @@
 // - [$flow]  : ltr | rtl
 // - [$key]   : from | to
 @function get-direction(
-  $flow: $flow,
+  $flow: susy-get(flow),
   $key: from
 ) {
   $from: if($flow == rtl, right, left);
@@ -22,7 +22,7 @@
 // Return the 'to' direction of a flow
 // - [$flow]  : ltr | rtl
 @function to(
-  $flow: $flow
+  $flow: susy-get(flow)
 ) {
   @return get-direction($flow,to);
 }
@@ -32,7 +32,7 @@
 // Return the 'from' direction of a flow
 // - [$flow]  : ltr | rtl
 @function from(
-  $flow: $flow
+  $flow: susy-get(flow)
 ) {
   @return get-direction($flow,from);
 }

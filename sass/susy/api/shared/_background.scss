@@ -2,13 +2,6 @@
 // ===================
 // - Sub-pixel rounding can lead to several pixels variation between browsers.
 
-@import "compass/layout/grid-background";
-@import "compass/css3/images";
-@import "compass/css3/background-size";
-
-// Set the line height for your vertical rhythm.
-$base-line-height       : 24px            !default;
-
 // Grid Background Output
 // ----------------------
 // $stops     : <list> (gradient color-stops)
@@ -16,31 +9,38 @@ $base-line-height       : 24px            !default;
 // [$flow]    : ltr | rtl
 @mixin background-grid-output (
   $stops,
-  $line-height  : $base-line-height,
-  $show         : $show-grids,
-  $flow         : $flow
+  $show         : susy-get(show-grids),
+  $line-height  : if(variable-exists(base-line-height), $base-line-height, false),
+  $flow         : susy-get(flow)
 ) {
   $to     : to($flow);
-  $from   : from($flow);
 
   // set the proper background gradient
   $background: ();
 
   @if $show and $show != hide {
 
-    @if $show != show-columns {
+    @if $show != show-columns and $line-height and function-exists(get-baseline-gradient) {
       $background: append($background, get-baseline-gradient(), comma);
     }
 
     @if $show != show-baseline {
-      $background: append($background, linear-gradient($from, $stops...), comma);
+      $background: append($background, linear-gradient(to $to, $stops...), comma);
     }
 
     // output styles
-    @include background($background);
+    @if mixin-exists(background-image) {
+      @include background-image($background);
+    } @else {
+      background-image: $background;
+    }
 
-    @if $show != show-columns {
-      @include background-size(100% $line-height);
+    @if $show != show-columns and $line-height {
+      @if mixin-exists(background-size) {
+        @include background-size(100% $line-height);
+      } @else {
+        background-size: 100% $line-height;
+      }
       background-position: left top;
     }
 

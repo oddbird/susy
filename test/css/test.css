@@ -7,8 +7,8 @@
 .test__overlay-grid .assert__overlay-grid .expect head:hover ~ body .asym::before {
   position: absolute;
   top: 0;
-  bottom: 0;
   left: 0;
+  bottom: 0;
   right: 0;
   content: " ";
   z-index: 998;
@@ -69,16 +69,13 @@
 /*  
 
 ### Settings Syntax ------ */
-/*  - [Test Helper] Original Grid (2 Assertions, 2 Passed, 0 Failed) */
-/*  - [mixin] set-grid (10 Assertions, 10 Passed, 0 Failed) */
+/*  - [mixin] set-grid (7 Assertions, 7 Passed, 0 Failed) */
 /*  - [mixin] use-grid (6 Assertions, 6 Passed, 0 Failed) */
-/*  - [function] get-grid (3 Assertions, 3 Passed, 0 Failed) */
-/*  - [function] parse-grid (55 Assertions, 55 Passed, 0 Failed) */
-/*  - [function] get-adjusted-grid (44 Assertions, 44 Passed, 0 Failed) */
+/*  - [function] parse-grid (60 Assertions, 60 Passed, 0 Failed) */
 /*  - [function] get-setting (13 Assertions, 13 Passed, 0 Failed) */
 /*  
-    7 Tests:
-    - 7 Passed
+    4 Tests:
+    - 4 Passed
     - 0 Failed */
 /*  
 
@@ -95,9 +92,9 @@
 /* - [mixin] background-grid */
 /* "Background-grid should show 7 columns with .5 gutters" */
 .test__background-grid .assert__background-grid .test {
-  background: -moz-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, rgba(0, 0, 0, 0) 10%, rgba(0, 0, 0, 0) 15%, rgba(102, 102, 255, 0.25) 15%, rgba(179, 179, 255, 0.25) 25%, rgba(0, 0, 0, 0) 25%, rgba(0, 0, 0, 0) 30%, rgba(102, 102, 255, 0.25) 30%, rgba(179, 179, 255, 0.25) 40%, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0) 45%, rgba(102, 102, 255, 0.25) 45%, rgba(179, 179, 255, 0.25) 55.0%, rgba(0, 0, 0, 0) 55.0%, rgba(0, 0, 0, 0) 60%, rgba(102, 102, 255, 0.25) 60%, rgba(179, 179, 255, 0.25) 70%, rgba(0, 0, 0, 0) 70%, rgba(0, 0, 0, 0) 75%, rgba(102, 102, 255, 0.25) 75%, rgba(179, 179, 255, 0.25) 85%, rgba(0, 0, 0, 0) 85%, rgba(0, 0, 0, 0) 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
-  background: -webkit-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, rgba(0, 0, 0, 0) 10%, rgba(0, 0, 0, 0) 15%, rgba(102, 102, 255, 0.25) 15%, rgba(179, 179, 255, 0.25) 25%, rgba(0, 0, 0, 0) 25%, rgba(0, 0, 0, 0) 30%, rgba(102, 102, 255, 0.25) 30%, rgba(179, 179, 255, 0.25) 40%, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0) 45%, rgba(102, 102, 255, 0.25) 45%, rgba(179, 179, 255, 0.25) 55.0%, rgba(0, 0, 0, 0) 55.0%, rgba(0, 0, 0, 0) 60%, rgba(102, 102, 255, 0.25) 60%, rgba(179, 179, 255, 0.25) 70%, rgba(0, 0, 0, 0) 70%, rgba(0, 0, 0, 0) 75%, rgba(102, 102, 255, 0.25) 75%, rgba(179, 179, 255, 0.25) 85%, rgba(0, 0, 0, 0) 85%, rgba(0, 0, 0, 0) 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
-  background: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, rgba(0, 0, 0, 0) 10%, rgba(0, 0, 0, 0) 15%, rgba(102, 102, 255, 0.25) 15%, rgba(179, 179, 255, 0.25) 25%, rgba(0, 0, 0, 0) 25%, rgba(0, 0, 0, 0) 30%, rgba(102, 102, 255, 0.25) 30%, rgba(179, 179, 255, 0.25) 40%, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0) 45%, rgba(102, 102, 255, 0.25) 45%, rgba(179, 179, 255, 0.25) 55.0%, rgba(0, 0, 0, 0) 55.0%, rgba(0, 0, 0, 0) 60%, rgba(102, 102, 255, 0.25) 60%, rgba(179, 179, 255, 0.25) 70%, rgba(0, 0, 0, 0) 70%, rgba(0, 0, 0, 0) 75%, rgba(102, 102, 255, 0.25) 75%, rgba(179, 179, 255, 0.25) 85%, rgba(0, 0, 0, 0) 85%, rgba(0, 0, 0, 0) 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
+  background-image: -moz-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, rgba(0, 0, 0, 0) 10%, rgba(0, 0, 0, 0) 15%, rgba(102, 102, 255, 0.25) 15%, rgba(179, 179, 255, 0.25) 25%, rgba(0, 0, 0, 0) 25%, rgba(0, 0, 0, 0) 30%, rgba(102, 102, 255, 0.25) 30%, rgba(179, 179, 255, 0.25) 40%, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0) 45%, rgba(102, 102, 255, 0.25) 45%, rgba(179, 179, 255, 0.25) 55.0%, rgba(0, 0, 0, 0) 55.0%, rgba(0, 0, 0, 0) 60%, rgba(102, 102, 255, 0.25) 60%, rgba(179, 179, 255, 0.25) 70%, rgba(0, 0, 0, 0) 70%, rgba(0, 0, 0, 0) 75%, rgba(102, 102, 255, 0.25) 75%, rgba(179, 179, 255, 0.25) 85%, rgba(0, 0, 0, 0) 85%, rgba(0, 0, 0, 0) 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
+  background-image: -webkit-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, rgba(0, 0, 0, 0) 10%, rgba(0, 0, 0, 0) 15%, rgba(102, 102, 255, 0.25) 15%, rgba(179, 179, 255, 0.25) 25%, rgba(0, 0, 0, 0) 25%, rgba(0, 0, 0, 0) 30%, rgba(102, 102, 255, 0.25) 30%, rgba(179, 179, 255, 0.25) 40%, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0) 45%, rgba(102, 102, 255, 0.25) 45%, rgba(179, 179, 255, 0.25) 55.0%, rgba(0, 0, 0, 0) 55.0%, rgba(0, 0, 0, 0) 60%, rgba(102, 102, 255, 0.25) 60%, rgba(179, 179, 255, 0.25) 70%, rgba(0, 0, 0, 0) 70%, rgba(0, 0, 0, 0) 75%, rgba(102, 102, 255, 0.25) 75%, rgba(179, 179, 255, 0.25) 85%, rgba(0, 0, 0, 0) 85%, rgba(0, 0, 0, 0) 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
+  background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, rgba(0, 0, 0, 0) 10%, rgba(0, 0, 0, 0) 15%, rgba(102, 102, 255, 0.25) 15%, rgba(179, 179, 255, 0.25) 25%, rgba(0, 0, 0, 0) 25%, rgba(0, 0, 0, 0) 30%, rgba(102, 102, 255, 0.25) 30%, rgba(179, 179, 255, 0.25) 40%, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0) 45%, rgba(102, 102, 255, 0.25) 45%, rgba(179, 179, 255, 0.25) 55.0%, rgba(0, 0, 0, 0) 55.0%, rgba(0, 0, 0, 0) 60%, rgba(102, 102, 255, 0.25) 60%, rgba(179, 179, 255, 0.25) 70%, rgba(0, 0, 0, 0) 70%, rgba(0, 0, 0, 0) 75%, rgba(102, 102, 255, 0.25) 75%, rgba(179, 179, 255, 0.25) 85%, rgba(0, 0, 0, 0) 85%, rgba(0, 0, 0, 0) 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
 }
 .test__background-grid .assert__background-grid .expect {
   background: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, rgba(0, 0, 0, 0) 10%, rgba(0, 0, 0, 0) 15%, rgba(102, 102, 255, 0.25) 15%, rgba(179, 179, 255, 0.25) 25%, rgba(0, 0, 0, 0) 25%, rgba(0, 0, 0, 0) 30%, rgba(102, 102, 255, 0.25) 30%, rgba(179, 179, 255, 0.25) 40%, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0) 45%, rgba(102, 102, 255, 0.25) 45%, rgba(179, 179, 255, 0.25) 55%, rgba(0, 0, 0, 0) 55%, rgba(0, 0, 0, 0) 60%, rgba(102, 102, 255, 0.25) 60%, rgba(179, 179, 255, 0.25) 70%, rgba(0, 0, 0, 0) 70%, rgba(0, 0, 0, 0) 75%, rgba(102, 102, 255, 0.25) 75%, rgba(179, 179, 255, 0.25) 85%, rgba(0, 0, 0, 0) 85%, rgba(0, 0, 0, 0) 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
@@ -138,9 +135,13 @@
 }
 .test__overlay-grid .assert__overlay-grid .test head:hover ~ .sym::before,
 .test__overlay-grid .assert__overlay-grid .test head:hover ~ body .sym::before {
-  background: -moz-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, rgba(0, 0, 0, 0) 10%, rgba(0, 0, 0, 0) 15%, rgba(102, 102, 255, 0.25) 15%, rgba(179, 179, 255, 0.25) 25%, rgba(0, 0, 0, 0) 25%, rgba(0, 0, 0, 0) 30%, rgba(102, 102, 255, 0.25) 30%, rgba(179, 179, 255, 0.25) 40%, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0) 45%, rgba(102, 102, 255, 0.25) 45%, rgba(179, 179, 255, 0.25) 55.0%, rgba(0, 0, 0, 0) 55.0%, rgba(0, 0, 0, 0) 60%, rgba(102, 102, 255, 0.25) 60%, rgba(179, 179, 255, 0.25) 70%, rgba(0, 0, 0, 0) 70%, rgba(0, 0, 0, 0) 75%, rgba(102, 102, 255, 0.25) 75%, rgba(179, 179, 255, 0.25) 85%, rgba(0, 0, 0, 0) 85%, rgba(0, 0, 0, 0) 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
-  background: -webkit-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, rgba(0, 0, 0, 0) 10%, rgba(0, 0, 0, 0) 15%, rgba(102, 102, 255, 0.25) 15%, rgba(179, 179, 255, 0.25) 25%, rgba(0, 0, 0, 0) 25%, rgba(0, 0, 0, 0) 30%, rgba(102, 102, 255, 0.25) 30%, rgba(179, 179, 255, 0.25) 40%, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0) 45%, rgba(102, 102, 255, 0.25) 45%, rgba(179, 179, 255, 0.25) 55.0%, rgba(0, 0, 0, 0) 55.0%, rgba(0, 0, 0, 0) 60%, rgba(102, 102, 255, 0.25) 60%, rgba(179, 179, 255, 0.25) 70%, rgba(0, 0, 0, 0) 70%, rgba(0, 0, 0, 0) 75%, rgba(102, 102, 255, 0.25) 75%, rgba(179, 179, 255, 0.25) 85%, rgba(0, 0, 0, 0) 85%, rgba(0, 0, 0, 0) 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
-  background: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, rgba(0, 0, 0, 0) 10%, rgba(0, 0, 0, 0) 15%, rgba(102, 102, 255, 0.25) 15%, rgba(179, 179, 255, 0.25) 25%, rgba(0, 0, 0, 0) 25%, rgba(0, 0, 0, 0) 30%, rgba(102, 102, 255, 0.25) 30%, rgba(179, 179, 255, 0.25) 40%, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0) 45%, rgba(102, 102, 255, 0.25) 45%, rgba(179, 179, 255, 0.25) 55.0%, rgba(0, 0, 0, 0) 55.0%, rgba(0, 0, 0, 0) 60%, rgba(102, 102, 255, 0.25) 60%, rgba(179, 179, 255, 0.25) 70%, rgba(0, 0, 0, 0) 70%, rgba(0, 0, 0, 0) 75%, rgba(102, 102, 255, 0.25) 75%, rgba(179, 179, 255, 0.25) 85%, rgba(0, 0, 0, 0) 85%, rgba(0, 0, 0, 0) 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
+  background-image: -moz-linear-gradient(bottom, rgba(0, 0, 0, 0.5) 5%, rgba(0, 0, 0, 0) 5%), -moz-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, rgba(0, 0, 0, 0) 10%, rgba(0, 0, 0, 0) 15%, rgba(102, 102, 255, 0.25) 15%, rgba(179, 179, 255, 0.25) 25%, rgba(0, 0, 0, 0) 25%, rgba(0, 0, 0, 0) 30%, rgba(102, 102, 255, 0.25) 30%, rgba(179, 179, 255, 0.25) 40%, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0) 45%, rgba(102, 102, 255, 0.25) 45%, rgba(179, 179, 255, 0.25) 55.0%, rgba(0, 0, 0, 0) 55.0%, rgba(0, 0, 0, 0) 60%, rgba(102, 102, 255, 0.25) 60%, rgba(179, 179, 255, 0.25) 70%, rgba(0, 0, 0, 0) 70%, rgba(0, 0, 0, 0) 75%, rgba(102, 102, 255, 0.25) 75%, rgba(179, 179, 255, 0.25) 85%, rgba(0, 0, 0, 0) 85%, rgba(0, 0, 0, 0) 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
+  background-image: -webkit-linear-gradient(bottom, rgba(0, 0, 0, 0.5) 5%, rgba(0, 0, 0, 0) 5%), -webkit-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, rgba(0, 0, 0, 0) 10%, rgba(0, 0, 0, 0) 15%, rgba(102, 102, 255, 0.25) 15%, rgba(179, 179, 255, 0.25) 25%, rgba(0, 0, 0, 0) 25%, rgba(0, 0, 0, 0) 30%, rgba(102, 102, 255, 0.25) 30%, rgba(179, 179, 255, 0.25) 40%, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0) 45%, rgba(102, 102, 255, 0.25) 45%, rgba(179, 179, 255, 0.25) 55.0%, rgba(0, 0, 0, 0) 55.0%, rgba(0, 0, 0, 0) 60%, rgba(102, 102, 255, 0.25) 60%, rgba(179, 179, 255, 0.25) 70%, rgba(0, 0, 0, 0) 70%, rgba(0, 0, 0, 0) 75%, rgba(102, 102, 255, 0.25) 75%, rgba(179, 179, 255, 0.25) 85%, rgba(0, 0, 0, 0) 85%, rgba(0, 0, 0, 0) 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
+  background-image: linear-gradient(to top, rgba(0, 0, 0, 0.5) 5%, rgba(0, 0, 0, 0) 5%), linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, rgba(0, 0, 0, 0) 10%, rgba(0, 0, 0, 0) 15%, rgba(102, 102, 255, 0.25) 15%, rgba(179, 179, 255, 0.25) 25%, rgba(0, 0, 0, 0) 25%, rgba(0, 0, 0, 0) 30%, rgba(102, 102, 255, 0.25) 30%, rgba(179, 179, 255, 0.25) 40%, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0) 45%, rgba(102, 102, 255, 0.25) 45%, rgba(179, 179, 255, 0.25) 55.0%, rgba(0, 0, 0, 0) 55.0%, rgba(0, 0, 0, 0) 60%, rgba(102, 102, 255, 0.25) 60%, rgba(179, 179, 255, 0.25) 70%, rgba(0, 0, 0, 0) 70%, rgba(0, 0, 0, 0) 75%, rgba(102, 102, 255, 0.25) 75%, rgba(179, 179, 255, 0.25) 85%, rgba(0, 0, 0, 0) 85%, rgba(0, 0, 0, 0) 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
+  -moz-background-size: 100% 24px;
+  -webkit-background-size: 100% 24px;
+  background-size: 100% 24px;
+  background-position: left top;
 }
 .test__overlay-grid .assert__overlay-grid .test head:hover ~ .asym,
 .test__overlay-grid .assert__overlay-grid .test head:hover ~ body .asym {
@@ -148,9 +149,13 @@
 }
 .test__overlay-grid .assert__overlay-grid .test head:hover ~ .asym::before,
 .test__overlay-grid .assert__overlay-grid .test head:hover ~ body .asym::before {
-  background: -moz-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 4em, rgba(0, 0, 0, 0) 4em, rgba(0, 0, 0, 0) 5em, rgba(102, 102, 255, 0.25) 5em, rgba(179, 179, 255, 0.25) 13em, rgba(0, 0, 0, 0) 13em, rgba(0, 0, 0, 0) 14em, rgba(102, 102, 255, 0.25) 14em, rgba(179, 179, 255, 0.25) 26em, rgba(0, 0, 0, 0) 26em, rgba(0, 0, 0, 0) 27em, rgba(102, 102, 255, 0.25) 27em, rgba(179, 179, 255, 0.25) 35em, rgba(0, 0, 0, 0) 35em, rgba(0, 0, 0, 0) 36em, rgba(102, 102, 255, 0.25) 36em, rgba(179, 179, 255, 0.25));
-  background: -webkit-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 4em, rgba(0, 0, 0, 0) 4em, rgba(0, 0, 0, 0) 5em, rgba(102, 102, 255, 0.25) 5em, rgba(179, 179, 255, 0.25) 13em, rgba(0, 0, 0, 0) 13em, rgba(0, 0, 0, 0) 14em, rgba(102, 102, 255, 0.25) 14em, rgba(179, 179, 255, 0.25) 26em, rgba(0, 0, 0, 0) 26em, rgba(0, 0, 0, 0) 27em, rgba(102, 102, 255, 0.25) 27em, rgba(179, 179, 255, 0.25) 35em, rgba(0, 0, 0, 0) 35em, rgba(0, 0, 0, 0) 36em, rgba(102, 102, 255, 0.25) 36em, rgba(179, 179, 255, 0.25));
-  background: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 4em, rgba(0, 0, 0, 0) 4em, rgba(0, 0, 0, 0) 5em, rgba(102, 102, 255, 0.25) 5em, rgba(179, 179, 255, 0.25) 13em, rgba(0, 0, 0, 0) 13em, rgba(0, 0, 0, 0) 14em, rgba(102, 102, 255, 0.25) 14em, rgba(179, 179, 255, 0.25) 26em, rgba(0, 0, 0, 0) 26em, rgba(0, 0, 0, 0) 27em, rgba(102, 102, 255, 0.25) 27em, rgba(179, 179, 255, 0.25) 35em, rgba(0, 0, 0, 0) 35em, rgba(0, 0, 0, 0) 36em, rgba(102, 102, 255, 0.25) 36em, rgba(179, 179, 255, 0.25));
+  background-image: -moz-linear-gradient(bottom, rgba(0, 0, 0, 0.5) 5%, rgba(0, 0, 0, 0) 5%), -moz-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 4em, rgba(0, 0, 0, 0) 4em, rgba(0, 0, 0, 0) 5em, rgba(102, 102, 255, 0.25) 5em, rgba(179, 179, 255, 0.25) 13em, rgba(0, 0, 0, 0) 13em, rgba(0, 0, 0, 0) 14em, rgba(102, 102, 255, 0.25) 14em, rgba(179, 179, 255, 0.25) 26em, rgba(0, 0, 0, 0) 26em, rgba(0, 0, 0, 0) 27em, rgba(102, 102, 255, 0.25) 27em, rgba(179, 179, 255, 0.25) 35em, rgba(0, 0, 0, 0) 35em, rgba(0, 0, 0, 0) 36em, rgba(102, 102, 255, 0.25) 36em, rgba(179, 179, 255, 0.25));
+  background-image: -webkit-linear-gradient(bottom, rgba(0, 0, 0, 0.5) 5%, rgba(0, 0, 0, 0) 5%), -webkit-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 4em, rgba(0, 0, 0, 0) 4em, rgba(0, 0, 0, 0) 5em, rgba(102, 102, 255, 0.25) 5em, rgba(179, 179, 255, 0.25) 13em, rgba(0, 0, 0, 0) 13em, rgba(0, 0, 0, 0) 14em, rgba(102, 102, 255, 0.25) 14em, rgba(179, 179, 255, 0.25) 26em, rgba(0, 0, 0, 0) 26em, rgba(0, 0, 0, 0) 27em, rgba(102, 102, 255, 0.25) 27em, rgba(179, 179, 255, 0.25) 35em, rgba(0, 0, 0, 0) 35em, rgba(0, 0, 0, 0) 36em, rgba(102, 102, 255, 0.25) 36em, rgba(179, 179, 255, 0.25));
+  background-image: linear-gradient(to top, rgba(0, 0, 0, 0.5) 5%, rgba(0, 0, 0, 0) 5%), linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 4em, rgba(0, 0, 0, 0) 4em, rgba(0, 0, 0, 0) 5em, rgba(102, 102, 255, 0.25) 5em, rgba(179, 179, 255, 0.25) 13em, rgba(0, 0, 0, 0) 13em, rgba(0, 0, 0, 0) 14em, rgba(102, 102, 255, 0.25) 14em, rgba(179, 179, 255, 0.25) 26em, rgba(0, 0, 0, 0) 26em, rgba(0, 0, 0, 0) 27em, rgba(102, 102, 255, 0.25) 27em, rgba(179, 179, 255, 0.25) 35em, rgba(0, 0, 0, 0) 35em, rgba(0, 0, 0, 0) 36em, rgba(102, 102, 255, 0.25) 36em, rgba(179, 179, 255, 0.25));
+  -moz-background-size: 100% 24px;
+  -webkit-background-size: 100% 24px;
+  background-size: 100% 24px;
+  background-position: left top;
 }
 .test__overlay-grid .assert__overlay-grid .expect head {
   border-radius: 0.25em;
@@ -181,9 +186,13 @@
 }
 .test__overlay-grid .assert__overlay-grid .expect head:hover ~ .sym::before,
 .test__overlay-grid .assert__overlay-grid .expect head:hover ~ body .sym::before {
-  background: -moz-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, rgba(0, 0, 0, 0) 10%, rgba(0, 0, 0, 0) 15%, rgba(102, 102, 255, 0.25) 15%, rgba(179, 179, 255, 0.25) 25%, rgba(0, 0, 0, 0) 25%, rgba(0, 0, 0, 0) 30%, rgba(102, 102, 255, 0.25) 30%, rgba(179, 179, 255, 0.25) 40%, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0) 45%, rgba(102, 102, 255, 0.25) 45%, rgba(179, 179, 255, 0.25) 55.0%, rgba(0, 0, 0, 0) 55.0%, rgba(0, 0, 0, 0) 60%, rgba(102, 102, 255, 0.25) 60%, rgba(179, 179, 255, 0.25) 70%, rgba(0, 0, 0, 0) 70%, rgba(0, 0, 0, 0) 75%, rgba(102, 102, 255, 0.25) 75%, rgba(179, 179, 255, 0.25) 85%, rgba(0, 0, 0, 0) 85%, rgba(0, 0, 0, 0) 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
-  background: -webkit-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, rgba(0, 0, 0, 0) 10%, rgba(0, 0, 0, 0) 15%, rgba(102, 102, 255, 0.25) 15%, rgba(179, 179, 255, 0.25) 25%, rgba(0, 0, 0, 0) 25%, rgba(0, 0, 0, 0) 30%, rgba(102, 102, 255, 0.25) 30%, rgba(179, 179, 255, 0.25) 40%, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0) 45%, rgba(102, 102, 255, 0.25) 45%, rgba(179, 179, 255, 0.25) 55.0%, rgba(0, 0, 0, 0) 55.0%, rgba(0, 0, 0, 0) 60%, rgba(102, 102, 255, 0.25) 60%, rgba(179, 179, 255, 0.25) 70%, rgba(0, 0, 0, 0) 70%, rgba(0, 0, 0, 0) 75%, rgba(102, 102, 255, 0.25) 75%, rgba(179, 179, 255, 0.25) 85%, rgba(0, 0, 0, 0) 85%, rgba(0, 0, 0, 0) 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
-  background: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, rgba(0, 0, 0, 0) 10%, rgba(0, 0, 0, 0) 15%, rgba(102, 102, 255, 0.25) 15%, rgba(179, 179, 255, 0.25) 25%, rgba(0, 0, 0, 0) 25%, rgba(0, 0, 0, 0) 30%, rgba(102, 102, 255, 0.25) 30%, rgba(179, 179, 255, 0.25) 40%, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0) 45%, rgba(102, 102, 255, 0.25) 45%, rgba(179, 179, 255, 0.25) 55.0%, rgba(0, 0, 0, 0) 55.0%, rgba(0, 0, 0, 0) 60%, rgba(102, 102, 255, 0.25) 60%, rgba(179, 179, 255, 0.25) 70%, rgba(0, 0, 0, 0) 70%, rgba(0, 0, 0, 0) 75%, rgba(102, 102, 255, 0.25) 75%, rgba(179, 179, 255, 0.25) 85%, rgba(0, 0, 0, 0) 85%, rgba(0, 0, 0, 0) 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
+  background-image: -moz-linear-gradient(bottom, rgba(0, 0, 0, 0.5) 5%, rgba(0, 0, 0, 0) 5%), -moz-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, rgba(0, 0, 0, 0) 10%, rgba(0, 0, 0, 0) 15%, rgba(102, 102, 255, 0.25) 15%, rgba(179, 179, 255, 0.25) 25%, rgba(0, 0, 0, 0) 25%, rgba(0, 0, 0, 0) 30%, rgba(102, 102, 255, 0.25) 30%, rgba(179, 179, 255, 0.25) 40%, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0) 45%, rgba(102, 102, 255, 0.25) 45%, rgba(179, 179, 255, 0.25) 55.0%, rgba(0, 0, 0, 0) 55.0%, rgba(0, 0, 0, 0) 60%, rgba(102, 102, 255, 0.25) 60%, rgba(179, 179, 255, 0.25) 70%, rgba(0, 0, 0, 0) 70%, rgba(0, 0, 0, 0) 75%, rgba(102, 102, 255, 0.25) 75%, rgba(179, 179, 255, 0.25) 85%, rgba(0, 0, 0, 0) 85%, rgba(0, 0, 0, 0) 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
+  background-image: -webkit-linear-gradient(bottom, rgba(0, 0, 0, 0.5) 5%, rgba(0, 0, 0, 0) 5%), -webkit-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, rgba(0, 0, 0, 0) 10%, rgba(0, 0, 0, 0) 15%, rgba(102, 102, 255, 0.25) 15%, rgba(179, 179, 255, 0.25) 25%, rgba(0, 0, 0, 0) 25%, rgba(0, 0, 0, 0) 30%, rgba(102, 102, 255, 0.25) 30%, rgba(179, 179, 255, 0.25) 40%, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0) 45%, rgba(102, 102, 255, 0.25) 45%, rgba(179, 179, 255, 0.25) 55.0%, rgba(0, 0, 0, 0) 55.0%, rgba(0, 0, 0, 0) 60%, rgba(102, 102, 255, 0.25) 60%, rgba(179, 179, 255, 0.25) 70%, rgba(0, 0, 0, 0) 70%, rgba(0, 0, 0, 0) 75%, rgba(102, 102, 255, 0.25) 75%, rgba(179, 179, 255, 0.25) 85%, rgba(0, 0, 0, 0) 85%, rgba(0, 0, 0, 0) 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
+  background-image: linear-gradient(to top, rgba(0, 0, 0, 0.5) 5%, rgba(0, 0, 0, 0) 5%), linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, rgba(0, 0, 0, 0) 10%, rgba(0, 0, 0, 0) 15%, rgba(102, 102, 255, 0.25) 15%, rgba(179, 179, 255, 0.25) 25%, rgba(0, 0, 0, 0) 25%, rgba(0, 0, 0, 0) 30%, rgba(102, 102, 255, 0.25) 30%, rgba(179, 179, 255, 0.25) 40%, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0) 45%, rgba(102, 102, 255, 0.25) 45%, rgba(179, 179, 255, 0.25) 55.0%, rgba(0, 0, 0, 0) 55.0%, rgba(0, 0, 0, 0) 60%, rgba(102, 102, 255, 0.25) 60%, rgba(179, 179, 255, 0.25) 70%, rgba(0, 0, 0, 0) 70%, rgba(0, 0, 0, 0) 75%, rgba(102, 102, 255, 0.25) 75%, rgba(179, 179, 255, 0.25) 85%, rgba(0, 0, 0, 0) 85%, rgba(0, 0, 0, 0) 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
+  -moz-background-size: 100% 24px;
+  -webkit-background-size: 100% 24px;
+  background-size: 100% 24px;
+  background-position: left top;
 }
 .test__overlay-grid .assert__overlay-grid .expect head:hover ~ .asym,
 .test__overlay-grid .assert__overlay-grid .expect head:hover ~ body .asym {
@@ -191,9 +200,13 @@
 }
 .test__overlay-grid .assert__overlay-grid .expect head:hover ~ .asym::before,
 .test__overlay-grid .assert__overlay-grid .expect head:hover ~ body .asym::before {
-  background: -moz-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 4em, rgba(0, 0, 0, 0) 4em, rgba(0, 0, 0, 0) 5em, rgba(102, 102, 255, 0.25) 5em, rgba(179, 179, 255, 0.25) 13em, rgba(0, 0, 0, 0) 13em, rgba(0, 0, 0, 0) 14em, rgba(102, 102, 255, 0.25) 14em, rgba(179, 179, 255, 0.25) 26em, rgba(0, 0, 0, 0) 26em, rgba(0, 0, 0, 0) 27em, rgba(102, 102, 255, 0.25) 27em, rgba(179, 179, 255, 0.25) 35em, rgba(0, 0, 0, 0) 35em, rgba(0, 0, 0, 0) 36em, rgba(102, 102, 255, 0.25) 36em, rgba(179, 179, 255, 0.25));
-  background: -webkit-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 4em, rgba(0, 0, 0, 0) 4em, rgba(0, 0, 0, 0) 5em, rgba(102, 102, 255, 0.25) 5em, rgba(179, 179, 255, 0.25) 13em, rgba(0, 0, 0, 0) 13em, rgba(0, 0, 0, 0) 14em, rgba(102, 102, 255, 0.25) 14em, rgba(179, 179, 255, 0.25) 26em, rgba(0, 0, 0, 0) 26em, rgba(0, 0, 0, 0) 27em, rgba(102, 102, 255, 0.25) 27em, rgba(179, 179, 255, 0.25) 35em, rgba(0, 0, 0, 0) 35em, rgba(0, 0, 0, 0) 36em, rgba(102, 102, 255, 0.25) 36em, rgba(179, 179, 255, 0.25));
-  background: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 4em, rgba(0, 0, 0, 0) 4em, rgba(0, 0, 0, 0) 5em, rgba(102, 102, 255, 0.25) 5em, rgba(179, 179, 255, 0.25) 13em, rgba(0, 0, 0, 0) 13em, rgba(0, 0, 0, 0) 14em, rgba(102, 102, 255, 0.25) 14em, rgba(179, 179, 255, 0.25) 26em, rgba(0, 0, 0, 0) 26em, rgba(0, 0, 0, 0) 27em, rgba(102, 102, 255, 0.25) 27em, rgba(179, 179, 255, 0.25) 35em, rgba(0, 0, 0, 0) 35em, rgba(0, 0, 0, 0) 36em, rgba(102, 102, 255, 0.25) 36em, rgba(179, 179, 255, 0.25));
+  background-image: -moz-linear-gradient(bottom, rgba(0, 0, 0, 0.5) 5%, rgba(0, 0, 0, 0) 5%), -moz-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 4em, rgba(0, 0, 0, 0) 4em, rgba(0, 0, 0, 0) 5em, rgba(102, 102, 255, 0.25) 5em, rgba(179, 179, 255, 0.25) 13em, rgba(0, 0, 0, 0) 13em, rgba(0, 0, 0, 0) 14em, rgba(102, 102, 255, 0.25) 14em, rgba(179, 179, 255, 0.25) 26em, rgba(0, 0, 0, 0) 26em, rgba(0, 0, 0, 0) 27em, rgba(102, 102, 255, 0.25) 27em, rgba(179, 179, 255, 0.25) 35em, rgba(0, 0, 0, 0) 35em, rgba(0, 0, 0, 0) 36em, rgba(102, 102, 255, 0.25) 36em, rgba(179, 179, 255, 0.25));
+  background-image: -webkit-linear-gradient(bottom, rgba(0, 0, 0, 0.5) 5%, rgba(0, 0, 0, 0) 5%), -webkit-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 4em, rgba(0, 0, 0, 0) 4em, rgba(0, 0, 0, 0) 5em, rgba(102, 102, 255, 0.25) 5em, rgba(179, 179, 255, 0.25) 13em, rgba(0, 0, 0, 0) 13em, rgba(0, 0, 0, 0) 14em, rgba(102, 102, 255, 0.25) 14em, rgba(179, 179, 255, 0.25) 26em, rgba(0, 0, 0, 0) 26em, rgba(0, 0, 0, 0) 27em, rgba(102, 102, 255, 0.25) 27em, rgba(179, 179, 255, 0.25) 35em, rgba(0, 0, 0, 0) 35em, rgba(0, 0, 0, 0) 36em, rgba(102, 102, 255, 0.25) 36em, rgba(179, 179, 255, 0.25));
+  background-image: linear-gradient(to top, rgba(0, 0, 0, 0.5) 5%, rgba(0, 0, 0, 0) 5%), linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 4em, rgba(0, 0, 0, 0) 4em, rgba(0, 0, 0, 0) 5em, rgba(102, 102, 255, 0.25) 5em, rgba(179, 179, 255, 0.25) 13em, rgba(0, 0, 0, 0) 13em, rgba(0, 0, 0, 0) 14em, rgba(102, 102, 255, 0.25) 14em, rgba(179, 179, 255, 0.25) 26em, rgba(0, 0, 0, 0) 26em, rgba(0, 0, 0, 0) 27em, rgba(102, 102, 255, 0.25) 27em, rgba(179, 179, 255, 0.25) 35em, rgba(0, 0, 0, 0) 35em, rgba(0, 0, 0, 0) 36em, rgba(102, 102, 255, 0.25) 36em, rgba(179, 179, 255, 0.25));
+  -moz-background-size: 100% 24px;
+  -webkit-background-size: 100% 24px;
+  background-size: 100% 24px;
+  background-position: left top;
 }
 
 /*  - [function] get-grid-color-stops (5 Assertions, 5 Passed, 0 Failed) */
@@ -211,9 +224,9 @@
   max-width: 80%;
   margin-left: auto;
   margin-right: auto;
-  background: -moz-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, rgba(0, 0, 0, 0) 10%, rgba(0, 0, 0, 0) 15%, rgba(102, 102, 255, 0.25) 15%, rgba(179, 179, 255, 0.25) 25%, rgba(0, 0, 0, 0) 25%, rgba(0, 0, 0, 0) 30%, rgba(102, 102, 255, 0.25) 30%, rgba(179, 179, 255, 0.25) 40%, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0) 45%, rgba(102, 102, 255, 0.25) 45%, rgba(179, 179, 255, 0.25) 55.0%, rgba(0, 0, 0, 0) 55.0%, rgba(0, 0, 0, 0) 60%, rgba(102, 102, 255, 0.25) 60%, rgba(179, 179, 255, 0.25) 70%, rgba(0, 0, 0, 0) 70%, rgba(0, 0, 0, 0) 75%, rgba(102, 102, 255, 0.25) 75%, rgba(179, 179, 255, 0.25) 85%, rgba(0, 0, 0, 0) 85%, rgba(0, 0, 0, 0) 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
-  background: -webkit-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, rgba(0, 0, 0, 0) 10%, rgba(0, 0, 0, 0) 15%, rgba(102, 102, 255, 0.25) 15%, rgba(179, 179, 255, 0.25) 25%, rgba(0, 0, 0, 0) 25%, rgba(0, 0, 0, 0) 30%, rgba(102, 102, 255, 0.25) 30%, rgba(179, 179, 255, 0.25) 40%, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0) 45%, rgba(102, 102, 255, 0.25) 45%, rgba(179, 179, 255, 0.25) 55.0%, rgba(0, 0, 0, 0) 55.0%, rgba(0, 0, 0, 0) 60%, rgba(102, 102, 255, 0.25) 60%, rgba(179, 179, 255, 0.25) 70%, rgba(0, 0, 0, 0) 70%, rgba(0, 0, 0, 0) 75%, rgba(102, 102, 255, 0.25) 75%, rgba(179, 179, 255, 0.25) 85%, rgba(0, 0, 0, 0) 85%, rgba(0, 0, 0, 0) 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
-  background: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, rgba(0, 0, 0, 0) 10%, rgba(0, 0, 0, 0) 15%, rgba(102, 102, 255, 0.25) 15%, rgba(179, 179, 255, 0.25) 25%, rgba(0, 0, 0, 0) 25%, rgba(0, 0, 0, 0) 30%, rgba(102, 102, 255, 0.25) 30%, rgba(179, 179, 255, 0.25) 40%, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0) 45%, rgba(102, 102, 255, 0.25) 45%, rgba(179, 179, 255, 0.25) 55.0%, rgba(0, 0, 0, 0) 55.0%, rgba(0, 0, 0, 0) 60%, rgba(102, 102, 255, 0.25) 60%, rgba(179, 179, 255, 0.25) 70%, rgba(0, 0, 0, 0) 70%, rgba(0, 0, 0, 0) 75%, rgba(102, 102, 255, 0.25) 75%, rgba(179, 179, 255, 0.25) 85%, rgba(0, 0, 0, 0) 85%, rgba(0, 0, 0, 0) 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
+  background-image: -moz-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, rgba(0, 0, 0, 0) 10%, rgba(0, 0, 0, 0) 15%, rgba(102, 102, 255, 0.25) 15%, rgba(179, 179, 255, 0.25) 25%, rgba(0, 0, 0, 0) 25%, rgba(0, 0, 0, 0) 30%, rgba(102, 102, 255, 0.25) 30%, rgba(179, 179, 255, 0.25) 40%, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0) 45%, rgba(102, 102, 255, 0.25) 45%, rgba(179, 179, 255, 0.25) 55.0%, rgba(0, 0, 0, 0) 55.0%, rgba(0, 0, 0, 0) 60%, rgba(102, 102, 255, 0.25) 60%, rgba(179, 179, 255, 0.25) 70%, rgba(0, 0, 0, 0) 70%, rgba(0, 0, 0, 0) 75%, rgba(102, 102, 255, 0.25) 75%, rgba(179, 179, 255, 0.25) 85%, rgba(0, 0, 0, 0) 85%, rgba(0, 0, 0, 0) 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
+  background-image: -webkit-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, rgba(0, 0, 0, 0) 10%, rgba(0, 0, 0, 0) 15%, rgba(102, 102, 255, 0.25) 15%, rgba(179, 179, 255, 0.25) 25%, rgba(0, 0, 0, 0) 25%, rgba(0, 0, 0, 0) 30%, rgba(102, 102, 255, 0.25) 30%, rgba(179, 179, 255, 0.25) 40%, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0) 45%, rgba(102, 102, 255, 0.25) 45%, rgba(179, 179, 255, 0.25) 55.0%, rgba(0, 0, 0, 0) 55.0%, rgba(0, 0, 0, 0) 60%, rgba(102, 102, 255, 0.25) 60%, rgba(179, 179, 255, 0.25) 70%, rgba(0, 0, 0, 0) 70%, rgba(0, 0, 0, 0) 75%, rgba(102, 102, 255, 0.25) 75%, rgba(179, 179, 255, 0.25) 85%, rgba(0, 0, 0, 0) 85%, rgba(0, 0, 0, 0) 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
+  background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, rgba(0, 0, 0, 0) 10%, rgba(0, 0, 0, 0) 15%, rgba(102, 102, 255, 0.25) 15%, rgba(179, 179, 255, 0.25) 25%, rgba(0, 0, 0, 0) 25%, rgba(0, 0, 0, 0) 30%, rgba(102, 102, 255, 0.25) 30%, rgba(179, 179, 255, 0.25) 40%, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0) 45%, rgba(102, 102, 255, 0.25) 45%, rgba(179, 179, 255, 0.25) 55.0%, rgba(0, 0, 0, 0) 55.0%, rgba(0, 0, 0, 0) 60%, rgba(102, 102, 255, 0.25) 60%, rgba(179, 179, 255, 0.25) 70%, rgba(0, 0, 0, 0) 70%, rgba(0, 0, 0, 0) 75%, rgba(102, 102, 255, 0.25) 75%, rgba(179, 179, 255, 0.25) 85%, rgba(0, 0, 0, 0) 85%, rgba(0, 0, 0, 0) 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
 }
 .test__container .assert__default-box .test:after {
   content: "";
@@ -242,9 +255,9 @@
   max-width: 40em;
   margin-left: 0;
   margin-right: auto;
-  background: -moz-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, rgba(0, 0, 0, 0) 10%, rgba(0, 0, 0, 0) 12.5%, rgba(102, 102, 255, 0.25) 12.5%, rgba(179, 179, 255, 0.25) 32.5%, rgba(0, 0, 0, 0) 32.5%, rgba(0, 0, 0, 0) 35%, rgba(102, 102, 255, 0.25) 35%, rgba(179, 179, 255, 0.25) 65%, rgba(0, 0, 0, 0) 65%, rgba(0, 0, 0, 0) 67.5%, rgba(102, 102, 255, 0.25) 67.5%, rgba(179, 179, 255, 0.25) 87.5%, rgba(0, 0, 0, 0) 87.5%, rgba(0, 0, 0, 0) 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
-  background: -webkit-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, rgba(0, 0, 0, 0) 10%, rgba(0, 0, 0, 0) 12.5%, rgba(102, 102, 255, 0.25) 12.5%, rgba(179, 179, 255, 0.25) 32.5%, rgba(0, 0, 0, 0) 32.5%, rgba(0, 0, 0, 0) 35%, rgba(102, 102, 255, 0.25) 35%, rgba(179, 179, 255, 0.25) 65%, rgba(0, 0, 0, 0) 65%, rgba(0, 0, 0, 0) 67.5%, rgba(102, 102, 255, 0.25) 67.5%, rgba(179, 179, 255, 0.25) 87.5%, rgba(0, 0, 0, 0) 87.5%, rgba(0, 0, 0, 0) 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
-  background: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, rgba(0, 0, 0, 0) 10%, rgba(0, 0, 0, 0) 12.5%, rgba(102, 102, 255, 0.25) 12.5%, rgba(179, 179, 255, 0.25) 32.5%, rgba(0, 0, 0, 0) 32.5%, rgba(0, 0, 0, 0) 35%, rgba(102, 102, 255, 0.25) 35%, rgba(179, 179, 255, 0.25) 65%, rgba(0, 0, 0, 0) 65%, rgba(0, 0, 0, 0) 67.5%, rgba(102, 102, 255, 0.25) 67.5%, rgba(179, 179, 255, 0.25) 87.5%, rgba(0, 0, 0, 0) 87.5%, rgba(0, 0, 0, 0) 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
+  background-image: -moz-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, rgba(0, 0, 0, 0) 10%, rgba(0, 0, 0, 0) 12.5%, rgba(102, 102, 255, 0.25) 12.5%, rgba(179, 179, 255, 0.25) 32.5%, rgba(0, 0, 0, 0) 32.5%, rgba(0, 0, 0, 0) 35%, rgba(102, 102, 255, 0.25) 35%, rgba(179, 179, 255, 0.25) 65%, rgba(0, 0, 0, 0) 65%, rgba(0, 0, 0, 0) 67.5%, rgba(102, 102, 255, 0.25) 67.5%, rgba(179, 179, 255, 0.25) 87.5%, rgba(0, 0, 0, 0) 87.5%, rgba(0, 0, 0, 0) 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
+  background-image: -webkit-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, rgba(0, 0, 0, 0) 10%, rgba(0, 0, 0, 0) 12.5%, rgba(102, 102, 255, 0.25) 12.5%, rgba(179, 179, 255, 0.25) 32.5%, rgba(0, 0, 0, 0) 32.5%, rgba(0, 0, 0, 0) 35%, rgba(102, 102, 255, 0.25) 35%, rgba(179, 179, 255, 0.25) 65%, rgba(0, 0, 0, 0) 65%, rgba(0, 0, 0, 0) 67.5%, rgba(102, 102, 255, 0.25) 67.5%, rgba(179, 179, 255, 0.25) 87.5%, rgba(0, 0, 0, 0) 87.5%, rgba(0, 0, 0, 0) 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
+  background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, rgba(0, 0, 0, 0) 10%, rgba(0, 0, 0, 0) 12.5%, rgba(102, 102, 255, 0.25) 12.5%, rgba(179, 179, 255, 0.25) 32.5%, rgba(0, 0, 0, 0) 32.5%, rgba(0, 0, 0, 0) 35%, rgba(102, 102, 255, 0.25) 35%, rgba(179, 179, 255, 0.25) 65%, rgba(0, 0, 0, 0) 65%, rgba(0, 0, 0, 0) 67.5%, rgba(102, 102, 255, 0.25) 67.5%, rgba(179, 179, 255, 0.25) 87.5%, rgba(0, 0, 0, 0) 87.5%, rgba(0, 0, 0, 0) 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
 }
 .test__container .assert__border-box .test:after {
   content: "";
@@ -273,671 +286,53 @@
     2 Tests:
     - 2 Passed
     - 0 Failed */
-/*  
-
-### Span Syntax ------ */
-/* - [mixin] span */
-/* "Span should set width (75%), float (left), and gutter (5% margin-right)" */
-.test__span .assert__default .test {
-  width: 70%;
-  float: left;
-  margin-right: 5%;
-}
-.test__span .assert__default .test .inner {
-  width: 35.71429%;
-  float: left;
-  margin-right: 7.14286%;
-}
-.test__span .assert__default .expect {
-  width: 70%;
-  float: left;
-  margin-right: 5%;
-}
-.test__span .assert__default .expect .inner {
-  width: 35.71429%;
-  float: left;
-  margin-right: 7.14286%;
-}
-
-/* "Span should set width, float, inside gutter, and border-box" */
-.test__span .assert__inside .test {
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-  width: 62.5%;
-  float: left;
-  padding-left: 1.25%;
-  padding-right: 1.25%;
-}
-.test__span .assert__inside .expect {
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-  width: 62.5%;
-  float: left;
-  padding-left: 1.25%;
-  padding-right: 1.25%;
-}
-
-.span-content-test {
-  width: 66.10169%;
-  float: left;
-  margin-right: 1.69492%;
-  width: 35.89744%;
-  float: left;
-  margin-right: 2.5641%;
-}
-
-/*  - [mixin] span (3 Assertions, 3 Passed, 0 Failed) */
-/*  - [function] span (6 Assertions, 6 Passed, 0 Failed) */
-/*  - [function] parse-span (84 Assertions, 84 Passed, 0 Failed) */
-/*  - [function] get-span-setting (13 Assertions, 13 Passed, 0 Failed) */
-/*  - [function] get-span-width (7 Assertions, 7 Passed, 0 Failed) */
-/*  - [function] span-math (9 Assertions, 9 Passed, 0 Failed) */
-/*  - [function] get-span-context (1 Assertions, 1 Passed, 0 Failed) */
-/*  
-    7 Tests:
-    - 7 Passed
-    - 0 Failed */
-/*  
-
-### Gutter Syntax ------ */
-/* - [mixin] gutters */
-/* "Item should have 2.5% margin-gutters added before and after" */
-.test__gutters .assert__auto .test {
-  margin-left: 2.5%;
-  margin-right: 2.5%;
-}
-.test__gutters .assert__auto .expect {
-  margin-left: 2.5%;
-  margin-right: 2.5%;
-}
-
-/* "Item should have 1em padding-gutters added before and after" */
-.test__gutters .assert__inside-static .test {
-  padding-left: 1em;
-  padding-right: 1em;
-}
-.test__gutters .assert__inside-static .expect {
-  padding-left: 1em;
-  padding-right: 1em;
-}
-
-/* "Item should have 5em padding-gutters added before and after" */
-.test__gutters .assert__explicit .test {
-  padding-left: 5em;
-  padding-right: 5em;
-}
-.test__gutters .assert__explicit .expect {
-  padding-left: 5em;
-  padding-right: 5em;
-}
-
-/*  - [function] gutter (6 Assertions, 6 Passed, 0 Failed) */
-/*  - [function] get-gutter-width (3 Assertions, 3 Passed, 0 Failed) */
-/*  - [function] get-gutters (8 Assertions, 8 Passed, 0 Failed) */
-/*  
-    3 Tests:
-    - 3 Passed
-    - 0 Failed */
-/*  
-
-### Isolation Syntax ------ */
-/* - [mixin] isolate */
-/* "Item should be isolated in the last 2 columns, right-to-left" */
-.test__isolate .assert__isolate .test {
-  float: right;
-  margin-right: 75%;
-  margin-left: -100%;
-}
-.test__isolate .assert__isolate .expect {
-  float: right;
-  margin-right: 75%;
-  margin-left: -100%;
-}
-
-/*  - [function] get-isolation (3 Assertions, 3 Passed, 0 Failed) */
-/*  
-    1 Tests:
-    - 1 Passed
-    - 0 Failed */
-/*  
-
-### Gallery Syntax ------ */
-/* - [mixin] gallery */
-/* "Items should create 3x symmetrical isolated gallery." */
-.test__gallery .assert__sym .test {
-  width: 28.0%;
-  float: left;
-  margin-right: -100%;
-}
-.test__gallery .assert__sym .test:nth-child(3n + 1) {
-  margin-left: 0;
-  clear: left;
-}
-.test__gallery .assert__sym .test:nth-child(3n + 2) {
-  margin-left: 36%;
-  clear: none;
-}
-.test__gallery .assert__sym .test:nth-child(3n + 3) {
-  margin-left: 72%;
-  clear: none;
-}
-.test__gallery .assert__sym .expect {
-  width: 28.0%;
-  float: left;
-  margin-right: -100%;
-}
-.test__gallery .assert__sym .expect:nth-child(3n + 1) {
-  margin-left: 0;
-  clear: left;
-}
-.test__gallery .assert__sym .expect:nth-child(3n + 2) {
-  margin-left: 36%;
-  clear: none;
-}
-.test__gallery .assert__sym .expect:nth-child(3n + 3) {
-  margin-left: 72%;
-  clear: none;
-}
-
-/* "Items should create 4x isolated gallery with inside-gutters." */
-.test__gallery .assert__inside .test {
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-  width: 25%;
-  float: left;
-  margin-right: -100%;
-  padding-left: 1.25%;
-  padding-right: 1.25%;
-}
-.test__gallery .assert__inside .test:nth-child(4n + 1) {
-  margin-left: 0;
-  clear: left;
-}
-.test__gallery .assert__inside .test:nth-child(4n + 2) {
-  margin-left: 25%;
-  clear: none;
-}
-.test__gallery .assert__inside .test:nth-child(4n + 3) {
-  margin-left: 50%;
-  clear: none;
-}
-.test__gallery .assert__inside .test:nth-child(4n + 4) {
-  margin-left: 75%;
-  clear: none;
-}
-.test__gallery .assert__inside .expect {
-  box-sizing: border-box;
-  width: 25.0%;
-  float: left;
-  margin-right: -100%;
-  padding-left: 1.25%;
-  padding-right: 1.25%;
-}
-.test__gallery .assert__inside .expect:nth-child(4n + 1) {
-  margin-left: 0;
-  clear: left;
-}
-.test__gallery .assert__inside .expect:nth-child(4n + 2) {
-  margin-left: 25%;
-  clear: none;
-}
-.test__gallery .assert__inside .expect:nth-child(4n + 3) {
-  margin-left: 50%;
-  clear: none;
-}
-.test__gallery .assert__inside .expect:nth-child(4n + 4) {
-  margin-left: 75%;
-  clear: none;
-}
-
-/* "Items should create 3x isolated gallery with inside-static gutters." */
-.test__gallery .assert__inside-static .test {
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-  width: 33.33333%;
-  float: left;
-  margin-right: -100%;
-  padding-left: 2em;
-  padding-right: 2em;
-}
-.test__gallery .assert__inside-static .test:nth-child(3n + 1) {
-  margin-left: 0;
-  clear: left;
-}
-.test__gallery .assert__inside-static .test:nth-child(3n + 2) {
-  margin-left: 33.33333%;
-  clear: none;
-}
-.test__gallery .assert__inside-static .test:nth-child(3n + 3) {
-  margin-left: 66.66667%;
-  clear: none;
-}
-.test__gallery .assert__inside-static .expect {
-  box-sizing: border-box;
-  width: 33.33333%;
-  float: left;
-  margin-right: -100%;
-  padding-left: 2em;
-  padding-right: 2em;
-}
-.test__gallery .assert__inside-static .expect:nth-child(3n + 1) {
-  margin-left: 0;
-  clear: left;
-}
-.test__gallery .assert__inside-static .expect:nth-child(3n + 2) {
-  margin-left: 33.33333%;
-  clear: none;
-}
-.test__gallery .assert__inside-static .expect:nth-child(3n + 3) {
-  margin-left: 66.66667%;
-  clear: none;
-}
-
-/* "Items should create 3x isolated asymmetrical gallery." */
-.test__gallery .assert__asym .test {
-  float: left;
-  margin-right: -100%;
-}
-.test__gallery .assert__asym .test:nth-child(3n + 1) {
-  width: 32%;
-  margin-left: 0;
-  clear: left;
-}
-.test__gallery .assert__asym .test:nth-child(3n + 2) {
-  width: 32%;
-  margin-left: 34%;
-  clear: none;
-}
-.test__gallery .assert__asym .test:nth-child(3n + 3) {
-  width: 32%;
-  margin-left: 68%;
-  clear: none;
-}
-.test__gallery .assert__asym .expect {
-  float: left;
-  margin-right: -100%;
-}
-.test__gallery .assert__asym .expect:nth-child(3n + 1) {
-  width: 32%;
-  margin-left: 0;
-  clear: left;
-}
-.test__gallery .assert__asym .expect:nth-child(3n + 2) {
-  width: 32%;
-  margin-left: 34%;
-  clear: none;
-}
-.test__gallery .assert__asym .expect:nth-child(3n + 3) {
-  width: 32%;
-  margin-left: 68%;
-  clear: none;
-}
-
-/* "Items should create 2x isolated asymmetrical gallery, with inside gutters." */
-.test__gallery .assert__asym-inside .test {
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-  float: left;
-  margin-right: -100%;
-  padding-left: 2.5%;
-  padding-right: 2.5%;
-}
-.test__gallery .assert__asym-inside .test:nth-child(2n + 1) {
-  width: 40%;
-  margin-left: 0;
-  clear: left;
-}
-.test__gallery .assert__asym-inside .test:nth-child(2n + 2) {
-  width: 60%;
-  margin-left: 40%;
-  clear: none;
-}
-.test__gallery .assert__asym-inside .expect {
-  box-sizing: border-box;
-  float: left;
-  margin-right: -100%;
-  padding-left: 2.5%;
-  padding-right: 2.5%;
-}
-.test__gallery .assert__asym-inside .expect:nth-child(2n + 1) {
-  width: 40%;
-  margin-left: 0;
-  clear: left;
-}
-.test__gallery .assert__asym-inside .expect:nth-child(2n + 2) {
-  width: 60%;
-  margin-left: 40%;
-  clear: none;
-}
-
-/*  
-    0 Tests:
-    - 0 Passed
-    - 0 Failed */
-/*
-
-### Row Syntax ------ */
-/* - [mixin] row */
-/* "Rows should clear preceeding floats, and contain inner floats" */
-.test__row .assert__row .test {
-  *zoom: 1;
-  clear: left;
-}
-.test__row .assert__row .test:after {
-  content: "";
-  display: table;
-  clear: both;
-}
-.test__row .assert__row .expect {
-  *zoom: 1;
-  clear: left;
-}
-.test__row .assert__row .expect:after {
-  content: "";
-  display: table;
-  clear: both;
-}
-
-/* - [mixin] unrow */
-/* "Non-rows should not clear or wrap floated elements" */
-.test__unrow .assert__unrow .test {
-  clear: none;
-}
-.test__unrow .assert__unrow .test:after {
-  content: none;
-  display: inline;
-  clear: none;
-}
-.test__unrow .assert__unrow .expect {
-  clear: none;
-}
-.test__unrow .assert__unrow .expect:after {
-  content: none;
-  display: inline;
-  clear: none;
-}
-
-/* - [mixin] first */
-/* "First items should have left margins removed" */
-.test__first .assert__first .test {
-  margin-left: 0;
-}
-.test__first .assert__first .expect {
-  margin-left: 0;
-}
-
-/* - [mixin] alpha */
-/* "Alpha items should have left margins removed" */
-.test__alpha .assert__alpha .test {
-  margin-left: 0;
-}
-.test__alpha .assert__alpha .expect {
-  margin-left: 0;
-}
-
-/* - [mixin] nth-first */
-/* "Nth-first (first-child) items should have left margins removed" */
-.test__nth-first .assert__nth-first .test:first-child {
-  margin-left: 0;
-}
-.test__nth-first .assert__nth-first .expect {
-  margin-left: 0;
-}
-
-/* - [mixin] nth-alpha */
-/* "Nth-alpha (first-child) items should have left margins removed" */
-.test__nth-alpha .assert__nth-alpha .test:first-child {
-  margin-left: 0;
-}
-.test__nth-alpha .assert__nth-alpha .expect {
-  margin-left: 0;
-}
-
-/* - [mixin] last */
-/* "Last items should float right, with right margins removed" */
-.test__last .assert__last .test {
-  float: right;
-  margin-right: 0;
-}
-.test__last .assert__last .expect {
-  float: right;
-  margin-right: 0;
-}
-
-/* - [mixin] omega */
-/* "Omega items should float right, with right margins removed" */
-.test__omega .assert__omega .test {
-  float: right;
-  margin-right: 0;
-}
-.test__omega .assert__omega .expect {
-  float: right;
-  margin-right: 0;
-}
-
-/* - [mixin] nth-last */
-/* "nth-last(2, last-child) items should float right, with right margins removed" */
-.test__nth-last .assert__nth-last .test:nth-last-child(2) {
-  float: right;
-  margin-right: 0;
-}
-.test__nth-last .assert__nth-last .expect {
-  float: right;
-  margin-right: 0;
-}
-
-/* - [mixin] nth-omega */
-/* "nth-omega(2, last-child) items should float right, with right margins removed" */
-.test__nth-omega .assert__nth-omega .test:nth-last-child(2) {
-  float: right;
-  margin-right: 0;
-}
-.test__nth-omega .assert__nth-omega .expect {
-  float: right;
-  margin-right: 0;
-}
-
-/*
-
-### Margin Syntax ------ */
-/* - [mixin] pre */
-/* "Items should have 3-columns margin before." */
-.test__pre .assert__pre .test {
-  margin-left: 45%;
-}
-.test__pre .assert__pre .expect {
-  margin-left: 45%;
-}
-
-/* - [mixin] post */
-/* "Items should have 2-columns margin after." */
-.test__post .assert__post .test {
-  margin-right: 35%;
-}
-.test__post .assert__post .expect {
-  margin-right: 35%;
-}
-
-/* - [mixin] push */
-/* "Items should have 2-columns margin before." */
-.test__push .assert__push .test {
-  margin-left: 35%;
-}
-.test__push .assert__push .expect {
-  margin-left: 35%;
-}
-
-/* - [mixin] pull */
-/* "Items should pull 1-column, overlapping the spacer." */
-.test__pull .assert__pull .test {
-  margin-left: -22.5%;
-}
-.test__pull .assert__pull .expect {
-  margin-left: -22.5%;
-}
-
-/* - [mixin] squish */
-/* "Items should have 2-columns margin before and after." */
-.test__squish .assert__simple .test {
-  margin-left: 35%;
-  margin-right: 35%;
-}
-.test__squish .assert__simple .expect {
-  margin-left: 35%;
-  margin-right: 35%;
-}
-
-/* "Items should have 1-column margin before, and 2 after - nested." */
-.test__squish .assert__nested .test {
-  margin-left: 20%;
-  margin-right: 40%;
-}
-.test__squish .assert__nested .expect {
-  margin-left: 20%;
-  margin-right: 40%;
-}
-
-/* - [mixin] bleed */
-/* "Items should bleed 1 column outside their nested context" */
-.test__bleed .assert__simple .test {
-  margin-left: -15%;
-  padding-left: 15%;
-  margin-right: -15%;
-  padding-right: 15%;
-}
-.test__bleed .assert__simple .expect {
-  margin-left: -15%;
-  padding-left: 15%;
-  margin-right: -15%;
-  padding-right: 15%;
-}
-
-/* "Items should bleed 1 column, and retain their gutters" */
-.test__bleed .assert__inside .test {
-  margin-left: -12.5%;
-  padding-left: 13.75%;
-  margin-right: -12.5%;
-  padding-right: 13.75%;
-}
-.test__bleed .assert__inside .expect {
-  margin-left: -12.5%;
-  padding-left: 13.75%;
-  margin-right: -12.5%;
-  padding-right: 13.75%;
-}
-
-/* "Items should bleed 1em on all sides, and retain their static gutters" */
-.test__bleed .assert__explicit .test {
-  margin: -1em;
-  padding: 1.5em;
-}
-.test__bleed .assert__explicit .expect {
-  margin: -1em;
-  padding: 1.5em;
-}
-
-/*
-
-### Padding Syntax ------ */
-/* - [mixin] prefix */
-/* "Items should have 3 columns padding before." */
-.test__prefix .assert__prefix .test {
-  padding-left: 45%;
-}
-.test__prefix .assert__prefix .expect {
-  padding-left: 45%;
-}
-
-/* - [mixin] suffix */
-/* "Items should have 2 columns padding after." */
-.test__suffix .assert__suffix .test {
-  padding-right: 35%;
-}
-.test__suffix .assert__suffix .expect {
-  padding-right: 35%;
-}
-
-/* - [mixin] pad */
-/* "Items should have 2 columns padding before and after." */
-.test__pad .assert__simple .test {
-  padding-left: 35%;
-  padding-right: 35%;
-}
-.test__pad .assert__simple .expect {
-  padding-left: 35%;
-  padding-right: 35%;
-}
-
-/* "Items should have 1 column padding before, and 2 after - nested." */
-.test__pad .assert__nested .test {
-  padding-left: 15%;
-  padding-right: 30%;
-}
-.test__pad .assert__nested .expect {
-  padding-left: 15%;
-  padding-right: 30%;
-}
-
 /*
 
 ### Grid Background API ------ */
 /* - [mixin] background-grid-output */
 /* "Elements should show a horizontal red-green-blue gradient, and a vertical baseline" */
 .test__background-grid-output .assert__show .test {
-  background: -moz-linear-gradient(left, #ffcccc, #ccffcc 25%, #ccccff);
-  background: -webkit-linear-gradient(left, #ffcccc, #ccffcc 25%, #ccccff);
-  background: linear-gradient(to right, #ffcccc, #ccffcc 25%, #ccccff);
-}
-.test__background-grid-output .assert__show .expect {
-  background: -moz-linear-gradient(bottom, rgba(0, 0, 0, 0.5) 5%, rgba(0, 0, 0, 0) 5%), -moz-linear-gradient(left, #ffcccc, #ccffcc 25%, #ccccff);
-  background: -webkit-linear-gradient(bottom, rgba(0, 0, 0, 0.5) 5%, rgba(0, 0, 0, 0) 5%), -webkit-linear-gradient(left, #ffcccc, #ccffcc 25%, #ccccff);
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.5) 5%, rgba(0, 0, 0, 0) 5%), linear-gradient(to right, #ffcccc, #ccffcc 25%, #ccccff);
+  background-image: -moz-linear-gradient(bottom, rgba(0, 0, 0, 0.5) 5%, rgba(0, 0, 0, 0) 5%), -moz-linear-gradient(left, #ffcccc, #ccffcc 25%, #ccccff);
+  background-image: -webkit-linear-gradient(bottom, rgba(0, 0, 0, 0.5) 5%, rgba(0, 0, 0, 0) 5%), -webkit-linear-gradient(left, #ffcccc, #ccffcc 25%, #ccccff);
+  background-image: linear-gradient(to top, rgba(0, 0, 0, 0.5) 5%, rgba(0, 0, 0, 0) 5%), linear-gradient(to right, #ffcccc, #ccffcc 25%, #ccccff);
   -moz-background-size: 100% 24px;
   -webkit-background-size: 100% 24px;
+  background-size: 100% 24px;
+  background-position: left top;
+}
+.test__background-grid-output .assert__show .expect {
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.5) 5%, rgba(0, 0, 0, 0) 5%), linear-gradient(to right, #ffcccc, #ccffcc 25%, #ccccff);
   background-size: 100% 24px;
   background-position: left top;
 }
 
 /* "Elements should show a horizontal red-green-blue gradient, with no baseline" */
 .test__background-grid-output .assert__show-columns .test {
-  background: -moz-linear-gradient(left, #ffcccc, #ccffcc 25%, #ccccff);
-  background: -webkit-linear-gradient(left, #ffcccc, #ccffcc 25%, #ccccff);
-  background: linear-gradient(to right, #ffcccc, #ccffcc 25%, #ccccff);
+  background-image: -moz-linear-gradient(left, #ffcccc, #ccffcc 25%, #ccccff);
+  background-image: -webkit-linear-gradient(left, #ffcccc, #ccffcc 25%, #ccccff);
+  background-image: linear-gradient(to right, #ffcccc, #ccffcc 25%, #ccccff);
 }
 .test__background-grid-output .assert__show-columns .expect {
-  background: -moz-linear-gradient(left, #ffcccc, #ccffcc 25%, #ccccff);
-  background: -webkit-linear-gradient(left, #ffcccc, #ccffcc 25%, #ccccff);
   background: linear-gradient(to right, #ffcccc, #ccffcc 25%, #ccccff);
 }
 
 /* "Elements should show a vertical baseline" */
 .test__background-grid-output .assert__show-baseline .test {
-  background: -moz-linear-gradient(left, #ffcccc, #ccffcc 25%, #ccccff);
-  background: -webkit-linear-gradient(left, #ffcccc, #ccffcc 25%, #ccccff);
-  background: linear-gradient(to right, #ffcccc, #ccffcc 25%, #ccccff);
-}
-.test__background-grid-output .assert__show-baseline .expect {
-  background: -moz-linear-gradient(bottom, rgba(0, 0, 0, 0.5) 5%, rgba(0, 0, 0, 0) 5%);
-  background: -webkit-linear-gradient(bottom, rgba(0, 0, 0, 0.5) 5%, rgba(0, 0, 0, 0) 5%);
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.5) 5%, rgba(0, 0, 0, 0) 5%);
+  background-image: -moz-linear-gradient(bottom, rgba(0, 0, 0, 0.5) 5%, rgba(0, 0, 0, 0) 5%);
+  background-image: -webkit-linear-gradient(bottom, rgba(0, 0, 0, 0.5) 5%, rgba(0, 0, 0, 0) 5%);
+  background-image: linear-gradient(to top, rgba(0, 0, 0, 0.5) 5%, rgba(0, 0, 0, 0) 5%);
   -moz-background-size: 100% 24px;
   -webkit-background-size: 100% 24px;
   background-size: 100% 24px;
   background-position: left top;
 }
-
-/* "Elements should not show any grid background" */
-.test__background-grid-output .assert__hide .test {
-  background: -moz-linear-gradient(left, #ffcccc, #ccffcc 25%, #ccccff);
-  background: -webkit-linear-gradient(left, #ffcccc, #ccffcc 25%, #ccccff);
-  background: linear-gradient(to right, #ffcccc, #ccffcc 25%, #ccccff);
+.test__background-grid-output .assert__show-baseline .expect {
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.5) 5%, rgba(0, 0, 0, 0) 5%);
+  background-size: 100% 24px;
+  background-position: left top;
 }
 
+/* "Elements should not show any grid background" */
 /*
 
 ### Shared Container API ------ */
@@ -992,118 +387,4 @@
 .test__padding-output .assert__padding-output .expect {
   padding-right: 25%;
   padding-left: 8em;
-}
-
-/*
-
-### Float Container API ------ */
-/* - [mixin] float-container */
-/* "Containers should be 30em wide, flush left." */
-.test__float-container .assert__float-container .test {
-  *zoom: 1;
-  max-width: 30em;
-  margin-left: 0;
-  margin-right: auto;
-}
-.test__float-container .assert__float-container .test:after {
-  content: "";
-  display: table;
-  clear: both;
-}
-.test__float-container .assert__float-container .expect {
-  max-width: 30em;
-  margin-left: 0;
-  margin-right: auto;
-}
-.test__float-container .assert__float-container .expect:after {
-  content: "";
-  display: table;
-  clear: both;
-}
-
-/*
-
-### Float Span API ------ */
-/* - [mixin] float-span-output */
-/* "Output should be 25%, floated left, with matching margins/padding" */
-.test__float-span-output .assert__full .test {
-  width: 25%;
-  float: left;
-  margin-left: 5em;
-  margin-right: 2em;
-  padding-left: 3em;
-  padding-right: 4em;
-}
-.test__float-span-output .assert__full .expect {
-  width: 25%;
-  float: left;
-  margin-left: 5em;
-  margin-right: 2em;
-  padding-left: 3em;
-  padding-right: 4em;
-}
-
-/* "Output should be 25%, floated right" */
-.test__float-span-output .assert__float-to .test {
-  width: 25%;
-  float: right;
-}
-.test__float-span-output .assert__float-to .expect {
-  width: 25%;
-  float: right;
-}
-
-/* "Output should be 25%, not floated" */
-.test__float-span-output .assert__float-null .test {
-  width: 25%;
-}
-.test__float-span-output .assert__float-null .expect {
-  width: 25%;
-}
-
-/*
-
-### Float End API ------ */
-/* - [mixin] float-last */
-/* "Items should float flush right." */
-.test__float-last .assert__default .test {
-  float: right;
-  margin-right: 0;
-}
-.test__float-last .assert__default .expect {
-  float: right;
-  margin-right: 0;
-}
-
-/* "Items should not have any right margin." */
-.test__float-last .assert__last-flow-from .test {
-  margin-right: 0;
-}
-.test__float-last .assert__last-flow-from .expect {
-  margin-right: 0;
-}
-
-/* - [mixin] float-first */
-/* "Items should float flush left." */
-.test__float-first .assert__float-first .test {
-  margin-left: 0;
-}
-.test__float-first .assert__float-first .expect {
-  margin-left: 0;
-}
-
-/*
-
-### Isolation API ------ */
-/* - [mixin] isolate-output */
-/* "Isolation at 30%, has 30% left margin and -100% right margin." */
-.test__isolate-output .assert__isolate-output .test {
-  float: left;
-  margin-left: 30%;
-  margin-right: -100%;
-}
-.test__isolate-output .assert__isolate-output .expect {
-  float: left;
-  margin-left: 30%;
-  margin-right: -100%;
 }

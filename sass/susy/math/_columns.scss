@@ -6,7 +6,7 @@
 // Returns true if a grid is symmetrical.
 // - [$columns]   : <number> | <list>
 @function is-symmetrical(
-  $columns: $columns
+  $columns: susy-get(columns)
 ) {
   @if type-of($columns) == number {
     @return $columns;
@@ -20,7 +20,7 @@
 // Find the number of columns in a given layout
 // - [$columns]   : <number> | <list>
 @function column-count(
-  $columns: $columns
+  $columns: susy-get(columns)
 ) {
   $count: is-symmetrical($columns);
 
@@ -38,8 +38,8 @@
 // - [$gutters]   : <ratio>
 // - [$outer]     : <boolean>
 @function column-sum(
-  $columns  : $columns,
-  $gutters  : $gutters,
+  $columns  : susy-get(columns),
+  $gutters  : susy-get(gutters),
   $outer    : false
 ) {
   $column-sum: 0;
@@ -71,7 +71,7 @@
 @function get-columns(
   $span,
   $location,
-  $columns: $columns
+  $columns: susy-get(columns)
 ) {
   $location     : get-location-position($span, $location, $columns);
   $sub-columns  : ();
@@ -100,8 +100,8 @@
 @function get-column-span-sum(
   $span,
   $location     : false,
-  $columns      : $columns,
-  $gutters      : $gutters,
+  $columns      : susy-get(columns),
+  $gutters      : susy-get(gutters),
   $outer        : false
 ) {
   $span-sum : false;

@@ -3,7 +3,6 @@
 
 @import "compass/css3/border-radius";
 @import "compass/css3/box-shadow";
-@import "compass/layout/stretching";
 
 // The overlay is painted over your container's ::after pseudo-element,
 // so we must give position to the container itself.
@@ -21,16 +20,16 @@ $grid-color             : rgba(#66f, .25) !default;
 // Show a grid background on any element.
 // - [$grid]  : <settings>
 @mixin background-grid(
-  $grid: get-grid()
+  $grid
 ) {
-  $grid         : get-adjusted-grid($grid);
+  $grid     : parse-grid($grid);
 
-  $this-flow    : get-setting(flow, $grid);
-  $this-show    : get-setting(show-grids, $grid);
+  $flow     : susy-get(flow, $grid);
+  $show     : susy-get(show-grids, $grid);
 
-  $stops        : get-grid-color-stops($grid);
+  $stops    : get-grid-color-stops($grid);
 
-  @include background-grid-output($stops, $show: $this-show, $flow: $this-flow);
+  @include background-grid-output($stops, $show: $show, $flow: $flow);
 }
 
 // Grid Overlay
@@ -84,7 +83,11 @@ $grid-color             : rgba(#66f, .25) !default;
 }
 
 %grid-overlay-base {
-  @include stretch;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
   content: " ";
   z-index: 998;
 }
@@ -94,43 +97,43 @@ $grid-color             : rgba(#66f, .25) !default;
 // Calculate the color-stops needed for a particular grid.
 // - $grid  : <settings>
 @function get-grid-color-stops(
-  $grid: parse-grid()
+  $grid
 ) {
   $stops  : ();
   $color  : $grid-color;
   $trans  : transparent;
   $light  : lighten($color, 15%);
 
-  $this-columns           : get-setting(columns, $grid);
-  $this-gutters           : get-setting(gutters, $grid);
-  $this-column-width      : get-setting(column-width, $grid);
-  $this-layout-math       : get-setting(layout-math, $grid);
-  $this-gutter-position   : get-setting(gutter-position, $grid);
+  $columns            : susy-get(columns, $grid);
+  $gutters            : susy-get(gutters, $grid);
+  $column-width       : susy-get(column-width, $grid);
+  $layout-math        : susy-get(layout-math, $grid);
+  $gutter-position    : susy-get(gutter-position, $grid);
 
-  @for $location from 1 through column-count($this-columns) {
+  @for $location from 1 through column-count($columns) {
     $this-stop: compact();
 
     @if $location == 1 {
       $this-stop: append($this-stop, $color, comma);
     } @else {
-      $start: get-isolation(1, $location, $this-columns, $this-gutters, $this-column-width, $this-layout-math);
+      $start: get-isolation(1, $location, $columns, $gutters, $column-width, $layout-math);
       $this-stop: append($this-stop, $color $start, comma);
     }
 
-    @if $location == column-count($this-columns) {
+    @if $location == column-count($columns) {
       $this-stop: append($this-stop, $light, comma);
     } @else {
       $end-color: $light;
-      $inside: if($this-gutter-position == inside or $this-gutter-position == inside-static, true, false);
+      $inside: if($gutter-position == inside or $gutter-position == inside-static, true, false);
 
       @if not $inside {
-        $gutter: get-span-width($location, 1, $this-columns, $this-gutters, $this-column-width, $this-layout-math, $this-gutter-position);
+        $gutter: get-span-width($location, 1, $columns, $gutters, $column-width, $layout-math, $gutter-position);
         $this-stop: append($this-stop, $light $gutter, comma);
         $this-stop: append($this-stop, $trans $gutter, comma);
         $end-color: $trans;
       }
 
-      $end: get-isolation(1, $location + 1, $this-columns, $this-gutters, $this-column-width, $this-layout-math);
+      $end: get-isolation(1, $location + 1, $columns, $gutters, $column-width, $layout-math);
       $this-stop: append($this-stop, $end-color $end, comma);
     }
 

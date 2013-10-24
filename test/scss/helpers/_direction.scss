@@ -7,8 +7,8 @@
   // -------------
 
   @include test('[function] get-direction') {
-    // ltr from
-    $dir: get-direction(ltr, from);
+    // default
+    $dir: get-direction();
     @include assert-equal($dir, left,
       'The from-direction for "ltr" should be "left".');
 

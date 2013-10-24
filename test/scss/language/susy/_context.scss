@@ -1,0 +1,50 @@
+// Context Syntax Tests
+// ====================
+
+@include test-module('Shared Context Language') {
+
+  // nested function
+  // ---------------
+
+  @include test('[function] nested') {
+    // symmetrical (location doesn't matter)
+    $context1: nested(3 of 12);
+    $context2: nested(3 of 12 at 2);
+    @include assert-equal($context1, 3,
+      'Symmetrical nested context should be equal to the given span');
+
+    @include assert-equal($context1, $context2,
+      'Symmetrical nested context should be equal no matter what the location');
+
+    // asymmetrical
+    $context: nested(3 of (1 1 2 3 5 8) at 2);
+    $expect: 1 2 3;
+    @include assert-equal($context, $expect,
+      'Nested "3 of (1 1 2 3 5 8) at 2" should be "(1 2 3)"');
+  }
+
+  // nested mixin
+  // ------------
+
+  @include test('[mixin] nested') {
+    // symmetrical
+    $columns: 12;
+    $susy: map-merge($susy, (columns: $columns)) !global;
+
+    @include nested(3 of 12) {
+      @include assert-equal(susy-get(columns), 3,
+        'Symmetrical nested $columns should be equal to nesting span');
+    }
+
+    // asymmetrical
+    $columns: 1 1 2 3 5 8 13;
+    $susy: map-merge($susy, (columns: $columns)) !global;
+
+    @include nested(last 4 of $columns) {
+      @include assert-equal(susy-get(columns), 3 5 8 13,
+        'Last 4 of "(1 1 2 3 5 8 13)" should be "(3 5 8 13)"');
+    }
+
+  }
+
+}

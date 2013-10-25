@@ -42,22 +42,22 @@ $show-grids           : show-columns    !default;
   $grid                 : get-adjusted-grid($grid, $clean);
 
   // get values
-  $columns              : get-setting(columns, $grid);
-  $gutters              : get-setting(gutters, $grid);
-  $container            : get-setting(container, $grid);
-  $column-width         : get-setting(column-width, $grid);
-  $layout-math          : get-setting(layout-math, $grid);
-  $layout-method        : get-setting(layout-method, $grid);
+  $columns              : get-setting(columns, $grid) !global;
+  $gutters              : get-setting(gutters, $grid) !global;
+  $container            : get-setting(container, $grid) !global;
+  $column-width         : get-setting(column-width, $grid) !global;
+  $layout-math          : get-setting(layout-math, $grid) !global;
+  $layout-method        : get-setting(layout-method, $grid) !global;
 
-  $flow                 : get-setting(flow, $grid);
-  $gutter-position      : get-setting(gutter-position, $grid);
-  $container-position   : get-setting(container-position, $grid);
-  $show-grids           : get-setting(show-grids, $grid);
-  $box                  : get-setting(box-sizing, $grid);
+  $flow                 : get-setting(flow, $grid) !global;
+  $gutter-position      : get-setting(gutter-position, $grid) !global;
+  $container-position   : get-setting(container-position, $grid) !global;
+  $show-grids           : get-setting(show-grids, $grid) !global;
+  $box                  : get-setting(box-sizing, $grid) !global;
 
-  $container            : get-setting(container, $grid);
-  $column-width         : get-setting(column-width, $grid);
-  $box-sizing           : get-setting(box-sizing, $grid);
+  $container            : get-setting(container, $grid) !global;
+  $column-width         : get-setting(column-width, $grid) !global;
+  $box-sizing           : get-setting(box-sizing, $grid) !global;
 }
 
 // Use Grid

@@ -1,4 +1,15 @@
 GIT
+  remote: git://github.com/chriseppstein/compass
+  revision: 0a74e91931e53fb798323cd8684198c38a2b76b8
+  branch: master
+  specs:
+    compass (0.13.alpha.10.0a74e91)
+      chunky_png (~> 1.2)
+      json
+      listen (~> 1.1.0)
+      sass (~> 3.3.0.rc.1)
+
+GIT
   remote: git://github.com/ericam/true
   revision: 94abd887fddccda289cacb52ca9111ab7785c3c4
   branch: master
@@ -6,16 +17,19 @@ GIT
     true (0.2.0.rc.1)
       sass (~> 3.3.0.rc.1)
 
+GIT
+  remote: git://github.com/nex3/sass
+  revision: 4d748c295ef79a3463327ea32c24423cd1f4149d
+  branch: master
+  specs:
+    sass (3.3.0.rc.1)
+      listen (~> 1.1.0)
+
 GEM
   remote: http://rubygems.org/
   specs:
     chunky_png (1.2.9)
-    compass (0.13.alpha.7)
-      chunky_png (~> 1.2)
-      json
-      listen (~> 1.1.0)
-      sass (~> 3.3.0.rc.1)
-    ffi (1.9.0)
+    ffi (1.9.3)
     json (1.8.1)
     listen (1.1.6)
       rb-fsevent (>= 0.9.3)
@@ -26,14 +40,12 @@ GEM
       ffi (>= 0.5.0)
     rb-kqueue (0.2.0)
       ffi (>= 0.5.0)
-    sass (3.3.0.rc.1)
-      listen (~> 1.1.0)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
-  compass (~> 0.13.alpha.7)
+  compass!
   rb-fsevent (~> 0.9)
-  sass (~> 3.3.0.rc.1)
+  sass!
   true!

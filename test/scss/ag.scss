@@ -1,151 +1,151 @@
-// AG tests
-// ========
+// // AG tests
+// // ========
 
-@import "susy";
-@import "compass/reset";
+// @import "susy";
+// @import "compass/reset";
 
-@import "compass/typography/vertical_rhythm";
+// @import "compass/typography/vertical_rhythm";
 
-// Complex AG tests
-// ----------------
+// // Complex AG tests
+// // ----------------
 
-@mixin ag-test(
-  $class
-) {
-  .#{$class} {
-    @include container;
-    @include leader(.5);
-    @include trailer(.5);
+// @mixin ag-test(
+//   $class
+// ) {
+//   .#{$class} {
+//     @include container;
+//     @include leader(.5);
+//     @include trailer(.5);
 
-    > .size1of5 {
-      min-height: rhythm(10);
-      &:first-of-type { @include span(2 at 1); }
-      ~ .size1of5 { @include span(last 2); }
-    }
-    > .size3of5 {
-      @include span(6 at 3 container);
-      > .size1of2 {
-        &:first-child { @include span(3 at 1 of nested(6 at 3)); }
-        + .size1of2 { @include span(last 3 of nested(6 at 3)); }
-      }
-      > .full {
-        clear: both;
-        background: none;
-      }
-    }
+//     > .size1of5 {
+//       min-height: rhythm(10);
+//       &:first-of-type { @include span(2 at 1); }
+//       ~ .size1of5 { @include span(last 2); }
+//     }
+//     > .size3of5 {
+//       @include span(6 at 3 container);
+//       > .size1of2 {
+//         &:first-child { @include span(3 at 1 of nested(6 at 3)); }
+//         + .size1of2 { @include span(last 3 of nested(6 at 3)); }
+//       }
+//       > .full {
+//         clear: both;
+//         background: none;
+//       }
+//     }
 
-    .full {
-      @include nested(6 at 3) {
-        .size1of3 {
-          @include span(first 2);
-          min-height: rhythm(6.5);
-        }
-        .size2of3 {
-          @include span(4 omega container);
-        }
-      }
-    }
+//     .full {
+//       @include nested(6 at 3) {
+//         .size1of3 {
+//           @include span(first 2);
+//           min-height: rhythm(6.5);
+//         }
+//         .size2of3 {
+//           @include span(4 omega container);
+//         }
+//       }
+//     }
 
-    .size2of3 {
-      .size1of2 {
-        @include nested(4 at 5) {
-          &:first-child { @include span(2 alpha); }
-          + .size1of2 { @include span(last 2); }
-        }
-      }
-      .full {
-        clear: both;
-      }
-    }
+//     .size2of3 {
+//       .size1of2 {
+//         @include nested(4 at 5) {
+//           &:first-child { @include span(2 alpha); }
+//           + .size1of2 { @include span(last 2); }
+//         }
+//       }
+//       .full {
+//         clear: both;
+//       }
+//     }
 
-    .gallery {
-      div {
-        @include gallery(2);
-      }
-    }
-  }
-}
+//     .gallery {
+//       div {
+//         @include gallery(2);
+//       }
+//     }
+//   }
+// }
 
-// Symmetrical
-// -----------
+// // Symmetrical
+// // -----------
 
-$a-grid: 10 (4em 1em) before;
+// $a-grid: 10 (4em 1em) before;
 
-@include use-grid(append($a-grid, hide)) {
-  @include ag-test(symmetrical);
-}
+// @include use-grid(append($a-grid, hide)) {
+//   @include ag-test(symmetrical);
+// }
 
-// Asymmetrical
-// ------------
+// // Asymmetrical
+// // ------------
 
-$b-grid: 80% (.5 2 1.25 1 3.25 1.75 3 2 1 3.75) .5 isolate left;
+// $b-grid: 80% (.5 2 1.25 1 3.25 1.75 3 2 1 3.75) .5 isolate left;
 
-@include use-grid(append($b-grid, show-baseline)) {
-  @include ag-test(asymmetrical);
-}
+// @include use-grid(append($b-grid, show-baseline)) {
+//   @include ag-test(asymmetrical);
+// }
 
-// Static
-// ------
+// // Static
+// // ------
 
-@include use-grid(10 (60px 20px) static) {
-  @include ag-test(static);
-}
+// @include use-grid(10 (60px 20px) static) {
+//   @include ag-test(static);
+// }
 
-// Inside Gutters
-// --------------
+// // Inside Gutters
+// // --------------
 
-@include use-grid(60em (1 .5 1 3 1 .5 1 .5 1 4) .25 inside right) {
-  @include ag-test(split);
-}
+// @include use-grid(60em (1 .5 1 3 1 .5 1 .5 1 4) .25 inside right) {
+//   @include ag-test(split);
+// }
 
-// Inside Static
-// -------------
+// // Inside Static
+// // -------------
 
-@include use-grid(10 (6em 2em) inside-static) {
-  @include ag-test(inside-static);
-}
+// @include use-grid(10 (6em 2em) inside-static) {
+//   @include ag-test(inside-static);
+// }
 
-// Grid Overlay
-// ------------
+// // Grid Overlay
+// // ------------
 
-@include overlay-grid('.symmetrical' append($a-grid, show), '.asymmetrical' append($b-grid, show-columns));
+// @include overlay-grid('.symmetrical' append($a-grid, show), '.asymmetrical' append($b-grid, show-columns));
 
-// Styles
-// ------
+// // Styles
+// // ------
 
-@include establish-baseline;
+// @include establish-baseline;
 
-body { font-family: sans-serif; }
+// body { font-family: sans-serif; }
 
-h1 {
-  background: #333;
-  color: #eee;
-  text-transform: uppercase;
-}
-h1, h2, h3 {
-  clear: both;
-  padding: rhythm(.5);
-  font-weight: bold;
-}
+// h1 {
+//   background: #333;
+//   color: #eee;
+//   text-transform: uppercase;
+// }
+// h1, h2, h3 {
+//   clear: both;
+//   padding: rhythm(.5);
+//   font-weight: bold;
+// }
 
-.grid-element {
-  @include trailer(.5);
-  opacity: .5;
-  min-height: rhythm(3);
-}
+// .grid-element {
+//   @include trailer(.5);
+//   opacity: .5;
+//   min-height: rhythm(3);
+// }
 
-.size1of2 { background: #f99; }
-.size1of5 { background: #aef; }
-.size1of3 { background: orange; }
-.full.grid-element { background: pink; }
+// .size1of2 { background: #f99; }
+// .size1of5 { background: #aef; }
+// .size1of3 { background: orange; }
+// .full.grid-element { background: pink; }
 
-.gallery {
-  @include clearfix;
-  clear: both;
-  div {
-    @include trailer(.5);
-    height: rhythm(1);
-    background: rgba(red,.25);
-    outline: 1px dotted red;
-  }
-}
+// .gallery {
+//   @include clearfix;
+//   clear: both;
+//   div {
+//     @include trailer(.5);
+//     height: rhythm(1);
+//     background: rgba(red,.25);
+//     outline: 1px dotted red;
+//   }
+// }

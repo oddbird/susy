@@ -1,75 +1,89 @@
 // Gallery Syntax
 // ==============
 
-@import "compass/css3/box-sizing";
-
 // Gallery
 // -------
 // Create an isolated gallery
 // - $input       : <span>
 // - [$selector]  : child | of-type
 @mixin gallery(
-  $input,
+  $layout,
   $selector: child
 ) {
-  $input                  : parse-span($input);
-  $width                  : null;
-  $location               : 1;
+  $layout             : parse-span($layout);
+  $layout             : map-merge($layout, (location: 1));
 
-  $span                   : get-span-setting(span, $input);
-  $this-columns           : get-span-setting(columns, $input);
-  $this-gutters           : get-span-setting(gutters, $input);
-  $this-column-width      : get-span-setting(column-width, $input);
-  $this-layout-math       : get-span-setting(layout-math, $input);
-  $this-gutter-position   : get-span-setting(gutter-position, $input);
-  $this-flow              : get-span-setting(flow, $input);
+  $span               : span-get(span, $layout);
+  $columns            : span-get(columns, $layout);
+  $context            : column-count($columns);
+  $flow               : span-get(flow, $layout);
 
-  $box                    : get-span-setting(box-sizing, $input);
-  $inside                 : if($this-gutter-position == inside or $this-gutter-position == inside-static, true, false);
+  $box                : span-get(box-sizing, $layout);
+  $inside             : is-inside($layout);
+  $from               : from($flow);
+  $line               : floor($context / $span);
+  $symmetrical        : is-symmetrical($columns);
 
-  $from                   : from($this-flow);
-  $context                : column-count($this-columns);
-  $line                   : floor($context / $span);
-
-  $padding-before         : null;
-  $padding-after          : null;
+  $output: (
+    width             : null,
+    float             : from,
+    margin-before     : null,
+    margin-after      : null,
+    padding-before    : null,
+    padding-after     : null,
+    flow              : $flow,
+  );
 
   @if $inside {
-    $inside-gutter: get-gutters($this-columns, $this-gutters, $this-column-width, $this-layout-math, $this-gutter-position);
-    $padding-before: nth($inside-gutter, 1);
-    $padding-after: nth($inside-gutter, 2);
+    $gutters: get-gutters($layout);
+    $output: map-merge($output, (
+      padding-before: map-get($gutters, before),
+      padding-after: map-get($gutters, after),
+    ));
   }
 
+  @if $symmetrical {
+    $output: map-merge($output, (width: get-span-width($layout)));
+  }
+
+  // Collective Output
   @if $box == border-box or $inside {
-    @include box-sizing(border-box);
+    @include susy-box-sizing(border-box);
   } @else if $box == content-box {
-    @include box-sizing(content-box);
+    @include susy-box-sizing(content-box);
   }
 
-  @if is-symmetrical($this-columns) {
-    $width: get-span-width($span, $location, $this-columns, $this-gutters, $this-column-width, $this-layout-math);
-  }
+  @include float-span-output($output...);
 
-  @include float-span-output($width, from, null, -100%, $padding-before, $padding-after, $this-flow);
-
+  // Individual Loop
   @for $item from 1 through $line {
     $nth: '#{$line}n + #{$item}';
     &:#{format-nth($nth,$selector)} {
-      $width: get-span-width($span, $location, $this-columns, $this-gutters, $this-column-width, $this-layout-math);
-      $width: if(is-symmetrical($columns), null, $width);
-      $before: get-isolation($span, $location, $this-columns, $this-gutters, $this-column-width, $this-layout-math);
+      // Individual Prep
+      $output: (
+        width             : if($symmetrical, null, get-span-width($layout)),
+        float             : null,
+        margin-before     : get-isolation($layout),
+        margin-after      : null,
+        padding-before    : null,
+        padding-after     : null,
+        flow              : $flow,
+      );
 
-      @include float-span-output($width, null, $before, null, null, null, $this-flow);
+      // Individual Output
+      @include float-span-output($output...);
 
-      @if is-first($location) {
-        @include first;
+      @if is-first(span-get(location, $layout)) {
+        @include first($flow);
         clear: $from;
       } @else {
         clear: none;
       }
 
-      $location: $location + $span;
-      @if $location > $context { $location: 1; }
+      // Individual Location Increment
+      $location: span-get(location, $layout) + $span;
+      $location: if($location > $context, 1, $location);
+      $layout: map-merge($layout, (location: $location));
     }
   }
 }

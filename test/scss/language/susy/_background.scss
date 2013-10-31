@@ -19,7 +19,7 @@
     @include assert-output(
       'Background-grid should show 7 columns with .5 gutters'
     ) {
-      .test { @include background-grid(7 .5); }
+      .test { @include background-grid(7 .5 show-columns); }
       .expect {
         background: linear-gradient(to right, $col, $light 10%, transparent 10%, transparent 15%, $col 15%, $light 25%, transparent 25%, transparent 30%, $col 30%, $light 40%, transparent 40%, transparent 45%, $col 45%, $light 55.0%, transparent 55.0%, transparent 60%, $col 60%, $light 70%, transparent 70%, transparent 75%, $col 75%, $light 85%, transparent 85%, transparent 90%, $col 90%, $light);
       }

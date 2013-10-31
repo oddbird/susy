@@ -1,0 +1,10 @@
+// Box Sizing
+// ----------
+
+@mixin susy-box-sizing($model) {
+  @if mixin-exists(box-sizing) {
+    @include box-sizing($model);
+  } @else {
+    box-sizing: $model;
+  }
+}

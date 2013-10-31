@@ -1,42 +1,16 @@
 // Grid Syntax Tests
 // =================
 
-// capture the original grid
-$original-columns             : $columns;
-$original-gutters             : $gutters;
-$original-container           : $container;
-$original-column-width        : $column-width;
-$original-layout-math         : $layout-math;
-$original-layout-method       : $layout-method;
-$original-flow                : $flow;
-$original-container-position  : $container-position;
-$original-gutter-position     : $gutter-position;
-$original-show-grids          : $show-grids;
-$original-box-sizing          : $box-sizing;
-
 // reset the original grid
 @mixin original-grid {
-  $columns              : $original-columns;
-  $gutters              : $original-gutters;
-  $container            : $original-container;
-  $column-width         : $original-column-width;
-  $layout-math          : $original-layout-math;
-  $layout-method        : $original-layout-method;
-  $flow                 : $original-flow;
-  $container-position   : $original-container-position;
-  $gutter-position      : $original-gutter-position;
-  $show-grids           : $original-show-grids;
-  $box-sizing           : $original-box-sizing;
+  $susy: $susy-defaults !global;
 }
 
 // test the output of a parsed grid
 @mixin test-parsed-grid($name, $test, $expect) {
-  $options: columns gutters container column-width layout-math layout-method container-position flow gutter-position show-grids box-sizing;
-
-  @each $setting in $options {
-    $index: index($options, $setting);
-    $this-test: nth($test, $index);
-    $this-expect: nth($expect, $index);
+  @each $setting in $susy-defaults {
+    $this-test: susy-get($test, $name);
+    $this-expect: susy-get($expect, $name);
     @include assert-equal($this-test, $this-expect,
       '[#{$name}] #{$setting} should be #{$this-expect}');
   }
@@ -47,18 +21,6 @@ $original-box-sizing          : $box-sizing;
 
 @include test-module('Settings Syntax') {
 
-  // Original-Grid Helpers
-  // ---------------------
-
-  @include test('[Test Helper] Original Grid') {
-    $columns: 1 1 2 3 5 8 13;
-    @include assert-unequal($columns, $original-columns,
-      '$columns should not equal $original-columns');
-    @include original-grid;
-    @include assert-equal($columns, $original-columns,
-      '$columns should be equal to original columns');
-  }
-
   // [mixin] set-grid
   // ----------------
 
@@ -68,34 +30,23 @@ $original-box-sizing          : $box-sizing;
     // original change
     @include set-grid($grid);
 
-    @include assert-equal($container, 960px,
+    @include assert-equal(susy-get(container), 960px,
       'New container setting should be "960px"');
-    @include assert-equal($columns, $original-columns,
+    @include assert-equal(susy-get(columns), susy-get(columns, $susy-defaults),
       'New columns setting should still be the default');
-    @include assert-equal($box-sizing, border-box,
+    @include assert-equal(susy-get(box-sizing), border-box,
       'New box-sizing should be "border-box"');
-    @include assert-equal($gutter-position, inside,
+    @include assert-equal(susy-get(gutter-position), inside,
       'New gutter-position should be "inside"');
 
-    // without cleaning
     @include set-grid(12);
 
-    @include assert-equal($container, 960px,
+    @include assert-equal(susy-get(container), 960px,
       'New container setting should remain "960px"');
-    @include assert-equal($columns, 12,
+    @include assert-equal(susy-get(columns), 12,
       'New columns setting should be "12"');
-    @include assert-equal($box-sizing, border-box,
+    @include assert-equal(susy-get(box-sizing), border-box,
       'New box-sizing should remain "border-box"');
-
-    // with cleaning
-    @include set-grid(8, clean);
-
-    @include assert-equal($container, auto,
-      'Container should reset to "auto"');
-    @include assert-equal($columns, 8,
-      'New columns setting should be "8"');
-    @include assert-equal($box-sizing, false,
-      'Box-sizing should reset to "false"');
 
     @include original-grid;
   }
@@ -104,56 +55,27 @@ $original-box-sizing          : $box-sizing;
   // ----------------
 
   @include test('[mixin] use-grid') {
-    $columns: 4;
-    $container: 960px;
+    @include set-grid((
+      columns: 4,
+      container: 960px
+    ));
 
-    @include assert-equal($columns, 4,
+    @include assert-equal(susy-get(columns), 4,
       'Start with 4 columns, before use-grid');
-    @include assert-equal($container, 960px,
+    @include assert-equal(susy-get(container), 960px,
       'Start with 960px container, before use-grid');
 
     @include use-grid(auto 12) {
-      @include assert-equal($columns, 12,
+      @include assert-equal(susy-get(columns), 12,
         'Switch to 12 columns, inside use-grid');
-      @include assert-equal($container, auto,
+      @include assert-equal(susy-get(container), auto,
         'Switch to auto container, inside use-grid');
     }
 
-    @include assert-equal($columns, $original-columns,
+    @include assert-equal(susy-get(columns), susy-get(columns, $susy-defaults),
       'End with 4 columns, after use-grid');
-    @include assert-equal($container, 960px,
+    @include assert-equal(susy-get(container), 960px,
       'End with 960px container, after use-grid');
-
-    @include original-grid;
-  }
-
-  // [function] get-grid
-  // -------------------
-
-  @include test('[function] get-grid') {
-
-    // defaults
-    $grid: get-grid();
-    $expect: auto 4 0.25 fluid float center show-columns ltr after;
-    @include assert-equal($grid, $expect,
-      'Shorthand for default grid should be "#{$expect}"');
-
-    // column-width, boolean show-grids
-    $column-width: 4em;
-    $show-grids: true;
-
-    $grid: get-grid();
-    $expect: auto 4 (4em 1em) fluid float center show ltr after;
-    @include assert-equal($grid, $expect,
-      'Shorthand grid with $column-width and $show-grids should be "#{$expect}"');
-
-    // false show-grids
-    $show-grids: false;
-
-    $grid: get-grid();
-    $expect: auto 4 (4em 1em) fluid float center hide ltr after;
-    @include assert-equal($grid, $expect,
-      'Shorthand without $show-grids should be "#{$expect}"');
 
     @include original-grid;
   }
@@ -165,86 +87,69 @@ $original-box-sizing          : $box-sizing;
     // Grid #1
     $grid: 960px 9 .25 static before show float right ltr;
     $test: parse-grid($grid);
-    $expect: 9 0.25 960px false static float right ltr before show false;
+    $expect: (
+      columns: 9,
+      gutters: 0.25,
+      container: 960px,
+      layout-math: static,
+      layout-method: float,
+      container-position: right,
+      flow: ltr,
+      gutter-position: before,
+      show-grids: show,
+    );
 
     @include test-parsed-grid('parse-grid: #1', $test, $expect);
 
     // Grid #2
     $grid: auto (1 2 3 2 1) (4em 1em) fluid isolate show-columns border-box left rtl after;
     $test: parse-grid($grid);
-    $expect: (1 2 3 2 1) 0.25 auto 4em fluid isolate left rtl after show-columns border-box;
+    $expect: (
+      columns: (1 2 3 2 1),
+      gutters: 0.25,
+      container: auto,
+      column-width: 4em,
+      layout-math: fluid,
+      layout-method: isolate,
+      container-position: left,
+      flow: rtl,
+      gutter-position: after,
+      show-grids: show-columns,
+      box-model: border-box,
+    );
 
     @include test-parsed-grid('parse-grid: #2', $test, $expect);
 
     // Grid #3
     $grid: center split content-box hide;
     $test: parse-grid($grid);
-    $expect: false false false false false false center false split hide content-box;
+    $expect: (
+      container-position: center,
+      gutter-position: split,
+      show-grids: hide,
+      box-model: content-box,
+    );
 
     @include test-parsed-grid('parse-grid: #3', $test, $expect);
 
     // Grid #4
     $grid: inside show-baseline;
     $test: parse-grid($grid);
-    $expect: false false false false false false false false inside show-baseline false;
+    $expect: (
+      gutter-position: inside,
+      show-grids: show-baseline,
+    );
 
     @include test-parsed-grid('parse-grid: #4', $test, $expect);
 
     // Grid #5
     $grid: inside-static;
     $test: parse-grid($grid);
-    $expect: false false false false false false false false inside-static false false;
+    $expect: (
+      gutter-position: inside-static
+    );
 
     @include test-parsed-grid('parse-grid: #5', $test, $expect);
-  }
-
-  // [function] get-adjusted-grid
-  // ----------------------------
-
-  @include test('[function] get-adjusted-grid') {
-    // set global values
-    $columns              : 7;
-    $gutters              : .5;
-    $container            : 80em;
-    $column-width         : false;
-    $layout-math          : fluid;
-    $layout-method        : float;
-    $flow                 : ltr;
-    $container-position   : center;
-    $gutter-position      : after;
-    $show-grids           : show;
-    $box-sizing           : false;
-
-    // override $container only
-    $grid: 960px;
-    $test: get-adjusted-grid($grid);
-    $expect: 7 0.5 960px false fluid float center ltr after show false;
-
-    @include test-parsed-grid('get-adjusted-grid #1', $test, $expect);
-
-    // override all but container
-    $grid: (1 2 3 2) .25 static isolate left rtl split hide border-box;
-    $test: get-adjusted-grid($grid);
-    $expect: (1 2 3 2) 0.25 80em false static isolate left rtl split hide border-box;
-
-    @include test-parsed-grid('get-adjusted-grid #2', $test, $expect);
-
-    // clean override of optional settings
-    $grid: 960px 12 (4em 1em) content-box;
-    $test: get-adjusted-grid($grid, clean);
-    $expect: 12 0.25 960px 4em fluid float center ltr after show content-box;
-
-    @include test-parsed-grid('get-adjusted-grid #3', $test, $expect);
-
-    // clean without optional overrides
-    $grid: 4;
-    $test: get-adjusted-grid($grid, clean);
-    $expect: 4 0.5 auto false fluid float center ltr after show false;
-
-    @include test-parsed-grid('get-adjusted-grid #4', $test, $expect);
-
-    // reset global values
-    @include original-grid;
   }
 
   // [function] get-setting
@@ -254,8 +159,8 @@ $original-box-sizing          : $box-sizing;
     $grid: 960px 4 1/4 right border-box float fluid before show-columns rtl;
     $pre: parse-grid($grid);
 
-    $a: get-setting(box-sizing, $grid, parse);
-    $b: get-setting(box-sizing, $pre);
+    $a: susy-get(box-sizing, $grid);
+    $b: susy-get(box-sizing, $pre);
 
     // parsing
     @include assert-equal($a, $b,
@@ -266,68 +171,68 @@ $original-box-sizing          : $box-sizing;
       'Box-sizing of "#{$grid}" should be "border-box"');
 
     // columns
-    $test: get-setting(columns, $pre);
+    $test: susy-get(columns, $pre);
     $expect: 4;
     @include assert-equal($test, $expect,
-      'Columns of "#{$pre}" should be "#{$expect}"');
+      'Columns of "#{$grid}" should be "#{$expect}"');
 
     // gutters
-    $test: get-setting(gutters, $pre);
+    $test: susy-get(gutters, $pre);
     $expect: 1/4;
     @include assert-equal($test, $expect,
-      'Gutters of "#{$pre}" should be "#{$expect}"');
+      'Gutters of "#{$grid}" should be "#{$expect}"');
 
     // container
-    $test: get-setting(container, $pre);
+    $test: susy-get(container, $pre);
     $expect: 960px;
     @include assert-equal($test, $expect,
-      'Container of "#{$pre}" should be "#{$expect}"');
+      'Container of "#{$grid}" should be "#{$expect}"');
 
     // column-width
-    $test: get-setting(column-width, $pre);
+    $test: susy-get(column-width, $pre);
     $expect: false;
     @include assert-equal($test, $expect,
-      'Column-width of "#{$pre}" should be "#{$expect}"');
+      'Column-width of "#{$grid}" should be "#{$expect}"');
 
     // layout-method
-    $test: get-setting(layout-method, $pre);
+    $test: susy-get(layout-method, $pre);
     $expect: float;
     @include assert-equal($test, $expect,
       'Isolate of "#{$grid}" should be "#{$expect}"');
 
     // layout-math
-    $test: get-setting(layout-math, $pre);
+    $test: susy-get(layout-math, $pre);
     $expect: fluid;
     @include assert-equal($test, $expect,
       'Static of "#{$grid}" should be "#{$expect}"');
 
     // flow
-    $test: get-setting(flow, $pre);
+    $test: susy-get(flow, $pre);
     $expect: rtl;
     @include assert-equal($test, $expect,
       'Static of "#{$grid}" should be "#{$expect}"');
 
     // container-position
-    $test: get-setting(container-position, $pre);
+    $test: susy-get(container-position, $pre);
     $expect: right;
     @include assert-equal($test, $expect,
       'Static of "#{$grid}" should be "#{$expect}"');
 
     // gutter-position
-    $test: get-setting(gutter-position, $pre);
+    $test: susy-get(gutter-position, $pre);
     $expect: before;
     @include assert-equal($test, $expect,
       'Static of "#{$grid}" should be "#{$expect}"');
 
     // show-grids
-    $test: get-setting(show-grids, $pre);
+    $test: susy-get(show-grids, $pre);
     $expect: show-columns;
     @include assert-equal($test, $expect,
       'Static of "#{$grid}" should be "#{$expect}"');
 
     // auto container
     $grid: auto;
-    $test: get-setting(container, $grid, parse);
+    $test: susy-get(container, $grid);
     $expect: auto;
     @include assert-equal($test, $expect,
       'Container of "#{$grid}" should be "#{$expect}"');

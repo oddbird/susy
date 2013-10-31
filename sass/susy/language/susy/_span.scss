@@ -10,21 +10,20 @@
 @mixin span(
   $span
 ) {
-  $span     : parse-span($span);
-  $output   : span-math($span...);
-  $box      : get-span-setting(box-sizing, $span);
+  $span             : parse-span($span);
 
-  $this-gutter-position: get-span-setting(gutter-position, $span);
-  $inside   : if($this-gutter-position == inside or $this-gutter-position == inside-static, true, false);
+  $output           : span-math($span);
+
+  $box              : span-get(box-sizing, $span);
+  $inside           : is-inside($span);
 
   @if $box == border-box or $inside {
-    @include box-sizing(border-box);
+    @include susy-box-sizing(border-box);
   } @else if $box == content-box {
-    @include box-sizing(content-box);
+    @include susy-box-sizing(content-box);
   }
 
   @include float-span-output($output...);
-
   @include nested($span) { @content; }
 }
 
@@ -35,21 +34,8 @@
 @function span(
   $span
 ) {
-  $span                   : parse-span($span);
-
-  $width                  : get-span-setting(span, $span);
-
-  $this-location          : get-span-setting(location, $span);
-  $this-columns           : get-span-setting(columns, $span);
-  $this-gutters           : get-span-setting(gutters, $span);
-  $this-column-width      : get-span-setting(column-width, $span);
-  $this-layout-math       : get-span-setting(layout-math, $span);
-  $this-gutter-position   : get-span-setting(gutter-position, $span);
-  $outer                  : get-span-setting(outer, $span);
-
-  $width: get-span-width($width, $this-location, $this-columns, $this-gutters, $this-column-width, $this-layout-math, $this-gutter-position, $outer);
-
-  @return $width;
+  $span   : parse-span($span);
+  @return get-span-width($span);
 }
 
 // Parse Span
@@ -59,155 +45,80 @@
 @function parse-span(
   $string
 ) {
-  $new-span               : false;
-  $new-location           : false;
-  $new-context            : false;
-  $new-layout-method      : false;
-  $new-layout-math        : false;
-  $new-columns            : false;
-  $new-gutters            : false;
-  $new-column-width       : false;
-  $outer                  : false;
-  $new-flow               : false;
-  $new-gutter-position    : false;
-  $gutter-override        : false;
+  @if type-of($string) == map {
+    @return $string;
+  } @else {
+    $return: map-merge($susy-defaults, $susy);
+    $i: 1;
 
-  $is-container           : false;
+    @while $i <= length($string) {
+      $item  : nth($string,$i);
+      $at     : false;
+      $of     : false;
+      $gutter : false;
 
-  $i: 1;
+      // keywords
+      @if type-of($item) == string {
 
-  @while $i <= length($string) {
-    $value  : nth($string,$i);
-    $at     : false;
-    $of     : false;
-    $gutter : false;
-
-    // keywords
-    @if type-of($value) == string {
-
-      // location keywords: first | last | alpha | omega
-      @if $value == first or $value == alpha {
-        $new-location: 1;
-      } @else if $value == last or $value == omega {
-        $new-location: last;
-      }
-
-      // layout-method
-      @else if $value == isolate {
-        $new-layout-method: isolate;
-      } @else if $value == float {
-        $new-layout-method: float;
-      }
-
-      // layout-math | fluid
-      @else if $value == static {
-        $new-layout-math: static;
-      } @else if $value == fluid {
-        $new-layout-math: fluid;
-      }
-
-      // ltr | rtl
-      @else if $value == outer {
-        $outer: outer;
-      }
-
-      // ltr | rtl
-      @else if $value == rtl {
-        $new-flow: rtl;
-      } @else if $value == ltr {
-        $new-flow: ltr;
-      }
-
-      // after | before | split | inside | no-gutters
-      @else if $value == after {
-        $new-gutter-position: after;
-      } @else if $value == before {
-        $new-gutter-position: before;
-      } @else if $value == split {
-        $new-gutter-position: split;
-      } @else if $value == inside {
-        $new-gutter-position: inside;
-      } @else if $value == inside-static {
-        $new-gutter-position: inside-static;
-      } @else if $value == no-gutter or $value == no-gutters {
-        $new-gutter-position: no-gutters;
-      }
-
-      // container
-      @else if $value == container {
-        $is-container: container;
-      }
-
-      // at
-      @else if $value == at {
-        $at: true;
-      }
-
-      // of
-      @else if $value == of {
-        $of: true;
-      }
-
-      // gutter
-      @else if $value == gutter or $value == gutters {
-        $gutter: true;
-      }
-
-    // span
-    } @else if not $new-span and type-of($value) == number {
-      $new-span: $value;
-    }
-
-    // location integer
-    @if $at {
-      $i: $i + 1;
-      $new-location: nth($string, $i);
-    }
-
-    // gutter override
-    @if $gutter {
-      $i: $i + 1;
-      $gutter-override: nth($string, $i);
-    }
-
-    // context
-    @if $of {
-      $i: $i + 1;
-      $new-context: ();
-
-      @while $of and $i <= length($string) {
-        $this: nth($string,$i);
-        @if type-of($this) != string {
-          $new-context: append($new-context, $this);
-          $i: $i + 1;
+        // at, of, gutter
+        @if $item == at {
+          $at: true;
+        } @else if $item == of {
+          $of: true;
+        } @else if $item == gutter or $item == gutters {
+          $gutter: true;
         } @else {
-          $of: false;
-          $i: $i - 1;
+          @each $key, $value in $susy-keywords {
+            @if index($value, $item) {
+              $return: map-merge($return, ($key: $item));
+            }
+          }
+        }
+
+      // span
+      } @else if not map-get($return, span) and type-of($item) == number {
+        $return: map-merge($return, (span: $item));
+      }
+
+      // location integer
+      @if $at {
+        $i: $i + 1;
+        $return: map-merge($return, (location: nth($string, $i)));
+      }
+
+      // gutter override
+      @if $gutter {
+        $i: $i + 1;
+        $return: map-merge($return, (gutter-override: nth($string, $i)));
+      }
+
+      // context
+      @if $of {
+        $i: $i + 1;
+        $context: ();
+
+        @while $of and $i <= length($string) {
+          $this: nth($string,$i);
+          @if type-of($this) != string {
+            $context: append($context, $this);
+            $i: $i + 1;
+          } @else {
+            $of: false;
+            $i: $i - 1;
+          }
+        }
+
+        @if length($context) > 0 {
+          $context: parse-grid($context);
+          $return: map-merge($return, $context);
         }
       }
+
+      $i: $i + 1;
     }
 
-    $i: $i + 1;
+    @return $return;
   }
-
-  // parse the context
-  @if $new-context {
-    $new-context        : parse-grid($new-context);
-    $new-columns        : get-setting(columns, $new-context);
-    $new-gutters        : get-setting(gutters, $new-context);
-    $new-column-width   : get-setting(column-width, $new-context);
-  }
-
-  // use global values for empty grid settings
-  $new-columns            : if($new-columns, $new-columns, $columns);
-  $new-gutters            : if($new-gutters, $new-gutters, $gutters);
-  $new-column-width       : if($new-column-width, $new-column-width, $column-width);
-  $new-layout-math        : if($new-layout-math, $new-layout-math, $layout-math);
-  $new-layout-method      : if($new-layout-method, $new-layout-method, $layout-method);
-  $new-flow               : if($new-flow, $new-flow, $flow);
-  $new-gutter-position    : if($new-gutter-position, $new-gutter-position, $gutter-position);
-
-  @return $new-span, $new-location, $new-columns, $new-gutters, $new-column-width, $new-layout-method, $new-layout-math, $outer, $new-flow, $new-gutter-position, $is-container, $gutter-override;
 }
 
 // Get Span Setting
@@ -215,143 +126,106 @@
 // Return one particular span setting from a list.
 // - $setting   : <keyword> (see $options below)
 // - $span      : <span>
-// - $parse     : <boolean>
-
-$susy-span-options: span location columns gutters column-width layout-method layout-math outer flow gutter-position is-container gutter-override;
-
-@function get-span-setting(
-  $setting,
-  $span,
-  $parse: false
+@function span-get(
+  $key,
+  $span
 ) {
-  $key      : index($susy-span-options, $setting);
-  $value    : false;
-
-  @if $parse {
+  @if type-of($span) != map {
     $span: parse-span($span);
   }
 
-  @if $key {
-    $value: nth($span, $key);
-  }
-
-  @return $value;
+  @return map-get($span, $key) or map-get($susy-defaults, $key);
 }
 
 // Span Math
 // ---------
 // Get all the span results.
-// - $span                : <length> | <number>
-// - $location            : first | last | <length> | <number>
-// - [$columns]           : <number> | <list>
-// - [$gutters]           : <ratio>
-// - [$column-width]      : <length>
-// - [$layout-method]     : float | isolate
-// - [$layout-math]       : fluid | static
-// - [$outer]             : <boolean>
-// - [$flow]              : ltr | rtl
-// - [$gutter-position]   : before | after | split | inside
-// - [$is-container]      : <boolean>
-// - [$gutter-override]   : <length>
+// - $span: <map>
 @function span-math(
-  $span,
-  $location,
-  $columns            : $columns,
-  $gutters            : $gutters,
-  $column-width       : $column-width,
-  $layout-method      : $layout-method,
-  $layout-math        : $layout-math,
-  $outer              : $outer,
-  $flow               : $flow,
-  $gutter-position    : $gutter-position,
-  $is-container       : false,
-  $gutter-override    : false,
-  $last-flow          : $last-flow
+  $span
 ) {
-  $float            : from;
-  $width            : $span;
-
-  $padding-before   : null;
-  $padding-after    : null;
-  $margin-before    : null;
-  $margin-after     : null;
+  $float              : from;
+  $padding-before     : null;
+  $padding-after      : null;
+  $margin-before      : null;
+  $margin-after       : null;
 
   // calculate widths
-  $width: get-span-width($span, $location, $columns, $gutters, $column-width, $layout-math, $gutter-position, $outer);
-  $this-gutters: get-gutters($columns, $gutters, $column-width, $layout-math, $gutter-position, $gutter-override);
-
-  $inside: if($gutter-position == inside or $gutter-position == inside-static, true, false);
+  $width: get-span-width($span);
+  $gutters: get-gutters($span);
 
   // apply gutters
-  @if $inside {
-    @if not $is-container {
-      $padding-before: nth($this-gutters,1);
-      $padding-after: nth($this-gutters,2);
+  @if is-inside($span) {
+    @if not span-get(is-container) {
+      $padding-before: map-get($gutters,before);
+      $padding-after: map-get($gutters,after);
     }
   } @else {
-    $margin-before: nth($this-gutters,1);
-    $margin-after: nth($this-gutters,2);
+    $margin-before: map-get($gutters,before);
+    $margin-after: map-get($gutters,after);
   }
 
   // special margin handling
-  @if $layout-method == isolate {
-    $margin-before: get-isolation($span, $location, $columns, $gutters, $column-width, $layout-math);
+  @if span-get(layout-method, $span) == isolate {
+    $margin-before: get-isolation($span);
     $margin-after: -100%;
   } @else {
-    @if is-last($span, $location, $columns) {
-      $float: $last-flow;
-      $margin-after: null;
-    } @else if is-first($location) {
-      $margin-before: null;
+    $location: span-get(location, $span);
+    @if $location {
+      $last: is-last(span-get(span, $span), $location, span-get(columns, $span));
+      @if $last {
+        $float: span-get(last-flow, $span);
+        $margin-after: null;
+      } @else if is-first($location) {
+        $margin-before: null;
+      }
     }
   }
 
-  @return $width $float $margin-before $margin-after $padding-before $padding-after $flow;
+  @return (
+    width           : $width,
+    float           : $float,
+    margin_before   : $margin-before,
+    margin_after    : $margin-after,
+    padding_before  : $padding-before,
+    padding_after   : $padding-after,
+    flow            : span-get(flow, $span),
+  );
 }
 
 // Get Span Width
 // --------------
 // Return span width.
-// - $span                : <length> | <number>
-// - $location            : first | last | <length> | <number>
-// - [$columns]           : <number> | <list>
-// - [$gutters]           : <ratio>
-// - [$column-width]      : <length>
-// - [$layout-math]       : fluid | static
-// - [$gutter-position]   : before | after | split | inside
-// - [$outer]             : <boolean>
+// - $span: <map>
 @function get-span-width(
-  $span,
-  $location           : 1,
-  $columns            : $columns,
-  $gutters            : $gutters,
-  $column-width       : $column-width,
-  $layout-math        : $layout-math,
-  $gutter-position    : $gutter-position,
-  $outer              : null
+  $span
 ) {
+  $n        : span-get(span, $span);
+  $location : span-get(location, $span);
+  $columns  : span-get(columns, $span);
+  $gutters  : span-get(gutters, $span);
+  $outer    : span-get(outer, $span);
+
   $context  : null;
   $span-sum : null;
   $width    : null;
 
-  $inside: if($gutter-position == inside or $gutter-position == inside-static, true, false);
-
-  @if unitless($span) {
-    @if $inside {
+  @if unitless($n) {
+    @if is-inside($span) {
       $context: column-sum($columns, $gutters, outer);
-      $span-sum: get-column-span-sum($span, $location, $columns, $gutters, outer);
+      $span-sum: get-column-span-sum($n, $location, $columns, $gutters, outer);
     } @else {
       $context: column-sum($columns, $gutters);
-      $span-sum: get-column-span-sum($span, $location, $columns, $gutters, $outer);
+      $span-sum: get-column-span-sum($n, $location, $columns, $gutters, $outer);
     }
 
-    @if $layout-math == static {
+    @if span-get(layout-math, $span) == static {
       $width: $span-sum * $column-width;
     } @else {
       $width: percentage($span-sum / $context);
     }
   } @else {
-    $width: $span;
+    $width: $n;
   }
 
   @return $width;
@@ -359,31 +233,18 @@ $susy-span-options: span location columns gutters column-width layout-method lay
 
 // Get Span Context
 // ----------------
-// - $span: <span>
+// - $span: <map>
 @function get-span-context(
   $span
 ) {
-  $parsed: parse-span($span);
-  $context: compact();
+  $span: parse-span($span);
+  $return: ();
 
-  $width: get-span-setting(span, $parsed);
-  $location: get-span-setting(location, $parsed);
-
-  $removed-width: false;
-  $removed-location: false;
-
-  @each $setting in $span {
-    @if $setting != of and $setting != at {
-      @if $setting == $width and not $removed-width {
-        $removed-width: true;
-      } @else if $setting == $location and not $removed-location {
-        $removed-location: true;
-      } @else {
-        $context: append($context, $setting, space);
-      }
+  @each $key, $value in $span {
+    @if $key != span and $key != location {
+      $return: map-merge($return, ($key: $value));
     }
   }
 
-  @return $context;
+  @return $return;
 }
-

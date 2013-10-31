@@ -6,7 +6,7 @@
 // Parse the $container-position into margin values.
 // - [$justify]   : left | center | right | <length> [<length>]
 @function parse-container-position(
-  $justify: $container-position
+  $justify: susy-get(container-position)
 ) {
   $left   : null;
   $right  : null;
@@ -39,9 +39,9 @@
 // - [$column-width]  : <length>
 // - [$outer]         : <boolean>
 @function calculate-container-width(
-  $columns        : $columns,
-  $gutters        : $gutters,
-  $column-width   : $column-width,
+  $columns        : susy-get(columns),
+  $gutters        : susy-get(gutters),
+  $column-width   : susy-get(column-width),
   $outer          : false
 ) {
   $width: column-sum($columns, $gutters, $outer) * $column-width;

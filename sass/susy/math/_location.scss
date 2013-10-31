@@ -10,11 +10,13 @@
 @function is-last(
   $span,
   $location,
-  $columns: $columns
+  $columns: susy-get(columns)
 ) {
   $is-last: false;
 
-  @if $location == "last" or $location == "omega" {
+  @if not $location {
+    @warn 'A location is required for is-last()';
+  } @else if $location == "last" or $location == "omega" {
     $is-last: true;
   } @else if $location + ($span - 1) == column-count($columns) {
     $is-last: true;
@@ -46,7 +48,7 @@
 @function get-location-position(
   $span,
   $location,
-  $columns: $columns
+  $columns: susy-get(columns)
 ) {
   @if type-of($location) == number {
     @return $location;

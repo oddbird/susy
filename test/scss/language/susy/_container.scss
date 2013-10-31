@@ -14,7 +14,7 @@
     ) {
       .test { @include container(show-columns); }
       .expect {
-        @include pie-clearfix;
+        @include susy-clearfix;
         max-width: 80%;
         margin-left: auto;
         margin-right: auto;
@@ -29,8 +29,8 @@
     ) {
       .test { @include container(auto left border-box); }
       .expect {
-        @include box-sizing(border-box);
-        @include pie-clearfix;
+        @include susy-box-sizing(border-box);
+        @include susy-clearfix;
         max-width: 40em;
         margin-left: 0;
         margin-right: auto;

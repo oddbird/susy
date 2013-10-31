@@ -156,7 +156,7 @@
 
   // apply gutters
   @if is-inside($span) {
-    @if not span-get(is-container) {
+    @if not span-get(is-container, $span) {
       $padding-before: map-get($gutters,before);
       $padding-after: map-get($gutters,after);
     }
@@ -220,7 +220,7 @@
     }
 
     @if span-get(layout-math, $span) == static {
-      $width: $span-sum * $column-width;
+      $width: $span-sum * span-get(column-width, $span);
     } @else {
       $width: percentage($span-sum / $context);
     }

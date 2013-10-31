@@ -87,7 +87,7 @@
   // Get Grid Color-Stops
   // --------------------
 
-  $color  : $grid-color;
+  $color  : map-get($susy-debug, color) or map-get($susy-debug-defaults, color);
   $trans  : transparent;
   $light  : lighten($color, 15%);
 

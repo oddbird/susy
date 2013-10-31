@@ -38,7 +38,7 @@
   $context: parse-gutters($context);
 
   $gutters: get-gutters($context);
-  $gutters: max(map-get($gutters, before), map-get($gutters, after));
+  $gutters: map-get($gutters, before) or map-get($gutters, after);
 
   @return $gutters;
 }
@@ -77,11 +77,12 @@
   $gutter   : span-get(gutter-override, $context);
 
   @if not $gutter {
-    @if gutter-math($context) == static {
+    $gutters: span-get(gutters, $context);
+    $column-width: span-get(column-width, $context);
+    @if $column-width and gutter-math($context) == static {
       $gutter: $gutters * $column-width;
     } @else {
       $columns  : span-get(columns, $context);
-      $gutters  : span-get(gutters, $context);
       $outer    : if(is-inside($context), outer, span-get(outer, $context));
       $gutter   : percentage($gutters / column-sum($columns, $gutters, $outer));
     }

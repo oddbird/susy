@@ -37,8 +37,8 @@ $susy-debug: () !default;
   $grids...
 ) {
   $debug: map-merge($susy-debug-defaults, $susy-debug);
-  $position: map-get(position, $debug);
-  $toggle: map-get(toggle, $debug);
+  $position: map-get($debug, position);
+  $toggle: map-get($debug, toggle);
   $horz: null;
   $vert: null;
 

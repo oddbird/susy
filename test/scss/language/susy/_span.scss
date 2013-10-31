@@ -236,7 +236,7 @@
   }
 
   // span-get
-  // ----------------
+  // --------
 
   @include test('[function] span-get') {
     $span: first 3 of 12 (4em 1em) after isolate outer fluid ltr gutters 1em container;
@@ -340,55 +340,86 @@
   @include test('[function] get-span-width') {
     // explicit
     $span: 30%;
-    $width: get-span-width($span);
+    $map: (span: $span);
+    $width: get-span-width($map);
     @include assert-equal($width, $span,
       'The width of an explicit "30%" span should be "30%"');
 
     // relative
-    $span: 5;
-    $cols: 7;
-    $guts: .5;
-    $width: get-span-width($span, 1, $cols, $guts);
+    $map: (
+      span: 5,
+      location: 1,
+      columns: 7,
+      gutters: .5,
+    );
+    $width: get-span-width($map);
     @include assert-equal($width, 70%,
       'The relative width for "5 of 7 .5" should be "70%"');
 
     // relative inside-gutters
-    $span: 4;
-    $cols: 8;
-    $guts: .25;
-    $width: get-span-width($span, 1, $cols, $guts, null, fluid, inside);
+    $map: (
+      span: 4,
+      location: 1,
+      columns: 8,
+      gutters: .25,
+      column-width: null,
+      layout-math: fluid,
+      gutter-position: inside,
+    );
+    $width: get-span-width($map);
     @include assert-equal($width, 50%,
       'The relative width for "4 of 8 .25 inside" should be "50%"');
 
     // relative inside-static gutters
-    $span: 4;
-    $cols: 8;
-    $guts: 1/3;
-    $width: get-span-width($span, 1, $cols, $guts, 6em, fluid, inside-static);
+    $map: (
+      span: 4,
+      location: 1,
+      columns: 8,
+      gutters: 1/3,
+      column-width: 6em,
+      layout-math: fluid,
+      gutter-position: inside-static,
+    );
+    $width: get-span-width($map);
     @include assert-equal($width, 50%,
       'The relative width for "4 of 8 (6em 2em) inside" should be "50%"');
 
     // static
-    $span: 5;
-    $cols: 7;
-    $guts: .5;
-    $width: get-span-width($span, 1, $cols, $guts, 4em, static);
+    $map: (
+      span: 5,
+      location: 1,
+      columns: 7,
+      gutters: .5,
+      column-width: 4em,
+      layout-math: static,
+    );
+    $width: get-span-width($map);
     @include assert-equal($width, 28em,
       'The static width for "5 of 7 (4em 2em)" should be "28em"');
 
     // static inside-gutters
-    $span: 4;
-    $cols: 8;
-    $guts: .25;
-    $width: get-span-width($span, 1, $cols, $guts, 4em, static, inside);
+    $map: (
+      span: 4,
+      location: 1,
+      columns: 8,
+      gutters: .25,
+      column-width: 4em,
+      layout-math: static,
+      gutter-position: inside,
+    );
+    $width: get-span-width($map);
     @include assert-equal($width, 20em,
       'The static width for "4 of 8 .25 inside" should be "20em"');
 
     // outer
-    $span: 5;
-    $cols: 7;
-    $guts: .5;
-    $width: get-span-width($span, 1, $cols, $guts, $outer: outer);
+    $map: (
+      span: 5,
+      location: 1,
+      columns: 7,
+      gutters: .5,
+      outer: outer,
+    );
+    $width: get-span-width($map);
     @include assert-equal($width, 75%,
       'The outer width for "5 of 7 .5" should be "75%"');
   }
@@ -410,9 +441,17 @@
       gutter-position: after,
     );
     $span: span-math($span);
-    $expect: 70% from null 5% null null ltr;
+    $expect: (
+      width: 70%,
+      float: from,
+      margin_before: null,
+      margin_after: 5%,
+      padding_before: null,
+      padding_after: null,
+      flow: ltr,
+    );
     @include assert-equal($span, $expect,
-      'The span output for "5 at 2 of 7 .5" should be "#{$expect}"');
+      'Test that span-math works with gutters after');
 
     // inside (padding)
     $span: (
@@ -427,7 +466,7 @@
       gutter-position: inside,
     );
     $span: span-math($span);
-    $padding: nth($span, 5) nth($span, 6);
+    $padding: map-get($span, padding_before) map-get($span, padding_after);
     $expect: 1.25% 1.25%;
     @include assert-equal($padding, $expect,
       'The padding for "5 at 2 of 8 .25 inside" should be "#{$expect}"');
@@ -445,7 +484,7 @@
       gutter-position: inside,
     );
     $span: span-math($span);
-    $width: nth($span, 1);
+    $width: map-get($span, width);
     $expect: 36em;
     @include assert-equal($width, $expect,
       'Inside-gutter width should include the gutters');
@@ -464,7 +503,7 @@
       gutter-position: after,
     );
     $span: span-math($span);
-    $width: nth($span, 1);
+    $width: map-get($span, width);
     $expect: 36em;
     @include assert-equal($width, $expect,
       'Outer span width should include the gutters');
@@ -483,7 +522,7 @@
       is-container: container,
     );
     $span: span-math($span);
-    $padding: nth($span, 5) nth($span, 6);
+    $padding: map-get($span, padding_before) map-get($span, padding_after);
     $expect: null null;
     @include assert-equal($padding, $expect,
       'The padding for any "inside container" should be "null null"');
@@ -501,7 +540,7 @@
       gutter-position: after,
     );
     $span: span-math($span);
-    $margins: nth($span, 3) nth($span, 4);
+    $margins: map-get($span, margin_before) map-get($span, margin_after);
     $expect: 60% -100%;
     @include assert-equal($margins, $expect,
       'The margins for "3 at 5 of 7 .5 isolate" should be "#{$expect}"');
@@ -519,8 +558,8 @@
       gutter-position: after,
     );
     $span: span-math($span);
-    $margins: nth($span, 3) nth($span, 4);
-    $float: nth($span, 2);
+    $margins: map-get($span, margin_before) map-get($span, margin_after);
+    $float: map-get($span, float);
     $expect: null null;
     @include assert-equal($margins, $expect,
       'The margins for "last after" should be "#{$expect}"');
@@ -541,7 +580,7 @@
       gutter-position: before,
     );
     $span: span-math($span);
-    $margins: nth($span, 3) nth($span, 4);
+    $margins: map-get($span, margin_before) map-get($span, margin_after);
     $expect: null null;
     @include assert-equal($margins, $expect,
       'The margins for "first before" should be "#{$expect}"');

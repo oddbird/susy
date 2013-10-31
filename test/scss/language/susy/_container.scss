@@ -86,7 +86,6 @@
   // -------------------
 
   @include test('[function] get-container-width') {
-    // args: $container, $column-width, $columns, $gutters, $gutter-position
 
     // explicit
     $test: get-container-width(80em);
@@ -95,29 +94,50 @@
       'An explicit container width should be returned without changes.');
 
     // no info
-    $test: get-container-width(false, false);
+    $map: (
+      container: false,
+      column-width: false,
+    );
+    $test: get-container-width($map);
     $expect: 100%;
     @include assert-equal($test, $expect,
       'An empty container value should return 100%.');
 
     // not enough info
-    $test: get-container-width(auto, false);
+    $map: (
+      container: auto,
+      column-width: false,
+    );
+    $test: get-container-width($map);
     $expect: 100%;
     @include assert-equal($test, $expect,
       'An auto container with no specified widths should return 100%.');
 
     // calculated (outside-gutters)
-    $test: get-container-width(auto, 4em, 7, .5, after);
+    $map: (
+      container: auto,
+      column-width: 4em,
+      columns: 7,
+      gutters: .5,
+      gutter-position: after,
+    );
+    $test: get-container-width($map);
     $expect: 40em;
     @include assert-equal($test, $expect,
       'The container for "7 (4em 2em) after" should return 40em.');
 
     // calculated (inside-gutters)
-    $test: get-container-width(auto, 4em, 7, .5, inside);
+    $map: (
+      container: auto,
+      column-width: 4em,
+      columns: 7,
+      gutters: .5,
+      gutter-position: inside,
+    );
+    $test: get-container-width($map);
     $expect: 42em;
     @include assert-equal($test, $expect,
       'The container for "7 (4em 2em) inside" should return 42em.');
 
   }
-
 }

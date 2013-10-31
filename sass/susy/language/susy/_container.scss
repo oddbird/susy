@@ -13,8 +13,9 @@
   $width      : get-container-width($grid);
   $justify    : susy-get(container-position, $grid);
   $math       : susy-get(layout-math, $grid);
+  $box        : susy-get(box-sizing, $grid);
 
-  @if susy-get(box-sizing, $grid) {
+  @if $box {
     @include susy-box-sizing($box);
   }
 
@@ -40,14 +41,14 @@
 @function get-container-width(
   $grid: $susy
 ) {
-  $grid   : parse-grid($grid);
-  $width  : susy-get(container, $grid);
+  $grid           : parse-grid($grid);
+  $width          : susy-get(container, $grid);
+  $column-width   : susy-get(column-width, $grid);
 
   @if not $width or $width == auto {
     @if $column-width {
       $columns        : susy-get(columns, $grid);
       $gutters        : susy-get(gutters, $grid);
-      $column-width   : susy-get(column-width, $grid);
       $outer          : if(is-inside($grid), true, false);
       $width          : calculate-container-width($columns, $gutters, $column-width, $outer);
     } @else {

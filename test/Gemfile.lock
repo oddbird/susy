@@ -1,8 +1,9 @@
-PATH
-  remote: /Users/eric/Sites/true
+GIT
+  remote: git://github.com/ericam/true
+  revision: 94abd887fddccda289cacb52ca9111ab7785c3c4
+  branch: master
   specs:
-    true (0.2.0)
-      compass (~> 0.13.alpha.7)
+    true (0.2.0.rc.1)
       sass (~> 3.3.0.rc.1)
 
 GEM

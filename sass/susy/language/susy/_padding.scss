@@ -8,8 +8,8 @@
 @mixin prefix(
   $span
 ) {
-  $span   : if(index($span, outer), $span, append($span, outer));
-  $flow   : get-span-setting(flow, $span, parse);
+  $span   : map-merge(parse-span($span), (outer: outer));
+  $flow   : span-get(flow, $span);
   $width  : span($span);
 
   @include padding-output($width, null, $flow);
@@ -22,8 +22,8 @@
 @mixin suffix(
   $span
 ) {
-  $span   : if(index($span, outer), $span, append($span, outer));
-  $flow   : get-span-setting(flow, $span, parse);
+  $span   : map-merge(parse-span($span), (outer: outer));
+  $flow   : span-get(flow, $span);
   $width  : span($span);
 
   @include padding-output(null, $width, $flow);
@@ -38,20 +38,16 @@
   $pre,
   $post: $pre
 ) {
-  $pre        : if(index($pre, outer), $pre, append($pre, outer));
-  $post       : if(index($post, outer), $post, append($post, outer));
+  $pre      : map-merge(parse-span($pre), (outer: outer));
+  $post     : map-merge(parse-span($post), (outer: outer));
 
-  $get-pre    : parse-span($pre);
-  $get-post   : parse-span($post);
+  $flow     : span-get(flow, $pre) or span-get(flow, $post);
+  $before   : null;
+  $after    : null;
 
-  $flow       : get-span-setting(flow, $get-pre);
-  $before     : null;
-  $after      : null;
-
-  // get the various contexts
-  $default-context  : $columns $gutters;
-  $pre-context      : get-span-setting(columns, $get-pre) get-span-setting(gutters, $get-pre);
-  $post-context     : get-span-setting(columns, $get-post) get-span-setting(gutters, $get-post);
+  $pre-context      : map-merge($pre, (span: null, location: null));
+  $post-context     : map-merge($post, (span: null, location: null));
+  $default-context  : map-merge(map-merge($susy, $susy-defaults), (span: null, location: null));
 
   // if the contexts don't line up, and only the post has changed, we use it for both
   @if $pre-context != $post-context and $default-context == $pre-context {

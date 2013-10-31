@@ -41,12 +41,12 @@ $supported-browsers: firefox chrome;
     @include set-grid($grid);
     @if $output {
       .test__#{$output-test-slug} .assert__#{$output-assert-slug} {
-        @include container;
+        @include container(show-columns);
       }
     }
   } @else if $output {
     .test__#{$output-test-slug} .assert__#{$output-assert-slug} {
-      @include clearfix;
+      overflow: hidden;
       background: rgba(#ccf, .5);
     }
   }

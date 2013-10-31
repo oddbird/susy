@@ -1,42 +1,10 @@
 // Settings
 // ========
 
-// Valid Keyword Values
-// --------------------
-$susy-keywords: (
-  container: auto,
-  layout-math: static fluid,
-  layout-method: isolate float,
-  container-position: left center right,
-  flow: ltr rtl,
-  show-grids: show hide show-columns show-baseline,
-  gutter-position: before after split inside inside-static no-gutters,
-  box-sizing: border-box content-box,
-  location: first alpha last omega,
-  outer: outer,
-  is-container: container,
-);
-
 // Default Settings
 // ----------------
 $susy-defaults: (
   columns: 4,
   gutters: .25,
   column-width: false,
-  container: auto,
-  last-flow: to,
-  layout-math: fluid,
-  layout-method: float,
-  flow: ltr,
-  box-sizing: false,
-  container-position: center,
-  gutter-position: after,
-  show-grids: show,
 );
-
-// User Settings
-// -------------
-// - Override the $susy variable with a map of your own settings.
-// - Set EITHER $column-width OR $container
-// - Use $column-width for static layouts
-$susy: $susy-defaults !default;

@@ -1,26 +1,23 @@
 // Background Grid Syntax
 // ======================
 
-@import "compass/css3/border-radius";
-@import "compass/css3/box-shadow";
+$susy-debug-defaults: (
+  position: relative,
+  color: rgba(#66f, .25),
+  toggle: left bottom,
+);
 
 // The overlay is painted over your container's ::after pseudo-element,
 // so we must give position to the container itself.
 // If relative doesn't suit your layout, it can be replaced by absolute/fixed.
-$overlay-position       : relative        !default;
-
-// Set the location of the switch.
-$grid-toggle-position   : left bottom     !default;
-
-// Set the color of background grids.
-$grid-color             : rgba(#66f, .25) !default;
+$susy-debug: () !default;
 
 // Grid Background
 // ---------------
 // Show a grid background on any element.
 // - [$grid]  : <settings>
 @mixin background-grid(
-  $grid
+  $grid: $susy
 ) {
   $grid     : parse-grid($grid);
 
@@ -39,17 +36,25 @@ $grid-color             : rgba(#66f, .25) !default;
 @mixin overlay-grid (
   $grids...
 ) {
-  $vert: nth($grid-toggle-position, 1);
-  $horz: nth($grid-toggle-position, 2);
+  $debug: map-merge($susy-debug-defaults, $susy-debug);
+  $position: map-get(position, $debug);
+  $toggle: map-get(toggle, $debug);
+  $horz: null;
+  $vert: null;
+
+  @each $side in $toggle {
+    $horz: if($side == left or $side == right, $side, $horz);
+    $vert: if($side == top or $side == bottom, $side, $vert);
+  }
 
   head {
-    @include border-radius(.25em);
     display: block;
     position: fixed;
     #{$horz}: 10px;
     #{$vert}: 10px;
     z-index: 999;
     color: #333;
+    border-radius: .25em;
     text-shadow: 0 0 3px #fff;
     &::before {
       content: "|||";
@@ -63,15 +68,15 @@ $grid-color             : rgba(#66f, .25) !default;
       }
     }
     &:hover {
-      @include box-shadow(0 0 3px rgba(#333,.5));
+      box-shadow: 0 0 3px rgba(#333,.5);
       background: rgba(white,.5);
       @each $grid in $grids {
         $selector: nth($grid, 1);
-        $grid: if(length($grid) > 1, nth($grid, 2), get-grid());
+        $grid: if(length($grid) > 1, nth($grid, 2), $susy);
 
         ~ #{$selector},
         ~ body #{$selector} {
-          position: unquote($overlay-position);
+          position: $position;
           &::before {
             @extend %grid-overlay-base;
             @include background-grid($grid);
@@ -95,12 +100,12 @@ $grid-color             : rgba(#66f, .25) !default;
 // Grid Color-Stops
 // ----------------
 // Calculate the color-stops needed for a particular grid.
-// - $grid  : <settings>
+// - $grid  : <map>
 @function get-grid-color-stops(
   $grid
 ) {
   $stops  : ();
-  $color  : $grid-color;
+  $color  : map-get($susy-debug, color) or map-get($susy-debug-defaults, color);
   $trans  : transparent;
   $light  : lighten($color, 15%);
 
@@ -116,7 +121,15 @@ $grid-color             : rgba(#66f, .25) !default;
     @if $location == 1 {
       $this-stop: append($this-stop, $color, comma);
     } @else {
-      $start: get-isolation(1, $location, $columns, $gutters, $column-width, $layout-math);
+      $start: (
+        span: 1,
+        location: $location,
+        columns: $columns,
+        gutters: $gutters,
+        column-width: $column-width,
+        layout-math: $layout-math,
+      );
+      $start: get-isolation($start);
       $this-stop: append($this-stop, $color $start, comma);
     }
 
@@ -127,13 +140,30 @@ $grid-color             : rgba(#66f, .25) !default;
       $inside: if($gutter-position == inside or $gutter-position == inside-static, true, false);
 
       @if not $inside {
-        $gutter: get-span-width($location, 1, $columns, $gutters, $column-width, $layout-math, $gutter-position);
+        $gutter: (
+          span: $location,
+          location: 1,
+          columns: $columns,
+          gutters: $gutters,
+          column-width: $column-width,
+          layout-math: $layout-math,
+          gutter-position: $gutter-position,
+        );
+        $gutter: get-span-width($gutter);
         $this-stop: append($this-stop, $light $gutter, comma);
         $this-stop: append($this-stop, $trans $gutter, comma);
         $end-color: $trans;
       }
 
-      $end: get-isolation(1, $location + 1, $columns, $gutters, $column-width, $layout-math);
+      $end: (
+        span: 1,
+        location: $location + 1,
+        columns: $columns,
+        gutters: $gutters,
+        column-width: $column-width,
+        layout-math: $layout-math,
+      );
+      $end: get-isolation($end);
       $this-stop: append($this-stop, $end-color $end, comma);
     }
 

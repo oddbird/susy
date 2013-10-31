@@ -1,6 +1,6 @@
 source "http://rubygems.org"
 
-gem "sass", '~> 3.3.0.rc.1'
+gem 'sass', :git => 'git://github.com/nex3/sass.git', :branch => 'master'
 gem "compass", '~> 0.13.alpha.10'
 gem "true", '~> 0.2.0.rc.1'
 

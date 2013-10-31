@@ -6,51 +6,38 @@
 // Set isolation as an override.
 // - $input   : <span>
 @mixin isolate(
-  $input
+  $input: first
 ) {
-  $input              : parse-span($input);
+  $input  : parse-span($input);
+  $push   : get-isolation($input);
+  $flow   : span-get(flow, $input);
 
-  $span               : get-span-setting(span, $input);
-  $location           : get-span-setting(location, $input);
-  $this-columns       : get-span-setting(columns, $input);
-  $this-gutters       : get-span-setting(gutters, $input);
-  $this-column-width  : get-span-setting(column-width, $input);
-  $this-layout-math   : get-span-setting(layout-math, $input);
-  $this-flow          : get-span-setting(flow, $input);
-
-  $push: get-isolation($span, $location, $columns, $gutters, $column-width, $layout-math);
-
-  @include isolate-output($push, $this-flow);
+  @include isolate-output($push, $flow);
 }
 
 // Get Isolation
 // -------------
 // Return the isolation offset width
-// - $span            : <length> | <number>
-// - $location        : <number>
-// - [$columns]       : <number> | <list>
-// - [$gutters]       : <ratio>
-// - [$column-width]  : <length>
-// - [$layout-math]   : fluid | static
+// - $input: <map>
 @function get-isolation(
-  $span,
-  $location,
-  $columns            : susy-get(columns),
-  $gutters            : susy-get(gutters),
-  $column-width       : susy-get(column-width),
-  $layout-math        : susy-get(layout-math)
+  $input
 ) {
-  $context  : column-sum($columns, $gutters);
-  $width    : null;
+  $span       : span-get(span, $input);
+  $location   : span-get(location, $input);
+  $columns    : span-get(columns, $input);
+  $width      : null;
 
   @if type-of($location) == number and not unitless($location) {
     $width: $location;
   } @else {
     $push: get-location-position($span, $location, $columns) - 1;
     @if $push > 0 {
-      $width: get-span-width($push, 1, $columns, $gutters, $column-width, $layout-math, $outer: outer);
-    } @else {
-      $width: null;
+      $push: map-merge($input, (
+        span: $push,
+        location: 1,
+        outer: outer,
+      ));
+      $width: get-span-width($push);
     }
   }
 

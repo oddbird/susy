@@ -47,45 +47,49 @@
 @function parse-grid(
   $grid
 ) {
-  $return: ();
-  $columns-check            : false;
+  @if type-of($grid) == map {
+    @return $grid;
+  } @else {
+    $return         : ();
+    $columns-check  : false;
 
-  @each $item in $grid {
+    @each $item in $grid {
 
-    // Keywords
-    @if type-of($item) == string {
-      @each $key, $value in $susy-keywords {
-        @if index($value, $item) {
-          $return: map-merge($return, ($key: $item));
+      // Keywords
+      @if type-of($item) == string {
+        @each $key, $value in $susy-keywords {
+          @if index($value, $item) {
+            $return: map-merge($return, ($key: $item));
+          }
+        }
+      }
+
+      // Container, Columns, or Gutters
+      @else if type-of($item) == number {
+        @if not unitless($item) {
+          $return: map-merge($return, (container: $item));
+        } @else if not $columns-check {
+          $return: map-merge($return, (columns: $item));
+          $columns-check: true;
+        } @else {
+          $return: map-merge($return, (gutters: $item));
+        }
+      }
+
+      // Columns or Gutters
+      @else if type-of($item) == list {
+        @if unitless(nth($item,1)) {
+          $return: map-merge($return, (columns: $item));
+          $columns-check: true;
+        } @else {
+          $return: map-merge($return, (column-width: nth($item,1)));
+          $return: map-merge($return, (gutters: nth($item,2) / nth($item,1)));
         }
       }
     }
 
-    // Container, Columns, or Gutters
-    @else if type-of($item) == number {
-      @if not unitless($item) {
-        $return: map-merge($return, (container: $item));
-      } @else if not $columns-check {
-        $return: map-merge($return, (columns: $item));
-        $columns-check: true;
-      } @else {
-        $return: map-merge($return, (gutters: $item));
-      }
-    }
-
-    // Columns or Gutters
-    @else if type-of($item) == list {
-      @if unitless(nth($item,1)) {
-        $return: map-merge($return, (columns: $item));
-        $columns-check: true;
-      } @else {
-        $return: map-merge($return, (column-width: nth($item,1)));
-        $return: map-merge($return, (gutters: nth($item,2) / nth($item,1)));
-      }
-    }
+    @return $return;
   }
-
-  @return $return;
 }
 
 // Get Setting

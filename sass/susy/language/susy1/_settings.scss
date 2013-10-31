@@ -1,50 +1,84 @@
 // Susy 1.0 Settings
 // =================
 
-$total-columns      : 12              !default;
-$column-width       : if($column-width, $column-width, 4em);
-$gutter-width       : 1em             !default;
-$grid-padding       : $gutter-width   !default;
+$total-columns      : 12                                  !default;
+$column-width       : 4em                                 !default;
+$gutter-width       : 1em                                 !default;
+$grid-padding       : $gutter-width                       !default;
 
-$from-direction     : left            !default;
-$container-width    : false           !default;
+$from-direction     : left                                !default;
+$container-width    : false                               !default;
 
-$container-style    : magic           !default;
+$container-style    : magic                               !default;
+$omega-float        : opposite-position($from-direction)  !default;
 
 // no translation (yet)
 // --------------------
 
-// $omega-float        : opposite-position($from-direction);
 // $border-box-sizing  : false;
 
 // $breakpoint-media-output  : true       !default;
 // $breakpoint-ie-output     : true       !default;
 // $breakpoint-raw-output    : false      !default;
 
+// Susy Defaults
+// -------------
+
+$susy-defaults: map-merge($susy-defaults, (
+  columns         : $total-columns,
+  gutters         : $column-width / $gutter-width,
+  column-width    : $column-width,
+  grid-padding    : $grid-padding,
+  flow            : if($from-direction == right, rtl, ltr),
+  container       : $container-width,
+  layout-math     : if($container-style == static, static, float),
+  last-flow       : to,
+));
+
+// User Settings
+// -------------
+
+$susy: $susy-defaults;
+
 // translation mixin
 // -----------------
 
-@mixin translate-susy1-settings(
+@mixin susy-translate(
 ) {
-  $columns: $total-columns;
+  // columns, gutters, column-width, grid-padding, flow
+  $new: (
+    columns       : $total-columns,
+    gutters       : $gutter-width / $column-width,
+    column-width  : $column-width,
+    grid-padding  : $grid-padding,
+    flow          : if($from-direction == right, rtl, ltr),
+  );
 
-  $gutters: $gutter-width / $column-width;
-  $column-width: $column-width;
-  $flow: if($from-direction == right, rtl, ltr);
-
+  // layout-math, container
   @if $container-style == static {
-    $layout-math: static;
+    $new: map-merge($new, (layout-math: static));
     @if $container-width {
       @warn "For static output, we use your $column-width setting and ignore any $container-width override.";
     }
   } @else {
-    $layout-math: fluid;
+    $new: map-merge($new, (layout-math: fluid));
 
     @if $container-width {
-      $container: $container-width;
-      $column-width: false;
+      $new: map-merge($new, (
+        container: $container-width,
+        column-width: false,
+      ));
     } @else if $container-style == fluid and unit($column-width) != '%' {
-      $container: 100%;
+      $new: map-merge($new, (container: 100%));
     }
   }
+
+  // last-flow
+  @if $omega-float == $from-direction {
+    $new: map-merge($new, (last-flow: from));
+  } @else {
+    $new: map-merge($new, (last-flow: to));
+  }
+
+  $susy: map-merge($susy, $new) !global;
 }

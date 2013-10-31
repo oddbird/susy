@@ -8,11 +8,10 @@
 @function nested(
   $context
 ) {
-  $context        : parse-span($context);
-
-  $span           : span-get(span, $context);
-  $location       : span-get(location, $context);
-  $columns        : span-get(columns, $context);
+  $context    : parse-span($context);
+  $span       : span-get(span, $context);
+  $location   : span-get(location, $context);
+  $columns    : span-get(columns, $context);
 
   @return get-columns($span, $location, $columns);
 }
@@ -25,10 +24,11 @@
 @mixin nested(
   $context
 ) {
-  $old: susy-get(columns);
-  $susy: map-merge($susy, (columns: nested($context))) !global;
+  $context    : parse-span($context);
+  $old        : susy-get(columns);
+  $susy       : map-merge($susy, (columns: nested($context))) !global;
 
   @content;
 
-  $susy: map-merge($susy, (columns: $old)) !global;
+  $susy       : map-merge($susy, (columns: $old)) !global;
 }

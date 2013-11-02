@@ -8,11 +8,7 @@
 @function is-symmetrical(
   $columns: susy-get(columns)
 ) {
-  @if type-of($columns) == number {
-    @return $columns;
-  } @else {
-    @return null;
-  }
+  @return if(type-of($columns) == number, $columns, null);
 }
 
 // Columns Count
@@ -22,13 +18,7 @@
 @function column-count(
   $columns: susy-get(columns)
 ) {
-  $count: is-symmetrical($columns);
-
-  @if not $count {
-    $count: length($columns);
-  }
-
-  @return $count;
+  @return is-symmetrical($columns) or length($columns);
 }
 
 // Column Sum
@@ -42,20 +32,13 @@
   $gutters  : susy-get(gutters),
   $outer    : false
 ) {
-  $column-sum: 0;
-  $gutter-sum: 0;
+  $outer: if($outer, if($outer == double, 1, 0), -1);
+  $gutter-sum: (column-count($columns) + $outer) * $gutters;
+  $column-sum: is-symmetrical($columns);
 
-  @if $outer {
-    $gutter-sum: column-count($columns) * $gutters;
-  } @else {
-    $gutter-sum: (column-count($columns) - 1) * $gutters;
-  }
-
-  @if is-symmetrical($columns) {
-    $column-sum: is-symmetrical($columns);
-  } @else {
+  @if not $column-sum {
     @each $column in $columns {
-      $column-sum: $column-sum + $column;
+      $column-sum: ($column-sum or 0) + $column;
     }
   }
 
@@ -73,14 +56,11 @@
   $location,
   $columns: susy-get(columns)
 ) {
-  $location     : get-location-position($span, $location, $columns);
-  $sub-columns  : ();
+  $sub-columns: $span;
 
-  @if is-symmetrical($columns) {
-    $sub-columns: nth($span,1);
-  } @else {
-    $location: if($location, $location, 1);
-
+  @if not is-symmetrical($columns) {
+    $sub-columns  : ();
+    $location     : get-location-position($span, $location, $columns) or 1;
     @for $i from $location to ($location + $span) {
       $sub-columns: append($sub-columns, nth($columns, $i));
     }
@@ -104,14 +84,9 @@
   $gutters      : susy-get(gutters),
   $outer        : false
 ) {
-  $span-sum : false;
-
-  @if is-symmetrical($columns) {
-    $span-sum: column-sum($span, $gutters, $outer);
-  } @else {
-    $span-columns: get-columns($span, $location, $columns);
-    $span-sum: column-sum($span-columns, $gutters, $outer);
+  @if not is-symmetrical($columns) {
+    $span: get-columns($span, $location, $columns);
   }
 
-  @return $span-sum;
+  @return column-sum($span, $gutters, $outer);
 }

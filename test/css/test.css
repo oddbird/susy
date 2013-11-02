@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /* Susy Tests */
 /* ========== */
 .test__overlay-grid .assert__overlay-grid .test head:hover ~ .sym::before,
@@ -19,15 +20,13 @@
 ### Column Math ------ */
 /*  - [function] is-symmetrical() (3 Assertions, 3 Passed, 0 Failed) */
 /*  - [function] column-count() (2 Assertions, 2 Passed, 0 Failed) */
-/*  - [function] symmetrical column-sum() (2 Assertions, 2 Passed, 0 Failed) */
-/*  - [function] asymmetrical column-sum() (2 Assertions, 2 Passed, 0 Failed) */
-/*  - [function] symmetrical get-columns() (1 Assertions, 1 Passed, 0 Failed) */
-/*  - [function] asymmetrical get-columns() (1 Assertions, 1 Passed, 0 Failed) */
-/*  - [function] symmetrical get-column-span-sum() (2 Assertions, 2 Passed, 0 Failed) */
-/*  - [function] asymmetrical get-column-span-sum() (2 Assertions, 2 Passed, 0 Failed) */
+/*  - [function] column-sum() — symmetrical (3 Assertions, 3 Passed, 0 Failed) */
+/*  - [function] column-sum() — asymmetrical (3 Assertions, 3 Passed, 0 Failed) */
+/*  - [function] get-columns() (3 Assertions, 3 Passed, 0 Failed) */
+/*  - [function] get-column-span-sum() (2 Assertions, 2 Passed, 0 Failed) */
 /*  
-    8 Tests:
-    - 8 Passed
+    6 Tests:
+    - 6 Passed
     - 0 Failed */
 /*  
 

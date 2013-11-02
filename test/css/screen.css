@@ -1,3 +1,4 @@
+@charset "UTF-8";
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -175,15 +176,13 @@ h1 {
 ### Column Math ------ */
 /*  - [function] is-symmetrical() (3 Assertions, 3 Passed, 0 Failed) */
 /*  - [function] column-count() (2 Assertions, 2 Passed, 0 Failed) */
-/*  - [function] symmetrical column-sum() (2 Assertions, 2 Passed, 0 Failed) */
-/*  - [function] asymmetrical column-sum() (2 Assertions, 2 Passed, 0 Failed) */
-/*  - [function] symmetrical get-columns() (1 Assertions, 1 Passed, 0 Failed) */
-/*  - [function] asymmetrical get-columns() (1 Assertions, 1 Passed, 0 Failed) */
-/*  - [function] symmetrical get-column-span-sum() (2 Assertions, 2 Passed, 0 Failed) */
-/*  - [function] asymmetrical get-column-span-sum() (2 Assertions, 2 Passed, 0 Failed) */
+/*  - [function] column-sum() — symmetrical (3 Assertions, 3 Passed, 0 Failed) */
+/*  - [function] column-sum() — asymmetrical (3 Assertions, 3 Passed, 0 Failed) */
+/*  - [function] get-columns() (3 Assertions, 3 Passed, 0 Failed) */
+/*  - [function] get-column-span-sum() (2 Assertions, 2 Passed, 0 Failed) */
 /*  
-    8 Tests:
-    - 8 Passed
+    6 Tests:
+    - 6 Passed
     - 0 Failed */
 /*  
 
@@ -728,5 +727,5 @@ h1 {
   border-color: green;
 }
 .results::after {
-  content: "33 Tests, 33 Passed, 0 Failed";
+  content: "31 Tests, 31 Passed, 0 Failed";
 }

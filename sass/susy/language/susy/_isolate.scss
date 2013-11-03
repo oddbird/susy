@@ -30,7 +30,7 @@
   @if type-of($location) == number and not unitless($location) {
     $width: $location;
   } @else {
-    $push: get-location-position($span, $location, $columns) - 1;
+    $push: get-location($span, $location, $columns) - 1;
     @if $push > 0 {
       $push: map-merge($input, (
         span: $push,

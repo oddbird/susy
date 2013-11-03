@@ -60,7 +60,7 @@
 
   @if not is-symmetrical($columns) {
     $sub-columns  : ();
-    $location     : get-location-position($span, $location, $columns) or 1;
+    $location     : get-location($span, $location, $columns) or 1;
     @for $i from $location to ($location + $span) {
       $sub-columns: append($sub-columns, nth($columns, $i));
     }

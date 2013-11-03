@@ -187,8 +187,8 @@ h1 {
 /*  
 
 ### Container Math ------ */
-/*  - [function] parse-container-position (6 Assertions, 6 Passed, 0 Failed) */
-/*  - [function] calculate-container-width (2 Assertions, 2 Passed, 0 Failed) */
+/*  - [function] parse-container-position() (6 Assertions, 6 Passed, 0 Failed) */
+/*  - [function] calculate-container-width() (1 Assertions, 1 Passed, 0 Failed) */
 /*  
     2 Tests:
     - 2 Passed
@@ -197,8 +197,8 @@ h1 {
 
 ### Location Math ------ */
 /*  - [function] is-last (5 Assertions, 5 Passed, 0 Failed) */
-/*  - [function] is-first (5 Assertions, 5 Passed, 0 Failed) */
-/*  - [function] get-location-position (5 Assertions, 5 Passed, 0 Failed) */
+/*  - [function] is-first (4 Assertions, 4 Passed, 0 Failed) */
+/*  - [function] get-location-position (3 Assertions, 3 Passed, 0 Failed) */
 /*  
     3 Tests:
     - 3 Passed

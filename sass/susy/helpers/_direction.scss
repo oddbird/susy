@@ -10,11 +10,8 @@
   $flow: susy-get(flow),
   $key: from
 ) {
-  $from: if($flow == rtl, right, left);
-  $to: if($flow == rtl, left, right);
-
-  @if $key == from { @return $from; }
-  @else if $key == to { @return $to; }
+  $return: if($flow == rtl, (from: right, to: left), (from: left, to: right));
+  @return map-get($return, $key);
 }
 
 // To
@@ -24,7 +21,7 @@
 @function to(
   $flow: susy-get(flow)
 ) {
-  @return get-direction($flow,to);
+  @return get-direction($flow, to);
 }
 
 // From
@@ -34,5 +31,5 @@
 @function from(
   $flow: susy-get(flow)
 ) {
-  @return get-direction($flow,from);
+  @return get-direction($flow, from);
 }

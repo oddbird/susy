@@ -1,10 +1,20 @@
 // Box Sizing
-// ----------
+// ==========
+// Susy is not in the business of handling css3 prefixed feature support.
+// If you provide a mixin, we'll use yours, otherwise we provide basics.
+// If you want more powerful support handling, we recommend compass-style.org
 
-@mixin susy-box-sizing($model) {
+// Susy Box Sizing
+// ---------------
+// [$model]: content-box | border-box
+@mixin susy-box-sizing(
+  $model: content-box
+) {
   @if mixin-exists(box-sizing) {
     @include box-sizing($model);
   } @else {
+    -moz-box-sizing: $model;
+    -webkit-box-sizing: $model;
     box-sizing: $model;
   }
 }

@@ -10,10 +10,6 @@
   $n        : last,
   $selector : child
 ) {
-  @if ($n == 'last') or ($n =='first') or ($n =='only') {
-    $selector: '#{$n}-#{$selector}';
-  } @else {
-    $selector: 'nth-#{$selector}(#{$n})';
-  }
-  @return $selector;
+  $key: last first only;
+  @return if(index($key, $n), '#{$n}-#{$selector}', 'nth-#{$selector}(#{$n})');
 }

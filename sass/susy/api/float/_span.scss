@@ -22,14 +22,8 @@
   $to     : to($flow);
   $from   : from($flow);
 
-  @if $float {
-    $float: if($float == to, $to, $from);
-  } @else {
-    $float: null;
-  }
-
   width: $width;
-  float: $float;
+  float: if($float == to, $to, null) or if($float == from, $from, null);
   margin-#{$from}: $margin-before;
   margin-#{$to}: $margin-after;
   padding-#{$from}: $padding-before;

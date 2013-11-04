@@ -1,8 +1,6 @@
 // Span Syntax
 // ===========
 
-@import "compass/css3/box-sizing";
-
 // Span [mixin]
 // ------------
 // Set a spanning element using shorthand syntax.
@@ -10,20 +8,12 @@
 @mixin span(
   $span
 ) {
-  $span             : parse-span($span);
-
-  $output           : span-math($span);
-
-  $box              : span-get(box-sizing, $span);
-  $inside           : is-inside($span);
-
-  @if $box == border-box or $inside {
-    @include susy-box-sizing(border-box);
-  } @else if $box == content-box {
-    @include susy-box-sizing(content-box);
-  }
+  $span     : parse-span($span);
+  $output   : span-math($span);
+  $box      : span-get(box-sizing, $span) or if(is-inside($span), border-box, null);
 
   @include float-span-output($output...);
+  @include susy-box-sizing($box);
   @include nested($span) { @content; }
 }
 
@@ -34,8 +24,7 @@
 @function span(
   $span
 ) {
-  $span   : parse-span($span);
-  @return get-span-width($span);
+  @return get-span-width(parse-span($span));
 }
 
 // Parse Span
@@ -57,16 +46,18 @@
       $of     : false;
       $gutter : false;
 
+      // maps
+      @if type-of($item) == map {
+        $return: map-merge($return, $item);
+
       // keywords
-      @if type-of($item) == string {
+      } @else if type-of($item) == string {
 
         // at, of, gutter
-        @if $item == at {
-          $at: true;
-        } @else if $item == of {
-          $of: true;
-        } @else if $item == gutter or $item == gutters {
-          $gutter: true;
+        @if index(at of gutter gutters, $item) {
+          $at: index(at, $item);
+          $of: index(of, $item);
+          $gutter: index(gutter gutters, $item);
         } @else {
           @each $key, $value in $susy-keywords {
             @if index($value, $item) {
@@ -108,10 +99,7 @@
           }
         }
 
-        @if length($context) > 0 {
-          $context: parse-grid($context);
-          $return: map-merge($return, $context);
-        }
+        $return: map-merge($return, parse-grid($context));
       }
 
       $i: $i + 1;
@@ -130,11 +118,7 @@
   $key,
   $span
 ) {
-  @if type-of($span) != map {
-    $span: parse-span($span);
-  }
-
-  @return map-get($span, $key) or map-get($susy-defaults, $key);
+  @return map-get(parse-span($span), $key) or map-get($susy-defaults, $key);
 }
 
 // Span Math
@@ -241,7 +225,7 @@
   $return: ();
 
   @each $key, $value in $span {
-    @if $key != span and $key != location {
+    @if not index(span location, $key) {
       $return: map-merge($return, ($key: $value));
     }
   }

@@ -339,13 +339,13 @@
 
 /* "Span should set width, float, inside gutter, and border-box" */
 .test__span .assert__inside .test {
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
   width: 62.5%;
   float: left;
   padding-left: 1.25%;
   padding-right: 1.25%;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
 }
 .test__span .assert__inside .expect {
   -moz-box-sizing: border-box;
@@ -366,12 +366,12 @@
   margin-right: 2.5641%;
 }
 
-/*  - [mixin] span (3 Assertions, 3 Passed, 0 Failed) */
-/*  - [function] span (6 Assertions, 6 Passed, 0 Failed) */
-/*  - [function] parse-span (99 Assertions, 99 Passed, 0 Failed) */
-/*  - [function] span-get (13 Assertions, 13 Passed, 0 Failed) */
-/*  - [function] get-span-width (7 Assertions, 7 Passed, 0 Failed) */
+/*  - [mixin] span (4 Assertions, 4 Passed, 0 Failed) */
+/*  - [function] span (1 Assertions, 1 Passed, 0 Failed) */
+/*  - [function] parse-span (100 Assertions, 100 Passed, 0 Failed) */
+/*  - [function] span-get (2 Assertions, 2 Passed, 0 Failed) */
 /*  - [function] span-math (9 Assertions, 9 Passed, 0 Failed) */
+/*  - [function] get-span-width (6 Assertions, 6 Passed, 0 Failed) */
 /*  - [function] get-span-context (1 Assertions, 1 Passed, 0 Failed) */
 /*  
     7 Tests:

@@ -48,8 +48,12 @@
 
     @each $item in $grid {
 
+      // maps
+      @if type-of($item) == map {
+        $return: map-merge($return, $item);
+
       // Keywords
-      @if type-of($item) == string {
+      } @else if type-of($item) == string {
         @each $key, $value in $susy-keywords {
           @if index($value, $item) {
             $return: map-merge($return, ($key: $item));

@@ -377,6 +377,51 @@
     7 Tests:
     - 7 Passed
     - 0 Failed */
+/*  
+
+### Gutter Syntax ------ */
+/* - [mixin] gutters */
+/* "Item should have 2.5% margin-gutters added before and after" */
+.test__gutters .assert__auto .test {
+  margin-left: 2.5%;
+  margin-right: 2.5%;
+}
+.test__gutters .assert__auto .expect {
+  margin-left: 2.5%;
+  margin-right: 2.5%;
+}
+
+/* "Item should have 1em padding-gutters added before and after" */
+.test__gutters .assert__inside-static .test {
+  padding-left: 1em;
+  padding-right: 1em;
+}
+.test__gutters .assert__inside-static .expect {
+  padding-left: 1em;
+  padding-right: 1em;
+}
+
+/* "Item should have 5em padding-gutters added before and after" */
+.test__gutters .assert__explicit .test {
+  padding-left: 5em;
+  padding-right: 5em;
+}
+.test__gutters .assert__explicit .expect {
+  padding-left: 5em;
+  padding-right: 5em;
+}
+
+/*  - [function] gutter (2 Assertions, 2 Passed, 0 Failed) */
+/*  - [function] parse-gutters (3 Assertions, 3 Passed, 0 Failed) */
+/*  - [function] get-gutter-width (4 Assertions, 4 Passed, 0 Failed) */
+/*  - [function] get-gutters (3 Assertions, 3 Passed, 0 Failed) */
+/*  - [function] is-inside (2 Assertions, 2 Passed, 0 Failed) */
+/*  - [function] is-split (2 Assertions, 2 Passed, 0 Failed) */
+/*  - [function] gutter-math (2 Assertions, 2 Passed, 0 Failed) */
+/*  
+    7 Tests:
+    - 7 Passed
+    - 0 Failed */
 /*
 
 ### Grid Background API ------ */

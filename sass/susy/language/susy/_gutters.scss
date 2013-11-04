@@ -9,16 +9,17 @@
   $context: $susy
 ) {
   $context    : parse-gutters($context);
-
   $gutters    : get-gutters($context);
-  $before     : map-get($gutters, before);
-  $after      : map-get($gutters, after);
-  $flow       : span-get(flow, $context);
+  $output     : (
+    before: map-get($gutters, before),
+    after: map-get($gutters, after),
+    flow: span-get(flow, $context),
+  );
 
   @if is-inside($context) {
-    @include padding-output($before, $after, $flow);
+    @include padding-output($output...);
   } @else {
-    @include margin-output($before, $after, $flow);
+    @include margin-output($output...);
   }
 }
 
@@ -73,7 +74,7 @@
 @function get-gutter-width(
   $context: $susy
 ) {
-  $context  : parse-span($context);
+  $context  : parse-gutters($context);
   $gutter   : span-get(gutter-override, $context);
 
   @if not $gutter {
@@ -98,7 +99,7 @@
 @function get-gutters(
   $context: $susy
 ) {
-  $context          : parse-span($context);
+  $context          : parse-gutters($context);
   $gutter-position  : span-get(gutter-position, $context);
   $gutter           : get-gutter-width($context);
   $return           : (before: null, after: null);
@@ -120,9 +121,10 @@
 @function is-inside(
   $context
 ) {
+  $inside: inside inside-static;
   $gutter-position: span-get(gutter-position, $context);
 
-  @return if($gutter-position == inside or $gutter-position == inside-static, true, false);
+  @return if(index($inside, $gutter-position), true, false);
 }
 
 // Is Split
@@ -132,9 +134,10 @@
 @function is-split(
   $context
 ) {
+  $split: split inside inside-static;
   $gutter-position: span-get(gutter-position, $context);
 
-  @return if($gutter-position == split or $gutter-position == inside or $gutter-position == inside-static, true, false);
+  @return if(index($split, $gutter-position), true, false);
 }
 
 // Gutter Math
@@ -144,7 +147,6 @@
 @function gutter-math(
   $context: $susy
 ) {
-  $context  : parse-span($context);
   $return   : span-get(layout-math, $context);
   $return   : if(span-get(gutter-position, $context) == inside-static, static, $return);
 

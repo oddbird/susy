@@ -3,8 +3,8 @@
 
 @include test-module('Gutter Syntax') {
 
-  // gutters
-  // -------
+  // gutters [mixin]
+  // ---------------
 
   @include output-test('gutters') {
     @include assert-setup('auto', $grid: 7 .5 split);
@@ -41,32 +41,61 @@
     }
   }
 
-  // gutter
-  // ------
+  // gutter [function]
+  // -----------------
 
   @include test('[function] gutter') {
-
     // after
     $test: gutter(of 7 .5 after);
     $expect: 5%;
     @include assert-equal($test, $expect,
-      'The default gutter for "7 .5 after" should be "#{$expect}"');
+      'Returns correct outside gutters.');
 
     // inside
     $test: gutter(of 8 .25 inside);
     $expect: 1.25%;
     @include assert-equal($test, $expect,
-      'The default gutter for "6 .5 fluid inside" should be "#{$expect}"');
+      'Returns correct inside gutters.');
+  }
+
+  // parse-gutters
+  // -------------
+
+  @include test('[function] parse-gutters') {
+    // context only
+    $test: parse-gutters(of 7 .5 after);
+    $expect: map-merge($susy-defaults, (
+      columns: 7,
+      gutters: .5,
+      gutter-position: after,
+    ));
+    @include assert-equal($test, $expect,
+      'Returns correct gutter context.');
 
     // explicit
-    $gutter: of (1 2 3 2 1) (4em 1em) static;
-    $test: gutter($gutter);
-    $expect: 1em;
+    $test: parse-gutters(30em of 7 .5 after);
+    $expect: map-merge($susy-defaults, (
+      span: 30em,
+      columns: 7,
+      gutters: .5,
+      gutter-position: after,
+      gutter-override: 30em,
+    ));
     @include assert-equal($test, $expect,
-      'The gutter-width for "#{$gutter}" should be "#{$expect}"');
+      'Returns correct explicit gutter-override.');
 
-    @include original-grid;
+    // keyword
+    $test: parse-gutters(of 7 .5 after gutters 3em);
+    $expect: map-merge($susy-defaults, (
+      columns: 7,
+      gutters: .5,
+      gutter-position: after,
+      gutter-override: 3em,
+    ));
+    @include assert-equal($test, $expect,
+      'Returns correct gutter-override using keyword.');
   }
+
 
   // get-gutter-width
   // ----------------
@@ -74,17 +103,29 @@
   @include test('[function] get-gutter-width') {
     $cols: 1 2 3 2 1;
 
+    // explicit
+    $gutter: get-gutter-width(30% of $cols (40px 10px) static);
+    $expect: 30%;
+    @include assert-equal($gutter, $expect,
+      'Returns correct explicit gutter width.');
+
     // static
     $gutter: get-gutter-width(of $cols (40px 10px) static);
     $expect: 10px;
     @include assert-equal($gutter, $expect,
-      'The static gutter-width of "(40px 10px)" should be "10px"');
+      'Returns correct static gutter width.');
 
     // fluid
     $gutter: get-gutter-width(of $cols .25);
     $expect: 2.5%;
     @include assert-equal($gutter, $expect,
-      'The fluid gutter-width of "(1 2 3 2 1) .25" should be "2.5%"');
+      'Returns correct fluid gutter width.');
+
+    // inside
+    $gutter: get-gutter-width(of 8 .25 inside);
+    $expect: 2.5%;
+    @include assert-equal($gutter, $expect,
+      'Returns correct inside gutter width.');
   }
 
   // get-gutters
@@ -96,51 +137,78 @@
 
     // override before
     $test: get-gutters(30% of $cols $guts fluid before);
-    $expect: 30% null;
+    $expect: (before: 30%, after: null);
     @include assert-equal($test, $expect,
-      'A "30% before" gutter should return "30% null" gutters');
+      'Returns correct explicit before gutter.');
 
     // override after
     $test: get-gutters(2em of $cols $guts fluid after);
-    $expect: null 2em;
+    $expect: (before: null, after: 2em);
     @include assert-equal($test, $expect,
-      'A "2em after" gutter should return "null 2em" gutters');
+      'Returns correct after gutters.');
 
     // override inside
     $test: get-gutters(30px of $cols $guts fluid inside);
-    $expect: 15px 15px;
+    $expect: (before: 15px, after: 15px);
     @include assert-equal($test, $expect,
-      'A "30px inside" gutter should return "15px 15px" gutters');
+      'Split gutters should be divided, even when explicit.');
+  }
 
-    // before
-    $test: get-gutters($cols $guts before);
-    $expect: 5% null;
-    @include assert-equal($test, $expect,
-      'A relative gutter from "7 .5 before" should return "5% null" gutters');
+  // is-inside [function]
+  // -------------------
 
+  @include test('[function] is-inside') {
     // after
-    $test: get-gutters($cols $guts after);
-    $expect: null 5%;
+    $test: is-inside((gutter-position: after));
+    $expect: false;
     @include assert-equal($test, $expect,
-      'A relative gutter from "7 .5 after" should return "null 5%" gutters');
-
-    // split
-    $test: get-gutters($cols $guts split);
-    $expect: 2.5% 2.5%;
-    @include assert-equal($test, $expect,
-      'A relative gutter from "7 .5 split" should return "2.5% 2.5%" gutters');
-
-    // inside
-    $test: get-gutters(8 .25 inside);
-    $expect: 1.25% 1.25%;
-    @include assert-equal($test, $expect,
-      'A relative gutter from "8 .25 inside" should return "1.25% 1.25%" gutters');
+      'After gutters are not inside.');
 
     // inside-static
-    $test: get-gutters($cols (4em 2em) fluid inside-static);
-    $expect: 1em 1em;
+    $test: is-inside(inside-static);
+    $expect: true;
     @include assert-equal($test, $expect,
-      'A gutter from "7 (4em 2em) inside-static" should return "1em 1em" gutters');
+      'Inside-static gutters are inside.');
+  }
+
+  // is-split [function]
+  // -------------------
+
+  @include test('[function] is-split') {
+    // after
+    $test: is-split((gutter-position: after));
+    $expect: false;
+    @include assert-equal($test, $expect,
+      'After gutters are not split.');
+
+    // inside
+    $test: is-split(inside);
+    $expect: true;
+    @include assert-equal($test, $expect,
+      'Inside gutters are split.');
+  }
+
+  // gutter-math [function]
+  // ----------------------
+
+  @include test('[function] gutter-math') {
+    // after static
+    $test: gutter-math((
+      layout-math: static,
+      gutter-position: after,
+    ));
+    $expect: static;
+    @include assert-equal($test, $expect,
+      'Returns static gutters when layout-math is static.');
+
+    // inside-static
+    $test: gutter-math((
+      layout-math: fluid,
+      gutter-position: inside-static,
+    ));
+    $expect: static;
+    @include assert-equal($test, $expect,
+      'Returns static gutters when gutter-position inside-static.');
   }
 
 }

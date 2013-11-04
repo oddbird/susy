@@ -101,7 +101,7 @@
     @include assert-output(
       'Items should bleed 1 column outside their nested context'
     ) {
-      .test { @include bleed(1 of 7); }
+      .test { @include bleed-x(1 of 7); }
       .expect {
         margin-left: -15%;
         padding-left: 15%;
@@ -117,7 +117,7 @@
     @include assert-output(
       'Items should bleed 1 column, and retain their gutters'
     ) {
-      .test { @include bleed(1 of 8); }
+      .test { @include bleed-x(1 of 8); }
       .expect {
         margin-left: -12.5%;
         padding-left: 13.75%;
@@ -137,7 +137,7 @@
     @include assert-output(
       'Items should bleed 1em on all sides, and retain their static gutters'
     ) {
-      .test { @include bleed(1em of 8, all); }
+      .test { @include bleed(1em of 8); }
       .expect {
         margin: -1em;
         padding: 1.5em;

@@ -32,19 +32,27 @@
     // args: $span, $location [, $columns, $gutters, $column-width, $layout-math ]
 
     // explicit
-    $test: get-isolation(1, 30%);
-    $expect: 30%;
+    $location: 30%;
+    $test: get-isolation((span: 1, location: $location));
+    $expect: $location;
     @include assert-equal($test, $expect,
       'Explicit isolation placements should be passed back unchanged.');
 
     // first
-    $test: get-isolation(1, first);
+    $test: get-isolation((span: 1, location: first));
     $expect: null;
     @include assert-equal($test, $expect,
       'Isolation in the first column doesnt require any prefixed margins.');
 
     // calculated
-    $test: get-isolation(2, last, 7, .5, 4em, static);
+    $test: get-isolation((
+      span: 2,
+      location: last,
+      columns: 7,
+      gutters: .5,
+      column-width: 4em,
+      layout-math: static,
+    ));
     $expect: 30em;
     @include assert-equal($test, $expect,
       'Isolation for "last 2 of 7 (4em 2em) static" (5 outer) should be 30em.');

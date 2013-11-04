@@ -38,27 +38,15 @@
   $pre,
   $post: $pre
 ) {
+  $pre      : if(length($pre) == 1 and length($post) > 1, set-nth($post, 1, $pre), $pre);
   $pre      : map-merge(parse-span($pre), (outer: outer));
   $post     : map-merge(parse-span($post), (outer: outer));
 
-  $flow     : span-get(flow, $pre) or span-get(flow, $post);
-  $before   : null;
-  $after    : null;
+  $output   : (
+    before: span($pre),
+    after: span($post),
+    flow: span-get(flow, $pre) or span-get(flow, $post),
+  );
 
-  $pre-context      : map-merge($pre, (span: null, location: null));
-  $post-context     : map-merge($post, (span: null, location: null));
-  $default-context  : map-merge(map-merge($susy, $susy-defaults), (span: null, location: null));
-
-  // if the contexts don't line up, and only the post has changed, we use it for both
-  @if $pre-context != $post-context and $default-context == $pre-context {
-    @include use-grid($post-context) {
-      $before: span($pre);
-      $after: span($post);
-    }
-  } @else {
-    $before: span($pre);
-    $after: span($post);
-  }
-
-  @include padding-output($before, $after, $flow);
+  @include padding-output($output...);
 }

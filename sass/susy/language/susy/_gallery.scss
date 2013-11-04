@@ -27,18 +27,18 @@
   $output: (
     width             : null,
     float             : from,
-    margin-before     : null,
-    margin-after      : null,
-    padding-before    : null,
-    padding-after     : null,
+    margin_before     : null,
+    margin_after      : null,
+    padding_before    : null,
+    padding_after     : null,
     flow              : $flow,
   );
 
   @if $inside {
     $gutters: get-gutters($layout);
     $output: map-merge($output, (
-      padding-before: map-get($gutters, before),
-      padding-after: map-get($gutters, after),
+      padding_before: map-get($gutters, before),
+      padding_after: map-get($gutters, after),
     ));
   }
 
@@ -63,10 +63,10 @@
       $output: (
         width             : if($symmetrical, null, get-span-width($layout)),
         float             : null,
-        margin-before     : get-isolation($layout),
-        margin-after      : null,
-        padding-before    : null,
-        padding-after     : null,
+        margin_before     : get-isolation($layout),
+        margin_after      : -100%,
+        padding_before    : null,
+        padding_after     : null,
         flow              : $flow,
       );
 

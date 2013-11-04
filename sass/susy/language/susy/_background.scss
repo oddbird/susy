@@ -121,15 +121,7 @@ $susy-debug: () !default;
     @if $location == 1 {
       $this-stop: append($this-stop, $color, comma);
     } @else {
-      $start: (
-        span: 1,
-        location: $location,
-        columns: $columns,
-        gutters: $gutters,
-        column-width: $column-width,
-        layout-math: $layout-math,
-      );
-      $start: get-isolation($start);
+      $start: get-isolation(parse-span(1 at $location $grid));
       $this-stop: append($this-stop, $color $start, comma);
     }
 
@@ -137,9 +129,8 @@ $susy-debug: () !default;
       $this-stop: append($this-stop, $light, comma);
     } @else {
       $end-color: $light;
-      $inside: if($gutter-position == inside or $gutter-position == inside-static, true, false);
 
-      @if not $inside {
+      @if not is-inside($grid) {
         $gutter: (
           span: $location,
           location: 1,

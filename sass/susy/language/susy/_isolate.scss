@@ -9,10 +9,12 @@
   $input: first
 ) {
   $input  : parse-span($input);
-  $push   : get-isolation($input);
-  $flow   : span-get(flow, $input);
+  $output : (
+    push: get-isolation($input),
+    flow: span-get(flow, $input),
+  );
 
-  @include isolate-output($push, $flow);
+  @include isolate-output($output...);
 }
 
 // Get Isolation

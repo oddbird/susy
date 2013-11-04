@@ -62,29 +62,17 @@
   $pre,
   $post: $pre
 ) {
+  $pre      : if(length($pre) == 1 and length($post) > 1, set-nth($post, 1, $pre), $pre);
   $pre      : map-merge(parse-span($pre), (outer: outer));
   $post     : map-merge(parse-span($post), (outer: outer));
 
-  $flow     : span-get(flow, $pre) or span-get(flow, $post);
-  $before   : null;
-  $after    : null;
+  $output   : (
+    before: span($pre),
+    after: span($post),
+    flow: span-get(flow, $pre) or span-get(flow, $post),
+  );
 
-  $pre-context      : map-merge($pre, (span: null, location: null));
-  $post-context     : map-merge($post, (span: null, location: null));
-  $default-context  : map-merge(map-merge($susy, $susy-defaults), (span: null, location: null));
-
-  // if the contexts don't line up, and only the post has changed, we use it for both
-  @if $pre-context != $post-context and $default-context == $pre-context {
-    @include use-grid($post-context) {
-      $before: span($pre);
-      $after: span($post);
-    }
-  } @else {
-    $before: span($pre);
-    $after: span($post);
-  }
-
-  @include margin-output($before, $after, $flow);
+  @include margin-output($output...);
 }
 
 // Bleed
@@ -114,7 +102,7 @@
     $i: $i + 1;
   }
 
-  @if $box-sizing == border-box {
+  @if span-get(box-sizing, $bleed) == border-box {
     @include susy-box-sizing(content-box);
   }
 
@@ -136,7 +124,7 @@
   $trbl   : span-get(span, $bleed);
 
   @if length($trbl) == 1 {
-    $bleed: map-merge($bleed, (span: 0 $trbl));
+    $bleed: map-merge($bleed, (span: 0 nth($trbl, 1)));
   } @else if length($trbl) == 2 {
     $bleed: map-merge($bleed, (span: 0 nth($trbl, 1) 0 nth($trbl, 2)));
   } @else {
@@ -153,7 +141,7 @@
   $trbl   : span-get(span, $bleed);
 
   @if length($trbl) == 1 {
-    $bleed: map-merge($bleed, (span: $trbl 0));
+    $bleed: map-merge($bleed, (span: nth($trbl, 1) 0));
   } @else if length($trbl) == 2 {
     $bleed: map-merge($bleed, (span: nth($trbl, 1) 0 nth($trbl, 2) 0));
   } @else {

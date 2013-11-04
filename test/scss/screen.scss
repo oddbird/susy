@@ -30,6 +30,8 @@ $output-test-results: false;
 // Helpers
 // -------
 
+@import "helpers/box-sizing";
+@import "helpers/clearfix";
 @import "helpers/direction";
 @import "helpers/nth";
 

@@ -1,11 +1,6 @@
 // Grid Syntax Tests
 // =================
 
-// reset the original grid
-@mixin original-grid {
-  $susy: $susy-defaults !global;
-}
-
 // test the output of a parsed grid
 @mixin test-parsed-grid($name, $test, $expect) {
   @each $setting in $susy-defaults {

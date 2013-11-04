@@ -49,6 +49,52 @@
     - 0 Failed */
 /*  
 
+### Box Sizing Helper ------ */
+/* - [mixin] susy-box-sizing */
+/* "Box-models are correctly output and prefixed." */
+.test__susy-box-sizing .assert__border-box .test {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.test__susy-box-sizing .assert__border-box .expect {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+/*  
+    0 Tests:
+    - 0 Passed
+    - 0 Failed */
+/*  
+
+### Clearfix Helper ------ */
+/* - [mixin] susy-clearfix */
+/* "Elements should clear floated children." */
+.test__susy-clearfix .assert__clearfix .test {
+  *zoom: 1;
+}
+.test__susy-clearfix .assert__clearfix .test:after {
+  content: " ";
+  display: block;
+  clear: both;
+}
+.test__susy-clearfix .assert__clearfix .expect {
+  *zoom: 1;
+}
+.test__susy-clearfix .assert__clearfix .expect:after {
+  content: " ";
+  display: block;
+  clear: both;
+}
+
+/*  
+    0 Tests:
+    - 0 Passed
+    - 0 Failed */
+/*  
+
 ### Direction Helpers ------ */
 /*  - [function] get-direction (2 Assertions, 2 Passed, 0 Failed) */
 /*  - [function] to (2 Assertions, 2 Passed, 0 Failed) */

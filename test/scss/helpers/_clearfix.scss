@@ -9,9 +9,14 @@
   @include output-test('susy-clearfix') {
 
     // no clearfix mixin
-    @include assert-setup(clearfix);
+    @include assert-setup(clearfix) {
+      .spacer {
+        float: left;
+        width: 25%;
+      }
+    }
     @include assert-output(
-      'Given no external box-sizing mixin, we output only the official syntax.'
+      'Elements should clear floated children.'
     ) {
       .test { @include susy-clearfix; }
       .expect {

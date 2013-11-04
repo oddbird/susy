@@ -15,6 +15,11 @@ $output-assert-slug: null;
 
 $supported-browsers: firefox chrome;
 
+// reset the original grid
+@mixin original-grid {
+  $susy: $susy-defaults !global;
+}
+
 // Test Output Module
 // ------------------
 

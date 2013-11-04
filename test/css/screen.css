@@ -205,6 +205,58 @@ h1 {
     - 0 Failed */
 /*  
 
+### Box Sizing Helper ------ */
+/* - [mixin] susy-box-sizing */
+.test__susy-box-sizing .assert__border-box {
+  overflow: hidden;
+  background: rgba(204, 204, 255, 0.5);
+}
+
+.test__susy-box-sizing .assert__border-box .test, .test__susy-box-sizing .assert__border-box .expect {
+  width: 50%;
+  padding: 0 2em;
+}
+
+.test__susy-box-sizing .assert__border-box::before {
+  content: "Box-models are correctly output and prefixed.";
+  display: block;
+  padding: 0.375rem 0.75rem;
+  text-align: left;
+  font-style: italic;
+}
+
+/*  
+    0 Tests:
+    - 0 Passed
+    - 0 Failed */
+/*  
+
+### Clearfix Helper ------ */
+/* - [mixin] susy-clearfix */
+.test__susy-clearfix .assert__clearfix {
+  overflow: hidden;
+  background: rgba(204, 204, 255, 0.5);
+}
+
+.test__susy-clearfix .assert__clearfix .spacer {
+  float: left;
+  width: 25%;
+}
+
+.test__susy-clearfix .assert__clearfix::before {
+  content: "Elements should clear floated children.";
+  display: block;
+  padding: 0.375rem 0.75rem;
+  text-align: left;
+  font-style: italic;
+}
+
+/*  
+    0 Tests:
+    - 0 Passed
+    - 0 Failed */
+/*  
+
 ### Direction Helpers ------ */
 /*  - [function] get-direction (2 Assertions, 2 Passed, 0 Failed) */
 /*  - [function] to (2 Assertions, 2 Passed, 0 Failed) */

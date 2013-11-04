@@ -16,12 +16,12 @@
       }
     }
     @include assert-output(
-      'Given no external box-sizing mixin, we output only the official syntax.'
+      'Box-models are correctly output and prefixed.'
     ) {
       .test { @include susy-box-sizing(border-box); }
       .expect {
-        -moz-box-sizing: $model;
-        -webkit-box-sizing: $model;
+        -moz-box-sizing: border-box;
+        -webkit-box-sizing: border-box;
         box-sizing: border-box;
       }
     }

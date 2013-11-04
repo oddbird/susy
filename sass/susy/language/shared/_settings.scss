@@ -8,13 +8,7 @@
 @mixin set-grid(
   $grid
 ) {
-  $global: map-merge($susy-defaults, $susy);
-
-  @if type-of($grid) != map {
-    $grid: parse-grid($grid);
-  }
-
-  $susy: map-merge($global, $grid) !global;
+  $susy: map-merge($susy, parse-grid($grid)) !global;
 }
 
 // Alternative syntax
@@ -34,7 +28,6 @@
   $old: $susy;
 
   @include set-grid($grid);
-
   @content;
 
   $susy: $old !global;
@@ -47,9 +40,9 @@
 @function parse-grid(
   $grid
 ) {
-  @if type-of($grid) == map {
-    @return $grid;
-  } @else {
+  $return: $grid;
+
+  @if type-of($grid) != map {
     $return         : ();
     $columns-check  : false;
 
@@ -87,9 +80,9 @@
         }
       }
     }
-
-    @return $return;
   }
+
+  @return $return;
 }
 
 // Get Setting
@@ -101,9 +94,7 @@
   $key,
   $grid: map-merge($susy-defaults, $susy)
 ) {
-  @if type-of($grid) != map {
-    $grid: parse-grid($grid);
-  }
+  $grid: parse-grid($grid);
 
   @return map-get($grid, $key) or map-get($susy, $key) or map-get($susy-defaults, $key);
 }

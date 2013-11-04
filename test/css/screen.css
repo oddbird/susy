@@ -278,8 +278,8 @@ h1 {
 ### Settings Syntax ------ */
 /*  - [mixin] set-grid (7 Assertions, 7 Passed, 0 Failed) */
 /*  - [mixin] use-grid (6 Assertions, 6 Passed, 0 Failed) */
-/*  - [function] parse-grid (60 Assertions, 60 Passed, 0 Failed) */
-/*  - [function] get-setting (13 Assertions, 13 Passed, 0 Failed) */
+/*  - [function] parse-grid (72 Assertions, 72 Passed, 0 Failed) */
+/*  - [function] get-setting (3 Assertions, 3 Passed, 0 Failed) */
 /*  
     4 Tests:
     - 4 Passed

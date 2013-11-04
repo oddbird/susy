@@ -79,7 +79,13 @@
   // ---------------------
 
   @include test('[function] parse-grid') {
-    // Grid #1
+    // map
+    $grid: (columns: 12);
+    $test: parse-grid($grid);
+    $expect: $grid;
+    @include test-parsed-grid('parse-grid: map', $test, $expect);
+
+    // grid #1
     $grid: 960px 9 .25 static before show float right ltr;
     $test: parse-grid($grid);
     $expect: (
@@ -93,10 +99,9 @@
       gutter-position: before,
       show-grids: show,
     );
-
     @include test-parsed-grid('parse-grid: #1', $test, $expect);
 
-    // Grid #2
+    // grid #2
     $grid: auto (1 2 3 2 1) (4em 1em) fluid isolate show-columns border-box left rtl after;
     $test: parse-grid($grid);
     $expect: (
@@ -112,10 +117,9 @@
       show-grids: show-columns,
       box-model: border-box,
     );
-
     @include test-parsed-grid('parse-grid: #2', $test, $expect);
 
-    // Grid #3
+    // grid #3
     $grid: center split content-box hide;
     $test: parse-grid($grid);
     $expect: (
@@ -124,26 +128,21 @@
       show-grids: hide,
       box-model: content-box,
     );
-
     @include test-parsed-grid('parse-grid: #3', $test, $expect);
 
-    // Grid #4
+    // grid #4
     $grid: inside show-baseline;
     $test: parse-grid($grid);
     $expect: (
       gutter-position: inside,
       show-grids: show-baseline,
     );
-
     @include test-parsed-grid('parse-grid: #4', $test, $expect);
 
-    // Grid #5
+    // grid #5
     $grid: inside-static;
     $test: parse-grid($grid);
-    $expect: (
-      gutter-position: inside-static
-    );
-
+    $expect: (gutter-position: inside-static);
     @include test-parsed-grid('parse-grid: #5', $test, $expect);
   }
 
@@ -161,76 +160,15 @@
     @include assert-equal($a, $b,
       'Get-setting should be the same whether pre-parsed or not');
 
-    // border-box
+    // simple get
     @include assert-equal($a, border-box,
-      'Box-sizing of "#{$grid}" should be "border-box"');
+      'Returns local grid setting when available.');
 
-    // columns
-    $test: susy-get(columns, $pre);
-    $expect: 4;
+    // default
+    $grid: (columns: 12);
+    $test: susy-get(gutters, $grid);
+    $expect: map-get($susy-defaults, gutters);
     @include assert-equal($test, $expect,
-      'Columns of "#{$grid}" should be "#{$expect}"');
-
-    // gutters
-    $test: susy-get(gutters, $pre);
-    $expect: 1/4;
-    @include assert-equal($test, $expect,
-      'Gutters of "#{$grid}" should be "#{$expect}"');
-
-    // container
-    $test: susy-get(container, $pre);
-    $expect: 960px;
-    @include assert-equal($test, $expect,
-      'Container of "#{$grid}" should be "#{$expect}"');
-
-    // column-width
-    $test: susy-get(column-width, $pre);
-    $expect: false;
-    @include assert-equal($test, $expect,
-      'Column-width of "#{$grid}" should be "#{$expect}"');
-
-    // layout-method
-    $test: susy-get(layout-method, $pre);
-    $expect: float;
-    @include assert-equal($test, $expect,
-      'Isolate of "#{$grid}" should be "#{$expect}"');
-
-    // layout-math
-    $test: susy-get(layout-math, $pre);
-    $expect: fluid;
-    @include assert-equal($test, $expect,
-      'Static of "#{$grid}" should be "#{$expect}"');
-
-    // flow
-    $test: susy-get(flow, $pre);
-    $expect: rtl;
-    @include assert-equal($test, $expect,
-      'Static of "#{$grid}" should be "#{$expect}"');
-
-    // container-position
-    $test: susy-get(container-position, $pre);
-    $expect: right;
-    @include assert-equal($test, $expect,
-      'Static of "#{$grid}" should be "#{$expect}"');
-
-    // gutter-position
-    $test: susy-get(gutter-position, $pre);
-    $expect: before;
-    @include assert-equal($test, $expect,
-      'Static of "#{$grid}" should be "#{$expect}"');
-
-    // show-grids
-    $test: susy-get(show-grids, $pre);
-    $expect: show-columns;
-    @include assert-equal($test, $expect,
-      'Static of "#{$grid}" should be "#{$expect}"');
-
-    // auto container
-    $grid: auto;
-    $test: susy-get(container, $grid);
-    $expect: auto;
-    @include assert-equal($test, $expect,
-      'Container of "#{$grid}" should be "#{$expect}"');
+      'Returns global default grid setting, when local is missing.');
   }
-
 }

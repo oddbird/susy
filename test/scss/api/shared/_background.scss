@@ -17,17 +17,19 @@
       }
     }
     @include assert-output(
-      'Elements should show a horizontal red-green-blue gradient, and a vertical baseline'
+      'Elements should show a horizontal clipped red-green-blue gradient, and a vertical baseline'
     ) {
       .test {
-        @include background-grid-output($stops, show);
+        @include background-grid-output($stops, show, 24px);
       }
       .expect {
-        background:
-          get-baseline-gradient(),
+        background-image:
+          linear-gradient(to bottom, black 5%, rgba(black, 0) 5%),
           linear-gradient(to right, $stops...);
-        background-size: 100% $base-line-height;
+        background-size: 100% 24px;
         background-position: left top;
+        background-origin: border-box, content-box;
+        background-clip: border-box, content-box;
       }
     }
 
@@ -39,10 +41,14 @@
       }
     }
     @include assert-output(
-      'Elements should show a horizontal red-green-blue gradient, with no baseline'
+      'Elements should show a horizontal clipped red-green-blue gradient, without baseline'
     ) {
       .test { @include background-grid-output($stops, show-columns); }
-      .expect { background: linear-gradient(to right, $stops...); }
+      .expect {
+        background: linear-gradient(to right, $stops...);
+        background-origin: content-box;
+        background-clip: content-box;
+      }
     }
 
     // show-baseline
@@ -55,10 +61,10 @@
     @include assert-output(
       'Elements should show a vertical baseline'
     ) {
-      .test { @include background-grid-output($stops, show-baseline); }
+      .test { @include background-grid-output($stops, show-baseline, 24px); }
       .expect {
-        background: get-baseline-gradient();
-        background-size: 100% $base-line-height;
+        background: linear-gradient(to bottom, black 5%, rgba(black, 0) 5%);
+        background-size: 100% 24px;
         background-position: left top;
       }
     }

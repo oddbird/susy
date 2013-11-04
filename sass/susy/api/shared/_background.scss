@@ -13,36 +13,57 @@
   $line-height  : if(variable-exists(base-line-height), $base-line-height, false),
   $flow         : susy-get(flow)
 ) {
-  $to     : to($flow);
-
-  // set the proper background gradient
-  $background: ();
-
   @if $show and $show != hide {
+    $to           : to($flow);
+    $size         : null;
+    $clip         : ();
+    $background   : ();
 
-    @if $show != show-columns and $line-height and function-exists(get-baseline-gradient) {
-      $background: append($background, get-baseline-gradient(), comma);
+    @if $show != show-columns {
+      @if $line-height {
+        $baseline: if(variable-exists(grid-background-baseline-color), $grid-background-baseline-color, black);
+        $background: linear-gradient(to bottom, $baseline 5%, rgba($baseline, 0) 5%);
+        $size: 100% $line-height;
+        $clip: append($clip, border-box, comma);
+      } @else if $show == show-baseline {
+        @warn 'Please provide a $base-line-height variable if you want to display a baseline grid.';
+      }
     }
 
     @if $show != show-baseline {
       $background: append($background, linear-gradient(to $to, $stops...), comma);
+      $clip: append($clip, content-box, comma);
     }
 
-    // output styles
-    @if mixin-exists(background-image) {
-      @include background-image($background);
-    } @else {
-      background-image: $background;
-    }
-
-    @if $show != show-columns and $line-height {
-      @if mixin-exists(background-size) {
-        @include background-size(100% $line-height);
+    @if length($background) > 0 {
+      @if mixin-exists(background-image) {
+        @include background-image($background);
       } @else {
-        background-size: 100% $line-height;
+        background-image: $background;
       }
-      background-position: left top;
-    }
 
+      @if $size {
+        @if mixin-exists(background-size) {
+          @include background-size($size);
+        } @else {
+          background-size: $size;
+        }
+        background-position: left top;
+      }
+
+      @if index($clip, content-box) {
+        @if mixin-exists(background-origin) {
+          @include background-origin($clip);
+        } @else {
+          background-origin: $clip;
+        }
+
+        @if mixin-exists(background-clip) {
+          @include background-clip($clip);
+        } @else {
+          background-clip: $clip;
+        }
+      }
+    }
   }
 }

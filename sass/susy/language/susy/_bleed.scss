@@ -50,7 +50,7 @@
   @if length($trbl) == 1 {
     $bleed: map-merge($bleed, (span: 0 nth($trbl, 1)));
   } @else if length($trbl) == 2 {
-    $bleed: map-merge($bleed, (span: 0 nth($trbl, 1) 0 nth($trbl, 2)));
+    $bleed: map-merge($bleed, (span: 0 nth($trbl, 2) 0 nth($trbl, 1)));
   } @else {
     @warn 'bleed-x only takes 2 lengths, but #{length($trbl)} were passed.';
   }

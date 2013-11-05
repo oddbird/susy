@@ -947,25 +947,8 @@
   padding-right: 15%;
 }
 
-/* "Items should bleed 1 column, and retain their gutters" */
-.test__bleed .assert__inside .test {
-  margin-right: -12.5%;
-  padding-right: 13.75%;
-  margin-left: -12.5%;
-  padding-left: 13.75%;
-  -moz-box-sizing: content-box;
-  -webkit-box-sizing: content-box;
-  box-sizing: content-box;
-}
-.test__bleed .assert__inside .expect {
-  margin-left: -12.5%;
-  padding-left: 13.75%;
-  margin-right: -12.5%;
-  padding-right: 13.75%;
-}
-
 /* "Items should bleed 1em on all sides, and retain their static gutters" */
-.test__bleed .assert__explicit .test {
+.test__bleed .assert__inside .test {
   margin-top: -1em;
   padding-top: 1em;
   margin-right: -1em;
@@ -978,9 +961,68 @@
   -webkit-box-sizing: content-box;
   box-sizing: content-box;
 }
-.test__bleed .assert__explicit .expect {
-  margin: -1em;
-  padding: 1.5em;
+.test__bleed .assert__inside .expect {
+  margin-top: -1em;
+  padding-top: 1em;
+  margin-right: -1em;
+  padding-right: 1.5em;
+  margin-bottom: -1em;
+  padding-bottom: 1em;
+  margin-left: -1em;
+  padding-left: 1.5em;
+}
+
+/* - [mixin] bleed-x */
+/* "Items should bleed 1 column left, and 2 columns right" */
+.test__bleed-x .assert__simple .test {
+  margin-right: -30%;
+  padding-right: 30%;
+  margin-left: -15%;
+  padding-left: 15%;
+  -moz-box-sizing: content-box;
+  -webkit-box-sizing: content-box;
+  box-sizing: content-box;
+}
+.test__bleed-x .assert__simple .expect {
+  margin-left: -15%;
+  padding-left: 15%;
+  margin-right: -30%;
+  padding-right: 30%;
+}
+
+/* "Items should bleed 1 column, and retain their gutters" */
+.test__bleed-x .assert__inside .test {
+  margin-right: -12.5%;
+  padding-right: 13.75%;
+  margin-left: -12.5%;
+  padding-left: 13.75%;
+  -moz-box-sizing: content-box;
+  -webkit-box-sizing: content-box;
+  box-sizing: content-box;
+}
+.test__bleed-x .assert__inside .expect {
+  margin-left: -12.5%;
+  padding-left: 13.75%;
+  margin-right: -12.5%;
+  padding-right: 13.75%;
+}
+
+/* - [mixin] bleed-y */
+/* "Items should bleed .5em top, and 1em bottom." */
+.test__bleed-y .assert__simple .test {
+  margin-top: -0.5em;
+  padding-top: 0.5em;
+  margin-bottom: -1em;
+  padding-bottom: 1em;
+  -moz-box-sizing: content-box;
+  -webkit-box-sizing: content-box;
+  box-sizing: content-box;
+}
+.test__bleed-y .assert__simple .expect {
+  margin-top: -.5em;
+  padding-top: .5em;
+  margin-bottom: -1em;
+  padding-bottom: 1em;
 }
 
 /*  - [function] parse-bleed (1 Assertions, 1 Passed, 0 Failed) */

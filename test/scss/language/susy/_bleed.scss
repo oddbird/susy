@@ -5,7 +5,6 @@
 
   // bleed [mixin]
   // -------------
-
   @include output-test('bleed') {
 
     // simple
@@ -15,12 +14,57 @@
     @include assert-output(
       'Items should bleed 1 column outside their nested context'
     ) {
-      .test { @include bleed-x(1 of 7); }
+      .test { @include bleed(0 1 of 7); }
       .expect {
         margin-left: -15%;
         padding-left: 15%;
         margin-right: -15%;
         padding-right: 15%;
+      }
+    }
+
+    // explicit inside-static
+    @include assert-setup('inside', $grid: 10 (4em 1em) inside-static) {
+      .nest {
+        @include rhythm-margins;
+        @include squish(1);
+      }
+    }
+    @include assert-output(
+      'Items should bleed 1em on all sides, and retain their static gutters'
+    ) {
+      .test { @include bleed(1em of 8); }
+      .expect {
+        margin-top: -1em;
+        padding-top: 1em;
+        margin-right: -1em;
+        padding-right: 1.5em;
+        margin-bottom: -1em;
+        padding-bottom: 1em;
+        margin-left: -1em;
+        padding-left: 1.5em;
+      }
+    }
+  }
+
+  // bleed-x [mixin]
+  // ---------------
+
+  @include output-test('bleed-x') {
+
+    // simple
+    @include assert-setup('simple', $grid: 11 .5) {
+      .nest { @include squish(2); }
+    }
+    @include assert-output(
+      'Items should bleed 1 column left, and 2 columns right'
+    ) {
+      .test { @include bleed-x(1 2 of 7); }
+      .expect {
+        margin-left: -15%;
+        padding-left: 15%;
+        margin-right: -30%;
+        padding-right: 30%;
       }
     }
 
@@ -39,22 +83,29 @@
         padding-right: 13.75%;
       }
     }
+  }
 
-    // explicit inside-static
-    @include assert-setup('explicit', $grid: 10 (4em 1em) inside-static) {
+  // bleed-y [mixin]
+  // ---------------
+
+  @include output-test('bleed-y') {
+
+    // simple
+    @include assert-setup('simple', $grid: 11 .5) {
       .nest {
-        @include leader;
-        @include trailer;
+        @include rhythm-margins(1);
         @include squish(1);
       }
     }
     @include assert-output(
-      'Items should bleed 1em on all sides, and retain their static gutters'
+      'Items should bleed .5em top, and 1em bottom.'
     ) {
-      .test { @include bleed(1em of 8); }
+      .test { @include bleed-y(.5em 1em); }
       .expect {
-        margin: -1em;
-        padding: 1.5em;
+        margin-top: -.5em;
+        padding-top: .5em;
+        margin-bottom: -1em;
+        padding-bottom: 1em;
       }
     }
   }

@@ -429,33 +429,6 @@
     </div>
   </section>
 
-  <!-- bleed -->
-  <section class="test__bleed">
-    <h1>bleed [mixin]</h1>
-
-    <div class="assert__simple">
-      <div class="nest">
-        <div class="test">bleed</div>
-        <div class="expect">expect</div>
-      </div>
-    </div>
-
-    <div class="assert__inside">
-      <div class="nest">
-        <div class="test">bleed</div>
-        <div class="expect">expect</div>
-      </div>
-    </div>
-
-    <div class="assert__explicit">
-      <div class="nest">
-        <div class="test">bleed</div>
-        <div class="expect">expect</div>
-      </div>
-    </div>
-
-  </section>
-
 </article>
 
 <!--
@@ -495,6 +468,71 @@
     <div class="assert__nested">
       <div class="nest">
         <div class="test">pad</div>
+        <div class="expect">expect</div>
+      </div>
+    </div>
+  </section>
+
+</article>
+
+<!--
+    Bleed Syntax
+    ------------ -->
+
+<article class="test-module">
+  <h1>Bleed Syntax</h1>
+
+  <!-- bleed -->
+  <section class="test__bleed">
+    <h1>bleed [mixin]</h1>
+
+    <div class="assert__simple">
+      <div class="nest">
+        <div class="test">bleed</div>
+        <div class="expect">expect</div>
+      </div>
+    </div>
+
+    <div class="assert__inside">
+      <div class="nest">
+        <div class="test">bleed</div>
+      </div>
+      <div class="nest">
+        <div class="expect">expect</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- bleed-x -->
+  <section class="test__bleed-x">
+    <h1>bleed-x [mixin]</h1>
+
+    <div class="assert__simple">
+      <div class="nest">
+        <div class="test">bleed</div>
+        <div class="expect">expect</div>
+      </div>
+    </div>
+
+    <div class="assert__inside">
+      <div class="nest">
+        <div class="test">bleed</div>
+      </div>
+      <div class="nest">
+        <div class="expect">expect</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- bleed-y -->
+  <section class="test__bleed-y">
+    <h1>bleed-y [mixin]</h1>
+
+    <div class="assert__simple">
+      <div class="nest">
+        <div class="test">bleed</div>
+      </div>
+      <div class="nest">
         <div class="expect">expect</div>
       </div>
     </div>

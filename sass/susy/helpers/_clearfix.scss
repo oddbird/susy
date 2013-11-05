@@ -6,14 +6,10 @@
 // Susy Clearfix
 // -------------
 @mixin susy-clearfix {
-  @if mixin-exists(clearfix) {
-    @include clearfix;
-  } @else {
-    *zoom: 1;
-    &:after {
-      content    : " ";
-      display    : block;
-      clear      : both;
-    }
+  *zoom: 1;
+  &:after {
+    content    : " ";
+    display    : block;
+    clear      : both;
   }
 }

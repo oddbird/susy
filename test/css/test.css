@@ -138,6 +138,8 @@
 /* "Background-grid should show 7 columns with .5 gutters" */
 .test__background-grid .assert__outside .test {
   background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, transparent 10%, transparent 15%, rgba(102, 102, 255, 0.25) 15%, rgba(179, 179, 255, 0.25) 25%, transparent 25%, transparent 30%, rgba(102, 102, 255, 0.25) 30%, rgba(179, 179, 255, 0.25) 40%, transparent 40%, transparent 45%, rgba(102, 102, 255, 0.25) 45%, rgba(179, 179, 255, 0.25) 55.0%, transparent 55.0%, transparent 60%, rgba(102, 102, 255, 0.25) 60%, rgba(179, 179, 255, 0.25) 70%, transparent 70%, transparent 75%, rgba(102, 102, 255, 0.25) 75%, rgba(179, 179, 255, 0.25) 85%, transparent 85%, transparent 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
+  -webkit-background-origin: content-box;
+  -webkit-background-clip: content-box;
   background-origin: content-box;
   background-clip: content-box;
 }
@@ -149,7 +151,9 @@
 
 /* "Background-grid should show 8 columns with inside gutters" */
 .test__background-grid .assert__inside .test {
-  background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 12.82051%, rgba(102, 102, 255, 0.25) 12.5%, rgba(179, 179, 255, 0.25) 25.64103%, rgba(102, 102, 255, 0.25) 25%, rgba(179, 179, 255, 0.25) 38.46154%, rgba(102, 102, 255, 0.25) 37.5%, rgba(179, 179, 255, 0.25) 51.28205%, rgba(102, 102, 255, 0.25) 50%, rgba(179, 179, 255, 0.25) 64.10256%, rgba(102, 102, 255, 0.25) 62.5%, rgba(179, 179, 255, 0.25) 76.92308%, rgba(102, 102, 255, 0.25) 75%, rgba(179, 179, 255, 0.25) 89.74359%, rgba(102, 102, 255, 0.25) 87.5%, rgba(179, 179, 255, 0.25));
+  background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 12.5%, rgba(102, 102, 255, 0.25) 12.5%, rgba(179, 179, 255, 0.25) 25%, rgba(102, 102, 255, 0.25) 25%, rgba(179, 179, 255, 0.25) 37.5%, rgba(102, 102, 255, 0.25) 37.5%, rgba(179, 179, 255, 0.25) 50%, rgba(102, 102, 255, 0.25) 50%, rgba(179, 179, 255, 0.25) 62.5%, rgba(102, 102, 255, 0.25) 62.5%, rgba(179, 179, 255, 0.25) 75%, rgba(102, 102, 255, 0.25) 75%, rgba(179, 179, 255, 0.25) 87.5%, rgba(102, 102, 255, 0.25) 87.5%, rgba(179, 179, 255, 0.25));
+  -webkit-background-origin: content-box;
+  -webkit-background-clip: content-box;
   background-origin: content-box;
   background-clip: content-box;
 }
@@ -191,6 +195,8 @@
 .test__overlay-grid .assert__overlay-grid .test head:hover ~ .sym::before,
 .test__overlay-grid .assert__overlay-grid .test head:hover ~ body .sym::before {
   background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, transparent 10%, transparent 15%, rgba(102, 102, 255, 0.25) 15%, rgba(179, 179, 255, 0.25) 25%, transparent 25%, transparent 30%, rgba(102, 102, 255, 0.25) 30%, rgba(179, 179, 255, 0.25) 40%, transparent 40%, transparent 45%, rgba(102, 102, 255, 0.25) 45%, rgba(179, 179, 255, 0.25) 55.0%, transparent 55.0%, transparent 60%, rgba(102, 102, 255, 0.25) 60%, rgba(179, 179, 255, 0.25) 70%, transparent 70%, transparent 75%, rgba(102, 102, 255, 0.25) 75%, rgba(179, 179, 255, 0.25) 85%, transparent 85%, transparent 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
+  -webkit-background-origin: content-box;
+  -webkit-background-clip: content-box;
   background-origin: content-box;
   background-clip: content-box;
 }
@@ -201,6 +207,8 @@
 .test__overlay-grid .assert__overlay-grid .test head:hover ~ .asym::before,
 .test__overlay-grid .assert__overlay-grid .test head:hover ~ body .asym::before {
   background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 4em, transparent 4em, transparent 5em, rgba(102, 102, 255, 0.25) 5em, rgba(179, 179, 255, 0.25) 13em, transparent 13em, transparent 14em, rgba(102, 102, 255, 0.25) 14em, rgba(179, 179, 255, 0.25) 26em, transparent 26em, transparent 27em, rgba(102, 102, 255, 0.25) 27em, rgba(179, 179, 255, 0.25) 35em, transparent 35em, transparent 36em, rgba(102, 102, 255, 0.25) 36em, rgba(179, 179, 255, 0.25));
+  -webkit-background-origin: content-box;
+  -webkit-background-clip: content-box;
   background-origin: content-box;
   background-clip: content-box;
 }
@@ -234,6 +242,8 @@
 .test__overlay-grid .assert__overlay-grid .expect head:hover ~ .sym::before,
 .test__overlay-grid .assert__overlay-grid .expect head:hover ~ body .sym::before {
   background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, transparent 10%, transparent 15%, rgba(102, 102, 255, 0.25) 15%, rgba(179, 179, 255, 0.25) 25%, transparent 25%, transparent 30%, rgba(102, 102, 255, 0.25) 30%, rgba(179, 179, 255, 0.25) 40%, transparent 40%, transparent 45%, rgba(102, 102, 255, 0.25) 45%, rgba(179, 179, 255, 0.25) 55.0%, transparent 55.0%, transparent 60%, rgba(102, 102, 255, 0.25) 60%, rgba(179, 179, 255, 0.25) 70%, transparent 70%, transparent 75%, rgba(102, 102, 255, 0.25) 75%, rgba(179, 179, 255, 0.25) 85%, transparent 85%, transparent 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
+  -webkit-background-origin: content-box;
+  -webkit-background-clip: content-box;
   background-origin: content-box;
   background-clip: content-box;
 }
@@ -244,15 +254,17 @@
 .test__overlay-grid .assert__overlay-grid .expect head:hover ~ .asym::before,
 .test__overlay-grid .assert__overlay-grid .expect head:hover ~ body .asym::before {
   background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 4em, transparent 4em, transparent 5em, rgba(102, 102, 255, 0.25) 5em, rgba(179, 179, 255, 0.25) 13em, transparent 13em, transparent 14em, rgba(102, 102, 255, 0.25) 14em, rgba(179, 179, 255, 0.25) 26em, transparent 26em, transparent 27em, rgba(102, 102, 255, 0.25) 27em, rgba(179, 179, 255, 0.25) 35em, transparent 35em, transparent 36em, rgba(102, 102, 255, 0.25) 36em, rgba(179, 179, 255, 0.25));
+  -webkit-background-origin: content-box;
+  -webkit-background-clip: content-box;
   background-origin: content-box;
   background-clip: content-box;
 }
 
-/*  - FAIL: [function] get-grid-color-stops (5 Assertions, 3 Passed, 2 Failed) */
+/*  - [function] get-grid-color-stops (5 Assertions, 5 Passed, 0 Failed) */
 /*  
     1 Tests:
-    - 0 Passed
-    - 1 Failed */
+    - 1 Passed
+    - 0 Failed */
 /*  
 
 ### Container Syntax ------ */
@@ -264,6 +276,8 @@
   margin-left: auto;
   margin-right: auto;
   background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, transparent 10%, transparent 15%, rgba(102, 102, 255, 0.25) 15%, rgba(179, 179, 255, 0.25) 25%, transparent 25%, transparent 30%, rgba(102, 102, 255, 0.25) 30%, rgba(179, 179, 255, 0.25) 40%, transparent 40%, transparent 45%, rgba(102, 102, 255, 0.25) 45%, rgba(179, 179, 255, 0.25) 55.0%, transparent 55.0%, transparent 60%, rgba(102, 102, 255, 0.25) 60%, rgba(179, 179, 255, 0.25) 70%, transparent 70%, transparent 75%, rgba(102, 102, 255, 0.25) 75%, rgba(179, 179, 255, 0.25) 85%, transparent 85%, transparent 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
+  -webkit-background-origin: content-box;
+  -webkit-background-clip: content-box;
   background-origin: content-box;
   background-clip: content-box;
 }
@@ -295,6 +309,8 @@
   margin-left: 0;
   margin-right: auto;
   background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, transparent 10%, transparent 12.5%, rgba(102, 102, 255, 0.25) 12.5%, rgba(179, 179, 255, 0.25) 32.5%, transparent 32.5%, transparent 35%, rgba(102, 102, 255, 0.25) 35%, rgba(179, 179, 255, 0.25) 65%, transparent 65%, transparent 67.5%, rgba(102, 102, 255, 0.25) 67.5%, rgba(179, 179, 255, 0.25) 87.5%, transparent 87.5%, transparent 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
+  -webkit-background-origin: content-box;
+  -webkit-background-clip: content-box;
   background-origin: content-box;
   background-clip: content-box;
 }
@@ -962,8 +978,11 @@
 /* "Elements should show a horizontal clipped red-green-blue gradient, and a vertical baseline" */
 .test__background-grid-output .assert__show .test {
   background-image: linear-gradient(to bottom, black 5%, transparent 5%), linear-gradient(to right, #ffcccc, #ccffcc 25%, #ccccff);
-  background-size: 100% 24px;
   background-position: left top;
+  -webkit-background-size: 100% 24px;
+  background-size: 100% 24px;
+  -webkit-background-origin: border-box, content-box;
+  -webkit-background-clip: border-box, content-box;
   background-origin: border-box, content-box;
   background-clip: border-box, content-box;
 }
@@ -978,6 +997,8 @@
 /* "Elements should show a horizontal clipped red-green-blue gradient, without baseline" */
 .test__background-grid-output .assert__show-columns .test {
   background-image: linear-gradient(to right, #ffcccc, #ccffcc 25%, #ccccff);
+  -webkit-background-origin: content-box;
+  -webkit-background-clip: content-box;
   background-origin: content-box;
   background-clip: content-box;
 }
@@ -990,8 +1011,9 @@
 /* "Elements should show a vertical baseline" */
 .test__background-grid-output .assert__show-baseline .test {
   background-image: linear-gradient(to bottom, black 5%, transparent 5%);
-  background-size: 100% 24px;
   background-position: left top;
+  -webkit-background-size: 100% 24px;
+  background-size: 100% 24px;
 }
 .test__background-grid-output .assert__show-baseline .expect {
   background: linear-gradient(to bottom, black 5%, transparent 5%);

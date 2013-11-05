@@ -11,10 +11,10 @@ GIT
 
 GIT
   remote: git://github.com/ericam/true
-  revision: ad3bc556c3d18621f4deef63532d89d6fc2f7764
+  revision: 052beae8319138ba3b919dd512f40970414ee908
   branch: master
   specs:
-    true (0.2.0.rc.1)
+    true (0.2.0.rc.2)
       sass (~> 3.3.0.rc.1)
 
 GIT

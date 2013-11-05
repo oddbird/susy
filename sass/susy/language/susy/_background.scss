@@ -121,7 +121,8 @@ $susy-debug: () !default;
     @if $location == 1 {
       $this-stop: append($this-stop, $color, comma);
     } @else {
-      $start: get-isolation(parse-span(1 at $location $grid));
+      $start: parse-span(1 at $location $grid);
+      $start: get-isolation($start);
       $this-stop: append($this-stop, $color $start, comma);
     }
 
@@ -146,14 +147,7 @@ $susy-debug: () !default;
         $end-color: $trans;
       }
 
-      $end: (
-        span: 1,
-        location: $location + 1,
-        columns: $columns,
-        gutters: $gutters,
-        column-width: $column-width,
-        layout-math: $layout-math,
-      );
+      $end: parse-span(1 at ($location + 1) $grid);
       $end: get-isolation($end);
       $this-stop: append($this-stop, $end-color $end, comma);
     }

@@ -10,11 +10,7 @@
 @mixin susy-box-sizing(
   $model: content-box
 ) {
-  @if mixin-exists(box-sizing) {
-    @include box-sizing($model);
-  } @else {
-    -moz-box-sizing: $model;
-    -webkit-box-sizing: $model;
-    box-sizing: $model;
-  }
+  -moz-box-sizing: $model;
+  -webkit-box-sizing: $model;
+  box-sizing: $model;
 }

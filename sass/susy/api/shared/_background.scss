@@ -43,26 +43,16 @@
       }
 
       @if $size {
-        @if mixin-exists(background-size) {
-          @include background-size($size);
-        } @else {
-          background-size: $size;
-        }
         background-position: left top;
+        -webkit-background-size: $size;
+        background-size: $size;
       }
 
       @if index($clip, content-box) {
-        @if mixin-exists(background-origin) {
-          @include background-origin($clip);
-        } @else {
-          background-origin: $clip;
-        }
-
-        @if mixin-exists(background-clip) {
-          @include background-clip($clip);
-        } @else {
-          background-clip: $clip;
-        }
+        -webkit-background-origin: $clip;
+        -webkit-background-clip: $clip;
+        background-origin: $clip;
+        background-clip: $clip;
       }
     }
   }

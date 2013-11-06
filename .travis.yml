@@ -1,0 +1,4 @@
+language: ruby
+script: "rake"
+rvm:
+  - 2.0.0

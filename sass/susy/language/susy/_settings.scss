@@ -35,7 +35,7 @@ $susy-keywords: (
 
 // User Settings
 // -------------
-// - Override the $susy variable with a map of your own settings.
+// - Define the $susy variable with a map of your own settings.
 // - Set EITHER $column-width OR $container
 // - Use $column-width for static layouts
-$susy: $susy-defaults !default;
+$susy: () !default;

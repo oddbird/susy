@@ -6,9 +6,9 @@
 // Apply to any layout element that should force a new layout row.
 // - [$flow]  : ltr | rtl
 @mixin row(
-  $flow: $flow
+  $flow: susy-get(flow)
 ) {
-  @include pie-clearfix;
+  @include susy-clearfix;
   clear: from($flow);
 }
 
@@ -29,7 +29,7 @@
 // -----
 // - [$flow]  : ltr | rtl
 @mixin first(
-  $flow: $flow
+  $flow: susy-get(flow)
 ) {
   @include float-first($flow);
 }
@@ -38,7 +38,7 @@
 // -----
 // - [$flow]  : ltr | rtl
 @mixin alpha(
-  $flow: $flow
+  $flow: susy-get(flow)
 ) {
   @include float-first($flow);
 }
@@ -69,7 +69,7 @@
 // ----
 // - [$flow]  : ltr | rtl
 @mixin last(
-  $flow: $flow
+  $flow: susy-get(flow)
 ) {
   @include float-last($flow);
 }
@@ -78,7 +78,7 @@
 // -----
 // - [$flow]  : ltr | rtl
 @mixin omega(
-  $flow: $flow
+  $flow: susy-get(flow)
 ) {
   @include float-last($flow);
 }

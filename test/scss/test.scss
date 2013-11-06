@@ -7,7 +7,6 @@
 // Testing
 // -------
 
-@import "test/settings";
 @import "test/helpers";
 
 // Output
@@ -28,6 +27,8 @@ $output-test-results: true;
 // Helpers
 // -------
 
+@import "helpers/box-sizing";
+@import "helpers/clearfix";
 @import "helpers/direction";
 @import "helpers/nth";
 

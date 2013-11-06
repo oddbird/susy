@@ -1,0 +1,109 @@
+// Bleed Syntax
+// ============
+
+// Bleed
+// -----
+// Add negative margins, and equal positive padding to create bleed.
+// - $span  : <span>
+@mixin bleed(
+  $bleed: 0 gutter()
+) {
+  $bleed    : parse-bleed($bleed);
+  $context  : get-span-context($bleed);
+  $trbl     : span-get(span, $bleed);
+  $spans    : (top: 0, right: 0, bottom: 0, left: 0);
+
+  $i: 1;
+  @each $span in $trbl {
+    $span: span(map-merge($bleed, (span: $span)));
+    @if $i == 1 {
+      $spans: map-merge($spans, (top: $span, right: $span, bottom: $span, left: $span));
+    } @else if $i == 2 {
+      $spans: map-merge($spans, (right: $span, left: $span));
+    } @else if $i == 3 {
+      $spans: map-merge($spans, (bottom: $span));
+    } @else if $i == 4 {
+      $spans: map-merge($spans, (left: $span));
+    }
+    $i: $i + 1;
+  }
+
+  @each $side, $span in $spans {
+    $padding: $span;
+    @if is-inside($bleed) and ($side == right or $side == left) {
+      $gutter: gutter($context);
+      $padding: if(comparable($padding, $gutter), $padding + $gutter, $padding);
+    }
+    margin-#{$side}: if($span != 0, 0 - $span, null);
+    padding-#{$side}: if($padding != 0, $padding, null);
+  }
+
+  @include susy-box-sizing(content-box);
+}
+
+@mixin bleed-x(
+  $bleed: gutter()
+) {
+  $bleed  : parse-bleed($bleed);
+  $trbl   : span-get(span, $bleed);
+
+  @if length($trbl) == 1 {
+    $bleed: map-merge($bleed, (span: 0 nth($trbl, 1)));
+  } @else if length($trbl) == 2 {
+    $bleed: map-merge($bleed, (span: 0 nth($trbl, 2) 0 nth($trbl, 1)));
+  } @else {
+    @warn 'bleed-x only takes 2 lengths, but #{length($trbl)} were passed.';
+  }
+
+  @include bleed($bleed);
+}
+
+@mixin bleed-y(
+  $bleed: if(function-exists(rhythm), rhythm(1), 1em)
+) {
+  $bleed  : parse-bleed($bleed);
+  $trbl   : span-get(span, $bleed);
+
+  @if length($trbl) == 1 {
+    $bleed: map-merge($bleed, (span: nth($trbl, 1) 0));
+  } @else if length($trbl) == 2 {
+    $bleed: map-merge($bleed, (span: nth($trbl, 1) 0 nth($trbl, 2) 0));
+  } @else {
+    @warn 'bleed-y only takes 2 lengths, but #{length($trbl)} were passed.';
+  }
+
+  @include bleed($bleed);
+}
+
+// Parse Bleed
+// -----------
+// Parse the bleed syntax, returning a TRBL list of spans
+// - $bleed: <bleed>
+@function parse-bleed(
+  $bleed
+) {
+  $return: $bleed;
+
+  @if type-of($bleed) != map {
+    $return: parse-span($bleed);
+    $span-list: ();
+    $keywords: false;
+    $i: 1;
+
+    @while not $keywords and $i <= length($bleed) {
+      $item: nth($bleed, $i);
+
+      @if type-of($item) == number {
+        $span-list: append($span-list, $item);
+      } @else {
+        $keywords: true;
+      }
+
+      $i: $i + 1;
+    }
+
+    $return: map-merge($return, (span: $span-list));
+  }
+
+  @return map-merge($return, (outer: outer));
+}

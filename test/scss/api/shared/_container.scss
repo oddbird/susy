@@ -33,6 +33,18 @@
         margin-right: 0;
       }
     }
-  }
 
+    // auto width
+    @include assert-setup('auto');
+    @include assert-output(
+      'Containers should have 100% width.'
+    ) {
+      .test { @include container-output(null); }
+      .expect {
+        max-width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+      }
+    }
+  }
 }

@@ -9,7 +9,7 @@
   @include output-test('gallery') {
     // sym
     @include assert-setup('sym', $grid: 6 .8) {
-      .nest { @include clearfix; }
+      .nest { @include susy-clearfix; }
       .test, .expect { @include trailer(0); }
     }
     @include assert-output(
@@ -37,7 +37,7 @@
 
     // inside
     @include assert-setup('inside', $grid: 8 .25 inside) {
-      .nest { @include clearfix; }
+      .nest { @include susy-clearfix; }
       .test, .expect { @include trailer(0); }
     }
     @include assert-output(
@@ -72,7 +72,7 @@
 
     // inside-static
     @include assert-setup('inside-static', $grid: 100% 6 (5em 4em) inside-static) {
-      .nest { @include clearfix; }
+      .nest { @include susy-clearfix; }
       .test, .expect { @include trailer(0); }
     }
     @include assert-output(
@@ -103,7 +103,7 @@
 
     // asymmetrical
     @include assert-setup('asym', $grid: (1 2 1 2 2 1) 1/5) {
-      .nest { @include clearfix; }
+      .nest { @include susy-clearfix; }
       .test, .expect { @include trailer(0); }
     }
     @include assert-output(
@@ -133,7 +133,7 @@
 
     // asymmetrical inside
     @include assert-setup('asym-inside', $grid: (1 2 4 1) .5 inside) {
-      .nest { @include clearfix; }
+      .nest { @include susy-clearfix; }
       .test, .expect { @include trailer(0); }
     }
     @include assert-output(

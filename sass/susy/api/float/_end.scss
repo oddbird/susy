@@ -5,15 +5,12 @@
 // ----------
 // - [$flow]  : ltr | rtl
 @mixin float-last(
-  $flow: $flow,
-  $last-flow: $last-flow
+  $flow: susy-get(flow),
+  $last-flow: susy-get(last-flow)
 ) {
   $to: to($flow);
 
-  @if $last-flow == to {
-    float: $to;
-  }
-
+  float: if($last-flow == to, $to, null);
   margin-#{$to}: 0;
 }
 
@@ -21,9 +18,7 @@
 // -----------
 // - [$flow]  : ltr | rtl
 @mixin float-first(
-  $flow: $flow
+  $flow: susy-get(flow)
 ) {
-  $from: from($flow);
-
-  margin-#{$from}: 0;
+  margin-#{from($flow)}: 0;
 }

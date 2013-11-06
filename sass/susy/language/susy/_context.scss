@@ -1,0 +1,34 @@
+// Context Syntax
+// ==============
+
+// Nested [function]
+// -----------------
+// Return a subset grid for nested context.
+// - $context   : <span>
+@function nested(
+  $context
+) {
+  $context    : parse-span($context);
+  $span       : span-get(span, $context);
+  $location   : span-get(location, $context);
+  $columns    : span-get(columns, $context);
+
+  @return get-columns($span, $location, $columns);
+}
+
+// Nested [mixin]
+// --------------
+// Use a subset grid for a nested context
+// - $context   : <span>
+// - @content   : <content>
+@mixin nested(
+  $context
+) {
+  $context    : parse-span($context);
+  $old        : susy-get(columns);
+  $susy       : map-merge($susy, (columns: nested($context))) !global;
+
+  @content;
+
+  $susy       : map-merge($susy, (columns: $old)) !global;
+}

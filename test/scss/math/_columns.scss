@@ -7,120 +7,142 @@
   // --------------
 
   @include test('[function] is-symmetrical()') {
-    $sym: 12;
-    $asym: 1 2 4 1 2 1;
-    $baz: compact(4);
+    $sym      : 12;
+    $asym     : 1 2 4 1 2 1;
+    $single   : (4,);
 
-    // 12 is a symmetrical grid.
-    $s: is-symmetrical($sym);
-    @include assert-true($s,
-      'Simple number should be symmetrical grid.');
+    // symmetrical
+    $sym: is-symmetrical($sym);
+    @include assert-true($sym,
+      'Number is parsed as symmetrical grid.');
 
-    // (1 2 4 1 2 1) is not a symmetrical grid.
-    $a: is-symmetrical($asym);
-    @include assert-false($a,
-      'List should be asymmetrical grid.');
+    // asymmetrical
+    $asym: is-symmetrical($asym);
+    @include assert-false($asym,
+      'List is parsed as asymmetrical grid.');
 
-    // compact(4) is not a symmetrical grid (because it is a list).
-    $b: is-symmetrical($baz);
-    @include assert-false($b,
-      'Single-item list should be asymmetrical grid.');
+    // single-item list
+    $single: is-symmetrical($single);
+    @include assert-false($single,
+      'Single-item list is parsed as asymmetrical grid.');
   }
 
   // Column Count
   // ------------
 
   @include test('[function] column-count()') {
-    $sym: 12;
-    $asym: 1 2 4 1 2 1;
+    $sym    : 12;
+    $asym   : 1 2 4 1 2 1;
 
-    // A symmetrical grid is equal to its column count.
-    $s-count: column-count($sym);
-    @include assert-equal($s-count, $sym,
-      'Symmetrical grid-count should equal $columns setting.');
+    // symmetrical
+    $count: column-count($sym);
+    @include assert-equal($count, $sym,
+      'Symmetrical grid-count is equal to columns setting.');
 
-    // An asymmetrical grid has a column-count equal to its length.
-    $a-count: column-count($asym);
-    $a-length: length($asym);
-    @include assert-equal($a-count, $a-length,
-      'Asymmetrical grid-count should equal $columns length.');
+    // asymmetrical
+    $count: column-count($asym);
+    $length: length($asym);
+    @include assert-equal($count, $length,
+      'Asymmetrical grid-count is equal to columns list length.');
   }
 
   // Column Sum
   // ----------
 
-  @include test('[function] symmetrical column-sum()') {
-    $cols   : 9;
-    $guts   : .5;
-    $sum    : column-sum($cols, $guts);
-    $outer  : column-sum($cols, $guts, outer);
+  @include test('[function] column-sum() — symmetrical') {
+    $columns: 9;
+    $gutters: .5;
 
+    // standard (inner)
+    $sum: column-sum($columns, $gutters);
+    $inner: 13;
     @include assert-equal($sum, 13,
-      'Column-sum for "9 .5" should be "13".');
+      'Symmetrical column-sum properly adds columns and gutters.');
 
-    @include assert-equal($outer, 13.5,
-      'Outer column-sum for "9 .5" should be "13.5".');
+    // outer
+    $sum: column-sum($columns, $gutters, outer);
+    $outer: $inner + $gutters;
+    @include assert-equal($sum, $outer,
+      'Outer column-sum includes an extra gutter.');
+
+    // double-outer
+    $sum: column-sum($columns, $gutters, double);
+    $double: $inner + ($gutters * 2);
+    @include assert-equal($sum, $double,
+      'Double-outer column-sum includes two extra gutters.');
   }
 
-  @include test('[function] asymmetrical column-sum()') {
-    $sum    : column-sum(1 2 3 1 2, .25);
-    $outer  : column-sum(1 2 3 1 2, .25, outer);
+  @include test('[function] column-sum() — asymmetrical') {
+    $columns: 1 2 3 1 2;
+    $gutters: .25;
 
-    @include assert-equal($sum, 10,
-      'Column-sum for "(1 2 3 1 2) .25" should be "10".');
+    // standard (inner)
+    $sum: column-sum($columns, $gutters);
+    $inner: 10;
+    @include assert-equal($sum, $inner,
+      'Asymmetrical column-sum properly adds columns and gutters.');
 
-    @include assert-equal($outer, 10.25,
-      'Outer column-sum for "(1 2 3 1 2) .25" should be "10.25".');
+    // outer
+    $sum: column-sum($columns, $gutters, outer);
+    $outer: $inner + $gutters;
+    @include assert-equal($sum, $outer,
+      'Outer column-sum includes an extra gutter.');
+
+    // double-outer
+    $sum: column-sum($columns, $gutters, double);
+    $double: $inner + ($gutters * 2);
+    @include assert-equal($sum, $double,
+      'Double-outer column-sum includes two extra gutters.');
   }
 
   // Get Columns
   // -----------
 
-  @include test('[function] symmetrical get-columns()') {
+  @include test('[function] get-columns()') {
     $span: 3;
+
+    // symmetrical
     $context: 12;
-    $sub: get-columns($span, 4, $context);
+    $test: get-columns($span, 4, $context);
+    @include assert-equal($test, $span,
+      'Subset is equal to the span.');
 
-    @include assert-equal($sub, $span,
-      'Symmetrical get-columns subset should be equal to its span.');
-  }
-
-  @include test('[function] asymmetrical get-columns()') {
-    $span: 3;
+    // asymmetrical
     $context: 1 2 3 1 2;
-    $sub: get-columns($span, 2, $context);
+    $test: get-columns($span, 2, $context);
+    $expect: 2 3 1;
+    @include assert-equal($test, $expect,
+      'Subset is an extracted list of span length, starting at location.');
 
-    @include assert-equal($sub, 2 3 1,
-      'Get-columns subset for "3 of (1 2 3 1 2) at 2" should be "2 3 1".');
+    // asymmetrical (no location)
+    $test: get-columns($span, null, $context);
+    $expect: 1 2 3;
+    @include assert-equal($test, $expect,
+      'Asymmetrical context without location returns first-position subset.');
   }
 
   // Get Column Span Sum
   // -------------------
 
-  @include test('[function] symmetrical get-column-span-sum()') {
-    $cols: 12;
-    $guts: 1/8;
+  @include test('[function] get-column-span-sum()') {
+    $span: 3;
+    $location: 2;
 
-    $sum: get-column-span-sum(3, 2, $cols, $guts);
-    @include assert-equal($sum, 3.25,
-      'Inner span-sum for "3 of 12 1/8 at 2" should be "3.25"');
+    // symmetrical
+    $columns: 12;
+    $gutters: 1/8;
+    $test: get-column-span-sum($span, $location, $columns, $gutters);
+    $expect: column-sum($span, $gutters);
+    @include assert-equal($test, $expect,
+      'Symmetrical column-span-sum is equal to column-sum of span.');
 
-    $sum: get-column-span-sum(3, last, $cols, $guts, outer);
-    @include assert-equal($sum, 3.375,
-      'Outer span-sum for "last 3 of 12 1/8" should be "3.375".');
-  }
-
-  @include test('[function] asymmetrical get-column-span-sum()') {
-    $cols: 1 2 3 2 1 2 3;
-    $guts: 1/4;
-
-    $sum: get-column-span-sum(3, 2, $cols, $guts);
-    @include assert-equal($sum, 7.5,
-      'Inner span-sum for "3 at 2 of (1 2 3 2 1 2 3)" should be "7.5".');
-
-    $sum: get-column-span-sum(3, last, $cols, $guts, outer);
-    @include assert-equal($sum, 6.75,
-      'Outer span-sum for "last 3 of (1 2 3 2 1 2 3)" should be "6.75".');
+    // asymmetrical
+    $columns: 1 2 3 2 1 2 3;
+    $gutters: 1/4;
+    $test: get-column-span-sum($span, $location, $columns, $gutters);
+    $expect: 7.5;
+    @include assert-equal($test, $expect,
+      'Assymetrical column-span-sum fetches subset before calculating sum.');
   }
 
 }

@@ -1,6 +1,25 @@
 Susy Next Changelog
 ===================
 
+2.0.0.alpha.5 (unreleased)
+--------------------------
+
+* None of the core code relies on Compass.
+* Any mixin/function that accepts natural language syntax also accepts maps.
+* Maps and natural language can even be mixed:
+  - `$large: (columns: 12, gutters: .5);`
+  - `span(3 of $large no-gutters)`
+
+Backwards Incompatible:
+
+* **Requires Sass 3.3**
+* Default settings are handled with a Sass map on the `$susy` variable:
+  - $susy: (columns: 12, gutters: .25) etc.
+* `bleed` now takes standard span syntax, with multiple (TRBL) spans.
+  - e.g. `bleed(1em 2 of 8)` for 1em top/bottom and 2-columns left/right.
+  - Add `bleed-x` and `bleed-y` mixins for horizontal and vertical shortcuts.
+
+
 2.0.0.alpha.4 [Sept 4, 2013]
 ----------------------------
 

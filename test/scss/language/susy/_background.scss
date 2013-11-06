@@ -7,10 +7,11 @@
   // ---------------
 
   @include output-test('background-grid') {
-    $col: rgba(102, 102, 255, 0.25);
+    $color: rgba(102, 102, 255, 0.25);
     $light: rgba(179, 179, 255, 0.25);
 
-    @include assert-setup {
+    // outside
+    @include assert-setup('outside') {
       .test, .expect {
         @include rhythm-padding(1);
         background: none;
@@ -19,9 +20,29 @@
     @include assert-output(
       'Background-grid should show 7 columns with .5 gutters'
     ) {
-      .test { @include background-grid(7 .5); }
+      .test { @include background-grid(7 .5 show-columns); }
       .expect {
-        background: linear-gradient(to right, $col, $light 10%, transparent 10%, transparent 15%, $col 15%, $light 25%, transparent 25%, transparent 30%, $col 30%, $light 40%, transparent 40%, transparent 45%, $col 45%, $light 55.0%, transparent 55.0%, transparent 60%, $col 60%, $light 70%, transparent 70%, transparent 75%, $col 75%, $light 85%, transparent 85%, transparent 90%, $col 90%, $light);
+        background-image: linear-gradient(to right, $color, $light 10%, transparent 10%, transparent 15%, $color 15%, $light 25%, transparent 25%, transparent 30%, $color 30%, $light 40%, transparent 40%, transparent 45%, $color 45%, $light 55.0%, transparent 55.0%, transparent 60%, $color 60%, $light 70%, transparent 70%, transparent 75%, $color 75%, $light 85%, transparent 85%, transparent 90%, $color 90%, $light);
+        background-origin: content-box;
+        background-clip: content-box;
+      }
+    }
+
+    // inside
+    @include assert-setup('inside') {
+      .test, .expect {
+        @include rhythm-padding(1);
+        background: none;
+      }
+    }
+    @include assert-output(
+      'Background-grid should show 8 columns with inside gutters'
+    ) {
+      .test { @include background-grid(8 .25 inside show-columns); }
+      .expect {
+        background-image: linear-gradient(to right, $color, $light 12.5%, $color 12.5%, $light 25%, $color 25%, $light 37.5%, $color 37.5%, $light 50%, $color 50%, $light 62.5%, $color 62.5%, $light 75%, $color 75%, $light 87.5%, $color 87.5%, $light);
+        background-origin: content-box;
+        background-clip: content-box;
       }
     }
   }
@@ -87,7 +108,7 @@
   // Get Grid Color-Stops
   // --------------------
 
-  $color  : $grid-color;
+  $color  : map-get($susy-debug, color) or map-get($susy-debug-defaults, color);
   $trans  : transparent;
   $light  : lighten($color, 15%);
 
@@ -99,7 +120,7 @@
     $stops: get-grid-color-stops($parse);
     $expect: $color, $light 4em, transparent 4em, transparent 5em, $color 5em, $light 9em, transparent 9em, transparent 10em, $color 10em, $light 14em, transparent 14em, transparent 15em, $color 15em, $light;
     @include assert-equal($stops, $expect,
-      'Stops for "#{$grid}" should be "#{$expect}"');
+      'Returns correct static grid-color-stops.');
 
     // static inside
     $grid: 4 (4em 1em) static inside;
@@ -107,7 +128,7 @@
     $stops: get-grid-color-stops($parse);
     $expect: $color, $light 5em, $color 5em, $light 10em, $color 10em, $light 15em, $color 15em, $light;
     @include assert-equal($stops, $expect,
-      'Stops for "#{$grid}" should be "#{$expect}"');
+      'Returns correct inside color-stops for a static grid.');
 
     // fluid
     $grid: (1 2 3 2 1) .25 fluid;
@@ -115,23 +136,21 @@
     $stops: get-grid-color-stops($parse);
     $expect: $color, $light 10%, transparent 10%, transparent 12.5%, $color 12.5%, $light 32.5%, transparent 32.5%, transparent 35%, $color 35%, $light 65%, transparent 65%, transparent 67.5%, $color 67.5%, $light 87.5%, transparent 87.5%, transparent 90%, $color 90%, $light;
     @include assert-equal($stops, $expect,
-      'Stops for "#{$grid}" should be "#{$expect}"');
+      'Returns correct fluid color-stops.');
 
     // fluid inside
-    $grid: 7 .5 fluid inside;
-    $parse: parse-grid($grid);
-    $stops: get-grid-color-stops($parse);
-    $expect: $color, $light 15%, $color 15%, $light 30%, $color 30%, $light 45%, $color 45%, $light 60%, $color 60%, $light 75%, $color 75%, $light 90%, $color 90%, $light;
+    $grid: parse-grid(8 .25 fluid inside);
+    $stops: get-grid-color-stops($grid);
+    $expect: $color, $light 12.5%, $color 12.5%, $light 25%, $color 25%, $light 37.5%, $color 37.5%, $light 50%, $color 50%, $light 62.5%, $color 62.5%, $light 75%, $color 75%, $light 87.5%, $color 87.5%, $light;
     @include assert-equal($stops, $expect,
-      'Stops for "#{$grid}" should be "#{$expect}"');
+      'Returns correct inside color-stops for a fluid grid.');
 
     // fluid inside-static
-    $grid: 7 .5 fluid inside-static;
-    $parse: parse-grid($grid);
-    $stops: get-grid-color-stops($parse);
-    $expect: $color, $light 15%, $color 15%, $light 30%, $color 30%, $light 45%, $color 45%, $light 60%, $color 60%, $light 75%, $color 75%, $light 90%, $color 90%, $light;
+    $grid: parse-grid(8 .25 fluid inside-static);
+    $stops: get-grid-color-stops($grid);
+    $expect: $color, $light 12.5%, $color 12.5%, $light 25%, $color 25%, $light 37.5%, $color 37.5%, $light 50%, $color 50%, $light 62.5%, $color 62.5%, $light 75%, $color 75%, $light 87.5%, $color 87.5%, $light;
     @include assert-equal($stops, $expect,
-      'Stops for "#{$grid}" should be "#{$expect}"');
+      'Returns correct color-stops for inside-static gutters in a fluid grid.');
   }
 
 }

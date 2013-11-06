@@ -11,32 +11,13 @@
     $select: format-nth(last);
     $expect: 'last-child';
     @include assert-equal($select, $expect,
-      '"last" n "child" should be formatted as "last-child".');
-
-    // first of-type
-    $select: format-nth(first, of-type);
-    $expect: 'first-of-type';
-    @include assert-equal($select, $expect,
-      '"first" n "of-type" should be formatted as "first-of-type".');
-
-    // only
-    $select: format-nth(only, child);
-    $expect: 'only-child';
-    @include assert-equal($select, $expect,
-      '"only" n "child" should be formatted as "only-child".');
+      'Returns properly-formatted keyword selectors.');
 
     // nth last-child
     $select: format-nth('3n + 5', last-child);
     $expect: 'nth-last-child(3n + 5)';
     @include assert-equal($select, $expect,
-      '"3n + 5" n "last-child" should be formatted as "nth-last-child(3n + 5)".');
-
-    // nth last-of-type
-    $select: format-nth(4n, last-of-type);
-    $expect: 'nth-last-of-type(4n)';
-    @include assert-equal($select, $expect,
-      '"4n" n "last-child" should be formatted as "nth-last-of-type(4n)".');
+      'Returns properly-formatted nth selectors.');
   }
-
 }
 

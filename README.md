@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/ericam/susy.png?branch=susy-next)](https://travis-ci.org/ericam/susy)
+
 # Susy [a Compass plugin]
 
 Susy is a semantic CSS grid system with a responsive twist.

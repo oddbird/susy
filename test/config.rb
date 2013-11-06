@@ -1,6 +1,6 @@
 # Compass CSS framework config file
+require 'susy'
 require 'true'
-add_import_path '../sass'
 
 project_type = :stand_alone
 http_path = "/"

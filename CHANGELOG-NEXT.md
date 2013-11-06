@@ -9,6 +9,8 @@ Susy Next Changelog
 * Maps and natural language can even be mixed:
   - `$large: (columns: 12, gutters: .5);`
   - `span(3 of $large no-gutters)`
+* Only register as a compass extension if compass is present.
+  - Compass is no longer an explicit dependency.
 
 Backwards Incompatible:
 

@@ -29,17 +29,19 @@
   @include test('[mixin] nested') {
     // symmetrical
     $columns: 12;
+    $susy: map-merge($susy, (columns: $columns)) !global;
 
     @include nested(3 of 12) {
-      @include assert-equal($columns, 3,
+      @include assert-equal(susy-get(columns), 3,
         'Symmetrical nested $columns should be equal to nesting span');
     }
 
     // asymmetrical
     $columns: 1 1 2 3 5 8 13;
+    $susy: map-merge($susy, (columns: $columns)) !global;
 
     @include nested(last 4 of $columns) {
-      @include assert-equal($columns, 3 5 8 13,
+      @include assert-equal(susy-get(columns), 3 5 8 13,
         'Last 4 of "(1 1 2 3 5 8 13)" should be "(3 5 8 13)"');
     }
 

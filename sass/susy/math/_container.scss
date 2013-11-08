@@ -6,29 +6,16 @@
 // Parse the $container-position into margin values.
 // - [$justify]   : left | center | right | <length> [<length>]
 @function parse-container-position(
-  $justify: $container-position
+  $justify: susy-get(container-position)
 ) {
-  $left   : null;
-  $right  : null;
+  $return: if($justify == left, 0, auto) if($justify == right, 0, auto);
 
-  @if type-of($justify) == list {
-    $left: nth($justify,1);
-    $right: nth($justify,2);
-  } @else if $justify == left {
-    $left: 0;
-    $right: auto;
-  } @else if $justify == right {
-    $left: auto;
-    $right: 0;
-  } @else if $justify == center {
-    $left: auto;
-    $right: auto;
-  } @else {
-    $left: $justify;
-    $right: $justify;
+  @if not index(left right center, $justify) {
+    $return: nth($justify, 1);
+    $return: $return if(length($justify) > 1, nth($justify, 2), $return);
   }
 
-  @return $left $right;
+  @return $return;
 }
 
 // Calculate Container Width
@@ -39,12 +26,10 @@
 // - [$column-width]  : <length>
 // - [$outer]         : <boolean>
 @function calculate-container-width(
-  $columns        : $columns,
-  $gutters        : $gutters,
-  $column-width   : $column-width,
+  $columns        : susy-get(columns),
+  $gutters        : susy-get(gutters),
+  $column-width   : susy-get(column-width),
   $outer          : false
 ) {
-  $width: column-sum($columns, $gutters, $outer) * $column-width;
-
-  @return $width;
+  @return column-sum($columns, $gutters, $outer) * $column-width;
 }

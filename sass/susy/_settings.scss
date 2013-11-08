@@ -1,23 +1,10 @@
 // Settings
 // ========
 
-// Grid Basics
-// -----------
-
-$columns              : 4         !default;
-$gutters              : .25       !default;
-
-// Grid Widths [optional]
-// ----------------------
-// - Set EITHER $column-width OR $container
-// - Use $column-width for static layouts
-// - We can determine one from the other, but we can't resolve conflicts
-
-$column-width         : false     !default;
-$container            : auto      !default;
-
-// Last Flow
-// ---------
-// - Last/Omega float-direction, relative to the document flow
-// from | to
-$last-flow            : to        !default;
+// Default Settings
+// ----------------
+$susy-defaults: (
+  columns: 4,
+  gutters: .25,
+  column-width: false,
+);

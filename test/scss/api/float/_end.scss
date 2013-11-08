@@ -38,9 +38,7 @@
       'Items should not have any right margin.'
     ) {
       .test { @include float-last(ltr, from); }
-      .expect {
-        margin-right: 0;
-      }
+      .expect { margin-right: 0; }
     }
 
   }
@@ -60,9 +58,7 @@
       'Items should float flush left.'
     ) {
       .test { @include float-first; }
-      .expect {
-        margin-left: 0;
-      }
+      .expect { margin-left: 0; }
     }
 
   }

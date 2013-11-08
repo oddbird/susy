@@ -21,6 +21,48 @@
 <div class="results"></div>
 
 <!--
+    Box Sizing Helper
+    ----------------- -->
+
+<article class="test-module">
+  <h1>Box Sizing Helper</h1>
+
+  <!-- susy-box-sizing -->
+  <section class="test__susy-box-sizing">
+    <h1>susy-box-sizing [mixin]</h1>
+    <div class="assert__border-box">
+      <div class="test">border-box</div>
+      <div class="expect">expect</div>
+    </div>
+  </section>
+
+</article>
+
+<!--
+    Clearfix Helper
+    --------------- -->
+
+<article class="test-module">
+  <h1>Clearfix Helper</h1>
+
+  <!-- susy-clearfix -->
+  <section class="test__susy-clearfix">
+    <h1>susy-clearfix [mixin]</h1>
+    <div class="assert__clearfix">
+      <div class="test">
+        <div class="spacer"></div>
+        clearfix
+      </div>
+      <div class="expect">
+        <div class="spacer"></div>
+        expect
+      </div>
+    </div>
+  </section>
+
+</article>
+
+<!--
     Grid Background Syntax
     ---------------------- -->
 
@@ -31,8 +73,13 @@
   <section class="test__background-grid">
     <h1>background-grid [mixin]</h1>
 
-    <div class="assert__background-grid">
+    <div class="assert__outside">
       <div class="test">background-grid</div>
+      <div class="expect">expect</div>
+    </div>
+
+    <div class="assert__inside">
+      <div class="test">background-grid (inside gutters)</div>
       <div class="expect">expect</div>
     </div>
   </section>
@@ -402,46 +449,6 @@
     </div>
   </section>
 
-  <!-- bleed -->
-  <section class="test__bleed">
-    <h1>bleed [mixin]</h1>
-
-    <div class="assert__no-gutters">
-      <div class="nest">
-        <div class="test">bleed [no-gutters]</div>
-        <div class="expect">expect</div>
-      </div>
-    </div>
-
-    <div class="assert__inside">
-      <div class="nest">
-        <div class="test">bleed [inside]</div>
-        <div class="expect">expect</div>
-      </div>
-    </div>
-
-    <div class="assert__outside">
-      <div class="nest">
-        <div class="spacer"></div>
-        <div class="test">bleed [outside]</div>
-        <div class="spacer"></div>
-      </div>
-      <div class="nest">
-        <div class="spacer"></div>
-        <div class="expect">expect</div>
-        <div class="spacer"></div>
-      </div>
-    </div>
-
-    <div class="assert__explicit">
-      <div class="nest">
-        <div class="test">bleed [explicit]</div>
-        <div class="expect">expect</div>
-      </div>
-    </div>
-
-  </section>
-
 </article>
 
 <!--
@@ -481,6 +488,71 @@
     <div class="assert__nested">
       <div class="nest">
         <div class="test">pad</div>
+        <div class="expect">expect</div>
+      </div>
+    </div>
+  </section>
+
+</article>
+
+<!--
+    Bleed Syntax
+    ------------ -->
+
+<article class="test-module">
+  <h1>Bleed Syntax</h1>
+
+  <!-- bleed -->
+  <section class="test__bleed">
+    <h1>bleed [mixin]</h1>
+
+    <div class="assert__simple">
+      <div class="nest">
+        <div class="test">bleed</div>
+        <div class="expect">expect</div>
+      </div>
+    </div>
+
+    <div class="assert__inside">
+      <div class="nest">
+        <div class="test">bleed</div>
+      </div>
+      <div class="nest">
+        <div class="expect">expect</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- bleed-x -->
+  <section class="test__bleed-x">
+    <h1>bleed-x [mixin]</h1>
+
+    <div class="assert__simple">
+      <div class="nest">
+        <div class="test">bleed</div>
+        <div class="expect">expect</div>
+      </div>
+    </div>
+
+    <div class="assert__inside">
+      <div class="nest">
+        <div class="test">bleed</div>
+      </div>
+      <div class="nest">
+        <div class="expect">expect</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- bleed-y -->
+  <section class="test__bleed-y">
+    <h1>bleed-y [mixin]</h1>
+
+    <div class="assert__simple">
+      <div class="nest">
+        <div class="test">bleed</div>
+      </div>
+      <div class="nest">
         <div class="expect">expect</div>
       </div>
     </div>
@@ -539,6 +611,11 @@
     </div>
 
     <div class="assert__static">
+      <div class="test">container-output</div>
+      <div class="expect">expect</div>
+    </div>
+
+    <div class="assert__auto">
       <div class="test">container-output</div>
       <div class="expect">expect</div>
     </div>

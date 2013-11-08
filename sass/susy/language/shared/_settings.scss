@@ -1,107 +1,36 @@
 // Grid Syntax
 // ===========
 
-// layout math
-// - static | fluid
-$layout-math          : fluid           !default;
-
-// layout method
-// - isolate | float
-$layout-method        : float           !default;
-
-// layout direction
-// - ltr | rtl
-$flow                 : ltr             !default;
-
-// box-sizing
-// false | border-box | content-box
-$box-sizing           : false           !default;
-
-// container justification
-// - left | center | right
-$container-position   : center          !default;
-
-// gutter handling
-// - before | after | split | inside | inside-static | no-gutters
-$gutter-position      : after           !default;
-
-// show/hide grids
-// show | show-columns | show-baseline | hide
-$show-grids           : show-columns    !default;
-
 // Set Grid
 // --------
 // Set a new grid using a shorthand
 // - $grid      : <settings>
-// - [$clean]   : true | false (resets container, column-width, & box-sizing)
 @mixin set-grid(
-  $grid,
-  $clean: false
+  $grid
 ) {
+  $susy: map-merge($susy, parse-grid($grid)) !global;
+}
 
-  $grid                 : get-adjusted-grid($grid, $clean);
-
-  // get values
-  $columns              : get-setting(columns, $grid);
-  $gutters              : get-setting(gutters, $grid);
-  $container            : get-setting(container, $grid);
-  $column-width         : get-setting(column-width, $grid);
-  $layout-math          : get-setting(layout-math, $grid);
-  $layout-method        : get-setting(layout-method, $grid);
-
-  $flow                 : get-setting(flow, $grid);
-  $gutter-position      : get-setting(gutter-position, $grid);
-  $container-position   : get-setting(container-position, $grid);
-  $show-grids           : get-setting(show-grids, $grid);
-  $box                  : get-setting(box-sizing, $grid);
-
-  $container            : get-setting(container, $grid);
-  $column-width         : get-setting(column-width, $grid);
-  $box-sizing           : get-setting(box-sizing, $grid);
+// Alternative syntax
+@mixin susy-set(
+  $grid
+) {
+  @include set-grid($grid);
 }
 
 // Use Grid
 // --------
 // Use an arbitrary grid for a section of code
 // - $grid      : <settings>
-// - [$clean]   : true | false (resets container, column-width, & box-sizing)
 @mixin use-grid(
-  $grid,
-  $clean: false
+  $grid
 ) {
-  $old-grid: get-grid();
+  $old: $susy;
 
-  @include set-grid($grid, $clean);
+  @include set-grid($grid);
   @content;
-  @include set-grid($old-grid, $clean);
-}
 
-// Get Grid
-// --------
-// Get the current grid settings as a shorthand list
-@function get-grid(
-) {
-  $new-gutters        : $gutters;
-  $new-show-grids     : false;
-
-  // Use units for column/gutter ratio if available
-  @if $column-width {
-    $new-gutters: $column-width $column-width * $gutters;
-  }
-
-  // Create keyword for show-grids setting
-  @if type-of($show-grids) == bool {
-    @if $show-grids {
-      $new-show-grids: show;
-    } @else {
-      $new-show-grids: hide;
-    }
-  } @else {
-    $new-show-grids: $show-grids;
-  }
-
-  // Return grid shorthand
-  @return compact($container $columns $new-gutters $layout-math $layout-method $container-position $new-show-grids $flow $gutter-position $box-sizing);
+  $susy: $old !global;
 }
 
 // Parse Grid
@@ -109,190 +38,67 @@ $show-grids           : show-columns    !default;
 // Parse a shorthand grid, and return an ordered list of settings
 // - [$grid]  : <settings>
 @function parse-grid(
-  $grid: get-grid()
+  $grid
 ) {
-  $new-columns              : false;
-  $new-gutters              : false;
-  $new-container            : false;
-  $new-column-width         : false;
-  $new-layout-math          : false;
-  $new-layout-method        : false;
-  $new-container-position   : false;
-  $new-flow                 : false;
-  $new-gutter-position      : false;
-  $new-show-grids           : false;
-  $new-box-sizing           : false;
+  $return: $grid;
 
-  $columns-check            : false;
+  @if type-of($grid) != map {
+    $return         : ();
+    $columns-check  : false;
 
-  @each $value in $grid {
-    @if type-of($value) == string {
-      // layout-math: static | fluid
-      @if $value == static {
-        $new-layout-math: static;
-      } @else if $value == fluid {
-        $new-layout-math: fluid;
+    @each $item in $grid {
+
+      // maps
+      @if type-of($item) == map {
+        $return: map-merge($return, $item);
+
+      // Keywords
+      } @else if type-of($item) == string {
+        @each $key, $value in $susy-keywords {
+          @if index($value, $item) {
+            $return: map-merge($return, ($key: $item));
+          }
+        }
       }
 
-      // layout-method: isolate | fluid
-      @if $value == isolate {
-        $new-layout-method: isolate;
-      } @else if $value == float {
-        $new-layout-method: float;
+      // Container, Columns, or Gutters
+      @else if type-of($item) == number {
+        @if not unitless($item) {
+          $return: map-merge($return, (container: $item));
+        } @else if not $columns-check {
+          $return: map-merge($return, (columns: $item));
+          $columns-check: true;
+        } @else {
+          $return: map-merge($return, (gutters: $item));
+        }
       }
 
-      // container-position: left | center | right
-      @if $value == left {
-        $new-container-position: left;
-      } @else if $value == right {
-        $new-container-position: right;
-      } @else if $value == center {
-        $new-container-position: center;
-      }
-
-      // flow: ltr | rtl
-      @if $value == rtl {
-        $new-flow: rtl;
-      } @else if $value == ltr {
-        $new-flow: ltr;
-      }
-
-      // show-grid: show | hide
-      @if $value == show {
-        $new-show-grids: show;
-      } @else if $value == hide {
-        $new-show-grids: hide;
-      } @else if $value == show-columns {
-        $new-show-grids: show-columns;
-      } @else if $value == show-baseline {
-        $new-show-grids: show-baseline;
-      }
-
-      // gutter-position: before | after | split | no-gutters
-      @if $value == before {
-        $new-gutter-position: before;
-      } @else if $value == after {
-        $new-gutter-position: after;
-      } @else if $value == split {
-        $new-gutter-position: split;
-      } @else if $value == inside {
-        $new-gutter-position: inside;
-      } @else if $value == inside-static {
-        $new-gutter-position: inside-static;
-      } @else if $value == no-gutters {
-        $new-gutter-position: no-gutters;
-      }
-
-      // box-sizing: border-box | content-box
-      @if $value == border-box {
-        $new-box-sizing: border-box;
-      } @else if $value == content-box {
-        $new-box-sizing: content-box;
-      }
-
-      // auto container
-      @if $value == auto {
-        $new-container: auto;
-      }
-    }
-
-    // container, columns, or gutters
-    @else if type-of($value) == number {
-      @if not unitless($value) {
-        $new-container: $value;
-      } @else if not $columns-check {
-        $new-columns: $value;
-        $columns-check: true;
-      } @else {
-        $new-gutters: $value;
-      }
-    }
-
-    // columns or gutters
-    @else if type-of($value) == list {
-      @if unitless(nth($value,1)) {
-        $new-columns: $value;
-        $columns-check: true;
-      } @else {
-        $new-column-width: nth($value,1);
-        $new-gutters: nth($value,2) / nth($value,1);
+      // Columns or Gutters
+      @else if type-of($item) == list {
+        @if unitless(nth($item,1)) {
+          $return: map-merge($return, (columns: $item));
+          $columns-check: true;
+        } @else {
+          $return: map-merge($return, (column-width: nth($item,1)));
+          $return: map-merge($return, (gutters: nth($item,2) / nth($item,1)));
+        }
       }
     }
   }
 
-  @return $new-columns $new-gutters $new-container $new-column-width $new-layout-math $new-layout-method $new-container-position $new-flow $new-gutter-position $new-show-grids $new-box-sizing;
-}
-
-// Get Adjusted Grid
-// -----------------
-// Fill missing grid values based on global settings
-// - $grid      : <settings>
-// - [$clean]   : true | false (resets container, column-width, & box-sizing)
-@function get-adjusted-grid(
-  $grid,
-  $clean: false
-) {
-  $grid                   : parse-grid($grid);
-
-  $new-columns            : get-setting(columns, $grid);
-  $new-gutters            : get-setting(gutters, $grid);
-  $new-layout-math        : get-setting(layout-math, $grid);
-  $new-layout-method      : get-setting(layout-method, $grid);
-  $new-flow               : get-setting(flow, $grid);
-  $new-gutter-place       : get-setting(gutter-position, $grid);
-  $new-container-position : get-setting(container-position, $grid);
-  $new-show-grids         : get-setting(show-grids, $grid);
-
-  $new-container          : get-setting(container, $grid);
-  $new-column-width       : get-setting(column-width, $grid);
-  $new-box-sizing         : get-setting(box-sizing, $grid);
-
-  // Set required values
-  $new-columns            : if($new-columns, $new-columns, $columns);
-  $new-gutters            : if($new-gutters, $new-gutters, $gutters);
-  $new-layout-math        : if($new-layout-math, $new-layout-math, $layout-math);
-  $new-layout-method      : if($new-layout-method, $new-layout-method, $layout-method);
-  $new-flow               : if($new-flow, $new-flow, $flow);
-  $new-gutter-place       : if($new-gutter-place, $new-gutter-place, $gutter-position);
-  $new-container-position : if($new-container-position, $new-container-position, $container-position);
-  $new-show-grids         : if($new-show-grids, $new-show-grids, $show-grids);
-
-  // optionally fill values based on current grid
-  @if $clean {
-    $new-container        : if($new-container, $new-container, auto);
-  } @else {
-    $new-container        : if($new-container, $new-container, $container);
-    $new-column-width     : if($new-column-width, $new-column-width, $column-width);
-    $new-box-sizing       : if($new-box-sizing, $new-box-sizing, $box-sizing);
-  }
-
-  @return $new-columns, $new-gutters, $new-container, $new-column-width, $new-layout-math, $new-layout-method, $new-container-position, $new-flow, $new-gutter-place, $new-show-grids, $new-box-sizing;
+  @return $return;
 }
 
 // Get Setting
 // -----------
-// Return one setting from a shorhand grid
-// - setting    : <keyword> (see $options below)
+// Return one setting from a grid
+// - setting    : <keyword>
 // - $grid      : <settings>
-// - [$parse]   : true | false
-@function get-setting(
-  $setting,
-  $grid   : parse-grid(),
-  $parse  : false
+@function susy-get(
+  $key,
+  $grid: map-merge($susy-defaults, $susy)
 ) {
-  $options  : columns gutters container column-width layout-math layout-method container-position flow gutter-position show-grids box-sizing;
-  $key      : index($options, $setting);
-  $value    : false;
+  $grid: parse-grid($grid);
 
-  @if $parse {
-    $grid: parse-grid($grid);
-  }
-
-  @if $key {
-    $value: nth($grid, $key);
-  } @else {
-    @warn '"#{$setting}" is not a valid grid setting.';
-  }
-
-  @return $value;
+  @return map-get($grid, $key) or map-get($susy, $key) or map-get($susy-defaults, $key);
 }

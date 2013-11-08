@@ -1,11 +1,21 @@
 // Test Helpers
 // ============
 
+// Settings
+// --------
+
 $output-test-context: true;
 $output-test-results: true;
 
 $output-test-slug: null;
 $output-assert-slug: null;
+
+$supported-browsers: firefox chrome;
+
+// reset the original grid
+@mixin original-grid {
+  $susy: $susy-defaults !global;
+}
 
 // Test Output Module
 // ------------------
@@ -27,20 +37,18 @@ $output-assert-slug: null;
   $grid: false,
   $output: $output-test-context
 ) {
-  $output-assert-slug: $slug;
+  $output-assert-slug: $slug !global;
 
   @if $grid {
     @include set-grid($grid);
     @if $output {
-      @include with-only-support-for(-moz, -webkit) {
-        .test__#{$output-test-slug} .assert__#{$output-assert-slug} {
-          @include container;
-        }
+      .test__#{$output-test-slug} .assert__#{$output-assert-slug} {
+        @include container(show-columns);
       }
     }
   } @else if $output {
     .test__#{$output-test-slug} .assert__#{$output-assert-slug} {
-      @include clearfix;
+      overflow: hidden;
       background: rgba(#ccf, .5);
     }
   }
@@ -54,7 +62,7 @@ $output-assert-slug: null;
 
 @mixin assert-teardown(
 ) {
-  $output-assert-slug: null;
+  $output-assert-slug: null !global;
   @include original-grid;
 }
 
@@ -64,12 +72,12 @@ $output-assert-slug: null;
 @mixin output-test(
   $slug
 ) {
-  $output-test-slug: $slug;
+  $output-test-slug: $slug !global;
 
   /* - [mixin] #{$output-test-slug} */
   @content;
 
-  $output-test-slug: null;
+  $output-test-slug: null !global;
 }
 
 // Assert Output

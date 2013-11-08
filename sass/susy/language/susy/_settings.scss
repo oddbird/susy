@@ -1,0 +1,41 @@
+// Susy Next Settings
+// ==================
+
+// Susy Defaults
+// -------------
+// - PRIVATE: DONT'T TOUCH
+$susy-defaults: map-merge($susy-defaults, (
+  container: auto,
+  last-flow: to,
+  layout-math: fluid,
+  layout-method: float,
+  flow: ltr,
+  box-sizing: false,
+  container-position: center,
+  gutter-position: after,
+  show-grids: show,
+));
+
+// Valid Keyword Values
+// --------------------
+// - PRIVATE: DONT'T TOUCH
+$susy-keywords: (
+  container: auto,
+  layout-math: static fluid,
+  layout-method: isolate float,
+  container-position: left center right,
+  flow: ltr rtl,
+  show-grids: show hide show-columns show-baseline,
+  gutter-position: before after split inside inside-static no-gutters,
+  box-sizing: border-box content-box,
+  location: first alpha last omega,
+  outer: outer,
+  is-container: container,
+);
+
+// User Settings
+// -------------
+// - Define the $susy variable with a map of your own settings.
+// - Set EITHER $column-width OR $container
+// - Use $column-width for static layouts
+$susy: () !default;

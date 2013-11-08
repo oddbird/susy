@@ -8,8 +8,8 @@
 @mixin pre(
   $span
 ) {
-  $span   : if(index($span, outer), $span, append($span, outer));
-  $flow   : get-span-setting(flow, $span, parse);
+  $span   : map-merge(parse-span($span), (outer: outer));
+  $flow   : span-get(flow, $span);
   $width  : span($span);
 
   @include margin-output($width, null, $flow);
@@ -22,8 +22,8 @@
 @mixin post(
   $span
 ) {
-  $span   : if(index($span, outer), $span, append($span, outer));
-  $flow   : get-span-setting(flow, $span, parse);
+  $span   : map-merge(parse-span($span), (outer: outer));
+  $flow   : span-get(flow, $span);
   $width  : span($span);
 
   @include margin-output(null, $width, $flow);
@@ -46,8 +46,8 @@
 @mixin pull(
   $span
 ) {
-  $span   : if(index($span, outer), $span, append($span, outer));
-  $flow   : get-span-setting(flow, $span, parse);
+  $span   : map-merge(parse-span($span), (outer: outer));
+  $flow   : span-get(flow, $span);
   $width  : 0 - span($span);
 
   @include margin-output($width, null, $flow);
@@ -62,67 +62,15 @@
   $pre,
   $post: $pre
 ) {
-  $pre    : if(index($pre, outer), $pre, append($pre, outer));
-  $post   : if(index($post, outer), $post, append($post, outer));
+  $pre      : if(length($pre) == 1 and length($post) > 1, set-nth($post, 1, $pre), $pre);
+  $pre      : map-merge(parse-span($pre), (outer: outer));
+  $post     : map-merge(parse-span($post), (outer: outer));
 
-  $get-pre    : parse-span($pre);
-  $get-post   : parse-span($post);
+  $output   : (
+    before: span($pre),
+    after: span($post),
+    flow: span-get(flow, $pre) or span-get(flow, $post),
+  );
 
-  $flow     : get-span-setting(flow, $get-pre);
-  $before   : null;
-  $after    : null;
-
-  // get the various contexts
-  $default-context  : $columns $gutters;
-  $pre-context      : get-span-setting(columns, $get-pre) get-span-setting(gutters, $get-pre);
-  $post-context     : get-span-setting(columns, $get-post) get-span-setting(gutters, $get-post);
-
-  // if the contexts don't line up, and only the post has changed, we use it for both
-  @if $pre-context != $post-context and $default-context == $pre-context {
-    @include use-grid($post-context) {
-      $before: span($pre);
-      $after: span($post);
-    }
-  } @else {
-    $before: span($pre);
-    $after: span($post);
-  }
-
-  @include margin-output($before, $after, $flow);
+  @include margin-output($output...);
 }
-
-// Bleed
-// -----
-// Add negative margins, and equal positive padding to create bleed.
-// - $span  : <span>
-// - $sides : [ top | right | bottom | left | all ]
-@mixin bleed(
-  $span   : gutter(),
-  $sides  : left right
-) {
-  $margin: span(append($span, outer));
-  $padding: $margin;
-
-  $context: get-span-context($span);
-
-  $this-gutter-position: get-span-setting(gutter-position, $span, parse);
-  $inside: if($this-gutter-position == inside or $this-gutter-position == inside-static, true, false);
-  $gutter-width: gutter($context);
-
-  @if $inside and comparable($padding, $gutter-width) {
-    $padding: $padding + $gutter-width;
-  }
-
-  @if $box-sizing == border-box { @include box-sizing(content-box); }
-
-  @if $sides == all {
-    margin: 0 - $margin;
-    padding: $padding;
-  } @else {
-    @each $side in $sides {
-      margin-#{$side}: 0 - $margin;
-      padding-#{$side}: $padding;
-    }
-  }
-}
-

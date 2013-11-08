@@ -1,0 +1,15 @@
+// Susy Fallback Clearfix
+// ======================
+// If you provide a clearfix mixin, we'll use yours.
+// If not, we'll provide the basics.
+
+// Susy Clearfix
+// -------------
+@mixin susy-clearfix {
+  *zoom: 1;
+  &:after {
+    content    : " ";
+    display    : block;
+    clear      : both;
+  }
+}

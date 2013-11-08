@@ -1,5 +1,5 @@
-// AG tests
-// ========
+// // AG tests
+// // ========
 
 @import "susy";
 @import "compass/reset";
@@ -140,7 +140,7 @@ h1, h2, h3 {
 .full.grid-element { background: pink; }
 
 .gallery {
-  @include clearfix;
+  @include susy-clearfix;
   clear: both;
   div {
     @include trailer(.5);

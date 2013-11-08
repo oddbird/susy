@@ -9,7 +9,7 @@
 @mixin margin-output(
   $before,
   $after,
-  $flow: $flow
+  $flow: susy-get(flow)
 ) {
   $to: to($flow);
   $from: from($flow);

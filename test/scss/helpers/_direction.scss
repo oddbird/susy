@@ -7,25 +7,21 @@
   // -------------
 
   @include test('[function] get-direction') {
-    // ltr from
-    $dir: get-direction(ltr, from);
-    @include assert-equal($dir, left,
-      'The from-direction for "ltr" should be "left".');
-
     // ltr to
-    $dir: get-direction(ltr, to);
-    @include assert-equal($dir, right,
+    $flow: ltr;
+    $dir: to;
+    $test: get-direction($flow, $dir);
+    $expect: right;
+    @include assert-equal($test, $expect,
       'The to-direction for "ltr" should be "right".');
 
     // rtl from
-    $dir: get-direction(rtl, from);
-    @include assert-equal($dir, right,
+    $flow: rtl;
+    $dir: from;
+    $test: get-direction($flow, $dir);
+    $expect: right;
+    @include assert-equal($test, $expect,
       'The from-direction for "rtl" should be "right".');
-
-    // rtl to
-    $dir: get-direction(rtl, to);
-    @include assert-equal($dir, left,
-      'The to-direction for "rtl" should be "left".');
   }
 
   // To
@@ -34,12 +30,14 @@
   @include test('[function] to') {
     // ltr
     $to: to(ltr);
-    @include assert-equal($to, right,
+    $expect: right;
+    @include assert-equal($to, $expect,
       'The to-direction for "ltr" should be "right".');
 
     // rtl
     $to: to(rtl);
-    @include assert-equal($to, left,
+    $expect: left;
+    @include assert-equal($to, $expect,
       'The to-direction for "rtl" should be "left".');
   }
 
@@ -49,12 +47,14 @@
   @include test('[function] from') {
     // ltr
     $from: from(ltr);
-    @include assert-equal($from, left,
+    $expect: left;
+    @include assert-equal($from, $expect,
       'The from-direction for "ltr" should be "left".');
 
     // rtl
     $from: from(rtl);
-    @include assert-equal($from, right,
+    $expect: right;
+    @include assert-equal($from, $expect,
       'The from-direction for "rtl" should be "right".');
   }
 

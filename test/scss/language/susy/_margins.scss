@@ -7,20 +7,8 @@
   // ---
 
   @include output-test('pre') {
-    // gutters
-    @include assert-setup('gutters', $grid: 7 .5 before) {
-      .spacer { @include span(first 1); }
-      .test, .expect { @include span(3); }
-    }
-    @include assert-output(
-      'Items should have 2-columns margin before.'
-    ) {
-      .test { @include pre(2); }
-      .expect { margin-left: 35%; }
-    }
-
-    // no-gutters
-    @include assert-setup('no-gutters', $grid: 7 .5 before) {
+    // outer
+    @include assert-setup('outer', $grid: 7 .5 before) {
       .spacer { @include span(first 1 outer); }
       .test, .expect { @include span(3); }
     }
@@ -30,14 +18,35 @@
       .test { @include pre(2 no-gutters); }
       .expect { margin-left: 30%; }
     }
+
+    // double
+    @include assert-setup('double', $grid: 7 .5 before) {
+      .spacer { @include span(first 1); }
+      .test, .expect { @include span(3); }
+    }
+    @include assert-output(
+      'Items should have 2-columns margin before.'
+    ) {
+      .test { @include pre(2); }
+      .expect { margin-left: 35%; }
+    }
   }
 
   // post
   // ----
 
   @include output-test('post') {
-    // gutters
-    @include assert-setup('gutters', $grid: (1 2 3 2 1) .25 after) {
+    // outer
+    @include assert-setup('outer', $grid: (1 2 3 2 1) .25 after);
+    @include assert-output(
+      'Items should have 2-columns margin after.'
+    ) {
+      .test { @include post(last 2 no-gutters); }
+      .expect { margin-right: 35%; }
+    }
+
+    // double
+    @include assert-setup('double', $grid: (1 2 3 2 1) .25 after) {
       .spacer {
         @include span(1 at 4);
         height: rhythm(1);
@@ -48,15 +57,6 @@
       'Items should have 2-columns margin after.'
     ) {
       .test { @include post(1 at 3 no-gutters); }
-      .expect { margin-right: 35%; }
-    }
-
-    // no-gutters
-    @include assert-setup('no-gutters', $grid: (1 2 3 2 1) .25 after);
-    @include assert-output(
-      'Items should have 2-columns margin after.'
-    ) {
-      .test { @include post(last 2 no-gutters); }
       .expect { margin-right: 35%; }
     }
   }
@@ -78,8 +78,8 @@
   // ----
 
   @include output-test('pull') {
-    // gutters
-    @include assert-setup('gutters', $grid: (1 2 3 2 1) .25 before) {
+    // inner
+    @include assert-setup('inner', $grid: (1 2 3 2 1) .25 before) {
       .spacer { @include span(first 2); }
       .test, .expect { @include span(3 at 2); }
     }
@@ -90,8 +90,8 @@
       .expect { margin-left: -20%; }
     }
 
-    // no-gutters
-    @include assert-setup('no-gutters', $grid: (1 2 3 2 1) .25 before) {
+    // outer
+    @include assert-setup('outer', $grid: (1 2 3 2 1) .25 before) {
       .spacer { @include span(first 2 outer); }
       .test, .expect { @include span(3 at 2); }
     }

@@ -378,15 +378,15 @@
   <!-- pre -->
   <section class="test__pre">
     <h1>pre [mixin]</h1>
-    <div class="assert__gutters">
+    <div class="assert__outer">
       <div class="spacer"></div>
-      <div class="test">pre [gutters]</div>
+      <div class="test">pre [outer]</div>
       <div class="expect">expect</div>
     </div>
 
-    <div class="assert__no-gutters">
+    <div class="assert__double">
       <div class="spacer"></div>
-      <div class="test">pre [no-gutters]</div>
+      <div class="test">pre [double]</div>
       <div class="expect">expect</div>
     </div>
   </section>
@@ -394,16 +394,16 @@
   <!-- post -->
   <section class="test__post">
     <h1>post [mixin]</h1>
-    <div class="assert__gutters">
-      <div class="test">post [gutters]</div>
-      <div class="spacer"></div>
+    <div class="assert__outer">
+      <div class="test">post [outer]</div>
       <div class="expect">expect</div>
-      <div class="spacer"></div>
     </div>
 
-    <div class="assert__no-gutters">
-      <div class="test">post [no-gutters]</div>
+    <div class="assert__double">
+      <div class="test">post [double]</div>
+      <div class="spacer"></div>
       <div class="expect">expect</div>
+      <div class="spacer"></div>
     </div>
   </section>
 
@@ -419,15 +419,15 @@
   <!-- pull -->
   <section class="test__pull">
     <h1>pull [mixin]</h1>
-    <div class="assert__gutters">
+    <div class="assert__inner">
       <div class="spacer"></div>
-      <div class="test">pull [gutters]</div>
+      <div class="test">pull [inner]</div>
       <div class="expect">expect</div>
     </div>
 
-    <div class="assert__no-gutters">
+    <div class="assert__outer">
       <div class="spacer"></div>
-      <div class="test">pull [no-gutters]</div>
+      <div class="test">pull [outer]</div>
       <div class="expect">expect</div>
     </div>
   </section>
@@ -461,8 +461,14 @@
   <!-- prefix -->
   <section class="test__prefix">
     <h1>prefix [mixin]</h1>
-    <div class="assert__prefix">
-      <div class="test">prefix</div>
+    <div class="assert__outer">
+      <div class="test">prefix [outer]</div>
+      <div class="expect">expect</div>
+    </div>
+
+    <div class="assert__double">
+      <div class="spacer"></div>
+      <div class="test">prefix [double]</div>
       <div class="expect">expect</div>
     </div>
   </section>
@@ -470,8 +476,14 @@
   <!-- suffix -->
   <section class="test__suffix">
     <h1>suffix [mixin]</h1>
-    <div class="assert__suffix">
-      <div class="test">suffix</div>
+    <div class="assert__outer">
+      <div class="test">suffix [outer]</div>
+      <div class="expect">expect</div>
+    </div>
+
+    <div class="assert__double">
+      <div class="spacer"></div>
+      <div class="test">suffix [double]</div>
       <div class="expect">expect</div>
     </div>
   </section>

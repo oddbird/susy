@@ -829,35 +829,35 @@
 ### Margin Syntax ------ */
 /* - [mixin] pre */
 /* "Items should have 2-columns margin before." */
-.test__pre .assert__gutters .test {
+.test__pre .assert__outer .test {
   margin-left: 30%;
 }
-.test__pre .assert__gutters .expect {
-  margin-left: 35%;
+.test__pre .assert__outer .expect {
+  margin-left: 30%;
 }
 
 /* "Items should have 2-columns margin before." */
-.test__pre .assert__no-gutters .test {
+.test__pre .assert__double .test {
   margin-left: 30%;
 }
-.test__pre .assert__no-gutters .expect {
-  margin-left: 30%;
+.test__pre .assert__double .expect {
+  margin-left: 35%;
 }
 
 /* - [mixin] post */
 /* "Items should have 2-columns margin after." */
-.test__post .assert__gutters .test {
-  margin-right: 32.5%;
+.test__post .assert__outer .test {
+  margin-right: 35%;
 }
-.test__post .assert__gutters .expect {
+.test__post .assert__outer .expect {
   margin-right: 35%;
 }
 
 /* "Items should have 2-columns margin after." */
-.test__post .assert__no-gutters .test {
-  margin-right: 35%;
+.test__post .assert__double .test {
+  margin-right: 32.5%;
 }
-.test__post .assert__no-gutters .expect {
+.test__post .assert__double .expect {
   margin-right: 35%;
 }
 
@@ -872,18 +872,18 @@
 
 /* - [mixin] pull */
 /* "Items should pull 1-column, overlapping the spacer." */
-.test__pull .assert__gutters .test {
+.test__pull .assert__inner .test {
   margin-left: -22.5%;
 }
-.test__pull .assert__gutters .expect {
+.test__pull .assert__inner .expect {
   margin-left: -20%;
 }
 
 /* "Items should pull 1-column, overlapping the spacer." */
-.test__pull .assert__no-gutters .test {
+.test__pull .assert__outer .test {
   margin-left: -22.5%;
 }
-.test__pull .assert__no-gutters .expect {
+.test__pull .assert__outer .expect {
   margin-left: -22.5%;
 }
 
@@ -913,20 +913,36 @@
 ### Padding Syntax ------ */
 /* - [mixin] prefix */
 /* "Items should have 3 columns padding before." */
-.test__prefix .assert__prefix .test {
+.test__prefix .assert__outer .test {
   padding-left: 45%;
 }
-.test__prefix .assert__prefix .expect {
+.test__prefix .assert__outer .expect {
   padding-left: 45%;
+}
+
+/* "Items should have 3 columns padding before." */
+.test__prefix .assert__double .test {
+  padding-left: 45%;
+}
+.test__prefix .assert__double .expect {
+  padding-left: 50%;
 }
 
 /* - [mixin] suffix */
 /* "Items should have 2 columns padding after." */
-.test__suffix .assert__suffix .test {
+.test__suffix .assert__outer .test {
   padding-right: 35%;
 }
-.test__suffix .assert__suffix .expect {
+.test__suffix .assert__outer .expect {
   padding-right: 35%;
+}
+
+/* "Items should have 2 columns padding after." */
+.test__suffix .assert__double .test {
+  padding-right: 55.0%;
+}
+.test__suffix .assert__double .expect {
+  padding-right: 57%;
 }
 
 /* - [mixin] pad */

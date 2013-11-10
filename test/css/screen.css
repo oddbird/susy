@@ -1215,7 +1215,7 @@ h1 {
 
 ### Margin Syntax ------ */
 /* - [mixin] pre */
-.test__pre .assert__gutters {
+.test__pre .assert__outer {
   *zoom: 1;
   max-width: 100%;
   margin-left: auto;
@@ -1228,23 +1228,23 @@ h1 {
   background-origin: content-box;
   background-clip: content-box;
 }
-.test__pre .assert__gutters:after {
+.test__pre .assert__outer:after {
   content: " ";
   display: block;
   clear: both;
 }
 
-.test__pre .assert__gutters .spacer {
-  width: 10%;
+.test__pre .assert__outer .spacer {
+  width: 15%;
   float: left;
 }
-.test__pre .assert__gutters .test, .test__pre .assert__gutters .expect {
+.test__pre .assert__outer .test, .test__pre .assert__outer .expect {
   width: 40%;
   float: left;
   margin-left: 5%;
 }
 
-.test__pre .assert__gutters::before {
+.test__pre .assert__outer::before {
   content: "Items should have 2-columns margin before.";
   display: block;
   padding: 0.375rem 0.75rem;
@@ -1252,7 +1252,7 @@ h1 {
   font-style: italic;
 }
 
-.test__pre .assert__no-gutters {
+.test__pre .assert__double {
   *zoom: 1;
   max-width: 100%;
   margin-left: auto;
@@ -1265,23 +1265,23 @@ h1 {
   background-origin: content-box;
   background-clip: content-box;
 }
-.test__pre .assert__no-gutters:after {
+.test__pre .assert__double:after {
   content: " ";
   display: block;
   clear: both;
 }
 
-.test__pre .assert__no-gutters .spacer {
-  width: 15%;
+.test__pre .assert__double .spacer {
+  width: 10%;
   float: left;
 }
-.test__pre .assert__no-gutters .test, .test__pre .assert__no-gutters .expect {
+.test__pre .assert__double .test, .test__pre .assert__double .expect {
   width: 40%;
   float: left;
   margin-left: 5%;
 }
 
-.test__pre .assert__no-gutters::before {
+.test__pre .assert__double::before {
   content: "Items should have 2-columns margin before.";
   display: block;
   padding: 0.375rem 0.75rem;
@@ -1290,7 +1290,7 @@ h1 {
 }
 
 /* - [mixin] post */
-.test__post .assert__gutters {
+.test__post .assert__outer {
   *zoom: 1;
   max-width: 100%;
   margin-left: auto;
@@ -1303,25 +1303,13 @@ h1 {
   background-origin: content-box;
   background-clip: content-box;
 }
-.test__post .assert__gutters:after {
+.test__post .assert__outer:after {
   content: " ";
   display: block;
   clear: both;
 }
 
-.test__post .assert__gutters .spacer {
-  width: 20%;
-  float: left;
-  margin-right: 2.5%;
-  height: 1.5rem;
-}
-.test__post .assert__gutters .test, .test__post .assert__gutters .expect {
-  width: 32.5%;
-  float: left;
-  margin-right: 2.5%;
-}
-
-.test__post .assert__gutters::before {
+.test__post .assert__outer::before {
   content: "Items should have 2-columns margin after.";
   display: block;
   padding: 0.375rem 0.75rem;
@@ -1329,7 +1317,7 @@ h1 {
   font-style: italic;
 }
 
-.test__post .assert__no-gutters {
+.test__post .assert__double {
   *zoom: 1;
   max-width: 100%;
   margin-left: auto;
@@ -1342,13 +1330,25 @@ h1 {
   background-origin: content-box;
   background-clip: content-box;
 }
-.test__post .assert__no-gutters:after {
+.test__post .assert__double:after {
   content: " ";
   display: block;
   clear: both;
 }
 
-.test__post .assert__no-gutters::before {
+.test__post .assert__double .spacer {
+  width: 20%;
+  float: left;
+  margin-right: 2.5%;
+  height: 1.5rem;
+}
+.test__post .assert__double .test, .test__post .assert__double .expect {
+  width: 32.5%;
+  float: left;
+  margin-right: 2.5%;
+}
+
+.test__post .assert__double::before {
   content: "Items should have 2-columns margin after.";
   display: block;
   padding: 0.375rem 0.75rem;
@@ -1385,7 +1385,7 @@ h1 {
 }
 
 /* - [mixin] pull */
-.test__pull .assert__gutters {
+.test__pull .assert__inner {
   *zoom: 1;
   max-width: 100%;
   margin-left: auto;
@@ -1398,23 +1398,23 @@ h1 {
   background-origin: content-box;
   background-clip: content-box;
 }
-.test__pull .assert__gutters:after {
+.test__pull .assert__inner:after {
   content: " ";
   display: block;
   clear: both;
 }
 
-.test__pull .assert__gutters .spacer {
+.test__pull .assert__inner .spacer {
   width: 32.5%;
   float: left;
 }
-.test__pull .assert__gutters .test, .test__pull .assert__gutters .expect {
+.test__pull .assert__inner .test, .test__pull .assert__inner .expect {
   width: 75%;
   float: left;
   margin-left: 2.5%;
 }
 
-.test__pull .assert__gutters::before {
+.test__pull .assert__inner::before {
   content: "Items should pull 1-column, overlapping the spacer.";
   display: block;
   padding: 0.375rem 0.75rem;
@@ -1422,7 +1422,7 @@ h1 {
   font-style: italic;
 }
 
-.test__pull .assert__no-gutters {
+.test__pull .assert__outer {
   *zoom: 1;
   max-width: 100%;
   margin-left: auto;
@@ -1435,23 +1435,23 @@ h1 {
   background-origin: content-box;
   background-clip: content-box;
 }
-.test__pull .assert__no-gutters:after {
+.test__pull .assert__outer:after {
   content: " ";
   display: block;
   clear: both;
 }
 
-.test__pull .assert__no-gutters .spacer {
+.test__pull .assert__outer .spacer {
   width: 35%;
   float: left;
 }
-.test__pull .assert__no-gutters .test, .test__pull .assert__no-gutters .expect {
+.test__pull .assert__outer .test, .test__pull .assert__outer .expect {
   width: 75%;
   float: left;
   margin-left: 2.5%;
 }
 
-.test__pull .assert__no-gutters::before {
+.test__pull .assert__outer::before {
   content: "Items should pull 1-column, overlapping the spacer.";
   display: block;
   padding: 0.375rem 0.75rem;
@@ -1523,7 +1523,7 @@ h1 {
 
 ### Padding Syntax ------ */
 /* - [mixin] prefix */
-.test__prefix .assert__prefix {
+.test__prefix .assert__outer {
   *zoom: 1;
   max-width: 100%;
   margin-left: auto;
@@ -1536,13 +1536,48 @@ h1 {
   background-origin: content-box;
   background-clip: content-box;
 }
-.test__prefix .assert__prefix:after {
+.test__prefix .assert__outer:after {
   content: " ";
   display: block;
   clear: both;
 }
 
-.test__prefix .assert__prefix::before {
+.test__prefix .assert__outer::before {
+  content: "Items should have 3 columns padding before.";
+  display: block;
+  padding: 0.375rem 0.75rem;
+  text-align: left;
+  font-style: italic;
+}
+
+.test__prefix .assert__double {
+  *zoom: 1;
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  background-image: -moz-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, rgba(0, 0, 0, 0) 10%, rgba(0, 0, 0, 0) 15%, rgba(102, 102, 255, 0.25) 15%, rgba(179, 179, 255, 0.25) 25%, rgba(0, 0, 0, 0) 25%, rgba(0, 0, 0, 0) 30%, rgba(102, 102, 255, 0.25) 30%, rgba(179, 179, 255, 0.25) 40%, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0) 45%, rgba(102, 102, 255, 0.25) 45%, rgba(179, 179, 255, 0.25) 55.0%, rgba(0, 0, 0, 0) 55.0%, rgba(0, 0, 0, 0) 60%, rgba(102, 102, 255, 0.25) 60%, rgba(179, 179, 255, 0.25) 70%, rgba(0, 0, 0, 0) 70%, rgba(0, 0, 0, 0) 75%, rgba(102, 102, 255, 0.25) 75%, rgba(179, 179, 255, 0.25) 85%, rgba(0, 0, 0, 0) 85%, rgba(0, 0, 0, 0) 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
+  background-image: -webkit-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, rgba(0, 0, 0, 0) 10%, rgba(0, 0, 0, 0) 15%, rgba(102, 102, 255, 0.25) 15%, rgba(179, 179, 255, 0.25) 25%, rgba(0, 0, 0, 0) 25%, rgba(0, 0, 0, 0) 30%, rgba(102, 102, 255, 0.25) 30%, rgba(179, 179, 255, 0.25) 40%, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0) 45%, rgba(102, 102, 255, 0.25) 45%, rgba(179, 179, 255, 0.25) 55.0%, rgba(0, 0, 0, 0) 55.0%, rgba(0, 0, 0, 0) 60%, rgba(102, 102, 255, 0.25) 60%, rgba(179, 179, 255, 0.25) 70%, rgba(0, 0, 0, 0) 70%, rgba(0, 0, 0, 0) 75%, rgba(102, 102, 255, 0.25) 75%, rgba(179, 179, 255, 0.25) 85%, rgba(0, 0, 0, 0) 85%, rgba(0, 0, 0, 0) 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
+  background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, rgba(0, 0, 0, 0) 10%, rgba(0, 0, 0, 0) 15%, rgba(102, 102, 255, 0.25) 15%, rgba(179, 179, 255, 0.25) 25%, rgba(0, 0, 0, 0) 25%, rgba(0, 0, 0, 0) 30%, rgba(102, 102, 255, 0.25) 30%, rgba(179, 179, 255, 0.25) 40%, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0) 45%, rgba(102, 102, 255, 0.25) 45%, rgba(179, 179, 255, 0.25) 55.0%, rgba(0, 0, 0, 0) 55.0%, rgba(0, 0, 0, 0) 60%, rgba(102, 102, 255, 0.25) 60%, rgba(179, 179, 255, 0.25) 70%, rgba(0, 0, 0, 0) 70%, rgba(0, 0, 0, 0) 75%, rgba(102, 102, 255, 0.25) 75%, rgba(179, 179, 255, 0.25) 85%, rgba(0, 0, 0, 0) 85%, rgba(0, 0, 0, 0) 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
+  -webkit-background-origin: content-box;
+  -webkit-background-clip: content-box;
+  background-origin: content-box;
+  background-clip: content-box;
+}
+.test__prefix .assert__double:after {
+  content: " ";
+  display: block;
+  clear: both;
+}
+
+.test__prefix .assert__double .spacer {
+  width: 10%;
+  float: left;
+}
+.test__prefix .assert__double .test, .test__prefix .assert__double .expect {
+  overflow: hidden;
+}
+
+.test__prefix .assert__double::before {
   content: "Items should have 3 columns padding before.";
   display: block;
   padding: 0.375rem 0.75rem;
@@ -1551,7 +1586,7 @@ h1 {
 }
 
 /* - [mixin] suffix */
-.test__suffix .assert__suffix {
+.test__suffix .assert__outer {
   *zoom: 1;
   max-width: 100%;
   margin-left: auto;
@@ -1564,13 +1599,48 @@ h1 {
   background-origin: content-box;
   background-clip: content-box;
 }
-.test__suffix .assert__suffix:after {
+.test__suffix .assert__outer:after {
   content: " ";
   display: block;
   clear: both;
 }
 
-.test__suffix .assert__suffix::before {
+.test__suffix .assert__outer::before {
+  content: "Items should have 2 columns padding after.";
+  display: block;
+  padding: 0.375rem 0.75rem;
+  text-align: left;
+  font-style: italic;
+}
+
+.test__suffix .assert__double {
+  *zoom: 1;
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  background-image: -moz-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, rgba(0, 0, 0, 0) 10%, rgba(0, 0, 0, 0) 12.5%, rgba(102, 102, 255, 0.25) 12.5%, rgba(179, 179, 255, 0.25) 32.5%, rgba(0, 0, 0, 0) 32.5%, rgba(0, 0, 0, 0) 35%, rgba(102, 102, 255, 0.25) 35%, rgba(179, 179, 255, 0.25) 65%, rgba(0, 0, 0, 0) 65%, rgba(0, 0, 0, 0) 67.5%, rgba(102, 102, 255, 0.25) 67.5%, rgba(179, 179, 255, 0.25) 87.5%, rgba(0, 0, 0, 0) 87.5%, rgba(0, 0, 0, 0) 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
+  background-image: -webkit-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, rgba(0, 0, 0, 0) 10%, rgba(0, 0, 0, 0) 12.5%, rgba(102, 102, 255, 0.25) 12.5%, rgba(179, 179, 255, 0.25) 32.5%, rgba(0, 0, 0, 0) 32.5%, rgba(0, 0, 0, 0) 35%, rgba(102, 102, 255, 0.25) 35%, rgba(179, 179, 255, 0.25) 65%, rgba(0, 0, 0, 0) 65%, rgba(0, 0, 0, 0) 67.5%, rgba(102, 102, 255, 0.25) 67.5%, rgba(179, 179, 255, 0.25) 87.5%, rgba(0, 0, 0, 0) 87.5%, rgba(0, 0, 0, 0) 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
+  background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, rgba(0, 0, 0, 0) 10%, rgba(0, 0, 0, 0) 12.5%, rgba(102, 102, 255, 0.25) 12.5%, rgba(179, 179, 255, 0.25) 32.5%, rgba(0, 0, 0, 0) 32.5%, rgba(0, 0, 0, 0) 35%, rgba(102, 102, 255, 0.25) 35%, rgba(179, 179, 255, 0.25) 65%, rgba(0, 0, 0, 0) 65%, rgba(0, 0, 0, 0) 67.5%, rgba(102, 102, 255, 0.25) 67.5%, rgba(179, 179, 255, 0.25) 87.5%, rgba(0, 0, 0, 0) 87.5%, rgba(0, 0, 0, 0) 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
+  -webkit-background-origin: content-box;
+  -webkit-background-clip: content-box;
+  background-origin: content-box;
+  background-clip: content-box;
+}
+.test__suffix .assert__double:after {
+  content: " ";
+  display: block;
+  clear: both;
+}
+
+.test__suffix .assert__double .spacer {
+  width: 10%;
+  float: right;
+}
+.test__suffix .assert__double .test, .test__suffix .assert__double .expect {
+  overflow: hidden;
+}
+
+.test__suffix .assert__double::before {
   content: "Items should have 2 columns padding after.";
   display: block;
   padding: 0.375rem 0.75rem;

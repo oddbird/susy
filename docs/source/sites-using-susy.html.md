@@ -42,6 +42,7 @@ title: Sites using Susy
 - [Turn It Responsive](http://turnitresponsive.com)
 - [Andrew Philip Clark](http://andrewphilipclark.com)
 - [Uncorked Studios](http://uncorkedstudios.com/)
+- [Vermont Brewers Association](http://www.vermontbrewers.com)[[source](https://github.com/rHoover/vermont-brewers)]
 
 Have a site to add? [Let us know](http://twitter.com/compasssusy) or [fork and add your site on GitHub](https://github.com/ericam/susy).
 

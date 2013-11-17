@@ -26,14 +26,14 @@
 // Find the total sum of column-units in a layout
 // - [$columns]   : <number> | <list>
 // - [$gutters]   : <ratio>
-// - [$outer]     : <boolean>
+// - [$spread]     : <boolean>
 @function column-sum(
   $columns  : susy-get(columns),
   $gutters  : susy-get(gutters),
-  $outer    : false
+  $spread   : false
 ) {
-  $outer: if($outer, if($outer == double, 1, 0), -1);
-  $gutter-sum: (column-count($columns) + $outer) * $gutters;
+  $spread: if($spread and $spread != inner, if($spread == outer2, 1, 0), -1);
+  $gutter-sum: (column-count($columns) + $spread) * $gutters;
   $column-sum: is-symmetrical($columns);
 
   @if not $column-sum {
@@ -76,17 +76,17 @@
 // - $location    : first | last | <number>
 // - [$columns]   : <number> | <list>
 // - [$gutters]   : <ratio>
-// - [$outer]     : <boolean>
+// - [$spread]     : <boolean>
 @function get-column-span-sum(
   $span,
   $location     : false,
   $columns      : susy-get(columns),
   $gutters      : susy-get(gutters),
-  $outer        : false
+  $spread       : false
 ) {
   @if not is-symmetrical($columns) {
     $span: get-columns($span, $location, $columns);
   }
 
-  @return column-sum($span, $gutters, $outer);
+  @return column-sum($span, $gutters, $spread);
 }

@@ -7,26 +7,51 @@
   // ------
 
   @include output-test('prefix') {
-    @include assert-setup($grid: 7 .5);
+    // outer
+    @include assert-setup('outer', $grid: 7 .5);
     @include assert-output(
       'Items should have 3 columns padding before.'
     ) {
       .test { @include prefix(3); }
       .expect { padding-left: 45%; }
     }
-    @include assert-teardown;
+
+    // outer2
+    @include assert-setup('double', $grid: 7 .5) {
+      .spacer { @include span(1 no-gutters); }
+      .test, .expect { overflow: hidden; }
+    }
+    @include assert-output(
+      'Items should have 3 columns padding before.'
+    ) {
+      .test { @include prefix(3 outer2); }
+      .expect { padding-left: 50%; }
+    }
   }
 
   // suffix
   // ------
 
   @include output-test('suffix') {
-    @include assert-setup($grid: (1 2 3 2 1) .25);
+    // outer
+    @include assert-setup('outer', $grid: (1 2 3 2 1) .25);
     @include assert-output(
       'Items should have 2 columns padding after.'
     ) {
       .test { @include suffix(last 2); }
       .expect { padding-right: 35%; }
+    }
+
+    // outer2
+    @include assert-setup('double', $grid: (1 2 3 2 1) .25) {
+      .spacer { @include span(last 1 no-gutters); }
+      .test, .expect { overflow: hidden; }
+    }
+    @include assert-output(
+      'Items should have 2 columns padding after.'
+    ) {
+      .test { @include suffix(2 at 3 outer2); }
+      .expect { padding-right: 57.5%; }
     }
   }
 

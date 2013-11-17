@@ -130,7 +130,7 @@
       gutters: 0.25,
       layout-method: isolate,
       layout-math: fluid,
-      outer: outer,
+      spread: outer,
       flow: ltr,
       gutter-position: after,
     );
@@ -154,7 +154,7 @@
     @include test-parsed-span('parse-span: #2', $test, $expect);
 
     // Span #3
-    $span: 1 of 3 alpha split (outer: double, column-width: 40px);
+    $span: 1 of 3 alpha split (spread: outer2, column-width: 40px);
     $test: parse-span($span);
     $expect: (
       span: 1,
@@ -162,7 +162,7 @@
       columns: 3,
       column-width: 40px,
       gutter-position: split,
-      outer: double,
+      spread: outer2,
     );
     @include test-parsed-span('parse-span: #3', $test, $expect);
 
@@ -304,7 +304,7 @@
       column-width: 4em,
       layout-method: float,
       layout-math: static,
-      outer: outer,
+      spread: outer,
       flow: ltr,
       gutter-position: after,
     );
@@ -461,7 +461,7 @@
       location: 1,
       columns: 7,
       gutters: .5,
-      outer: outer,
+      spread: outer,
     );
     $width: get-span-width($map);
     @include assert-equal($width, 75%,

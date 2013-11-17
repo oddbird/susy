@@ -5,6 +5,8 @@ Susy Next Changelog
 --------------------------
 
 * None of the core code relies on Compass.
+* Span arguments now accept `inner`, `outer`, or `outer2` keywords.
+  - This setting has been re-named `spread` in span maps.
 * Any mixin/function that accepts natural language syntax also accepts maps.
 * Maps and natural language can even be mixed:
   - `$large: (columns: 12, gutters: .5);`

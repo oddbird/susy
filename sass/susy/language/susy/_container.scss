@@ -49,8 +49,8 @@
     @if $column-width {
       $columns        : susy-get(columns, $grid);
       $gutters        : susy-get(gutters, $grid);
-      $outer          : if(is-inside($grid), true, false);
-      $width          : calculate-container-width($columns, $gutters, $column-width, $outer);
+      $spread         : if(is-inside($grid), outer, inner);
+      $width          : calculate-container-width($columns, $gutters, $column-width, $spread);
     } @else {
       // if we have nothing, default to 100%
       $width: 100%;

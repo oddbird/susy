@@ -188,7 +188,7 @@
   $location : span-get(location, $span);
   $columns  : span-get(columns, $span);
   $gutters  : span-get(gutters, $span);
-  $outer    : span-get(outer, $span);
+  $spread   : span-get(spread, $span);
 
   $context  : null;
   $span-sum : null;
@@ -200,7 +200,7 @@
       $span-sum: get-column-span-sum($n, $location, $columns, $gutters, outer);
     } @else {
       $context: column-sum($columns, $gutters);
-      $span-sum: get-column-span-sum($n, $location, $columns, $gutters, $outer);
+      $span-sum: get-column-span-sum($n, $location, $columns, $gutters, $spread);
     }
 
     @if span-get(layout-math, $span) == static {

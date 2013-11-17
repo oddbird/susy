@@ -84,8 +84,8 @@
       $gutter: $gutters * $column-width;
     } @else {
       $columns  : span-get(columns, $context);
-      $outer    : if(is-inside($context), outer, span-get(outer, $context));
-      $gutter   : percentage($gutters / column-sum($columns, $gutters, $outer));
+      $spread    : if(is-inside($context), outer, span-get(spread, $context));
+      $gutter   : percentage($gutters / column-sum($columns, $gutters, $spread));
     }
   }
 

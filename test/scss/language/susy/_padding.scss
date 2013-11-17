@@ -16,7 +16,7 @@
       .expect { padding-left: 45%; }
     }
 
-    // double
+    // outer2
     @include assert-setup('double', $grid: 7 .5) {
       .spacer { @include span(1 no-gutters); }
       .test, .expect { overflow: hidden; }
@@ -24,7 +24,7 @@
     @include assert-output(
       'Items should have 3 columns padding before.'
     ) {
-      .test { @include prefix(3); }
+      .test { @include prefix(3 outer2); }
       .expect { padding-left: 50%; }
     }
   }
@@ -42,7 +42,7 @@
       .expect { padding-right: 35%; }
     }
 
-    // double
+    // outer2
     @include assert-setup('double', $grid: (1 2 3 2 1) .25) {
       .spacer { @include span(last 1 no-gutters); }
       .test, .expect { overflow: hidden; }
@@ -50,8 +50,8 @@
     @include assert-output(
       'Items should have 2 columns padding after.'
     ) {
-      .test { @include suffix(2 at 3); }
-      .expect { padding-right: 57%; }
+      .test { @include suffix(2 at 3 outer2); }
+      .expect { padding-right: 57.5%; }
     }
   }
 

@@ -24,12 +24,12 @@
 // - [$columns]       : <number> | <list>
 // - [$gutters]       : <ratio>
 // - [$column-width]  : <length>
-// - [$outer]         : <boolean>
+// - [$spread]        : <boolean>
 @function calculate-container-width(
   $columns        : susy-get(columns),
   $gutters        : susy-get(gutters),
   $column-width   : susy-get(column-width),
-  $outer          : false
+  $spread         : false
 ) {
-  @return column-sum($columns, $gutters, $outer) * $column-width;
+  @return column-sum($columns, $gutters, $spread) * $column-width;
 }

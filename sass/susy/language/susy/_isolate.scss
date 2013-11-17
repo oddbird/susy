@@ -37,7 +37,7 @@
       $push: map-merge($input, (
         span: $push,
         location: 1,
-        outer: outer,
+        spread: outer,
       ));
       $width: get-span-width($push);
     }

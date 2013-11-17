@@ -105,5 +105,5 @@
     $return: map-merge($return, (span: $span-list));
   }
 
-  @return map-merge($return, (outer: outer));
+  @return map-merge($return, (spread: outer));
 }

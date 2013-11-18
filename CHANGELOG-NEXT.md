@@ -4,16 +4,12 @@ Susy Next Changelog
 2.0.0.alpha.5 (unreleased)
 --------------------------
 
-* None of the core code relies on Compass.
-* Span arguments now accept `narrow`, `wide`, or `wider` keywords.
-  - The `wide` keyword replaces the old `outer` keyword.
-  - This setting has been re-named from `outer` to `spread`.
+* Compass is no longer a dependency.
+  - Only registers as a compass extension if compass is present.
 * Any mixin/function that accepts natural language syntax also accepts maps.
 * Maps and natural language can even be mixed:
   - `$large: (columns: 12, gutters: .5);`
-  - `span(3 of $large no-gutters)`
-* Only register as a compass extension if compass is present.
-  - Compass is no longer an explicit dependency.
+  - `span(3 $large no-gutters)`
 
 Backwards Incompatible:
 
@@ -23,6 +19,9 @@ Backwards Incompatible:
 * `bleed` now takes standard span syntax, with multiple (TRBL) spans.
   - e.g. `bleed(1em 2 of 8)` for 1em top/bottom and 2-columns left/right.
   - Add `bleed-x` and `bleed-y` mixins for horizontal and vertical shortcuts.
+* Span arguments now accept `narrow`, `wide`, or `wider` keywords.
+  - The `wide` keyword replaces the old `outer` keyword.
+  - This setting has been re-named from `outer` to `spread`.
 
 
 2.0.0.alpha.4 [Sept 4, 2013]

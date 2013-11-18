@@ -1215,7 +1215,7 @@ h1 {
 
 ### Margin Syntax ------ */
 /* - [mixin] pre */
-.test__pre .assert__outer {
+.test__pre .assert__wide {
   *zoom: 1;
   max-width: 100%;
   margin-left: auto;
@@ -1228,31 +1228,31 @@ h1 {
   background-origin: content-box;
   background-clip: content-box;
 }
-.test__pre .assert__outer:after {
+.test__pre .assert__wide:after {
   content: " ";
   display: block;
   clear: both;
 }
 
-.test__pre .assert__outer .spacer {
+.test__pre .assert__wide .spacer {
   width: 15%;
   float: left;
 }
-.test__pre .assert__outer .test, .test__pre .assert__outer .expect {
+.test__pre .assert__wide .test, .test__pre .assert__wide .expect {
   width: 40%;
   float: left;
   margin-left: 5%;
 }
 
-.test__pre .assert__outer::before {
-  content: "Items should have 2-columns (outer) margin before.";
+.test__pre .assert__wide::before {
+  content: "Items should have 2-columns (wide) margin before.";
   display: block;
   padding: 0.375rem 0.75rem;
   text-align: left;
   font-style: italic;
 }
 
-.test__pre .assert__double {
+.test__pre .assert__wider {
   *zoom: 1;
   max-width: 100%;
   margin-left: auto;
@@ -1265,24 +1265,24 @@ h1 {
   background-origin: content-box;
   background-clip: content-box;
 }
-.test__pre .assert__double:after {
+.test__pre .assert__wider:after {
   content: " ";
   display: block;
   clear: both;
 }
 
-.test__pre .assert__double .spacer {
+.test__pre .assert__wider .spacer {
   width: 10%;
   float: left;
 }
-.test__pre .assert__double .test, .test__pre .assert__double .expect {
+.test__pre .assert__wider .test, .test__pre .assert__wider .expect {
   width: 40%;
   float: left;
   margin-left: 5%;
 }
 
-.test__pre .assert__double::before {
-  content: "Items should have 2-columns (outer2) margin before.";
+.test__pre .assert__wider::before {
+  content: "Items should have 2-columns (wider) margin before.";
   display: block;
   padding: 0.375rem 0.75rem;
   text-align: left;
@@ -1290,7 +1290,7 @@ h1 {
 }
 
 /* - [mixin] post */
-.test__post .assert__outer {
+.test__post .assert__wide {
   *zoom: 1;
   max-width: 100%;
   margin-left: auto;
@@ -1303,21 +1303,21 @@ h1 {
   background-origin: content-box;
   background-clip: content-box;
 }
-.test__post .assert__outer:after {
+.test__post .assert__wide:after {
   content: " ";
   display: block;
   clear: both;
 }
 
-.test__post .assert__outer::before {
-  content: "Items should have 2-columns (outer) margin after.";
+.test__post .assert__wide::before {
+  content: "Items should have 2-columns (wide) margin after.";
   display: block;
   padding: 0.375rem 0.75rem;
   text-align: left;
   font-style: italic;
 }
 
-.test__post .assert__double {
+.test__post .assert__wider {
   *zoom: 1;
   max-width: 100%;
   margin-left: auto;
@@ -1330,26 +1330,26 @@ h1 {
   background-origin: content-box;
   background-clip: content-box;
 }
-.test__post .assert__double:after {
+.test__post .assert__wider:after {
   content: " ";
   display: block;
   clear: both;
 }
 
-.test__post .assert__double .spacer {
+.test__post .assert__wider .spacer {
   width: 20%;
   float: left;
   margin-right: 2.5%;
   height: 1.5rem;
 }
-.test__post .assert__double .test, .test__post .assert__double .expect {
+.test__post .assert__wider .test, .test__post .assert__wider .expect {
   width: 32.5%;
   float: left;
   margin-right: 2.5%;
 }
 
-.test__post .assert__double::before {
-  content: "Items should have 1-column (outer-2) margin after.";
+.test__post .assert__wider::before {
+  content: "Items should have 1-column (wide-2) margin after.";
   display: block;
   padding: 0.375rem 0.75rem;
   text-align: left;
@@ -1385,7 +1385,7 @@ h1 {
 }
 
 /* - [mixin] pull */
-.test__pull .assert__inner {
+.test__pull .assert__narrow {
   *zoom: 1;
   max-width: 100%;
   margin-left: auto;
@@ -1398,23 +1398,23 @@ h1 {
   background-origin: content-box;
   background-clip: content-box;
 }
-.test__pull .assert__inner:after {
+.test__pull .assert__narrow:after {
   content: " ";
   display: block;
   clear: both;
 }
 
-.test__pull .assert__inner .spacer {
+.test__pull .assert__narrow .spacer {
   width: 32.5%;
   float: left;
 }
-.test__pull .assert__inner .test, .test__pull .assert__inner .expect {
+.test__pull .assert__narrow .test, .test__pull .assert__narrow .expect {
   width: 75%;
   float: left;
   margin-left: 2.5%;
 }
 
-.test__pull .assert__inner::before {
+.test__pull .assert__narrow::before {
   content: "Items should pull 1-column, overlapping the spacer.";
   display: block;
   padding: 0.375rem 0.75rem;
@@ -1422,7 +1422,7 @@ h1 {
   font-style: italic;
 }
 
-.test__pull .assert__outer {
+.test__pull .assert__wide {
   *zoom: 1;
   max-width: 100%;
   margin-left: auto;
@@ -1435,23 +1435,23 @@ h1 {
   background-origin: content-box;
   background-clip: content-box;
 }
-.test__pull .assert__outer:after {
+.test__pull .assert__wide:after {
   content: " ";
   display: block;
   clear: both;
 }
 
-.test__pull .assert__outer .spacer {
+.test__pull .assert__wide .spacer {
   width: 35%;
   float: left;
 }
-.test__pull .assert__outer .test, .test__pull .assert__outer .expect {
+.test__pull .assert__wide .test, .test__pull .assert__wide .expect {
   width: 75%;
   float: left;
   margin-left: 2.5%;
 }
 
-.test__pull .assert__outer::before {
+.test__pull .assert__wide::before {
   content: "Items should pull 1-column, overlapping the spacer.";
   display: block;
   padding: 0.375rem 0.75rem;
@@ -1459,7 +1459,7 @@ h1 {
   font-style: italic;
 }
 
-.test__pull .assert__double {
+.test__pull .assert__wider {
   *zoom: 1;
   max-width: 100%;
   margin-left: auto;
@@ -1472,23 +1472,23 @@ h1 {
   background-origin: content-box;
   background-clip: content-box;
 }
-.test__pull .assert__double:after {
+.test__pull .assert__wider:after {
   content: " ";
   display: block;
   clear: both;
 }
 
-.test__pull .assert__double .spacer {
+.test__pull .assert__wider .spacer {
   width: 35%;
   float: left;
 }
-.test__pull .assert__double .test, .test__pull .assert__double .expect {
+.test__pull .assert__wider .test, .test__pull .assert__wider .expect {
   width: 80%;
   float: left;
   margin-left: 2.38095%;
 }
 
-.test__pull .assert__double::before {
+.test__pull .assert__wider::before {
   content: "Items should pull 1-column, overlapping the spacer.";
   display: block;
   padding: 0.375rem 0.75rem;
@@ -1560,7 +1560,7 @@ h1 {
 
 ### Padding Syntax ------ */
 /* - [mixin] prefix */
-.test__prefix .assert__outer {
+.test__prefix .assert__wide {
   *zoom: 1;
   max-width: 100%;
   margin-left: auto;
@@ -1573,13 +1573,13 @@ h1 {
   background-origin: content-box;
   background-clip: content-box;
 }
-.test__prefix .assert__outer:after {
+.test__prefix .assert__wide:after {
   content: " ";
   display: block;
   clear: both;
 }
 
-.test__prefix .assert__outer::before {
+.test__prefix .assert__wide::before {
   content: "Items should have 3 columns padding before.";
   display: block;
   padding: 0.375rem 0.75rem;
@@ -1587,7 +1587,7 @@ h1 {
   font-style: italic;
 }
 
-.test__prefix .assert__double {
+.test__prefix .assert__wider {
   *zoom: 1;
   max-width: 100%;
   margin-left: auto;
@@ -1600,21 +1600,21 @@ h1 {
   background-origin: content-box;
   background-clip: content-box;
 }
-.test__prefix .assert__double:after {
+.test__prefix .assert__wider:after {
   content: " ";
   display: block;
   clear: both;
 }
 
-.test__prefix .assert__double .spacer {
+.test__prefix .assert__wider .spacer {
   width: 10%;
   float: left;
 }
-.test__prefix .assert__double .test, .test__prefix .assert__double .expect {
+.test__prefix .assert__wider .test, .test__prefix .assert__wider .expect {
   overflow: hidden;
 }
 
-.test__prefix .assert__double::before {
+.test__prefix .assert__wider::before {
   content: "Items should have 3 columns padding before.";
   display: block;
   padding: 0.375rem 0.75rem;
@@ -1623,7 +1623,7 @@ h1 {
 }
 
 /* - [mixin] suffix */
-.test__suffix .assert__outer {
+.test__suffix .assert__wide {
   *zoom: 1;
   max-width: 100%;
   margin-left: auto;
@@ -1636,13 +1636,13 @@ h1 {
   background-origin: content-box;
   background-clip: content-box;
 }
-.test__suffix .assert__outer:after {
+.test__suffix .assert__wide:after {
   content: " ";
   display: block;
   clear: both;
 }
 
-.test__suffix .assert__outer::before {
+.test__suffix .assert__wide::before {
   content: "Items should have 2 columns padding after.";
   display: block;
   padding: 0.375rem 0.75rem;
@@ -1650,7 +1650,7 @@ h1 {
   font-style: italic;
 }
 
-.test__suffix .assert__double {
+.test__suffix .assert__wider {
   *zoom: 1;
   max-width: 100%;
   margin-left: auto;
@@ -1663,21 +1663,21 @@ h1 {
   background-origin: content-box;
   background-clip: content-box;
 }
-.test__suffix .assert__double:after {
+.test__suffix .assert__wider:after {
   content: " ";
   display: block;
   clear: both;
 }
 
-.test__suffix .assert__double .spacer {
+.test__suffix .assert__wider .spacer {
   width: 10%;
   float: right;
 }
-.test__suffix .assert__double .test, .test__suffix .assert__double .expect {
+.test__suffix .assert__wider .test, .test__suffix .assert__wider .expect {
   overflow: hidden;
 }
 
-.test__suffix .assert__double::before {
+.test__suffix .assert__wider::before {
   content: "Items should have 2 columns padding after.";
   display: block;
   padding: 0.375rem 0.75rem;

@@ -7,27 +7,27 @@
   // ---
 
   @include output-test('pre') {
-    // outer
-    @include assert-setup('outer', $grid: 7 .5 before) {
-      .spacer { @include span(first 1 outer); }
+    // wide
+    @include assert-setup('wide', $grid: 7 .5 before) {
+      .spacer { @include span(first 1 wide); }
       .test, .expect { @include span(3); }
     }
     @include assert-output(
-      'Items should have 2-columns (outer) margin before.'
+      'Items should have 2-columns (wide) margin before.'
     ) {
       .test { @include pre(2); }
       .expect { margin-left: 30%; }
     }
 
-    // outer2
-    @include assert-setup('double', $grid: 7 .5 before) {
+    // wider
+    @include assert-setup('wider', $grid: 7 .5 before) {
       .spacer { @include span(first 1); }
       .test, .expect { @include span(3); }
     }
     @include assert-output(
-      'Items should have 2-columns (outer2) margin before.'
+      'Items should have 2-columns (wider) margin before.'
     ) {
-      .test { @include pre(2 outer2); }
+      .test { @include pre(2 wider); }
       .expect { margin-left: 35%; }
     }
   }
@@ -36,17 +36,17 @@
   // ----
 
   @include output-test('post') {
-    // outer
-    @include assert-setup('outer', $grid: (1 2 3 2 1) .25 after);
+    // wide
+    @include assert-setup('wide', $grid: (1 2 3 2 1) .25 after);
     @include assert-output(
-      'Items should have 2-columns (outer) margin after.'
+      'Items should have 2-columns (wide) margin after.'
     ) {
       .test { @include post(last 2); }
       .expect { margin-right: 35%; }
     }
 
-    // outer2
-    @include assert-setup('double', $grid: (1 2 3 2 1) .25 after) {
+    // wider
+    @include assert-setup('wider', $grid: (1 2 3 2 1) .25 after) {
       .spacer {
         @include span(1 at 4);
         height: rhythm(1);
@@ -54,9 +54,9 @@
       .test, .expect { @include span(first 2); }
     }
     @include assert-output(
-      'Items should have 1-column (outer-2) margin after.'
+      'Items should have 1-column (wide-2) margin after.'
     ) {
-      .test { @include post(1 at 3 outer2); }
+      .test { @include post(1 at 3 wider); }
       .expect { margin-right: 35%; }
     }
   }
@@ -78,21 +78,21 @@
   // ----
 
   @include output-test('pull') {
-    // inner
-    @include assert-setup('inner', $grid: (1 2 3 2 1) .25 before) {
+    // narrow
+    @include assert-setup('narrow', $grid: (1 2 3 2 1) .25 before) {
       .spacer { @include span(first 2); }
       .test, .expect { @include span(3 at 2); }
     }
     @include assert-output(
       'Items should pull 1-column, overlapping the spacer.'
     ) {
-      .test { @include pull(1 at 2 inner); }
+      .test { @include pull(1 at 2 narrow); }
       .expect { margin-left: -20%; }
     }
 
-    // outer
-    @include assert-setup('outer', $grid: (1 2 3 2 1) .25 before) {
-      .spacer { @include span(first 2 outer); }
+    // wide
+    @include assert-setup('wide', $grid: (1 2 3 2 1) .25 before) {
+      .spacer { @include span(first 2 wide); }
       .test, .expect { @include span(3 at 2); }
     }
     @include assert-output(
@@ -102,15 +102,15 @@
       .expect { margin-left: -22.5%; }
     }
 
-    // outer2
-    @include assert-setup('double', $grid: (1 2 3 2 1) .25 before) {
-      .spacer { @include span(first 2 outer); }
-      .test, .expect { @include span(3 at 2 outer2); }
+    // wider
+    @include assert-setup('wider', $grid: (1 2 3 2 1) .25 before) {
+      .spacer { @include span(first 2 wide); }
+      .test, .expect { @include span(3 at 2 wider); }
     }
     @include assert-output(
       'Items should pull 1-column, overlapping the spacer.'
     ) {
-      .test { @include pull(1 at 2 outer2); }
+      .test { @include pull(1 at 2 wider); }
       .expect { margin-left: -25%; }
     }
   }

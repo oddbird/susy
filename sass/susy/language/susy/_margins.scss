@@ -8,7 +8,7 @@
 @mixin pre(
   $span
 ) {
-  $span   : map-merge((spread: outer), parse-span($span));
+  $span   : map-merge((spread: wide), parse-span($span));
   $flow   : span-get(flow, $span);
   $width  : span($span);
 
@@ -22,7 +22,7 @@
 @mixin post(
   $span
 ) {
-  $span   : map-merge((spread: outer), parse-span($span));
+  $span   : map-merge((spread: wide), parse-span($span));
   $flow   : span-get(flow, $span);
   $width  : span($span);
 
@@ -46,7 +46,7 @@
 @mixin pull(
   $span
 ) {
-  $span   : map-merge((spread: outer), parse-span($span));
+  $span   : map-merge((spread: wide), parse-span($span));
   $flow   : span-get(flow, $span);
   $width  : 0 - span($span);
 
@@ -63,8 +63,8 @@
   $post: $pre
 ) {
   $pre      : if(length($pre) == 1 and length($post) > 1, set-nth($post, 1, $pre), $pre);
-  $pre      : map-merge(parse-span($pre), (spread: outer));
-  $post     : map-merge(parse-span($post), (spread: outer));
+  $pre      : map-merge((spread: wide), parse-span($pre));
+  $post     : map-merge((spread: wide), parse-span($post));
 
   $output   : (
     before: span($pre),

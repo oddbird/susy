@@ -37,19 +37,19 @@ Any solution should support:
 
 - Need to access the width of a certain number of columns
   - Symmetric or asymmetric
-  - With or without edge gutters (inner or outer width)
+  - With or without edge gutters
   - In context
 
 ```scss
 // symmetric
 width: span(4);
 width: span(4 of 3);
-width: span(4 of 3 outer);
+width: span(4 of 3 wide);
 
 // asymmetric
 width: span(4 at 2);
 width: span(4 at 2 of 3 4 5 4 3);
-width: span(4 at 2 of 3 4 5 4 3 outer);
+width: span(4 at 2 of 3 4 5 4 3 wide);
 ```
 
 - Need to access the width of a single gutter

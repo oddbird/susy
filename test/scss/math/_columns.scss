@@ -53,52 +53,52 @@
     $columns: 9;
     $gutters: .5;
 
-    // default (inner)
+    // default (narrow)
     $sum: column-sum($columns, $gutters);
-    $inner: 13;
-    @include assert-equal($sum, 13,
+    $narrow: 13;
+    @include assert-equal($sum, $narrow,
       'Symmetrical column-sum properly adds columns and gutters.');
 
-    // explicit (inner)
-    $sum: column-sum($columns, $gutters, inner);
-    $inner: 13;
-    @include assert-equal($sum, 13,
-      'Symmetrical column-sum properly adds columns and gutters.');
+    // explicit (narrow)
+    $sum: column-sum($columns, $gutters, narrow);
+    $narrow: 13;
+    @include assert-equal($sum, $narrow,
+      'Narrow column-sum properly adds columns and gutters.');
 
-    // outer
-    $sum: column-sum($columns, $gutters, outer);
-    $outer: $inner + $gutters;
-    @include assert-equal($sum, $outer,
-      'Outer column-sum includes an extra gutter.');
+    // wide
+    $sum: column-sum($columns, $gutters, wide);
+    $wide: $narrow + $gutters;
+    @include assert-equal($sum, $wide,
+      'Wide column-sum includes an extra gutter.');
 
-    // double-outer
-    $sum: column-sum($columns, $gutters, outer2);
-    $double: $inner + ($gutters * 2);
-    @include assert-equal($sum, $double,
-      'Double-outer column-sum includes two extra gutters.');
+    // wider
+    $sum: column-sum($columns, $gutters, wider);
+    $wider: $narrow + ($gutters * 2);
+    @include assert-equal($sum, $wider,
+      'Wider column-sum includes two extra gutters.');
   }
 
   @include test('[function] column-sum() — asymmetrical') {
     $columns: 1 2 3 1 2;
     $gutters: .25;
 
-    // standard (inner)
+    // standard (narrow)
     $sum: column-sum($columns, $gutters);
-    $inner: 10;
-    @include assert-equal($sum, $inner,
+    $narrow: 10;
+    @include assert-equal($sum, $narrow,
       'Asymmetrical column-sum properly adds columns and gutters.');
 
-    // outer
-    $sum: column-sum($columns, $gutters, outer);
-    $outer: $inner + $gutters;
-    @include assert-equal($sum, $outer,
-      'Outer column-sum includes an extra gutter.');
+    // wide
+    $sum: column-sum($columns, $gutters, wide);
+    $wide: $narrow + $gutters;
+    @include assert-equal($sum, $wide,
+      'Wide column-sum includes an extra gutter.');
 
-    // double-outer
-    $sum: column-sum($columns, $gutters, outer2);
-    $double: $inner + ($gutters * 2);
-    @include assert-equal($sum, $double,
-      'Double-outer column-sum includes two extra gutters.');
+    // wider
+    $sum: column-sum($columns, $gutters, wider);
+    $wider: $narrow + ($gutters * 2);
+    @include assert-equal($sum, $wider,
+      'Wider column-sum includes two extra gutters.');
   }
 
   // Get Columns

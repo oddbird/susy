@@ -828,36 +828,36 @@
 
 ### Margin Syntax ------ */
 /* - [mixin] pre */
-/* "Items should have 2-columns (outer) margin before." */
-.test__pre .assert__outer .test {
+/* "Items should have 2-columns (wide) margin before." */
+.test__pre .assert__wide .test {
   margin-left: 30%;
 }
-.test__pre .assert__outer .expect {
+.test__pre .assert__wide .expect {
   margin-left: 30%;
 }
 
-/* "Items should have 2-columns (outer2) margin before." */
-.test__pre .assert__double .test {
+/* "Items should have 2-columns (wider) margin before." */
+.test__pre .assert__wider .test {
   margin-left: 35%;
 }
-.test__pre .assert__double .expect {
+.test__pre .assert__wider .expect {
   margin-left: 35%;
 }
 
 /* - [mixin] post */
-/* "Items should have 2-columns (outer) margin after." */
-.test__post .assert__outer .test {
+/* "Items should have 2-columns (wide) margin after." */
+.test__post .assert__wide .test {
   margin-right: 35%;
 }
-.test__post .assert__outer .expect {
+.test__post .assert__wide .expect {
   margin-right: 35%;
 }
 
-/* "Items should have 1-column (outer-2) margin after." */
-.test__post .assert__double .test {
+/* "Items should have 1-column (wide-2) margin after." */
+.test__post .assert__wider .test {
   margin-right: 35%;
 }
-.test__post .assert__double .expect {
+.test__post .assert__wider .expect {
   margin-right: 35%;
 }
 
@@ -872,26 +872,26 @@
 
 /* - [mixin] pull */
 /* "Items should pull 1-column, overlapping the spacer." */
-.test__pull .assert__inner .test {
+.test__pull .assert__narrow .test {
   margin-left: -20%;
 }
-.test__pull .assert__inner .expect {
+.test__pull .assert__narrow .expect {
   margin-left: -20%;
 }
 
 /* "Items should pull 1-column, overlapping the spacer." */
-.test__pull .assert__outer .test {
+.test__pull .assert__wide .test {
   margin-left: -22.5%;
 }
-.test__pull .assert__outer .expect {
+.test__pull .assert__wide .expect {
   margin-left: -22.5%;
 }
 
 /* "Items should pull 1-column, overlapping the spacer." */
-.test__pull .assert__double .test {
+.test__pull .assert__wider .test {
   margin-left: -25%;
 }
-.test__pull .assert__double .expect {
+.test__pull .assert__wider .expect {
   margin-left: -25%;
 }
 
@@ -921,35 +921,35 @@
 ### Padding Syntax ------ */
 /* - [mixin] prefix */
 /* "Items should have 3 columns padding before." */
-.test__prefix .assert__outer .test {
+.test__prefix .assert__wide .test {
   padding-left: 45%;
 }
-.test__prefix .assert__outer .expect {
+.test__prefix .assert__wide .expect {
   padding-left: 45%;
 }
 
 /* "Items should have 3 columns padding before." */
-.test__prefix .assert__double .test {
+.test__prefix .assert__wider .test {
   padding-left: 50%;
 }
-.test__prefix .assert__double .expect {
+.test__prefix .assert__wider .expect {
   padding-left: 50%;
 }
 
 /* - [mixin] suffix */
 /* "Items should have 2 columns padding after." */
-.test__suffix .assert__outer .test {
+.test__suffix .assert__wide .test {
   padding-right: 35%;
 }
-.test__suffix .assert__outer .expect {
+.test__suffix .assert__wide .expect {
   padding-right: 35%;
 }
 
 /* "Items should have 2 columns padding after." */
-.test__suffix .assert__double .test {
+.test__suffix .assert__wider .test {
   padding-right: 57.5%;
 }
-.test__suffix .assert__double .expect {
+.test__suffix .assert__wider .expect {
   padding-right: 57.5%;
 }
 

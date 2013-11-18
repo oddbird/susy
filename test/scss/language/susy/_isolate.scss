@@ -55,7 +55,7 @@
     ));
     $expect: 30em;
     @include assert-equal($test, $expect,
-      'Isolation for "last 2 of 7 (4em 2em) static" (5 outer) should be 30em.');
+      'Isolation for "last 2 of 7 (4em 2em) static" (5 wide) should be 30em.');
 
   }
 

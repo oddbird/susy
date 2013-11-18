@@ -121,7 +121,7 @@
 
   @include test('[function] parse-span') {
     // Span #1
-    $span: first 3 of 12 .25 after isolate fluid ltr outer;
+    $span: first 3 of 12 .25 after isolate fluid ltr wide;
     $test: parse-span($span);
     $expect: (
       span: 3,
@@ -130,7 +130,7 @@
       gutters: 0.25,
       layout-method: isolate,
       layout-math: fluid,
-      spread: outer,
+      spread: wide,
       flow: ltr,
       gutter-position: after,
     );
@@ -154,7 +154,7 @@
     @include test-parsed-span('parse-span: #2', $test, $expect);
 
     // Span #3
-    $span: 1 of 3 alpha split (spread: outer2, column-width: 40px);
+    $span: 1 of 3 alpha split (spread: wider, column-width: 40px);
     $test: parse-span($span);
     $expect: (
       span: 1,
@@ -162,7 +162,7 @@
       columns: 3,
       column-width: 40px,
       gutter-position: split,
-      spread: outer2,
+      spread: wider,
     );
     @include test-parsed-span('parse-span: #3', $test, $expect);
 
@@ -295,7 +295,7 @@
     @include assert-equal($width, $expect,
       'Inside-gutter width includes the gutters');
 
-    // outer (width)
+    // wide (width)
     $span: (
       span: 6,
       location: 2,
@@ -304,7 +304,7 @@
       column-width: 4em,
       layout-method: float,
       layout-math: static,
-      spread: outer,
+      spread: wide,
       flow: ltr,
       gutter-position: after,
     );
@@ -312,7 +312,7 @@
     $width: map-get($span, width);
     $expect: 36em;
     @include assert-equal($width, $expect,
-      'Outer span width includes the gutters');
+      'wide span width includes the gutters');
 
     // inside container (padding)
     $span: (
@@ -455,17 +455,17 @@
     @include assert-equal($width, 20em,
       'Returns the correct static width with inside gutters.');
 
-    // outer
+    // wide
     $map: (
       span: 5,
       location: 1,
       columns: 7,
       gutters: .5,
-      spread: outer,
+      spread: wide,
     );
     $width: get-span-width($map);
     @include assert-equal($width, 75%,
-      'Returns the correct outer span width.');
+      'Returns the correct wide span width.');
   }
 
   // Get Span Context

@@ -32,7 +32,7 @@
   $gutters  : susy-get(gutters),
   $spread   : false
 ) {
-  $spread: if($spread and $spread != inner, if($spread == outer2, 1, 0), -1);
+  $spread: if($spread == wide, 0, if($spread == wider, 1, -1));
   $gutter-sum: (column-count($columns) + $spread) * $gutters;
   $column-sum: is-symmetrical($columns);
 

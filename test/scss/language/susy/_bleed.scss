@@ -120,7 +120,7 @@
       span: 1em 2em 3em 1em,
       columns: 10,
       gutter-position: inside,
-      spread: outer,
+      spread: wide,
     ));
     @include assert-equal($test, $expect,
       'Returns multiple spans as a list, along with context.');

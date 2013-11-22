@@ -26,7 +26,7 @@ GEM
       ffi (>= 0.5.0)
     sass (3.3.0.rc.1)
       listen (~> 1.1.0)
-    true (0.2.0.rc.3)
+    true (0.2.0.rc.4)
       sass (~> 3.3.0.rc.1)
 
 PLATFORMS
@@ -36,4 +36,4 @@ DEPENDENCIES
   compass (~> 0.13.alpha)
   sass (~> 3.3.0.rc.1)
   susy!
-  true (~> 0.2.0.rc.3)
+  true (~> 0.2.0.rc.4)

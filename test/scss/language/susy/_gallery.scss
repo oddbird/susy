@@ -19,17 +19,19 @@
       .expect {
         width: 28.0%;
         float: left;
-        margin-right: -100%;
         &:nth-child(3n + 1) {
+          margin-right: -100%;
           margin-left: 0;
           clear: left;
         }
         &:nth-child(3n + 2) {
           margin-left: 36%;
+          margin-right: -100%;
           clear: none;
         }
         &:nth-child(3n + 3) {
           margin-left: 72%;
+          margin-right: -100%;
           clear: none;
         }
       }
@@ -45,26 +47,29 @@
     ) {
       .test { @include gallery(2); }
       .expect {
-        box-sizing: border-box;
+        @include susy-box-sizing(border-box);
         width: 25.0%;
         float: left;
-        margin-right: -100%;
         padding-left: 1.25%;
         padding-right: 1.25%;
         &:nth-child(4n + 1) {
+          margin-right: -100%;
           margin-left: 0;
           clear: left;
         }
         &:nth-child(4n + 2) {
           margin-left: 25%;
+          margin-right: -100%;
           clear: none;
         }
         &:nth-child(4n + 3) {
           margin-left: 50%;
+          margin-right: -100%;
           clear: none;
         }
         &:nth-child(4n + 4) {
           margin-left: 75%;
+          margin-right: -100%;
           clear: none;
         }
       }
@@ -80,22 +85,24 @@
     ) {
       .test { @include gallery(2); }
       .expect {
-        box-sizing: border-box;
+        @include susy-box-sizing(border-box);
         width: 33.33333%;
         float: left;
-        margin-right: -100%;
         padding-left: 2em;
         padding-right: 2em;
         &:nth-child(3n + 1) {
+          margin-right: -100%;
           margin-left: 0;
           clear: left;
         }
         &:nth-child(3n + 2) {
           margin-left: 33.33333%;
+          margin-right: -100%;
           clear: none;
         }
         &:nth-child(3n + 3) {
           margin-left: 66.66667%;
+          margin-right: -100%;
           clear: none;
         }
       }
@@ -112,20 +119,22 @@
       .test { @include gallery(2); }
       .expect {
         float: left;
-        margin-right: -100%;
         &:nth-child(3n + 1) {
           width: 32%;
+          margin-right: -100%;
           margin-left: 0;
           clear: left;
         }
         &:nth-child(3n + 2) {
           width: 32%;
           margin-left: 34%;
+          margin-right: -100%;
           clear: none;
         }
         &:nth-child(3n + 3) {
           width: 32%;
           margin-left: 68%;
+          margin-right: -100%;
           clear: none;
         }
       }

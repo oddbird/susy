@@ -7,12 +7,15 @@
   // ----------------------
 
   @include output-test('background-grid-output') {
-    $stops: #fcc, #cfc 25%, #ccf;
+    $image: linear-gradient(to right, #fcc, #cfc 25%, #ccf),
+            linear-gradient(to bottom, black 5%, rgba(black, 0) 5%);
+    $size: auto, 100% 16px;
+    $clip: content-box, border-box;
+    $flow: ltr;
 
-    // show
     @include assert-setup('show') {
       .test, .expect {
-        @include rhythm-padding(1);
+        @include rhythm-padding(2);
         background: none;
       }
     }
@@ -20,67 +23,18 @@
       'Elements should show a horizontal clipped red-green-blue gradient, and a vertical baseline'
     ) {
       .test {
-        @include background-grid-output($stops, show, 24px);
+        @include background-grid-output($image, $size, $clip, $flow);
       }
       .expect {
-        background-image:
-          linear-gradient(to bottom, black 5%, rgba(black, 0) 5%),
-          linear-gradient(to right, $stops...);
-        background-size: 100% 24px;
-        background-position: left top;
-        background-origin: border-box, content-box;
-        background-clip: border-box, content-box;
-      }
-    }
-
-    // show-columns
-    @include assert-setup('show-columns') {
-      .test, .expect {
-        @include rhythm-padding(1);
-        background: none;
-      }
-    }
-    @include assert-output(
-      'Elements should show a horizontal clipped red-green-blue gradient, without baseline'
-    ) {
-      .test { @include background-grid-output($stops, show-columns); }
-      .expect {
-        background: linear-gradient(to right, $stops...);
-        background-origin: content-box;
-        background-clip: content-box;
-      }
-    }
-
-    // show-baseline
-    @include assert-setup('show-baseline') {
-      .test, .expect {
-        @include rhythm-padding(1);
-        background: none;
-      }
-    }
-    @include assert-output(
-      'Elements should show a vertical baseline'
-    ) {
-      .test { @include background-grid-output($stops, show-baseline, 24px); }
-      .expect {
-        background: linear-gradient(to bottom, black 5%, rgba(black, 0) 5%);
-        background-size: 100% 24px;
+        background-image: $image;
+        -webkit-background-size: $size;
+        background-size: $size;
+        -webkit-background-origin: $clip;
+        -webkit-background-clip: $clip;
+        background-origin: $clip;
+        background-clip: $clip;
         background-position: left top;
       }
-    }
-
-    // hide
-    @include assert-setup('hide') {
-      .test, .expect {
-        @include rhythm-padding(1);
-        background: none;
-      }
-    }
-    @include assert-output(
-      'Elements should not show any grid background'
-    ) {
-      .test { @include background-grid-output($stops, hide); }
-      .expect { }
     }
   }
 }

@@ -1,44 +1,57 @@
 // Background Grid Syntax
 // ======================
 
-$susy-debug-defaults: (
-  position: relative,
+$debug-defaults: (
   color: rgba(#66f, .25),
-  toggle: left bottom,
+  toggle: top right,
 );
 
-// The overlay is painted over your container's ::after pseudo-element,
-// so we must give position to the container itself.
-// If relative doesn't suit your layout, it can be replaced by absolute/fixed.
-$susy-debug: () !default;
-
-// Grid Background
-// ---------------
+// Show Grid
+// ---------
 // Show a grid background on any element.
 // - [$grid]  : <settings>
-@mixin background-grid(
+@mixin show-grid(
   $grid: $susy
 ) {
-  $grid     : parse-grid($grid);
+  $output: get-background($grid);
 
-  $flow     : susy-get(flow, $grid);
-  $show     : susy-get(show-grids, $grid);
+  @if length($output) > 0 {
+    $flow: susy-get(flow, $grid);
 
-  $stops    : get-grid-color-stops($grid);
+    $image: ();
+    @each $name, $layer in map-get($output, image) {
+      $direction: if($name == baseline, to bottom, to to($flow));
+      $image: append($image, linear-gradient($direction, $layer...), comma);
+    }
+    $output: map-merge($output, (image: $image));
 
-  @include background-grid-output($stops, $show: $show, $flow: $flow);
+    @include background-grid-output($output...);
+  }
+}
+
+@mixin show-grids(
+  $grid: $susy
+) {
+  @include show-grid($grid);
 }
 
 // Grid Overlay
 // ------------
 // Generate an icon to trigger grid-overlays on any given elements.
 // $grids...  : <selector> [<settings>] [, <selector>]*
-@mixin overlay-grid (
+@mixin grid-overlay (
   $grids...
 ) {
-  $debug: map-merge($susy-debug-defaults, $susy-debug);
-  $position: map-get($debug, position);
-  $toggle: map-get($debug, toggle);
+  head {
+    @include overlay-head;
+    &:hover {
+      @include overlay-backgrounds($grids...);
+    }
+  }
+}
+
+@mixin overlay-head {
+  $toggle: debug-get(toggle);
   $horz: null;
   $vert: null;
 
@@ -47,41 +60,42 @@ $susy-debug: () !default;
     $vert: if($side == top or $side == bottom, $side, $vert);
   }
 
-  head {
+  display: block;
+  position: fixed;
+  #{$horz}: 10px;
+  #{$vert}: 10px;
+  z-index: 999;
+  color: #333;
+  background: rgba(white, .25);
+  &::before {
+    content: "|||";
     display: block;
-    position: fixed;
-    #{$horz}: 10px;
-    #{$vert}: 10px;
-    z-index: 999;
-    color: #333;
-    border-radius: .25em;
-    text-shadow: 0 0 3px #fff;
-    &::before {
-      content: "|||";
-      display: block;
-      padding: 10px 14px;
-      letter-spacing: -1;
-      font: {
-        family: sans-serif;
-        size: 26px;
-        weight: bold;
-      }
+    padding: 5px 10px;
+    font: {
+      family: sans-serif;
+      size: 16px;
+      weight: bold;
     }
-    &:hover {
-      box-shadow: 0 0 3px rgba(#333,.5);
-      background: rgba(white,.5);
-      @each $grid in $grids {
-        $selector: nth($grid, 1);
-        $grid: if(length($grid) > 1, nth($grid, 2), $susy);
+  }
+  &:hover {
+    box-shadow: 0 0 1px rgba(#333,.5);
+    background: rgba(white, .5);
+  }
+}
 
-        ~ #{$selector},
-        ~ body #{$selector} {
-          position: $position;
-          &::before {
-            @extend %grid-overlay-base;
-            @include background-grid($grid);
-          }
-        }
+@mixin overlay-backgrounds(
+  $grids...
+) {
+  @each $grid in $grids {
+    $selector: nth($grid, 1);
+    $grid: if(length($grid) > 1, nth($grid, 2), $susy);
+
+    ~ #{$selector},
+    ~ body #{$selector} {
+      position: relative;
+      &::before {
+        @extend %grid-overlay-base;
+        @include show-grid($grid);
       }
     }
   }
@@ -97,26 +111,54 @@ $susy-debug: () !default;
   z-index: 998;
 }
 
-// Grid Color-Stops
-// ----------------
-// Calculate the color-stops needed for a particular grid.
-// - $grid  : <map>
-@function get-grid-color-stops(
+// Get Symmetrical Background
+// --------------------------
+// - $grid: <map>
+@function get-background-sym(
   $grid
 ) {
-  $stops  : ();
-  $color  : map-get($susy-debug, color) or map-get($susy-debug-defaults, color);
-  $trans  : transparent;
-  $light  : lighten($color, 15%);
+  $grid           : parse-grid($grid);
+  $gutters        : susy-get(gutters, $grid);
+  $column-width   : susy-get(column-width, $grid);
+  $math           : susy-get(layout-math, $grid);
 
-  $columns            : susy-get(columns, $grid);
-  $gutters            : susy-get(gutters, $grid);
-  $column-width       : susy-get(column-width, $grid);
-  $layout-math        : susy-get(layout-math, $grid);
-  $gutter-position    : susy-get(gutter-position, $grid);
+  $color          : debug-get(color);
+  $trans          : transparent;
+  $light          : lighten($color, 15%);
+
+  $end            : 1 + $gutters;
+  $after          : percentage(1/$end);
+  $stops          : ();
+
+  @if is-inside($grid) {
+    $stops: $color, $light;
+  } @else {
+    $stops: $color, $light $after, $trans $after;
+  }
+
+  $background: (
+    image: (columns: $stops),
+    size: if($math == static, $column-width * $end, span(1 $grid wide)),
+  );
+
+  @return $background;
+}
+
+// Get Asymmetrical Inside
+// -----------------------
+// - $grid: <settings>
+@function get-asym-inside(
+  $grid
+) {
+  $grid     : parse-grid($grid);
+  $columns  : susy-get(columns, $grid);
+
+  $color    : debug-get(color);
+  $light    : lighten($color, 15%);
+  $stops    : ();
 
   @for $location from 1 through column-count($columns) {
-    $this-stop: compact();
+    $this-stop: ();
 
     @if $location == 1 {
       $this-stop: append($this-stop, $color, comma);
@@ -129,31 +171,138 @@ $susy-debug: () !default;
     @if $location == column-count($columns) {
       $this-stop: append($this-stop, $light, comma);
     } @else {
-      $end-color: $light;
-
-      @if not is-inside($grid) {
-        $gutter: (
-          span: $location,
-          location: 1,
-          columns: $columns,
-          gutters: $gutters,
-          column-width: $column-width,
-          layout-math: $layout-math,
-          gutter-position: $gutter-position,
-        );
-        $gutter: get-span-width($gutter);
-        $this-stop: append($this-stop, $light $gutter, comma);
-        $this-stop: append($this-stop, $trans $gutter, comma);
-        $end-color: $trans;
-      }
-
       $end: parse-span(1 at ($location + 1) $grid);
       $end: get-isolation($end);
-      $this-stop: append($this-stop, $end-color $end, comma);
+      $this-stop: append($this-stop, $light $end, comma);
     }
 
     $stops: join($stops, $this-stop, comma);
   }
 
   @return $stops;
+}
+
+// Get Asymmetrical Outside
+// ------------------------
+// - $grid: <settings>
+@function get-asym-outside(
+  $grid
+) {
+  $grid     : parse-grid($grid);
+  $columns  : susy-get(columns, $grid);
+
+  $color    : debug-get(color);
+  $light    : lighten($color, 15%);
+  $trans    : transparent;
+  $stops    : ();
+
+  @for $location from 1 through column-count($columns) {
+    $this-stop: ();
+
+    @if $location == 1 {
+      $this-stop: append($this-stop, $color, comma);
+    } @else {
+      $start: parse-span(1 at $location $grid);
+      $start: get-isolation($start);
+      $this-stop: append($this-stop, $color $start, comma);
+    }
+
+    @if $location == column-count($columns) {
+      $this-stop: append($this-stop, $light, comma);
+    } @else {
+      $gutter: get-span-width(first $location $grid);
+
+      $end: parse-span(1 at ($location + 1) $grid);
+      $end: get-isolation($end);
+
+      $gutter: $light $gutter, $trans $gutter, $trans $end;
+      $this-stop: join($this-stop, $gutter, comma);
+    }
+
+    $stops: join($stops, $this-stop, comma);
+  }
+
+  @return $stops;
+}
+
+// Get Asymmetrical Background
+// ---------------------------
+// - $grid: <settings>
+@function get-background-asym(
+  $grid
+) {
+  $stops: ();
+
+  @if is-inside($grid) {
+    $stops: get-asym-inside($grid);
+  } @else {
+    $stops: get-asym-outside($grid);
+  }
+
+  @return (image: (columns: $stops));
+}
+
+// Get Background
+// --------------
+// - $grid: <settings>
+@function get-background(
+  $grid
+) {
+  $grid     : parse-grid($grid);
+  $show     : susy-get(show-grids, $grid);
+  $return   : ();
+
+  @if $show and $show != hide {
+    $line-height: variable-exists(base-line-height);
+    $line-height: if($line-height, $base-line-height, false);
+    $columns: susy-get(columns, $grid);
+
+    @if $show != show-baseline {
+      $sym: is-symmetrical($columns);
+      $return: if($sym, get-background-sym($grid), get-background-asym($grid));
+      $return: map-merge($return, (clip: content-box));
+    } @else if not $line-height {
+      @warn 'Please provide $base-line-height in order to see baseline grids.';
+    }
+
+    @if $line-height {
+      @if $show != show-columns {
+        $color: variable-exists(grid-background-baseline-color);
+        $color: if($color, $grid-background-baseline-color, black);
+
+        $image: map-get($return, image);
+        $size: map-get($return, size);
+        $baseline: (baseline: ($color 5%, rgba($color, 0) 5%));
+        $baseline-size: 100% $line-height;
+
+        $return: map-merge($return, (
+          image: if($image, map-merge($image, $baseline), $baseline),
+          size: if($size, append($size, $baseline-size, comma), $baseline-size),
+        ));
+      }
+
+      @if $show == show {
+        $clip: map-get($return, clip);
+        $return: map-merge($return, (clip: join($clip, border-box, comma)));
+      }
+    }
+  }
+
+  @if map-get($return, image) {
+    $return: map-merge($return, (flow: susy-get(flow, $grid)));
+  }
+
+  @return $return;
+}
+
+// Get Debug
+// ---------
+// Return the value of a debug setting
+// - $key: <setting>
+@function debug-get(
+  $key
+) {
+  $user: variable-exists(debug);
+  $map: if($user, map-merge($debug-defaults, $debug), $debug-defaults);
+  @return map-get($map, $key);
 }

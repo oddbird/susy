@@ -122,7 +122,7 @@
   $context
 ) {
   $inside: inside inside-static;
-  $gutter-position: span-get(gutter-position, $context);
+  $gutter-position: susy-get(gutter-position, $context);
 
   @return if(index($inside, $gutter-position), true, false);
 }
@@ -135,7 +135,7 @@
   $context
 ) {
   $split: split inside inside-static;
-  $gutter-position: span-get(gutter-position, $context);
+  $gutter-position: susy-get(gutter-position, $context);
 
   @return if(index($split, $gutter-position), true, false);
 }
@@ -147,8 +147,8 @@
 @function gutter-math(
   $context: $susy
 ) {
-  $return   : span-get(layout-math, $context);
-  $return   : if(span-get(gutter-position, $context) == inside-static, static, $return);
+  $return   : susy-get(layout-math, $context);
+  $return   : if(susy-get(gutter-position, $context) == inside-static, static, $return);
 
   @return $return;
 }

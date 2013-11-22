@@ -63,23 +63,33 @@
 </article>
 
 <!--
-    Grid Background Syntax
-    ---------------------- -->
+    Show Grid Syntax
+    ---------------- -->
 
 <article class="test-module">
-  <h1>Grid Background Syntax</h1>
+  <h1>Show Grid Syntax</h1>
 
-  <!-- background-grid -->
-  <section class="test__background-grid">
-    <h1>background-grid [mixin]</h1>
+  <!-- show-grid -->
+  <section class="test__show-grid">
+    <h1>show-grid [mixin]</h1>
 
     <div class="assert__outside">
-      <div class="test">background-grid</div>
+      <div class="test">show-grid</div>
       <div class="expect">expect</div>
     </div>
 
     <div class="assert__inside">
-      <div class="test">background-grid (inside gutters)</div>
+      <div class="test">show-grid (inside gutters)</div>
+      <div class="expect">expect</div>
+    </div>
+
+    <div class="assert__asym-outside">
+      <div class="test">show-grid</div>
+      <div class="expect">expect</div>
+    </div>
+
+    <div class="assert__asym-inside">
+      <div class="test">show-grid (inside gutters)</div>
       <div class="expect">expect</div>
     </div>
   </section>
@@ -591,21 +601,6 @@
 
     <div class="assert__show">
       <div class="test">show</div>
-      <div class="expect">expect</div>
-    </div>
-
-    <div class="assert__show-columns">
-      <div class="test">show-columns</div>
-      <div class="expect">expect</div>
-    </div>
-
-    <div class="assert__show-baseline">
-      <div class="test">show-baseline</div>
-      <div class="expect">expect</div>
-    </div>
-
-    <div class="assert__hide">
-      <div class="test">hide</div>
       <div class="expect">expect</div>
     </div>
   </section>

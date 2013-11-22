@@ -20,6 +20,7 @@
         padding-left: 15%;
         margin-right: -15%;
         padding-right: 15%;
+        @include susy-box-sizing(content-box);
       }
     }
 
@@ -43,6 +44,7 @@
         padding-bottom: 1em;
         margin-left: -1em;
         padding-left: 1.5em;
+        @include susy-box-sizing(content-box);
       }
     }
   }
@@ -61,10 +63,11 @@
     ) {
       .test { @include bleed-x(1 2 of 7); }
       .expect {
-        margin-left: -15%;
-        padding-left: 15%;
         margin-right: -30%;
         padding-right: 30%;
+        margin-left: -15%;
+        padding-left: 15%;
+        @include susy-box-sizing(content-box);
       }
     }
 
@@ -81,6 +84,7 @@
         padding-left: 13.75%;
         margin-right: -12.5%;
         padding-right: 13.75%;
+        @include susy-box-sizing(content-box);
       }
     }
   }
@@ -102,10 +106,11 @@
     ) {
       .test { @include bleed-y(.5em 1em); }
       .expect {
-        margin-top: -.5em;
-        padding-top: .5em;
+        margin-top: -0.5em;
+        padding-top: 0.5em;
         margin-bottom: -1em;
         padding-bottom: 1em;
+        @include susy-box-sizing(content-box);
       }
     }
   }

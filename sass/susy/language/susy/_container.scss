@@ -20,7 +20,7 @@
   }
 
   @include float-container($width, $justify, $math);
-  @include background-grid($grid);
+  @include show-grid($grid);
 }
 
 // Container [function]

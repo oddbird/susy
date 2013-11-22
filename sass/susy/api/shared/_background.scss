@@ -4,56 +4,33 @@
 
 // Grid Background Output
 // ----------------------
-// $stops     : <list> (gradient color-stops)
-// [$show]    : show | show-columns | show-gutters | hide
-// [$flow]    : ltr | rtl
+// - $image: background-image
+// - $size: background-size
+// - $clip: background-clip
+// - [$flow]: ltr | rtl
 @mixin background-grid-output (
-  $stops,
-  $show         : susy-get(show-grids),
-  $line-height  : if(variable-exists(base-line-height), $base-line-height, false),
-  $flow         : susy-get(flow)
+  $image,
+  $size: false,
+  $clip: false,
+  $flow: susy-get(flow)
 ) {
-  @if $show and $show != hide {
-    $to           : to($flow);
-    $size         : null;
-    $clip         : ();
-    $background   : ();
-
-    @if $show != show-columns {
-      @if $line-height {
-        $baseline: if(variable-exists(grid-background-baseline-color), $grid-background-baseline-color, black);
-        $background: linear-gradient(to bottom, $baseline 5%, rgba($baseline, 0) 5%);
-        $size: 100% $line-height;
-        $clip: append($clip, border-box, comma);
-      } @else if $show == show-baseline {
-        @warn 'Please provide a $base-line-height variable if you want to display a baseline grid.';
-      }
-    }
-
-    @if $show != show-baseline {
-      $background: append($background, linear-gradient(to $to, $stops...), comma);
-      $clip: append($clip, content-box, comma);
-    }
-
-    @if length($background) > 0 {
-      @if mixin-exists(background-image) {
-        @include background-image($background);
-      } @else {
-        background-image: $background;
-      }
-
-      @if $size {
-        background-position: left top;
-        -webkit-background-size: $size;
-        background-size: $size;
-      }
-
-      @if index($clip, content-box) {
-        -webkit-background-origin: $clip;
-        -webkit-background-clip: $clip;
-        background-origin: $clip;
-        background-clip: $clip;
-      }
-    }
+  @if mixin-exists(background-image) {
+    @include background-image($image);
+  } @else {
+    background-image: $image;
   }
+
+  @if $size {
+    -webkit-background-size: $size;
+    background-size: $size;
+  }
+
+  @if $clip {
+    -webkit-background-origin: $clip;
+    -webkit-background-clip: $clip;
+    background-origin: $clip;
+    background-clip: $clip;
+  }
+
+  background-position: from($flow) top;
 }

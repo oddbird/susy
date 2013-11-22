@@ -1,20 +1,6 @@
 @charset "UTF-8";
 /* Susy Tests */
 /* ========== */
-.test__overlay-grid .assert__overlay-grid .test head:hover ~ .sym::before,
-.test__overlay-grid .assert__overlay-grid .test head:hover ~ body .sym::before, .test__overlay-grid .assert__overlay-grid .test head:hover ~ .asym::before,
-.test__overlay-grid .assert__overlay-grid .test head:hover ~ body .asym::before, .test__overlay-grid .assert__overlay-grid .expect head:hover ~ .sym::before,
-.test__overlay-grid .assert__overlay-grid .expect head:hover ~ body .sym::before, .test__overlay-grid .assert__overlay-grid .expect head:hover ~ .asym::before,
-.test__overlay-grid .assert__overlay-grid .expect head:hover ~ body .asym::before {
-  position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  content: " ";
-  z-index: 998;
-}
-
 /*  
 
 ### Column Math ------ */
@@ -133,137 +119,97 @@
     - 0 Failed */
 /*  
 
-### Grid Background Syntax ------ */
-/* - [mixin] background-grid */
-/* "Background-grid should show 7 columns with .5 gutters" */
-.test__background-grid .assert__outside .test {
-  background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, transparent 10%, transparent 15%, rgba(102, 102, 255, 0.25) 15%, rgba(179, 179, 255, 0.25) 25%, transparent 25%, transparent 30%, rgba(102, 102, 255, 0.25) 30%, rgba(179, 179, 255, 0.25) 40%, transparent 40%, transparent 45%, rgba(102, 102, 255, 0.25) 45%, rgba(179, 179, 255, 0.25) 55.0%, transparent 55.0%, transparent 60%, rgba(102, 102, 255, 0.25) 60%, rgba(179, 179, 255, 0.25) 70%, transparent 70%, transparent 75%, rgba(102, 102, 255, 0.25) 75%, rgba(179, 179, 255, 0.25) 85%, transparent 85%, transparent 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
+### Background Syntax ------ */
+/* - [mixin] show-grid */
+/* "Items should have a 7-column grid with outside gutters." */
+.test__show-grid .assert__outside .test {
+  background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 66.66667%, transparent 66.66667%);
+  -webkit-background-size: 15%;
+  background-size: 15%;
   -webkit-background-origin: content-box;
   -webkit-background-clip: content-box;
   background-origin: content-box;
   background-clip: content-box;
+  background-position: left top;
 }
-.test__background-grid .assert__outside .expect {
-  background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, transparent 10%, transparent 15%, rgba(102, 102, 255, 0.25) 15%, rgba(179, 179, 255, 0.25) 25%, transparent 25%, transparent 30%, rgba(102, 102, 255, 0.25) 30%, rgba(179, 179, 255, 0.25) 40%, transparent 40%, transparent 45%, rgba(102, 102, 255, 0.25) 45%, rgba(179, 179, 255, 0.25) 55%, transparent 55%, transparent 60%, rgba(102, 102, 255, 0.25) 60%, rgba(179, 179, 255, 0.25) 70%, transparent 70%, transparent 75%, rgba(102, 102, 255, 0.25) 75%, rgba(179, 179, 255, 0.25) 85%, transparent 85%, transparent 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
+.test__show-grid .assert__outside .expect {
+  background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 66.66667%, transparent 66.66667%);
+  -webkit-background-size: 15%;
+  background-size: 15%;
+  -webkit-background-origin: content-box;
+  -webkit-background-clip: content-box;
   background-origin: content-box;
   background-clip: content-box;
+  background-position: left top;
 }
 
-/* "Background-grid should show 8 columns with inside gutters" */
-.test__background-grid .assert__inside .test {
-  background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 12.5%, rgba(102, 102, 255, 0.25) 12.5%, rgba(179, 179, 255, 0.25) 25%, rgba(102, 102, 255, 0.25) 25%, rgba(179, 179, 255, 0.25) 37.5%, rgba(102, 102, 255, 0.25) 37.5%, rgba(179, 179, 255, 0.25) 50%, rgba(102, 102, 255, 0.25) 50%, rgba(179, 179, 255, 0.25) 62.5%, rgba(102, 102, 255, 0.25) 62.5%, rgba(179, 179, 255, 0.25) 75%, rgba(102, 102, 255, 0.25) 75%, rgba(179, 179, 255, 0.25) 87.5%, rgba(102, 102, 255, 0.25) 87.5%, rgba(179, 179, 255, 0.25));
+/* "Items should have a 8-column grid with inside gutters." */
+.test__show-grid .assert__inside .test {
+  background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25));
+  -webkit-background-size: 12.5%;
+  background-size: 12.5%;
   -webkit-background-origin: content-box;
   -webkit-background-clip: content-box;
   background-origin: content-box;
   background-clip: content-box;
+  background-position: left top;
 }
-.test__background-grid .assert__inside .expect {
-  background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 12.5%, rgba(102, 102, 255, 0.25) 12.5%, rgba(179, 179, 255, 0.25) 25%, rgba(102, 102, 255, 0.25) 25%, rgba(179, 179, 255, 0.25) 37.5%, rgba(102, 102, 255, 0.25) 37.5%, rgba(179, 179, 255, 0.25) 50%, rgba(102, 102, 255, 0.25) 50%, rgba(179, 179, 255, 0.25) 62.5%, rgba(102, 102, 255, 0.25) 62.5%, rgba(179, 179, 255, 0.25) 75%, rgba(102, 102, 255, 0.25) 75%, rgba(179, 179, 255, 0.25) 87.5%, rgba(102, 102, 255, 0.25) 87.5%, rgba(179, 179, 255, 0.25));
+.test__show-grid .assert__inside .expect {
+  background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25));
+  -webkit-background-size: 12.5%;
+  background-size: 12.5%;
+  -webkit-background-origin: content-box;
+  -webkit-background-clip: content-box;
   background-origin: content-box;
   background-clip: content-box;
+  background-position: left top;
 }
 
-/* - [mixin] overlay-grid */
-/* ".test and .expect should have same output." */
-.test__overlay-grid .assert__overlay-grid .test head {
-  display: block;
-  position: fixed;
-  left: 10px;
-  bottom: 10px;
-  z-index: 999;
-  color: #333;
-  border-radius: .25em;
-  text-shadow: 0 0 3px #fff;
-}
-.test__overlay-grid .assert__overlay-grid .test head::before {
-  content: "|||";
-  display: block;
-  padding: 10px 14px;
-  letter-spacing: -1;
-  font-family: sans-serif;
-  font-size: 26px;
-  font-weight: bold;
-}
-.test__overlay-grid .assert__overlay-grid .test head:hover {
-  box-shadow: 0 0 3px rgba(51, 51, 51, 0.5);
-  background: rgba(255, 255, 255, 0.5);
-}
-.test__overlay-grid .assert__overlay-grid .test head:hover ~ .sym,
-.test__overlay-grid .assert__overlay-grid .test head:hover ~ body .sym {
-  position: relative;
-}
-.test__overlay-grid .assert__overlay-grid .test head:hover ~ .sym::before,
-.test__overlay-grid .assert__overlay-grid .test head:hover ~ body .sym::before {
-  background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, transparent 10%, transparent 15%, rgba(102, 102, 255, 0.25) 15%, rgba(179, 179, 255, 0.25) 25%, transparent 25%, transparent 30%, rgba(102, 102, 255, 0.25) 30%, rgba(179, 179, 255, 0.25) 40%, transparent 40%, transparent 45%, rgba(102, 102, 255, 0.25) 45%, rgba(179, 179, 255, 0.25) 55.0%, transparent 55.0%, transparent 60%, rgba(102, 102, 255, 0.25) 60%, rgba(179, 179, 255, 0.25) 70%, transparent 70%, transparent 75%, rgba(102, 102, 255, 0.25) 75%, rgba(179, 179, 255, 0.25) 85%, transparent 85%, transparent 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
+/* "Items should have a (1 2 3 2 1)-column grid with outside gutters." */
+.test__show-grid .assert__asym-outside .test {
+  background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 9.09091%, transparent 9.09091%, transparent 13.63636%, rgba(102, 102, 255, 0.25) 13.63636%, rgba(179, 179, 255, 0.25) 31.81818%, transparent 31.81818%, transparent 36.36364%, rgba(102, 102, 255, 0.25) 36.36364%, rgba(179, 179, 255, 0.25) 63.63636%, transparent 63.63636%, transparent 68.18182%, rgba(102, 102, 255, 0.25) 68.18182%, rgba(179, 179, 255, 0.25) 86.36364%, transparent 86.36364%, transparent 90.90909%, rgba(102, 102, 255, 0.25) 90.90909%, rgba(179, 179, 255, 0.25));
   -webkit-background-origin: content-box;
   -webkit-background-clip: content-box;
   background-origin: content-box;
   background-clip: content-box;
+  background-position: left top;
 }
-.test__overlay-grid .assert__overlay-grid .test head:hover ~ .asym,
-.test__overlay-grid .assert__overlay-grid .test head:hover ~ body .asym {
-  position: relative;
-}
-.test__overlay-grid .assert__overlay-grid .test head:hover ~ .asym::before,
-.test__overlay-grid .assert__overlay-grid .test head:hover ~ body .asym::before {
-  background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 4em, transparent 4em, transparent 5em, rgba(102, 102, 255, 0.25) 5em, rgba(179, 179, 255, 0.25) 13em, transparent 13em, transparent 14em, rgba(102, 102, 255, 0.25) 14em, rgba(179, 179, 255, 0.25) 26em, transparent 26em, transparent 27em, rgba(102, 102, 255, 0.25) 27em, rgba(179, 179, 255, 0.25) 35em, transparent 35em, transparent 36em, rgba(102, 102, 255, 0.25) 36em, rgba(179, 179, 255, 0.25));
+.test__show-grid .assert__asym-outside .expect {
+  background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 9.09091%, transparent 9.09091%, transparent 13.63636%, rgba(102, 102, 255, 0.25) 13.63636%, rgba(179, 179, 255, 0.25) 31.81818%, transparent 31.81818%, transparent 36.36364%, rgba(102, 102, 255, 0.25) 36.36364%, rgba(179, 179, 255, 0.25) 63.63636%, transparent 63.63636%, transparent 68.18182%, rgba(102, 102, 255, 0.25) 68.18182%, rgba(179, 179, 255, 0.25) 86.36364%, transparent 86.36364%, transparent 90.90909%, rgba(102, 102, 255, 0.25) 90.90909%, rgba(179, 179, 255, 0.25));
   -webkit-background-origin: content-box;
   -webkit-background-clip: content-box;
   background-origin: content-box;
   background-clip: content-box;
-}
-.test__overlay-grid .assert__overlay-grid .expect head {
-  border-radius: 0.25em;
-  display: block;
-  position: fixed;
-  bottom: 10px;
-  left: 10px;
-  z-index: 999;
-  color: #333;
-  text-shadow: 0 0 3px #fff;
-}
-.test__overlay-grid .assert__overlay-grid .expect head::before {
-  content: "|||";
-  display: block;
-  padding: 10px 14px;
-  letter-spacing: -1;
-  font-family: sans-serif;
-  font-size: 26px;
-  font-weight: bold;
-}
-.test__overlay-grid .assert__overlay-grid .expect head:hover {
-  box-shadow: 0 0 3px rgba(51, 51, 51, 0.5);
-  background: rgba(255, 255, 255, 0.5);
-}
-.test__overlay-grid .assert__overlay-grid .expect head:hover ~ .sym,
-.test__overlay-grid .assert__overlay-grid .expect head:hover ~ body .sym {
-  position: relative;
-}
-.test__overlay-grid .assert__overlay-grid .expect head:hover ~ .sym::before,
-.test__overlay-grid .assert__overlay-grid .expect head:hover ~ body .sym::before {
-  background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, transparent 10%, transparent 15%, rgba(102, 102, 255, 0.25) 15%, rgba(179, 179, 255, 0.25) 25%, transparent 25%, transparent 30%, rgba(102, 102, 255, 0.25) 30%, rgba(179, 179, 255, 0.25) 40%, transparent 40%, transparent 45%, rgba(102, 102, 255, 0.25) 45%, rgba(179, 179, 255, 0.25) 55.0%, transparent 55.0%, transparent 60%, rgba(102, 102, 255, 0.25) 60%, rgba(179, 179, 255, 0.25) 70%, transparent 70%, transparent 75%, rgba(102, 102, 255, 0.25) 75%, rgba(179, 179, 255, 0.25) 85%, transparent 85%, transparent 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
-  -webkit-background-origin: content-box;
-  -webkit-background-clip: content-box;
-  background-origin: content-box;
-  background-clip: content-box;
-}
-.test__overlay-grid .assert__overlay-grid .expect head:hover ~ .asym,
-.test__overlay-grid .assert__overlay-grid .expect head:hover ~ body .asym {
-  position: relative;
-}
-.test__overlay-grid .assert__overlay-grid .expect head:hover ~ .asym::before,
-.test__overlay-grid .assert__overlay-grid .expect head:hover ~ body .asym::before {
-  background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 4em, transparent 4em, transparent 5em, rgba(102, 102, 255, 0.25) 5em, rgba(179, 179, 255, 0.25) 13em, transparent 13em, transparent 14em, rgba(102, 102, 255, 0.25) 14em, rgba(179, 179, 255, 0.25) 26em, transparent 26em, transparent 27em, rgba(102, 102, 255, 0.25) 27em, rgba(179, 179, 255, 0.25) 35em, transparent 35em, transparent 36em, rgba(102, 102, 255, 0.25) 36em, rgba(179, 179, 255, 0.25));
-  -webkit-background-origin: content-box;
-  -webkit-background-clip: content-box;
-  background-origin: content-box;
-  background-clip: content-box;
+  background-position: left top;
 }
 
-/*  - [function] get-grid-color-stops (5 Assertions, 5 Passed, 0 Failed) */
+/* "Items should have a (1 2 3 3)-column grid with inside gutters." */
+.test__show-grid .assert__asym-inside .test {
+  background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 12.5%, rgba(102, 102, 255, 0.25) 12.5%, rgba(179, 179, 255, 0.25) 35%, rgba(102, 102, 255, 0.25) 35%, rgba(179, 179, 255, 0.25) 67.5%, rgba(102, 102, 255, 0.25) 67.5%, rgba(179, 179, 255, 0.25));
+  -webkit-background-origin: content-box;
+  -webkit-background-clip: content-box;
+  background-origin: content-box;
+  background-clip: content-box;
+  background-position: left top;
+}
+.test__show-grid .assert__asym-inside .expect {
+  background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 12.5%, rgba(102, 102, 255, 0.25) 12.5%, rgba(179, 179, 255, 0.25) 35%, rgba(102, 102, 255, 0.25) 35%, rgba(179, 179, 255, 0.25) 67.5%, rgba(102, 102, 255, 0.25) 67.5%, rgba(179, 179, 255, 0.25));
+  -webkit-background-origin: content-box;
+  -webkit-background-clip: content-box;
+  background-origin: content-box;
+  background-clip: content-box;
+  background-position: left top;
+}
+
+/*  - [function] get-background-sym (4 Assertions, 4 Passed, 0 Failed) */
+/*  - [function] get-asym-inside (1 Assertions, 1 Passed, 0 Failed) */
+/*  - [function] get-asym-outside (1 Assertions, 1 Passed, 0 Failed) */
+/*  - [function] get-background-asym (2 Assertions, 2 Passed, 0 Failed) */
+/*  - [function] get-background (5 Assertions, 5 Passed, 0 Failed) */
+/*  - [function] get-debug (2 Assertions, 2 Passed, 0 Failed) */
 /*  
-    1 Tests:
-    - 1 Passed
+    6 Tests:
+    - 6 Passed
     - 0 Failed */
 /*  
 
@@ -275,11 +221,14 @@
   max-width: 80%;
   margin-left: auto;
   margin-right: auto;
-  background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, transparent 10%, transparent 15%, rgba(102, 102, 255, 0.25) 15%, rgba(179, 179, 255, 0.25) 25%, transparent 25%, transparent 30%, rgba(102, 102, 255, 0.25) 30%, rgba(179, 179, 255, 0.25) 40%, transparent 40%, transparent 45%, rgba(102, 102, 255, 0.25) 45%, rgba(179, 179, 255, 0.25) 55.0%, transparent 55.0%, transparent 60%, rgba(102, 102, 255, 0.25) 60%, rgba(179, 179, 255, 0.25) 70%, transparent 70%, transparent 75%, rgba(102, 102, 255, 0.25) 75%, rgba(179, 179, 255, 0.25) 85%, transparent 85%, transparent 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
+  background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 66.66667%, transparent 66.66667%);
+  -webkit-background-size: 15%;
+  background-size: 15%;
   -webkit-background-origin: content-box;
   -webkit-background-clip: content-box;
   background-origin: content-box;
   background-clip: content-box;
+  background-position: left top;
 }
 .test__container .assert__default-box .test:after {
   content: " ";
@@ -291,7 +240,14 @@
   max-width: 80%;
   margin-left: auto;
   margin-right: auto;
-  background: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, transparent 10%, transparent 15%, rgba(102, 102, 255, 0.25) 15%, rgba(179, 179, 255, 0.25) 25%, transparent 25%, transparent 30%, rgba(102, 102, 255, 0.25) 30%, rgba(179, 179, 255, 0.25) 40%, transparent 40%, transparent 45%, rgba(102, 102, 255, 0.25) 45%, rgba(179, 179, 255, 0.25) 55%, transparent 55%, transparent 60%, rgba(102, 102, 255, 0.25) 60%, rgba(179, 179, 255, 0.25) 70%, transparent 70%, transparent 75%, rgba(102, 102, 255, 0.25) 75%, rgba(179, 179, 255, 0.25) 85%, transparent 85%, transparent 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
+  background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 66.66667%, transparent 66.66667%);
+  -webkit-background-size: 15%;
+  background-size: 15%;
+  -webkit-background-origin: content-box;
+  -webkit-background-clip: content-box;
+  background-origin: content-box;
+  background-clip: content-box;
+  background-position: left top;
 }
 .test__container .assert__default-box .expect:after {
   content: " ";
@@ -313,6 +269,7 @@
   -webkit-background-clip: content-box;
   background-origin: content-box;
   background-clip: content-box;
+  background-position: left top;
 }
 .test__container .assert__border-box .test:after {
   content: " ";
@@ -327,7 +284,12 @@
   max-width: 40em;
   margin-left: 0;
   margin-right: auto;
-  background: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, transparent 10%, transparent 12.5%, rgba(102, 102, 255, 0.25) 12.5%, rgba(179, 179, 255, 0.25) 32.5%, transparent 32.5%, transparent 35%, rgba(102, 102, 255, 0.25) 35%, rgba(179, 179, 255, 0.25) 65%, transparent 65%, transparent 67.5%, rgba(102, 102, 255, 0.25) 67.5%, rgba(179, 179, 255, 0.25) 87.5%, transparent 87.5%, transparent 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
+  background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, transparent 10%, transparent 12.5%, rgba(102, 102, 255, 0.25) 12.5%, rgba(179, 179, 255, 0.25) 32.5%, transparent 32.5%, transparent 35%, rgba(102, 102, 255, 0.25) 35%, rgba(179, 179, 255, 0.25) 65%, transparent 65%, transparent 67.5%, rgba(102, 102, 255, 0.25) 67.5%, rgba(179, 179, 255, 0.25) 87.5%, transparent 87.5%, transparent 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
+  -webkit-background-origin: content-box;
+  -webkit-background-clip: content-box;
+  background-origin: content-box;
+  background-clip: content-box;
+  background-position: left top;
 }
 .test__container .assert__border-box .expect:after {
   content: " ";
@@ -369,13 +331,13 @@
 
 /* "Span should set width, float, inside gutter, and border-box" */
 .test__span .assert__inside .test {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
   width: 62.5%;
   float: left;
   padding-left: 1.25%;
   padding-right: 1.25%;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
 }
 .test__span .assert__inside .expect {
   -moz-box-sizing: border-box;
@@ -385,15 +347,6 @@
   float: left;
   padding-left: 1.25%;
   padding-right: 1.25%;
-}
-
-.span-content-test {
-  width: 66.10169%;
-  float: left;
-  margin-right: 1.69492%;
-  width: 35.89744%;
-  float: left;
-  margin-right: 2.5641%;
 }
 
 /*  - [mixin] span (4 Assertions, 4 Passed, 0 Failed) */
@@ -500,18 +453,20 @@
 .test__gallery .assert__sym .expect {
   width: 28.0%;
   float: left;
-  margin-right: -100%;
 }
 .test__gallery .assert__sym .expect:nth-child(3n + 1) {
+  margin-right: -100%;
   margin-left: 0;
   clear: left;
 }
 .test__gallery .assert__sym .expect:nth-child(3n + 2) {
   margin-left: 36%;
+  margin-right: -100%;
   clear: none;
 }
 .test__gallery .assert__sym .expect:nth-child(3n + 3) {
   margin-left: 72%;
+  margin-right: -100%;
   clear: none;
 }
 
@@ -546,27 +501,32 @@
   clear: none;
 }
 .test__gallery .assert__inside .expect {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
   box-sizing: border-box;
   width: 25.0%;
   float: left;
-  margin-right: -100%;
   padding-left: 1.25%;
   padding-right: 1.25%;
 }
 .test__gallery .assert__inside .expect:nth-child(4n + 1) {
+  margin-right: -100%;
   margin-left: 0;
   clear: left;
 }
 .test__gallery .assert__inside .expect:nth-child(4n + 2) {
   margin-left: 25%;
+  margin-right: -100%;
   clear: none;
 }
 .test__gallery .assert__inside .expect:nth-child(4n + 3) {
   margin-left: 50%;
+  margin-right: -100%;
   clear: none;
 }
 .test__gallery .assert__inside .expect:nth-child(4n + 4) {
   margin-left: 75%;
+  margin-right: -100%;
   clear: none;
 }
 
@@ -596,23 +556,27 @@
   clear: none;
 }
 .test__gallery .assert__inside-static .expect {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
   box-sizing: border-box;
   width: 33.33333%;
   float: left;
-  margin-right: -100%;
   padding-left: 2em;
   padding-right: 2em;
 }
 .test__gallery .assert__inside-static .expect:nth-child(3n + 1) {
+  margin-right: -100%;
   margin-left: 0;
   clear: left;
 }
 .test__gallery .assert__inside-static .expect:nth-child(3n + 2) {
   margin-left: 33.33333%;
+  margin-right: -100%;
   clear: none;
 }
 .test__gallery .assert__inside-static .expect:nth-child(3n + 3) {
   margin-left: 66.66667%;
+  margin-right: -100%;
   clear: none;
 }
 
@@ -640,21 +604,23 @@
 }
 .test__gallery .assert__asym .expect {
   float: left;
-  margin-right: -100%;
 }
 .test__gallery .assert__asym .expect:nth-child(3n + 1) {
   width: 32%;
+  margin-right: -100%;
   margin-left: 0;
   clear: left;
 }
 .test__gallery .assert__asym .expect:nth-child(3n + 2) {
   width: 32%;
   margin-left: 34%;
+  margin-right: -100%;
   clear: none;
 }
 .test__gallery .assert__asym .expect:nth-child(3n + 3) {
   width: 32%;
   margin-left: 68%;
+  margin-right: -100%;
   clear: none;
 }
 
@@ -993,6 +959,9 @@
   padding-left: 15%;
   margin-right: -15%;
   padding-right: 15%;
+  -moz-box-sizing: content-box;
+  -webkit-box-sizing: content-box;
+  box-sizing: content-box;
 }
 
 /* "Items should bleed 1em on all sides, and retain their static gutters" */
@@ -1018,6 +987,9 @@
   padding-bottom: 1em;
   margin-left: -1em;
   padding-left: 1.5em;
+  -moz-box-sizing: content-box;
+  -webkit-box-sizing: content-box;
+  box-sizing: content-box;
 }
 
 /* - [mixin] bleed-x */
@@ -1032,10 +1004,13 @@
   box-sizing: content-box;
 }
 .test__bleed-x .assert__simple .expect {
-  margin-left: -15%;
-  padding-left: 15%;
   margin-right: -30%;
   padding-right: 30%;
+  margin-left: -15%;
+  padding-left: 15%;
+  -moz-box-sizing: content-box;
+  -webkit-box-sizing: content-box;
+  box-sizing: content-box;
 }
 
 /* "Items should bleed 1 column, and retain their gutters" */
@@ -1053,6 +1028,9 @@
   padding-left: 13.75%;
   margin-right: -12.5%;
   padding-right: 13.75%;
+  -moz-box-sizing: content-box;
+  -webkit-box-sizing: content-box;
+  box-sizing: content-box;
 }
 
 /* - [mixin] bleed-y */
@@ -1067,10 +1045,13 @@
   box-sizing: content-box;
 }
 .test__bleed-y .assert__simple .expect {
-  margin-top: -.5em;
-  padding-top: .5em;
+  margin-top: -0.5em;
+  padding-top: 0.5em;
   margin-bottom: -1em;
   padding-bottom: 1em;
+  -moz-box-sizing: content-box;
+  -webkit-box-sizing: content-box;
+  box-sizing: content-box;
 }
 
 /*  - [function] parse-bleed (1 Assertions, 1 Passed, 0 Failed) */
@@ -1084,51 +1065,26 @@
 /* - [mixin] background-grid-output */
 /* "Elements should show a horizontal clipped red-green-blue gradient, and a vertical baseline" */
 .test__background-grid-output .assert__show .test {
-  background-image: linear-gradient(to bottom, black 5%, transparent 5%), linear-gradient(to right, #ffcccc, #ccffcc 25%, #ccccff);
+  background-image: linear-gradient(to right, #ffcccc, #ccffcc 25%, #ccccff), linear-gradient(to bottom, black 5%, transparent 5%);
+  -webkit-background-size: auto, 100% 16px;
+  background-size: auto, 100% 16px;
+  -webkit-background-origin: content-box, border-box;
+  -webkit-background-clip: content-box, border-box;
+  background-origin: content-box, border-box;
+  background-clip: content-box, border-box;
   background-position: left top;
-  -webkit-background-size: 100% 24px;
-  background-size: 100% 24px;
-  -webkit-background-origin: border-box, content-box;
-  -webkit-background-clip: border-box, content-box;
-  background-origin: border-box, content-box;
-  background-clip: border-box, content-box;
 }
 .test__background-grid-output .assert__show .expect {
-  background-image: linear-gradient(to bottom, black 5%, transparent 5%), linear-gradient(to right, #ffcccc, #ccffcc 25%, #ccccff);
-  background-size: 100% 24px;
-  background-position: left top;
-  background-origin: border-box, content-box;
-  background-clip: border-box, content-box;
-}
-
-/* "Elements should show a horizontal clipped red-green-blue gradient, without baseline" */
-.test__background-grid-output .assert__show-columns .test {
-  background-image: linear-gradient(to right, #ffcccc, #ccffcc 25%, #ccccff);
-  -webkit-background-origin: content-box;
-  -webkit-background-clip: content-box;
-  background-origin: content-box;
-  background-clip: content-box;
-}
-.test__background-grid-output .assert__show-columns .expect {
-  background: linear-gradient(to right, #ffcccc, #ccffcc 25%, #ccccff);
-  background-origin: content-box;
-  background-clip: content-box;
-}
-
-/* "Elements should show a vertical baseline" */
-.test__background-grid-output .assert__show-baseline .test {
-  background-image: linear-gradient(to bottom, black 5%, transparent 5%);
-  background-position: left top;
-  -webkit-background-size: 100% 24px;
-  background-size: 100% 24px;
-}
-.test__background-grid-output .assert__show-baseline .expect {
-  background: linear-gradient(to bottom, black 5%, transparent 5%);
-  background-size: 100% 24px;
+  background-image: linear-gradient(to right, #ffcccc, #ccffcc 25%, #ccccff), linear-gradient(to bottom, black 5%, transparent 5%);
+  -webkit-background-size: auto, 100% 16px;
+  background-size: auto, 100% 16px;
+  -webkit-background-origin: content-box, border-box;
+  -webkit-background-clip: content-box, border-box;
+  background-origin: content-box, border-box;
+  background-clip: content-box, border-box;
   background-position: left top;
 }
 
-/* "Elements should not show any grid background" */
 /*
 
 ### Shared Container API ------ */

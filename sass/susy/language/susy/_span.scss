@@ -12,8 +12,8 @@
   $output   : span-math($span);
   $box      : span-get(box-sizing, $span) or if(is-inside($span), border-box, null);
 
-  @include float-span-output($output...);
   @include susy-box-sizing($box);
+  @include float-span-output($output...);
   @include nested($span) { @content; }
 }
 

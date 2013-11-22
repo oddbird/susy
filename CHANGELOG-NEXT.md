@@ -7,13 +7,13 @@ Susy Next Changelog
 * Compass is no longer a dependency.
   - Only registers as a compass extension if compass is present.
 * Any mixin/function that accepts natural language syntax also accepts maps.
-* Maps and natural language can even be mixed:
+* Maps and natural language can be mixed:
   - `$large: (columns: 12, gutters: .5);`
   - `span(3 $large no-gutters)`
 
 Backwards Incompatible:
 
-* **Requires Sass 3.3**
+* Requires Sass 3.3
 * Default settings are handled with a Sass map on the `$susy` variable:
   - $susy: (columns: 12, gutters: .25) etc.
 * `bleed` now takes standard span syntax, with multiple (TRBL) spans.
@@ -22,7 +22,13 @@ Backwards Incompatible:
 * Span arguments now accept `narrow`, `wide`, or `wider` keywords.
   - The `wide` keyword replaces the old `outer` keyword.
   - This setting has been re-named from `outer` to `spread`.
-
+* Re-wrote grid debugging
+  - More concise & accurate output for symmetrical grids.
+  - Changed `grid-background()` to `show-grid()`/`show-grids()`
+  - Changed `overlay-grid()` to `grid-overlay()`
+  - Moved settings into `$debug: (color: rgba(#66f, .25), toggle: top right);`
+  - Removed overlay-position setting.
+  - Only display vertical-rhythms when `$base-line-height` is available.
 
 2.0.0.alpha.4 [Sept 4, 2013]
 ----------------------------

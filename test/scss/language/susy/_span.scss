@@ -67,7 +67,7 @@
   @include test('[mixin] span') {
     $susy: (columns: 12) !global;
 
-    .span-content-test {
+    %span-content-test {
       @include span(8 of 12) {
         $test: susy-get(columns);
         $expect: 8;

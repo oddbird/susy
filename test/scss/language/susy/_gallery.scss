@@ -108,6 +108,41 @@
       }
     }
 
+    // split
+    @include assert-setup('split', $grid: 8 .25 split) {
+      .nest { @include susy-clearfix; }
+      .test, .expect { @include trailer(0); }
+    }
+    @include assert-output(
+      'Items should create 4x isolated gallery with split-gutters.'
+    ) {
+      .test { @include gallery(2); }
+      .expect {
+        width: 22.5%;
+        float: left;
+        &:nth-child(4n + 1) {
+          margin-right: -100%;
+          margin-left: 1.25%;
+          clear: left;
+        }
+        &:nth-child(4n + 2) {
+          margin-left: 26.25%;
+          margin-right: -100%;
+          clear: none;
+        }
+        &:nth-child(4n + 3) {
+          margin-left: 51.25%;
+          margin-right: -100%;
+          clear: none;
+        }
+        &:nth-child(4n + 4) {
+          margin-left: 76.25%;
+          margin-right: -100%;
+          clear: none;
+        }
+      }
+    }
+
     // asymmetrical
     @include assert-setup('asym', $grid: (1 2 1 2 2 1) 1/5) {
       .nest { @include susy-clearfix; }

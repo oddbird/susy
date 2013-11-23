@@ -143,6 +143,28 @@
   background-position: left top;
 }
 
+/* "Items should have a 8-column grid with split gutters." */
+.test__show-grid .assert__split .test {
+  background-image: linear-gradient(to right, transparent 10%, rgba(102, 102, 255, 0.25) 10%, rgba(179, 179, 255, 0.25) 90%, transparent 90%);
+  -webkit-background-size: 12.5%;
+  background-size: 12.5%;
+  -webkit-background-origin: content-box;
+  -webkit-background-clip: content-box;
+  background-origin: content-box;
+  background-clip: content-box;
+  background-position: left top;
+}
+.test__show-grid .assert__split .expect {
+  background-image: linear-gradient(to right, transparent 10%, rgba(102, 102, 255, 0.25) 10%, rgba(179, 179, 255, 0.25) 90%, transparent 90%);
+  -webkit-background-size: 12.5%;
+  background-size: 12.5%;
+  -webkit-background-origin: content-box;
+  -webkit-background-clip: content-box;
+  background-origin: content-box;
+  background-clip: content-box;
+  background-position: left top;
+}
+
 /* "Items should have a 8-column grid with inside gutters." */
 .test__show-grid .assert__inside .test {
   background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25));
@@ -183,6 +205,24 @@
   background-position: left top;
 }
 
+/* "Items should have a (1 2 3 3)-column grid with split gutters." */
+.test__show-grid .assert__asym-split .test {
+  background-image: linear-gradient(to right, transparent 1.25%, rgba(102, 102, 255, 0.25) 1.25%, rgba(179, 179, 255, 0.25) 11.25%, transparent 11.25%, transparent 13.75%, rgba(102, 102, 255, 0.25) 13.75%, rgba(179, 179, 255, 0.25) 33.75%, transparent 33.75%, transparent 36.25%, rgba(102, 102, 255, 0.25) 36.25%, rgba(179, 179, 255, 0.25) 66.25%, transparent 66.25%, transparent 68.75%, rgba(102, 102, 255, 0.25) 68.75%, rgba(179, 179, 255, 0.25) 98.75%, transparent 98.75%);
+  -webkit-background-origin: content-box;
+  -webkit-background-clip: content-box;
+  background-origin: content-box;
+  background-clip: content-box;
+  background-position: left top;
+}
+.test__show-grid .assert__asym-split .expect {
+  background-image: linear-gradient(to right, transparent 1.25%, rgba(102, 102, 255, 0.25) 1.25%, rgba(179, 179, 255, 0.25) 11.25%, transparent 11.25%, transparent 13.75%, rgba(102, 102, 255, 0.25) 13.75%, rgba(179, 179, 255, 0.25) 33.75%, transparent 33.75%, transparent 36.25%, rgba(102, 102, 255, 0.25) 36.25%, rgba(179, 179, 255, 0.25) 66.25%, transparent 66.25%, transparent 68.75%, rgba(102, 102, 255, 0.25) 68.75%, rgba(179, 179, 255, 0.25) 98.75%, transparent 98.75%);
+  -webkit-background-origin: content-box;
+  -webkit-background-clip: content-box;
+  background-origin: content-box;
+  background-clip: content-box;
+  background-position: left top;
+}
+
 /* "Items should have a (1 2 3 3)-column grid with inside gutters." */
 .test__show-grid .assert__asym-inside .test {
   background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 12.5%, rgba(102, 102, 255, 0.25) 12.5%, rgba(179, 179, 255, 0.25) 35%, rgba(102, 102, 255, 0.25) 35%, rgba(179, 179, 255, 0.25) 67.5%, rgba(102, 102, 255, 0.25) 67.5%, rgba(179, 179, 255, 0.25));
@@ -201,15 +241,16 @@
   background-position: left top;
 }
 
-/*  - [function] get-background-sym (4 Assertions, 4 Passed, 0 Failed) */
+/*  - [function] get-background-sym (6 Assertions, 6 Passed, 0 Failed) */
 /*  - [function] get-asym-inside (1 Assertions, 1 Passed, 0 Failed) */
+/*  - [function] get-asym-split (1 Assertions, 1 Passed, 0 Failed) */
 /*  - [function] get-asym-outside (1 Assertions, 1 Passed, 0 Failed) */
 /*  - [function] get-background-asym (2 Assertions, 2 Passed, 0 Failed) */
 /*  - [function] get-background (5 Assertions, 5 Passed, 0 Failed) */
 /*  - [function] get-debug (2 Assertions, 2 Passed, 0 Failed) */
 /*  
-    6 Tests:
-    - 6 Passed
+    7 Tests:
+    - 7 Passed
     - 0 Failed */
 /*  
 
@@ -298,7 +339,7 @@
 }
 
 /*  - [function] container (5 Assertions, 5 Passed, 0 Failed) */
-/*  - [function] get-container-width (5 Assertions, 5 Passed, 0 Failed) */
+/*  - [function] get-container-width (6 Assertions, 6 Passed, 0 Failed) */
 /*  
     2 Tests:
     - 2 Passed
@@ -354,7 +395,7 @@
 /*  - [function] parse-span (100 Assertions, 100 Passed, 0 Failed) */
 /*  - [function] span-get (2 Assertions, 2 Passed, 0 Failed) */
 /*  - [function] span-math (9 Assertions, 9 Passed, 0 Failed) */
-/*  - [function] get-span-width (6 Assertions, 6 Passed, 0 Failed) */
+/*  - [function] get-span-width (8 Assertions, 8 Passed, 0 Failed) */
 /*  - [function] get-span-context (1 Assertions, 1 Passed, 0 Failed) */
 /*  
     7 Tests:
@@ -366,8 +407,8 @@
 /* - [mixin] gutters */
 /* "Item should have 2.5% margin-gutters added before and after" */
 .test__gutters .assert__auto .test {
-  margin-left: 2.5%;
-  margin-right: 2.5%;
+  margin-left: 2.38095%;
+  margin-right: 2.38095%;
 }
 .test__gutters .assert__auto .expect {
   margin-left: 2.5%;
@@ -396,7 +437,7 @@
 
 /*  - [function] gutter (2 Assertions, 2 Passed, 0 Failed) */
 /*  - [function] parse-gutters (3 Assertions, 3 Passed, 0 Failed) */
-/*  - [function] get-gutter-width (4 Assertions, 4 Passed, 0 Failed) */
+/*  - [function] get-gutter-width (5 Assertions, 5 Passed, 0 Failed) */
 /*  - [function] get-gutters (3 Assertions, 3 Passed, 0 Failed) */
 /*  - [function] is-inside (2 Assertions, 2 Passed, 0 Failed) */
 /*  - [function] is-split (2 Assertions, 2 Passed, 0 Failed) */
@@ -421,7 +462,7 @@
   margin-left: -100%;
 }
 
-/*  - [function] get-isolation (3 Assertions, 3 Passed, 0 Failed) */
+/*  - [function] get-isolation (4 Assertions, 4 Passed, 0 Failed) */
 /*  
     1 Tests:
     - 1 Passed
@@ -580,6 +621,56 @@
   clear: none;
 }
 
+/* "Items should create 4x isolated gallery with split-gutters." */
+.test__gallery .assert__split .test {
+  width: 22.5%;
+  float: left;
+}
+.test__gallery .assert__split .test:nth-child(4n + 1) {
+  margin-left: 1.25%;
+  margin-right: -100%;
+  clear: left;
+}
+.test__gallery .assert__split .test:nth-child(4n + 2) {
+  margin-left: 26.25%;
+  margin-right: -100%;
+  clear: none;
+}
+.test__gallery .assert__split .test:nth-child(4n + 3) {
+  margin-left: 51.25%;
+  margin-right: -100%;
+  clear: none;
+}
+.test__gallery .assert__split .test:nth-child(4n + 4) {
+  margin-left: 76.25%;
+  margin-right: -100%;
+  clear: none;
+}
+.test__gallery .assert__split .expect {
+  width: 22.5%;
+  float: left;
+}
+.test__gallery .assert__split .expect:nth-child(4n + 1) {
+  margin-right: -100%;
+  margin-left: 1.25%;
+  clear: left;
+}
+.test__gallery .assert__split .expect:nth-child(4n + 2) {
+  margin-left: 26.25%;
+  margin-right: -100%;
+  clear: none;
+}
+.test__gallery .assert__split .expect:nth-child(4n + 3) {
+  margin-left: 51.25%;
+  margin-right: -100%;
+  clear: none;
+}
+.test__gallery .assert__split .expect:nth-child(4n + 4) {
+  margin-left: 76.25%;
+  margin-right: -100%;
+  clear: none;
+}
+
 /* "Items should create 3x isolated asymmetrical gallery." */
 .test__gallery .assert__asym .test {
   float: left;
@@ -674,7 +765,7 @@
 /* "Rows should clear preceeding floats, and contain inner floats" */
 .test__row .assert__row .test {
   *zoom: 1;
-  clear: left;
+  clear: both;
 }
 .test__row .assert__row .test:after {
   content: " ";
@@ -683,7 +774,7 @@
 }
 .test__row .assert__row .expect {
   *zoom: 1;
-  clear: left;
+  clear: both;
 }
 .test__row .assert__row .expect:after {
   content: " ";
@@ -711,16 +802,17 @@
 }
 
 /* - [mixin] first */
-/* "First items should have left margins removed" */
-.test__first .assert__first .test {
+/* "First items should have left margins removed." */
+.test__first .assert__before .test {
   margin-left: 0;
 }
-.test__first .assert__first .expect {
+.test__first .assert__before .expect {
   margin-left: 0;
 }
 
+/* "Nothing should happen to split first items." */
 /* - [mixin] alpha */
-/* "Alpha items should have left margins removed" */
+/* "Alpha items should have left margins removed." */
 .test__alpha .assert__alpha .test {
   margin-left: 0;
 }
@@ -729,14 +821,7 @@
 }
 
 /* - [mixin] nth-first */
-/* "Nth-first (first-child) items should have left margins removed" */
-.test__nth-first .assert__nth-first .test:first-child {
-  margin-left: 0;
-}
-.test__nth-first .assert__nth-first .expect {
-  margin-left: 0;
-}
-
+/* "Nth-first (first-child) items should have left margins removed." */
 /* - [mixin] nth-alpha */
 /* "Nth-alpha (first-child) items should have left margins removed" */
 .test__nth-alpha .assert__nth-alpha .test:first-child {
@@ -748,13 +833,22 @@
 
 /* - [mixin] last */
 /* "Last items should float right, with right margins removed" */
-.test__last .assert__last .test {
+.test__last .assert__after .test {
   float: right;
   margin-right: 0;
 }
-.test__last .assert__last .expect {
+.test__last .assert__after .expect {
   float: right;
   margin-right: 0;
+}
+
+/* "Last items should float right." */
+.test__last .assert__split .test {
+  float: right;
+  margin-right: 2.38095%;
+}
+.test__last .assert__split .expect {
+  float: right;
 }
 
 /* - [mixin] omega */
@@ -769,18 +863,17 @@
 }
 
 /* - [mixin] nth-last */
-/* "nth-last(2, last-child) items should float right, with right margins removed" */
+/* "nth-last(2, last-child) items should float right." */
 .test__nth-last .assert__nth-last .test:nth-last-child(2) {
   float: right;
-  margin-right: 0;
+  margin-right: 2.38095%;
 }
 .test__nth-last .assert__nth-last .expect {
   float: right;
-  margin-right: 0;
 }
 
 /* - [mixin] nth-omega */
-/* "nth-omega(2, last-child) items should float right, with right margins removed" */
+/* "nth-omega(2, last-child) items should float right, with right margins removed." */
 .test__nth-omega .assert__nth-omega .test:nth-last-child(2) {
   float: right;
   margin-right: 0;
@@ -802,6 +895,14 @@
   margin-left: 30%;
 }
 
+/* "Items should have 2-columns margin after, including split gutter." */
+.test__pre .assert__split .test {
+  margin-left: 26.25%;
+}
+.test__pre .assert__split .expect {
+  margin-left: 26.25%;
+}
+
 /* "Items should have 2-columns (wider) margin before." */
 .test__pre .assert__wider .test {
   margin-left: 35%;
@@ -819,6 +920,14 @@
   margin-right: 35%;
 }
 
+/* "Items should have 2-columns margin after, including split gutter." */
+.test__post .assert__split .test {
+  margin-right: 33.75%;
+}
+.test__post .assert__split .expect {
+  margin-right: 33.75%;
+}
+
 /* "Items should have 1-column (wide-2) margin after." */
 .test__post .assert__wider .test {
   margin-right: 35%;
@@ -830,10 +939,10 @@
 /* - [mixin] push */
 /* "Items should have 2-columns margin before." */
 .test__push .assert__push .test {
-  margin-left: 35%;
+  margin-left: 26.25%;
 }
 .test__push .assert__push .expect {
-  margin-left: 35%;
+  margin-left: 26.25%;
 }
 
 /* - [mixin] pull */
@@ -843,6 +952,14 @@
 }
 .test__pull .assert__narrow .expect {
   margin-left: -20%;
+}
+
+/* "Items should pull 1-column, overlapping the spacer." */
+.test__pull .assert__split .test {
+  margin-left: -11.25%;
+}
+.test__pull .assert__split .expect {
+  margin-left: -11.25%;
 }
 
 /* "Items should pull 1-column, overlapping the spacer." */

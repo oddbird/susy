@@ -74,7 +74,7 @@
       @include float-span-output($output...);
 
       @if is-first(span-get(location, $layout)) {
-        @include first($flow);
+        @include first($layout);
         clear: $from;
       } @else {
         clear: none;

@@ -26,6 +26,24 @@
       }
     }
 
+    // split
+    @include assert-setup('split');
+    @include assert-output(
+      'Items should have a 8-column grid with split gutters.'
+    ) {
+      .test { @include show-grid(8 .25 split); }
+      .expect {
+        background-image: linear-gradient(to right, transparent 10%, rgba(102, 102, 255, 0.25) 10%, rgba(179, 179, 255, 0.25) 90%, transparent 90%);
+        -webkit-background-size: 12.5%;
+        background-size: 12.5%;
+        -webkit-background-origin: content-box;
+        -webkit-background-clip: content-box;
+        background-origin: content-box;
+        background-clip: content-box;
+        background-position: left top;
+      }
+    }
+
     // inside
     @include assert-setup('inside');
     @include assert-output(
@@ -52,6 +70,22 @@
       .test { @include show-grid((1 2 3 2 1) .5 before); }
       .expect {
         background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 9.09091%, transparent 9.09091%, transparent 13.63636%, rgba(102, 102, 255, 0.25) 13.63636%, rgba(179, 179, 255, 0.25) 31.81818%, transparent 31.81818%, transparent 36.36364%, rgba(102, 102, 255, 0.25) 36.36364%, rgba(179, 179, 255, 0.25) 63.63636%, transparent 63.63636%, transparent 68.18182%, rgba(102, 102, 255, 0.25) 68.18182%, rgba(179, 179, 255, 0.25) 86.36364%, transparent 86.36364%, transparent 90.90909%, rgba(102, 102, 255, 0.25) 90.90909%, rgba(179, 179, 255, 0.25));
+        -webkit-background-origin: content-box;
+        -webkit-background-clip: content-box;
+        background-origin: content-box;
+        background-clip: content-box;
+        background-position: left top;
+      }
+    }
+
+    // asymmetrical split
+    @include assert-setup('asym-split');
+    @include assert-output(
+      'Items should have a (1 2 3 3)-column grid with split gutters.'
+    ) {
+      .test { @include show-grid((1 2 3 3) .25 split); }
+      .expect {
+        background-image: linear-gradient(to right, transparent 1.25%, rgba(102, 102, 255, 0.25) 1.25%, rgba(179, 179, 255, 0.25) 11.25%, transparent 11.25%, transparent 13.75%, rgba(102, 102, 255, 0.25) 13.75%, rgba(179, 179, 255, 0.25) 33.75%, transparent 33.75%, transparent 36.25%, rgba(102, 102, 255, 0.25) 36.25%, rgba(179, 179, 255, 0.25) 66.25%, transparent 66.25%, transparent 68.75%, rgba(102, 102, 255, 0.25) 68.75%, rgba(179, 179, 255, 0.25) 98.75%, transparent 98.75%);
         -webkit-background-origin: content-box;
         -webkit-background-clip: content-box;
         background-origin: content-box;
@@ -108,6 +142,18 @@
     $expect: 6em;
     @include assert-equal($size, $expect,
       'Returns the correct background size for a static grid.');
+
+    // Split columns
+    $test: get-background-sym(8 .25 split);
+    $columns: map-get(map-get($test, image), columns);
+    $expect: transparent 10%, $color 10%, $light 90%, transparent 90%;
+    @include assert-equal($columns, $expect,
+      'Returns the correct columns gradient for a split-gutters grid.');
+
+    $size: map-get($test, size);
+    $expect: 12.5%;
+    @include assert-equal($size, $expect,
+      'Returns the correct background size for a split-gutters grid.');
   }
 
   // Get Asymmetrical Inside
@@ -123,6 +169,22 @@
              $light 67.5%, $color 67.5%, $light;
     @include assert-equal($test, $expect,
       'Returns column gradient stops for asymmetric inside grid.');
+  }
+
+  // Get Asymmetrical Split
+  // ----------------------
+  @include test('[function] get-asym-split') {
+    $color: debug-get(color);
+    $light: lighten($color, 15%);
+
+    $grid: (1 2 3 3) .25 split;
+    $test: get-asym-split($grid);
+    $expect: transparent 1.25%, $color 1.25%, $light 11.25%, transparent 11.25%,
+             transparent 13.75%, $color 13.75%, $light 33.75%, transparent 33.75%,
+             transparent 36.25%, $color 36.25%, $light 66.25%, transparent 66.25%,
+             transparent 68.75%, $color 68.75%, $light 98.75%, transparent 98.75%;
+    @include assert-equal($test, $expect,
+      'Returns column gradient stops for asymmetric split grid.');
   }
 
   // Get Asymmetrical Outside

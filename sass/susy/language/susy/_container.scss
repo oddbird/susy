@@ -49,7 +49,7 @@
     @if $column-width {
       $columns        : susy-get(columns, $grid);
       $gutters        : susy-get(gutters, $grid);
-      $spread         : if(is-inside($grid), wide, narrow);
+      $spread         : if(is-split($grid), wide, narrow);
       $width          : calculate-container-width($columns, $gutters, $column-width, $spread);
     } @else {
       // if we have nothing, default to 100%

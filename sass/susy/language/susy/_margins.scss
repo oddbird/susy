@@ -10,7 +10,8 @@
 ) {
   $span   : map-merge((spread: wide), parse-span($span));
   $flow   : span-get(flow, $span);
-  $width  : span($span);
+  $split  : if(span-get(gutter-position, $span) == split, true, false);
+  $width  : if($split, span($span) + gutter($span), span($span));
 
   @include margin-output($width, null, $flow);
 }
@@ -24,7 +25,8 @@
 ) {
   $span   : map-merge((spread: wide), parse-span($span));
   $flow   : span-get(flow, $span);
-  $width  : span($span);
+  $split  : if(span-get(gutter-position, $span) == split, true, false);
+  $width  : if($split, span($span) + gutter($span), span($span));
 
   @include margin-output(null, $width, $flow);
 }
@@ -48,7 +50,8 @@
 ) {
   $span   : map-merge((spread: wide), parse-span($span));
   $flow   : span-get(flow, $span);
-  $width  : 0 - span($span);
+  $split  : if(span-get(gutter-position, $span) == split, true, false);
+  $width  : if($split, 0 - span($span) + gutter($span), 0 - span($span));
 
   @include margin-output($width, null, $flow);
 }

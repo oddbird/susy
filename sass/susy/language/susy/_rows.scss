@@ -9,13 +9,13 @@
   $flow: susy-get(flow)
 ) {
   @include susy-clearfix;
-  clear: from($flow);
+  clear: both;
 }
 
 // Unrow
 // -----
 // Cancel the row() effect, e.g. when using media queries.
-// - [$flow]  : ltr | rtl
+// - [$flow]: ltr | rtl
 @mixin unrow {
   clear: none;
   &:after {
@@ -27,20 +27,23 @@
 
 // First
 // -----
-// - [$flow]  : ltr | rtl
+// - [$grid]: <settings>
 @mixin first(
-  $flow: susy-get(flow)
+  $grid: $susy
 ) {
-  @include float-first($flow);
+  $grid: parse-grid($grid);
+  $flow: susy-get(flow, $grid);
+  $split: if(susy-get(gutter-position, $grid) == split, true, false);
+
+  @if not $split {
+    @include float-first($flow);
+  }
 }
 
-// Alpha
-// -----
-// - [$flow]  : ltr | rtl
 @mixin alpha(
-  $flow: susy-get(flow)
+  $grid: $susy
 ) {
-  @include float-first($flow);
+  @include first($grid);
 }
 
 // Nth-First
@@ -49,9 +52,10 @@
 // - [$type]    : child | last-child | of-type | last-of-type
 @mixin nth-first(
   $value: first,
-  $type: child
+  $type: child,
+  $grid: $susy
 ) {
-  &:#{format-nth($value,$type)} { @include first(); }
+  &:#{format-nth($value,$type)} { @include first($grid); }
 }
 
 // Nth-Alpha
@@ -60,47 +64,55 @@
 // - [$type]    : child | last-child | of-type | last-of-type
 @mixin nth-alpha(
   $value: first,
-  $type: child
+  $type: child,
+  $grid: $susy
 ) {
-  @include nth-first($value, $type);
+  @include nth-first($value, $type, $grid);
 }
 
 // Last
-// ----
-// - [$flow]  : ltr | rtl
+// -----
+// - [$grid]: <settings>
 @mixin last(
-  $flow: susy-get(flow)
+  $grid: $susy
 ) {
-  @include float-last($flow);
+  $grid: parse-grid($grid);
+  $output: (
+    flow: susy-get(flow, $grid),
+    margin: if(susy-get(gutter-position, $grid) == split, gutters($grid), 0),
+  );
+
+  @include float-last($output...);
 }
 
-// Omega
-// -----
-// - [$flow]  : ltr | rtl
 @mixin omega(
-  $flow: susy-get(flow)
+  $grid: $susy
 ) {
-  @include float-last($flow);
+  @include last($grid);
 }
 
 // Nth-Last
 // --------
-// - [$value]   : first | last | only | <math>
-// - [$type]    : child | last-child | of-type | last-of-type
+// - [$value] : first | last | only | <math>
+// - [$type]  : child | last-child | of-type | last-of-type
+// - [$grid]  : <settings>
 @mixin nth-last(
   $value: last,
-  $type: child
+  $type: child,
+  $grid: $susy
 ) {
-  &:#{format-nth($value,$type)} { @include last(); }
+  &:#{format-nth($value,$type)} { @include last($grid); }
 }
 
 // Nth-Omega
 // ---------
-// - [$value]   : first | last | only | <math>
-// - [$type]    : child | last-child | of-type | last-of-type
+// - [$value] : first | last | only | <math>
+// - [$type]  : child | last-child | of-type | last-of-type
+// - [$grid]  : <settings>
 @mixin nth-omega(
   $value: last,
-  $type: child
+  $type: child,
+  $grid: $susy
 ) {
-  @include nth-last($value, $type);
+  @include nth-last($value, $type, $grid);
 }

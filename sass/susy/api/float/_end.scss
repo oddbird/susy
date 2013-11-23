@@ -6,12 +6,13 @@
 // - [$flow]  : ltr | rtl
 @mixin float-last(
   $flow: susy-get(flow),
-  $last-flow: susy-get(last-flow)
+  $last-flow: susy-get(last-flow),
+  $margin: 0
 ) {
   $to: to($flow);
 
   float: if($last-flow == to, $to, null);
-  margin-#{$to}: 0;
+  margin-#{$to}: $margin;
 }
 
 // Float First

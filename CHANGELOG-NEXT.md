@@ -1,8 +1,8 @@
 Susy Next Changelog
 ===================
 
-2.0.0.alpha.5 (unreleased)
---------------------------
+2.0.0.alpha.5 (Nov 25, 2013)
+----------------------------
 
 * Compass is no longer a dependency.
   - Only registers as a compass extension if compass is present.

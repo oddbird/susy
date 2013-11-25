@@ -29,7 +29,7 @@
         + .size1of2 { @include span(last 3 of nested(6 at 3)); }
       }
       > .full {
-        clear: both;
+        @include full(container);
         background: none;
       }
     }
@@ -54,7 +54,7 @@
         }
       }
       .full {
-        clear: both;
+        @include full(of nested(4 at 5));
       }
     }
 

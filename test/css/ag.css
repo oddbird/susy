@@ -106,8 +106,16 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   margin-left: 3.44828%;
 }
 .symmetrical > .size3of5 > .full {
+  *zoom: 1;
   clear: both;
+  float: none;
+  width: auto;
   background: none;
+}
+.symmetrical > .size3of5 > .full:after {
+  content: " ";
+  display: block;
+  clear: both;
 }
 .symmetrical .full .size1of3 {
   width: 31.03448%;
@@ -129,6 +137,14 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   margin-left: 5.26316%;
 }
 .symmetrical .size2of3 .full {
+  *zoom: 1;
+  clear: both;
+  float: none;
+  width: auto;
+}
+.symmetrical .size2of3 .full:after {
+  content: " ";
+  display: block;
   clear: both;
 }
 .symmetrical .gallery div {
@@ -213,8 +229,16 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   margin-right: -100%;
 }
 .asymmetrical > .size3of5 > .full {
+  *zoom: 1;
   clear: both;
+  float: none;
+  width: auto;
   background: none;
+}
+.asymmetrical > .size3of5 > .full:after {
+  content: " ";
+  display: block;
+  clear: both;
 }
 .asymmetrical .full .size1of3 {
   width: 18.64407%;
@@ -240,6 +264,14 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   margin-right: -100%;
 }
 .asymmetrical .size2of3 .full {
+  *zoom: 1;
+  clear: both;
+  float: none;
+  width: auto;
+}
+.asymmetrical .size2of3 .full:after {
+  content: " ";
+  display: block;
   clear: both;
 }
 .asymmetrical .gallery div {
@@ -327,8 +359,16 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   float: right;
 }
 .static > .size3of5 > .full {
+  *zoom: 1;
   clear: both;
+  float: none;
+  width: auto;
   background: none;
+}
+.static > .size3of5 > .full:after {
+  content: " ";
+  display: block;
+  clear: both;
 }
 .static .full .size1of3 {
   width: 140px;
@@ -350,6 +390,14 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   float: right;
 }
 .static .size2of3 .full {
+  *zoom: 1;
+  clear: both;
+  float: none;
+  width: auto;
+}
+.static .size2of3 .full:after {
+  content: " ";
+  display: block;
   clear: both;
 }
 .static .gallery div {
@@ -438,8 +486,16 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   margin-right: 1.47059%;
 }
 .split > .size3of5 > .full {
+  *zoom: 1;
   clear: both;
+  float: none;
+  width: auto;
   background: none;
+}
+.split > .size3of5 > .full:after {
+  content: " ";
+  display: block;
+  clear: both;
 }
 .split .full .size1of3 {
   width: 50%;
@@ -465,6 +521,16 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   margin-right: 3.125%;
 }
 .split .size2of3 .full {
+  *zoom: 1;
+  clear: both;
+  margin-left: 3.125%;
+  margin-right: 3.125%;
+  float: none;
+  width: auto;
+}
+.split .size2of3 .full:after {
+  content: " ";
+  display: block;
   clear: both;
 }
 .split .gallery div {
@@ -572,8 +638,16 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   padding-right: 1.47059%;
 }
 .inside > .size3of5 > .full {
+  *zoom: 1;
   clear: both;
+  float: none;
+  width: auto;
   background: none;
+}
+.inside > .size3of5 > .full:after {
+  content: " ";
+  display: block;
+  clear: both;
 }
 .inside .full .size1of3 {
   -moz-box-sizing: border-box;
@@ -611,6 +685,16 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   padding-right: 3.125%;
 }
 .inside .size2of3 .full {
+  *zoom: 1;
+  clear: both;
+  padding-left: 3.125%;
+  padding-right: 3.125%;
+  float: none;
+  width: auto;
+}
+.inside .size2of3 .full:after {
+  content: " ";
+  display: block;
   clear: both;
 }
 .inside .gallery div {
@@ -723,8 +807,16 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   padding-right: 1em;
 }
 .inside-static > .size3of5 > .full {
+  *zoom: 1;
   clear: both;
+  float: none;
+  width: auto;
   background: none;
+}
+.inside-static > .size3of5 > .full:after {
+  content: " ";
+  display: block;
+  clear: both;
 }
 .inside-static .full .size1of3 {
   -moz-box-sizing: border-box;
@@ -762,6 +854,16 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   padding-right: 1em;
 }
 .inside-static .size2of3 .full {
+  *zoom: 1;
+  clear: both;
+  padding-left: 1em;
+  padding-right: 1em;
+  float: none;
+  width: auto;
+}
+.inside-static .size2of3 .full:after {
+  content: " ";
+  display: block;
   clear: both;
 }
 .inside-static .gallery div {

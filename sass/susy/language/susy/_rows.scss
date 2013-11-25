@@ -27,13 +27,16 @@
 
 // Full
 // ----
-// - [$grid]: <settings>
+// - [$span]: <span settings>
 @mixin full(
-  $grid: $susy
+  $span: $susy
 ) {
-  $grid: parse-grid($grid);
-  @include row(susy-get(flow, $grid));
-  @include gutters($grid);
+  $span: parse-span($span);
+
+  @include row(span-get(flow, $span));
+  @if is-split($span) and not span-get(is-container, $span) {
+    @include gutters($span);
+  }
   float: none;
   width: auto;
 }

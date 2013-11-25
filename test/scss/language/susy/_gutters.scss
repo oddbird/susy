@@ -126,6 +126,12 @@
     $expect: 2.5%;
     @include assert-equal($gutter, $expect,
       'Returns correct inside gutter width.');
+
+    // split
+    $gutter: get-gutter-width(of 8 .25 split);
+    $expect: 2.5%;
+    @include assert-equal($gutter, $expect,
+      'Returns correct split gutter width.');
   }
 
   // get-gutters

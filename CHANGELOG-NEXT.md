@@ -10,6 +10,7 @@ Susy Next Changelog
 * Maps and natural language can be mixed:
   - `$large: (columns: 12, gutters: .5);`
   - `span(3 $large no-gutters)`
+* Add `full` mixin for full-width spans.
 
 Backwards Incompatible:
 
@@ -29,6 +30,10 @@ Backwards Incompatible:
   - Moved settings into `$debug: (color: rgba(#66f, .25), toggle: top right);`
   - Removed overlay-position setting.
   - Only display vertical-rhythms when `$base-line-height` is available.
+* `split` gutters are no longer removed at the grid edges.
+  - `first` and `last` are not special cases for split gutter-handling.
+  - pass the `container` argument to wrappers you plan to nest inside.
+* `first`/`alpha`/`last`/`omega`/`nth-` mixins now require grid context.
 
 2.0.0.alpha.4 [Sept 4, 2013]
 ----------------------------

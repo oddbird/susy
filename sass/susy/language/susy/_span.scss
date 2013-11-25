@@ -128,25 +128,31 @@
 @function span-math(
   $span
 ) {
-  $float              : from;
-  $padding-before     : null;
-  $padding-after      : null;
-  $margin-before      : null;
-  $margin-after       : null;
+  $split-container  : if(is-split($span) and span-get(is-container, $span), true, false);
+
+  $float            : from;
+  $padding-before   : null;
+  $padding-after    : null;
+  $margin-before    : null;
+  $margin-after     : null;
 
   // calculate widths
+  $spread: index(map-values($span), spread);
+  $span: if($split-container and not $spread, map-merge($span, (spread: wide)), $span);
   $width: get-span-width($span);
   $gutters: get-gutters($span);
 
   // apply gutters
   @if is-inside($span) {
     @if not span-get(is-container, $span) {
-      $padding-before: map-get($gutters,before);
-      $padding-after: map-get($gutters,after);
+      $padding-before: map-get($gutters, before);
+      $padding-after: map-get($gutters, after);
     }
   } @else {
-    $margin-before: map-get($gutters,before);
-    $margin-after: map-get($gutters,after);
+    @if not ($split-container) {
+      $margin-before: map-get($gutters, before);
+      $margin-after: map-get($gutters, after);
+    }
   }
 
   // special margin handling
@@ -157,11 +163,12 @@
     $location: span-get(location, $span);
     @if $location {
       $last: is-last(span-get(span, $span), $location, span-get(columns, $span));
+      $is-split: is-split($span);
       @if $last {
         $float: span-get(last-flow, $span);
-        $margin-after: null;
+        $margin-after: if($is-split, $margin-after, null);
       } @else if is-first($location) {
-        $margin-before: null;
+        $margin-before: if($is-split, $margin-before, null);
       }
     }
   }
@@ -195,13 +202,8 @@
   $width    : null;
 
   @if unitless($n) {
-    @if is-inside($span) {
-      $context: column-sum($columns, $gutters, wide);
-      $span-sum: get-column-span-sum($n, $location, $columns, $gutters, wide);
-    } @else {
-      $context: column-sum($columns, $gutters);
-      $span-sum: get-column-span-sum($n, $location, $columns, $gutters, $spread);
-    }
+    $context: column-sum($columns, $gutters, if(is-split($span), wide, narrow));
+    $span-sum: get-column-span-sum($n, $location, $columns, $gutters, if(is-inside($span), wide, $spread));
 
     @if span-get(layout-math, $span) == static {
       $width: $span-sum * span-get(column-width, $span);

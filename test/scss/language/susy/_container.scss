@@ -136,7 +136,7 @@
     $test: get-container-width($map);
     $expect: 40em;
     @include assert-equal($test, $expect,
-      'The container for "7 (4em 2em) after" should return 40em.');
+      'Returns narrow container for outside gutters.');
 
     // calculated (inside-gutters)
     $map: (
@@ -149,7 +149,20 @@
     $test: get-container-width($map);
     $expect: 42em;
     @include assert-equal($test, $expect,
-      'The container for "7 (4em 2em) inside" should return 42em.');
+      'Returns wide container for inside gutters.');
+
+    // calculated (split-gutters)
+    $map: (
+      container: auto,
+      column-width: 4em,
+      columns: 7,
+      gutters: .5,
+      gutter-position: split,
+    );
+    $test: get-container-width($map);
+    $expect: 42em;
+    @include assert-equal($test, $expect,
+      'Returns wide container for split gutters.');
 
   }
 }

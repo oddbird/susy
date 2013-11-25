@@ -78,12 +78,22 @@
       <div class="expect">expect</div>
     </div>
 
+    <div class="assert__split">
+      <div class="test">show-grid</div>
+      <div class="expect">expect</div>
+    </div>
+
     <div class="assert__inside">
       <div class="test">show-grid (inside gutters)</div>
       <div class="expect">expect</div>
     </div>
 
     <div class="assert__asym-outside">
+      <div class="test">show-grid</div>
+      <div class="expect">expect</div>
+    </div>
+
+    <div class="assert__asym-split">
       <div class="test">show-grid</div>
       <div class="expect">expect</div>
     </div>
@@ -242,6 +252,17 @@
       </div>
     </div>
 
+    <div class="assert__split">
+      <div class="nest">
+        <div class="test">float</div><div class="test">float</div><div class="test">float</div><div class="test">float</div>
+        <div class="test">float</div><div class="test">float</div><div class="test">float</div><div class="test">float</div>
+      </div>
+      <div class="nest">
+        <div class="expect">expect</div><div class="expect">expect</div><div class="expect">expect</div><div class="expect">expect</div>
+        <div class="expect">expect</div><div class="expect">expect</div><div class="expect">expect</div><div class="expect">expect</div>
+      </div>
+    </div>
+
     <div class="assert__asym">
       <div class="nest">
         <div class="test">float</div><div class="test">float</div><div class="test">float</div>
@@ -296,11 +317,27 @@
     </div>
   </section>
 
+  <!-- full -->
+  <section class="test__full">
+    <h1>full [mixin]</h1>
+
+    <div class="assert__full">
+      <div class="spacer"></div>
+      <div class="test">full <div class="spacer"></div></div>
+      <div class="expect">expect <div class="spacer"></div></div>
+    </div>
+  </section>
+
   <!-- first -->
   <section class="test__first">
     <h1>first [mixin]</h1>
 
-    <div class="assert__first">
+    <div class="assert__before">
+      <div class="test">first</div>
+      <div class="expect">expect</div>
+    </div>
+
+    <div class="assert__split">
       <div class="test">first</div>
       <div class="expect">expect</div>
     </div>
@@ -340,8 +377,13 @@
   <section class="test__last">
     <h1>last [mixin]</h1>
 
-    <div class="assert__last">
-      <div class="test">last</div>
+    <div class="assert__after">
+      <div class="test">first</div>
+      <div class="expect">expect</div>
+    </div>
+
+    <div class="assert__split">
+      <div class="test">first</div>
       <div class="expect">expect</div>
     </div>
   </section>
@@ -394,6 +436,11 @@
       <div class="expect">expect</div>
     </div>
 
+    <div class="assert__split">
+      <div class="test">pre [split]</div>
+      <div class="expect">expect</div>
+    </div>
+
     <div class="assert__wider">
       <div class="spacer"></div>
       <div class="test">pre [wider]</div>
@@ -406,6 +453,11 @@
     <h1>post [mixin]</h1>
     <div class="assert__wide">
       <div class="test">post [wide]</div>
+      <div class="expect">expect</div>
+    </div>
+
+    <div class="assert__split">
+      <div class="test">post [split]</div>
       <div class="expect">expect</div>
     </div>
 
@@ -435,6 +487,12 @@
       <div class="expect">expect</div>
     </div>
 
+    <div class="assert__split">
+      <div class="spacer"></div>
+      <div class="test">pull [split]</div>
+      <div class="expect">expect</div>
+    </div>
+
     <div class="assert__wide">
       <div class="spacer"></div>
       <div class="test">pull [wide]</div>
@@ -453,6 +511,11 @@
     <h1>squish [mixin]</h1>
 
     <div class="assert__simple">
+      <div class="test">squish</div>
+      <div class="expect">expect</div>
+    </div>
+
+    <div class="assert__split">
       <div class="test">squish</div>
       <div class="expect">expect</div>
     </div>
@@ -542,6 +605,15 @@
     </div>
 
     <div class="assert__inside">
+      <div class="nest">
+        <div class="test">bleed</div>
+      </div>
+      <div class="nest">
+        <div class="expect">expect</div>
+      </div>
+    </div>
+
+    <div class="assert__split">
       <div class="nest">
         <div class="test">bleed</div>
       </div>

@@ -47,6 +47,23 @@
         @include susy-box-sizing(content-box);
       }
     }
+
+    // split
+    @include assert-setup('split', $grid: 12 (4em 1em) split) {
+      .nest { @include squish(2); }
+    }
+    @include assert-output(
+      'Items should bleed 1 column horizontal, and retain gutters.'
+    ) {
+      .test { @include bleed(0 1 of 8); }
+      .expect {
+        margin-right: -12.5%;
+        padding-right: 12.5%;
+        margin-left: -12.5%;
+        padding-left: 12.5%;
+        @include susy-box-sizing(content-box);
+      }
+    }
   }
 
   // bleed-x [mixin]

@@ -43,5 +43,9 @@
     }
   }
 
+  @if span-get(gutter-position, $input) == split {
+    $width: if($width == null, gutters($input), $width + gutters($input));
+  }
+
   @return $width;
 }

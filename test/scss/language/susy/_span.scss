@@ -259,6 +259,31 @@
     @include assert-equal($span, $expect,
       'Returns correct span-math with outside gutters.');
 
+    // split first/last
+    $span: (
+      span: 8,
+      location: 1,
+      columns: 8,
+      gutters: .25,
+      column-width: 4em,
+      layout-method: float,
+      layout-math: fluid,
+      flow: ltr,
+      gutter-position: split,
+    );
+    $span: span-math($span);
+    $expect: (
+      width: 97.5%,
+      float: to,
+      margin_before: 1.25%,
+      margin_after: 1.25%,
+      padding_before: null,
+      padding_after: null,
+      flow: ltr,
+    );
+    @include assert-equal($span, $expect,
+      'Returns correct span-math with split gutters.');
+
     // inside (padding)
     $span: (
       span: 5,
@@ -276,43 +301,6 @@
     $expect: 1.25% 1.25%;
     @include assert-equal($padding, $expect,
       'Returns correct padding for inside gutters.');
-
-    // inside (width)
-    $span: (
-      span: 6,
-      location: 2,
-      columns: 7,
-      gutters: .5,
-      column-width: 4em,
-      layout-method: float,
-      layout-math: static,
-      flow: ltr,
-      gutter-position: inside,
-    );
-    $span: span-math($span);
-    $width: map-get($span, width);
-    $expect: 36em;
-    @include assert-equal($width, $expect,
-      'Inside-gutter width includes the gutters');
-
-    // wide (width)
-    $span: (
-      span: 6,
-      location: 2,
-      columns: 7,
-      gutters: .5,
-      column-width: 4em,
-      layout-method: float,
-      layout-math: static,
-      spread: wide,
-      flow: ltr,
-      gutter-position: after,
-    );
-    $span: span-math($span);
-    $width: map-get($span, width);
-    $expect: 36em;
-    @include assert-equal($width, $expect,
-      'wide span width includes the gutters');
 
     // inside container (padding)
     $span: (
@@ -332,6 +320,24 @@
     $expect: null null;
     @include assert-equal($padding, $expect,
       'The padding for any "inside container" should be "null null"');
+
+    // split container (margin & width)
+    $span: (
+      span: 5,
+      location: 2,
+      columns: 8,
+      gutters: .25,
+      layout-method: float,
+      layout-math: fluid,
+      flow: ltr,
+      gutter-position: split,
+      is-container: container,
+    );
+    $span: span-math($span);
+    $margin: map-get($span, width) map-get($span, margin_before) map-get($span, margin_after);
+    $expect: 62.5% null null;
+    @include assert-equal($margin, $expect,
+      'Split containers use outer width, and no margins.');
 
     // isolate (margins)
     $span: (
@@ -428,6 +434,20 @@
     @include assert-equal($width, 50%,
       'Returns correct width with inside gutters.');
 
+    // split-gutters
+    $map: (
+      span: 4,
+      location: 1,
+      columns: 8,
+      gutters: .25,
+      column-width: null,
+      layout-math: fluid,
+      gutter-position: split,
+    );
+    $width: get-span-width($map);
+    @include assert-equal($width, 47.5%,
+      'Returns correct width with split gutters.');
+
     // static
     $map: (
       span: 5,
@@ -466,6 +486,18 @@
     $width: get-span-width($map);
     @include assert-equal($width, 75%,
       'Returns the correct wide span width.');
+
+    // wider
+    $map: (
+      span: 5,
+      location: 1,
+      columns: 7,
+      gutters: .5,
+      spread: wider,
+    );
+    $width: get-span-width($map);
+    @include assert-equal($width, 80%,
+      'Returns the correct wider span width.');
   }
 
   // Get Span Context

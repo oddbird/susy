@@ -50,6 +50,9 @@ $debug-defaults: (
   }
 }
 
+// [Private] Overlay Head
+// ----------------------
+// <head> styles to create grid overlay toggle
 @mixin overlay-head {
   $toggle: debug-get(toggle);
   $horz: null;
@@ -83,6 +86,9 @@ $debug-defaults: (
   }
 }
 
+// [Private] Overlay Backgrounds
+// -----------------------------
+// Parse and apply backgrounds for overlay-grid
 @mixin overlay-backgrounds(
   $grids...
 ) {
@@ -101,6 +107,9 @@ $debug-defaults: (
   }
 }
 
+// [Private] Grid Overlay Base
+// ---------------------------
+// Base styles for generating a grid overlay
 %grid-overlay-base {
   position: absolute;
   top: 0;
@@ -132,6 +141,11 @@ $debug-defaults: (
 
   @if is-inside($grid) {
     $stops: $color, $light;
+  } @else if is-split($grid) {
+    $split: $gutters/2;
+    $before: percentage($split/$end);
+    $after: percentage((1 + $split)/$end);
+    $stops: $trans $before, $color $before, $light $after, $trans $after;
   } @else {
     $stops: $color, $light $after, $trans $after;
   }
@@ -175,6 +189,37 @@ $debug-defaults: (
       $end: get-isolation($end);
       $this-stop: append($this-stop, $light $end, comma);
     }
+
+    $stops: join($stops, $this-stop, comma);
+  }
+
+  @return $stops;
+}
+
+// Get Asymmetrical Split
+// ----------------------
+// - $grid: <settings>
+@function get-asym-split(
+  $grid
+) {
+  $grid     : parse-grid($grid);
+  $columns  : susy-get(columns, $grid);
+
+  $color    : debug-get(color);
+  $light    : lighten($color, 15%);
+  $stops    : ();
+
+  @for $location from 1 through column-count($columns) {
+    $this-stop: ();
+
+    $start: parse-span(1 at $location $grid);
+    $start: get-isolation($start);
+    $this-stop: append($this-stop, transparent $start, comma);
+    $this-stop: append($this-stop, $color $start, comma);
+
+    $end: $start + span(1 at $location $grid);
+    $this-stop: append($this-stop, $light $end, comma);
+    $this-stop: append($this-stop, transparent $end, comma);
 
     $stops: join($stops, $this-stop, comma);
   }
@@ -235,6 +280,8 @@ $debug-defaults: (
 
   @if is-inside($grid) {
     $stops: get-asym-inside($grid);
+  } @else if is-split($grid) {
+    $stops: get-asym-split($grid);
   } @else {
     $stops: get-asym-outside($grid);
   }

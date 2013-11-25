@@ -57,6 +57,19 @@
     @include assert-equal($test, $expect,
       'Isolation for "last 2 of 7 (4em 2em) static" (5 wide) should be 30em.');
 
+    // split
+    $test: get-isolation((
+      span: 2,
+      location: first,
+      columns: 8,
+      gutters: .25,
+      column-width: 4em,
+      layout-math: fluid,
+      gutter-position: split,
+    ));
+    $expect: 1.25%;
+    @include assert-equal($test, $expect,
+      'Returns isolation value for first split element.');
   }
 
 }

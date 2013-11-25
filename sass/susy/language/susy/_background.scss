@@ -50,6 +50,9 @@ $debug-defaults: (
   }
 }
 
+// [Private] Overlay Head
+// ----------------------
+// <head> styles to create grid overlay toggle
 @mixin overlay-head {
   $toggle: debug-get(toggle);
   $horz: null;
@@ -83,6 +86,9 @@ $debug-defaults: (
   }
 }
 
+// [Private] Overlay Backgrounds
+// -----------------------------
+// Parse and apply backgrounds for overlay-grid
 @mixin overlay-backgrounds(
   $grids...
 ) {
@@ -101,6 +107,9 @@ $debug-defaults: (
   }
 }
 
+// [Private] Grid Overlay Base
+// ---------------------------
+// Base styles for generating a grid overlay
 %grid-overlay-base {
   position: absolute;
   top: 0;

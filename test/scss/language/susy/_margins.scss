@@ -24,7 +24,7 @@
       .test, .expect { @include span(4); }
     }
     @include assert-output(
-      'Items should have 2-columns margin after, including split gutter.'
+      'Items should have 2-columns margin before, including split gutter.'
     ) {
       .test { @include pre(2); }
       .expect { margin-left: 26.25%; }
@@ -164,6 +164,18 @@
       .expect {
         margin-left: 35%;
         margin-right: 35%;
+      }
+    }
+
+    // split
+    @include assert-setup('split', $grid: (1 2 3 2 1) .25 split);
+    @include assert-output(
+      'Items should have 2-columns margin before and after.'
+    ) {
+      .test { @include squish(first 2, last 2); }
+      .expect {
+        margin-left: 35.25%;
+        margin-right: 35.25%;
       }
     }
 

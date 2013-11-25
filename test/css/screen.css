@@ -1476,7 +1476,7 @@ h1 {
 }
 
 .test__pre .assert__split::before {
-  content: "Items should have 2-columns margin after, including split gutter.";
+  content: "Items should have 2-columns margin before, including split gutter.";
   display: block;
   padding: 0.375rem 0.75rem;
   text-align: left;
@@ -1850,6 +1850,34 @@ h1 {
   font-style: italic;
 }
 
+.test__squish .assert__split {
+  *zoom: 1;
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  background-image: -moz-linear-gradient(left, rgba(0, 0, 0, 0) 1.21951%, rgba(102, 102, 255, 0.25) 1.21951%, rgba(179, 179, 255, 0.25) 10.97561%, rgba(0, 0, 0, 0) 10.97561%, rgba(0, 0, 0, 0) 13.41463%, rgba(102, 102, 255, 0.25) 13.41463%, rgba(179, 179, 255, 0.25) 32.92683%, rgba(0, 0, 0, 0) 32.92683%, rgba(0, 0, 0, 0) 35.36585%, rgba(102, 102, 255, 0.25) 35.36585%, rgba(179, 179, 255, 0.25) 64.63415%, rgba(0, 0, 0, 0) 64.63415%, rgba(0, 0, 0, 0) 67.07317%, rgba(102, 102, 255, 0.25) 67.07317%, rgba(179, 179, 255, 0.25) 86.58537%, rgba(0, 0, 0, 0) 86.58537%, rgba(0, 0, 0, 0) 89.02439%, rgba(102, 102, 255, 0.25) 89.02439%, rgba(179, 179, 255, 0.25) 98.78049%, rgba(0, 0, 0, 0) 98.78049%);
+  background-image: -webkit-linear-gradient(left, rgba(0, 0, 0, 0) 1.21951%, rgba(102, 102, 255, 0.25) 1.21951%, rgba(179, 179, 255, 0.25) 10.97561%, rgba(0, 0, 0, 0) 10.97561%, rgba(0, 0, 0, 0) 13.41463%, rgba(102, 102, 255, 0.25) 13.41463%, rgba(179, 179, 255, 0.25) 32.92683%, rgba(0, 0, 0, 0) 32.92683%, rgba(0, 0, 0, 0) 35.36585%, rgba(102, 102, 255, 0.25) 35.36585%, rgba(179, 179, 255, 0.25) 64.63415%, rgba(0, 0, 0, 0) 64.63415%, rgba(0, 0, 0, 0) 67.07317%, rgba(102, 102, 255, 0.25) 67.07317%, rgba(179, 179, 255, 0.25) 86.58537%, rgba(0, 0, 0, 0) 86.58537%, rgba(0, 0, 0, 0) 89.02439%, rgba(102, 102, 255, 0.25) 89.02439%, rgba(179, 179, 255, 0.25) 98.78049%, rgba(0, 0, 0, 0) 98.78049%);
+  background-image: linear-gradient(to right, rgba(0, 0, 0, 0) 1.21951%, rgba(102, 102, 255, 0.25) 1.21951%, rgba(179, 179, 255, 0.25) 10.97561%, rgba(0, 0, 0, 0) 10.97561%, rgba(0, 0, 0, 0) 13.41463%, rgba(102, 102, 255, 0.25) 13.41463%, rgba(179, 179, 255, 0.25) 32.92683%, rgba(0, 0, 0, 0) 32.92683%, rgba(0, 0, 0, 0) 35.36585%, rgba(102, 102, 255, 0.25) 35.36585%, rgba(179, 179, 255, 0.25) 64.63415%, rgba(0, 0, 0, 0) 64.63415%, rgba(0, 0, 0, 0) 67.07317%, rgba(102, 102, 255, 0.25) 67.07317%, rgba(179, 179, 255, 0.25) 86.58537%, rgba(0, 0, 0, 0) 86.58537%, rgba(0, 0, 0, 0) 89.02439%, rgba(102, 102, 255, 0.25) 89.02439%, rgba(179, 179, 255, 0.25) 98.78049%, rgba(0, 0, 0, 0) 98.78049%);
+  -webkit-background-origin: content-box;
+  -webkit-background-clip: content-box;
+  background-origin: content-box;
+  background-clip: content-box;
+  background-position: left top;
+}
+.test__squish .assert__split:after {
+  content: " ";
+  display: block;
+  clear: both;
+}
+
+.test__squish .assert__split::before {
+  content: "Items should have 2-columns margin before and after.";
+  display: block;
+  padding: 0.375rem 0.75rem;
+  text-align: left;
+  font-style: italic;
+}
+
 .test__squish .assert__nested {
   *zoom: 1;
   max-width: 100%;
@@ -2158,6 +2186,41 @@ h1 {
 
 .test__bleed .assert__inside::before {
   content: "Items should bleed 1em on all sides, and retain their static gutters";
+  display: block;
+  padding: 0.375rem 0.75rem;
+  text-align: left;
+  font-style: italic;
+}
+
+.test__bleed .assert__split {
+  *zoom: 1;
+  max-width: 60em;
+  margin-left: auto;
+  margin-right: auto;
+  background-image: -moz-linear-gradient(left, rgba(0, 0, 0, 0) 10%, rgba(102, 102, 255, 0.25) 10%, rgba(179, 179, 255, 0.25) 90%, rgba(0, 0, 0, 0) 90%);
+  background-image: -webkit-linear-gradient(left, rgba(0, 0, 0, 0) 10%, rgba(102, 102, 255, 0.25) 10%, rgba(179, 179, 255, 0.25) 90%, rgba(0, 0, 0, 0) 90%);
+  background-image: linear-gradient(to right, rgba(0, 0, 0, 0) 10%, rgba(102, 102, 255, 0.25) 10%, rgba(179, 179, 255, 0.25) 90%, rgba(0, 0, 0, 0) 90%);
+  -webkit-background-size: 8.33333%;
+  background-size: 8.33333%;
+  -webkit-background-origin: content-box;
+  -webkit-background-clip: content-box;
+  background-origin: content-box;
+  background-clip: content-box;
+  background-position: left top;
+}
+.test__bleed .assert__split:after {
+  content: " ";
+  display: block;
+  clear: both;
+}
+
+.test__bleed .assert__split .nest {
+  margin-left: 17.5%;
+  margin-right: 17.5%;
+}
+
+.test__bleed .assert__split::before {
+  content: "Items should bleed 1 column horizontal, and retain gutters.";
   display: block;
   padding: 0.375rem 0.75rem;
   text-align: left;

@@ -69,11 +69,6 @@
   $pre      : map-merge((spread: wide), parse-span($pre));
   $post     : map-merge((spread: wide), parse-span($post));
 
-  $output   : (
-    before: span($pre),
-    after: span($post),
-    flow: span-get(flow, $pre) or span-get(flow, $post),
-  );
-
-  @include margin-output($output...);
+  @include pre($pre);
+  @include post($post);
 }

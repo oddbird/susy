@@ -895,7 +895,7 @@
   margin-left: 30%;
 }
 
-/* "Items should have 2-columns margin after, including split gutter." */
+/* "Items should have 2-columns margin before, including split gutter." */
 .test__pre .assert__split .test {
   margin-left: 26.25%;
 }
@@ -987,6 +987,16 @@
 .test__squish .assert__simple .expect {
   margin-left: 35%;
   margin-right: 35%;
+}
+
+/* "Items should have 2-columns margin before and after." */
+.test__squish .assert__split .test {
+  margin-left: 35.36585%;
+  margin-right: 35.36585%;
+}
+.test__squish .assert__split .expect {
+  margin-left: 35.25%;
+  margin-right: 35.25%;
 }
 
 /* "Items should have 1-column margin before, and 2 after - nested." */
@@ -1104,6 +1114,26 @@
   padding-bottom: 1em;
   margin-left: -1em;
   padding-left: 1.5em;
+  -moz-box-sizing: content-box;
+  -webkit-box-sizing: content-box;
+  box-sizing: content-box;
+}
+
+/* "Items should bleed 1 column horizontal, and retain gutters." */
+.test__bleed .assert__split .test {
+  margin-right: -12.5%;
+  padding-right: 12.5%;
+  margin-left: -12.5%;
+  padding-left: 12.5%;
+  -moz-box-sizing: content-box;
+  -webkit-box-sizing: content-box;
+  box-sizing: content-box;
+}
+.test__bleed .assert__split .expect {
+  margin-right: -12.5%;
+  padding-right: 12.5%;
+  margin-left: -12.5%;
+  padding-left: 12.5%;
   -moz-box-sizing: content-box;
   -webkit-box-sizing: content-box;
   box-sizing: content-box;

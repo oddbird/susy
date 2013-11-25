@@ -1020,6 +1020,44 @@ h1 {
   font-style: italic;
 }
 
+/* - [mixin] full */
+.test__full .assert__full {
+  *zoom: 1;
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  background-image: -moz-linear-gradient(left, rgba(0, 0, 0, 0) 16.66667%, rgba(102, 102, 255, 0.25) 16.66667%, rgba(179, 179, 255, 0.25) 83.33333%, rgba(0, 0, 0, 0) 83.33333%);
+  background-image: -webkit-linear-gradient(left, rgba(0, 0, 0, 0) 16.66667%, rgba(102, 102, 255, 0.25) 16.66667%, rgba(179, 179, 255, 0.25) 83.33333%, rgba(0, 0, 0, 0) 83.33333%);
+  background-image: linear-gradient(to right, rgba(0, 0, 0, 0) 16.66667%, rgba(102, 102, 255, 0.25) 16.66667%, rgba(179, 179, 255, 0.25) 83.33333%, rgba(0, 0, 0, 0) 83.33333%);
+  -webkit-background-size: 14.28571%;
+  background-size: 14.28571%;
+  -webkit-background-origin: content-box;
+  -webkit-background-clip: content-box;
+  background-origin: content-box;
+  background-clip: content-box;
+  background-position: left top;
+}
+.test__full .assert__full:after {
+  content: " ";
+  display: block;
+  clear: both;
+}
+
+.test__full .assert__full .spacer {
+  width: 23.80952%;
+  float: left;
+  margin-left: 2.38095%;
+  margin-right: 2.38095%;
+}
+
+.test__full .assert__full::before {
+  content: "Full spans clear preceeding floats, and have gutters.";
+  display: block;
+  padding: 0.375rem 0.75rem;
+  text-align: left;
+  font-style: italic;
+}
+
 /* - [mixin] first */
 .test__first .assert__before {
   *zoom: 1;

@@ -801,6 +801,35 @@
   clear: none;
 }
 
+/* - [mixin] full */
+/* "Full spans clear preceeding floats, and have gutters." */
+.test__full .assert__full .test {
+  *zoom: 1;
+  clear: both;
+  margin-left: 2.38095%;
+  margin-right: 2.38095%;
+  float: none;
+  width: auto;
+}
+.test__full .assert__full .test:after {
+  content: " ";
+  display: block;
+  clear: both;
+}
+.test__full .assert__full .expect {
+  *zoom: 1;
+  clear: both;
+  margin-left: 2.38095%;
+  margin-right: 2.38095%;
+  float: none;
+  width: auto;
+}
+.test__full .assert__full .expect:after {
+  content: " ";
+  display: block;
+  clear: both;
+}
+
 /* - [mixin] first */
 /* "First items should have left margins removed." */
 .test__first .assert__before .test {

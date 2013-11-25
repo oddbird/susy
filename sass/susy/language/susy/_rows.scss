@@ -25,6 +25,19 @@
   }
 }
 
+// Full
+// ----
+// - [$grid]: <settings>
+@mixin full(
+  $grid: $susy
+) {
+  $grid: parse-grid($grid);
+  @include row(susy-get(flow, $grid));
+  @include gutters($grid);
+  float: none;
+  width: auto;
+}
+
 // First
 // -----
 // - [$grid]: <settings>

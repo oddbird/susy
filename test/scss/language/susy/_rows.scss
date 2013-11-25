@@ -44,6 +44,26 @@
     }
   }
 
+  // full
+  // ---
+
+  @include output-test('full') {
+    @include assert-setup($grid: 7 .5 split) {
+      .spacer { @include span(2); }
+    }
+    @include assert-output(
+      'Full spans clear preceeding floats, and have gutters.'
+    ) {
+      .test { @include full; }
+      .expect {
+        @include row;
+        @include gutters;
+        float: none;
+        width: auto;
+      }
+    }
+  }
+
   // first
   // -----
 

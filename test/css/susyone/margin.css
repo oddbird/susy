@@ -1,0 +1,20 @@
+.pre {
+  margin-left: 25.42373%;
+}
+
+.post {
+  margin-right: 33.89831%;
+}
+
+.push {
+  margin-left: 25.42373%;
+}
+
+.pull {
+  margin-left: -33.89831%;
+}
+
+.squish {
+  margin-left: 12.82051%;
+  margin-right: 25.64103%;
+}

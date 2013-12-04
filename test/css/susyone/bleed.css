@@ -1,0 +1,20 @@
+.bleed-columns {
+  margin-left: -25.42373%;
+  padding-left: 25.42373%;
+  margin-right: -25.42373%;
+  padding-right: 25.42373%;
+}
+
+.bleed-length {
+  margin-left: -3em;
+  padding-left: 3em;
+  margin-right: -3em;
+  padding-right: 3em;
+}
+
+.bleed-sides {
+  margin-top: -4%;
+  padding-top: 4%;
+  margin-bottom: -4%;
+  padding-bottom: 4%;
+}

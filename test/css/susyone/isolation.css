@@ -1,0 +1,46 @@
+.isolate {
+  margin-right: -100%;
+  margin-left: 16.94915%;
+}
+
+.isolate-grid {
+  width: 24.05063%;
+  float: left;
+  margin-right: 1.26582%;
+  display: inline;
+  margin-right: -100%;
+}
+.isolate-grid:nth-child(4n + 1) {
+  margin-left: 0%;
+  clear: left;
+}
+.isolate-grid:nth-child(4n + 2) {
+  margin-left: 25.31646%;
+}
+.isolate-grid:nth-child(4n + 3) {
+  margin-left: 50.63291%;
+}
+.isolate-grid:nth-child(4n + 4) {
+  margin-left: 75.94937%;
+}
+
+.isolate-grid-for-nth-of-type {
+  width: 24.05063%;
+  float: left;
+  margin-right: 1.26582%;
+  display: inline;
+  margin-right: -100%;
+}
+.isolate-grid-for-nth-of-type:nth-of-type(4n + 1) {
+  margin-left: 0%;
+  clear: left;
+}
+.isolate-grid-for-nth-of-type:nth-of-type(4n + 2) {
+  margin-left: 25.31646%;
+}
+.isolate-grid-for-nth-of-type:nth-of-type(4n + 3) {
+  margin-left: 50.63291%;
+}
+.isolate-grid-for-nth-of-type:nth-of-type(4n + 4) {
+  margin-left: 75.94937%;
+}

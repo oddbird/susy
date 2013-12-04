@@ -1,0 +1,134 @@
+.container {
+  *zoom: 1;
+  max-width: 59em;
+  _width: 59em;
+  padding-left: 1em;
+  padding-right: 1em;
+  margin-left: auto;
+  margin-right: auto;
+}
+.container:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.complex-container {
+  *zoom: 1;
+  max-width: 59em;
+  _width: 59em;
+  padding-left: 1em;
+  padding-right: 1em;
+  margin-left: auto;
+  margin-right: auto;
+}
+.complex-container:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+@media (min-width: 69em) {
+  .complex-container {
+    max-width: 69em;
+  }
+}
+
+.span-columns {
+  width: 49.15254%;
+  float: right;
+  margin-right: 0;
+  *margin-left: -1em;
+  display: inline;
+}
+
+.span-columns-with-padding {
+  padding-left: 1.69492%;
+  padding-right: 3.38983%;
+  width: 44.0678%;
+  float: right;
+  margin-right: 0;
+  *margin-left: -1em;
+  display: inline;
+}
+
+.reset-columns {
+  float: none;
+  width: auto;
+  margin-right: auto;
+  *margin-left: auto;
+  display: block;
+}
+
+.omega {
+  float: right;
+  margin-right: 0;
+  *margin-left: -1em;
+  display: inline;
+}
+
+.nth-omega:last-child {
+  float: right;
+  margin-right: 0;
+}
+
+.remove-omega {
+  float: left;
+  margin-right: 1.69492%;
+  *margin-left: auto;
+}
+
+.remove-nth-omega:last-child {
+  float: left;
+  margin-right: 1.69492%;
+}
+
+/* ---------------------------------------------------------------------------
+/* Border-Box Sizing */
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.container {
+  *zoom: 1;
+  max-width: 61em;
+  _width: 61em;
+  padding-left: 1em;
+  padding-right: 1em;
+  margin-left: auto;
+  margin-right: auto;
+}
+.container:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.span-columns-with-padding {
+  padding-left: 1.69492%;
+  padding-right: 3.38983%;
+  width: 49.15254%;
+  float: right;
+  margin-right: 0;
+  *margin-left: -1em;
+  display: inline;
+}
+
+/* ---------------------------------------------------------------------------
+/* Static output */
+.static {
+  width: 9em;
+  float: left;
+  margin-right: 1em;
+  display: inline;
+}
+
+.force-fluid {
+  width: 15.25424%;
+  float: left;
+  margin-right: 1.69492%;
+  display: inline;
+  margin-left: 8.47458%;
+  margin-right: 8.47458%;
+}

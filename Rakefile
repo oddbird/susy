@@ -53,7 +53,7 @@ task :record_version do
     open(FileList["VERSION"].first, "w") do |f|
       f.write(spec.version.to_s)
     end
-    sh "git add VERSION test/Gemfile.lock"
+    sh "git add VERSION test/Gemfile.lock bower.json"
     sh %Q{git commit -m "Bump version to #{spec.version}."}
   end
 end

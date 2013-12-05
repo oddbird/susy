@@ -24,7 +24,7 @@
 @function span(
   $span
 ) {
-  @return get-span-width(parse-span($span));
+  @return get-span-width($span);
 }
 
 // Span Math

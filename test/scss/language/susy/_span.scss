@@ -362,6 +362,20 @@
     @include assert-equal($width, 50%,
       'Returns correct width with inside gutters.');
 
+    // inside no-gutters
+    $map: (
+      span: 4,
+      columns: 8,
+      gutters: .25,
+      column-width: null,
+      layout-math: fluid,
+      gutter-position: inside,
+      gutter-override: no-gutters,
+    );
+    $width: get-span-width($map);
+    @include assert-equal($width, 50%,
+      'Returns correct width with no-gutters.');
+
     // split-gutters
     $map: (
       span: 4,

@@ -402,7 +402,7 @@
 /*  - [mixin] span (4 Assertions, 4 Passed, 0 Failed) */
 /*  - [function] span (1 Assertions, 1 Passed, 0 Failed) */
 /*  - [function] span-math (10 Assertions, 10 Passed, 0 Failed) */
-/*  - [function] get-span-width (8 Assertions, 8 Passed, 0 Failed) */
+/*  - [function] get-span-width (9 Assertions, 9 Passed, 0 Failed) */
 /*  
     4 Tests:
     - 4 Passed
@@ -442,7 +442,7 @@
 }
 
 /*  - [function] gutter (2 Assertions, 2 Passed, 0 Failed) */
-/*  - [function] get-gutter-width (5 Assertions, 5 Passed, 0 Failed) */
+/*  - [function] get-gutter-width (6 Assertions, 6 Passed, 0 Failed) */
 /*  - [function] get-gutters (3 Assertions, 3 Passed, 0 Failed) */
 /*  - [function] is-inside (2 Assertions, 2 Passed, 0 Failed) */
 /*  - [function] is-split (2 Assertions, 2 Passed, 0 Failed) */
@@ -1099,6 +1099,26 @@
 .test__pad .assert__nested .expect {
   padding-left: 15%;
   padding-right: 30%;
+}
+
+/* "Items should have 2 columns padding before and after, and keep gutters." */
+.test__pad .assert__inside .test {
+  padding-left: 26.25%;
+  padding-right: 26.25%;
+}
+.test__pad .assert__inside .expect {
+  padding-left: 26.25%;
+  padding-right: 26.25%;
+}
+
+/* "Items should have 2 columns padding before and after, without gutters." */
+.test__pad .assert__inside-nogutters .test {
+  padding-left: 25%;
+  padding-right: 25%;
+}
+.test__pad .assert__inside-nogutters .expect {
+  padding-left: 25%;
+  padding-right: 25%;
 }
 
 /*  

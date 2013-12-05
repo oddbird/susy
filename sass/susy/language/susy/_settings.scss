@@ -26,10 +26,11 @@ $susy-keywords: (
   container-position: left center right,
   flow: ltr rtl,
   show-grids: show hide show-columns show-baseline,
-  gutter-position: before after split inside inside-static no-gutters,
+  gutter-position: before after split inside inside-static,
   box-sizing: border-box content-box,
   location: first alpha last omega,
   spread: narrow wide wider,
+  gutter-override: no-gutters no-gutter,
   is-container: container,
 );
 

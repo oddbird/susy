@@ -67,10 +67,12 @@
       $gutter: $gutters * $column-width;
     } @else {
       $columns  : susy-get(columns, $context);
-      $spread    : if(is-split($context), wide, susy-get(spread, $context));
+      $spread   : if(is-split($context), wide, susy-get(spread, $context));
       $gutter   : percentage($gutters / column-sum($columns, $gutters, $spread));
     }
   }
+
+  $gutter: if($gutter == 'no-gutters' or $gutter == 'no-gutter', null, $gutter);
 
   @return $gutter;
 }
@@ -87,7 +89,7 @@
   $gutter           : get-gutter-width($context);
   $return           : (before: null, after: null);
 
-  @if is-split($context) {
+  @if is-split($context) and $gutter {
     $gutter: $gutter / 2;
     $return: map-merge($return, (before: $gutter, after: $gutter));
   } @else {

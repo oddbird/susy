@@ -12,6 +12,11 @@
   $flow   : susy-get(flow, $span);
   $width  : span($span);
 
+  @if is-inside($span) {
+    $gutter: gutter($span);
+    $width: if($gutter and comparable($width, $gutter), $width + $gutter, $width);
+  }
+
   @include padding-output($width, null, $flow);
 }
 
@@ -25,6 +30,11 @@
   $span   : map-merge((spread: wide), parse-span($span));
   $flow   : susy-get(flow, $span);
   $width  : span($span);
+
+  @if is-inside($span) {
+    $gutter: gutter($span);
+    $width: if($gutter and comparable($width, $gutter), $width + $gutter, $width);
+  }
 
   @include padding-output(null, $width, $flow);
 }
@@ -42,11 +52,6 @@
   $pre      : map-merge((spread: wide), parse-span($pre));
   $post     : map-merge((spread: wide), parse-span($post));
 
-  $output   : (
-    before: span($pre),
-    after: span($post),
-    flow: susy-get(flow, $pre) or susy-get(flow, $post),
-  );
-
-  @include padding-output($output...);
+  @include prefix($pre);
+  @include suffix($post);
 }

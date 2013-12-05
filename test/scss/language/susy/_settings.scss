@@ -144,12 +144,13 @@
       'parse-span: #4');
 
     // Span #5
-    $test: 3 at 2 no-gutters;
+    $test: 3 at 2 inside no-gutters;
     $test: parse-span($test);
     $expect: (
       span: 3,
       location: 2,
-      gutter-position: no-gutters,
+      gutter-position: inside,
+      gutter-override: no-gutters,
     );
     @include compare-maps($test, $expect,
       'parse-span: #5');

@@ -99,17 +99,6 @@
     - 0 Failed */
 /*  
 
-### Settings Syntax ------ */
-/*  - [mixin] set-grid (7 Assertions, 7 Passed, 0 Failed) */
-/*  - [mixin] use-grid (6 Assertions, 6 Passed, 0 Failed) */
-/*  - [function] parse-grid (72 Assertions, 72 Passed, 0 Failed) */
-/*  - [function] get-setting (3 Assertions, 3 Passed, 0 Failed) */
-/*  
-    4 Tests:
-    - 4 Passed
-    - 0 Failed */
-/*  
-
 ### Shared Context Language ------ */
 /*  - [function] nested (3 Assertions, 3 Passed, 0 Failed) */
 /*  - [mixin] nested (2 Assertions, 2 Passed, 0 Failed) */
@@ -390,16 +379,33 @@
   padding-right: 1.25%;
 }
 
+/* "Span should set width, float, inside gutter, and border-box" */
+.test__span .assert__explicit .test {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 80%;
+  float: left;
+  padding-left: 1.25%;
+  padding-right: 1.25%;
+}
+.test__span .assert__explicit .expect {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 80%;
+  float: left;
+  padding-left: 1.25%;
+  padding-right: 1.25%;
+}
+
 /*  - [mixin] span (4 Assertions, 4 Passed, 0 Failed) */
 /*  - [function] span (1 Assertions, 1 Passed, 0 Failed) */
-/*  - [function] parse-span (100 Assertions, 100 Passed, 0 Failed) */
-/*  - [function] span-get (2 Assertions, 2 Passed, 0 Failed) */
-/*  - [function] span-math (9 Assertions, 9 Passed, 0 Failed) */
+/*  - [function] span-math (10 Assertions, 10 Passed, 0 Failed) */
 /*  - [function] get-span-width (8 Assertions, 8 Passed, 0 Failed) */
-/*  - [function] get-span-context (1 Assertions, 1 Passed, 0 Failed) */
 /*  
-    7 Tests:
-    - 7 Passed
+    4 Tests:
+    - 4 Passed
     - 0 Failed */
 /*  
 
@@ -436,15 +442,14 @@
 }
 
 /*  - [function] gutter (2 Assertions, 2 Passed, 0 Failed) */
-/*  - [function] parse-gutters (3 Assertions, 3 Passed, 0 Failed) */
 /*  - [function] get-gutter-width (5 Assertions, 5 Passed, 0 Failed) */
 /*  - [function] get-gutters (3 Assertions, 3 Passed, 0 Failed) */
 /*  - [function] is-inside (2 Assertions, 2 Passed, 0 Failed) */
 /*  - [function] is-split (2 Assertions, 2 Passed, 0 Failed) */
 /*  - [function] gutter-math (2 Assertions, 2 Passed, 0 Failed) */
 /*  
-    7 Tests:
-    - 7 Passed
+    6 Tests:
+    - 6 Passed
     - 0 Failed */
 /*  
 
@@ -1102,10 +1107,14 @@
 /* - [mixin] bleed */
 /* "Items should bleed 1 column outside their nested context" */
 .test__bleed .assert__simple .test {
-  margin-right: -15%;
-  padding-right: 15%;
-  margin-left: -15%;
-  padding-left: 15%;
+  margin-top: 5%;
+  padding-top: -5%;
+  margin-right: -10%;
+  padding-right: 10%;
+  margin-bottom: 5%;
+  padding-bottom: -5%;
+  margin-left: -10%;
+  padding-left: 10%;
   -moz-box-sizing: content-box;
   -webkit-box-sizing: content-box;
   box-sizing: content-box;
@@ -1150,10 +1159,14 @@
 
 /* "Items should bleed 1 column horizontal, and retain gutters." */
 .test__bleed .assert__split .test {
-  margin-right: -12.5%;
-  padding-right: 12.5%;
-  margin-left: -12.5%;
-  padding-left: 12.5%;
+  margin-top: 2.5%;
+  padding-top: -2.5%;
+  margin-right: -10%;
+  padding-right: 10%;
+  margin-bottom: 2.5%;
+  padding-bottom: -2.5%;
+  margin-left: -10%;
+  padding-left: 10%;
   -moz-box-sizing: content-box;
   -webkit-box-sizing: content-box;
   box-sizing: content-box;
@@ -1171,10 +1184,14 @@
 /* - [mixin] bleed-x */
 /* "Items should bleed 1 column left, and 2 columns right" */
 .test__bleed-x .assert__simple .test {
-  margin-right: -30%;
-  padding-right: 30%;
-  margin-left: -15%;
-  padding-left: 15%;
+  margin-top: 5%;
+  padding-top: -5%;
+  margin-right: -25%;
+  padding-right: 25%;
+  margin-bottom: 5%;
+  padding-bottom: -5%;
+  margin-left: -10%;
+  padding-left: 10%;
   -moz-box-sizing: content-box;
   -webkit-box-sizing: content-box;
   box-sizing: content-box;
@@ -1214,8 +1231,12 @@
 .test__bleed-y .assert__simple .test {
   margin-top: -0.5em;
   padding-top: 0.5em;
+  margin-right: 3.125%;
+  padding-right: -3.125%;
   margin-bottom: -1em;
   padding-bottom: 1em;
+  margin-left: 3.125%;
+  padding-left: -3.125%;
   -moz-box-sizing: content-box;
   -webkit-box-sizing: content-box;
   box-sizing: content-box;
@@ -1230,10 +1251,9 @@
   box-sizing: content-box;
 }
 
-/*  - [function] parse-bleed (1 Assertions, 1 Passed, 0 Failed) */
 /*  
-    1 Tests:
-    - 1 Passed
+    0 Tests:
+    - 0 Passed
     - 0 Failed */
 /*
 

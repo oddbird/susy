@@ -13,12 +13,12 @@
   $layout             : parse-span($layout);
   $layout             : map-merge($layout, (location: 1));
 
-  $span               : span-get(span, $layout);
-  $columns            : span-get(columns, $layout);
+  $span               : susy-get(span, $layout);
+  $columns            : susy-get(columns, $layout);
   $context            : column-count($columns);
-  $flow               : span-get(flow, $layout);
+  $flow               : susy-get(flow, $layout);
 
-  $box                : span-get(box-sizing, $layout);
+  $box                : susy-get(box-sizing, $layout);
   $inside             : is-inside($layout);
   $from               : from($flow);
   $line               : floor($context / $span);
@@ -73,7 +73,7 @@
       // Individual Output
       @include float-span-output($output...);
 
-      @if is-first(span-get(location, $layout)) {
+      @if is-first(susy-get(location, $layout)) {
         @include first($layout);
         clear: $from;
       } @else {
@@ -81,7 +81,7 @@
       }
 
       // Individual Location Increment
-      $location: span-get(location, $layout) + $span;
+      $location: susy-get(location, $layout) + $span;
       $location: if($location > $context, 1, $location);
       $layout: map-merge($layout, (location: $location));
     }

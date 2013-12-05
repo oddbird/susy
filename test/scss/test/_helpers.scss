@@ -109,3 +109,16 @@ $supported-browsers: firefox chrome;
 
   @include assert-teardown;
 }
+
+// compare two maps
+@mixin compare-maps(
+  $test,
+  $expect,
+  $name
+) {
+  @each $key, $value in $expect {
+    $this: map-get($test, $key);
+    @include assert-equal($this, $value,
+      '[#{$name}] Returns the correct #{$key}.');
+  }
+}

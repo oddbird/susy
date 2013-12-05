@@ -9,7 +9,7 @@
   $span
 ) {
   $span   : map-merge((spread: wide), parse-span($span));
-  $flow   : span-get(flow, $span);
+  $flow   : susy-get(flow, $span);
   $width  : span($span);
 
   @include padding-output($width, null, $flow);
@@ -23,7 +23,7 @@
   $span
 ) {
   $span   : map-merge((spread: wide), parse-span($span));
-  $flow   : span-get(flow, $span);
+  $flow   : susy-get(flow, $span);
   $width  : span($span);
 
   @include padding-output(null, $width, $flow);
@@ -45,7 +45,7 @@
   $output   : (
     before: span($pre),
     after: span($post),
-    flow: span-get(flow, $pre) or span-get(flow, $post),
+    flow: susy-get(flow, $pre) or susy-get(flow, $post),
   );
 
   @include padding-output($output...);

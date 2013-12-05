@@ -11,7 +11,7 @@
   $input  : parse-span($input);
   $output : (
     push: get-isolation($input),
-    flow: span-get(flow, $input),
+    flow: susy-get(flow, $input),
   );
 
   @include isolate-output($output...);
@@ -24,9 +24,9 @@
 @function get-isolation(
   $input
 ) {
-  $span       : span-get(span, $input);
-  $location   : span-get(location, $input);
-  $columns    : span-get(columns, $input);
+  $span       : susy-get(span, $input);
+  $location   : susy-get(location, $input);
+  $columns    : susy-get(columns, $input);
   $width      : null;
 
   @if type-of($location) == number and not unitless($location) {
@@ -43,7 +43,7 @@
     }
   }
 
-  @if span-get(gutter-position, $input) == split {
+  @if susy-get(gutter-position, $input) == split {
     $width: if($width == null, gutters($input), $width + gutters($input));
   }
 

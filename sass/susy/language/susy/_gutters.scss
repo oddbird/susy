@@ -13,7 +13,7 @@
   $output     : (
     before: map-get($gutters, before),
     after: map-get($gutters, after),
-    flow: span-get(flow, $context),
+    flow: susy-get(flow, $context),
   );
 
   @if is-inside($context) {
@@ -50,23 +50,6 @@
   @return gutter($context);
 }
 
-// Parse Gutters
-// -------------
-// Return context with override value set
-// $context: <context>
-@function parse-gutters(
-  $context: $susy
-) {
-  $context      : parse-span($context);
-  $override     : span-get(gutter-override, $context) or span-get(span, $context);
-
-  @if $override and not unitless($override) {
-    $context: map-merge($context, (gutter-override: $override));
-  }
-
-  @return $context;
-}
-
 // Get Gutter Width
 // ----------------
 // Return gutter width.
@@ -75,16 +58,16 @@
   $context: $susy
 ) {
   $context  : parse-gutters($context);
-  $gutter   : span-get(gutter-override, $context);
+  $gutter   : susy-get(gutter-override, $context);
 
   @if not $gutter {
-    $gutters: span-get(gutters, $context);
-    $column-width: span-get(column-width, $context);
+    $gutters: susy-get(gutters, $context);
+    $column-width: susy-get(column-width, $context);
     @if $column-width and gutter-math($context) == static {
       $gutter: $gutters * $column-width;
     } @else {
-      $columns  : span-get(columns, $context);
-      $spread    : if(is-split($context), wide, span-get(spread, $context));
+      $columns  : susy-get(columns, $context);
+      $spread    : if(is-split($context), wide, susy-get(spread, $context));
       $gutter   : percentage($gutters / column-sum($columns, $gutters, $spread));
     }
   }
@@ -100,7 +83,7 @@
   $context: $susy
 ) {
   $context          : parse-gutters($context);
-  $gutter-position  : span-get(gutter-position, $context);
+  $gutter-position  : susy-get(gutter-position, $context);
   $gutter           : get-gutter-width($context);
   $return           : (before: null, after: null);
 

@@ -39,3 +39,161 @@ $susy-keywords: (
 // - Set EITHER $column-width OR $container
 // - Use $column-width for static layouts
 $susy: () !default;
+
+// Parse Susy Keywords and Maps
+// ----------------------------
+@function parse-settings(
+  $short: $susy
+) {
+  $return: ();
+
+  @if type-of($short) == map {
+    $return: $short;
+  } @else {
+    @each $item in $short {
+      // strings
+      @if type-of($item) == string {
+        @each $key, $value in $susy-keywords {
+          @if index($value, $item) {
+            $return: map-merge($return, ($key: $item));
+          }
+        }
+      // maps
+      } @else if type-of($item) == map {
+        $return: map-merge($return, $item);
+      }
+    }
+  }
+
+  @return $return;
+}
+
+// Parse Columns & Gutters
+// -----------------------
+@function parse-layout(
+  $short
+) {
+  $return: ();
+  $columns: ();
+  $gutters: null;
+
+  @if not unitless(nth(nth($short, 1), 1)) {
+    $gutters: nth($short, 1);
+  } @else {
+    $columns: (columns: nth($short, 1));
+    $gutters: if(length($short) > 1, nth($short, 2), $gutters);
+  }
+
+  @if type-of($gutters) == list and length($gutters) > 0 {
+    $gutters: (
+      gutters: nth($gutters, 2) / nth($gutters, 1),
+      column-width: nth($gutters, 1),
+    );
+  } @else {
+    $gutters: if($gutters, (gutters: $gutters), ());
+  }
+
+  $return: map-merge($return, $columns);
+  $return: map-merge($return, $gutters);
+
+  @return $return;
+}
+
+// Parse Grid/Context
+// ------------------
+@function parse-grid(
+  $short: $susy
+) {
+  $return: parse-settings($short);
+  $layout: ();
+
+  @if type-of($short) == map {
+    $return: $short;
+  } @else {
+    @each $item in $short {
+      // number or list
+      @if type-of($item) == number or type-of($item) == list {
+        @if type-of($item) == list or unitless($item) {
+          $layout: append($layout, $item);
+        } @else {
+          $return: map-merge($return, (container: $item));
+        }
+      }
+    }
+
+    $layout: if(length($layout) > 0, parse-layout($layout), $layout);
+  }
+
+  @return map-merge($return, $layout);
+}
+
+// Parse Span
+// ----------
+@function parse-span(
+  $short,
+  $key: span
+) {
+  $return: ();
+
+  @if type-of($short) == map {
+    $return: $short;
+  } @else {
+    $at: index($short, at);
+
+    @if $at {
+      $loci: $at + 1;
+      $location: nth($short, $loci);
+      $return: map-merge($return, (location: $location));
+      $short: set-nth($short, $at, null);
+      $short: set-nth($short, $loci, null);
+    }
+
+    $i: 1;
+    $span: ();
+
+    @while $i <= length($short) {
+      $this: nth($short, $i);
+
+      @if type-of($this) == number {
+        $span: append($span, $this);
+        $short: set-nth($short, $i, null);
+      } @else if $this == of {
+        $short: set-nth($short, $i, null);
+        $i: length($short) + 1;
+      }
+
+      $i: $i + 1;
+    }
+
+    @if length($span) > 0 {
+      $span: if(length($span) == 1, nth($span, 1), $span);
+      $return: map-merge($return, ($key: $span));
+    }
+
+    $return: map-merge($return, parse-grid($short));
+  }
+
+  @return $return;
+}
+
+// Parse Gutters
+// -------------
+@function parse-gutters(
+  $short: $susy
+) {
+  @return parse-span($short, gutter-override);
+}
+
+// Susy Get
+// --------
+// Return one setting from a grid
+// - $key   : <keyword>
+// - $grid  : <settings>
+@function susy-get(
+  $key,
+  $grid: map-merge($susy-defaults, $susy)
+) {
+  $grid: parse-grid($grid);
+
+  @return map-get($grid, $key) or map-get($susy, $key) or map-get($susy-defaults, $key);
+}

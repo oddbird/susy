@@ -58,45 +58,6 @@
       'Returns correct inside gutters.');
   }
 
-  // parse-gutters
-  // -------------
-
-  @include test('[function] parse-gutters') {
-    // context only
-    $test: parse-gutters(of 7 .5 after);
-    $expect: map-merge($susy-defaults, (
-      columns: 7,
-      gutters: .5,
-      gutter-position: after,
-    ));
-    @include assert-equal($test, $expect,
-      'Returns correct gutter context.');
-
-    // explicit
-    $test: parse-gutters(30em of 7 .5 after);
-    $expect: map-merge($susy-defaults, (
-      span: 30em,
-      columns: 7,
-      gutters: .5,
-      gutter-position: after,
-      gutter-override: 30em,
-    ));
-    @include assert-equal($test, $expect,
-      'Returns correct explicit gutter-override.');
-
-    // keyword
-    $test: parse-gutters(of 7 .5 after gutters 3em);
-    $expect: map-merge($susy-defaults, (
-      columns: 7,
-      gutters: .5,
-      gutter-position: after,
-      gutter-override: 3em,
-    ));
-    @include assert-equal($test, $expect,
-      'Returns correct gutter-override using keyword.');
-  }
-
-
   // get-gutter-width
   // ----------------
 

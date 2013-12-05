@@ -1,6 +1,17 @@
 Susy Next Changelog
 ===================
 
+2.0.0.alpha.6 (unreleased)
+--------------------------
+
+* Re-write syntax parsing so parser and resulting maps are shared across Susy.
+* Fix explicit-span bug causing large gutters.
+
+Backwards Incompatible:
+
+* Removed `gutters $n` keyword in shorthand syntax for setting explicit gutters.
+  - Use `(gutter-override: $n)` map instead.
+
 2.0.0.alpha.5 (Nov 25, 2013)
 ----------------------------
 

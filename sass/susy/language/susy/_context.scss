@@ -9,9 +9,9 @@
   $context
 ) {
   $context    : parse-span($context);
-  $span       : span-get(span, $context);
-  $location   : span-get(location, $context);
-  $columns    : span-get(columns, $context);
+  $span       : susy-get(span, $context);
+  $location   : susy-get(location, $context);
+  $columns    : susy-get(columns, $context);
 
   @return get-columns($span, $location, $columns);
 }

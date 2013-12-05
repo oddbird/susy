@@ -275,17 +275,6 @@ h1 {
     - 0 Failed */
 /*  
 
-### Settings Syntax ------ */
-/*  - [mixin] set-grid (7 Assertions, 7 Passed, 0 Failed) */
-/*  - [mixin] use-grid (6 Assertions, 6 Passed, 0 Failed) */
-/*  - [function] parse-grid (72 Assertions, 72 Passed, 0 Failed) */
-/*  - [function] get-setting (3 Assertions, 3 Passed, 0 Failed) */
-/*  
-    4 Tests:
-    - 4 Passed
-    - 0 Failed */
-/*  
-
 ### Shared Context Language ------ */
 /*  - [function] nested (3 Assertions, 3 Passed, 0 Failed) */
 /*  - [mixin] nested (2 Assertions, 2 Passed, 0 Failed) */
@@ -503,16 +492,47 @@ h1 {
   font-style: italic;
 }
 
+.test__span .assert__explicit {
+  *zoom: 1;
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  background-image: -moz-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25));
+  background-image: -webkit-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25));
+  background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25));
+  -webkit-background-size: 12.5%;
+  background-size: 12.5%;
+  -webkit-background-origin: content-box;
+  -webkit-background-clip: content-box;
+  background-origin: content-box;
+  background-clip: content-box;
+  background-position: left top;
+}
+.test__span .assert__explicit:after {
+  content: " ";
+  display: block;
+  clear: both;
+}
+
+.test__span .assert__explicit .test, .test__span .assert__explicit .expect {
+  clear: both;
+}
+
+.test__span .assert__explicit::before {
+  content: "Span should set width, float, inside gutter, and border-box";
+  display: block;
+  padding: 0.375rem 0.75rem;
+  text-align: left;
+  font-style: italic;
+}
+
 /*  - [mixin] span (4 Assertions, 4 Passed, 0 Failed) */
 /*  - [function] span (1 Assertions, 1 Passed, 0 Failed) */
-/*  - [function] parse-span (100 Assertions, 100 Passed, 0 Failed) */
-/*  - [function] span-get (2 Assertions, 2 Passed, 0 Failed) */
-/*  - [function] span-math (9 Assertions, 9 Passed, 0 Failed) */
+/*  - [function] span-math (10 Assertions, 10 Passed, 0 Failed) */
 /*  - [function] get-span-width (8 Assertions, 8 Passed, 0 Failed) */
-/*  - [function] get-span-context (1 Assertions, 1 Passed, 0 Failed) */
 /*  
-    7 Tests:
-    - 7 Passed
+    4 Tests:
+    - 4 Passed
     - 0 Failed */
 /*  
 
@@ -609,15 +629,14 @@ h1 {
 }
 
 /*  - [function] gutter (2 Assertions, 2 Passed, 0 Failed) */
-/*  - [function] parse-gutters (3 Assertions, 3 Passed, 0 Failed) */
 /*  - [function] get-gutter-width (5 Assertions, 5 Passed, 0 Failed) */
 /*  - [function] get-gutters (3 Assertions, 3 Passed, 0 Failed) */
 /*  - [function] is-inside (2 Assertions, 2 Passed, 0 Failed) */
 /*  - [function] is-split (2 Assertions, 2 Passed, 0 Failed) */
 /*  - [function] gutter-math (2 Assertions, 2 Passed, 0 Failed) */
 /*  
-    7 Tests:
-    - 7 Passed
+    6 Tests:
+    - 6 Passed
     - 0 Failed */
 /*  
 
@@ -2376,10 +2395,9 @@ h1 {
   font-style: italic;
 }
 
-/*  - [function] parse-bleed (1 Assertions, 1 Passed, 0 Failed) */
 /*  
-    1 Tests:
-    - 1 Passed
+    0 Tests:
+    - 0 Passed
     - 0 Failed */
 /*
 
@@ -2631,7 +2649,7 @@ h1 {
 .test__isolate-output .assert__isolate-output .test, .test__isolate-output .assert__isolate-output .expect {
   width: 40%;
   float: left;
-  margin-right: 40%;
+  margin-right: 5.26316%;
 }
 .test__isolate-output .assert__isolate-output .expect {
   clear: both;
@@ -2650,5 +2668,5 @@ h1 {
   border-color: green;
 }
 .results::after {
-  content: "46 Tests, 46 Passed, 0 Failed";
+  content: "37 Tests, 37 Passed, 0 Failed";
 }

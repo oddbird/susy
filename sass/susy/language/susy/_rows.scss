@@ -33,8 +33,8 @@
 ) {
   $span: parse-span($span);
 
-  @include row(span-get(flow, $span));
-  @if is-split($span) and not span-get(is-container, $span) {
+  @include row(susy-get(flow, $span));
+  @if is-split($span) and not susy-get(is-container, $span) {
     @include gutters($span);
   }
   float: none;

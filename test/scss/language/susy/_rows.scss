@@ -114,41 +114,6 @@
     }
   }
 
-  // nth-first
-  // ---------
-
-  @include output-test('nth-first') {
-    @include assert-setup($grid: 7 .5 split) {
-      .test, .expect {
-        @include span(2);
-        clear: left;
-      }
-    }
-    @include assert-output(
-      'Nth-first (first-child) items should have left margins removed.'
-    ) {
-      .test { @include nth-first; }
-    }
-  }
-
-  // nth-alpha
-  // ---------
-
-  @include output-test('nth-alpha') {
-    @include assert-setup($grid: 7 .5 before) {
-      .test, .expect {
-        @include span(2);
-        clear: left;
-      }
-    }
-    @include assert-output(
-      'Nth-alpha (first-child) items should have left margins removed'
-    ) {
-      .test { @include nth-alpha; }
-      .expect { margin-left: 0; }
-    }
-  }
-
   // last
   // ----
 
@@ -199,47 +164,6 @@
       'Omega items should float right, with right margins removed'
     ) {
       .test { @include omega; }
-      .expect {
-        float: right;
-        margin-right: 0;
-      }
-    }
-  }
-
-  // nth-last
-  // --------
-
-  @include output-test('nth-last') {
-    @include assert-setup($grid: 7 .5 split) {
-      .test, .expect {
-        @include span(2);
-        clear: both;
-      }
-    }
-    @include assert-output(
-      'nth-last(2, last-child) items should float right.'
-    ) {
-      .test { @include nth-last(2, last-child); }
-      .expect {
-        float: right;
-      }
-    }
-  }
-
-  // nth-omega
-  // ---------
-
-  @include output-test('nth-omega') {
-    @include assert-setup($grid: 7 .5 after) {
-      .test, .expect {
-        @include span(2);
-        clear: both;
-      }
-    }
-    @include assert-output(
-      'nth-omega(2, last-child) items should float right, with right margins removed.'
-    ) {
-      .test { @include nth-omega(2, last-child); }
       .expect {
         float: right;
         margin-right: 0;

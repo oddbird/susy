@@ -91,14 +91,6 @@
     - 0 Failed */
 /*  
 
-### Nth- Helpers ------ */
-/*  - [function] format-nth (2 Assertions, 2 Passed, 0 Failed) */
-/*  
-    1 Tests:
-    - 1 Passed
-    - 0 Failed */
-/*  
-
 ### Shared Context Language ------ */
 /*  - [function] nested (3 Assertions, 3 Passed, 0 Failed) */
 /*  - [mixin] nested (2 Assertions, 2 Passed, 0 Failed) */
@@ -854,17 +846,6 @@
   margin-left: 0;
 }
 
-/* - [mixin] nth-first */
-/* "Nth-first (first-child) items should have left margins removed." */
-/* - [mixin] nth-alpha */
-/* "Nth-alpha (first-child) items should have left margins removed" */
-.test__nth-alpha .assert__nth-alpha .test:first-child {
-  margin-left: 0;
-}
-.test__nth-alpha .assert__nth-alpha .expect {
-  margin-left: 0;
-}
-
 /* - [mixin] last */
 /* "Last items should float right, with right margins removed" */
 .test__last .assert__after .test {
@@ -892,27 +873,6 @@
   margin-right: 0;
 }
 .test__omega .assert__omega .expect {
-  float: right;
-  margin-right: 0;
-}
-
-/* - [mixin] nth-last */
-/* "nth-last(2, last-child) items should float right." */
-.test__nth-last .assert__nth-last .test:nth-last-child(2) {
-  float: right;
-  margin-right: 2.38095%;
-}
-.test__nth-last .assert__nth-last .expect {
-  float: right;
-}
-
-/* - [mixin] nth-omega */
-/* "nth-omega(2, last-child) items should float right, with right margins removed." */
-.test__nth-omega .assert__nth-omega .test:nth-last-child(2) {
-  float: right;
-  margin-right: 0;
-}
-.test__nth-omega .assert__nth-omega .expect {
   float: right;
   margin-right: 0;
 }

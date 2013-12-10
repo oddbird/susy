@@ -267,14 +267,6 @@ h1 {
     - 0 Failed */
 /*  
 
-### Nth- Helpers ------ */
-/*  - [function] format-nth (2 Assertions, 2 Passed, 0 Failed) */
-/*  
-    1 Tests:
-    - 1 Passed
-    - 0 Failed */
-/*  
-
 ### Shared Context Language ------ */
 /*  - [function] nested (3 Assertions, 3 Passed, 0 Failed) */
 /*  - [mixin] nested (2 Assertions, 2 Passed, 0 Failed) */
@@ -1191,83 +1183,6 @@ h1 {
   font-style: italic;
 }
 
-/* - [mixin] nth-first */
-.test__nth-first .assert__nth-first {
-  *zoom: 1;
-  max-width: 100%;
-  margin-left: auto;
-  margin-right: auto;
-  background-image: -moz-linear-gradient(left, rgba(0, 0, 0, 0) 16.66667%, rgba(102, 102, 255, 0.25) 16.66667%, rgba(179, 179, 255, 0.25) 83.33333%, rgba(0, 0, 0, 0) 83.33333%);
-  background-image: -webkit-linear-gradient(left, rgba(0, 0, 0, 0) 16.66667%, rgba(102, 102, 255, 0.25) 16.66667%, rgba(179, 179, 255, 0.25) 83.33333%, rgba(0, 0, 0, 0) 83.33333%);
-  background-image: linear-gradient(to right, rgba(0, 0, 0, 0) 16.66667%, rgba(102, 102, 255, 0.25) 16.66667%, rgba(179, 179, 255, 0.25) 83.33333%, rgba(0, 0, 0, 0) 83.33333%);
-  -webkit-background-size: 14.28571%;
-  background-size: 14.28571%;
-  -webkit-background-origin: content-box;
-  -webkit-background-clip: content-box;
-  background-origin: content-box;
-  background-clip: content-box;
-  background-position: left top;
-}
-.test__nth-first .assert__nth-first:after {
-  content: " ";
-  display: block;
-  clear: both;
-}
-
-.test__nth-first .assert__nth-first .test, .test__nth-first .assert__nth-first .expect {
-  width: 23.80952%;
-  float: left;
-  margin-left: 2.38095%;
-  margin-right: 2.38095%;
-  clear: left;
-}
-
-.test__nth-first .assert__nth-first::before {
-  content: "Nth-first (first-child) items should have left margins removed.";
-  display: block;
-  padding: 0.375rem 0.75rem;
-  text-align: left;
-  font-style: italic;
-}
-
-/* - [mixin] nth-alpha */
-.test__nth-alpha .assert__nth-alpha {
-  *zoom: 1;
-  max-width: 100%;
-  margin-left: auto;
-  margin-right: auto;
-  background-image: -moz-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 66.66667%, rgba(0, 0, 0, 0) 66.66667%);
-  background-image: -webkit-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 66.66667%, rgba(0, 0, 0, 0) 66.66667%);
-  background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 66.66667%, rgba(0, 0, 0, 0) 66.66667%);
-  -webkit-background-size: 15%;
-  background-size: 15%;
-  -webkit-background-origin: content-box;
-  -webkit-background-clip: content-box;
-  background-origin: content-box;
-  background-clip: content-box;
-  background-position: left top;
-}
-.test__nth-alpha .assert__nth-alpha:after {
-  content: " ";
-  display: block;
-  clear: both;
-}
-
-.test__nth-alpha .assert__nth-alpha .test, .test__nth-alpha .assert__nth-alpha .expect {
-  width: 25%;
-  float: left;
-  margin-left: 5%;
-  clear: left;
-}
-
-.test__nth-alpha .assert__nth-alpha::before {
-  content: "Nth-alpha (first-child) items should have left margins removed";
-  display: block;
-  padding: 0.375rem 0.75rem;
-  text-align: left;
-  font-style: italic;
-}
-
 /* - [mixin] last */
 .test__last .assert__after {
   *zoom: 1;
@@ -1376,83 +1291,6 @@ h1 {
 
 .test__omega .assert__omega::before {
   content: "Omega items should float right, with right margins removed";
-  display: block;
-  padding: 0.375rem 0.75rem;
-  text-align: left;
-  font-style: italic;
-}
-
-/* - [mixin] nth-last */
-.test__nth-last .assert__nth-last {
-  *zoom: 1;
-  max-width: 100%;
-  margin-left: auto;
-  margin-right: auto;
-  background-image: -moz-linear-gradient(left, rgba(0, 0, 0, 0) 16.66667%, rgba(102, 102, 255, 0.25) 16.66667%, rgba(179, 179, 255, 0.25) 83.33333%, rgba(0, 0, 0, 0) 83.33333%);
-  background-image: -webkit-linear-gradient(left, rgba(0, 0, 0, 0) 16.66667%, rgba(102, 102, 255, 0.25) 16.66667%, rgba(179, 179, 255, 0.25) 83.33333%, rgba(0, 0, 0, 0) 83.33333%);
-  background-image: linear-gradient(to right, rgba(0, 0, 0, 0) 16.66667%, rgba(102, 102, 255, 0.25) 16.66667%, rgba(179, 179, 255, 0.25) 83.33333%, rgba(0, 0, 0, 0) 83.33333%);
-  -webkit-background-size: 14.28571%;
-  background-size: 14.28571%;
-  -webkit-background-origin: content-box;
-  -webkit-background-clip: content-box;
-  background-origin: content-box;
-  background-clip: content-box;
-  background-position: left top;
-}
-.test__nth-last .assert__nth-last:after {
-  content: " ";
-  display: block;
-  clear: both;
-}
-
-.test__nth-last .assert__nth-last .test, .test__nth-last .assert__nth-last .expect {
-  width: 23.80952%;
-  float: left;
-  margin-left: 2.38095%;
-  margin-right: 2.38095%;
-  clear: both;
-}
-
-.test__nth-last .assert__nth-last::before {
-  content: "nth-last(2, last-child) items should float right.";
-  display: block;
-  padding: 0.375rem 0.75rem;
-  text-align: left;
-  font-style: italic;
-}
-
-/* - [mixin] nth-omega */
-.test__nth-omega .assert__nth-omega {
-  *zoom: 1;
-  max-width: 100%;
-  margin-left: auto;
-  margin-right: auto;
-  background-image: -moz-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 66.66667%, rgba(0, 0, 0, 0) 66.66667%);
-  background-image: -webkit-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 66.66667%, rgba(0, 0, 0, 0) 66.66667%);
-  background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 66.66667%, rgba(0, 0, 0, 0) 66.66667%);
-  -webkit-background-size: 15%;
-  background-size: 15%;
-  -webkit-background-origin: content-box;
-  -webkit-background-clip: content-box;
-  background-origin: content-box;
-  background-clip: content-box;
-  background-position: left top;
-}
-.test__nth-omega .assert__nth-omega:after {
-  content: " ";
-  display: block;
-  clear: both;
-}
-
-.test__nth-omega .assert__nth-omega .test, .test__nth-omega .assert__nth-omega .expect {
-  width: 25%;
-  float: left;
-  margin-right: 5%;
-  clear: both;
-}
-
-.test__nth-omega .assert__nth-omega::before {
-  content: "nth-omega(2, last-child) items should float right, with right margins removed.";
   display: block;
   padding: 0.375rem 0.75rem;
   text-align: left;
@@ -2728,5 +2566,5 @@ h1 {
   border-color: green;
 }
 .results::after {
-  content: "37 Tests, 37 Passed, 0 Failed";
+  content: "36 Tests, 36 Passed, 0 Failed";
 }

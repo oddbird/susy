@@ -57,8 +57,8 @@
 
   // Individual Loop
   @for $item from 1 through $line {
-    $nth: '#{$line}n + #{$item}';
-    &:#{format-nth($nth,$selector)} {
+    $n: '#{$line}n + #{$item}';
+    &:nth-#{$selector}(#{$n}) {
       // Individual Prep
       $output: (
         width             : if($symmetrical, null, get-span-width($layout)),

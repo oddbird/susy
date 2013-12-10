@@ -1,6 +1,11 @@
 Susy Next Changelog
 ===================
 
+2.0.0.alpha.7 (unreleased)
+--------------------------
+
+* Debug grids are now hidden by default.
+
 2.0.0.alpha.6 (Dec 5, 2013)
 ---------------------------
 

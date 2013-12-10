@@ -23,7 +23,7 @@
 
   @if $return != $columns {
     $warn: '$columns must be a unitless number or list of unitless numbers.';
-    @warn $warn + ' Current value [#{$type}]: $columns';
+    @warn $warn + ' Current value [#{$type}]: #{$columns}';
   } @else {
     @return $return;
   }
@@ -41,7 +41,7 @@
     @return $gutters;
   } @else {
     $warn: '$gutters must be a unitless number.';
-    @warn $warn + ' Current value [#{$type}]: $columns';
+    @warn $warn + ' Current value [#{$type}]: #{$gutters}';
   }
 }
 
@@ -57,6 +57,6 @@
     @return $column-width;
   } @else {
     $warn: '$column-width must be a length (number with units), or false.';
-    @warn $warn + ' Current value [#{$type}]: $columns';
+    @warn $warn + ' Current value [#{$type}]: #{$column-width}';
   }
 }

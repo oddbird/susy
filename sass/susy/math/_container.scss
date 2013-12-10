@@ -31,5 +31,7 @@
   $column-width   : susy-get(column-width),
   $spread         : false
 ) {
-  @return column-sum($columns, $gutters, $spread) * $column-width;
+  $sum: column-sum($columns, $gutters, $spread);
+  $column-width: valid-column-width($column-width);
+  @return $sum * $column-width;
 }

@@ -91,6 +91,26 @@
     - 0 Failed */
 /*  
 
+### Language Settings ------ */
+/*  - [function] parse-grid (30 Assertions, 30 Passed, 0 Failed) */
+/*  - [function] parse-span (41 Assertions, 41 Passed, 0 Failed) */
+/*  - [function] parse-gutters (11 Assertions, 11 Passed, 0 Failed) */
+/*  - [function] susy-get (3 Assertions, 3 Passed, 0 Failed) */
+/*  
+    4 Tests:
+    - 4 Passed
+    - 0 Failed */
+/*  
+
+### Grids Syntax ------ */
+/*  - [mixin] set-grid (7 Assertions, 7 Passed, 0 Failed) */
+/*  - [mixin] use-grid (6 Assertions, 6 Passed, 0 Failed) */
+/*  
+    2 Tests:
+    - 2 Passed
+    - 0 Failed */
+/*  
+
 ### Shared Context Language ------ */
 /*  - [function] nested (3 Assertions, 3 Passed, 0 Failed) */
 /*  - [mixin] nested (2 Assertions, 2 Passed, 0 Failed) */

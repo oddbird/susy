@@ -182,7 +182,31 @@ $susy: () !default;
 @function parse-gutters(
   $short: $susy
 ) {
-  @return parse-span($short, gutter-override);
+  $gutters: parse-span($short, gutter-override);
+  $span: susy-get(gutter-override, $gutters);
+
+  @if $span and not map-get($gutters, columns) {
+    $context: ();
+    $new: ();
+
+    @each $item in $span {
+      @if type-of($item) == number and unitless($item) {
+        $context: append($context, $item);
+      } @else {
+        $new: append($new, $item);
+      }
+    }
+
+    $context: parse-grid($context);
+    $new: if(length($new) == 0, null, $new);
+    $new: if(length($new) == 1, nth($new, 1), $new);
+    $new: (gutter-override: if($new != $span, $new, $span));
+
+    $gutters: map-merge($gutters, $new);
+    $gutters: map-merge($gutters, $context);
+  }
+
+  @return $gutters;
 }
 
 // Susy Get

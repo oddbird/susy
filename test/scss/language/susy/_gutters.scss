@@ -52,7 +52,7 @@
       'Returns correct outside gutters.');
 
     // inside
-    $test: gutter(of 8 .25 inside);
+    $test: gutter(8 .25 inside);
     $expect: 1.25%;
     @include assert-equal($test, $expect,
       'Returns correct inside gutters.');

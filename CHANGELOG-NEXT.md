@@ -7,6 +7,10 @@ Susy Next Changelog
 * Debug grids are now hidden by default.
 * Remove `nth-last`/`-omega`/`-first`/`-alpha` as confusing & out-of-scope.
   - Format your nth-selectors manually to apply `first`/`last` mixins.
+* Gutter mixins/functions can accept context-only (without the "of" syntax):
+  - `gutters(of 10 .25)` == `gutters(10 .25)`
+  - unitless numbers are used for context.
+  - lengths (with units) are used as explicit gutter-overrides.
 
 2.0.0.alpha.6 (Dec 5, 2013)
 ---------------------------

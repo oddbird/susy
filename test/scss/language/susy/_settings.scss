@@ -193,6 +193,24 @@
     @include compare-maps($test, $expect,
       'context-only');
 
+    // context only (no "of")
+    $test: parse-gutters(7 .5 after);
+    $expect: (
+      columns: 7,
+      gutters: .5,
+      gutter-position: after,
+    );
+    @include compare-maps($test, $expect,
+      'context-only [no "of"]');
+
+    // explicit only
+    $test: parse-gutters(30%);
+    $expect: (
+      gutter-override: 30%,
+    );
+    @include compare-maps($test, $expect,
+      'explicit-only');
+
     // explicit
     $test: parse-gutters(30em of 7 .5 after);
     $expect: (

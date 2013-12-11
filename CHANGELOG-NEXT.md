@@ -9,13 +9,15 @@ Susy Next Changelog
   - Format your nth-selectors manually to apply `first`/`last` mixins.
 * Gutter mixins/functions can accept context-only (without the "of" syntax):
   - `gutters(of 10 .25)` == `gutters(10 .25)`
-  - unitless numbers are used for context.
-  - lengths (with units) are used as explicit gutter-overrides.
+  - Unitless numbers are used for context.
+  - Lengths (with units) are used as explicit gutter-overrides.
 * Re-purposed `susy-set` as reverse of `susy-get` — to adjust a single setting.
   - Example: `@include susy-set(gutter-position, inside);`
-* Added `global-box-sizing` setting
-  - let Susy know what box model you are using globally.
-* Added `global-box-sizing()` mixin to set your global box model.
+* Add `global-box-sizing` setting.
+  - Let Susy know what box model you are using globally.
+* Remove `box-sizing` setting.
+  - It can still be passed as a keyword argument.
+* Add `global-box-sizing()` mixin to set your global box model.
   - Example: `@include global-box-sizing(border-box);`
   - You can still use the legacy `@include border-box-sizing;` as a shortcut.
   - Uses your global setting as a default.

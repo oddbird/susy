@@ -22,6 +22,7 @@ Susy Next Changelog
   - You can still use the legacy `@include border-box-sizing;` as a shortcut.
   - Uses your global setting as a default.
   - Updates your global setting to match, if you pass a different value.
+* `gallery` and `span` mixins take global-box-sizing into account.
 
 2.0.0.alpha.6 (Dec 5, 2013)
 ---------------------------

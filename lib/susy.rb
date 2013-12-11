@@ -4,9 +4,9 @@ begin
   Compass::Frameworks.register('susy', :stylesheets_directory => susy_stylesheets_path)
 rescue LoadError
   # compass not found, register on the Sass path via the environment.
-  if ENV.has_key?("SASSPATH")
-    ENV["SASSPATH"] = ENV["SASSPATH"] + File::PATH_SEPARATOR + susy_stylesheets_path
+  if ENV.has_key?("SASS_PATH")
+    ENV["SASS_PATH"] = ENV["SASS_PATH"] + File::PATH_SEPARATOR + susy_stylesheets_path
   else
-    ENV["SASSPATH"] = susy_stylesheets_path
+    ENV["SASS_PATH"] = susy_stylesheets_path
   end
 end

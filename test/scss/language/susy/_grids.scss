@@ -33,6 +33,23 @@
     @include original-grid;
   }
 
+  // [mixin] susy-set
+  // ----------------
+
+  @include test('[mixin] susy-set') {
+    $key: columns;
+    $original: susy-get($key);
+    $new: $original + 3;
+
+    @include susy-set($key, $new);
+
+    $test: susy-get($key);
+    @include assert-equal($test, $new,
+      'Changes the global value for a setting.');
+
+    @include original-grid;
+  }
+
   // [mixin] use-grid
   // ----------------
 

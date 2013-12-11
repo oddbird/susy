@@ -14,6 +14,7 @@ $susy-defaults: map-merge($susy-defaults, (
   container-position: center,
   gutter-position: after,
   show-grids: hide,
+  global-box-sizing: content-box,
 ));
 
 // Valid Keyword Values

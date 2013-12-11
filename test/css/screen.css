@@ -280,10 +280,61 @@ h1 {
 
 ### Grids Syntax ------ */
 /*  - [mixin] set-grid (7 Assertions, 7 Passed, 0 Failed) */
+/*  - [mixin] susy-set (1 Assertions, 1 Passed, 0 Failed) */
 /*  - [mixin] use-grid (6 Assertions, 6 Passed, 0 Failed) */
 /*  
-    2 Tests:
-    - 2 Passed
+    3 Tests:
+    - 3 Passed
+    - 0 Failed */
+/*  
+
+### Global Box-Sizing Syntax ------ */
+/* - [mixin] global-box-sizing */
+.test__global-box-sizing .assert__global-box-sizing {
+  overflow: hidden;
+  background: rgba(204, 204, 255, 0.5);
+}
+
+.test__global-box-sizing .assert__global-box-sizing .nest {
+  padding-left: 15%;
+  padding-right: 15%;
+  width: 60%;
+  margin: 0 auto;
+}
+
+.test__global-box-sizing .assert__global-box-sizing::before {
+  content: "Nested items should use border-box model.";
+  display: block;
+  padding: 0.375rem 0.75rem;
+  text-align: left;
+  font-style: italic;
+}
+
+/* - [mixin] border-box-sizing */
+.test__border-box-sizing .assert__border-box-sizing {
+  overflow: hidden;
+  background: rgba(204, 204, 255, 0.5);
+}
+
+.test__border-box-sizing .assert__border-box-sizing .nest {
+  padding-left: 15%;
+  padding-right: 15%;
+  width: 60%;
+  margin: 0 auto;
+}
+
+.test__border-box-sizing .assert__border-box-sizing::before {
+  content: "Nested items should use border-box model.";
+  display: block;
+  padding: 0.375rem 0.75rem;
+  text-align: left;
+  font-style: italic;
+}
+
+/*  - update-box-model (2 Assertions, 2 Passed, 0 Failed) */
+/*  
+    1 Tests:
+    - 1 Passed
     - 0 Failed */
 /*  
 
@@ -2586,5 +2637,5 @@ h1 {
   border-color: green;
 }
 .results::after {
-  content: "42 Tests, 42 Passed, 0 Failed";
+  content: "44 Tests, 44 Passed, 0 Failed";
 }

@@ -104,10 +104,45 @@
 
 ### Grids Syntax ------ */
 /*  - [mixin] set-grid (7 Assertions, 7 Passed, 0 Failed) */
+/*  - [mixin] susy-set (1 Assertions, 1 Passed, 0 Failed) */
 /*  - [mixin] use-grid (6 Assertions, 6 Passed, 0 Failed) */
 /*  
-    2 Tests:
-    - 2 Passed
+    3 Tests:
+    - 3 Passed
+    - 0 Failed */
+/*  
+
+### Global Box-Sizing Syntax ------ */
+/* - [mixin] global-box-sizing */
+/* "Nested items should use border-box model." */
+.test__global-box-sizing .assert__global-box-sizing .test *, .test__global-box-sizing .assert__global-box-sizing .test *:before, .test__global-box-sizing .assert__global-box-sizing .test *:after {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.test__global-box-sizing .assert__global-box-sizing .expect *, .test__global-box-sizing .assert__global-box-sizing .expect *:before, .test__global-box-sizing .assert__global-box-sizing .expect *:after {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+/* - [mixin] border-box-sizing */
+/* "Nested items should use border-box model." */
+.test__border-box-sizing .assert__border-box-sizing .test *, .test__border-box-sizing .assert__border-box-sizing .test *:before, .test__border-box-sizing .assert__border-box-sizing .test *:after {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.test__border-box-sizing .assert__border-box-sizing .expect *, .test__border-box-sizing .assert__border-box-sizing .expect *:before, .test__border-box-sizing .assert__border-box-sizing .expect *:after {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+/*  - update-box-model (2 Assertions, 2 Passed, 0 Failed) */
+/*  
+    1 Tests:
+    - 1 Passed
     - 0 Failed */
 /*  
 

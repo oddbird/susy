@@ -118,7 +118,7 @@
   // ---------------
 
   @include test('[function] span') {
-    @include susy-set((
+    @include set-grid((
       columns: 7,
       gutters: .5,
       layout-math: fluid,

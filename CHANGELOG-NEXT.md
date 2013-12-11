@@ -11,6 +11,15 @@ Susy Next Changelog
   - `gutters(of 10 .25)` == `gutters(10 .25)`
   - unitless numbers are used for context.
   - lengths (with units) are used as explicit gutter-overrides.
+* Re-purposed `susy-set` as reverse of `susy-get` — to adjust a single setting.
+  - Example: `@include susy-set(gutter-position, inside);`
+* Added `global-box-sizing` setting
+  - let Susy know what box model you are using globally.
+* Added `global-box-sizing()` mixin to set your global box model.
+  - Example: `@include global-box-sizing(border-box);`
+  - You can still use the legacy `@include border-box-sizing;` as a shortcut.
+  - Uses your global setting as a default.
+  - Updates your global setting to match, if you pass a different value.
 
 2.0.0.alpha.6 (Dec 5, 2013)
 ---------------------------

@@ -11,11 +11,14 @@
   $susy: map-merge($susy, parse-grid($grid)) !global;
 }
 
-// Alternative syntax
+// Susy Set
+// --------
+// Change one setting
 @mixin susy-set(
-  $grid
+  $key,
+  $value
 ) {
-  @include set-grid($grid);
+  $susy: map-merge($susy, ($key: $value)) !global;
 }
 
 // Use Grid

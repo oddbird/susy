@@ -1,0 +1,64 @@
+// Global Box Sizing Syntax
+// ========================
+
+@include test-module('Global Box-Sizing Syntax') {
+
+  // [mixin] global-box-sizing
+  // -------------------------
+  @include output-test('global-box-sizing') {
+    @include assert-setup {
+      .nest {
+        @include pad(15%);
+        width: 60%;
+        margin: 0 auto;
+      }
+    }
+    @include assert-output(
+      'Nested items should use border-box model.'
+    ) {
+      .test { @include global-box-sizing(border-box); }
+      .expect {
+        *, *:before, *:after { @include susy-box-sizing(border-box); }
+      }
+    }
+  }
+
+  // [mixin] border-box-sizing
+  // -------------------------
+  @include output-test('border-box-sizing') {
+    @include assert-setup {
+      .nest {
+        @include pad(15%);
+        width: 60%;
+        margin: 0 auto;
+      }
+    }
+    @include assert-output(
+      'Nested items should use border-box model.'
+    ) {
+      .test { @include border-box-sizing; }
+      .expect {
+        *, *:before, *:after { @include susy-box-sizing(border-box); }
+      }
+    }
+  }
+
+  // [mixin] update-box-model
+  // ------------------------
+  @include test('update-box-model') {
+    $original: susy-get(global-box-sizing);
+    $new: border-box;
+
+    @include assert-unequal($original, $new,
+      'Box models are different before we test.');
+
+    @include update-box-model($new);
+
+    $test: susy-get(global-box-sizing);
+    @include assert-equal($test, $new,
+      'Changes the global-box-sizing.');
+
+    @include original-grid;
+  }
+
+}

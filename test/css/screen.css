@@ -548,7 +548,7 @@ h1 {
 }
 
 .test__span .assert__inside::before {
-  content: "Span should set width, float, inside gutter, and border-box";
+  content: "Span should set width, float, and inside gutter";
   display: block;
   padding: 0.375rem 0.75rem;
   text-align: left;

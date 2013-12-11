@@ -8,9 +8,12 @@
 @mixin span(
   $span
 ) {
-  $span     : parse-span($span);
-  $output   : span-math($span);
-  $box      : susy-get(box-sizing, $span) or if(is-inside($span), border-box, null);
+  $span: parse-span($span);
+  $output: span-math($span);
+
+  $box: susy-get(box-sizing, $span);
+  $content-box: if(susy-get(global-box-sizing) != 'border-box', true, false);
+  $box: $box or if(is-inside($span) and $content-box, border-box, null);
 
   @include susy-box-sizing($box);
   @include float-span-output($output...);

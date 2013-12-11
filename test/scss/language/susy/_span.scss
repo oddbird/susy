@@ -30,9 +30,10 @@
       'Span should set width (75%), float (left), and gutter (5% margin-right)'
     ) {
       .test {
-        @include span(5) { .inner { @include span(2); } }
+        @include span(5 content-box) { .inner { @include span(2); } }
       }
       .expect {
+        @include susy-box-sizing(content-box);
         width: 70%;
         float: left;
         margin-right: 5%;
@@ -49,16 +50,19 @@
       .test, .expect { clear: both; }
     }
     @include assert-output(
-      'Span should set width, float, inside gutter, and border-box'
+      'Span should set width, float, and inside gutter'
     ) {
+      @include border-box-sizing;
+
       .test { @include span(5); }
       .expect {
-        @include susy-box-sizing(border-box);
         width: 62.5%;
         float: left;
         padding-left: 1.25%;
         padding-right: 1.25%;
       }
+
+      @include original-grid;
     }
 
     // explicit

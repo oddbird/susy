@@ -1,16 +1,16 @@
 Install
 =======
 
-Requirements
-------------
+The only requirement is `Sass`_,
+but all the cool kids load `Compass`_,
+and we recommend something like `Breakpoint`_
+to help manage your media-queries.
 
-The only requirement is `Sass`_.
 See the `Sass install`_ page for details.
-Note that the third-party apps usually require extra effort
-to support Sass plugins,
-but several of them come with Susy pre-installed.
 
 .. _Sass: http://sass-lang.com/
+.. _Compass: http://compass-style.org/
+.. _Breakpoint: breakpoint-sass.com/‎
 .. _Sass install: http://sass-lang.com/install
 
 
@@ -25,9 +25,6 @@ Simple Install
 
 Bundler or Rails
 ----------------
-
-I recommend `Bundler`_
-whether or not you are using `Rails`_.
 
 .. code-block:: ruby
 
@@ -104,18 +101,19 @@ This is going to work with CodeKit.
 Version Management
 ------------------
 
-When you are working with bundled gems and dependencies
+When you work with bundled gems
 across a number of different projects,
 managing gem versions can become an issue.
 
-If you are working in a Ruby environment, we recommend using RVM.
-See our Rails troubleshooting below for some basic instructions,
-or dig into RVM's installation instructions.
-
-In a Python environment, we recommend virtualenv
-with added "postactivate" and "predeactivate" scripts
-to handle Ruby gems.
+If you are in a Ruby environment, check out `RVM`_.
+In a Python environment, we recommend `virtualenv`_
+with these `scripts`_ added to your
+"postactivate" and "predeactivate" files.
 
 Once you have that in place,
-Bundler can be used in either environment
+`Bundler`_ can be used in either environment
 to manage the actual installation and updating of the gems.
+
+.. _RVM: https://rvm.io/
+.. _virtualenv: http://www.virtualenv.org/en/latest/index.html
+.. _scripts: https://gist.github.com/1078601

@@ -1,28 +1,32 @@
-Susy Documentation
-==================
-
-`Susy`_: *A custom layout toolkit.*
+Manifesto
+=========
 
 The world is full of overblown, one-size-fits-all "`frameworks`_"
 that want to design your site for you.
 We think the best layout is the one you custom-build
 around your own content,
 with your markup, to fit your design.
-We just help you with the math.
 
-The only requirement is `Sass`_,
-but all the cool kids load `Compass`_,
-and we recommend something like `Breakpoint`_
-to help manage your media-queries.
+That's why we built `Susy`_
+(pronounced like Suzy),
+a non-invasive and un-opinionated
+layout toolkit:
+designed to be flexible, semantic,
+simple, and responsive.
+We're not here to tell you
+about the magical powers of the golden-ratio,
+or where to use ``em`` vs ``px``,
+we just don't like doing the same math over and over.
+Let Susy do the math, so you can focus on design.
 
 .. _frameworks: http://getbootstrap.com/
 .. _Susy: http://susy.oddbird.net/
-.. _Sass: http://sass-lang.com/
-.. _Compass: http://compass-style.org/
-.. _Breakpoint: breakpoint-sass.com/‎
 
-Next
+
+ToDo
 ----
+
+These are the features we're working on next:
 
 - Add optional ``px`` fallback for output in ``rem`` units.
 - Respect Compass support settings when they are available.
@@ -30,7 +34,14 @@ Next
 - Add upgrade syntax to help with the transition.
 - Add padding/margin options to the ``span`` mixin, for simpler output.
 
-Contents
+We're always happy to hear your ideas as well.
+Leave us a note on `GitHub Issues`_,
+or fork our code, and submit a pull request!
+
+.. _GitHub Issues: https://github.com/ericam/susy/issues
+
+
+The Docs
 --------
 
 .. toctree::

@@ -78,4 +78,5 @@ The Docs
 
    install
    start
+   syntax
    changelog

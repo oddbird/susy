@@ -6,9 +6,9 @@ Changelog
 --------------------------
 
 - Debug grids are now hidden by default.
-- Remove ``nth-last``/``-omega``/``-first``/``-alpha`` as confusing & out-of-scope.
-
-  + Format your nth-selectors manually to apply ``first``/``last`` mixins.
+- Remove ``nth-last``/``-omega``/``-first``/``-alpha``
+  as confusing & out-of-scope.
+  Format your nth-selectors manually to apply ``first``/``last`` mixins.
 
 - Gutter mixins/functions can accept context-only (without the "of" syntax):
 
@@ -16,17 +16,15 @@ Changelog
   + Unitless numbers are used for context.
   + Lengths (with units) are used as explicit gutter-overrides.
 
-- Re-purposed ``susy-set`` as reverse of ``susy-get`` — to adjust a single setting.
-
-  + Example: ``@include susy-set(gutter-position, inside);``
+- Re-purposed ``susy-set`` as reverse of ``susy-get`` —
+  to adjust a single setting.
+  Example: ``@include susy-set(gutter-position, inside);``
 
 - Add ``global-box-sizing`` setting.
-
-  + Let Susy know what box model you are using globally.
+  Let Susy know what box model you are using globally.
 
 - Remove ``box-sizing`` setting.
-
-  + It can still be passed as a keyword argument.
+  It can still be passed as a keyword argument.
 
 - Add ``global-box-sizing()`` mixin to set your global box model.
 
@@ -47,9 +45,9 @@ Changelog
 
 Backwards Incompatible:
 
-- Removed ``gutters $n`` keyword in shorthand syntax for setting explicit gutters.
-
-  + Use ``(gutter-override: $n)`` map instead.
+- Removed ``gutters $n`` keyword in shorthand syntax
+  for setting explicit gutters.
+  Use ``(gutter-override: $n)`` map instead.
 
 
 2.0.0.alpha.5 — Nov 25 2013
@@ -70,14 +68,13 @@ Backwards Incompatible:
 Backwards Incompatible:
 
 - Requires Sass 3.3
-- Default settings are handled with a Sass map on the ``$susy`` variable:
-
-  + $susy: (columns: 12, gutters: .25) etc.
+- Default settings are handled with a Sass map on the ``$susy`` variable.
+  Example: ``$susy: (columns: 12, gutters: .25)`` etc.
 
 - ``bleed`` now takes standard span syntax, with multiple (TRBL) spans.
 
   + e.g. ``bleed(1em 2 of 8)`` for 1em top/bottom and 2-columns left/right.
-  + Add ``bleed-x`` and ``bleed-y`` mixins for horizontal and vertical shortcuts.
+  + Add ``bleed-x``/``bleed-y`` mixins for horizontal and vertical shortcuts.
 
 - Span arguments now accept ``narrow``, ``wide``, or ``wider`` keywords.
 
@@ -98,7 +95,7 @@ Backwards Incompatible:
   + ``first`` and ``last`` are not special cases for split gutter-handling.
   + pass the ``container`` argument to wrappers you plan to nest inside.
 
-- ``first``/``alpha``/``last``/``omega``/``nth-`` mixins now require grid context.
+- ``first``/``alpha``/``last``/``omega``/``nth-`` mixins require grid context.
 
 
 2.0.0.alpha.4 — Sept 4 2013
@@ -106,10 +103,11 @@ Backwards Incompatible:
 
 - Add ``bleed`` mixin.
 - Fix bug with fluid inside-gutter calculations.
-- ``$last-flow`` setting controls the flow direction (to/from) of row-ending elements.
+- ``$last-flow`` setting controls the flow direction of row-ending elements.
 - ``background-grid-output`` now accepts ``$line-height`` argument.
 - Compass modules are imported as needed.
-- ``grid-background``, ``grid-overlay``, ``grid-background-output``, & ``$grid-background-color``
+- ``grid-background``, ``grid-overlay``, ``grid-background-output``,
+  & ``$grid-background-color``
   have been renamed to remiain consistent and avoid conflicts with Compass:
 
   + ``grid-background`` => ``background-grid``
@@ -128,12 +126,14 @@ Backwards Incompatible:
 
 - ``row`` now includes clearfix, and ``unrow`` removes clearfix.
 - ``gallery`` output should override previous gallery settings.
-- Removed ``nth-gallery`` and ``isolate-gallery`` in favor of single, isolated ``gallery`` mixin.
+- Removed ``nth-gallery`` and ``isolate-gallery`` in favor of single,
+  isolated ``gallery`` mixin.
 - Add padding-span syntax: ``prefix``, ``suffix``, and ``pad``.
 - Add margin-span syntax: ``pre``, ``post``, ``push``, ``pull``, and ``squish``.
 - New ``gutters`` mixin adds gutters to an element.
 - ``gutter`` function now returns half-widths when using split/inside gutters.
-- Add ``outer`` keyword to ``span`` syntax, to return span-width including gutters.
+- Add ``outer`` keyword to ``span`` syntax,
+  to return span-width including gutters.
 
   + Works with both span mixin and span function.
   + Replaces Susy 1.0 ``space`` function.
@@ -141,7 +141,8 @@ Backwards Incompatible:
 - Add comrehensive unit tests, using `True`_.
 - Improve fall-abck handling of ommitted arguments.
 - Add ``container`` function to return a given container's width.
-- Add ``auto`` keyword to override ``$container-width``, otherwise respect existing width.
+- Add ``auto`` keyword to override ``$container-width``,
+  otherwise respect existing width.
 - Renamed ``$isolate`` to ``$layout-method``
 
   + No longer accepts boolean.
@@ -150,11 +151,12 @@ Backwards Incompatible:
 - Renamed ``$static`` to ``$layout-math``
 
   + No longer accepts boolean.
-  + Accepts keywords ``static`` (use given units) and (default) ``fluid`` (use % units).
+  + Accepts keywords ``static`` (use given units)
+    and (default) ``fluid`` (use % units).
 
-- Add ``show-columns`` and ``show-baseline`` keywords to ``$show-grids`` setting.
-
-  + ``show`` will show both columns/baseline, default is ``show-columns``.
+- Add ``show-columns`` and ``show-baseline`` keywords
+  to ``$show-grids`` setting.
+  ``show`` will show both columns/baseline, default is ``show-columns``.
 
 .. _True: http://eric.andmeyer.com/true/
 
@@ -162,21 +164,25 @@ Backwards Incompatible:
 2.0.0.alpha.2 — May 7 2013
 --------------------------
 
-- Added ``gutter <length>``/``gutters <length>`` to override the attached gutter width on a single span.
+- Added ``gutter <length>``/``gutters <length>``
+  to override the attached gutter width on a single span.
+  NOTE: ``gutters 0`` is not the same as ``no-gutters``.
+  ``0`` is an output value, ``no-gutters`` removes output.
 
-  + NOTE: ``gutters 0`` is not the same as ``no-gutters``. ``0`` is an output value, ``no-gutters`` removes output.
-
-- Added ``container`` span option to remove inside gutters from nesting containers.
-- Added gutter options: ``before`` | ``after`` | ``split`` | ``inside`` | ``no-gutters``.
-- Added ``gallery`` mixin for auto-generating gallery layouts (floated or isolated).
+- Added ``container`` span option
+  to remove inside gutters from nesting containers.
+- Added ``before``/``after``/``split``/``inside``/``no-gutters`` gutter options.
+- Added ``gallery`` mixin for auto-generating gallery layouts.
 - Moved grid-backgrounds into language layer, and made them syntax-aware.
-- Added ``row``/``unrow``, ``first``/``last``, ``alpha``/``omega``, ``nth-first``/``nth-last``, and ``nth-alpha``/``nth-omega``.
+- Added ``row``/``unrow``, ``first``/``last``, ``alpha``/``omega``,
+  ``nth-first``/``nth-last``, and ``nth-alpha``/``nth-omega``.
 - Added ``container`` and ``span`` mixins with new syntax.
 - Added syntax-aware math functions (``span``/``gutter``/``outer-span``).
 - Added rough ``translate-susy1-settings`` mixin.
 - Moved syntax-specific math into language layer.
 - Fleshed-out new language syntax.
-- Added ``get-grid``, ``set-grid``, and ``use-grid`` and declaring and managing settings.
+- Added ``get-grid``, ``set-grid``, and ``use-grid``
+  and declaring and managing settings.
 - Remove breakpoint core requirement (will come back as option)
 
 
@@ -206,7 +212,8 @@ Backwards Incompatible:
 1.0.4 — Nov 3 2012
 -------------------
 
-- Fix bug in nested mixins that adjust support (e.g. ``nth-omeg`` inside ``at-breakpoint``).
+- Fix bug in nested mixins that adjust support
+  (e.g. ``nth-omeg`` inside ``at-breakpoint``).
 - Remove non-ie experimental support in ``at-breakpoint`` ie-fallback output.
 
 
@@ -226,7 +233,8 @@ Backwards Incompatible:
 1.0.1 — Sept 12 2012
 --------------------
 
-- Fix a bug in the relationship between ``$container-width`` and ``$border-box-sizing``,
+- Fix a bug in the relationship
+  between ``$container-width`` and ``$border-box-sizing``,
   so that grid-padding is subtracted from the width in certain cases.
 - Reset right margin to ``auto`` rather than ``0`` with ``remove-omega``.
 
@@ -251,7 +259,8 @@ in order to make the syntax simpler and more consistent:
 - ``$side-gutter-width`` is now ``$grid-padding``
   and gets applied directly to the grid container.
 - ``un-column`` & ``reset-column`` mixins have merged into ``reset-columns``.
-- ``columns`` has been renamed ``span-columns`` to resolve the conflict with CSS3 columns.
+- ``columns`` has been renamed ``span-columns``
+  to resolve the conflict with CSS3 columns.
   See other improvements to span-columns below.
 
 We also removed several bothersome requirements:
@@ -292,14 +301,15 @@ New Features:
 - ``layout`` allows you to use a different layout at any time.
 - ``with-grid-settings`` allows you to change any or all grid settings.
 - ``set-container-width`` does what it says, without the other container code.
-- ``$breakpoint-media-output``, ``$breakpoint-ie-output``, and ``$breakpoint-raw-output``
+- ``$breakpoint-media-output``, ``$breakpoint-ie-output``,
+  and ``$breakpoint-raw-output``
   settings help manage the different outputs from ``at-breakpoint``
   when you have IE-overrides living in a file of their own.
 - ``border-box-sizing`` will  apply the popular ``* { box-sizing: border-box }``
-  universal box-model fix, as well as changing the Susy ``$border-box-model`` setting for you,
-  so Susy knows to adjust some math.
+  universal box-model fix, as well as changing the Susy ``$border-box-model``
+  setting for you, so Susy knows to adjust some math.
 - The ``space()`` function can be used anywhere you need column+gutter math.
-- ``push``, ``pull``, ``pre``, ``post``, and ``squish`` mixins help manage margins.
+- ``push``/``pull``/``pre``/``post``/``squish`` mixins help manage margins.
 - use the ``nth-omega`` mixin to set omega on any nth-child, nth-of-type,
   first, last, or only element.
 - ``remove-omega`` and ``remove-nth-omega`` will remove
@@ -326,12 +336,12 @@ Removed:
 
 - Susy no longer imports all of compass.
 - Susy no longer establishes your baseline and no longer provides a reset.
-  All of that is in the Compass core. You can (and should!) keep using them, but
-  you will need to import them from compass.
+  All of that is in the Compass core. You can (and should!) keep using them,
+  but you will need to import them from compass.
 
 New:
 
-- Use the ``susy-grid-background`` mixin on any ``container`` to display the grid.
+- Use ``susy-grid-background`` mixin on any ``container`` to display the grid.
   This toggles on and off with the same controls that are used by the compass
   grid-background module.
 
@@ -341,18 +351,31 @@ New:
 
 Deprecated:
 
-- The ``susy/reset`` import has been deprecated in favor of the Compass core ``compass/reset`` import.
-- The ``susy`` mixin has been deprecated. If you plan to continue using vertical-rhythms, you should replace it with the ``establish-baseline`` mixin from the Compass Core.
+- The ``susy/reset`` import has been deprecated
+  in favor of the Compass core ``compass/reset`` import.
+- The ``susy`` mixin has been deprecated.
+  If you plan to continue using vertical-rhythms,
+  you should replace it with the ``establish-baseline`` mixin
+  from the Compass Core.
 
 Removed:
 
-- The ``vertical-rhythm`` module has moved into compass core. The API remains the same, but if you were importing it directly, you will have to update that import. (``$px2em`` was removed as part of this, but didn't make it into core).
-- The ``defaults`` template has been removed as 'out-of-scope'. This will not effect upgrading in any way, but new projects will not get a template with default styles.
+- The ``vertical-rhythm`` module has moved into compass core.
+  The API remains the same, but if you were importing it directly,
+  you will have to update that import.
+  (``$px2em`` was removed as part of this, but didn't make it into core).
+- The ``defaults`` template has been removed as 'out-of-scope'.
+  This will not effect upgrading in any way,
+  but new projects will not get a template with default styles.
 
 New Features:
 
-- Susy now supports RTL grids and bi-directional sites using the ``$from-direction`` variable (default: left) and an optional additional from-direction argument on all affected mixins. Thanks to @bangpound for the initial implementation.
-- Susy is now written in pure Sass! No extra Ruby functions included! Thanks to the Sass team for making it possible.
+- Susy now supports RTL grids and bi-directional sites
+  using the ``$from-direction`` variable (default: left)
+  and an optional additional from-direction argument on all affected mixins.
+  Thanks to @bangpound for the initial implementation.
+- Susy is now written in pure Sass! No extra Ruby functions included!
+  Thanks to the Sass team for making it possible.
 
 
 0.8.1 — Sep 24 2010
@@ -367,15 +390,29 @@ New Features:
 Deprecated:
 
 - The ``skip-link`` was deprecated as it doesn't belong in Susy.
-- All the IE-specific mixins have been deprecated, along with the ``$hacks`` variable. Hacks are now used in the default mixins as per Compass.
-- The ``hide`` mixin was deprecated in favor of the Compass code ``hide-text`` mixin.
+- All the IE-specific mixins have been deprecated,
+  along with the ``$hacks`` variable.
+  Hacks are now used in the default mixins as per Compass.
+- The ``hide`` mixin was deprecated in favor of the Compass ``hide-text`` mixin.
 
 Other Changes:
 
-- ``inline-block-list`` will be moved to the compass core soon. In preparation, I've cleaned it up some. You can now apply a padding of "0" to override previous padding arguments. You can also use ``inline-block-list-container`` and ``inline-block-list-item`` as you would with the Compass ``horizontal-list`` mixins.
-- The ``$align`` arguments have been removed from both the ``susy`` and ``container`` mixins. Text-alignment is no longer used or needed in achieving page centering. That was a cary-over from the IE5 Mac days.
-- The ``container`` mixin now uses the ``pie-clearfix`` compass mixin to avoid setting the overflow to hidden.
-- Default styles have been cleaned up to account for better font stacks and typography, html5 elements, vertically-rhythmed forms, expanded print styles, use of ``@extend``, and overall simplification.
+- ``inline-block-list`` will be moved to the compass core soon.
+  In preparation, I've cleaned it up some.
+  You can now apply a padding of "0" to override previous padding arguments.
+  You can also use ``inline-block-list-container``
+  and ``inline-block-list-item`` as you would
+  with the Compass ``horizontal-list`` mixins.
+- The ``$align`` arguments have been removed
+  from both the ``susy`` and ``container`` mixins.
+  Text-alignment is no longer used or needed in achieving page centering.
+  That was a cary-over from the IE5 Mac days.
+- The ``container`` mixin now uses the ``pie-clearfix``
+  compass mixin to avoid setting the overflow to hidden.
+- Default styles have been cleaned up to account
+  for better font stacks and typography, html5 elements,
+  vertically-rhythmed forms, expanded print styles,
+  use of ``@extend``, and overall simplification.
 
 
 0.7.0 — Jun 01 2010
@@ -395,7 +432,8 @@ Other Changes:
 
 - template cleanup & simplification - no more pushing CSSEdit comments, etc.
 - expanded base and defaults with better fonts & styles out-of-the-box
-- expanded readme documentation. This will expand out into a larger docs/tutorial site in the next week.
+- expanded readme documentation.
+  This will expand out into a larger docs/tutorial site in the next week.
 
 
 0.7.0.pre8 — Apr 20 2010
@@ -403,15 +441,18 @@ Other Changes:
 
 - mostly syntax and gem cleanup
 - added ``un-column`` mixin to reset elements previously declared as columns.
-- added ``rhythm`` mixin as shortcut for leaders/trailers. accepts 4 args: leader, padding-leader, padding-trailer, trailer.
-- added a warning on ``alpha`` to remind you that ``alpha`` is not needed at nested levels.
+- added ``rhythm`` mixin as shortcut for leaders/trailers. accepts 4 args:
+  leader, padding-leader, padding-trailer, trailer.
+- added a warning on ``alpha``
+  to remind you that ``alpha`` is not needed at nested levels.
 
 
 0.7.0.pre7 — Apr 13 2010
 ------------------------
 
 - *Requires HAML 3 and Compass 0.10.0.rc2*
-- Internal syntax switched to scss. This will have little or no effect on users. You can still use Susy with either (Sass/Scss) syntax.
+- Internal syntax switched to scss. This will have little or no effect on users.
+  You can still use Susy with either (Sass/Scss) syntax.
 - ``$default-rhythm-border-style`` overrides default rhythm border styles
 - Better handling of sub-pixel rounding for IE6
 
@@ -427,7 +468,9 @@ Other Changes:
 0.7.0.pre5 — Mar 19 2010
 ------------------------
 
-- Expanded and adjusted ``_vertical_rhythm.sass`` in ways that are not entirely backwards compatible. Check the file for details.
+- Expanded and adjusted ``_vertical_rhythm.sass``
+  in ways that are not entirely backwards compatible.
+  Check the file for details.
 - ``_defaults.sass`` is re-ordered from inline to block.
 - ``:focus`` defaults cleaned up.
 - README and docs updated.
@@ -438,25 +481,45 @@ Other Changes:
 
 Update: pre2 was missing a file in the manifest. Use pre4.
 
-*Update:* Forgot to note one change: ``+susy`` is no longer assigned to the ``body`` tag, but instead at the top level of the document (not nested under anything).
+*Update:* Forgot to note one change:
+``+susy`` is no longer assigned to the ``body`` tag,
+but instead at the top level of the document
+(not nested under anything).
 
-Warning: This update is not backwards compatible. We've changed some things. You'll have to change some things. Our changes were fairly major in cleaning up the code - yours will be minor and also clean up some code.
+Warning: This update is not backwards compatible.
+We've changed some things. You'll have to change some things.
+Our changes were fairly major in cleaning up the code -
+yours will be minor and also clean up some code.
 
 Added:
 
-- new ``_vertical_rhythm.sass`` (thanks to Chris Eppstein) provides better establishing of the baseline grid, as well as mixins to help you manage it.
+- new ``_vertical_rhythm.sass`` (thanks to Chris Eppstein)
+  provides better establishing of the baseline grid,
+  as well as mixins to help you manage it.
 - ``!px2em`` has replaced ``px2em()`` - see below.
 
 Removed:
 
-- ``px2em()`` has been removed and replaced with a simple variable ``!px2em`` which returns the size of one pixel relative to your basic em-height. Multiply against your desired px dimensions (i.e. ``border-width = !px2em*5px`` will output the em-equivalent of 5px).
-- ``!base_font_size_px`` and ``!base_line_height_px`` have been replaced with ``!base_font_size`` and ``!base_line_height`` which take advantage of sass's built-in unit handling.
-- ``!grid_units`` is not needed, as you can now declare your units directly in the other grid ``_width`` variables. Use any one type of units in declaring your grid. The units you use will be used in setting the container size.
+- ``px2em()`` has been removed and replaced with a simple variable
+  ``!px2em`` which returns the size of one pixel
+  relative to your basic em-height.
+  Multiply against your desired px dimensions
+  (i.e. ``border-width = !px2em*5px`` will output the em-equivalent of 5px).
+- ``!base_font_size_px`` and ``!base_line_height_px``
+  have been replaced with ``!base_font_size`` and ``!base_line_height``
+  which take advantage of sass's built-in unit handling.
+- ``!grid_units`` is not needed,
+  as you can now declare your units directly
+  in the other grid ``_width`` variables.
+  Use any one type of units in declaring your grid.
+  The units you use will be used in setting the container size.
 
 Once you've upgraded, before you compile your files, make these changes:
 
-- remove the "_px" from the font-size and line-height variables, and add "px" to their values.
-- remove the ``!grid_units`` variable and add units to your grid variable values.
+- remove the "_px" from the font-size and line-height variables,
+  and add "px" to their values.
+- remove the ``!grid_units`` variable
+  and add units to your grid variable values.
 - find any uses of ``px2em()`` and replace them with something.
 - enjoy!
 
@@ -464,14 +527,20 @@ Once you've upgraded, before you compile your files, make these changes:
 0.7.0.pre1 — Nov 30 2009
 ------------------------
 
-Not a lot of new functionality here – it all moved over to Compass 0.10.0 – mostly just cleaning it up to match.
+Not a lot of new functionality here –
+it all moved over to Compass 0.10.0 –
+mostly just cleaning it up to match.
 
-- simplified the default styles and gave them their own project template (``_defaults.sass``).
-- defaults not imported by ``ie.sass``, as ``ie.sass`` should be cascading on top of ``screen.sass`` anyway
-- changed the syntax to match CSS and Compass (``property:`` replaces ``:property``)
+- simplified the default styles
+  and gave them their own project template (``_defaults.sass``).
+- defaults not imported by ``ie.sass``,
+  as ``ie.sass`` should be cascading on top of ``screen.sass`` anyway
+- changed the syntax to match CSS and Compass
+  (``property:`` replaces ``:property``)
 - added more inline documentation and brought tutorial up to date
 - moved CSS3 module over to Compass
-- import the compass HTML5 reset along with the normal reset by default (because Susy loves the future)
+- import the compass HTML5 reset along with the normal reset by default
+  (because Susy loves the future)
 - little internal management fixes and so on and so on…
 
 

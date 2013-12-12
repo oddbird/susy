@@ -36,4 +36,6 @@ Contents
 .. toctree::
    :maxdepth: 1
 
+   install
+   start
    changelog

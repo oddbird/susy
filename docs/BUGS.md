@@ -1,2 +1,0 @@
-Susy Documentation: Bugs
-=====================

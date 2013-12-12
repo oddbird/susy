@@ -23,6 +23,35 @@ Let Susy do the math, so you can focus on design.
 .. _Susy: http://susy.oddbird.net/
 
 
+No Magic
+--------
+
+This isn't neverland,
+we're still talking about web design
+in a world where browsers disagree on implementation,
+standards are not always the standard,
+and your Sass code compiles into Boring Old CSS.
+Remember CSS?
+
+Susy can't save you from CSS,
+but we can help make it easier to write and maintain.
+Abstraction is great at making your code meaningful and `DRY`_,
+but don't let it fool you —
+the output CSS is what matters.
+If you don't know what Susy is doing,
+take a look at the CSS output files.
+Play with the code inspector in your favorite browser.
+Play with the different settings, functions, and mixins,
+to watch how the output changes.
+
+Think of it like a toolkit.
+You can't use a hammer to build your entire houes.
+Sometimes you have to set it down and pick up a screw driver,
+or get crazy with the table saw.
+
+.. _DRY: http://en.wikipedia.org/wiki/Don't_repeat_yourself
+
+
 ToDo
 ----
 

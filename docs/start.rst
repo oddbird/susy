@@ -5,7 +5,9 @@ Quick Start
 Import
 ------
 
-@import "susy";
+.. code-block:: scss
+
+  @import "susy";
 
 
 Basic Layouts
@@ -13,14 +15,14 @@ Basic Layouts
 
 The basic Susy layout is composed using two simple mixins:
 
-.. code:: scss
+.. code-block:: scss
 
   @include container; // establish a layout context
   @include span(<width>); // lay out your elements
 
 For example:
 
-.. code:: scss
+.. code-block:: scss
 
   body { @include container(80em); }
   nav { @include span(25%); }
@@ -30,7 +32,7 @@ Settings
 
 All your settings are controlled by the single ``$susy`` variable.
 
-.. code:: scss
+.. code-block:: scss
 
   $susy: (
     columns: 12,  // The number of columns in your grid
@@ -40,7 +42,7 @@ All your settings are controlled by the single ``$susy`` variable.
 If you want to lay your elements out on a grid,
 you can use the ``span`` mixin to calculate column widths:
 
-.. code:: scss
+.. code-block:: scss
 
   nav { @include span(3 of 12); }
 

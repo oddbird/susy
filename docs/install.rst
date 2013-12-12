@@ -17,7 +17,7 @@ but several of them come with Susy pre-installed.
 Simple Install
 --------------
 
-.. code:: bash
+.. code-block:: bash
 
   # command line
   gem install susy
@@ -29,12 +29,12 @@ Bundler or Rails
 I recommend `Bundler`_
 whether or not you are using `Rails`_.
 
-.. code:: ruby
+.. code-block:: ruby
 
   # Gemfile
   gem "susy"
 
-.. code:: bash
+.. code-block:: bash
 
   # command line
   bundle install
@@ -51,14 +51,14 @@ start by following the `Compass install`_ instructions.
 
 Create a new Compass project:
 
-.. code:: bash
+.. code-block:: bash
 
   # command line
   compass create <project name> -r susy -u susy
 
 Update an existing Compass project:
 
-.. code:: ruby
+.. code-block:: ruby
 
   # config.rb
   require "susy"
@@ -74,7 +74,7 @@ Edit your Gruntfile.js at the root level of your project
 and look for the Compass related rules.
 Add the following inside the options object:
 
-.. code:: js
+.. code-block:: js
 
   // Gruntfile.js
   compass: {

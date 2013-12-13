@@ -13,14 +13,16 @@ a non-invasive and un-opinionated
 layout toolkit:
 designed to be flexible, semantic,
 simple, and responsive.
+
 We're not here to tell you
 about the magical powers of the golden-ratio,
 or where to use ``em`` vs ``px``,
-we just don't like doing the same math over and over.
+we just want to help keep your code `DRY`_.
 Let Susy do the math, so you can focus on design.
 
 .. _frameworks: http://getbootstrap.com/
 .. _Susy: http://susy.oddbird.net/
+.. _DRY: http://en.wikipedia.org/wiki/Don't_repeat_yourself
 
 
 No Magic
@@ -35,21 +37,16 @@ Remember CSS?
 
 Susy can't save you from CSS,
 but we can help make it easier to write and maintain.
-Abstraction is great at making your code meaningful and `DRY`_,
+Abstraction is great at making your code meaningful and DRY,
 but don't let it fool you —
 the output CSS is what matters.
 If you don't know what Susy is doing,
 take a look at the CSS output files.
-Play with the code inspector in your favorite browser.
-Play with the different settings, functions, and mixins,
-to watch how the output changes.
 
 Think of it like a toolkit.
 You can't use a hammer to build your entire houes.
 Sometimes you have to set it down and pick up a screw driver,
 or get crazy with the table saw.
-
-.. _DRY: http://en.wikipedia.org/wiki/Don't_repeat_yourself
 
 
 ToDo
@@ -78,5 +75,6 @@ The Docs
 
    install
    start
-   syntax
+   susytwo/index
+   susyone/index
    changelog

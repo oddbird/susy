@@ -1,5 +1,5 @@
-Susy Next
-=========
+Susy Two Syntax
+===============
 
 .. toctree::
    :maxdepth: 2

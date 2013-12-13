@@ -26,10 +26,10 @@ Gem::Specification.new do |s|
   s.files = Dir.glob("lib/*.*")
   s.files += Dir.glob("sass/**/*.*")
   s.files += Dir.glob("templates/**/*.*")
-  s.files += ["CHANGELOG.mkdn", "LICENSE.txt", "README.md", "VERSION"]
+  s.files += ["docs/changelog.rst", "LICENSE.txt", "README.md", "VERSION"]
 
   # Docs Information
-  s.extra_rdoc_files = ["CHANGELOG.mkdn", "LICENSE.txt", "README.md", "lib/susy.rb"]
+  s.extra_rdoc_files = ["docs/changelog.rst", "LICENSE.txt", "README.md", "lib/susy.rb"]
   s.rdoc_options = ["--line-numbers", "--inline-source", "--title", "Susy", "--main", "README.md"]
 
   dependencies = {

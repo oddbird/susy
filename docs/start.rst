@@ -52,7 +52,7 @@ to customize every aspect of your layout,
 but this is a quick-start quide.
 
 Syntax Options
-==============
+--------------
 
 Susy is built in three distinct modules:
 math, output, and syntax.

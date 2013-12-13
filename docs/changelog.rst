@@ -20,11 +20,10 @@ Changelog
   to adjust a single setting.
   Example: ``@include susy-set(gutter-position, inside);``
 
-- Add ``global-box-sizing`` setting.
-  Let Susy know what box model you are using globally.
+- Replace global ``box-sizing`` setting with ``global-box-sizing``.
 
-- Remove ``box-sizing`` setting.
-  It can still be passed as a keyword argument.
+  + Let Susy know what box model you are using globally.
+  + ``box-sizing`` can still be passed as a keyword argument.
 
 - Add ``global-box-sizing()`` mixin to set your global box model.
 

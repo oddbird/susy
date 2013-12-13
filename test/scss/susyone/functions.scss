@@ -1,15 +1,26 @@
 // ---------------------------------------------------------------------------
 // Imports
 
+@import "true";
 @import "susyone";
 
 // ---------------------------------------------------------------------------
 // Functions
 
-.container-outer-width-default {
-  width: container-outer-width();
-}
+@include test-module("susyone functions") {
 
-.container-outer-width-explicit {
-  width: container-outer-width(8);
+  @include test("container-outer-width") {
+  
+    $width: container-outer-width();
+    $expect: 59em;
+    @include assert-equal($width, $expect,
+      "Returns the correct outer width of a default container."
+    );
+    // .container-outer-width-explicit {
+    //   width: container-outer-width(8);
+    // }
+    // .container-outer-width-explicit {
+    //   width: container-outer-width(8, 80%);
+    // }    
+  }
 }

@@ -68,10 +68,10 @@ $container-style: static;
 }
 
 .force-fluid {
-  $container-width: 960px;
+  $container-width: 960px !global;
   @include span-columns(2);
   @include squish(1,1);
-  $container-width: false;
+  $container-width: false !global;
 }
 
 $container-style: magic;

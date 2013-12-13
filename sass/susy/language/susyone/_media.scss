@@ -9,13 +9,13 @@
 ) {
   // store default $total-columns setting for later, then change it.
   $default-layout   : $total-columns;
-  $total-columns    : $layout-cols;
+  $total-columns    : $layout-cols !global;
 
   // apply children in this new layout context.
   @content;
 
   // return to default $total-columns setting.
-  $total-columns    : $default-layout;
+  $total-columns    : $default-layout !global;
 }
 
 // Nest a block of code inside a new media-query and layout context.
@@ -54,8 +54,8 @@
       @include layout($layout) {
         @if $breakpoint-media-output {
           // Capture current state of ie support and set new
-          $atbreak-legacy-ie-matrix: capture-legacy-ie-matrix();
-          @include set-legacy-ie-support;
+          $atbreak-legacy-ie-matrix: map-get($browser-minimum-versions, ie);
+          $browser-minimum-versions : map-merge($browser-minimum-versions, (ie: "9")) !global;
 
           @if $min and $max {
             // Both $min and $max
@@ -80,8 +80,9 @@
               }
             }
           }
+
           // Return legacy-ie support to original
-          @include set-legacy-ie-support($atbreak-legacy-ie-matrix...);
+          $browser-minimum-versions : map-merge($browser-minimum-versions, (ie: $atbreak-legacy-ie-matrix)) !global;
         }
         // Set an IE fallback
         @if $ie and $breakpoint-ie-output {
@@ -89,10 +90,7 @@
             $ie: 'lt-ie9';
           }
           .#{$ie} & {
-            $atbreak-experimental-matrix: capture-experimental-matrix();
-            @include set-experimental-support($ms: true);
             @content;
-            @include set-experimental-support($atbreak-experimental-matrix...);
           }
         }
 

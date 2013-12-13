@@ -10,7 +10,7 @@
 // Apply the border-box sizing model to all elements
 // and adjust the grid math appropriately.
 @mixin border-box-sizing {
-  $border-box-sizing: true;
+  $border-box-sizing: true !global;
   * { @include box-sizing(border-box); }
 }
 
@@ -33,7 +33,7 @@
       @if unit($width) == '%' { @include if-rem(width, $width); }
     } @else {
       @include if-rem(max-width, $width);
-      @if $legacy-support-for-ie6 {
+      @include for-legacy-browser(ie,"6") {
         @if unit($width) == 'rem' {
           _width: round(convert-length($width, px));
         } @else {
@@ -144,7 +144,9 @@
   } @else {
     float: $from;
     margin-#{$to}: gutter($context, $style);
-    @if $legacy-support-for-ie6 { display: inline; }
+    @include for-legacy-browser(ie, "6") { 
+      display: inline; 
+    }
   }
 }
 
@@ -162,9 +164,11 @@
   float: $omega-float;
   margin-#{$to}: 0;
 
-  @if $legacy-support-for-ie6 or $legacy-support-for-ie7 {
+  @include for-legacy-browser(ie, "6", "7") {
     *margin-#{$hack}: - $gutter-width;
-    @if $legacy-support-for-ie6 { display: inline; }
+    @include for-legacy-browser(ie, "6") {
+      display: inline;
+    }
   }
 }
 
@@ -179,11 +183,14 @@
   $from     : $from-direction
 ) {
   $from     : unquote($from);
-  $ie: if($n == "first", true, false);
-  @include adjust-support-for($ie6: $ie, $ie7: $ie, $ie8: $ie) {
-    &:#{format-nth($n,$selector)} { @include omega($from); }
-  }
+  // $ie: if($n == "first", true, false);
+  $nth-omega-legacy-ie-matrix: map-get($browser-minimum-versions, ie);
+  $browser-minimum-versions : map-merge($browser-minimum-versions, (ie: "9")) !global;
+  &:#{format-nth($n,$selector)} { @include omega($from); }
+  $browser-minimum-versions : map-merge($browser-minimum-versions, (ie: $nth-omega-legacy-ie-matrix)) !global;
 }
+
+
 
 // ---------------------------------------------------------------------------
 // Resets
@@ -202,9 +209,11 @@
   width: auto;
   margin-#{$to}: auto;
 
-  @if $legacy-support-for-ie6 or $legacy-support-for-ie7 {
-    *margin-#{$hack}: auto;
-    @if $legacy-support-for-ie6 { display: block; }
+  @include for-legacy-browser(ie, "6", "7") {
+    *margin-#{$hack}: auto; 
+    @include for-legacy-browser(ie, "6") {
+      display: block;
+    }
   }
 }
 
@@ -226,7 +235,7 @@
   float: $from;
   margin-#{$to}: gutter($context, $style);
 
-  @if $legacy-support-for-ie6 or $legacy-support-for-ie7 {
+  @include for-legacy-browser(ie, "6", "7") {
     *margin-#{$hack}: auto;
   }
 }
@@ -239,20 +248,21 @@
 // $from      : The start-direction for your document.
 // $style     : The container style to use.
 @mixin remove-nth-omega(
-  $n        : last,
+  $n        : last, 
   $selector : child,
   $context  : $total-columns,
   $from     : $from-direction,
   $style    : fix-static-misalignment()
 ) {
   $from     : unquote($from);
-  $ie: if($n == "first", true, false);
-  @include adjust-support-for($ie6: $ie, $ie7: $ie, $ie8: $ie) {
-    &:#{format-nth($n,$selector)} {
-      @include remove-omega($context, $from, $style);
-    }
+  $nth-omega-legacy-ie-matrix: map-get($browser-minimum-versions, ie);
+  $browser-minimum-versions : map-merge($browser-minimum-versions, (ie: "9")) !global;
+  &:#{format-nth($n,$selector)} {
+    @include remove-omega($context, $from, $style);
   }
+  $browser-minimum-versions : map-merge($browser-minimum-versions, (ie: $nth-omega-legacy-ie-matrix)) !global;
 }
+
 
 // ---------------------------------------------------------------------------
 // Change Settings
@@ -270,17 +280,17 @@
   $default-padding: $grid-padding;
 
   // use the new settings
-  $total-columns: $columns;
-  $column-width: $width;
-  $gutter-width: $gutter;
-  $grid-padding: $padding;
+  $total-columns: $columns !global;
+  $column-width: $width !global;
+  $gutter-width: $gutter !global;
+  $grid-padding: $padding !global;
 
   // apply to contents
   @content;
 
   // re-instate the defaults
-  $total-columns: $default-columns;
-  $column-width: $default-width;
-  $gutter-width: $default-gutter;
-  $grid-padding: $default-padding;
+  $total-columns: $default-columns !global;
+  $column-width: $default-width !global;
+  $gutter-width: $default-gutter !global;
+  $grid-padding: $default-padding !global;
 }

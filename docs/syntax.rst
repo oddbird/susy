@@ -16,7 +16,7 @@ you can theme Susy by writing your own syntax
 We've written a powerful new :doc:`Default Syntax <settings>`,
 and we're keeping the old :doc:`susyone/index` available as well.
 But why stop there?
-You can create your own unique syntax,
+You can *create your own unique syntax*,
 or port over the language of existing tools like
 `oocss`_, `singularity`_, `zurb`_, `neat`_, `zen`_,
 `blueprint`_, `960gs`_, etc.,

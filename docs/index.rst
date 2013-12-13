@@ -74,7 +74,6 @@ The Docs
    :maxdepth: 1
 
    install
-   start
    settings
    susyone/index
    syntax

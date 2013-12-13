@@ -38,7 +38,7 @@ Changelog
 2.0.0.alpha.6 — Dec 5 2013
 --------------------------
 
-- Re-write syntax parsing so parser and resulting maps are shared across Susy.
+- Rewrite syntax parsing so parser and resulting maps are shared across Susy.
 - Fix explicit-span bug causing large gutters.
 - Padding mixins now respect inside gutters.
 

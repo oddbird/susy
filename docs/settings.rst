@@ -276,7 +276,7 @@ Show Grids
 4. ``show-baseline``
 
 
-Global Shorthand
+Layout Shorthand
 ----------------
 
 **syntax:** [ ``<container>`` ``<columns>`` ``<gutters/column-width>`` ``<keywords...>`` ]

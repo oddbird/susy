@@ -1,6 +1,6 @@
 source "http://rubygems.org"
 
 gem "sass", '~> 3.3.0.rc.2'
-gem "compass", "~> 1.0.0.alpha.15"
+gem "compass", "~> 1.0.0.alpha.17"
 gem "true", "~> 0.2.0.rc.4"
 gem "susy", :path => ".."

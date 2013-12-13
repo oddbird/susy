@@ -8,15 +8,17 @@ GEM
   remote: http://rubygems.org/
   specs:
     chunky_png (1.2.9)
-    compass (1.0.0.alpha.15)
+    compass (1.0.0.alpha.17)
       chunky_png (~> 1.2)
-      compass-core (~> 1.0.0.alpha.15)
+      compass-core (~> 1.0.0.alpha.16)
+      compass-import-once (~> 1.0.1)
       json
       listen (~> 1.1.0)
       sass (~> 3.3.0.rc.1)
-    compass-core (1.0.0.alpha.15)
+    compass-core (1.0.0.alpha.16)
       multi_json (~> 1.0)
       sass (>= 3.3.rc.1)
+    compass-import-once (1.0.1)
     ffi (1.9.3)
     json (1.8.1)
     listen (1.1.6)
@@ -38,7 +40,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  compass (~> 1.0.0.alpha.15)
+  compass (~> 1.0.0.alpha.17)
   sass (~> 3.3.0.rc.2)
   susy!
   true (~> 0.2.0.rc.4)

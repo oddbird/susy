@@ -91,22 +91,58 @@
     - 0 Failed */
 /*  
 
-### Nth- Helpers ------ */
-/*  - [function] format-nth (2 Assertions, 2 Passed, 0 Failed) */
-/*  
-    1 Tests:
-    - 1 Passed
-    - 0 Failed */
-/*  
-
-### Settings Syntax ------ */
-/*  - [mixin] set-grid (7 Assertions, 7 Passed, 0 Failed) */
-/*  - [mixin] use-grid (6 Assertions, 6 Passed, 0 Failed) */
-/*  - [function] parse-grid (72 Assertions, 72 Passed, 0 Failed) */
-/*  - [function] get-setting (3 Assertions, 3 Passed, 0 Failed) */
+### Language Settings ------ */
+/*  - [function] parse-grid (30 Assertions, 30 Passed, 0 Failed) */
+/*  - [function] parse-span (41 Assertions, 41 Passed, 0 Failed) */
+/*  - [function] parse-gutters (11 Assertions, 11 Passed, 0 Failed) */
+/*  - [function] susy-get (3 Assertions, 3 Passed, 0 Failed) */
 /*  
     4 Tests:
     - 4 Passed
+    - 0 Failed */
+/*  
+
+### Grids Syntax ------ */
+/*  - [mixin] set-grid (7 Assertions, 7 Passed, 0 Failed) */
+/*  - [mixin] susy-set (1 Assertions, 1 Passed, 0 Failed) */
+/*  - [mixin] use-grid (6 Assertions, 6 Passed, 0 Failed) */
+/*  
+    3 Tests:
+    - 3 Passed
+    - 0 Failed */
+/*  
+
+### Global Box-Sizing Syntax ------ */
+/* - [mixin] global-box-sizing */
+/* "Nested items should use border-box model." */
+.test__global-box-sizing .assert__global-box-sizing .test *, .test__global-box-sizing .assert__global-box-sizing .test *:before, .test__global-box-sizing .assert__global-box-sizing .test *:after {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.test__global-box-sizing .assert__global-box-sizing .expect *, .test__global-box-sizing .assert__global-box-sizing .expect *:before, .test__global-box-sizing .assert__global-box-sizing .expect *:after {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+/* - [mixin] border-box-sizing */
+/* "Nested items should use border-box model." */
+.test__border-box-sizing .assert__border-box-sizing .test *, .test__border-box-sizing .assert__border-box-sizing .test *:before, .test__border-box-sizing .assert__border-box-sizing .test *:after {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.test__border-box-sizing .assert__border-box-sizing .expect *, .test__border-box-sizing .assert__border-box-sizing .expect *:before, .test__border-box-sizing .assert__border-box-sizing .expect *:after {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+/*  - update-box-model (2 Assertions, 2 Passed, 0 Failed) */
+/*  
+    1 Tests:
+    - 1 Passed
     - 0 Failed */
 /*  
 
@@ -350,6 +386,9 @@
 /* - [mixin] span */
 /* "Span should set width (75%), float (left), and gutter (5% margin-right)" */
 .test__span .assert__default .test {
+  -moz-box-sizing: content-box;
+  -webkit-box-sizing: content-box;
+  box-sizing: content-box;
   width: 70%;
   float: left;
   margin-right: 5%;
@@ -360,6 +399,9 @@
   margin-right: 7.14286%;
 }
 .test__span .assert__default .expect {
+  -moz-box-sizing: content-box;
+  -webkit-box-sizing: content-box;
+  box-sizing: content-box;
   width: 70%;
   float: left;
   margin-right: 5%;
@@ -370,21 +412,40 @@
   margin-right: 7.14286%;
 }
 
-/* "Span should set width, float, inside gutter, and border-box" */
-.test__span .assert__inside .test {
+/* "Span should set width, float, and inside gutter" */
+.test__span .assert__inside *, .test__span .assert__inside *:before, .test__span .assert__inside *:after {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
+}
+.test__span .assert__inside .test {
   width: 62.5%;
   float: left;
   padding-left: 1.25%;
   padding-right: 1.25%;
 }
 .test__span .assert__inside .expect {
+  width: 62.5%;
+  float: left;
+  padding-left: 1.25%;
+  padding-right: 1.25%;
+}
+
+/* "Span should set width, float, inside gutter, and border-box" */
+.test__span .assert__explicit .test {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
-  width: 62.5%;
+  width: 80%;
+  float: left;
+  padding-left: 1.25%;
+  padding-right: 1.25%;
+}
+.test__span .assert__explicit .expect {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 80%;
   float: left;
   padding-left: 1.25%;
   padding-right: 1.25%;
@@ -392,14 +453,11 @@
 
 /*  - [mixin] span (4 Assertions, 4 Passed, 0 Failed) */
 /*  - [function] span (1 Assertions, 1 Passed, 0 Failed) */
-/*  - [function] parse-span (100 Assertions, 100 Passed, 0 Failed) */
-/*  - [function] span-get (2 Assertions, 2 Passed, 0 Failed) */
-/*  - [function] span-math (9 Assertions, 9 Passed, 0 Failed) */
-/*  - [function] get-span-width (8 Assertions, 8 Passed, 0 Failed) */
-/*  - [function] get-span-context (1 Assertions, 1 Passed, 0 Failed) */
+/*  - [function] span-math (10 Assertions, 10 Passed, 0 Failed) */
+/*  - [function] get-span-width (9 Assertions, 9 Passed, 0 Failed) */
 /*  
-    7 Tests:
-    - 7 Passed
+    4 Tests:
+    - 4 Passed
     - 0 Failed */
 /*  
 
@@ -436,15 +494,14 @@
 }
 
 /*  - [function] gutter (2 Assertions, 2 Passed, 0 Failed) */
-/*  - [function] parse-gutters (3 Assertions, 3 Passed, 0 Failed) */
-/*  - [function] get-gutter-width (5 Assertions, 5 Passed, 0 Failed) */
+/*  - [function] get-gutter-width (6 Assertions, 6 Passed, 0 Failed) */
 /*  - [function] get-gutters (3 Assertions, 3 Passed, 0 Failed) */
 /*  - [function] is-inside (2 Assertions, 2 Passed, 0 Failed) */
 /*  - [function] is-split (2 Assertions, 2 Passed, 0 Failed) */
 /*  - [function] gutter-math (2 Assertions, 2 Passed, 0 Failed) */
 /*  
-    7 Tests:
-    - 7 Passed
+    6 Tests:
+    - 6 Passed
     - 0 Failed */
 /*  
 
@@ -849,17 +906,6 @@
   margin-left: 0;
 }
 
-/* - [mixin] nth-first */
-/* "Nth-first (first-child) items should have left margins removed." */
-/* - [mixin] nth-alpha */
-/* "Nth-alpha (first-child) items should have left margins removed" */
-.test__nth-alpha .assert__nth-alpha .test:first-child {
-  margin-left: 0;
-}
-.test__nth-alpha .assert__nth-alpha .expect {
-  margin-left: 0;
-}
-
 /* - [mixin] last */
 /* "Last items should float right, with right margins removed" */
 .test__last .assert__after .test {
@@ -887,27 +933,6 @@
   margin-right: 0;
 }
 .test__omega .assert__omega .expect {
-  float: right;
-  margin-right: 0;
-}
-
-/* - [mixin] nth-last */
-/* "nth-last(2, last-child) items should float right." */
-.test__nth-last .assert__nth-last .test:nth-last-child(2) {
-  float: right;
-  margin-right: 2.38095%;
-}
-.test__nth-last .assert__nth-last .expect {
-  float: right;
-}
-
-/* - [mixin] nth-omega */
-/* "nth-omega(2, last-child) items should float right, with right margins removed." */
-.test__nth-omega .assert__nth-omega .test:nth-last-child(2) {
-  float: right;
-  margin-right: 0;
-}
-.test__nth-omega .assert__nth-omega .expect {
   float: right;
   margin-right: 0;
 }
@@ -1096,16 +1121,40 @@
   padding-right: 30%;
 }
 
+/* "Items should have 2 columns padding before and after, and keep gutters." */
+.test__pad .assert__inside .test {
+  padding-left: 26.25%;
+  padding-right: 26.25%;
+}
+.test__pad .assert__inside .expect {
+  padding-left: 26.25%;
+  padding-right: 26.25%;
+}
+
+/* "Items should have 2 columns padding before and after, without gutters." */
+.test__pad .assert__inside-nogutters .test {
+  padding-left: 25%;
+  padding-right: 25%;
+}
+.test__pad .assert__inside-nogutters .expect {
+  padding-left: 25%;
+  padding-right: 25%;
+}
+
 /*  
 
 ### Bleed Syntax ------ */
 /* - [mixin] bleed */
 /* "Items should bleed 1 column outside their nested context" */
 .test__bleed .assert__simple .test {
-  margin-right: -15%;
-  padding-right: 15%;
-  margin-left: -15%;
-  padding-left: 15%;
+  margin-top: 5%;
+  padding-top: -5%;
+  margin-right: -10%;
+  padding-right: 10%;
+  margin-bottom: 5%;
+  padding-bottom: -5%;
+  margin-left: -10%;
+  padding-left: 10%;
   -moz-box-sizing: content-box;
   -webkit-box-sizing: content-box;
   box-sizing: content-box;
@@ -1150,10 +1199,14 @@
 
 /* "Items should bleed 1 column horizontal, and retain gutters." */
 .test__bleed .assert__split .test {
-  margin-right: -12.5%;
-  padding-right: 12.5%;
-  margin-left: -12.5%;
-  padding-left: 12.5%;
+  margin-top: 2.5%;
+  padding-top: -2.5%;
+  margin-right: -10%;
+  padding-right: 10%;
+  margin-bottom: 2.5%;
+  padding-bottom: -2.5%;
+  margin-left: -10%;
+  padding-left: 10%;
   -moz-box-sizing: content-box;
   -webkit-box-sizing: content-box;
   box-sizing: content-box;
@@ -1171,10 +1224,14 @@
 /* - [mixin] bleed-x */
 /* "Items should bleed 1 column left, and 2 columns right" */
 .test__bleed-x .assert__simple .test {
-  margin-right: -30%;
-  padding-right: 30%;
-  margin-left: -15%;
-  padding-left: 15%;
+  margin-top: 5%;
+  padding-top: -5%;
+  margin-right: -25%;
+  padding-right: 25%;
+  margin-bottom: 5%;
+  padding-bottom: -5%;
+  margin-left: -10%;
+  padding-left: 10%;
   -moz-box-sizing: content-box;
   -webkit-box-sizing: content-box;
   box-sizing: content-box;
@@ -1214,8 +1271,12 @@
 .test__bleed-y .assert__simple .test {
   margin-top: -0.5em;
   padding-top: 0.5em;
+  margin-right: 3.125%;
+  padding-right: -3.125%;
   margin-bottom: -1em;
   padding-bottom: 1em;
+  margin-left: 3.125%;
+  padding-left: -3.125%;
   -moz-box-sizing: content-box;
   -webkit-box-sizing: content-box;
   box-sizing: content-box;
@@ -1230,10 +1291,9 @@
   box-sizing: content-box;
 }
 
-/*  - [function] parse-bleed (1 Assertions, 1 Passed, 0 Failed) */
 /*  
-    1 Tests:
-    - 1 Passed
+    0 Tests:
+    - 0 Passed
     - 0 Failed */
 /*
 

@@ -3,8 +3,8 @@
 
 @include test-module('Clearfix Helper') {
 
-  // susy-box-sizing [mixin]
-  // -----------------------
+  // susy-clearfix [mixin]
+  // ---------------------
 
   @include output-test('susy-clearfix') {
 

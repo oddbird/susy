@@ -1,0 +1,37 @@
+// Grid Syntax
+// ===========
+
+// Set Grid
+// --------
+// Set a new grid using a shorthand
+// - $grid      : <settings>
+@mixin set-grid(
+  $grid
+) {
+  $susy: map-merge($susy, parse-grid($grid)) !global;
+}
+
+// Susy Set
+// --------
+// Change one setting
+@mixin susy-set(
+  $key,
+  $value
+) {
+  $susy: map-merge($susy, ($key: $value)) !global;
+}
+
+// Use Grid
+// --------
+// Use an arbitrary grid for a section of code
+// - $grid      : <settings>
+@mixin use-grid(
+  $grid
+) {
+  $old: $susy;
+
+  @include set-grid($grid);
+  @content;
+
+  $susy: $old !global;
+}

@@ -1,0 +1,62 @@
+// Math Validation
+// ===============
+
+// Valid Columns
+// -------------
+// Check that a column setting is valid.
+@function valid-columns(
+  $columns
+) {
+  $type: type-of($columns);
+  $return: null;
+
+  @if $type == number and unitless($columns) {
+    $return: $columns;
+  } @else if $type == list {
+    $fail: false;
+    @each $col in $columns {
+      $number: if(type-of($col == number), true, null);
+      $fail: $fail or if($number and unitless($col), null, true);
+    }
+    $return: if($fail, $return, $columns);
+  }
+
+  @if $return != $columns {
+    $warn: '$columns must be a unitless number or list of unitless numbers.';
+    @warn $warn + ' Current value [#{$type}]: #{$columns}';
+  } @else {
+    @return $return;
+  }
+}
+
+// Valid Gutters
+// -------------
+// Check that a gutter setting is valid.
+@function valid-gutters(
+  $gutters
+) {
+  $type: type-of($gutters);
+
+  @if $type == number and unitless($gutters) {
+    @return $gutters;
+  } @else {
+    $warn: '$gutters must be a unitless number.';
+    @warn $warn + ' Current value [#{$type}]: #{$gutters}';
+  }
+}
+
+// Valid Column-Width
+// ------------------
+// Check that a column-width setting is valid.
+@function valid-column-width(
+  $column-width
+) {
+  $type: type-of($column-width);
+
+  @if ($type == number and unit($column-width)) or not $column-width {
+    @return $column-width;
+  } @else {
+    $warn: '$column-width must be a length (number with units), or false.';
+    @warn $warn + ' Current value [#{$type}]: #{$column-width}';
+  }
+}

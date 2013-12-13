@@ -1,0 +1,31 @@
+// Global Box Sizing
+// =================
+
+// Global Box Sizing
+// -----------------
+// Set a box model globally on all elements.
+// - [$box]: border-box | content-box
+@mixin global-box-sizing(
+  $box: susy-get(global-box-sizing)
+) {
+  *, *:before, *:after { @include susy-box-sizing($box); }
+  @include update-box-model($box);
+}
+
+// Border Box Sizing
+// -----------------
+// A legacy shortcut...
+@mixin border-box-sizing {
+  @include global-box-sizing(border-box);
+}
+
+// Update Box Model
+// ----------------
+// PRIVATE: Updates global box model setting
+@mixin update-box-model(
+  $box
+) {
+  @if $box != susy-get(global-box-sizing) {
+    @include susy-set(global-box-sizing, $box);
+  }
+}

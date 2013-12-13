@@ -51,7 +51,7 @@ a img {
   border: none;
 }
 
-article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary {
+article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary {
   display: block;
 }
 
@@ -267,22 +267,74 @@ h1 {
     - 0 Failed */
 /*  
 
-### Nth- Helpers ------ */
-/*  - [function] format-nth (2 Assertions, 2 Passed, 0 Failed) */
-/*  
-    1 Tests:
-    - 1 Passed
-    - 0 Failed */
-/*  
-
-### Settings Syntax ------ */
-/*  - [mixin] set-grid (7 Assertions, 7 Passed, 0 Failed) */
-/*  - [mixin] use-grid (6 Assertions, 6 Passed, 0 Failed) */
-/*  - [function] parse-grid (72 Assertions, 72 Passed, 0 Failed) */
-/*  - [function] get-setting (3 Assertions, 3 Passed, 0 Failed) */
+### Language Settings ------ */
+/*  - [function] parse-grid (30 Assertions, 30 Passed, 0 Failed) */
+/*  - [function] parse-span (41 Assertions, 41 Passed, 0 Failed) */
+/*  - [function] parse-gutters (11 Assertions, 11 Passed, 0 Failed) */
+/*  - [function] susy-get (3 Assertions, 3 Passed, 0 Failed) */
 /*  
     4 Tests:
     - 4 Passed
+    - 0 Failed */
+/*  
+
+### Grids Syntax ------ */
+/*  - [mixin] set-grid (7 Assertions, 7 Passed, 0 Failed) */
+/*  - [mixin] susy-set (1 Assertions, 1 Passed, 0 Failed) */
+/*  - [mixin] use-grid (6 Assertions, 6 Passed, 0 Failed) */
+/*  
+    3 Tests:
+    - 3 Passed
+    - 0 Failed */
+/*  
+
+### Global Box-Sizing Syntax ------ */
+/* - [mixin] global-box-sizing */
+.test__global-box-sizing .assert__global-box-sizing {
+  overflow: hidden;
+  background: rgba(204, 204, 255, 0.5);
+}
+
+.test__global-box-sizing .assert__global-box-sizing .nest {
+  padding-left: 15%;
+  padding-right: 15%;
+  width: 60%;
+  margin: 0 auto;
+}
+
+.test__global-box-sizing .assert__global-box-sizing::before {
+  content: "Nested items should use border-box model.";
+  display: block;
+  padding: 0.375rem 0.75rem;
+  text-align: left;
+  font-style: italic;
+}
+
+/* - [mixin] border-box-sizing */
+.test__border-box-sizing .assert__border-box-sizing {
+  overflow: hidden;
+  background: rgba(204, 204, 255, 0.5);
+}
+
+.test__border-box-sizing .assert__border-box-sizing .nest {
+  padding-left: 15%;
+  padding-right: 15%;
+  width: 60%;
+  margin: 0 auto;
+}
+
+.test__border-box-sizing .assert__border-box-sizing::before {
+  content: "Nested items should use border-box model.";
+  display: block;
+  padding: 0.375rem 0.75rem;
+  text-align: left;
+  font-style: italic;
+}
+
+/*  - update-box-model (2 Assertions, 2 Passed, 0 Failed) */
+/*  
+    1 Tests:
+    - 1 Passed
     - 0 Failed */
 /*  
 
@@ -496,6 +548,40 @@ h1 {
 }
 
 .test__span .assert__inside::before {
+  content: "Span should set width, float, and inside gutter";
+  display: block;
+  padding: 0.375rem 0.75rem;
+  text-align: left;
+  font-style: italic;
+}
+
+.test__span .assert__explicit {
+  *zoom: 1;
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  background-image: -moz-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25));
+  background-image: -webkit-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25));
+  background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25));
+  -webkit-background-size: 12.5%;
+  background-size: 12.5%;
+  -webkit-background-origin: content-box;
+  -webkit-background-clip: content-box;
+  background-origin: content-box;
+  background-clip: content-box;
+  background-position: left top;
+}
+.test__span .assert__explicit:after {
+  content: " ";
+  display: block;
+  clear: both;
+}
+
+.test__span .assert__explicit .test, .test__span .assert__explicit .expect {
+  clear: both;
+}
+
+.test__span .assert__explicit::before {
   content: "Span should set width, float, inside gutter, and border-box";
   display: block;
   padding: 0.375rem 0.75rem;
@@ -505,14 +591,11 @@ h1 {
 
 /*  - [mixin] span (4 Assertions, 4 Passed, 0 Failed) */
 /*  - [function] span (1 Assertions, 1 Passed, 0 Failed) */
-/*  - [function] parse-span (100 Assertions, 100 Passed, 0 Failed) */
-/*  - [function] span-get (2 Assertions, 2 Passed, 0 Failed) */
-/*  - [function] span-math (9 Assertions, 9 Passed, 0 Failed) */
-/*  - [function] get-span-width (8 Assertions, 8 Passed, 0 Failed) */
-/*  - [function] get-span-context (1 Assertions, 1 Passed, 0 Failed) */
+/*  - [function] span-math (10 Assertions, 10 Passed, 0 Failed) */
+/*  - [function] get-span-width (9 Assertions, 9 Passed, 0 Failed) */
 /*  
-    7 Tests:
-    - 7 Passed
+    4 Tests:
+    - 4 Passed
     - 0 Failed */
 /*  
 
@@ -609,15 +692,14 @@ h1 {
 }
 
 /*  - [function] gutter (2 Assertions, 2 Passed, 0 Failed) */
-/*  - [function] parse-gutters (3 Assertions, 3 Passed, 0 Failed) */
-/*  - [function] get-gutter-width (5 Assertions, 5 Passed, 0 Failed) */
+/*  - [function] get-gutter-width (6 Assertions, 6 Passed, 0 Failed) */
 /*  - [function] get-gutters (3 Assertions, 3 Passed, 0 Failed) */
 /*  - [function] is-inside (2 Assertions, 2 Passed, 0 Failed) */
 /*  - [function] is-split (2 Assertions, 2 Passed, 0 Failed) */
 /*  - [function] gutter-math (2 Assertions, 2 Passed, 0 Failed) */
 /*  
-    7 Tests:
-    - 7 Passed
+    6 Tests:
+    - 6 Passed
     - 0 Failed */
 /*  
 
@@ -1172,83 +1254,6 @@ h1 {
   font-style: italic;
 }
 
-/* - [mixin] nth-first */
-.test__nth-first .assert__nth-first {
-  *zoom: 1;
-  max-width: 100%;
-  margin-left: auto;
-  margin-right: auto;
-  background-image: -moz-linear-gradient(left, rgba(0, 0, 0, 0) 16.66667%, rgba(102, 102, 255, 0.25) 16.66667%, rgba(179, 179, 255, 0.25) 83.33333%, rgba(0, 0, 0, 0) 83.33333%);
-  background-image: -webkit-linear-gradient(left, rgba(0, 0, 0, 0) 16.66667%, rgba(102, 102, 255, 0.25) 16.66667%, rgba(179, 179, 255, 0.25) 83.33333%, rgba(0, 0, 0, 0) 83.33333%);
-  background-image: linear-gradient(to right, rgba(0, 0, 0, 0) 16.66667%, rgba(102, 102, 255, 0.25) 16.66667%, rgba(179, 179, 255, 0.25) 83.33333%, rgba(0, 0, 0, 0) 83.33333%);
-  -webkit-background-size: 14.28571%;
-  background-size: 14.28571%;
-  -webkit-background-origin: content-box;
-  -webkit-background-clip: content-box;
-  background-origin: content-box;
-  background-clip: content-box;
-  background-position: left top;
-}
-.test__nth-first .assert__nth-first:after {
-  content: " ";
-  display: block;
-  clear: both;
-}
-
-.test__nth-first .assert__nth-first .test, .test__nth-first .assert__nth-first .expect {
-  width: 23.80952%;
-  float: left;
-  margin-left: 2.38095%;
-  margin-right: 2.38095%;
-  clear: left;
-}
-
-.test__nth-first .assert__nth-first::before {
-  content: "Nth-first (first-child) items should have left margins removed.";
-  display: block;
-  padding: 0.375rem 0.75rem;
-  text-align: left;
-  font-style: italic;
-}
-
-/* - [mixin] nth-alpha */
-.test__nth-alpha .assert__nth-alpha {
-  *zoom: 1;
-  max-width: 100%;
-  margin-left: auto;
-  margin-right: auto;
-  background-image: -moz-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 66.66667%, rgba(0, 0, 0, 0) 66.66667%);
-  background-image: -webkit-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 66.66667%, rgba(0, 0, 0, 0) 66.66667%);
-  background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 66.66667%, rgba(0, 0, 0, 0) 66.66667%);
-  -webkit-background-size: 15%;
-  background-size: 15%;
-  -webkit-background-origin: content-box;
-  -webkit-background-clip: content-box;
-  background-origin: content-box;
-  background-clip: content-box;
-  background-position: left top;
-}
-.test__nth-alpha .assert__nth-alpha:after {
-  content: " ";
-  display: block;
-  clear: both;
-}
-
-.test__nth-alpha .assert__nth-alpha .test, .test__nth-alpha .assert__nth-alpha .expect {
-  width: 25%;
-  float: left;
-  margin-left: 5%;
-  clear: left;
-}
-
-.test__nth-alpha .assert__nth-alpha::before {
-  content: "Nth-alpha (first-child) items should have left margins removed";
-  display: block;
-  padding: 0.375rem 0.75rem;
-  text-align: left;
-  font-style: italic;
-}
-
 /* - [mixin] last */
 .test__last .assert__after {
   *zoom: 1;
@@ -1357,83 +1362,6 @@ h1 {
 
 .test__omega .assert__omega::before {
   content: "Omega items should float right, with right margins removed";
-  display: block;
-  padding: 0.375rem 0.75rem;
-  text-align: left;
-  font-style: italic;
-}
-
-/* - [mixin] nth-last */
-.test__nth-last .assert__nth-last {
-  *zoom: 1;
-  max-width: 100%;
-  margin-left: auto;
-  margin-right: auto;
-  background-image: -moz-linear-gradient(left, rgba(0, 0, 0, 0) 16.66667%, rgba(102, 102, 255, 0.25) 16.66667%, rgba(179, 179, 255, 0.25) 83.33333%, rgba(0, 0, 0, 0) 83.33333%);
-  background-image: -webkit-linear-gradient(left, rgba(0, 0, 0, 0) 16.66667%, rgba(102, 102, 255, 0.25) 16.66667%, rgba(179, 179, 255, 0.25) 83.33333%, rgba(0, 0, 0, 0) 83.33333%);
-  background-image: linear-gradient(to right, rgba(0, 0, 0, 0) 16.66667%, rgba(102, 102, 255, 0.25) 16.66667%, rgba(179, 179, 255, 0.25) 83.33333%, rgba(0, 0, 0, 0) 83.33333%);
-  -webkit-background-size: 14.28571%;
-  background-size: 14.28571%;
-  -webkit-background-origin: content-box;
-  -webkit-background-clip: content-box;
-  background-origin: content-box;
-  background-clip: content-box;
-  background-position: left top;
-}
-.test__nth-last .assert__nth-last:after {
-  content: " ";
-  display: block;
-  clear: both;
-}
-
-.test__nth-last .assert__nth-last .test, .test__nth-last .assert__nth-last .expect {
-  width: 23.80952%;
-  float: left;
-  margin-left: 2.38095%;
-  margin-right: 2.38095%;
-  clear: both;
-}
-
-.test__nth-last .assert__nth-last::before {
-  content: "nth-last(2, last-child) items should float right.";
-  display: block;
-  padding: 0.375rem 0.75rem;
-  text-align: left;
-  font-style: italic;
-}
-
-/* - [mixin] nth-omega */
-.test__nth-omega .assert__nth-omega {
-  *zoom: 1;
-  max-width: 100%;
-  margin-left: auto;
-  margin-right: auto;
-  background-image: -moz-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 66.66667%, rgba(0, 0, 0, 0) 66.66667%);
-  background-image: -webkit-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 66.66667%, rgba(0, 0, 0, 0) 66.66667%);
-  background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 66.66667%, rgba(0, 0, 0, 0) 66.66667%);
-  -webkit-background-size: 15%;
-  background-size: 15%;
-  -webkit-background-origin: content-box;
-  -webkit-background-clip: content-box;
-  background-origin: content-box;
-  background-clip: content-box;
-  background-position: left top;
-}
-.test__nth-omega .assert__nth-omega:after {
-  content: " ";
-  display: block;
-  clear: both;
-}
-
-.test__nth-omega .assert__nth-omega .test, .test__nth-omega .assert__nth-omega .expect {
-  width: 25%;
-  float: left;
-  margin-right: 5%;
-  clear: both;
-}
-
-.test__nth-omega .assert__nth-omega::before {
-  content: "nth-omega(2, last-child) items should float right, with right margins removed.";
   display: block;
   padding: 0.375rem 0.75rem;
   text-align: left;
@@ -2152,6 +2080,66 @@ h1 {
   font-style: italic;
 }
 
+.test__pad .assert__inside {
+  *zoom: 1;
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  background-image: -moz-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25));
+  background-image: -webkit-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25));
+  background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25));
+  -webkit-background-size: 12.5%;
+  background-size: 12.5%;
+  -webkit-background-origin: content-box;
+  -webkit-background-clip: content-box;
+  background-origin: content-box;
+  background-clip: content-box;
+  background-position: left top;
+}
+.test__pad .assert__inside:after {
+  content: " ";
+  display: block;
+  clear: both;
+}
+
+.test__pad .assert__inside::before {
+  content: "Items should have 2 columns padding before and after, and keep gutters.";
+  display: block;
+  padding: 0.375rem 0.75rem;
+  text-align: left;
+  font-style: italic;
+}
+
+.test__pad .assert__inside-nogutters {
+  *zoom: 1;
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  background-image: -moz-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25));
+  background-image: -webkit-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25));
+  background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25));
+  -webkit-background-size: 12.5%;
+  background-size: 12.5%;
+  -webkit-background-origin: content-box;
+  -webkit-background-clip: content-box;
+  background-origin: content-box;
+  background-clip: content-box;
+  background-position: left top;
+}
+.test__pad .assert__inside-nogutters:after {
+  content: " ";
+  display: block;
+  clear: both;
+}
+
+.test__pad .assert__inside-nogutters::before {
+  content: "Items should have 2 columns padding before and after, without gutters.";
+  display: block;
+  padding: 0.375rem 0.75rem;
+  text-align: left;
+  font-style: italic;
+}
+
 /*  
 
 ### Bleed Syntax ------ */
@@ -2376,10 +2364,9 @@ h1 {
   font-style: italic;
 }
 
-/*  - [function] parse-bleed (1 Assertions, 1 Passed, 0 Failed) */
 /*  
-    1 Tests:
-    - 1 Passed
+    0 Tests:
+    - 0 Passed
     - 0 Failed */
 /*
 
@@ -2631,7 +2618,7 @@ h1 {
 .test__isolate-output .assert__isolate-output .test, .test__isolate-output .assert__isolate-output .expect {
   width: 40%;
   float: left;
-  margin-right: 40%;
+  margin-right: 5.26316%;
 }
 .test__isolate-output .assert__isolate-output .expect {
   clear: both;
@@ -2650,5 +2637,5 @@ h1 {
   border-color: green;
 }
 .results::after {
-  content: "46 Tests, 46 Passed, 0 Failed";
+  content: "44 Tests, 44 Passed, 0 Failed";
 }

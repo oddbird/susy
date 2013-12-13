@@ -1,0 +1,10 @@
+{
+  "name": "susy",
+  "version": "2.0.0-alpha.6",
+  "main": "sass/_susy.scss",
+  "ignore": [
+    "**/.*",
+    "docs",
+    "test"
+  ]
+}

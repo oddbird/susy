@@ -5,4 +5,4 @@ susy-*.gem
 .rvmrc
 pkg/
 *.sublime-*
-build/
+docs/_build/

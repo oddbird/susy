@@ -8,9 +8,8 @@
 @mixin bleed(
   $bleed: 0 gutter()
 ) {
-  $bleed    : parse-bleed($bleed);
-  $context  : get-span-context($bleed);
-  $trbl     : span-get(span, $bleed);
+  $bleed    : parse-span($bleed);
+  $trbl     : susy-get(span, $bleed);
   $spans    : (top: 0, right: 0, bottom: 0, left: 0);
 
   $i: 1;
@@ -31,7 +30,7 @@
   @each $side, $span in $spans {
     $padding: $span;
     @if is-inside($bleed) and ($side == right or $side == left) {
-      $gutter: gutter($context);
+      $gutter: gutter($bleed);
       $padding: if(comparable($padding, $gutter), $padding + $gutter, $padding);
     }
     margin-#{$side}: if($span != 0, 0 - $span, null);
@@ -44,8 +43,8 @@
 @mixin bleed-x(
   $bleed: gutter()
 ) {
-  $bleed  : parse-bleed($bleed);
-  $trbl   : span-get(span, $bleed);
+  $bleed  : parse-span($bleed);
+  $trbl   : susy-get(span, $bleed);
 
   @if length($trbl) == 1 {
     $bleed: map-merge($bleed, (span: 0 nth($trbl, 1)));
@@ -61,8 +60,8 @@
 @mixin bleed-y(
   $bleed: if(function-exists(rhythm), rhythm(1), 1em)
 ) {
-  $bleed  : parse-bleed($bleed);
-  $trbl   : span-get(span, $bleed);
+  $bleed  : parse-span($bleed);
+  $trbl   : susy-get(span, $bleed);
 
   @if length($trbl) == 1 {
     $bleed: map-merge($bleed, (span: nth($trbl, 1) 0));
@@ -73,37 +72,4 @@
   }
 
   @include bleed($bleed);
-}
-
-// Parse Bleed
-// -----------
-// Parse the bleed syntax, returning a TRBL list of spans
-// - $bleed: <bleed>
-@function parse-bleed(
-  $bleed
-) {
-  $return: $bleed;
-
-  @if type-of($bleed) != map {
-    $return: parse-span($bleed);
-    $span-list: ();
-    $keywords: false;
-    $i: 1;
-
-    @while not $keywords and $i <= length($bleed) {
-      $item: nth($bleed, $i);
-
-      @if type-of($item) == number {
-        $span-list: append($span-list, $item);
-      } @else {
-        $keywords: true;
-      }
-
-      $i: $i + 1;
-    }
-
-    $return: map-merge($return, (span: $span-list));
-  }
-
-  @return map-merge($return, (spread: wide));
 }

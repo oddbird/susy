@@ -30,9 +30,10 @@
       'Span should set width (75%), float (left), and gutter (5% margin-right)'
     ) {
       .test {
-        @include span(5) { .inner { @include span(2); } }
+        @include span(5 content-box) { .inner { @include span(2); } }
       }
       .expect {
+        @include susy-box-sizing(content-box);
         width: 70%;
         float: left;
         margin-right: 5%;
@@ -49,17 +50,38 @@
       .test, .expect { clear: both; }
     }
     @include assert-output(
-      'Span should set width, float, inside gutter, and border-box'
+      'Span should set width, float, and inside gutter'
     ) {
+      @include border-box-sizing;
+
       .test { @include span(5); }
       .expect {
-        @include susy-box-sizing(border-box);
         width: 62.5%;
         float: left;
         padding-left: 1.25%;
         padding-right: 1.25%;
       }
+
+      @include original-grid;
     }
+
+    // explicit
+    @include assert-setup('explicit', $grid: 8 .25 inside) {
+      .test, .expect { clear: both; }
+    }
+    @include assert-output(
+      'Span should set width, float, inside gutter, and border-box'
+    ) {
+      .test { @include span(80%); }
+      .expect {
+        @include susy-box-sizing(border-box);
+        width: 80%;
+        float: left;
+        padding-left: 1.25%;
+        padding-right: 1.25%;
+      }
+    }
+
   }
 
   // Span Nesting
@@ -100,7 +122,7 @@
   // ---------------
 
   @include test('[function] span') {
-    @include susy-set((
+    @include set-grid((
       columns: 7,
       gutters: .5,
       layout-math: fluid,
@@ -114,120 +136,6 @@
       'Span function returns expected width value.');
 
     @include original-grid;
-  }
-
-  // parse-span
-  // ----------
-
-  @include test('[function] parse-span') {
-    // Span #1
-    $span: first 3 of 12 .25 after isolate fluid ltr wide;
-    $test: parse-span($span);
-    $expect: (
-      span: 3,
-      location: first,
-      columns: 12,
-      gutters: 0.25,
-      layout-method: isolate,
-      layout-math: fluid,
-      spread: wide,
-      flow: ltr,
-      gutter-position: after,
-    );
-    @include test-parsed-span('parse-span: #1', $test, $expect);
-
-    // Span #2
-    $span: last 4 of (1 2 3 2 1) (4em 1em) before float static rtl container;
-    $test: parse-span($span);
-    $expect: (
-      span: 4,
-      location: last,
-      columns: (1 2 3 2 1),
-      gutters: 0.25,
-      column-width: 4em,
-      layout-method: float,
-      layout-math: static,
-      flow: rtl,
-      gutter-position: before,
-      is-container: container,
-    );
-    @include test-parsed-span('parse-span: #2', $test, $expect);
-
-    // Span #3
-    $span: 1 of 3 alpha split (spread: wider, column-width: 40px);
-    $test: parse-span($span);
-    $expect: (
-      span: 1,
-      location: alpha,
-      columns: 3,
-      column-width: 40px,
-      gutter-position: split,
-      spread: wider,
-    );
-    @include test-parsed-span('parse-span: #3', $test, $expect);
-
-    // Span #4
-    $span: omega 3 of 7 .5 inside;
-    $test: parse-span($span);
-    $expect: (
-      span: 3,
-      location: omega,
-      columns: 7,
-      gutters: .5,
-      gutter-position: inside,
-    );
-    @include test-parsed-span('parse-span: #4', $test, $expect);
-
-    // Span #5
-    $span: 3 at 2 no-gutters;
-    $test: parse-span($span);
-    $expect: (
-      span: 3,
-      location: 2,
-      gutter-position: no-gutters,
-    );
-    @include test-parsed-span('parse-span: #5', $test, $expect);
-
-    // Span #6
-    $span: 2 gutter 5em;
-    $test: parse-span($span);
-    $expect: (
-      span: 2,
-      gutter-override: 5em,
-    );
-    @include test-parsed-span('parse-span: #6', $test, $expect);
-
-    // Span #7
-    $span: 2 of 7 (4em 2em) inside-static;
-    $test: parse-span($span);
-    $expect: (
-      span: 2,
-      columns: 7,
-      gutters: .5,
-      column-width: 4em,
-      gutter-position: inside-static,
-    );
-    @include test-parsed-span('parse-span: #7', $test, $expect);
-  }
-
-  // span-get
-  // --------
-
-  @include test('[function] span-get') {
-    $span: first 3 of 12 (4em 1em) isolate fluid ltr gutters 1em container;
-    $pre: parse-span($span);
-
-    // parsing
-    $test: span-get(span, $span);
-    $expect: span-get(span, $pre);
-    @include assert-equal($test, $expect,
-      'Span-get should be the same whether pre-parsed or not.');
-
-    // gutter-position (fallback)
-    $test: span-get(gutter-position, $pre);
-    $expect: map-get($susy-defaults, gutter-position);
-    @include assert-equal($test, $expect,
-      'Returns the default if a setting is not available.');
   }
 
   // span math
@@ -258,6 +166,30 @@
     );
     @include assert-equal($span, $expect,
       'Returns correct span-math with outside gutters.');
+
+    // explicit
+    $span: (
+      span: 50%,
+      columns: 7,
+      gutters: .5,
+      column-width: 4em,
+      layout-method: float,
+      layout-math: fluid,
+      flow: ltr,
+      gutter-position: after,
+    );
+    $span: span-math($span);
+    $expect: (
+      width: 50%,
+      float: from,
+      margin_before: null,
+      margin_after: 5%,
+      padding_before: null,
+      padding_after: null,
+      flow: ltr,
+    );
+    @include assert-equal($span, $expect,
+      'Returns correct span-math gutters with explicit span.');
 
     // split first/last
     $span: (
@@ -434,6 +366,20 @@
     @include assert-equal($width, 50%,
       'Returns correct width with inside gutters.');
 
+    // inside no-gutters
+    $map: (
+      span: 4,
+      columns: 8,
+      gutters: .25,
+      column-width: null,
+      layout-math: fluid,
+      gutter-position: inside,
+      gutter-override: no-gutters,
+    );
+    $width: get-span-width($map);
+    @include assert-equal($width, 50%,
+      'Returns correct width with no-gutters.');
+
     // split-gutters
     $map: (
       span: 4,
@@ -498,22 +444,5 @@
     $width: get-span-width($map);
     @include assert-equal($width, 80%,
       'Returns the correct wider span width.');
-  }
-
-  // Get Span Context
-  // ----------------
-
-  @include test('[function] get-span-context') {
-    $span: 3 of 7 .5 inside static;
-    $test: get-span-context($span);
-    $expect: (
-      columns: 7,
-      gutters: .5,
-      gutter-position: inside,
-      layout-math: static,
-    );
-    $expect: map-merge($susy-defaults, $expect);
-    @include assert-equal($test, $expect,
-      'Returns only the grid context of a given span.');
   }
 }

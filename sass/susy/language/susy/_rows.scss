@@ -33,8 +33,8 @@
 ) {
   $span: parse-span($span);
 
-  @include row(span-get(flow, $span));
-  @if is-split($span) and not span-get(is-container, $span) {
+  @include row(susy-get(flow, $span));
+  @if is-split($span) and not susy-get(is-container, $span) {
     @include gutters($span);
   }
   float: none;
@@ -62,30 +62,6 @@
   @include first($grid);
 }
 
-// Nth-First
-// ---------
-// - [$value]   : first | last | only | <math>
-// - [$type]    : child | last-child | of-type | last-of-type
-@mixin nth-first(
-  $value: first,
-  $type: child,
-  $grid: $susy
-) {
-  &:#{format-nth($value,$type)} { @include first($grid); }
-}
-
-// Nth-Alpha
-// ---------
-// - [$value]   : first | last | only | <math>
-// - [$type]    : child | last-child | of-type | last-of-type
-@mixin nth-alpha(
-  $value: first,
-  $type: child,
-  $grid: $susy
-) {
-  @include nth-first($value, $type, $grid);
-}
-
 // Last
 // -----
 // - [$grid]: <settings>
@@ -105,30 +81,4 @@
   $grid: $susy
 ) {
   @include last($grid);
-}
-
-// Nth-Last
-// --------
-// - [$value] : first | last | only | <math>
-// - [$type]  : child | last-child | of-type | last-of-type
-// - [$grid]  : <settings>
-@mixin nth-last(
-  $value: last,
-  $type: child,
-  $grid: $susy
-) {
-  &:#{format-nth($value,$type)} { @include last($grid); }
-}
-
-// Nth-Omega
-// ---------
-// - [$value] : first | last | only | <math>
-// - [$type]  : child | last-child | of-type | last-of-type
-// - [$grid]  : <settings>
-@mixin nth-omega(
-  $value: last,
-  $type: child,
-  $grid: $susy
-) {
-  @include nth-last($value, $type, $grid);
 }

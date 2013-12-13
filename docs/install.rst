@@ -2,16 +2,15 @@ Install
 =======
 
 The only requirement is `Sass`_,
-but all the cool kids load `Compass`_,
-and we recommend something like `Breakpoint`_
-to help manage your media-queries.
-
-See the `Sass install`_ page for details.
+but Susy was built to be part of the `Compass`_ ecosystem,
+and we recommend pairing with tools like
+`Breakpoint`_
+and `Vertical Rhythms`_.
 
 .. _Sass: http://sass-lang.com/
 .. _Compass: http://compass-style.org/
 .. _Breakpoint: breakpoint-sass.com/‎
-.. _Sass install: http://sass-lang.com/install
+.. _Vertical Rhythms: http://compass-style.org/reference/compass/typography/vertical_rhythm/
 
 
 Simple Install

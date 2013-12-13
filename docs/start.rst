@@ -1,17 +1,12 @@
 Quick Start
 ===========
 
-
-Import
-------
+Once you have everything :doc:`installed <install>`,
+you can import Susy into your Sass files.
 
 .. code-block:: scss
 
   @import "susy";
-
-
-Basic Layouts
--------------
 
 The basic Susy layout is composed using two simple mixins:
 
@@ -27,11 +22,30 @@ For example:
   body { @include container(80em); }
   nav { @include span(25%); }
 
+If you want to lay your elements out on a grid,
+you can use the ``span`` mixin to calculate column widths:
 
-Settings
---------
+.. code-block:: scss
 
-All your settings are controlled by the single ``$susy`` variable.
+  nav { @include span(3 of 12); }
+
+But you don't have to do things the Susy way.
+We give you direct access to the math,
+so you can use it any way you like:
+
+.. code-block:: scss
+
+  main {
+    float: left;
+    width: span(4);
+    margin-left: span(2) + gutter();
+    margin-right: gutter();
+  }
+
+You can also establish :doc:`global settings <settings>`,
+to configure Susy for your specific needs.
+Just create a ``$susy`` variable,
+and add your settings as a map.
 
 .. code-block:: scss
 
@@ -40,45 +54,7 @@ All your settings are controlled by the single ``$susy`` variable.
     gutters: 1/4, // The size of a gutter in relation to a single column
   );
 
-If you want to lay your elements out on a grid,
-you can use the ``span`` mixin to calculate column widths:
-
-.. code-block:: scss
-
-  nav { @include span(3 of 12); }
-
-There are many more settings you can use
-to customize every aspect of your layout,
-but this is a quick-start quide.
-
-Syntax Options
---------------
-
-Susy is built in three distinct modules:
-math, output, and syntax.
-The math and and output layers form the core of Susy —
-so abstract that they could be used for any grid system.
-That's exactly what we hope will happen.
-
-The syntax modules hold it all together.
-In the same way that you can theme a website,
-applying different CSS to the same markup,
-you can theme Susy by writing your own syntax
-(or extending one of ours).
-
-We've written a powerful new :doc:`susytwo/index`,
-and we're keeping the old :doc:`susyone/index` available as well.
-But why stop there?
-You can create your own unique syntax,
-or port over the language of existing tools like
-`oocss`_, `singularity`_, `zurb`_, `neat`_, `zen`_,
-`blueprint`_, `960gs`_, etc.,
-without ever leaving Susy.
-
-.. _oocss: http://oocss.org/
-.. _singularity: http://singularity.gs/
-.. _zurb: http://foundation.zurb.com/
-.. _neat: http://neat.bourbon.io/
-.. _zen: http://zengrids.com/
-.. _blueprint: http://www.blueprintcss.org/
-.. _960gs: http://960.gs/
+There are many more settings available
+for customizing every aspect of your layout,
+but this is just a quick-start guide.
+Keep going to get the details.

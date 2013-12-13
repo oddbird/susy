@@ -75,6 +75,7 @@ The Docs
 
    install
    start
-   susytwo/index
+   settings
    susyone/index
+   syntax
    changelog

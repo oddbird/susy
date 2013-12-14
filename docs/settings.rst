@@ -1,10 +1,10 @@
 Settings
 ========
 
-The new default syntax for Susy
+The new syntax for Susy
 is based around a number of settings
 that can be written either as a Sass Map
-or using a shorthand syntax.
+or using a :doc:`shorthand syntax <shorthand>`.
 These two definitions are interchangeable:
 
 .. code-block:: scss

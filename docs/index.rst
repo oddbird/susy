@@ -36,7 +36,7 @@ and your Sass code compiles into Boring Old CSS.
 Remember CSS?
 
 Susy can't save you from CSS,
-but we can help make it easier to write and maintain.
+but it can help make layouts easier to write and maintain.
 Abstraction is great at making your code meaningful and DRY,
 but don't let it fool you —
 the output CSS is what matters.
@@ -77,5 +77,5 @@ The Docs
    settings
    shorthand
    susyone/index
-   syntax
+   diy
    changelog

@@ -43,7 +43,7 @@ Compass
 -------
 
 If you want to use Susy with `Compass`_,
-start by following the `Compass install`_ instructions.
+start by `installing Compass`_.
 
 Create a new Compass project:
 
@@ -60,7 +60,7 @@ Update an existing Compass project:
   require "susy"
 
 .. _Compass: http://compass-style.org/
-.. _Compass install: http://compass-style.org/install/
+.. _installing Compass: http://compass-style.org/install/
 
 
 Yeoman

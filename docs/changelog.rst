@@ -5,7 +5,7 @@ Changelog
 2.0.0.alpha.7 — unreleased
 --------------------------
 
-- Debug grids are now hidden by default.
+- Debug grids are hidden by default.
 - Remove ``nth-last``/``-omega``/``-first``/``-alpha``
   as confusing & out-of-scope.
   Format your nth-selectors manually to apply ``first``/``last`` mixins.

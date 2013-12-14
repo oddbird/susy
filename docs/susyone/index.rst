@@ -1,4 +1,4 @@
 SusyOne
 =======
 
-Susy One has not yet been implemented in the new gem. Coming soon!
+Susy One has not been ported yet. Coming soon!

@@ -78,8 +78,8 @@ with ``use-grid``:
 Flow
 ----
 
-*Establishes the reading direction of your document,
-either left-to-right, or right-to-left.*
+*Set the flow direction of your document,
+similar to the html ``dir`` attribute.*
 
 - **scope:** global, local
 - **options:** ``rtl`` | ``ltr``
@@ -94,9 +94,7 @@ either left-to-right, or right-to-left.*
 Layout Math
 -----------
 
-*Determines the output units for calculating grid spans,
-either relative to a container,
-or a multiplier of the ``column-width``.*
+*Toggle between static and fluid (relative) math.*
 
 - **setting:** ``layout-math``
 - **scope:** global, local
@@ -116,8 +114,7 @@ or a multiplier of the ``column-width``.*
 Layout Method
 -------------
 
-*Determines the layout technique.
-Currently only two variations of the float method are supported.*
+*Toggle between output layout styles.*
 
 - **setting:** ``layout-method``
 - **scope:** global, local
@@ -133,8 +130,6 @@ Currently only two variations of the float method are supported.*
    We find it to be very useful for spot-checking the worst rounding bugs,
    but we think it's overkill as a layout technique all to itself.
 
-- **todo:** Add support for ``inline-block`` and ``flexbox`` layouts.
-
 .. _trick: http://www.palantir.net/blog/responsive-design-s-dirty-little-secret
 .. _sub-pixel rounding: http://tylertate.com/blog/2012/01/05/subpixel-rounding.html
 .. _John Albin Wilkins: http://john.albin.net/
@@ -143,7 +138,7 @@ Currently only two variations of the float method are supported.*
 Gutter Position
 ---------------
 
-*Determines how and where gutters are added to the layout,
+*Set how and where gutters are added to the layout,
 either as padding or margins on layout elements.*
 
 - **setting:** ``gutter-position``
@@ -175,31 +170,57 @@ either as padding or margins on layout elements.*
 Container
 ---------
 
-*Determines the width of the containing element.*
+*Set the width of the containing element.*
 
 - **setting:** ``container``
 - **scope:** global, local [container only]
 - **options:** ``<length>`` | ``auto``
 - **default:** ``auto``
 
-1. ``<length>``
-2. ``auto``
+1. ``<length>``:
+   Set any explicit lenght (e.g. ``60em`` or ``80%``),
+   and it will be applied directly to the container.
+2. ``auto``:
+   Susy will calculate the width of your container
+   based on the other grid settings,
+   or fall back to ``100%``.
+
+.. warning::
+
+  For ``static`` layouts,
+  leave ``container: auto``
+  and set the ``column-width`` instead.
+  Susy will calculate the outer container width for you.
+  Dividing columns out of a set container width
+  would leave you open to sub-pixel errors,
+  and no one likes sub-pixel errors.
 
 
 Container Position
 ------------------
 
-*Determines the position of the container in the viewport.*
+*Position the container in the viewport (or other context).*
 
 - **setting:** ``container-position``
 - **scope:** global, local [container only]
-- **options:** ``left`` | ``center`` | ``right`` | ``<offset> [<offset>]``
+- **options:** ``left`` | ``center`` | ``right`` | ``<length> [*2]``
 - **default:** ``center``
 
-1. ``left``
-2. ``center``
-3. ``right``
-4. ``<offset> [<offset>]``
+1. ``left``:
+   Holds container elements flush left,
+   with ``margin-left: 0;`` and ``margin-right: auto;``.
+2. ``center``:
+   Centers the container,
+   by setting both left and right margins to ``auto``.
+3. ``right``:
+   Pushes the container flush right,
+   with ``margin-right: 0;`` and ``margin-left: auto;``.
+4. ``<length> [*2]``:
+   If one length is given,
+   it will be applied to both side margins,
+   to offset the container from the edges of the viewport.
+   If to values are given,
+   they will be used as ``left`` and ``right`` margins respectively.
 
 
 Columns
@@ -207,11 +228,21 @@ Columns
 
 - **setting:** ``columns``
 - **scope:** global, local
-- **options:** ``<list>`` | ``<number>``
+- **options:** ``<number>`` | ``<list>``
 - **default:** ``12``
 
-1. ``<list>``
-2. ``<number>``
+1. ``<number>``:
+   The number of columns in your layout.
+2. ``<list>``:
+   For assymetrical grids,
+   list the size of each column relative to the other columns,
+   where ``1`` is a single column-unit.
+   ``(1 2)`` would create a 2-column grid,
+   with the second column being twice the width of the first.
+   For a `Fibonacci`_-inspired grid, use
+   ``(1 1 2 3 5 8 13)``.
+
+.. _Fibonacci: http://en.wikipedia.org/wiki/Fibonacci_number
 
 
 Gutters
@@ -222,7 +253,12 @@ Gutters
 - **options:** ``<ratio>``
 - **default:** ``1/4``
 
-1. ``<ratio>``
+1. ``<ratio>``:
+   Gutters are established as a ratio to the size of a column.
+   The default ``1/4`` setting will create gutters
+   one quarter the size of a column.
+   In asymmetrical grids,
+   this is ``1/4`` the size of a single column-unit.
 
 
 Column Width
@@ -233,33 +269,62 @@ Column Width
 - **options:** ``<length>`` | ``false``
 - **default:** ``false``
 
-1. ``<length>``
-2. ``false``
+1. ``<length>``:
+   The width of one column, using any valid unit.
+   This will be used in ``static`` layouts to calculate all grid widths,
+   but can also be used by ``fluid`` layouts
+   to calculate an outer maximum width for the container.
+2. ``false``:
+   There is no need for column-width in ``fluid`` layouts
+   unless you specifically want the container-width
+   calculated for you.
 
 
-Box Sizing
-----------
+Global Box Sizing
+-----------------
 
-- **setting:** ``global-box-sizing`` [global scope],
-  ``box-sizing`` [local scope]
-- **scope:** global, local
+*Tell Susy what box model is being applied globally.*
+
+- **setting:** ``global-box-sizing``
+- **scope:** global
 - **options:** ``border-box`` | ``content-box``
 - **default:** ``content-box``
 
-1. ``global-box-sizing`` vs ``box-sizing``
-2. ``border-box`` vs ``content-box``
+1. ``content-box``:
+   Browsers use the ``content-box`` model unless you specify otherwise.
+2. ``border-box``:
+   If you are using the `Paul Irish universal border-box`_ technique
+   (or something similar),
+   you should change this setting to ``border-box``.
+   You can also use our ``border-box-sizing`` mixin,
+   and we'll take care of it all for you.
+
+For more,
+see the `MDN box-sizing documentation`_.
+
+.. _MDN box-sizing documentation: https://developer.mozilla.org/en-US/docs/Web/CSS/box-sizing
 
 
 Last Flow
 ---------
+
+*The float-direction for the last element in a row.*
 
 - **setting:** ``last-flow``
 - **scope:** global
 - **options:** ``from`` | ``to``
 - **default:** ``to``
 
-1. ``from``
-2. ``to``
+1. ``from``:
+   This is the default for all other elements in a layout.
+   In an ``ltr`` (left-to-right) flow,
+   the from-direction is ``left``,
+   and this setting would float "last" elements to the left,
+   along with the other elements.
+2. ``to``:
+   In many cases (especially with ``fluid`` grids),
+   it can be helpful to float the last element in a row
+   in the opposite direction.
 
 
 Show Grids
@@ -270,27 +335,20 @@ Show Grids
 - **options:** ``show`` | ``hide`` | ``show-columns`` | ``show-baseline``
 - **default:** ``hide``
 
-1. ``show``
-2. ``hide``
-3. ``show-columns``
-4. ``show-baseline``
+1. ``show``:
+   Show grid images,
+   usually on the background of container elements,
+   for the purpose of debugging.
+   If you are using `Compass vertical rhythms`_
+   (or have set your own ``$base-line-height`` variable)
+   Susy will show baseline grids as well.
+2. ``hide``:
+   Hide all grid debugging images.
+3. ``show-columns``:
+   Show only horizontal grid-columns,
+   even if a baseline grid is available.
+4. ``show-baseline``:
+   Show only the baseline grid,
+   if the ``$base-line-height`` variable is available.
 
-
-Layout Shorthand
-----------------
-
-**syntax:** [ ``<container>`` ``<columns>`` ``<gutters/column-width>`` ``<keywords...>`` ]
-
-
-Span Shorthand
---------------
-
-**syntax:** ``<span>`` [ ``at`` ``<location>`` ``of`` ``<global-context>`` ]
-
-
-Gutter Shorthand
-----------------
-
-**syntax** [ ``<gutter-override>`` ``of`` ] ``<global-context>``
-
-
+.. _Compass vertical rhythms: http://compass-style.org/reference/compass/typography/vertical_rhythm/

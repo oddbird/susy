@@ -75,6 +75,7 @@ The Docs
 
    install
    settings
+   shorthand
    susyone/index
    syntax
    changelog

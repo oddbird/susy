@@ -37,6 +37,10 @@
   @if is-split($span) and not susy-get(is-container, $span) {
     @include gutters($span);
   }
+  @if susy-get(layout-method, $span) == isolate {
+    margin-left: auto;
+    margin-right: auto;
+  }
   float: none;
   width: auto;
 }

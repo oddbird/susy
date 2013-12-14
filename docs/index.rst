@@ -1,5 +1,5 @@
-Manifesto
-=========
+Introduction
+============
 
 The world is full of overblown, one-size-fits-all "`frameworks`_"
 that want to design your site for you.

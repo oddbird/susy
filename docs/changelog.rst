@@ -5,6 +5,7 @@ Changelog
 2.0.0.alpha.7 — unreleased
 --------------------------
 
+- ``full`` outputs auto margins in an isolation context.
 - Debug grids are hidden by default.
 - Remove ``nth-last``/``-omega``/``-first``/``-alpha``
   as confusing & out-of-scope.

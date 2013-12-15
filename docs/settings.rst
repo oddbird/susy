@@ -330,6 +330,8 @@ Last Flow
 Show Grids
 ----------
 
+*Toggle grid images for debugging.*
+
 - **setting:** ``show-grids``
 - **scope:** global, local [container only]
 - **options:** ``show`` | ``hide`` | ``show-columns`` | ``show-baseline``
@@ -351,4 +353,119 @@ Show Grids
    Show only the baseline grid,
    if the ``$base-line-height`` variable is available.
 
+.. warning::
+
+  Grid images are not exact.
+  Browsers have extra trouble
+  with sub-pixel rounding on background images.
+  These are meant for rough debugging,
+  not for pixel-perfect measurements.
+
 .. _Compass vertical rhythms: http://compass-style.org/reference/compass/typography/vertical_rhythm/
+
+
+Location
+--------
+
+*Reference a specific column on the grid.
+Locations keywords don't require the ``at`` flag.*
+
+- **name:** ``location``
+- **scope:** local
+- **options:** ``first`` | ``alpha`` | ``last`` | ``omega`` | ``<number>``
+- **default:** ``null``
+
+1. ``first`` & ``alpha``:
+   Set location to ``1``.
+2. ``last`` & ``omega``:
+   Set the location to the final column,
+   and any previous columns included by the relevant ``span``.
+3. ``<number>``:
+   Set the location to any column-index
+   between ``1`` and the total number of available columns.
+
+
+Box Sizing
+----------
+
+*Set a new box model on the given element element.*
+
+- **name:** ``box-sizing``
+- **scope:** local
+- **options:** ``border-box`` | ``content-box``
+- **default:** ``null``
+
+1. ``border-box``:
+   Output ``box-sizing`` CSS to set the ``border-box`` model.
+2. ``content-box``:
+   Output ``box-sizing`` CSS to set the ``content-box`` model.
+
+
+Spread
+------
+
+*Adjust how many gutters are included in a column span.*
+
+- **name:** ``spread``
+- **scope:** local
+- **options:** ``narrow`` | ``wide`` | ``wider``
+- **default:** various...
+
+1. ``narrow``:
+   In most cases,
+   column-spans include the gutters *between* columns.
+   A span of ``3 narrow`` covers the width of 3 columns,
+   as well as 2 internal gutters.
+   This is the default in most cases.
+2. ``wide``:
+   Sometimes you need to include one side gutter in a span width.
+   A span of ``3 wide`` covers the width of 3 columns,
+   and 3 gutters (2 internal, and 1 side).
+   This is the default for several margin/padding mixins.
+3. ``wider``:
+   Sometimes you need to include both side gutters in a span width.
+   A span of ``3 wider`` covers the width of 3 columns,
+   and 4 gutters (2 internal, and 2 sides).
+
+
+Gutter Override
+---------------
+
+*Set an explicit one-off gutter-width, or remove gutters entirely.*
+
+- **name:** ``gutter-override``
+- **scope:** local
+- **options:** ``no-gutters`` | ``no-gutter`` | ``<length>``
+- **default:** ``null``
+
+1. ``no-gutters`` or ``no-gutter``:
+   Remove all gutter output.
+2. ``<length>``:
+   Override the calculated gutter output with an explicit width.
+
+
+Is-Container
+------------
+
+*Mark a grid element as a container for nested grids.*
+
+- **name:** ``is-container``
+- **scope:** local
+- **options:** ``container``
+- **default:** ``null``
+
+1. ``container``:
+   Mark an internal grid element as a context for nested grids.
+
+.. note::
+
+  This can be used with any grid type,
+  but it is required for nesting
+  with ``split``, ``inside``, or ``inside-static`` gutters.
+
+.. warning::
+
+  Not to be confused with the global ``container`` setting,
+  or an outer ``container`` element.
+  This is for internal grid elements that are *also*
+  acting as containers for nested grid elements.

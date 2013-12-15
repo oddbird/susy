@@ -121,22 +121,35 @@ it will be used for the ``container`` width.
 Spans
 -----
 
-**span:** ``<span>`` [ ``at`` ``<location>`` ``of`` ``<layout>`` ]
+Most of Susy's functions & mixins
+are used to calculate or set a width, or ``span``.
+Most spans in Susy can be either a unitless number
+(representing columns)
+or an explicit width.
+Some of them also require a location
+(particularly for asymmetrical grids and isolation).
 
-**gutter:** [ ``<gutter-override>`` ``of`` ] ``<layout>``
+The standard span syntax looks like this:
 
+.. code-block:: scss
 
-Box Sizing
-----------
+  // Pattern:
+  $span: $span at $location of $layout;
 
-*Change the box model on an element.*
+  // span: 3;
+  // location: 4;
+  // layout: (columns: 12, gutters: .25, layout-math: fluid)
+  $span: 3 at 4 of 12 .25 fluid;
 
-- **setting:** ``box-sizing``
-- **scope:** local
-- **options:** ``border-box`` | ``content-box``
-- **default:** ``null``
+  // Only $span is required in most cases
+  $span: 30%;
 
+The "at" flag comes immediately before the location
+(unless the location itself is a keyword),
+and everything after the "of" flag
+is treated as part of the layout.
 
-Spread
-------
-
+Some mixins accept multiple spans,
+using the common CSS "top right bottom left" (TRBL) pattern,
+or have other specific options.
+Those are all documented as part of the function/mixin details.

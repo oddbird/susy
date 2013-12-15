@@ -33,20 +33,22 @@ we're still talking about web design
 in a world where browsers disagree on implementation,
 standards are not always the standard,
 and your Sass code compiles into Boring Old CSS.
-Remember CSS?
 
-Susy can't save you from CSS,
-but it can help make layouts easier to write and maintain.
-Abstraction is great at making your code meaningful and DRY,
-but don't let it fool you —
-the output CSS is what matters.
-If you don't know what Susy is doing,
-take a look at the CSS output files.
-
-Think of it like a toolkit.
-You can't use a hammer to build your entire houes.
-Sometimes you have to set it down and pick up a screw driver,
+Susy is just a toolkit.
+You don't use one hammer to build your entire house.
+Sometimes you have to set Susy down and pick up a screw driver,
 or get crazy with the table saw.
+Don't rely on Susy — put it to use.
+What you want to accomplish
+is more important than what we planned for.
+
+We can't save you from CSS,
+but we can help make layouts easier to write and maintain.
+Abstraction is great for meaningful code,
+but don't let it fool you —
+the output is what matters.
+If you don't understand what Susy is doing,
+take a look at the CSS files.
 
 
 ToDo

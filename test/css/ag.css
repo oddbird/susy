@@ -231,6 +231,8 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 .asymmetrical > .size3of5 > .full {
   *zoom: 1;
   clear: both;
+  margin-left: auto;
+  margin-right: auto;
   float: none;
   width: auto;
   background: none;
@@ -266,6 +268,8 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 .asymmetrical .size2of3 .full {
   *zoom: 1;
   clear: both;
+  margin-left: auto;
+  margin-right: auto;
   float: none;
   width: auto;
 }

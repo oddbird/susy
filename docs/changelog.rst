@@ -5,6 +5,8 @@ Changelog
 2.0.0.alpha.7 — unreleased
 --------------------------
 
+- ``gutters`` and ``container-position`` can be set to ``null``.
+- If ``gutters`` are set to ``0`` or ``null``, they will have no output.
 - ``full`` outputs auto margins in an isolation context.
 - Debug grids are hidden by default.
 - Remove ``nth-last``/``-omega``/``-first``/``-alpha``

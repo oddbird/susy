@@ -58,10 +58,10 @@
   $context: $susy
 ) {
   $context  : parse-gutters($context);
+  $gutters  : susy-get(gutters, $context);
   $gutter   : susy-get(gutter-override, $context);
 
-  @if not $gutter {
-    $gutters: susy-get(gutters, $context);
+  @if $gutters and ($gutters > 0) and not $gutter {
     $column-width: susy-get(column-width, $context);
     @if $column-width and gutter-math($context) == static {
       $gutter: $gutters * $column-width;

@@ -95,11 +95,30 @@
       'Returns correct split gutter width.');
 
     // no-gutters
-    $gutter: get-gutter-width(of 8 .25 split no-gutters);
+    $gutter: get-gutter-width(8 .25 split no-gutters);
     $expect: null;
     @include assert-equal($gutter, $expect,
       'Returns correct split no-gutters width.');
 
+    // 0 gutters
+    $context: (
+      columns: 10,
+      gutters: 0,
+    );
+    $gutter: get-gutter-width($context split);
+    $expect: null;
+    @include assert-equal($gutter, $expect,
+      'Returns null width for 0-gutters.');
+
+    // null gutters
+    $context: (
+      columns: 10,
+      gutters: 0,
+    );
+    $gutter: get-gutter-width(3em $context split);
+    $expect: 3em;
+    @include assert-equal($gutter, $expect,
+      'Returns correct override width for 0 gutters.');
   }
 
   // get-gutters

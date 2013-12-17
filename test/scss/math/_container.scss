@@ -7,6 +7,13 @@
   // ------------------------
 
   @include test('[function] parse-container-position()') {
+    // null
+    $pos: null;
+    $test: parse-container-position($pos);
+    $expect: null null;
+    @include assert-equal($test, $expect,
+      'A null value should return null for both sides.');
+
     // 2-part list
     $pos: 10% auto;
     $test: parse-container-position($pos);

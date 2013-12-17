@@ -16,6 +16,8 @@ $susy-defaults: map-merge($susy-defaults, (
   global-box-sizing: content-box,
 ));
 
+$nullable: gutters container-position;
+
 // Valid Keyword Values
 // --------------------
 // - PRIVATE: DONT'T TOUCH
@@ -219,6 +221,18 @@ $susy: () !default;
   $grid: map-merge($susy-defaults, $susy)
 ) {
   $grid: parse-grid($grid);
+  $options: $grid $susy $susy-defaults;
+  $nullish: index($nullable, $key);
+  $break: false;
+  $return: null;
 
-  @return map-get($grid, $key) or map-get($susy, $key) or map-get($susy-defaults, $key);
+  @each $opt in $options {
+    $keyset: index(map-keys($opt), $key);
+    @if not $break {
+      $return: map-get($opt, $key);
+      $break: $return or if($keyset and $nullish, true, false);
+    }
+  }
+
+  @return $return;
 }

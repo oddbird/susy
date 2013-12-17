@@ -247,5 +247,12 @@
     $expect: map-get($susy-defaults, gutters);
     @include assert-equal($test, $expect,
       'Returns global default grid setting, when local is missing.');
+
+    // null setting
+    $grid: (gutters: null);
+    $test: susy-get(gutters, $grid);
+    $expect: null;
+    @include assert-equal($test, $expect,
+      'Returns null gutter setting without falling back on default.');
   }
 }

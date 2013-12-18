@@ -13,7 +13,7 @@
     @include assert-output(
       'Containers should have 60em max-width, centered.'
     ) {
-      .test { @include container-output(60em, center, fluid); }
+      .test { @include container-output(60em, auto auto, max-width); }
       .expect {
         max-width: 60em;
         margin-left: auto;
@@ -26,7 +26,7 @@
     @include assert-output(
       'Containers should have 30em width, flush right.'
     ) {
-      .test { @include container-output(30em, right, static); }
+      .test { @include container-output(30em, auto 0, width); }
       .expect {
         width: 30em;
         margin-left: auto;
@@ -39,7 +39,7 @@
     @include assert-output(
       'Containers should have 100% width.'
     ) {
-      .test { @include container-output(null); }
+      .test { @include container-output(null, auto auto, max-width); }
       .expect {
         max-width: 100%;
         margin-left: auto;

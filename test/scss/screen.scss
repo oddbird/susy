@@ -3,10 +3,6 @@
 
 @import "susy";
 @import "true";
-
-// Testing
-// -------
-
 @import "test/helpers";
 @import "test/layout";
 
@@ -20,27 +16,10 @@ $default-final-output: false;
 $output-test-context: true;
 $output-test-results: false;
 
-// Math
+// Test
 // ----
 
-@import "math/columns";
-@import "math/container";
-@import "math/location";
-
-// Helpers
-// -------
-
-@import "helpers/box-sizing";
-@import "helpers/clearfix";
-@import "helpers/direction";
-
-// Language
-// --------
-
 @import "language/susy";
-
-// API
-// ---
 
 @import "api/shared";
 @import "api/float";

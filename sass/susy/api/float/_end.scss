@@ -1,12 +1,19 @@
 // Float Ends API
 // ==============
 
+// Susy End Defaults
+// -----------------
+// - PRIVATE
+@include susy-defaults((
+  last-flow: to,
+));
+
 // Float Last
 // ----------
 // - [$flow]  : ltr | rtl
 @mixin float-last(
-  $flow: susy-get(flow),
-  $last-flow: susy-get(last-flow),
+  $flow: map-get($susy-defaults, flow),
+  $last-flow: map-get($susy-defaults, last-flow),
   $margin: 0
 ) {
   $to: to($flow);
@@ -19,7 +26,7 @@
 // -----------
 // - [$flow]  : ltr | rtl
 @mixin float-first(
-  $flow: susy-get(flow)
+  $flow: map-get($susy-defaults, flow)
 ) {
   margin-#{from($flow)}: 0;
 }

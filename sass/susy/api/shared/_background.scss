@@ -12,7 +12,7 @@
   $image,
   $size: false,
   $clip: false,
-  $flow: susy-get(flow)
+  $flow: map-get($susy-defaults, flow)
 ) {
   @if mixin-exists(background-image) {
     @include background-image($image);

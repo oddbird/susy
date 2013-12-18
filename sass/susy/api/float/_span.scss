@@ -17,7 +17,7 @@
   $margin-after     : null,
   $padding-before   : null,
   $padding-after    : null,
-  $flow             : susy-get(flow)
+  $flow             : map-get($susy-defaults, flow)
 ) {
   $to     : to($flow);
   $from   : from($flow);

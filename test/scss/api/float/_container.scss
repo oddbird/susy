@@ -11,7 +11,7 @@
     @include assert-output(
       'Containers should be 30em wide, flush left.'
     ) {
-      .test { @include float-container(30em, left); }
+      .test { @include float-container(30em, 0 auto); }
       .expect {
         max-width: 30em;
         margin-left: 0;

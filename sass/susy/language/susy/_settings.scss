@@ -1,15 +1,13 @@
 // Susy Next Settings
 // ==================
 
-// Susy Defaults
-// -------------
-// - PRIVATE: DONT'T TOUCH
-$susy-defaults: map-merge($susy-defaults, (
+// Susy Language Defaults
+// ----------------------
+// - PRIVATE
+@include susy-defaults((
   container: auto,
-  last-flow: to,
   layout-math: fluid,
   layout-method: float,
-  flow: ltr,
   container-position: center,
   gutter-position: after,
   show-grids: hide,

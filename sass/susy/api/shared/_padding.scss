@@ -9,7 +9,7 @@
 @mixin padding-output(
   $before,
   $after,
-  $flow: susy-get(flow)
+  $flow: map-get($susy-defaults, flow)
 ) {
   $to: to($flow);
   $from: from($flow);

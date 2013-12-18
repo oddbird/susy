@@ -7,10 +7,10 @@
 // - [$justify]       : left | center | right
 // - [$layout-math]   : fluid | static
 @mixin float-container(
-  $width        : susy-get(container),
-  $justify      : susy-get(container-position),
-  $layout-math  : susy-get(layout-math)
+  $width,
+  $justify: auto auto,
+  $property: max-width
 ) {
   @include susy-clearfix;
-  @include container-output($width, $justify, $layout-math);
+  @include container-output($width, $justify, $property);
 }

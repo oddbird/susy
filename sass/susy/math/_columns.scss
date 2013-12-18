@@ -6,7 +6,7 @@
 // Returns true if a grid is symmetrical.
 // - [$columns]   : <number> | <list>
 @function is-symmetrical(
-  $columns: susy-get(columns)
+  $columns: map-get($susy-defaults, columns)
 ) {
   $columns: valid-columns($columns);
   @return if(type-of($columns) == number, $columns, null);
@@ -17,7 +17,7 @@
 // Find the number of columns in a given layout
 // - [$columns]   : <number> | <list>
 @function column-count(
-  $columns: susy-get(columns)
+  $columns: map-get($susy-defaults, columns)
 ) {
   $columns: valid-columns($columns);
   @return is-symmetrical($columns) or length($columns);
@@ -30,8 +30,8 @@
 // - [$gutters]   : <ratio>
 // - [$spread]    : false/narrow | wide | wider
 @function column-sum(
-  $columns  : susy-get(columns),
-  $gutters  : susy-get(gutters),
+  $columns  : map-get($susy-defaults, columns),
+  $gutters  : map-get($susy-defaults, gutters),
   $spread   : false
 ) {
   $columns: valid-columns($columns);
@@ -59,7 +59,7 @@
 @function get-columns(
   $span,
   $location,
-  $columns: susy-get(columns)
+  $columns: map-get($susy-defaults, columns)
 ) {
   $columns: valid-columns($columns);
   $sub-columns: $span;
@@ -86,8 +86,8 @@
 @function get-column-span-sum(
   $span,
   $location     : false,
-  $columns      : susy-get(columns),
-  $gutters      : susy-get(gutters),
+  $columns      : map-get($susy-defaults, columns),
+  $gutters      : map-get($susy-defaults, gutters),
   $spread       : false
 ) {
   $columns: valid-columns($columns);

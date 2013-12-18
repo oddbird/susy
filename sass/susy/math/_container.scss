@@ -1,23 +1,6 @@
 // Container math
 // ==============
 
-// Parse Container Position
-// ------------------------
-// Parse the $container-position into margin values.
-// - [$justify]   : left | center | right | <length> [<length>]
-@function parse-container-position(
-  $justify: susy-get(container-position)
-) {
-  $return: if($justify == left, 0, auto) if($justify == right, 0, auto);
-
-  @if not index(left right center, $justify) {
-    $return: nth($justify, 1);
-    $return: $return if(length($justify) > 1, nth($justify, 2), $return);
-  }
-
-  @return $return;
-}
-
 // Calculate Container Width
 // -------------------------
 // Calculate the width of a container based on columns and gutters.
@@ -26,9 +9,9 @@
 // - [$column-width]  : <length>
 // - [$spread]        : <boolean>
 @function calculate-container-width(
-  $columns        : susy-get(columns),
-  $gutters        : susy-get(gutters),
-  $column-width   : susy-get(column-width),
+  $columns        : map-get($susy-defaults, columns),
+  $gutters        : map-get($susy-defaults, gutters),
+  $column-width   : map-get($susy-defaults, column-width),
   $spread         : false
 ) {
   $sum: column-sum($columns, $gutters, $spread);

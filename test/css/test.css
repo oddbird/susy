@@ -17,11 +17,10 @@
 /*  
 
 ### Container Math ------ */
-/*  - [function] parse-container-position() (7 Assertions, 7 Passed, 0 Failed) */
 /*  - [function] calculate-container-width() (1 Assertions, 1 Passed, 0 Failed) */
 /*  
-    2 Tests:
-    - 2 Passed
+    1 Tests:
+    - 1 Passed
     - 0 Failed */
 /*  
 
@@ -376,9 +375,10 @@
 
 /*  - [function] container (5 Assertions, 5 Passed, 0 Failed) */
 /*  - [function] get-container-width (6 Assertions, 6 Passed, 0 Failed) */
+/*  - [function] parse-container-position() (7 Assertions, 7 Passed, 0 Failed) */
 /*  
-    2 Tests:
-    - 2 Passed
+    3 Tests:
+    - 3 Passed
     - 0 Failed */
 /*  
 

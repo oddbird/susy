@@ -10,7 +10,7 @@
 @function is-last(
   $span,
   $location,
-  $columns: susy-get(columns)
+  $columns: map-get($susy-defaults, columns)
 ) {
   $last: column-count($columns) - $span + 1;
   $is-last: if(index(last omega, $location), $last, false);
@@ -41,8 +41,13 @@
 @function get-location(
   $span,
   $location,
-  $columns: susy-get(columns)
+  $columns: map-get($susy-defaults, columns)
 ) {
-  $string: if(type-of($location) == string, true, false);
-  @return if($string, is-first($location) or is-last($span, $location, $columns), $location);
+  $return: $location;
+
+  @if type-of($location) == string {
+    $return: is-first($location) or is-last($span, $location, $columns);
+  }
+
+  @return $return;
 }

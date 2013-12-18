@@ -163,6 +163,58 @@
     $expect: 42em;
     @include assert-equal($test, $expect,
       'Returns wide container for split gutters.');
+  }
 
+  // Parse Container Position
+  // ------------------------
+
+  @include test('[function] parse-container-position()') {
+    // null
+    $pos: null;
+    $test: parse-container-position($pos);
+    $expect: null null;
+    @include assert-equal($test, $expect,
+      'A null value should return null for both sides.');
+
+    // 2-part list
+    $pos: 10% auto;
+    $test: parse-container-position($pos);
+    @include assert-equal($test, $pos,
+      'A 2-part list is already a valid container position.');
+
+    // left
+    $pos: left;
+    $test: parse-container-position($pos);
+    $expect:  0 auto;
+    @include assert-equal($test, $expect,
+      'A left-aligned container should have 0 margin-left, and auto right.');
+
+    // right
+    $pos: right;
+    $test: parse-container-position($pos);
+    $expect: auto 0;
+    @include assert-equal($test, $expect,
+      'A right-aligned container should have 0 margin-right, and auto left.');
+
+    // center
+    $pos: center;
+    $test: parse-container-position($pos);
+    $expect: auto auto;
+    @include assert-equal($test, $expect,
+      'A centered container should have auto left and right margins.');
+
+    // number
+    $pos: 10%;
+    $test: parse-container-position($pos);
+    $expect: $pos $pos;
+    @include assert-equal($test, $expect,
+      'A number should be used for both left and right container margins.');
+
+    // string
+    $pos: auto;
+    $test: parse-container-position($pos);
+    $expect: $pos $pos;
+    @include assert-equal($test, $expect,
+      'A string should be used for both left and right container margins.');
   }
 }

@@ -59,3 +59,20 @@
 
   @return $width;
 }
+
+// Parse Container Position
+// ------------------------
+// Parse the $container-position into margin values.
+// - [$justify]   : left | center | right | <length> [<length>]
+@function parse-container-position(
+  $justify: map-get($susy-defaults, container-position)
+) {
+  $return: if($justify == left, 0, auto) if($justify == right, 0, auto);
+
+  @if not index(left right center, $justify) {
+    $return: nth($justify, 1);
+    $return: $return if(length($justify) > 1, nth($justify, 2), $return);
+  }
+
+  @return $return;
+}

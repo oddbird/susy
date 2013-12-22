@@ -352,6 +352,17 @@
     @include assert-equal($width, 70%,
       'Returns correct fluid span width.');
 
+    // full
+    $map: (
+      span: full,
+      location: full,
+      columns: 7,
+      gutters: .5,
+    );
+    $width: get-span-width($map);
+    @include assert-equal($width, 100%,
+      'Returns correct full span width.');
+
     // relative inside-gutters
     $map: (
       span: 4,

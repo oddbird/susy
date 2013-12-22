@@ -9,8 +9,8 @@ Changelog
 - ``gutters`` and ``container-position`` can be set to ``null``.
 - If ``gutters`` are set to ``0`` or ``null``, they will have no output.
 - ``full`` outputs auto margins in an isolation context.
-- Debug grids are hidden by default.
-- Remove ``nth-last``/``-omega``/``-first``/``-alpha``
+- BREAKING: Debug grids are hidden by default.
+- BREAKING: Remove ``nth-last``/``-omega``/``-first``/``-alpha``
   as confusing & out-of-scope.
   Format your nth-selectors manually to apply ``first``/``last`` mixins.
 
@@ -20,7 +20,7 @@ Changelog
   + Unitless numbers are used for context.
   + Lengths (with units) are used as explicit gutter-overrides.
 
-- Re-purposed ``susy-set`` as reverse of ``susy-get`` —
+- BREAKING: Re-purposed ``susy-set`` as reverse of ``susy-get`` —
   to adjust a single setting.
   Example: ``@include susy-set(gutter-position, inside);``
 

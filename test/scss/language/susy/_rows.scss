@@ -11,13 +11,10 @@
       .spacer { @include span(2); }
     }
     @include assert-output(
-      'Rows should clear preceeding floats, and contain inner floats'
+      'Rows should clear preceeding floats'
     ) {
       .test { @include row; }
-      .expect {
-        @include susy-clearfix;
-        clear: both;
-      }
+      .expect { clear: both; }
     }
   }
 
@@ -30,17 +27,10 @@
       .test, .expect { @include row; }
     }
     @include assert-output(
-      'Non-rows should not clear or wrap floated elements'
+      'Non-rows should not clear floated elements'
     ) {
       .test { @include unrow; }
-      .expect {
-        clear: none;
-        &:after {
-          content: none;
-          display: inline;
-          clear: none;
-        }
-      }
+      .expect { clear: none; }
     }
   }
 
@@ -48,7 +38,7 @@
   // ---
 
   @include output-test('full') {
-    @include assert-setup($grid: 7 .5 split) {
+    @include assert-setup('split', $grid: 8 .25 split) {
       .spacer { @include span(2); }
     }
     @include assert-output(
@@ -57,9 +47,20 @@
       .test { @include full; }
       .expect {
         @include row;
-        @include gutters;
-        float: none;
-        width: auto;
+        @include span(100% - get-gutter-width());
+      }
+    }
+
+    @include assert-setup('after', $grid: 7 .5 after) {
+      .spacer { @include span(2); }
+    }
+    @include assert-output(
+      'Full spans clear preceeding floats, and have gutters.'
+    ) {
+      .test { @include full; }
+      .expect {
+        @include row;
+        @include span(100%);
       }
     }
   }

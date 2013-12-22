@@ -144,32 +144,35 @@
       'parse-span: #4');
 
     // Span #5
-    $test: 3 at 2 inside no-gutters;
+    $test: 3 at 2 inside no-gutters row;
     $test: parse-span($test);
     $expect: (
       span: 3,
       location: 2,
       gutter-position: inside,
       gutter-override: no-gutters,
+      clear: row,
     );
     @include compare-maps($test, $expect,
       'parse-span: #5');
 
     // Span #6
-    $test: 2 (gutter-override: 5em);
+    $test: 2 (gutter-override: 5em) unrow;
     $test: parse-span($test);
     $expect: (
       span: 2,
       gutter-override: 5em,
+      clear: unrow,
     );
     @include compare-maps($test, $expect,
       'parse-span: #6');
 
     // Span #7
-    $test: 2 of 7 (4em 2em) inside-static;
+    $test: full of 7 (4em 2em) inside-static;
     $test: parse-span($test);
     $expect: (
-      span: 2,
+      span: full,
+      location: full,
       columns: 7,
       gutters: .5,
       column-width: 4em,

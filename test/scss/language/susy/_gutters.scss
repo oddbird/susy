@@ -7,14 +7,14 @@
   // ---------------
 
   @include output-test('gutters') {
-    @include assert-setup('auto', $grid: 7 .5 split);
+    @include assert-setup('auto', $grid: 8 .25 split);
     @include assert-output(
       'Item should have 2.5% margin-gutters added before and after'
     ) {
-      .test { @include gutters(of 7); }
+      .test { @include gutters(of 8); }
       .expect {
-        margin-left: 2.5%;
-        margin-right: 2.5%;
+        margin-left: 1.25%;
+        margin-right: 1.25%;
       }
     }
 

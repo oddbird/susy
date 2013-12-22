@@ -10,6 +10,7 @@
 ) {
   $span: parse-span($span);
   $output: span-math($span);
+  $nesting: susy-get(span, $span);
 
   $box: susy-get(box-sizing, $span);
   $content-box: if(susy-get(global-box-sizing) != 'border-box', true, false);
@@ -17,7 +18,13 @@
 
   @include susy-box-sizing($box);
   @include float-span-output($output...);
-  @include nested($span) { @content; }
+
+
+  @if type-of($nesting) == number and unitless($nesting) {
+    @include nested($span) { @content; }
+  } @else {
+    @content;
+  }
 }
 
 // Span [function]
@@ -112,7 +119,11 @@
   $span-sum : null;
   $width    : null;
 
-  @if unitless($n) {
+  @if $n == 'full' {
+    $split: if(susy-get(gutter-position, $span) == 'split', true, false);
+    $container: if(susy-get(is-container, $span), true, false);
+    $width: if($split and not $container, 100% - get-gutter-width($span), 100%);
+  } @else if unitless($n) {
     $context: column-sum($columns, $gutters, if(is-split($span), wide, narrow));
     $span-sum: get-column-span-sum($n, $location, $columns, $gutters, if(is-inside($span), wide, $spread));
 

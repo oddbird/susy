@@ -15,7 +15,9 @@
   $last: column-count($columns) - $span + 1;
   $is-last: if(index(last omega, $location), $last, false);
 
-  @if type-of($location) == number {
+  @if $location == 'full' {
+    $is-last: 1;
+  } @else if type-of($location) == number {
     $is-last: if($location + ($span - 1) == column-count($columns), $location, false);
   }
 
@@ -29,7 +31,7 @@
 @function is-first(
   $location
 ) {
-  @return if(index(first alpha 1, $location), 1, false);
+  @return if(index(full first alpha 1, $location), 1, false);
 }
 
 // Get Location Position

@@ -106,16 +106,11 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   margin-left: 3.44828%;
 }
 .symmetrical > .size3of5 > .full {
-  *zoom: 1;
   clear: both;
-  float: none;
-  width: auto;
+  width: 100%;
+  float: right;
+  margin-left: 2.04082%;
   background: none;
-}
-.symmetrical > .size3of5 > .full:after {
-  content: " ";
-  display: block;
-  clear: both;
 }
 .symmetrical .full .size1of3 {
   width: 31.03448%;
@@ -137,15 +132,10 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   margin-left: 5.26316%;
 }
 .symmetrical .size2of3 .full {
-  *zoom: 1;
   clear: both;
-  float: none;
-  width: auto;
-}
-.symmetrical .size2of3 .full:after {
-  content: " ";
-  display: block;
-  clear: both;
+  width: 100%;
+  float: right;
+  margin-left: 5.26316%;
 }
 .symmetrical .gallery div {
   width: 18.36735%;
@@ -229,18 +219,11 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   margin-right: -100%;
 }
 .asymmetrical > .size3of5 > .full {
-  *zoom: 1;
   clear: both;
-  margin-left: auto;
-  margin-right: auto;
-  float: none;
-  width: auto;
+  width: 100%;
+  float: left;
+  margin-right: -100%;
   background: none;
-}
-.asymmetrical > .size3of5 > .full:after {
-  content: " ";
-  display: block;
-  clear: both;
 }
 .asymmetrical .full .size1of3 {
   width: 18.64407%;
@@ -266,17 +249,10 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   margin-right: -100%;
 }
 .asymmetrical .size2of3 .full {
-  *zoom: 1;
   clear: both;
-  margin-left: auto;
-  margin-right: auto;
-  float: none;
-  width: auto;
-}
-.asymmetrical .size2of3 .full:after {
-  content: " ";
-  display: block;
-  clear: both;
+  width: 100%;
+  float: left;
+  margin-right: -100%;
 }
 .asymmetrical .gallery div {
   float: left;
@@ -363,16 +339,10 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   float: right;
 }
 .static > .size3of5 > .full {
-  *zoom: 1;
   clear: both;
-  float: none;
-  width: auto;
+  width: 100%;
+  float: right;
   background: none;
-}
-.static > .size3of5 > .full:after {
-  content: " ";
-  display: block;
-  clear: both;
 }
 .static .full .size1of3 {
   width: 140px;
@@ -394,15 +364,9 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   float: right;
 }
 .static .size2of3 .full {
-  *zoom: 1;
   clear: both;
-  float: none;
-  width: auto;
-}
-.static .size2of3 .full:after {
-  content: " ";
-  display: block;
-  clear: both;
+  width: 100%;
+  float: right;
 }
 .static .gallery div {
   width: 140px;
@@ -490,16 +454,10 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   margin-right: 1.47059%;
 }
 .split > .size3of5 > .full {
-  *zoom: 1;
   clear: both;
-  float: none;
-  width: auto;
+  width: 100%;
+  float: right;
   background: none;
-}
-.split > .size3of5 > .full:after {
-  content: " ";
-  display: block;
-  clear: both;
 }
 .split .full .size1of3 {
   width: 50%;
@@ -525,17 +483,11 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   margin-right: 3.125%;
 }
 .split .size2of3 .full {
-  *zoom: 1;
   clear: both;
+  width: 93.75%;
+  float: right;
   margin-left: 3.125%;
   margin-right: 3.125%;
-  float: none;
-  width: auto;
-}
-.split .size2of3 .full:after {
-  content: " ";
-  display: block;
-  clear: both;
 }
 .split .gallery div {
   float: left;
@@ -642,16 +594,13 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   padding-right: 1.47059%;
 }
 .inside > .size3of5 > .full {
-  *zoom: 1;
   clear: both;
-  float: none;
-  width: auto;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 100%;
+  float: right;
   background: none;
-}
-.inside > .size3of5 > .full:after {
-  content: " ";
-  display: block;
-  clear: both;
 }
 .inside .full .size1of3 {
   -moz-box-sizing: border-box;
@@ -689,17 +638,14 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   padding-right: 3.125%;
 }
 .inside .size2of3 .full {
-  *zoom: 1;
   clear: both;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 100%;
+  float: right;
   padding-left: 3.125%;
   padding-right: 3.125%;
-  float: none;
-  width: auto;
-}
-.inside .size2of3 .full:after {
-  content: " ";
-  display: block;
-  clear: both;
 }
 .inside .gallery div {
   -moz-box-sizing: border-box;
@@ -712,7 +658,6 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 .inside .gallery div:nth-child(5n + 1) {
   width: 12.5%;
   margin-right: -100%;
-  margin-left: 0;
   clear: left;
 }
 .inside .gallery div:nth-child(5n + 2) {
@@ -811,16 +756,13 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   padding-right: 1em;
 }
 .inside-static > .size3of5 > .full {
-  *zoom: 1;
   clear: both;
-  float: none;
-  width: auto;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 100%;
+  float: right;
   background: none;
-}
-.inside-static > .size3of5 > .full:after {
-  content: " ";
-  display: block;
-  clear: both;
 }
 .inside-static .full .size1of3 {
   -moz-box-sizing: border-box;
@@ -858,17 +800,14 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   padding-right: 1em;
 }
 .inside-static .size2of3 .full {
-  *zoom: 1;
   clear: both;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 100%;
+  float: right;
   padding-left: 1em;
   padding-right: 1em;
-  float: none;
-  width: auto;
-}
-.inside-static .size2of3 .full:after {
-  content: " ";
-  display: block;
-  clear: both;
 }
 .inside-static .gallery div {
   -moz-box-sizing: border-box;
@@ -881,7 +820,6 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 }
 .inside-static .gallery div:nth-child(5n + 1) {
   margin-right: -100%;
-  margin-left: 0;
   clear: left;
 }
 .inside-static .gallery div:nth-child(5n + 2) {

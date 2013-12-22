@@ -4,45 +4,25 @@
 // Row
 // ---
 // Apply to any layout element that should force a new layout row.
-// - [$flow]  : ltr | rtl
-@mixin row(
-  $flow: susy-get(flow)
-) {
-  @include susy-clearfix;
+@mixin row {
   clear: both;
 }
 
 // Unrow
 // -----
 // Cancel the row() effect, e.g. when using media queries.
-// - [$flow]: ltr | rtl
 @mixin unrow {
   clear: none;
-  &:after {
-    content: none;
-    display: inline;
-    clear: none;
-  }
 }
 
 // Full
 // ----
 // - [$span]: <span settings>
 @mixin full(
-  $span: $susy
+  $context: $susy
 ) {
-  $span: parse-span($span);
-
-  @include row(susy-get(flow, $span));
-  @if is-split($span) and not susy-get(is-container, $span) {
-    @include gutters($span);
-  }
-  @if susy-get(layout-method, $span) == isolate {
-    margin-left: auto;
-    margin-right: auto;
-  }
-  float: none;
-  width: auto;
+  @include row;
+  @include span(full of parse-grid($context));
 }
 
 // First
@@ -53,9 +33,8 @@
 ) {
   $grid: parse-grid($grid);
   $flow: susy-get(flow, $grid);
-  $split: if(susy-get(gutter-position, $grid) == split, true, false);
 
-  @if not $split {
+  @if not is-split($grid) {
     @include float-first($flow);
   }
 }
@@ -75,7 +54,7 @@
   $grid: parse-grid($grid);
   $output: (
     flow: susy-get(flow, $grid),
-    margin: if(susy-get(gutter-position, $grid) == split, gutters($grid), 0),
+    margin: if(is-split($grid), gutters($grid), 0),
   );
 
   @include float-last($output...);

@@ -33,8 +33,8 @@
 /*  
 
 ### Location Math ------ */
-/*  - [function] is-last (5 Assertions, 5 Passed, 0 Failed) */
-/*  - [function] is-first (4 Assertions, 4 Passed, 0 Failed) */
+/*  - [function] is-last (6 Assertions, 6 Passed, 0 Failed) */
+/*  - [function] is-first (5 Assertions, 5 Passed, 0 Failed) */
 /*  - [function] get-location-position (3 Assertions, 3 Passed, 0 Failed) */
 /*  
     3 Tests:
@@ -44,7 +44,7 @@
 
 ### Language Settings ------ */
 /*  - [function] parse-grid (30 Assertions, 30 Passed, 0 Failed) */
-/*  - [function] parse-span (41 Assertions, 41 Passed, 0 Failed) */
+/*  - [function] parse-span (44 Assertions, 44 Passed, 0 Failed) */
 /*  - [function] parse-gutters (11 Assertions, 11 Passed, 0 Failed) */
 /*  - [function] susy-get (4 Assertions, 4 Passed, 0 Failed) */
 /*  
@@ -406,7 +406,7 @@
 /*  - [mixin] span (4 Assertions, 4 Passed, 0 Failed) */
 /*  - [function] span (1 Assertions, 1 Passed, 0 Failed) */
 /*  - [function] span-math (10 Assertions, 10 Passed, 0 Failed) */
-/*  - [function] get-span-width (9 Assertions, 9 Passed, 0 Failed) */
+/*  - [function] get-span-width (10 Assertions, 10 Passed, 0 Failed) */
 /*  
     4 Tests:
     - 4 Passed
@@ -417,12 +417,12 @@
 /* - [mixin] gutters */
 /* "Item should have 2.5% margin-gutters added before and after" */
 .test__gutters .assert__auto .test {
-  margin-left: 2.38095%;
-  margin-right: 2.38095%;
+  margin-left: 1.25%;
+  margin-right: 1.25%;
 }
 .test__gutters .assert__auto .expect {
-  margin-left: 2.5%;
-  margin-right: 2.5%;
+  margin-left: 1.25%;
+  margin-right: 1.25%;
 }
 
 /* "Item should have 1em padding-gutters added before and after" */
@@ -532,7 +532,6 @@
 }
 .test__gallery .assert__inside .test:nth-child(4n + 1) {
   margin-right: -100%;
-  margin-left: 0;
   clear: left;
 }
 .test__gallery .assert__inside .test:nth-child(4n + 2) {
@@ -592,7 +591,6 @@
 }
 .test__gallery .assert__inside-static .test:nth-child(3n + 1) {
   margin-right: -100%;
-  margin-left: 0;
   clear: left;
 }
 .test__gallery .assert__inside-static .test:nth-child(3n + 2) {
@@ -736,7 +734,6 @@
 .test__gallery .assert__asym-inside .test:nth-child(2n + 1) {
   width: 40%;
   margin-right: -100%;
-  margin-left: 0;
   clear: left;
 }
 .test__gallery .assert__asym-inside .test:nth-child(2n + 2) {
@@ -771,72 +768,51 @@
 
 ### Row Syntax ------ */
 /* - [mixin] row */
-/* "Rows should clear preceeding floats, and contain inner floats" */
+/* "Rows should clear preceeding floats" */
 .test__row .assert__row .test {
-  *zoom: 1;
-  clear: both;
-}
-.test__row .assert__row .test:after {
-  content: " ";
-  display: block;
   clear: both;
 }
 .test__row .assert__row .expect {
-  *zoom: 1;
-  clear: both;
-}
-.test__row .assert__row .expect:after {
-  content: " ";
-  display: block;
   clear: both;
 }
 
 /* - [mixin] unrow */
-/* "Non-rows should not clear or wrap floated elements" */
+/* "Non-rows should not clear floated elements" */
 .test__unrow .assert__unrow .test {
-  clear: none;
-}
-.test__unrow .assert__unrow .test:after {
-  content: none;
-  display: inline;
   clear: none;
 }
 .test__unrow .assert__unrow .expect {
   clear: none;
 }
-.test__unrow .assert__unrow .expect:after {
-  content: none;
-  display: inline;
-  clear: none;
-}
 
 /* - [mixin] full */
 /* "Full spans clear preceeding floats, and have gutters." */
-.test__full .assert__full .test {
-  *zoom: 1;
+.test__full .assert__split .test {
   clear: both;
-  margin-left: 2.38095%;
-  margin-right: 2.38095%;
-  float: none;
-  width: auto;
+  width: 97.5%;
+  float: right;
+  margin-left: 1.25%;
+  margin-right: 1.25%;
 }
-.test__full .assert__full .test:after {
-  content: " ";
-  display: block;
+.test__full .assert__split .expect {
   clear: both;
+  width: 97.5%;
+  float: left;
+  margin-left: 1.25%;
+  margin-right: 1.25%;
 }
-.test__full .assert__full .expect {
-  *zoom: 1;
+
+/* "Full spans clear preceeding floats, and have gutters." */
+.test__full .assert__after .test {
   clear: both;
-  margin-left: 2.38095%;
-  margin-right: 2.38095%;
-  float: none;
-  width: auto;
+  width: 100%;
+  float: right;
 }
-.test__full .assert__full .expect:after {
-  content: " ";
-  display: block;
+.test__full .assert__after .expect {
   clear: both;
+  width: 100%;
+  float: left;
+  margin-right: 5%;
 }
 
 /* - [mixin] first */

@@ -5,10 +5,14 @@ Changelog
 2.0.0.alpha.7 — unreleased
 --------------------------
 
+- Add ``full`` keyword shortcut for full-width spans.
+- BREAKING: Remove unclear ``row`` and ``unrow`` mixins.
+- Add ``break`` and ``nobreak`` mixins/keywords
+  to create a new line before any element in the layout.
 - Clean up division between math/output/syntax layers.
 - ``gutters`` and ``container-position`` can be set to ``null``.
 - If ``gutters`` are set to ``0`` or ``null``, they will have no output.
-- ``full`` outputs auto margins in an isolation context.
+- BREAKING: ``full`` output matches span patterns.
 - BREAKING: Debug grids are hidden by default.
 - BREAKING: Remove ``nth-last``/``-omega``/``-first``/``-alpha``
   as confusing & out-of-scope.

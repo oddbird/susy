@@ -449,12 +449,19 @@ h1 {
   clear: both;
 }
 
-.test__span .assert__inside .test, .test__span .assert__inside .expect {
-  clear: both;
+.test__span .assert__inside .spacer {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 25%;
+  float: left;
+  padding-left: 1.25%;
+  padding-right: 1.25%;
+  clear: left;
 }
 
 .test__span .assert__inside::before {
-  content: "Span should set width, float, and inside gutter";
+  content: "Span should set width, float, clear, and inside gutter";
   display: block;
   padding: 0.375rem 0.75rem;
   text-align: left;

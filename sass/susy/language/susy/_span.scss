@@ -11,14 +11,20 @@
   $span: parse-span($span);
   $output: span-math($span);
   $nesting: susy-get(span, $span);
+  $clear: susy-get(clear, $span);
 
   $box: susy-get(box-sizing, $span);
   $content-box: if(susy-get(global-box-sizing) != 'border-box', true, false);
   $box: $box or if(is-inside($span) and $content-box, border-box, null);
 
+  @if $clear == row {
+    @include row;
+  } @else if $clear == unrow {
+    @include unrow;
+  }
+
   @include susy-box-sizing($box);
   @include float-span-output($output...);
-
 
   @if type-of($nesting) == number and unitless($nesting) {
     @include nested($span) { @content; }

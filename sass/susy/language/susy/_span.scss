@@ -45,6 +45,7 @@
   $span
 ) {
   $split-container  : if(is-split($span) and susy-get(is-container, $span), true, false);
+  $location         : susy-get(location, $span);
 
   $float            : from;
   $padding-before   : null;
@@ -72,20 +73,17 @@
   }
 
   // special margin handling
-  @if susy-get(layout-method, $span) == isolate {
+  @if susy-get(layout-method, $span) == isolate and $location {
     $margin-before: get-isolation($span);
     $margin-after: -100%;
   } @else {
-    $location: susy-get(location, $span);
-    @if $location {
-      $last: is-last(susy-get(span, $span), $location, susy-get(columns, $span));
-      $is-split: is-split($span);
-      @if $last {
-        $float: susy-get(last-flow, $span);
-        $margin-after: if($is-split, $margin-after, null);
-      } @else if is-first($location) {
-        $margin-before: if($is-split, $margin-before, null);
-      }
+    $last: is-last(susy-get(span, $span), $location, susy-get(columns, $span));
+    $is-split: is-split($span);
+    @if $last {
+      $float: susy-get(last-flow, $span);
+      $margin-after: if($is-split, $margin-after, null);
+    } @else if is-first($location) {
+      $margin-before: if($is-split, $margin-before, null);
     }
   }
 

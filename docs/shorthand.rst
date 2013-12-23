@@ -70,8 +70,8 @@ The syntax generally breaks down into three parts:
 
      $global-keywords: (
        container            : auto,
-       math          : static fluid,
-       layout-method        : isolate float,
+       math                 : static fluid,
+       output               : isolate float,
        container-position   : left center right,
        flow                 : ltr rtl,
        show-grids           : show hide show-columns show-baseline,

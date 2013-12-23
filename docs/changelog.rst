@@ -5,7 +5,8 @@ Changelog
 2.0.0.alpha.7 — unreleased
 --------------------------
 
-- BREAKING: Rename ``layout-math`` settings to ``math``.
+- BREAKING: Rename ``layout-method`` setting to ``output``.
+- BREAKING: Rename ``layout-math`` setting to ``math``.
 - Clean up division between math/output/syntax layers.
 - ``gutters`` and ``container-position`` can be set to ``null``.
 - If ``gutters`` are set to ``0`` or ``null``, they will have no output.

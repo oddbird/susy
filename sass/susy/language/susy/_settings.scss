@@ -7,7 +7,7 @@
 @include susy-defaults((
   container: auto,
   math: fluid,
-  layout-method: float,
+  output: float,
   container-position: center,
   gutter-position: after,
   show-grids: hide,
@@ -22,7 +22,7 @@ $nullable: gutters container-position;
 $susy-keywords: (
   container: auto,
   math: static fluid,
-  layout-method: isolate float,
+  output: isolate float,
   container-position: left center right,
   flow: ltr rtl,
   show-grids: show hide show-columns show-baseline,

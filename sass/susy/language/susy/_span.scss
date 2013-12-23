@@ -66,7 +66,7 @@
   }
 
   // special margin handling
-  @if susy-get(layout-method, $span) == isolate and $location {
+  @if susy-get(output, $span) == isolate and $location {
     $margin-before: get-isolation($span);
     $margin-after: -100%;
   } @else {

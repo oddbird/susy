@@ -13,7 +13,7 @@ These two definitions are interchangeable:
     columns: 12,
     gutters: 1/4,
     math: fluid,
-    layout-method: float,
+    output: float,
     gutter-position: inside,
   );
 
@@ -116,7 +116,7 @@ Layout Method
 
 *Toggle between output layout styles.*
 
-- **setting:** ``layout-method``
+- **setting:** ``output``
 - **scope:** global, local
 - **options:** ``float`` | ``isolate``
 - **default:** ``float``

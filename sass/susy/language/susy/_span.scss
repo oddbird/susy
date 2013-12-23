@@ -114,7 +114,7 @@
     $context: column-sum($columns, $gutters, if(is-split($span), wide, narrow));
     $span-sum: get-column-span-sum($n, $location, $columns, $gutters, if(is-inside($span), wide, $spread));
 
-    @if susy-get(layout-math, $span) == static {
+    @if susy-get(math, $span) == static {
       $width: $span-sum * susy-get(column-width, $span);
     } @else {
       $width: percentage($span-sum / $context);

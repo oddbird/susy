@@ -132,7 +132,7 @@
 @function gutter-math(
   $context: $susy
 ) {
-  $return   : susy-get(layout-math, $context);
+  $return   : susy-get(math, $context);
   $return   : if(susy-get(gutter-position, $context) == inside-static, static, $return);
 
   @return $return;

@@ -6,7 +6,7 @@
 // - PRIVATE
 @include susy-defaults((
   container: auto,
-  layout-math: fluid,
+  math: fluid,
   layout-method: float,
   container-position: center,
   gutter-position: after,
@@ -21,7 +21,7 @@ $nullable: gutters container-position;
 // - PRIVATE: DONT'T TOUCH
 $susy-keywords: (
   container: auto,
-  layout-math: static fluid,
+  math: static fluid,
   layout-method: isolate float,
   container-position: left center right,
   flow: ltr rtl,

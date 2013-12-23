@@ -12,7 +12,7 @@
 
   $width      : get-container-width($grid);
   $justify    : parse-container-position(susy-get(container-position, $grid));
-  $property   : if(susy-get(layout-math, $grid) == static, width, max-width);
+  $property   : if(susy-get(math, $grid) == static, width, max-width);
 
   $box        : susy-get(box-sizing, $grid);
 

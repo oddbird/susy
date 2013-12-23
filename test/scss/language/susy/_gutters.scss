@@ -197,16 +197,16 @@
   @include test('[function] gutter-math') {
     // after static
     $test: gutter-math((
-      layout-math: static,
+      math: static,
       gutter-position: after,
     ));
     $expect: static;
     @include assert-equal($test, $expect,
-      'Returns static gutters when layout-math is static.');
+      'Returns static gutters when math is static.');
 
     // inside-static
     $test: gutter-math((
-      layout-math: fluid,
+      math: fluid,
       gutter-position: inside-static,
     ));
     $expect: static;

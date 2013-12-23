@@ -29,7 +29,7 @@
   // -------------
 
   @include test('[function] get-isolation') {
-    // args: $span, $location [, $columns, $gutters, $column-width, $layout-math ]
+    // args: $span, $location [, $columns, $gutters, $column-width, $math ]
 
     // explicit
     $location: 30%;
@@ -51,7 +51,7 @@
       columns: 7,
       gutters: .5,
       column-width: 4em,
-      layout-math: static,
+      math: static,
     ));
     $expect: 30em;
     @include assert-equal($test, $expect,
@@ -64,7 +64,7 @@
       columns: 8,
       gutters: .25,
       column-width: 4em,
-      layout-math: fluid,
+      math: fluid,
       gutter-position: split,
     ));
     $expect: 1.25%;

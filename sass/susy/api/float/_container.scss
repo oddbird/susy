@@ -5,7 +5,7 @@
 // ---------------
 // - [$width]         : <length>
 // - [$justify]       : left | center | right
-// - [$layout-math]   : fluid | static
+// - [$math]   : fluid | static
 @mixin float-container(
   $width,
   $justify: auto auto,

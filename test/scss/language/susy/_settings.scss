@@ -99,7 +99,7 @@
       'parse-span: #1');
 
     // Span #2
-    $test: last 4 of (1 2 3 2 1) (4em 1em) before float static rtl container;
+    $test: last 4 of (1 2 3 2 1) (4em 1em) before float static rtl nest;
     $test: parse-span($test);
     $expect: (
       span: 4,
@@ -111,7 +111,7 @@
       math: static,
       flow: rtl,
       gutter-position: before,
-      is-container: container,
+      role: nest,
     );
     @include compare-maps($test, $expect,
       'parse-span: #2');

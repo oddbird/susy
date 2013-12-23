@@ -234,7 +234,7 @@
     @include assert-equal($padding, $expect,
       'Returns correct padding for inside gutters.');
 
-    // inside container (padding)
+    // inside nest (padding)
     $span: (
       span: 5,
       location: 2,
@@ -245,15 +245,15 @@
       math: fluid,
       flow: ltr,
       gutter-position: inside,
-      is-container: container,
+      role: nest,
     );
     $span: span-math($span);
     $padding: map-get($span, padding_before) map-get($span, padding_after);
     $expect: null null;
     @include assert-equal($padding, $expect,
-      'The padding for any "inside container" should be "null null"');
+      'The padding for any "inside nest" should be "null null"');
 
-    // split container (margin & width)
+    // split nest (margin & width)
     $span: (
       span: 5,
       location: 2,
@@ -263,13 +263,13 @@
       math: fluid,
       flow: ltr,
       gutter-position: split,
-      is-container: container,
+      role: nest,
     );
     $span: span-math($span);
     $margin: map-get($span, width) map-get($span, margin_before) map-get($span, margin_after);
     $expect: 62.5% null null;
     @include assert-equal($margin, $expect,
-      'Split containers use outer width, and no margins.');
+      'Split nest use outer width, and no margins.');
 
     // isolate (margins)
     $span: (

@@ -91,8 +91,8 @@ similar to the html ``dir`` attribute.*
    Layout elements will flow from right to left.
 
 
-Layout Math
------------
+Math
+----
 
 *Toggle between static and fluid (relative) math.*
 
@@ -111,8 +111,8 @@ Layout Math
    your grid widths will be output as ``em`` values.
 
 
-Layout Method
--------------
+Output
+------
 
 *Toggle between output layout styles.*
 
@@ -444,17 +444,17 @@ Gutter Override
    Override the calculated gutter output with an explicit width.
 
 
-Is-Container
-------------
+Role
+----
 
-*Mark a grid element as a container for nested grids.*
+*Mark a grid element as a nesting context for child elements.*
 
-- **name:** ``is-container``
+- **name:** ``role``
 - **scope:** local
-- **options:** ``container``
+- **options:** ``nest``
 - **default:** ``null``
 
-1. ``container``:
+1. ``nest``:
    Mark an internal grid element as a context for nested grids.
 
 .. note::
@@ -462,10 +462,3 @@ Is-Container
   This can be used with any grid type,
   but it is required for nesting
   with ``split``, ``inside``, or ``inside-static`` gutters.
-
-.. warning::
-
-  Not to be confused with the global ``container`` setting,
-  or an outer ``container`` element.
-  This is for internal grid elements that are *also*
-  acting as containers for nested grid elements.

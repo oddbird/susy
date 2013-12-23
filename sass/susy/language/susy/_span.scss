@@ -37,7 +37,8 @@
 @function span-math(
   $span
 ) {
-  $split-container  : if(is-split($span) and susy-get(is-container, $span), true, false);
+  $nest             : if(susy-get(role, $span) == nest, true, false);
+  $split-nest       : if(is-split($span) and $nest, true, false);
   $location         : susy-get(location, $span);
 
   $float            : from;
@@ -48,18 +49,18 @@
 
   // calculate widths
   $spread: index(map-values($span), spread);
-  $span: if($split-container and not $spread, map-merge($span, (spread: wide)), $span);
+  $span: if($split-nest and not $spread, map-merge($span, (spread: wide)), $span);
   $width: get-span-width($span);
   $gutters: get-gutters($span);
 
   // apply gutters
   @if is-inside($span) {
-    @if not susy-get(is-container, $span) {
+    @if not susy-get(role, $span) {
       $padding-before: map-get($gutters, before);
       $padding-after: map-get($gutters, after);
     }
   } @else {
-    @if not ($split-container) {
+    @if not ($split-nest) {
       $margin-before: map-get($gutters, before);
       $margin-after: map-get($gutters, after);
     }

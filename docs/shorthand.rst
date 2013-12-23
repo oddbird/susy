@@ -83,7 +83,7 @@ The syntax generally breaks down into three parts:
        location             : first alpha last omega,
        spread               : narrow wide wider,
        gutter-override      : no-gutters no-gutter,
-       is-container         : container,
+       role                 : nest,
      );
 
    The global keywords can be used anywhere,

@@ -34,7 +34,7 @@
   $span: parse-span($span);
 
   @include row(susy-get(flow, $span));
-  @if is-split($span) and not susy-get(is-container, $span) {
+  @if is-split($span) and not susy-get(role, $span) {
     @include gutters($span);
   }
   @if susy-get(output, $span) == isolate {

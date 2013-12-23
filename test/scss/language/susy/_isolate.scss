@@ -40,7 +40,7 @@
 
     // first
     $test: get-isolation((span: 1, location: first));
-    $expect: null;
+    $expect: auto;
     @include assert-equal($test, $expect,
       'Isolation in the first column doesnt require any prefixed margins.');
 

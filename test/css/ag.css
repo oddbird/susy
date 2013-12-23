@@ -142,6 +142,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   float: left;
 }
 .symmetrical .gallery div:nth-child(5n + 1) {
+  margin-left: auto;
   margin-right: -100%;
   margin-left: 0;
   clear: left;
@@ -193,6 +194,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 .asymmetrical > .size1of5:first-of-type {
   width: 12.5%;
   float: left;
+  margin-left: auto;
   margin-right: -100%;
 }
 .asymmetrical > .size1of5 ~ .size1of5 {
@@ -210,6 +212,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 .asymmetrical > .size3of5 > .size1of2:first-child {
   width: 44.0678%;
   float: left;
+  margin-left: auto;
   margin-right: -100%;
 }
 .asymmetrical > .size3of5 > .size1of2 + .size1of2 {
@@ -222,12 +225,14 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   clear: both;
   width: 100%;
   float: left;
+  margin-left: auto;
   margin-right: -100%;
   background: none;
 }
 .asymmetrical .full .size1of3 {
   width: 18.64407%;
   float: left;
+  margin-left: auto;
   margin-right: -100%;
   min-height: 9.75em;
 }
@@ -240,6 +245,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 .asymmetrical .size2of3 .size1of2:first-child {
   width: 47.82609%;
   float: left;
+  margin-left: auto;
   margin-right: -100%;
 }
 .asymmetrical .size2of3 .size1of2 + .size1of2 {
@@ -252,6 +258,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   clear: both;
   width: 100%;
   float: left;
+  margin-left: auto;
   margin-right: -100%;
 }
 .asymmetrical .gallery div {
@@ -259,6 +266,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 }
 .asymmetrical .gallery div:nth-child(5n + 1) {
   width: 12.5%;
+  margin-left: auto;
   margin-right: -100%;
   margin-left: 0;
   clear: left;
@@ -373,6 +381,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   float: left;
 }
 .static .gallery div:nth-child(5n + 1) {
+  margin-left: auto;
   margin-right: -100%;
   margin-left: 0;
   clear: left;
@@ -657,6 +666,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 }
 .inside .gallery div:nth-child(5n + 1) {
   width: 12.5%;
+  margin-left: auto;
   margin-right: -100%;
   clear: left;
 }
@@ -819,6 +829,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   padding-right: 1em;
 }
 .inside-static .gallery div:nth-child(5n + 1) {
+  margin-left: auto;
   margin-right: -100%;
   clear: left;
 }

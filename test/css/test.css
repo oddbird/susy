@@ -486,6 +486,7 @@
   float: left;
 }
 .test__gallery .assert__sym .test:nth-child(3n + 1) {
+  margin-left: auto;
   margin-right: -100%;
   margin-left: 0;
   clear: left;
@@ -531,6 +532,7 @@
   padding-right: 1.25%;
 }
 .test__gallery .assert__inside .test:nth-child(4n + 1) {
+  margin-left: auto;
   margin-right: -100%;
   clear: left;
 }
@@ -590,6 +592,7 @@
   padding-right: 2em;
 }
 .test__gallery .assert__inside-static .test:nth-child(3n + 1) {
+  margin-left: auto;
   margin-right: -100%;
   clear: left;
 }
@@ -684,6 +687,7 @@
 }
 .test__gallery .assert__asym .test:nth-child(3n + 1) {
   width: 32%;
+  margin-left: auto;
   margin-right: -100%;
   margin-left: 0;
   clear: left;
@@ -733,6 +737,7 @@
 }
 .test__gallery .assert__asym-inside .test:nth-child(2n + 1) {
   width: 40%;
+  margin-left: auto;
   margin-right: -100%;
   clear: left;
 }

@@ -47,5 +47,5 @@
     $width: if($width == null, gutters($input), $width + gutters($input));
   }
 
-  @return $width;
+  @return $width or auto;
 }

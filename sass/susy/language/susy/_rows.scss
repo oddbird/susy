@@ -1,17 +1,17 @@
 // Row Start & End
 // ===============
 
-// Row
-// ---
-// Apply to any layout element that should force a new layout row.
-@mixin row {
+// Break
+// -----
+// Apply to any element that should force a line break.
+@mixin break {
   clear: both;
 }
 
-// Unrow
-// -----
-// Cancel the row() effect, e.g. when using media queries.
-@mixin unrow {
+// NoBreak
+// -------
+// Cancel the break() effect, e.g. when using media queries.
+@mixin nobreak {
   clear: none;
 }
 
@@ -21,8 +21,7 @@
 @mixin full(
   $context: $susy
 ) {
-  @include row;
-  @include span(full of parse-grid($context));
+  @include span(full of parse-grid($context) break);
 }
 
 // First

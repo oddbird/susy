@@ -774,21 +774,21 @@
 /*
 
 ### Row Syntax ------ */
-/* - [mixin] row */
-/* "Rows should clear preceeding floats" */
-.test__row .assert__row .test {
+/* - [mixin] break */
+/* "breaks should clear preceeding floats" */
+.test__break .assert__break .test {
   clear: both;
 }
-.test__row .assert__row .expect {
+.test__break .assert__break .expect {
   clear: both;
 }
 
-/* - [mixin] unrow */
-/* "Non-rows should not clear floated elements" */
-.test__unrow .assert__unrow .test {
+/* - [mixin] nobreak */
+/* "Non-breaks should not clear floated elements" */
+.test__nobreak .assert__nobreak .test {
   clear: none;
 }
-.test__unrow .assert__unrow .expect {
+.test__nobreak .assert__nobreak .expect {
   clear: none;
 }
 

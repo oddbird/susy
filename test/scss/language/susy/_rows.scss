@@ -3,33 +3,33 @@
 
 @include output-test-module('Row Syntax') {
 
-  // row
-  // ---
+  // break
+  // -----
 
-  @include output-test('row') {
+  @include output-test('break') {
     @include assert-setup($grid: 7 .5 inside) {
       .spacer { @include span(2); }
     }
     @include assert-output(
-      'Rows should clear preceeding floats'
+      'breaks should clear preceeding floats'
     ) {
-      .test { @include row; }
+      .test { @include break; }
       .expect { clear: both; }
     }
   }
 
-  // unrow
-  // -----
+  // nobreak
+  // -------
 
-  @include output-test('unrow') {
+  @include output-test('nobreak') {
     @include assert-setup($grid: 7 .5 inside) {
       .spacer { @include span(2); }
-      .test, .expect { @include row; }
+      .test, .expect { @include break; }
     }
     @include assert-output(
-      'Non-rows should not clear floated elements'
+      'Non-breaks should not clear floated elements'
     ) {
-      .test { @include unrow; }
+      .test { @include nobreak; }
       .expect { clear: none; }
     }
   }
@@ -46,7 +46,7 @@
     ) {
       .test { @include full; }
       .expect {
-        @include row;
+        @include break;
         @include span(100% - get-gutter-width());
       }
     }
@@ -59,7 +59,7 @@
     ) {
       .test { @include full; }
       .expect {
-        @include row;
+        @include break;
         @include span(100%);
       }
     }

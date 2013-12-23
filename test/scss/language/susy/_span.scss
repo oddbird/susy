@@ -57,7 +57,7 @@
     ) {
       @include border-box-sizing;
 
-      .test { @include span(5 row); }
+      .test { @include span(5 break); }
       .expect {
         clear: both;
         width: 62.5%;

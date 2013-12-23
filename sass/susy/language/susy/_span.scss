@@ -17,10 +17,10 @@
   $content-box: if(susy-get(global-box-sizing) != 'border-box', true, false);
   $box: $box or if(is-inside($span) and $content-box, border-box, null);
 
-  @if $clear == row {
-    @include row;
-  } @else if $clear == unrow {
-    @include unrow;
+  @if $clear == break {
+    @include break;
+  } @else if $clear == nobreak {
+    @include nobreak;
   }
 
   @include susy-box-sizing($box);

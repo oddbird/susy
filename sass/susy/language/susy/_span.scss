@@ -80,7 +80,7 @@
     $last: is-last(susy-get(span, $span), $location, susy-get(columns, $span));
     $is-split: is-split($span);
     @if $last {
-      $float: susy-get(last-flow, $span);
+      $float: if($location == 'full', $float, susy-get(last-flow, $span));
       $margin-after: if($is-split, $margin-after, null);
     } @else if is-first($location) {
       $margin-before: if($is-split, $margin-before, null);

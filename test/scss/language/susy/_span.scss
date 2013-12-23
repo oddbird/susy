@@ -311,6 +311,28 @@
     @include assert-equal($float, to,
       'Sets the correct float when last.');
 
+    // full (margins & float)
+    $span: (
+      span: full,
+      location: full,
+      columns: 8,
+      gutters: .25,
+      column-width: 4em,
+      layout-method: float,
+      layout-math: fluid,
+      flow: ltr,
+      gutter-position: split,
+    );
+    $span: span-math($span);
+    $margins: map-get($span, margin_before) map-get($span, margin_after);
+    $float: map-get($span, float);
+    $expect: 1.25% 1.25%;
+    @include assert-equal($margins, $expect,
+      'Removes correct margins when full.');
+
+    @include assert-equal($float, from,
+      'Sets the correct float when full.');
+
     // before first (margins)
     $span: (
       span: 3,

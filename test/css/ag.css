@@ -108,7 +108,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 .symmetrical > .size3of5 > .full {
   clear: both;
   width: 100%;
-  float: right;
+  float: left;
   margin-left: 2.04082%;
   background: none;
 }
@@ -134,7 +134,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 .symmetrical .size2of3 .full {
   clear: both;
   width: 100%;
-  float: right;
+  float: left;
   margin-left: 5.26316%;
 }
 .symmetrical .gallery div {
@@ -341,7 +341,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 .static > .size3of5 > .full {
   clear: both;
   width: 100%;
-  float: right;
+  float: left;
   background: none;
 }
 .static .full .size1of3 {
@@ -366,7 +366,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 .static .size2of3 .full {
   clear: both;
   width: 100%;
-  float: right;
+  float: left;
 }
 .static .gallery div {
   width: 140px;
@@ -456,7 +456,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 .split > .size3of5 > .full {
   clear: both;
   width: 100%;
-  float: right;
+  float: left;
   background: none;
 }
 .split .full .size1of3 {
@@ -485,7 +485,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 .split .size2of3 .full {
   clear: both;
   width: 93.75%;
-  float: right;
+  float: left;
   margin-left: 3.125%;
   margin-right: 3.125%;
 }
@@ -599,7 +599,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
   width: 100%;
-  float: right;
+  float: left;
   background: none;
 }
 .inside .full .size1of3 {
@@ -643,7 +643,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
   width: 100%;
-  float: right;
+  float: left;
   padding-left: 3.125%;
   padding-right: 3.125%;
 }
@@ -761,7 +761,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
   width: 100%;
-  float: right;
+  float: left;
   background: none;
 }
 .inside-static .full .size1of3 {
@@ -805,7 +805,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
   width: 100%;
-  float: right;
+  float: left;
   padding-left: 1em;
   padding-right: 1em;
 }

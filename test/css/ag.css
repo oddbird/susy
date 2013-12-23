@@ -447,8 +447,10 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   margin-right: 0.78125%;
 }
 .split > .size3of5 {
-  width: 53.125%;
+  width: 51.5625%;
   float: left;
+  margin-left: 0.78125%;
+  margin-right: 0.78125%;
 }
 .split > .size3of5 > .size1of2:first-child {
   width: 64.70588%;
@@ -464,8 +466,10 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 }
 .split > .size3of5 > .full {
   clear: both;
-  width: 100%;
+  width: 98.4375%;
   float: left;
+  margin-left: 0.78125%;
+  margin-right: 0.78125%;
   background: none;
 }
 .split .full .size1of3 {
@@ -476,8 +480,10 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   min-height: 9.75em;
 }
 .split .full .size2of3 {
-  width: 47.05882%;
+  width: 44.11765%;
   float: right;
+  margin-left: 1.47059%;
+  margin-right: 1.47059%;
 }
 .split .size2of3 .size1of2:first-child {
   width: 43.75%;
@@ -583,6 +589,8 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   box-sizing: border-box;
   width: 53.125%;
   float: left;
+  padding-left: 0.78125%;
+  padding-right: 0.78125%;
 }
 .inside > .size3of5 > .size1of2:first-child {
   -moz-box-sizing: border-box;
@@ -609,6 +617,8 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   box-sizing: border-box;
   width: 100%;
   float: left;
+  padding-left: 0.78125%;
+  padding-right: 0.78125%;
   background: none;
 }
 .inside .full .size1of3 {
@@ -627,6 +637,8 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   box-sizing: border-box;
   width: 47.05882%;
   float: right;
+  padding-left: 1.47059%;
+  padding-right: 1.47059%;
 }
 .inside .size2of3 .size1of2:first-child {
   -moz-box-sizing: border-box;
@@ -746,6 +758,8 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   box-sizing: border-box;
   width: 60.0%;
   float: left;
+  padding-left: 1em;
+  padding-right: 1em;
 }
 .inside-static > .size3of5 > .size1of2:first-child {
   -moz-box-sizing: border-box;
@@ -772,6 +786,8 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   box-sizing: border-box;
   width: 100%;
   float: left;
+  padding-left: 1em;
+  padding-right: 1em;
   background: none;
 }
 .inside-static .full .size1of3 {
@@ -790,6 +806,8 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   box-sizing: border-box;
   width: 66.66667%;
   float: right;
+  padding-left: 1em;
+  padding-right: 1em;
 }
 .inside-static .size2of3 .size1of2:first-child {
   -moz-box-sizing: border-box;

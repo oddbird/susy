@@ -9,6 +9,7 @@ Changelog
 - BREAKING: Remove unclear ``row`` and ``unrow`` mixins.
 - Add ``break`` and ``nobreak`` mixins/keywords
   to create a new line before any element in the layout.
+- BREAKING: Rename ``is-container: container`` setting/value to ``role: nest``.
 - BREAKING: Rename ``layout-method`` setting to ``output``.
 - BREAKING: Rename ``layout-math`` setting to ``math``.
 - Clean up division between math/output/syntax layers.

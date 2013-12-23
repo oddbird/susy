@@ -79,7 +79,7 @@
   }
 
   // special margin handling
-  @if susy-get(layout-method, $span) == isolate and $location {
+  @if susy-get(output, $span) == isolate and $location {
     $margin-before: get-isolation($span);
     $margin-after: -100%;
   } @else {
@@ -131,7 +131,7 @@
     $context: column-sum($columns, $gutters, if(is-split($span), wide, narrow));
     $span-sum: get-column-span-sum($n, $location, $columns, $gutters, if(is-inside($span), wide, $spread));
 
-    @if susy-get(layout-math, $span) == static {
+    @if susy-get(math, $span) == static {
       $width: $span-sum * susy-get(column-width, $span);
     } @else {
       $width: percentage($span-sum / $context);

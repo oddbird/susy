@@ -70,8 +70,8 @@ The syntax generally breaks down into three parts:
 
      $global-keywords: (
        container            : auto,
-       layout-math          : static fluid,
-       layout-method        : isolate float,
+       math                 : static fluid,
+       output               : isolate float,
        container-position   : left center right,
        flow                 : ltr rtl,
        show-grids           : show hide show-columns show-baseline,
@@ -109,7 +109,7 @@ it will be used for the ``container`` width.
   $layout: $span $grid $keywords;
 
   // grid: (columns: 4, gutters: 1/4, column-width: 4em);
-  // keywords: (layout-math: fluid, gutter-position: inside-static, flow: rtl);
+  // keywords: (math: fluid, gutter-position: inside-static, flow: rtl);
   $small: 4 (4em 1em) fluid inside-static rtl;
 
   // span: (container: 80em);
@@ -138,7 +138,7 @@ The standard span syntax looks like this:
 
   // span: 3;
   // location: 4;
-  // layout: (columns: 12, gutters: .25, layout-math: fluid)
+  // layout: (columns: 12, gutters: .25, math: fluid)
   $span: 3 at 4 of 12 .25 fluid;
 
   // Only $span is required in most cases

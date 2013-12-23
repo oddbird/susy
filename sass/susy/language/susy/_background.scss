@@ -129,7 +129,7 @@ $debug-defaults: (
   $grid           : parse-grid($grid);
   $gutters        : susy-get(gutters, $grid);
   $column-width   : susy-get(column-width, $grid);
-  $math           : susy-get(layout-math, $grid);
+  $math           : susy-get(math, $grid);
 
   $color          : debug-get(color);
   $trans          : transparent;

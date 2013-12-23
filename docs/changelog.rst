@@ -9,6 +9,8 @@ Changelog
 - BREAKING: Remove unclear ``row`` and ``unrow`` mixins.
 - Add ``break`` and ``nobreak`` mixins/keywords
   to create a new line before any element in the layout.
+- BREAKING: Rename ``layout-method`` setting to ``output``.
+- BREAKING: Rename ``layout-math`` setting to ``math``.
 - Clean up division between math/output/syntax layers.
 - ``gutters`` and ``container-position`` can be set to ``null``.
 - If ``gutters`` are set to ``0`` or ``null``, they will have no output.

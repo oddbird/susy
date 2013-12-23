@@ -129,7 +129,7 @@
     @include set-grid((
       columns: 7,
       gutters: .5,
-      layout-math: fluid,
+      math: fluid,
     ));
 
     // simple
@@ -153,8 +153,8 @@
       columns: 7,
       gutters: .5,
       column-width: 4em,
-      layout-method: float,
-      layout-math: fluid,
+      output: float,
+      math: fluid,
       flow: ltr,
       gutter-position: after,
     );
@@ -177,8 +177,8 @@
       columns: 7,
       gutters: .5,
       column-width: 4em,
-      layout-method: float,
-      layout-math: fluid,
+      output: float,
+      math: fluid,
       flow: ltr,
       gutter-position: after,
     );
@@ -202,8 +202,8 @@
       columns: 8,
       gutters: .25,
       column-width: 4em,
-      layout-method: float,
-      layout-math: fluid,
+      output: float,
+      math: fluid,
       flow: ltr,
       gutter-position: split,
     );
@@ -227,8 +227,8 @@
       columns: 8,
       gutters: .25,
       column-width: 4em,
-      layout-method: float,
-      layout-math: fluid,
+      output: float,
+      math: fluid,
       flow: ltr,
       gutter-position: inside,
     );
@@ -245,8 +245,8 @@
       columns: 7,
       gutters: .5,
       column-width: 4em,
-      layout-method: float,
-      layout-math: fluid,
+      output: float,
+      math: fluid,
       flow: ltr,
       gutter-position: inside,
       is-container: container,
@@ -263,8 +263,8 @@
       location: 2,
       columns: 8,
       gutters: .25,
-      layout-method: float,
-      layout-math: fluid,
+      output: float,
+      math: fluid,
       flow: ltr,
       gutter-position: split,
       is-container: container,
@@ -282,8 +282,8 @@
       columns: 7,
       gutters: .5,
       column-width: 4em,
-      layout-method: isolate,
-      layout-math: fluid,
+      output: isolate,
+      math: fluid,
       flow: ltr,
       gutter-position: after,
     );
@@ -300,8 +300,8 @@
       columns: 7,
       gutters: .5,
       column-width: 4em,
-      layout-method: float,
-      layout-math: static,
+      output: float,
+      math: static,
       flow: ltr,
       gutter-position: after,
     );
@@ -344,8 +344,8 @@
       columns: (1 2 3 2 1),
       gutters: .5,
       column-width: 4em,
-      layout-method: float,
-      layout-math: static,
+      output: float,
+      math: static,
       flow: ltr,
       gutter-position: before,
     );
@@ -396,7 +396,7 @@
       columns: 8,
       gutters: .25,
       column-width: null,
-      layout-math: fluid,
+      math: fluid,
       gutter-position: inside,
     );
     $width: get-span-width($map);
@@ -409,7 +409,7 @@
       columns: 8,
       gutters: .25,
       column-width: null,
-      layout-math: fluid,
+      math: fluid,
       gutter-position: inside,
       gutter-override: no-gutters,
     );
@@ -424,7 +424,7 @@
       columns: 8,
       gutters: .25,
       column-width: null,
-      layout-math: fluid,
+      math: fluid,
       gutter-position: split,
     );
     $width: get-span-width($map);
@@ -438,7 +438,7 @@
       columns: 7,
       gutters: .5,
       column-width: 4em,
-      layout-math: static,
+      math: static,
     );
     $width: get-span-width($map);
     @include assert-equal($width, 28em,
@@ -451,7 +451,7 @@
       columns: 8,
       gutters: .25,
       column-width: 4em,
-      layout-math: static,
+      math: static,
       gutter-position: inside,
     );
     $width: get-span-width($map);

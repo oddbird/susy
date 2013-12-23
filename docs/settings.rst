@@ -12,8 +12,8 @@ These two definitions are interchangeable:
   $map: (
     columns: 12,
     gutters: 1/4,
-    layout-math: fluid,
-    layout-method: float,
+    math: fluid,
+    output: float,
     gutter-position: inside,
   );
 
@@ -28,7 +28,7 @@ They can even be mixed and matched:
   $map: (
     columns: 12,
     gutters: .25,
-    layout-math: fluid,
+    math: fluid,
   );
 
   @include set-grid($map float inside);
@@ -96,7 +96,7 @@ Layout Math
 
 *Toggle between static and fluid (relative) math.*
 
-- **setting:** ``layout-math``
+- **setting:** ``math``
 - **scope:** global, local
 - **options:** ``fluid`` | ``static``
 - **default:** ``fluid``
@@ -116,7 +116,7 @@ Layout Method
 
 *Toggle between output layout styles.*
 
-- **setting:** ``layout-method``
+- **setting:** ``output``
 - **scope:** global, local
 - **options:** ``float`` | ``isolate``
 - **default:** ``float``

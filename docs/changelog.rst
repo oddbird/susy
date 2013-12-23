@@ -5,6 +5,7 @@ Changelog
 2.0.0.alpha.7 — unreleased
 --------------------------
 
+- BREAKING: Rename ``is-container: container`` setting/value to ``role: nest``.
 - BREAKING: Rename ``layout-method`` setting to ``output``.
 - BREAKING: Rename ``layout-math`` setting to ``math``.
 - Clean up division between math/output/syntax layers.

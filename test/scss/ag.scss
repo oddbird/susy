@@ -23,13 +23,13 @@
       ~ .size1of5 { @include span(last 2); }
     }
     > .size3of5 {
-      @include span(6 at 3 container);
+      @include span(6 at 3 nest);
       > .size1of2 {
         &:first-child { @include span(3 at 1 of nested(6 at 3)); }
         + .size1of2 { @include span(last 3 of nested(6 at 3)); }
       }
       > .full {
-        @include full(container);
+        @include full(nest);
         background: none;
       }
     }
@@ -41,7 +41,7 @@
           min-height: rhythm(6.5);
         }
         .size2of3 {
-          @include span(4 omega container);
+          @include span(4 omega nest);
         }
       }
     }

@@ -5,15 +5,19 @@ Changelog
 2.0.0.alpha.7 — unreleased
 --------------------------
 
+- Add ``full`` keyword shortcut for full-width spans.
+- BREAKING: Remove unclear ``row`` and ``unrow`` mixins.
+- Add ``break`` and ``nobreak`` mixins/keywords
+  to create a new line before any element in the layout.
 - BREAKING: Rename ``is-container: container`` setting/value to ``role: nest``.
 - BREAKING: Rename ``layout-method`` setting to ``output``.
 - BREAKING: Rename ``layout-math`` setting to ``math``.
 - Clean up division between math/output/syntax layers.
 - ``gutters`` and ``container-position`` can be set to ``null``.
 - If ``gutters`` are set to ``0`` or ``null``, they will have no output.
-- ``full`` outputs auto margins in an isolation context.
-- Debug grids are hidden by default.
-- Remove ``nth-last``/``-omega``/``-first``/``-alpha``
+- BREAKING: ``full`` output matches span patterns.
+- BREAKING: Debug grids are hidden by default.
+- BREAKING: Remove ``nth-last``/``-omega``/``-first``/``-alpha``
   as confusing & out-of-scope.
   Format your nth-selectors manually to apply ``first``/``last`` mixins.
 
@@ -23,7 +27,7 @@ Changelog
   + Unitless numbers are used for context.
   + Lengths (with units) are used as explicit gutter-overrides.
 
-- Re-purposed ``susy-set`` as reverse of ``susy-get`` —
+- BREAKING: Re-purposed ``susy-set`` as reverse of ``susy-get`` —
   to adjust a single setting.
   Example: ``@include susy-set(gutter-position, inside);``
 

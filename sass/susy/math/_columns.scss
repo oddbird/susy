@@ -54,7 +54,7 @@
 // -----------
 // Return a subset of columns at a given location.
 // - $span        : <number>
-// - $location    : first | last | <number>
+// - $location    : <number>
 // - [$columns]   : <number> | <list>
 @function get-columns(
   $span,
@@ -65,8 +65,8 @@
   $sub-columns: $span;
 
   @if not is-symmetrical($columns) {
-    $sub-columns  : ();
-    $location     : get-location($span, $location, $columns) or 1;
+    $location: $location or 1;
+    $sub-columns: ();
     @for $i from $location to ($location + $span) {
       $sub-columns: append($sub-columns, nth($columns, $i));
     }
@@ -82,7 +82,7 @@
 // - $location    : first | last | <number>
 // - [$columns]   : <number> | <list>
 // - [$gutters]   : <ratio>
-// - [$spread]     : <boolean>
+// - [$spread]    : <boolean>
 @function get-column-span-sum(
   $span,
   $location     : false,

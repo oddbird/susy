@@ -39,15 +39,15 @@
       'Explicit isolation placements should be passed back unchanged.');
 
     // first
-    $test: get-isolation((span: 1, location: first));
-    $expect: null;
+    $test: get-isolation((span: 1, edge: first));
+    $expect: 0;
     @include assert-equal($test, $expect,
       'Isolation in the first column doesnt require any prefixed margins.');
 
     // calculated
     $test: get-isolation((
       span: 2,
-      location: last,
+      edge: last,
       columns: 7,
       gutters: .5,
       column-width: 4em,
@@ -60,7 +60,7 @@
     // split
     $test: get-isolation((
       span: 2,
-      location: first,
+      location: 1,
       columns: 8,
       gutters: .25,
       column-width: 4em,

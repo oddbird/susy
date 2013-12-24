@@ -8,13 +8,15 @@
 @mixin bleed(
   $bleed: 0 gutter()
 ) {
-  $bleed    : parse-span($bleed);
+  $bleed    : map-merge(parse-span($bleed), (spread: wide));
   $trbl     : susy-get(span, $bleed);
   $spans    : (top: 0, right: 0, bottom: 0, left: 0);
 
   $i: 1;
   @each $span in $trbl {
-    $span: span(map-merge($bleed, (span: $span)));
+    $this: map-merge($bleed, (span: $span));
+    $span: span($this);
+
     @if $i == 1 {
       $spans: map-merge($spans, (top: $span, right: $span, bottom: $span, left: $span));
     } @else if $i == 2 {

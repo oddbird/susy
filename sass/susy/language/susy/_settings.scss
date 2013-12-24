@@ -28,10 +28,12 @@ $susy-keywords: (
   show-grids: show hide show-columns show-baseline,
   gutter-position: before after split inside inside-static,
   box-sizing: border-box content-box,
-  location: first alpha last omega,
+  span: full,
+  edge: first alpha last omega full,
   spread: narrow wide wider,
   gutter-override: no-gutters no-gutter,
   role: nest,
+  clear: break nobreak,
 );
 
 // User Settings

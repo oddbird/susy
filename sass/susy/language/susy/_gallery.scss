@@ -75,15 +75,15 @@
       // Individual Output
       @include float-span-output($output...);
 
-      @if is-first(susy-get(location, $layout)) {
+      @if get-edge($layout) == first {
+        @include break;
         @include first($layout);
-        clear: $from;
       } @else {
-        clear: none;
+        @include nobreak;
       }
 
       // Individual Location Increment
-      $location: susy-get(location, $layout) + $span;
+      $location: get-location($layout) + $span;
       $location: if($location > $context, 1, $location);
       $layout: map-merge($layout, (location: $location));
     }

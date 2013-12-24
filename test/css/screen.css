@@ -174,7 +174,7 @@ h1 {
 
 ### Language Settings ------ */
 /*  - [function] parse-grid (30 Assertions, 30 Passed, 0 Failed) */
-/*  - [function] parse-span (41 Assertions, 41 Passed, 0 Failed) */
+/*  - [function] parse-span (44 Assertions, 44 Passed, 0 Failed) */
 /*  - [function] parse-gutters (11 Assertions, 11 Passed, 0 Failed) */
 /*  - [function] susy-get (4 Assertions, 4 Passed, 0 Failed) */
 /*  
@@ -449,12 +449,19 @@ h1 {
   clear: both;
 }
 
-.test__span .assert__inside .test, .test__span .assert__inside .expect {
-  clear: both;
+.test__span .assert__inside .spacer {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 25%;
+  float: left;
+  padding-left: 1.25%;
+  padding-right: 1.25%;
+  clear: left;
 }
 
 .test__span .assert__inside::before {
-  content: "Span should set width, float, and inside gutter";
+  content: "Span should set width, float, clear, and inside gutter";
   display: block;
   padding: 0.375rem 0.75rem;
   text-align: left;
@@ -497,8 +504,8 @@ h1 {
 
 /*  - [mixin] span (4 Assertions, 4 Passed, 0 Failed) */
 /*  - [function] span (1 Assertions, 1 Passed, 0 Failed) */
-/*  - [function] span-math (10 Assertions, 10 Passed, 0 Failed) */
-/*  - [function] get-span-width (9 Assertions, 9 Passed, 0 Failed) */
+/*  - [function] span-math (12 Assertions, 12 Passed, 0 Failed) */
+/*  - [function] get-span-width (10 Assertions, 10 Passed, 0 Failed) */
 /*  
     4 Tests:
     - 4 Passed
@@ -512,11 +519,11 @@ h1 {
   max-width: 100%;
   margin-left: auto;
   margin-right: auto;
-  background-image: -moz-linear-gradient(left, rgba(0, 0, 0, 0) 16.66667%, rgba(102, 102, 255, 0.25) 16.66667%, rgba(179, 179, 255, 0.25) 83.33333%, rgba(0, 0, 0, 0) 83.33333%);
-  background-image: -webkit-linear-gradient(left, rgba(0, 0, 0, 0) 16.66667%, rgba(102, 102, 255, 0.25) 16.66667%, rgba(179, 179, 255, 0.25) 83.33333%, rgba(0, 0, 0, 0) 83.33333%);
-  background-image: linear-gradient(to right, rgba(0, 0, 0, 0) 16.66667%, rgba(102, 102, 255, 0.25) 16.66667%, rgba(179, 179, 255, 0.25) 83.33333%, rgba(0, 0, 0, 0) 83.33333%);
-  -webkit-background-size: 14.28571%;
-  background-size: 14.28571%;
+  background-image: -moz-linear-gradient(left, rgba(0, 0, 0, 0) 10%, rgba(102, 102, 255, 0.25) 10%, rgba(179, 179, 255, 0.25) 90%, rgba(0, 0, 0, 0) 90%);
+  background-image: -webkit-linear-gradient(left, rgba(0, 0, 0, 0) 10%, rgba(102, 102, 255, 0.25) 10%, rgba(179, 179, 255, 0.25) 90%, rgba(0, 0, 0, 0) 90%);
+  background-image: linear-gradient(to right, rgba(0, 0, 0, 0) 10%, rgba(102, 102, 255, 0.25) 10%, rgba(179, 179, 255, 0.25) 90%, rgba(0, 0, 0, 0) 90%);
+  -webkit-background-size: 12.5%;
+  background-size: 12.5%;
   -webkit-background-origin: content-box;
   -webkit-background-clip: content-box;
   background-origin: content-box;
@@ -914,11 +921,11 @@ h1 {
     0 Tests:
     - 0 Passed
     - 0 Failed */
-/*
+/*  
 
 ### Row Syntax ------ */
-/* - [mixin] row */
-.test__row .assert__row {
+/* - [mixin] break */
+.test__break .assert__break {
   *zoom: 1;
   max-width: 100%;
   margin-left: auto;
@@ -934,13 +941,13 @@ h1 {
   background-clip: content-box;
   background-position: left top;
 }
-.test__row .assert__row:after {
+.test__break .assert__break:after {
   content: " ";
   display: block;
   clear: both;
 }
 
-.test__row .assert__row .spacer {
+.test__break .assert__break .spacer {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
@@ -950,16 +957,16 @@ h1 {
   padding-right: 2.38095%;
 }
 
-.test__row .assert__row::before {
-  content: "Rows should clear preceeding floats, and contain inner floats";
+.test__break .assert__break::before {
+  content: "breaks should clear preceeding floats";
   display: block;
   padding: 0.375rem 0.75rem;
   text-align: left;
   font-style: italic;
 }
 
-/* - [mixin] unrow */
-.test__unrow .assert__unrow {
+/* - [mixin] nobreak */
+.test__nobreak .assert__nobreak {
   *zoom: 1;
   max-width: 100%;
   margin-left: auto;
@@ -975,13 +982,13 @@ h1 {
   background-clip: content-box;
   background-position: left top;
 }
-.test__unrow .assert__unrow:after {
+.test__nobreak .assert__nobreak:after {
   content: " ";
   display: block;
   clear: both;
 }
 
-.test__unrow .assert__unrow .spacer {
+.test__nobreak .assert__nobreak .spacer {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
@@ -990,18 +997,12 @@ h1 {
   padding-left: 2.38095%;
   padding-right: 2.38095%;
 }
-.test__unrow .assert__unrow .test, .test__unrow .assert__unrow .expect {
-  *zoom: 1;
-  clear: both;
-}
-.test__unrow .assert__unrow .test:after, .test__unrow .assert__unrow .expect:after {
-  content: " ";
-  display: block;
+.test__nobreak .assert__nobreak .test, .test__nobreak .assert__nobreak .expect {
   clear: both;
 }
 
-.test__unrow .assert__unrow::before {
-  content: "Non-rows should not clear or wrap floated elements";
+.test__nobreak .assert__nobreak::before {
+  content: "Non-breaks should not clear floated elements";
   display: block;
   padding: 0.375rem 0.75rem;
   text-align: left;
@@ -1009,36 +1010,72 @@ h1 {
 }
 
 /* - [mixin] full */
-.test__full .assert__full {
+.test__full .assert__split {
   *zoom: 1;
   max-width: 100%;
   margin-left: auto;
   margin-right: auto;
-  background-image: -moz-linear-gradient(left, rgba(0, 0, 0, 0) 16.66667%, rgba(102, 102, 255, 0.25) 16.66667%, rgba(179, 179, 255, 0.25) 83.33333%, rgba(0, 0, 0, 0) 83.33333%);
-  background-image: -webkit-linear-gradient(left, rgba(0, 0, 0, 0) 16.66667%, rgba(102, 102, 255, 0.25) 16.66667%, rgba(179, 179, 255, 0.25) 83.33333%, rgba(0, 0, 0, 0) 83.33333%);
-  background-image: linear-gradient(to right, rgba(0, 0, 0, 0) 16.66667%, rgba(102, 102, 255, 0.25) 16.66667%, rgba(179, 179, 255, 0.25) 83.33333%, rgba(0, 0, 0, 0) 83.33333%);
-  -webkit-background-size: 14.28571%;
-  background-size: 14.28571%;
+  background-image: -moz-linear-gradient(left, rgba(0, 0, 0, 0) 10%, rgba(102, 102, 255, 0.25) 10%, rgba(179, 179, 255, 0.25) 90%, rgba(0, 0, 0, 0) 90%);
+  background-image: -webkit-linear-gradient(left, rgba(0, 0, 0, 0) 10%, rgba(102, 102, 255, 0.25) 10%, rgba(179, 179, 255, 0.25) 90%, rgba(0, 0, 0, 0) 90%);
+  background-image: linear-gradient(to right, rgba(0, 0, 0, 0) 10%, rgba(102, 102, 255, 0.25) 10%, rgba(179, 179, 255, 0.25) 90%, rgba(0, 0, 0, 0) 90%);
+  -webkit-background-size: 12.5%;
+  background-size: 12.5%;
   -webkit-background-origin: content-box;
   -webkit-background-clip: content-box;
   background-origin: content-box;
   background-clip: content-box;
   background-position: left top;
 }
-.test__full .assert__full:after {
+.test__full .assert__split:after {
   content: " ";
   display: block;
   clear: both;
 }
 
-.test__full .assert__full .spacer {
-  width: 23.80952%;
+.test__full .assert__split .spacer {
+  width: 22.5%;
   float: left;
-  margin-left: 2.38095%;
-  margin-right: 2.38095%;
+  margin-left: 1.25%;
+  margin-right: 1.25%;
 }
 
-.test__full .assert__full::before {
+.test__full .assert__split::before {
+  content: "Full spans clear preceeding floats, and have gutters.";
+  display: block;
+  padding: 0.375rem 0.75rem;
+  text-align: left;
+  font-style: italic;
+}
+
+.test__full .assert__after {
+  *zoom: 1;
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  background-image: -moz-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 66.66667%, rgba(0, 0, 0, 0) 66.66667%);
+  background-image: -webkit-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 66.66667%, rgba(0, 0, 0, 0) 66.66667%);
+  background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 66.66667%, rgba(0, 0, 0, 0) 66.66667%);
+  -webkit-background-size: 15%;
+  background-size: 15%;
+  -webkit-background-origin: content-box;
+  -webkit-background-clip: content-box;
+  background-origin: content-box;
+  background-clip: content-box;
+  background-position: left top;
+}
+.test__full .assert__after:after {
+  content: " ";
+  display: block;
+  clear: both;
+}
+
+.test__full .assert__after .spacer {
+  width: 25%;
+  float: left;
+  margin-right: 5%;
+}
+
+.test__full .assert__after::before {
   content: "Full spans clear preceeding floats, and have gutters.";
   display: block;
   padding: 0.375rem 0.75rem;
@@ -1274,6 +1311,12 @@ h1 {
   font-style: italic;
 }
 
+/*  - [function] get-edge (6 Assertions, 6 Passed, 0 Failed) */
+/*  - [function] get-location (4 Assertions, 4 Passed, 0 Failed) */
+/*  
+    2 Tests:
+    - 2 Passed
+    - 0 Failed */
 /*
 
 ### Margin Syntax ------ */
@@ -2605,5 +2648,5 @@ h1 {
   border-color: green;
 }
 .results::after {
-  content: "34 Tests, 34 Passed, 0 Failed";
+  content: "36 Tests, 36 Passed, 0 Failed";
 }

@@ -10,7 +10,7 @@
 ) {
   $context    : parse-span($context);
   $span       : susy-get(span, $context);
-  $location   : susy-get(location, $context);
+  $location   : get-location($context);
   $columns    : susy-get(columns, $context);
 
   @return get-columns($span, $location, $columns);

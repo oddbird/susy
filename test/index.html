@@ -188,7 +188,9 @@
     </div>
 
     <div class="assert__inside">
+      <div class="spacer"></div>
       <div class="test">inside</div>
+      <div class="spacer"></div>
       <div class="expect">expect</div>
     </div>
 
@@ -335,25 +337,27 @@
 <article class="test-module">
   <h1>Row Syntax</h1>
 
-  <!-- row -->
-  <section class="test__row">
-    <h1>row [mixin]</h1>
+  <!-- break -->
+  <section class="test__break">
+    <h1>break [mixin]</h1>
 
-    <div class="assert__row">
+    <div class="assert__break">
       <div class="spacer"></div>
-      <div class="test">row <div class="spacer"></div></div>
-      <div class="expect">expect <div class="spacer"></div></div>
+      <div class="test">break</div>
+      <div class="spacer"></div>
+      <div class="expect">expect</div>
     </div>
   </section>
 
-  <!-- unrow -->
-  <section class="test__unrow">
-    <h1>unrow [mixin]</h1>
+  <!-- nobreak -->
+  <section class="test__nobreak">
+    <h1>nobreak [mixin]</h1>
 
-    <div class="assert__unrow">
+    <div class="assert__nobreak">
       <div class="spacer"></div>
-      <div class="test">unrow <div class="spacer"></div></div>
-      <div class="expect">expect <div class="spacer"></div></div>
+      <div class="test">nobreak</div>
+      <div class="spacer"></div>
+      <div class="expect">expect</div>
     </div>
   </section>
 
@@ -361,7 +365,13 @@
   <section class="test__full">
     <h1>full [mixin]</h1>
 
-    <div class="assert__full">
+    <div class="assert__split">
+      <div class="spacer"></div>
+      <div class="test">full <div class="spacer"></div></div>
+      <div class="expect">expect <div class="spacer"></div></div>
+    </div>
+
+    <div class="assert__after">
       <div class="spacer"></div>
       <div class="test">full <div class="spacer"></div></div>
       <div class="expect">expect <div class="spacer"></div></div>
@@ -393,26 +403,6 @@
     </div>
   </section>
 
-  <!-- nth-first -->
-  <section class="test__nth-first">
-    <h1>nth-first [mixin]</h1>
-
-    <div class="assert__nth-first">
-      <div class="test">nth-first</div>
-      <div class="expect">expect</div>
-    </div>
-  </section>
-
-  <!-- nth-alpha -->
-  <section class="test__nth-alpha">
-    <h1>nth-alpha [mixin]</h1>
-
-    <div class="assert__nth-alpha">
-      <div class="test">nth-alpha</div>
-      <div class="expect">expect</div>
-    </div>
-  </section>
-
   <!-- last -->
   <section class="test__last">
     <h1>last [mixin]</h1>
@@ -434,26 +424,6 @@
 
     <div class="assert__omega">
       <div class="test">omega</div>
-      <div class="expect">expect</div>
-    </div>
-  </section>
-
-  <!-- nth-last -->
-  <section class="test__nth-last">
-    <h1>nth-last [mixin]</h1>
-
-    <div class="assert__nth-last">
-      <div class="test">nth-last</div>
-      <div class="expect">expect</div>
-    </div>
-  </section>
-
-  <!-- nth-omega -->
-  <section class="test__nth-omega">
-    <h1>nth-omega [mixin]</h1>
-
-    <div class="assert__nth-omega">
-      <div class="test">nth-omega</div>
       <div class="expect">expect</div>
     </div>
   </section>

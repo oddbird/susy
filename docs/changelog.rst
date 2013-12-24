@@ -5,6 +5,7 @@ Changelog
 2.0.0.alpha.7 — unreleased
 --------------------------
 
+- Add ``layout`` function to convert layouts from shorthand syntax to map.
 - Add ``full`` keyword shortcut for full-width spans.
 - BREAKING: Remove unclear ``row`` and ``unrow`` mixins.
 - Add ``break`` and ``nobreak`` mixins/keywords

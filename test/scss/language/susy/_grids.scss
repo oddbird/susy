@@ -78,4 +78,16 @@
 
     @include original-grid;
   }
+
+  // [function] layout
+  // -----------------
+
+  @include test('[function] layout') {
+    $shorthand: 8 .5 inside static;
+    $test: layout($shorthand);
+    $expect: parse-grid($shorthand);
+    @include assert-equal($test, $expect,
+      'Returns a parsed grid map based on shorthand syntax');
+
+  }
 }

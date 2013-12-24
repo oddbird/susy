@@ -4,7 +4,7 @@
 // Set Grid
 // --------
 // Set a new grid using a shorthand
-// - $grid      : <settings>
+// - $grid: <settings>
 @mixin set-grid(
   $grid
 ) {
@@ -24,7 +24,7 @@
 // Use Grid
 // --------
 // Use an arbitrary grid for a section of code
-// - $grid      : <settings>
+// - $grid: <settings>
 @mixin use-grid(
   $grid
 ) {
@@ -34,4 +34,14 @@
   @content;
 
   $susy: $old !global;
+}
+
+// Layout
+// ------
+// Return a parsed layout map based on shorthand syntax
+// - $grid: <settings>
+@function layout(
+  $grid: $susy
+) {
+  @return parse-grid($grid);
 }

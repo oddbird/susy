@@ -1,6 +1,7 @@
 // Row Start & End
 // ===============
 
+
 // Break
 // -----
 // Apply to any element that should force a line break.
@@ -8,12 +9,14 @@
   clear: both;
 }
 
+
 // NoBreak
 // -------
 // Cancel the break() effect, e.g. when using media queries.
 @mixin nobreak {
   clear: none;
 }
+
 
 // Full
 // ----
@@ -23,6 +26,7 @@
 ) {
   @include span(full of parse-grid($context) break);
 }
+
 
 // First
 // -----
@@ -44,8 +48,9 @@
   @include first($grid);
 }
 
+
 // Last
-// -----
+// ----
 // - [$grid]: <settings>
 @mixin last(
   $grid: $susy
@@ -63,4 +68,60 @@
   $grid: $susy
 ) {
   @include last($grid);
+}
+
+
+// Get Edge
+// --------
+// Calculate edge value based on location, if possible
+@function get-edge(
+  $span
+) {
+  $span       : parse-span($span);
+  $edge       : susy-get(edge, $span);
+
+  @if not $edge {
+    $count: column-count(susy-get(columns, $span));
+    $location: susy-get(location, $span);
+    $n: susy-get(span, $span);
+
+    @if $n == $count {
+      $edge: full;
+    } @else if $location {
+      @if $location == 1 {
+        $edge: if($n == $count, full, first);
+      } @else if $location + $n - 1 == $count {
+        $edge: last;
+      }
+    }
+  }
+
+  @if $edge == alpha or $edge == omega {
+    $edge: if($edge == alpha, first, last);
+  }
+
+  @return $edge;
+}
+
+
+// Get Location
+// ------------
+// Calculate location value based on edge, if possible
+@function get-location(
+  $span
+) {
+  $span       : parse-span($span);
+  $location   : susy-get(location, $span);
+  $edge       : get-edge($span);
+  $n          : susy-get(span, $span);
+
+  @if $edge and not $location and type-of($n) == number and unitless($n) {
+    @if $edge == first {
+      $location: 1;
+    } @else if $edge == last {
+      $location: column-count(susy-get(columns, $span)) - $n + 1;
+    }
+  }
+
+  @return $location
 }

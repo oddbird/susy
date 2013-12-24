@@ -25,14 +25,14 @@
   $input
 ) {
   $span       : susy-get(span, $input);
-  $location   : susy-get(location, $input);
+  $location   : get-location($input);
   $columns    : susy-get(columns, $input);
   $width      : null;
 
   @if type-of($location) == number and not unitless($location) {
     $width: $location;
-  } @else {
-    $push: get-location($span, $location, $columns) - 1;
+  } @else if $location {
+    $push: $location - 1;
     @if $push > 0 {
       $push: map-merge($input, (
         span: $push,
@@ -47,5 +47,5 @@
     $width: if($width == null, gutters($input), $width + gutters($input));
   }
 
-  @return $width or auto;
+  @return $width or 0;
 }

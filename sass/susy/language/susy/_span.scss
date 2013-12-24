@@ -52,7 +52,8 @@
 ) {
   $nest             : if(susy-get(role, $span) == nest, true, false);
   $split-nest       : if(is-split($span) and $nest, true, false);
-  $location         : susy-get(location, $span);
+  $edge             : get-edge($span);
+  $location         : get-location($span);
 
   $float            : from;
   $padding-before   : null;
@@ -83,14 +84,15 @@
   @if susy-get(output, $span) == isolate and $location {
     $margin-before: get-isolation($span);
     $margin-after: -100%;
-  } @else {
-    $last: is-last(susy-get(span, $span), $location, susy-get(columns, $span));
+  } @else if $edge {
     $is-split: is-split($span);
-    @if $last {
-      $float: if($location == 'full', $float, susy-get(last-flow, $span));
+    @if $edge == last or $edge == full {
       $margin-after: if($is-split, $margin-after, null);
-    } @else if is-first($location) {
+    }
+    @if $edge == first or $edge == full {
       $margin-before: if($is-split, $margin-before, null);
+    } @else if $edge == last {
+      $float: susy-get(last-flow, $span);
     }
   }
 
@@ -115,7 +117,7 @@
   $span     : parse-span($span);
 
   $n        : susy-get(span, $span);
-  $location : susy-get(location, $span);
+  $location : get-location($span);
   $columns  : susy-get(columns, $span);
   $gutters  : susy-get(gutters, $span);
   $spread   : susy-get(spread, $span);
@@ -125,10 +127,12 @@
   $width    : null;
 
   @if $n == 'full' {
-    $split: if(susy-get(gutter-position, $span) == 'split', true, false);
-    $container: if(susy-get(is-container, $span), true, false);
-    $width: if($split and not $container, 100% - get-gutter-width($span), 100%);
-  } @else if unitless($n) {
+    $pos: susy-get(gutter-position, $span);
+    $role: susy-get(role, $span);
+    $n: if($pos == split and $role != nest, column-count($columns), 100%);
+  }
+
+  @if unitless($n) {
     $context: column-sum($columns, $gutters, if(is-split($span), wide, narrow));
     $span-sum: get-column-span-sum($n, $location, $columns, $gutters, if(is-inside($span), wide, $spread));
 

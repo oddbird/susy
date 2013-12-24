@@ -210,7 +210,7 @@
     $span: span-math($span);
     $expect: (
       width: 97.5%,
-      float: to,
+      float: from,
       margin_before: 1.25%,
       margin_after: 1.25%,
       padding_before: null,
@@ -318,7 +318,7 @@
     // full (margins & float)
     $span: (
       span: full,
-      location: full,
+      edge: full,
       columns: 8,
       gutters: .25,
       column-width: 4em,
@@ -391,16 +391,16 @@
 
     // relative inside-gutters
     $map: (
-      span: 4,
-      location: 1,
-      columns: 8,
-      gutters: .25,
+      span: 2,
+      edge: last,
+      columns: (1 2 3 2),
+      gutters: .5,
       column-width: null,
       math: fluid,
       gutter-position: inside,
     );
     $width: get-span-width($map);
-    @include assert-equal($width, 50%,
+    @include assert-equal($width, 60%,
       'Returns correct width with inside gutters.');
 
     // inside no-gutters

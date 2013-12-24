@@ -1,7 +1,7 @@
 // Row Start & End
 // ===============
 
-@include output-test-module('Row Syntax') {
+@include test-module('Row Syntax') {
 
   // break
   // -----
@@ -170,6 +170,66 @@
         margin-right: 0;
       }
     }
+  }
+
+  // get-edge
+  // --------
+
+  @include test('[function] get-edge') {
+    $test: get-edge(4 of (1 2 3 4));
+    $expect: full;
+    @include assert-equal($test, $expect,
+      'Returns full if span is equal to column-count');
+
+    $test: get-edge(4 of 8);
+    $expect: null;
+    @include assert-equal($test, $expect,
+      'Returns null if no location or edge given');
+
+    $test: get-edge(first 4 of 8);
+    $expect: first;
+    @include assert-equal($test, $expect,
+      'Returns valid edge without changes');
+
+    $test: get-edge(omega 4 of 8);
+    $expect: last;
+    @include assert-equal($test, $expect,
+      'Returns last in place of omega');
+
+    $test: get-edge(4 of 8 at 1);
+    $expect: first;
+    @include assert-equal($test, $expect,
+      'Calculates first based on location when possible');
+
+    $test: get-edge(4 of 8 at 5);
+    $expect: last;
+    @include assert-equal($test, $expect,
+      'Calculates last based on location when possible');
+}
+
+  // get-location
+  // ------------
+
+  @include test('[function] get-location') {
+    $test: get-location(first 4 of 8 at 2);
+    $expect: 2;
+    @include assert-equal($test, $expect,
+      'Returns valid location without changes');
+
+    $test: get-location(first 4 of 8);
+    $expect: 1;
+    @include assert-equal($test, $expect,
+      'Calculates location based on first when possible');
+
+    $test: get-location(last 4 of 8);
+    $expect: 5;
+    @include assert-equal($test, $expect,
+      'Calculates location based on last when possible');
+
+    $test: get-location(last 50% of 8);
+    $expect: null;
+    @include assert-equal($test, $expect,
+      'Return null when location can't be calculated);
   }
 
 }

@@ -32,16 +32,6 @@
     - 0 Failed */
 /*  
 
-### Location Math ------ */
-/*  - [function] is-last (6 Assertions, 6 Passed, 0 Failed) */
-/*  - [function] is-first (5 Assertions, 5 Passed, 0 Failed) */
-/*  - [function] get-location-position (3 Assertions, 3 Passed, 0 Failed) */
-/*  
-    3 Tests:
-    - 3 Passed
-    - 0 Failed */
-/*  
-
 ### Language Settings ------ */
 /*  - [function] parse-grid (30 Assertions, 30 Passed, 0 Failed) */
 /*  - [function] parse-span (44 Assertions, 44 Passed, 0 Failed) */
@@ -488,10 +478,10 @@
   float: left;
 }
 .test__gallery .assert__sym .test:nth-child(3n + 1) {
-  margin-left: auto;
-  margin-right: -100%;
   margin-left: 0;
-  clear: left;
+  margin-right: -100%;
+  clear: both;
+  margin-left: 0;
 }
 .test__gallery .assert__sym .test:nth-child(3n + 2) {
   margin-left: 36%;
@@ -534,9 +524,9 @@
   padding-right: 1.25%;
 }
 .test__gallery .assert__inside .test:nth-child(4n + 1) {
-  margin-left: auto;
+  margin-left: 0;
   margin-right: -100%;
-  clear: left;
+  clear: both;
 }
 .test__gallery .assert__inside .test:nth-child(4n + 2) {
   margin-left: 25%;
@@ -594,9 +584,9 @@
   padding-right: 2em;
 }
 .test__gallery .assert__inside-static .test:nth-child(3n + 1) {
-  margin-left: auto;
+  margin-left: 0;
   margin-right: -100%;
-  clear: left;
+  clear: both;
 }
 .test__gallery .assert__inside-static .test:nth-child(3n + 2) {
   margin-left: 33.33333%;
@@ -641,7 +631,7 @@
 .test__gallery .assert__split .test:nth-child(4n + 1) {
   margin-left: 1.25%;
   margin-right: -100%;
-  clear: left;
+  clear: both;
 }
 .test__gallery .assert__split .test:nth-child(4n + 2) {
   margin-left: 26.25%;
@@ -689,10 +679,10 @@
 }
 .test__gallery .assert__asym .test:nth-child(3n + 1) {
   width: 32%;
-  margin-left: auto;
-  margin-right: -100%;
   margin-left: 0;
-  clear: left;
+  margin-right: -100%;
+  clear: both;
+  margin-left: 0;
 }
 .test__gallery .assert__asym .test:nth-child(3n + 2) {
   width: 32%;
@@ -739,9 +729,9 @@
 }
 .test__gallery .assert__asym-inside .test:nth-child(2n + 1) {
   width: 40%;
-  margin-left: auto;
+  margin-left: 0;
   margin-right: -100%;
-  clear: left;
+  clear: both;
 }
 .test__gallery .assert__asym-inside .test:nth-child(2n + 2) {
   width: 60%;
@@ -771,7 +761,7 @@
     0 Tests:
     - 0 Passed
     - 0 Failed */
-/*
+/*  
 
 ### Row Syntax ------ */
 /* - [mixin] break */
@@ -872,6 +862,12 @@
   margin-right: 0;
 }
 
+/*  - [function] get-edge (6 Assertions, 6 Passed, 0 Failed) */
+/*  - [function] get-location (4 Assertions, 4 Passed, 0 Failed) */
+/*  
+    2 Tests:
+    - 2 Passed
+    - 0 Failed */
 /*
 
 ### Margin Syntax ------ */
@@ -1082,14 +1078,10 @@
 /* - [mixin] bleed */
 /* "Items should bleed 1 column outside their nested context" */
 .test__bleed .assert__simple .test {
-  margin-top: 5%;
-  padding-top: -5%;
-  margin-right: -10%;
-  padding-right: 10%;
-  margin-bottom: 5%;
-  padding-bottom: -5%;
-  margin-left: -10%;
-  padding-left: 10%;
+  margin-right: -15%;
+  padding-right: 15%;
+  margin-left: -15%;
+  padding-left: 15%;
   -moz-box-sizing: content-box;
   -webkit-box-sizing: content-box;
   box-sizing: content-box;
@@ -1134,14 +1126,10 @@
 
 /* "Items should bleed 1 column horizontal, and retain gutters." */
 .test__bleed .assert__split .test {
-  margin-top: 2.5%;
-  padding-top: -2.5%;
-  margin-right: -10%;
-  padding-right: 10%;
-  margin-bottom: 2.5%;
-  padding-bottom: -2.5%;
-  margin-left: -10%;
-  padding-left: 10%;
+  margin-right: -12.5%;
+  padding-right: 12.5%;
+  margin-left: -12.5%;
+  padding-left: 12.5%;
   -moz-box-sizing: content-box;
   -webkit-box-sizing: content-box;
   box-sizing: content-box;
@@ -1159,14 +1147,10 @@
 /* - [mixin] bleed-x */
 /* "Items should bleed 1 column left, and 2 columns right" */
 .test__bleed-x .assert__simple .test {
-  margin-top: 5%;
-  padding-top: -5%;
-  margin-right: -25%;
-  padding-right: 25%;
-  margin-bottom: 5%;
-  padding-bottom: -5%;
-  margin-left: -10%;
-  padding-left: 10%;
+  margin-right: -30%;
+  padding-right: 30%;
+  margin-left: -15%;
+  padding-left: 15%;
   -moz-box-sizing: content-box;
   -webkit-box-sizing: content-box;
   box-sizing: content-box;
@@ -1206,12 +1190,8 @@
 .test__bleed-y .assert__simple .test {
   margin-top: -0.5em;
   padding-top: 0.5em;
-  margin-right: 3.125%;
-  padding-right: -3.125%;
   margin-bottom: -1em;
   padding-bottom: 1em;
-  margin-left: 3.125%;
-  padding-left: -3.125%;
   -moz-box-sizing: content-box;
   -webkit-box-sizing: content-box;
   box-sizing: content-box;

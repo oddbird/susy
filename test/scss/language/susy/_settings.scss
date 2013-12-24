@@ -86,7 +86,7 @@
     $test: parse-span($test);
     $expect: (
       span: 3,
-      location: first,
+      edge: first,
       columns: 12,
       gutters: 0.25,
       output: isolate,
@@ -103,7 +103,7 @@
     $test: parse-span($test);
     $expect: (
       span: 4,
-      location: last,
+      edge: last,
       columns: (1 2 3 2 1),
       gutters: 0.25,
       column-width: 4em,
@@ -121,7 +121,7 @@
     $test: parse-span($test);
     $expect: (
       span: 1,
-      location: alpha,
+      edge: alpha,
       columns: 3,
       column-width: 40px,
       gutter-position: split,
@@ -135,7 +135,7 @@
     $test: parse-span($test);
     $expect: (
       span: 3,
-      location: omega,
+      edge: omega,
       columns: 7,
       gutters: .5,
       gutter-position: inside,
@@ -172,7 +172,7 @@
     $test: parse-span($test);
     $expect: (
       span: full,
-      location: full,
+      edge: full,
       columns: 7,
       gutters: .5,
       column-width: 4em,

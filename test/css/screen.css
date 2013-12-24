@@ -921,7 +921,7 @@ h1 {
     0 Tests:
     - 0 Passed
     - 0 Failed */
-/*
+/*  
 
 ### Row Syntax ------ */
 /* - [mixin] break */
@@ -1311,6 +1311,12 @@ h1 {
   font-style: italic;
 }
 
+/*  - [function] get-edge (6 Assertions, 6 Passed, 0 Failed) */
+/*  - [function] get-location (4 Assertions, 4 Passed, 0 Failed) */
+/*  
+    2 Tests:
+    - 2 Passed
+    - 0 Failed */
 /*
 
 ### Margin Syntax ------ */
@@ -2642,5 +2648,5 @@ h1 {
   border-color: green;
 }
 .results::after {
-  content: "34 Tests, 34 Passed, 0 Failed";
+  content: "36 Tests, 36 Passed, 0 Failed";
 }

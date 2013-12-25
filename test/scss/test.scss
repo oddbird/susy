@@ -20,8 +20,8 @@ $output-test-results: true;
 
 @import "language/susy";
 
-@import "api/shared";
-@import "api/float";
+@import "output/shared";
+@import "output/float";
 
 // Report
 // ------

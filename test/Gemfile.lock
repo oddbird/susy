@@ -1,7 +1,7 @@
 PATH
   remote: ..
   specs:
-    susy (2.0.0.beta.0)
+    susy (2.0.0.beta.1)
       sass (~> 3.3.0.rc.1)
 
 GEM

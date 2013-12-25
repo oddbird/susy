@@ -3,7 +3,7 @@ DIY Susy
 
 Susy is built in three distinct modules:
 math, output, and syntax.
-The math and and output layers form the core of Susy —
+The math and output layers form the core of Susy —
 so abstract that they could be used for any grid system.
 That's exactly what we hope will happen.
 

@@ -2,7 +2,7 @@ Changelog
 =========
 
 
-2.0.0.alpha.7 — unreleased
+2.0.0.beta.1 — Dec 25 2013
 --------------------------
 
 - Add ``susy-breakpoint`` mixin for basic integration with `Breakpoint`_.

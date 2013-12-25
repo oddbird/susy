@@ -7,6 +7,10 @@ PATH
 GEM
   remote: http://rubygems.org/
   specs:
+    breakpoint (2.4.0)
+      compass (~> 1.0.0.alpha.13)
+      sass (~> 3.3.0.rc.2)
+      sassy-maps (< 1.0.0)
     chunky_png (1.2.9)
     compass (1.0.0.alpha.17)
       chunky_png (~> 1.2)
@@ -33,6 +37,9 @@ GEM
       ffi (>= 0.5.0)
     sass (3.3.0.rc.2)
       listen (~> 1.1.0)
+    sassy-maps (0.3.1)
+      compass (~> 1.0.0.alpha.13)
+      sass (~> 3.3.0.rc.2)
     true (0.2.0.rc.4)
       sass (~> 3.3.0.rc.1)
 
@@ -40,6 +47,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  breakpoint (~> 2.4.0)
   compass (~> 1.0.0.alpha.17)
   sass (~> 3.3.0.rc.2)
   susy!

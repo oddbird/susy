@@ -5,6 +5,12 @@ Changelog
 2.0.0.alpha.7 — unreleased
 --------------------------
 
+- Add ``susy-breakpoint`` mixin for basic integration with `Breakpoint`_.
+
+  + Syntax: ``breakpoint($query, $layout, $no-query)``
+    where ``$query`` and ``no-query`` follow the Breakpoint syntax,
+    and ``$layout`` uses the Susy syntax for defining grids.
+
 - Add ``layout`` function to convert layouts from shorthand syntax to map.
 - Add ``full`` keyword shortcut for full-width spans.
 - BREAKING: Remove unclear ``row`` and ``unrow`` mixins.
@@ -21,7 +27,6 @@ Changelog
 - BREAKING: Remove ``nth-last``/``-omega``/``-first``/``-alpha``
   as confusing & out-of-scope.
   Format your nth-selectors manually to apply ``first``/``last`` mixins.
-
 - Gutter mixins/functions can accept context-only (without the "of" syntax):
 
   + ``gutters(of 10 .25)`` == ``gutters(10 .25)``
@@ -45,6 +50,8 @@ Changelog
   + Updates your global setting to match, if you pass a different value.
 
 - ``gallery`` and ``span`` mixins take global-box-sizing into account.
+
+.. _Breakpoint: http://breakpoint-sass.com/
 
 
 2.0.0.alpha.6 — Dec 5 2013

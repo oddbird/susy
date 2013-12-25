@@ -2320,6 +2320,14 @@ h1 {
     - 0 Failed */
 /*  
 
+### breakpoint integration ------ */
+/*  - [mixin] susy-breakpoint (2 Assertions, 2 Passed, 0 Failed) */
+/*  
+    1 Tests:
+    - 1 Passed
+    - 0 Failed */
+/*  
+
 ### Box Sizing Helper ------ */
 /* - [mixin] susy-box-sizing */
 .test__susy-box-sizing .assert__border-box {
@@ -2649,5 +2657,5 @@ h1 {
   border-color: green;
 }
 .results::after {
-  content: "37 Tests, 37 Passed, 0 Failed";
+  content: "38 Tests, 38 Passed, 0 Failed";
 }

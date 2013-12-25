@@ -1,0 +1,21 @@
+// Breakpoint Integration Tests
+// ============================
+
+@import "breakpoint";
+
+@include test-module('breakpoint integration') {
+  @include test('[mixin] susy-breakpoint') {
+    $layout: 24 .5 static;
+
+    $test: susy-get(columns);
+    $expect: susy-get(columns, $layout);
+    @include assert-unequal($test, $expect,
+      'Assert that we arent testing the default layout');
+
+    @include susy-breakpoint(720px, $layout) {
+      $test: susy-get(columns);
+      @include assert-equal($test, $expect,
+        'Susy-breakpoint creates a new global layout context');
+    }
+  }
+}

@@ -1213,6 +1213,14 @@
     - 0 Failed */
 /*  
 
+### breakpoint integration ------ */
+/*  - [mixin] susy-breakpoint (2 Assertions, 2 Passed, 0 Failed) */
+/*  
+    1 Tests:
+    - 1 Passed
+    - 0 Failed */
+/*  
+
 ### Box Sizing Helper ------ */
 /* - [mixin] susy-box-sizing */
 /* "Box-models are correctly output and prefixed." */

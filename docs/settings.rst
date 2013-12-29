@@ -302,6 +302,7 @@ Global Box Sizing
 For more,
 see the `MDN box-sizing documentation`_.
 
+.. _Paul Irish universal border-box: http://www.paulirish.com/2012/box-sizing-border-box-ftw/
 .. _MDN box-sizing documentation: https://developer.mozilla.org/en-US/docs/Web/CSS/box-sizing
 
 

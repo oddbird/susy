@@ -58,7 +58,7 @@ You can set the defaults directly in the ``$susy`` variable:
     gutter-position: inside,
   )
 
-You can set them using ``set-grid`` along with the shorthand syntax:
+You can also use ``set-grid`` along with the shorthand syntax:
 
 .. code-block:: scss
 

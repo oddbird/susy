@@ -1,0 +1,258 @@
+Syntax
+======
+
+The Susy 2.0 syntax is all built around
+our layout :doc:`shorthand`.
+Use the shorthand to control every detail,
+and adjust your defaults on-the-fly,
+so you are never tied down to just one grid,
+or just one output style.
+
+Span [Mixin]
+------------
+
+Set any element to span a portion of your layout.
+For a floated or isolated layout,
+this will add necessary floats, widths, and margins.
+
+**Arbitrary Widths**
+
+For the simplest use,
+pass any width directly to the mixin:
+
+.. code-block:: scss
+
+  // arbitrary width
+  .item { @include span(25%); }
+
+  // float output (without gutters)
+  .item {
+    float: left;
+    width: 25%;
+  }
+
+**Grid Widths**
+
+If you are using a grid,
+you can also span columns on the grid:
+
+.. code-block:: scss
+
+  // grid span
+  .item { @include span(3); }
+
+  // output (7-column grid with 1/2 gutters after)
+  .item {
+    float: left;
+    width: 40%;
+    margin-right: 5%;
+  }
+
+**Row Edges**
+
+When you use a grid with gutters ``before`` or ``after``,
+you sometimes need to mark the ``first`` or ``last``
+elements in a row,
+so Susy can remove the extra gutters:
+
+.. code-block:: scss
+
+  // grid span
+  @include span(last 3);
+
+  // output (same 7-column grid)
+  .item {
+    float: right;
+    width: 40%;
+  }
+
+For legacy reasons,
+``alpha`` and ``omega`` can be used
+in place of ``first`` and ``last``.
+
+**Context**
+
+Context is required any time you are using fluid math,
+and nesting grid elements inside other elements:
+
+.. code-block:: scss
+
+  // 10-column grid
+  .outer {
+    @include span(5);
+    .inner { @include span(2 of 5); }
+  }
+
+The ``of`` flag is used to signal context.
+The context is always equal to the grid-span of the parent.
+In some cases, you can imply changes in context
+by nesting elements inside the span tag itself:
+
+.. code-block:: scss
+
+  // 10-column grid
+  .outer {
+    // out here, the context is 10
+    @include span(5) {
+      // in here, the context is 5
+      .inner { @include span(2); }
+    }
+  }
+
+**Nesting**
+
+Grids with ``inside``, ``inside-static``, or ``split`` gutters
+don't need to worry about the edge cases,
+but they do have to worry about nesting.
+
+If an element will have grid-aligned children,
+you should mark it as a ``nest``:
+
+.. code-block:: scss
+
+  // inside, inside-static, or split gutters
+  .outer {
+    @include span(5 nest);
+    .inner { @include span(2 of 5); }
+  }
+
+**Location**
+
+Asymmetrical grids and isolated output
+also need to know the desired ``location`` of the span.
+In both cases,
+use the ``at`` flag to set a location.
+
+For isolation,
+you can use either an arbitrary width
+or a column index (starting with 1).
+For asymmetrical grid spans,
+the location setting must be a column index:
+
+.. code-block:: scss
+
+  .width { @include span(isolate 500px at 25%); }
+  .index { @include span(isolate 3 at 2); }
+
+**narrow, wide, and wider**
+
+By default,
+a grid span only spans the gutters *between* columns.
+So a span of ``2`` includes 1 internal gutter (``narrow``).
+In some cases you want to span additional gutters on either side.
+So that same span of 2
+could include the internal gutter,
+and one (``wide``) or both (``wider``) external gutters.
+
+.. code-block:: scss
+
+  // grid span
+  .narrow { @include span(2); }
+  .wide { @include span(2 wide); }
+  .wider { @include span(2 wider); }
+
+  // width output (7 columns, .25 gutters)
+  // (each column is 10%, and each gutter adds 2.5%)
+  .narrow { width: 22.5%; }
+  .wide { width: 25%; }
+  .wider { width: 27.5%; }
+
+If you are using inside gutters,
+the spans are wide by default
+but can be overridden manually.
+
+**Other Settings**
+
+Use the ``full`` keyword
+to span the entire context available.
+Use ``break`` to clear previous floats
+and start a new row.
+The ``no-gutters`` keyword can be used
+to remove gutter output from an individual span.
+
+You can set an arbitrary gutter override,
+by passing a map (e.g. ``(gutter-override: 1.5em)``)
+as part of the shorthand syntax.
+
+You can also change the output style
+(currently only float and isolate are supported)
+grid context,
+and other global settings on the fly:
+
+.. code-block:: scss
+
+  // grid span
+  .item { @include span(isolate 4 at 2 of 8 (4em 1em) inside-static rtl break); }
+
+  // output
+  .item {
+    clear: both;
+    float: right;
+    width: 50%;
+    padding-left: .5em;
+    padding-right: .5em;
+    margin-left: 25%;
+    margin-right: -100%;
+  }
+
+Span [Function]
+---------------
+
+The span function is identical to the `span mixin`_,
+but returns only the span width value,
+so you can use it as you like:
+
+.. code-block:: scss
+
+  .item {
+    width: span(2);
+    margin-left: span(3 wide);
+    margin-right: span(1) + 25%;
+  }
+
+Gutters
+-------
+
+
+Container
+---------
+
+
+Context
+-------
+
+
+Box Sizing
+----------
+
+
+Margins
+-------
+
+
+Padding
+-------
+
+
+Bleed
+-----
+
+
+Rows
+----
+
+
+Isolation
+---------
+
+
+Gallery
+-------
+
+
+Breakpoint
+----------
+
+
+Debugging
+---------

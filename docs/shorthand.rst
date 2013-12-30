@@ -117,6 +117,42 @@ it will be used for the ``container`` width.
   // keywords: (container-position: left);
   $large: 80em (1 2 3 4 5) left;
 
+You can easily convert layouts from shorthand to map syntax
+using the ``layout()`` function.
+
+.. code-block:: scss
+
+  // input
+  $map: layout(auto 12 .25 inside fluid isolate);
+
+  //output
+  $map: (
+    container: auto,
+    columns: 12,
+    gutters: .25,
+    gutter-position: inside,
+    math: fluid,
+    output: isolate,
+  );
+
+This is useful any time you need to combine settings
+from different places.
+This has to do with the difference in Sass
+between lists and maps.
+
+.. code-block:: scss
+
+  // these work
+  $medium: layout(13 static);
+  @include span(3 of $medium);
+
+  $medium: 13 static;
+  @include span(3 of layout($medium));
+
+  // this doesn't
+  $medium: 13 static;
+  @include span(3 of $medium);
+
 
 Spans
 -----

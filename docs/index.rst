@@ -1,28 +1,16 @@
 Introduction
 ============
 
-The world is full of overblown, one-size-fits-all "`frameworks`_"
-that want to design your site for you.
-We think the best layout is the one you custom-build
-around your own content,
-with your markup, to fit your design.
-
-That's why we built `Susy`_
-(pronounced like Suzy),
-a non-invasive and un-opinionated
-layout toolkit:
-designed to be flexible, semantic,
-simple, and responsive.
-
+The best layout is the one that fits your content
+and the needs of your users.
+The best web layout technique
+is the one that achieves your goals.
 We're not here to tell you
 about the magical powers of the golden-ratio,
 or where to use ``em`` vs ``px``,
-we just want to help keep your code `DRY`_.
-Let Susy do the math, so you can focus on design.
+we just want to help keep your code maintainable.
 
-.. _frameworks: http://getbootstrap.com/
-.. _Susy: http://susy.oddbird.net/
-.. _DRY: http://en.wikipedia.org/wiki/Don't_repeat_yourself
+Let Susy do the math, so you can focus on design.
 
 
 No Magic
@@ -34,21 +22,14 @@ in a world where browsers disagree on implementation,
 standards are not always the standard,
 and your Sass code compiles into Boring Old CSS.
 
-Susy is just a toolkit.
 You don't use one hammer to build your entire house.
 Sometimes you have to set Susy down and pick up a screw driver,
 or get crazy with the table saw.
 Don't rely on Susy — put it to use.
 What you want to accomplish
 is more important than what we planned for.
-
-We can't save you from CSS,
-but we can help make layouts easier to write and maintain.
-Abstraction is great for meaningful code,
-but don't let it fool you —
-the output is what matters.
 If you don't understand what Susy is doing,
-take a look at the CSS files.
+take a look at the output CSS files.
 
 
 ToDo
@@ -59,7 +40,7 @@ These are the features we're working on next:
 - Add optional ``px`` fallback for output in ``rem`` units.
 - Respect Compass support settings when they are available.
 - Port Susy 1 syntax to use new math and Sass features.
-- Add upgrade syntax to help with the transition.
+- Add syntax to help with the transition from Susy 1.
 - Add padding/margin options to the ``span`` mixin, for simpler output.
 
 We're always happy to hear your ideas as well.
@@ -78,6 +59,7 @@ The Docs
    install
    settings
    shorthand
+   syntax
    susyone/index
    diy
    changelog

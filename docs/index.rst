@@ -59,7 +59,7 @@ The Docs
    install
    settings
    shorthand
-   syntax
+   toolkit
    susyone/index
    diy
    changelog

@@ -1,5 +1,5 @@
-Shorthand
-=========
+Shorthand Syntax
+================
 
 Susy provides a shorthand syntax
 to easily pass arbitrary settings into functions and mixins.

@@ -25,7 +25,7 @@ we just do the math and get out of your way.
 - [Tutorial](http://susy.oddbird.net/guides/getting-started/)
 - [Reference](http://susy.oddbird.net/guides/reference/)
 - [Sites using Susy](http://susy.oddbird.net/sites-using-susy/)
-- [Twitter @CompassSusy](http://twitter.com/compasssusy/)
+- [Twitter @SassSusy](http://twitter.com/sasssusy/)
 
 ## Contributing
 

@@ -6,3 +6,4 @@ susy-*.gem
 pkg/
 *.sublime-*
 build/
+*.bundle/

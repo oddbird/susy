@@ -4,14 +4,14 @@
 // Isolate
 // -------
 // Set isolation as an override.
-// - $input   : <span>
+// - $location: <span>
 @mixin isolate(
-  $input: first
+  $location: first
 ) {
-  $input  : parse-span($input);
+  $location  : parse-span($location);
   $output : (
-    push: get-isolation($input),
-    flow: susy-get(flow, $input),
+    push: get-isolation($location),
+    flow: susy-get(flow, $location),
   );
 
   @include isolate-output($output...);

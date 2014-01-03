@@ -4,19 +4,19 @@
 // Gutters
 // -------
 // Set gutters on an element.
-// - [$context]   : <settings>
+// - [$span]   : <settings>
 @mixin gutters(
-  $context: $susy
+  $span: $susy
 ) {
-  $context    : parse-gutters($context);
-  $gutters    : get-gutters($context);
+  $span    : parse-gutters($span);
+  $gutters    : get-gutters($span);
   $output     : (
     before: map-get($gutters, before),
     after: map-get($gutters, after),
-    flow: susy-get(flow, $context),
+    flow: susy-get(flow, $span),
   );
 
-  @if is-inside($context) {
+  @if is-inside($span) {
     @include padding-output($output...);
   } @else {
     @include margin-output($output...);
@@ -24,30 +24,30 @@
 }
 
 @mixin gutter(
-  $context: $susy
+  $span: $susy
 ) {
-  @include gutters($context);
+  @include gutters($span);
 }
 
 // Gutter
 // ------
 // Return the width of a gutter.
-// - [$context]   : <settings>
+// - [$span]   : <settings>
 @function gutter(
-  $context: $susy
+  $span: $susy
 ) {
-  $context: parse-gutters($context);
+  $span: parse-gutters($span);
 
-  $gutters: get-gutters($context);
+  $gutters: get-gutters($span);
   $gutters: map-get($gutters, before) or map-get($gutters, after);
 
   @return $gutters;
 }
 
 @function gutters(
-  $context: $susy
+  $span: $susy
 ) {
-  @return gutter($context);
+  @return gutter($span);
 }
 
 // Get Gutter Width

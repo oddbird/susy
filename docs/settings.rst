@@ -75,6 +75,8 @@ with ``use-grid``:
   }
 
 
+.. _settings-flow:
+
 Flow
 ----
 
@@ -90,6 +92,8 @@ similar to the html ``dir`` attribute.*
 2. ``rtl``:
    Layout elements will flow from right to left.
 
+
+.. _settings-math:
 
 Math
 ----
@@ -110,6 +114,8 @@ Math
    If you set column-width to ``4em``,
    your grid widths will be output as ``em`` values.
 
+
+.. _settings-output:
 
 Output
 ------
@@ -134,6 +140,8 @@ Output
 .. _sub-pixel rounding: http://tylertate.com/blog/2012/01/05/subpixel-rounding.html
 .. _John Albin Wilkins: http://john.albin.net/
 
+
+.. _settings-gutter-position:
 
 Gutter Position
 ---------------
@@ -167,6 +175,8 @@ either as padding or margins on layout elements.*
    and are not removed at the edges of the grid.
 
 
+.. _settings-container:
+
 Container
 ---------
 
@@ -196,6 +206,8 @@ Container
   and no one likes sub-pixel errors.
 
 
+.. _settings-container-position:
+
 Container Position
 ------------------
 
@@ -223,6 +235,8 @@ Container Position
    they will be used as ``left`` and ``right`` margins respectively.
 
 
+.. _settings-columns:
+
 Columns
 -------
 
@@ -245,6 +259,8 @@ Columns
 .. _Fibonacci: http://en.wikipedia.org/wiki/Fibonacci_number
 
 
+.. _settings-gutters:
+
 Gutters
 -------
 
@@ -260,6 +276,8 @@ Gutters
    In asymmetrical grids,
    this is ``1/4`` the size of a single column-unit.
 
+
+.. _settings-column-width:
 
 Column Width
 ------------
@@ -279,6 +297,8 @@ Column Width
    unless you specifically want the container-width
    calculated for you.
 
+
+.. _settings-global-box-sizing:
 
 Global Box Sizing
 -----------------
@@ -306,6 +326,8 @@ see the `MDN box-sizing documentation`_.
 .. _MDN box-sizing documentation: https://developer.mozilla.org/en-US/docs/Web/CSS/box-sizing
 
 
+.. _settings-last-flow:
+
 Last Flow
 ---------
 
@@ -327,6 +349,8 @@ Last Flow
    it can be helpful to float the last element in a row
    in the opposite direction.
 
+
+.. _settings-show-grids:
 
 Show Grids
 ----------
@@ -365,6 +389,8 @@ Show Grids
 .. _Compass vertical rhythms: http://compass-style.org/reference/compass/typography/vertical_rhythm/
 
 
+.. _settings-location:
+
 Location
 --------
 
@@ -386,6 +412,8 @@ Locations keywords don't require the ``at`` flag.*
    between ``1`` and the total number of available columns.
 
 
+.. _settings-box-sizing:
+
 Box Sizing
 ----------
 
@@ -401,6 +429,8 @@ Box Sizing
 2. ``content-box``:
    Output ``box-sizing`` CSS to set the ``content-box`` model.
 
+
+.. _settings-spread:
 
 Spread
 ------
@@ -429,6 +459,8 @@ Spread
    and 4 gutters (2 internal, and 2 sides).
 
 
+.. _settings-gutter-override:
+
 Gutter Override
 ---------------
 
@@ -444,6 +476,8 @@ Gutter Override
 2. ``<length>``:
    Override the calculated gutter output with an explicit width.
 
+
+.. _settings-role:
 
 Role
 ----

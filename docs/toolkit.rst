@@ -8,17 +8,24 @@ and adjust your defaults on-the-fly,
 so you are never tied down to just one grid,
 or just one output style.
 
+-------------------------------------------------------------------------
 
 .. _tools-span-mixin:
 
 Span [Mixin]
 ------------
 
+- ``span($span)``
+- ``$span``: :ref:`\<span\> <shorthand-span>`
+
 Set any element to span a portion of your layout.
 For a floated or isolated layout,
 this will add necessary floats, widths, and margins.
 
-**Arbitrary Widths**
+.. _tools-span-width:
+
+Arbitrary Widths
+~~~~~~~~~~~~~~~~
 
 For the simplest use,
 pass any width directly to the mixin:
@@ -34,7 +41,10 @@ pass any width directly to the mixin:
     width: 25%;
   }
 
-**Grid Widths**
+.. _tools-span-span:
+
+Grid Widths
+~~~~~~~~~~~
 
 If you are using a grid,
 you can also span columns on the grid:
@@ -51,7 +61,10 @@ you can also span columns on the grid:
     margin-right: 5%;
   }
 
-**Row Edges**
+.. _tools-span-edge:
+
+Row Edges
+~~~~~~~~~
 
 When you use a grid with gutters ``before`` or ``after``,
 you sometimes need to mark the ``first`` or ``last``
@@ -73,7 +86,10 @@ For legacy reasons,
 ``alpha`` and ``omega`` can be used
 in place of ``first`` and ``last``.
 
-**Context**
+.. _tools-span-context:
+
+Context
+~~~~~~~
 
 Context is required any time you are using fluid math,
 and nesting grid elements inside other elements:
@@ -102,7 +118,10 @@ by nesting elements inside the span tag itself:
     }
   }
 
-**Nesting**
+.. _tools-span-nesting:
+
+Nesting
+~~~~~~~
 
 Grids with ``inside``, ``inside-static``, or ``split`` gutters
 don't need to worry about the edge cases,
@@ -119,7 +138,10 @@ you should mark it as a ``nest``:
     .inner { @include span(2 of 5); }
   }
 
-**Location**
+.. _tools-span-location:
+
+Location
+~~~~~~~~
 
 Asymmetrical grids and isolated output
 also need to know the desired ``location`` of the span.
@@ -137,7 +159,10 @@ the location setting must be a column index:
   .width { @include span(isolate 500px at 25%); }
   .index { @include span(isolate 3 at 2); }
 
-**narrow, wide, and wider**
+.. _tools-span-spread:
+
+narrow, wide, and wider
+~~~~~~~~~~~~~~~~~~~~~~~
 
 By default,
 a grid span only spans the gutters *between* columns.
@@ -164,23 +189,29 @@ If you are using inside gutters,
 the spans are wide by default
 but can be overridden manually.
 
-**Other Settings**
+.. _tools-span-other:
+
+Other Settings
+~~~~~~~~~~~~~~
 
 Use the ``full`` keyword
-to span the entire context available.
-Use ``break`` to clear previous floats
-and start a new row.
-The ``no-gutters`` keyword can be used
-to remove gutter output from an individual span.
+to span the entire context available,
+use ``break`` to start a new :ref:`tools-row`
+by clearinh previous floats,
+and ``nobreak`` to clear none.
+Use ``no-gutters``
+to remove gutter output from an individual span,
+and use ``border-box`` or ``content-box``
+to output changes in :ref:`box-sizing <tools-box-sizing>`
+on the fly.
 
 You can set an arbitrary gutter override,
 by passing a map (e.g. ``(gutter-override: 1.5em)``)
 as part of the shorthand syntax.
 
-You can also change the output style
-(currently only float and isolate are supported)
+You can also change the :ref:`output <settings-output>` style,
 grid context,
-and other global settings on the fly:
+and other :doc:`global settings <settings>` on the fly:
 
 .. code-block:: scss
 
@@ -199,10 +230,15 @@ and other global settings on the fly:
   }
 
 
+-------------------------------------------------------------------------
+
 .. _tools-span-function:
 
 Span [Function]
 ---------------
+
+- ``span($span)``
+- ``$span``: :ref:`\<span\> <shorthand-span>`
 
 The span function is identical to the
 :ref:`span mixin <tools-span-mixin>`,
@@ -218,10 +254,15 @@ so you can use it with custom output:
   }
 
 
+-------------------------------------------------------------------------
+
 .. _tools-gutter:
 
 Gutters
 -------
+
+- ``gutter($span)`` / ``gutters($span)``
+- ``$span``: :ref:`\<span\> <shorthand-span>`
 
 Use ``gutter`` or ``gutters``
 as a function to return the width of a gutter
@@ -265,10 +306,15 @@ to adjust settings on the fly:
   .item { @include gutters(10 1/3 after); }
 
 
+-------------------------------------------------------------------------
+
 .. _tools-container:
 
 Container
 ---------
+
+- ``container($grid)``
+- ``$grid``: :ref:`\<layout\> <shorthand-layout>`
 
 Use the ``container`` function
 return a container width based on your settings,
@@ -293,10 +339,15 @@ apply container settings to an element directly.
   }
 
 
-.. _tools-context:
+-------------------------------------------------------------------------
+
+.. _tools-nested:
 
 Nested Context
 --------------
+
+- ``nested($span)``
+- ``$context``: :ref:`\<span\> <shorthand-span>`
 
 Sass is not aware of the :abbr:`DOM (Document Object Model)`,
 or the specific markup of your site,
@@ -354,10 +405,15 @@ without having to calculate it yourself.
   }
 
 
+-------------------------------------------------------------------------
+
 .. _tools-box-sizing:
 
-Box Sizing
-----------
+Global Box Sizing
+-----------------
+
+- ``global-box-sizing($box)``
+- ``$box``: ``content-box`` | ``border-box``
 
 You can pass a ``box-sizing`` argument
 to the ``span`` mixin
@@ -400,7 +456,8 @@ using one of Susy's shortcuts.
 
 If you want to change the global box-sizing by hand,
 or it has already been changed by another library,
-just update the `global-box-sizing` setting
+just update the
+:ref:`global-box-sizing <settings-global-box-sizing>` setting
 to let Susy know.
 
 If you need to supprot IE6/7,
@@ -411,49 +468,497 @@ to make it work.
 .. _polyfill: https://github.com/Schepp/box-sizing-polyfill
 
 
+-------------------------------------------------------------------------
+
+.. _tools-row:
+
+Rows & Edges
+------------
+
+Floated layouts sometimes require
+help maintinaing rows and edges.
+
+.. _tools-row-break:
+
+Break
+~~~~~
+
+- ``break()`` / ``nobreak()``
+
+To create a new row,
+you need to clear all previous floats.
+This can usually be done using keywords
+with the :ref:`span mixin <tools-span-edge>`.
+When you need to apply a row-break on it's own,
+we have a ``break`` mixin.
+
+.. code-block:: scss
+
+  .new-line { @include break; }
+
+If you ever need to override that,
+you can use ``nobreak``
+to set ``clear: none;``.
+
+.. code-block:: scss
+
+  .no-new-line { @include nobreak; }
+
+.. _tools-row-first:
+
+First
+~~~~~
+
+- ``first($context)`` / ``alpha($context)``
+- ``$context``: :ref:`\<layout\> <shorthand-layout>`
+
+.. note::
+
+  Only useful when
+  :ref:`gutter-position <settings-gutter-position>`
+  is set to ``before``.
+
+When :ref:`gutter-position <settings-gutter-position>`
+is set to ``before``
+we need to remove the gutter
+from the first element in every row.
+This can often be solved
+using a keyword in the :ref:`span mixin <tools-span-edge>`.
+Sometimes you need to set an item as ``first``
+outside the span mixin.
+
+.. code-block:: scss
+
+  .first { @include first; }
+
+We also support an ``alpha`` mixin
+with the same syntax and output.
+
+.. _tools-row-last:
+
+Last
+~~~~
+
+- ``last($context)`` / ``omega($context)``
+- ``$context``: :ref:`\<layout\> <shorthand-layout>`
+
+.. note::
+
+  Only required when
+  :ref:`gutter-position <settings-gutter-position>`
+  is set to ``after``,
+  but can be useful in any context
+  to help with sub-pixel rounding issues.
+
+When :ref:`gutter-position <settings-gutter-position>`
+is set to ``after``
+we need to remove the gutter
+from the last element in every row,
+and :ref:`optionally float in the opposite direction <settings-last-flow>`.
+This can often be solved
+using a keyword in the :ref:`span mixin <tools-span-edge>`.
+Sometimes you need to set an item as ``last``
+outside the span mixin.
+
+.. code-block:: scss
+
+  .last { @include last; }
+
+We also support an ``omega`` mixin
+with the same syntax and output.
+
+.. _tools-row-full:
+
+Full
+~~~~
+
+- ``full($context)``
+- ``$context``: :ref:`\<layout\> <shorthand-layout>`
+
+This is simply a shortcut for
+``span(full)``,
+used to create elements
+that span their entire context.
+
+.. code-block:: scss
+
+  .last { @include full; }
+
+
+-------------------------------------------------------------------------
+
 .. _tools-margin:
 
 Margins
 -------
 
+Shortcut mixins
+for applying left/right margins.
+
+.. _tools-margin-pre:
+
+Pre
+~~~
+
+- ``pre($span)``
+- ``$span``: :ref:`\<span\> <shorthand-span>`
+
+Add margins before an element,
+depending on the :ref:`flow <settings-flow>` direction.
+
+.. code-block:: scss
+
+  .example1 { @include pre(25%); }
+  .example2 { @include pre(2 of 7); }
+
+.. _tools-margin-post:
+
+Post
+~~~~
+
+- ``post($span)``
+- ``$span``: :ref:`\<span\> <shorthand-span>`
+
+Add margins after an element,
+depending on the :ref:`flow <settings-flow>` direction.
+
+.. code-block:: scss
+
+  .example1 { @include post(25%); }
+  .example2 { @include post(2 of 7); }
+
+.. _tools-margin-push:
+
+Push
+~~~~
+
+- ``push($span)``
+- ``$span``: :ref:`\<span\> <shorthand-span>`
+
+Identical to :ref:`pre <tools-margin-pre>`.
+
+.. _tools-margin-pull:
+
+Pull
+~~~~
+
+- ``pull($span)``
+- ``$span``: :ref:`\<span\> <shorthand-span>`
+
+Add negative margins before an element,
+pulling it against the direction of :ref:`flow <settings-flow>`.
+
+.. code-block:: scss
+
+  .example1 { @include pull(25%); }
+  .example2 { @include pull(2 of 7); }
+
+.. _tools-margin-squish:
+
+Squish
+~~~~~~
+
+- ``squish($pre [, $post])``
+- ``$pre``: :ref:`\<span\> <shorthand-span>`
+- ``$post``: [:ref:`\<span\> <shorthand-span>`]
+
+Shortcut for adding both :ref:`pre <tools-margin-pre>`
+and :ref:`post <tools-margin-post>` margins
+to the same element.
+
+.. code-block:: scss
+
+  // equal margins
+  .example1 { @include squish(25%); }
+
+  // different margins
+  .example2 { @include squish(1, 3); }
+
+In the case of simple grid-calculated, nested margins,
+you only have to pass the context once.
+
+.. code-block:: scss
+
+  .example { @include squish(1, 3 of 7); }
+
+
+-------------------------------------------------------------------------
 
 .. _tools-padding:
 
 Padding
 -------
 
+Shortcut mixins
+for applying left/right padding.
+
+.. note::
+
+  The interaction between padding and width changes
+  depending on your given :ref:`box-model <tools-box-sizing>`.
+  In the browser-default `content-box` model,
+  width and padding are added together,
+  so that an item with ``span(3)`` and ``prefix(2)``
+  will occupy a total of 5 columns.
+  In the recommended `border-box` model,
+  padding is subtracted from the width,
+  so that an item with ``span(3)`` will always
+  occupy 3 columns,
+  no matter what padding is applied.
+
+.. _tools-padding-prefix:
+
+Prefix
+~~~~~~
+
+- ``prefix($span)``
+- ``$span``: :ref:`\<span\> <shorthand-span>`
+
+Add padding before an element,
+depending on the :ref:`flow <settings-flow>` direction.
+
+.. code-block:: scss
+
+  .example1 { @include prefix(25%); }
+  .example2 { @include prefix(2 of 7); }
+
+.. _tools-padding-suffix:
+
+Suffix
+~~~~~~
+
+- ``suffix($span)``
+- ``$span``: :ref:`\<span\> <shorthand-span>`
+
+Add padding after an element,
+depending on the :ref:`flow <settings-flow>` direction.
+
+.. code-block:: scss
+
+  .example1 { @include suffix(25%); }
+  .example2 { @include suffix(2 of 7); }
+
+.. _tools-padding-pad:
+
+Pad
+~~~
+
+- ``pad($prefix [, $suffix])``
+- ``$prefix``: :ref:`\<span\> <shorthand-span>`
+- ``$suffix``: :ref:`\<span\> <shorthand-span>`
+
+Shortcut for adding both :ref:`prefix <tools-padding-prefix>`
+and :ref:`suffix <tools-padding-suffix>` padding
+to the same element.
+
+.. code-block:: scss
+
+  // equal padding
+  .example1 { @include pad(25%); }
+
+  // different padding
+  .example2 { @include pad(1, 3); }
+
+In the case of simple grid-calculated, nested padding,
+you only have to pass the context once.
+
+.. code-block:: scss
+
+  .example { @include pad(1, 3 of 7); }
+
+
+-------------------------------------------------------------------------
 
 .. _tools-bleed:
 
 Bleed
 -----
 
+- ``bleed($bleed)``
+- ``$bleed``: :abbr:`TRBL (Top Right Bottom Left)`
+  :ref:`\<span\> <shorthand-span>`
 
-.. _tools-row:
+Apply negative margins
+and equal positive padding,
+so that element borders and backgrounds "bleed"
+outside of their containers,
+without the content be affected.
 
-Rows
-----
+This uses the standard :ref:`span shorthand <shorthand-span>`,
+but takes anywhere from one to four widths,
+using the common :abbr:`TRBL (Top Right Bottom Left)` pattern
+from CSS.
+
+.. code-block:: scss
+
+  // input
+  .example1 { @include bleed(1em); }
+  .example2 { @include bleed(1em 2 20px 5% of 8 .25); }
+
+  // output
+  .example1 {
+    margin: -1em;
+    padding: 1em;
+  }
+
+  .example2 {
+    margin-top: -1em;
+    padding-top: 1em;
+    margin-right: -22.5%;
+    padding-right: 22.5%;
+    margin-bottom: -20px;
+    padding-bottom: 20px;
+    margin-left: -5%;
+    padding-left: 5%;
+  }
+
+When possible,
+the ``bleed`` mixins will attempt
+to keep gutters intact.
+To override that behavior,
+simply pass the ``no-gutters`` keyword.
+
+.. _tools-bleed-x:
+
+Bleed-x
+~~~~~~~
+
+- ``bleed-x($bleed)``
+- ``$bleed``: :abbr:`LR (Left Right)`
+  :ref:`\<span\> <shorthand-span>`
+
+A shortcut for applying only left and right
+(horizontal) bleed.
+
+.. code-block:: scss
+
+  // input
+  .example { @include bleed-x(1em 2em); }
+
+  // output
+  .example {
+    margin-left: -1em;
+    padding-left: 1em;
+    margin-right: -2em;
+    padding-right: 2em;
+  }
+
+.. _tools-bleed-y:
+
+Bleed-y
+~~~~~~~
+
+- ``bleed-y($bleed)``
+- ``$bleed``: :abbr:`TB (Top Bottom)`
+  :ref:`\<span\> <shorthand-span>`
+
+A shortcut for applying only top and bottom
+(vertical) bleed.
+
+.. code-block:: scss
+
+  // input
+  .example { @include bleed-y(1em 2em); }
+
+  // output
+  .example {
+    margin-top: -1em;
+    padding-top: 1em;
+    margin-bottom: -2em;
+    padding-bottom: 2em;
+  }
 
 
-.. _tools-isolation:
+-------------------------------------------------------------------------
 
-Isolation
----------
+.. _tools-isolate:
 
+Isolate
+-------
+
+- ``isolate($location)``
+- ``$location``: :ref:`\<span\> <shorthand-span>`
+
+Isolation is a layout technique based on floats,
+but adjusted to `address sub-pixel rounding issues`_.
+Susy supports it as a global :ref:`output <settings-output>` setting,
+or as a :ref:`shorthand` keyword for the ``span`` mixin,
+or as a stand-alone mixin.
+
+The ``$location`` argument takes a standard
+:ref:`span shorthand <shorthand-span>`,
+but any length or grid-index given
+is interpreted as an isolation location.
+
+.. code-block:: scss
+
+  // input
+  .example { @include isolate(25%); }
+
+  // output
+  .example {
+    float: left;
+    margin-left: 25%;
+    margin-right: -100%;
+  }
+
+.. _`address sub-pixel rounding issues`: http://www.palantir.net/blog/responsive-design-s-dirty-little-secret
+
+
+-------------------------------------------------------------------------
 
 .. _tools-gallery:
 
 Gallery
 -------
 
+- ``gallery($span, $selector)``
+- ``$span``: :ref:`\<span\> <shorthand-span>`
+- ``$selector``: (nth-) ``child`` | ``of-type``
+
+
+-------------------------------------------------------------------------
 
 .. _tools-breakpoint:
 
 Breakpoint
 ----------
 
+.. _tools-susy-breakpoint:
 
-.. _tools-debugging:
+Susy Breakpoint
+~~~~~~~~~~~~~~~
 
-Debugging
----------
+- ``susy-breakpoint($query, $layout, $no-query)``
+- ``$query``: See `Breakpoint: Basic Media Queries`_
+- ``$layout``: :ref:`\<layout\> <shorthand-layout>`
+- ``$no-query``: See `Breakpoint: No Query Fallbacks`_
+
+.. _`Breakpoint: Basic Media Queries`: https://github.com/Team-Sass/breakpoint/wiki/Basic-Media-Queries
+.. _`Breakpoint: No Query Fallbacks`: https://github.com/Team-Sass/breakpoint/wiki/No-Query-Fallbacks
+
+
+-------------------------------------------------------------------------
+
+.. _tools-debug:
+
+Debug
+-----
+
+.. _tools-show-grid:
+
+Show Grid
+~~~~~~~~~
+
+- ``show-grid($grid)``
+- ``$grid``: :ref:`\<layout\> <shorthand-layout>`
+
+.. _tools-grid-overlay:
+
+Grid Overlay
+~~~~~~~~~~~~
+
+- ``show-grid($grids...)``
+- ``$grids...``: <selector> :ref:`\<layout\> <shorthand-layout>`
+  [, <selector> <layout> ]
+  *(repeat as needed)*

@@ -20,7 +20,7 @@
 
 // Full
 // ----
-// - [$span]: <span settings>
+// - [$context]: <layout shorthand>
 @mixin full(
   $context: $susy
 ) {
@@ -30,44 +30,44 @@
 
 // First
 // -----
-// - [$grid]: <settings>
+// - [$context]: <settings>
 @mixin first(
-  $grid: $susy
+  $context: $susy
 ) {
-  $grid: parse-grid($grid);
-  $flow: susy-get(flow, $grid);
+  $context: parse-grid($context);
+  $flow: susy-get(flow, $context);
 
-  @if not is-split($grid) {
+  @if not is-split($context) {
     @include float-first($flow);
   }
 }
 
 @mixin alpha(
-  $grid: $susy
+  $context: $susy
 ) {
-  @include first($grid);
+  @include first($context);
 }
 
 
 // Last
 // ----
-// - [$grid]: <settings>
+// - [$context]: <settings>
 @mixin last(
-  $grid: $susy
+  $context: $susy
 ) {
-  $grid: parse-grid($grid);
+  $context: parse-grid($context);
   $output: (
-    flow: susy-get(flow, $grid),
-    margin: if(is-split($grid), gutters($grid), 0),
+    flow: susy-get(flow, $context),
+    margin: if(is-split($context), gutters($context), 0),
   );
 
   @include float-last($output...);
 }
 
 @mixin omega(
-  $grid: $susy
+  $context: $susy
 ) {
-  @include last($grid);
+  @include last($context);
 }
 
 

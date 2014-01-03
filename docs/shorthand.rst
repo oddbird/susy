@@ -1,5 +1,5 @@
-Shorthand Syntax
-================
+Shorthand
+=========
 
 Susy provides a shorthand syntax
 to easily pass arbitrary settings into functions and mixins.
@@ -91,6 +91,8 @@ The syntax generally breaks down into three parts:
    The local keywords are specific to each individual use.
 
 
+.. _shorthand-layout:
+
 Layout
 ------
 
@@ -153,6 +155,8 @@ between lists and maps.
   $medium: 13 static;
   @include span(3 of $medium);
 
+
+.. _shorthand-span:
 
 Spans
 -----

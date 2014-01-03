@@ -9,7 +9,7 @@ and `Vertical Rhythms`_.
 
 .. _Sass: http://sass-lang.com/
 .. _Compass: http://compass-style.org/
-.. _Breakpoint: breakpoint-sass.com/‎
+.. _Breakpoint: http://breakpoint-sass.com/
 .. _Vertical Rhythms: http://compass-style.org/reference/compass/typography/vertical_rhythm/
 
 

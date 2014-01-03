@@ -481,5 +481,32 @@
     $width: get-span-width($map);
     @include assert-equal($width, 80%,
       'Returns the correct wider span width.');
+
+    // inside narrow
+    $map: (
+      span: 5,
+      location: 1,
+      columns: 8,
+      gutters: .25,
+      spread: narrow,
+      gutter-position: inside,
+    );
+    $width: get-span-width($map);
+    @include assert-equal($width, 60%,
+      'Returns the correct narrow inside span width.');
+
+    // inside wider
+    $map: (
+      span: 5,
+      location: 1,
+      columns: 8,
+      gutters: .25,
+      spread: wider,
+      gutter-position: inside,
+    );
+    $width: get-span-width($map);
+    @include assert-equal($width, 65%,
+      'Returns the correct narrow inside span width.');
+
   }
 }

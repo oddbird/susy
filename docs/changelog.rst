@@ -9,6 +9,7 @@ Changelog
 - ``show-grid`` mixin can output either background or overlay grids.
 - Add ``isolate`` function to return isolation offset width.
 - Fix a bug with ``last`` output for ``split``-gutter layouts.
+- Split-gutter ``span()`` properly supports ``narrow`` and ``wider`` keywords.
 
 BREAKING:
 

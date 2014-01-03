@@ -39,6 +39,11 @@ all the settings can be controlled both globally
 or locally
 (passed to individual functions and mixins).
 
+
+-------------------------------------------------------------------------
+
+.. _settings-global:
+
 Global Defaults
 ---------------
 
@@ -74,6 +79,33 @@ with ``use-grid``:
     // an 8-column static grid...
   }
 
+Here are all the global Susy settings
+with their default values:
+
+.. code-block:: scss
+
+  $susy: (
+    flow: ltr,
+    math: fluid,
+    output: float,
+    gutter-position: after,
+    container: auto,
+    container-position: center,
+    columns: 4,
+    gutters: .25,
+    column-width: false,
+    global-box-sizing: content-box,
+    last-flow: to,
+    debug: (
+      image: hide,
+      color: rgba(#66f, .25),
+      output: background,
+      toggle: top right,
+    ),
+  );
+
+
+-------------------------------------------------------------------------
 
 .. _settings-flow:
 
@@ -115,6 +147,8 @@ Math
    your grid widths will be output as ``em`` values.
 
 
+-------------------------------------------------------------------------
+
 .. _settings-output:
 
 Output
@@ -140,6 +174,8 @@ Output
 .. _sub-pixel rounding: http://tylertate.com/blog/2012/01/05/subpixel-rounding.html
 .. _John Albin Wilkins: http://john.albin.net/
 
+
+-------------------------------------------------------------------------
 
 .. _settings-gutter-position:
 
@@ -175,6 +211,8 @@ either as padding or margins on layout elements.*
    and are not removed at the edges of the grid.
 
 
+-------------------------------------------------------------------------
+
 .. _settings-container:
 
 Container
@@ -206,6 +244,8 @@ Container
   and no one likes sub-pixel errors.
 
 
+-------------------------------------------------------------------------
+
 .. _settings-container-position:
 
 Container Position
@@ -235,6 +275,8 @@ Container Position
    they will be used as ``left`` and ``right`` margins respectively.
 
 
+-------------------------------------------------------------------------
+
 .. _settings-columns:
 
 Columns
@@ -259,6 +301,8 @@ Columns
 .. _Fibonacci: http://en.wikipedia.org/wiki/Fibonacci_number
 
 
+-------------------------------------------------------------------------
+
 .. _settings-gutters:
 
 Gutters
@@ -276,6 +320,8 @@ Gutters
    In asymmetrical grids,
    this is ``1/4`` the size of a single column-unit.
 
+
+-------------------------------------------------------------------------
 
 .. _settings-column-width:
 
@@ -297,6 +343,8 @@ Column Width
    unless you specifically want the container-width
    calculated for you.
 
+
+-------------------------------------------------------------------------
 
 .. _settings-global-box-sizing:
 
@@ -326,6 +374,8 @@ see the `MDN box-sizing documentation`_.
 .. _MDN box-sizing documentation: https://developer.mozilla.org/en-US/docs/Web/CSS/box-sizing
 
 
+-------------------------------------------------------------------------
+
 .. _settings-last-flow:
 
 Last Flow
@@ -350,14 +400,46 @@ Last Flow
    in the opposite direction.
 
 
-.. _settings-show-grids:
+-------------------------------------------------------------------------
 
-Show Grids
-----------
+.. _settings-debug:
 
-*Toggle grid images for debugging.*
+Debug
+-----
 
-- **setting:** ``show-grids``
+*Settings for debugging.*
+
+- **setting:** ``debug``
+- **scope:** global, local [container only]
+- **options**: <map of sub-settings>
+
+.. code-block:: scss
+
+  $susy: (
+    debug: (
+      image: show,
+      color: blue,
+      output: overlay,
+      toggle: top right,
+    ),
+  );
+
+.. warning::
+
+  Grid images are not exact.
+  Browsers have extra trouble
+  with sub-pixel rounding on background images.
+  These are meant for rough debugging,
+  not for pixel-perfect measurements.
+
+.. _settings-debug-image:
+
+Debug Image
+~~~~~~~~~~~
+
+*Toggle the available grid images on and off.*
+
+- **setting:** ``debug: image``
 - **scope:** global, local [container only]
 - **options:** ``show`` | ``hide`` | ``show-columns`` | ``show-baseline``
 - **default:** ``hide``
@@ -378,16 +460,57 @@ Show Grids
    Show only the baseline grid,
    if the ``$base-line-height`` variable is available.
 
-.. warning::
-
-  Grid images are not exact.
-  Browsers have extra trouble
-  with sub-pixel rounding on background images.
-  These are meant for rough debugging,
-  not for pixel-perfect measurements.
-
 .. _Compass vertical rhythms: http://compass-style.org/reference/compass/typography/vertical_rhythm/
 
+.. _settings-debug-output:
+
+Debug Output
+~~~~~~~~~~~~
+
+- **setting:** ``debug: output``
+- **scope:** global, local [container only]
+- **options:** ``background`` | ``overlay``
+- **default:** ``background``
+
+1. ``background``:
+   Debugging images will be generated
+   on on the background of the container element.
+2. ``overlay``:
+   Debugging images will be generated as an overlay
+   using the container's ``:\:before`` element.
+
+.. _settings-debug-toggle:
+
+Debug Toggle
+~~~~~~~~~~~~
+
+*Position the grid-overlay toggle.*
+
+- **setting:** ``debug: toggle``
+- **scope:** global
+- **options:** ``right`` | ``left`` and ``top`` | ``bottom``
+- **default:** ``top right``
+
+If you are using the grid overlay option,
+Susy will generate a toggle to show/hide the overlay.
+Hovering over the toggle will show the overlay.
+You can place the toggle in any corner of the viewport
+using a combination of ``top``, ``right``, ``bottom``, and ``left``.
+
+.. _settings-debug-color:
+
+Debug Color
+~~~~~~~~~~~
+
+*Change the color of the grid image.*
+
+- **setting:** ``debug: color``
+- **scope:** global
+- **options:** <color>
+- **default:** ``rgba(#66f, .25)``
+
+
+-------------------------------------------------------------------------
 
 .. _settings-location:
 
@@ -400,7 +523,6 @@ Locations keywords don't require the ``at`` flag.*
 - **name:** ``location``
 - **scope:** local
 - **options:** ``first`` | ``alpha`` | ``last`` | ``omega`` | ``<number>``
-- **default:** ``null``
 
 1. ``first`` & ``alpha``:
    Set location to ``1``.
@@ -412,6 +534,8 @@ Locations keywords don't require the ``at`` flag.*
    between ``1`` and the total number of available columns.
 
 
+-------------------------------------------------------------------------
+
 .. _settings-box-sizing:
 
 Box Sizing
@@ -422,13 +546,14 @@ Box Sizing
 - **name:** ``box-sizing``
 - **scope:** local
 - **options:** ``border-box`` | ``content-box``
-- **default:** ``null``
 
 1. ``border-box``:
    Output ``box-sizing`` CSS to set the ``border-box`` model.
 2. ``content-box``:
    Output ``box-sizing`` CSS to set the ``content-box`` model.
 
+
+-------------------------------------------------------------------------
 
 .. _settings-spread:
 
@@ -459,6 +584,8 @@ Spread
    and 4 gutters (2 internal, and 2 sides).
 
 
+-------------------------------------------------------------------------
+
 .. _settings-gutter-override:
 
 Gutter Override
@@ -469,13 +596,14 @@ Gutter Override
 - **name:** ``gutter-override``
 - **scope:** local
 - **options:** ``no-gutters`` | ``no-gutter`` | ``<length>``
-- **default:** ``null``
 
 1. ``no-gutters`` or ``no-gutter``:
    Remove all gutter output.
 2. ``<length>``:
    Override the calculated gutter output with an explicit width.
 
+
+-------------------------------------------------------------------------
 
 .. _settings-role:
 
@@ -487,7 +615,6 @@ Role
 - **name:** ``role``
 - **scope:** local
 - **options:** ``nest``
-- **default:** ``null``
 
 1. ``nest``:
    Mark an internal grid element as a context for nested grids.

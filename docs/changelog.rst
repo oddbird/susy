@@ -2,6 +2,25 @@ Changelog
 =========
 
 
+2.0.0.beta.2 — UNRELEASED
+-------------------------
+
+- Allow nesting of Susy settings.
+- ``show-grid`` mixin can output either background or overlay grids.
+
+BREAKING:
+
+- Move debug settings into ``$susy: (debug: (<settings>));``.
+- Replace ``show-grid`` setting with new ``debug: image`` setting.
+- Add ``debug: output`` setting and keywords
+  to toggle between ``background`` and ``overlay`` grid images.
+- Remove ``grid-overlay`` mixin.
+- Replace it with ``overlay-grid`` mixin:
+
+  + Doesn't take ``$selector`` argument — should be nested instead.
+  + Can still be used multiple times.
+
+
 2.0.0.beta.1 — Dec 24 2013
 --------------------------
 

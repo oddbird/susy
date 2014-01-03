@@ -14,7 +14,7 @@
     @include compare-maps($test, $expect, 'parse-grid: map');
 
     // grid #1
-    $grid: 960px 9 .25 static before show float right ltr;
+    $grid: 960px 9 .25 static before show float right ltr background;
     $test: parse-grid($grid);
     $expect: (
       columns: 9,
@@ -25,7 +25,10 @@
       container-position: right,
       flow: ltr,
       gutter-position: before,
-      show-grids: show,
+      debug: (
+        image: show,
+        output: background,
+      ),
     );
     @include compare-maps($test, $expect, 'parse-grid: #1');
 
@@ -42,8 +45,10 @@
       container-position: left,
       flow: rtl,
       gutter-position: after,
-      show-grids: show-columns,
       box-sizing: border-box,
+      debug: (
+        image: show-columns,
+      ),
     );
     @include compare-maps($test, $expect, 'parse-grid: #2');
 
@@ -53,8 +58,10 @@
     $expect: (
       container-position: center,
       gutter-position: split,
-      show-grids: hide,
       box-sizing: content-box,
+      debug: (
+        image: hide,
+      ),
     );
     @include compare-maps($test, $expect, 'parse-grid: #3');
 
@@ -65,7 +72,9 @@
       columns: 12,
       gutters: .25,
       gutter-position: inside,
-      show-grids: show-baseline,
+      debug: (
+        image: show-baseline,
+      ),
     );
     @include compare-maps($test, $expect, 'parse-grid: #4');
 
@@ -226,6 +235,23 @@
       'explicit');
   }
 
+  // [mixin] susy-set
+  // ----------------
+
+  @include test('[mixin] susy-set') {
+    $key: columns;
+    $original: susy-get($key);
+    $new: $original + 3;
+
+    @include susy-set($key, $new);
+
+    $test: susy-get($key);
+    @include assert-equal($test, $new,
+      'Changes the global value for a setting.');
+
+    @include original-grid;
+  }
+
   // [function] susy-get
   // -------------------
 
@@ -257,5 +283,23 @@
     $expect: null;
     @include assert-equal($test, $expect,
       'Returns null gutter setting without falling back on default.');
+
+    // deep get
+    $grid: (
+      columns: 12,
+      debug: (
+        output: background,
+        color: red,
+      ),
+    );
+    $test: susy-get(debug color, $grid);
+    $expect: red;
+    @include assert-equal($test, $expect,
+      'Returns deep grid setting when available.');
+
+    $test: susy-get(turtle monkey dove, $grid);
+    $expect: null;
+    @include assert-equal($test, $expect,
+      'Returns null when deep grid setting is not available.');
   }
 }

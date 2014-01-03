@@ -69,18 +69,14 @@
 // Symmetrical
 // -----------
 
-$a-grid: 10 (4em 1em) before;
-
-@include use-grid(append($a-grid, hide)) {
+@include use-grid(10 (4em 1em) before show overlay) {
   @include ag-test(symmetrical);
 }
 
 // Asymmetrical
 // ------------
 
-$b-grid: 80% (.5 2 1.25 1 3.25 1.75 3 2 1 3.75) .5 isolate left;
-
-@include use-grid(append($b-grid, show-baseline)) {
+@include use-grid(80% (.5 2 1.25 1 3.25 1.75 3 2 1 3.75) .5 isolate left show-columns overlay) {
   @include ag-test(asymmetrical);
 }
 
@@ -111,11 +107,6 @@ $b-grid: 80% (.5 2 1.25 1 3.25 1.75 3 2 1 3.75) .5 isolate left;
 @include use-grid(10 (6em 2em) inside-static show) {
   @include ag-test(inside-static);
 }
-
-// Grid Overlay
-// ------------
-
-@include grid-overlay('.symmetrical' append($a-grid, show), '.asymmetrical' append($b-grid, show-columns));
 
 // Styles
 // ------

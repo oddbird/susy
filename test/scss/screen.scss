@@ -6,26 +6,13 @@
 @import "test/helpers";
 @import "test/layout";
 
-// Output
-// ------
-
-$default-module-output: false;
-$default-test-output: false;
-$default-final-output: false;
+// Test
+// ----
 
 $output-test-context: true;
 $output-test-results: false;
 
-// Test
-// ----
-
-@import "language/susy";
-
-@import "output/shared";
-@import "output/float";
-
-// Report
-// ------
+@import "tests";
 
 .results{
   @if map-get($true-results, fail) < 1 {

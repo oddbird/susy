@@ -1,16 +1,36 @@
 // Background Grid Syntax
 // ======================
 
-$debug-defaults: (
-  color: rgba(#66f, .25),
-  toggle: top right,
-);
+$susy-overlay-grid-head-exists: false;
 
-// Show Grid
-// ---------
-// Show a grid background on any element.
+
+// Show Grid/s
+// -----------
+// Show grid on any element using either background or overlay.
 // - [$grid]  : <settings>
 @mixin show-grid(
+  $grid: $susy
+) {
+  $output: debug-get(output, $grid);
+
+  @if $output == overlay {
+    @include overlay-grid($grid);
+  } @else {
+    @include background-grid($grid);
+  }
+}
+
+@mixin show-grids(
+  $grid: $susy
+) {
+  @include show-grid($grid);
+}
+
+// Background Grid
+// ---------------
+// Show a grid background on any element.
+// - [$grid]  : <settings>
+@mixin background-grid(
   $grid: $susy
 ) {
   $output: get-background($grid);
@@ -29,26 +49,33 @@ $debug-defaults: (
   }
 }
 
-@mixin show-grids(
-  $grid: $susy
-) {
-  @include show-grid($grid);
-}
 
-// Grid Overlay
+// Overlay Grid
 // ------------
 // Generate an icon to trigger grid-overlays on any given elements.
 // $grids...  : <selector> [<settings>] [, <selector>]*
-@mixin grid-overlay (
-  $grids...
+@mixin overlay-grid (
+  $grid: $susy
 ) {
-  head {
-    @include overlay-head;
-    &:hover {
-      @include overlay-backgrounds($grids...);
+  @if not $susy-overlay-grid-head-exists {
+    @at-root head { @include overlay-head; }
+    $susy-overlay-grid-head-exists: true !global;
+  }
+
+  $selector: #{&};
+
+  @at-root head:hover {
+    ~ #{$selector},
+    ~ body #{$selector} {
+      position: relative;
+      &::before {
+        @include grid-overlay-base;
+        @include background-grid($grid);
+      }
     }
   }
 }
+
 
 // [Private] Overlay Head
 // ----------------------
@@ -86,31 +113,11 @@ $debug-defaults: (
   }
 }
 
-// [Private] Overlay Backgrounds
-// -----------------------------
-// Parse and apply backgrounds for overlay-grid
-@mixin overlay-backgrounds(
-  $grids...
-) {
-  @each $grid in $grids {
-    $selector: nth($grid, 1);
-    $grid: if(length($grid) > 1, nth($grid, 2), $susy);
-
-    ~ #{$selector},
-    ~ body #{$selector} {
-      position: relative;
-      &::before {
-        @extend %grid-overlay-base;
-        @include show-grid($grid);
-      }
-    }
-  }
-}
 
 // [Private] Grid Overlay Base
 // ---------------------------
 // Base styles for generating a grid overlay
-%grid-overlay-base {
+@mixin grid-overlay-base() {
   position: absolute;
   top: 0;
   left: 0;
@@ -119,6 +126,7 @@ $debug-defaults: (
   content: " ";
   z-index: 998;
 }
+
 
 // Get Symmetrical Background
 // --------------------------
@@ -158,6 +166,7 @@ $debug-defaults: (
   @return $background;
 }
 
+
 // Get Asymmetrical Inside
 // -----------------------
 // - $grid: <settings>
@@ -196,6 +205,7 @@ $debug-defaults: (
   @return $stops;
 }
 
+
 // Get Asymmetrical Split
 // ----------------------
 // - $grid: <settings>
@@ -226,6 +236,7 @@ $debug-defaults: (
 
   @return $stops;
 }
+
 
 // Get Asymmetrical Outside
 // ------------------------
@@ -270,6 +281,7 @@ $debug-defaults: (
   @return $stops;
 }
 
+
 // Get Asymmetrical Background
 // ---------------------------
 // - $grid: <settings>
@@ -289,6 +301,7 @@ $debug-defaults: (
   @return (image: (columns: $stops));
 }
 
+
 // Get Background
 // --------------
 // - $grid: <settings>
@@ -296,7 +309,7 @@ $debug-defaults: (
   $grid
 ) {
   $grid     : parse-grid($grid);
-  $show     : susy-get(show-grids, $grid);
+  $show     : susy-get(debug image, $grid);
   $return   : ();
 
   @if $show and $show != hide {
@@ -342,14 +355,15 @@ $debug-defaults: (
   @return $return;
 }
 
+
 // Get Debug
 // ---------
 // Return the value of a debug setting
 // - $key: <setting>
 @function debug-get(
-  $key
+  $key,
+  $grid: $susy
 ) {
-  $user: variable-exists(debug);
-  $map: if($user, map-merge($debug-defaults, $debug), $debug-defaults);
-  @return map-get($map, $key);
+  $key: join(debug, $key, space);
+  @return susy-get($key);
 }

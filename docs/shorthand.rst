@@ -74,15 +74,19 @@ The syntax generally breaks down into three parts:
        output               : isolate float,
        container-position   : left center right,
        flow                 : ltr rtl,
-       show-grids           : show hide show-columns show-baseline,
        gutter-position      : before after split inside inside-static,
+       debug: (
+         image              : show hide show-columns show-baseline,
+         output             : background overlay,
+       ),
      );
 
      $local-keywords: (
        box-sizing           : border-box content-box,
-       location             : first alpha last omega,
+       edge                 : first alpha last omega,
        spread               : narrow wide wider,
        gutter-override      : no-gutters no-gutter,
+       clear                : break nobreak,
        role                 : nest,
      );
 

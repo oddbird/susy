@@ -1,3 +1,4 @@
+@charset "UTF-8";
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -172,25 +173,391 @@ h1 {
 
 /*  
 
-### Language Settings ------ */
-/*  - [function] parse-grid (30 Assertions, 30 Passed, 0 Failed) */
-/*  - [function] parse-span (44 Assertions, 44 Passed, 0 Failed) */
-/*  - [function] parse-gutters (11 Assertions, 11 Passed, 0 Failed) */
-/*  - [function] susy-get (4 Assertions, 4 Passed, 0 Failed) */
+### General Settings ------ */
+/*  - susy-defaults (2 Assertions, 2 Passed, 0 Failed) */
+/*  
+    1 Tests:
+    - 1 Passed
+    - 0 Failed */
+/*  
+
+### Column Math ------ */
+/*  - [function] is-symmetrical() (3 Assertions, 3 Passed, 0 Failed) */
+/*  - [function] column-count() (2 Assertions, 2 Passed, 0 Failed) */
+/*  - [function] column-sum() — symmetrical (4 Assertions, 4 Passed, 0 Failed) */
+/*  - [function] column-sum() — asymmetrical (3 Assertions, 3 Passed, 0 Failed) */
+/*  - [function] get-columns() (3 Assertions, 3 Passed, 0 Failed) */
+/*  - [function] get-column-span-sum() (2 Assertions, 2 Passed, 0 Failed) */
+/*  
+    6 Tests:
+    - 6 Passed
+    - 0 Failed */
+/*  
+
+### Container Math ------ */
+/*  - [function] calculate-container-width() (1 Assertions, 1 Passed, 0 Failed) */
+/*  
+    1 Tests:
+    - 1 Passed
+    - 0 Failed */
+/*  
+
+### Box Sizing Helper ------ */
+/* - [mixin] susy-box-sizing */
+.test__susy-box-sizing .assert__border-box {
+  overflow: hidden;
+  background: rgba(204, 204, 255, 0.5);
+}
+
+.test__susy-box-sizing .assert__border-box .test, .test__susy-box-sizing .assert__border-box .expect {
+  width: 50%;
+  padding: 0 2em;
+}
+
+.test__susy-box-sizing .assert__border-box::before {
+  content: "Box-models are correctly output and prefixed.";
+  display: block;
+  padding: 0.375rem 0.75rem;
+  text-align: left;
+  font-style: italic;
+}
+
+/*  
+    0 Tests:
+    - 0 Passed
+    - 0 Failed */
+/*  
+
+### Direction Helpers ------ */
+/*  - [function] get-direction (2 Assertions, 2 Passed, 0 Failed) */
+/*  - [function] to (2 Assertions, 2 Passed, 0 Failed) */
+/*  - [function] from (2 Assertions, 2 Passed, 0 Failed) */
+/*  
+    3 Tests:
+    - 3 Passed
+    - 0 Failed */
+/*
+
+### Grid Background API ------ */
+/* - [mixin] background-grid-output */
+.test__background-grid-output .assert__show {
+  overflow: hidden;
+  background: rgba(204, 204, 255, 0.5);
+}
+
+.test__background-grid-output .assert__show .test, .test__background-grid-output .assert__show .expect {
+  padding-top: 48px;
+  padding-top: 3rem;
+  padding-bottom: 48px;
+  padding-bottom: 3rem;
+  background: none;
+}
+
+.test__background-grid-output .assert__show::before {
+  content: "Elements should show a horizontal clipped red-green-blue gradient, and a vertical baseline";
+  display: block;
+  padding: 0.375rem 0.75rem;
+  text-align: left;
+  font-style: italic;
+}
+
+/*
+
+### Shared Container API ------ */
+/* - [mixin] container-output */
+.test__container-output .assert__fluid {
+  overflow: hidden;
+  background: rgba(204, 204, 255, 0.5);
+}
+
+.test__container-output .assert__fluid::before {
+  content: "Containers should have 60em max-width, centered.";
+  display: block;
+  padding: 0.375rem 0.75rem;
+  text-align: left;
+  font-style: italic;
+}
+
+.test__container-output .assert__static {
+  overflow: hidden;
+  background: rgba(204, 204, 255, 0.5);
+}
+
+.test__container-output .assert__static::before {
+  content: "Containers should have 30em width, flush right.";
+  display: block;
+  padding: 0.375rem 0.75rem;
+  text-align: left;
+  font-style: italic;
+}
+
+.test__container-output .assert__auto {
+  overflow: hidden;
+  background: rgba(204, 204, 255, 0.5);
+}
+
+.test__container-output .assert__auto::before {
+  content: "Containers should have 100% width.";
+  display: block;
+  padding: 0.375rem 0.75rem;
+  text-align: left;
+  font-style: italic;
+}
+
+/*
+
+### Shared Margin API ------ */
+/* - [mixin] margin-output */
+.test__margin-output .assert__margin-output {
+  overflow: hidden;
+  background: rgba(204, 204, 255, 0.5);
+}
+
+.test__margin-output .assert__margin-output::before {
+  content: "Elements should have 25% right margin, 8em left.";
+  display: block;
+  padding: 0.375rem 0.75rem;
+  text-align: left;
+  font-style: italic;
+}
+
+/*
+
+### Shared Padding API ------ */
+/* - [mixin] padding-output */
+.test__padding-output .assert__padding-output {
+  overflow: hidden;
+  background: rgba(204, 204, 255, 0.5);
+}
+
+.test__padding-output .assert__padding-output::before {
+  content: "Elements should have 25% right padding, 8em left.";
+  display: block;
+  padding: 0.375rem 0.75rem;
+  text-align: left;
+  font-style: italic;
+}
+
+/*  
+
+### Clearfix Helper ------ */
+/* - [mixin] susy-clearfix */
+.test__susy-clearfix .assert__clearfix {
+  overflow: hidden;
+  background: rgba(204, 204, 255, 0.5);
+}
+
+.test__susy-clearfix .assert__clearfix .spacer {
+  float: left;
+  width: 25%;
+}
+
+.test__susy-clearfix .assert__clearfix::before {
+  content: "Elements should clear floated children.";
+  display: block;
+  padding: 0.375rem 0.75rem;
+  text-align: left;
+  font-style: italic;
+}
+
+/*  
+    0 Tests:
+    - 0 Passed
+    - 0 Failed */
+/*
+
+### Float Container API ------ */
+/* - [mixin] float-container */
+.test__float-container .assert__float-container {
+  overflow: hidden;
+  background: rgba(204, 204, 255, 0.5);
+}
+
+.test__float-container .assert__float-container::before {
+  content: "Containers should be 30em wide, flush left.";
+  display: block;
+  padding: 0.375rem 0.75rem;
+  text-align: left;
+  font-style: italic;
+}
+
+/*
+
+### Float Span API ------ */
+/* - [mixin] float-span-output */
+.test__float-span-output .assert__full {
+  overflow: hidden;
+  background: rgba(204, 204, 255, 0.5);
+}
+
+.test__float-span-output .assert__full .expect {
+  clear: both;
+}
+
+.test__float-span-output .assert__full::before {
+  content: "Output should be 25%, floated left, with matching margins/padding";
+  display: block;
+  padding: 0.375rem 0.75rem;
+  text-align: left;
+  font-style: italic;
+}
+
+.test__float-span-output .assert__float-to {
+  overflow: hidden;
+  background: rgba(204, 204, 255, 0.5);
+}
+
+.test__float-span-output .assert__float-to .expect {
+  clear: both;
+}
+
+.test__float-span-output .assert__float-to::before {
+  content: "Output should be 25%, floated right";
+  display: block;
+  padding: 0.375rem 0.75rem;
+  text-align: left;
+  font-style: italic;
+}
+
+.test__float-span-output .assert__float-null {
+  overflow: hidden;
+  background: rgba(204, 204, 255, 0.5);
+}
+
+.test__float-span-output .assert__float-null::before {
+  content: "Output should be 25%, not floated";
+  display: block;
+  padding: 0.375rem 0.75rem;
+  text-align: left;
+  font-style: italic;
+}
+
+/*
+
+### Float End API ------ */
+/* - [mixin] float-last */
+.test__float-last .assert__default {
+  overflow: hidden;
+  background: rgba(204, 204, 255, 0.5);
+}
+
+.test__float-last .assert__default .test, .test__float-last .assert__default .expect {
+  float: left;
+  width: 75%;
+  margin-right: 5%;
+}
+
+.test__float-last .assert__default::before {
+  content: "Items should float flush right.";
+  display: block;
+  padding: 0.375rem 0.75rem;
+  text-align: left;
+  font-style: italic;
+}
+
+.test__float-last .assert__last-flow-from {
+  overflow: hidden;
+  background: rgba(204, 204, 255, 0.5);
+}
+
+.test__float-last .assert__last-flow-from .test, .test__float-last .assert__last-flow-from .expect {
+  float: left;
+  width: 75%;
+  margin-right: 5%;
+}
+.test__float-last .assert__last-flow-from .expect {
+  clear: both;
+}
+.test__float-last .assert__last-flow-from .spacer {
+  overflow: hidden;
+}
+
+.test__float-last .assert__last-flow-from::before {
+  content: "Items should not have any right margin.";
+  display: block;
+  padding: 0.375rem 0.75rem;
+  text-align: left;
+  font-style: italic;
+}
+
+/* - [mixin] float-first */
+.test__float-first .assert__float-first {
+  overflow: hidden;
+  background: rgba(204, 204, 255, 0.5);
+}
+
+.test__float-first .assert__float-first .test, .test__float-first .assert__float-first .expect {
+  float: left;
+  width: 75%;
+  margin-left: 5%;
+}
+
+.test__float-first .assert__float-first::before {
+  content: "Items should float flush left.";
+  display: block;
+  padding: 0.375rem 0.75rem;
+  text-align: left;
+  font-style: italic;
+}
+
+/*
+
+### Isolation API ------ */
+/* - [mixin] isolate-output */
+.test__isolate-output .assert__isolate-output {
+  overflow: hidden;
+  background: rgba(204, 204, 255, 0.5);
+}
+
+.test__isolate-output .assert__isolate-output .test, .test__isolate-output .assert__isolate-output .expect {
+  width: 40%;
+  float: left;
+  margin-right: 5.26316%;
+}
+.test__isolate-output .assert__isolate-output .expect {
+  clear: both;
+}
+
+.test__isolate-output .assert__isolate-output::before {
+  content: "Isolation at 30%, has 30% left margin and -100% right margin.";
+  display: block;
+  padding: 0.375rem 0.75rem;
+  text-align: left;
+  font-style: italic;
+}
+
+/*  
+
+### Map Helpers ------ */
+/*  - truncate-list (1 Assertions, 1 Passed, 0 Failed) */
+/*  - deep-get (1 Assertions, 1 Passed, 0 Failed) */
+/*  - deep-set (2 Assertions, 2 Passed, 0 Failed) */
+/*  - deep-has-key (2 Assertions, 2 Passed, 0 Failed) */
 /*  
     4 Tests:
     - 4 Passed
     - 0 Failed */
 /*  
 
+### Language Settings ------ */
+/*  - [function] parse-grid (30 Assertions, 30 Passed, 0 Failed) */
+/*  - [function] parse-span (44 Assertions, 44 Passed, 0 Failed) */
+/*  - [function] parse-gutters (11 Assertions, 11 Passed, 0 Failed) */
+/*  - [mixin] susy-set (1 Assertions, 1 Passed, 0 Failed) */
+/*  - [function] susy-get (6 Assertions, 6 Passed, 0 Failed) */
+/*  
+    5 Tests:
+    - 5 Passed
+    - 0 Failed */
+/*  
+
 ### Grids Syntax ------ */
 /*  - [mixin] set-grid (7 Assertions, 7 Passed, 0 Failed) */
-/*  - [mixin] susy-set (1 Assertions, 1 Passed, 0 Failed) */
 /*  - [mixin] use-grid (6 Assertions, 6 Passed, 0 Failed) */
 /*  - [function] layout (1 Assertions, 1 Passed, 0 Failed) */
 /*  
-    4 Tests:
-    - 4 Passed
+    3 Tests:
+    - 3 Passed
     - 0 Failed */
 /*  
 
@@ -254,13 +621,13 @@ h1 {
 /*  
 
 ### Background Syntax ------ */
-/* - [mixin] show-grid */
-.test__show-grid .assert__outside {
+/* - [mixin] background-grid */
+.test__background-grid .assert__outside {
   overflow: hidden;
   background: rgba(204, 204, 255, 0.5);
 }
 
-.test__show-grid .assert__outside::before {
+.test__background-grid .assert__outside::before {
   content: "Items should have a 7-column grid with outside gutters.";
   display: block;
   padding: 0.375rem 0.75rem;
@@ -268,12 +635,12 @@ h1 {
   font-style: italic;
 }
 
-.test__show-grid .assert__split {
+.test__background-grid .assert__split {
   overflow: hidden;
   background: rgba(204, 204, 255, 0.5);
 }
 
-.test__show-grid .assert__split::before {
+.test__background-grid .assert__split::before {
   content: "Items should have a 8-column grid with split gutters.";
   display: block;
   padding: 0.375rem 0.75rem;
@@ -281,12 +648,12 @@ h1 {
   font-style: italic;
 }
 
-.test__show-grid .assert__inside {
+.test__background-grid .assert__inside {
   overflow: hidden;
   background: rgba(204, 204, 255, 0.5);
 }
 
-.test__show-grid .assert__inside::before {
+.test__background-grid .assert__inside::before {
   content: "Items should have a 8-column grid with inside gutters.";
   display: block;
   padding: 0.375rem 0.75rem;
@@ -294,12 +661,12 @@ h1 {
   font-style: italic;
 }
 
-.test__show-grid .assert__asym-outside {
+.test__background-grid .assert__asym-outside {
   overflow: hidden;
   background: rgba(204, 204, 255, 0.5);
 }
 
-.test__show-grid .assert__asym-outside::before {
+.test__background-grid .assert__asym-outside::before {
   content: "Items should have a (1 2 3 2 1)-column grid with outside gutters.";
   display: block;
   padding: 0.375rem 0.75rem;
@@ -307,12 +674,12 @@ h1 {
   font-style: italic;
 }
 
-.test__show-grid .assert__asym-split {
+.test__background-grid .assert__asym-split {
   overflow: hidden;
   background: rgba(204, 204, 255, 0.5);
 }
 
-.test__show-grid .assert__asym-split::before {
+.test__background-grid .assert__asym-split::before {
   content: "Items should have a (1 2 3 3)-column grid with split gutters.";
   display: block;
   padding: 0.375rem 0.75rem;
@@ -320,12 +687,12 @@ h1 {
   font-style: italic;
 }
 
-.test__show-grid .assert__asym-inside {
+.test__background-grid .assert__asym-inside {
   overflow: hidden;
   background: rgba(204, 204, 255, 0.5);
 }
 
-.test__show-grid .assert__asym-inside::before {
+.test__background-grid .assert__asym-inside::before {
   content: "Items should have a (1 2 3 3)-column grid with inside gutters.";
   display: block;
   padding: 0.375rem 0.75rem;
@@ -2326,336 +2693,10 @@ h1 {
     1 Tests:
     - 1 Passed
     - 0 Failed */
-/*  
-
-### Box Sizing Helper ------ */
-/* - [mixin] susy-box-sizing */
-.test__susy-box-sizing .assert__border-box {
-  overflow: hidden;
-  background: rgba(204, 204, 255, 0.5);
-}
-
-.test__susy-box-sizing .assert__border-box .test, .test__susy-box-sizing .assert__border-box .expect {
-  width: 50%;
-  padding: 0 2em;
-}
-
-.test__susy-box-sizing .assert__border-box::before {
-  content: "Box-models are correctly output and prefixed.";
-  display: block;
-  padding: 0.375rem 0.75rem;
-  text-align: left;
-  font-style: italic;
-}
-
-/*  
-    0 Tests:
-    - 0 Passed
-    - 0 Failed */
-/*  
-
-### Direction Helpers ------ */
-/*  - [function] get-direction (2 Assertions, 2 Passed, 0 Failed) */
-/*  - [function] to (2 Assertions, 2 Passed, 0 Failed) */
-/*  - [function] from (2 Assertions, 2 Passed, 0 Failed) */
-/*  
-    3 Tests:
-    - 3 Passed
-    - 0 Failed */
-/*
-
-### Grid Background API ------ */
-/* - [mixin] background-grid-output */
-.test__background-grid-output .assert__show {
-  overflow: hidden;
-  background: rgba(204, 204, 255, 0.5);
-}
-
-.test__background-grid-output .assert__show .test, .test__background-grid-output .assert__show .expect {
-  padding-top: 48px;
-  padding-top: 3rem;
-  padding-bottom: 48px;
-  padding-bottom: 3rem;
-  background: none;
-}
-
-.test__background-grid-output .assert__show::before {
-  content: "Elements should show a horizontal clipped red-green-blue gradient, and a vertical baseline";
-  display: block;
-  padding: 0.375rem 0.75rem;
-  text-align: left;
-  font-style: italic;
-}
-
-/*
-
-### Shared Container API ------ */
-/* - [mixin] container-output */
-.test__container-output .assert__fluid {
-  overflow: hidden;
-  background: rgba(204, 204, 255, 0.5);
-}
-
-.test__container-output .assert__fluid::before {
-  content: "Containers should have 60em max-width, centered.";
-  display: block;
-  padding: 0.375rem 0.75rem;
-  text-align: left;
-  font-style: italic;
-}
-
-.test__container-output .assert__static {
-  overflow: hidden;
-  background: rgba(204, 204, 255, 0.5);
-}
-
-.test__container-output .assert__static::before {
-  content: "Containers should have 30em width, flush right.";
-  display: block;
-  padding: 0.375rem 0.75rem;
-  text-align: left;
-  font-style: italic;
-}
-
-.test__container-output .assert__auto {
-  overflow: hidden;
-  background: rgba(204, 204, 255, 0.5);
-}
-
-.test__container-output .assert__auto::before {
-  content: "Containers should have 100% width.";
-  display: block;
-  padding: 0.375rem 0.75rem;
-  text-align: left;
-  font-style: italic;
-}
-
-/*
-
-### Shared Margin API ------ */
-/* - [mixin] margin-output */
-.test__margin-output .assert__margin-output {
-  overflow: hidden;
-  background: rgba(204, 204, 255, 0.5);
-}
-
-.test__margin-output .assert__margin-output::before {
-  content: "Elements should have 25% right margin, 8em left.";
-  display: block;
-  padding: 0.375rem 0.75rem;
-  text-align: left;
-  font-style: italic;
-}
-
-/*
-
-### Shared Padding API ------ */
-/* - [mixin] padding-output */
-.test__padding-output .assert__padding-output {
-  overflow: hidden;
-  background: rgba(204, 204, 255, 0.5);
-}
-
-.test__padding-output .assert__padding-output::before {
-  content: "Elements should have 25% right padding, 8em left.";
-  display: block;
-  padding: 0.375rem 0.75rem;
-  text-align: left;
-  font-style: italic;
-}
-
-/*  
-
-### Clearfix Helper ------ */
-/* - [mixin] susy-clearfix */
-.test__susy-clearfix .assert__clearfix {
-  overflow: hidden;
-  background: rgba(204, 204, 255, 0.5);
-}
-
-.test__susy-clearfix .assert__clearfix .spacer {
-  float: left;
-  width: 25%;
-}
-
-.test__susy-clearfix .assert__clearfix::before {
-  content: "Elements should clear floated children.";
-  display: block;
-  padding: 0.375rem 0.75rem;
-  text-align: left;
-  font-style: italic;
-}
-
-/*  
-    0 Tests:
-    - 0 Passed
-    - 0 Failed */
-/*
-
-### Float Container API ------ */
-/* - [mixin] float-container */
-.test__float-container .assert__float-container {
-  overflow: hidden;
-  background: rgba(204, 204, 255, 0.5);
-}
-
-.test__float-container .assert__float-container::before {
-  content: "Containers should be 30em wide, flush left.";
-  display: block;
-  padding: 0.375rem 0.75rem;
-  text-align: left;
-  font-style: italic;
-}
-
-/*
-
-### Float Span API ------ */
-/* - [mixin] float-span-output */
-.test__float-span-output .assert__full {
-  overflow: hidden;
-  background: rgba(204, 204, 255, 0.5);
-}
-
-.test__float-span-output .assert__full .expect {
-  clear: both;
-}
-
-.test__float-span-output .assert__full::before {
-  content: "Output should be 25%, floated left, with matching margins/padding";
-  display: block;
-  padding: 0.375rem 0.75rem;
-  text-align: left;
-  font-style: italic;
-}
-
-.test__float-span-output .assert__float-to {
-  overflow: hidden;
-  background: rgba(204, 204, 255, 0.5);
-}
-
-.test__float-span-output .assert__float-to .expect {
-  clear: both;
-}
-
-.test__float-span-output .assert__float-to::before {
-  content: "Output should be 25%, floated right";
-  display: block;
-  padding: 0.375rem 0.75rem;
-  text-align: left;
-  font-style: italic;
-}
-
-.test__float-span-output .assert__float-null {
-  overflow: hidden;
-  background: rgba(204, 204, 255, 0.5);
-}
-
-.test__float-span-output .assert__float-null::before {
-  content: "Output should be 25%, not floated";
-  display: block;
-  padding: 0.375rem 0.75rem;
-  text-align: left;
-  font-style: italic;
-}
-
-/*
-
-### Float End API ------ */
-/* - [mixin] float-last */
-.test__float-last .assert__default {
-  overflow: hidden;
-  background: rgba(204, 204, 255, 0.5);
-}
-
-.test__float-last .assert__default .test, .test__float-last .assert__default .expect {
-  float: left;
-  width: 75%;
-  margin-right: 5%;
-}
-
-.test__float-last .assert__default::before {
-  content: "Items should float flush right.";
-  display: block;
-  padding: 0.375rem 0.75rem;
-  text-align: left;
-  font-style: italic;
-}
-
-.test__float-last .assert__last-flow-from {
-  overflow: hidden;
-  background: rgba(204, 204, 255, 0.5);
-}
-
-.test__float-last .assert__last-flow-from .test, .test__float-last .assert__last-flow-from .expect {
-  float: left;
-  width: 75%;
-  margin-right: 5%;
-}
-.test__float-last .assert__last-flow-from .expect {
-  clear: both;
-}
-.test__float-last .assert__last-flow-from .spacer {
-  overflow: hidden;
-}
-
-.test__float-last .assert__last-flow-from::before {
-  content: "Items should not have any right margin.";
-  display: block;
-  padding: 0.375rem 0.75rem;
-  text-align: left;
-  font-style: italic;
-}
-
-/* - [mixin] float-first */
-.test__float-first .assert__float-first {
-  overflow: hidden;
-  background: rgba(204, 204, 255, 0.5);
-}
-
-.test__float-first .assert__float-first .test, .test__float-first .assert__float-first .expect {
-  float: left;
-  width: 75%;
-  margin-left: 5%;
-}
-
-.test__float-first .assert__float-first::before {
-  content: "Items should float flush left.";
-  display: block;
-  padding: 0.375rem 0.75rem;
-  text-align: left;
-  font-style: italic;
-}
-
-/*
-
-### Isolation API ------ */
-/* - [mixin] isolate-output */
-.test__isolate-output .assert__isolate-output {
-  overflow: hidden;
-  background: rgba(204, 204, 255, 0.5);
-}
-
-.test__isolate-output .assert__isolate-output .test, .test__isolate-output .assert__isolate-output .expect {
-  width: 40%;
-  float: left;
-  margin-right: 5.26316%;
-}
-.test__isolate-output .assert__isolate-output .expect {
-  clear: both;
-}
-
-.test__isolate-output .assert__isolate-output::before {
-  content: "Isolation at 30%, has 30% left margin and -100% right margin.";
-  display: block;
-  padding: 0.375rem 0.75rem;
-  text-align: left;
-  font-style: italic;
-}
-
 .results {
   background: rgba(0, 128, 0, 0.25);
   border-color: green;
 }
 .results::after {
-  content: "38 Tests, 38 Passed, 0 Failed";
+  content: "50 Tests, 50 Passed, 0 Failed";
 }

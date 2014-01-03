@@ -5,25 +5,14 @@
 @import "true";
 @import "test/helpers";
 
-// Output
-// ------
+// Test
+// ----
 
 $default-module-output: css;
 
 $output-test-context: false;
 $output-test-results: true;
 
-// Test
-// ----
-
-@import "math";
-
-@import "language/susy";
-
-@import "output/shared";
-@import "output/float";
-
-// Report
-// ------
+@import "tests";
 
 @include report;

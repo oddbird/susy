@@ -10,11 +10,15 @@
   output: float,
   container-position: center,
   gutter-position: after,
-  show-grids: hide,
   global-box-sizing: content-box,
+  debug: (
+    image: hide,
+    color: rgba(#66f, .25),
+    output: background,
+    toggle: top right,
+  ),
 ));
 
-$nullable: gutters container-position;
 
 // Valid Keyword Values
 // --------------------
@@ -25,7 +29,6 @@ $susy-keywords: (
   output: isolate float,
   container-position: left center right,
   flow: ltr rtl,
-  show-grids: show hide show-columns show-baseline,
   gutter-position: before after split inside inside-static,
   box-sizing: border-box content-box,
   span: full,
@@ -34,7 +37,10 @@ $susy-keywords: (
   gutter-override: no-gutters no-gutter,
   role: nest,
   clear: break nobreak,
+  debug image: show hide show-columns show-baseline,
+  debug output: background overlay,
 );
+
 
 // User Settings
 // -------------
@@ -42,6 +48,7 @@ $susy-keywords: (
 // - Set EITHER $column-width OR $container
 // - Use $column-width for static layouts
 $susy: () !default;
+
 
 // Parse Susy Keywords and Maps
 // ----------------------------
@@ -58,7 +65,7 @@ $susy: () !default;
       @if type-of($item) == string {
         @each $key, $value in $susy-keywords {
           @if index($value, $item) {
-            $return: map-merge($return, ($key: $item));
+            $return: deep-set($return, $key, $item);
           }
         }
       // maps
@@ -70,6 +77,7 @@ $susy: () !default;
 
   @return $return;
 }
+
 
 // Parse Columns & Gutters
 // -----------------------
@@ -102,6 +110,7 @@ $susy: () !default;
   @return $return;
 }
 
+
 // Parse Grid/Context
 // ------------------
 @function parse-grid(
@@ -129,6 +138,7 @@ $susy: () !default;
 
   @return map-merge($return, $layout);
 }
+
 
 // Parse Span
 // ----------
@@ -179,6 +189,7 @@ $susy: () !default;
   @return $return;
 }
 
+
 // Parse Gutters
 // -------------
 @function parse-gutters(
@@ -211,6 +222,20 @@ $susy: () !default;
   @return $gutters;
 }
 
+
+// Susy Set
+// --------
+// Change one setting
+// - $key   : setting name
+// - $value : setting value
+@mixin susy-set(
+  $key,
+  $value
+) {
+  $susy: deep-set($susy, $key, $value) !global;
+}
+
+
 // Susy Get
 // --------
 // Return one setting from a grid
@@ -222,15 +247,16 @@ $susy: () !default;
 ) {
   $grid: parse-grid($grid);
   $options: $grid $susy $susy-defaults;
-  $nullish: index($nullable, $key);
   $break: false;
   $return: null;
 
   @each $opt in $options {
-    $keyset: index(map-keys($opt), $key);
-    @if not $break {
-      $return: map-get($opt, $key);
-      $break: $return or if($keyset and $nullish, true, false);
+    @if type-of($opt) == map and not $break {
+      $keyset: deep-has-key($opt, $key...);
+      @if $keyset {
+        $return: deep-get($opt, $key...);
+        $break: true;
+      }
     }
   }
 

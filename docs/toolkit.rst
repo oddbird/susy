@@ -882,7 +882,7 @@ Isolate
 Isolation is a layout technique based on floats,
 but adjusted to `address sub-pixel rounding issues`_.
 Susy supports it as a global :ref:`output <settings-output>` setting,
-or as a :ref:`shorthand` keyword for the ``span`` mixin,
+or as a :doc:`shorthand` keyword for the ``span`` mixin,
 or as a stand-alone mixin.
 
 The ``$location`` argument takes a standard
@@ -914,7 +914,49 @@ Gallery
 
 - ``gallery($span, $selector)``
 - ``$span``: :ref:`\<span\> <shorthand-span>`
-- ``$selector``: (nth-) ``child`` | ``of-type``
+- ``$selector``: (nth-) ``child``:abbr:`* (default)` | ``of-type``
+
+Gallery is a shortcut for creating gallery-style layouts,
+where a large number of elements are layed out on a consistent grid.
+We take the standard :ref:`span shorthand <shorthand-span>`
+and apply it to all the elements,
+using ``nth-child`` or ``nth-of-type`` selectors
+and the isolation technique to arrange them on the grid.
+
+.. code-block:: scss
+
+  // each img will span 3 of 12 columns,
+  // with 4 images in each row:
+  .gallery img {
+    @include gallery(3 of 12);
+  }
+
+
+-------------------------------------------------------------------------
+
+.. _tools-show-grid:
+
+Show Grid
+---------
+
+- ``show-grid($grid)``
+- ``$grid``: :ref:`\<layout\> <shorthand-layout>`
+
+The easiest way to show you grids
+is by adding a :ref:`keyword <settings-debug-image>`
+to your :ref:`container <tools-container>` mixin.
+If you need to apply the grid separately,
+the ``show-grid`` mixin takes exactly the same
+:ref:`layout shorthand <shorthand-layout>` arguments,
+and can output the debugging grid image
+as either a background, or a triggered overlay.
+
+.. code-block:: scss
+
+  body {
+    @include container;
+    @include show-grid(overlay);
+  }
 
 
 -------------------------------------------------------------------------
@@ -923,6 +965,13 @@ Gallery
 
 Breakpoint
 ----------
+
+Susy has built-in integration with the `Breakpoint`_ plugin.
+To install Breakpoint,
+follow the instuctions on their site.
+You have to install it before you can use it.
+
+.. _Breakpoint: http://breakpoint-sass.com/
 
 .. _tools-susy-breakpoint:
 
@@ -934,31 +983,41 @@ Susy Breakpoint
 - ``$layout``: :ref:`\<layout\> <shorthand-layout>`
 - ``$no-query``: See `Breakpoint: No Query Fallbacks`_
 
+If you have `Breakpoint`_ installed,
+they provide a standard ``breakpoint`` mixin
+that you should `learn to use`_.
+Their mixin takes two arguments:
+one to establish the media-query rules,
+and the second to handle fallbacks for older browsers.
+Our ``susy-breakpoint`` mixin keeps those two arguments,
+but adds a third one in the middle,
+so you can set the layout settings you want to use inside
+the given media-query.
+
+This mixin acts as a wrapper,
+and changes the default settings for any mixins
+that are nested inside.
+
+.. code-block:: scss
+
+  @include susy-breakpoint(30em, 8) {
+    // nested code uses an 8-column grid,
+    // starting at a 30em min-width breakpoint...
+    .example { @include span(3); }
+  }
+
+This is simply a shortcut for the more verbose approach.
+
+.. code-block:: scss
+
+  @include breakpoint(30em) {
+    @include use-grid(8) {
+      // nested code uses an 8-column grid,
+      // starting at a 30em min-width breakpoint...
+      .example { @include span(3); }
+    }
+  }
+
 .. _`Breakpoint: Basic Media Queries`: https://github.com/Team-Sass/breakpoint/wiki/Basic-Media-Queries
 .. _`Breakpoint: No Query Fallbacks`: https://github.com/Team-Sass/breakpoint/wiki/No-Query-Fallbacks
-
-
--------------------------------------------------------------------------
-
-.. _tools-debug:
-
-Debug
------
-
-.. _tools-show-grid:
-
-Show Grid
-~~~~~~~~~
-
-- ``show-grid($grid)``
-- ``$grid``: :ref:`\<layout\> <shorthand-layout>`
-
-.. _tools-grid-overlay:
-
-Grid Overlay
-~~~~~~~~~~~~
-
-- ``show-grid($grids...)``
-- ``$grids...``: <selector> :ref:`\<layout\> <shorthand-layout>`
-  [, <selector> <layout> ]
-  *(repeat as needed)*
+.. _`learn to use`: https://github.com/Team-Sass/breakpoint/wiki/Basic-Media-Queries

@@ -125,6 +125,8 @@ similar to the html ``dir`` attribute.*
    Layout elements will flow from right to left.
 
 
+-------------------------------------------------------------------------
+
 .. _settings-math:
 
 Math

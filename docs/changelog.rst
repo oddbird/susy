@@ -7,6 +7,7 @@ Changelog
 
 - Allow nesting of Susy settings.
 - ``show-grid`` mixin can output either background or overlay grids.
+- Add ``isolate`` function to return isolation offset width.
 
 BREAKING:
 
@@ -20,6 +21,11 @@ BREAKING:
   + Doesn't take ``$selector`` argument — should be nested instead.
   + Can still be used multiple times.
 
+- ``isolate`` mixin now interprets span argument as location,
+  unless location is otherwise specified.
+
+  + ``isolate(2)`` is the same as ``isolate(at 2)``.
+  + ``isolate(25%)`` will isolate *at* ``25%``.
 
 2.0.0.beta.1 — Dec 24 2013
 --------------------------

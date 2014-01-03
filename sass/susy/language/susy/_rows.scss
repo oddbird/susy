@@ -85,9 +85,12 @@
     $location: susy-get(location, $span);
     $n: susy-get(span, $span);
 
+    $number: if(type-of($location) == number, true, false);
+    $index: if($number and unitless($location), true, false);
+
     @if $n == $count {
       $edge: full;
-    } @else if $location {
+    } @else if $location and $n and $index {
       @if $location == 1 {
         $edge: if($n == $count, full, first);
       } @else if $location + $n - 1 == $count {

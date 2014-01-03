@@ -727,22 +727,23 @@
 
 ### Isolation Syntax ------ */
 /* - [mixin] isolate */
-/* "Item should be isolated in the last 2 columns, right-to-left" */
+/* "Item should be isolated in the last 2 columns" */
 .test__isolate .assert__isolate .test {
-  float: right;
-  margin-right: 75%;
-  margin-left: -100%;
+  float: left;
+  margin-left: 75%;
+  margin-right: -100%;
 }
 .test__isolate .assert__isolate .expect {
-  float: right;
-  margin-right: 75%;
-  margin-left: -100%;
+  float: left;
+  margin-left: 75%;
+  margin-right: -100%;
 }
 
+/*  - [function] isolate (2 Assertions, 2 Passed, 0 Failed) */
 /*  - [function] get-isolation (4 Assertions, 4 Passed, 0 Failed) */
 /*  
-    1 Tests:
-    - 1 Passed
+    2 Tests:
+    - 2 Passed
     - 0 Failed */
 /*  
 

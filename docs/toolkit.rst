@@ -876,8 +876,8 @@ A shortcut for applying only top and bottom
 Isolate
 -------
 
-- ``isolate($location)``
-- ``$location``: :ref:`\<span\> <shorthand-span>`
+- ``isolate($isolate)``
+- ``$isolate``: :ref:`\<span\> <shorthand-span>`
 
 Isolation is a layout technique based on floats,
 but adjusted to `address sub-pixel rounding issues`_.
@@ -885,18 +885,35 @@ Susy supports it as a global :ref:`output <settings-output>` setting,
 or as a :doc:`shorthand` keyword for the ``span`` mixin,
 or as a stand-alone mixin.
 
-The ``$location`` argument takes a standard
+The ``$isolate`` argument takes a standard
 :ref:`span shorthand <shorthand-span>`,
 but any length or grid-index given
-is interpreted as an isolation location.
+is interpreted as an isolation location
+(unless location is otherwise specified with the ``at`` flag).
+The function returns a length value.
 
 .. code-block:: scss
 
   // input
-  .example { @include isolate(25%); }
+  .function {
+    margin-left: isolate(2 of 7 .5 after);
+  }
 
   // output
-  .example {
+  .function {
+    margin-left: 15%;
+  }
+
+And the mixin returns
+all the properties required for isolation.
+
+.. code-block:: scss
+
+  // input
+  .mixin { @include isolate(25%); }
+
+  // output
+  .mixin {
     float: left;
     margin-left: 25%;
     margin-right: -100%;

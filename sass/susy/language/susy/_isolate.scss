@@ -1,21 +1,44 @@
 // Isolation Syntax
 // ================
 
-// Isolate
-// -------
+
+// Isolate [Mixin]
+// ---------------
 // Set isolation as an override.
 // - $location: <span>
 @mixin isolate(
-  $location: first
+  $isolate: 1
 ) {
-  $location  : parse-span($location);
-  $output : (
-    push: get-isolation($location),
-    flow: susy-get(flow, $location),
+  $output: (
+    push: isolate($isolate),
+    flow: susy-get(flow, $isolate),
   );
 
   @include isolate-output($output...);
 }
+
+
+// Isolate [function]
+// ------------------
+// Return an isolation offset width.
+// - $location: <span>
+@function isolate(
+  $isolate: 1
+) {
+  $isolate: parse-span($isolate);
+  $isolation: susy-get(span, $isolate);
+
+  @if $isolation and not get-location($isolate) {
+    $new: (
+      span: null,
+      location: $isolation,
+    );
+    $isolate: map-merge($isolate, $new);
+  }
+
+  @return get-isolation($isolate);
+}
+
 
 // Get Isolation
 // -------------
@@ -24,7 +47,6 @@
 @function get-isolation(
   $input
 ) {
-  $span       : susy-get(span, $input);
   $location   : get-location($input);
   $columns    : susy-get(columns, $input);
   $width      : null;

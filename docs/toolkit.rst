@@ -197,7 +197,7 @@ Other Settings
 Use the ``full`` keyword
 to span the entire context available,
 use ``break`` to start a new :ref:`tools-row`
-by clearinh previous floats,
+by clearing previous floats,
 and ``nobreak`` to clear none.
 Use ``no-gutters``
 to remove gutter output from an individual span,
@@ -464,7 +464,7 @@ If you need to supprot IE6/7,
 there is a simple `polyfill`_
 to make it work.
 
-.. _global: www.paulirish.com/2012/box-sizing-border-box-ftw/
+.. _global: http://www.paulirish.com/2012/box-sizing-border-box-ftw/
 .. _polyfill: https://github.com/Schepp/box-sizing-polyfill
 
 

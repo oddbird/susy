@@ -188,7 +188,7 @@ Container
 - **default:** ``auto``
 
 1. ``<length>``:
-   Set any explicit lenght (e.g. ``60em`` or ``80%``),
+   Set any explicit length (e.g. ``60em`` or ``80%``),
    and it will be applied directly to the container.
 2. ``auto``:
    Susy will calculate the width of your container

@@ -8,6 +8,7 @@ Changelog
 - Allow nesting of Susy settings.
 - ``show-grid`` mixin can output either background or overlay grids.
 - Add ``isolate`` function to return isolation offset width.
+- Fix a bug with ``last`` output for ``split``-gutter layouts.
 
 BREAKING:
 

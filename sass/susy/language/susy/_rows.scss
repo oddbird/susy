@@ -58,7 +58,7 @@
   $context: parse-grid($context);
   $output: (
     flow: susy-get(flow, $context),
-    margin: if(is-split($context), gutters($context), 0),
+    margin: if(is-split($context), null, 0),
   );
 
   @include float-last($output...);

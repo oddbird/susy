@@ -1122,7 +1122,6 @@
 /* "Last items should float right." */
 .test__last .assert__split .test {
   float: right;
-  margin-right: 2.38095%;
 }
 .test__last .assert__split .expect {
   float: right;

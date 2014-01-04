@@ -89,8 +89,8 @@ and will not clash with Yeomans grunt rules.
 Manual Start
 ------------
 
-You can use this method if you're not using Compass from Terminal and/or Rails.
-This is going to work with CodeKit.
+If you simply want to copy in the Sass, and skip any package management,
+you can do that too.
 
 - Download the zip file from GitHub.
 - Copy the contents of the "sass" folder (feel free to remove everything else).

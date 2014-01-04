@@ -113,8 +113,7 @@ with their default values:
 Flow
 ----
 
-*Set the flow direction of your document,
-similar to the html ``dir`` attribute.*
+*Set the flow direction of your document.*
 
 - **scope:** global, local
 - **options:** ``rtl`` | ``ltr``

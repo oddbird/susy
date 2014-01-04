@@ -97,7 +97,7 @@ for the sake of flexibility.
      $count: 12;
 
 2. ``<list>``:
-   Asymmetrical grids are a bit more complex.
+   Asymmetrical grids are more complex.
    Since each column can have a different width
    relative to the other columns,
    we need to provide more detail about the columns.
@@ -223,7 +223,7 @@ so that ``1`` is the first column,
 
 -------------------------------------------------------------------------
 
-.. _core-column-span:
+.. _core-column-span-sum:
 
 Column Span Sum
 ---------------
@@ -238,7 +238,7 @@ Find the sum of a column-span.
 
 This is where it all comes together.
 ``column-span-sum`` is the simple,
-abstract version of :ref:`span <toolkit-span-function>` —
+abstract version of :ref:`span <tools-span-function>` —
 the basic building-block for any grid system.
 It simply combines ``column-span`` with ``column-sum``
 to return the width of a given span.

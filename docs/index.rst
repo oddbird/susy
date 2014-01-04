@@ -3,8 +3,6 @@ Introduction
 
 The best layout is the one that fits your content
 and the needs of your users.
-The best web layout technique
-is the one that achieves your goals.
 We're not here to tell you
 about the magical powers of the golden-ratio,
 or where to use ``em`` vs ``px``,
@@ -23,7 +21,8 @@ Contents
    settings
    shorthand
    toolkit
-   susyone/index
+   susyone
+   upgrade
    diy
    changelog
 

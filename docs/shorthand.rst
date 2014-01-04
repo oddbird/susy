@@ -167,7 +167,7 @@ Spans
 
 Most of Susy's functions & mixins
 are used to calculate or set a width, or ``span``.
-Most spans in Susy can be either a unitless number
+Most spans in Susy are either a unitless number
 (representing columns)
 or an explicit width.
 Some of them also require a location

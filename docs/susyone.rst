@@ -1,5 +1,5 @@
-SusyOne
-=======
+Susy One
+========
 
 .. contents:: Legacy 1.0 Reference
   :depth: 3

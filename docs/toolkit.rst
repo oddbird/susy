@@ -351,7 +351,7 @@ Nested Context
 
 Sass is not aware of the :abbr:`DOM (Document Object Model)`,
 or the specific markup of your site,
-so Susy mixins don't know about about ancestor/child relationships.
+so Susy mixins don't know about any ancestor/child relationships.
 If your container creates a grid context
 that is different from the default,
 you will need to pass that new context explicitly to nested elements.

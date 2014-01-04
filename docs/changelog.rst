@@ -13,6 +13,7 @@ Changelog
 - Fix a bug with ``bleed`` and ``null``+``inside`` gutters.
 - ``bleed`` output uses TRBL shorthand when possible.
 - Clean up and document the core math functions.
+- Document upgrade path, core-math, and DIY grids.
 
 BREAKING:
 

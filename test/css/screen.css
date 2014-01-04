@@ -186,19 +186,11 @@ h1 {
 /*  - [function] column-count() (2 Assertions, 2 Passed, 0 Failed) */
 /*  - [function] column-sum() — symmetrical (4 Assertions, 4 Passed, 0 Failed) */
 /*  - [function] column-sum() — asymmetrical (3 Assertions, 3 Passed, 0 Failed) */
-/*  - [function] get-columns() (3 Assertions, 3 Passed, 0 Failed) */
-/*  - [function] get-column-span-sum() (2 Assertions, 2 Passed, 0 Failed) */
+/*  - [function] column-span() (3 Assertions, 3 Passed, 0 Failed) */
+/*  - [function] column-span-sum() (2 Assertions, 2 Passed, 0 Failed) */
 /*  
     6 Tests:
     - 6 Passed
-    - 0 Failed */
-/*  
-
-### Container Math ------ */
-/*  - [function] calculate-container-width() (1 Assertions, 1 Passed, 0 Failed) */
-/*  
-    1 Tests:
-    - 1 Passed
     - 0 Failed */
 /*  
 
@@ -536,6 +528,14 @@ h1 {
 /*  
     4 Tests:
     - 4 Passed
+    - 0 Failed */
+/*  
+
+### Container Math ------ */
+/*  - [function] calculate-container-width() (1 Assertions, 1 Passed, 0 Failed) */
+/*  
+    1 Tests:
+    - 1 Passed
     - 0 Failed */
 /*  
 

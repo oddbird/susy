@@ -7,7 +7,7 @@
 // - [$columns]       : <number> | <list>
 // - [$gutters]       : <ratio>
 // - [$column-width]  : <length>
-// - [$spread]        : <boolean>
+// - [$spread]        : false/narrow | wide | wider
 @function calculate-container-width(
   $columns        : map-get($susy-defaults, columns),
   $gutters        : map-get($susy-defaults, gutters),

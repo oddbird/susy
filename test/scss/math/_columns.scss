@@ -101,43 +101,43 @@
       'Wider column-sum includes two extra gutters.');
   }
 
-  // Get Columns
+  // Column Span
   // -----------
 
-  @include test('[function] get-columns()') {
+  @include test('[function] column-span()') {
     $span: 3;
 
     // symmetrical
     $context: 12;
-    $test: get-columns($span, 4, $context);
+    $test: column-span($span, 4, $context);
     @include assert-equal($test, $span,
       'Subset is equal to the span.');
 
     // asymmetrical
     $context: 1 2 3 1 2;
-    $test: get-columns($span, 2, $context);
+    $test: column-span($span, 2, $context);
     $expect: 2 3 1;
     @include assert-equal($test, $expect,
       'Subset is an extracted list of span length, starting at location.');
 
     // asymmetrical (no location)
-    $test: get-columns($span, null, $context);
+    $test: column-span($span, null, $context);
     $expect: 1 2 3;
     @include assert-equal($test, $expect,
       'Asymmetrical context without location returns first-position subset.');
   }
 
-  // Get Column Span Sum
-  // -------------------
+  // Column Span Sum
+  // ---------------
 
-  @include test('[function] get-column-span-sum()') {
+  @include test('[function] column-span-sum()') {
     $span: 3;
     $location: 2;
 
     // symmetrical
     $columns: 12;
     $gutters: 1/8;
-    $test: get-column-span-sum($span, $location, $columns, $gutters);
+    $test: column-span-sum($span, $location, $columns, $gutters);
     $expect: column-sum($span, $gutters);
     @include assert-equal($test, $expect,
       'Symmetrical column-span-sum is equal to column-sum of span.');
@@ -145,7 +145,7 @@
     // asymmetrical
     $columns: 1 2 3 2 1 2 3;
     $gutters: 1/4;
-    $test: get-column-span-sum($span, $location, $columns, $gutters);
+    $test: column-span-sum($span, $location, $columns, $gutters);
     $expect: 7.5;
     @include assert-equal($test, $expect,
       'Assymetrical column-span-sum fetches subset before calculating sum.');

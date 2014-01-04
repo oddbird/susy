@@ -12,6 +12,7 @@ Changelog
 - Fix a bug with split-gutter ``span()``, and ``narrow``/``wider`` keywords.
 - Fix a bug with ``bleed`` and ``null``+``inside`` gutters.
 - ``bleed`` output uses TRBL shorthand when possible.
+- Clean up and document the core math functions.
 
 BREAKING:
 
@@ -20,8 +21,8 @@ BREAKING:
 - Add ``debug: output`` setting and keywords
   to toggle between ``background`` and ``overlay`` grid images.
 - Remove ``grid-overlay`` mixin.
-- Replace it with ``overlay-grid`` mixin:
 
+  + Becomes part of ``show-grid`` mixin.
   + Doesn't take ``$selector`` argument — should be nested instead.
   + Can still be used multiple times.
 

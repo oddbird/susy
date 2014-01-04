@@ -135,7 +135,7 @@
   @if unitless($n) {
     $context: column-sum($columns, $gutters, if(is-split($span), wide, narrow));
     $spread: if(is-inside($span), $spread or wide, $spread);
-    $span-sum: get-column-span-sum($n, $location, $columns, $gutters, $spread);
+    $span-sum: column-span-sum($n, $location, $columns, $gutters, $spread);
 
     @if susy-get(math, $span) == static {
       $width: $span-sum * susy-get(column-width, $span);

@@ -50,13 +50,13 @@
   @return $column-sum + $gutter-sum;
 }
 
-// Get Columns
+// Column Span
 // -----------
 // Return a subset of columns at a given location.
 // - $span        : <number>
 // - $location    : <number>
 // - [$columns]   : <number> | <list>
-@function get-columns(
+@function column-span(
   $span,
   $location,
   $columns: map-get($susy-defaults, columns)
@@ -75,15 +75,15 @@
   @return $sub-columns;
 }
 
-// Get Column Span Sum
-// -------------------
+// Column Span Sum
+// ---------------
 // Find the sum of a column-span.
 // - $span        : <number>
-// - $location    : first | last | <number>
+// - $location    : <number>
 // - [$columns]   : <number> | <list>
 // - [$gutters]   : <ratio>
-// - [$spread]    : <boolean>
-@function get-column-span-sum(
+// - [$spread]    : false/narrow | wide | wider
+@function column-span-sum(
   $span,
   $location     : false,
   $columns      : map-get($susy-defaults, columns),
@@ -92,7 +92,7 @@
 ) {
   $columns: valid-columns($columns);
   $gutters: valid-gutters($gutters);
-  $span: get-columns($span, $location, $columns);
+  $span: column-span($span, $location, $columns);
 
   @return column-sum($span, $gutters, $spread);
 }

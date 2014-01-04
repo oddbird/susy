@@ -1,11 +1,11 @@
 // Grid Syntax
 // ===========
 
-// Set Grid
-// --------
+// Layout
+// ------
 // Set a new grid using a shorthand
 // - $grid: <settings>
-@mixin set-grid(
+@mixin layout(
   $grid
 ) {
   $susy: map-merge($susy, parse-grid($grid)) !global;
@@ -15,12 +15,12 @@
 // --------
 // Use an arbitrary grid for a section of code
 // - $grid: <settings>
-@mixin use-grid(
+@mixin with-layout(
   $grid
 ) {
   $old: $susy;
 
-  @include set-grid($grid);
+  @include layout($grid);
   @content;
 
   $susy: $old !global;

@@ -51,7 +51,7 @@
       $columns        : susy-get(columns, $grid);
       $gutters        : susy-get(gutters, $grid);
       $spread         : if(is-split($grid), wide, narrow);
-      $width          : calculate-container-width($columns, $gutters, $column-width, $spread);
+      $width          : column-sum($columns, $gutters, $spread) * $column-width;
     } @else {
       // if we have nothing, default to 100%
       $width: 100%;

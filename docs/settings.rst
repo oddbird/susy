@@ -31,7 +31,7 @@ They can even be mixed and matched:
     math: fluid,
   );
 
-  @include set-grid($map float inside);
+  @include layout($map float inside);
 
 Unless otherwise noted,
 all the settings can be controlled both globally
@@ -63,19 +63,20 @@ You can set the defaults directly in the ``$susy`` variable:
     gutter-position: inside,
   )
 
-You can also use ``set-grid`` along with the shorthand syntax:
+You can also use the ``layout`` mixin
+along with the shorthand syntax:
 
 .. code-block:: scss
 
-  @include set-grid(12 .25 inside);
+  @include layout(12 .25 inside);
 
 Or you can temporarily set defaults
 for a small section of your code
-with ``use-grid``:
+using ``with-layout``:
 
 .. code-block:: scss
 
-  @include use-grid(8 static) {
+  @include with-layout(8 static) {
     // an 8-column static grid...
   }
 

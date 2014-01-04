@@ -16,7 +16,7 @@
 ) {
   @if mixin-exists(breakpoint) {
     @include breakpoint($query, $no-query) {
-      @include use-grid($layout) {
+      @include with-layout($layout) {
         @content;
       }
     }

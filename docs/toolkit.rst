@@ -1028,7 +1028,7 @@ This is simply a shortcut for the more verbose approach.
 .. code-block:: scss
 
   @include breakpoint(30em) {
-    @include use-grid(8) {
+    @include with-layout(8) {
       // nested code uses an 8-column grid,
       // starting at a 30em min-width breakpoint...
       .example { @include span(3); }

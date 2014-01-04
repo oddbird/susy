@@ -40,7 +40,7 @@ $supported-browsers: firefox chrome;
   $output-assert-slug: $slug !global;
 
   @if $grid {
-    @include set-grid($grid);
+    @include layout($grid);
     @if $output {
       .test__#{$output-test-slug} .assert__#{$output-assert-slug} {
         @include container(show-columns);

@@ -32,6 +32,12 @@ BREAKING:
   + ``isolate(2)`` is the same as ``isolate(at 2)``.
   + ``isolate(25%)`` will isolate *at* ``25%``.
 
+- Rename setting controls for consistency.
+
+  + ``set-grid`` => ``layout``
+  + ``use-grid`` => ``with-layout``
+
+
 2.0.0.beta.1 — Dec 24 2013
 --------------------------
 

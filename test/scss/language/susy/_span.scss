@@ -126,7 +126,7 @@
   // ---------------
 
   @include test('[function] span') {
-    @include set-grid((
+    @include layout((
       columns: 7,
       gutters: .5,
       math: fluid,

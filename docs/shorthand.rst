@@ -16,7 +16,7 @@ and only add complexity if/when you really need it.
   @include span(3 of 12);
 
   // Setup the 960 Grid System
-  @include set-grid(12 (60px 10px) split static);
+  @include layout(12 (60px 10px) split static);
 
   // Span 3 isolated columns in a complex, asymmetrical grid, without gutters
   @include span(isolate 3 at 2 of (1 2 3 4 3 2 1) no-gutters);

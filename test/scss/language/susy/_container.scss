@@ -7,7 +7,7 @@
   // -----------------
 
   @include output-test('container') {
-    @include set-grid(80% 7 .5);
+    @include layout(80% 7 .5);
     @include assert-setup(default-box);
     @include assert-output(
       'Containers should have 80% max-width and show a 7 .5 grid.'
@@ -29,7 +29,7 @@
       }
     }
 
-    @include set-grid((1 2 3 2 1) (4em 1em) show-columns);
+    @include layout((1 2 3 2 1) (4em 1em) show-columns);
     @include assert-setup(border-box);
     @include assert-output(
       'Containers should have 40em max-width, border-box-sizing, and show a (1 2 3 2 1) (4em 2em) grid, flush left.'
@@ -80,7 +80,7 @@
     @include assert-equal($width, $expect,
       'The container-width of "#{$grid}" should be #{$expect}');
 
-    @include use-grid(960px 12 .25) {
+    @include with-layout(960px 12 .25) {
       $width: container(isolate);
       $expect: 960px;
       @include assert-equal($width, $expect,

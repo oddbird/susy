@@ -531,14 +531,6 @@ h1 {
     - 0 Failed */
 /*  
 
-### Container Math ------ */
-/*  - [function] calculate-container-width() (1 Assertions, 1 Passed, 0 Failed) */
-/*  
-    1 Tests:
-    - 1 Passed
-    - 0 Failed */
-/*  
-
 ### Language Settings ------ */
 /*  - [function] parse-grid (30 Assertions, 30 Passed, 0 Failed) */
 /*  - [function] parse-span (44 Assertions, 44 Passed, 0 Failed) */
@@ -552,8 +544,8 @@ h1 {
 /*  
 
 ### Grids Syntax ------ */
-/*  - [mixin] set-grid (7 Assertions, 7 Passed, 0 Failed) */
-/*  - [mixin] use-grid (6 Assertions, 6 Passed, 0 Failed) */
+/*  - [mixin] layout (7 Assertions, 7 Passed, 0 Failed) */
+/*  - [mixin] with-layout (6 Assertions, 6 Passed, 0 Failed) */
 /*  - [function] layout (1 Assertions, 1 Passed, 0 Failed) */
 /*  
     3 Tests:
@@ -2701,5 +2693,5 @@ h1 {
   border-color: green;
 }
 .results::after {
-  content: "53 Tests, 53 Passed, 0 Failed";
+  content: "52 Tests, 52 Passed, 0 Failed";
 }

@@ -44,19 +44,3 @@
     @warn $warn + ' Current value [#{$type}]: #{$gutters}';
   }
 }
-
-// Valid Column-Width
-// ------------------
-// Check that a column-width setting is valid.
-@function valid-column-width(
-  $column-width
-) {
-  $type: type-of($column-width);
-
-  @if ($type == number and unit($column-width)) or not $column-width {
-    @return $column-width;
-  } @else {
-    $warn: '$column-width must be a length (number with units), or false.';
-    @warn $warn + ' Current value [#{$type}]: #{$column-width}';
-  }
-}

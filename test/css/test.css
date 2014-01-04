@@ -1355,8 +1355,8 @@
 /* "Items should bleed 1 column outside their nested context" */
 .test__bleed .assert__simple .test {
   margin-right: -15%;
-  padding-right: 15%;
   margin-left: -15%;
+  padding-right: 15%;
   padding-left: 15%;
   -moz-box-sizing: content-box;
   -webkit-box-sizing: content-box;
@@ -1374,27 +1374,15 @@
 
 /* "Items should bleed 1em on all sides, and retain their static gutters" */
 .test__bleed .assert__inside .test {
-  margin-top: -1em;
-  padding-top: 1em;
-  margin-right: -1em;
-  padding-right: 1.5em;
-  margin-bottom: -1em;
-  padding-bottom: 1em;
-  margin-left: -1em;
-  padding-left: 1.5em;
+  margin: -1em;
+  padding: 1em 1.5em;
   -moz-box-sizing: content-box;
   -webkit-box-sizing: content-box;
   box-sizing: content-box;
 }
 .test__bleed .assert__inside .expect {
-  margin-top: -1em;
-  padding-top: 1em;
-  margin-right: -1em;
-  padding-right: 1.5em;
-  margin-bottom: -1em;
-  padding-bottom: 1em;
-  margin-left: -1em;
-  padding-left: 1.5em;
+  margin: -1em;
+  padding: 1em 1.5em;
   -moz-box-sizing: content-box;
   -webkit-box-sizing: content-box;
   box-sizing: content-box;
@@ -1403,8 +1391,8 @@
 /* "Items should bleed 1 column horizontal, and retain gutters." */
 .test__bleed .assert__split .test {
   margin-right: -12.5%;
-  padding-right: 12.5%;
   margin-left: -12.5%;
+  padding-right: 12.5%;
   padding-left: 12.5%;
   -moz-box-sizing: content-box;
   -webkit-box-sizing: content-box;
@@ -1424,8 +1412,8 @@
 /* "Items should bleed 1 column left, and 2 columns right" */
 .test__bleed-x .assert__simple .test {
   margin-right: -30%;
-  padding-right: 30%;
   margin-left: -15%;
+  padding-right: 30%;
   padding-left: 15%;
   -moz-box-sizing: content-box;
   -webkit-box-sizing: content-box;
@@ -1444,8 +1432,8 @@
 /* "Items should bleed 1 column, and retain their gutters" */
 .test__bleed-x .assert__inside .test {
   margin-right: -12.5%;
-  padding-right: 13.75%;
   margin-left: -12.5%;
+  padding-right: 13.75%;
   padding-left: 13.75%;
   -moz-box-sizing: content-box;
   -webkit-box-sizing: content-box;
@@ -1465,8 +1453,8 @@
 /* "Items should bleed .5em top, and 1em bottom." */
 .test__bleed-y .assert__simple .test {
   margin-top: -0.5em;
-  padding-top: 0.5em;
   margin-bottom: -1em;
+  padding-top: 0.5em;
   padding-bottom: 1em;
   -moz-box-sizing: content-box;
   -webkit-box-sizing: content-box;
@@ -1483,9 +1471,10 @@
 }
 
 /*  - [function] get-bleed (3 Assertions, 3 Passed, 0 Failed) */
+/*  - [function] bleed-shorthand (2 Assertions, 2 Passed, 0 Failed) */
 /*  
-    1 Tests:
-    - 1 Passed
+    2 Tests:
+    - 2 Passed
     - 0 Failed */
 /*  
 

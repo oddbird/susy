@@ -135,5 +135,64 @@
     $output: if($value == 0, map-merge($output, ($prop: null)), $output);
   }
 
-  @return $output;
+  @return bleed-shorthand($output);
+}
+
+// Bleed Shorthand
+// ---------------
+// Convert bleed output into shorthand when possible.
+// - $bleed: <output map>
+@function bleed-shorthand(
+  $bleed
+) {
+  $margin: ();
+  $padding: ();
+  $return: ();
+
+  @each $key, $value in $bleed {
+    @if str-index($key, margin) > 0 {
+      $margin: map-merge($margin, ($key: $value));
+    } @else if str-index($key, padding) > 0 {
+      $padding: map-merge($padding, ($key: $value));
+    }
+  }
+
+  $props: (
+    margin: $margin,
+    padding: $padding,
+  );
+
+  @each $name, $map in $props {
+    $four: if(length(map-keys($map)) == 4, true, false);
+    $null: if(index(map-values($map), null), true, false);
+
+    @if $four and not $null {
+      $top: map-get($map, '#{$name}-top');
+      $right: map-get($map, '#{$name}-right');
+      $bottom: map-get($map, '#{$name}-bottom');
+      $left: map-get($map, '#{$name}-left');
+
+      $tb: if($top == $bottom, $top, null);
+      $rl: if($right == $left, $right, null);
+      $all: if($tb == $rl, $tb, null);
+
+      $new: if($all, $all, null);
+
+      @if not $new {
+        @if $tb and $rl {
+          $new: $tb $rl;
+        } @else if $rl {
+          $new: $top $rl $bottom;
+        } @else {
+          $new: $top $right $bottom $left;
+        }
+      }
+
+      $return: map-merge($return, ($name: $new));
+    } @else {
+      $return: map-merge($return, $map);
+    }
+  }
+
+  @return $return;
 }

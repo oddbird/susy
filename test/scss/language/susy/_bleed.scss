@@ -37,14 +37,8 @@
     ) {
       .test { @include bleed(1em of 8); }
       .expect {
-        margin-top: -1em;
-        padding-top: 1em;
-        margin-right: -1em;
-        padding-right: 1.5em;
-        margin-bottom: -1em;
-        padding-bottom: 1em;
-        margin-left: -1em;
-        padding-left: 1.5em;
+        margin: -1em;
+        padding: 1em 1.5em;
         @include susy-box-sizing(content-box);
       }
     }
@@ -180,5 +174,50 @@
     );
     @include assert-equal($test, $expect,
       'get-bleed can handle no-gutters inside.');
+  }
+
+  // bleed shorthand
+  // ---------------
+
+  @include test('[function] bleed-shorthand') {
+    $bleed: (
+      margin-top: -1em,
+      padding-top: 1em,
+      margin-right: -2em,
+      padding-right: 2em,
+      margin-bottom: -3em,
+      padding-bottom: 1em,
+      margin-left: -4em,
+      padding-left: 2em,
+    );
+    $test: bleed-shorthand($bleed);
+    $expect: (
+      margin: -1em -2em -3em -4em,
+      padding: 1em 2em,
+    );
+    @include assert-equal($test, $expect,
+      'Returns shorthand for margin and padding, separate or combined.');
+
+    $bleed: (
+      margin-top: -1em,
+      padding-top: 1em,
+      margin-right: -1em,
+      padding-right: 2em,
+      margin-bottom: -1em,
+      padding-bottom: 1em,
+      margin-left: -1em,
+      padding-left: null,
+    );
+    $test: bleed-shorthand($bleed);
+    $expect: (
+      margin: -1em,
+      padding-top: 1em,
+      padding-right: 2em,
+      padding-bottom: 1em,
+      padding-left: null,
+    );
+    @include assert-equal($test, $expect,
+      'Returns combined shorthand for margin, no shorthand for padding.');
+
   }
 }

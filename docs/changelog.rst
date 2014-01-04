@@ -11,6 +11,7 @@ Changelog
 - Fix a bug with ``last`` output for ``split``-gutter layouts.
 - Fix a bug with split-gutter ``span()``, and ``narrow``/``wider`` keywords.
 - Fix a bug with ``bleed`` and ``null``+``inside`` gutters.
+- ``bleed`` output uses TRBL shorthand when possible.
 
 BREAKING:
 

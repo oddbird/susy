@@ -2683,9 +2683,10 @@ h1 {
 }
 
 /*  - [function] get-bleed (3 Assertions, 3 Passed, 0 Failed) */
+/*  - [function] bleed-shorthand (2 Assertions, 2 Passed, 0 Failed) */
 /*  
-    1 Tests:
-    - 1 Passed
+    2 Tests:
+    - 2 Passed
     - 0 Failed */
 /*  
 
@@ -2700,5 +2701,5 @@ h1 {
   border-color: green;
 }
 .results::after {
-  content: "52 Tests, 52 Passed, 0 Failed";
+  content: "53 Tests, 53 Passed, 0 Failed";
 }

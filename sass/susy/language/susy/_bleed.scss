@@ -4,44 +4,24 @@
 // Bleed
 // -----
 // Add negative margins, and equal positive padding to create bleed.
-// - $span  : <span>
+// - $bleed  : <span>
 @mixin bleed(
   $bleed: 0 gutter()
 ) {
-  $bleed    : map-merge(parse-span($bleed), (spread: wide));
-  $trbl     : susy-get(span, $bleed);
-  $spans    : (top: 0, right: 0, bottom: 0, left: 0);
+  $output: get-bleed($bleed);
 
-  $i: 1;
-  @each $span in $trbl {
-    $this: map-merge($bleed, (span: $span));
-    $span: span($this);
-
-    @if $i == 1 {
-      $spans: map-merge($spans, (top: $span, right: $span, bottom: $span, left: $span));
-    } @else if $i == 2 {
-      $spans: map-merge($spans, (right: $span, left: $span));
-    } @else if $i == 3 {
-      $spans: map-merge($spans, (bottom: $span));
-    } @else if $i == 4 {
-      $spans: map-merge($spans, (left: $span));
-    }
-    $i: $i + 1;
-  }
-
-  @each $side, $span in $spans {
-    $padding: $span;
-    @if is-inside($bleed) and ($side == right or $side == left) {
-      $gutter: gutter($bleed);
-      $padding: if(comparable($padding, $gutter), $padding + $gutter, $padding);
-    }
-    margin-#{$side}: if($span != 0, 0 - $span, null);
-    padding-#{$side}: if($padding != 0, $padding, null);
+  @each $property, $value in $output {
+    #{$property}: $value;
   }
 
   @include susy-box-sizing(content-box);
 }
 
+
+// Bleed-x
+// -------
+// Shortcut for horizontal bleed.
+// - $bleed  : <span>
 @mixin bleed-x(
   $bleed: gutter()
 ) {
@@ -59,6 +39,11 @@
   @include bleed($bleed);
 }
 
+
+// Bleed-y
+// -------
+// Shortcut for vertical bleed.
+// - $bleed  : <span>
 @mixin bleed-y(
   $bleed: if(function-exists(rhythm), rhythm(1), 1em)
 ) {
@@ -74,4 +59,81 @@
   }
 
   @include bleed($bleed);
+}
+
+
+// Get Bleed
+// ---------
+// Return bleed output values
+// - $bleed: <span>
+@function get-bleed(
+  $bleed
+) {
+  $bleed    : map-merge((spread: wide), parse-span($bleed));
+  $trbl     : susy-get(span, $bleed);
+  $short    : null;
+  $output   : ();
+
+  @for $i from 1 through length($trbl) {
+    $this: nth($trbl, $i);
+    $new: ();
+    $margin: null;
+    $padding: null;
+    $padding-x: null;
+
+    @if $this > 0 {
+      $this: map-merge($bleed, (span: $this));
+      $margin: span($this);
+      $padding: $margin;
+      $padding-x: $padding;
+    }
+
+    @if $margin and $margin > 0 {
+      $margin: - $margin;
+
+      @if is-inside($this) {
+        $gutter: gutter($this);
+        $join: if($gutter and comparable($padding, $gutter), true, false);
+        $padding-x: if($join and $padding > 0, $padding + $gutter, $padding);
+      }
+    }
+
+    @if $i == 1 {
+      $new: (
+        margin-top: $margin,
+        padding-top: $padding,
+        margin-right: $margin,
+        padding-right: $padding-x,
+        margin-bottom: $margin,
+        padding-bottom: $padding,
+        margin-left: $margin,
+        padding-left: $padding-x,
+      );
+    } @else if $i == 2 {
+      $new: (
+        margin-right: $margin,
+        padding-right: $padding-x,
+        margin-left: $margin,
+        padding-left: $padding-x,
+      );
+    } @else if $i == 3 {
+      $new: (
+        margin-bottom: $margin,
+        padding-bottom: $padding,
+      );
+    } @else if $i == 4 {
+      $new: (
+        margin-left: $margin,
+        padding-left: $padding-x,
+      );
+    }
+
+    $output: map-merge($output, $new);
+  }
+
+  @each $prop, $value in $output {
+    $output: if($value == 0, map-merge($output, ($prop: null)), $output);
+  }
+
+  @return $output;
 }

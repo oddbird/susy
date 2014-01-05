@@ -250,7 +250,7 @@ Media-Layouts
 - ``<$ie-fallback>``: Any string to use as a fallback class
   when mediaqueries are not available.
   Do not include a leading "``.``" class-signifier,
-  simply the class name ("``lt-ie9``", not "``.lt-ie9``").
+  only the class name ("``lt-ie9``", not "``.lt-ie9``").
   This can be anything you want:
   "``no-mediaqueries``", "``ie8``", "``popcorn``", etc.
 
@@ -302,7 +302,7 @@ Set Container Width
 
 Reset the width of a Container for a new Layout context.
 Can be used when ``container()`` has already been applied to an element,
-for DRYer output than simply using ``container`` again.
+for DRYer output than using ``container`` again.
 
 .. code-block:: scss
 

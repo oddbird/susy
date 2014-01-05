@@ -83,9 +83,9 @@ There are a few differences to note in the translation.
 - If you are using ``static`` math
   we highly recommend that you use ``column-width``
   rather than ``container``.
-- The old ``magic`` style is simply a combination of
-  ``fluid`` math, and a width setting
-  (either ``column-width`` or ``container``).
+- The old ``magic`` style can be achieved
+  through a combination of ``fluid`` math
+  and a width setting (either ``column-width`` or ``container``).
 
 See :doc:`settings` for more details.
 
@@ -130,9 +130,6 @@ but the syntax has changed.
   $old: gutter(6, static);
   $new: gutter(6 static);
 
-Simply removing any commas
-should get your ``gutter`` functions up-to-date.
-
 
 -------------------------------------------------------------------------
 
@@ -148,9 +145,9 @@ For now, at least,
 you'll have to establish one container at a time
 inside media-query declarations.
 
-In most cases,
-we simply setup the container for our largest layout,
-and let it flex from there.
+In most (fluid/magic) cases,
+we set up the container for our largest layout,
+and let it flex fluidly from there.
 If you need to change explicit sizes at explicit breakpoints,
 we recommend using the ``container`` *function*
 to override only the width at different breakpoints.
@@ -198,8 +195,7 @@ For readability, ``omega`` can be replaced with ``last``,
 but that's up to you.
 
 ``nth-omega`` has been deprecated,
-as it is easy enough to write your own nth-child selectors,
-and difficult to add any useful automation around it.
+in favor of ``omega`` with nth-child selectors.
 
 .. code-block:: scss
 
@@ -280,7 +276,7 @@ Set Container Width
 ~~~~~~~~~~~~~~~~~~~
 
 The ``set-container-width`` mixin
-can be replaced by simply applying the
+can be replaced by applying the
 :ref:`container function <tools-container>`
 to the ``width`` or ``max-width`` of your containing element.
 
@@ -379,7 +375,7 @@ Susy One included ``reset-columns``
 and ``remove-omega``,
 but both have been deprecated.
 Rather than removing styles,
-simply override them with the desired behavior.
+override them with the desired behavior.
 The :ref:`full <tools-row-full>` and :ref:`span <tools-span-mixin>`
 mixins should give you everything you need
 for overriding spans and omegas, respectively.

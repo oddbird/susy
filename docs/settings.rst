@@ -77,8 +77,8 @@ or create individual layout maps
 to access as needed.
 
 For global settings,
-simply create a ``$susy`` variable,
-and set any values that you need.
+create a ``$susy`` variable
+with any values that you need.
 
 .. code-block:: scss
 
@@ -146,7 +146,7 @@ using the ``susy-get`` function.
   $large-container: susy-get(container, $large);
 
 To access a nested setting like ``debug/image``,
-simply send the full path as a list for the first argument.
+send the full path as a list for the ``$key`` argument.
 
 .. code-block:: scss
 

@@ -175,8 +175,7 @@ which we call a ``wider`` spread.
   // output: 7 + (8 * .5) = 11
   $wider-sum: 11;
 
-Of course,
-this is all possible with asymmetrical grids as well.
+This is all possible with asymmetrical grids as well.
 
 .. code-block:: scss
 
@@ -237,10 +236,10 @@ Find the sum of a column-span.
 - ``$spread``: ``false``/``narrow`` | ``wide`` | ``wider``
 
 This is where it all comes together.
-``column-span-sum`` is the simple,
-abstract version of :ref:`span <tools-span-function>` —
+``column-span-sum`` is the abstract version of
+:ref:`span <tools-span-function>` —
 the basic building-block for any grid system.
-It simply combines ``column-span`` with ``column-sum``
+It combines ``column-span`` with ``column-sum``
 to return the width of a given span.
 
 .. code-block:: scss

@@ -89,7 +89,8 @@ and will not clash with Yeomans grunt rules.
 Manual Start
 ------------
 
-If you simply want to copy in the Sass, and skip any package management,
+If you want to copy in the Sass files directly,
+and skip any package management,
 you can do that too.
 
 - Download the zip file from GitHub.
@@ -164,7 +165,7 @@ so you can use it any way you like:
 
 You can also establish :doc:`global settings <settings>`,
 to configure Susy for your specific needs.
-Just create a ``$susy`` variable,
+Create a ``$susy`` variable,
 and add your settings as a map.
 
 .. code-block:: scss

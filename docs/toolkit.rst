@@ -456,7 +456,7 @@ using one of Susy's shortcuts.
 
 If you want to change the global box-sizing by hand,
 or it has already been changed by another library,
-just update the
+update the
 :ref:`global-box-sizing <settings-global-box-sizing>` setting
 to let Susy know.
 
@@ -575,7 +575,7 @@ Full
 - ``full($context)``
 - ``$context``: :ref:`\<layout\> <shorthand-layout>`
 
-This is simply a shortcut for
+This is a shortcut for
 ``span(full)``,
 used to create elements
 that span their entire context.
@@ -815,8 +815,8 @@ from CSS.
 When possible,
 the ``bleed`` mixins will attempt
 to keep gutters intact.
-To override that behavior,
-simply pass the ``no-gutters`` keyword.
+Use the ``no-gutters`` keyword
+to override that behavior.
 
 .. _tools-bleed-x:
 
@@ -1034,7 +1034,8 @@ that are nested inside.
     .example { @include span(3); }
   }
 
-This is simply a shortcut for the more verbose approach.
+This is a shortcut for combining the
+``breakpoint`` and ``with-layout`` mixins.
 
 .. code-block:: scss
 

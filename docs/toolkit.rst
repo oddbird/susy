@@ -975,6 +975,17 @@ as either a background, or a triggered overlay.
     @include show-grid(overlay);
   }
 
+.. warning::
+
+  Grid images are not exact.
+  Browsers have extra trouble with
+  sub-pixel rounding on background images.
+  These are meant for rough debugging,
+  not for pixel-perfect measurements.
+  Expect the ``to`` side of your grid image
+  (``right`` if your flow is ``ltr``)
+  to be off by several pixels.
+
 
 -------------------------------------------------------------------------
 

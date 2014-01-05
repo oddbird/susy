@@ -1,37 +1,37 @@
 // Grid Syntax
 // ===========
 
-// Set Grid
-// --------
-// Set a new grid using a shorthand
-// - $grid      : <settings>
-@mixin set-grid(
-  $grid
+// Layout
+// ------
+// Set a new layout using a shorthand
+// - $layout: <settings>
+@mixin layout(
+  $layout
 ) {
-  $susy: map-merge($susy, parse-grid($grid)) !global;
-}
-
-// Susy Set
-// --------
-// Change one setting
-@mixin susy-set(
-  $key,
-  $value
-) {
-  $susy: map-merge($susy, ($key: $value)) !global;
+  $susy: map-merge($susy, parse-grid($layout)) !global;
 }
 
 // Use Grid
 // --------
-// Use an arbitrary grid for a section of code
-// - $grid      : <settings>
-@mixin use-grid(
-  $grid
+// Use an arbitrary layout for a section of code
+// - $layout: <settings>
+@mixin with-layout(
+  $layout
 ) {
   $old: $susy;
 
-  @include set-grid($grid);
+  @include layout($layout);
   @content;
 
   $susy: $old !global;
+}
+
+// Layout
+// ------
+// Return a parsed layout map based on shorthand syntax
+// - $layout: <settings>
+@function layout(
+  $layout: $susy
+) {
+  @return parse-grid($layout);
 }

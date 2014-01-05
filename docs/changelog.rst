@@ -2,29 +2,86 @@ Changelog
 =========
 
 
-2.0.0.alpha.7 — unreleased
+2.0.0.beta.2 — UNRELEASED
+-------------------------
+
+- Allow nesting of Susy settings.
+- ``show-grid`` mixin can output either background or overlay grids.
+- Add ``isolate`` function to return isolation offset width.
+- Fix a bug with ``last`` output for ``split``-gutter layouts.
+- Fix a bug with split-gutter ``span()``, and ``narrow``/``wider`` keywords.
+- Fix a bug with ``bleed`` and ``null``+``inside`` gutters.
+- ``bleed`` output uses TRBL shorthand when possible.
+- Clean up and document the core math functions.
+- Document upgrade path, core-math, and DIY grids.
+
+BREAKING:
+
+- Move debug settings into ``$susy: (debug: (<settings>));``.
+- Replace ``show-grid`` setting with new ``debug: image`` setting.
+- Add ``debug: output`` setting and keywords
+  to toggle between ``background`` and ``overlay`` grid images.
+- Remove ``grid-overlay`` mixin.
+
+  + Becomes part of ``show-grid`` mixin.
+  + Doesn't take ``$selector`` argument — should be nested instead.
+  + Can still be used multiple times.
+
+- ``isolate`` mixin now interprets span argument as location,
+  unless location is otherwise specified.
+
+  + ``isolate(2)`` is the same as ``isolate(at 2)``.
+  + ``isolate(25%)`` will isolate *at* ``25%``.
+
+- Rename setting controls for consistency.
+
+  + ``set-grid`` => ``layout``
+  + ``use-grid`` => ``with-layout``
+
+- ``pad`` and ``squish`` use RL shorthand for shared context.
+
+  + ``pad(1, 3 of 12)`` => ``pad(1 3 of 12)``
+
+
+2.0.0.beta.1 — Dec 24 2013
 --------------------------
 
-- Debug grids are now hidden by default.
-- Remove ``nth-last``/``-omega``/``-first``/``-alpha``
+- Add ``susy-breakpoint`` mixin for basic integration with `Breakpoint`_.
+
+  + Syntax: ``breakpoint($query, $layout, $no-query)``
+    where ``$query`` and ``no-query`` follow the Breakpoint syntax,
+    and ``$layout`` uses the Susy syntax for defining grids.
+
+- Add ``layout`` function to convert layouts from shorthand syntax to map.
+- Add ``full`` keyword shortcut for full-width spans.
+- BREAKING: Remove unclear ``row`` and ``unrow`` mixins.
+- Add ``break`` and ``nobreak`` mixins/keywords
+  to create a new line before any element in the layout.
+- BREAKING: Rename ``is-container: container`` setting/value to ``role: nest``.
+- BREAKING: Rename ``layout-method`` setting to ``output``.
+- BREAKING: Rename ``layout-math`` setting to ``math``.
+- Clean up division between math/output/syntax layers.
+- ``gutters`` and ``container-position`` can be set to ``null``.
+- If ``gutters`` are set to ``0`` or ``null``, they will have no output.
+- BREAKING: ``full`` output matches span patterns.
+- BREAKING: Debug grids are hidden by default.
+- BREAKING: Remove ``nth-last``/``-omega``/``-first``/``-alpha``
   as confusing & out-of-scope.
   Format your nth-selectors manually to apply ``first``/``last`` mixins.
-
 - Gutter mixins/functions can accept context-only (without the "of" syntax):
 
   + ``gutters(of 10 .25)`` == ``gutters(10 .25)``
   + Unitless numbers are used for context.
   + Lengths (with units) are used as explicit gutter-overrides.
 
-- Re-purposed ``susy-set`` as reverse of ``susy-get`` —
+- BREAKING: Re-purposed ``susy-set`` as reverse of ``susy-get`` —
   to adjust a single setting.
   Example: ``@include susy-set(gutter-position, inside);``
 
-- Add ``global-box-sizing`` setting.
-  Let Susy know what box model you are using globally.
+- Replace global ``box-sizing`` setting with ``global-box-sizing``.
 
-- Remove ``box-sizing`` setting.
-  It can still be passed as a keyword argument.
+  + Let Susy know what box model you are using globally.
+  + ``box-sizing`` can still be passed as a keyword argument.
 
 - Add ``global-box-sizing()`` mixin to set your global box model.
 
@@ -35,11 +92,13 @@ Changelog
 
 - ``gallery`` and ``span`` mixins take global-box-sizing into account.
 
+.. _Breakpoint: http://breakpoint-sass.com/
+
 
 2.0.0.alpha.6 — Dec 5 2013
 --------------------------
 
-- Re-write syntax parsing so parser and resulting maps are shared across Susy.
+- Rewrite syntax parsing so parser and resulting maps are shared across Susy.
 - Fix explicit-span bug causing large gutters.
 - Padding mixins now respect inside gutters.
 

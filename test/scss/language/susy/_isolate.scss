@@ -3,33 +3,48 @@
 
 @include test-module('Isolation Syntax') {
 
-  // isolate
-  // -------
+  // isolate [mixin]
+  // ---------------
 
   @include output-test('isolate') {
-    @include assert-setup($grid: 7 .5 rtl) {
+    @include assert-setup($grid: 7 .5) {
       .test, .expect {
         @include span(last 2);
         clear: both;
       }
     }
     @include assert-output(
-      'Item should be isolated in the last 2 columns, right-to-left'
+      'Item should be isolated in the last 2 columns'
     ) {
       .test { @include isolate(last 2); }
       .expect {
-        float: right;
-        margin-right: 75%;
-        margin-left: -100%;
+        float: left;
+        margin-left: 75%;
+        margin-right: -100%;
       }
     }
+  }
+
+  // isolate [function]
+  // ------------------
+
+  @include test('[function] isolate') {
+    $test: isolate(25%);
+    $expect: 25%;
+    @include assert-equal($test, $expect,
+      'Explicit value is passed through as isolation offset.');
+
+    $test: isolate(2 of 7 .5 after);
+    $expect: 15%;
+    @include assert-equal($test, $expect,
+      'Index span is calculated as isolation location.');
   }
 
   // get-isolation
   // -------------
 
   @include test('[function] get-isolation') {
-    // args: $span, $location [, $columns, $gutters, $column-width, $layout-math ]
+    // args: $span, $location [, $columns, $gutters, $column-width, $math ]
 
     // explicit
     $location: 30%;
@@ -39,19 +54,19 @@
       'Explicit isolation placements should be passed back unchanged.');
 
     // first
-    $test: get-isolation((span: 1, location: first));
-    $expect: null;
+    $test: get-isolation((span: 1, edge: first));
+    $expect: 0;
     @include assert-equal($test, $expect,
       'Isolation in the first column doesnt require any prefixed margins.');
 
     // calculated
     $test: get-isolation((
       span: 2,
-      location: last,
+      edge: last,
       columns: 7,
       gutters: .5,
       column-width: 4em,
-      layout-math: static,
+      math: static,
     ));
     $expect: 30em;
     @include assert-equal($test, $expect,
@@ -60,11 +75,11 @@
     // split
     $test: get-isolation((
       span: 2,
-      location: first,
+      location: 1,
       columns: 8,
       gutters: .25,
       column-width: 4em,
-      layout-math: fluid,
+      math: fluid,
       gutter-position: split,
     ));
     $expect: 1.25%;

@@ -1,0 +1,85 @@
+// Map Toolkit
+// ===========
+
+// Truncate List
+// -------------
+// - Return a list, truncated to a given length
+@function truncate-list(
+  $list,
+  $length
+) {
+  $return: ();
+
+  @for $i from 1 through length($list) {
+    $return: if($i <= $length, append($return, nth($list, $i)), $return);
+  }
+
+  @return $return;
+}
+
+// Deep Get
+// --------
+// - Return a value deep in nested maps
+@function deep-get(
+  $map,
+  $keys...
+) {
+  $return: $map;
+
+  @each $key in $keys {
+    @if type-of($return) == map {
+      $return: map-get($return, $key);
+    }
+  }
+
+  @return $return;
+}
+
+// Deep Set
+// --------
+// - Set a value deep in nested maps
+@function deep-set(
+  $map,
+  $keys,
+  $value
+) {
+  $length: length($keys);
+  $return: ();
+
+  @for $i from 1 through $length {
+    $n: 0 - $i;
+    $level: truncate-list($keys, $length + $n);
+    $level: deep-get($map, $level...);
+    $merge: (nth($keys, $n): $value);
+    $value: if($level, map-merge($level, $merge), $merge);
+    $return: $value;
+  }
+
+  @return $return;
+}
+
+// Deep Has-Key
+// ------------
+// - Return true if a deep key exists
+@function deep-has-key(
+  $map,
+  $keys...
+) {
+  $return: null;
+  $break: false;
+
+  @each $key in $keys {
+    @if not $break {
+      $return: map-has-key($map, $key);
+    }
+
+    @if $return {
+      $map: map-get($map, $key);
+    } @else {
+      $break: true;
+    }
+  }
+
+  @return $return;
+}
+

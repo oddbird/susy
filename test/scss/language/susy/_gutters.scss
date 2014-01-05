@@ -7,14 +7,14 @@
   // ---------------
 
   @include output-test('gutters') {
-    @include assert-setup('auto', $grid: 7 .5 split);
+    @include assert-setup('auto', $grid: 8 .25 split);
     @include assert-output(
       'Item should have 2.5% margin-gutters added before and after'
     ) {
-      .test { @include gutters(of 7); }
+      .test { @include gutters(of 8); }
       .expect {
-        margin-left: 2.5%;
-        margin-right: 2.5%;
+        margin-left: 1.25%;
+        margin-right: 1.25%;
       }
     }
 
@@ -95,11 +95,40 @@
       'Returns correct split gutter width.');
 
     // no-gutters
-    $gutter: get-gutter-width(of 8 .25 split no-gutters);
+    $gutter: get-gutter-width(8 .25 split no-gutters);
     $expect: null;
     @include assert-equal($gutter, $expect,
       'Returns correct split no-gutters width.');
 
+    // null gutters
+    $context: (
+      columns: 10,
+      gutters: null,
+    );
+    $gutter: get-gutter-width($context after);
+    $expect: null;
+    @include assert-equal($gutter, $expect,
+      'Returns correct null gutters width.');
+
+    // 0 gutters
+    $context: (
+      columns: 10,
+      gutters: 0,
+    );
+    $gutter: get-gutter-width($context split);
+    $expect: null;
+    @include assert-equal($gutter, $expect,
+      'Returns null width for 0-gutters.');
+
+    // null gutters
+    $context: (
+      columns: 10,
+      gutters: 0,
+    );
+    $gutter: get-gutter-width(3em $context split);
+    $expect: 3em;
+    @include assert-equal($gutter, $expect,
+      'Returns correct override width for 0 gutters.');
   }
 
   // get-gutters
@@ -168,16 +197,16 @@
   @include test('[function] gutter-math') {
     // after static
     $test: gutter-math((
-      layout-math: static,
+      math: static,
       gutter-position: after,
     ));
     $expect: static;
     @include assert-equal($test, $expect,
-      'Returns static gutters when layout-math is static.');
+      'Returns static gutters when math is static.');
 
     // inside-static
     $test: gutter-math((
-      layout-math: fluid,
+      math: fluid,
       gutter-position: inside-static,
     ));
     $expect: static;

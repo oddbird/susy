@@ -1,84 +1,130 @@
 // Row Start & End
 // ===============
 
-// Row
-// ---
-// Apply to any layout element that should force a new layout row.
-// - [$flow]  : ltr | rtl
-@mixin row(
-  $flow: susy-get(flow)
-) {
-  @include susy-clearfix;
+
+// Break
+// -----
+// Apply to any element that should force a line break.
+@mixin break {
   clear: both;
 }
 
-// Unrow
-// -----
-// Cancel the row() effect, e.g. when using media queries.
-// - [$flow]: ltr | rtl
-@mixin unrow {
+
+// NoBreak
+// -------
+// Cancel the break() effect, e.g. when using media queries.
+@mixin nobreak {
   clear: none;
-  &:after {
-    content: none;
-    display: inline;
-    clear: none;
-  }
 }
+
 
 // Full
 // ----
-// - [$span]: <span settings>
+// - [$context]: <layout shorthand>
 @mixin full(
-  $span: $susy
+  $context: $susy
 ) {
-  $span: parse-span($span);
-
-  @include row(susy-get(flow, $span));
-  @if is-split($span) and not susy-get(is-container, $span) {
-    @include gutters($span);
-  }
-  float: none;
-  width: auto;
+  @include span(full of parse-grid($context) break);
 }
+
 
 // First
 // -----
-// - [$grid]: <settings>
+// - [$context]: <settings>
 @mixin first(
-  $grid: $susy
+  $context: $susy
 ) {
-  $grid: parse-grid($grid);
-  $flow: susy-get(flow, $grid);
-  $split: if(susy-get(gutter-position, $grid) == split, true, false);
+  $context: parse-grid($context);
+  $flow: susy-get(flow, $context);
 
-  @if not $split {
+  @if not is-split($context) {
     @include float-first($flow);
   }
 }
 
 @mixin alpha(
-  $grid: $susy
+  $context: $susy
 ) {
-  @include first($grid);
+  @include first($context);
 }
 
+
 // Last
-// -----
-// - [$grid]: <settings>
+// ----
+// - [$context]: <settings>
 @mixin last(
-  $grid: $susy
+  $context: $susy
 ) {
-  $grid: parse-grid($grid);
+  $context: parse-grid($context);
   $output: (
-    flow: susy-get(flow, $grid),
-    margin: if(susy-get(gutter-position, $grid) == split, gutters($grid), 0),
+    flow: susy-get(flow, $context),
+    margin: if(is-split($context), null, 0),
   );
 
   @include float-last($output...);
 }
 
 @mixin omega(
-  $grid: $susy
+  $context: $susy
 ) {
-  @include last($grid);
+  @include last($context);
+}
+
+
+// Get Edge
+// --------
+// Calculate edge value based on location, if possible
+@function get-edge(
+  $span
+) {
+  $span       : parse-span($span);
+  $edge       : susy-get(edge, $span);
+
+  @if not $edge {
+    $count: column-count(susy-get(columns, $span));
+    $location: susy-get(location, $span);
+    $n: susy-get(span, $span);
+
+    $number: if(type-of($location) == number, true, false);
+    $index: if($number and unitless($location), true, false);
+
+    @if $n == $count {
+      $edge: full;
+    } @else if $location and $n and $index {
+      @if $location == 1 {
+        $edge: if($n == $count, full, first);
+      } @else if $location + $n - 1 == $count {
+        $edge: last;
+      }
+    }
+  }
+
+  @if $edge == alpha or $edge == omega {
+    $edge: if($edge == alpha, first, last);
+  }
+
+  @return $edge;
+}
+
+
+// Get Location
+// ------------
+// Calculate location value based on edge, if possible
+@function get-location(
+  $span
+) {
+  $span       : parse-span($span);
+  $location   : susy-get(location, $span);
+  $edge       : get-edge($span);
+  $n          : susy-get(span, $span);
+
+  @if $edge and not $location and type-of($n) == number and unitless($n) {
+    @if $edge == first {
+      $location: 1;
+    } @else if $edge == last {
+      $location: column-count(susy-get(columns, $span)) - $n + 1;
+    }
+  }
+
+  @return $location
 }

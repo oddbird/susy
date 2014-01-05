@@ -3,46 +3,16 @@
 
 @import "susy";
 @import "true";
-
-// Testing
-// -------
-
 @import "test/helpers";
 
-// Output
-// ------
+// Test
+// ----
 
 $default-module-output: css;
 
 $output-test-context: false;
 $output-test-results: true;
 
-// Math
-// ----
-
-@import "math/columns";
-@import "math/container";
-@import "math/location";
-
-// Helpers
-// -------
-
-@import "helpers/box-sizing";
-@import "helpers/clearfix";
-@import "helpers/direction";
-
-// Language
-// --------
-
-@import "language/susy";
-
-// API
-// ---
-
-@import "api/shared";
-@import "api/float";
-
-// Report
-// ------
+@import "tests";
 
 @include report;

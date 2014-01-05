@@ -3,14 +3,14 @@
 
 @include test-module('Grids Syntax') {
 
-  // [mixin] set-grid
+  // [mixin] layout
   // ----------------
 
-  @include test('[mixin] set-grid') {
+  @include test('[mixin] layout') {
     $grid: 960px inside border-box;
 
     // original change
-    @include set-grid($grid);
+    @include layout($grid);
 
     @include assert-equal(susy-get(container), 960px,
       'New container setting should be "960px"');
@@ -21,7 +21,7 @@
     @include assert-equal(susy-get(gutter-position), inside,
       'New gutter-position should be "inside"');
 
-    @include set-grid(12);
+    @include layout(12);
 
     @include assert-equal(susy-get(container), 960px,
       'New container setting should remain "960px"');
@@ -33,49 +33,44 @@
     @include original-grid;
   }
 
-  // [mixin] susy-set
-  // ----------------
+  // [mixin] with-layout
+  // -------------------
 
-  @include test('[mixin] susy-set') {
-    $key: columns;
-    $original: susy-get($key);
-    $new: $original + 3;
-
-    @include susy-set($key, $new);
-
-    $test: susy-get($key);
-    @include assert-equal($test, $new,
-      'Changes the global value for a setting.');
-
-    @include original-grid;
-  }
-
-  // [mixin] use-grid
-  // ----------------
-
-  @include test('[mixin] use-grid') {
-    @include set-grid((
+  @include test('[mixin] with-layout') {
+    @include layout((
       columns: 4,
       container: 960px
     ));
 
     @include assert-equal(susy-get(columns), 4,
-      'Start with 4 columns, before use-grid');
+      'Start with 4 columns, before with-layout');
     @include assert-equal(susy-get(container), 960px,
-      'Start with 960px container, before use-grid');
+      'Start with 960px container, before with-layout');
 
-    @include use-grid(auto 12) {
+    @include with-layout(auto 12) {
       @include assert-equal(susy-get(columns), 12,
-        'Switch to 12 columns, inside use-grid');
+        'Switch to 12 columns, inside with-layout');
       @include assert-equal(susy-get(container), auto,
-        'Switch to auto container, inside use-grid');
+        'Switch to auto container, inside with-layout');
     }
 
     @include assert-equal(susy-get(columns), susy-get(columns, $susy-defaults),
-      'End with 4 columns, after use-grid');
+      'End with 4 columns, after with-layout');
     @include assert-equal(susy-get(container), 960px,
-      'End with 960px container, after use-grid');
+      'End with 960px container, after with-layout');
 
     @include original-grid;
+  }
+
+  // [function] layout
+  // -----------------
+
+  @include test('[function] layout') {
+    $shorthand: 8 .5 inside static;
+    $test: layout($shorthand);
+    $expect: parse-grid($shorthand);
+    @include assert-equal($test, $expect,
+      'Returns a parsed grid map based on shorthand syntax');
+
   }
 }

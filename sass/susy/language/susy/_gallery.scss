@@ -4,23 +4,23 @@
 // Gallery
 // -------
 // Create an isolated gallery
-// - $input       : <span>
+// - $span        : <span>
 // - [$selector]  : child | of-type
 @mixin gallery(
-  $layout,
+  $span,
   $selector: child
 ) {
-  $layout       : parse-span($layout);
-  $layout       : map-merge($layout, (location: 1));
+  $span       : parse-span($span);
+  $span       : map-merge($span, (location: 1));
 
-  $span         : susy-get(span, $layout);
-  $columns      : susy-get(columns, $layout);
+  $n            : susy-get(span, $span);
+  $columns      : susy-get(columns, $span);
   $context      : column-count($columns);
-  $flow         : susy-get(flow, $layout);
+  $flow         : susy-get(flow, $span);
 
-  $inside       : is-inside($layout);
+  $inside       : is-inside($span);
   $from         : from($flow);
-  $line         : floor($context / $span);
+  $line         : floor($context / $n);
   $symmetrical  : is-symmetrical($columns);
 
   $output: (
@@ -34,7 +34,7 @@
   );
 
   @if $inside {
-    $gutters: get-gutters($layout);
+    $gutters: get-gutters($span);
     $output: map-merge($output, (
       padding_before: map-get($gutters, before),
       padding_after: map-get($gutters, after),
@@ -42,10 +42,10 @@
   }
 
   @if $symmetrical {
-    $output: map-merge($output, (width: get-span-width($layout)));
+    $output: map-merge($output, (width: get-span-width($span)));
   }
 
-  $box          : susy-get(box-sizing, $layout);
+  $box          : susy-get(box-sizing, $span);
   $global-box   : if(susy-get(global-box-sizing) == 'border-box', true, false);
 
   // Collective Output
@@ -59,13 +59,13 @@
 
   // Individual Loop
   @for $item from 1 through $line {
-    $n: '#{$line}n + #{$item}';
-    &:nth-#{$selector}(#{$n}) {
+    $nth: '#{$line}n + #{$item}';
+    &:nth-#{$selector}(#{$nth}) {
       // Individual Prep
       $output: (
-        width             : if($symmetrical, null, get-span-width($layout)),
+        width             : if($symmetrical, null, get-span-width($span)),
         float             : null,
-        margin_before     : get-isolation($layout),
+        margin_before     : get-isolation($span),
         margin_after      : -100%,
         padding_before    : null,
         padding_after     : null,
@@ -75,17 +75,17 @@
       // Individual Output
       @include float-span-output($output...);
 
-      @if is-first(susy-get(location, $layout)) {
-        @include first($layout);
-        clear: $from;
+      @if get-edge($span) == first {
+        @include break;
+        @include first($span);
       } @else {
-        clear: none;
+        @include nobreak;
       }
 
       // Individual Location Increment
-      $location: susy-get(location, $layout) + $span;
+      $location: get-location($span) + $n;
       $location: if($location > $context, 1, $location);
-      $layout: map-merge($layout, (location: $location));
+      $span: map-merge($span, (location: $location));
     }
   }
 }

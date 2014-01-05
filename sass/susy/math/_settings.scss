@@ -1,0 +1,23 @@
+// Settings
+// ========
+
+// Version
+// -------
+$susy-version: 2.0;
+
+// Default Settings
+// ----------------
+// PRIVATE: The basic settings
+$susy-defaults: (
+  columns: 4,
+  gutters: 1/4,
+);
+
+// Susy Defaults
+// -------------
+// PRIVATE: Add defaults to Susy
+@mixin susy-defaults(
+  $defaults
+) {
+  $susy-defaults: map-merge($susy-defaults, $defaults) !global;
+}

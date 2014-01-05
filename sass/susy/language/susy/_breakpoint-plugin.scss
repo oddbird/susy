@@ -1,0 +1,26 @@
+// Breakpoint Integration
+// ======================
+// REQUIRES Breakpoint: http://breakpoint-sass.com/
+
+
+// Susy Breakpoint
+// ---------------
+// Change grids at different mediaqueries.
+// - $query     : <breakpoint $query>
+// - $layout    : <settings>
+// - $no-query  : <breakpoint $no-query>
+@mixin susy-breakpoint(
+  $query,
+  $layout,
+  $no-query: false
+) {
+  @if mixin-exists(breakpoint) {
+    @include breakpoint($query, $no-query) {
+      @include with-layout($layout) {
+        @content;
+      }
+    }
+  } @else {
+    @warn "Susy-breakpoint requires the Breakpoint plugin (http://breakpoint-sass.com/)";
+  }
+}

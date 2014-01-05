@@ -1,19 +1,16 @@
 stylesheet 'screen.scss', :media => "screen, projection"
 stylesheet '_base.scss'
 
-description "Susy: a flexible static/fluid/elastic grid system native to compass."
+description "Susy: custom Sass layouts. Your markup, your design, our math."
 
 help %Q{
-Please see the Susy website for all documentation and tutorials:
+Full documentation and tutorials available online:
 
-    http://www.oddbird.net/susy
+    http://susy.oddbird.net/
 }
 
 welcome_message %Q{
-Please see the Susy website for all documentation and tutorials:
+Welcome to Susy! Check out the full documentation online:
 
-    http://www.oddbird.net/susy
-
-To get started, set up your grid in the base partial by following the inline instructions.
+    http://susy.oddbird.net/
 }
-

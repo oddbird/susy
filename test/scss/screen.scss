@@ -3,50 +3,16 @@
 
 @import "susy";
 @import "true";
-
-// Testing
-// -------
-
 @import "test/helpers";
 @import "test/layout";
 
-// Output
-// ------
-
-$default-module-output: false;
-$default-test-output: false;
-$default-final-output: false;
+// Test
+// ----
 
 $output-test-context: true;
 $output-test-results: false;
 
-// Math
-// ----
-
-@import "math/columns";
-@import "math/container";
-@import "math/location";
-
-// Helpers
-// -------
-
-@import "helpers/box-sizing";
-@import "helpers/clearfix";
-@import "helpers/direction";
-
-// Language
-// --------
-
-@import "language/susy";
-
-// API
-// ---
-
-@import "api/shared";
-@import "api/float";
-
-// Report
-// ------
+@import "tests";
 
 .results{
   @if map-get($true-results, fail) < 1 {

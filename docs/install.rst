@@ -1,17 +1,16 @@
-Install
-=======
+Getting Started
+===============
 
 The only requirement is `Sass`_,
-but all the cool kids load `Compass`_,
-and we recommend something like `Breakpoint`_
-to help manage your media-queries.
-
-See the `Sass install`_ page for details.
+but Susy was built to be part of the `Compass`_ ecosystem,
+and we recommend pairing with tools like
+`Breakpoint`_
+and `Vertical Rhythms`_.
 
 .. _Sass: http://sass-lang.com/
 .. _Compass: http://compass-style.org/
-.. _Breakpoint: breakpoint-sass.com/‎
-.. _Sass install: http://sass-lang.com/install
+.. _Breakpoint: http://breakpoint-sass.com/
+.. _Vertical Rhythms: http://compass-style.org/reference/compass/typography/vertical_rhythm/
 
 
 Simple Install
@@ -44,7 +43,7 @@ Compass
 -------
 
 If you want to use Susy with `Compass`_,
-start by following the `Compass install`_ instructions.
+start by `installing Compass`_.
 
 Create a new Compass project:
 
@@ -61,7 +60,7 @@ Update an existing Compass project:
   require "susy"
 
 .. _Compass: http://compass-style.org/
-.. _Compass install: http://compass-style.org/install/
+.. _installing Compass: http://compass-style.org/install/
 
 
 Yeoman
@@ -90,8 +89,9 @@ and will not clash with Yeomans grunt rules.
 Manual Start
 ------------
 
-You can use this method if you're not using Compass from Terminal and/or Rails.
-This is going to work with CodeKit.
+If you want to copy in the Sass files directly,
+and skip any package management,
+you can do that too.
 
 - Download the zip file from GitHub.
 - Copy the contents of the "sass" folder (feel free to remove everything else).
@@ -117,3 +117,65 @@ to manage the actual installation and updating of the gems.
 .. _RVM: https://rvm.io/
 .. _virtualenv: http://www.virtualenv.org/en/latest/index.html
 .. _scripts: https://gist.github.com/1078601
+
+
+Quick Start
+-----------
+
+Once you have everything installed,
+you can import Susy into your Sass files.
+
+.. code-block:: scss
+
+  @import "susy";
+
+The basic Susy layout is composed using two simple mixins:
+
+.. code-block:: scss
+
+  @include container; // establish a layout context
+  @include span(<width>); // lay out your elements
+
+For example:
+
+.. code-block:: scss
+
+  body { @include container(80em); }
+  nav { @include span(25%); }
+
+If you want to lay your elements out on a grid,
+you can use the ``span`` mixin to calculate column widths:
+
+.. code-block:: scss
+
+  nav { @include span(3 of 12); }
+
+But you don't have to do things the Susy way.
+We give you direct access to the math,
+so you can use it any way you like:
+
+.. code-block:: scss
+
+  main {
+    float: left;
+    width: span(4);
+    margin-left: span(2) + gutter();
+    margin-right: gutter();
+  }
+
+You can also establish :doc:`global settings <settings>`,
+to configure Susy for your specific needs.
+Create a ``$susy`` variable,
+and add your settings as a map.
+
+.. code-block:: scss
+
+  $susy: (
+    columns: 12,  // The number of columns in your grid
+    gutters: 1/4, // The size of a gutter in relation to a single column
+  );
+
+There are many more settings available
+for customizing every aspect of your layout,
+but this is just a quick-start guide.
+Keep going to get the details.

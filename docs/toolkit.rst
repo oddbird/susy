@@ -313,8 +313,8 @@ to adjust settings on the fly:
 Container
 ---------
 
-- ``container($grid)``
-- ``$grid``: :ref:`\<layout\> <shorthand-layout>`
+- ``container($layout)``
+- ``$layout``: :ref:`\<layout\> <shorthand-layout>`
 
 Use the ``container`` function
 return a container width based on your settings,

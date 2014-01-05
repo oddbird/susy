@@ -47,45 +47,12 @@ or locally
 Global Defaults
 ---------------
 
-You can create any setting-maps you need
-for storing different layouts,
-but you can also set a global default
-for Susy to use as fallback.
-That map is simply called ``$susy``.
-
-You can set the defaults directly in the ``$susy`` variable:
-
-.. code-block:: scss
-
-  $susy: (
-    columns: 12,
-    gutters: .25,
-    gutter-position: inside,
-  )
-
-You can also use the ``layout`` mixin
-along with the shorthand syntax:
-
-.. code-block:: scss
-
-  @include layout(12 .25 inside);
-
-Or you can temporarily set defaults
-for a small section of your code
-using ``with-layout``:
-
-.. code-block:: scss
-
-  @include with-layout(8 static) {
-    // an 8-column static grid...
-  }
-
 Here are all the global Susy settings
 with their default values:
 
 .. code-block:: scss
 
-  $susy: (
+  $susy-defaults: (
     flow: ltr,
     math: fluid,
     output: float,
@@ -104,6 +71,91 @@ with their default values:
       toggle: top right,
     ),
   );
+
+You can set your own global defaults,
+or create individual layout maps
+to access as needed.
+
+For global settings,
+simply create a ``$susy`` variable,
+and set any values that you need.
+
+.. code-block:: scss
+
+  $susy: (
+    columns: 12,
+    gutters: .25,
+    gutter-position: inside,
+  )
+
+
+-------------------------------------------------------------------------
+
+.. _settings-layout:
+
+Layout
+------
+
+- ``layout($layout)``
+- ``$layout``: :ref:`\<layout\> <shorthand-layout>`
+
+A "layout" in Susy is made up of any combination of settings.
+Layouts are stored as maps,
+but can also be written as :doc:`shorthand`.
+The ``layout`` function can be used to convert shorthand into maps,
+and the ``layout`` mixin will set any layout as a global default.
+
+.. code-block:: scss
+
+  // convert from shorthand to map
+  $large-screen: layout(960px 12 .25 split);
+
+  // set global layout
+  @include layout($large-screen);
+
+You can temporarily set defaults
+for a small section of your code
+using ``with-layout``:
+
+.. code-block:: scss
+
+  @include with-layout(8 static) {
+    // Temporary 8-column static grid...
+  }
+
+  // Global settings are restored...
+
+
+-------------------------------------------------------------------------
+
+.. _settings-susy-get:
+
+Susy-Get
+--------
+
+- ``susy-get($key, $layout)``
+- ``$key``: <setting name>
+- ``$layout``: :ref:`\<layout\> <shorthand-layout>`
+
+You can access your layout settings at any time,
+using the ``susy-get`` function.
+
+.. code-block:: scss
+
+  $large: layout(80em 24 1/4 inside);
+  $large-container: susy-get(container, $large);
+
+To access a nested setting like ``debug/image``,
+simply send the full path as a list for the first argument.
+
+.. code-block:: scss
+
+  $debug-image: susy-get(debug image);
+
+If no setting is available
+(or no ``$layout`` is provided)
+``susy-get`` falls back to the global user settings,
+and finally to the Susy default settings.
 
 
 -------------------------------------------------------------------------

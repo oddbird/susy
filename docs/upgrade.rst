@@ -12,6 +12,8 @@ without making any changes to your syntax.
 These instructions are for making the larger leap
 between syntaxes.
 
+-------------------------------------------------------------------------
+
 Settings
 --------
 
@@ -36,23 +38,23 @@ In SusyOne, settings were handled as variables.
   $breakpoint-ie-output: true;
   $breakpoint-raw-output: false;
 
-Deprecated
-~~~~~~~~~~
-
 Susy no longer manages media-queries,
 so all the query-fallback settings have been dropped,
 but Susy works well with other media-query libraries,
-and we have special `Breakpoint`_ integration built in.
-See their documentation for handling fallbacks for legacy browsers.
+and we have special
+:ref:`Breakpoint integration <tools-susy-breakpoint>`
+built in.
+See `their documentation`_ for handling legacy browsers.
 
-.. _`Breakpoint`: https://github.com/Team-Sass/breakpoint/wiki/Basic-Media-Queries
+.. _`their documentation`: https://github.com/Team-Sass/breakpoint/wiki/Basic-Media-Queries
 
 We've also dropped ``$grid-padding`` as a setting.
 If you want to add padding to your container,
 you can easily do it by hand.
 
-Translated
-~~~~~~~~~~
+
+Translation
+~~~~~~~~~~~
 
 The remaining settings can be easily mapped
 into the new syntax.
@@ -85,6 +87,10 @@ There are a few differences to note in the translation.
   ``fluid`` math, and a width setting
   (either ``column-width`` or ``container``).
 
+See :doc:`settings` for more details.
+
+
+-------------------------------------------------------------------------
 
 Functions
 ---------
@@ -93,7 +99,8 @@ Columns / Space
 ~~~~~~~~~~~~~~~
 
 The ``columns`` and ``space`` functions from SusyOne
-have now been merged into the new ``span`` function.
+have now been merged into the new
+:ref:`span function <tools-span-function>`.
 
 .. code-block:: scss
 
@@ -107,14 +114,15 @@ have now been merged into the new ``span`` function.
 
 The difference between ``columns`` and ``space``
 in the old syntax
-is now covered by the ``narrow`` and ``wide`` keywords
+is now covered by the ``narrow`` and ``wide``
+:ref:`spread <tools-span-spread>` keywords
 (with ``narrow`` being the default in most cases).
 
 Gutter
 ~~~~~~
 
-The ``gutter`` function remains,
-but the syntax for arguments has changed.
+The :ref:`gutter function <tools-gutter>` remains,
+but the syntax has changed.
 
 .. code-block:: scss
 
@@ -126,13 +134,15 @@ Simply removing any commas
 should get your ``gutter`` functions up-to-date.
 
 
+-------------------------------------------------------------------------
+
 Basic Mixins
 ------------
 
 Container
 ~~~~~~~~~
 
-The ``container`` mixin remains,
+The :ref:`container mixin <tools-container>` remains,
 but media-query support has been removed.
 For now, at least,
 you'll have to establish one container at a time
@@ -165,7 +175,8 @@ to override only the width at different breakpoints.
 Span Columns
 ~~~~~~~~~~~~
 
-The ``span-columns`` mixin has been renamed ``span``,
+The ``span-columns`` mixin has been renamed
+:ref:`span <tools-span-mixin>`,
 and has much more power and flexibility.
 The old ``$padding`` argument has been removed,
 but everything else tranlates cleanly.
@@ -181,7 +192,7 @@ where the new ``flow`` setting takes ``rtl`` or ``ltr``.
 Omega
 ~~~~~
 
-The ``omega`` mixin still esists,
+The :ref:`omega mixin <tools-row-last>` still esists,
 and should work without any changes.
 For readability, ``omega`` can be replaced with ``last``,
 but that's up to you.
@@ -196,6 +207,8 @@ and difficult to add any useful automation around it.
   .new:last-child { @include omega; }
 
 
+-------------------------------------------------------------------------
+
 Responsive Design
 -----------------
 
@@ -207,7 +220,7 @@ because there are so many more powerful and flexible
 query-handling plugins.
 We recommend using `Breakpoint`_,
 and we've written a translation of ``at-breakpoint``
-(now called ``susy-breakpoint``)
+(now called :ref:`susy-breakpoint <tools-susy-breakpoint>`)
 that integrates smoothly with their controls.
 
 .. code-block:: scss
@@ -231,11 +244,13 @@ See the `Breakpoint`_ docs for more detail on the former,
 and use our :doc:`shorthand <shorthand>` to control the latter
 in detail.
 
-Layout & With Grid Settings
+.. _Breakpoint: http://breakpoint-sass.com/
+
+Layout & With-Grid-Settings
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 the ``layout`` and ``with-grid-settings`` mixins
-have merged to become ``with-layout``.
+have merged to become :ref:`with-layout <settings-layout>`.
 They continue to work much like before,
 with extra power exposed
 through the :doc:`shorthand <shorthand>` syntax.
@@ -265,7 +280,8 @@ Set Container Width
 ~~~~~~~~~~~~~~~~~~~
 
 The ``set-container-width`` mixin
-can be replaced by simply applying the ``container`` function
+can be replaced by simply applying the
+:ref:`container function <tools-container>`
 to the ``width`` or ``max-width`` of your containing element.
 
 .. code-block:: scss
@@ -279,6 +295,8 @@ to the ``width`` or ``max-width`` of your containing element.
   .static { width: container(12); }
 
 
+-------------------------------------------------------------------------
+
 Grid Helpers
 ------------
 
@@ -288,7 +306,7 @@ Border-Box Sizing
 The setting has changed
 from the boolean ``$border-box-sizing``
 to the new :ref:`global-box-sizing <settings-global-box-sizing>`,
-but the ``border-box-sizing`` mixin
+but the :ref:`border-box-sizing <tools-box-sizing>` mixin
 works exactly like before.
 
 Isolate
@@ -297,7 +315,8 @@ Isolate
 Isolation no longer requires it's own mixin,
 as it can be controlled now through the
 :ref:`span mixin <tools-span-mixin>` for most cases.
-Still, ``isolate`` remains much as before.
+In those cases where you do still need a distinct mixin,
+:ref:`isolate <tools-isolate>` remains much like before.
 
 .. code-block:: scss
 
@@ -307,8 +326,9 @@ Still, ``isolate`` remains much as before.
 Isolate Grid
 ~~~~~~~~~~~~
 
-the ``isolate-grid`` mixin has been renamed ``gallery``,
-but remains very similar.
+the ``isolate-grid`` mixin has been renamed
+:ref:`gallery <tools-gallery>`,
+but is very similar in use.
 
 .. code-block:: scss
 
@@ -335,7 +355,7 @@ Bleed
 ~~~~~
 
 Besides upgrading to the new shorthand,
-the ``bleed`` mixin now also supports
+the :ref:`bleed <tools-bleed>` mixin now also supports
 :abbr:`TRBL (Top Right Bottom Left)` syntax
 for applying to different sides,
 along with ``bleed-x`` and ``bleed-y`` shortcuts
@@ -349,5 +369,17 @@ for horizontal and vertical bleed.
 Susy Grid Background
 ~~~~~~~~~~~~~~~~~~~~
 
-This has been renamed ``show-grid``,
+This has been renamed :ref:`show-grid <tools-show-grid>`,
 and otherwise remains intact.
+
+Reset-Columns / Remove-Omega
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Susy One included ``reset-columns``
+and ``remove-omega``,
+but both have been deprecated.
+Rather than removing styles,
+simply override them with the desired behavior.
+The :ref:`full <tools-row-full>` and :ref:`span <tools-span-mixin>`
+mixins should give you everything you need
+for overriding spans and omegas, respectively.

@@ -3,24 +3,24 @@
 
 // Layout
 // ------
-// Set a new grid using a shorthand
-// - $grid: <settings>
+// Set a new layout using a shorthand
+// - $layout: <settings>
 @mixin layout(
-  $grid
+  $layout
 ) {
-  $susy: map-merge($susy, parse-grid($grid)) !global;
+  $susy: map-merge($susy, parse-grid($layout)) !global;
 }
 
 // Use Grid
 // --------
-// Use an arbitrary grid for a section of code
-// - $grid: <settings>
+// Use an arbitrary layout for a section of code
+// - $layout: <settings>
 @mixin with-layout(
-  $grid
+  $layout
 ) {
   $old: $susy;
 
-  @include layout($grid);
+  @include layout($layout);
   @content;
 
   $susy: $old !global;
@@ -29,9 +29,9 @@
 // Layout
 // ------
 // Return a parsed layout map based on shorthand syntax
-// - $grid: <settings>
+// - $layout: <settings>
 @function layout(
-  $grid: $susy
+  $layout: $susy
 ) {
-  @return parse-grid($grid);
+  @return parse-grid($layout);
 }

@@ -239,14 +239,14 @@ $susy: () !default;
 // Susy Get
 // --------
 // Return one setting from a grid
-// - $key   : <keyword>
-// - $grid  : <settings>
+// - $key     : <keyword>
+// - $layout  : <settings>
 @function susy-get(
   $key,
-  $grid: map-merge($susy-defaults, $susy)
+  $layout: map-merge($susy-defaults, $susy)
 ) {
-  $grid: parse-grid($grid);
-  $options: $grid $susy $susy-defaults;
+  $layout: parse-grid($layout);
+  $options: $layout $susy $susy-defaults;
   $break: false;
   $return: null;
 

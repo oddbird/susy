@@ -38,6 +38,10 @@ BREAKING:
   + ``set-grid`` => ``layout``
   + ``use-grid`` => ``with-layout``
 
+- ``pad`` and ``squish`` use RL shorthand for shared context.
+
+  + ``pad(1, 3 of 12)`` => ``pad(1 3 of 12)``
+
 
 2.0.0.beta.1 — Dec 24 2013
 --------------------------

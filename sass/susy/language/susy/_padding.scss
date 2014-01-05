@@ -46,11 +46,21 @@
 // - [$post]  : <span>
 @mixin pad(
   $pre,
-  $post: $pre
+  $post: false
 ) {
-  $pre      : if(length($pre) == 1 and length($post) > 1, set-nth($post, 1, $pre), $pre);
-  $pre      : map-merge((spread: wide), parse-span($pre));
-  $post     : map-merge((spread: wide), parse-span($post));
+  $pre: map-merge((spread: wide), parse-span($pre));
+
+  @if $post {
+    $post: map-merge((spread: wide), parse-span($post));
+  } @else {
+    $span: susy-get(span, $pre);
+    @if length($span) > 1 {
+      $pre: map-merge($pre, (span: nth($span, 1)));
+      $post: map-merge($pre, (span: nth($span, 2)));
+    } @else {
+      $post: $pre;
+    }
+  }
 
   @include prefix($pre);
   @include suffix($post);

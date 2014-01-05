@@ -132,7 +132,9 @@
     $n: if($pos == split and $role != nest, column-count($columns), 100%);
   }
 
-  @if unitless($n) {
+  @if type-of($n) != number {
+    @warn "(#{type-of($n)}) #{$n} is not a valid span.";
+  } @else if unitless($n) {
     $context: column-sum($columns, $gutters, if(is-split($span), wide, narrow));
     $spread: if(is-inside($span), $spread or wide, $spread);
     $span-sum: column-span-sum($n, $location, $columns, $gutters, $spread);

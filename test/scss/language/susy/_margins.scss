@@ -186,7 +186,7 @@
     @include assert-output(
       'Items should have 1-column margin before, and 2 after - nested.'
     ) {
-      .test { @include squish(1, 2 of 5); }
+      .test { @include squish(1 2 of 5); }
       .expect {
         margin-left: 20%;
         margin-right: 40%;

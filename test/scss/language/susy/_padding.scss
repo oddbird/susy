@@ -78,7 +78,7 @@
     @include assert-output(
       'Items should have 1 column padding before, and 2 after - nested.'
     ) {
-      .test { @include pad(1, 2 of 7); }
+      .test { @include pad(1 2 of 7); }
       .expect {
         padding-left: 15%;
         padding-right: 30%;

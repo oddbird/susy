@@ -216,7 +216,7 @@ and other :doc:`global settings <settings>` on the fly:
 .. code-block:: scss
 
   // grid span
-  .item { @include span(isolate 4 at 2 of 8 (4em 1em) inside-static rtl break); }
+  .item { @include span(isolate 4 at 2 of 8 (4em 1em) inside rtl break); }
 
   // output
   .item {
@@ -668,18 +668,28 @@ to the same element.
 
 .. code-block:: scss
 
-  // equal margins
+  // equal pre and post
   .example1 { @include squish(25%); }
 
-  // different margins
+  // distinct pre and post
   .example2 { @include squish(1, 3); }
 
-In the case of simple grid-calculated, nested margins,
-you only have to pass the context once.
+In most cases,
+you could also pass ``pre`` and ``post`` spans
+in the same argument.
+This saves you from repeating any overlapping context.
 
 .. code-block:: scss
 
-  .example { @include squish(1, 3 of 7); }
+  // shared context
+  .shared {
+    @include squish(1 3 of 12 no-gutters);
+  }
+
+  // distinct context
+  .distinct {
+    @include squish(1 at 2, 3 at 6);
+  }
 
 
 -------------------------------------------------------------------------
@@ -753,18 +763,28 @@ to the same element.
 
 .. code-block:: scss
 
-  // equal padding
+  // equal pre and post
   .example1 { @include pad(25%); }
 
-  // different padding
+  // distinct pre and post
   .example2 { @include pad(1, 3); }
 
-In the case of simple grid-calculated, nested padding,
-you only have to pass the context once.
+In most cases,
+you could also pass ``pre`` and ``post`` spans
+in the same argument.
+This saves you from repeating any overlapping context.
 
 .. code-block:: scss
 
-  .example { @include pad(1, 3 of 7); }
+  // shared context
+  .shared {
+    @include pad(1 3 of 12 no-gutters);
+  }
+
+  // distinct context
+  .distinct {
+    @include pad(1 at 2, 3 at 6);
+  }
 
 
 -------------------------------------------------------------------------

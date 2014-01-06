@@ -2,7 +2,7 @@ Changelog
 =========
 
 
-2.0.0.beta.2 — UNRELEASED
+2.0.0.beta.2 — Jan 6 2014
 -------------------------
 
 - Allow nesting of Susy settings.

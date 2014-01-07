@@ -615,7 +615,6 @@ h1 {
 ### Background Syntax ------ */
 /* - [mixin] background-grid */
 .test__background-grid .assert__outside {
-  overflow: hidden;
   background: rgba(204, 204, 255, 0.5);
 }
 

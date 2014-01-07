@@ -17,7 +17,6 @@
   .breakpoint .break6 {
     *zoom: 1;
     max-width: 29em;
-    _width: 29em;
     padding-left: 1em;
     padding-right: 1em;
     margin-left: auto;
@@ -36,13 +35,11 @@
 @media (min-width: 30em) and (max-width: 60em) {
   .breakpoint .break60-8-30 {
     max-width: 39em;
-    _width: 39em;
   }
 }
 @media (min-width: 119em) {
   .breakpoint .break-ltie9 {
     max-width: 119em;
-    _width: 119em;
     *zoom: 1;
     -moz-border-radius: 5px;
     -webkit-border-radius: 5px;
@@ -95,13 +92,11 @@
   .break60r-8-30r {
     max-width: 684px;
     max-width: 38rem;
-    _width: 684px;
   }
 }
 @media (min-width: 33.75em) and (max-width: 67.5em) {
   .break60-8-30 {
     max-width: 684px;
     max-width: 38rem;
-    _width: 684px;
   }
 }

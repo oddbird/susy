@@ -30,7 +30,6 @@
 @media (min-width: 69em) {
   .complex-container {
     max-width: 69em;
-    _width: 69em;
   }
 }
 

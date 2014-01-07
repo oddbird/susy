@@ -53,36 +53,31 @@
       // Set our new layout context.
       @include layout($layout) {
         @if $breakpoint-media-output {
-          // Capture current state of ie support and set new
-          $atbreak-legacy-ie-matrix: map-get($browser-minimum-versions, ie);
-          $browser-minimum-versions : map-merge($browser-minimum-versions, (ie: "9")) !global;
-
-          @if $min and $max {
-            // Both $min and $max
-            @media (min-width: $min) and (max-width: $max) {
-              @content;
-            }
-          } @else {
-            @if (not $min) and (not $max) {
-              // Neither $min nor $max:
-              // We can create a breakpoint based on the number of columns in the layout.
-              $min: fix-ems(container-outer-width($width: false));
-            }
-            @if $min {
-              // Min only:
-              @media (min-width: $min) {
+          @include with-browser-ranges(css-mediaqueries) {
+            @if $min and $max {
+              // Both $min and $max
+              @media (min-width: $min) and (max-width: $max) {
                 @content;
               }
             } @else {
-              // Max only:
-              @media (max-width: $max) {
-                @content;
+              @if (not $min) and (not $max) {
+                // Neither $min nor $max:
+                // We can create a breakpoint based on the number of columns in the layout.
+                $min: fix-ems(container-outer-width($width: false));
+              }
+              @if $min {
+                // Min only:
+                @media (min-width: $min) {
+                  @content;
+                }
+              } @else {
+                // Max only:
+                @media (max-width: $max) {
+                  @content;
+                }
               }
             }
           }
-
-          // Return legacy-ie support to original
-          $browser-minimum-versions : map-merge($browser-minimum-versions, (ie: $atbreak-legacy-ie-matrix)) !global;
         }
         // Set an IE fallback
         @if $ie and $breakpoint-ie-output {
@@ -99,7 +94,7 @@
         }
       }
     } @else {
-      @warn "Something went horribly wrong here. Try adjusting your variables.";
+      @warn "We were unable to determine a layout for your breakpoint.";
     }
 
   } @else {

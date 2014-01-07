@@ -2,6 +2,12 @@ Changelog
 =========
 
 
+2.0.0.beta.3 — UNRELEASED
+-------------------------
+
+- Fix a bug making ``show-grid`` unaware of local ``debug/output`` keywords.
+
+
 2.0.0.beta.2 — Jan 6 2014
 -------------------------
 

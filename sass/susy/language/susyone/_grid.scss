@@ -144,8 +144,8 @@
   } @else {
     float: $from;
     margin-#{$to}: gutter($context, $style);
-    @include for-legacy-browser(ie, "6") { 
-      display: inline; 
+    @include for-legacy-browser(ie, "6") {
+      display: inline;
     }
   }
 }
@@ -183,11 +183,16 @@
   $from     : $from-direction
 ) {
   $from     : unquote($from);
-  // $ie: if($n == "first", true, false);
-  $nth-omega-legacy-ie-matrix: map-get($browser-minimum-versions, ie);
-  $browser-minimum-versions : map-merge($browser-minimum-versions, (ie: "9")) !global;
-  &:#{format-nth($n,$selector)} { @include omega($from); }
-  $browser-minimum-versions : map-merge($browser-minimum-versions, (ie: $nth-omega-legacy-ie-matrix)) !global;
+
+  &:#{format-nth($n,$selector)} {
+    @if $n == "first" {
+      @include omega($from);
+    } @else {
+      @include with-browser-ranges(css-sel3) {
+        @include omega($from);
+      }
+    }
+  }
 }
 
 
@@ -210,7 +215,7 @@
   margin-#{$to}: auto;
 
   @include for-legacy-browser(ie, "6", "7") {
-    *margin-#{$hack}: auto; 
+    *margin-#{$hack}: auto;
     @include for-legacy-browser(ie, "6") {
       display: block;
     }
@@ -248,7 +253,7 @@
 // $from      : The start-direction for your document.
 // $style     : The container style to use.
 @mixin remove-nth-omega(
-  $n        : last, 
+  $n        : last,
   $selector : child,
   $context  : $total-columns,
   $from     : $from-direction,

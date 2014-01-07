@@ -31,7 +31,6 @@
   .breakpoint .nth-omega:nth-child(3n) {
     float: right;
     margin-right: 0;
-    *margin-left: -1em;
   }
 }
 @media (min-width: 30em) and (max-width: 60em) {

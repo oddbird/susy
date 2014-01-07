@@ -43,7 +43,11 @@ $supported-browsers: firefox chrome;
     @include layout($grid);
     @if $output {
       .test__#{$output-test-slug} .assert__#{$output-assert-slug} {
-        @include container(show-columns);
+        @if map-get(layout($grid), columns) {
+          @include container(show-columns);
+        } @else {
+          background: rgba(#ccf, .5);
+        }
       }
     }
   } @else if $output {

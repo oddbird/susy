@@ -9,11 +9,11 @@
 
   @include output-test('background-grid') {
     // outside
-    @include assert-setup('outside');
+    @include assert-setup('outside', $grid: overlay);
     @include assert-output(
       'Items should have a 7-column grid with outside gutters.'
     ) {
-      .test { @include background-grid(7 .5 before show); }
+      .test { @include show-grid(7 .5 before show background); }
       .expect {
         background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 66.66667%, transparent 66.66667%);
         -webkit-background-size: 15%;

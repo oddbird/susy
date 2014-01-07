@@ -66,9 +66,15 @@
   // -----------------
 
   @include test('[function] layout') {
-    $shorthand: 8 .5 inside static;
+    $shorthand: 8 .5 inside static overlay;
     $test: layout($shorthand);
-    $expect: parse-grid($shorthand);
+    $expect: (
+      columns: 8,
+      gutters: .5,
+      gutter-position: inside,
+      math: static,
+      debug: ( output: overlay ),
+    );
     @include assert-equal($test, $expect,
       'Returns a parsed grid map based on shorthand syntax');
 

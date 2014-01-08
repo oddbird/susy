@@ -1,0 +1,27 @@
+{
+  "name": "susy",
+  "version": "1.0.9",
+  "main": "sass/_susy.scss",
+  "description": "web layout power-tools",
+  "authors": ["Eric Meyer <eric@oddbird.net>"],
+  "homepage": "http://susy.oddbird.net",
+  "keywords": [
+    "layout",
+    "grid",
+    "sass",
+    "compass",
+    "responsive",
+    "rwd",
+    "semantic"
+  ],
+  "license": "Modified BSD",
+  "ignore": [
+    "**/.*",
+    "docs",
+    "test"
+  ],
+  "dependencies": {
+    "sass": "3.2.0",
+    "compass": "0.12.2"
+  }
+}

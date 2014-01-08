@@ -1,10 +1,20 @@
 {
   "name": "susy",
-  "version": "2.0.0-beta.2",
+  "version": "2.0.0",
   "main": "sass/_susy.scss",
+  "description": "web layout power-tools",
+  "license": "Modified BSD",
   "ignore": [
     "**/.*",
     "docs",
     "test"
-  ]
+  ],
+  "dependencies": {
+    "sass": "3.3.0"
+  },
+  "devDependencies": {
+    "compass": "1.0",
+    "true": "0.2.0",
+    "breakpoint": "2.4.0"
+  }
 }

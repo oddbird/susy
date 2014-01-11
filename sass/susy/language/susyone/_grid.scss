@@ -260,12 +260,16 @@
   $style    : fix-static-misalignment()
 ) {
   $from     : unquote($from);
-  $nth-omega-legacy-ie-matrix: map-get($browser-minimum-versions, ie);
-  $browser-minimum-versions : map-merge($browser-minimum-versions, (ie: "9")) !global;
+  
   &:#{format-nth($n,$selector)} {
-    @include remove-omega($context, $from, $style);
+    @if $n == "first" {
+      @include remove-omega($context, $from, $style);
+    } @else {
+      @include with-browser-ranges(css-sel3) {
+        @include remove-omega($context, $from, $style);
+      }
+    }
   }
-  $browser-minimum-versions : map-merge($browser-minimum-versions, (ie: $nth-omega-legacy-ie-matrix)) !global;
 }
 
 

@@ -1,0 +1,33 @@
+// ---------------------------------------------------------------------------
+// Imports
+
+@import "true";
+@import "susyone";
+
+// ---------------------------------------------------------------------------
+// Functions
+
+@include test-module("susyone functions") {
+
+  @include test("container-outer-width") {
+
+    $width: container-outer-width();
+    $expect: 59em;
+    @include assert-equal($width, $expect,
+      "Returns the correct outer width of a default container."
+    );
+    // .container-outer-width-explicit {
+    //   width: container-outer-width(8);
+    // }
+    // .container-outer-width-explicit {
+    //   width: container-outer-width(8, 80%);
+    // }
+  }
+
+  @include test("get-layout") {
+    $test: get-layout(30em);
+    $expect: 7;
+    @include assert-equal($test, $expect,
+      'Returns correct layout based on min width.');
+  }
+}

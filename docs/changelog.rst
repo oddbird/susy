@@ -6,7 +6,10 @@ Changelog
 -------------------------
 
 - Fix a bug making ``show-grid`` unaware of local ``debug/output`` keywords.
+- Added Susyone syntax for those that need to use the old Susy syntax, 
+  with updated Sass and Compass.
 
+  + ``@import 'susyone';``
 
 2.0.0.beta.2 — Jan 6 2014
 -------------------------

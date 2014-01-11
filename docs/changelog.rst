@@ -2,11 +2,11 @@ Changelog
 =========
 
 
-2.0.0.beta.3 — UNRELEASED
--------------------------
+2.0.0.beta.3 — Jan 10 2014
+--------------------------
 
 - Fix a bug making ``show-grid`` unaware of local ``debug/output`` keywords.
-- Added Susyone syntax for those that need to use the old Susy syntax, 
+- Added Susyone syntax for those that need to use the old Susy syntax,
   with updated Sass and Compass.
 
   + ``@import 'susyone';``

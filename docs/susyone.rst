@@ -1,12 +1,23 @@
 Susy One
 ========
 
-.. contents:: Legacy 1.0 Reference
-  :depth: 3
+Documentation for the original syntax,
+used in the ``1.x`` gems,
+and also available as an language option in ``2.x``.
+If you want the old syntax on the new gem,
+change your import from ``susy`` to ``susyone``.
+
+.. code-block:: scss
+
+  @import "susyone";
 
 
-Basic Usage
------------
+----------------------------------------------------------------------
+
+.. _susyone-basic-settings:
+
+Basic Settings
+--------------
 
 - **Container**: The root element of a *Grid*.
 - **Layout**: The total number of *Columns* in a grid.
@@ -15,12 +26,10 @@ Basic Usage
 - **Omega**: Any *Grid Element* spanning the last *Column* in its *Context*.
 
 
-Basic Settings
-~~~~~~~~~~~~~~
-
+.. _susyone-total-columns:
 
 Total Columns
-+++++++++++++
+~~~~~~~~~~~~~
 
 The number of Columns in your default Grid Layout.
 
@@ -32,8 +41,10 @@ The number of Columns in your default Grid Layout.
 - ``<number>``: Unitless number.
 
 
+.. _susyone-column-width:
+
 Column Width
-++++++++++++
+~~~~~~~~~~~~
 
 The width of a single Column in your Grid.
 
@@ -45,8 +56,10 @@ The width of a single Column in your Grid.
 - ``<length>``: Length in any unit of measurement (em, px, %, etc).
 
 
+.. _susyone-gutter-width:
+
 Gutter Width
-++++++++++++
+~~~~~~~~~~~~
 
 The space between Columns.
 
@@ -58,8 +71,10 @@ The space between Columns.
 - ``<length>``: Units must match ``$column-width``.
 
 
+.. _susyone-grid-padding:
+
 Grid Padding
-++++++++++++
+~~~~~~~~~~~~
 
 Padding on the left and right of a Grid Container.
 
@@ -72,16 +87,21 @@ Padding on the left and right of a Grid Container.
   (``$column-width`` unless ``$container-width`` is set directly).
 
 
-Functions
-~~~~~~~~~
+----------------------------------------------------------------------
 
+.. _susyone-functions:
+
+Functions
+---------
 
 Where a mixin returns property/value pairs, functions return simple values
 that you can put where you want, and use for advanced math.
 
 
+.. _susyone-columns:
+
 Columns
-+++++++
+~~~~~~~
 
 Similar to ``span-columns`` mixin,
 but returns the math-ready ``%`` multiplier.
@@ -98,8 +118,10 @@ but returns the math-ready ``%`` multiplier.
   Default: ``$container-style``.
 
 
+.. _susyone-gutter:
+
 Gutter
-++++++
+~~~~~~
 
 The ``%`` width of one gutter in any given context.
 
@@ -114,8 +136,10 @@ The ``%`` width of one gutter in any given context.
   Default: ``$container-style``.
 
 
+.. _susyone-space:
+
 Space
-+++++
+~~~~~
 
 Total ``%`` space taken by Columns, including internal AND external gutters.
 
@@ -131,12 +155,18 @@ Total ``%`` space taken by Columns, including internal AND external gutters.
   Default: ``$container-style``.
 
 
-Basic Mixins
-~~~~~~~~~~~~
+----------------------------------------------------------------------
 
+.. _susyone-basic-mixins:
+
+Basic Mixins
+------------
+
+
+.. _susyone-container:
 
 Container
-+++++++++
+~~~~~~~~~
 
 Establish the outer grid-containing element.
 
@@ -150,8 +180,10 @@ Establish the outer grid-containing element.
   Default: ``$total-columns``.
 
 
+.. _susyone-span-columns:
+
 Span Columns
-++++++++++++
+~~~~~~~~~~~~
 
 Align an element to the Susy Grid.
 
@@ -175,8 +207,10 @@ Align an element to the Susy Grid.
   Default: ``$container-style``.
 
 
+.. _susyone-omega:
+
 Omega
-+++++
+~~~~~
 
 Apply to any omega element as an override.
 
@@ -192,8 +226,10 @@ Apply to any omega element as an override.
   Default: ``$from-direction``.
 
 
+.. _susyone-nth-omega:
+
 Nth-Omega
-+++++++++
+~~~~~~~~~
 
 Apply to any element as an nth-child omega shortcut.
 Defaults to ``:last-child``.
@@ -218,16 +254,15 @@ Defaults to ``:last-child``.
   Default: ``$from-direction``.
 
 
-Responsive Grid
----------------
+----------------------------------------------------------------------
+
+.. _susyone-responsive-mixins:
+
+Responsive Mixins
+-----------------
 
 - **Breakpoint**: A min- or max- viewport width at which to change *Layouts*.
 - **Media-Layout**: Shortcut for declaring *Breakpoints* and *Layouts* in Susy.
-
-
-Media-Layouts
-~~~~~~~~~~~~~
-
 
 .. code-block:: scss
 
@@ -255,12 +290,10 @@ Media-Layouts
   "``no-mediaqueries``", "``ie8``", "``popcorn``", etc.
 
 
-Responsive Mixins
-~~~~~~~~~~~~~~~~~
-
+.. _susyone-at-breakpoint:
 
 At-Breakpoint
-+++++++++++++
+~~~~~~~~~~~~~
 
 At a given min- or max-width Breakpoint, use a given Layout.
 
@@ -281,8 +314,10 @@ At a given min- or max-width Breakpoint, use a given Layout.
 - ``<@content>``: Nested ``@content`` block will use the given *Layout*.
 
 
+.. _susyone-layout:
+
 Layout
-++++++
+~~~~~~
 
 Set an arbitrary Layout to use with any block of content.
 
@@ -297,8 +332,10 @@ Set an arbitrary Layout to use with any block of content.
 - ``<@content>``: Nested ``@content`` block will use the given *Layout*.
 
 
+.. _susyone-set-container-width:
+
 Set Container Width
-+++++++++++++++++++
+~~~~~~~~~~~~~~~~~~~
 
 Reset the width of a Container for a new Layout context.
 Can be used when ``container()`` has already been applied to an element,
@@ -318,8 +355,10 @@ for DRYer output than using ``container`` again.
   Default: ``$container-style``.
 
 
+.. _susyone-with-settings:
+
 With Grid Settings
-++++++++++++++++++
+~~~~~~~~~~~~~~~~~~
 
 Use different grid settings for a block of code -
 whether the same grid at a different breakpoint,
@@ -339,16 +378,18 @@ or a different grid altogether.
 - ``<@content>``: Nested ``@content`` block will use the given grid settings.
 
 
-Grid Helpers
-------------
+----------------------------------------------------------------------
 
+.. _susyone-box-sizing:
 
 Box Sizing
-~~~~~~~~~~
+----------
 
+
+.. _susyone-border-box-mixin:
 
 Border-Box Sizing
-+++++++++++++++++
+~~~~~~~~~~~~~~~~~
 
 Set the default box-model to ``border-box``,
 and adjust the grid math accordingly.
@@ -365,12 +406,17 @@ You can use the variable on it's own to adjust the grid math,
 in cases where you want to apply the box-model separately.
 
 
-Isolation
-~~~~~~~~~
+----------------------------------------------------------------------
 
+.. _susyone-isolation:
+
+Isolation
+---------
+
+.. _susyone-isolate:
 
 Isolate
-+++++++
+~~~~~~~
 
 Isolate the position of a grid element relative to the container.
 This should be used in addition to ``span-columns``
@@ -391,8 +437,10 @@ as a way of minimizing sub-pixel rounding errors in specific trouble locations.
   Default: ``$container-style``.
 
 
+.. _susyone-isolate-grid:
+
 Isolate Grid
-++++++++++++
+~~~~~~~~~~~~
 
 Isolate a group of elements in an grid (such as an image gallery)
 using nth-child or nth-of-type for positioning.
@@ -417,12 +465,18 @@ and Susy will determine the positioning for you.
   Default: ``$container-style``.
 
 
-Padding Mixins
-~~~~~~~~~~~~~~
+----------------------------------------------------------------------
 
+.. _susyone-padding:
+
+Padding Mixins
+--------------
+
+
+.. _susyone-prefix:
 
 Prefix
-++++++
+~~~~~~
 
 Add Columns of empty space as ``padding`` before an element.
 
@@ -440,8 +494,10 @@ Add Columns of empty space as ``padding`` before an element.
   Default: ``$container-style``.
 
 
+.. _susyone-suffix:
+
 Suffix
-++++++
+~~~~~~
 
 Add columns of empty space as padding after an element.
 
@@ -459,8 +515,10 @@ Add columns of empty space as padding after an element.
   Default: ``$container-style``.
 
 
+.. _susyone-pad:
+
 Pad
-+++
+~~~
 
 Shortcut for adding both Prefix and Suffix ``padding``.
 
@@ -479,8 +537,10 @@ Shortcut for adding both Prefix and Suffix ``padding``.
   Default: ``$container-style``.
 
 
+.. _susyone-bleed:
+
 Bleed
-+++++
+~~~~~
 
 Add negative margins and matching positive padding to an element,
 so that its background "bleeds" outside its natural position.
@@ -498,12 +558,18 @@ so that its background "bleeds" outside its natural position.
   Default: ``$container-style``.
 
 
-Margin Mixins
-~~~~~~~~~~~~~
+----------------------------------------------------------------------
 
+.. _susyone-margin:
+
+Margin Mixins
+-------------
+
+
+.. _susyone-pre:
 
 Pre
-+++
+~~~
 
 Add columns of empty space as margin before an element.
 
@@ -521,8 +587,10 @@ Add columns of empty space as margin before an element.
   Default: ``$container-style``.
 
 
+.. _susyone-post:
+
 Post
-++++
+~~~~
 
 Add columns of empty space as margin after an element.
 
@@ -540,8 +608,10 @@ Add columns of empty space as margin after an element.
   Default: ``$container-style``.
 
 
+.. _susyone-squish:
+
 Squish
-++++++
+~~~~~~
 
 Shortcut to add empty space as margin before and after an element.
 
@@ -560,8 +630,10 @@ Shortcut to add empty space as margin before and after an element.
   Default: ``$container-style``.
 
 
+.. _susyone-push:
+
 Push
-++++
+~~~~
 
 Identical to ``pre``.
 
@@ -571,8 +643,10 @@ Identical to ``pre``.
   .box { @include push(3); }
 
 
+.. _susyone-pull:
+
 Pull
-++++
+~~~~
 
 Add negative margins before an element, to pull it against the flow.
 
@@ -590,12 +664,18 @@ Add negative margins before an element, to pull it against the flow.
   Default: ``$container-style``.
 
 
-Reset Mixins
-~~~~~~~~~~~~
+----------------------------------------------------------------------
 
+.. _susyone-reset:
+
+Reset Mixins
+------------
+
+
+.. _susyone-reset-column:
 
 Reset Columns
-+++++++++++++
+~~~~~~~~~~~~~
 
 Resets an element to default block behaviour.
 
@@ -610,8 +690,10 @@ Resets an element to default block behaviour.
   Default: ``$from-direction``.
 
 
+.. _susyone-remove-omega:
+
 Remove-Omega
-++++++++++++
+~~~~~~~~~~~~
 
 Apply to any previously-omega element
 to reset it's float direction and margins
@@ -634,8 +716,10 @@ this requires a context when nested.
   Default: ``$container-style``.
 
 
+.. _susyone-remove-nth-omega:
+
 Remove Nth-Omega
-++++++++++++++++
+~~~~~~~~~~~~~~~~
 
 Apply to any previously nth-omega element
 to reset it's float direction and margins
@@ -665,12 +749,18 @@ this requires a context when nested.
   Default: ``$container-style``.
 
 
-Other Mixins
-~~~~~~~~~~~~
+----------------------------------------------------------------------
 
+.. _susyone-debug:
+
+Debugging
+---------
+
+
+.. _susyone-grid-background:
 
 Susy Grid Background
-++++++++++++++++++++
+~~~~~~~~~~~~~~~~~~~~
 
 Show the Susy Grid as a background-image on any container.
 
@@ -687,12 +777,18 @@ Show the Susy Grid as a background-image on any container.
   Susy columns tend to be more accurate than gradient grid-backgrounds.
 
 
-Container Override Settings
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
+----------------------------------------------------------------------
 
+.. _susyone-container-override:
+
+Container Override Settings
+---------------------------
+
+
+.. _susyone-container-width:
 
 Container Width
-+++++++++++++++
+~~~~~~~~~~~~~~~
 
 Override the total width of your grid with an arbitrary length.
 
@@ -705,8 +801,10 @@ Override the total width of your grid with an arbitrary length.
 - ``<boolean>``: True or false.
 
 
+.. _susyone-container-style:
+
 Container Style
-+++++++++++++++
+~~~~~~~~~~~~~~~
 
 Override the type of shell containing your grid.
 
@@ -727,12 +825,18 @@ Override the type of shell containing your grid.
     Otherwise it will default to ``auto`` (100%).
 
 
-Direction Override Settings
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
+----------------------------------------------------------------------
 
+.. _susyone-direction-override:
+
+Direction Override Settings
+---------------------------
+
+
+.. _susyone-from-direction:
 
 From Direction
-++++++++++++++
+~~~~~~~~~~~~~~
 
 The side of the Susy Grid from which the flow starts.
 For ltr documents, this is the left.
@@ -745,8 +849,10 @@ For ltr documents, this is the left.
 - ``<direction>``: ``left`` | ``right``
 
 
+.. _susyone-omega-float:
+
 Omega Float
-+++++++++++
+~~~~~~~~~~~
 
 The direction that Omega elements should be floated.
 
@@ -758,12 +864,18 @@ The direction that Omega elements should be floated.
 - ``<direction>``: ``left`` | ``right``
 
 
-Compass Options
-~~~~~~~~~~~~~~~
+----------------------------------------------------------------------
 
+.. _susyone-compass-options:
+
+Compass Options
+---------------
+
+
+.. _susyone-base-font-size:
 
 Base Font Size
-++++++++++++++
+~~~~~~~~~~~~~~
 
 From the `Compass Vertical Rhythm`_ module,
 Susy uses your base font size to help manage
@@ -784,8 +896,10 @@ em-based media-queries.
 .. _Compass Docs: http://compass-style.org/reference/compass/typography/vertical*rhythm/#const-base-font-size
 
 
+.. _susyone-browser-support:
+
 Browser Support
-+++++++++++++++
+~~~~~~~~~~~~~~~
 
 Susy recognizes all the `Compass Browser Support`_ variables,
 although only IE6 and IE7 have special cases attached to them currently.
@@ -804,8 +918,12 @@ although only IE6 and IE7 have special cases attached to them currently.
 .. _Compass Browser Support: http://compass-style.org/reference/compass/support/
 
 
+----------------------------------------------------------------------
+
+.. _susyone-breakpoint-output:
+
 Breakpoint Output
-~~~~~~~~~~~~~~~~~
+-----------------
 
 If you are compiling seperate files for IE-fallbacks,
 it can be useful to output only the modern code in one file
@@ -814,8 +932,10 @@ You can make ``at-breakpoint`` do exactly that
 by using the following settings.
 
 
+.. _susyone-media-output:
+
 $breakpoint-media-output
-++++++++++++++++++++++++
+~~~~~~~~~~~~~~~~~~~~~~~~
 
 Turn off media-query output for IE-only stylesheets.
 
@@ -827,8 +947,10 @@ Turn off media-query output for IE-only stylesheets.
 - ``<boolean>``: ``true`` | ``false``
 
 
+.. _susyone-ie-output:
+
 $breakpoint-ie-output
-+++++++++++++++++++++
+~~~~~~~~~~~~~~~~~~~~~
 
 Turn off media-query fallback output for non-IE stylesheets.
 
@@ -840,8 +962,10 @@ Turn off media-query fallback output for non-IE stylesheets.
 - ``<boolean>``: ``true`` | ``false``
 
 
+.. _susyone-raw-output:
+
 $breakpoint-raw-output
-++++++++++++++++++++++
+~~~~~~~~~~~~~~~~~~~~~~
 
 Pass through raw output
 without media-queries or fallback classes

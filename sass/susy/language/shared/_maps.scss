@@ -8,13 +8,13 @@
   $list,
   $length
 ) {
-  $return: ();
+  $fn-return: ();
 
   @for $i from 1 through length($list) {
-    $return: if($i <= $length, append($return, nth($list, $i)), $return);
+    $fn-return: if($i <= $length, append($fn-return, nth($list, $i)), $fn-return);
   }
 
-  @return $return;
+  @return $fn-return;
 }
 
 // Deep Get
@@ -24,15 +24,15 @@
   $map,
   $keys...
 ) {
-  $return: $map;
+  $fn-return: $map;
 
   @each $key in $keys {
-    @if type-of($return) == map {
-      $return: map-get($return, $key);
+    @if type-of($fn-return) == map {
+      $fn-return: map-get($fn-return, $key);
     }
   }
 
-  @return $return;
+  @return $fn-return;
 }
 
 // Deep Set
@@ -43,19 +43,19 @@
   $keys,
   $value
 ) {
-  $length: length($keys);
-  $return: ();
+  $fn-length: length($keys);
+  $fn-return: ();
 
-  @for $i from 1 through $length {
-    $n: 0 - $i;
-    $level: truncate-list($keys, $length + $n);
-    $level: deep-get($map, $level...);
-    $merge: (nth($keys, $n): $value);
-    $value: if($level, map-merge($level, $merge), $merge);
-    $return: $value;
+  @for $i from 1 through $fn-length {
+    $fn-n: 0 - $i;
+    $fn-level: truncate-list($keys, $fn-length + $fn-n);
+    $fn-level: deep-get($map, $fn-level...);
+    $fn-merge: (nth($keys, $fn-n): $value);
+    $fn-return: if($fn-level, map-merge($fn-level, $fn-merge), $fn-merge);
+    $value: $fn-return;
   }
 
-  @return $return;
+  @return $fn-return;
 }
 
 // Deep Has-Key
@@ -65,21 +65,20 @@
   $map,
   $keys...
 ) {
-  $return: null;
-  $break: false;
+  $fn-return: null;
+  $fn-stop: false;
 
   @each $key in $keys {
-    @if not $break {
-      $return: map-has-key($map, $key);
+    @if not $fn-stop {
+      $fn-return: map-has-key($map, $key);
     }
 
-    @if $return {
+    @if $fn-return {
       $map: map-get($map, $key);
     } @else {
-      $break: true;
+      $fn-stop: true;
     }
   }
 
-  @return $return;
+  @return $fn-return;
 }
-

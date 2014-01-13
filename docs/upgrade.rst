@@ -4,7 +4,7 @@ Upgrade Path
 You can upgrade to the latest release of Susy,
 without changing more than your import directive.
 
-.. code-block::
+.. code-block:: scss
 
   // With Susy 2.x installed...
   @import 'susyone';

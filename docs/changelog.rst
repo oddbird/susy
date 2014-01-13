@@ -19,7 +19,7 @@ Changelog
 - Add ``isolate`` function to return isolation offset width.
 - Fix a bug with ``last`` output for ``split``-gutter layouts.
 - Fix a bug with split-gutter ``span()``, and ``narrow``/``wider`` keywords.
-- Fix a bug with ``bleed`` and ``null``+``inside`` gutters.
+- Fix a bug with ``bleed`` and ``null`` + ``inside`` gutters.
 - ``bleed`` output uses TRBL shorthand when possible.
 - Clean up and document the core math functions.
 - Document upgrade path, core-math, and DIY grids.

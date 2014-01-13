@@ -34,7 +34,6 @@ These are the features we're working on next:
 
 - Add optional ``px`` fallback for output in ``rem`` units.
 - Respect Compass support settings when they are available.
-- Port Susy 1 syntax to use new math and Sass features.
 - Add syntax to help with the transition from Susy 1.
 - Add padding/margin options to the ``span`` mixin, for simpler output.
 

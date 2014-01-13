@@ -2,13 +2,15 @@ Susy One
 ========
 
 Documentation for the original syntax,
-used in the ``1.x`` gems,
+used in the ``1.x`` releases,
 and also available as an language option in ``2.x``.
-If you want the old syntax on the new gem,
+If you want to upgrade
+but keep using the old syntax,
 change your import from ``susy`` to ``susyone``.
 
 .. code-block:: scss
 
+  // With Susy 2.x installed...
   @import "susyone";
 
 

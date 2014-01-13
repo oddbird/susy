@@ -1,16 +1,17 @@
 Upgrade Path
 ============
 
-We're working on a direct implementation
-of the SusyOne syntax,
-built on top of the new math module.
-With that in place
-(we're calling it 1.5)
-you will be able to upgrade the gem
-without making any changes to your syntax.
+You can upgrade to the latest release of Susy,
+without changing more than your import directive.
 
-These instructions are for making the larger leap
-between syntaxes.
+.. code-block::
+
+  // With Susy 2.x installed...
+  @import 'susyone';
+
+If you ever want to upgrade to the new syntax,
+change the import back to ``susy``,
+and follow these instructions:
 
 -------------------------------------------------------------------------
 

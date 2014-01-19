@@ -7,12 +7,16 @@
 // - [$flow]  : ltr | rtl
 @mixin isolate-output(
   $push,
-  $flow   : map-get($susy-defaults, flow)
+  $flow: map-get($susy-defaults, flow)
 ) {
-  $to     : to($flow);
-  $from   : from($flow);
+  $to: to($flow);
+  $from: from($flow);
 
-  float: $from;
-  margin-#{$from}: $push;
-  margin-#{$to}: -100%;
+  $output: (
+    float: $from,
+    margin-#{$from}: $push,
+    margin-#{$to}: -100%,
+  );
+
+  @include output($output);
 }

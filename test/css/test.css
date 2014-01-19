@@ -170,9 +170,11 @@
 .test__susy-clearfix .assert__clearfix .expect {
   *zoom: 1;
 }
-.test__susy-clearfix .assert__clearfix .expect:after {
+.test__susy-clearfix .assert__clearfix .expect::before, .test__susy-clearfix .assert__clearfix .expect::after {
   content: " ";
-  display: block;
+  display: table;
+}
+.test__susy-clearfix .assert__clearfix .expect::after {
   clear: both;
 }
 
@@ -203,9 +205,11 @@
   margin-left: 0;
   margin-right: auto;
 }
-.test__float-container .assert__float-container .expect:after {
+.test__float-container .assert__float-container .expect::before, .test__float-container .assert__float-container .expect::after {
   content: "";
   display: table;
+}
+.test__float-container .assert__float-container .expect::after {
   clear: both;
 }
 
@@ -334,12 +338,12 @@
 ### Global Box-Sizing Syntax ------ */
 /* - [mixin] global-box-sizing */
 /* "Nested items should use border-box model." */
-.test__global-box-sizing .assert__global-box-sizing .test *, .test__global-box-sizing .assert__global-box-sizing .test *:before, .test__global-box-sizing .assert__global-box-sizing .test *:after {
+.test__global-box-sizing .assert__global-box-sizing .test *, .test__global-box-sizing .assert__global-box-sizing .test *::before, .test__global-box-sizing .assert__global-box-sizing .test *::after {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
-.test__global-box-sizing .assert__global-box-sizing .expect *, .test__global-box-sizing .assert__global-box-sizing .expect *:before, .test__global-box-sizing .assert__global-box-sizing .expect *:after {
+.test__global-box-sizing .assert__global-box-sizing .expect *, .test__global-box-sizing .assert__global-box-sizing .expect *::before, .test__global-box-sizing .assert__global-box-sizing .expect *::after {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
@@ -347,12 +351,12 @@
 
 /* - [mixin] border-box-sizing */
 /* "Nested items should use border-box model." */
-.test__border-box-sizing .assert__border-box-sizing .test *, .test__border-box-sizing .assert__border-box-sizing .test *:before, .test__border-box-sizing .assert__border-box-sizing .test *:after {
+.test__border-box-sizing .assert__border-box-sizing .test *, .test__border-box-sizing .assert__border-box-sizing .test *::before, .test__border-box-sizing .assert__border-box-sizing .test *::after {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
-.test__border-box-sizing .assert__border-box-sizing .expect *, .test__border-box-sizing .assert__border-box-sizing .expect *:before, .test__border-box-sizing .assert__border-box-sizing .expect *:after {
+.test__border-box-sizing .assert__border-box-sizing .expect *, .test__border-box-sizing .assert__border-box-sizing .expect *::before, .test__border-box-sizing .assert__border-box-sizing .expect *::after {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
@@ -681,7 +685,7 @@
 }
 
 /* "Span should set width, float, clear, and inside gutter" */
-.test__span .assert__inside *, .test__span .assert__inside *:before, .test__span .assert__inside *:after {
+.test__span .assert__inside *, .test__span .assert__inside *::before, .test__span .assert__inside *::after {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
@@ -1404,13 +1408,13 @@
 /* - [mixin] bleed */
 /* "Items should bleed 1 column outside their nested context" */
 .test__bleed .assert__simple .test {
+  -moz-box-sizing: content-box;
+  -webkit-box-sizing: content-box;
+  box-sizing: content-box;
   margin-right: -15%;
   margin-left: -15%;
   padding-right: 15%;
   padding-left: 15%;
-  -moz-box-sizing: content-box;
-  -webkit-box-sizing: content-box;
-  box-sizing: content-box;
 }
 .test__bleed .assert__simple .expect {
   margin-left: -15%;
@@ -1424,11 +1428,11 @@
 
 /* "Items should bleed 1em on all sides, and retain their static gutters" */
 .test__bleed .assert__inside .test {
-  margin: -1em;
-  padding: 1em 1.5em;
   -moz-box-sizing: content-box;
   -webkit-box-sizing: content-box;
   box-sizing: content-box;
+  margin: -1em;
+  padding: 1em 1.5em;
 }
 .test__bleed .assert__inside .expect {
   margin: -1em;
@@ -1440,13 +1444,13 @@
 
 /* "Items should bleed 1 column horizontal, and retain gutters." */
 .test__bleed .assert__split .test {
+  -moz-box-sizing: content-box;
+  -webkit-box-sizing: content-box;
+  box-sizing: content-box;
   margin-right: -12.5%;
   margin-left: -12.5%;
   padding-right: 12.5%;
   padding-left: 12.5%;
-  -moz-box-sizing: content-box;
-  -webkit-box-sizing: content-box;
-  box-sizing: content-box;
 }
 .test__bleed .assert__split .expect {
   margin-right: -12.5%;
@@ -1461,13 +1465,13 @@
 /* - [mixin] bleed-x */
 /* "Items should bleed 1 column left, and 2 columns right" */
 .test__bleed-x .assert__simple .test {
+  -moz-box-sizing: content-box;
+  -webkit-box-sizing: content-box;
+  box-sizing: content-box;
   margin-right: -30%;
   margin-left: -15%;
   padding-right: 30%;
   padding-left: 15%;
-  -moz-box-sizing: content-box;
-  -webkit-box-sizing: content-box;
-  box-sizing: content-box;
 }
 .test__bleed-x .assert__simple .expect {
   margin-right: -30%;
@@ -1481,13 +1485,13 @@
 
 /* "Items should bleed 1 column, and retain their gutters" */
 .test__bleed-x .assert__inside .test {
+  -moz-box-sizing: content-box;
+  -webkit-box-sizing: content-box;
+  box-sizing: content-box;
   margin-right: -12.5%;
   margin-left: -12.5%;
   padding-right: 13.75%;
   padding-left: 13.75%;
-  -moz-box-sizing: content-box;
-  -webkit-box-sizing: content-box;
-  box-sizing: content-box;
 }
 .test__bleed-x .assert__inside .expect {
   margin-left: -12.5%;
@@ -1502,13 +1506,13 @@
 /* - [mixin] bleed-y */
 /* "Items should bleed .5em top, and 1em bottom." */
 .test__bleed-y .assert__simple .test {
+  -moz-box-sizing: content-box;
+  -webkit-box-sizing: content-box;
+  box-sizing: content-box;
   margin-top: -0.5em;
   margin-bottom: -1em;
   padding-top: 0.5em;
   padding-bottom: 1em;
-  -moz-box-sizing: content-box;
-  -webkit-box-sizing: content-box;
-  box-sizing: content-box;
 }
 .test__bleed-y .assert__simple .expect {
   margin-top: -0.5em;

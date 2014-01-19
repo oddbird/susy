@@ -10,11 +10,8 @@
 ) {
   $output: get-bleed($bleed);
 
-  @each $property, $value in $output {
-    #{$property}: $value;
-  }
-
   @include susy-box-sizing(content-box);
+  @include output($output);
 }
 
 

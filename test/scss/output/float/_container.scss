@@ -16,9 +16,11 @@
         max-width: 30em;
         margin-left: 0;
         margin-right: auto;
-        &:after {
+        &::before, &::after {
           content: "";
           display: table;
+        }
+        &::after {
           clear: both;
         }
       }

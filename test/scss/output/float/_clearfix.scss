@@ -21,10 +21,12 @@
       .test { @include susy-clearfix; }
       .expect {
         *zoom: 1;
-        &:after {
-          content    : " ";
-          display    : block;
-          clear      : both;
+        &::before, &::after {
+          content: " ";
+          display: table;
+        }
+        &::after {
+          clear: both;
         }
       }
     }

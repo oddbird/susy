@@ -1,7 +1,10 @@
 // Box Sizing
 // ==========
 
-
+// Box Sizing
+// ----------
+// Check for an existing support mixin, or provide a simple fallback.
+// - $model: <box-sizing>
 @mixin susy-box-sizing(
   $model: content-box
 ) {

@@ -1,11 +1,11 @@
 // Browser Support
 // ===============
 
-$support-modules: background-image, background-size,
-                  background-origin, background-clip,
-                  box-sizing,
-                  ;
-
+// Susy Support
+// ------------
+// Send property-value pairs to the proper support modules.
+// - $prop  : <css property>
+// - $val   : <css value>
 @mixin susy-support(
   $prop,
   $val
@@ -24,5 +24,10 @@ $support-modules: background-image, background-size,
   // Box-Sizing Support
   @else if $prop == box-sizing {
     @include susy-box-sizing($val);
+  }
+
+  // Rem Support
+  @else {
+    @include susy-rem($prop, $val);
   }
 }

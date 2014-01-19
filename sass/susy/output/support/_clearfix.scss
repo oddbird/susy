@@ -2,6 +2,9 @@
 // ======================
 
 
+// Clearfix
+// --------
+// Check for an existing support mixin, or provide a simple fallback.
 @mixin susy-clearfix {
   @if mixin-exists(clearfix) {
     @include clearfix;

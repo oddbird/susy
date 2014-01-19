@@ -1,6 +1,8 @@
 Introduction
 ============
 
+*Current Release:* |release|
+
 The best layout is the one that fits your content
 and the needs of your users.
 We're not here to tell you
@@ -9,7 +11,6 @@ or where to use ``em`` vs ``px``,
 we just want to help keep your code maintainable.
 
 Let Susy do the math, so you can focus on design.
-
 
 Contents
 --------

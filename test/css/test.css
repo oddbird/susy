@@ -24,284 +24,6 @@
     - 0 Failed */
 /*  
 
-### Box Sizing Helper ------ */
-/* - [mixin] susy-box-sizing */
-/* "Box-models are correctly output and prefixed." */
-.test__susy-box-sizing .assert__border-box .test {
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-}
-.test__susy-box-sizing .assert__border-box .expect {
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-}
-
-/*  
-    0 Tests:
-    - 0 Passed
-    - 0 Failed */
-/*  
-
-### Direction Helpers ------ */
-/*  - [function] get-direction (2 Assertions, 2 Passed, 0 Failed) */
-/*  - [function] to (2 Assertions, 2 Passed, 0 Failed) */
-/*  - [function] from (2 Assertions, 2 Passed, 0 Failed) */
-/*  
-    3 Tests:
-    - 3 Passed
-    - 0 Failed */
-/*
-
-### Grid Background API ------ */
-/* - [mixin] background-grid-output */
-/* "Elements should show a horizontal clipped red-green-blue gradient, and a vertical baseline" */
-.test__background-grid-output .assert__show .test {
-  background-image: linear-gradient(to right, #ffcccc, #ccffcc 25%, #ccccff), linear-gradient(to bottom, black 5%, transparent 5%);
-  -moz-background-size: auto, 100% 16px;
-  -o-background-size: auto, 100% 16px;
-  -webkit-background-size: auto, 100% 16px;
-  background-size: auto, 100% 16px;
-  -moz-background-origin: content-box, border-box;
-  -o-background-origin: content-box, border-box;
-  -webkit-background-origin: content-box, border-box;
-  background-origin: content-box, border-box;
-  -moz-background-clip: content-box, border-box;
-  -o-background-clip: content-box, border-box;
-  -webkit-background-clip: content-box, border-box;
-  background-clip: content-box, border-box;
-  background-position: left top;
-}
-.test__background-grid-output .assert__show .expect {
-  background-image: linear-gradient(to right, #ffcccc, #ccffcc 25%, #ccccff), linear-gradient(to bottom, black 5%, transparent 5%);
-  -webkit-background-size: auto, 100% 16px;
-  background-size: auto, 100% 16px;
-  -webkit-background-origin: content-box, border-box;
-  -webkit-background-clip: content-box, border-box;
-  background-origin: content-box, border-box;
-  background-clip: content-box, border-box;
-  background-position: left top;
-}
-
-/*
-
-### Shared Container API ------ */
-/* - [mixin] container-output */
-/* "Containers should have 60em max-width, centered." */
-.test__container-output .assert__fluid .test {
-  max-width: 60em;
-  margin-left: auto;
-  margin-right: auto;
-}
-.test__container-output .assert__fluid .expect {
-  max-width: 60em;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-/* "Containers should have 30em width, flush right." */
-.test__container-output .assert__static .test {
-  width: 30em;
-  margin-left: auto;
-  margin-right: 0;
-}
-.test__container-output .assert__static .expect {
-  width: 30em;
-  margin-left: auto;
-  margin-right: 0;
-}
-
-/* "Containers should have 100% width." */
-.test__container-output .assert__auto .test {
-  max-width: 100%;
-  margin-left: auto;
-  margin-right: auto;
-}
-.test__container-output .assert__auto .expect {
-  max-width: 100%;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-/*
-
-### Shared Margin API ------ */
-/* - [mixin] margin-output */
-/* "Elements should have 25% right margin, 8em left." */
-.test__margin-output .assert__margin-output .test {
-  margin-right: 25%;
-  margin-left: 8em;
-}
-.test__margin-output .assert__margin-output .expect {
-  margin-right: 25%;
-  margin-left: 8em;
-}
-
-/*
-
-### Shared Padding API ------ */
-/* - [mixin] padding-output */
-/* "Elements should have 25% right padding, 8em left." */
-.test__padding-output .assert__padding-output .test {
-  padding-right: 25%;
-  padding-left: 8em;
-}
-.test__padding-output .assert__padding-output .expect {
-  padding-right: 25%;
-  padding-left: 8em;
-}
-
-/*  
-
-### Clearfix Helper ------ */
-/* - [mixin] susy-clearfix */
-/* "Elements should clear floated children." */
-.test__susy-clearfix .assert__clearfix .test {
-  *zoom: 1;
-}
-.test__susy-clearfix .assert__clearfix .test::before, .test__susy-clearfix .assert__clearfix .test::after {
-  content: " ";
-  display: table;
-}
-.test__susy-clearfix .assert__clearfix .test::after {
-  clear: both;
-}
-.test__susy-clearfix .assert__clearfix .expect {
-  *zoom: 1;
-}
-.test__susy-clearfix .assert__clearfix .expect::before, .test__susy-clearfix .assert__clearfix .expect::after {
-  content: " ";
-  display: table;
-}
-.test__susy-clearfix .assert__clearfix .expect::after {
-  clear: both;
-}
-
-/*  
-    0 Tests:
-    - 0 Passed
-    - 0 Failed */
-/*
-
-### Float Container API ------ */
-/* - [mixin] float-container */
-/* "Containers should be 30em wide, flush left." */
-.test__float-container .assert__float-container .test {
-  *zoom: 1;
-  max-width: 30em;
-  margin-left: 0;
-  margin-right: auto;
-}
-.test__float-container .assert__float-container .test::before, .test__float-container .assert__float-container .test::after {
-  content: " ";
-  display: table;
-}
-.test__float-container .assert__float-container .test::after {
-  clear: both;
-}
-.test__float-container .assert__float-container .expect {
-  max-width: 30em;
-  margin-left: 0;
-  margin-right: auto;
-}
-.test__float-container .assert__float-container .expect::before, .test__float-container .assert__float-container .expect::after {
-  content: "";
-  display: table;
-}
-.test__float-container .assert__float-container .expect::after {
-  clear: both;
-}
-
-/*
-
-### Float Span API ------ */
-/* - [mixin] float-span-output */
-/* "Output should be 25%, floated left, with matching margins/padding" */
-.test__float-span-output .assert__full .test {
-  width: 25%;
-  float: left;
-  margin-left: 5em;
-  margin-right: 2em;
-  padding-left: 3em;
-  padding-right: 4em;
-}
-.test__float-span-output .assert__full .expect {
-  width: 25%;
-  float: left;
-  margin-left: 5em;
-  margin-right: 2em;
-  padding-left: 3em;
-  padding-right: 4em;
-}
-
-/* "Output should be 25%, floated right" */
-.test__float-span-output .assert__float-to .test {
-  width: 25%;
-  float: right;
-}
-.test__float-span-output .assert__float-to .expect {
-  width: 25%;
-  float: right;
-}
-
-/* "Output should be 25%, not floated" */
-.test__float-span-output .assert__float-null .test {
-  width: 25%;
-}
-.test__float-span-output .assert__float-null .expect {
-  width: 25%;
-}
-
-/*
-
-### Float End API ------ */
-/* - [mixin] float-last */
-/* "Items should float flush right." */
-.test__float-last .assert__default .test {
-  float: right;
-  margin-right: 0;
-}
-.test__float-last .assert__default .expect {
-  float: right;
-  margin-right: 0;
-}
-
-/* "Items should not have any right margin." */
-.test__float-last .assert__last-flow-from .test {
-  margin-right: 0;
-}
-.test__float-last .assert__last-flow-from .expect {
-  margin-right: 0;
-}
-
-/* - [mixin] float-first */
-/* "Items should float flush left." */
-.test__float-first .assert__float-first .test {
-  margin-left: 0;
-}
-.test__float-first .assert__float-first .expect {
-  margin-left: 0;
-}
-
-/*
-
-### Isolation API ------ */
-/* - [mixin] isolate-output */
-/* "Isolation at 30%, has 30% left margin and -100% right margin." */
-.test__isolate-output .assert__isolate-output .test {
-  float: left;
-  margin-left: 30%;
-  margin-right: -100%;
-}
-.test__isolate-output .assert__isolate-output .expect {
-  float: left;
-  margin-left: 30%;
-  margin-right: -100%;
-}
-
-/*  
-
 ### Map Helpers ------ */
 /*  - truncate-list (1 Assertions, 1 Passed, 0 Failed) */
 /*  - deep-get (1 Assertions, 1 Passed, 0 Failed) */
@@ -1538,3 +1260,394 @@
     1 Tests:
     - 1 Passed
     - 0 Failed */
+/*
+
+### Shared Output ------ */
+/* - [mixin] output */
+/* "Property value pairs are passed in as maps and output as CSS." */
+.test__output .assert__output .test {
+  width: 3em;
+  position: relative;
+}
+.test__output .assert__output .expect {
+  width: 3em;
+  position: relative;
+}
+
+/*  
+
+### Direction Helpers ------ */
+/*  - [function] get-direction (2 Assertions, 2 Passed, 0 Failed) */
+/*  - [function] to (2 Assertions, 2 Passed, 0 Failed) */
+/*  - [function] from (2 Assertions, 2 Passed, 0 Failed) */
+/*  
+    3 Tests:
+    - 3 Passed
+    - 0 Failed */
+/*
+
+### Grid Background API ------ */
+/* - [mixin] background-grid-output */
+/* "Elements should show a horizontal clipped red-green-blue gradient, and a vertical baseline" */
+.test__background-grid-output .assert__show .test {
+  background-image: linear-gradient(to right, #ffcccc, #ccffcc 25%, #ccccff), linear-gradient(to bottom, black 5%, transparent 5%);
+  -moz-background-size: auto, 100% 16px;
+  -o-background-size: auto, 100% 16px;
+  -webkit-background-size: auto, 100% 16px;
+  background-size: auto, 100% 16px;
+  -moz-background-origin: content-box, border-box;
+  -o-background-origin: content-box, border-box;
+  -webkit-background-origin: content-box, border-box;
+  background-origin: content-box, border-box;
+  -moz-background-clip: content-box, border-box;
+  -o-background-clip: content-box, border-box;
+  -webkit-background-clip: content-box, border-box;
+  background-clip: content-box, border-box;
+  background-position: left top;
+}
+.test__background-grid-output .assert__show .expect {
+  background-image: linear-gradient(to right, #ffcccc, #ccffcc 25%, #ccccff), linear-gradient(to bottom, black 5%, transparent 5%);
+  -webkit-background-size: auto, 100% 16px;
+  background-size: auto, 100% 16px;
+  -webkit-background-origin: content-box, border-box;
+  -webkit-background-clip: content-box, border-box;
+  background-origin: content-box, border-box;
+  background-clip: content-box, border-box;
+  background-position: left top;
+}
+
+/*
+
+### Shared Container API ------ */
+/* - [mixin] container-output */
+/* "Containers should have 60em max-width, centered." */
+.test__container-output .assert__fluid .test {
+  max-width: 60em;
+  margin-left: auto;
+  margin-right: auto;
+}
+.test__container-output .assert__fluid .expect {
+  max-width: 60em;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* "Containers should have 30em width, flush right." */
+.test__container-output .assert__static .test {
+  width: 30em;
+  margin-left: auto;
+  margin-right: 0;
+}
+.test__container-output .assert__static .expect {
+  width: 30em;
+  margin-left: auto;
+  margin-right: 0;
+}
+
+/* "Containers should have 100% width." */
+.test__container-output .assert__auto .test {
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+.test__container-output .assert__auto .expect {
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/*
+
+### Shared Margin API ------ */
+/* - [mixin] margin-output */
+/* "Elements should have 25% right margin, 8em left." */
+.test__margin-output .assert__margin-output .test {
+  margin-right: 25%;
+  margin-left: 8em;
+}
+.test__margin-output .assert__margin-output .expect {
+  margin-right: 25%;
+  margin-left: 8em;
+}
+
+/*
+
+### Shared Padding API ------ */
+/* - [mixin] padding-output */
+/* "Elements should have 25% right padding, 8em left." */
+.test__padding-output .assert__padding-output .test {
+  padding-right: 25%;
+  padding-left: 8em;
+}
+.test__padding-output .assert__padding-output .expect {
+  padding-right: 25%;
+  padding-left: 8em;
+}
+
+/*
+
+### Prefix Support ------ */
+/* - [mixin] susy-prefix */
+/* "Requested prefixes are added to output." */
+.test__susy-prefix .assert__susy-prefix .test {
+  -moz-border-radius: 3em;
+  -webkit-border-radius: 3em;
+  border-radius: 3em;
+}
+.test__susy-prefix .assert__susy-prefix .expect {
+  -moz-border-radius: 3em;
+  -webkit-border-radius: 3em;
+  border-radius: 3em;
+}
+
+/*
+
+### Background Support ------ */
+/* - [mixin] susy-background-image */
+/* "Without Compass, background-image is output directly." */
+.test__susy-background-image .assert__susy-background-image .test {
+  background-image: linear-gradient(to left, red, green, blue);
+}
+.test__susy-background-image .assert__susy-background-image .expect {
+  background-image: linear-gradient(to left, red, green, blue);
+}
+
+/* - [mixin] susy-background-size */
+/* "Without Compass, background-size is output with prefixes." */
+.test__susy-background-size .assert__susy-background-size .test {
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  -webkit-background-size: cover;
+  background-size: cover;
+}
+.test__susy-background-size .assert__susy-background-size .expect {
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  -webkit-background-size: cover;
+  background-size: cover;
+}
+
+/* - [mixin] susy-background-origin */
+/* "Without Compass, background-origin is output with prefixes." */
+.test__susy-background-origin .assert__susy-background-origin .test {
+  -moz-background-origin: content-box;
+  -o-background-origin: content-box;
+  -webkit-background-origin: content-box;
+  background-origin: content-box;
+}
+.test__susy-background-origin .assert__susy-background-origin .expect {
+  -moz-background-origin: content-box;
+  -o-background-origin: content-box;
+  -webkit-background-origin: content-box;
+  background-origin: content-box;
+}
+
+/* - [mixin] susy-background-clip */
+/* "Without Compass, background-clip is output with prefixes." */
+.test__susy-background-clip .assert__susy-background-clip .test {
+  -moz-background-clip: border-box;
+  -o-background-clip: border-box;
+  -webkit-background-clip: border-box;
+  background-clip: border-box;
+}
+.test__susy-background-clip .assert__susy-background-clip .expect {
+  -moz-background-clip: border-box;
+  -o-background-clip: border-box;
+  -webkit-background-clip: border-box;
+  background-clip: border-box;
+}
+
+/*  
+
+### Box Sizing Support ------ */
+/* - [mixin] susy-box-sizing */
+/* "Box-models are correctly output and prefixed." */
+.test__susy-box-sizing .assert__border-box .test {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.test__susy-box-sizing .assert__border-box .expect {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+/*  
+    0 Tests:
+    - 0 Passed
+    - 0 Failed */
+/*
+
+### rem Support ------ */
+/* "Without compass, rem units are output unchanged." */
+.test__ .assert__ .test {
+  width: 3rem;
+}
+.test__ .assert__ .expect {
+  width: 3rem;
+}
+
+/*
+
+### Clearfix Support ------ */
+/* - [mixin] susy-clearfix */
+/* "Elements should clear floated children." */
+.test__susy-clearfix .assert__clearfix .test {
+  *zoom: 1;
+}
+.test__susy-clearfix .assert__clearfix .test::before, .test__susy-clearfix .assert__clearfix .test::after {
+  content: " ";
+  display: table;
+}
+.test__susy-clearfix .assert__clearfix .test::after {
+  clear: both;
+}
+.test__susy-clearfix .assert__clearfix .expect {
+  *zoom: 1;
+}
+.test__susy-clearfix .assert__clearfix .expect::before, .test__susy-clearfix .assert__clearfix .expect::after {
+  content: " ";
+  display: table;
+}
+.test__susy-clearfix .assert__clearfix .expect::after {
+  clear: both;
+}
+
+/*
+
+### Susy Support ------ */
+/* - [mixin] susy-support */
+/* "Recogizes properties that need special support,
+      and passes others through directly." */
+.test__susy-support .assert__susy-support .test {
+  width: 30em;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.test__susy-support .assert__susy-support .expect {
+  width: 30em;
+  -moz-box-sizing: border-box;
+  -o-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+/*
+
+### Float Container API ------ */
+/* - [mixin] float-container */
+/* "Containers should be 30em wide, flush left." */
+.test__float-container .assert__float-container .test {
+  *zoom: 1;
+  max-width: 30em;
+  margin-left: 0;
+  margin-right: auto;
+}
+.test__float-container .assert__float-container .test::before, .test__float-container .assert__float-container .test::after {
+  content: " ";
+  display: table;
+}
+.test__float-container .assert__float-container .test::after {
+  clear: both;
+}
+.test__float-container .assert__float-container .expect {
+  max-width: 30em;
+  margin-left: 0;
+  margin-right: auto;
+}
+.test__float-container .assert__float-container .expect::before, .test__float-container .assert__float-container .expect::after {
+  content: "";
+  display: table;
+}
+.test__float-container .assert__float-container .expect::after {
+  clear: both;
+}
+
+/*
+
+### Float Span API ------ */
+/* - [mixin] float-span-output */
+/* "Output should be 25%, floated left, with matching margins/padding" */
+.test__float-span-output .assert__full .test {
+  width: 25%;
+  float: left;
+  margin-left: 5em;
+  margin-right: 2em;
+  padding-left: 3em;
+  padding-right: 4em;
+}
+.test__float-span-output .assert__full .expect {
+  width: 25%;
+  float: left;
+  margin-left: 5em;
+  margin-right: 2em;
+  padding-left: 3em;
+  padding-right: 4em;
+}
+
+/* "Output should be 25%, floated right" */
+.test__float-span-output .assert__float-to .test {
+  width: 25%;
+  float: right;
+}
+.test__float-span-output .assert__float-to .expect {
+  width: 25%;
+  float: right;
+}
+
+/* "Output should be 25%, not floated" */
+.test__float-span-output .assert__float-null .test {
+  width: 25%;
+}
+.test__float-span-output .assert__float-null .expect {
+  width: 25%;
+}
+
+/*
+
+### Float End API ------ */
+/* - [mixin] float-last */
+/* "Items should float flush right." */
+.test__float-last .assert__default .test {
+  float: right;
+  margin-right: 0;
+}
+.test__float-last .assert__default .expect {
+  float: right;
+  margin-right: 0;
+}
+
+/* "Items should not have any right margin." */
+.test__float-last .assert__last-flow-from .test {
+  margin-right: 0;
+}
+.test__float-last .assert__last-flow-from .expect {
+  margin-right: 0;
+}
+
+/* - [mixin] float-first */
+/* "Items should float flush left." */
+.test__float-first .assert__float-first .test {
+  margin-left: 0;
+}
+.test__float-first .assert__float-first .expect {
+  margin-left: 0;
+}
+
+/*
+
+### Isolation API ------ */
+/* - [mixin] isolate-output */
+/* "Isolation at 30%, has 30% left margin and -100% right margin." */
+.test__isolate-output .assert__isolate-output .test {
+  float: left;
+  margin-left: 30%;
+  margin-right: -100%;
+}
+.test__isolate-output .assert__isolate-output .expect {
+  float: left;
+  margin-left: 30%;
+  margin-right: -100%;
+}

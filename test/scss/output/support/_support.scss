@@ -1,0 +1,24 @@
+// Susy Support Tests
+// ==================
+
+@include output-test-module('Susy Support') {
+  @include output-test('susy-support') {
+    @include assert-setup;
+    @include assert-output(
+      'Recogizes properties that need special support,
+      and passes others through directly.'
+    ) {
+      .test {
+        @include susy-support(width, 30em);
+        @include susy-support(box-sizing, border-box);
+      }
+      .expect {
+        width: 30em;
+        -moz-box-sizing: border-box;
+        -o-box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+      }
+    }
+  }
+}

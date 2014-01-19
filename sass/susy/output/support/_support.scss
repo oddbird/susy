@@ -1,0 +1,28 @@
+// Browser Support
+// ===============
+
+$support-modules: background-image, background-size,
+                  background-origin, background-clip,
+                  box-sizing,
+                  ;
+
+@mixin susy-support(
+  $prop,
+  $val
+) {
+  // Background Support
+  @if $prop == background-image {
+    @include susy-background-image($val);
+  } @else if $prop == background-size {
+    @include susy-background-size($val);
+  } @else if $prop == background-origin {
+    @include susy-background-origin($val);
+  } @else if $prop == background-clip {
+    @include susy-background-clip($val);
+  }
+
+  // Box-Sizing Support
+  @else if $prop == box-sizing {
+    @include susy-box-sizing($val);
+  }
+}

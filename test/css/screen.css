@@ -751,17 +751,23 @@ h1 {
   background-image: -moz-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 66.66667%, rgba(0, 0, 0, 0) 66.66667%);
   background-image: -webkit-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 66.66667%, rgba(0, 0, 0, 0) 66.66667%);
   background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 66.66667%, rgba(0, 0, 0, 0) 66.66667%);
+  -moz-background-size: 15%;
   -webkit-background-size: 15%;
   background-size: 15%;
+  -moz-background-origin: content-box;
+  -o-background-origin: content-box;
   -webkit-background-origin: content-box;
-  -webkit-background-clip: content-box;
   background-origin: content-box;
+  -moz-background-clip: content;
+  -webkit-background-clip: content;
   background-clip: content-box;
   background-position: left top;
 }
-.test__span .assert__default:after {
+.test__span .assert__default::before, .test__span .assert__default::after {
   content: " ";
-  display: block;
+  display: table;
+}
+.test__span .assert__default::after {
   clear: both;
 }
 
@@ -769,9 +775,11 @@ h1 {
   *zoom: 1;
   clear: both;
 }
-.test__span .assert__default .test:after, .test__span .assert__default .expect:after {
+.test__span .assert__default .test::before, .test__span .assert__default .test::after, .test__span .assert__default .expect::before, .test__span .assert__default .expect::after {
   content: " ";
-  display: block;
+  display: table;
+}
+.test__span .assert__default .test::after, .test__span .assert__default .expect::after {
   clear: both;
 }
 .test__span .assert__default .test .inner, .test__span .assert__default .expect .inner {
@@ -794,17 +802,23 @@ h1 {
   background-image: -moz-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25));
   background-image: -webkit-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25));
   background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25));
+  -moz-background-size: 12.5%;
   -webkit-background-size: 12.5%;
   background-size: 12.5%;
+  -moz-background-origin: content-box;
+  -o-background-origin: content-box;
   -webkit-background-origin: content-box;
-  -webkit-background-clip: content-box;
   background-origin: content-box;
+  -moz-background-clip: content;
+  -webkit-background-clip: content;
   background-clip: content-box;
   background-position: left top;
 }
-.test__span .assert__inside:after {
+.test__span .assert__inside::before, .test__span .assert__inside::after {
   content: " ";
-  display: block;
+  display: table;
+}
+.test__span .assert__inside::after {
   clear: both;
 }
 
@@ -835,17 +849,23 @@ h1 {
   background-image: -moz-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25));
   background-image: -webkit-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25));
   background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25));
+  -moz-background-size: 12.5%;
   -webkit-background-size: 12.5%;
   background-size: 12.5%;
+  -moz-background-origin: content-box;
+  -o-background-origin: content-box;
   -webkit-background-origin: content-box;
-  -webkit-background-clip: content-box;
   background-origin: content-box;
+  -moz-background-clip: content;
+  -webkit-background-clip: content;
   background-clip: content-box;
   background-position: left top;
 }
-.test__span .assert__explicit:after {
+.test__span .assert__explicit::before, .test__span .assert__explicit::after {
   content: " ";
-  display: block;
+  display: table;
+}
+.test__span .assert__explicit::after {
   clear: both;
 }
 
@@ -881,17 +901,23 @@ h1 {
   background-image: -moz-linear-gradient(left, rgba(0, 0, 0, 0) 10%, rgba(102, 102, 255, 0.25) 10%, rgba(179, 179, 255, 0.25) 90%, rgba(0, 0, 0, 0) 90%);
   background-image: -webkit-linear-gradient(left, rgba(0, 0, 0, 0) 10%, rgba(102, 102, 255, 0.25) 10%, rgba(179, 179, 255, 0.25) 90%, rgba(0, 0, 0, 0) 90%);
   background-image: linear-gradient(to right, rgba(0, 0, 0, 0) 10%, rgba(102, 102, 255, 0.25) 10%, rgba(179, 179, 255, 0.25) 90%, rgba(0, 0, 0, 0) 90%);
+  -moz-background-size: 12.5%;
   -webkit-background-size: 12.5%;
   background-size: 12.5%;
+  -moz-background-origin: content-box;
+  -o-background-origin: content-box;
   -webkit-background-origin: content-box;
-  -webkit-background-clip: content-box;
   background-origin: content-box;
+  -moz-background-clip: content;
+  -webkit-background-clip: content;
   background-clip: content-box;
   background-position: left top;
 }
-.test__gutters .assert__auto:after {
+.test__gutters .assert__auto::before, .test__gutters .assert__auto::after {
   content: " ";
-  display: block;
+  display: table;
+}
+.test__gutters .assert__auto::after {
   clear: both;
 }
 
@@ -911,17 +937,23 @@ h1 {
   background-image: -moz-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25));
   background-image: -webkit-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25));
   background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25));
+  -moz-background-size: 14.28571%;
   -webkit-background-size: 14.28571%;
   background-size: 14.28571%;
+  -moz-background-origin: content-box;
+  -o-background-origin: content-box;
   -webkit-background-origin: content-box;
-  -webkit-background-clip: content-box;
   background-origin: content-box;
+  -moz-background-clip: content;
+  -webkit-background-clip: content;
   background-clip: content-box;
   background-position: left top;
 }
-.test__gutters .assert__inside-static:after {
+.test__gutters .assert__inside-static::before, .test__gutters .assert__inside-static::after {
   content: " ";
-  display: block;
+  display: table;
+}
+.test__gutters .assert__inside-static::after {
   clear: both;
 }
 
@@ -941,17 +973,23 @@ h1 {
   background-image: -moz-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25));
   background-image: -webkit-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25));
   background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25));
+  -moz-background-size: 14.28571%;
   -webkit-background-size: 14.28571%;
   background-size: 14.28571%;
+  -moz-background-origin: content-box;
+  -o-background-origin: content-box;
   -webkit-background-origin: content-box;
-  -webkit-background-clip: content-box;
   background-origin: content-box;
+  -moz-background-clip: content;
+  -webkit-background-clip: content;
   background-clip: content-box;
   background-position: left top;
 }
-.test__gutters .assert__explicit:after {
+.test__gutters .assert__explicit::before, .test__gutters .assert__explicit::after {
   content: " ";
-  display: block;
+  display: table;
+}
+.test__gutters .assert__explicit::after {
   clear: both;
 }
 
@@ -985,17 +1023,23 @@ h1 {
   background-image: -moz-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 66.66667%, rgba(0, 0, 0, 0) 66.66667%);
   background-image: -webkit-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 66.66667%, rgba(0, 0, 0, 0) 66.66667%);
   background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 66.66667%, rgba(0, 0, 0, 0) 66.66667%);
+  -moz-background-size: 15%;
   -webkit-background-size: 15%;
   background-size: 15%;
+  -moz-background-origin: content-box;
+  -o-background-origin: content-box;
   -webkit-background-origin: content-box;
-  -webkit-background-clip: content-box;
   background-origin: content-box;
+  -moz-background-clip: content;
+  -webkit-background-clip: content;
   background-clip: content-box;
   background-position: left top;
 }
-.test__isolate .assert__isolate:after {
+.test__isolate .assert__isolate::before, .test__isolate .assert__isolate::after {
   content: " ";
-  display: block;
+  display: table;
+}
+.test__isolate .assert__isolate::after {
   clear: both;
 }
 
@@ -1031,26 +1075,34 @@ h1 {
   background-image: -moz-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 55.55556%, rgba(0, 0, 0, 0) 55.55556%);
   background-image: -webkit-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 55.55556%, rgba(0, 0, 0, 0) 55.55556%);
   background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 55.55556%, rgba(0, 0, 0, 0) 55.55556%);
+  -moz-background-size: 18%;
   -webkit-background-size: 18%;
   background-size: 18%;
+  -moz-background-origin: content-box;
+  -o-background-origin: content-box;
   -webkit-background-origin: content-box;
-  -webkit-background-clip: content-box;
   background-origin: content-box;
+  -moz-background-clip: content;
+  -webkit-background-clip: content;
   background-clip: content-box;
   background-position: left top;
 }
-.test__gallery .assert__sym:after {
+.test__gallery .assert__sym::before, .test__gallery .assert__sym::after {
   content: " ";
-  display: block;
+  display: table;
+}
+.test__gallery .assert__sym::after {
   clear: both;
 }
 
 .test__gallery .assert__sym .nest {
   *zoom: 1;
 }
-.test__gallery .assert__sym .nest:after {
+.test__gallery .assert__sym .nest::before, .test__gallery .assert__sym .nest::after {
   content: " ";
-  display: block;
+  display: table;
+}
+.test__gallery .assert__sym .nest::after {
   clear: both;
 }
 .test__gallery .assert__sym .test, .test__gallery .assert__sym .expect {
@@ -1074,26 +1126,34 @@ h1 {
   background-image: -moz-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25));
   background-image: -webkit-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25));
   background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25));
+  -moz-background-size: 12.5%;
   -webkit-background-size: 12.5%;
   background-size: 12.5%;
+  -moz-background-origin: content-box;
+  -o-background-origin: content-box;
   -webkit-background-origin: content-box;
-  -webkit-background-clip: content-box;
   background-origin: content-box;
+  -moz-background-clip: content;
+  -webkit-background-clip: content;
   background-clip: content-box;
   background-position: left top;
 }
-.test__gallery .assert__inside:after {
+.test__gallery .assert__inside::before, .test__gallery .assert__inside::after {
   content: " ";
-  display: block;
+  display: table;
+}
+.test__gallery .assert__inside::after {
   clear: both;
 }
 
 .test__gallery .assert__inside .nest {
   *zoom: 1;
 }
-.test__gallery .assert__inside .nest:after {
+.test__gallery .assert__inside .nest::before, .test__gallery .assert__inside .nest::after {
   content: " ";
-  display: block;
+  display: table;
+}
+.test__gallery .assert__inside .nest::after {
   clear: both;
 }
 .test__gallery .assert__inside .test, .test__gallery .assert__inside .expect {
@@ -1117,26 +1177,34 @@ h1 {
   background-image: -moz-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25));
   background-image: -webkit-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25));
   background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25));
+  -moz-background-size: 16.66667%;
   -webkit-background-size: 16.66667%;
   background-size: 16.66667%;
+  -moz-background-origin: content-box;
+  -o-background-origin: content-box;
   -webkit-background-origin: content-box;
-  -webkit-background-clip: content-box;
   background-origin: content-box;
+  -moz-background-clip: content;
+  -webkit-background-clip: content;
   background-clip: content-box;
   background-position: left top;
 }
-.test__gallery .assert__inside-static:after {
+.test__gallery .assert__inside-static::before, .test__gallery .assert__inside-static::after {
   content: " ";
-  display: block;
+  display: table;
+}
+.test__gallery .assert__inside-static::after {
   clear: both;
 }
 
 .test__gallery .assert__inside-static .nest {
   *zoom: 1;
 }
-.test__gallery .assert__inside-static .nest:after {
+.test__gallery .assert__inside-static .nest::before, .test__gallery .assert__inside-static .nest::after {
   content: " ";
-  display: block;
+  display: table;
+}
+.test__gallery .assert__inside-static .nest::after {
   clear: both;
 }
 .test__gallery .assert__inside-static .test, .test__gallery .assert__inside-static .expect {
@@ -1160,26 +1228,34 @@ h1 {
   background-image: -moz-linear-gradient(left, rgba(0, 0, 0, 0) 10%, rgba(102, 102, 255, 0.25) 10%, rgba(179, 179, 255, 0.25) 90%, rgba(0, 0, 0, 0) 90%);
   background-image: -webkit-linear-gradient(left, rgba(0, 0, 0, 0) 10%, rgba(102, 102, 255, 0.25) 10%, rgba(179, 179, 255, 0.25) 90%, rgba(0, 0, 0, 0) 90%);
   background-image: linear-gradient(to right, rgba(0, 0, 0, 0) 10%, rgba(102, 102, 255, 0.25) 10%, rgba(179, 179, 255, 0.25) 90%, rgba(0, 0, 0, 0) 90%);
+  -moz-background-size: 12.5%;
   -webkit-background-size: 12.5%;
   background-size: 12.5%;
+  -moz-background-origin: content-box;
+  -o-background-origin: content-box;
   -webkit-background-origin: content-box;
-  -webkit-background-clip: content-box;
   background-origin: content-box;
+  -moz-background-clip: content;
+  -webkit-background-clip: content;
   background-clip: content-box;
   background-position: left top;
 }
-.test__gallery .assert__split:after {
+.test__gallery .assert__split::before, .test__gallery .assert__split::after {
   content: " ";
-  display: block;
+  display: table;
+}
+.test__gallery .assert__split::after {
   clear: both;
 }
 
 .test__gallery .assert__split .nest {
   *zoom: 1;
 }
-.test__gallery .assert__split .nest:after {
+.test__gallery .assert__split .nest::before, .test__gallery .assert__split .nest::after {
   content: " ";
-  display: block;
+  display: table;
+}
+.test__gallery .assert__split .nest::after {
   clear: both;
 }
 .test__gallery .assert__split .test, .test__gallery .assert__split .expect {
@@ -1203,24 +1279,31 @@ h1 {
   background-image: -moz-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, rgba(0, 0, 0, 0) 10%, rgba(0, 0, 0, 0) 12%, rgba(102, 102, 255, 0.25) 12%, rgba(179, 179, 255, 0.25) 32%, rgba(0, 0, 0, 0) 32%, rgba(0, 0, 0, 0) 34%, rgba(102, 102, 255, 0.25) 34%, rgba(179, 179, 255, 0.25) 44.0%, rgba(0, 0, 0, 0) 44.0%, rgba(0, 0, 0, 0) 46%, rgba(102, 102, 255, 0.25) 46%, rgba(179, 179, 255, 0.25) 66.0%, rgba(0, 0, 0, 0) 66.0%, rgba(0, 0, 0, 0) 68%, rgba(102, 102, 255, 0.25) 68%, rgba(179, 179, 255, 0.25) 88.0%, rgba(0, 0, 0, 0) 88.0%, rgba(0, 0, 0, 0) 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
   background-image: -webkit-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, rgba(0, 0, 0, 0) 10%, rgba(0, 0, 0, 0) 12%, rgba(102, 102, 255, 0.25) 12%, rgba(179, 179, 255, 0.25) 32%, rgba(0, 0, 0, 0) 32%, rgba(0, 0, 0, 0) 34%, rgba(102, 102, 255, 0.25) 34%, rgba(179, 179, 255, 0.25) 44.0%, rgba(0, 0, 0, 0) 44.0%, rgba(0, 0, 0, 0) 46%, rgba(102, 102, 255, 0.25) 46%, rgba(179, 179, 255, 0.25) 66.0%, rgba(0, 0, 0, 0) 66.0%, rgba(0, 0, 0, 0) 68%, rgba(102, 102, 255, 0.25) 68%, rgba(179, 179, 255, 0.25) 88.0%, rgba(0, 0, 0, 0) 88.0%, rgba(0, 0, 0, 0) 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
   background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, rgba(0, 0, 0, 0) 10%, rgba(0, 0, 0, 0) 12%, rgba(102, 102, 255, 0.25) 12%, rgba(179, 179, 255, 0.25) 32%, rgba(0, 0, 0, 0) 32%, rgba(0, 0, 0, 0) 34%, rgba(102, 102, 255, 0.25) 34%, rgba(179, 179, 255, 0.25) 44.0%, rgba(0, 0, 0, 0) 44.0%, rgba(0, 0, 0, 0) 46%, rgba(102, 102, 255, 0.25) 46%, rgba(179, 179, 255, 0.25) 66.0%, rgba(0, 0, 0, 0) 66.0%, rgba(0, 0, 0, 0) 68%, rgba(102, 102, 255, 0.25) 68%, rgba(179, 179, 255, 0.25) 88.0%, rgba(0, 0, 0, 0) 88.0%, rgba(0, 0, 0, 0) 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
+  -moz-background-origin: content-box;
+  -o-background-origin: content-box;
   -webkit-background-origin: content-box;
-  -webkit-background-clip: content-box;
   background-origin: content-box;
+  -moz-background-clip: content;
+  -webkit-background-clip: content;
   background-clip: content-box;
   background-position: left top;
 }
-.test__gallery .assert__asym:after {
+.test__gallery .assert__asym::before, .test__gallery .assert__asym::after {
   content: " ";
-  display: block;
+  display: table;
+}
+.test__gallery .assert__asym::after {
   clear: both;
 }
 
 .test__gallery .assert__asym .nest {
   *zoom: 1;
 }
-.test__gallery .assert__asym .nest:after {
+.test__gallery .assert__asym .nest::before, .test__gallery .assert__asym .nest::after {
   content: " ";
-  display: block;
+  display: table;
+}
+.test__gallery .assert__asym .nest::after {
   clear: both;
 }
 .test__gallery .assert__asym .test, .test__gallery .assert__asym .expect {
@@ -1244,24 +1327,31 @@ h1 {
   background-image: -moz-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 15%, rgba(102, 102, 255, 0.25) 15%, rgba(179, 179, 255, 0.25) 40%, rgba(102, 102, 255, 0.25) 40%, rgba(179, 179, 255, 0.25) 85%, rgba(102, 102, 255, 0.25) 85%, rgba(179, 179, 255, 0.25));
   background-image: -webkit-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 15%, rgba(102, 102, 255, 0.25) 15%, rgba(179, 179, 255, 0.25) 40%, rgba(102, 102, 255, 0.25) 40%, rgba(179, 179, 255, 0.25) 85%, rgba(102, 102, 255, 0.25) 85%, rgba(179, 179, 255, 0.25));
   background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 15%, rgba(102, 102, 255, 0.25) 15%, rgba(179, 179, 255, 0.25) 40%, rgba(102, 102, 255, 0.25) 40%, rgba(179, 179, 255, 0.25) 85%, rgba(102, 102, 255, 0.25) 85%, rgba(179, 179, 255, 0.25));
+  -moz-background-origin: content-box;
+  -o-background-origin: content-box;
   -webkit-background-origin: content-box;
-  -webkit-background-clip: content-box;
   background-origin: content-box;
+  -moz-background-clip: content;
+  -webkit-background-clip: content;
   background-clip: content-box;
   background-position: left top;
 }
-.test__gallery .assert__asym-inside:after {
+.test__gallery .assert__asym-inside::before, .test__gallery .assert__asym-inside::after {
   content: " ";
-  display: block;
+  display: table;
+}
+.test__gallery .assert__asym-inside::after {
   clear: both;
 }
 
 .test__gallery .assert__asym-inside .nest {
   *zoom: 1;
 }
-.test__gallery .assert__asym-inside .nest:after {
+.test__gallery .assert__asym-inside .nest::before, .test__gallery .assert__asym-inside .nest::after {
   content: " ";
-  display: block;
+  display: table;
+}
+.test__gallery .assert__asym-inside .nest::after {
   clear: both;
 }
 .test__gallery .assert__asym-inside .test, .test__gallery .assert__asym-inside .expect {
@@ -1293,17 +1383,23 @@ h1 {
   background-image: -moz-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25));
   background-image: -webkit-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25));
   background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25));
+  -moz-background-size: 14.28571%;
   -webkit-background-size: 14.28571%;
   background-size: 14.28571%;
+  -moz-background-origin: content-box;
+  -o-background-origin: content-box;
   -webkit-background-origin: content-box;
-  -webkit-background-clip: content-box;
   background-origin: content-box;
+  -moz-background-clip: content;
+  -webkit-background-clip: content;
   background-clip: content-box;
   background-position: left top;
 }
-.test__break .assert__break:after {
+.test__break .assert__break::before, .test__break .assert__break::after {
   content: " ";
-  display: block;
+  display: table;
+}
+.test__break .assert__break::after {
   clear: both;
 }
 
@@ -1334,17 +1430,23 @@ h1 {
   background-image: -moz-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25));
   background-image: -webkit-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25));
   background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25));
+  -moz-background-size: 14.28571%;
   -webkit-background-size: 14.28571%;
   background-size: 14.28571%;
+  -moz-background-origin: content-box;
+  -o-background-origin: content-box;
   -webkit-background-origin: content-box;
-  -webkit-background-clip: content-box;
   background-origin: content-box;
+  -moz-background-clip: content;
+  -webkit-background-clip: content;
   background-clip: content-box;
   background-position: left top;
 }
-.test__nobreak .assert__nobreak:after {
+.test__nobreak .assert__nobreak::before, .test__nobreak .assert__nobreak::after {
   content: " ";
-  display: block;
+  display: table;
+}
+.test__nobreak .assert__nobreak::after {
   clear: both;
 }
 
@@ -1378,17 +1480,23 @@ h1 {
   background-image: -moz-linear-gradient(left, rgba(0, 0, 0, 0) 10%, rgba(102, 102, 255, 0.25) 10%, rgba(179, 179, 255, 0.25) 90%, rgba(0, 0, 0, 0) 90%);
   background-image: -webkit-linear-gradient(left, rgba(0, 0, 0, 0) 10%, rgba(102, 102, 255, 0.25) 10%, rgba(179, 179, 255, 0.25) 90%, rgba(0, 0, 0, 0) 90%);
   background-image: linear-gradient(to right, rgba(0, 0, 0, 0) 10%, rgba(102, 102, 255, 0.25) 10%, rgba(179, 179, 255, 0.25) 90%, rgba(0, 0, 0, 0) 90%);
+  -moz-background-size: 12.5%;
   -webkit-background-size: 12.5%;
   background-size: 12.5%;
+  -moz-background-origin: content-box;
+  -o-background-origin: content-box;
   -webkit-background-origin: content-box;
-  -webkit-background-clip: content-box;
   background-origin: content-box;
+  -moz-background-clip: content;
+  -webkit-background-clip: content;
   background-clip: content-box;
   background-position: left top;
 }
-.test__full .assert__split:after {
+.test__full .assert__split::before, .test__full .assert__split::after {
   content: " ";
-  display: block;
+  display: table;
+}
+.test__full .assert__split::after {
   clear: both;
 }
 
@@ -1415,17 +1523,23 @@ h1 {
   background-image: -moz-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 66.66667%, rgba(0, 0, 0, 0) 66.66667%);
   background-image: -webkit-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 66.66667%, rgba(0, 0, 0, 0) 66.66667%);
   background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 66.66667%, rgba(0, 0, 0, 0) 66.66667%);
+  -moz-background-size: 15%;
   -webkit-background-size: 15%;
   background-size: 15%;
+  -moz-background-origin: content-box;
+  -o-background-origin: content-box;
   -webkit-background-origin: content-box;
-  -webkit-background-clip: content-box;
   background-origin: content-box;
+  -moz-background-clip: content;
+  -webkit-background-clip: content;
   background-clip: content-box;
   background-position: left top;
 }
-.test__full .assert__after:after {
+.test__full .assert__after::before, .test__full .assert__after::after {
   content: " ";
-  display: block;
+  display: table;
+}
+.test__full .assert__after::after {
   clear: both;
 }
 
@@ -1452,17 +1566,23 @@ h1 {
   background-image: -moz-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 66.66667%, rgba(0, 0, 0, 0) 66.66667%);
   background-image: -webkit-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 66.66667%, rgba(0, 0, 0, 0) 66.66667%);
   background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 66.66667%, rgba(0, 0, 0, 0) 66.66667%);
+  -moz-background-size: 15%;
   -webkit-background-size: 15%;
   background-size: 15%;
+  -moz-background-origin: content-box;
+  -o-background-origin: content-box;
   -webkit-background-origin: content-box;
-  -webkit-background-clip: content-box;
   background-origin: content-box;
+  -moz-background-clip: content;
+  -webkit-background-clip: content;
   background-clip: content-box;
   background-position: left top;
 }
-.test__first .assert__before:after {
+.test__first .assert__before::before, .test__first .assert__before::after {
   content: " ";
-  display: block;
+  display: table;
+}
+.test__first .assert__before::after {
   clear: both;
 }
 
@@ -1489,17 +1609,23 @@ h1 {
   background-image: -moz-linear-gradient(left, rgba(0, 0, 0, 0) 10%, rgba(102, 102, 255, 0.25) 10%, rgba(179, 179, 255, 0.25) 90%, rgba(0, 0, 0, 0) 90%);
   background-image: -webkit-linear-gradient(left, rgba(0, 0, 0, 0) 10%, rgba(102, 102, 255, 0.25) 10%, rgba(179, 179, 255, 0.25) 90%, rgba(0, 0, 0, 0) 90%);
   background-image: linear-gradient(to right, rgba(0, 0, 0, 0) 10%, rgba(102, 102, 255, 0.25) 10%, rgba(179, 179, 255, 0.25) 90%, rgba(0, 0, 0, 0) 90%);
+  -moz-background-size: 12.5%;
   -webkit-background-size: 12.5%;
   background-size: 12.5%;
+  -moz-background-origin: content-box;
+  -o-background-origin: content-box;
   -webkit-background-origin: content-box;
-  -webkit-background-clip: content-box;
   background-origin: content-box;
+  -moz-background-clip: content;
+  -webkit-background-clip: content;
   background-clip: content-box;
   background-position: left top;
 }
-.test__first .assert__split:after {
+.test__first .assert__split::before, .test__first .assert__split::after {
   content: " ";
-  display: block;
+  display: table;
+}
+.test__first .assert__split::after {
   clear: both;
 }
 
@@ -1528,17 +1654,23 @@ h1 {
   background-image: -moz-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 66.66667%, rgba(0, 0, 0, 0) 66.66667%);
   background-image: -webkit-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 66.66667%, rgba(0, 0, 0, 0) 66.66667%);
   background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 66.66667%, rgba(0, 0, 0, 0) 66.66667%);
+  -moz-background-size: 15%;
   -webkit-background-size: 15%;
   background-size: 15%;
+  -moz-background-origin: content-box;
+  -o-background-origin: content-box;
   -webkit-background-origin: content-box;
-  -webkit-background-clip: content-box;
   background-origin: content-box;
+  -moz-background-clip: content;
+  -webkit-background-clip: content;
   background-clip: content-box;
   background-position: left top;
 }
-.test__alpha .assert__alpha:after {
+.test__alpha .assert__alpha::before, .test__alpha .assert__alpha::after {
   content: " ";
-  display: block;
+  display: table;
+}
+.test__alpha .assert__alpha::after {
   clear: both;
 }
 
@@ -1566,17 +1698,23 @@ h1 {
   background-image: -moz-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 66.66667%, rgba(0, 0, 0, 0) 66.66667%);
   background-image: -webkit-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 66.66667%, rgba(0, 0, 0, 0) 66.66667%);
   background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 66.66667%, rgba(0, 0, 0, 0) 66.66667%);
+  -moz-background-size: 15%;
   -webkit-background-size: 15%;
   background-size: 15%;
+  -moz-background-origin: content-box;
+  -o-background-origin: content-box;
   -webkit-background-origin: content-box;
-  -webkit-background-clip: content-box;
   background-origin: content-box;
+  -moz-background-clip: content;
+  -webkit-background-clip: content;
   background-clip: content-box;
   background-position: left top;
 }
-.test__last .assert__after:after {
+.test__last .assert__after::before, .test__last .assert__after::after {
   content: " ";
-  display: block;
+  display: table;
+}
+.test__last .assert__after::after {
   clear: both;
 }
 
@@ -1603,17 +1741,23 @@ h1 {
   background-image: -moz-linear-gradient(left, rgba(0, 0, 0, 0) 16.66667%, rgba(102, 102, 255, 0.25) 16.66667%, rgba(179, 179, 255, 0.25) 83.33333%, rgba(0, 0, 0, 0) 83.33333%);
   background-image: -webkit-linear-gradient(left, rgba(0, 0, 0, 0) 16.66667%, rgba(102, 102, 255, 0.25) 16.66667%, rgba(179, 179, 255, 0.25) 83.33333%, rgba(0, 0, 0, 0) 83.33333%);
   background-image: linear-gradient(to right, rgba(0, 0, 0, 0) 16.66667%, rgba(102, 102, 255, 0.25) 16.66667%, rgba(179, 179, 255, 0.25) 83.33333%, rgba(0, 0, 0, 0) 83.33333%);
+  -moz-background-size: 14.28571%;
   -webkit-background-size: 14.28571%;
   background-size: 14.28571%;
+  -moz-background-origin: content-box;
+  -o-background-origin: content-box;
   -webkit-background-origin: content-box;
-  -webkit-background-clip: content-box;
   background-origin: content-box;
+  -moz-background-clip: content;
+  -webkit-background-clip: content;
   background-clip: content-box;
   background-position: left top;
 }
-.test__last .assert__split:after {
+.test__last .assert__split::before, .test__last .assert__split::after {
   content: " ";
-  display: block;
+  display: table;
+}
+.test__last .assert__split::after {
   clear: both;
 }
 
@@ -1642,17 +1786,23 @@ h1 {
   background-image: -moz-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 66.66667%, rgba(0, 0, 0, 0) 66.66667%);
   background-image: -webkit-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 66.66667%, rgba(0, 0, 0, 0) 66.66667%);
   background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 66.66667%, rgba(0, 0, 0, 0) 66.66667%);
+  -moz-background-size: 15%;
   -webkit-background-size: 15%;
   background-size: 15%;
+  -moz-background-origin: content-box;
+  -o-background-origin: content-box;
   -webkit-background-origin: content-box;
-  -webkit-background-clip: content-box;
   background-origin: content-box;
+  -moz-background-clip: content;
+  -webkit-background-clip: content;
   background-clip: content-box;
   background-position: left top;
 }
-.test__omega .assert__omega:after {
+.test__omega .assert__omega::before, .test__omega .assert__omega::after {
   content: " ";
-  display: block;
+  display: table;
+}
+.test__omega .assert__omega::after {
   clear: both;
 }
 
@@ -1689,17 +1839,23 @@ h1 {
   background-image: -moz-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 66.66667%, rgba(0, 0, 0, 0) 66.66667%);
   background-image: -webkit-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 66.66667%, rgba(0, 0, 0, 0) 66.66667%);
   background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 66.66667%, rgba(0, 0, 0, 0) 66.66667%);
+  -moz-background-size: 15%;
   -webkit-background-size: 15%;
   background-size: 15%;
+  -moz-background-origin: content-box;
+  -o-background-origin: content-box;
   -webkit-background-origin: content-box;
-  -webkit-background-clip: content-box;
   background-origin: content-box;
+  -moz-background-clip: content;
+  -webkit-background-clip: content;
   background-clip: content-box;
   background-position: left top;
 }
-.test__pre .assert__wide:after {
+.test__pre .assert__wide::before, .test__pre .assert__wide::after {
   content: " ";
-  display: block;
+  display: table;
+}
+.test__pre .assert__wide::after {
   clear: both;
 }
 
@@ -1729,17 +1885,23 @@ h1 {
   background-image: -moz-linear-gradient(left, rgba(0, 0, 0, 0) 10%, rgba(102, 102, 255, 0.25) 10%, rgba(179, 179, 255, 0.25) 90%, rgba(0, 0, 0, 0) 90%);
   background-image: -webkit-linear-gradient(left, rgba(0, 0, 0, 0) 10%, rgba(102, 102, 255, 0.25) 10%, rgba(179, 179, 255, 0.25) 90%, rgba(0, 0, 0, 0) 90%);
   background-image: linear-gradient(to right, rgba(0, 0, 0, 0) 10%, rgba(102, 102, 255, 0.25) 10%, rgba(179, 179, 255, 0.25) 90%, rgba(0, 0, 0, 0) 90%);
+  -moz-background-size: 12.5%;
   -webkit-background-size: 12.5%;
   background-size: 12.5%;
+  -moz-background-origin: content-box;
+  -o-background-origin: content-box;
   -webkit-background-origin: content-box;
-  -webkit-background-clip: content-box;
   background-origin: content-box;
+  -moz-background-clip: content;
+  -webkit-background-clip: content;
   background-clip: content-box;
   background-position: left top;
 }
-.test__pre .assert__split:after {
+.test__pre .assert__split::before, .test__pre .assert__split::after {
   content: " ";
-  display: block;
+  display: table;
+}
+.test__pre .assert__split::after {
   clear: both;
 }
 
@@ -1766,17 +1928,23 @@ h1 {
   background-image: -moz-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 66.66667%, rgba(0, 0, 0, 0) 66.66667%);
   background-image: -webkit-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 66.66667%, rgba(0, 0, 0, 0) 66.66667%);
   background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 66.66667%, rgba(0, 0, 0, 0) 66.66667%);
+  -moz-background-size: 15%;
   -webkit-background-size: 15%;
   background-size: 15%;
+  -moz-background-origin: content-box;
+  -o-background-origin: content-box;
   -webkit-background-origin: content-box;
-  -webkit-background-clip: content-box;
   background-origin: content-box;
+  -moz-background-clip: content;
+  -webkit-background-clip: content;
   background-clip: content-box;
   background-position: left top;
 }
-.test__pre .assert__wider:after {
+.test__pre .assert__wider::before, .test__pre .assert__wider::after {
   content: " ";
-  display: block;
+  display: table;
+}
+.test__pre .assert__wider::after {
   clear: both;
 }
 
@@ -1807,15 +1975,20 @@ h1 {
   background-image: -moz-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, rgba(0, 0, 0, 0) 10%, rgba(0, 0, 0, 0) 12.5%, rgba(102, 102, 255, 0.25) 12.5%, rgba(179, 179, 255, 0.25) 32.5%, rgba(0, 0, 0, 0) 32.5%, rgba(0, 0, 0, 0) 35%, rgba(102, 102, 255, 0.25) 35%, rgba(179, 179, 255, 0.25) 65%, rgba(0, 0, 0, 0) 65%, rgba(0, 0, 0, 0) 67.5%, rgba(102, 102, 255, 0.25) 67.5%, rgba(179, 179, 255, 0.25) 87.5%, rgba(0, 0, 0, 0) 87.5%, rgba(0, 0, 0, 0) 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
   background-image: -webkit-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, rgba(0, 0, 0, 0) 10%, rgba(0, 0, 0, 0) 12.5%, rgba(102, 102, 255, 0.25) 12.5%, rgba(179, 179, 255, 0.25) 32.5%, rgba(0, 0, 0, 0) 32.5%, rgba(0, 0, 0, 0) 35%, rgba(102, 102, 255, 0.25) 35%, rgba(179, 179, 255, 0.25) 65%, rgba(0, 0, 0, 0) 65%, rgba(0, 0, 0, 0) 67.5%, rgba(102, 102, 255, 0.25) 67.5%, rgba(179, 179, 255, 0.25) 87.5%, rgba(0, 0, 0, 0) 87.5%, rgba(0, 0, 0, 0) 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
   background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, rgba(0, 0, 0, 0) 10%, rgba(0, 0, 0, 0) 12.5%, rgba(102, 102, 255, 0.25) 12.5%, rgba(179, 179, 255, 0.25) 32.5%, rgba(0, 0, 0, 0) 32.5%, rgba(0, 0, 0, 0) 35%, rgba(102, 102, 255, 0.25) 35%, rgba(179, 179, 255, 0.25) 65%, rgba(0, 0, 0, 0) 65%, rgba(0, 0, 0, 0) 67.5%, rgba(102, 102, 255, 0.25) 67.5%, rgba(179, 179, 255, 0.25) 87.5%, rgba(0, 0, 0, 0) 87.5%, rgba(0, 0, 0, 0) 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
+  -moz-background-origin: content-box;
+  -o-background-origin: content-box;
   -webkit-background-origin: content-box;
-  -webkit-background-clip: content-box;
   background-origin: content-box;
+  -moz-background-clip: content;
+  -webkit-background-clip: content;
   background-clip: content-box;
   background-position: left top;
 }
-.test__post .assert__wide:after {
+.test__post .assert__wide::before, .test__post .assert__wide::after {
   content: " ";
-  display: block;
+  display: table;
+}
+.test__post .assert__wide::after {
   clear: both;
 }
 
@@ -1835,15 +2008,20 @@ h1 {
   background-image: -moz-linear-gradient(left, rgba(0, 0, 0, 0) 1.25%, rgba(102, 102, 255, 0.25) 1.25%, rgba(179, 179, 255, 0.25) 11.25%, rgba(0, 0, 0, 0) 11.25%, rgba(0, 0, 0, 0) 13.75%, rgba(102, 102, 255, 0.25) 13.75%, rgba(179, 179, 255, 0.25) 33.75%, rgba(0, 0, 0, 0) 33.75%, rgba(0, 0, 0, 0) 36.25%, rgba(102, 102, 255, 0.25) 36.25%, rgba(179, 179, 255, 0.25) 66.25%, rgba(0, 0, 0, 0) 66.25%, rgba(0, 0, 0, 0) 68.75%, rgba(102, 102, 255, 0.25) 68.75%, rgba(179, 179, 255, 0.25) 98.75%, rgba(0, 0, 0, 0) 98.75%);
   background-image: -webkit-linear-gradient(left, rgba(0, 0, 0, 0) 1.25%, rgba(102, 102, 255, 0.25) 1.25%, rgba(179, 179, 255, 0.25) 11.25%, rgba(0, 0, 0, 0) 11.25%, rgba(0, 0, 0, 0) 13.75%, rgba(102, 102, 255, 0.25) 13.75%, rgba(179, 179, 255, 0.25) 33.75%, rgba(0, 0, 0, 0) 33.75%, rgba(0, 0, 0, 0) 36.25%, rgba(102, 102, 255, 0.25) 36.25%, rgba(179, 179, 255, 0.25) 66.25%, rgba(0, 0, 0, 0) 66.25%, rgba(0, 0, 0, 0) 68.75%, rgba(102, 102, 255, 0.25) 68.75%, rgba(179, 179, 255, 0.25) 98.75%, rgba(0, 0, 0, 0) 98.75%);
   background-image: linear-gradient(to right, rgba(0, 0, 0, 0) 1.25%, rgba(102, 102, 255, 0.25) 1.25%, rgba(179, 179, 255, 0.25) 11.25%, rgba(0, 0, 0, 0) 11.25%, rgba(0, 0, 0, 0) 13.75%, rgba(102, 102, 255, 0.25) 13.75%, rgba(179, 179, 255, 0.25) 33.75%, rgba(0, 0, 0, 0) 33.75%, rgba(0, 0, 0, 0) 36.25%, rgba(102, 102, 255, 0.25) 36.25%, rgba(179, 179, 255, 0.25) 66.25%, rgba(0, 0, 0, 0) 66.25%, rgba(0, 0, 0, 0) 68.75%, rgba(102, 102, 255, 0.25) 68.75%, rgba(179, 179, 255, 0.25) 98.75%, rgba(0, 0, 0, 0) 98.75%);
+  -moz-background-origin: content-box;
+  -o-background-origin: content-box;
   -webkit-background-origin: content-box;
-  -webkit-background-clip: content-box;
   background-origin: content-box;
+  -moz-background-clip: content;
+  -webkit-background-clip: content;
   background-clip: content-box;
   background-position: left top;
 }
-.test__post .assert__split:after {
+.test__post .assert__split::before, .test__post .assert__split::after {
   content: " ";
-  display: block;
+  display: table;
+}
+.test__post .assert__split::after {
   clear: both;
 }
 
@@ -1868,15 +2046,20 @@ h1 {
   background-image: -moz-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, rgba(0, 0, 0, 0) 10%, rgba(0, 0, 0, 0) 12.5%, rgba(102, 102, 255, 0.25) 12.5%, rgba(179, 179, 255, 0.25) 32.5%, rgba(0, 0, 0, 0) 32.5%, rgba(0, 0, 0, 0) 35%, rgba(102, 102, 255, 0.25) 35%, rgba(179, 179, 255, 0.25) 65%, rgba(0, 0, 0, 0) 65%, rgba(0, 0, 0, 0) 67.5%, rgba(102, 102, 255, 0.25) 67.5%, rgba(179, 179, 255, 0.25) 87.5%, rgba(0, 0, 0, 0) 87.5%, rgba(0, 0, 0, 0) 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
   background-image: -webkit-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, rgba(0, 0, 0, 0) 10%, rgba(0, 0, 0, 0) 12.5%, rgba(102, 102, 255, 0.25) 12.5%, rgba(179, 179, 255, 0.25) 32.5%, rgba(0, 0, 0, 0) 32.5%, rgba(0, 0, 0, 0) 35%, rgba(102, 102, 255, 0.25) 35%, rgba(179, 179, 255, 0.25) 65%, rgba(0, 0, 0, 0) 65%, rgba(0, 0, 0, 0) 67.5%, rgba(102, 102, 255, 0.25) 67.5%, rgba(179, 179, 255, 0.25) 87.5%, rgba(0, 0, 0, 0) 87.5%, rgba(0, 0, 0, 0) 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
   background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, rgba(0, 0, 0, 0) 10%, rgba(0, 0, 0, 0) 12.5%, rgba(102, 102, 255, 0.25) 12.5%, rgba(179, 179, 255, 0.25) 32.5%, rgba(0, 0, 0, 0) 32.5%, rgba(0, 0, 0, 0) 35%, rgba(102, 102, 255, 0.25) 35%, rgba(179, 179, 255, 0.25) 65%, rgba(0, 0, 0, 0) 65%, rgba(0, 0, 0, 0) 67.5%, rgba(102, 102, 255, 0.25) 67.5%, rgba(179, 179, 255, 0.25) 87.5%, rgba(0, 0, 0, 0) 87.5%, rgba(0, 0, 0, 0) 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
+  -moz-background-origin: content-box;
+  -o-background-origin: content-box;
   -webkit-background-origin: content-box;
-  -webkit-background-clip: content-box;
   background-origin: content-box;
+  -moz-background-clip: content;
+  -webkit-background-clip: content;
   background-clip: content-box;
   background-position: left top;
 }
-.test__post .assert__wider:after {
+.test__post .assert__wider::before, .test__post .assert__wider::after {
   content: " ";
-  display: block;
+  display: table;
+}
+.test__post .assert__wider::after {
   clear: both;
 }
 
@@ -1909,17 +2092,23 @@ h1 {
   background-image: -moz-linear-gradient(left, rgba(0, 0, 0, 0) 10%, rgba(102, 102, 255, 0.25) 10%, rgba(179, 179, 255, 0.25) 90%, rgba(0, 0, 0, 0) 90%);
   background-image: -webkit-linear-gradient(left, rgba(0, 0, 0, 0) 10%, rgba(102, 102, 255, 0.25) 10%, rgba(179, 179, 255, 0.25) 90%, rgba(0, 0, 0, 0) 90%);
   background-image: linear-gradient(to right, rgba(0, 0, 0, 0) 10%, rgba(102, 102, 255, 0.25) 10%, rgba(179, 179, 255, 0.25) 90%, rgba(0, 0, 0, 0) 90%);
+  -moz-background-size: 12.5%;
   -webkit-background-size: 12.5%;
   background-size: 12.5%;
+  -moz-background-origin: content-box;
+  -o-background-origin: content-box;
   -webkit-background-origin: content-box;
-  -webkit-background-clip: content-box;
   background-origin: content-box;
+  -moz-background-clip: content;
+  -webkit-background-clip: content;
   background-clip: content-box;
   background-position: left top;
 }
-.test__push .assert__push:after {
+.test__push .assert__push::before, .test__push .assert__push::after {
   content: " ";
-  display: block;
+  display: table;
+}
+.test__push .assert__push::after {
   clear: both;
 }
 
@@ -1947,15 +2136,20 @@ h1 {
   background-image: -moz-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, rgba(0, 0, 0, 0) 10%, rgba(0, 0, 0, 0) 12.5%, rgba(102, 102, 255, 0.25) 12.5%, rgba(179, 179, 255, 0.25) 32.5%, rgba(0, 0, 0, 0) 32.5%, rgba(0, 0, 0, 0) 35%, rgba(102, 102, 255, 0.25) 35%, rgba(179, 179, 255, 0.25) 65%, rgba(0, 0, 0, 0) 65%, rgba(0, 0, 0, 0) 67.5%, rgba(102, 102, 255, 0.25) 67.5%, rgba(179, 179, 255, 0.25) 87.5%, rgba(0, 0, 0, 0) 87.5%, rgba(0, 0, 0, 0) 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
   background-image: -webkit-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, rgba(0, 0, 0, 0) 10%, rgba(0, 0, 0, 0) 12.5%, rgba(102, 102, 255, 0.25) 12.5%, rgba(179, 179, 255, 0.25) 32.5%, rgba(0, 0, 0, 0) 32.5%, rgba(0, 0, 0, 0) 35%, rgba(102, 102, 255, 0.25) 35%, rgba(179, 179, 255, 0.25) 65%, rgba(0, 0, 0, 0) 65%, rgba(0, 0, 0, 0) 67.5%, rgba(102, 102, 255, 0.25) 67.5%, rgba(179, 179, 255, 0.25) 87.5%, rgba(0, 0, 0, 0) 87.5%, rgba(0, 0, 0, 0) 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
   background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, rgba(0, 0, 0, 0) 10%, rgba(0, 0, 0, 0) 12.5%, rgba(102, 102, 255, 0.25) 12.5%, rgba(179, 179, 255, 0.25) 32.5%, rgba(0, 0, 0, 0) 32.5%, rgba(0, 0, 0, 0) 35%, rgba(102, 102, 255, 0.25) 35%, rgba(179, 179, 255, 0.25) 65%, rgba(0, 0, 0, 0) 65%, rgba(0, 0, 0, 0) 67.5%, rgba(102, 102, 255, 0.25) 67.5%, rgba(179, 179, 255, 0.25) 87.5%, rgba(0, 0, 0, 0) 87.5%, rgba(0, 0, 0, 0) 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
+  -moz-background-origin: content-box;
+  -o-background-origin: content-box;
   -webkit-background-origin: content-box;
-  -webkit-background-clip: content-box;
   background-origin: content-box;
+  -moz-background-clip: content;
+  -webkit-background-clip: content;
   background-clip: content-box;
   background-position: left top;
 }
-.test__pull .assert__narrow:after {
+.test__pull .assert__narrow::before, .test__pull .assert__narrow::after {
   content: " ";
-  display: block;
+  display: table;
+}
+.test__pull .assert__narrow::after {
   clear: both;
 }
 
@@ -1985,17 +2179,23 @@ h1 {
   background-image: -moz-linear-gradient(left, rgba(0, 0, 0, 0) 10%, rgba(102, 102, 255, 0.25) 10%, rgba(179, 179, 255, 0.25) 90%, rgba(0, 0, 0, 0) 90%);
   background-image: -webkit-linear-gradient(left, rgba(0, 0, 0, 0) 10%, rgba(102, 102, 255, 0.25) 10%, rgba(179, 179, 255, 0.25) 90%, rgba(0, 0, 0, 0) 90%);
   background-image: linear-gradient(to right, rgba(0, 0, 0, 0) 10%, rgba(102, 102, 255, 0.25) 10%, rgba(179, 179, 255, 0.25) 90%, rgba(0, 0, 0, 0) 90%);
+  -moz-background-size: 12.5%;
   -webkit-background-size: 12.5%;
   background-size: 12.5%;
+  -moz-background-origin: content-box;
+  -o-background-origin: content-box;
   -webkit-background-origin: content-box;
-  -webkit-background-clip: content-box;
   background-origin: content-box;
+  -moz-background-clip: content;
+  -webkit-background-clip: content;
   background-clip: content-box;
   background-position: left top;
 }
-.test__pull .assert__split:after {
+.test__pull .assert__split::before, .test__pull .assert__split::after {
   content: " ";
-  display: block;
+  display: table;
+}
+.test__pull .assert__split::after {
   clear: both;
 }
 
@@ -2028,15 +2228,20 @@ h1 {
   background-image: -moz-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, rgba(0, 0, 0, 0) 10%, rgba(0, 0, 0, 0) 12.5%, rgba(102, 102, 255, 0.25) 12.5%, rgba(179, 179, 255, 0.25) 32.5%, rgba(0, 0, 0, 0) 32.5%, rgba(0, 0, 0, 0) 35%, rgba(102, 102, 255, 0.25) 35%, rgba(179, 179, 255, 0.25) 65%, rgba(0, 0, 0, 0) 65%, rgba(0, 0, 0, 0) 67.5%, rgba(102, 102, 255, 0.25) 67.5%, rgba(179, 179, 255, 0.25) 87.5%, rgba(0, 0, 0, 0) 87.5%, rgba(0, 0, 0, 0) 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
   background-image: -webkit-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, rgba(0, 0, 0, 0) 10%, rgba(0, 0, 0, 0) 12.5%, rgba(102, 102, 255, 0.25) 12.5%, rgba(179, 179, 255, 0.25) 32.5%, rgba(0, 0, 0, 0) 32.5%, rgba(0, 0, 0, 0) 35%, rgba(102, 102, 255, 0.25) 35%, rgba(179, 179, 255, 0.25) 65%, rgba(0, 0, 0, 0) 65%, rgba(0, 0, 0, 0) 67.5%, rgba(102, 102, 255, 0.25) 67.5%, rgba(179, 179, 255, 0.25) 87.5%, rgba(0, 0, 0, 0) 87.5%, rgba(0, 0, 0, 0) 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
   background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, rgba(0, 0, 0, 0) 10%, rgba(0, 0, 0, 0) 12.5%, rgba(102, 102, 255, 0.25) 12.5%, rgba(179, 179, 255, 0.25) 32.5%, rgba(0, 0, 0, 0) 32.5%, rgba(0, 0, 0, 0) 35%, rgba(102, 102, 255, 0.25) 35%, rgba(179, 179, 255, 0.25) 65%, rgba(0, 0, 0, 0) 65%, rgba(0, 0, 0, 0) 67.5%, rgba(102, 102, 255, 0.25) 67.5%, rgba(179, 179, 255, 0.25) 87.5%, rgba(0, 0, 0, 0) 87.5%, rgba(0, 0, 0, 0) 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
+  -moz-background-origin: content-box;
+  -o-background-origin: content-box;
   -webkit-background-origin: content-box;
-  -webkit-background-clip: content-box;
   background-origin: content-box;
+  -moz-background-clip: content;
+  -webkit-background-clip: content;
   background-clip: content-box;
   background-position: left top;
 }
-.test__pull .assert__wide:after {
+.test__pull .assert__wide::before, .test__pull .assert__wide::after {
   content: " ";
-  display: block;
+  display: table;
+}
+.test__pull .assert__wide::after {
   clear: both;
 }
 
@@ -2066,15 +2271,20 @@ h1 {
   background-image: -moz-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, rgba(0, 0, 0, 0) 10%, rgba(0, 0, 0, 0) 12.5%, rgba(102, 102, 255, 0.25) 12.5%, rgba(179, 179, 255, 0.25) 32.5%, rgba(0, 0, 0, 0) 32.5%, rgba(0, 0, 0, 0) 35%, rgba(102, 102, 255, 0.25) 35%, rgba(179, 179, 255, 0.25) 65%, rgba(0, 0, 0, 0) 65%, rgba(0, 0, 0, 0) 67.5%, rgba(102, 102, 255, 0.25) 67.5%, rgba(179, 179, 255, 0.25) 87.5%, rgba(0, 0, 0, 0) 87.5%, rgba(0, 0, 0, 0) 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
   background-image: -webkit-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, rgba(0, 0, 0, 0) 10%, rgba(0, 0, 0, 0) 12.5%, rgba(102, 102, 255, 0.25) 12.5%, rgba(179, 179, 255, 0.25) 32.5%, rgba(0, 0, 0, 0) 32.5%, rgba(0, 0, 0, 0) 35%, rgba(102, 102, 255, 0.25) 35%, rgba(179, 179, 255, 0.25) 65%, rgba(0, 0, 0, 0) 65%, rgba(0, 0, 0, 0) 67.5%, rgba(102, 102, 255, 0.25) 67.5%, rgba(179, 179, 255, 0.25) 87.5%, rgba(0, 0, 0, 0) 87.5%, rgba(0, 0, 0, 0) 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
   background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, rgba(0, 0, 0, 0) 10%, rgba(0, 0, 0, 0) 12.5%, rgba(102, 102, 255, 0.25) 12.5%, rgba(179, 179, 255, 0.25) 32.5%, rgba(0, 0, 0, 0) 32.5%, rgba(0, 0, 0, 0) 35%, rgba(102, 102, 255, 0.25) 35%, rgba(179, 179, 255, 0.25) 65%, rgba(0, 0, 0, 0) 65%, rgba(0, 0, 0, 0) 67.5%, rgba(102, 102, 255, 0.25) 67.5%, rgba(179, 179, 255, 0.25) 87.5%, rgba(0, 0, 0, 0) 87.5%, rgba(0, 0, 0, 0) 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
+  -moz-background-origin: content-box;
+  -o-background-origin: content-box;
   -webkit-background-origin: content-box;
-  -webkit-background-clip: content-box;
   background-origin: content-box;
+  -moz-background-clip: content;
+  -webkit-background-clip: content;
   background-clip: content-box;
   background-position: left top;
 }
-.test__pull .assert__wider:after {
+.test__pull .assert__wider::before, .test__pull .assert__wider::after {
   content: " ";
-  display: block;
+  display: table;
+}
+.test__pull .assert__wider::after {
   clear: both;
 }
 
@@ -2105,15 +2315,20 @@ h1 {
   background-image: -moz-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, rgba(0, 0, 0, 0) 10%, rgba(0, 0, 0, 0) 12.5%, rgba(102, 102, 255, 0.25) 12.5%, rgba(179, 179, 255, 0.25) 32.5%, rgba(0, 0, 0, 0) 32.5%, rgba(0, 0, 0, 0) 35%, rgba(102, 102, 255, 0.25) 35%, rgba(179, 179, 255, 0.25) 65%, rgba(0, 0, 0, 0) 65%, rgba(0, 0, 0, 0) 67.5%, rgba(102, 102, 255, 0.25) 67.5%, rgba(179, 179, 255, 0.25) 87.5%, rgba(0, 0, 0, 0) 87.5%, rgba(0, 0, 0, 0) 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
   background-image: -webkit-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, rgba(0, 0, 0, 0) 10%, rgba(0, 0, 0, 0) 12.5%, rgba(102, 102, 255, 0.25) 12.5%, rgba(179, 179, 255, 0.25) 32.5%, rgba(0, 0, 0, 0) 32.5%, rgba(0, 0, 0, 0) 35%, rgba(102, 102, 255, 0.25) 35%, rgba(179, 179, 255, 0.25) 65%, rgba(0, 0, 0, 0) 65%, rgba(0, 0, 0, 0) 67.5%, rgba(102, 102, 255, 0.25) 67.5%, rgba(179, 179, 255, 0.25) 87.5%, rgba(0, 0, 0, 0) 87.5%, rgba(0, 0, 0, 0) 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
   background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, rgba(0, 0, 0, 0) 10%, rgba(0, 0, 0, 0) 12.5%, rgba(102, 102, 255, 0.25) 12.5%, rgba(179, 179, 255, 0.25) 32.5%, rgba(0, 0, 0, 0) 32.5%, rgba(0, 0, 0, 0) 35%, rgba(102, 102, 255, 0.25) 35%, rgba(179, 179, 255, 0.25) 65%, rgba(0, 0, 0, 0) 65%, rgba(0, 0, 0, 0) 67.5%, rgba(102, 102, 255, 0.25) 67.5%, rgba(179, 179, 255, 0.25) 87.5%, rgba(0, 0, 0, 0) 87.5%, rgba(0, 0, 0, 0) 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
+  -moz-background-origin: content-box;
+  -o-background-origin: content-box;
   -webkit-background-origin: content-box;
-  -webkit-background-clip: content-box;
   background-origin: content-box;
+  -moz-background-clip: content;
+  -webkit-background-clip: content;
   background-clip: content-box;
   background-position: left top;
 }
-.test__squish .assert__simple:after {
+.test__squish .assert__simple::before, .test__squish .assert__simple::after {
   content: " ";
-  display: block;
+  display: table;
+}
+.test__squish .assert__simple::after {
   clear: both;
 }
 
@@ -2133,15 +2348,20 @@ h1 {
   background-image: -moz-linear-gradient(left, rgba(0, 0, 0, 0) 1.21951%, rgba(102, 102, 255, 0.25) 1.21951%, rgba(179, 179, 255, 0.25) 10.97561%, rgba(0, 0, 0, 0) 10.97561%, rgba(0, 0, 0, 0) 13.41463%, rgba(102, 102, 255, 0.25) 13.41463%, rgba(179, 179, 255, 0.25) 32.92683%, rgba(0, 0, 0, 0) 32.92683%, rgba(0, 0, 0, 0) 35.36585%, rgba(102, 102, 255, 0.25) 35.36585%, rgba(179, 179, 255, 0.25) 64.63415%, rgba(0, 0, 0, 0) 64.63415%, rgba(0, 0, 0, 0) 67.07317%, rgba(102, 102, 255, 0.25) 67.07317%, rgba(179, 179, 255, 0.25) 86.58537%, rgba(0, 0, 0, 0) 86.58537%, rgba(0, 0, 0, 0) 89.02439%, rgba(102, 102, 255, 0.25) 89.02439%, rgba(179, 179, 255, 0.25) 98.78049%, rgba(0, 0, 0, 0) 98.78049%);
   background-image: -webkit-linear-gradient(left, rgba(0, 0, 0, 0) 1.21951%, rgba(102, 102, 255, 0.25) 1.21951%, rgba(179, 179, 255, 0.25) 10.97561%, rgba(0, 0, 0, 0) 10.97561%, rgba(0, 0, 0, 0) 13.41463%, rgba(102, 102, 255, 0.25) 13.41463%, rgba(179, 179, 255, 0.25) 32.92683%, rgba(0, 0, 0, 0) 32.92683%, rgba(0, 0, 0, 0) 35.36585%, rgba(102, 102, 255, 0.25) 35.36585%, rgba(179, 179, 255, 0.25) 64.63415%, rgba(0, 0, 0, 0) 64.63415%, rgba(0, 0, 0, 0) 67.07317%, rgba(102, 102, 255, 0.25) 67.07317%, rgba(179, 179, 255, 0.25) 86.58537%, rgba(0, 0, 0, 0) 86.58537%, rgba(0, 0, 0, 0) 89.02439%, rgba(102, 102, 255, 0.25) 89.02439%, rgba(179, 179, 255, 0.25) 98.78049%, rgba(0, 0, 0, 0) 98.78049%);
   background-image: linear-gradient(to right, rgba(0, 0, 0, 0) 1.21951%, rgba(102, 102, 255, 0.25) 1.21951%, rgba(179, 179, 255, 0.25) 10.97561%, rgba(0, 0, 0, 0) 10.97561%, rgba(0, 0, 0, 0) 13.41463%, rgba(102, 102, 255, 0.25) 13.41463%, rgba(179, 179, 255, 0.25) 32.92683%, rgba(0, 0, 0, 0) 32.92683%, rgba(0, 0, 0, 0) 35.36585%, rgba(102, 102, 255, 0.25) 35.36585%, rgba(179, 179, 255, 0.25) 64.63415%, rgba(0, 0, 0, 0) 64.63415%, rgba(0, 0, 0, 0) 67.07317%, rgba(102, 102, 255, 0.25) 67.07317%, rgba(179, 179, 255, 0.25) 86.58537%, rgba(0, 0, 0, 0) 86.58537%, rgba(0, 0, 0, 0) 89.02439%, rgba(102, 102, 255, 0.25) 89.02439%, rgba(179, 179, 255, 0.25) 98.78049%, rgba(0, 0, 0, 0) 98.78049%);
+  -moz-background-origin: content-box;
+  -o-background-origin: content-box;
   -webkit-background-origin: content-box;
-  -webkit-background-clip: content-box;
   background-origin: content-box;
+  -moz-background-clip: content;
+  -webkit-background-clip: content;
   background-clip: content-box;
   background-position: left top;
 }
-.test__squish .assert__split:after {
+.test__squish .assert__split::before, .test__squish .assert__split::after {
   content: " ";
-  display: block;
+  display: table;
+}
+.test__squish .assert__split::after {
   clear: both;
 }
 
@@ -2161,17 +2381,23 @@ h1 {
   background-image: -moz-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25));
   background-image: -webkit-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25));
   background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25));
+  -moz-background-size: 14.28571%;
   -webkit-background-size: 14.28571%;
   background-size: 14.28571%;
+  -moz-background-origin: content-box;
+  -o-background-origin: content-box;
   -webkit-background-origin: content-box;
-  -webkit-background-clip: content-box;
   background-origin: content-box;
+  -moz-background-clip: content;
+  -webkit-background-clip: content;
   background-clip: content-box;
   background-position: left top;
 }
-.test__squish .assert__nested:after {
+.test__squish .assert__nested::before, .test__squish .assert__nested::after {
   content: " ";
-  display: block;
+  display: table;
+}
+.test__squish .assert__nested::after {
   clear: both;
 }
 
@@ -2200,17 +2426,23 @@ h1 {
   background-image: -moz-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 66.66667%, rgba(0, 0, 0, 0) 66.66667%);
   background-image: -webkit-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 66.66667%, rgba(0, 0, 0, 0) 66.66667%);
   background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 66.66667%, rgba(0, 0, 0, 0) 66.66667%);
+  -moz-background-size: 15%;
   -webkit-background-size: 15%;
   background-size: 15%;
+  -moz-background-origin: content-box;
+  -o-background-origin: content-box;
   -webkit-background-origin: content-box;
-  -webkit-background-clip: content-box;
   background-origin: content-box;
+  -moz-background-clip: content;
+  -webkit-background-clip: content;
   background-clip: content-box;
   background-position: left top;
 }
-.test__prefix .assert__wide:after {
+.test__prefix .assert__wide::before, .test__prefix .assert__wide::after {
   content: " ";
-  display: block;
+  display: table;
+}
+.test__prefix .assert__wide::after {
   clear: both;
 }
 
@@ -2230,17 +2462,23 @@ h1 {
   background-image: -moz-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 66.66667%, rgba(0, 0, 0, 0) 66.66667%);
   background-image: -webkit-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 66.66667%, rgba(0, 0, 0, 0) 66.66667%);
   background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 66.66667%, rgba(0, 0, 0, 0) 66.66667%);
+  -moz-background-size: 15%;
   -webkit-background-size: 15%;
   background-size: 15%;
+  -moz-background-origin: content-box;
+  -o-background-origin: content-box;
   -webkit-background-origin: content-box;
-  -webkit-background-clip: content-box;
   background-origin: content-box;
+  -moz-background-clip: content;
+  -webkit-background-clip: content;
   background-clip: content-box;
   background-position: left top;
 }
-.test__prefix .assert__wider:after {
+.test__prefix .assert__wider::before, .test__prefix .assert__wider::after {
   content: " ";
-  display: block;
+  display: table;
+}
+.test__prefix .assert__wider::after {
   clear: both;
 }
 
@@ -2269,15 +2507,20 @@ h1 {
   background-image: -moz-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, rgba(0, 0, 0, 0) 10%, rgba(0, 0, 0, 0) 12.5%, rgba(102, 102, 255, 0.25) 12.5%, rgba(179, 179, 255, 0.25) 32.5%, rgba(0, 0, 0, 0) 32.5%, rgba(0, 0, 0, 0) 35%, rgba(102, 102, 255, 0.25) 35%, rgba(179, 179, 255, 0.25) 65%, rgba(0, 0, 0, 0) 65%, rgba(0, 0, 0, 0) 67.5%, rgba(102, 102, 255, 0.25) 67.5%, rgba(179, 179, 255, 0.25) 87.5%, rgba(0, 0, 0, 0) 87.5%, rgba(0, 0, 0, 0) 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
   background-image: -webkit-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, rgba(0, 0, 0, 0) 10%, rgba(0, 0, 0, 0) 12.5%, rgba(102, 102, 255, 0.25) 12.5%, rgba(179, 179, 255, 0.25) 32.5%, rgba(0, 0, 0, 0) 32.5%, rgba(0, 0, 0, 0) 35%, rgba(102, 102, 255, 0.25) 35%, rgba(179, 179, 255, 0.25) 65%, rgba(0, 0, 0, 0) 65%, rgba(0, 0, 0, 0) 67.5%, rgba(102, 102, 255, 0.25) 67.5%, rgba(179, 179, 255, 0.25) 87.5%, rgba(0, 0, 0, 0) 87.5%, rgba(0, 0, 0, 0) 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
   background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, rgba(0, 0, 0, 0) 10%, rgba(0, 0, 0, 0) 12.5%, rgba(102, 102, 255, 0.25) 12.5%, rgba(179, 179, 255, 0.25) 32.5%, rgba(0, 0, 0, 0) 32.5%, rgba(0, 0, 0, 0) 35%, rgba(102, 102, 255, 0.25) 35%, rgba(179, 179, 255, 0.25) 65%, rgba(0, 0, 0, 0) 65%, rgba(0, 0, 0, 0) 67.5%, rgba(102, 102, 255, 0.25) 67.5%, rgba(179, 179, 255, 0.25) 87.5%, rgba(0, 0, 0, 0) 87.5%, rgba(0, 0, 0, 0) 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
+  -moz-background-origin: content-box;
+  -o-background-origin: content-box;
   -webkit-background-origin: content-box;
-  -webkit-background-clip: content-box;
   background-origin: content-box;
+  -moz-background-clip: content;
+  -webkit-background-clip: content;
   background-clip: content-box;
   background-position: left top;
 }
-.test__suffix .assert__wide:after {
+.test__suffix .assert__wide::before, .test__suffix .assert__wide::after {
   content: " ";
-  display: block;
+  display: table;
+}
+.test__suffix .assert__wide::after {
   clear: both;
 }
 
@@ -2297,15 +2540,20 @@ h1 {
   background-image: -moz-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, rgba(0, 0, 0, 0) 10%, rgba(0, 0, 0, 0) 12.5%, rgba(102, 102, 255, 0.25) 12.5%, rgba(179, 179, 255, 0.25) 32.5%, rgba(0, 0, 0, 0) 32.5%, rgba(0, 0, 0, 0) 35%, rgba(102, 102, 255, 0.25) 35%, rgba(179, 179, 255, 0.25) 65%, rgba(0, 0, 0, 0) 65%, rgba(0, 0, 0, 0) 67.5%, rgba(102, 102, 255, 0.25) 67.5%, rgba(179, 179, 255, 0.25) 87.5%, rgba(0, 0, 0, 0) 87.5%, rgba(0, 0, 0, 0) 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
   background-image: -webkit-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, rgba(0, 0, 0, 0) 10%, rgba(0, 0, 0, 0) 12.5%, rgba(102, 102, 255, 0.25) 12.5%, rgba(179, 179, 255, 0.25) 32.5%, rgba(0, 0, 0, 0) 32.5%, rgba(0, 0, 0, 0) 35%, rgba(102, 102, 255, 0.25) 35%, rgba(179, 179, 255, 0.25) 65%, rgba(0, 0, 0, 0) 65%, rgba(0, 0, 0, 0) 67.5%, rgba(102, 102, 255, 0.25) 67.5%, rgba(179, 179, 255, 0.25) 87.5%, rgba(0, 0, 0, 0) 87.5%, rgba(0, 0, 0, 0) 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
   background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, rgba(0, 0, 0, 0) 10%, rgba(0, 0, 0, 0) 12.5%, rgba(102, 102, 255, 0.25) 12.5%, rgba(179, 179, 255, 0.25) 32.5%, rgba(0, 0, 0, 0) 32.5%, rgba(0, 0, 0, 0) 35%, rgba(102, 102, 255, 0.25) 35%, rgba(179, 179, 255, 0.25) 65%, rgba(0, 0, 0, 0) 65%, rgba(0, 0, 0, 0) 67.5%, rgba(102, 102, 255, 0.25) 67.5%, rgba(179, 179, 255, 0.25) 87.5%, rgba(0, 0, 0, 0) 87.5%, rgba(0, 0, 0, 0) 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
+  -moz-background-origin: content-box;
+  -o-background-origin: content-box;
   -webkit-background-origin: content-box;
-  -webkit-background-clip: content-box;
   background-origin: content-box;
+  -moz-background-clip: content;
+  -webkit-background-clip: content;
   background-clip: content-box;
   background-position: left top;
 }
-.test__suffix .assert__wider:after {
+.test__suffix .assert__wider::before, .test__suffix .assert__wider::after {
   content: " ";
-  display: block;
+  display: table;
+}
+.test__suffix .assert__wider::after {
   clear: both;
 }
 
@@ -2334,15 +2582,20 @@ h1 {
   background-image: -moz-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, rgba(0, 0, 0, 0) 10%, rgba(0, 0, 0, 0) 12.5%, rgba(102, 102, 255, 0.25) 12.5%, rgba(179, 179, 255, 0.25) 32.5%, rgba(0, 0, 0, 0) 32.5%, rgba(0, 0, 0, 0) 35%, rgba(102, 102, 255, 0.25) 35%, rgba(179, 179, 255, 0.25) 65%, rgba(0, 0, 0, 0) 65%, rgba(0, 0, 0, 0) 67.5%, rgba(102, 102, 255, 0.25) 67.5%, rgba(179, 179, 255, 0.25) 87.5%, rgba(0, 0, 0, 0) 87.5%, rgba(0, 0, 0, 0) 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
   background-image: -webkit-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, rgba(0, 0, 0, 0) 10%, rgba(0, 0, 0, 0) 12.5%, rgba(102, 102, 255, 0.25) 12.5%, rgba(179, 179, 255, 0.25) 32.5%, rgba(0, 0, 0, 0) 32.5%, rgba(0, 0, 0, 0) 35%, rgba(102, 102, 255, 0.25) 35%, rgba(179, 179, 255, 0.25) 65%, rgba(0, 0, 0, 0) 65%, rgba(0, 0, 0, 0) 67.5%, rgba(102, 102, 255, 0.25) 67.5%, rgba(179, 179, 255, 0.25) 87.5%, rgba(0, 0, 0, 0) 87.5%, rgba(0, 0, 0, 0) 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
   background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, rgba(0, 0, 0, 0) 10%, rgba(0, 0, 0, 0) 12.5%, rgba(102, 102, 255, 0.25) 12.5%, rgba(179, 179, 255, 0.25) 32.5%, rgba(0, 0, 0, 0) 32.5%, rgba(0, 0, 0, 0) 35%, rgba(102, 102, 255, 0.25) 35%, rgba(179, 179, 255, 0.25) 65%, rgba(0, 0, 0, 0) 65%, rgba(0, 0, 0, 0) 67.5%, rgba(102, 102, 255, 0.25) 67.5%, rgba(179, 179, 255, 0.25) 87.5%, rgba(0, 0, 0, 0) 87.5%, rgba(0, 0, 0, 0) 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
+  -moz-background-origin: content-box;
+  -o-background-origin: content-box;
   -webkit-background-origin: content-box;
-  -webkit-background-clip: content-box;
   background-origin: content-box;
+  -moz-background-clip: content;
+  -webkit-background-clip: content;
   background-clip: content-box;
   background-position: left top;
 }
-.test__pad .assert__simple:after {
+.test__pad .assert__simple::before, .test__pad .assert__simple::after {
   content: " ";
-  display: block;
+  display: table;
+}
+.test__pad .assert__simple::after {
   clear: both;
 }
 
@@ -2362,17 +2615,23 @@ h1 {
   background-image: -moz-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 66.66667%, rgba(0, 0, 0, 0) 66.66667%);
   background-image: -webkit-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 66.66667%, rgba(0, 0, 0, 0) 66.66667%);
   background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 66.66667%, rgba(0, 0, 0, 0) 66.66667%);
+  -moz-background-size: 11.53846%;
   -webkit-background-size: 11.53846%;
   background-size: 11.53846%;
+  -moz-background-origin: content-box;
+  -o-background-origin: content-box;
   -webkit-background-origin: content-box;
-  -webkit-background-clip: content-box;
   background-origin: content-box;
+  -moz-background-clip: content;
+  -webkit-background-clip: content;
   background-clip: content-box;
   background-position: left top;
 }
-.test__pad .assert__nested:after {
+.test__pad .assert__nested::before, .test__pad .assert__nested::after {
   content: " ";
-  display: block;
+  display: table;
+}
+.test__pad .assert__nested::after {
   clear: both;
 }
 
@@ -2397,17 +2656,23 @@ h1 {
   background-image: -moz-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25));
   background-image: -webkit-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25));
   background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25));
+  -moz-background-size: 12.5%;
   -webkit-background-size: 12.5%;
   background-size: 12.5%;
+  -moz-background-origin: content-box;
+  -o-background-origin: content-box;
   -webkit-background-origin: content-box;
-  -webkit-background-clip: content-box;
   background-origin: content-box;
+  -moz-background-clip: content;
+  -webkit-background-clip: content;
   background-clip: content-box;
   background-position: left top;
 }
-.test__pad .assert__inside:after {
+.test__pad .assert__inside::before, .test__pad .assert__inside::after {
   content: " ";
-  display: block;
+  display: table;
+}
+.test__pad .assert__inside::after {
   clear: both;
 }
 
@@ -2427,17 +2692,23 @@ h1 {
   background-image: -moz-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25));
   background-image: -webkit-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25));
   background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25));
+  -moz-background-size: 12.5%;
   -webkit-background-size: 12.5%;
   background-size: 12.5%;
+  -moz-background-origin: content-box;
+  -o-background-origin: content-box;
   -webkit-background-origin: content-box;
-  -webkit-background-clip: content-box;
   background-origin: content-box;
+  -moz-background-clip: content;
+  -webkit-background-clip: content;
   background-clip: content-box;
   background-position: left top;
 }
-.test__pad .assert__inside-nogutters:after {
+.test__pad .assert__inside-nogutters::before, .test__pad .assert__inside-nogutters::after {
   content: " ";
-  display: block;
+  display: table;
+}
+.test__pad .assert__inside-nogutters::after {
   clear: both;
 }
 
@@ -2461,17 +2732,23 @@ h1 {
   background-image: -moz-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 66.66667%, rgba(0, 0, 0, 0) 66.66667%);
   background-image: -webkit-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 66.66667%, rgba(0, 0, 0, 0) 66.66667%);
   background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 66.66667%, rgba(0, 0, 0, 0) 66.66667%);
+  -moz-background-size: 11.53846%;
   -webkit-background-size: 11.53846%;
   background-size: 11.53846%;
+  -moz-background-origin: content-box;
+  -o-background-origin: content-box;
   -webkit-background-origin: content-box;
-  -webkit-background-clip: content-box;
   background-origin: content-box;
+  -moz-background-clip: content;
+  -webkit-background-clip: content;
   background-clip: content-box;
   background-position: left top;
 }
-.test__bleed .assert__simple:after {
+.test__bleed .assert__simple::before, .test__bleed .assert__simple::after {
   content: " ";
-  display: block;
+  display: table;
+}
+.test__bleed .assert__simple::after {
   clear: both;
 }
 
@@ -2496,17 +2773,23 @@ h1 {
   background-image: -moz-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25));
   background-image: -webkit-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25));
   background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25));
+  -moz-background-size: 10%;
   -webkit-background-size: 10%;
   background-size: 10%;
+  -moz-background-origin: content-box;
+  -o-background-origin: content-box;
   -webkit-background-origin: content-box;
-  -webkit-background-clip: content-box;
   background-origin: content-box;
+  -moz-background-clip: content;
+  -webkit-background-clip: content;
   background-clip: content-box;
   background-position: left top;
 }
-.test__bleed .assert__inside:after {
+.test__bleed .assert__inside::before, .test__bleed .assert__inside::after {
   content: " ";
-  display: block;
+  display: table;
+}
+.test__bleed .assert__inside::after {
   clear: both;
 }
 
@@ -2535,17 +2818,23 @@ h1 {
   background-image: -moz-linear-gradient(left, rgba(0, 0, 0, 0) 10%, rgba(102, 102, 255, 0.25) 10%, rgba(179, 179, 255, 0.25) 90%, rgba(0, 0, 0, 0) 90%);
   background-image: -webkit-linear-gradient(left, rgba(0, 0, 0, 0) 10%, rgba(102, 102, 255, 0.25) 10%, rgba(179, 179, 255, 0.25) 90%, rgba(0, 0, 0, 0) 90%);
   background-image: linear-gradient(to right, rgba(0, 0, 0, 0) 10%, rgba(102, 102, 255, 0.25) 10%, rgba(179, 179, 255, 0.25) 90%, rgba(0, 0, 0, 0) 90%);
+  -moz-background-size: 8.33333%;
   -webkit-background-size: 8.33333%;
   background-size: 8.33333%;
+  -moz-background-origin: content-box;
+  -o-background-origin: content-box;
   -webkit-background-origin: content-box;
-  -webkit-background-clip: content-box;
   background-origin: content-box;
+  -moz-background-clip: content;
+  -webkit-background-clip: content;
   background-clip: content-box;
   background-position: left top;
 }
-.test__bleed .assert__split:after {
+.test__bleed .assert__split::before, .test__bleed .assert__split::after {
   content: " ";
-  display: block;
+  display: table;
+}
+.test__bleed .assert__split::after {
   clear: both;
 }
 
@@ -2571,17 +2860,23 @@ h1 {
   background-image: -moz-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 66.66667%, rgba(0, 0, 0, 0) 66.66667%);
   background-image: -webkit-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 66.66667%, rgba(0, 0, 0, 0) 66.66667%);
   background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 66.66667%, rgba(0, 0, 0, 0) 66.66667%);
+  -moz-background-size: 9.375%;
   -webkit-background-size: 9.375%;
   background-size: 9.375%;
+  -moz-background-origin: content-box;
+  -o-background-origin: content-box;
   -webkit-background-origin: content-box;
-  -webkit-background-clip: content-box;
   background-origin: content-box;
+  -moz-background-clip: content;
+  -webkit-background-clip: content;
   background-clip: content-box;
   background-position: left top;
 }
-.test__bleed-x .assert__simple:after {
+.test__bleed-x .assert__simple::before, .test__bleed-x .assert__simple::after {
   content: " ";
-  display: block;
+  display: table;
+}
+.test__bleed-x .assert__simple::after {
   clear: both;
 }
 
@@ -2606,17 +2901,23 @@ h1 {
   background-image: -moz-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25));
   background-image: -webkit-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25));
   background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25));
+  -moz-background-size: 10%;
   -webkit-background-size: 10%;
   background-size: 10%;
+  -moz-background-origin: content-box;
+  -o-background-origin: content-box;
   -webkit-background-origin: content-box;
-  -webkit-background-clip: content-box;
   background-origin: content-box;
+  -moz-background-clip: content;
+  -webkit-background-clip: content;
   background-clip: content-box;
   background-position: left top;
 }
-.test__bleed-x .assert__inside:after {
+.test__bleed-x .assert__inside::before, .test__bleed-x .assert__inside::after {
   content: " ";
-  display: block;
+  display: table;
+}
+.test__bleed-x .assert__inside::after {
   clear: both;
 }
 
@@ -2642,17 +2943,23 @@ h1 {
   background-image: -moz-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 66.66667%, rgba(0, 0, 0, 0) 66.66667%);
   background-image: -webkit-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 66.66667%, rgba(0, 0, 0, 0) 66.66667%);
   background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 66.66667%, rgba(0, 0, 0, 0) 66.66667%);
+  -moz-background-size: 9.375%;
   -webkit-background-size: 9.375%;
   background-size: 9.375%;
+  -moz-background-origin: content-box;
+  -o-background-origin: content-box;
   -webkit-background-origin: content-box;
-  -webkit-background-clip: content-box;
   background-origin: content-box;
+  -moz-background-clip: content;
+  -webkit-background-clip: content;
   background-clip: content-box;
   background-position: left top;
 }
-.test__bleed-y .assert__simple:after {
+.test__bleed-y .assert__simple::before, .test__bleed-y .assert__simple::after {
   content: " ";
-  display: block;
+  display: table;
+}
+.test__bleed-y .assert__simple::after {
   clear: both;
 }
 

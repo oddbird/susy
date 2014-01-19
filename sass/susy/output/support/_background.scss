@@ -1,0 +1,49 @@
+// Background Properties
+// =====================
+
+
+@mixin susy-background-image(
+  $image
+) {
+  @if mixin-exists(background-image) {
+    @include background-image($image...);
+  } @else {
+    background-image: $image;
+  }
+}
+
+
+@mixin susy-background-size(
+  $size
+) {
+  @if mixin-exists(background-size) {
+    @include background-size($size);
+  } @else {
+    $prefix: (moz, o, webkit, official);
+    @include susy-prefix(background-size, $size, $prefix);
+  }
+}
+
+
+@mixin susy-background-origin(
+  $origin
+) {
+  @if mixin-exists(background-origin) {
+    @include background-origin($origin);
+  } @else {
+    $prefix: (moz, o, webkit, official);
+    @include susy-prefix(background-origin, $origin, $prefix);
+  }
+}
+
+
+@mixin susy-background-clip(
+  $clip
+) {
+  @if mixin-exists(background-clip) {
+    @include background-clip($clip);
+  } @else {
+    $prefix: (moz, o, webkit, official);
+    @include susy-prefix(background-clip, $clip, $prefix);
+  }
+}

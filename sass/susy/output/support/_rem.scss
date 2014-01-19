@@ -1,0 +1,13 @@
+// REM Support
+// ===========
+
+@mixin susy-rem(
+  $prop,
+  $val
+) {
+  @if variable-exists(rem-with-px-fallback) and mixin-exists(rem) {
+    @include rem($prop, $val);
+  } @else {
+    #{$prop}: $val;
+  }
+}

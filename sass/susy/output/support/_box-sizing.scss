@@ -1,0 +1,14 @@
+// Box Sizing
+// ==========
+
+
+@mixin susy-box-sizing(
+  $model: content-box
+) {
+  @if mixin-exists(box-sizing) {
+    @include box-sizing($model);
+  } @else {
+    $prefix: (moz, webkit, official);
+    @include susy-prefix(box-sizing, $model, $prefix);
+  }
+}

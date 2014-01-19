@@ -1,0 +1,14 @@
+// Output
+// ======
+
+@mixin output(
+  $styles
+) {
+  @each $prop, $val in $styles {
+    @if index($support-modules, $prop) {
+      @include susy-support($prop, $val);
+    } @else {
+      @include susy-rem($prop, $val);
+    }
+  }
+}

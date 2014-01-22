@@ -190,7 +190,7 @@ $rem-with-px-fallback               : true !default;
     @if $request == 'position' {
       @return $pos;
     } @else {
-      @warn '"#{$request}"" is not a valid value for $request';
+      @warn '"#{$request}" is not a valid value for $request';
     }
   }
 }

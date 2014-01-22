@@ -150,7 +150,7 @@
   $return: ();
 
   @each $key, $value in $bleed {
-    @if str-index($key, margin) > 0 {
+    @if str-index($key, margin) {
       $margin: map-merge($margin, ($key: $value));
     } @else if str-index($key, padding) > 0 {
       $padding: map-merge($padding, ($key: $value));

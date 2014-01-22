@@ -88,12 +88,10 @@ head:hover {
   box-shadow: 0 0 1px rgba(51, 51, 51, 0.5);
   background: rgba(255, 255, 255, 0.5);
 }
-head:hover ~ .symmetrical,
-head:hover ~ body .symmetrical {
+head:hover ~ .symmetrical, head:hover ~ body .symmetrical {
   position: relative;
 }
-head:hover ~ .symmetrical::before,
-head:hover ~ body .symmetrical::before {
+head:hover ~ .symmetrical::before, head:hover ~ body .symmetrical::before {
   position: absolute;
   top: 0;
   left: 0;
@@ -213,12 +211,10 @@ head:hover ~ body .symmetrical::before {
   display: block;
   clear: both;
 }
-head:hover ~ .asymmetrical,
-head:hover ~ body .asymmetrical {
+head:hover ~ .asymmetrical, head:hover ~ body .asymmetrical {
   position: relative;
 }
-head:hover ~ .asymmetrical::before,
-head:hover ~ body .asymmetrical::before {
+head:hover ~ .asymmetrical::before, head:hover ~ body .asymmetrical::before {
   position: absolute;
   top: 0;
   left: 0;

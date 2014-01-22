@@ -23,7 +23,7 @@
     @include nobreak;
   }
 
-  @include susy-box-sizing($box);
+  @include output((box-sizing: $box));
   @include float-span-output($output...);
 
   @if valid-columns($nesting, silent) {

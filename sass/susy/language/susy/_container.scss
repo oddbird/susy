@@ -17,7 +17,7 @@
   $box        : susy-get(box-sizing, $layout);
 
   @if $box {
-    @include susy-box-sizing($box);
+    @include output((box-sizing: $box));
   }
 
   @include float-container($width, $justify, $property);

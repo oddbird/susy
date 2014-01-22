@@ -16,12 +16,15 @@
       'Items should bleed 1 column outside their nested context'
     ) {
       .test { @include bleed(0 1 of 7); }
+      $expect: (
+        margin-left: -15%,
+        padding-left: 15%,
+        margin-right: -15%,
+        padding-right: 15%,
+        box-sizing: content-box,
+      );
       .expect {
-        margin-left: -15%;
-        padding-left: 15%;
-        margin-right: -15%;
-        padding-right: 15%;
-        @include susy-box-sizing(content-box);
+        @include output($expect);
       }
     }
 
@@ -39,7 +42,7 @@
       .expect {
         margin: -1em;
         padding: 1em 1.5em;
-        @include susy-box-sizing(content-box);
+        @include output((box-sizing: content-box));
       }
     }
 
@@ -56,7 +59,7 @@
         padding-right: 12.5%;
         margin-left: -12.5%;
         padding-left: 12.5%;
-        @include susy-box-sizing(content-box);
+        @include output((box-sizing: content-box));
       }
     }
   }
@@ -79,7 +82,7 @@
         padding-right: 30%;
         margin-left: -15%;
         padding-left: 15%;
-        @include susy-box-sizing(content-box);
+        @include output((box-sizing: content-box));
       }
     }
 
@@ -96,7 +99,7 @@
         padding-left: 13.75%;
         margin-right: -12.5%;
         padding-right: 13.75%;
-        @include susy-box-sizing(content-box);
+        @include output((box-sizing: content-box));
       }
     }
   }
@@ -122,7 +125,7 @@
         padding-top: 0.5em;
         margin-bottom: -1em;
         padding-bottom: 1em;
-        @include susy-box-sizing(content-box);
+        @include output((box-sizing: content-box));
       }
     }
   }

@@ -50,9 +50,9 @@
 
   // Collective Output
   @if $box == border-box or ($inside and not $box and not $global-box) {
-    @include susy-box-sizing(border-box);
+    @include output((box-sizing: border-box));
   } @else if $box == content-box {
-    @include susy-box-sizing(content-box);
+    @include output((box-sizing: content-box));
   }
 
   @include float-span-output($output...);

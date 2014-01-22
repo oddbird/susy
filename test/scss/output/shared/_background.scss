@@ -1,7 +1,7 @@
-// Shared Grid Background API Tests
-// ================================
+// Shared Grid Background Output Tests
+// ===================================
 
-@include output-test-module('Grid Background API') {
+@include output-test-module('Grid Background Output') {
 
   // Grid Background Output
   // ----------------------
@@ -27,10 +27,7 @@
       }
       .expect {
         background-image: $image;
-        -webkit-background-size: $size;
         background-size: $size;
-        -webkit-background-origin: $clip;
-        -webkit-background-clip: $clip;
         background-origin: $clip;
         background-clip: $clip;
         background-position: left top;

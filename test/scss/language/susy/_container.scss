@@ -36,7 +36,7 @@
     ) {
       .test { @include container(auto left border-box); }
       .expect {
-        @include susy-box-sizing(border-box);
+        @include output((box-sizing: border-box));
         @include susy-clearfix;
         max-width: 40em;
         margin-left: 0;

@@ -25,8 +25,7 @@
   @if mixin-exists(background-size) {
     @include background-size($size);
   } @else {
-    $prefix: (moz, o, webkit, official);
-    @include susy-prefix(background-size, $size, $prefix);
+    background-size: $size;
   }
 }
 
@@ -40,8 +39,7 @@
   @if mixin-exists(background-origin) {
     @include background-origin($origin);
   } @else {
-    $prefix: (moz, o, webkit, official);
-    @include susy-prefix(background-origin, $origin, $prefix);
+    background-origin: $origin;
   }
 }
 
@@ -55,7 +53,6 @@
   @if mixin-exists(background-clip) {
     @include background-clip($clip);
   } @else {
-    $prefix: (moz, o, webkit, official);
-    @include susy-prefix(background-clip, $clip, $prefix);
+    background-clip: $clip;
   }
 }

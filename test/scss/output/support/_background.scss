@@ -24,15 +24,12 @@
     $size: cover;
     @include assert-setup;
     @include assert-output(
-      'Without Compass, background-size is output with prefixes.'
+      'Without Compass, background-size is output directly.'
     ) {
       .test {
         @include susy-background-size($size);
       }
       .expect {
-        -moz-background-size: $size;
-        -o-background-size: $size;
-        -webkit-background-size: $size;
         background-size: $size;
       }
     }
@@ -43,15 +40,12 @@
     $origin: content-box;
     @include assert-setup;
     @include assert-output(
-      'Without Compass, background-origin is output with prefixes.'
+      'Without Compass, background-origin is output directly.'
     ) {
       .test {
         @include susy-background-origin($origin);
       }
       .expect {
-        -moz-background-origin: $origin;
-        -o-background-origin: $origin;
-        -webkit-background-origin: $origin;
         background-origin: $origin;
       }
     }
@@ -62,15 +56,12 @@
     $clip: border-box;
     @include assert-setup;
     @include assert-output(
-      'Without Compass, background-clip is output with prefixes.'
+      'Without Compass, background-clip is output directly.'
     ) {
       .test {
         @include susy-background-clip($clip);
       }
       .expect {
-        -moz-background-clip: $clip;
-        -o-background-clip: $clip;
-        -webkit-background-clip: $clip;
         background-clip: $clip;
       }
     }

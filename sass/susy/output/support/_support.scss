@@ -1,6 +1,20 @@
 // Browser Support
 // ===============
 
+// Susy Support Defaults
+// ---------------------
+// - PRIVATE
+@include susy-defaults((
+  support: (
+    background-image: true,
+    background-options: false,
+    box-sizing: true,
+    clearfix: false,
+    rem: false,
+  ),
+));
+
+
 // Susy Support
 // ------------
 // Send property-value pairs to the proper support modules.
@@ -11,18 +25,18 @@
   $val
 ) {
   // Background Support
-  @if $prop == background-image {
+  @if $prop == background-image and susy-get(support background-image) {
     @include susy-background-image($val);
-  } @else if $prop == background-size {
+  } @else if $prop == background-size and susy-get(support background-options) {
     @include susy-background-size($val);
-  } @else if $prop == background-origin {
+  } @else if $prop == background-origin and susy-get(support background-options) {
     @include susy-background-origin($val);
-  } @else if $prop == background-clip {
+  } @else if $prop == background-clip and susy-get(support background-options) {
     @include susy-background-clip($val);
   }
 
   // Box-Sizing Support
-  @else if $prop == box-sizing {
+  @else if $prop == box-sizing and susy-get(support box-sizing) {
     @include susy-box-sizing($val);
   }
 

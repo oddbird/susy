@@ -6,15 +6,12 @@
 // --------
 // Check for an existing support mixin, or provide a simple fallback.
 @mixin susy-clearfix {
-  @if mixin-exists(clearfix) {
+  @if susy-get(support clearfix) and mixin-exists(clearfix) {
     @include clearfix;
   } @else {
-    *zoom: 1;
-    &::before, &::after {
-      content: " ";
-      display: table;
-    }
     &::after {
+      content: "";
+      display: table;
       clear: both;
     }
   }

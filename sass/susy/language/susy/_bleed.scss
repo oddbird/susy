@@ -10,7 +10,10 @@
 ) {
   $output: get-bleed($bleed);
 
-  @include susy-box-sizing(content-box);
+  @if susy-get(global-box-sizing) != content-box {
+    $output: map-merge((box-sizing: content-box), $output);
+  }
+
   @include output($output);
 }
 

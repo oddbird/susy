@@ -12,7 +12,7 @@ end
 
 # Set SAME_VERSION when moving to a new major version and you want to specify the new version
 # explicitly instead of bumping the current version.
-# E.g. rake build SAME_VERSION=susy
+# E.g. rake build SAME_VERSION=True
 spec.bump! unless ENV["SAME_VERSION"]
 
 desc "Run tests and build susy-#{spec.version}.gem"

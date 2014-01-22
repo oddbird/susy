@@ -4,13 +4,26 @@ Changelog
 2.0.0.rc.1 — UNRELEASED
 -----------------------
 
-- Add internal browser-support module.
+- Add browser support module with ``support`` defaults
+  for ``background-image``, ``-options`` (``-size``, ``-clip``, ``-origin``),
+  ``box-sizing``, ``clearfix``, and ``rem``.
+  If you set to ``false``,
+  we'll make sure everything works well on modern browsers.
+  If you set to ``true``,
+  we'll check for existing mixins (e.g. from Compass or Bourbon)
+  to provide more powerful legacy support.
 
-  + Includes support for Compass ``$rem-with-px-fallback``!
-  + Use ``background-image``, ``-size``, ``-clip``, ``-origin``,
-    ``box-sizing``, and ``clearfix``
-    mixins when available (e.g. from Compass or Bourbon).
-    Otherwise, fall back on basic Susy support settings.
+  .. code-block: scss
+
+    $susy: (
+      support: (
+        background-image: true,
+        background-options: false,
+        box-sizing: true,
+        clearfix: false,
+        rem: false,
+      ),
+    );
 
 
 2.0.0.beta.3 — Jan 10 2014

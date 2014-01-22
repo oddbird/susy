@@ -3,6 +3,17 @@
 /* ========== */
 /*  
 
+### Map Helpers ------ */
+/*  - truncate-list (1 Assertions, 1 Passed, 0 Failed) */
+/*  - deep-get (1 Assertions, 1 Passed, 0 Failed) */
+/*  - deep-set (2 Assertions, 2 Passed, 0 Failed) */
+/*  - deep-has-key (2 Assertions, 2 Passed, 0 Failed) */
+/*  
+    4 Tests:
+    - 4 Passed
+    - 0 Failed */
+/*  
+
 ### General Settings ------ */
 /*  - susy-defaults (2 Assertions, 2 Passed, 0 Failed) */
 /*  
@@ -21,17 +32,6 @@
 /*  
     6 Tests:
     - 6 Passed
-    - 0 Failed */
-/*  
-
-### Map Helpers ------ */
-/*  - truncate-list (1 Assertions, 1 Passed, 0 Failed) */
-/*  - deep-get (1 Assertions, 1 Passed, 0 Failed) */
-/*  - deep-set (2 Assertions, 2 Passed, 0 Failed) */
-/*  - deep-has-key (2 Assertions, 2 Passed, 0 Failed) */
-/*  
-    4 Tests:
-    - 4 Passed
     - 0 Failed */
 /*  
 
@@ -105,17 +105,8 @@
 /* "Items should have a 7-column grid with outside gutters." */
 .test__background-grid .assert__outside .test {
   background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 66.66667%, transparent 66.66667%);
-  -moz-background-size: 15%;
-  -o-background-size: 15%;
-  -webkit-background-size: 15%;
   background-size: 15%;
-  -moz-background-origin: content-box;
-  -o-background-origin: content-box;
-  -webkit-background-origin: content-box;
   background-origin: content-box;
-  -moz-background-clip: content-box;
-  -o-background-clip: content-box;
-  -webkit-background-clip: content-box;
   background-clip: content-box;
   background-position: left top;
 }
@@ -133,17 +124,8 @@
 /* "Items should have a 8-column grid with split gutters." */
 .test__background-grid .assert__split .test {
   background-image: linear-gradient(to right, transparent 10%, rgba(102, 102, 255, 0.25) 10%, rgba(179, 179, 255, 0.25) 90%, transparent 90%);
-  -moz-background-size: 12.5%;
-  -o-background-size: 12.5%;
-  -webkit-background-size: 12.5%;
   background-size: 12.5%;
-  -moz-background-origin: content-box;
-  -o-background-origin: content-box;
-  -webkit-background-origin: content-box;
   background-origin: content-box;
-  -moz-background-clip: content-box;
-  -o-background-clip: content-box;
-  -webkit-background-clip: content-box;
   background-clip: content-box;
   background-position: left top;
 }
@@ -161,17 +143,8 @@
 /* "Items should have a 8-column grid with inside gutters." */
 .test__background-grid .assert__inside .test {
   background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25));
-  -moz-background-size: 12.5%;
-  -o-background-size: 12.5%;
-  -webkit-background-size: 12.5%;
   background-size: 12.5%;
-  -moz-background-origin: content-box;
-  -o-background-origin: content-box;
-  -webkit-background-origin: content-box;
   background-origin: content-box;
-  -moz-background-clip: content-box;
-  -o-background-clip: content-box;
-  -webkit-background-clip: content-box;
   background-clip: content-box;
   background-position: left top;
 }
@@ -189,13 +162,7 @@
 /* "Items should have a (1 2 3 2 1)-column grid with outside gutters." */
 .test__background-grid .assert__asym-outside .test {
   background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 9.09091%, transparent 9.09091%, transparent 13.63636%, rgba(102, 102, 255, 0.25) 13.63636%, rgba(179, 179, 255, 0.25) 31.81818%, transparent 31.81818%, transparent 36.36364%, rgba(102, 102, 255, 0.25) 36.36364%, rgba(179, 179, 255, 0.25) 63.63636%, transparent 63.63636%, transparent 68.18182%, rgba(102, 102, 255, 0.25) 68.18182%, rgba(179, 179, 255, 0.25) 86.36364%, transparent 86.36364%, transparent 90.90909%, rgba(102, 102, 255, 0.25) 90.90909%, rgba(179, 179, 255, 0.25));
-  -moz-background-origin: content-box;
-  -o-background-origin: content-box;
-  -webkit-background-origin: content-box;
   background-origin: content-box;
-  -moz-background-clip: content-box;
-  -o-background-clip: content-box;
-  -webkit-background-clip: content-box;
   background-clip: content-box;
   background-position: left top;
 }
@@ -211,13 +178,7 @@
 /* "Items should have a (1 2 3 3)-column grid with split gutters." */
 .test__background-grid .assert__asym-split .test {
   background-image: linear-gradient(to right, transparent 1.25%, rgba(102, 102, 255, 0.25) 1.25%, rgba(179, 179, 255, 0.25) 11.25%, transparent 11.25%, transparent 13.75%, rgba(102, 102, 255, 0.25) 13.75%, rgba(179, 179, 255, 0.25) 33.75%, transparent 33.75%, transparent 36.25%, rgba(102, 102, 255, 0.25) 36.25%, rgba(179, 179, 255, 0.25) 66.25%, transparent 66.25%, transparent 68.75%, rgba(102, 102, 255, 0.25) 68.75%, rgba(179, 179, 255, 0.25) 98.75%, transparent 98.75%);
-  -moz-background-origin: content-box;
-  -o-background-origin: content-box;
-  -webkit-background-origin: content-box;
   background-origin: content-box;
-  -moz-background-clip: content-box;
-  -o-background-clip: content-box;
-  -webkit-background-clip: content-box;
   background-clip: content-box;
   background-position: left top;
 }
@@ -233,13 +194,7 @@
 /* "Items should have a (1 2 3 3)-column grid with inside gutters." */
 .test__background-grid .assert__asym-inside .test {
   background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 12.5%, rgba(102, 102, 255, 0.25) 12.5%, rgba(179, 179, 255, 0.25) 35%, rgba(102, 102, 255, 0.25) 35%, rgba(179, 179, 255, 0.25) 67.5%, rgba(102, 102, 255, 0.25) 67.5%, rgba(179, 179, 255, 0.25));
-  -moz-background-origin: content-box;
-  -o-background-origin: content-box;
-  -webkit-background-origin: content-box;
   background-origin: content-box;
-  -moz-background-clip: content-box;
-  -o-background-clip: content-box;
-  -webkit-background-clip: content-box;
   background-clip: content-box;
   background-position: left top;
 }
@@ -269,34 +224,21 @@
 /* - [mixin] container */
 /* "Containers should have 80% max-width and show a 7 .5 grid." */
 .test__container .assert__default-box .test {
-  *zoom: 1;
   max-width: 80%;
   margin-left: auto;
   margin-right: auto;
   background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 66.66667%, transparent 66.66667%);
-  -moz-background-size: 15%;
-  -o-background-size: 15%;
-  -webkit-background-size: 15%;
   background-size: 15%;
-  -moz-background-origin: content-box;
-  -o-background-origin: content-box;
-  -webkit-background-origin: content-box;
   background-origin: content-box;
-  -moz-background-clip: content-box;
-  -o-background-clip: content-box;
-  -webkit-background-clip: content-box;
   background-clip: content-box;
   background-position: left top;
 }
-.test__container .assert__default-box .test::before, .test__container .assert__default-box .test::after {
-  content: " ";
-  display: table;
-}
 .test__container .assert__default-box .test::after {
+  content: "";
+  display: table;
   clear: both;
 }
 .test__container .assert__default-box .expect {
-  *zoom: 1;
   max-width: 80%;
   margin-left: auto;
   margin-right: auto;
@@ -309,11 +251,9 @@
   background-clip: content-box;
   background-position: left top;
 }
-.test__container .assert__default-box .expect::before, .test__container .assert__default-box .expect::after {
-  content: " ";
-  display: table;
-}
 .test__container .assert__default-box .expect::after {
+  content: "";
+  display: table;
   clear: both;
 }
 
@@ -322,33 +262,23 @@
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
-  *zoom: 1;
   max-width: 40em;
   margin-left: 0;
   margin-right: auto;
   background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, transparent 10%, transparent 12.5%, rgba(102, 102, 255, 0.25) 12.5%, rgba(179, 179, 255, 0.25) 32.5%, transparent 32.5%, transparent 35%, rgba(102, 102, 255, 0.25) 35%, rgba(179, 179, 255, 0.25) 65%, transparent 65%, transparent 67.5%, rgba(102, 102, 255, 0.25) 67.5%, rgba(179, 179, 255, 0.25) 87.5%, transparent 87.5%, transparent 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
-  -moz-background-origin: content-box;
-  -o-background-origin: content-box;
-  -webkit-background-origin: content-box;
   background-origin: content-box;
-  -moz-background-clip: content-box;
-  -o-background-clip: content-box;
-  -webkit-background-clip: content-box;
   background-clip: content-box;
   background-position: left top;
 }
-.test__container .assert__border-box .test::before, .test__container .assert__border-box .test::after {
-  content: " ";
-  display: table;
-}
 .test__container .assert__border-box .test::after {
+  content: "";
+  display: table;
   clear: both;
 }
 .test__container .assert__border-box .expect {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
-  *zoom: 1;
   max-width: 40em;
   margin-left: 0;
   margin-right: auto;
@@ -359,11 +289,9 @@
   background-clip: content-box;
   background-position: left top;
 }
-.test__container .assert__border-box .expect::before, .test__container .assert__border-box .expect::after {
-  content: " ";
-  display: table;
-}
 .test__container .assert__border-box .expect::after {
+  content: "";
+  display: table;
   clear: both;
 }
 
@@ -1130,9 +1058,6 @@
 /* - [mixin] bleed */
 /* "Items should bleed 1 column outside their nested context" */
 .test__bleed .assert__simple .test {
-  -moz-box-sizing: content-box;
-  -webkit-box-sizing: content-box;
-  box-sizing: content-box;
   margin-right: -15%;
   margin-left: -15%;
   padding-right: 15%;
@@ -1150,9 +1075,6 @@
 
 /* "Items should bleed 1em on all sides, and retain their static gutters" */
 .test__bleed .assert__inside .test {
-  -moz-box-sizing: content-box;
-  -webkit-box-sizing: content-box;
-  box-sizing: content-box;
   margin: -1em;
   padding: 1em 1.5em;
 }
@@ -1166,9 +1088,6 @@
 
 /* "Items should bleed 1 column horizontal, and retain gutters." */
 .test__bleed .assert__split .test {
-  -moz-box-sizing: content-box;
-  -webkit-box-sizing: content-box;
-  box-sizing: content-box;
   margin-right: -12.5%;
   margin-left: -12.5%;
   padding-right: 12.5%;
@@ -1187,9 +1106,6 @@
 /* - [mixin] bleed-x */
 /* "Items should bleed 1 column left, and 2 columns right" */
 .test__bleed-x .assert__simple .test {
-  -moz-box-sizing: content-box;
-  -webkit-box-sizing: content-box;
-  box-sizing: content-box;
   margin-right: -30%;
   margin-left: -15%;
   padding-right: 30%;
@@ -1207,9 +1123,6 @@
 
 /* "Items should bleed 1 column, and retain their gutters" */
 .test__bleed-x .assert__inside .test {
-  -moz-box-sizing: content-box;
-  -webkit-box-sizing: content-box;
-  box-sizing: content-box;
   margin-right: -12.5%;
   margin-left: -12.5%;
   padding-right: 13.75%;
@@ -1228,9 +1141,6 @@
 /* - [mixin] bleed-y */
 /* "Items should bleed .5em top, and 1em bottom." */
 .test__bleed-y .assert__simple .test {
-  -moz-box-sizing: content-box;
-  -webkit-box-sizing: content-box;
-  box-sizing: content-box;
   margin-top: -0.5em;
   margin-bottom: -1em;
   padding-top: 0.5em;
@@ -1286,31 +1196,19 @@
     - 0 Failed */
 /*
 
-### Grid Background API ------ */
+### Grid Background Output ------ */
 /* - [mixin] background-grid-output */
 /* "Elements should show a horizontal clipped red-green-blue gradient, and a vertical baseline" */
 .test__background-grid-output .assert__show .test {
   background-image: linear-gradient(to right, #ffcccc, #ccffcc 25%, #ccccff), linear-gradient(to bottom, black 5%, transparent 5%);
-  -moz-background-size: auto, 100% 16px;
-  -o-background-size: auto, 100% 16px;
-  -webkit-background-size: auto, 100% 16px;
   background-size: auto, 100% 16px;
-  -moz-background-origin: content-box, border-box;
-  -o-background-origin: content-box, border-box;
-  -webkit-background-origin: content-box, border-box;
   background-origin: content-box, border-box;
-  -moz-background-clip: content-box, border-box;
-  -o-background-clip: content-box, border-box;
-  -webkit-background-clip: content-box, border-box;
   background-clip: content-box, border-box;
   background-position: left top;
 }
 .test__background-grid-output .assert__show .expect {
   background-image: linear-gradient(to right, #ffcccc, #ccffcc 25%, #ccccff), linear-gradient(to bottom, black 5%, transparent 5%);
-  -webkit-background-size: auto, 100% 16px;
   background-size: auto, 100% 16px;
-  -webkit-background-origin: content-box, border-box;
-  -webkit-background-clip: content-box, border-box;
   background-origin: content-box, border-box;
   background-clip: content-box, border-box;
   background-position: left top;
@@ -1413,47 +1311,29 @@
 }
 
 /* - [mixin] susy-background-size */
-/* "Without Compass, background-size is output with prefixes." */
+/* "Without Compass, background-size is output directly." */
 .test__susy-background-size .assert__susy-background-size .test {
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  -webkit-background-size: cover;
   background-size: cover;
 }
 .test__susy-background-size .assert__susy-background-size .expect {
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  -webkit-background-size: cover;
   background-size: cover;
 }
 
 /* - [mixin] susy-background-origin */
-/* "Without Compass, background-origin is output with prefixes." */
+/* "Without Compass, background-origin is output directly." */
 .test__susy-background-origin .assert__susy-background-origin .test {
-  -moz-background-origin: content-box;
-  -o-background-origin: content-box;
-  -webkit-background-origin: content-box;
   background-origin: content-box;
 }
 .test__susy-background-origin .assert__susy-background-origin .expect {
-  -moz-background-origin: content-box;
-  -o-background-origin: content-box;
-  -webkit-background-origin: content-box;
   background-origin: content-box;
 }
 
 /* - [mixin] susy-background-clip */
-/* "Without Compass, background-clip is output with prefixes." */
+/* "Without Compass, background-clip is output directly." */
 .test__susy-background-clip .assert__susy-background-clip .test {
-  -moz-background-clip: border-box;
-  -o-background-clip: border-box;
-  -webkit-background-clip: border-box;
   background-clip: border-box;
 }
 .test__susy-background-clip .assert__susy-background-clip .expect {
-  -moz-background-clip: border-box;
-  -o-background-clip: border-box;
-  -webkit-background-clip: border-box;
   background-clip: border-box;
 }
 
@@ -1493,14 +1373,9 @@
 ### Clearfix Support ------ */
 /* - [mixin] susy-clearfix */
 /* "Elements should clear floated children." */
-.test__susy-clearfix .assert__clearfix .test {
-  *zoom: 1;
-}
-.test__susy-clearfix .assert__clearfix .test::before, .test__susy-clearfix .assert__clearfix .test::after {
-  content: " ";
-  display: table;
-}
 .test__susy-clearfix .assert__clearfix .test::after {
+  content: "";
+  display: table;
   clear: both;
 }
 .test__susy-clearfix .assert__clearfix .expect {
@@ -1540,16 +1415,13 @@
 /* - [mixin] float-container */
 /* "Containers should be 30em wide, flush left." */
 .test__float-container .assert__float-container .test {
-  *zoom: 1;
   max-width: 30em;
   margin-left: 0;
   margin-right: auto;
 }
-.test__float-container .assert__float-container .test::before, .test__float-container .assert__float-container .test::after {
-  content: " ";
-  display: table;
-}
 .test__float-container .assert__float-container .test::after {
+  content: "";
+  display: table;
   clear: both;
 }
 .test__float-container .assert__float-container .expect {

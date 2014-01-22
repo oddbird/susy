@@ -10,7 +10,9 @@
   $prop,
   $val
 ) {
-  @if variable-exists(rem-with-px-fallback) and mixin-exists(rem) {
+  $_var: variable-exists(rem-with-px-fallback);
+  $_mix: mixin-exists(rem);
+  @if $_var and $_mix and susy-get(support rem) {
     @include rem($prop, $val);
   } @else {
     #{$prop}: $val;

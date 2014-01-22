@@ -47,7 +47,7 @@
     ) {
       .test { @include gallery(2); }
       .expect {
-        @include susy-box-sizing(border-box);
+        @include output((box-sizing: border-box));
         width: 25.0%;
         float: left;
         padding-left: 1.25%;
@@ -85,7 +85,7 @@
     ) {
       .test { @include gallery(2); }
       .expect {
-        @include susy-box-sizing(border-box);
+        @include output((box-sizing: border-box));
         width: 33.33333%;
         float: left;
         padding-left: 2em;

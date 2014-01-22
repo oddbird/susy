@@ -337,7 +337,7 @@ $susy-overlay-grid-head-exists: false;
 
         $return: map-merge($return, (
           image: if($image, map-merge($image, $baseline), $baseline),
-          size: if($size, append($size, $baseline-size, comma), $baseline-size),
+          size: if($size, ($size, $baseline-size), $baseline-size),
         ));
       }
 

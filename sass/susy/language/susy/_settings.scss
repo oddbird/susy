@@ -57,7 +57,8 @@ $susy-keywords: (
       @if type-of($item) == string {
         @each $key, $value in $susy-keywords {
           @if index($value, $item) {
-            $_return: _susy-deep-set($_return, $key, $item);
+            $_key-value: append($key, $item);
+            $_return: _susy-deep-set($_return, $_key-value...);
           }
         }
       // maps

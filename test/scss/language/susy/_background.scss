@@ -301,7 +301,7 @@
     @include assert-equal($test, $expect,
       'Returns proper default debug value.');
 
-    @include susy-set(debug color, red);
+    @include susy-set(debug, color, red);
 
     // user
     $test: debug-get(color);

@@ -39,10 +39,9 @@ $susy: () !default;
 // - $key   : setting name
 // - $value : setting value
 @mixin susy-set(
-  $key,
-  $value
+  $key-value...
 ) {
-  $susy: _susy-deep-set($susy, $key, $value) !global;
+  $susy: _susy-deep-set($susy, $key-value...) !global;
 }
 
 

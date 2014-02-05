@@ -335,7 +335,7 @@ $rem-with-px-fallback               : true !default;
 // Return the nearest layout (column-count) above a given breakpoint.
 //
 // $min : The min-width media-query breakpoint above which to establish a new layout.
-@function get-layout (
+@function get-layout( 
   $min
 ) {
   $min      : fix-ems($min);

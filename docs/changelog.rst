@@ -2,6 +2,12 @@ Changelog
 =========
 
 
+2.0.0.beta.4 — UNRELEASED
+-------------------------
+
+- Fix bugs caused by Sass changes to ``str-index()`` and ``#{&}``.
+
+
 2.0.0.beta.3 — Jan 10 2014
 --------------------------
 
@@ -10,6 +16,7 @@ Changelog
   with updated Sass and Compass.
 
   + ``@import 'susyone';``
+
 
 2.0.0.beta.2 — Jan 6 2014
 -------------------------

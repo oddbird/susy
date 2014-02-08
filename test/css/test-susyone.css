@@ -1,3 +1,5 @@
+/* Susy Tests */
+/* ========== */
 .background {
   background-image: -moz-linear-gradient(left, rgba(0, 0, 0, 0) 0%, rgba(121, 121, 229, 0.25) 0%, rgba(79, 79, 221, 0.25) 6.77966%, rgba(0, 0, 0, 0) 6.77966%, rgba(0, 0, 0, 0) 8.47458%, rgba(121, 121, 229, 0.25) 8.47458%, rgba(79, 79, 221, 0.25) 15.25424%, rgba(0, 0, 0, 0) 15.25424%, rgba(0, 0, 0, 0) 16.94915%, rgba(121, 121, 229, 0.25) 16.94915%, rgba(79, 79, 221, 0.25) 23.72881%, rgba(0, 0, 0, 0) 23.72881%, rgba(0, 0, 0, 0) 25.42373%, rgba(121, 121, 229, 0.25) 25.42373%, rgba(79, 79, 221, 0.25) 32.20339%, rgba(0, 0, 0, 0) 32.20339%, rgba(0, 0, 0, 0) 33.89831%, rgba(121, 121, 229, 0.25) 33.89831%, rgba(79, 79, 221, 0.25) 40.67797%, rgba(0, 0, 0, 0) 40.67797%, rgba(0, 0, 0, 0) 42.37288%, rgba(121, 121, 229, 0.25) 42.37288%, rgba(79, 79, 221, 0.25) 49.15254%, rgba(0, 0, 0, 0) 49.15254%, rgba(0, 0, 0, 0) 50.84746%, rgba(121, 121, 229, 0.25) 50.84746%, rgba(79, 79, 221, 0.25) 57.62712%, rgba(0, 0, 0, 0) 57.62712%, rgba(0, 0, 0, 0) 59.32203%, rgba(121, 121, 229, 0.25) 59.32203%, rgba(79, 79, 221, 0.25) 66.10169%, rgba(0, 0, 0, 0) 66.10169%, rgba(0, 0, 0, 0) 67.79661%, rgba(121, 121, 229, 0.25) 67.79661%, rgba(79, 79, 221, 0.25) 74.57627%, rgba(0, 0, 0, 0) 74.57627%, rgba(0, 0, 0, 0) 76.27119%, rgba(121, 121, 229, 0.25) 76.27119%, rgba(79, 79, 221, 0.25) 83.05085%, rgba(0, 0, 0, 0) 83.05085%, rgba(0, 0, 0, 0) 84.74576%, rgba(121, 121, 229, 0.25) 84.74576%, rgba(79, 79, 221, 0.25) 91.52542%, rgba(0, 0, 0, 0) 91.52542%, rgba(0, 0, 0, 0) 93.22034%, rgba(121, 121, 229, 0.25) 93.22034%, rgba(79, 79, 221, 0.25) 100.0%, rgba(0, 0, 0, 0) 100.0%, rgba(0, 0, 0, 0) 100%);
   background-image: -o-linear-gradient(left, rgba(0, 0, 0, 0) 0%, rgba(121, 121, 229, 0.25) 0%, rgba(79, 79, 221, 0.25) 6.77966%, rgba(0, 0, 0, 0) 6.77966%, rgba(0, 0, 0, 0) 8.47458%, rgba(121, 121, 229, 0.25) 8.47458%, rgba(79, 79, 221, 0.25) 15.25424%, rgba(0, 0, 0, 0) 15.25424%, rgba(0, 0, 0, 0) 16.94915%, rgba(121, 121, 229, 0.25) 16.94915%, rgba(79, 79, 221, 0.25) 23.72881%, rgba(0, 0, 0, 0) 23.72881%, rgba(0, 0, 0, 0) 25.42373%, rgba(121, 121, 229, 0.25) 25.42373%, rgba(79, 79, 221, 0.25) 32.20339%, rgba(0, 0, 0, 0) 32.20339%, rgba(0, 0, 0, 0) 33.89831%, rgba(121, 121, 229, 0.25) 33.89831%, rgba(79, 79, 221, 0.25) 40.67797%, rgba(0, 0, 0, 0) 40.67797%, rgba(0, 0, 0, 0) 42.37288%, rgba(121, 121, 229, 0.25) 42.37288%, rgba(79, 79, 221, 0.25) 49.15254%, rgba(0, 0, 0, 0) 49.15254%, rgba(0, 0, 0, 0) 50.84746%, rgba(121, 121, 229, 0.25) 50.84746%, rgba(79, 79, 221, 0.25) 57.62712%, rgba(0, 0, 0, 0) 57.62712%, rgba(0, 0, 0, 0) 59.32203%, rgba(121, 121, 229, 0.25) 59.32203%, rgba(79, 79, 221, 0.25) 66.10169%, rgba(0, 0, 0, 0) 66.10169%, rgba(0, 0, 0, 0) 67.79661%, rgba(121, 121, 229, 0.25) 67.79661%, rgba(79, 79, 221, 0.25) 74.57627%, rgba(0, 0, 0, 0) 74.57627%, rgba(0, 0, 0, 0) 76.27119%, rgba(121, 121, 229, 0.25) 76.27119%, rgba(79, 79, 221, 0.25) 83.05085%, rgba(0, 0, 0, 0) 83.05085%, rgba(0, 0, 0, 0) 84.74576%, rgba(121, 121, 229, 0.25) 84.74576%, rgba(79, 79, 221, 0.25) 91.52542%, rgba(0, 0, 0, 0) 91.52542%, rgba(0, 0, 0, 0) 93.22034%, rgba(121, 121, 229, 0.25) 93.22034%, rgba(79, 79, 221, 0.25) 100.0%, rgba(0, 0, 0, 0) 100.0%, rgba(0, 0, 0, 0) 100%);
@@ -12,4 +14,358 @@
   -o-background-clip: content-box;
   -webkit-background-clip: content;
   background-clip: content-box;
+}
+
+.bleed-columns {
+  margin-left: -25.42373%;
+  padding-left: 25.42373%;
+  margin-right: -25.42373%;
+  padding-right: 25.42373%;
+}
+
+.bleed-length {
+  margin-left: -3em;
+  padding-left: 3em;
+  margin-right: -3em;
+  padding-right: 3em;
+}
+
+.bleed-sides {
+  margin-top: -4%;
+  padding-top: 4%;
+  margin-bottom: -4%;
+  padding-bottom: 4%;
+}
+
+/*  
+
+### susyone functions ------ */
+/*  - container-outer-width (4 Assertions, 4 Passed, 0 Failed) */
+/*  - get-layout (1 Assertions, 1 Passed, 0 Failed) */
+/*  
+    2 Tests:
+    - 2 Passed
+    - 0 Failed */
+.container {
+  *zoom: 1;
+  max-width: 59em;
+  _width: 59em;
+  padding-left: 1em;
+  padding-right: 1em;
+  margin-left: auto;
+  margin-right: auto;
+}
+.container:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.complex-container {
+  *zoom: 1;
+  max-width: 59em;
+  _width: 59em;
+  padding-left: 1em;
+  padding-right: 1em;
+  margin-left: auto;
+  margin-right: auto;
+}
+.complex-container:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+@media (min-width: 69em) {
+  .complex-container {
+    max-width: 69em;
+  }
+}
+
+.span-columns {
+  width: 49.15254%;
+  float: right;
+  margin-right: 0;
+  *margin-left: -1em;
+  display: inline;
+}
+
+.span-columns-with-padding {
+  padding-left: 1.69492%;
+  padding-right: 3.38983%;
+  width: 44.0678%;
+  float: right;
+  margin-right: 0;
+  *margin-left: -1em;
+  display: inline;
+}
+
+.reset-columns {
+  float: none;
+  width: auto;
+  margin-right: auto;
+  *margin-left: auto;
+  display: block;
+}
+
+.omega {
+  float: right;
+  margin-right: 0;
+  *margin-left: -1em;
+  display: inline;
+}
+
+.nth-omega:last-child {
+  float: right;
+  margin-right: 0;
+}
+
+.remove-omega {
+  float: left;
+  margin-right: 1.69492%;
+  *margin-left: auto;
+}
+
+.remove-nth-omega:last-child {
+  float: left;
+  margin-right: 1.69492%;
+}
+
+/* ---------------------------------------------------------------------------
+/* Border-Box Sizing */
+* {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.container {
+  *zoom: 1;
+  max-width: 61em;
+  _width: 61em;
+  padding-left: 1em;
+  padding-right: 1em;
+  margin-left: auto;
+  margin-right: auto;
+}
+.container:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.span-columns-with-padding {
+  padding-left: 1.69492%;
+  padding-right: 3.38983%;
+  width: 49.15254%;
+  float: right;
+  margin-right: 0;
+  *margin-left: -1em;
+  display: inline;
+}
+
+/* ---------------------------------------------------------------------------
+/* Static output */
+.static {
+  width: 9em;
+  float: left;
+  margin-right: 1em;
+  display: inline;
+}
+
+.force-fluid {
+  width: 15.25424%;
+  float: left;
+  margin-right: 1.69492%;
+  display: inline;
+  margin-left: 8.47458%;
+  margin-right: 8.47458%;
+}
+
+.isolate {
+  margin-right: -100%;
+  margin-left: 16.94915%;
+}
+
+.isolate-grid {
+  width: 24.05063%;
+  float: left;
+  margin-right: 1.26582%;
+  display: inline;
+  margin-right: -100%;
+}
+.isolate-grid:nth-child(4n + 1) {
+  margin-left: 0%;
+  clear: left;
+}
+.isolate-grid:nth-child(4n + 2) {
+  margin-left: 25.31646%;
+  clear: none;
+}
+.isolate-grid:nth-child(4n + 3) {
+  margin-left: 50.63291%;
+  clear: none;
+}
+.isolate-grid:nth-child(4n + 4) {
+  margin-left: 75.94937%;
+  clear: none;
+}
+
+.isolate-grid-for-nth-of-type {
+  width: 24.05063%;
+  float: left;
+  margin-right: 1.26582%;
+  display: inline;
+  margin-right: -100%;
+}
+.isolate-grid-for-nth-of-type:nth-of-type(4n + 1) {
+  margin-left: 0%;
+  clear: left;
+}
+.isolate-grid-for-nth-of-type:nth-of-type(4n + 2) {
+  margin-left: 25.31646%;
+  clear: none;
+}
+.isolate-grid-for-nth-of-type:nth-of-type(4n + 3) {
+  margin-left: 50.63291%;
+  clear: none;
+}
+.isolate-grid-for-nth-of-type:nth-of-type(4n + 4) {
+  margin-left: 75.94937%;
+  clear: none;
+}
+
+.pre {
+  margin-left: 25.42373%;
+}
+
+.post {
+  margin-right: 33.89831%;
+}
+
+.push {
+  margin-left: 25.42373%;
+}
+
+.pull {
+  margin-left: -33.89831%;
+}
+
+.squish {
+  margin-left: 12.82051%;
+  margin-right: 25.64103%;
+}
+
+.layout {
+  *zoom: 1;
+  max-width: 19em;
+  _width: 19em;
+  padding-left: 1em;
+  padding-right: 1em;
+  margin-left: auto;
+  margin-right: auto;
+}
+.layout:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+@media (min-width: 29em) {
+  .breakpoint .break6 {
+    *zoom: 1;
+    max-width: 29em;
+    padding-left: 1em;
+    padding-right: 1em;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .breakpoint .break6:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+  .breakpoint .nth-omega:nth-child(3n) {
+    float: right;
+    margin-right: 0;
+  }
+}
+@media (min-width: 30em) and (max-width: 60em) {
+  .breakpoint .break60-8-30 {
+    max-width: 39em;
+  }
+}
+@media (min-width: 119em) {
+  .breakpoint .break-ltie9 {
+    max-width: 119em;
+    *zoom: 1;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+  }
+}
+.lt-ie9 .breakpoint .break-ltie9 {
+  max-width: 119em;
+  _width: 119em;
+  *zoom: 1;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+}
+
+.with-settings6-3-2-1 {
+  *zoom: 1;
+  max-width: 28em;
+  _width: 28em;
+  padding-left: 1em;
+  padding-right: 1em;
+  margin-left: auto;
+  margin-right: auto;
+}
+.with-settings6-3-2-1:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.with-settings6-3r-2r-1r {
+  *zoom: 1;
+  max-width: 504px;
+  max-width: 28rem;
+  _width: 504px;
+  padding-left: 18px;
+  padding-left: 1rem;
+  padding-right: 18px;
+  padding-right: 1rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+.with-settings6-3r-2r-1r:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+@media (min-width: 33.75em) and (max-width: 67.5em) {
+  .break60r-8-30r {
+    max-width: 684px;
+    max-width: 38rem;
+  }
+}
+@media (min-width: 33.75em) and (max-width: 67.5em) {
+  .break60-8-30 {
+    max-width: 684px;
+    max-width: 38rem;
+  }
+}
+.prefix {
+  padding-left: 16.94915%;
+}
+
+.suffix {
+  padding-right: 22.72727%;
+}
+
+.pad {
+  padding-left: 20.40816%;
+  padding-right: 40.81633%;
 }

@@ -1,11 +1,7 @@
-// ---------------------------------------------------------------------------
-// Imports
-
-@import "susyone";
-@import "compass/css3/border-radius";
-
-// ---------------------------------------------------------------------------
 // Media
+// =====
+
+@import "compass/css3/border-radius";
 
 @include layout(4) {
   .layout { @include container; }

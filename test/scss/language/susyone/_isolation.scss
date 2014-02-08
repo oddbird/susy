@@ -1,0 +1,14 @@
+// Isolation
+// =========
+
+.isolate {
+  @include isolate(3);
+}
+
+.isolate-grid {
+  @include isolate-grid(4,16);
+}
+
+.isolate-grid-for-nth-of-type {
+  @include isolate-grid(4,16, 'of-type');
+}

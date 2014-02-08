@@ -1,0 +1,22 @@
+// Margin
+// ======
+
+.pre {
+  @include pre(3);
+}
+
+.post {
+  @include post(4,12);
+}
+
+.push {
+  @include push(3);
+}
+
+.pull {
+  @include pull(4,12);
+}
+
+.squish {
+  @include squish(1,2,8);
+}

@@ -31,7 +31,7 @@ end
 
 desc "run the tests"
 task :test do
-  sh "cd test && bundle install --quiet && bundle exec compass compile 2> error.output > /dev/null --force && cd - > /dev/null", :verbose => false
+  sh "cd test && bundle install --quiet && bundle exec compass compile . scss/test.scss 2> error.output > /dev/null --force && cd - > /dev/null", :verbose => false
   open("test/error.output") do |f|
     if f.read =~ /(.*):\d+.* (\d+) Passed.* (\d+) Failed/
       unless $3 == "0"

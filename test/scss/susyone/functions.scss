@@ -10,24 +10,51 @@
 @include test-module("susyone functions") {
 
   @include test("container-outer-width") {
-
     $width: container-outer-width();
     $expect: 59em;
     @include assert-equal($width, $expect,
       "Returns the correct outer width of a default container."
+    );    
+    $width: container-outer-width(8);
+    $expect: 39em;
+    @include assert-equal($width, $expect,
+      "Returns the correct outer width whith specified columns."
     );
-    // .container-outer-width-explicit {
-    //   width: container-outer-width(8);
-    // }
-    // .container-outer-width-explicit {
-    //   width: container-outer-width(8, 80%);
-    // }
+    $width: container-outer-width(12, 80em);
+    $expect: 78em;
+    @include assert-equal($width, $expect,
+      "Returns correct outer width when columns and outerwidth is specified."
+    );
+    $border-box-sizing: true !global;
+    $width: container-outer-width(12, 80%);
+    $expect: 80%;
+    @include assert-equal($width, $expect,
+      "Returns correct outer width when columns and outerwidth is specified."
+    );
+    $border-box-sizing: false !global;
   }
-
+  
   @include test("get-layout") {
     $test: get-layout(30em);
     $expect: 7;
     @include assert-equal($test, $expect,
-      'Returns correct layout based on min width.');
+      "Returns correct layout based on min width."
+    );
   }
+  
+  // Functions to test:
+  //
+  // column();
+  // columns();
+  // gutter();
+  // relative-width();
+  // split-columns-value();
+  // format-nth();
+  // base-ems();
+  // absolute-ems();
+  // fix-ems();
+  // medialayout();
+  // is-default-layout();
 }
+
+@include report;

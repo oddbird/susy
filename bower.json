@@ -2,26 +2,20 @@
   "name": "susy",
   "version": "1.0.9",
   "main": "sass/_susy.scss",
-  "description": "web layout power-tools",
+  "description": "Web layout power-tools for Sass. Responsive, semantic, and customized to your specific needs.",
   "authors": ["Eric Meyer <eric@oddbird.net>"],
   "homepage": "http://susy.oddbird.net",
   "keywords": [
-    "layout",
-    "grid",
-    "sass",
-    "compass",
-    "responsive",
-    "rwd",
-    "semantic"
+    "layout", "grid", "sass", "compass", "responsive", "rwd", "semantic"
   ],
   "license": "Modified BSD",
   "ignore": [
     "**/.*",
     "docs",
-    "test"
-  ],
-  "dependencies": {
-    "sass": "3.2.0",
-    "compass": "0.12.2"
-  }
+    "test",
+    "*.json",
+    "*.gemspec",
+    "Manifest",
+    "Rakefile"
+  ]
 }

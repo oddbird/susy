@@ -4,6 +4,7 @@ susy-*.gem
 .sass-cache
 .rvmrc
 pkg/
+docs/_build/
 *.sublime-*
 build/
 *.bundle/

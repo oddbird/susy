@@ -11,10 +11,10 @@
   $val
 ) {
   $_reqs: (
-    variable: rem-with-px-fallback,
+    variable: rhythm-unit rem-with-px-fallback,
     mixin: rem,
   );
-  @if susy-support(rem, $_reqs, $warn: false) {
+  @if susy-support(rem, $_reqs, $warn: false) and $rhythm-unit == rem {
     @include rem($prop, $val);
   } @else {
     #{$prop}: $val;

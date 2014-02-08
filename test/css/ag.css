@@ -331,7 +331,6 @@ head:hover ~ .asymmetrical::before, head:hover ~ body .asymmetrical::before {
 
 .static {
   width: 780px;
-  width: 48.75rem;
   margin-left: auto;
   margin-right: auto;
   background-image: -moz-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 75%, rgba(0, 0, 0, 0) 75%), -moz-linear-gradient(top, rgba(0, 0, 0, 0.5) 5%, rgba(0, 0, 0, 0) 5%);
@@ -355,33 +354,25 @@ head:hover ~ .asymmetrical::before, head:hover ~ body .asymmetrical::before {
 }
 .static > .size1of5:first-of-type {
   width: 140px;
-  width: 8.75rem;
   float: left;
   margin-right: 20px;
-  margin-right: 1.25rem;
 }
 .static > .size1of5 ~ .size1of5 {
   width: 140px;
-  width: 8.75rem;
   float: right;
 }
 .static > .size3of5 {
-  width: 460px;
-  width: 28.75rem;
+  width: 460.0px;
   float: left;
   margin-right: 20px;
-  margin-right: 1.25rem;
 }
 .static > .size3of5 > .size1of2:first-child {
   width: 220px;
-  width: 13.75rem;
   float: left;
   margin-right: 20px;
-  margin-right: 1.25rem;
 }
 .static > .size3of5 > .size1of2 + .size1of2 {
   width: 220px;
-  width: 13.75rem;
   float: right;
 }
 .static > .size3of5 > .full {
@@ -392,27 +383,21 @@ head:hover ~ .asymmetrical::before, head:hover ~ body .asymmetrical::before {
 }
 .static .full .size1of3 {
   width: 140px;
-  width: 8.75rem;
   float: left;
   margin-right: 20px;
-  margin-right: 1.25rem;
   min-height: 9.75em;
 }
 .static .full .size2of3 {
   width: 300px;
-  width: 18.75rem;
   float: right;
 }
 .static .size2of3 .size1of2:first-child {
   width: 140px;
-  width: 8.75rem;
   float: left;
   margin-right: 20px;
-  margin-right: 1.25rem;
 }
 .static .size2of3 .size1of2 + .size1of2 {
   width: 140px;
-  width: 8.75rem;
   float: right;
 }
 .static .size2of3 .full {
@@ -422,7 +407,6 @@ head:hover ~ .asymmetrical::before, head:hover ~ body .asymmetrical::before {
 }
 .static .gallery div {
   width: 140px;
-  width: 8.75rem;
   float: left;
 }
 .static .gallery div:nth-child(5n + 1) {
@@ -433,25 +417,21 @@ head:hover ~ .asymmetrical::before, head:hover ~ body .asymmetrical::before {
 }
 .static .gallery div:nth-child(5n + 2) {
   margin-left: 160px;
-  margin-left: 10rem;
   margin-right: -100%;
   clear: none;
 }
 .static .gallery div:nth-child(5n + 3) {
   margin-left: 320px;
-  margin-left: 20rem;
   margin-right: -100%;
   clear: none;
 }
 .static .gallery div:nth-child(5n + 4) {
   margin-left: 480px;
-  margin-left: 30rem;
   margin-right: -100%;
   clear: none;
 }
 .static .gallery div:nth-child(5n + 5) {
   margin-left: 640px;
-  margin-left: 40rem;
   margin-right: -100%;
   clear: none;
 }

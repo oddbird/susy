@@ -25,7 +25,7 @@ GIT
 PATH
   remote: ..
   specs:
-    susy (2.0.0.rc.0)
+    susy (2.0.0.rc.1)
       sass (~> 3.3.0.rc.1)
 
 GEM

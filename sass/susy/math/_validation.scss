@@ -5,7 +5,8 @@
 // -------------
 // Check that a column setting is valid.
 @function valid-columns(
-  $columns
+  $columns,
+  $silent: false
 ) {
   $type: type-of($columns);
   $return: null;
@@ -21,26 +22,31 @@
     $return: if($fail, $return, $columns);
   }
 
-  @if $return != $columns {
+  @if $return != $columns and not $silent {
+    $return: null;
     $warn: '$columns must be a unitless number or list of unitless numbers.';
     @warn $warn + ' Current value [#{$type}]: #{$columns}';
-  } @else {
-    @return $return;
   }
+
+  @return $return;
 }
 
 // Valid Gutters
 // -------------
 // Check that a gutter setting is valid.
 @function valid-gutters(
-  $gutters
+  $gutters,
+  $silent: false
 ) {
   $type: type-of($gutters);
+  $return: null;
 
   @if $type == number and unitless($gutters) {
-    @return $gutters;
-  } @else {
+    $return: $gutters;
+  } @else if not $silent {
     $warn: '$gutters must be a unitless number.';
     @warn $warn + ' Current value [#{$type}]: #{$gutters}';
   }
+
+  @return $return;
 }

@@ -173,6 +173,17 @@ h1 {
 
 /*  
 
+### Map Helpers ------ */
+/*  - truncate-list (1 Assertions, 1 Passed, 0 Failed) */
+/*  - deep-get (1 Assertions, 1 Passed, 0 Failed) */
+/*  - deep-set (2 Assertions, 2 Passed, 0 Failed) */
+/*  - deep-has-key (2 Assertions, 2 Passed, 0 Failed) */
+/*  
+    4 Tests:
+    - 4 Passed
+    - 0 Failed */
+/*  
+
 ### General Settings ------ */
 /*  - susy-defaults (2 Assertions, 2 Passed, 0 Failed) */
 /*  
@@ -191,343 +202,6 @@ h1 {
 /*  
     6 Tests:
     - 6 Passed
-    - 0 Failed */
-/*  
-
-### Box Sizing Helper ------ */
-/* - [mixin] susy-box-sizing */
-.test__susy-box-sizing .assert__border-box {
-  overflow: hidden;
-  background: rgba(204, 204, 255, 0.5);
-}
-
-.test__susy-box-sizing .assert__border-box .test, .test__susy-box-sizing .assert__border-box .expect {
-  width: 50%;
-  padding: 0 2em;
-}
-
-.test__susy-box-sizing .assert__border-box::before {
-  content: "Box-models are correctly output and prefixed.";
-  display: block;
-  padding: 0.375rem 0.75rem;
-  text-align: left;
-  font-style: italic;
-}
-
-/*  
-    0 Tests:
-    - 0 Passed
-    - 0 Failed */
-/*  
-
-### Direction Helpers ------ */
-/*  - [function] get-direction (2 Assertions, 2 Passed, 0 Failed) */
-/*  - [function] to (2 Assertions, 2 Passed, 0 Failed) */
-/*  - [function] from (2 Assertions, 2 Passed, 0 Failed) */
-/*  
-    3 Tests:
-    - 3 Passed
-    - 0 Failed */
-/*
-
-### Grid Background API ------ */
-/* - [mixin] background-grid-output */
-.test__background-grid-output .assert__show {
-  overflow: hidden;
-  background: rgba(204, 204, 255, 0.5);
-}
-
-.test__background-grid-output .assert__show .test, .test__background-grid-output .assert__show .expect {
-  padding-top: 48px;
-  padding-top: 3rem;
-  padding-bottom: 48px;
-  padding-bottom: 3rem;
-  background: none;
-}
-
-.test__background-grid-output .assert__show::before {
-  content: "Elements should show a horizontal clipped red-green-blue gradient, and a vertical baseline";
-  display: block;
-  padding: 0.375rem 0.75rem;
-  text-align: left;
-  font-style: italic;
-}
-
-/*
-
-### Shared Container API ------ */
-/* - [mixin] container-output */
-.test__container-output .assert__fluid {
-  overflow: hidden;
-  background: rgba(204, 204, 255, 0.5);
-}
-
-.test__container-output .assert__fluid::before {
-  content: "Containers should have 60em max-width, centered.";
-  display: block;
-  padding: 0.375rem 0.75rem;
-  text-align: left;
-  font-style: italic;
-}
-
-.test__container-output .assert__static {
-  overflow: hidden;
-  background: rgba(204, 204, 255, 0.5);
-}
-
-.test__container-output .assert__static::before {
-  content: "Containers should have 30em width, flush right.";
-  display: block;
-  padding: 0.375rem 0.75rem;
-  text-align: left;
-  font-style: italic;
-}
-
-.test__container-output .assert__auto {
-  overflow: hidden;
-  background: rgba(204, 204, 255, 0.5);
-}
-
-.test__container-output .assert__auto::before {
-  content: "Containers should have 100% width.";
-  display: block;
-  padding: 0.375rem 0.75rem;
-  text-align: left;
-  font-style: italic;
-}
-
-/*
-
-### Shared Margin API ------ */
-/* - [mixin] margin-output */
-.test__margin-output .assert__margin-output {
-  overflow: hidden;
-  background: rgba(204, 204, 255, 0.5);
-}
-
-.test__margin-output .assert__margin-output::before {
-  content: "Elements should have 25% right margin, 8em left.";
-  display: block;
-  padding: 0.375rem 0.75rem;
-  text-align: left;
-  font-style: italic;
-}
-
-/*
-
-### Shared Padding API ------ */
-/* - [mixin] padding-output */
-.test__padding-output .assert__padding-output {
-  overflow: hidden;
-  background: rgba(204, 204, 255, 0.5);
-}
-
-.test__padding-output .assert__padding-output::before {
-  content: "Elements should have 25% right padding, 8em left.";
-  display: block;
-  padding: 0.375rem 0.75rem;
-  text-align: left;
-  font-style: italic;
-}
-
-/*  
-
-### Clearfix Helper ------ */
-/* - [mixin] susy-clearfix */
-.test__susy-clearfix .assert__clearfix {
-  overflow: hidden;
-  background: rgba(204, 204, 255, 0.5);
-}
-
-.test__susy-clearfix .assert__clearfix .spacer {
-  float: left;
-  width: 25%;
-}
-
-.test__susy-clearfix .assert__clearfix::before {
-  content: "Elements should clear floated children.";
-  display: block;
-  padding: 0.375rem 0.75rem;
-  text-align: left;
-  font-style: italic;
-}
-
-/*  
-    0 Tests:
-    - 0 Passed
-    - 0 Failed */
-/*
-
-### Float Container API ------ */
-/* - [mixin] float-container */
-.test__float-container .assert__float-container {
-  overflow: hidden;
-  background: rgba(204, 204, 255, 0.5);
-}
-
-.test__float-container .assert__float-container::before {
-  content: "Containers should be 30em wide, flush left.";
-  display: block;
-  padding: 0.375rem 0.75rem;
-  text-align: left;
-  font-style: italic;
-}
-
-/*
-
-### Float Span API ------ */
-/* - [mixin] float-span-output */
-.test__float-span-output .assert__full {
-  overflow: hidden;
-  background: rgba(204, 204, 255, 0.5);
-}
-
-.test__float-span-output .assert__full .expect {
-  clear: both;
-}
-
-.test__float-span-output .assert__full::before {
-  content: "Output should be 25%, floated left, with matching margins/padding";
-  display: block;
-  padding: 0.375rem 0.75rem;
-  text-align: left;
-  font-style: italic;
-}
-
-.test__float-span-output .assert__float-to {
-  overflow: hidden;
-  background: rgba(204, 204, 255, 0.5);
-}
-
-.test__float-span-output .assert__float-to .expect {
-  clear: both;
-}
-
-.test__float-span-output .assert__float-to::before {
-  content: "Output should be 25%, floated right";
-  display: block;
-  padding: 0.375rem 0.75rem;
-  text-align: left;
-  font-style: italic;
-}
-
-.test__float-span-output .assert__float-null {
-  overflow: hidden;
-  background: rgba(204, 204, 255, 0.5);
-}
-
-.test__float-span-output .assert__float-null::before {
-  content: "Output should be 25%, not floated";
-  display: block;
-  padding: 0.375rem 0.75rem;
-  text-align: left;
-  font-style: italic;
-}
-
-/*
-
-### Float End API ------ */
-/* - [mixin] float-last */
-.test__float-last .assert__default {
-  overflow: hidden;
-  background: rgba(204, 204, 255, 0.5);
-}
-
-.test__float-last .assert__default .test, .test__float-last .assert__default .expect {
-  float: left;
-  width: 75%;
-  margin-right: 5%;
-}
-
-.test__float-last .assert__default::before {
-  content: "Items should float flush right.";
-  display: block;
-  padding: 0.375rem 0.75rem;
-  text-align: left;
-  font-style: italic;
-}
-
-.test__float-last .assert__last-flow-from {
-  overflow: hidden;
-  background: rgba(204, 204, 255, 0.5);
-}
-
-.test__float-last .assert__last-flow-from .test, .test__float-last .assert__last-flow-from .expect {
-  float: left;
-  width: 75%;
-  margin-right: 5%;
-}
-.test__float-last .assert__last-flow-from .expect {
-  clear: both;
-}
-.test__float-last .assert__last-flow-from .spacer {
-  overflow: hidden;
-}
-
-.test__float-last .assert__last-flow-from::before {
-  content: "Items should not have any right margin.";
-  display: block;
-  padding: 0.375rem 0.75rem;
-  text-align: left;
-  font-style: italic;
-}
-
-/* - [mixin] float-first */
-.test__float-first .assert__float-first {
-  overflow: hidden;
-  background: rgba(204, 204, 255, 0.5);
-}
-
-.test__float-first .assert__float-first .test, .test__float-first .assert__float-first .expect {
-  float: left;
-  width: 75%;
-  margin-left: 5%;
-}
-
-.test__float-first .assert__float-first::before {
-  content: "Items should float flush left.";
-  display: block;
-  padding: 0.375rem 0.75rem;
-  text-align: left;
-  font-style: italic;
-}
-
-/*
-
-### Isolation API ------ */
-/* - [mixin] isolate-output */
-.test__isolate-output .assert__isolate-output {
-  overflow: hidden;
-  background: rgba(204, 204, 255, 0.5);
-}
-
-.test__isolate-output .assert__isolate-output .test, .test__isolate-output .assert__isolate-output .expect {
-  width: 40%;
-  float: left;
-  margin-right: 5.26316%;
-}
-.test__isolate-output .assert__isolate-output .expect {
-  clear: both;
-}
-
-.test__isolate-output .assert__isolate-output::before {
-  content: "Isolation at 30%, has 30% left margin and -100% right margin.";
-  display: block;
-  padding: 0.375rem 0.75rem;
-  text-align: left;
-  font-style: italic;
-}
-
-/*  
-
-### Map Helpers ------ */
-/*  - truncate-list (1 Assertions, 1 Passed, 0 Failed) */
-/*  - deep-get (1 Assertions, 1 Passed, 0 Failed) */
-/*  - deep-set (2 Assertions, 2 Passed, 0 Failed) */
-/*  - deep-has-key (2 Assertions, 2 Passed, 0 Failed) */
-/*  
-    4 Tests:
-    - 4 Passed
     - 0 Failed */
 /*  
 
@@ -744,32 +418,27 @@ h1 {
 ### Span Syntax ------ */
 /* - [mixin] span */
 .test__span .assert__default {
-  *zoom: 1;
   max-width: 100%;
   margin-left: auto;
   margin-right: auto;
   background-image: -moz-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 66.66667%, rgba(0, 0, 0, 0) 66.66667%);
   background-image: -webkit-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 66.66667%, rgba(0, 0, 0, 0) 66.66667%);
   background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 66.66667%, rgba(0, 0, 0, 0) 66.66667%);
-  -webkit-background-size: 15%;
   background-size: 15%;
-  -webkit-background-origin: content-box;
-  -webkit-background-clip: content-box;
   background-origin: content-box;
   background-clip: content-box;
   background-position: left top;
 }
-.test__span .assert__default:after {
+.test__span .assert__default::after {
   content: " ";
   display: block;
   clear: both;
 }
 
 .test__span .assert__default .test, .test__span .assert__default .expect {
-  *zoom: 1;
   clear: both;
 }
-.test__span .assert__default .test:after, .test__span .assert__default .expect:after {
+.test__span .assert__default .test::after, .test__span .assert__default .expect::after {
   content: " ";
   display: block;
   clear: both;
@@ -787,22 +456,18 @@ h1 {
 }
 
 .test__span .assert__inside {
-  *zoom: 1;
   max-width: 100%;
   margin-left: auto;
   margin-right: auto;
   background-image: -moz-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25));
   background-image: -webkit-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25));
   background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25));
-  -webkit-background-size: 12.5%;
   background-size: 12.5%;
-  -webkit-background-origin: content-box;
-  -webkit-background-clip: content-box;
   background-origin: content-box;
   background-clip: content-box;
   background-position: left top;
 }
-.test__span .assert__inside:after {
+.test__span .assert__inside::after {
   content: " ";
   display: block;
   clear: both;
@@ -828,22 +493,18 @@ h1 {
 }
 
 .test__span .assert__explicit {
-  *zoom: 1;
   max-width: 100%;
   margin-left: auto;
   margin-right: auto;
   background-image: -moz-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25));
   background-image: -webkit-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25));
   background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25));
-  -webkit-background-size: 12.5%;
   background-size: 12.5%;
-  -webkit-background-origin: content-box;
-  -webkit-background-clip: content-box;
   background-origin: content-box;
   background-clip: content-box;
   background-position: left top;
 }
-.test__span .assert__explicit:after {
+.test__span .assert__explicit::after {
   content: " ";
   display: block;
   clear: both;
@@ -874,22 +535,18 @@ h1 {
 ### Gutter Syntax ------ */
 /* - [mixin] gutters */
 .test__gutters .assert__auto {
-  *zoom: 1;
   max-width: 100%;
   margin-left: auto;
   margin-right: auto;
   background-image: -moz-linear-gradient(left, rgba(0, 0, 0, 0) 10%, rgba(102, 102, 255, 0.25) 10%, rgba(179, 179, 255, 0.25) 90%, rgba(0, 0, 0, 0) 90%);
   background-image: -webkit-linear-gradient(left, rgba(0, 0, 0, 0) 10%, rgba(102, 102, 255, 0.25) 10%, rgba(179, 179, 255, 0.25) 90%, rgba(0, 0, 0, 0) 90%);
   background-image: linear-gradient(to right, rgba(0, 0, 0, 0) 10%, rgba(102, 102, 255, 0.25) 10%, rgba(179, 179, 255, 0.25) 90%, rgba(0, 0, 0, 0) 90%);
-  -webkit-background-size: 12.5%;
   background-size: 12.5%;
-  -webkit-background-origin: content-box;
-  -webkit-background-clip: content-box;
   background-origin: content-box;
   background-clip: content-box;
   background-position: left top;
 }
-.test__gutters .assert__auto:after {
+.test__gutters .assert__auto::after {
   content: " ";
   display: block;
   clear: both;
@@ -904,22 +561,18 @@ h1 {
 }
 
 .test__gutters .assert__inside-static {
-  *zoom: 1;
   max-width: 42em;
   margin-left: auto;
   margin-right: auto;
   background-image: -moz-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25));
   background-image: -webkit-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25));
   background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25));
-  -webkit-background-size: 14.28571%;
   background-size: 14.28571%;
-  -webkit-background-origin: content-box;
-  -webkit-background-clip: content-box;
   background-origin: content-box;
   background-clip: content-box;
   background-position: left top;
 }
-.test__gutters .assert__inside-static:after {
+.test__gutters .assert__inside-static::after {
   content: " ";
   display: block;
   clear: both;
@@ -934,22 +587,18 @@ h1 {
 }
 
 .test__gutters .assert__explicit {
-  *zoom: 1;
   max-width: 100%;
   margin-left: auto;
   margin-right: auto;
   background-image: -moz-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25));
   background-image: -webkit-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25));
   background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25));
-  -webkit-background-size: 14.28571%;
   background-size: 14.28571%;
-  -webkit-background-origin: content-box;
-  -webkit-background-clip: content-box;
   background-origin: content-box;
   background-clip: content-box;
   background-position: left top;
 }
-.test__gutters .assert__explicit:after {
+.test__gutters .assert__explicit::after {
   content: " ";
   display: block;
   clear: both;
@@ -978,22 +627,18 @@ h1 {
 ### Isolation Syntax ------ */
 /* - [mixin] isolate */
 .test__isolate .assert__isolate {
-  *zoom: 1;
   max-width: 100%;
   margin-left: auto;
   margin-right: auto;
   background-image: -moz-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 66.66667%, rgba(0, 0, 0, 0) 66.66667%);
   background-image: -webkit-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 66.66667%, rgba(0, 0, 0, 0) 66.66667%);
   background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 66.66667%, rgba(0, 0, 0, 0) 66.66667%);
-  -webkit-background-size: 15%;
   background-size: 15%;
-  -webkit-background-origin: content-box;
-  -webkit-background-clip: content-box;
   background-origin: content-box;
   background-clip: content-box;
   background-position: left top;
 }
-.test__isolate .assert__isolate:after {
+.test__isolate .assert__isolate::after {
   content: " ";
   display: block;
   clear: both;
@@ -1024,31 +669,24 @@ h1 {
 ### Gallery Syntax ------ */
 /* - [mixin] gallery */
 .test__gallery .assert__sym {
-  *zoom: 1;
   max-width: 100%;
   margin-left: auto;
   margin-right: auto;
   background-image: -moz-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 55.55556%, rgba(0, 0, 0, 0) 55.55556%);
   background-image: -webkit-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 55.55556%, rgba(0, 0, 0, 0) 55.55556%);
   background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 55.55556%, rgba(0, 0, 0, 0) 55.55556%);
-  -webkit-background-size: 18%;
   background-size: 18%;
-  -webkit-background-origin: content-box;
-  -webkit-background-clip: content-box;
   background-origin: content-box;
   background-clip: content-box;
   background-position: left top;
 }
-.test__gallery .assert__sym:after {
+.test__gallery .assert__sym::after {
   content: " ";
   display: block;
   clear: both;
 }
 
-.test__gallery .assert__sym .nest {
-  *zoom: 1;
-}
-.test__gallery .assert__sym .nest:after {
+.test__gallery .assert__sym .nest::after {
   content: " ";
   display: block;
   clear: both;
@@ -1067,31 +705,24 @@ h1 {
 }
 
 .test__gallery .assert__inside {
-  *zoom: 1;
   max-width: 100%;
   margin-left: auto;
   margin-right: auto;
   background-image: -moz-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25));
   background-image: -webkit-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25));
   background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25));
-  -webkit-background-size: 12.5%;
   background-size: 12.5%;
-  -webkit-background-origin: content-box;
-  -webkit-background-clip: content-box;
   background-origin: content-box;
   background-clip: content-box;
   background-position: left top;
 }
-.test__gallery .assert__inside:after {
+.test__gallery .assert__inside::after {
   content: " ";
   display: block;
   clear: both;
 }
 
-.test__gallery .assert__inside .nest {
-  *zoom: 1;
-}
-.test__gallery .assert__inside .nest:after {
+.test__gallery .assert__inside .nest::after {
   content: " ";
   display: block;
   clear: both;
@@ -1110,31 +741,24 @@ h1 {
 }
 
 .test__gallery .assert__inside-static {
-  *zoom: 1;
   max-width: 100%;
   margin-left: auto;
   margin-right: auto;
   background-image: -moz-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25));
   background-image: -webkit-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25));
   background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25));
-  -webkit-background-size: 16.66667%;
   background-size: 16.66667%;
-  -webkit-background-origin: content-box;
-  -webkit-background-clip: content-box;
   background-origin: content-box;
   background-clip: content-box;
   background-position: left top;
 }
-.test__gallery .assert__inside-static:after {
+.test__gallery .assert__inside-static::after {
   content: " ";
   display: block;
   clear: both;
 }
 
-.test__gallery .assert__inside-static .nest {
-  *zoom: 1;
-}
-.test__gallery .assert__inside-static .nest:after {
+.test__gallery .assert__inside-static .nest::after {
   content: " ";
   display: block;
   clear: both;
@@ -1153,31 +777,24 @@ h1 {
 }
 
 .test__gallery .assert__split {
-  *zoom: 1;
   max-width: 100%;
   margin-left: auto;
   margin-right: auto;
   background-image: -moz-linear-gradient(left, rgba(0, 0, 0, 0) 10%, rgba(102, 102, 255, 0.25) 10%, rgba(179, 179, 255, 0.25) 90%, rgba(0, 0, 0, 0) 90%);
   background-image: -webkit-linear-gradient(left, rgba(0, 0, 0, 0) 10%, rgba(102, 102, 255, 0.25) 10%, rgba(179, 179, 255, 0.25) 90%, rgba(0, 0, 0, 0) 90%);
   background-image: linear-gradient(to right, rgba(0, 0, 0, 0) 10%, rgba(102, 102, 255, 0.25) 10%, rgba(179, 179, 255, 0.25) 90%, rgba(0, 0, 0, 0) 90%);
-  -webkit-background-size: 12.5%;
   background-size: 12.5%;
-  -webkit-background-origin: content-box;
-  -webkit-background-clip: content-box;
   background-origin: content-box;
   background-clip: content-box;
   background-position: left top;
 }
-.test__gallery .assert__split:after {
+.test__gallery .assert__split::after {
   content: " ";
   display: block;
   clear: both;
 }
 
-.test__gallery .assert__split .nest {
-  *zoom: 1;
-}
-.test__gallery .assert__split .nest:after {
+.test__gallery .assert__split .nest::after {
   content: " ";
   display: block;
   clear: both;
@@ -1196,29 +813,23 @@ h1 {
 }
 
 .test__gallery .assert__asym {
-  *zoom: 1;
   max-width: 100%;
   margin-left: auto;
   margin-right: auto;
   background-image: -moz-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, rgba(0, 0, 0, 0) 10%, rgba(0, 0, 0, 0) 12%, rgba(102, 102, 255, 0.25) 12%, rgba(179, 179, 255, 0.25) 32%, rgba(0, 0, 0, 0) 32%, rgba(0, 0, 0, 0) 34%, rgba(102, 102, 255, 0.25) 34%, rgba(179, 179, 255, 0.25) 44.0%, rgba(0, 0, 0, 0) 44.0%, rgba(0, 0, 0, 0) 46%, rgba(102, 102, 255, 0.25) 46%, rgba(179, 179, 255, 0.25) 66.0%, rgba(0, 0, 0, 0) 66.0%, rgba(0, 0, 0, 0) 68%, rgba(102, 102, 255, 0.25) 68%, rgba(179, 179, 255, 0.25) 88.0%, rgba(0, 0, 0, 0) 88.0%, rgba(0, 0, 0, 0) 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
   background-image: -webkit-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, rgba(0, 0, 0, 0) 10%, rgba(0, 0, 0, 0) 12%, rgba(102, 102, 255, 0.25) 12%, rgba(179, 179, 255, 0.25) 32%, rgba(0, 0, 0, 0) 32%, rgba(0, 0, 0, 0) 34%, rgba(102, 102, 255, 0.25) 34%, rgba(179, 179, 255, 0.25) 44.0%, rgba(0, 0, 0, 0) 44.0%, rgba(0, 0, 0, 0) 46%, rgba(102, 102, 255, 0.25) 46%, rgba(179, 179, 255, 0.25) 66.0%, rgba(0, 0, 0, 0) 66.0%, rgba(0, 0, 0, 0) 68%, rgba(102, 102, 255, 0.25) 68%, rgba(179, 179, 255, 0.25) 88.0%, rgba(0, 0, 0, 0) 88.0%, rgba(0, 0, 0, 0) 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
   background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, rgba(0, 0, 0, 0) 10%, rgba(0, 0, 0, 0) 12%, rgba(102, 102, 255, 0.25) 12%, rgba(179, 179, 255, 0.25) 32%, rgba(0, 0, 0, 0) 32%, rgba(0, 0, 0, 0) 34%, rgba(102, 102, 255, 0.25) 34%, rgba(179, 179, 255, 0.25) 44.0%, rgba(0, 0, 0, 0) 44.0%, rgba(0, 0, 0, 0) 46%, rgba(102, 102, 255, 0.25) 46%, rgba(179, 179, 255, 0.25) 66.0%, rgba(0, 0, 0, 0) 66.0%, rgba(0, 0, 0, 0) 68%, rgba(102, 102, 255, 0.25) 68%, rgba(179, 179, 255, 0.25) 88.0%, rgba(0, 0, 0, 0) 88.0%, rgba(0, 0, 0, 0) 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
-  -webkit-background-origin: content-box;
-  -webkit-background-clip: content-box;
   background-origin: content-box;
   background-clip: content-box;
   background-position: left top;
 }
-.test__gallery .assert__asym:after {
+.test__gallery .assert__asym::after {
   content: " ";
   display: block;
   clear: both;
 }
 
-.test__gallery .assert__asym .nest {
-  *zoom: 1;
-}
-.test__gallery .assert__asym .nest:after {
+.test__gallery .assert__asym .nest::after {
   content: " ";
   display: block;
   clear: both;
@@ -1237,29 +848,23 @@ h1 {
 }
 
 .test__gallery .assert__asym-inside {
-  *zoom: 1;
   max-width: 100%;
   margin-left: auto;
   margin-right: auto;
   background-image: -moz-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 15%, rgba(102, 102, 255, 0.25) 15%, rgba(179, 179, 255, 0.25) 40%, rgba(102, 102, 255, 0.25) 40%, rgba(179, 179, 255, 0.25) 85%, rgba(102, 102, 255, 0.25) 85%, rgba(179, 179, 255, 0.25));
   background-image: -webkit-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 15%, rgba(102, 102, 255, 0.25) 15%, rgba(179, 179, 255, 0.25) 40%, rgba(102, 102, 255, 0.25) 40%, rgba(179, 179, 255, 0.25) 85%, rgba(102, 102, 255, 0.25) 85%, rgba(179, 179, 255, 0.25));
   background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 15%, rgba(102, 102, 255, 0.25) 15%, rgba(179, 179, 255, 0.25) 40%, rgba(102, 102, 255, 0.25) 40%, rgba(179, 179, 255, 0.25) 85%, rgba(102, 102, 255, 0.25) 85%, rgba(179, 179, 255, 0.25));
-  -webkit-background-origin: content-box;
-  -webkit-background-clip: content-box;
   background-origin: content-box;
   background-clip: content-box;
   background-position: left top;
 }
-.test__gallery .assert__asym-inside:after {
+.test__gallery .assert__asym-inside::after {
   content: " ";
   display: block;
   clear: both;
 }
 
-.test__gallery .assert__asym-inside .nest {
-  *zoom: 1;
-}
-.test__gallery .assert__asym-inside .nest:after {
+.test__gallery .assert__asym-inside .nest::after {
   content: " ";
   display: block;
   clear: both;
@@ -1286,22 +891,18 @@ h1 {
 ### Row Syntax ------ */
 /* - [mixin] break */
 .test__break .assert__break {
-  *zoom: 1;
   max-width: 100%;
   margin-left: auto;
   margin-right: auto;
   background-image: -moz-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25));
   background-image: -webkit-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25));
   background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25));
-  -webkit-background-size: 14.28571%;
   background-size: 14.28571%;
-  -webkit-background-origin: content-box;
-  -webkit-background-clip: content-box;
   background-origin: content-box;
   background-clip: content-box;
   background-position: left top;
 }
-.test__break .assert__break:after {
+.test__break .assert__break::after {
   content: " ";
   display: block;
   clear: both;
@@ -1327,22 +928,18 @@ h1 {
 
 /* - [mixin] nobreak */
 .test__nobreak .assert__nobreak {
-  *zoom: 1;
   max-width: 100%;
   margin-left: auto;
   margin-right: auto;
   background-image: -moz-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25));
   background-image: -webkit-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25));
   background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25));
-  -webkit-background-size: 14.28571%;
   background-size: 14.28571%;
-  -webkit-background-origin: content-box;
-  -webkit-background-clip: content-box;
   background-origin: content-box;
   background-clip: content-box;
   background-position: left top;
 }
-.test__nobreak .assert__nobreak:after {
+.test__nobreak .assert__nobreak::after {
   content: " ";
   display: block;
   clear: both;
@@ -1371,22 +968,18 @@ h1 {
 
 /* - [mixin] full */
 .test__full .assert__split {
-  *zoom: 1;
   max-width: 100%;
   margin-left: auto;
   margin-right: auto;
   background-image: -moz-linear-gradient(left, rgba(0, 0, 0, 0) 10%, rgba(102, 102, 255, 0.25) 10%, rgba(179, 179, 255, 0.25) 90%, rgba(0, 0, 0, 0) 90%);
   background-image: -webkit-linear-gradient(left, rgba(0, 0, 0, 0) 10%, rgba(102, 102, 255, 0.25) 10%, rgba(179, 179, 255, 0.25) 90%, rgba(0, 0, 0, 0) 90%);
   background-image: linear-gradient(to right, rgba(0, 0, 0, 0) 10%, rgba(102, 102, 255, 0.25) 10%, rgba(179, 179, 255, 0.25) 90%, rgba(0, 0, 0, 0) 90%);
-  -webkit-background-size: 12.5%;
   background-size: 12.5%;
-  -webkit-background-origin: content-box;
-  -webkit-background-clip: content-box;
   background-origin: content-box;
   background-clip: content-box;
   background-position: left top;
 }
-.test__full .assert__split:after {
+.test__full .assert__split::after {
   content: " ";
   display: block;
   clear: both;
@@ -1408,22 +1001,18 @@ h1 {
 }
 
 .test__full .assert__after {
-  *zoom: 1;
   max-width: 100%;
   margin-left: auto;
   margin-right: auto;
   background-image: -moz-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 66.66667%, rgba(0, 0, 0, 0) 66.66667%);
   background-image: -webkit-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 66.66667%, rgba(0, 0, 0, 0) 66.66667%);
   background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 66.66667%, rgba(0, 0, 0, 0) 66.66667%);
-  -webkit-background-size: 15%;
   background-size: 15%;
-  -webkit-background-origin: content-box;
-  -webkit-background-clip: content-box;
   background-origin: content-box;
   background-clip: content-box;
   background-position: left top;
 }
-.test__full .assert__after:after {
+.test__full .assert__after::after {
   content: " ";
   display: block;
   clear: both;
@@ -1445,22 +1034,18 @@ h1 {
 
 /* - [mixin] first */
 .test__first .assert__before {
-  *zoom: 1;
   max-width: 100%;
   margin-left: auto;
   margin-right: auto;
   background-image: -moz-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 66.66667%, rgba(0, 0, 0, 0) 66.66667%);
   background-image: -webkit-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 66.66667%, rgba(0, 0, 0, 0) 66.66667%);
   background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 66.66667%, rgba(0, 0, 0, 0) 66.66667%);
-  -webkit-background-size: 15%;
   background-size: 15%;
-  -webkit-background-origin: content-box;
-  -webkit-background-clip: content-box;
   background-origin: content-box;
   background-clip: content-box;
   background-position: left top;
 }
-.test__first .assert__before:after {
+.test__first .assert__before::after {
   content: " ";
   display: block;
   clear: both;
@@ -1482,22 +1067,18 @@ h1 {
 }
 
 .test__first .assert__split {
-  *zoom: 1;
   max-width: 100%;
   margin-left: auto;
   margin-right: auto;
   background-image: -moz-linear-gradient(left, rgba(0, 0, 0, 0) 10%, rgba(102, 102, 255, 0.25) 10%, rgba(179, 179, 255, 0.25) 90%, rgba(0, 0, 0, 0) 90%);
   background-image: -webkit-linear-gradient(left, rgba(0, 0, 0, 0) 10%, rgba(102, 102, 255, 0.25) 10%, rgba(179, 179, 255, 0.25) 90%, rgba(0, 0, 0, 0) 90%);
   background-image: linear-gradient(to right, rgba(0, 0, 0, 0) 10%, rgba(102, 102, 255, 0.25) 10%, rgba(179, 179, 255, 0.25) 90%, rgba(0, 0, 0, 0) 90%);
-  -webkit-background-size: 12.5%;
   background-size: 12.5%;
-  -webkit-background-origin: content-box;
-  -webkit-background-clip: content-box;
   background-origin: content-box;
   background-clip: content-box;
   background-position: left top;
 }
-.test__first .assert__split:after {
+.test__first .assert__split::after {
   content: " ";
   display: block;
   clear: both;
@@ -1521,22 +1102,18 @@ h1 {
 
 /* - [mixin] alpha */
 .test__alpha .assert__alpha {
-  *zoom: 1;
   max-width: 100%;
   margin-left: auto;
   margin-right: auto;
   background-image: -moz-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 66.66667%, rgba(0, 0, 0, 0) 66.66667%);
   background-image: -webkit-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 66.66667%, rgba(0, 0, 0, 0) 66.66667%);
   background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 66.66667%, rgba(0, 0, 0, 0) 66.66667%);
-  -webkit-background-size: 15%;
   background-size: 15%;
-  -webkit-background-origin: content-box;
-  -webkit-background-clip: content-box;
   background-origin: content-box;
   background-clip: content-box;
   background-position: left top;
 }
-.test__alpha .assert__alpha:after {
+.test__alpha .assert__alpha::after {
   content: " ";
   display: block;
   clear: both;
@@ -1559,22 +1136,18 @@ h1 {
 
 /* - [mixin] last */
 .test__last .assert__after {
-  *zoom: 1;
   max-width: 100%;
   margin-left: auto;
   margin-right: auto;
   background-image: -moz-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 66.66667%, rgba(0, 0, 0, 0) 66.66667%);
   background-image: -webkit-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 66.66667%, rgba(0, 0, 0, 0) 66.66667%);
   background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 66.66667%, rgba(0, 0, 0, 0) 66.66667%);
-  -webkit-background-size: 15%;
   background-size: 15%;
-  -webkit-background-origin: content-box;
-  -webkit-background-clip: content-box;
   background-origin: content-box;
   background-clip: content-box;
   background-position: left top;
 }
-.test__last .assert__after:after {
+.test__last .assert__after::after {
   content: " ";
   display: block;
   clear: both;
@@ -1596,22 +1169,18 @@ h1 {
 }
 
 .test__last .assert__split {
-  *zoom: 1;
   max-width: 100%;
   margin-left: auto;
   margin-right: auto;
   background-image: -moz-linear-gradient(left, rgba(0, 0, 0, 0) 16.66667%, rgba(102, 102, 255, 0.25) 16.66667%, rgba(179, 179, 255, 0.25) 83.33333%, rgba(0, 0, 0, 0) 83.33333%);
   background-image: -webkit-linear-gradient(left, rgba(0, 0, 0, 0) 16.66667%, rgba(102, 102, 255, 0.25) 16.66667%, rgba(179, 179, 255, 0.25) 83.33333%, rgba(0, 0, 0, 0) 83.33333%);
   background-image: linear-gradient(to right, rgba(0, 0, 0, 0) 16.66667%, rgba(102, 102, 255, 0.25) 16.66667%, rgba(179, 179, 255, 0.25) 83.33333%, rgba(0, 0, 0, 0) 83.33333%);
-  -webkit-background-size: 14.28571%;
   background-size: 14.28571%;
-  -webkit-background-origin: content-box;
-  -webkit-background-clip: content-box;
   background-origin: content-box;
   background-clip: content-box;
   background-position: left top;
 }
-.test__last .assert__split:after {
+.test__last .assert__split::after {
   content: " ";
   display: block;
   clear: both;
@@ -1635,22 +1204,18 @@ h1 {
 
 /* - [mixin] omega */
 .test__omega .assert__omega {
-  *zoom: 1;
   max-width: 100%;
   margin-left: auto;
   margin-right: auto;
   background-image: -moz-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 66.66667%, rgba(0, 0, 0, 0) 66.66667%);
   background-image: -webkit-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 66.66667%, rgba(0, 0, 0, 0) 66.66667%);
   background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 66.66667%, rgba(0, 0, 0, 0) 66.66667%);
-  -webkit-background-size: 15%;
   background-size: 15%;
-  -webkit-background-origin: content-box;
-  -webkit-background-clip: content-box;
   background-origin: content-box;
   background-clip: content-box;
   background-position: left top;
 }
-.test__omega .assert__omega:after {
+.test__omega .assert__omega::after {
   content: " ";
   display: block;
   clear: both;
@@ -1682,22 +1247,18 @@ h1 {
 ### Margin Syntax ------ */
 /* - [mixin] pre */
 .test__pre .assert__wide {
-  *zoom: 1;
   max-width: 100%;
   margin-left: auto;
   margin-right: auto;
   background-image: -moz-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 66.66667%, rgba(0, 0, 0, 0) 66.66667%);
   background-image: -webkit-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 66.66667%, rgba(0, 0, 0, 0) 66.66667%);
   background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 66.66667%, rgba(0, 0, 0, 0) 66.66667%);
-  -webkit-background-size: 15%;
   background-size: 15%;
-  -webkit-background-origin: content-box;
-  -webkit-background-clip: content-box;
   background-origin: content-box;
   background-clip: content-box;
   background-position: left top;
 }
-.test__pre .assert__wide:after {
+.test__pre .assert__wide::after {
   content: " ";
   display: block;
   clear: both;
@@ -1722,22 +1283,18 @@ h1 {
 }
 
 .test__pre .assert__split {
-  *zoom: 1;
   max-width: 100%;
   margin-left: auto;
   margin-right: auto;
   background-image: -moz-linear-gradient(left, rgba(0, 0, 0, 0) 10%, rgba(102, 102, 255, 0.25) 10%, rgba(179, 179, 255, 0.25) 90%, rgba(0, 0, 0, 0) 90%);
   background-image: -webkit-linear-gradient(left, rgba(0, 0, 0, 0) 10%, rgba(102, 102, 255, 0.25) 10%, rgba(179, 179, 255, 0.25) 90%, rgba(0, 0, 0, 0) 90%);
   background-image: linear-gradient(to right, rgba(0, 0, 0, 0) 10%, rgba(102, 102, 255, 0.25) 10%, rgba(179, 179, 255, 0.25) 90%, rgba(0, 0, 0, 0) 90%);
-  -webkit-background-size: 12.5%;
   background-size: 12.5%;
-  -webkit-background-origin: content-box;
-  -webkit-background-clip: content-box;
   background-origin: content-box;
   background-clip: content-box;
   background-position: left top;
 }
-.test__pre .assert__split:after {
+.test__pre .assert__split::after {
   content: " ";
   display: block;
   clear: both;
@@ -1759,22 +1316,18 @@ h1 {
 }
 
 .test__pre .assert__wider {
-  *zoom: 1;
   max-width: 100%;
   margin-left: auto;
   margin-right: auto;
   background-image: -moz-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 66.66667%, rgba(0, 0, 0, 0) 66.66667%);
   background-image: -webkit-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 66.66667%, rgba(0, 0, 0, 0) 66.66667%);
   background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 66.66667%, rgba(0, 0, 0, 0) 66.66667%);
-  -webkit-background-size: 15%;
   background-size: 15%;
-  -webkit-background-origin: content-box;
-  -webkit-background-clip: content-box;
   background-origin: content-box;
   background-clip: content-box;
   background-position: left top;
 }
-.test__pre .assert__wider:after {
+.test__pre .assert__wider::after {
   content: " ";
   display: block;
   clear: both;
@@ -1800,20 +1353,17 @@ h1 {
 
 /* - [mixin] post */
 .test__post .assert__wide {
-  *zoom: 1;
   max-width: 100%;
   margin-left: auto;
   margin-right: auto;
   background-image: -moz-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, rgba(0, 0, 0, 0) 10%, rgba(0, 0, 0, 0) 12.5%, rgba(102, 102, 255, 0.25) 12.5%, rgba(179, 179, 255, 0.25) 32.5%, rgba(0, 0, 0, 0) 32.5%, rgba(0, 0, 0, 0) 35%, rgba(102, 102, 255, 0.25) 35%, rgba(179, 179, 255, 0.25) 65%, rgba(0, 0, 0, 0) 65%, rgba(0, 0, 0, 0) 67.5%, rgba(102, 102, 255, 0.25) 67.5%, rgba(179, 179, 255, 0.25) 87.5%, rgba(0, 0, 0, 0) 87.5%, rgba(0, 0, 0, 0) 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
   background-image: -webkit-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, rgba(0, 0, 0, 0) 10%, rgba(0, 0, 0, 0) 12.5%, rgba(102, 102, 255, 0.25) 12.5%, rgba(179, 179, 255, 0.25) 32.5%, rgba(0, 0, 0, 0) 32.5%, rgba(0, 0, 0, 0) 35%, rgba(102, 102, 255, 0.25) 35%, rgba(179, 179, 255, 0.25) 65%, rgba(0, 0, 0, 0) 65%, rgba(0, 0, 0, 0) 67.5%, rgba(102, 102, 255, 0.25) 67.5%, rgba(179, 179, 255, 0.25) 87.5%, rgba(0, 0, 0, 0) 87.5%, rgba(0, 0, 0, 0) 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
   background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, rgba(0, 0, 0, 0) 10%, rgba(0, 0, 0, 0) 12.5%, rgba(102, 102, 255, 0.25) 12.5%, rgba(179, 179, 255, 0.25) 32.5%, rgba(0, 0, 0, 0) 32.5%, rgba(0, 0, 0, 0) 35%, rgba(102, 102, 255, 0.25) 35%, rgba(179, 179, 255, 0.25) 65%, rgba(0, 0, 0, 0) 65%, rgba(0, 0, 0, 0) 67.5%, rgba(102, 102, 255, 0.25) 67.5%, rgba(179, 179, 255, 0.25) 87.5%, rgba(0, 0, 0, 0) 87.5%, rgba(0, 0, 0, 0) 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
-  -webkit-background-origin: content-box;
-  -webkit-background-clip: content-box;
   background-origin: content-box;
   background-clip: content-box;
   background-position: left top;
 }
-.test__post .assert__wide:after {
+.test__post .assert__wide::after {
   content: " ";
   display: block;
   clear: both;
@@ -1828,20 +1378,17 @@ h1 {
 }
 
 .test__post .assert__split {
-  *zoom: 1;
   max-width: 100%;
   margin-left: auto;
   margin-right: auto;
   background-image: -moz-linear-gradient(left, rgba(0, 0, 0, 0) 1.25%, rgba(102, 102, 255, 0.25) 1.25%, rgba(179, 179, 255, 0.25) 11.25%, rgba(0, 0, 0, 0) 11.25%, rgba(0, 0, 0, 0) 13.75%, rgba(102, 102, 255, 0.25) 13.75%, rgba(179, 179, 255, 0.25) 33.75%, rgba(0, 0, 0, 0) 33.75%, rgba(0, 0, 0, 0) 36.25%, rgba(102, 102, 255, 0.25) 36.25%, rgba(179, 179, 255, 0.25) 66.25%, rgba(0, 0, 0, 0) 66.25%, rgba(0, 0, 0, 0) 68.75%, rgba(102, 102, 255, 0.25) 68.75%, rgba(179, 179, 255, 0.25) 98.75%, rgba(0, 0, 0, 0) 98.75%);
   background-image: -webkit-linear-gradient(left, rgba(0, 0, 0, 0) 1.25%, rgba(102, 102, 255, 0.25) 1.25%, rgba(179, 179, 255, 0.25) 11.25%, rgba(0, 0, 0, 0) 11.25%, rgba(0, 0, 0, 0) 13.75%, rgba(102, 102, 255, 0.25) 13.75%, rgba(179, 179, 255, 0.25) 33.75%, rgba(0, 0, 0, 0) 33.75%, rgba(0, 0, 0, 0) 36.25%, rgba(102, 102, 255, 0.25) 36.25%, rgba(179, 179, 255, 0.25) 66.25%, rgba(0, 0, 0, 0) 66.25%, rgba(0, 0, 0, 0) 68.75%, rgba(102, 102, 255, 0.25) 68.75%, rgba(179, 179, 255, 0.25) 98.75%, rgba(0, 0, 0, 0) 98.75%);
   background-image: linear-gradient(to right, rgba(0, 0, 0, 0) 1.25%, rgba(102, 102, 255, 0.25) 1.25%, rgba(179, 179, 255, 0.25) 11.25%, rgba(0, 0, 0, 0) 11.25%, rgba(0, 0, 0, 0) 13.75%, rgba(102, 102, 255, 0.25) 13.75%, rgba(179, 179, 255, 0.25) 33.75%, rgba(0, 0, 0, 0) 33.75%, rgba(0, 0, 0, 0) 36.25%, rgba(102, 102, 255, 0.25) 36.25%, rgba(179, 179, 255, 0.25) 66.25%, rgba(0, 0, 0, 0) 66.25%, rgba(0, 0, 0, 0) 68.75%, rgba(102, 102, 255, 0.25) 68.75%, rgba(179, 179, 255, 0.25) 98.75%, rgba(0, 0, 0, 0) 98.75%);
-  -webkit-background-origin: content-box;
-  -webkit-background-clip: content-box;
   background-origin: content-box;
   background-clip: content-box;
   background-position: left top;
 }
-.test__post .assert__split:after {
+.test__post .assert__split::after {
   content: " ";
   display: block;
   clear: both;
@@ -1861,20 +1408,17 @@ h1 {
 }
 
 .test__post .assert__wider {
-  *zoom: 1;
   max-width: 100%;
   margin-left: auto;
   margin-right: auto;
   background-image: -moz-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, rgba(0, 0, 0, 0) 10%, rgba(0, 0, 0, 0) 12.5%, rgba(102, 102, 255, 0.25) 12.5%, rgba(179, 179, 255, 0.25) 32.5%, rgba(0, 0, 0, 0) 32.5%, rgba(0, 0, 0, 0) 35%, rgba(102, 102, 255, 0.25) 35%, rgba(179, 179, 255, 0.25) 65%, rgba(0, 0, 0, 0) 65%, rgba(0, 0, 0, 0) 67.5%, rgba(102, 102, 255, 0.25) 67.5%, rgba(179, 179, 255, 0.25) 87.5%, rgba(0, 0, 0, 0) 87.5%, rgba(0, 0, 0, 0) 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
   background-image: -webkit-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, rgba(0, 0, 0, 0) 10%, rgba(0, 0, 0, 0) 12.5%, rgba(102, 102, 255, 0.25) 12.5%, rgba(179, 179, 255, 0.25) 32.5%, rgba(0, 0, 0, 0) 32.5%, rgba(0, 0, 0, 0) 35%, rgba(102, 102, 255, 0.25) 35%, rgba(179, 179, 255, 0.25) 65%, rgba(0, 0, 0, 0) 65%, rgba(0, 0, 0, 0) 67.5%, rgba(102, 102, 255, 0.25) 67.5%, rgba(179, 179, 255, 0.25) 87.5%, rgba(0, 0, 0, 0) 87.5%, rgba(0, 0, 0, 0) 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
   background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, rgba(0, 0, 0, 0) 10%, rgba(0, 0, 0, 0) 12.5%, rgba(102, 102, 255, 0.25) 12.5%, rgba(179, 179, 255, 0.25) 32.5%, rgba(0, 0, 0, 0) 32.5%, rgba(0, 0, 0, 0) 35%, rgba(102, 102, 255, 0.25) 35%, rgba(179, 179, 255, 0.25) 65%, rgba(0, 0, 0, 0) 65%, rgba(0, 0, 0, 0) 67.5%, rgba(102, 102, 255, 0.25) 67.5%, rgba(179, 179, 255, 0.25) 87.5%, rgba(0, 0, 0, 0) 87.5%, rgba(0, 0, 0, 0) 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
-  -webkit-background-origin: content-box;
-  -webkit-background-clip: content-box;
   background-origin: content-box;
   background-clip: content-box;
   background-position: left top;
 }
-.test__post .assert__wider:after {
+.test__post .assert__wider::after {
   content: " ";
   display: block;
   clear: both;
@@ -1902,22 +1446,18 @@ h1 {
 
 /* - [mixin] push */
 .test__push .assert__push {
-  *zoom: 1;
   max-width: 100%;
   margin-left: auto;
   margin-right: auto;
   background-image: -moz-linear-gradient(left, rgba(0, 0, 0, 0) 10%, rgba(102, 102, 255, 0.25) 10%, rgba(179, 179, 255, 0.25) 90%, rgba(0, 0, 0, 0) 90%);
   background-image: -webkit-linear-gradient(left, rgba(0, 0, 0, 0) 10%, rgba(102, 102, 255, 0.25) 10%, rgba(179, 179, 255, 0.25) 90%, rgba(0, 0, 0, 0) 90%);
   background-image: linear-gradient(to right, rgba(0, 0, 0, 0) 10%, rgba(102, 102, 255, 0.25) 10%, rgba(179, 179, 255, 0.25) 90%, rgba(0, 0, 0, 0) 90%);
-  -webkit-background-size: 12.5%;
   background-size: 12.5%;
-  -webkit-background-origin: content-box;
-  -webkit-background-clip: content-box;
   background-origin: content-box;
   background-clip: content-box;
   background-position: left top;
 }
-.test__push .assert__push:after {
+.test__push .assert__push::after {
   content: " ";
   display: block;
   clear: both;
@@ -1940,20 +1480,17 @@ h1 {
 
 /* - [mixin] pull */
 .test__pull .assert__narrow {
-  *zoom: 1;
   max-width: 100%;
   margin-left: auto;
   margin-right: auto;
   background-image: -moz-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, rgba(0, 0, 0, 0) 10%, rgba(0, 0, 0, 0) 12.5%, rgba(102, 102, 255, 0.25) 12.5%, rgba(179, 179, 255, 0.25) 32.5%, rgba(0, 0, 0, 0) 32.5%, rgba(0, 0, 0, 0) 35%, rgba(102, 102, 255, 0.25) 35%, rgba(179, 179, 255, 0.25) 65%, rgba(0, 0, 0, 0) 65%, rgba(0, 0, 0, 0) 67.5%, rgba(102, 102, 255, 0.25) 67.5%, rgba(179, 179, 255, 0.25) 87.5%, rgba(0, 0, 0, 0) 87.5%, rgba(0, 0, 0, 0) 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
   background-image: -webkit-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, rgba(0, 0, 0, 0) 10%, rgba(0, 0, 0, 0) 12.5%, rgba(102, 102, 255, 0.25) 12.5%, rgba(179, 179, 255, 0.25) 32.5%, rgba(0, 0, 0, 0) 32.5%, rgba(0, 0, 0, 0) 35%, rgba(102, 102, 255, 0.25) 35%, rgba(179, 179, 255, 0.25) 65%, rgba(0, 0, 0, 0) 65%, rgba(0, 0, 0, 0) 67.5%, rgba(102, 102, 255, 0.25) 67.5%, rgba(179, 179, 255, 0.25) 87.5%, rgba(0, 0, 0, 0) 87.5%, rgba(0, 0, 0, 0) 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
   background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, rgba(0, 0, 0, 0) 10%, rgba(0, 0, 0, 0) 12.5%, rgba(102, 102, 255, 0.25) 12.5%, rgba(179, 179, 255, 0.25) 32.5%, rgba(0, 0, 0, 0) 32.5%, rgba(0, 0, 0, 0) 35%, rgba(102, 102, 255, 0.25) 35%, rgba(179, 179, 255, 0.25) 65%, rgba(0, 0, 0, 0) 65%, rgba(0, 0, 0, 0) 67.5%, rgba(102, 102, 255, 0.25) 67.5%, rgba(179, 179, 255, 0.25) 87.5%, rgba(0, 0, 0, 0) 87.5%, rgba(0, 0, 0, 0) 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
-  -webkit-background-origin: content-box;
-  -webkit-background-clip: content-box;
   background-origin: content-box;
   background-clip: content-box;
   background-position: left top;
 }
-.test__pull .assert__narrow:after {
+.test__pull .assert__narrow::after {
   content: " ";
   display: block;
   clear: both;
@@ -1978,22 +1515,18 @@ h1 {
 }
 
 .test__pull .assert__split {
-  *zoom: 1;
   max-width: 100%;
   margin-left: auto;
   margin-right: auto;
   background-image: -moz-linear-gradient(left, rgba(0, 0, 0, 0) 10%, rgba(102, 102, 255, 0.25) 10%, rgba(179, 179, 255, 0.25) 90%, rgba(0, 0, 0, 0) 90%);
   background-image: -webkit-linear-gradient(left, rgba(0, 0, 0, 0) 10%, rgba(102, 102, 255, 0.25) 10%, rgba(179, 179, 255, 0.25) 90%, rgba(0, 0, 0, 0) 90%);
   background-image: linear-gradient(to right, rgba(0, 0, 0, 0) 10%, rgba(102, 102, 255, 0.25) 10%, rgba(179, 179, 255, 0.25) 90%, rgba(0, 0, 0, 0) 90%);
-  -webkit-background-size: 12.5%;
   background-size: 12.5%;
-  -webkit-background-origin: content-box;
-  -webkit-background-clip: content-box;
   background-origin: content-box;
   background-clip: content-box;
   background-position: left top;
 }
-.test__pull .assert__split:after {
+.test__pull .assert__split::after {
   content: " ";
   display: block;
   clear: both;
@@ -2021,20 +1554,17 @@ h1 {
 }
 
 .test__pull .assert__wide {
-  *zoom: 1;
   max-width: 100%;
   margin-left: auto;
   margin-right: auto;
   background-image: -moz-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, rgba(0, 0, 0, 0) 10%, rgba(0, 0, 0, 0) 12.5%, rgba(102, 102, 255, 0.25) 12.5%, rgba(179, 179, 255, 0.25) 32.5%, rgba(0, 0, 0, 0) 32.5%, rgba(0, 0, 0, 0) 35%, rgba(102, 102, 255, 0.25) 35%, rgba(179, 179, 255, 0.25) 65%, rgba(0, 0, 0, 0) 65%, rgba(0, 0, 0, 0) 67.5%, rgba(102, 102, 255, 0.25) 67.5%, rgba(179, 179, 255, 0.25) 87.5%, rgba(0, 0, 0, 0) 87.5%, rgba(0, 0, 0, 0) 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
   background-image: -webkit-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, rgba(0, 0, 0, 0) 10%, rgba(0, 0, 0, 0) 12.5%, rgba(102, 102, 255, 0.25) 12.5%, rgba(179, 179, 255, 0.25) 32.5%, rgba(0, 0, 0, 0) 32.5%, rgba(0, 0, 0, 0) 35%, rgba(102, 102, 255, 0.25) 35%, rgba(179, 179, 255, 0.25) 65%, rgba(0, 0, 0, 0) 65%, rgba(0, 0, 0, 0) 67.5%, rgba(102, 102, 255, 0.25) 67.5%, rgba(179, 179, 255, 0.25) 87.5%, rgba(0, 0, 0, 0) 87.5%, rgba(0, 0, 0, 0) 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
   background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, rgba(0, 0, 0, 0) 10%, rgba(0, 0, 0, 0) 12.5%, rgba(102, 102, 255, 0.25) 12.5%, rgba(179, 179, 255, 0.25) 32.5%, rgba(0, 0, 0, 0) 32.5%, rgba(0, 0, 0, 0) 35%, rgba(102, 102, 255, 0.25) 35%, rgba(179, 179, 255, 0.25) 65%, rgba(0, 0, 0, 0) 65%, rgba(0, 0, 0, 0) 67.5%, rgba(102, 102, 255, 0.25) 67.5%, rgba(179, 179, 255, 0.25) 87.5%, rgba(0, 0, 0, 0) 87.5%, rgba(0, 0, 0, 0) 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
-  -webkit-background-origin: content-box;
-  -webkit-background-clip: content-box;
   background-origin: content-box;
   background-clip: content-box;
   background-position: left top;
 }
-.test__pull .assert__wide:after {
+.test__pull .assert__wide::after {
   content: " ";
   display: block;
   clear: both;
@@ -2059,20 +1589,17 @@ h1 {
 }
 
 .test__pull .assert__wider {
-  *zoom: 1;
   max-width: 100%;
   margin-left: auto;
   margin-right: auto;
   background-image: -moz-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, rgba(0, 0, 0, 0) 10%, rgba(0, 0, 0, 0) 12.5%, rgba(102, 102, 255, 0.25) 12.5%, rgba(179, 179, 255, 0.25) 32.5%, rgba(0, 0, 0, 0) 32.5%, rgba(0, 0, 0, 0) 35%, rgba(102, 102, 255, 0.25) 35%, rgba(179, 179, 255, 0.25) 65%, rgba(0, 0, 0, 0) 65%, rgba(0, 0, 0, 0) 67.5%, rgba(102, 102, 255, 0.25) 67.5%, rgba(179, 179, 255, 0.25) 87.5%, rgba(0, 0, 0, 0) 87.5%, rgba(0, 0, 0, 0) 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
   background-image: -webkit-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, rgba(0, 0, 0, 0) 10%, rgba(0, 0, 0, 0) 12.5%, rgba(102, 102, 255, 0.25) 12.5%, rgba(179, 179, 255, 0.25) 32.5%, rgba(0, 0, 0, 0) 32.5%, rgba(0, 0, 0, 0) 35%, rgba(102, 102, 255, 0.25) 35%, rgba(179, 179, 255, 0.25) 65%, rgba(0, 0, 0, 0) 65%, rgba(0, 0, 0, 0) 67.5%, rgba(102, 102, 255, 0.25) 67.5%, rgba(179, 179, 255, 0.25) 87.5%, rgba(0, 0, 0, 0) 87.5%, rgba(0, 0, 0, 0) 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
   background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, rgba(0, 0, 0, 0) 10%, rgba(0, 0, 0, 0) 12.5%, rgba(102, 102, 255, 0.25) 12.5%, rgba(179, 179, 255, 0.25) 32.5%, rgba(0, 0, 0, 0) 32.5%, rgba(0, 0, 0, 0) 35%, rgba(102, 102, 255, 0.25) 35%, rgba(179, 179, 255, 0.25) 65%, rgba(0, 0, 0, 0) 65%, rgba(0, 0, 0, 0) 67.5%, rgba(102, 102, 255, 0.25) 67.5%, rgba(179, 179, 255, 0.25) 87.5%, rgba(0, 0, 0, 0) 87.5%, rgba(0, 0, 0, 0) 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
-  -webkit-background-origin: content-box;
-  -webkit-background-clip: content-box;
   background-origin: content-box;
   background-clip: content-box;
   background-position: left top;
 }
-.test__pull .assert__wider:after {
+.test__pull .assert__wider::after {
   content: " ";
   display: block;
   clear: both;
@@ -2098,20 +1625,17 @@ h1 {
 
 /* - [mixin] squish */
 .test__squish .assert__simple {
-  *zoom: 1;
   max-width: 100%;
   margin-left: auto;
   margin-right: auto;
   background-image: -moz-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, rgba(0, 0, 0, 0) 10%, rgba(0, 0, 0, 0) 12.5%, rgba(102, 102, 255, 0.25) 12.5%, rgba(179, 179, 255, 0.25) 32.5%, rgba(0, 0, 0, 0) 32.5%, rgba(0, 0, 0, 0) 35%, rgba(102, 102, 255, 0.25) 35%, rgba(179, 179, 255, 0.25) 65%, rgba(0, 0, 0, 0) 65%, rgba(0, 0, 0, 0) 67.5%, rgba(102, 102, 255, 0.25) 67.5%, rgba(179, 179, 255, 0.25) 87.5%, rgba(0, 0, 0, 0) 87.5%, rgba(0, 0, 0, 0) 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
   background-image: -webkit-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, rgba(0, 0, 0, 0) 10%, rgba(0, 0, 0, 0) 12.5%, rgba(102, 102, 255, 0.25) 12.5%, rgba(179, 179, 255, 0.25) 32.5%, rgba(0, 0, 0, 0) 32.5%, rgba(0, 0, 0, 0) 35%, rgba(102, 102, 255, 0.25) 35%, rgba(179, 179, 255, 0.25) 65%, rgba(0, 0, 0, 0) 65%, rgba(0, 0, 0, 0) 67.5%, rgba(102, 102, 255, 0.25) 67.5%, rgba(179, 179, 255, 0.25) 87.5%, rgba(0, 0, 0, 0) 87.5%, rgba(0, 0, 0, 0) 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
   background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, rgba(0, 0, 0, 0) 10%, rgba(0, 0, 0, 0) 12.5%, rgba(102, 102, 255, 0.25) 12.5%, rgba(179, 179, 255, 0.25) 32.5%, rgba(0, 0, 0, 0) 32.5%, rgba(0, 0, 0, 0) 35%, rgba(102, 102, 255, 0.25) 35%, rgba(179, 179, 255, 0.25) 65%, rgba(0, 0, 0, 0) 65%, rgba(0, 0, 0, 0) 67.5%, rgba(102, 102, 255, 0.25) 67.5%, rgba(179, 179, 255, 0.25) 87.5%, rgba(0, 0, 0, 0) 87.5%, rgba(0, 0, 0, 0) 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
-  -webkit-background-origin: content-box;
-  -webkit-background-clip: content-box;
   background-origin: content-box;
   background-clip: content-box;
   background-position: left top;
 }
-.test__squish .assert__simple:after {
+.test__squish .assert__simple::after {
   content: " ";
   display: block;
   clear: both;
@@ -2126,20 +1650,17 @@ h1 {
 }
 
 .test__squish .assert__split {
-  *zoom: 1;
   max-width: 100%;
   margin-left: auto;
   margin-right: auto;
   background-image: -moz-linear-gradient(left, rgba(0, 0, 0, 0) 1.21951%, rgba(102, 102, 255, 0.25) 1.21951%, rgba(179, 179, 255, 0.25) 10.97561%, rgba(0, 0, 0, 0) 10.97561%, rgba(0, 0, 0, 0) 13.41463%, rgba(102, 102, 255, 0.25) 13.41463%, rgba(179, 179, 255, 0.25) 32.92683%, rgba(0, 0, 0, 0) 32.92683%, rgba(0, 0, 0, 0) 35.36585%, rgba(102, 102, 255, 0.25) 35.36585%, rgba(179, 179, 255, 0.25) 64.63415%, rgba(0, 0, 0, 0) 64.63415%, rgba(0, 0, 0, 0) 67.07317%, rgba(102, 102, 255, 0.25) 67.07317%, rgba(179, 179, 255, 0.25) 86.58537%, rgba(0, 0, 0, 0) 86.58537%, rgba(0, 0, 0, 0) 89.02439%, rgba(102, 102, 255, 0.25) 89.02439%, rgba(179, 179, 255, 0.25) 98.78049%, rgba(0, 0, 0, 0) 98.78049%);
   background-image: -webkit-linear-gradient(left, rgba(0, 0, 0, 0) 1.21951%, rgba(102, 102, 255, 0.25) 1.21951%, rgba(179, 179, 255, 0.25) 10.97561%, rgba(0, 0, 0, 0) 10.97561%, rgba(0, 0, 0, 0) 13.41463%, rgba(102, 102, 255, 0.25) 13.41463%, rgba(179, 179, 255, 0.25) 32.92683%, rgba(0, 0, 0, 0) 32.92683%, rgba(0, 0, 0, 0) 35.36585%, rgba(102, 102, 255, 0.25) 35.36585%, rgba(179, 179, 255, 0.25) 64.63415%, rgba(0, 0, 0, 0) 64.63415%, rgba(0, 0, 0, 0) 67.07317%, rgba(102, 102, 255, 0.25) 67.07317%, rgba(179, 179, 255, 0.25) 86.58537%, rgba(0, 0, 0, 0) 86.58537%, rgba(0, 0, 0, 0) 89.02439%, rgba(102, 102, 255, 0.25) 89.02439%, rgba(179, 179, 255, 0.25) 98.78049%, rgba(0, 0, 0, 0) 98.78049%);
   background-image: linear-gradient(to right, rgba(0, 0, 0, 0) 1.21951%, rgba(102, 102, 255, 0.25) 1.21951%, rgba(179, 179, 255, 0.25) 10.97561%, rgba(0, 0, 0, 0) 10.97561%, rgba(0, 0, 0, 0) 13.41463%, rgba(102, 102, 255, 0.25) 13.41463%, rgba(179, 179, 255, 0.25) 32.92683%, rgba(0, 0, 0, 0) 32.92683%, rgba(0, 0, 0, 0) 35.36585%, rgba(102, 102, 255, 0.25) 35.36585%, rgba(179, 179, 255, 0.25) 64.63415%, rgba(0, 0, 0, 0) 64.63415%, rgba(0, 0, 0, 0) 67.07317%, rgba(102, 102, 255, 0.25) 67.07317%, rgba(179, 179, 255, 0.25) 86.58537%, rgba(0, 0, 0, 0) 86.58537%, rgba(0, 0, 0, 0) 89.02439%, rgba(102, 102, 255, 0.25) 89.02439%, rgba(179, 179, 255, 0.25) 98.78049%, rgba(0, 0, 0, 0) 98.78049%);
-  -webkit-background-origin: content-box;
-  -webkit-background-clip: content-box;
   background-origin: content-box;
   background-clip: content-box;
   background-position: left top;
 }
-.test__squish .assert__split:after {
+.test__squish .assert__split::after {
   content: " ";
   display: block;
   clear: both;
@@ -2154,22 +1675,18 @@ h1 {
 }
 
 .test__squish .assert__nested {
-  *zoom: 1;
   max-width: 100%;
   margin-left: auto;
   margin-right: auto;
   background-image: -moz-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25));
   background-image: -webkit-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25));
   background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25));
-  -webkit-background-size: 14.28571%;
   background-size: 14.28571%;
-  -webkit-background-origin: content-box;
-  -webkit-background-clip: content-box;
   background-origin: content-box;
   background-clip: content-box;
   background-position: left top;
 }
-.test__squish .assert__nested:after {
+.test__squish .assert__nested::after {
   content: " ";
   display: block;
   clear: both;
@@ -2193,22 +1710,18 @@ h1 {
 ### Padding Syntax ------ */
 /* - [mixin] prefix */
 .test__prefix .assert__wide {
-  *zoom: 1;
   max-width: 100%;
   margin-left: auto;
   margin-right: auto;
   background-image: -moz-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 66.66667%, rgba(0, 0, 0, 0) 66.66667%);
   background-image: -webkit-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 66.66667%, rgba(0, 0, 0, 0) 66.66667%);
   background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 66.66667%, rgba(0, 0, 0, 0) 66.66667%);
-  -webkit-background-size: 15%;
   background-size: 15%;
-  -webkit-background-origin: content-box;
-  -webkit-background-clip: content-box;
   background-origin: content-box;
   background-clip: content-box;
   background-position: left top;
 }
-.test__prefix .assert__wide:after {
+.test__prefix .assert__wide::after {
   content: " ";
   display: block;
   clear: both;
@@ -2223,22 +1736,18 @@ h1 {
 }
 
 .test__prefix .assert__wider {
-  *zoom: 1;
   max-width: 100%;
   margin-left: auto;
   margin-right: auto;
   background-image: -moz-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 66.66667%, rgba(0, 0, 0, 0) 66.66667%);
   background-image: -webkit-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 66.66667%, rgba(0, 0, 0, 0) 66.66667%);
   background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 66.66667%, rgba(0, 0, 0, 0) 66.66667%);
-  -webkit-background-size: 15%;
   background-size: 15%;
-  -webkit-background-origin: content-box;
-  -webkit-background-clip: content-box;
   background-origin: content-box;
   background-clip: content-box;
   background-position: left top;
 }
-.test__prefix .assert__wider:after {
+.test__prefix .assert__wider::after {
   content: " ";
   display: block;
   clear: both;
@@ -2262,20 +1771,17 @@ h1 {
 
 /* - [mixin] suffix */
 .test__suffix .assert__wide {
-  *zoom: 1;
   max-width: 100%;
   margin-left: auto;
   margin-right: auto;
   background-image: -moz-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, rgba(0, 0, 0, 0) 10%, rgba(0, 0, 0, 0) 12.5%, rgba(102, 102, 255, 0.25) 12.5%, rgba(179, 179, 255, 0.25) 32.5%, rgba(0, 0, 0, 0) 32.5%, rgba(0, 0, 0, 0) 35%, rgba(102, 102, 255, 0.25) 35%, rgba(179, 179, 255, 0.25) 65%, rgba(0, 0, 0, 0) 65%, rgba(0, 0, 0, 0) 67.5%, rgba(102, 102, 255, 0.25) 67.5%, rgba(179, 179, 255, 0.25) 87.5%, rgba(0, 0, 0, 0) 87.5%, rgba(0, 0, 0, 0) 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
   background-image: -webkit-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, rgba(0, 0, 0, 0) 10%, rgba(0, 0, 0, 0) 12.5%, rgba(102, 102, 255, 0.25) 12.5%, rgba(179, 179, 255, 0.25) 32.5%, rgba(0, 0, 0, 0) 32.5%, rgba(0, 0, 0, 0) 35%, rgba(102, 102, 255, 0.25) 35%, rgba(179, 179, 255, 0.25) 65%, rgba(0, 0, 0, 0) 65%, rgba(0, 0, 0, 0) 67.5%, rgba(102, 102, 255, 0.25) 67.5%, rgba(179, 179, 255, 0.25) 87.5%, rgba(0, 0, 0, 0) 87.5%, rgba(0, 0, 0, 0) 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
   background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, rgba(0, 0, 0, 0) 10%, rgba(0, 0, 0, 0) 12.5%, rgba(102, 102, 255, 0.25) 12.5%, rgba(179, 179, 255, 0.25) 32.5%, rgba(0, 0, 0, 0) 32.5%, rgba(0, 0, 0, 0) 35%, rgba(102, 102, 255, 0.25) 35%, rgba(179, 179, 255, 0.25) 65%, rgba(0, 0, 0, 0) 65%, rgba(0, 0, 0, 0) 67.5%, rgba(102, 102, 255, 0.25) 67.5%, rgba(179, 179, 255, 0.25) 87.5%, rgba(0, 0, 0, 0) 87.5%, rgba(0, 0, 0, 0) 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
-  -webkit-background-origin: content-box;
-  -webkit-background-clip: content-box;
   background-origin: content-box;
   background-clip: content-box;
   background-position: left top;
 }
-.test__suffix .assert__wide:after {
+.test__suffix .assert__wide::after {
   content: " ";
   display: block;
   clear: both;
@@ -2290,20 +1796,17 @@ h1 {
 }
 
 .test__suffix .assert__wider {
-  *zoom: 1;
   max-width: 100%;
   margin-left: auto;
   margin-right: auto;
   background-image: -moz-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, rgba(0, 0, 0, 0) 10%, rgba(0, 0, 0, 0) 12.5%, rgba(102, 102, 255, 0.25) 12.5%, rgba(179, 179, 255, 0.25) 32.5%, rgba(0, 0, 0, 0) 32.5%, rgba(0, 0, 0, 0) 35%, rgba(102, 102, 255, 0.25) 35%, rgba(179, 179, 255, 0.25) 65%, rgba(0, 0, 0, 0) 65%, rgba(0, 0, 0, 0) 67.5%, rgba(102, 102, 255, 0.25) 67.5%, rgba(179, 179, 255, 0.25) 87.5%, rgba(0, 0, 0, 0) 87.5%, rgba(0, 0, 0, 0) 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
   background-image: -webkit-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, rgba(0, 0, 0, 0) 10%, rgba(0, 0, 0, 0) 12.5%, rgba(102, 102, 255, 0.25) 12.5%, rgba(179, 179, 255, 0.25) 32.5%, rgba(0, 0, 0, 0) 32.5%, rgba(0, 0, 0, 0) 35%, rgba(102, 102, 255, 0.25) 35%, rgba(179, 179, 255, 0.25) 65%, rgba(0, 0, 0, 0) 65%, rgba(0, 0, 0, 0) 67.5%, rgba(102, 102, 255, 0.25) 67.5%, rgba(179, 179, 255, 0.25) 87.5%, rgba(0, 0, 0, 0) 87.5%, rgba(0, 0, 0, 0) 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
   background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, rgba(0, 0, 0, 0) 10%, rgba(0, 0, 0, 0) 12.5%, rgba(102, 102, 255, 0.25) 12.5%, rgba(179, 179, 255, 0.25) 32.5%, rgba(0, 0, 0, 0) 32.5%, rgba(0, 0, 0, 0) 35%, rgba(102, 102, 255, 0.25) 35%, rgba(179, 179, 255, 0.25) 65%, rgba(0, 0, 0, 0) 65%, rgba(0, 0, 0, 0) 67.5%, rgba(102, 102, 255, 0.25) 67.5%, rgba(179, 179, 255, 0.25) 87.5%, rgba(0, 0, 0, 0) 87.5%, rgba(0, 0, 0, 0) 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
-  -webkit-background-origin: content-box;
-  -webkit-background-clip: content-box;
   background-origin: content-box;
   background-clip: content-box;
   background-position: left top;
 }
-.test__suffix .assert__wider:after {
+.test__suffix .assert__wider::after {
   content: " ";
   display: block;
   clear: both;
@@ -2327,20 +1830,17 @@ h1 {
 
 /* - [mixin] pad */
 .test__pad .assert__simple {
-  *zoom: 1;
   max-width: 100%;
   margin-left: auto;
   margin-right: auto;
   background-image: -moz-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, rgba(0, 0, 0, 0) 10%, rgba(0, 0, 0, 0) 12.5%, rgba(102, 102, 255, 0.25) 12.5%, rgba(179, 179, 255, 0.25) 32.5%, rgba(0, 0, 0, 0) 32.5%, rgba(0, 0, 0, 0) 35%, rgba(102, 102, 255, 0.25) 35%, rgba(179, 179, 255, 0.25) 65%, rgba(0, 0, 0, 0) 65%, rgba(0, 0, 0, 0) 67.5%, rgba(102, 102, 255, 0.25) 67.5%, rgba(179, 179, 255, 0.25) 87.5%, rgba(0, 0, 0, 0) 87.5%, rgba(0, 0, 0, 0) 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
   background-image: -webkit-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, rgba(0, 0, 0, 0) 10%, rgba(0, 0, 0, 0) 12.5%, rgba(102, 102, 255, 0.25) 12.5%, rgba(179, 179, 255, 0.25) 32.5%, rgba(0, 0, 0, 0) 32.5%, rgba(0, 0, 0, 0) 35%, rgba(102, 102, 255, 0.25) 35%, rgba(179, 179, 255, 0.25) 65%, rgba(0, 0, 0, 0) 65%, rgba(0, 0, 0, 0) 67.5%, rgba(102, 102, 255, 0.25) 67.5%, rgba(179, 179, 255, 0.25) 87.5%, rgba(0, 0, 0, 0) 87.5%, rgba(0, 0, 0, 0) 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
   background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, rgba(0, 0, 0, 0) 10%, rgba(0, 0, 0, 0) 12.5%, rgba(102, 102, 255, 0.25) 12.5%, rgba(179, 179, 255, 0.25) 32.5%, rgba(0, 0, 0, 0) 32.5%, rgba(0, 0, 0, 0) 35%, rgba(102, 102, 255, 0.25) 35%, rgba(179, 179, 255, 0.25) 65%, rgba(0, 0, 0, 0) 65%, rgba(0, 0, 0, 0) 67.5%, rgba(102, 102, 255, 0.25) 67.5%, rgba(179, 179, 255, 0.25) 87.5%, rgba(0, 0, 0, 0) 87.5%, rgba(0, 0, 0, 0) 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
-  -webkit-background-origin: content-box;
-  -webkit-background-clip: content-box;
   background-origin: content-box;
   background-clip: content-box;
   background-position: left top;
 }
-.test__pad .assert__simple:after {
+.test__pad .assert__simple::after {
   content: " ";
   display: block;
   clear: both;
@@ -2355,22 +1855,18 @@ h1 {
 }
 
 .test__pad .assert__nested {
-  *zoom: 1;
   max-width: 100%;
   margin-left: auto;
   margin-right: auto;
   background-image: -moz-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 66.66667%, rgba(0, 0, 0, 0) 66.66667%);
   background-image: -webkit-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 66.66667%, rgba(0, 0, 0, 0) 66.66667%);
   background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 66.66667%, rgba(0, 0, 0, 0) 66.66667%);
-  -webkit-background-size: 11.53846%;
   background-size: 11.53846%;
-  -webkit-background-origin: content-box;
-  -webkit-background-clip: content-box;
   background-origin: content-box;
   background-clip: content-box;
   background-position: left top;
 }
-.test__pad .assert__nested:after {
+.test__pad .assert__nested::after {
   content: " ";
   display: block;
   clear: both;
@@ -2390,22 +1886,18 @@ h1 {
 }
 
 .test__pad .assert__inside {
-  *zoom: 1;
   max-width: 100%;
   margin-left: auto;
   margin-right: auto;
   background-image: -moz-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25));
   background-image: -webkit-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25));
   background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25));
-  -webkit-background-size: 12.5%;
   background-size: 12.5%;
-  -webkit-background-origin: content-box;
-  -webkit-background-clip: content-box;
   background-origin: content-box;
   background-clip: content-box;
   background-position: left top;
 }
-.test__pad .assert__inside:after {
+.test__pad .assert__inside::after {
   content: " ";
   display: block;
   clear: both;
@@ -2420,22 +1912,18 @@ h1 {
 }
 
 .test__pad .assert__inside-nogutters {
-  *zoom: 1;
   max-width: 100%;
   margin-left: auto;
   margin-right: auto;
   background-image: -moz-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25));
   background-image: -webkit-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25));
   background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25));
-  -webkit-background-size: 12.5%;
   background-size: 12.5%;
-  -webkit-background-origin: content-box;
-  -webkit-background-clip: content-box;
   background-origin: content-box;
   background-clip: content-box;
   background-position: left top;
 }
-.test__pad .assert__inside-nogutters:after {
+.test__pad .assert__inside-nogutters::after {
   content: " ";
   display: block;
   clear: both;
@@ -2454,22 +1942,18 @@ h1 {
 ### Bleed Syntax ------ */
 /* - [mixin] bleed */
 .test__bleed .assert__simple {
-  *zoom: 1;
   max-width: 100%;
   margin-left: auto;
   margin-right: auto;
   background-image: -moz-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 66.66667%, rgba(0, 0, 0, 0) 66.66667%);
   background-image: -webkit-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 66.66667%, rgba(0, 0, 0, 0) 66.66667%);
   background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 66.66667%, rgba(0, 0, 0, 0) 66.66667%);
-  -webkit-background-size: 11.53846%;
   background-size: 11.53846%;
-  -webkit-background-origin: content-box;
-  -webkit-background-clip: content-box;
   background-origin: content-box;
   background-clip: content-box;
   background-position: left top;
 }
-.test__bleed .assert__simple:after {
+.test__bleed .assert__simple::after {
   content: " ";
   display: block;
   clear: both;
@@ -2489,22 +1973,18 @@ h1 {
 }
 
 .test__bleed .assert__inside {
-  *zoom: 1;
   max-width: 50em;
   margin-left: auto;
   margin-right: auto;
   background-image: -moz-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25));
   background-image: -webkit-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25));
   background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25));
-  -webkit-background-size: 10%;
   background-size: 10%;
-  -webkit-background-origin: content-box;
-  -webkit-background-clip: content-box;
   background-origin: content-box;
   background-clip: content-box;
   background-position: left top;
 }
-.test__bleed .assert__inside:after {
+.test__bleed .assert__inside::after {
   content: " ";
   display: block;
   clear: both;
@@ -2528,22 +2008,18 @@ h1 {
 }
 
 .test__bleed .assert__split {
-  *zoom: 1;
   max-width: 60em;
   margin-left: auto;
   margin-right: auto;
   background-image: -moz-linear-gradient(left, rgba(0, 0, 0, 0) 10%, rgba(102, 102, 255, 0.25) 10%, rgba(179, 179, 255, 0.25) 90%, rgba(0, 0, 0, 0) 90%);
   background-image: -webkit-linear-gradient(left, rgba(0, 0, 0, 0) 10%, rgba(102, 102, 255, 0.25) 10%, rgba(179, 179, 255, 0.25) 90%, rgba(0, 0, 0, 0) 90%);
   background-image: linear-gradient(to right, rgba(0, 0, 0, 0) 10%, rgba(102, 102, 255, 0.25) 10%, rgba(179, 179, 255, 0.25) 90%, rgba(0, 0, 0, 0) 90%);
-  -webkit-background-size: 8.33333%;
   background-size: 8.33333%;
-  -webkit-background-origin: content-box;
-  -webkit-background-clip: content-box;
   background-origin: content-box;
   background-clip: content-box;
   background-position: left top;
 }
-.test__bleed .assert__split:after {
+.test__bleed .assert__split::after {
   content: " ";
   display: block;
   clear: both;
@@ -2564,22 +2040,18 @@ h1 {
 
 /* - [mixin] bleed-x */
 .test__bleed-x .assert__simple {
-  *zoom: 1;
   max-width: 100%;
   margin-left: auto;
   margin-right: auto;
   background-image: -moz-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 66.66667%, rgba(0, 0, 0, 0) 66.66667%);
   background-image: -webkit-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 66.66667%, rgba(0, 0, 0, 0) 66.66667%);
   background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 66.66667%, rgba(0, 0, 0, 0) 66.66667%);
-  -webkit-background-size: 9.375%;
   background-size: 9.375%;
-  -webkit-background-origin: content-box;
-  -webkit-background-clip: content-box;
   background-origin: content-box;
   background-clip: content-box;
   background-position: left top;
 }
-.test__bleed-x .assert__simple:after {
+.test__bleed-x .assert__simple::after {
   content: " ";
   display: block;
   clear: both;
@@ -2599,22 +2071,18 @@ h1 {
 }
 
 .test__bleed-x .assert__inside {
-  *zoom: 1;
   max-width: 100%;
   margin-left: auto;
   margin-right: auto;
   background-image: -moz-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25));
   background-image: -webkit-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25));
   background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25));
-  -webkit-background-size: 10%;
   background-size: 10%;
-  -webkit-background-origin: content-box;
-  -webkit-background-clip: content-box;
   background-origin: content-box;
   background-clip: content-box;
   background-position: left top;
 }
-.test__bleed-x .assert__inside:after {
+.test__bleed-x .assert__inside::after {
   content: " ";
   display: block;
   clear: both;
@@ -2635,22 +2103,18 @@ h1 {
 
 /* - [mixin] bleed-y */
 .test__bleed-y .assert__simple {
-  *zoom: 1;
   max-width: 100%;
   margin-left: auto;
   margin-right: auto;
   background-image: -moz-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 66.66667%, rgba(0, 0, 0, 0) 66.66667%);
   background-image: -webkit-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 66.66667%, rgba(0, 0, 0, 0) 66.66667%);
   background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 66.66667%, rgba(0, 0, 0, 0) 66.66667%);
-  -webkit-background-size: 9.375%;
   background-size: 9.375%;
-  -webkit-background-origin: content-box;
-  -webkit-background-clip: content-box;
   background-origin: content-box;
   background-clip: content-box;
   background-position: left top;
 }
-.test__bleed-y .assert__simple:after {
+.test__bleed-y .assert__simple::after {
   content: " ";
   display: block;
   clear: both;
@@ -2687,10 +2151,464 @@ h1 {
     1 Tests:
     - 1 Passed
     - 0 Failed */
+/*
+
+### Shared Output ------ */
+/* - [mixin] output */
+.test__output .assert__output {
+  overflow: hidden;
+  background: rgba(204, 204, 255, 0.5);
+}
+
+.test__output .assert__output::before {
+  content: "Property value pairs are passed in as maps and output as CSS.";
+  display: block;
+  padding: 0.375rem 0.75rem;
+  text-align: left;
+  font-style: italic;
+}
+
+/*  
+
+### Direction Helpers ------ */
+/*  - [function] get-direction (2 Assertions, 2 Passed, 0 Failed) */
+/*  - [function] to (2 Assertions, 2 Passed, 0 Failed) */
+/*  - [function] from (2 Assertions, 2 Passed, 0 Failed) */
+/*  
+    3 Tests:
+    - 3 Passed
+    - 0 Failed */
+/*
+
+### Grid Background Output ------ */
+/* - [mixin] background-grid-output */
+.test__background-grid-output .assert__show {
+  overflow: hidden;
+  background: rgba(204, 204, 255, 0.5);
+}
+
+.test__background-grid-output .assert__show .test, .test__background-grid-output .assert__show .expect {
+  padding-top: 48px;
+  padding-top: 3rem;
+  padding-bottom: 48px;
+  padding-bottom: 3rem;
+  background: none;
+}
+
+.test__background-grid-output .assert__show::before {
+  content: "Elements should show a horizontal clipped red-green-blue gradient, and a vertical baseline";
+  display: block;
+  padding: 0.375rem 0.75rem;
+  text-align: left;
+  font-style: italic;
+}
+
+/*
+
+### Shared Container API ------ */
+/* - [mixin] container-output */
+.test__container-output .assert__fluid {
+  overflow: hidden;
+  background: rgba(204, 204, 255, 0.5);
+}
+
+.test__container-output .assert__fluid::before {
+  content: "Containers should have 60em max-width, centered.";
+  display: block;
+  padding: 0.375rem 0.75rem;
+  text-align: left;
+  font-style: italic;
+}
+
+.test__container-output .assert__static {
+  overflow: hidden;
+  background: rgba(204, 204, 255, 0.5);
+}
+
+.test__container-output .assert__static::before {
+  content: "Containers should have 30em width, flush right.";
+  display: block;
+  padding: 0.375rem 0.75rem;
+  text-align: left;
+  font-style: italic;
+}
+
+.test__container-output .assert__auto {
+  overflow: hidden;
+  background: rgba(204, 204, 255, 0.5);
+}
+
+.test__container-output .assert__auto::before {
+  content: "Containers should have 100% width.";
+  display: block;
+  padding: 0.375rem 0.75rem;
+  text-align: left;
+  font-style: italic;
+}
+
+/*
+
+### Shared Margin API ------ */
+/* - [mixin] margin-output */
+.test__margin-output .assert__margin-output {
+  overflow: hidden;
+  background: rgba(204, 204, 255, 0.5);
+}
+
+.test__margin-output .assert__margin-output::before {
+  content: "Elements should have 25% right margin, 8em left.";
+  display: block;
+  padding: 0.375rem 0.75rem;
+  text-align: left;
+  font-style: italic;
+}
+
+/*
+
+### Shared Padding API ------ */
+/* - [mixin] padding-output */
+.test__padding-output .assert__padding-output {
+  overflow: hidden;
+  background: rgba(204, 204, 255, 0.5);
+}
+
+.test__padding-output .assert__padding-output::before {
+  content: "Elements should have 25% right padding, 8em left.";
+  display: block;
+  padding: 0.375rem 0.75rem;
+  text-align: left;
+  font-style: italic;
+}
+
+/*
+
+### Prefix Support ------ */
+/* - [mixin] susy-prefix */
+.test__susy-prefix .assert__susy-prefix {
+  overflow: hidden;
+  background: rgba(204, 204, 255, 0.5);
+}
+
+.test__susy-prefix .assert__susy-prefix::before {
+  content: "Requested prefixes are added to output.";
+  display: block;
+  padding: 0.375rem 0.75rem;
+  text-align: left;
+  font-style: italic;
+}
+
+/*
+
+### Background Support ------ */
+/* - [mixin] susy-background-image */
+.test__susy-background-image .assert__susy-background-image {
+  overflow: hidden;
+  background: rgba(204, 204, 255, 0.5);
+}
+
+.test__susy-background-image .assert__susy-background-image::before {
+  content: "Without Compass, background-image is output directly.";
+  display: block;
+  padding: 0.375rem 0.75rem;
+  text-align: left;
+  font-style: italic;
+}
+
+/* - [mixin] susy-background-size */
+.test__susy-background-size .assert__susy-background-size {
+  overflow: hidden;
+  background: rgba(204, 204, 255, 0.5);
+}
+
+.test__susy-background-size .assert__susy-background-size::before {
+  content: "Without Compass, background-size is output directly.";
+  display: block;
+  padding: 0.375rem 0.75rem;
+  text-align: left;
+  font-style: italic;
+}
+
+/* - [mixin] susy-background-origin */
+.test__susy-background-origin .assert__susy-background-origin {
+  overflow: hidden;
+  background: rgba(204, 204, 255, 0.5);
+}
+
+.test__susy-background-origin .assert__susy-background-origin::before {
+  content: "Without Compass, background-origin is output directly.";
+  display: block;
+  padding: 0.375rem 0.75rem;
+  text-align: left;
+  font-style: italic;
+}
+
+/* - [mixin] susy-background-clip */
+.test__susy-background-clip .assert__susy-background-clip {
+  overflow: hidden;
+  background: rgba(204, 204, 255, 0.5);
+}
+
+.test__susy-background-clip .assert__susy-background-clip::before {
+  content: "Without Compass, background-clip is output directly.";
+  display: block;
+  padding: 0.375rem 0.75rem;
+  text-align: left;
+  font-style: italic;
+}
+
+/*  
+
+### Box Sizing Support ------ */
+/* - [mixin] susy-box-sizing */
+.test__susy-box-sizing .assert__border-box {
+  overflow: hidden;
+  background: rgba(204, 204, 255, 0.5);
+}
+
+.test__susy-box-sizing .assert__border-box .test, .test__susy-box-sizing .assert__border-box .expect {
+  width: 50%;
+  padding: 0 2em;
+}
+
+.test__susy-box-sizing .assert__border-box::before {
+  content: "Box-models are correctly output and prefixed.";
+  display: block;
+  padding: 0.375rem 0.75rem;
+  text-align: left;
+  font-style: italic;
+}
+
+/*  
+    0 Tests:
+    - 0 Passed
+    - 0 Failed */
+/*
+
+### rem Support ------ */
+.test__ .assert__ {
+  overflow: hidden;
+  background: rgba(204, 204, 255, 0.5);
+}
+
+.test__ .assert__::before {
+  content: "Without compass, rem units are output unchanged.";
+  display: block;
+  padding: 0.375rem 0.75rem;
+  text-align: left;
+  font-style: italic;
+}
+
+/*
+
+### Clearfix Support ------ */
+/* - [mixin] susy-clearfix */
+.test__susy-clearfix .assert__clearfix {
+  overflow: hidden;
+  background: rgba(204, 204, 255, 0.5);
+}
+
+.test__susy-clearfix .assert__clearfix .spacer {
+  float: left;
+  width: 25%;
+}
+
+.test__susy-clearfix .assert__clearfix::before {
+  content: "Elements should clear floated children.";
+  display: block;
+  padding: 0.375rem 0.75rem;
+  text-align: left;
+  font-style: italic;
+}
+
+/*  
+
+### Susy Support ------ */
+/* - [mixin] susy-support */
+.test__susy-support .assert__susy-support {
+  overflow: hidden;
+  background: rgba(204, 204, 255, 0.5);
+}
+
+.test__susy-support .assert__susy-support::before {
+  content: "Recogizes properties that need special support,
+      and passes others through directly.";
+  display: block;
+  padding: 0.375rem 0.75rem;
+  text-align: left;
+  font-style: italic;
+}
+
+/*  - [function] susy-support (3 Assertions, 3 Passed, 0 Failed) */
+/*  
+    1 Tests:
+    - 1 Passed
+    - 0 Failed */
+/*
+
+### Float Container API ------ */
+/* - [mixin] float-container */
+.test__float-container .assert__float-container {
+  overflow: hidden;
+  background: rgba(204, 204, 255, 0.5);
+}
+
+.test__float-container .assert__float-container::before {
+  content: "Containers should be 30em wide, flush left.";
+  display: block;
+  padding: 0.375rem 0.75rem;
+  text-align: left;
+  font-style: italic;
+}
+
+/*
+
+### Float Span API ------ */
+/* - [mixin] float-span-output */
+.test__float-span-output .assert__full {
+  overflow: hidden;
+  background: rgba(204, 204, 255, 0.5);
+}
+
+.test__float-span-output .assert__full .expect {
+  clear: both;
+}
+
+.test__float-span-output .assert__full::before {
+  content: "Output should be 25%, floated left, with matching margins/padding";
+  display: block;
+  padding: 0.375rem 0.75rem;
+  text-align: left;
+  font-style: italic;
+}
+
+.test__float-span-output .assert__float-to {
+  overflow: hidden;
+  background: rgba(204, 204, 255, 0.5);
+}
+
+.test__float-span-output .assert__float-to .expect {
+  clear: both;
+}
+
+.test__float-span-output .assert__float-to::before {
+  content: "Output should be 25%, floated right";
+  display: block;
+  padding: 0.375rem 0.75rem;
+  text-align: left;
+  font-style: italic;
+}
+
+.test__float-span-output .assert__float-null {
+  overflow: hidden;
+  background: rgba(204, 204, 255, 0.5);
+}
+
+.test__float-span-output .assert__float-null::before {
+  content: "Output should be 25%, not floated";
+  display: block;
+  padding: 0.375rem 0.75rem;
+  text-align: left;
+  font-style: italic;
+}
+
+/*
+
+### Float End API ------ */
+/* - [mixin] float-last */
+.test__float-last .assert__default {
+  overflow: hidden;
+  background: rgba(204, 204, 255, 0.5);
+}
+
+.test__float-last .assert__default .test, .test__float-last .assert__default .expect {
+  float: left;
+  width: 75%;
+  margin-right: 5%;
+}
+
+.test__float-last .assert__default::before {
+  content: "Items should float flush right.";
+  display: block;
+  padding: 0.375rem 0.75rem;
+  text-align: left;
+  font-style: italic;
+}
+
+.test__float-last .assert__last-flow-from {
+  overflow: hidden;
+  background: rgba(204, 204, 255, 0.5);
+}
+
+.test__float-last .assert__last-flow-from .test, .test__float-last .assert__last-flow-from .expect {
+  float: left;
+  width: 75%;
+  margin-right: 5%;
+}
+.test__float-last .assert__last-flow-from .expect {
+  clear: both;
+}
+.test__float-last .assert__last-flow-from .spacer {
+  overflow: hidden;
+}
+
+.test__float-last .assert__last-flow-from::before {
+  content: "Items should not have any right margin.";
+  display: block;
+  padding: 0.375rem 0.75rem;
+  text-align: left;
+  font-style: italic;
+}
+
+/* - [mixin] float-first */
+.test__float-first .assert__float-first {
+  overflow: hidden;
+  background: rgba(204, 204, 255, 0.5);
+}
+
+.test__float-first .assert__float-first .test, .test__float-first .assert__float-first .expect {
+  float: left;
+  width: 75%;
+  margin-left: 5%;
+}
+
+.test__float-first .assert__float-first::before {
+  content: "Items should float flush left.";
+  display: block;
+  padding: 0.375rem 0.75rem;
+  text-align: left;
+  font-style: italic;
+}
+
+/*
+
+### Isolation API ------ */
+/* - [mixin] isolate-output */
+.test__isolate-output .assert__isolate-output {
+  overflow: hidden;
+  background: rgba(204, 204, 255, 0.5);
+}
+
+.test__isolate-output .assert__isolate-output .test, .test__isolate-output .assert__isolate-output .expect {
+  width: 40%;
+  float: left;
+  margin-right: 5.26316%;
+}
+.test__isolate-output .assert__isolate-output .expect {
+  clear: both;
+}
+
+.test__isolate-output .assert__isolate-output::before {
+  content: "Isolation at 30%, has 30% left margin and -100% right margin.";
+  display: block;
+  padding: 0.375rem 0.75rem;
+  text-align: left;
+  font-style: italic;
+}
+
 .results {
   background: rgba(0, 128, 0, 0.25);
   border-color: green;
 }
 .results::after {
-  content: "52 Tests, 52 Passed, 0 Failed";
+  content: "53 Tests, 53 Passed, 0 Failed";
 }

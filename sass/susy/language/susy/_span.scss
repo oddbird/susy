@@ -23,10 +23,10 @@
     @include nobreak;
   }
 
-  @include susy-box-sizing($box);
+  @include output((box-sizing: $box));
   @include float-span-output($output...);
 
-  @if type-of($nesting) == number and unitless($nesting) {
+  @if valid-columns($nesting, silent) {
     @include nested($span) { @content; }
   } @else {
     @content;

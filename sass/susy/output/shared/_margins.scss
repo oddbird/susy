@@ -14,6 +14,10 @@
   $to: to($flow);
   $from: from($flow);
 
-  margin-#{$from}: $before;
-  margin-#{$to}: $after;
+  $output: (
+    margin-#{$from}: $before,
+    margin-#{$to}: $after,
+  );
+
+  @include output($output);
 }

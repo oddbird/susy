@@ -8,9 +8,9 @@
 @mixin gutters(
   $span: $susy
 ) {
-  $span    : parse-gutters($span);
-  $gutters    : get-gutters($span);
-  $output     : (
+  $span: parse-gutters($span);
+  $gutters: get-gutters($span);
+  $output: (
     before: map-get($gutters, before),
     after: map-get($gutters, after),
     flow: susy-get(flow, $span),

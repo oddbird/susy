@@ -33,7 +33,7 @@
         @include span(5 content-box) { .inner { @include span(2); } }
       }
       .expect {
-        @include susy-box-sizing(content-box);
+        @include output((box-sizing: content-box));
         width: 70%;
         float: left;
         margin-right: 5%;
@@ -78,7 +78,7 @@
     ) {
       .test { @include span(80%); }
       .expect {
-        @include susy-box-sizing(border-box);
+        @include output((box-sizing: border-box));
         width: 80%;
         float: left;
         padding-left: 1.25%;

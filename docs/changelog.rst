@@ -1,6 +1,30 @@
 Changelog
 =========
 
+2.0.0.rc.1 — UNRELEASED
+-----------------------
+
+- Add browser support module with ``support`` defaults
+  for ``background-image``, ``-options`` (``-size``, ``-clip``, ``-origin``),
+  ``box-sizing``, ``clearfix``, and ``rem``.
+  If you set to ``false``,
+  we'll make sure everything works well on modern browsers.
+  If you set to ``true``,
+  we'll check for existing mixins (e.g. from Compass or Bourbon)
+  to provide more powerful legacy support.
+
+  .. code-block: scss
+
+    $susy: (
+      support: (
+        background-image: true,
+        background-options: false,
+        box-sizing: true,
+        clearfix: false,
+        rem: false,
+      ),
+    );
+
 
 2.0.0.beta.4 — UNRELEASED
 -------------------------

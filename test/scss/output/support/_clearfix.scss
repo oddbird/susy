@@ -1,7 +1,7 @@
-// Box Sizing
-// ----------
+// Clearfix Tests
+// ==============
 
-@include test-module('Clearfix Helper') {
+@include output-test-module('Clearfix Support') {
 
   // susy-clearfix [mixin]
   // ---------------------
@@ -20,11 +20,10 @@
     ) {
       .test { @include susy-clearfix; }
       .expect {
-        *zoom: 1;
-        &:after {
-          content    : " ";
-          display    : block;
-          clear      : both;
+        &::after {
+          content: " ";
+          display: block;
+          clear: both;
         }
       }
     }

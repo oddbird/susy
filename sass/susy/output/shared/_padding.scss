@@ -14,6 +14,10 @@
   $to: to($flow);
   $from: from($flow);
 
-  padding-#{$from}: $before;
-  padding-#{$to}: $after;
+  $output: (
+    padding-#{$from}: $before,
+    padding-#{$to}: $after,
+  );
+
+  @include output($output);
 }

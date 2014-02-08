@@ -16,11 +16,7 @@
         max-width: 30em;
         margin-left: 0;
         margin-right: auto;
-        &:after {
-          content: "";
-          display: table;
-          clear: both;
-        }
+        @include susy-clearfix;
       }
     }
   }

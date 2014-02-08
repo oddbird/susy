@@ -10,27 +10,17 @@
 // - [$flow]: ltr | rtl
 @mixin background-grid-output (
   $image,
-  $size: false,
-  $clip: false,
+  $size: null,
+  $clip: null,
   $flow: map-get($susy-defaults, flow)
 ) {
-  @if mixin-exists(background-image) {
-    @include background-image($image...);
-  } @else {
-    background-image: $image;
-  }
+  $output: (
+    background-image: $image,
+    background-size: $size,
+    background-origin: $clip,
+    background-clip: $clip,
+    background-position: from($flow) top,
+  );
 
-  @if $size {
-    -webkit-background-size: $size;
-    background-size: $size;
-  }
-
-  @if $clip {
-    -webkit-background-origin: $clip;
-    -webkit-background-clip: $clip;
-    background-origin: $clip;
-    background-clip: $clip;
-  }
-
-  background-position: from($flow) top;
+  @include output($output);
 }

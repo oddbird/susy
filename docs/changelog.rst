@@ -1,11 +1,12 @@
 Changelog
 =========
 
-2.0.0.rc.1 — UNRELEASED
+2.0.0.rc.1 — Feb 7 2014
 -----------------------
 
-- Add browser support module with ``support`` defaults
-  for ``background-image``, ``-options`` (``-size``, ``-clip``, ``-origin``),
+- Add browser support module with settings to ``use-custom`` mixins
+  for ``background-image``,
+  ``background-options`` (``-size``, ``-clip``, ``-origin``),
   ``box-sizing``, ``clearfix``, and ``rem``.
   If you set to ``false``,
   we'll make sure everything works well on modern browsers.
@@ -16,20 +17,19 @@ Changelog
   .. code-block: scss
 
     $susy: (
-      support: (
+      use-custom: (
+        clearfix: false,
         background-image: true,
         background-options: false,
         box-sizing: true,
-        clearfix: false,
-        rem: false,
+        rem: true,
       ),
     );
 
-
-2.0.0.beta.4 — UNRELEASED
--------------------------
-
-- Fix bugs caused by Sass changes to ``str-index()`` and ``#{&}``.
+- Fix bugs caused by Sass changes to ``str-index()``,
+  ``#{&}``, and ``@at-root``.
+- Fix Bower dependencies, and add support for Sache.
+- Remove legacy Compass polyfils from susyone code.
 
 
 2.0.0.beta.3 — Jan 10 2014

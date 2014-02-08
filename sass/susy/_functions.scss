@@ -338,20 +338,13 @@ $rem-with-px-fallback               : true !default;
 @function get-layout (
   $min
 ) {
-  $columns        : 1;
-  $layout-width   : container-outer-width($columns);
-  $return         : false;
-  $min            : fix-ems($min);
+  $min      : fix-ems($min);
 
-  @if comparable($min, $layout-width) {
-    @while $min >= $layout-width {
-      $columns        : $columns + 1;
-      $layout-width   : container-outer-width($columns);
-    }
-    $return : $columns;
+  @if comparable($min, $column-width) {
+    @return ceil(($min + $gutter-width) / ($column-width + $gutter-width));
+  } @else {
+    @warn "Can't determine a layout, becuse #{$min} and #{$column-width} are not comparable.";
   }
-
-  @return $return;
 }
 
 // Check to see if a given $media-layout list is simply the default.

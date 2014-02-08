@@ -101,7 +101,7 @@
         }
       }
     } @else {
-      @warn "Something went horribly wrong here. Try adjusting your variables.";
+      @warn "We were not able to determine what layout to use at this breakpoint.";
     }
 
   } @else {

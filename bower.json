@@ -12,7 +12,10 @@
   "ignore": [
     "**/.*",
     "docs",
-    "test"
+    "test",
+    "Rakefile",
+    "*.json",
+    "*.gemspec"
   ],
   "devDependencies": {
     "true": "0.2.0"

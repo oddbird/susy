@@ -70,12 +70,12 @@ with their default values:
       output: background,
       toggle: top right,
     ),
-    support: (
+    use-custom: (
       background-image: true,
       background-options: false,
       box-sizing: true,
       clearfix: false,
-      rem: false,
+      rem: true,
     )
   );
 
@@ -769,30 +769,145 @@ Change the color of columns in the generated grid image.
 
 -------------------------------------------------------------------------
 
-.. _settings-support:
+.. _settings-custom:
 
-Support
--------
+Custom Support
+--------------
 
-Susy will use your browser-support modules,
-if you provide them.
-We provide a micro `clearfix`,
-and prefixed versions of `bos-sizing`,
-but everything else is left to third-party mixins.
-
-If you (or a library like Compass/Bourbon that you use)
-provides more complete support,
-Susy can be told to use it.
+There are several common helpers that you can tell Susy to use,
+if you provide them yourself
+or through a third-party library like Compass or Bourbon.
 
 
 -------------------------------------------------------------------------
 
-.. _settings-support-background-image:
+.. _settings-custom-clearfix:
 
-Support Background Image
-~~~~~~~~~~~~~~~~~~~~~~~~
+Custom Clearfix
+~~~~~~~~~~~~~~~
+
+Tell Susy to use a global ``clearfix`` mixin.
+
+.. describe:: setting
+
+  :key: ``use-custom clearfix``
+  :scope: global
+  :options: <boolean>
+  :default: ``false``
+
+``false``
+  Susy will use an internal micro-clearfix.
+
+``true``
+  Susy will look for an existing ``clearfix`` mixin,
+  and fallback to the internal micro-clearfix if none is found.
 
 
+-------------------------------------------------------------------------
+
+.. _settings-custom-background-image:
+
+Custom Background Image
+~~~~~~~~~~~~~~~~~~~~~~~
+
+Tell Susy to use a global ``background-image`` mixin.
+This is only used for debugging.
+
+.. describe:: setting
+
+  :key: ``use-custom background-image``
+  :scope: global
+  :options: <boolean>
+  :default: ``true``
+
+``false``
+  Susy will output background-images directly to CSS.
+
+``true``
+  Susy will look for an existing ``background-image`` mixin
+  (like the ones provided by Compass and Bourbon),
+  and fallback to plain CSS output if none is found.
+
+
+-------------------------------------------------------------------------
+
+.. _settings-custom-background-options:
+
+Custom Background Options
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Tell Susy to use global ``background-size``, ``-origin``, and ``-clip`` mixins.
+This is only used for debugging.
+
+.. describe:: setting
+
+  :key: ``use-custom background-options``
+  :scope: global
+  :options: <boolean>
+  :default: ``false``
+
+``false``
+  Susy will output background-options directly to CSS.
+
+``true``
+  Susy will look for existing ``background-size``,
+  ``-origin``, and ``-clip`` mixins
+  (like the ones provided by Compass and Bourbon),
+  and fallback to plain CSS output if none is found.
+
+
+-------------------------------------------------------------------------
+
+.. _settings-custom-box-sizing:
+
+Custom Box Sizing
+~~~~~~~~~~~~~~~~~
+
+Tell Susy to use a global ``box-sizing`` mixin.
+
+.. describe:: setting
+
+  :key: ``use-custom box-sizing``
+  :scope: global
+  :options: <boolean>
+  :default: ``true``
+
+``false``
+  Susy will output ``box-sizing`` official syntax,
+  as well as ``-moz`` and ``-webkit`` prefixed versions.
+
+``true``
+  Susy will look for an existing ``box-sizing`` mixin
+  (like the ones provided by Compass and Bourbon),
+  and fallback to mozilla, webkit, and official syntax
+  if none is found.
+
+
+-------------------------------------------------------------------------
+
+.. _settings-custom-rem:
+
+Custom Rem
+~~~~~~~~~~
+
+Tell Susy to use a global ``rem`` mixin
+(for ``rem``/``px`` fallback support).
+
+.. describe:: setting
+
+  :key: ``use-custom rem``
+  :scope: global
+  :options: <boolean>
+  :default: ``true``
+
+``false``
+  Susy will output length values directly to CSS.
+
+``true``
+  Susy will look for an existing ``rem`` mixin,
+  and the ``$rem-with-px-fallback`` setting
+  (as provided by Compass),
+  and fallback to plain CSS output if they aren't found.
 
 
 ------------------------------------------------------------------------------

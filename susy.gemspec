@@ -13,8 +13,8 @@ Gem::Specification.new do |s|
   s.required_rubygems_version = Gem::Requirement.new(">= 1.2") if s.respond_to? :required_rubygems_version=
 
   # Author Information
-  s.authors = ["Eric Meyer", "Mason Wendell", "Tsachi Shlidor", "Sam Richard", "Danny Palmer", "Rachel Nabors", "Scott Kellum", "Jina Bolton"]
-  s.email = ["eric@oddbird.net", "mason@zivtech.com", "tsi.shlidor@gmail.com", "snugug@gmail.com", "danny@dannyprose.com", "rachelnabors@gmail.com", "scott@scottkellum.com", "jina@sushiandrobots.com"]
+  s.authors = ["Eric Meyer", "Tsachi Shlidor", "Aaron Gray", "Rachel Nabors", "Jina Bolton", "Danny Palmer"]
+  s.email = ["eric@oddbird.net", "tsi.shlidor@gmail.com", "aaron@hellometa.com", "rachelnabors@gmail.com", "jina@sushiandrobots.com", "danny@dannyprose.com"]
   s.homepage = "http://susy.oddbird.net/"
 
   # Project Description

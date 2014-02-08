@@ -26,6 +26,12 @@ Changelog
     );
 
 
+2.0.0.beta.4 — UNRELEASED
+-------------------------
+
+- Fix bugs caused by Sass changes to ``str-index()`` and ``#{&}``.
+
+
 2.0.0.beta.3 — Jan 10 2014
 --------------------------
 

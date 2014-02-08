@@ -62,16 +62,12 @@ $susy-overlay-grid-head-exists: false;
     $susy-overlay-grid-head-exists: true !global;
   }
 
-  $selector: #{&};
-
-  @at-root head:hover {
-    ~ #{$selector},
-    ~ body #{$selector} {
-      position: relative;
-      &::before {
-        @include grid-overlay-base;
-        @include background-grid($grid);
-      }
+  head:hover ~ &,
+  head:hover ~ body & {
+    position: relative;
+    &::before {
+      @include grid-overlay-base;
+      @include background-grid($grid);
     }
   }
 }

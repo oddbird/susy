@@ -27,12 +27,12 @@
   $width: container-outer-width($columns);
 
   @if $style == 'static' {
-    @include if-rem(width, $width);
+    @include rem(width, $width);
   } @else {
     @if $style == 'fluid' {
-      @if unit($width) == '%' { @include if-rem(width, $width); }
+      @if unit($width) == '%' { @include rem(width, $width); }
     } @else {
-      @include if-rem(max-width, $width);
+      @include rem(max-width, $width);
       @include for-legacy-browser(ie,"6") {
         @if unit($width) == 'rem' {
           _width: round(convert-length($width, px));
@@ -52,8 +52,8 @@
 ){
   @include pie-clearfix;
   @include set-container-width($columns);
-  @include if-rem(padding-left, $grid-padding);
-  @include if-rem(padding-right, $grid-padding);
+  @include rem(padding-left, $grid-padding);
+  @include rem(padding-right, $grid-padding);
   margin: { left: auto; right: auto; }
 }
 

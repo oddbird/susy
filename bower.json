@@ -6,13 +6,7 @@
   "authors": ["Eric Meyer <eric@oddbird.net>"],
   "homepage": "http://susy.oddbird.net",
   "keywords": [
-    "layout",
-    "grid",
-    "sass",
-    "compass",
-    "responsive",
-    "rwd",
-    "semantic"
+    "layout", "grid", "sass", "compass", "responsive", "rwd", "semantic"
   ],
   "license": "BSD-3-Clause",
   "ignore": [
@@ -20,12 +14,7 @@
     "docs",
     "test"
   ],
-  "dependencies": {
-    "sass": "3.3.0"
-  },
   "devDependencies": {
-    "compass": "1.0",
-    "true": "0.2.0",
-    "breakpoint": "2.4.0"
+    "true": "0.2.0"
   }
 }

@@ -1,26 +1,26 @@
 GIT
   remote: git://github.com/chriseppstein/compass.git
-  revision: 6f3b30869da77094901a4585968f5eda453c26ec
+  revision: a052dc8eb91bf2ec884b68ecf7a8bde23cb8f685
   branch: master
   specs:
-    compass (1.0.0.alpha.17)
+    compass (1.0.0.alpha.18)
       chunky_png (~> 1.2)
-      compass-core (~> 1.0.0.alpha.16)
-      compass-import-once (~> 1.0.1)
+      compass-core (~> 1.0.0.alpha.17)
+      compass-import-once (~> 1.0.2)
       json
       listen (~> 1.1.0)
-      sass (~> 3.3.0.rc.1)
-    compass-core (1.0.0.alpha.16)
+      sass (~> 3.3.0.rc.3)
+    compass-core (1.0.0.alpha.17)
       multi_json (~> 1.0)
-      sass (>= 3.3.rc.1)
+      sass (>= 3.3.rc.3)
+    compass-import-once (1.0.2)
 
 GIT
   remote: git://github.com/nex3/sass.git
-  revision: 05fc8e2d835296c5abde788c2af7057b06212f32
+  revision: 575807f25cdd28ab2d5931f802059d19093fc656
   branch: master
   specs:
-    sass (3.3.0.rc.2)
-      listen (~> 1.1.0)
+    sass (3.3.0.rc.3)
 
 PATH
   remote: ..
@@ -31,12 +31,11 @@ PATH
 GEM
   remote: http://rubygems.org/
   specs:
-    breakpoint (2.4.0)
+    breakpoint (2.4.1)
       compass (~> 1.0.0.alpha.13)
       sass (~> 3.3.0.rc.2)
       sassy-maps (< 1.0.0)
     chunky_png (1.2.9)
-    compass-import-once (1.0.2)
     ffi (1.9.3)
     json (1.8.1)
     listen (1.1.6)

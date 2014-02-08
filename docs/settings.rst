@@ -70,6 +70,13 @@ with their default values:
       output: background,
       toggle: top right,
     ),
+    support: (
+      background-image: true,
+      background-options: false,
+      box-sizing: true,
+      clearfix: false,
+      rem: false,
+    )
   );
 
 You can set your own global defaults,
@@ -761,6 +768,34 @@ Change the color of columns in the generated grid image.
 
 
 -------------------------------------------------------------------------
+
+.. _settings-support:
+
+Support
+-------
+
+Susy will use your browser-support modules,
+if you provide them.
+We provide a micro `clearfix`,
+and prefixed versions of `bos-sizing`,
+but everything else is left to third-party mixins.
+
+If you (or a library like Compass/Bourbon that you use)
+provides more complete support,
+Susy can be told to use it.
+
+
+-------------------------------------------------------------------------
+
+.. _settings-support-background-image:
+
+Support Background Image
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+
+
+------------------------------------------------------------------------------
 
 .. _settings-location:
 

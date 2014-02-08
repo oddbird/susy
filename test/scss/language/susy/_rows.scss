@@ -60,7 +60,7 @@
       .test { @include full; }
       .expect {
         @include break;
-        @include span(100%);
+        @include span(100% no-gutters);
       }
     }
   }

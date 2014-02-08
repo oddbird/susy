@@ -8,7 +8,7 @@
 @mixin susy-box-sizing(
   $model: content-box
 ) {
-  @if mixin-exists(box-sizing) {
+  @if susy-support(box-sizing, (mixin: box-sizing), $warn: false) {
     @include box-sizing($model);
   } @else {
     $prefix: (moz, webkit, official);

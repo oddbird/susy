@@ -16,10 +16,7 @@
       .test { @include show-grid(7 .5 before show background); }
       .expect {
         background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 66.66667%, transparent 66.66667%);
-        -webkit-background-size: 15%;
         background-size: 15%;
-        -webkit-background-origin: content-box;
-        -webkit-background-clip: content-box;
         background-origin: content-box;
         background-clip: content-box;
         background-position: left top;
@@ -34,10 +31,7 @@
       .test { @include background-grid(8 .25 split show); }
       .expect {
         background-image: linear-gradient(to right, transparent 10%, rgba(102, 102, 255, 0.25) 10%, rgba(179, 179, 255, 0.25) 90%, transparent 90%);
-        -webkit-background-size: 12.5%;
         background-size: 12.5%;
-        -webkit-background-origin: content-box;
-        -webkit-background-clip: content-box;
         background-origin: content-box;
         background-clip: content-box;
         background-position: left top;
@@ -52,10 +46,7 @@
       .test { @include background-grid(8 .25 inside show); }
       .expect {
         background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25));
-        -webkit-background-size: 12.5%;
         background-size: 12.5%;
-        -webkit-background-origin: content-box;
-        -webkit-background-clip: content-box;
         background-origin: content-box;
         background-clip: content-box;
         background-position: left top;
@@ -70,8 +61,6 @@
       .test { @include background-grid((1 2 3 2 1) .5 before show); }
       .expect {
         background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 9.09091%, transparent 9.09091%, transparent 13.63636%, rgba(102, 102, 255, 0.25) 13.63636%, rgba(179, 179, 255, 0.25) 31.81818%, transparent 31.81818%, transparent 36.36364%, rgba(102, 102, 255, 0.25) 36.36364%, rgba(179, 179, 255, 0.25) 63.63636%, transparent 63.63636%, transparent 68.18182%, rgba(102, 102, 255, 0.25) 68.18182%, rgba(179, 179, 255, 0.25) 86.36364%, transparent 86.36364%, transparent 90.90909%, rgba(102, 102, 255, 0.25) 90.90909%, rgba(179, 179, 255, 0.25));
-        -webkit-background-origin: content-box;
-        -webkit-background-clip: content-box;
         background-origin: content-box;
         background-clip: content-box;
         background-position: left top;
@@ -86,8 +75,6 @@
       .test { @include background-grid((1 2 3 3) .25 split show); }
       .expect {
         background-image: linear-gradient(to right, transparent 1.25%, rgba(102, 102, 255, 0.25) 1.25%, rgba(179, 179, 255, 0.25) 11.25%, transparent 11.25%, transparent 13.75%, rgba(102, 102, 255, 0.25) 13.75%, rgba(179, 179, 255, 0.25) 33.75%, transparent 33.75%, transparent 36.25%, rgba(102, 102, 255, 0.25) 36.25%, rgba(179, 179, 255, 0.25) 66.25%, transparent 66.25%, transparent 68.75%, rgba(102, 102, 255, 0.25) 68.75%, rgba(179, 179, 255, 0.25) 98.75%, transparent 98.75%);
-        -webkit-background-origin: content-box;
-        -webkit-background-clip: content-box;
         background-origin: content-box;
         background-clip: content-box;
         background-position: left top;
@@ -102,8 +89,6 @@
       .test { @include background-grid((1 2 3 3) .25 inside show); }
       .expect {
         background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 12.5%, rgba(102, 102, 255, 0.25) 12.5%, rgba(179, 179, 255, 0.25) 35%, rgba(102, 102, 255, 0.25) 35%, rgba(179, 179, 255, 0.25) 67.5%, rgba(102, 102, 255, 0.25) 67.5%, rgba(179, 179, 255, 0.25));
-        -webkit-background-origin: content-box;
-        -webkit-background-clip: content-box;
         background-origin: content-box;
         background-clip: content-box;
         background-position: left top;

@@ -8,7 +8,7 @@
 @mixin susy-background-image(
   $image
 ) {
-  @if mixin-exists(background-image) {
+  @if susy-support(background-image, (mixin: background-image), $warn: false) {
     @include background-image($image...);
   } @else {
     background-image: $image;
@@ -22,7 +22,7 @@
 @mixin susy-background-size(
   $size
 ) {
-  @if mixin-exists(background-size) {
+  @if susy-support(background-options, (mixin: background-size)) {
     @include background-size($size);
   } @else {
     background-size: $size;
@@ -36,7 +36,7 @@
 @mixin susy-background-origin(
   $origin
 ) {
-  @if mixin-exists(background-origin) {
+  @if susy-support(background-options, (mixin: background-origin)) {
     @include background-origin($origin);
   } @else {
     background-origin: $origin;
@@ -50,7 +50,7 @@
 @mixin susy-background-clip(
   $clip
 ) {
-  @if mixin-exists(background-clip) {
+  @if susy-support(background-options, (mixin: background-clip)) {
     @include background-clip($clip);
   } @else {
     background-clip: $clip;

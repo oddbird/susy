@@ -185,19 +185,20 @@
     ) {
       .test { @include gallery(2); }
       .expect {
-        box-sizing: border-box;
+        @include output((box-sizing: border-box));
         float: left;
-        margin-right: -100%;
         padding-left: 2.5%;
         padding-right: 2.5%;
         &:nth-child(2n + 1) {
           width: 40%;
           margin-left: 0;
+          margin-right: -100%;
           clear: left;
         }
         &:nth-child(2n + 2) {
           width: 60%;
           margin-left: 40%;
+          margin-right: -100%;
           clear: none;
         }
       }

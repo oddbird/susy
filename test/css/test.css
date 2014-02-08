@@ -112,10 +112,7 @@
 }
 .test__background-grid .assert__outside .expect {
   background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 66.66667%, transparent 66.66667%);
-  -webkit-background-size: 15%;
   background-size: 15%;
-  -webkit-background-origin: content-box;
-  -webkit-background-clip: content-box;
   background-origin: content-box;
   background-clip: content-box;
   background-position: left top;
@@ -131,10 +128,7 @@
 }
 .test__background-grid .assert__split .expect {
   background-image: linear-gradient(to right, transparent 10%, rgba(102, 102, 255, 0.25) 10%, rgba(179, 179, 255, 0.25) 90%, transparent 90%);
-  -webkit-background-size: 12.5%;
   background-size: 12.5%;
-  -webkit-background-origin: content-box;
-  -webkit-background-clip: content-box;
   background-origin: content-box;
   background-clip: content-box;
   background-position: left top;
@@ -150,10 +144,7 @@
 }
 .test__background-grid .assert__inside .expect {
   background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25));
-  -webkit-background-size: 12.5%;
   background-size: 12.5%;
-  -webkit-background-origin: content-box;
-  -webkit-background-clip: content-box;
   background-origin: content-box;
   background-clip: content-box;
   background-position: left top;
@@ -168,8 +159,6 @@
 }
 .test__background-grid .assert__asym-outside .expect {
   background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 9.09091%, transparent 9.09091%, transparent 13.63636%, rgba(102, 102, 255, 0.25) 13.63636%, rgba(179, 179, 255, 0.25) 31.81818%, transparent 31.81818%, transparent 36.36364%, rgba(102, 102, 255, 0.25) 36.36364%, rgba(179, 179, 255, 0.25) 63.63636%, transparent 63.63636%, transparent 68.18182%, rgba(102, 102, 255, 0.25) 68.18182%, rgba(179, 179, 255, 0.25) 86.36364%, transparent 86.36364%, transparent 90.90909%, rgba(102, 102, 255, 0.25) 90.90909%, rgba(179, 179, 255, 0.25));
-  -webkit-background-origin: content-box;
-  -webkit-background-clip: content-box;
   background-origin: content-box;
   background-clip: content-box;
   background-position: left top;
@@ -184,8 +173,6 @@
 }
 .test__background-grid .assert__asym-split .expect {
   background-image: linear-gradient(to right, transparent 1.25%, rgba(102, 102, 255, 0.25) 1.25%, rgba(179, 179, 255, 0.25) 11.25%, transparent 11.25%, transparent 13.75%, rgba(102, 102, 255, 0.25) 13.75%, rgba(179, 179, 255, 0.25) 33.75%, transparent 33.75%, transparent 36.25%, rgba(102, 102, 255, 0.25) 36.25%, rgba(179, 179, 255, 0.25) 66.25%, transparent 66.25%, transparent 68.75%, rgba(102, 102, 255, 0.25) 68.75%, rgba(179, 179, 255, 0.25) 98.75%, transparent 98.75%);
-  -webkit-background-origin: content-box;
-  -webkit-background-clip: content-box;
   background-origin: content-box;
   background-clip: content-box;
   background-position: left top;
@@ -200,8 +187,6 @@
 }
 .test__background-grid .assert__asym-inside .expect {
   background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 12.5%, rgba(102, 102, 255, 0.25) 12.5%, rgba(179, 179, 255, 0.25) 35%, rgba(102, 102, 255, 0.25) 35%, rgba(179, 179, 255, 0.25) 67.5%, rgba(102, 102, 255, 0.25) 67.5%, rgba(179, 179, 255, 0.25));
-  -webkit-background-origin: content-box;
-  -webkit-background-clip: content-box;
   background-origin: content-box;
   background-clip: content-box;
   background-position: left top;
@@ -234,8 +219,8 @@
   background-position: left top;
 }
 .test__container .assert__default-box .test::after {
-  content: "";
-  display: table;
+  content: " ";
+  display: block;
   clear: both;
 }
 .test__container .assert__default-box .expect {
@@ -243,17 +228,14 @@
   margin-left: auto;
   margin-right: auto;
   background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 66.66667%, transparent 66.66667%);
-  -webkit-background-size: 15%;
   background-size: 15%;
-  -webkit-background-origin: content-box;
-  -webkit-background-clip: content-box;
   background-origin: content-box;
   background-clip: content-box;
   background-position: left top;
 }
 .test__container .assert__default-box .expect::after {
-  content: "";
-  display: table;
+  content: " ";
+  display: block;
   clear: both;
 }
 
@@ -271,8 +253,8 @@
   background-position: left top;
 }
 .test__container .assert__border-box .test::after {
-  content: "";
-  display: table;
+  content: " ";
+  display: block;
   clear: both;
 }
 .test__container .assert__border-box .expect {
@@ -283,15 +265,13 @@
   margin-left: 0;
   margin-right: auto;
   background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, transparent 10%, transparent 12.5%, rgba(102, 102, 255, 0.25) 12.5%, rgba(179, 179, 255, 0.25) 32.5%, transparent 32.5%, transparent 35%, rgba(102, 102, 255, 0.25) 35%, rgba(179, 179, 255, 0.25) 65%, transparent 65%, transparent 67.5%, rgba(102, 102, 255, 0.25) 67.5%, rgba(179, 179, 255, 0.25) 87.5%, transparent 87.5%, transparent 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
-  -webkit-background-origin: content-box;
-  -webkit-background-clip: content-box;
   background-origin: content-box;
   background-clip: content-box;
   background-position: left top;
 }
 .test__container .assert__border-box .expect::after {
-  content: "";
-  display: table;
+  content: " ";
+  display: block;
   clear: both;
 }
 
@@ -721,20 +701,23 @@
   clear: none;
 }
 .test__gallery .assert__asym-inside .expect {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
   box-sizing: border-box;
   float: left;
-  margin-right: -100%;
   padding-left: 2.5%;
   padding-right: 2.5%;
 }
 .test__gallery .assert__asym-inside .expect:nth-child(2n + 1) {
   width: 40%;
   margin-left: 0;
+  margin-right: -100%;
   clear: left;
 }
 .test__gallery .assert__asym-inside .expect:nth-child(2n + 2) {
   width: 60%;
   margin-left: 40%;
+  margin-right: -100%;
   clear: none;
 }
 
@@ -790,7 +773,6 @@
   clear: both;
   width: 100%;
   float: left;
-  margin-right: 5%;
 }
 
 /* - [mixin] first */
@@ -1064,13 +1046,10 @@
   padding-left: 15%;
 }
 .test__bleed .assert__simple .expect {
-  margin-left: -15%;
-  padding-left: 15%;
   margin-right: -15%;
+  margin-left: -15%;
   padding-right: 15%;
-  -moz-box-sizing: content-box;
-  -webkit-box-sizing: content-box;
-  box-sizing: content-box;
+  padding-left: 15%;
 }
 
 /* "Items should bleed 1em on all sides, and retain their static gutters" */
@@ -1081,9 +1060,6 @@
 .test__bleed .assert__inside .expect {
   margin: -1em;
   padding: 1em 1.5em;
-  -moz-box-sizing: content-box;
-  -webkit-box-sizing: content-box;
-  box-sizing: content-box;
 }
 
 /* "Items should bleed 1 column horizontal, and retain gutters." */
@@ -1095,12 +1071,9 @@
 }
 .test__bleed .assert__split .expect {
   margin-right: -12.5%;
-  padding-right: 12.5%;
   margin-left: -12.5%;
+  padding-right: 12.5%;
   padding-left: 12.5%;
-  -moz-box-sizing: content-box;
-  -webkit-box-sizing: content-box;
-  box-sizing: content-box;
 }
 
 /* - [mixin] bleed-x */
@@ -1113,12 +1086,9 @@
 }
 .test__bleed-x .assert__simple .expect {
   margin-right: -30%;
-  padding-right: 30%;
   margin-left: -15%;
+  padding-right: 30%;
   padding-left: 15%;
-  -moz-box-sizing: content-box;
-  -webkit-box-sizing: content-box;
-  box-sizing: content-box;
 }
 
 /* "Items should bleed 1 column, and retain their gutters" */
@@ -1129,13 +1099,10 @@
   padding-left: 13.75%;
 }
 .test__bleed-x .assert__inside .expect {
-  margin-left: -12.5%;
-  padding-left: 13.75%;
   margin-right: -12.5%;
+  margin-left: -12.5%;
   padding-right: 13.75%;
-  -moz-box-sizing: content-box;
-  -webkit-box-sizing: content-box;
-  box-sizing: content-box;
+  padding-left: 13.75%;
 }
 
 /* - [mixin] bleed-y */
@@ -1148,12 +1115,9 @@
 }
 .test__bleed-y .assert__simple .expect {
   margin-top: -0.5em;
-  padding-top: 0.5em;
   margin-bottom: -1em;
+  padding-top: 0.5em;
   padding-bottom: 1em;
-  -moz-box-sizing: content-box;
-  -webkit-box-sizing: content-box;
-  box-sizing: content-box;
 }
 
 /*  - [function] get-bleed (3 Assertions, 3 Passed, 0 Failed) */
@@ -1374,22 +1338,17 @@
 /* - [mixin] susy-clearfix */
 /* "Elements should clear floated children." */
 .test__susy-clearfix .assert__clearfix .test::after {
-  content: "";
-  display: table;
+  content: " ";
+  display: block;
   clear: both;
 }
-.test__susy-clearfix .assert__clearfix .expect {
-  *zoom: 1;
-}
-.test__susy-clearfix .assert__clearfix .expect::before, .test__susy-clearfix .assert__clearfix .expect::after {
-  content: " ";
-  display: table;
-}
 .test__susy-clearfix .assert__clearfix .expect::after {
+  content: " ";
+  display: block;
   clear: both;
 }
 
-/*
+/*  
 
 ### Susy Support ------ */
 /* - [mixin] susy-support */
@@ -1404,11 +1363,15 @@
 .test__susy-support .assert__susy-support .expect {
   width: 30em;
   -moz-box-sizing: border-box;
-  -o-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
 
+/*  - [function] susy-support (3 Assertions, 3 Passed, 0 Failed) */
+/*  
+    1 Tests:
+    - 1 Passed
+    - 0 Failed */
 /*
 
 ### Float Container API ------ */
@@ -1420,8 +1383,8 @@
   margin-right: auto;
 }
 .test__float-container .assert__float-container .test::after {
-  content: "";
-  display: table;
+  content: " ";
+  display: block;
   clear: both;
 }
 .test__float-container .assert__float-container .expect {
@@ -1429,11 +1392,9 @@
   margin-left: 0;
   margin-right: auto;
 }
-.test__float-container .assert__float-container .expect::before, .test__float-container .assert__float-container .expect::after {
-  content: "";
-  display: table;
-}
 .test__float-container .assert__float-container .expect::after {
+  content: " ";
+  display: block;
   clear: both;
 }
 

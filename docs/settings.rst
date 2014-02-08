@@ -890,8 +890,7 @@ Tell Susy to use a global ``box-sizing`` mixin.
 Custom Rem
 ~~~~~~~~~~
 
-Tell Susy to use a global ``rem`` mixin
-(for ``rem``/``px`` fallback support).
+Tell Susy to use the Compass ``rem`` support module.
 
 .. describe:: setting
 
@@ -905,9 +904,9 @@ Tell Susy to use a global ``rem`` mixin
 
 ``true``
   Susy will look for an existing ``rem`` mixin,
-  and the ``$rem-with-px-fallback`` setting
-  (as provided by Compass),
-  and fallback to plain CSS output if they aren't found.
+  and check the ``$rhythm-unit`` and ``$rem-with-px-fallback`` settings
+  provided by Compass,
+  or fallback to plain CSS output if they aren't found.
 
 
 ------------------------------------------------------------------------------

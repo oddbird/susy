@@ -1,6 +1,12 @@
 Changelog
 =========
 
+2.0.0.rc.2 — UNRELEASED
+-----------------------
+
+- Fix Compass "rem" integration to respect ``$rhythm-units`` setting.
+
+
 2.0.0.rc.1 — Feb 7 2014
 -----------------------
 

@@ -1,11 +1,11 @@
 Susy One
 ========
 
-Documentation for the original syntax,
+Documentation for the original syntax
 used in the ``1.x`` releases,
-and also available as an language option in ``2.x``.
-If you want to upgrade
-but keep using the old syntax,
+and also available as an option in ``2.x``.
+If you want to use the latest release
+but keep the old syntax,
 change your import from ``susy`` to ``susyone``.
 
 .. code-block:: scss

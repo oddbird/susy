@@ -1,16 +1,26 @@
-Introduction
-============
+Susy
+====
 
-*Current Release:* |release|
-
-The best layout is the one that fits your content
-and the needs of your users.
 We're not here to tell you
 about the magical powers of the golden-ratio,
 or where to use ``em`` vs ``px``,
 we just want to help keep your code maintainable.
+We're just here do help with the math,
+so you can focus on design.
 
-Let Susy do the math, so you can focus on design.
+
+Versions
+--------
+
+*Release:* |release|
+
+If you are using Susy ``1.x``,
+see :doc:`susyone` for complete documentation
+of the old syntax.
+Susy ``2.x`` supports
+a new syntax, along side the old one.
+See the :doc:`upgrade` for details.
+
 
 Contents
 --------
@@ -33,9 +43,8 @@ ToDo
 
 These are the features we're working on next:
 
-- Add optional ``px`` fallback for output in ``rem`` units.
-- Respect Compass support settings when they are available.
-- Add syntax to help with the transition from Susy 1.
+- Add IE support to new syntax.
+- Move SusyOne syntax onto new math/output modules.
 - Add padding/margin options to the ``span`` mixin, for simpler output.
 
 We're always happy to hear your ideas as well.

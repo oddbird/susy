@@ -1,17 +1,20 @@
 Upgrade Path
 ============
 
-You can upgrade to the latest release of Susy,
-without changing more than your import directive.
+Susy ``2.x`` supports two syntax options, side by side.
+If you want to use the latest release
+but keep the old ``1.x`` syntax,
+change your import from ``susy`` to ``susyone``.
 
 .. code-block:: scss
 
   // With Susy 2.x installed...
-  @import 'susyone';
+  @import "susyone";
 
 If you ever want to upgrade to the new syntax,
 change the import back to ``susy``,
 and follow these instructions:
+
 
 -------------------------------------------------------------------------
 
@@ -39,12 +42,15 @@ In SusyOne, settings were handled as variables.
   $breakpoint-ie-output: true;
   $breakpoint-raw-output: false;
 
-Susy no longer manages media-queries,
-so all the query-fallback settings have been dropped,
-but Susy works well with other media-query libraries,
-and we have special
-:ref:`Breakpoint integration <tools-susy-breakpoint>`
-built in.
+
+Removed Settings
+~~~~~~~~~~~~~~~~
+
+All the media-query fallback settings have been dropped.
+Susy 2 no longer manages media-queries,
+but we play well with other media-query libraries,
+and include special
+:ref:`Breakpoint integration <tools-susy-breakpoint>`.
 See `their documentation`_ for handling legacy browsers.
 
 .. _`their documentation`: https://github.com/Team-Sass/breakpoint/wiki/Basic-Media-Queries

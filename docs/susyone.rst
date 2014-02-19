@@ -1,16 +1,16 @@
 Susy One
 ========
 
-Documentation for the original syntax
-used in the ``1.x`` releases,
-and also available as an option in ``2.x``.
-If you want to use the latest release
-but keep the old syntax,
+This is documentation for the old syntax,
+used in Susy 1.
+
+If you are using Susy 2
+and want keep the old syntax,
 change your import from ``susy`` to ``susyone``.
 
 .. code-block:: scss
 
-  // With Susy 2.x installed...
+  // With Susy 2 installed...
   @import "susyone";
 
 

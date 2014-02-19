@@ -1,25 +1,21 @@
-Susy
-====
+Susy |release|
+==============
 
-We're not here to tell you
-about the magical powers of the golden-ratio,
-or where to use ``em`` vs ``px``,
-we just want to help keep your code maintainable.
-We're just here do help with the math,
-so you can focus on design.
+In a world of agile development and
+super-tablet-multi-magic-laptop-phones,
+the best layouts can’t be contained
+in a single framework or technique.
+CSS Libraries are a bloated mess of opinions
+about how to do your job.
+Why let the table-saw tell you where to put the kitchen?
 
+Your markup, your design, your opinions | *our math*.
 
-Versions
---------
+.. note::
 
-*Release:* |release|
-
-If you are using Susy ``1.x``,
-see :doc:`susyone` for complete documentation
-of the old syntax.
-Susy ``2.x`` supports
-a new syntax, along side the old one.
-See the :doc:`upgrade` for details.
+  These docs are focussed on Susy |release|.
+  See the :doc:`susyone` documentation
+  for help with earlier versions of Susy.
 
 
 Contents

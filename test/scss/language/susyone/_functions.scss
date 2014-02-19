@@ -38,12 +38,76 @@
     );
   }
 
+  @include test("format-nth") {
+    $test: format-nth(3);
+    $expect: "nth-child(3)";
+    @include assert-equal($test, $expect,
+      "Returns correct selector for nth-child."
+    );
+    $test: format-nth(first);
+    $expect: "first-child";
+    @include assert-equal($test, $expect,
+      "Returns correct selector for first-child."
+    );  
+    $test: format-nth(last);
+    $expect: "last-child";
+    @include assert-equal($test, $expect,
+      "Returns correct selector for last-child."
+    );
+    $test: format-nth(only);
+    $expect: "only-child";
+    @include assert-equal($test, $expect,
+      "Returns correct selector for only child."
+    );          
+  }
+
+  @include test("columns-width") {
+    $test: columns-width();
+    $expect: 59em;
+    @include assert-equal($test, $expect,
+      "Returns the full width of a grid based on grid settings."
+    );
+    $test: columns-width(24);
+    $expect: 119em;
+    @include assert-equal($test, $expect,
+      "Returns the full width of a grid based on custom param."
+    );
+    $test: columns-width(0);
+    $expect: 0;
+    @include assert-equal($test, $expect,
+      "Returns the full width of a grid based on custom param."
+    );
+  }  
+
+  @include test("relative-width") {
+    $test: relative-width(4em, 24);
+    $expect: percentage(4em / 119em); // 3.36134% 
+    @include assert-equal($test, $expect,
+      "Returns width based on percentage of given context."
+    );
+  }
+
+  @include test("columns") {
+    $test: columns(12, 24, static);
+    $expect: 59em;
+    @include assert-equal($test, $expect,
+      "Returns proper layout."
+    );
+    $test: columns(12, 12, fluid);
+    $expect: 100%;
+    @include assert-equal($test, $expect,
+      "Returns proper layout."
+    );
+    $test: columns(12, 24, fluid);
+    $expect: percentage(59em / 119em);
+    @include assert-equal($test, $expect,
+      "Returns proper layout."
+    );  
+  }
+
   // Functions to test:
   //
-  // column();
-  // columns();
   // gutter();
-  // relative-width();
   // split-columns-value();
   // format-nth();
   // base-ems();
@@ -52,3 +116,4 @@
   // medialayout();
   // is-default-layout();
 }
+@include report;

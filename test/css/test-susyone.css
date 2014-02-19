@@ -42,9 +42,13 @@
 ### susyone functions ------ */
 /*  - container-outer-width (4 Assertions, 4 Passed, 0 Failed) */
 /*  - get-layout (1 Assertions, 1 Passed, 0 Failed) */
+/*  - format-nth (4 Assertions, 4 Passed, 0 Failed) */
+/*  - columns-width (3 Assertions, 3 Passed, 0 Failed) */
+/*  - relative-width (1 Assertions, 1 Passed, 0 Failed) */
+/*  - columns (3 Assertions, 3 Passed, 0 Failed) */
 /*  
-    2 Tests:
-    - 2 Passed
+    6 Tests:
+    - 6 Passed
     - 0 Failed */
 .container {
   *zoom: 1;

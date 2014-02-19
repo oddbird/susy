@@ -5,7 +5,7 @@ Gem::Specification.new do |s|
   s.name = "susy"
   s.version = File.read(File.join(File.dirname(__FILE__), "VERSION"))
   s.licenses = ['BSD-3-Clause']
-  s.date = "2013-09-04"
+  s.date = "2014-02-18"
 
   # RubyForge Information
   s.rubyforge_project = "susy"
@@ -13,7 +13,7 @@ Gem::Specification.new do |s|
   s.required_rubygems_version = Gem::Requirement.new(">= 1.2") if s.respond_to? :required_rubygems_version=
 
   # Author Information
-  s.authors = ["Eric Meyer", "Tsachi Shlidor", "Aaron Gray", "Rachel Nabors", "Jina Bolton", "Danny Palmer"]
+  s.authors = ["Eric Suzanne Meyer", "Tsachi Shlidor", "Aaron Gray", "Rachel Nabors", "Jina Bolton", "Danny Palmer"]
   s.email = ["eric@oddbird.net", "tsi.shlidor@gmail.com", "aaron@hellometa.com", "rachelnabors@gmail.com", "jina@sushiandrobots.com", "danny@dannyprose.com"]
   s.homepage = "http://susy.oddbird.net/"
 

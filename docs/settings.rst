@@ -9,7 +9,7 @@ These two definitions are interchangeable:
 
 .. code-block:: scss
 
-  $map: (
+  $susy: (
     columns: 12,
     gutters: 1/4,
     math: fluid,
@@ -25,13 +25,13 @@ Maps can even be used as part of the shorthand:
 
 .. code-block:: scss
 
-  $map: (
+  $susy: (
     columns: 12,
     gutters: .25,
     math: fluid,
   );
 
-  @include layout($map float inside);
+  @include layout($susy float inside);
 
 Unless otherwise noted,
 most settings can be controlled both globally
@@ -52,7 +52,7 @@ with their default values:
 
 .. code-block:: scss
 
-  $susy-defaults: (
+  $susy: (
     flow: ltr,
     math: fluid,
     output: float,
@@ -308,7 +308,7 @@ Output
 ------
 
 Susy can generate output using different layout techniques.
-Currtly we have a float module,
+Currently we have a float module,
 with an extension to handle isolation as well.
 In the future there could be flexbox, grid, and other output styles.
 

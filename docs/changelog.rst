@@ -263,7 +263,7 @@ Backwards Incompatible:
   to ``$show-grids`` setting.
   ``show`` will show both columns/baseline, default is ``show-columns``.
 
-.. _True: http://eric.andmeyer.com/true/
+.. _True: http://ericsuzanne.com/true/
 
 
 2.0.0.alpha.2 — May 7 2013

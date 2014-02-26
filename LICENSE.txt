@@ -1,4 +1,4 @@
-Copyright (c) 2014, Eric Suzanne Meyer
+Copyright (c) 2014, Eric M. Suzanne
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without

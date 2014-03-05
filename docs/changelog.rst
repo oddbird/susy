@@ -4,6 +4,7 @@ Changelog
 2.0.0.rc.2 — UNRELEASED
 -----------------------
 
+- Fix `templates_path` and compass project templates
 - Fix Compass "rem" integration to respect ``$rhythm-units`` setting.
 
 

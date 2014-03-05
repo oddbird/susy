@@ -2,3 +2,8 @@
 // ============
 
 @import "susy";
+
+$susy: (
+  columns: 12,
+  gutters: 1/4,
+);

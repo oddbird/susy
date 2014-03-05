@@ -1,7 +1,6 @@
-stylesheet 'screen.scss', :media => "screen, projection"
-stylesheet '_base.scss'
-
 description "Susy: custom Sass layouts. Your markup, your design, our math."
+
+discover :stylesheets
 
 help %Q{
 Full documentation and tutorials available online:

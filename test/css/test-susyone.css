@@ -46,9 +46,12 @@
 /*  - columns-width (3 Assertions, 3 Passed, 0 Failed) */
 /*  - relative-width (1 Assertions, 1 Passed, 0 Failed) */
 /*  - columns (3 Assertions, 3 Passed, 0 Failed) */
+/*  - medialayout (4 Assertions, 4 Passed, 0 Failed) */
+/*  - is-default-layout (4 Assertions, 4 Passed, 0 Failed) */
+/*  - split-columns-value (4 Assertions, 4 Passed, 0 Failed) */
 /*  
-    6 Tests:
-    - 6 Passed
+    9 Tests:
+    - 9 Passed
     - 0 Failed */
 .container {
   *zoom: 1;

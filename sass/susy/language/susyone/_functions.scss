@@ -245,7 +245,12 @@ $rem-with-px-fallback               : true !default;
 }
 
 // This name will be deprecated...
-@function absolute-ems($ems, $font-size: $base-font-size){ @return base-ems($ems, $font-size); }
+@function absolute-ems(
+  $ems, 
+  $font-size: $base-font-size
+){ 
+  @return base-ems( $ems, $font-size);
+  }
 
 // Return a length, after any em-values have been sent through absolute-ems().
 //

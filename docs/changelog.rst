@@ -1,7 +1,7 @@
 Changelog
 =========
 
-2.0.0.rc.2 — UNRELEASED
+2.0.0.rc.2 — Mar 4 2014
 -----------------------
 
 - Fix `templates_path` and compass project templates

@@ -1,8 +1,17 @@
-GIT
-  remote: git://github.com/chriseppstein/compass.git
-  revision: a052dc8eb91bf2ec884b68ecf7a8bde23cb8f685
-  branch: master
+PATH
+  remote: ..
   specs:
+    susy (2.0.0.rc.2)
+      sass (~> 3.3.0)
+
+GEM
+  remote: http://rubygems.org/
+  specs:
+    breakpoint (2.4.1)
+      compass (~> 1.0.0.alpha.13)
+      sass (~> 3.3.0.rc.2)
+      sassy-maps (< 1.0.0)
+    chunky_png (1.3.0)
     compass (1.0.0.alpha.18)
       chunky_png (~> 1.2)
       compass-core (~> 1.0.0.alpha.17)
@@ -14,41 +23,22 @@ GIT
       multi_json (~> 1.0)
       sass (>= 3.3.rc.3)
     compass-import-once (1.0.2)
-
-GIT
-  remote: git://github.com/nex3/sass.git
-  revision: 575807f25cdd28ab2d5931f802059d19093fc656
-  branch: master
-  specs:
-    sass (3.3.0.rc.3)
-
-PATH
-  remote: ..
-  specs:
-    susy (2.0.0.rc.1)
-      sass (~> 3.3.0.rc.1)
-
-GEM
-  remote: http://rubygems.org/
-  specs:
-    breakpoint (2.4.1)
-      compass (~> 1.0.0.alpha.13)
-      sass (~> 3.3.0.rc.2)
-      sassy-maps (< 1.0.0)
-    chunky_png (1.2.9)
     ffi (1.9.3)
     json (1.8.1)
     listen (1.1.6)
       rb-fsevent (>= 0.9.3)
       rb-inotify (>= 0.9)
       rb-kqueue (>= 0.2)
-    multi_json (1.8.4)
+    multi_json (1.9.0)
+    rake (10.1.1)
     rb-fsevent (0.9.4)
     rb-inotify (0.9.3)
       ffi (>= 0.5.0)
-    rb-kqueue (0.2.0)
+    rb-kqueue (0.2.2)
       ffi (>= 0.5.0)
-    sassy-maps (0.3.1)
+    sass (3.3.0)
+      rake
+    sassy-maps (0.3.2)
       compass (~> 1.0.0.alpha.13)
       sass (~> 3.3.0.rc.2)
     true (0.2.0.rc.4)
@@ -58,8 +48,8 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  breakpoint (~> 2.4.0)
-  compass!
-  sass!
+  breakpoint (~> 2.4.1)
+  compass (~> 1.0.0.alpha)
+  sass (~> 3.3.0)
   susy!
   true (~> 0.2.0.rc.4)

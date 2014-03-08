@@ -1,7 +1,7 @@
 source "http://rubygems.org"
 
-gem "sass", :git => 'git://github.com/nex3/sass.git', :branch => 'master'
-gem "compass", :git => 'git://github.com/chriseppstein/compass.git', :branch => 'master'
+gem "sass", "~> 3.3.0"
+gem "compass", "~> 1.0.0.alpha"
 gem "true", "~> 0.2.0.rc.4"
-gem "breakpoint", "~> 2.4.0"
+gem "breakpoint", "~> 2.4.1"
 gem "susy", :path => ".."

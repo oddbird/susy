@@ -1,6 +1,14 @@
 Changelog
 =========
 
+2.0.0.rc.3 — unreleased
+-----------------------
+
+- Include tests for split-columns, is-default-layout, medialayout, columns,
+  relative-width, columns width and nth-of-type.
+- Sass 3.3.0 (Maptastic Maple)
+
+
 2.0.0.rc.2 — Mar 4 2014
 -----------------------
 

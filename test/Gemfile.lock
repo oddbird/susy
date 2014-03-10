@@ -41,8 +41,8 @@ GEM
     sassy-maps (0.3.2)
       compass (~> 1.0.0.alpha.13)
       sass (~> 3.3.0.rc.2)
-    true (0.2.0.rc.4)
-      sass (~> 3.3.0.rc.1)
+    true (0.2.0)
+      sass (>= 3.3.0, < 3.5)
 
 PLATFORMS
   ruby
@@ -52,4 +52,4 @@ DEPENDENCIES
   compass (~> 1.0.0.alpha)
   sass (~> 3.3.0)
   susy!
-  true (~> 0.2.0.rc.4)
+  true (~> 0.2.0)

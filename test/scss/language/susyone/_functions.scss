@@ -48,7 +48,7 @@
     $expect: "first-child";
     @include assert-equal($test, $expect,
       "Returns correct selector for first-child."
-    );  
+    );
     $test: format-nth(last);
     $expect: "last-child";
     @include assert-equal($test, $expect,
@@ -58,7 +58,7 @@
     $expect: "only-child";
     @include assert-equal($test, $expect,
       "Returns correct selector for only child."
-    );          
+    );
   }
 
   // columns-width
@@ -78,12 +78,12 @@
     @include assert-equal($test, $expect,
       "Returns the full width of a grid based on custom param."
     );
-  }  
+  }
 
   // relative-width
   @include test("relative-width") {
     $test: relative-width(4em, 24);
-    $expect: percentage(4em / 119em); // 3.36134% 
+    $expect: percentage(4em / 119em); // 3.36134%
     @include assert-equal($test, $expect,
       "Returns width based on percentage of given context."
     );
@@ -105,7 +105,7 @@
     $expect: percentage(59em / 119em);
     @include assert-equal($test, $expect,
       "Returns proper layout."
-    );  
+    );
   }
 
   // medialayout
@@ -124,12 +124,12 @@
     $expect: false 12 false lt-ie8;
     @include assert-equal($test, $expect,
       "Works with columns and ie support."
-    );        
+    );
     $test: medialayout(60em 12 30em lt-ie9);
     $expect: 30em 12 60em lt-ie9;
     @include assert-equal($test, $expect,
       "Works with four arguments for min-width, columns, max-width and IE fallback."
-    );  
+    );
   }
 
   // is-default-layout
@@ -143,14 +143,14 @@
     $expect: true;
     @include assert-equal($test, $expect,
       "Returns true if $media-layout matches default coulms."
-    );    
+    );
     $test: is-default-layout(12 lt-ie8);
     $expect: true;
     @include assert-equal($test, $expect,
       "Returns true if $media-layout matches default coulms."
     );
     @include assert-equal(
-      is-default-layout(60em 12 30em lt-ie9), 
+      is-default-layout(60em 12 30em lt-ie9),
       false,
       "Returns false if $media-layout overrides the default layout."
     );
@@ -159,17 +159,17 @@
   // split-columns-values
   @include test("split-columns-value") {
     @include assert-equal(
-      split-columns-value(12 omega), 
+      split-columns-value(12 omega),
       12,
       "Returns just column count when given two arguments."
     );
     @include assert-equal(
-      split-columns-value(9), 
+      split-columns-value(9),
       9,
       "Returns just column count when given one argument."
-    );    
+    );
     @include assert-equal(
-      split-columns-value(24 omega, columns), 
+      split-columns-value(24 omega, columns),
       24,
       "Returns column count when spcified."
     );
@@ -185,11 +185,10 @@
   // Layout:
   // gutter();
   // format-nth();
-  
+
   // Ems:
   // base-ems();
   // absolute-ems();
   // fix-ems();
 
 }
-@include report;

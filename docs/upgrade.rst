@@ -3,7 +3,7 @@ Upgrade Path
 
 Susy ``2.x`` supports two syntax options, side by side.
 If you want to use the latest release
-but keep the old ``1.x`` syntax,
+but keep the old syntax,
 change your import from ``susy`` to ``susyone``.
 
 .. code-block:: scss

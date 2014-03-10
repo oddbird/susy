@@ -1,8 +1,8 @@
 Changelog
 =========
 
-2.0.0 — unreleased
-------------------
+2.0.0 — Mar 10 2013
+-------------------
 
 - New susyone tests for split-columns, is-default-layout, medialayout, columns,
   relative-width, columns width and nth-of-type (using True).

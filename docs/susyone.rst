@@ -5,7 +5,7 @@ This is documentation for the old syntax,
 used in Susy 1.
 
 If you are using Susy 2
-and want keep the old syntax,
+and want use the old syntax,
 change your import from ``susy`` to ``susyone``.
 
 .. code-block:: scss

@@ -1,14 +1,13 @@
 Getting Started
 ===============
 
-The only requirement for Susy 2.0 is `Sass`_,
+The only requirement is `Sass`_,
 but Susy was built to be part of the `Compass`_ ecosystem,
 and we recommend pairing with tools like
 `Breakpoint`_
 and `Vertical Rhythms`_.
 
-Compass is still required for Susy 1
-and the :doc:`susyone` syntax.
+Compass is still required for the :doc:`susyone` syntax.
 
 .. _Sass: http://sass-lang.com/
 .. _Compass: http://compass-style.org/

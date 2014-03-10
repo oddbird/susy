@@ -9,6 +9,10 @@
   @include container($total-columns,14);
 }
 
+.inner-default-container {
+  @include container(4 30em, $total-columns, 14);
+}
+
 .span-columns {
   @include span-columns(6 omega,12);
 }

@@ -1,12 +1,14 @@
 Changelog
 =========
 
-2.0.0.rc.3 — unreleased
------------------------
+2.0.0 — unreleased
+------------------
 
-- Include tests for split-columns, is-default-layout, medialayout, columns,
-  relative-width, columns width and nth-of-type.
+- New susyone tests for split-columns, is-default-layout, medialayout, columns,
+  relative-width, columns width and nth-of-type (using True).
 - Sass 3.3.0 (Maptastic Maple)
+- Rename local 2.0 variables that conflict with global susyone settings.
+- Susyone container mixin applies full container settings at every breakpoint.
 
 
 2.0.0.rc.2 — Mar 4 2014

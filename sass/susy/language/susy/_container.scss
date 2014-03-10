@@ -10,17 +10,17 @@
 ) {
   $layout     : parse-grid($layout);
 
-  $width      : get-container-width($layout);
-  $justify    : parse-container-position(susy-get(container-position, $layout));
-  $property   : if(susy-get(math, $layout) == static, width, max-width);
+  $_width     : get-container-width($layout);
+  $_justify   : parse-container-position(susy-get(container-position, $layout));
+  $_property  : if(susy-get(math, $layout) == static, width, max-width);
 
-  $box        : susy-get(box-sizing, $layout);
+  $_box       : susy-get(box-sizing, $layout);
 
-  @if $box {
-    @include output((box-sizing: $box));
+  @if $_box {
+    @include output((box-sizing: $_box));
   }
 
-  @include float-container($width, $justify, $property);
+  @include float-container($_width, $_justify, $_property);
   @include show-grid($layout);
 }
 
@@ -43,22 +43,22 @@
   $layout: $susy
 ) {
   $layout         : parse-grid($layout);
-  $width          : susy-get(container, $layout);
-  $column-width   : susy-get(column-width, $layout);
+  $_width         : susy-get(container, $layout);
+  $_column-width  : susy-get(column-width, $layout);
 
-  @if not $width or $width == auto {
-    @if $column-width {
-      $columns        : susy-get(columns, $layout);
-      $gutters        : susy-get(gutters, $layout);
-      $spread         : if(is-split($layout), wide, narrow);
-      $width          : column-sum($columns, $gutters, $spread) * $column-width;
+  @if not $_width or $_width == auto {
+    @if $_column-width {
+      $_columns   : susy-get(columns, $layout);
+      $_gutters   : susy-get(gutters, $layout);
+      $_spread    : if(is-split($layout), wide, narrow);
+      $_width     : column-sum($_columns, $_gutters, $_spread) * $_column-width;
     } @else {
       // if we have nothing, default to 100%
-      $width: 100%;
+      $_width: 100%;
     }
   }
 
-  @return $width;
+  @return $_width;
 }
 
 // Parse Container Position
@@ -68,12 +68,12 @@
 @function parse-container-position(
   $justify: map-get($susy-defaults, container-position)
 ) {
-  $return: if($justify == left, 0, auto) if($justify == right, 0, auto);
+  $_return: if($justify == left, 0, auto) if($justify == right, 0, auto);
 
   @if not index(left right center, $justify) {
-    $return: nth($justify, 1);
-    $return: $return if(length($justify) > 1, nth($justify, 2), $return);
+    $_return: nth($justify, 1);
+    $_return: $_return if(length($justify) > 1, nth($justify, 2), $_return);
   }
 
-  @return $return;
+  @return $_return;
 }

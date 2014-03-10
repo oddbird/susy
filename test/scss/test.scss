@@ -5,6 +5,9 @@
 @import "true";
 @import "test/helpers";
 
+// test that susyone settings don't cause errors in susy
+@import "susy/language/susyone/settings";
+
 // Test
 // ----
 

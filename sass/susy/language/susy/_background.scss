@@ -186,7 +186,7 @@ $susy-overlay-grid-head-exists: false;
   $_light   : lighten($_color, 15%);
   $_stops   : ();
 
-  @for $location from 1 through column-count($_columns) {
+  @for $location from 1 through susy-count($_columns) {
     $this-stop: ();
 
     @if $location == 1 {
@@ -197,7 +197,7 @@ $susy-overlay-grid-head-exists: false;
       $this-stop: append($this-stop, $_color $start, comma);
     }
 
-    @if $location == column-count($_columns) {
+    @if $location == susy-count($_columns) {
       $this-stop: append($this-stop, $_light, comma);
     } @else {
       $_end: parse-span(1 at ($location + 1) $grid);
@@ -225,7 +225,7 @@ $susy-overlay-grid-head-exists: false;
   $_light   : lighten($_color, 15%);
   $_stops   : ();
 
-  @for $location from 1 through column-count($_columns) {
+  @for $location from 1 through susy-count($_columns) {
     $this-stop: ();
 
     $start: parse-span(1 at $location $grid);
@@ -258,7 +258,7 @@ $susy-overlay-grid-head-exists: false;
   $_trans   : transparent;
   $_stops   : ();
 
-  @for $location from 1 through column-count($_columns) {
+  @for $location from 1 through susy-count($_columns) {
     $this-stop: ();
 
     @if $location == 1 {
@@ -269,7 +269,7 @@ $susy-overlay-grid-head-exists: false;
       $this-stop: append($this-stop, $_color $start, comma);
     }
 
-    @if $location == column-count($_columns) {
+    @if $location == susy-count($_columns) {
       $this-stop: append($this-stop, $_light, comma);
     } @else {
       $gutter: get-span-width(first $location $grid);

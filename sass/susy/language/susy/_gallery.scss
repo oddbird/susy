@@ -15,7 +15,7 @@
 
   $n            : susy-get(span, $span);
   $columns      : susy-get(columns, $span);
-  $context      : column-count($columns);
+  $context      : susy-count($columns);
   $flow         : susy-get(flow, $span);
 
   $inside       : is-inside($span);

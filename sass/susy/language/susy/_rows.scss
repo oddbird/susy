@@ -81,7 +81,7 @@
   $edge       : susy-get(edge, $span);
 
   @if not $edge {
-    $count: column-count(susy-get(columns, $span));
+    $count: susy-count(susy-get(columns, $span));
     $location: susy-get(location, $span);
     $n: susy-get(span, $span);
 
@@ -122,7 +122,7 @@
     @if $edge == first {
       $location: 1;
     } @else if $edge == last {
-      $location: column-count(susy-get(columns, $span)) - $n + 1;
+      $location: susy-count(susy-get(columns, $span)) - $n + 1;
     }
   }
 

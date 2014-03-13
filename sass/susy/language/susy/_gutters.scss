@@ -73,7 +73,7 @@
     } @else {
       $_columns : susy-get(columns, $context);
       $_spread  : if(is-split($context), wide, susy-get(spread, $context));
-      $_gutter  : percentage($_gutters / column-sum($_columns, $_gutters, $_spread));
+      $_gutter  : percentage($_gutters / susy-sum($_columns, $_gutters, $_spread));
     }
   }
 

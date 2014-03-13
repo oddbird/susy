@@ -129,15 +129,15 @@
   @if $n == 'full' {
     $pos: susy-get(gutter-position, $span);
     $role: susy-get(role, $span);
-    $n: if($pos == split and $role != nest, column-count($columns), 100%);
+    $n: if($pos == split and $role != nest, susy-count($columns), 100%);
   }
 
   @if type-of($n) != number {
     @warn "(#{type-of($n)}) #{$n} is not a valid span.";
   } @else if unitless($n) {
-    $context: column-sum($columns, $gutters, if(is-split($span), wide, narrow));
+    $context: susy-sum($columns, $gutters, if(is-split($span), wide, narrow));
     $spread: if(is-inside($span), $spread or wide, $spread);
-    $span-sum: column-span-sum($n, $location, $columns, $gutters, $spread);
+    $span-sum: susy($n, $location, $columns, $gutters, $spread);
 
     @if susy-get(math, $span) == static {
       $width: $span-sum * susy-get(column-width, $span);

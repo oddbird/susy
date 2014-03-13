@@ -13,7 +13,7 @@
   $location   : get-location($context);
   $columns    : susy-get(columns, $context);
 
-  @return column-span($span, $location, $columns);
+  @return susy-slice($span, $location, $columns);
 }
 
 // Nested [mixin]

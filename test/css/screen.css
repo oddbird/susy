@@ -192,13 +192,22 @@ h1 {
     - 0 Failed */
 /*  
 
+### Grid Validation ------ */
+/*  - [mixin] valid-columns (4 Assertions, 4 Passed, 0 Failed) */
+/*  - [mixin] valid-gutters (2 Assertions, 2 Passed, 0 Failed) */
+/*  
+    2 Tests:
+    - 2 Passed
+    - 0 Failed */
+/*  
+
 ### Column Math ------ */
 /*  - [function] is-symmetrical() (3 Assertions, 3 Passed, 0 Failed) */
-/*  - [function] column-count() (2 Assertions, 2 Passed, 0 Failed) */
-/*  - [function] column-sum() — symmetrical (4 Assertions, 4 Passed, 0 Failed) */
-/*  - [function] column-sum() — asymmetrical (3 Assertions, 3 Passed, 0 Failed) */
-/*  - [function] column-span() (3 Assertions, 3 Passed, 0 Failed) */
-/*  - [function] column-span-sum() (2 Assertions, 2 Passed, 0 Failed) */
+/*  - [function] susy-count() (2 Assertions, 2 Passed, 0 Failed) */
+/*  - [function] susy-sum() — symmetrical (4 Assertions, 4 Passed, 0 Failed) */
+/*  - [function] susy-sum() — asymmetrical (3 Assertions, 3 Passed, 0 Failed) */
+/*  - [function] susy-slice() (3 Assertions, 3 Passed, 0 Failed) */
+/*  - [function] susy() (2 Assertions, 2 Passed, 0 Failed) */
 /*  
     6 Tests:
     - 6 Passed
@@ -2610,5 +2619,5 @@ h1 {
   border-color: green;
 }
 .results::after {
-  content: "53 Tests, 53 Passed, 0 Failed";
+  content: "55 Tests, 55 Passed, 0 Failed";
 }

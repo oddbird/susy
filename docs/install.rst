@@ -18,19 +18,19 @@ Compass is still required for the :doc:`susyone` syntax.
 Simple Install
 --------------
 
-For the Susy 2 gem (release candidate):
+For the Susy 2 gem:
 
 .. code-block:: bash
 
   # command line
-  gem install susy --pre
+  gem install susy
 
 or for Susy 1:
 
 .. code-block:: bash
 
   # command line
-  gem install susy
+  gem install susy -v '~>1.0'
 
 
 Bundler or Rails

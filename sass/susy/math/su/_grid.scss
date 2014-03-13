@@ -1,6 +1,7 @@
 // Column math
 // ===========
 
+
 // Is Symmetrical
 // --------------
 // Returns true if a grid is symmetrical.
@@ -12,24 +13,33 @@
   @return if(type-of($columns) == number, $columns, null);
 }
 
-// Columns Count
-// -------------
+
+// Susy Count
+// ----------
 // Find the number of columns in a given layout
 // - [$columns]   : <number> | <list>
-@function column-count(
+@function susy-count(
   $columns: map-get($susy-defaults, columns)
 ) {
   $columns: valid-columns($columns);
   @return is-symmetrical($columns) or length($columns);
 }
 
-// Column Sum
-// ----------
+@function column-count(
+  $columns: map-get($susy-defaults, columns)
+) {
+  @warn "[function] column-count() has been renamed susy-count().";
+  @return susy-count($columns);
+}
+
+
+// Susy Sum
+// --------
 // Find the total sum of column-units in a layout
 // - [$columns]   : <number> | <list>
 // - [$gutters]   : <ratio>
 // - [$spread]    : false/narrow | wide | wider
-@function column-sum(
+@function susy-sum(
   $columns  : map-get($susy-defaults, columns),
   $gutters  : map-get($susy-defaults, gutters),
   $spread   : false
@@ -38,7 +48,7 @@
   $gutters: valid-gutters($gutters);
 
   $spread: if($spread == wide, 0, if($spread == wider, 1, -1));
-  $gutter-sum: (column-count($columns) + $spread) * $gutters;
+  $gutter-sum: (susy-count($columns) + $spread) * $gutters;
   $column-sum: is-symmetrical($columns);
 
   @if not $column-sum {
@@ -50,13 +60,23 @@
   @return $column-sum + $gutter-sum;
 }
 
-// Column Span
-// -----------
+@function column-sum(
+  $columns  : map-get($susy-defaults, columns),
+  $gutters  : map-get($susy-defaults, gutters),
+  $spread   : false
+) {
+  @warn "[function] column-sum() has been renamed susy-sum().";
+  @return susy-sum($columns, $gutters, $spread);
+}
+
+
+// Susy Slice
+// ----------
 // Return a subset of columns at a given location.
 // - $span        : <number>
 // - $location    : <number>
 // - [$columns]   : <number> | <list>
-@function column-span(
+@function susy-slice(
   $span,
   $location,
   $columns: map-get($susy-defaults, columns)
@@ -75,15 +95,25 @@
   @return $sub-columns;
 }
 
-// Column Span Sum
-// ---------------
+@function column-span(
+  $span,
+  $location,
+  $columns: map-get($susy-defaults, columns)
+) {
+  @warn "[function] column-span() has been renamed susy-slice().";
+  @return susy-slice($span, $location, $columns);
+}
+
+
+// Susy
+// ----
 // Find the sum of a column-span.
 // - $span        : <number>
 // - $location    : <number>
 // - [$columns]   : <number> | <list>
 // - [$gutters]   : <ratio>
 // - [$spread]    : false/narrow | wide | wider
-@function column-span-sum(
+@function susy(
   $span,
   $location     : false,
   $columns      : map-get($susy-defaults, columns),
@@ -92,7 +122,18 @@
 ) {
   $columns: valid-columns($columns);
   $gutters: valid-gutters($gutters);
-  $span: column-span($span, $location, $columns);
+  $span: susy-slice($span, $location, $columns);
 
-  @return column-sum($span, $gutters, $spread);
+  @return susy-sum($span, $gutters, $spread);
+}
+
+@function column-span-sum(
+  $span,
+  $location     : false,
+  $columns      : map-get($susy-defaults, columns),
+  $gutters      : map-get($susy-defaults, gutters),
+  $spread       : false
+) {
+  @warn "[function] column-span-sum() has been renamed susy().";
+  @return susy($span, $location, $columns, $gutters, $spread);
 }

@@ -1,6 +1,20 @@
 Changelog
 =========
 
+
+2.1.0 - Mar 13 2014
+-------------------
+
+- Rename core math functions, and prepare for decomposition.
+
+  + ``column-count()`` => ``susy-count()``
+  + ``column-sum()`` => ``susy-sum()``
+  + ``column-span()`` => ``susy-slice()``
+  + ``column-span-sum()`` => ``susy()``
+
+- Add tests for core math validation.
+
+
 2.0.0 — Mar 10 2014
 -------------------
 

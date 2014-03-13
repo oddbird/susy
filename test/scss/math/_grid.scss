@@ -27,125 +27,125 @@
       'Single-item list is parsed as asymmetrical grid.');
   }
 
-  // Column Count
-  // ------------
+  // Susy Count
+  // ----------
 
-  @include test('[function] column-count()') {
+  @include test('[function] susy-count()') {
     $sym    : 12;
     $asym   : 1 2 4 1 2 1;
 
     // symmetrical
-    $count: column-count($sym);
+    $count: susy-count($sym);
     @include assert-equal($count, $sym,
       'Symmetrical grid-count is equal to columns setting.');
 
     // asymmetrical
-    $count: column-count($asym);
+    $count: susy-count($asym);
     $length: length($asym);
     @include assert-equal($count, $length,
       'Asymmetrical grid-count is equal to columns list length.');
   }
 
-  // Column Sum
-  // ----------
+  // Susy Sum
+  // --------
 
-  @include test('[function] column-sum() — symmetrical') {
+  @include test('[function] susy-sum() — symmetrical') {
     $columns: 9;
     $gutters: .5;
 
     // default (narrow)
-    $sum: column-sum($columns, $gutters);
+    $sum: susy-sum($columns, $gutters);
     $narrow: 13;
     @include assert-equal($sum, $narrow,
-      'Symmetrical column-sum properly adds columns and gutters.');
+      'Symmetrical sum properly adds columns and gutters.');
 
     // explicit (narrow)
-    $sum: column-sum($columns, $gutters, narrow);
+    $sum: susy-sum($columns, $gutters, narrow);
     $narrow: 13;
     @include assert-equal($sum, $narrow,
-      'Narrow column-sum properly adds columns and gutters.');
+      'Narrow sum properly adds columns and gutters.');
 
     // wide
-    $sum: column-sum($columns, $gutters, wide);
+    $sum: susy-sum($columns, $gutters, wide);
     $wide: $narrow + $gutters;
     @include assert-equal($sum, $wide,
-      'Wide column-sum includes an extra gutter.');
+      'Wide sum includes an extra gutter.');
 
     // wider
-    $sum: column-sum($columns, $gutters, wider);
+    $sum: susy-sum($columns, $gutters, wider);
     $wider: $narrow + ($gutters * 2);
     @include assert-equal($sum, $wider,
-      'Wider column-sum includes two extra gutters.');
+      'Wider sum includes two extra gutters.');
   }
 
-  @include test('[function] column-sum() — asymmetrical') {
+  @include test('[function] susy-sum() — asymmetrical') {
     $columns: 1 2 3 1 2;
     $gutters: .25;
 
     // standard (narrow)
-    $sum: column-sum($columns, $gutters);
+    $sum: susy-sum($columns, $gutters);
     $narrow: 10;
     @include assert-equal($sum, $narrow,
-      'Asymmetrical column-sum properly adds columns and gutters.');
+      'Asymmetrical sum properly adds columns and gutters.');
 
     // wide
-    $sum: column-sum($columns, $gutters, wide);
+    $sum: susy-sum($columns, $gutters, wide);
     $wide: $narrow + $gutters;
     @include assert-equal($sum, $wide,
-      'Wide column-sum includes an extra gutter.');
+      'Wide sum includes an extra gutter.');
 
     // wider
-    $sum: column-sum($columns, $gutters, wider);
+    $sum: susy-sum($columns, $gutters, wider);
     $wider: $narrow + ($gutters * 2);
     @include assert-equal($sum, $wider,
-      'Wider column-sum includes two extra gutters.');
+      'Wider sum includes two extra gutters.');
   }
 
-  // Column Span
-  // -----------
+  // Susy Slice
+  // ----------
 
-  @include test('[function] column-span()') {
+  @include test('[function] susy-slice()') {
     $span: 3;
 
     // symmetrical
     $context: 12;
-    $test: column-span($span, 4, $context);
+    $test: susy-slice($span, 4, $context);
     @include assert-equal($test, $span,
       'Subset is equal to the span.');
 
     // asymmetrical
     $context: 1 2 3 1 2;
-    $test: column-span($span, 2, $context);
+    $test: susy-slice($span, 2, $context);
     $expect: 2 3 1;
     @include assert-equal($test, $expect,
       'Subset is an extracted list of span length, starting at location.');
 
     // asymmetrical (no location)
-    $test: column-span($span, null, $context);
+    $test: susy-slice($span, null, $context);
     $expect: 1 2 3;
     @include assert-equal($test, $expect,
       'Asymmetrical context without location returns first-position subset.');
   }
 
-  // Column Span Sum
-  // ---------------
+  // Susy
+  // ----
 
-  @include test('[function] column-span-sum()') {
+  @include test('[function] susy()') {
     $span: 3;
     $location: 2;
 
     // symmetrical
     $columns: 12;
     $gutters: 1/8;
-    $test: column-span-sum($span, $location, $columns, $gutters);
-    $expect: column-sum($span, $gutters);
+    $test: susy($span, $location, $columns, $gutters);
+    $expect: susy-sum($span, $gutters);
     @include assert-equal($test, $expect,
       'Symmetrical column-span-sum is equal to column-sum of span.');
 
     // asymmetrical
     $columns: 1 2 3 2 1 2 3;
     $gutters: 1/4;
-    $test: column-span-sum($span, $location, $columns, $gutters);
+    $test: susy($span, $location, $columns, $gutters);
     $expect: 7.5;
     @include assert-equal($test, $expect,
       'Assymetrical column-span-sum fetches subset before calculating sum.');

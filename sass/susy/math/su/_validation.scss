@@ -1,6 +1,7 @@
 // Math Validation
 // ===============
 
+
 // Valid Columns
 // -------------
 // Check that a column setting is valid.
@@ -14,10 +15,13 @@
   @if $type == number and unitless($columns) {
     $return: $columns;
   } @else if $type == list {
-    $fail: false;
+    $fail: null;
     @each $col in $columns {
-      $number: if(type-of($col == number), true, null);
-      $fail: $fail or if($number and unitless($col), null, true);
+      @if type-of($col) == number {
+        $fail: $fail or if(unitless($col), null, true);
+      } @else {
+        $fail: true;
+      }
     }
     $return: if($fail, $return, $columns);
   }
@@ -30,6 +34,7 @@
 
   @return $return;
 }
+
 
 // Valid Gutters
 // -------------

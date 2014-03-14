@@ -420,7 +420,7 @@ Align the container relative to it's parent element
 Columns
 -------
 
-Establish a the column-could and arrangement for a grid.
+Establish the column-count and arrangement for a grid.
 
 .. describe:: setting
 

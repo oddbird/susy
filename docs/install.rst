@@ -69,25 +69,7 @@ Grunt (and Yeoman)
 ------------------
 
 You can enable Susy in Grunt by adding a line to your ``Gruntfile.js``. 
-You will need to add a line to either your Compass task or, if you're not using Compass, your Sass task.
-
-To add Susy to the Compass task, edit your Gruntfile.js at the root level of your project
-and look for the Compass-related rules. Add ``require: 'susy'`` inside the ``options`` object:
-
-.. code-block:: js
-
-  // Gruntfile.js
-  compass: {
-      options: {
-        require: 'susy',
-        ...
-      }
-    }
-  }
-
-Assuming you've already installed Susy,
-it will now be added to the project
-and will not clash with Yeomans grunt rules.
+You will need to add a line to either your Sass task or, if you're using Compass, your Compass task.
 
 To add Susy to the Sass task, edit your Gruntfile.js at the root level of your project
 and look for the Sass-related rules. Add ``require: 'susy'`` inside the ``options`` object:
@@ -105,6 +87,24 @@ and look for the Sass-related rules. Add ``require: 'susy'`` inside the ``option
           'css/style.css': 'scss/style.scss'
       }
     } 
+  }
+
+Assuming you've already installed Susy,
+it will now be added to the project
+and will not clash with Yeomans grunt rules.
+
+To add Susy to the Compass task, edit your Gruntfile.js at the root level of your project
+and look for the Compass-related rules. Add ``require: 'susy'`` inside the ``options`` object:
+
+.. code-block:: js
+
+  // Gruntfile.js
+  compass: {
+      options: {
+        require: 'susy',
+        ...
+      }
+    }
   }
 
 Again, assuming you've already installed Susy,

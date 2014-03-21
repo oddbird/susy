@@ -49,9 +49,10 @@
 /*  - medialayout (4 Assertions, 4 Passed, 0 Failed) */
 /*  - is-default-layout (4 Assertions, 4 Passed, 0 Failed) */
 /*  - split-columns-value (4 Assertions, 4 Passed, 0 Failed) */
+/*  - fix-static-misalignment (2 Assertions, 2 Passed, 0 Failed) */
 /*  
-    9 Tests:
-    - 9 Passed
+    10 Tests:
+    - 10 Passed
     - 0 Failed */
 .container {
   *zoom: 1;

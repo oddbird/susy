@@ -167,17 +167,28 @@
       "Returns column position when specified."
     );
   }
+  
+  // fix-static-misalignment()
+  @include test("fix-static-misalignment") {
+    @include assert-equal(
+      fix-static-misalignment(),
+      magic,
+      "Confirm default container is set to magic"
+    );
+    $container-width: 1200px !global;
+    @include assert-equal(
+      fix-static-misalignment(static, 12),
+      fluid,
+      "Confirm custom container-width is accounted for."
+    );    
+    $container-width: false !global;
+  }
 
   // TODO:
-  //
-  // Layout:
   // gutter();
   // format-nth();
-  // fix-static-misalignment()
-
-  // Ems:
   // base-ems();
   // absolute-ems();
   // fix-ems();
-
+  // Review fix-static-alignment
 }

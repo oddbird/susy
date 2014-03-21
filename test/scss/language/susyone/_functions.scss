@@ -2,151 +2,139 @@
 // =========
 
 @include test-module("susyone functions") {
+  
   // container-outer-width
   @include test("container-outer-width") {
-    $width: container-outer-width();
-    $expect: 59em;
-    @include assert-equal($width, $expect,
+    @include assert-equal(
+      container-outer-width(), 59em,
       "Returns the correct outer width of a default container."
     );
-    $width: container-outer-width(8);
-    $expect: 39em;
-    @include assert-equal($width, $expect,
+    @include assert-equal(
+      container-outer-width(8), 39em,
       "Returns the correct outer width whith specified columns."
     );
-    $width: container-outer-width(12, 80em);
-    $expect: 78em;
-    @include assert-equal($width, $expect,
+    @include assert-equal(
+      container-outer-width(12, 80em), 78em,
       "Returns correct outer width when columns and outerwidth is specified."
     );
     $border-box-sizing: true !global;
-    $width: container-outer-width(12, 80%);
-    $expect: 80%;
-    @include assert-equal($width, $expect,
+    @include assert-equal(
+      container-outer-width(12, 80%), 80%,
       "Returns correct outer width when columns and outerwidth is specified."
     );
     $border-box-sizing: false !global;
   }
-
+  
   // get-layout
   @include test("get-layout") {
-    $test: get-layout(30em);
-    $expect: 7;
-    @include assert-equal($test, $expect,
+    @include assert-equal(
+      get-layout(30em), 7,
       "Returns correct layout based on min width."
     );
   }
 
   // format-nth
   @include test("format-nth") {
-    $test: format-nth(3);
-    $expect: "nth-child(3)";
-    @include assert-equal($test, $expect,
+    @include assert-equal(
+      format-nth(3), "nth-child(3)",
       "Returns correct selector for nth-child."
     );
-    $test: format-nth(first);
-    $expect: "first-child";
-    @include assert-equal($test, $expect,
+    @include assert-equal(
+      format-nth(first), "first-child",
       "Returns correct selector for first-child."
     );
-    $test: format-nth(last);
-    $expect: "last-child";
-    @include assert-equal($test, $expect,
+    @include assert-equal(
+      format-nth(last), "last-child",
       "Returns correct selector for last-child."
     );
-    $test: format-nth(only);
-    $expect: "only-child";
-    @include assert-equal($test, $expect,
+    @include assert-equal(
+      format-nth(only), "only-child",
       "Returns correct selector for only child."
     );
   }
 
   // columns-width
   @include test("columns-width") {
-    $test: columns-width();
-    $expect: 59em;
-    @include assert-equal($test, $expect,
+    @include assert-equal(
+      columns-width(), 
+      59em,
       "Returns the full width of a grid based on grid settings."
     );
-    $test: columns-width(24);
-    $expect: 119em;
-    @include assert-equal($test, $expect,
+    @include assert-equal(
+      columns-width(24), 
+      119em,
       "Returns the full width of a grid based on custom param."
     );
-    $test: columns-width(0);
-    $expect: 0;
-    @include assert-equal($test, $expect,
+    @include assert-equal(
+      columns-width(0), 0,
       "Returns the full width of a grid based on custom param."
     );
   }
 
   // relative-width
   @include test("relative-width") {
-    $test: relative-width(4em, 24);
-    $expect: percentage(4em / 119em); // 3.36134%
-    @include assert-equal($test, $expect,
+    @include assert-equal(
+      relative-width(4em, 24), percentage(4em / 119em),
       "Returns width based on percentage of given context."
     );
   }
 
   // columns
   @include test("columns") {
-    $test: columns(12, 24, static);
-    $expect: 59em;
-    @include assert-equal($test, $expect,
+    @include assert-equal(
+      columns(12, 24, static), 59em,
       "Returns proper layout."
     );
-    $test: columns(12, 12, fluid);
-    $expect: 100%;
-    @include assert-equal($test, $expect,
+    @include assert-equal(
+      columns(12, 12, fluid), 
+      100%,
       "Returns proper layout."
     );
-    $test: columns(12, 24, fluid);
-    $expect: percentage(59em / 119em);
-    @include assert-equal($test, $expect,
+    @include assert-equal(
+      columns(12, 24, fluid), 
+      percentage(59em / 119em),
       "Returns proper layout."
     );
   }
 
   // medialayout
   @include test("medialayout") {
-    $test: medialayout(30em 12 60em);
-    $expect: 30em 12 60em false;
-    @include assert-equal($test, $expect,
+    @include assert-equal(
+      medialayout(30em 12 60em), 
+      30em 12 60em false,
       "Works with three arguments. $min: 30em, $cols: 12, $max: 30em ."
     );
-    $test: medialayout(12);
-    $expect: false 12 false false;
-    @include assert-equal($test, $expect,
+    @include assert-equal(
+      medialayout(12), 
+      false 12 false false,
       "Works with one argument for columns."
     );
-    $test: medialayout(12 lt-ie8);
-    $expect: false 12 false lt-ie8;
-    @include assert-equal($test, $expect,
+    @include assert-equal(
+      medialayout(12 lt-ie8), false 12 false lt-ie8,
       "Works with columns and ie support."
     );
-    $test: medialayout(60em 12 30em lt-ie9);
-    $expect: 30em 12 60em lt-ie9;
-    @include assert-equal($test, $expect,
+    @include assert-equal(
+      medialayout(60em 12 30em lt-ie9), 
+      30em 12 60em lt-ie9,
       "Works with four arguments for min-width, columns, max-width and IE fallback."
     );
   }
 
   // is-default-layout
   @include test("is-default-layout") {
-    $test: is-default-layout(30em 12 60em);
-    $expect: false;
-    @include assert-equal($test, $expect,
+    @include assert-equal(
+      is-default-layout(30em 12 60em), 
+      false,
       "Returns false if $media-layout overrides the default layout."
     );
-    $test: is-default-layout(12);
-    $expect: true;
-    @include assert-equal($test, $expect,
+    @include assert-equal(
+      is-default-layout(12), 
+      true,
       "Returns true if $media-layout matches default coulms."
     );
-    $test: is-default-layout(12 lt-ie8);
-    $expect: true;
-    @include assert-equal($test, $expect,
+    @include assert-equal(
+      is-default-layout(12 lt-ie8), 
+      true,
       "Returns true if $media-layout matches default coulms."
     );
     @include assert-equal(
@@ -185,6 +173,7 @@
   // Layout:
   // gutter();
   // format-nth();
+  // fix-static-misalignment()
 
   // Ems:
   // base-ems();

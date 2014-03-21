@@ -184,11 +184,22 @@
     $container-width: false !global;
   }
 
+  // gutter
+  @include test("gutter") {
+    @include assert-equal(
+      gutter(),
+      percentage(1 / 59),
+      "Return the percentage width of a single gutter in a given 'context'."
+    );
+    @include assert-equal(
+      gutter(24, static),
+      1,
+      "Return a fixed width if style is static."
+    );
+  }
+
   // TODO:
-  // gutter();
-  // format-nth();
   // base-ems();
   // absolute-ems();
   // fix-ems();
-  // Review fix-static-alignment
 }

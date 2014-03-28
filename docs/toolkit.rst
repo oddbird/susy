@@ -506,7 +506,7 @@ Rows & Edges
 ------------
 
 Floated layouts sometimes require
-help maintinaing rows and edges.
+help maintaining rows and edges.
 
 
 -------------------------------------------------------------------------

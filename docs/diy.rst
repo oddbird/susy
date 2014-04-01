@@ -14,7 +14,7 @@ you can theme Susy by writing your own syntax
 (or extending one of ours).
 
 We've written a powerful new :doc:`Default Syntax <settings>`,
-and we're keeping the old :doc:`susyone/index` available as well.
+and we're keeping the old :doc:`susyone` available as well.
 But why stop there?
 You can *create your own unique syntax*,
 or port over the language of existing tools like

@@ -358,6 +358,9 @@ apply container settings to an element directly.
     @include container(12 center static);
   }
 
+Note that :ref:`static math <settings-math>` requires a valid
+:ref:`column-width <settings-column-width>` setting
+
 
 -------------------------------------------------------------------------
 

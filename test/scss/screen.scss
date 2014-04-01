@@ -20,7 +20,7 @@ $output-test-results: false;
     border-color: green;
   }
 
-  &::after {
+  &:after {
     content: report();
   }
 }

@@ -9,7 +9,7 @@
   @if susy-support(clearfix, (mixin: clearfix)) {
     @include clearfix;
   } @else {
-    &::after {
+    &:after {
       content: " ";
       display: block;
       clear: both;

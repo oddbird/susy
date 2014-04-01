@@ -92,11 +92,11 @@ h1 {
   background-color: rgba(255, 0, 0, 0.25);
   border-color: red;
 }
-.results::before {
+.results:before {
   content: 'Unit Tests: ';
   font-weight: bold;
 }
-.results::before, .results::after {
+.results:before, .results:after {
   display: inline;
 }
 
@@ -250,7 +250,7 @@ h1 {
   margin: 0 auto;
 }
 
-.test__global-box-sizing .assert__global-box-sizing::before {
+.test__global-box-sizing .assert__global-box-sizing:before {
   content: "Nested items should use border-box model.";
   display: block;
   padding: 0.375rem 0.75rem;
@@ -271,7 +271,7 @@ h1 {
   margin: 0 auto;
 }
 
-.test__border-box-sizing .assert__border-box-sizing::before {
+.test__border-box-sizing .assert__border-box-sizing:before {
   content: "Nested items should use border-box model.";
   display: block;
   padding: 0.375rem 0.75rem;
@@ -301,7 +301,7 @@ h1 {
   background: rgba(204, 204, 255, 0.5);
 }
 
-.test__background-grid .assert__outside::before {
+.test__background-grid .assert__outside:before {
   content: "Items should have a 7-column grid with outside gutters.";
   display: block;
   padding: 0.375rem 0.75rem;
@@ -314,7 +314,7 @@ h1 {
   background: rgba(204, 204, 255, 0.5);
 }
 
-.test__background-grid .assert__split::before {
+.test__background-grid .assert__split:before {
   content: "Items should have a 8-column grid with split gutters.";
   display: block;
   padding: 0.375rem 0.75rem;
@@ -327,7 +327,7 @@ h1 {
   background: rgba(204, 204, 255, 0.5);
 }
 
-.test__background-grid .assert__inside::before {
+.test__background-grid .assert__inside:before {
   content: "Items should have a 8-column grid with inside gutters.";
   display: block;
   padding: 0.375rem 0.75rem;
@@ -340,7 +340,7 @@ h1 {
   background: rgba(204, 204, 255, 0.5);
 }
 
-.test__background-grid .assert__asym-outside::before {
+.test__background-grid .assert__asym-outside:before {
   content: "Items should have a (1 2 3 2 1)-column grid with outside gutters.";
   display: block;
   padding: 0.375rem 0.75rem;
@@ -353,7 +353,7 @@ h1 {
   background: rgba(204, 204, 255, 0.5);
 }
 
-.test__background-grid .assert__asym-split::before {
+.test__background-grid .assert__asym-split:before {
   content: "Items should have a (1 2 3 3)-column grid with split gutters.";
   display: block;
   padding: 0.375rem 0.75rem;
@@ -366,7 +366,7 @@ h1 {
   background: rgba(204, 204, 255, 0.5);
 }
 
-.test__background-grid .assert__asym-inside::before {
+.test__background-grid .assert__asym-inside:before {
   content: "Items should have a (1 2 3 3)-column grid with inside gutters.";
   display: block;
   padding: 0.375rem 0.75rem;
@@ -394,7 +394,7 @@ h1 {
   background: rgba(204, 204, 255, 0.5);
 }
 
-.test__container .assert__default-box::before {
+.test__container .assert__default-box:before {
   content: "Containers should have 80% max-width and show a 7 .5 grid.";
   display: block;
   padding: 0.375rem 0.75rem;
@@ -407,7 +407,7 @@ h1 {
   background: rgba(204, 204, 255, 0.5);
 }
 
-.test__container .assert__border-box::before {
+.test__container .assert__border-box:before {
   content: "Containers should have 40em max-width, border-box-sizing, and show a (1 2 3 2 1) (4em 2em) grid, flush left.";
   display: block;
   padding: 0.375rem 0.75rem;
@@ -438,7 +438,7 @@ h1 {
   background-clip: content-box;
   background-position: left top;
 }
-.test__span .assert__default::after {
+.test__span .assert__default:after {
   content: " ";
   display: block;
   clear: both;
@@ -447,7 +447,7 @@ h1 {
 .test__span .assert__default .test, .test__span .assert__default .expect {
   clear: both;
 }
-.test__span .assert__default .test::after, .test__span .assert__default .expect::after {
+.test__span .assert__default .test:after, .test__span .assert__default .expect:after {
   content: " ";
   display: block;
   clear: both;
@@ -456,7 +456,7 @@ h1 {
   background: rgba(255, 255, 0, 0.25);
 }
 
-.test__span .assert__default::before {
+.test__span .assert__default:before {
   content: "Span should set width (75%), float (left), and gutter (5% margin-right)";
   display: block;
   padding: 0.375rem 0.75rem;
@@ -476,7 +476,7 @@ h1 {
   background-clip: content-box;
   background-position: left top;
 }
-.test__span .assert__inside::after {
+.test__span .assert__inside:after {
   content: " ";
   display: block;
   clear: both;
@@ -493,7 +493,7 @@ h1 {
   clear: left;
 }
 
-.test__span .assert__inside::before {
+.test__span .assert__inside:before {
   content: "Span should set width, float, clear, and inside gutter";
   display: block;
   padding: 0.375rem 0.75rem;
@@ -513,7 +513,7 @@ h1 {
   background-clip: content-box;
   background-position: left top;
 }
-.test__span .assert__explicit::after {
+.test__span .assert__explicit:after {
   content: " ";
   display: block;
   clear: both;
@@ -523,7 +523,7 @@ h1 {
   clear: both;
 }
 
-.test__span .assert__explicit::before {
+.test__span .assert__explicit:before {
   content: "Span should set width, float, inside gutter, and border-box";
   display: block;
   padding: 0.375rem 0.75rem;
@@ -555,13 +555,13 @@ h1 {
   background-clip: content-box;
   background-position: left top;
 }
-.test__gutters .assert__auto::after {
+.test__gutters .assert__auto:after {
   content: " ";
   display: block;
   clear: both;
 }
 
-.test__gutters .assert__auto::before {
+.test__gutters .assert__auto:before {
   content: "Item should have 2.5% margin-gutters added before and after";
   display: block;
   padding: 0.375rem 0.75rem;
@@ -581,13 +581,13 @@ h1 {
   background-clip: content-box;
   background-position: left top;
 }
-.test__gutters .assert__inside-static::after {
+.test__gutters .assert__inside-static:after {
   content: " ";
   display: block;
   clear: both;
 }
 
-.test__gutters .assert__inside-static::before {
+.test__gutters .assert__inside-static:before {
   content: "Item should have 1em padding-gutters added before and after";
   display: block;
   padding: 0.375rem 0.75rem;
@@ -607,13 +607,13 @@ h1 {
   background-clip: content-box;
   background-position: left top;
 }
-.test__gutters .assert__explicit::after {
+.test__gutters .assert__explicit:after {
   content: " ";
   display: block;
   clear: both;
 }
 
-.test__gutters .assert__explicit::before {
+.test__gutters .assert__explicit:before {
   content: "Item should have 5em padding-gutters added before and after";
   display: block;
   padding: 0.375rem 0.75rem;
@@ -647,7 +647,7 @@ h1 {
   background-clip: content-box;
   background-position: left top;
 }
-.test__isolate .assert__isolate::after {
+.test__isolate .assert__isolate:after {
   content: " ";
   display: block;
   clear: both;
@@ -660,7 +660,7 @@ h1 {
   clear: both;
 }
 
-.test__isolate .assert__isolate::before {
+.test__isolate .assert__isolate:before {
   content: "Item should be isolated in the last 2 columns";
   display: block;
   padding: 0.375rem 0.75rem;
@@ -690,13 +690,13 @@ h1 {
   background-clip: content-box;
   background-position: left top;
 }
-.test__gallery .assert__sym::after {
+.test__gallery .assert__sym:after {
   content: " ";
   display: block;
   clear: both;
 }
 
-.test__gallery .assert__sym .nest::after {
+.test__gallery .assert__sym .nest:after {
   content: " ";
   display: block;
   clear: both;
@@ -706,7 +706,7 @@ h1 {
   margin-bottom: 0rem;
 }
 
-.test__gallery .assert__sym::before {
+.test__gallery .assert__sym:before {
   content: "Items should create 3x symmetrical isolated gallery.";
   display: block;
   padding: 0.375rem 0.75rem;
@@ -726,13 +726,13 @@ h1 {
   background-clip: content-box;
   background-position: left top;
 }
-.test__gallery .assert__inside::after {
+.test__gallery .assert__inside:after {
   content: " ";
   display: block;
   clear: both;
 }
 
-.test__gallery .assert__inside .nest::after {
+.test__gallery .assert__inside .nest:after {
   content: " ";
   display: block;
   clear: both;
@@ -742,7 +742,7 @@ h1 {
   margin-bottom: 0rem;
 }
 
-.test__gallery .assert__inside::before {
+.test__gallery .assert__inside:before {
   content: "Items should create 4x isolated gallery with inside-gutters.";
   display: block;
   padding: 0.375rem 0.75rem;
@@ -762,13 +762,13 @@ h1 {
   background-clip: content-box;
   background-position: left top;
 }
-.test__gallery .assert__inside-static::after {
+.test__gallery .assert__inside-static:after {
   content: " ";
   display: block;
   clear: both;
 }
 
-.test__gallery .assert__inside-static .nest::after {
+.test__gallery .assert__inside-static .nest:after {
   content: " ";
   display: block;
   clear: both;
@@ -778,7 +778,7 @@ h1 {
   margin-bottom: 0rem;
 }
 
-.test__gallery .assert__inside-static::before {
+.test__gallery .assert__inside-static:before {
   content: "Items should create 3x isolated gallery with inside-static gutters.";
   display: block;
   padding: 0.375rem 0.75rem;
@@ -798,13 +798,13 @@ h1 {
   background-clip: content-box;
   background-position: left top;
 }
-.test__gallery .assert__split::after {
+.test__gallery .assert__split:after {
   content: " ";
   display: block;
   clear: both;
 }
 
-.test__gallery .assert__split .nest::after {
+.test__gallery .assert__split .nest:after {
   content: " ";
   display: block;
   clear: both;
@@ -814,7 +814,7 @@ h1 {
   margin-bottom: 0rem;
 }
 
-.test__gallery .assert__split::before {
+.test__gallery .assert__split:before {
   content: "Items should create 4x isolated gallery with split-gutters.";
   display: block;
   padding: 0.375rem 0.75rem;
@@ -833,13 +833,13 @@ h1 {
   background-clip: content-box;
   background-position: left top;
 }
-.test__gallery .assert__asym::after {
+.test__gallery .assert__asym:after {
   content: " ";
   display: block;
   clear: both;
 }
 
-.test__gallery .assert__asym .nest::after {
+.test__gallery .assert__asym .nest:after {
   content: " ";
   display: block;
   clear: both;
@@ -849,7 +849,7 @@ h1 {
   margin-bottom: 0rem;
 }
 
-.test__gallery .assert__asym::before {
+.test__gallery .assert__asym:before {
   content: "Items should create 3x isolated asymmetrical gallery.";
   display: block;
   padding: 0.375rem 0.75rem;
@@ -868,13 +868,13 @@ h1 {
   background-clip: content-box;
   background-position: left top;
 }
-.test__gallery .assert__asym-inside::after {
+.test__gallery .assert__asym-inside:after {
   content: " ";
   display: block;
   clear: both;
 }
 
-.test__gallery .assert__asym-inside .nest::after {
+.test__gallery .assert__asym-inside .nest:after {
   content: " ";
   display: block;
   clear: both;
@@ -884,7 +884,7 @@ h1 {
   margin-bottom: 0rem;
 }
 
-.test__gallery .assert__asym-inside::before {
+.test__gallery .assert__asym-inside:before {
   content: "Items should create 2x isolated asymmetrical gallery, with inside gutters.";
   display: block;
   padding: 0.375rem 0.75rem;
@@ -912,7 +912,7 @@ h1 {
   background-clip: content-box;
   background-position: left top;
 }
-.test__break .assert__break::after {
+.test__break .assert__break:after {
   content: " ";
   display: block;
   clear: both;
@@ -928,7 +928,7 @@ h1 {
   padding-right: 2.38095%;
 }
 
-.test__break .assert__break::before {
+.test__break .assert__break:before {
   content: "breaks should clear preceeding floats";
   display: block;
   padding: 0.375rem 0.75rem;
@@ -949,7 +949,7 @@ h1 {
   background-clip: content-box;
   background-position: left top;
 }
-.test__nobreak .assert__nobreak::after {
+.test__nobreak .assert__nobreak:after {
   content: " ";
   display: block;
   clear: both;
@@ -968,7 +968,7 @@ h1 {
   clear: both;
 }
 
-.test__nobreak .assert__nobreak::before {
+.test__nobreak .assert__nobreak:before {
   content: "Non-breaks should not clear floated elements";
   display: block;
   padding: 0.375rem 0.75rem;
@@ -989,7 +989,7 @@ h1 {
   background-clip: content-box;
   background-position: left top;
 }
-.test__full .assert__split::after {
+.test__full .assert__split:after {
   content: " ";
   display: block;
   clear: both;
@@ -1002,7 +1002,7 @@ h1 {
   margin-right: 1.25%;
 }
 
-.test__full .assert__split::before {
+.test__full .assert__split:before {
   content: "Full spans clear preceeding floats, and have gutters.";
   display: block;
   padding: 0.375rem 0.75rem;
@@ -1022,7 +1022,7 @@ h1 {
   background-clip: content-box;
   background-position: left top;
 }
-.test__full .assert__after::after {
+.test__full .assert__after:after {
   content: " ";
   display: block;
   clear: both;
@@ -1034,7 +1034,7 @@ h1 {
   margin-right: 5%;
 }
 
-.test__full .assert__after::before {
+.test__full .assert__after:before {
   content: "Full spans clear preceeding floats, and have gutters.";
   display: block;
   padding: 0.375rem 0.75rem;
@@ -1055,7 +1055,7 @@ h1 {
   background-clip: content-box;
   background-position: left top;
 }
-.test__first .assert__before::after {
+.test__first .assert__before:after {
   content: " ";
   display: block;
   clear: both;
@@ -1068,7 +1068,7 @@ h1 {
   clear: left;
 }
 
-.test__first .assert__before::before {
+.test__first .assert__before:before {
   content: "First items should have left margins removed.";
   display: block;
   padding: 0.375rem 0.75rem;
@@ -1088,7 +1088,7 @@ h1 {
   background-clip: content-box;
   background-position: left top;
 }
-.test__first .assert__split::after {
+.test__first .assert__split:after {
   content: " ";
   display: block;
   clear: both;
@@ -1102,7 +1102,7 @@ h1 {
   clear: left;
 }
 
-.test__first .assert__split::before {
+.test__first .assert__split:before {
   content: "Nothing should happen to split first items.";
   display: block;
   padding: 0.375rem 0.75rem;
@@ -1123,7 +1123,7 @@ h1 {
   background-clip: content-box;
   background-position: left top;
 }
-.test__alpha .assert__alpha::after {
+.test__alpha .assert__alpha:after {
   content: " ";
   display: block;
   clear: both;
@@ -1136,7 +1136,7 @@ h1 {
   clear: left;
 }
 
-.test__alpha .assert__alpha::before {
+.test__alpha .assert__alpha:before {
   content: "Alpha items should have left margins removed.";
   display: block;
   padding: 0.375rem 0.75rem;
@@ -1157,7 +1157,7 @@ h1 {
   background-clip: content-box;
   background-position: left top;
 }
-.test__last .assert__after::after {
+.test__last .assert__after:after {
   content: " ";
   display: block;
   clear: both;
@@ -1170,7 +1170,7 @@ h1 {
   clear: both;
 }
 
-.test__last .assert__after::before {
+.test__last .assert__after:before {
   content: "Last items should float right, with right margins removed";
   display: block;
   padding: 0.375rem 0.75rem;
@@ -1190,7 +1190,7 @@ h1 {
   background-clip: content-box;
   background-position: left top;
 }
-.test__last .assert__split::after {
+.test__last .assert__split:after {
   content: " ";
   display: block;
   clear: both;
@@ -1204,7 +1204,7 @@ h1 {
   clear: both;
 }
 
-.test__last .assert__split::before {
+.test__last .assert__split:before {
   content: "Last items should float right.";
   display: block;
   padding: 0.375rem 0.75rem;
@@ -1225,7 +1225,7 @@ h1 {
   background-clip: content-box;
   background-position: left top;
 }
-.test__omega .assert__omega::after {
+.test__omega .assert__omega:after {
   content: " ";
   display: block;
   clear: both;
@@ -1238,7 +1238,7 @@ h1 {
   clear: both;
 }
 
-.test__omega .assert__omega::before {
+.test__omega .assert__omega:before {
   content: "Omega items should float right, with right margins removed";
   display: block;
   padding: 0.375rem 0.75rem;
@@ -1268,7 +1268,7 @@ h1 {
   background-clip: content-box;
   background-position: left top;
 }
-.test__pre .assert__wide::after {
+.test__pre .assert__wide:after {
   content: " ";
   display: block;
   clear: both;
@@ -1285,7 +1285,7 @@ h1 {
   margin-left: 5%;
 }
 
-.test__pre .assert__wide::before {
+.test__pre .assert__wide:before {
   content: "Items should have 2-columns (wide) margin before.";
   display: block;
   padding: 0.375rem 0.75rem;
@@ -1305,7 +1305,7 @@ h1 {
   background-clip: content-box;
   background-position: left top;
 }
-.test__pre .assert__split::after {
+.test__pre .assert__split:after {
   content: " ";
   display: block;
   clear: both;
@@ -1318,7 +1318,7 @@ h1 {
   margin-right: 1.25%;
 }
 
-.test__pre .assert__split::before {
+.test__pre .assert__split:before {
   content: "Items should have 2-columns margin before, including split gutter.";
   display: block;
   padding: 0.375rem 0.75rem;
@@ -1338,7 +1338,7 @@ h1 {
   background-clip: content-box;
   background-position: left top;
 }
-.test__pre .assert__wider::after {
+.test__pre .assert__wider:after {
   content: " ";
   display: block;
   clear: both;
@@ -1355,7 +1355,7 @@ h1 {
   margin-left: 5%;
 }
 
-.test__pre .assert__wider::before {
+.test__pre .assert__wider:before {
   content: "Items should have 2-columns (wider) margin before.";
   display: block;
   padding: 0.375rem 0.75rem;
@@ -1375,13 +1375,13 @@ h1 {
   background-clip: content-box;
   background-position: left top;
 }
-.test__post .assert__wide::after {
+.test__post .assert__wide:after {
   content: " ";
   display: block;
   clear: both;
 }
 
-.test__post .assert__wide::before {
+.test__post .assert__wide:before {
   content: "Items should have 2-columns (wide) margin after.";
   display: block;
   padding: 0.375rem 0.75rem;
@@ -1400,7 +1400,7 @@ h1 {
   background-clip: content-box;
   background-position: left top;
 }
-.test__post .assert__split::after {
+.test__post .assert__split:after {
   content: " ";
   display: block;
   clear: both;
@@ -1411,7 +1411,7 @@ h1 {
   margin-right: 1.25%;
 }
 
-.test__post .assert__split::before {
+.test__post .assert__split:before {
   content: "Items should have 2-columns margin after, including split gutter.";
   display: block;
   padding: 0.375rem 0.75rem;
@@ -1430,7 +1430,7 @@ h1 {
   background-clip: content-box;
   background-position: left top;
 }
-.test__post .assert__wider::after {
+.test__post .assert__wider:after {
   content: " ";
   display: block;
   clear: both;
@@ -1448,7 +1448,7 @@ h1 {
   margin-right: 2.5%;
 }
 
-.test__post .assert__wider::before {
+.test__post .assert__wider:before {
   content: "Items should have 1-column (wide-2) margin after.";
   display: block;
   padding: 0.375rem 0.75rem;
@@ -1469,7 +1469,7 @@ h1 {
   background-clip: content-box;
   background-position: left top;
 }
-.test__push .assert__push::after {
+.test__push .assert__push:after {
   content: " ";
   display: block;
   clear: both;
@@ -1482,7 +1482,7 @@ h1 {
   margin-right: 1.25%;
 }
 
-.test__push .assert__push::before {
+.test__push .assert__push:before {
   content: "Items should have 2-columns margin before.";
   display: block;
   padding: 0.375rem 0.75rem;
@@ -1502,7 +1502,7 @@ h1 {
   background-clip: content-box;
   background-position: left top;
 }
-.test__pull .assert__narrow::after {
+.test__pull .assert__narrow:after {
   content: " ";
   display: block;
   clear: both;
@@ -1519,7 +1519,7 @@ h1 {
   margin-left: 2.5%;
 }
 
-.test__pull .assert__narrow::before {
+.test__pull .assert__narrow:before {
   content: "Items should pull 1-column, overlapping the spacer.";
   display: block;
   padding: 0.375rem 0.75rem;
@@ -1539,7 +1539,7 @@ h1 {
   background-clip: content-box;
   background-position: left top;
 }
-.test__pull .assert__split::after {
+.test__pull .assert__split:after {
   content: " ";
   display: block;
   clear: both;
@@ -1558,7 +1558,7 @@ h1 {
   margin-right: 1.25%;
 }
 
-.test__pull .assert__split::before {
+.test__pull .assert__split:before {
   content: "Items should pull 1-column, overlapping the spacer.";
   display: block;
   padding: 0.375rem 0.75rem;
@@ -1577,7 +1577,7 @@ h1 {
   background-clip: content-box;
   background-position: left top;
 }
-.test__pull .assert__wide::after {
+.test__pull .assert__wide:after {
   content: " ";
   display: block;
   clear: both;
@@ -1594,7 +1594,7 @@ h1 {
   margin-left: 2.5%;
 }
 
-.test__pull .assert__wide::before {
+.test__pull .assert__wide:before {
   content: "Items should pull 1-column, overlapping the spacer.";
   display: block;
   padding: 0.375rem 0.75rem;
@@ -1613,7 +1613,7 @@ h1 {
   background-clip: content-box;
   background-position: left top;
 }
-.test__pull .assert__wider::after {
+.test__pull .assert__wider:after {
   content: " ";
   display: block;
   clear: both;
@@ -1630,7 +1630,7 @@ h1 {
   margin-left: 2.38095%;
 }
 
-.test__pull .assert__wider::before {
+.test__pull .assert__wider:before {
   content: "Items should pull 1-column, overlapping the spacer.";
   display: block;
   padding: 0.375rem 0.75rem;
@@ -1650,13 +1650,13 @@ h1 {
   background-clip: content-box;
   background-position: left top;
 }
-.test__squish .assert__simple::after {
+.test__squish .assert__simple:after {
   content: " ";
   display: block;
   clear: both;
 }
 
-.test__squish .assert__simple::before {
+.test__squish .assert__simple:before {
   content: "Items should have 2-columns margin before and after.";
   display: block;
   padding: 0.375rem 0.75rem;
@@ -1675,13 +1675,13 @@ h1 {
   background-clip: content-box;
   background-position: left top;
 }
-.test__squish .assert__split::after {
+.test__squish .assert__split:after {
   content: " ";
   display: block;
   clear: both;
 }
 
-.test__squish .assert__split::before {
+.test__squish .assert__split:before {
   content: "Items should have 2-columns margin before and after.";
   display: block;
   padding: 0.375rem 0.75rem;
@@ -1701,7 +1701,7 @@ h1 {
   background-clip: content-box;
   background-position: left top;
 }
-.test__squish .assert__nested::after {
+.test__squish .assert__nested:after {
   content: " ";
   display: block;
   clear: both;
@@ -1712,7 +1712,7 @@ h1 {
   margin-right: 14.28571%;
 }
 
-.test__squish .assert__nested::before {
+.test__squish .assert__nested:before {
   content: "Items should have 1-column margin before, and 2 after - nested.";
   display: block;
   padding: 0.375rem 0.75rem;
@@ -1736,13 +1736,13 @@ h1 {
   background-clip: content-box;
   background-position: left top;
 }
-.test__prefix .assert__wide::after {
+.test__prefix .assert__wide:after {
   content: " ";
   display: block;
   clear: both;
 }
 
-.test__prefix .assert__wide::before {
+.test__prefix .assert__wide:before {
   content: "Items should have 3 columns padding before.";
   display: block;
   padding: 0.375rem 0.75rem;
@@ -1762,7 +1762,7 @@ h1 {
   background-clip: content-box;
   background-position: left top;
 }
-.test__prefix .assert__wider::after {
+.test__prefix .assert__wider:after {
   content: " ";
   display: block;
   clear: both;
@@ -1776,7 +1776,7 @@ h1 {
   overflow: hidden;
 }
 
-.test__prefix .assert__wider::before {
+.test__prefix .assert__wider:before {
   content: "Items should have 3 columns padding before.";
   display: block;
   padding: 0.375rem 0.75rem;
@@ -1796,13 +1796,13 @@ h1 {
   background-clip: content-box;
   background-position: left top;
 }
-.test__suffix .assert__wide::after {
+.test__suffix .assert__wide:after {
   content: " ";
   display: block;
   clear: both;
 }
 
-.test__suffix .assert__wide::before {
+.test__suffix .assert__wide:before {
   content: "Items should have 2 columns padding after.";
   display: block;
   padding: 0.375rem 0.75rem;
@@ -1821,7 +1821,7 @@ h1 {
   background-clip: content-box;
   background-position: left top;
 }
-.test__suffix .assert__wider::after {
+.test__suffix .assert__wider:after {
   content: " ";
   display: block;
   clear: both;
@@ -1836,7 +1836,7 @@ h1 {
   overflow: hidden;
 }
 
-.test__suffix .assert__wider::before {
+.test__suffix .assert__wider:before {
   content: "Items should have 2 columns padding after.";
   display: block;
   padding: 0.375rem 0.75rem;
@@ -1856,13 +1856,13 @@ h1 {
   background-clip: content-box;
   background-position: left top;
 }
-.test__pad .assert__simple::after {
+.test__pad .assert__simple:after {
   content: " ";
   display: block;
   clear: both;
 }
 
-.test__pad .assert__simple::before {
+.test__pad .assert__simple:before {
   content: "Items should have 2 columns padding before and after.";
   display: block;
   padding: 0.375rem 0.75rem;
@@ -1882,7 +1882,7 @@ h1 {
   background-clip: content-box;
   background-position: left top;
 }
-.test__pad .assert__nested::after {
+.test__pad .assert__nested:after {
   content: " ";
   display: block;
   clear: both;
@@ -1893,7 +1893,7 @@ h1 {
   padding-right: 11.53846%;
 }
 
-.test__pad .assert__nested::before {
+.test__pad .assert__nested:before {
   content: "Items should have 1 column padding before, and 2 after - nested.";
   display: block;
   padding: 0.375rem 0.75rem;
@@ -1913,13 +1913,13 @@ h1 {
   background-clip: content-box;
   background-position: left top;
 }
-.test__pad .assert__inside::after {
+.test__pad .assert__inside:after {
   content: " ";
   display: block;
   clear: both;
 }
 
-.test__pad .assert__inside::before {
+.test__pad .assert__inside:before {
   content: "Items should have 2 columns padding before and after, and keep gutters.";
   display: block;
   padding: 0.375rem 0.75rem;
@@ -1939,13 +1939,13 @@ h1 {
   background-clip: content-box;
   background-position: left top;
 }
-.test__pad .assert__inside-nogutters::after {
+.test__pad .assert__inside-nogutters:after {
   content: " ";
   display: block;
   clear: both;
 }
 
-.test__pad .assert__inside-nogutters::before {
+.test__pad .assert__inside-nogutters:before {
   content: "Items should have 2 columns padding before and after, without gutters.";
   display: block;
   padding: 0.375rem 0.75rem;
@@ -1969,7 +1969,7 @@ h1 {
   background-clip: content-box;
   background-position: left top;
 }
-.test__bleed .assert__simple::after {
+.test__bleed .assert__simple:after {
   content: " ";
   display: block;
   clear: both;
@@ -1980,7 +1980,7 @@ h1 {
   margin-right: 11.53846%;
 }
 
-.test__bleed .assert__simple::before {
+.test__bleed .assert__simple:before {
   content: "Items should bleed 1 column outside their nested context";
   display: block;
   padding: 0.375rem 0.75rem;
@@ -2000,7 +2000,7 @@ h1 {
   background-clip: content-box;
   background-position: left top;
 }
-.test__bleed .assert__inside::after {
+.test__bleed .assert__inside:after {
   content: " ";
   display: block;
   clear: both;
@@ -2015,7 +2015,7 @@ h1 {
   margin-right: 10%;
 }
 
-.test__bleed .assert__inside::before {
+.test__bleed .assert__inside:before {
   content: "Items should bleed 1em on all sides, and retain their static gutters";
   display: block;
   padding: 0.375rem 0.75rem;
@@ -2035,7 +2035,7 @@ h1 {
   background-clip: content-box;
   background-position: left top;
 }
-.test__bleed .assert__split::after {
+.test__bleed .assert__split:after {
   content: " ";
   display: block;
   clear: both;
@@ -2046,7 +2046,7 @@ h1 {
   margin-right: 17.5%;
 }
 
-.test__bleed .assert__split::before {
+.test__bleed .assert__split:before {
   content: "Items should bleed 1 column horizontal, and retain gutters.";
   display: block;
   padding: 0.375rem 0.75rem;
@@ -2067,7 +2067,7 @@ h1 {
   background-clip: content-box;
   background-position: left top;
 }
-.test__bleed-x .assert__simple::after {
+.test__bleed-x .assert__simple:after {
   content: " ";
   display: block;
   clear: both;
@@ -2078,7 +2078,7 @@ h1 {
   margin-right: 18.75%;
 }
 
-.test__bleed-x .assert__simple::before {
+.test__bleed-x .assert__simple:before {
   content: "Items should bleed 1 column left, and 2 columns right";
   display: block;
   padding: 0.375rem 0.75rem;
@@ -2098,7 +2098,7 @@ h1 {
   background-clip: content-box;
   background-position: left top;
 }
-.test__bleed-x .assert__inside::after {
+.test__bleed-x .assert__inside:after {
   content: " ";
   display: block;
   clear: both;
@@ -2109,7 +2109,7 @@ h1 {
   margin-right: 10%;
 }
 
-.test__bleed-x .assert__inside::before {
+.test__bleed-x .assert__inside:before {
   content: "Items should bleed 1 column, and retain their gutters";
   display: block;
   padding: 0.375rem 0.75rem;
@@ -2130,7 +2130,7 @@ h1 {
   background-clip: content-box;
   background-position: left top;
 }
-.test__bleed-y .assert__simple::after {
+.test__bleed-y .assert__simple:after {
   content: " ";
   display: block;
   clear: both;
@@ -2145,7 +2145,7 @@ h1 {
   margin-right: 9.375%;
 }
 
-.test__bleed-y .assert__simple::before {
+.test__bleed-y .assert__simple:before {
   content: "Items should bleed .5em top, and 1em bottom.";
   display: block;
   padding: 0.375rem 0.75rem;
@@ -2176,7 +2176,7 @@ h1 {
   background: rgba(204, 204, 255, 0.5);
 }
 
-.test__output .assert__output::before {
+.test__output .assert__output:before {
   content: "Property value pairs are passed in as maps and output as CSS.";
   display: block;
   padding: 0.375rem 0.75rem;
@@ -2211,7 +2211,7 @@ h1 {
   background: none;
 }
 
-.test__background-grid-output .assert__show::before {
+.test__background-grid-output .assert__show:before {
   content: "Elements should show a horizontal clipped red-green-blue gradient, and a vertical baseline";
   display: block;
   padding: 0.375rem 0.75rem;
@@ -2228,7 +2228,7 @@ h1 {
   background: rgba(204, 204, 255, 0.5);
 }
 
-.test__container-output .assert__fluid::before {
+.test__container-output .assert__fluid:before {
   content: "Containers should have 60em max-width, centered.";
   display: block;
   padding: 0.375rem 0.75rem;
@@ -2241,7 +2241,7 @@ h1 {
   background: rgba(204, 204, 255, 0.5);
 }
 
-.test__container-output .assert__static::before {
+.test__container-output .assert__static:before {
   content: "Containers should have 30em width, flush right.";
   display: block;
   padding: 0.375rem 0.75rem;
@@ -2254,7 +2254,7 @@ h1 {
   background: rgba(204, 204, 255, 0.5);
 }
 
-.test__container-output .assert__auto::before {
+.test__container-output .assert__auto:before {
   content: "Containers should have 100% width.";
   display: block;
   padding: 0.375rem 0.75rem;
@@ -2271,7 +2271,7 @@ h1 {
   background: rgba(204, 204, 255, 0.5);
 }
 
-.test__margin-output .assert__margin-output::before {
+.test__margin-output .assert__margin-output:before {
   content: "Elements should have 25% right margin, 8em left.";
   display: block;
   padding: 0.375rem 0.75rem;
@@ -2288,7 +2288,7 @@ h1 {
   background: rgba(204, 204, 255, 0.5);
 }
 
-.test__padding-output .assert__padding-output::before {
+.test__padding-output .assert__padding-output:before {
   content: "Elements should have 25% right padding, 8em left.";
   display: block;
   padding: 0.375rem 0.75rem;
@@ -2305,7 +2305,7 @@ h1 {
   background: rgba(204, 204, 255, 0.5);
 }
 
-.test__susy-prefix .assert__susy-prefix::before {
+.test__susy-prefix .assert__susy-prefix:before {
   content: "Requested prefixes are added to output.";
   display: block;
   padding: 0.375rem 0.75rem;
@@ -2322,7 +2322,7 @@ h1 {
   background: rgba(204, 204, 255, 0.5);
 }
 
-.test__susy-background-image .assert__susy-background-image::before {
+.test__susy-background-image .assert__susy-background-image:before {
   content: "Without Compass, background-image is output directly.";
   display: block;
   padding: 0.375rem 0.75rem;
@@ -2336,7 +2336,7 @@ h1 {
   background: rgba(204, 204, 255, 0.5);
 }
 
-.test__susy-background-size .assert__susy-background-size::before {
+.test__susy-background-size .assert__susy-background-size:before {
   content: "Without Compass, background-size is output directly.";
   display: block;
   padding: 0.375rem 0.75rem;
@@ -2350,7 +2350,7 @@ h1 {
   background: rgba(204, 204, 255, 0.5);
 }
 
-.test__susy-background-origin .assert__susy-background-origin::before {
+.test__susy-background-origin .assert__susy-background-origin:before {
   content: "Without Compass, background-origin is output directly.";
   display: block;
   padding: 0.375rem 0.75rem;
@@ -2364,7 +2364,7 @@ h1 {
   background: rgba(204, 204, 255, 0.5);
 }
 
-.test__susy-background-clip .assert__susy-background-clip::before {
+.test__susy-background-clip .assert__susy-background-clip:before {
   content: "Without Compass, background-clip is output directly.";
   display: block;
   padding: 0.375rem 0.75rem;
@@ -2386,7 +2386,7 @@ h1 {
   padding: 0 2em;
 }
 
-.test__susy-box-sizing .assert__border-box::before {
+.test__susy-box-sizing .assert__border-box:before {
   content: "Box-models are correctly output and prefixed.";
   display: block;
   padding: 0.375rem 0.75rem;
@@ -2406,7 +2406,7 @@ h1 {
   background: rgba(204, 204, 255, 0.5);
 }
 
-.test__ .assert__::before {
+.test__ .assert__:before {
   content: "Without compass, rem units are output unchanged.";
   display: block;
   padding: 0.375rem 0.75rem;
@@ -2428,7 +2428,7 @@ h1 {
   width: 25%;
 }
 
-.test__susy-clearfix .assert__clearfix::before {
+.test__susy-clearfix .assert__clearfix:before {
   content: "Elements should clear floated children.";
   display: block;
   padding: 0.375rem 0.75rem;
@@ -2445,7 +2445,7 @@ h1 {
   background: rgba(204, 204, 255, 0.5);
 }
 
-.test__susy-support .assert__susy-support::before {
+.test__susy-support .assert__susy-support:before {
   content: "Recogizes properties that need special support,
       and passes others through directly.";
   display: block;
@@ -2468,7 +2468,7 @@ h1 {
   background: rgba(204, 204, 255, 0.5);
 }
 
-.test__float-container .assert__float-container::before {
+.test__float-container .assert__float-container:before {
   content: "Containers should be 30em wide, flush left.";
   display: block;
   padding: 0.375rem 0.75rem;
@@ -2489,7 +2489,7 @@ h1 {
   clear: both;
 }
 
-.test__float-span-output .assert__full::before {
+.test__float-span-output .assert__full:before {
   content: "Output should be 25%, floated left, with matching margins/padding";
   display: block;
   padding: 0.375rem 0.75rem;
@@ -2506,7 +2506,7 @@ h1 {
   clear: both;
 }
 
-.test__float-span-output .assert__float-to::before {
+.test__float-span-output .assert__float-to:before {
   content: "Output should be 25%, floated right";
   display: block;
   padding: 0.375rem 0.75rem;
@@ -2519,7 +2519,7 @@ h1 {
   background: rgba(204, 204, 255, 0.5);
 }
 
-.test__float-span-output .assert__float-null::before {
+.test__float-span-output .assert__float-null:before {
   content: "Output should be 25%, not floated";
   display: block;
   padding: 0.375rem 0.75rem;
@@ -2542,7 +2542,7 @@ h1 {
   margin-right: 5%;
 }
 
-.test__float-last .assert__default::before {
+.test__float-last .assert__default:before {
   content: "Items should float flush right.";
   display: block;
   padding: 0.375rem 0.75rem;
@@ -2567,7 +2567,7 @@ h1 {
   overflow: hidden;
 }
 
-.test__float-last .assert__last-flow-from::before {
+.test__float-last .assert__last-flow-from:before {
   content: "Items should not have any right margin.";
   display: block;
   padding: 0.375rem 0.75rem;
@@ -2587,7 +2587,7 @@ h1 {
   margin-left: 5%;
 }
 
-.test__float-first .assert__float-first::before {
+.test__float-first .assert__float-first:before {
   content: "Items should float flush left.";
   display: block;
   padding: 0.375rem 0.75rem;
@@ -2613,7 +2613,7 @@ h1 {
   clear: both;
 }
 
-.test__isolate-output .assert__isolate-output::before {
+.test__isolate-output .assert__isolate-output:before {
   content: "Isolation at 30%, has 30% left margin and -100% right margin.";
   display: block;
   padding: 0.375rem 0.75rem;
@@ -2625,6 +2625,6 @@ h1 {
   background: rgba(0, 128, 0, 0.25);
   border-color: green;
 }
-.results::after {
+.results:after {
   content: "55 Tests, 55 Passed, 0 Failed";
 }

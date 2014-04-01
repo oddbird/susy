@@ -4,8 +4,10 @@ Changelog
 2.2.0 - UNRELEASED
 ------------------
 
-- `first` and `last` keywords output `0` margins instead of `null`
+- ``first`` and ``last`` keywords output ``0`` margins instead of ``null``
   so they can be used to override previous span settings.
+- Output ``:before`` / ``:after`` rather than ``::before`` / ``::after``
+  to support IE8.
 
 
 2.1.0 - Mar 13 2014

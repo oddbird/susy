@@ -69,12 +69,12 @@
 ### Global Box-Sizing Syntax ------ */
 /* - [mixin] global-box-sizing */
 /* "Nested items should use border-box model." */
-.test__global-box-sizing .assert__global-box-sizing .test *, .test__global-box-sizing .assert__global-box-sizing .test *::before, .test__global-box-sizing .assert__global-box-sizing .test *::after {
+.test__global-box-sizing .assert__global-box-sizing .test *, .test__global-box-sizing .assert__global-box-sizing .test *:before, .test__global-box-sizing .assert__global-box-sizing .test *:after {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
-.test__global-box-sizing .assert__global-box-sizing .expect *, .test__global-box-sizing .assert__global-box-sizing .expect *::before, .test__global-box-sizing .assert__global-box-sizing .expect *::after {
+.test__global-box-sizing .assert__global-box-sizing .expect *, .test__global-box-sizing .assert__global-box-sizing .expect *:before, .test__global-box-sizing .assert__global-box-sizing .expect *:after {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
@@ -82,12 +82,12 @@
 
 /* - [mixin] border-box-sizing */
 /* "Nested items should use border-box model." */
-.test__border-box-sizing .assert__border-box-sizing .test *, .test__border-box-sizing .assert__border-box-sizing .test *::before, .test__border-box-sizing .assert__border-box-sizing .test *::after {
+.test__border-box-sizing .assert__border-box-sizing .test *, .test__border-box-sizing .assert__border-box-sizing .test *:before, .test__border-box-sizing .assert__border-box-sizing .test *:after {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
-.test__border-box-sizing .assert__border-box-sizing .expect *, .test__border-box-sizing .assert__border-box-sizing .expect *::before, .test__border-box-sizing .assert__border-box-sizing .expect *::after {
+.test__border-box-sizing .assert__border-box-sizing .expect *, .test__border-box-sizing .assert__border-box-sizing .expect *:before, .test__border-box-sizing .assert__border-box-sizing .expect *:after {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
@@ -227,7 +227,7 @@
   background-clip: content-box;
   background-position: left top;
 }
-.test__container .assert__default-box .test::after {
+.test__container .assert__default-box .test:after {
   content: " ";
   display: block;
   clear: both;
@@ -242,7 +242,7 @@
   background-clip: content-box;
   background-position: left top;
 }
-.test__container .assert__default-box .expect::after {
+.test__container .assert__default-box .expect:after {
   content: " ";
   display: block;
   clear: both;
@@ -261,7 +261,7 @@
   background-clip: content-box;
   background-position: left top;
 }
-.test__container .assert__border-box .test::after {
+.test__container .assert__border-box .test:after {
   content: " ";
   display: block;
   clear: both;
@@ -278,7 +278,7 @@
   background-clip: content-box;
   background-position: left top;
 }
-.test__container .assert__border-box .expect::after {
+.test__container .assert__border-box .expect:after {
   content: " ";
   display: block;
   clear: both;
@@ -324,7 +324,7 @@
 }
 
 /* "Span should set width, float, clear, and inside gutter" */
-.test__span .assert__inside *, .test__span .assert__inside *::before, .test__span .assert__inside *::after {
+.test__span .assert__inside *, .test__span .assert__inside *:before, .test__span .assert__inside *:after {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
@@ -1348,12 +1348,12 @@
 ### Clearfix Support ------ */
 /* - [mixin] susy-clearfix */
 /* "Elements should clear floated children." */
-.test__susy-clearfix .assert__clearfix .test::after {
+.test__susy-clearfix .assert__clearfix .test:after {
   content: " ";
   display: block;
   clear: both;
 }
-.test__susy-clearfix .assert__clearfix .expect::after {
+.test__susy-clearfix .assert__clearfix .expect:after {
   content: " ";
   display: block;
   clear: both;
@@ -1393,7 +1393,7 @@
   margin-left: 0;
   margin-right: auto;
 }
-.test__float-container .assert__float-container .test::after {
+.test__float-container .assert__float-container .test:after {
   content: " ";
   display: block;
   clear: both;
@@ -1403,7 +1403,7 @@
   margin-left: 0;
   margin-right: auto;
 }
-.test__float-container .assert__float-container .expect::after {
+.test__float-container .assert__float-container .expect:after {
   content: " ";
   display: block;
   clear: both;

@@ -61,7 +61,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   margin-top: 0.75em;
   margin-bottom: 0.75em;
 }
-.symmetrical::after {
+.symmetrical:after {
   content: " ";
   display: block;
   clear: both;
@@ -75,7 +75,7 @@ head {
   color: #333;
   background: rgba(255, 255, 255, 0.25);
 }
-head::before {
+head:before {
   content: "|||";
   display: block;
   padding: 5px 10px;
@@ -90,7 +90,7 @@ head:hover {
 head:hover ~ .symmetrical, head:hover ~ body .symmetrical {
   position: relative;
 }
-head:hover ~ .symmetrical::before, head:hover ~ body .symmetrical::before {
+head:hover ~ .symmetrical:before, head:hover ~ body .symmetrical:before {
   position: absolute;
   top: 0;
   left: 0;
@@ -208,7 +208,7 @@ head:hover ~ .symmetrical::before, head:hover ~ body .symmetrical::before {
   margin-top: 0.75em;
   margin-bottom: 0.75em;
 }
-.asymmetrical::after {
+.asymmetrical:after {
   content: " ";
   display: block;
   clear: both;
@@ -216,7 +216,7 @@ head:hover ~ .symmetrical::before, head:hover ~ body .symmetrical::before {
 head:hover ~ .asymmetrical, head:hover ~ body .asymmetrical {
   position: relative;
 }
-head:hover ~ .asymmetrical::before, head:hover ~ body .asymmetrical::before {
+head:hover ~ .asymmetrical:before, head:hover ~ body .asymmetrical:before {
   position: absolute;
   top: 0;
   left: 0;
@@ -353,7 +353,7 @@ head:hover ~ .asymmetrical::before, head:hover ~ body .asymmetrical::before {
   margin-top: 0.75em;
   margin-bottom: 0.75em;
 }
-.static::after {
+.static:after {
   content: " ";
   display: block;
   clear: both;
@@ -467,7 +467,7 @@ head:hover ~ .asymmetrical::before, head:hover ~ body .asymmetrical::before {
   margin-top: 0.75em;
   margin-bottom: 0.75em;
 }
-.split::after {
+.split:after {
   content: " ";
   display: block;
   clear: both;
@@ -587,7 +587,7 @@ head:hover ~ .asymmetrical::before, head:hover ~ body .asymmetrical::before {
   margin-top: 0.75em;
   margin-bottom: 0.75em;
 }
-.inside::after {
+.inside:after {
   content: " ";
   display: block;
   clear: both;
@@ -745,7 +745,7 @@ head:hover ~ .asymmetrical::before, head:hover ~ body .asymmetrical::before {
   margin-top: 0.75em;
   margin-bottom: 0.75em;
 }
-.inside-static::after {
+.inside-static:after {
   content: " ";
   display: block;
   clear: both;
@@ -931,7 +931,7 @@ h1, h2, h3 {
 .gallery {
   clear: both;
 }
-.gallery::after {
+.gallery:after {
   content: " ";
   display: block;
   clear: both;

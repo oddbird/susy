@@ -24,12 +24,12 @@ h1 { font-weight: bold; }
   background-color: rgba(red, .25);
   border-color: red;
 
-  &::before {
+  &:before {
     content: 'Unit Tests: ';
     font-weight: bold;
   }
 
-  &::before, &::after {
+  &:before, &:after {
     display: inline;
   }
 }

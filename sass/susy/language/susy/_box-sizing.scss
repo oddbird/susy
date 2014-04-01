@@ -8,7 +8,7 @@
 @mixin global-box-sizing(
   $box: susy-get(global-box-sizing)
 ) {
-  *, *::before, *::after { @include output((box-sizing: $box)); }
+  *, *:before, *:after { @include output((box-sizing: $box)); }
   @include update-box-model($box);
 }
 

@@ -20,7 +20,7 @@
     ) {
       .test { @include susy-clearfix; }
       .expect {
-        &::after {
+        &:after {
           content: " ";
           display: block;
           clear: both;

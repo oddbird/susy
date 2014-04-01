@@ -59,7 +59,7 @@ $susy-overlay-grid-head-exists: false;
 ) {
   @if not $susy-overlay-grid-head-exists {
     @at-root head { @include overlay-head; }
-    @at-root head::before { @include overlay-trigger; }
+    @at-root head:before { @include overlay-trigger; }
     @at-root head:hover { @include overlay-trigger-hover; }
     $susy-overlay-grid-head-exists: true !global;
   }
@@ -67,7 +67,7 @@ $susy-overlay-grid-head-exists: false;
   head:hover ~ &,
   head:hover ~ body & {
     position: relative;
-    &::before {
+    &:before {
       @include grid-overlay-base;
       @include background-grid($grid);
     }

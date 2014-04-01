@@ -98,7 +98,7 @@ $supported-browsers: firefox chrome;
 
   .test__#{$output-test-slug} .assert__#{$output-assert-slug} {
     @if $output-test-context and $message {
-      &::before {
+      &:before {
         content: $message;
         display: block;
         padding: rhythm(.25) rhythm(.5);

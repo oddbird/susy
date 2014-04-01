@@ -18,7 +18,7 @@
     ) {
       .test { @include global-box-sizing(border-box); }
       .expect {
-        *, *::before, *::after { @include output((box-sizing: border-box)); }
+        *, *:before, *:after { @include output((box-sizing: border-box)); }
       }
     }
   }
@@ -38,7 +38,7 @@
     ) {
       .test { @include border-box-sizing; }
       .expect {
-        *, *::before, *::after { @include output((box-sizing: border-box)); }
+        *, *:before, *:after { @include output((box-sizing: border-box)); }
       }
     }
   }

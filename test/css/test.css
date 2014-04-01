@@ -16,9 +16,11 @@
 
 ### General Settings ------ */
 /*  - susy-defaults (2 Assertions, 2 Passed, 0 Failed) */
+/*  - [mixin] susy-set (1 Assertions, 1 Passed, 0 Failed) */
+/*  - [function] susy-get (6 Assertions, 6 Passed, 0 Failed) */
 /*  
-    1 Tests:
-    - 1 Passed
+    3 Tests:
+    - 3 Passed
     - 0 Failed */
 /*  
 
@@ -48,11 +50,9 @@
 /*  - [function] parse-grid (30 Assertions, 30 Passed, 0 Failed) */
 /*  - [function] parse-span (44 Assertions, 44 Passed, 0 Failed) */
 /*  - [function] parse-gutters (11 Assertions, 11 Passed, 0 Failed) */
-/*  - [mixin] susy-set (1 Assertions, 1 Passed, 0 Failed) */
-/*  - [function] susy-get (6 Assertions, 6 Passed, 0 Failed) */
 /*  
-    5 Tests:
-    - 5 Passed
+    3 Tests:
+    - 3 Passed
     - 0 Failed */
 /*  
 

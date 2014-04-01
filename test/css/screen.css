@@ -533,7 +533,7 @@ h1 {
 
 /*  - [mixin] span (4 Assertions, 4 Passed, 0 Failed) */
 /*  - [function] span (1 Assertions, 1 Passed, 0 Failed) */
-/*  - [function] span-math (12 Assertions, 12 Passed, 0 Failed) */
+/*  - [function] span-math (14 Assertions, 14 Passed, 0 Failed) */
 /*  - [function] get-span-width (12 Assertions, 12 Passed, 0 Failed) */
 /*  
     4 Tests:
@@ -656,6 +656,7 @@ h1 {
 .test__isolate .assert__isolate .test, .test__isolate .assert__isolate .expect {
   width: 25%;
   float: right;
+  margin-right: 0;
   clear: both;
 }
 
@@ -1276,6 +1277,7 @@ h1 {
 .test__pre .assert__wide .spacer {
   width: 15%;
   float: left;
+  margin-left: 0;
 }
 .test__pre .assert__wide .test, .test__pre .assert__wide .expect {
   width: 40%;
@@ -1345,6 +1347,7 @@ h1 {
 .test__pre .assert__wider .spacer {
   width: 10%;
   float: left;
+  margin-left: 0;
 }
 .test__pre .assert__wider .test, .test__pre .assert__wider .expect {
   width: 40%;
@@ -1508,6 +1511,7 @@ h1 {
 .test__pull .assert__narrow .spacer {
   width: 32.5%;
   float: left;
+  margin-left: 0;
 }
 .test__pull .assert__narrow .test, .test__pull .assert__narrow .expect {
   width: 75%;
@@ -1582,6 +1586,7 @@ h1 {
 .test__pull .assert__wide .spacer {
   width: 35%;
   float: left;
+  margin-left: 0;
 }
 .test__pull .assert__wide .test, .test__pull .assert__wide .expect {
   width: 75%;
@@ -1617,6 +1622,7 @@ h1 {
 .test__pull .assert__wider .spacer {
   width: 35%;
   float: left;
+  margin-left: 0;
 }
 .test__pull .assert__wider .test, .test__pull .assert__wider .expect {
   width: 80%;
@@ -1824,6 +1830,7 @@ h1 {
 .test__suffix .assert__wider .spacer {
   width: 10%;
   float: right;
+  margin-right: 0;
 }
 .test__suffix .assert__wider .test, .test__suffix .assert__wider .expect {
   overflow: hidden;

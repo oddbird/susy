@@ -88,6 +88,7 @@ so Susy can remove the extra gutters:
   .item {
     float: right;
     width: 40%;
+    margin-right: 0;
   }
 
 For legacy reasons,

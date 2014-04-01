@@ -308,12 +308,25 @@
     $span: span-math($span);
     $margins: map-get($span, margin_before) map-get($span, margin_after);
     $float: map-get($span, float);
-    $expect: null null;
+    $expect: null 0;
     @include assert-equal($margins, $expect,
       'Removes correct margins when last.');
 
     @include assert-equal($float, to,
       'Sets the correct float when last.');
+
+    // after first (margins)
+    $span: (
+      span: 3,
+      location: 1,
+      columns: 6,
+      gutter-position: after,
+    );
+    $span: span-math($span);
+    $margins: map-get($span, margin_before);
+    $expect: null;
+    @include assert-equal($margins, $expect,
+      'No special margins for after first.');
 
     // full (margins & float)
     $span: (
@@ -351,9 +364,23 @@
     );
     $span: span-math($span);
     $margins: map-get($span, margin_before) map-get($span, margin_after);
-    $expect: null null;
+    $expect: 0 null;
     @include assert-equal($margins, $expect,
       'Removes correct margins when first.');
+
+    // before last (margins)
+    $span: (
+      span: 3,
+      location: 4,
+      columns: 6,
+      gutter-position: before,
+    );
+    $span: span-math($span);
+    $margins: map-get($span, margin_after);
+    $expect: null;
+    @include assert-equal($margins, $expect,
+      'No special margins for before last.');
+
   }
 
   // get-span-width

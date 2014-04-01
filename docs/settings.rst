@@ -916,7 +916,10 @@ Tell Susy to use the Compass ``rem`` support module.
 Location
 --------
 
-Reference a specific column on the grid.
+Reference a specific column on the grid
+for :ref:`row edges <tools-span-edge>`,
+:ref:`isolation <tools-isolate>`,
+or :ref:`asymmetrical layouts <tools-span-location>`.
 Locations keywords don't require the ``at`` flag.
 
 .. describe:: setting

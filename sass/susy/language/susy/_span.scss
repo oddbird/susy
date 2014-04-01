@@ -86,14 +86,21 @@
     $margin-after: -100%;
   } @else if $edge {
     $is-split: is-split($span);
-    @if $edge == last or $edge == full {
-      $margin-after: if($is-split, $margin-after, null);
-    }
-    @if $edge == first or $edge == full {
-      $margin-before: if($is-split, $margin-before, null);
-    } @else if $edge == last {
+    $pos: susy-get(gutter-position, $span);
+
+    @if $edge == last {
       $float: susy-get(last-flow, $span);
     }
+
+    @if not $is-split {
+      @if $edge == full or ($edge == first and $pos == before) {
+        $margin-before: 0;
+      }
+      @if $edge == full or ($edge == last and $pos == after) {
+        $margin-after: 0;
+      }
+    }
+
   }
 
   @return (

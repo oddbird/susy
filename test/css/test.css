@@ -366,7 +366,7 @@
 
 /*  - [mixin] span (4 Assertions, 4 Passed, 0 Failed) */
 /*  - [function] span (1 Assertions, 1 Passed, 0 Failed) */
-/*  - [function] span-math (12 Assertions, 12 Passed, 0 Failed) */
+/*  - [function] span-math (14 Assertions, 14 Passed, 0 Failed) */
 /*  - [function] get-span-width (12 Assertions, 12 Passed, 0 Failed) */
 /*  
     4 Tests:
@@ -777,6 +777,8 @@
   clear: both;
   width: 100%;
   float: left;
+  margin-left: 0;
+  margin-right: 0;
 }
 .test__full .assert__after .expect {
   clear: both;

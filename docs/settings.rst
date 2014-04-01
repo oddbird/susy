@@ -343,7 +343,7 @@ In the future there could be flexbox, grid, and other output styles.
 Container
 ---------
 
-Set the width of the containing element.
+Set the max-width of the containing element.
 
 .. describe:: setting
 

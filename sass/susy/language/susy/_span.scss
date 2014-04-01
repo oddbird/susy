@@ -146,8 +146,10 @@
     $spread: if(is-inside($span), $spread or wide, $spread);
     $span-sum: susy($n, $location, $columns, $gutters, $spread);
 
-    @if susy-get(math, $span) == static {
-      $width: $span-sum * susy-get(column-width, $span);
+    $_math: susy-get(math, $span);
+    $_column-width: susy-get(column-width, $span);
+    @if $_math == static {
+      $width: $span-sum * valid-column-math($_math, $_column-width);
     } @else {
       $width: percentage($span-sum / $context);
     }

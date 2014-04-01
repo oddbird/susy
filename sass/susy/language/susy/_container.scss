@@ -45,15 +45,15 @@
   $layout         : parse-grid($layout);
   $_width         : susy-get(container, $layout);
   $_column-width  : susy-get(column-width, $layout);
+  $_math          : susy-get(math, $layout);
 
   @if not $_width or $_width == auto {
-    @if $_column-width {
+    @if valid-column-math($_math, $_column-width) {
       $_columns   : susy-get(columns, $layout);
       $_gutters   : susy-get(gutters, $layout);
       $_spread    : if(is-split($layout), wide, narrow);
       $_width     : susy-sum($_columns, $_gutters, $_spread) * $_column-width;
     } @else {
-      // if we have nothing, default to 100%
       $_width: 100%;
     }
   }

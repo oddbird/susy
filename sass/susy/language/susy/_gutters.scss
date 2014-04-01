@@ -68,8 +68,9 @@
 
   @if $_gutters and ($_gutters > 0) and not $_gutter {
     $_column-width: susy-get(column-width, $context);
-    @if $_column-width and gutter-math($context) == static {
-      $_gutter: $_gutters * $_column-width;
+    $_math: gutter-math($context);
+    @if $_math == static {
+      $_gutter: $_gutters * valid-column-math($_math, $_column-width);
     } @else {
       $_columns : susy-get(columns, $context);
       $_spread  : if(is-split($context), wide, susy-get(spread, $context));

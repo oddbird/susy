@@ -152,6 +152,7 @@ $susy-overlay-grid-head-exists: false;
   $_end           : 1 + $_gutters;
   $_after         : percentage(1/$_end);
   $_stops         : ();
+  $_size          : span(1 $grid wide);
 
   @if is-inside($grid) {
     $_stops: $_color, $_light;
@@ -164,9 +165,13 @@ $susy-overlay-grid-head-exists: false;
     $_stops: $_color, $_light $_after, $_trans $_after;
   }
 
+  @if $_math == static {
+    $_size: valid-column-math($_math, $_column-width) * $_end;
+  }
+
   $_output: (
     image: (columns: $_stops),
-    size: if($_math == static, $_column-width * $_end, span(1 $grid wide)),
+    size: $_size,
   );
 
   @return $_output;

@@ -148,7 +148,7 @@
     $test: susy($span, $location, $columns, $gutters);
     $expect: 7.5;
     @include assert-equal($test, $expect,
-      'Assymetrical column-span-sum fetches subset before calculating sum.');
+      'Asymmetrical column-span-sum fetches subset before calculating sum.');
   }
 
 }

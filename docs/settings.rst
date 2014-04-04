@@ -433,7 +433,7 @@ Establish the column-count and arrangement for a grid.
   The number of columns in your layout.
 
 ``<list>``
-  For assymetrical grids,
+  For asymmetrical grids,
   list the size of each column relative to the other columns,
   where ``1`` is a single column-unit.
   ``(1 2)`` would create a 2-column grid,

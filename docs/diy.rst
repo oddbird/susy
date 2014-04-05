@@ -101,7 +101,7 @@ Find the number of columns in a given layout.
 
 - ``$columns``: ``<number>`` | ``<list>``
 
-This is only necessary for asymetrical grids,
+This is only necessary for asymmetrical grids,
 since symmetrical are already defined by their count,
 but the function handles both styles
 for the sake of flexibility.

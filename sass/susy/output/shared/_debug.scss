@@ -4,14 +4,18 @@
 // - $mixin  : <susy mixin>
 // - $debug   : <css arguments>
 
-@mixin susy-debug($mixin, $debug) {
+@mixin susy-debug($mixin, $context) {
   @if ($mixin == 'span') {
-    $nest        : if(susy-get(role, $debug) == nest, true, false);
-    $split-nest  : if(is-split($debug) and $nest, true, false);
-    $edge        : get-edge($debug);
-    $location    : get-location($debug);
-    
-    susy-span: $nest $split-nest $edge $location;
+    $span        : susy-get(span, $context);
+    $clear       : susy-get(clear, $context);
+    $clear       : susy-get(clear, $context);
+    $nest        : susy-get(role, $context);
+    $gutters     : susy-get(gutter-position, $context);
+    $box         : susy-get(box-sizing, $span);
+    $edge        : susy-get(edge, $context);
+    $location    : susy-get(location, $context);
+
+    -susy-span: $span $gutters $nest $edge $box $clear;
   }
 };
 

@@ -113,26 +113,31 @@ head:hover ~ .symmetrical:before, head:hover ~ body .symmetrical:before {
   width: 18.36735%;
   float: left;
   margin-left: 0;
+  -susy-span: 2 at 1;
 }
 .symmetrical > .size1of5 ~ .size1of5 {
   width: 18.36735%;
   float: right;
   margin-left: 2.04082%;
+  -susy-span: last 2;
 }
 .symmetrical > .size3of5 {
   width: 59.18367%;
   float: left;
   margin-left: 2.04082%;
+  -susy-span: 6 at 3 nest;
 }
 .symmetrical > .size3of5 > .size1of2:first-child {
   width: 48.27586%;
   float: left;
   margin-left: 0;
+  -susy-span: 3 at 1 of 6;
 }
 .symmetrical > .size3of5 > .size1of2 + .size1of2 {
   width: 48.27586%;
   float: right;
   margin-left: 3.44828%;
+  -susy-span: last 3 of 6;
 }
 .symmetrical > .size3of5 > .full {
   clear: both;
@@ -140,28 +145,33 @@ head:hover ~ .symmetrical:before, head:hover ~ body .symmetrical:before {
   float: left;
   margin-left: 0;
   margin-right: 0;
+  -susy-span: full of (role: nest) break;
   background: none;
 }
 .symmetrical .full .size1of3 {
   width: 31.03448%;
   float: left;
   margin-left: 0;
+  -susy-span: first 2;
   min-height: 9.75em;
 }
 .symmetrical .full .size2of3 {
   width: 65.51724%;
   float: right;
   margin-left: 3.44828%;
+  -susy-span: 4 omega nest;
 }
 .symmetrical .size2of3 .size1of2:first-child {
   width: 47.36842%;
   float: left;
   margin-left: 0;
+  -susy-span: 2 alpha;
 }
 .symmetrical .size2of3 .size1of2 + .size1of2 {
   width: 47.36842%;
   float: right;
   margin-left: 5.26316%;
+  -susy-span: last 2;
 }
 .symmetrical .size2of3 .full {
   clear: both;
@@ -169,6 +179,7 @@ head:hover ~ .symmetrical:before, head:hover ~ body .symmetrical:before {
   float: left;
   margin-left: 0;
   margin-right: 0;
+  -susy-span: full of (columns: 4) break;
 }
 .symmetrical .gallery div {
   width: 18.36735%;
@@ -239,30 +250,35 @@ head:hover ~ .asymmetrical:before, head:hover ~ body .asymmetrical:before {
   float: left;
   margin-left: 0;
   margin-right: -100%;
+  -susy-span: 2 at 1;
 }
 .asymmetrical > .size1of5 ~ .size1of5 {
   width: 21.875%;
   float: left;
   margin-left: 78.125%;
   margin-right: -100%;
+  -susy-span: last 2;
 }
 .asymmetrical > .size3of5 {
   width: 61.45833%;
   float: left;
   margin-left: 14.58333%;
   margin-right: -100%;
+  -susy-span: 6 at 3 nest;
 }
 .asymmetrical > .size3of5 > .size1of2:first-child {
   width: 44.0678%;
   float: left;
   margin-left: 0;
   margin-right: -100%;
+  -susy-span: 3 at 1 of (1.25 1 3.25 1.75 3 2);
 }
 .asymmetrical > .size3of5 > .size1of2 + .size1of2 {
   width: 52.54237%;
   float: left;
   margin-left: 47.45763%;
   margin-right: -100%;
+  -susy-span: last 3 of (1.25 1 3.25 1.75 3 2);
 }
 .asymmetrical > .size3of5 > .full {
   clear: both;
@@ -270,6 +286,7 @@ head:hover ~ .asymmetrical:before, head:hover ~ body .asymmetrical:before {
   float: left;
   margin-left: 0;
   margin-right: 0;
+  -susy-span: full of (role: nest) break;
   background: none;
 }
 .asymmetrical .full .size1of3 {
@@ -277,6 +294,7 @@ head:hover ~ .asymmetrical:before, head:hover ~ body .asymmetrical:before {
   float: left;
   margin-left: 0;
   margin-right: -100%;
+  -susy-span: first 2;
   min-height: 9.75em;
 }
 .asymmetrical .full .size2of3 {
@@ -284,18 +302,21 @@ head:hover ~ .asymmetrical:before, head:hover ~ body .asymmetrical:before {
   float: left;
   margin-left: 22.0339%;
   margin-right: -100%;
+  -susy-span: 4 omega nest;
 }
 .asymmetrical .size2of3 .size1of2:first-child {
   width: 47.82609%;
   float: left;
   margin-left: 0;
   margin-right: -100%;
+  -susy-span: 2 alpha;
 }
 .asymmetrical .size2of3 .size1of2 + .size1of2 {
   width: 47.82609%;
   float: left;
   margin-left: 52.17391%;
   margin-right: -100%;
+  -susy-span: last 2;
 }
 .asymmetrical .size2of3 .full {
   clear: both;
@@ -303,6 +324,7 @@ head:hover ~ .asymmetrical:before, head:hover ~ body .asymmetrical:before {
   float: left;
   margin-left: 0;
   margin-right: 0;
+  -susy-span: full of (columns: 3.25 1.75 3 2) break;
 }
 .asymmetrical .gallery div {
   float: left;
@@ -365,26 +387,31 @@ head:hover ~ .asymmetrical:before, head:hover ~ body .asymmetrical:before {
   width: 140px;
   float: left;
   margin-right: 20px;
+  -susy-span: 2 at 1;
 }
 .static > .size1of5 ~ .size1of5 {
   width: 140px;
   float: right;
   margin-right: 0;
+  -susy-span: last 2;
 }
 .static > .size3of5 {
   width: 460.0px;
   float: left;
   margin-right: 20px;
+  -susy-span: 6 at 3 nest;
 }
 .static > .size3of5 > .size1of2:first-child {
   width: 220px;
   float: left;
   margin-right: 20px;
+  -susy-span: 3 at 1 of 6;
 }
 .static > .size3of5 > .size1of2 + .size1of2 {
   width: 220px;
   float: right;
   margin-right: 0;
+  -susy-span: last 3 of 6;
 }
 .static > .size3of5 > .full {
   clear: both;
@@ -392,28 +419,33 @@ head:hover ~ .asymmetrical:before, head:hover ~ body .asymmetrical:before {
   float: left;
   margin-left: 0;
   margin-right: 0;
+  -susy-span: full of (role: nest) break;
   background: none;
 }
 .static .full .size1of3 {
   width: 140px;
   float: left;
   margin-right: 20px;
+  -susy-span: first 2;
   min-height: 9.75em;
 }
 .static .full .size2of3 {
   width: 300px;
   float: right;
   margin-right: 0;
+  -susy-span: 4 omega nest;
 }
 .static .size2of3 .size1of2:first-child {
   width: 140px;
   float: left;
   margin-right: 20px;
+  -susy-span: 2 alpha;
 }
 .static .size2of3 .size1of2 + .size1of2 {
   width: 140px;
   float: right;
   margin-right: 0;
+  -susy-span: last 2;
 }
 .static .size2of3 .full {
   clear: both;
@@ -421,6 +453,7 @@ head:hover ~ .asymmetrical:before, head:hover ~ body .asymmetrical:before {
   float: left;
   margin-left: 0;
   margin-right: 0;
+  -susy-span: full of (columns: 4) break;
 }
 .static .gallery div {
   width: 140px;
@@ -480,33 +513,39 @@ head:hover ~ .asymmetrical:before, head:hover ~ body .asymmetrical:before {
   float: left;
   margin-left: 0.78125%;
   margin-right: 0.78125%;
+  -susy-span: 2 at 1;
 }
 .split > .size1of5 ~ .size1of5 {
   width: 32.8125%;
   float: right;
   margin-left: 0.78125%;
   margin-right: 0.78125%;
+  -susy-span: last 2;
 }
 .split > .size3of5 {
   width: 53.125%;
   float: left;
+  -susy-span: 6 at 3 nest;
 }
 .split > .size3of5 > .size1of2:first-child {
   width: 64.70588%;
   float: left;
   margin-left: 1.47059%;
   margin-right: 1.47059%;
+  -susy-span: 3 at 1 of (1 3 1 0.5 1 0.5);
 }
 .split > .size3of5 > .size1of2 + .size1of2 {
   width: 29.41176%;
   float: right;
   margin-left: 1.47059%;
   margin-right: 1.47059%;
+  -susy-span: last 3 of (1 3 1 0.5 1 0.5);
 }
 .split > .size3of5 > .full {
   clear: both;
   width: 100%;
   float: left;
+  -susy-span: full of (role: nest) break;
   background: none;
 }
 .split .full .size1of3 {
@@ -514,23 +553,27 @@ head:hover ~ .asymmetrical:before, head:hover ~ body .asymmetrical:before {
   float: left;
   margin-left: 1.47059%;
   margin-right: 1.47059%;
+  -susy-span: first 2;
   min-height: 9.75em;
 }
 .split .full .size2of3 {
   width: 47.05882%;
   float: right;
+  -susy-span: 4 omega nest;
 }
 .split .size2of3 .size1of2:first-child {
   width: 43.75%;
   float: left;
   margin-left: 3.125%;
   margin-right: 3.125%;
+  -susy-span: 2 alpha;
 }
 .split .size2of3 .size1of2 + .size1of2 {
   width: 43.75%;
   float: right;
   margin-left: 3.125%;
   margin-right: 3.125%;
+  -susy-span: last 2;
 }
 .split .size2of3 .full {
   clear: both;
@@ -538,6 +581,7 @@ head:hover ~ .asymmetrical:before, head:hover ~ body .asymmetrical:before {
   float: left;
   margin-left: 3.125%;
   margin-right: 3.125%;
+  -susy-span: full of (columns: 1 0.5 1 0.5) break;
 }
 .split .gallery div {
   float: left;
@@ -603,6 +647,7 @@ head:hover ~ .asymmetrical:before, head:hover ~ body .asymmetrical:before {
   float: left;
   padding-left: 0.78125%;
   padding-right: 0.78125%;
+  -susy-span: 2 at 1;
 }
 .inside > .size1of5 ~ .size1of5 {
   -moz-box-sizing: border-box;
@@ -612,6 +657,7 @@ head:hover ~ .asymmetrical:before, head:hover ~ body .asymmetrical:before {
   float: right;
   padding-left: 0.78125%;
   padding-right: 0.78125%;
+  -susy-span: last 2;
 }
 .inside > .size3of5 {
   -moz-box-sizing: border-box;
@@ -619,6 +665,7 @@ head:hover ~ .asymmetrical:before, head:hover ~ body .asymmetrical:before {
   box-sizing: border-box;
   width: 53.125%;
   float: left;
+  -susy-span: 6 at 3 nest;
 }
 .inside > .size3of5 > .size1of2:first-child {
   -moz-box-sizing: border-box;
@@ -628,6 +675,7 @@ head:hover ~ .asymmetrical:before, head:hover ~ body .asymmetrical:before {
   float: left;
   padding-left: 1.47059%;
   padding-right: 1.47059%;
+  -susy-span: 3 at 1 of (1 3 1 0.5 1 0.5);
 }
 .inside > .size3of5 > .size1of2 + .size1of2 {
   -moz-box-sizing: border-box;
@@ -637,6 +685,7 @@ head:hover ~ .asymmetrical:before, head:hover ~ body .asymmetrical:before {
   float: right;
   padding-left: 1.47059%;
   padding-right: 1.47059%;
+  -susy-span: last 3 of (1 3 1 0.5 1 0.5);
 }
 .inside > .size3of5 > .full {
   clear: both;
@@ -645,6 +694,7 @@ head:hover ~ .asymmetrical:before, head:hover ~ body .asymmetrical:before {
   box-sizing: border-box;
   width: 100%;
   float: left;
+  -susy-span: full of (role: nest) break;
   background: none;
 }
 .inside .full .size1of3 {
@@ -655,6 +705,7 @@ head:hover ~ .asymmetrical:before, head:hover ~ body .asymmetrical:before {
   float: left;
   padding-left: 1.47059%;
   padding-right: 1.47059%;
+  -susy-span: first 2;
   min-height: 9.75em;
 }
 .inside .full .size2of3 {
@@ -663,6 +714,7 @@ head:hover ~ .asymmetrical:before, head:hover ~ body .asymmetrical:before {
   box-sizing: border-box;
   width: 47.05882%;
   float: right;
+  -susy-span: 4 omega nest;
 }
 .inside .size2of3 .size1of2:first-child {
   -moz-box-sizing: border-box;
@@ -672,6 +724,7 @@ head:hover ~ .asymmetrical:before, head:hover ~ body .asymmetrical:before {
   float: left;
   padding-left: 3.125%;
   padding-right: 3.125%;
+  -susy-span: 2 alpha;
 }
 .inside .size2of3 .size1of2 + .size1of2 {
   -moz-box-sizing: border-box;
@@ -681,6 +734,7 @@ head:hover ~ .asymmetrical:before, head:hover ~ body .asymmetrical:before {
   float: right;
   padding-left: 3.125%;
   padding-right: 3.125%;
+  -susy-span: last 2;
 }
 .inside .size2of3 .full {
   clear: both;
@@ -691,6 +745,7 @@ head:hover ~ .asymmetrical:before, head:hover ~ body .asymmetrical:before {
   float: left;
   padding-left: 3.125%;
   padding-right: 3.125%;
+  -susy-span: full of (columns: 1 0.5 1 0.5) break;
 }
 .inside .gallery div {
   -moz-box-sizing: border-box;
@@ -761,6 +816,7 @@ head:hover ~ .asymmetrical:before, head:hover ~ body .asymmetrical:before {
   float: left;
   padding-left: 1em;
   padding-right: 1em;
+  -susy-span: 2 at 1;
 }
 .inside-static > .size1of5 ~ .size1of5 {
   -moz-box-sizing: border-box;
@@ -770,6 +826,7 @@ head:hover ~ .asymmetrical:before, head:hover ~ body .asymmetrical:before {
   float: right;
   padding-left: 1em;
   padding-right: 1em;
+  -susy-span: last 2;
 }
 .inside-static > .size3of5 {
   -moz-box-sizing: border-box;
@@ -777,6 +834,7 @@ head:hover ~ .asymmetrical:before, head:hover ~ body .asymmetrical:before {
   box-sizing: border-box;
   width: 60.0%;
   float: left;
+  -susy-span: 6 at 3 nest;
 }
 .inside-static > .size3of5 > .size1of2:first-child {
   -moz-box-sizing: border-box;
@@ -786,6 +844,7 @@ head:hover ~ .asymmetrical:before, head:hover ~ body .asymmetrical:before {
   float: left;
   padding-left: 1em;
   padding-right: 1em;
+  -susy-span: 3 at 1 of 6;
 }
 .inside-static > .size3of5 > .size1of2 + .size1of2 {
   -moz-box-sizing: border-box;
@@ -795,6 +854,7 @@ head:hover ~ .asymmetrical:before, head:hover ~ body .asymmetrical:before {
   float: right;
   padding-left: 1em;
   padding-right: 1em;
+  -susy-span: last 3 of 6;
 }
 .inside-static > .size3of5 > .full {
   clear: both;
@@ -803,6 +863,7 @@ head:hover ~ .asymmetrical:before, head:hover ~ body .asymmetrical:before {
   box-sizing: border-box;
   width: 100%;
   float: left;
+  -susy-span: full of (role: nest) break;
   background: none;
 }
 .inside-static .full .size1of3 {
@@ -813,6 +874,7 @@ head:hover ~ .asymmetrical:before, head:hover ~ body .asymmetrical:before {
   float: left;
   padding-left: 1em;
   padding-right: 1em;
+  -susy-span: first 2;
   min-height: 9.75em;
 }
 .inside-static .full .size2of3 {
@@ -821,6 +883,7 @@ head:hover ~ .asymmetrical:before, head:hover ~ body .asymmetrical:before {
   box-sizing: border-box;
   width: 66.66667%;
   float: right;
+  -susy-span: 4 omega nest;
 }
 .inside-static .size2of3 .size1of2:first-child {
   -moz-box-sizing: border-box;
@@ -830,6 +893,7 @@ head:hover ~ .asymmetrical:before, head:hover ~ body .asymmetrical:before {
   float: left;
   padding-left: 1em;
   padding-right: 1em;
+  -susy-span: 2 alpha;
 }
 .inside-static .size2of3 .size1of2 + .size1of2 {
   -moz-box-sizing: border-box;
@@ -839,6 +903,7 @@ head:hover ~ .asymmetrical:before, head:hover ~ body .asymmetrical:before {
   float: right;
   padding-left: 1em;
   padding-right: 1em;
+  -susy-span: last 2;
 }
 .inside-static .size2of3 .full {
   clear: both;
@@ -849,6 +914,7 @@ head:hover ~ .asymmetrical:before, head:hover ~ body .asymmetrical:before {
   float: left;
   padding-left: 1em;
   padding-right: 1em;
+  -susy-span: full of (columns: 4) break;
 }
 .inside-static .gallery div {
   -moz-box-sizing: border-box;

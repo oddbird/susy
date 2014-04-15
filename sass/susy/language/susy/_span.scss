@@ -8,8 +8,9 @@
 @mixin span(
   $span
 ) {
+  $input: $span;
   $span: parse-span($span);
-  $output: span-math($span);
+  $output: span-math($span, $input);
   $nesting: susy-get(span, $span);
   $clear: susy-get(clear, $span);
 
@@ -22,7 +23,7 @@
   } @else if $clear == nobreak {
     @include nobreak;
   }
-
+  
   @include output((box-sizing: $box));
   @include float-span-output($output...);
 
@@ -48,7 +49,7 @@
 // Get all the span results.
 // - $span: <map>
 @function span-math(
-  $span
+  $span, $input
 ) {
   $nest             : if(susy-get(role, $span) == nest, true, false);
   $split-nest       : if(is-split($span) and $nest, true, false);
@@ -102,6 +103,11 @@
     }
 
   }
+  
+  // $span-val: map-get($span, span);
+  // $loc-val: map-get($span, location);
+  // $cal-val:  map-get($span, columns);
+  // $gut-val:  map-get($span, gutters);
 
   @return (
     width           : $width,
@@ -111,7 +117,10 @@
     padding_before  : $padding-before,
     padding_after   : $padding-after,
     flow            : susy-get(flow, $span),
+    -susy-span      : inspect($input)
+
   );
+
 }
 
 // Get Span Width

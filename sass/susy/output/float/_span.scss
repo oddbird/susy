@@ -17,6 +17,7 @@
   $margin-after     : null,
   $padding-before   : null,
   $padding-after    : null,
+  $_susy_span       : null,
   $flow             : map-get($susy-defaults, flow)
 ) {
   $to     : to($flow);
@@ -29,6 +30,7 @@
     margin-#{$to}: $margin-after,
     padding-#{$from}: $padding-before,
     padding-#{$to}: $padding-after,
+    -susy-span: $_susy_span
   );
 
   @include output($output);

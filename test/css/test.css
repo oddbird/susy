@@ -1,1497 +1,197 @@
-@charset "UTF-8";
-/* Susy Tests */
-/* ========== */
-/*  
-
-### Map Helpers ------ */
-/*  - truncate-list (1 Assertions, 1 Passed, 0 Failed) */
-/*  - deep-get (1 Assertions, 1 Passed, 0 Failed) */
-/*  - deep-set (2 Assertions, 2 Passed, 0 Failed) */
-/*  - deep-has-key (2 Assertions, 2 Passed, 0 Failed) */
-/*  
-    4 Tests:
-    - 4 Passed
-    - 0 Failed */
-/*  
-
-### General Settings ------ */
-/*  - susy-defaults (2 Assertions, 2 Passed, 0 Failed) */
-/*  - [mixin] susy-set (1 Assertions, 1 Passed, 0 Failed) */
-/*  - [function] susy-get (6 Assertions, 6 Passed, 0 Failed) */
-/*  
-    3 Tests:
-    - 3 Passed
-    - 0 Failed */
-/*  
-
-### Grid Validation ------ */
-/*  - [mixin] valid-columns (4 Assertions, 4 Passed, 0 Failed) */
-/*  - [mixin] valid-gutters (2 Assertions, 2 Passed, 0 Failed) */
-/*  
-    2 Tests:
-    - 2 Passed
-    - 0 Failed */
-/*  
-
-### Column Math ------ */
-/*  - [function] is-symmetrical() (3 Assertions, 3 Passed, 0 Failed) */
-/*  - [function] susy-count() (2 Assertions, 2 Passed, 0 Failed) */
-/*  - [function] susy-sum() — symmetrical (4 Assertions, 4 Passed, 0 Failed) */
-/*  - [function] susy-sum() — asymmetrical (3 Assertions, 3 Passed, 0 Failed) */
-/*  - [function] susy-slice() (3 Assertions, 3 Passed, 0 Failed) */
-/*  - [function] susy() (2 Assertions, 2 Passed, 0 Failed) */
-/*  
-    6 Tests:
-    - 6 Passed
-    - 0 Failed */
-/*  
-
-### Language Settings ------ */
-/*  - [function] parse-grid (30 Assertions, 30 Passed, 0 Failed) */
-/*  - [function] parse-span (44 Assertions, 44 Passed, 0 Failed) */
-/*  - [function] parse-gutters (11 Assertions, 11 Passed, 0 Failed) */
-/*  
-    3 Tests:
-    - 3 Passed
-    - 0 Failed */
-/*  
-
-### Grids Syntax ------ */
-/*  - [mixin] layout (7 Assertions, 7 Passed, 0 Failed) */
-/*  - [mixin] with-layout (6 Assertions, 6 Passed, 0 Failed) */
-/*  - [function] layout (1 Assertions, 1 Passed, 0 Failed) */
-/*  
-    3 Tests:
-    - 3 Passed
-    - 0 Failed */
-/*  
-
-### Global Box-Sizing Syntax ------ */
-/* - [mixin] global-box-sizing */
-/* "Nested items should use border-box model." */
-.test__global-box-sizing .assert__global-box-sizing .test *, .test__global-box-sizing .assert__global-box-sizing .test *:before, .test__global-box-sizing .assert__global-box-sizing .test *:after {
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-}
-.test__global-box-sizing .assert__global-box-sizing .expect *, .test__global-box-sizing .assert__global-box-sizing .expect *:before, .test__global-box-sizing .assert__global-box-sizing .expect *:after {
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-}
-
-/* - [mixin] border-box-sizing */
-/* "Nested items should use border-box model." */
-.test__border-box-sizing .assert__border-box-sizing .test *, .test__border-box-sizing .assert__border-box-sizing .test *:before, .test__border-box-sizing .assert__border-box-sizing .test *:after {
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-}
-.test__border-box-sizing .assert__border-box-sizing .expect *, .test__border-box-sizing .assert__border-box-sizing .expect *:before, .test__border-box-sizing .assert__border-box-sizing .expect *:after {
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-}
-
-/*  - update-box-model (2 Assertions, 2 Passed, 0 Failed) */
-/*  
-    1 Tests:
-    - 1 Passed
-    - 0 Failed */
-/*  
-
-### Shared Context Language ------ */
-/*  - [function] nested (3 Assertions, 3 Passed, 0 Failed) */
-/*  - [mixin] nested (2 Assertions, 2 Passed, 0 Failed) */
-/*  
-    2 Tests:
-    - 2 Passed
-    - 0 Failed */
-/*  
-
-### Background Syntax ------ */
-/* - [mixin] background-grid */
-/* "Items should have a 7-column grid with outside gutters." */
-.test__background-grid .assert__outside .test {
-  background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 66.66667%, transparent 66.66667%);
-  background-size: 15%;
-  background-origin: content-box;
-  background-clip: content-box;
-  background-position: left top;
-}
-.test__background-grid .assert__outside .expect {
-  background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 66.66667%, transparent 66.66667%);
-  background-size: 15%;
-  background-origin: content-box;
-  background-clip: content-box;
-  background-position: left top;
-}
-
-/* "Items should have a 8-column grid with split gutters." */
-.test__background-grid .assert__split .test {
-  background-image: linear-gradient(to right, transparent 10%, rgba(102, 102, 255, 0.25) 10%, rgba(179, 179, 255, 0.25) 90%, transparent 90%);
-  background-size: 12.5%;
-  background-origin: content-box;
-  background-clip: content-box;
-  background-position: left top;
-}
-.test__background-grid .assert__split .expect {
-  background-image: linear-gradient(to right, transparent 10%, rgba(102, 102, 255, 0.25) 10%, rgba(179, 179, 255, 0.25) 90%, transparent 90%);
-  background-size: 12.5%;
-  background-origin: content-box;
-  background-clip: content-box;
-  background-position: left top;
-}
-
-/* "Items should have a 8-column grid with inside gutters." */
-.test__background-grid .assert__inside .test {
-  background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25));
-  background-size: 12.5%;
-  background-origin: content-box;
-  background-clip: content-box;
-  background-position: left top;
-}
-.test__background-grid .assert__inside .expect {
-  background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25));
-  background-size: 12.5%;
-  background-origin: content-box;
-  background-clip: content-box;
-  background-position: left top;
-}
-
-/* "Items should have a (1 2 3 2 1)-column grid with outside gutters." */
-.test__background-grid .assert__asym-outside .test {
-  background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 9.09091%, transparent 9.09091%, transparent 13.63636%, rgba(102, 102, 255, 0.25) 13.63636%, rgba(179, 179, 255, 0.25) 31.81818%, transparent 31.81818%, transparent 36.36364%, rgba(102, 102, 255, 0.25) 36.36364%, rgba(179, 179, 255, 0.25) 63.63636%, transparent 63.63636%, transparent 68.18182%, rgba(102, 102, 255, 0.25) 68.18182%, rgba(179, 179, 255, 0.25) 86.36364%, transparent 86.36364%, transparent 90.90909%, rgba(102, 102, 255, 0.25) 90.90909%, rgba(179, 179, 255, 0.25));
-  background-origin: content-box;
-  background-clip: content-box;
-  background-position: left top;
-}
-.test__background-grid .assert__asym-outside .expect {
-  background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 9.09091%, transparent 9.09091%, transparent 13.63636%, rgba(102, 102, 255, 0.25) 13.63636%, rgba(179, 179, 255, 0.25) 31.81818%, transparent 31.81818%, transparent 36.36364%, rgba(102, 102, 255, 0.25) 36.36364%, rgba(179, 179, 255, 0.25) 63.63636%, transparent 63.63636%, transparent 68.18182%, rgba(102, 102, 255, 0.25) 68.18182%, rgba(179, 179, 255, 0.25) 86.36364%, transparent 86.36364%, transparent 90.90909%, rgba(102, 102, 255, 0.25) 90.90909%, rgba(179, 179, 255, 0.25));
-  background-origin: content-box;
-  background-clip: content-box;
-  background-position: left top;
-}
-
-/* "Items should have a (1 2 3 3)-column grid with split gutters." */
-.test__background-grid .assert__asym-split .test {
-  background-image: linear-gradient(to right, transparent 1.25%, rgba(102, 102, 255, 0.25) 1.25%, rgba(179, 179, 255, 0.25) 11.25%, transparent 11.25%, transparent 13.75%, rgba(102, 102, 255, 0.25) 13.75%, rgba(179, 179, 255, 0.25) 33.75%, transparent 33.75%, transparent 36.25%, rgba(102, 102, 255, 0.25) 36.25%, rgba(179, 179, 255, 0.25) 66.25%, transparent 66.25%, transparent 68.75%, rgba(102, 102, 255, 0.25) 68.75%, rgba(179, 179, 255, 0.25) 98.75%, transparent 98.75%);
-  background-origin: content-box;
-  background-clip: content-box;
-  background-position: left top;
-}
-.test__background-grid .assert__asym-split .expect {
-  background-image: linear-gradient(to right, transparent 1.25%, rgba(102, 102, 255, 0.25) 1.25%, rgba(179, 179, 255, 0.25) 11.25%, transparent 11.25%, transparent 13.75%, rgba(102, 102, 255, 0.25) 13.75%, rgba(179, 179, 255, 0.25) 33.75%, transparent 33.75%, transparent 36.25%, rgba(102, 102, 255, 0.25) 36.25%, rgba(179, 179, 255, 0.25) 66.25%, transparent 66.25%, transparent 68.75%, rgba(102, 102, 255, 0.25) 68.75%, rgba(179, 179, 255, 0.25) 98.75%, transparent 98.75%);
-  background-origin: content-box;
-  background-clip: content-box;
-  background-position: left top;
-}
-
-/* "Items should have a (1 2 3 3)-column grid with inside gutters." */
-.test__background-grid .assert__asym-inside .test {
-  background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 12.5%, rgba(102, 102, 255, 0.25) 12.5%, rgba(179, 179, 255, 0.25) 35%, rgba(102, 102, 255, 0.25) 35%, rgba(179, 179, 255, 0.25) 67.5%, rgba(102, 102, 255, 0.25) 67.5%, rgba(179, 179, 255, 0.25));
-  background-origin: content-box;
-  background-clip: content-box;
-  background-position: left top;
-}
-.test__background-grid .assert__asym-inside .expect {
-  background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 12.5%, rgba(102, 102, 255, 0.25) 12.5%, rgba(179, 179, 255, 0.25) 35%, rgba(102, 102, 255, 0.25) 35%, rgba(179, 179, 255, 0.25) 67.5%, rgba(102, 102, 255, 0.25) 67.5%, rgba(179, 179, 255, 0.25));
-  background-origin: content-box;
-  background-clip: content-box;
-  background-position: left top;
-}
-
-/*  - [function] get-background-sym (6 Assertions, 6 Passed, 0 Failed) */
-/*  - [function] get-asym-inside (1 Assertions, 1 Passed, 0 Failed) */
-/*  - [function] get-asym-split (1 Assertions, 1 Passed, 0 Failed) */
-/*  - [function] get-asym-outside (1 Assertions, 1 Passed, 0 Failed) */
-/*  - [function] get-background-asym (2 Assertions, 2 Passed, 0 Failed) */
-/*  - [function] get-background (5 Assertions, 5 Passed, 0 Failed) */
-/*  - [function] get-debug (2 Assertions, 2 Passed, 0 Failed) */
-/*  
-    7 Tests:
-    - 7 Passed
-    - 0 Failed */
-/*  
-
-### Container Syntax ------ */
-/* - [mixin] container */
-/* "Containers should have 80% max-width and show a 7 .5 grid." */
-.test__container .assert__default-box .test {
-  max-width: 80%;
-  margin-left: auto;
-  margin-right: auto;
-  background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 66.66667%, transparent 66.66667%);
-  background-size: 15%;
-  background-origin: content-box;
-  background-clip: content-box;
-  background-position: left top;
-}
-.test__container .assert__default-box .test:after {
-  content: " ";
-  display: block;
-  clear: both;
-}
-.test__container .assert__default-box .expect {
-  max-width: 80%;
-  margin-left: auto;
-  margin-right: auto;
-  background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 66.66667%, transparent 66.66667%);
-  background-size: 15%;
-  background-origin: content-box;
-  background-clip: content-box;
-  background-position: left top;
-}
-.test__container .assert__default-box .expect:after {
-  content: " ";
-  display: block;
-  clear: both;
-}
-
-/* "Containers should have 40em max-width, border-box-sizing, and show a (1 2 3 2 1) (4em 2em) grid, flush left." */
-.test__container .assert__border-box .test {
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-  max-width: 40em;
-  margin-left: 0;
-  margin-right: auto;
-  background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, transparent 10%, transparent 12.5%, rgba(102, 102, 255, 0.25) 12.5%, rgba(179, 179, 255, 0.25) 32.5%, transparent 32.5%, transparent 35%, rgba(102, 102, 255, 0.25) 35%, rgba(179, 179, 255, 0.25) 65%, transparent 65%, transparent 67.5%, rgba(102, 102, 255, 0.25) 67.5%, rgba(179, 179, 255, 0.25) 87.5%, transparent 87.5%, transparent 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
-  background-origin: content-box;
-  background-clip: content-box;
-  background-position: left top;
-}
-.test__container .assert__border-box .test:after {
-  content: " ";
-  display: block;
-  clear: both;
-}
-.test__container .assert__border-box .expect {
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-  max-width: 40em;
-  margin-left: 0;
-  margin-right: auto;
-  background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, transparent 10%, transparent 12.5%, rgba(102, 102, 255, 0.25) 12.5%, rgba(179, 179, 255, 0.25) 32.5%, transparent 32.5%, transparent 35%, rgba(102, 102, 255, 0.25) 35%, rgba(179, 179, 255, 0.25) 65%, transparent 65%, transparent 67.5%, rgba(102, 102, 255, 0.25) 67.5%, rgba(179, 179, 255, 0.25) 87.5%, transparent 87.5%, transparent 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
-  background-origin: content-box;
-  background-clip: content-box;
-  background-position: left top;
-}
-.test__container .assert__border-box .expect:after {
-  content: " ";
-  display: block;
-  clear: both;
-}
-
-/*  - [function] container (5 Assertions, 5 Passed, 0 Failed) */
-/*  - [function] get-container-width (6 Assertions, 6 Passed, 0 Failed) */
-/*  - [function] parse-container-position() (7 Assertions, 7 Passed, 0 Failed) */
-/*  
-    3 Tests:
-    - 3 Passed
-    - 0 Failed */
-/*  
-
-### Span Syntax ------ */
-/* - [mixin] span */
-/* "Span should set width (75%), float (left), and gutter (5% margin-right)" */
-.test__span .assert__default .test {
-  -moz-box-sizing: content-box;
-  -webkit-box-sizing: content-box;
-  box-sizing: content-box;
-  width: 70%;
-  float: left;
-  margin-right: 5%;
-}
-.test__span .assert__default .test .inner {
-  width: 35.71429%;
-  float: left;
-  margin-right: 7.14286%;
-}
-.test__span .assert__default .expect {
-  -moz-box-sizing: content-box;
-  -webkit-box-sizing: content-box;
-  box-sizing: content-box;
-  width: 70%;
-  float: left;
-  margin-right: 5%;
-}
-.test__span .assert__default .expect .inner {
-  width: 35.71429%;
-  float: left;
-  margin-right: 7.14286%;
-}
-
-/* "Span should set width, float, clear, and inside gutter" */
-.test__span .assert__inside *, .test__span .assert__inside *:before, .test__span .assert__inside *:after {
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-}
-.test__span .assert__inside .test {
-  clear: both;
-  width: 62.5%;
-  float: left;
-  padding-left: 1.25%;
-  padding-right: 1.25%;
-}
-.test__span .assert__inside .expect {
-  clear: both;
-  width: 62.5%;
-  float: left;
-  padding-left: 1.25%;
-  padding-right: 1.25%;
-}
-
-/* "Span should set width, float, inside gutter, and border-box" */
-.test__span .assert__explicit .test {
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-  width: 80%;
-  float: left;
-  padding-left: 1.25%;
-  padding-right: 1.25%;
-}
-.test__span .assert__explicit .expect {
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-  width: 80%;
-  float: left;
-  padding-left: 1.25%;
-  padding-right: 1.25%;
-}
-
-/*  - [mixin] span (4 Assertions, 4 Passed, 0 Failed) */
-/*  - [function] span (1 Assertions, 1 Passed, 0 Failed) */
-/*  - [function] span-math (14 Assertions, 14 Passed, 0 Failed) */
-/*  - [function] get-span-width (12 Assertions, 12 Passed, 0 Failed) */
-/*  
-    4 Tests:
-    - 4 Passed
-    - 0 Failed */
-/*  
-
-### Gutter Syntax ------ */
-/* - [mixin] gutters */
-/* "Item should have 2.5% margin-gutters added before and after" */
-.test__gutters .assert__auto .test {
-  margin-left: 1.25%;
-  margin-right: 1.25%;
-}
-.test__gutters .assert__auto .expect {
-  margin-left: 1.25%;
-  margin-right: 1.25%;
-}
-
-/* "Item should have 1em padding-gutters added before and after" */
-.test__gutters .assert__inside-static .test {
-  padding-left: 1em;
-  padding-right: 1em;
-}
-.test__gutters .assert__inside-static .expect {
-  padding-left: 1em;
-  padding-right: 1em;
-}
-
-/* "Item should have 5em padding-gutters added before and after" */
-.test__gutters .assert__explicit .test {
-  padding-left: 5em;
-  padding-right: 5em;
-}
-.test__gutters .assert__explicit .expect {
-  padding-left: 5em;
-  padding-right: 5em;
-}
-
-/*  - [function] gutter (2 Assertions, 2 Passed, 0 Failed) */
-/*  - [function] get-gutter-width (9 Assertions, 9 Passed, 0 Failed) */
-/*  - [function] get-gutters (3 Assertions, 3 Passed, 0 Failed) */
-/*  - [function] is-inside (2 Assertions, 2 Passed, 0 Failed) */
-/*  - [function] is-split (2 Assertions, 2 Passed, 0 Failed) */
-/*  - [function] gutter-math (2 Assertions, 2 Passed, 0 Failed) */
-/*  
-    6 Tests:
-    - 6 Passed
-    - 0 Failed */
-/*  
-
-### Isolation Syntax ------ */
-/* - [mixin] isolate */
-/* "Item should be isolated in the last 2 columns" */
-.test__isolate .assert__isolate .test {
-  float: left;
-  margin-left: 75%;
-  margin-right: -100%;
-}
-.test__isolate .assert__isolate .expect {
-  float: left;
-  margin-left: 75%;
-  margin-right: -100%;
-}
-
-/*  - [function] isolate (2 Assertions, 2 Passed, 0 Failed) */
-/*  - [function] get-isolation (4 Assertions, 4 Passed, 0 Failed) */
-/*  
-    2 Tests:
-    - 2 Passed
-    - 0 Failed */
-/*  
-
-### Gallery Syntax ------ */
-/* - [mixin] gallery */
-/* "Items should create 3x symmetrical isolated gallery." */
-.test__gallery .assert__sym .test {
-  width: 28.0%;
-  float: left;
-}
-.test__gallery .assert__sym .test:nth-child(3n + 1) {
-  margin-left: 0;
-  margin-right: -100%;
-  clear: both;
-  margin-left: 0;
-}
-.test__gallery .assert__sym .test:nth-child(3n + 2) {
-  margin-left: 36%;
-  margin-right: -100%;
-  clear: none;
-}
-.test__gallery .assert__sym .test:nth-child(3n + 3) {
-  margin-left: 72%;
-  margin-right: -100%;
-  clear: none;
-}
-.test__gallery .assert__sym .expect {
-  width: 28.0%;
-  float: left;
-}
-.test__gallery .assert__sym .expect:nth-child(3n + 1) {
-  margin-right: -100%;
-  margin-left: 0;
-  clear: left;
-}
-.test__gallery .assert__sym .expect:nth-child(3n + 2) {
-  margin-left: 36%;
-  margin-right: -100%;
-  clear: none;
-}
-.test__gallery .assert__sym .expect:nth-child(3n + 3) {
-  margin-left: 72%;
-  margin-right: -100%;
-  clear: none;
-}
-
-/* "Items should create 4x isolated gallery with inside-gutters." */
-.test__gallery .assert__inside .test {
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-  width: 25%;
-  float: left;
-  padding-left: 1.25%;
-  padding-right: 1.25%;
-}
-.test__gallery .assert__inside .test:nth-child(4n + 1) {
-  margin-left: 0;
-  margin-right: -100%;
-  clear: both;
-}
-.test__gallery .assert__inside .test:nth-child(4n + 2) {
-  margin-left: 25%;
-  margin-right: -100%;
-  clear: none;
-}
-.test__gallery .assert__inside .test:nth-child(4n + 3) {
-  margin-left: 50%;
-  margin-right: -100%;
-  clear: none;
-}
-.test__gallery .assert__inside .test:nth-child(4n + 4) {
-  margin-left: 75%;
-  margin-right: -100%;
-  clear: none;
-}
-.test__gallery .assert__inside .expect {
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-  width: 25.0%;
-  float: left;
-  padding-left: 1.25%;
-  padding-right: 1.25%;
-}
-.test__gallery .assert__inside .expect:nth-child(4n + 1) {
-  margin-right: -100%;
-  margin-left: 0;
-  clear: left;
-}
-.test__gallery .assert__inside .expect:nth-child(4n + 2) {
-  margin-left: 25%;
-  margin-right: -100%;
-  clear: none;
-}
-.test__gallery .assert__inside .expect:nth-child(4n + 3) {
-  margin-left: 50%;
-  margin-right: -100%;
-  clear: none;
-}
-.test__gallery .assert__inside .expect:nth-child(4n + 4) {
-  margin-left: 75%;
-  margin-right: -100%;
-  clear: none;
-}
-
-/* "Items should create 3x isolated gallery with inside-static gutters." */
-.test__gallery .assert__inside-static .test {
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-  width: 33.33333%;
-  float: left;
-  padding-left: 2em;
-  padding-right: 2em;
-}
-.test__gallery .assert__inside-static .test:nth-child(3n + 1) {
-  margin-left: 0;
-  margin-right: -100%;
-  clear: both;
-}
-.test__gallery .assert__inside-static .test:nth-child(3n + 2) {
-  margin-left: 33.33333%;
-  margin-right: -100%;
-  clear: none;
-}
-.test__gallery .assert__inside-static .test:nth-child(3n + 3) {
-  margin-left: 66.66667%;
-  margin-right: -100%;
-  clear: none;
-}
-.test__gallery .assert__inside-static .expect {
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-  width: 33.33333%;
-  float: left;
-  padding-left: 2em;
-  padding-right: 2em;
-}
-.test__gallery .assert__inside-static .expect:nth-child(3n + 1) {
-  margin-right: -100%;
-  margin-left: 0;
-  clear: left;
-}
-.test__gallery .assert__inside-static .expect:nth-child(3n + 2) {
-  margin-left: 33.33333%;
-  margin-right: -100%;
-  clear: none;
-}
-.test__gallery .assert__inside-static .expect:nth-child(3n + 3) {
-  margin-left: 66.66667%;
-  margin-right: -100%;
-  clear: none;
-}
-
-/* "Items should create 4x isolated gallery with split-gutters." */
-.test__gallery .assert__split .test {
-  width: 22.5%;
-  float: left;
-}
-.test__gallery .assert__split .test:nth-child(4n + 1) {
-  margin-left: 1.25%;
-  margin-right: -100%;
-  clear: both;
-}
-.test__gallery .assert__split .test:nth-child(4n + 2) {
-  margin-left: 26.25%;
-  margin-right: -100%;
-  clear: none;
-}
-.test__gallery .assert__split .test:nth-child(4n + 3) {
-  margin-left: 51.25%;
-  margin-right: -100%;
-  clear: none;
-}
-.test__gallery .assert__split .test:nth-child(4n + 4) {
-  margin-left: 76.25%;
-  margin-right: -100%;
-  clear: none;
-}
-.test__gallery .assert__split .expect {
-  width: 22.5%;
-  float: left;
-}
-.test__gallery .assert__split .expect:nth-child(4n + 1) {
-  margin-right: -100%;
-  margin-left: 1.25%;
-  clear: left;
-}
-.test__gallery .assert__split .expect:nth-child(4n + 2) {
-  margin-left: 26.25%;
-  margin-right: -100%;
-  clear: none;
-}
-.test__gallery .assert__split .expect:nth-child(4n + 3) {
-  margin-left: 51.25%;
-  margin-right: -100%;
-  clear: none;
-}
-.test__gallery .assert__split .expect:nth-child(4n + 4) {
-  margin-left: 76.25%;
-  margin-right: -100%;
-  clear: none;
-}
-
-/* "Items should create 3x isolated asymmetrical gallery." */
-.test__gallery .assert__asym .test {
-  float: left;
-}
-.test__gallery .assert__asym .test:nth-child(3n + 1) {
-  width: 32%;
-  margin-left: 0;
-  margin-right: -100%;
-  clear: both;
-  margin-left: 0;
-}
-.test__gallery .assert__asym .test:nth-child(3n + 2) {
-  width: 32%;
-  margin-left: 34%;
-  margin-right: -100%;
-  clear: none;
-}
-.test__gallery .assert__asym .test:nth-child(3n + 3) {
-  width: 32%;
-  margin-left: 68%;
-  margin-right: -100%;
-  clear: none;
-}
-.test__gallery .assert__asym .expect {
-  float: left;
-}
-.test__gallery .assert__asym .expect:nth-child(3n + 1) {
-  width: 32%;
-  margin-right: -100%;
-  margin-left: 0;
-  clear: left;
-}
-.test__gallery .assert__asym .expect:nth-child(3n + 2) {
-  width: 32%;
-  margin-left: 34%;
-  margin-right: -100%;
-  clear: none;
-}
-.test__gallery .assert__asym .expect:nth-child(3n + 3) {
-  width: 32%;
-  margin-left: 68%;
-  margin-right: -100%;
-  clear: none;
-}
-
-/* "Items should create 2x isolated asymmetrical gallery, with inside gutters." */
-.test__gallery .assert__asym-inside .test {
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-  float: left;
-  padding-left: 2.5%;
-  padding-right: 2.5%;
-}
-.test__gallery .assert__asym-inside .test:nth-child(2n + 1) {
-  width: 40%;
-  margin-left: 0;
-  margin-right: -100%;
-  clear: both;
-}
-.test__gallery .assert__asym-inside .test:nth-child(2n + 2) {
-  width: 60%;
-  margin-left: 40%;
-  margin-right: -100%;
-  clear: none;
-}
-.test__gallery .assert__asym-inside .expect {
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-  float: left;
-  padding-left: 2.5%;
-  padding-right: 2.5%;
-}
-.test__gallery .assert__asym-inside .expect:nth-child(2n + 1) {
-  width: 40%;
-  margin-left: 0;
-  margin-right: -100%;
-  clear: left;
-}
-.test__gallery .assert__asym-inside .expect:nth-child(2n + 2) {
-  width: 60%;
-  margin-left: 40%;
-  margin-right: -100%;
-  clear: none;
-}
-
-/*  
-    0 Tests:
-    - 0 Passed
-    - 0 Failed */
-/*  
-
-### Row Syntax ------ */
-/* - [mixin] break */
-/* "breaks should clear preceeding floats" */
-.test__break .assert__break .test {
-  clear: both;
-}
-.test__break .assert__break .expect {
-  clear: both;
-}
-
-/* - [mixin] nobreak */
-/* "Non-breaks should not clear floated elements" */
-.test__nobreak .assert__nobreak .test {
-  clear: none;
-}
-.test__nobreak .assert__nobreak .expect {
-  clear: none;
-}
-
-/* - [mixin] full */
-/* "Full spans clear preceeding floats, and have gutters." */
-.test__full .assert__split .test {
-  clear: both;
-  width: 97.5%;
-  float: left;
-  margin-left: 1.25%;
-  margin-right: 1.25%;
-}
-.test__full .assert__split .expect {
-  clear: both;
-  width: 97.5%;
-  float: left;
-  margin-left: 1.25%;
-  margin-right: 1.25%;
-}
-
-/* "Full spans clear preceeding floats, and have gutters." */
-.test__full .assert__after .test {
-  clear: both;
-  width: 100%;
-  float: left;
-  margin-left: 0;
-  margin-right: 0;
-}
-.test__full .assert__after .expect {
-  clear: both;
-  width: 100%;
-  float: left;
-}
-
-/* - [mixin] first */
-/* "First items should have left margins removed." */
-.test__first .assert__before .test {
-  margin-left: 0;
-}
-.test__first .assert__before .expect {
-  margin-left: 0;
-}
-
-/* "Nothing should happen to split first items." */
-/* - [mixin] alpha */
-/* "Alpha items should have left margins removed." */
-.test__alpha .assert__alpha .test {
-  margin-left: 0;
-}
-.test__alpha .assert__alpha .expect {
-  margin-left: 0;
-}
-
-/* - [mixin] last */
-/* "Last items should float right, with right margins removed" */
-.test__last .assert__after .test {
-  float: right;
-  margin-right: 0;
-}
-.test__last .assert__after .expect {
-  float: right;
-  margin-right: 0;
-}
-
-/* "Last items should float right." */
-.test__last .assert__split .test {
-  float: right;
-}
-.test__last .assert__split .expect {
-  float: right;
-}
-
-/* - [mixin] omega */
-/* "Omega items should float right, with right margins removed" */
-.test__omega .assert__omega .test {
-  float: right;
-  margin-right: 0;
-}
-.test__omega .assert__omega .expect {
-  float: right;
-  margin-right: 0;
-}
-
-/*  - [function] get-edge (6 Assertions, 6 Passed, 0 Failed) */
-/*  - [function] get-location (4 Assertions, 4 Passed, 0 Failed) */
-/*  
-    2 Tests:
-    - 2 Passed
-    - 0 Failed */
 /*
-
-### Margin Syntax ------ */
-/* - [mixin] pre */
-/* "Items should have 2-columns (wide) margin before." */
-.test__pre .assert__wide .test {
-  margin-left: 30%;
-}
-.test__pre .assert__wide .expect {
-  margin-left: 30%;
-}
-
-/* "Items should have 2-columns margin before, including split gutter." */
-.test__pre .assert__split .test {
-  margin-left: 26.25%;
-}
-.test__pre .assert__split .expect {
-  margin-left: 26.25%;
-}
-
-/* "Items should have 2-columns (wider) margin before." */
-.test__pre .assert__wider .test {
-  margin-left: 35%;
-}
-.test__pre .assert__wider .expect {
-  margin-left: 35%;
-}
-
-/* - [mixin] post */
-/* "Items should have 2-columns (wide) margin after." */
-.test__post .assert__wide .test {
-  margin-right: 35%;
-}
-.test__post .assert__wide .expect {
-  margin-right: 35%;
-}
-
-/* "Items should have 2-columns margin after, including split gutter." */
-.test__post .assert__split .test {
-  margin-right: 33.75%;
-}
-.test__post .assert__split .expect {
-  margin-right: 33.75%;
-}
-
-/* "Items should have 1-column (wide-2) margin after." */
-.test__post .assert__wider .test {
-  margin-right: 35%;
-}
-.test__post .assert__wider .expect {
-  margin-right: 35%;
-}
-
-/* - [mixin] push */
-/* "Items should have 2-columns margin before." */
-.test__push .assert__push .test {
-  margin-left: 26.25%;
-}
-.test__push .assert__push .expect {
-  margin-left: 26.25%;
-}
-
-/* - [mixin] pull */
-/* "Items should pull 1-column, overlapping the spacer." */
-.test__pull .assert__narrow .test {
-  margin-left: -20%;
-}
-.test__pull .assert__narrow .expect {
-  margin-left: -20%;
-}
-
-/* "Items should pull 1-column, overlapping the spacer." */
-.test__pull .assert__split .test {
-  margin-left: -11.25%;
-}
-.test__pull .assert__split .expect {
-  margin-left: -11.25%;
-}
-
-/* "Items should pull 1-column, overlapping the spacer." */
-.test__pull .assert__wide .test {
-  margin-left: -22.5%;
-}
-.test__pull .assert__wide .expect {
-  margin-left: -22.5%;
-}
-
-/* "Items should pull 1-column, overlapping the spacer." */
-.test__pull .assert__wider .test {
-  margin-left: -25%;
-}
-.test__pull .assert__wider .expect {
-  margin-left: -25%;
-}
-
-/* - [mixin] squish */
-/* "Items should have 2-columns margin before and after." */
-.test__squish .assert__simple .test {
-  margin-left: 35%;
-  margin-right: 35%;
-}
-.test__squish .assert__simple .expect {
-  margin-left: 35%;
-  margin-right: 35%;
-}
-
-/* "Items should have 2-columns margin before and after." */
-.test__squish .assert__split .test {
-  margin-left: 35.36585%;
-  margin-right: 35.36585%;
-}
-.test__squish .assert__split .expect {
-  margin-left: 35.25%;
-  margin-right: 35.25%;
-}
-
-/* "Items should have 1-column margin before, and 2 after - nested." */
-.test__squish .assert__nested .test {
-  margin-left: 20%;
-  margin-right: 40%;
-}
-.test__squish .assert__nested .expect {
-  margin-left: 20%;
-  margin-right: 40%;
-}
-
-/*
-
-### Padding Syntax ------ */
-/* - [mixin] prefix */
-/* "Items should have 3 columns padding before." */
-.test__prefix .assert__wide .test {
-  padding-left: 45%;
-}
-.test__prefix .assert__wide .expect {
-  padding-left: 45%;
-}
-
-/* "Items should have 3 columns padding before." */
-.test__prefix .assert__wider .test {
-  padding-left: 50%;
-}
-.test__prefix .assert__wider .expect {
-  padding-left: 50%;
-}
-
-/* - [mixin] suffix */
-/* "Items should have 2 columns padding after." */
-.test__suffix .assert__wide .test {
-  padding-right: 35%;
-}
-.test__suffix .assert__wide .expect {
-  padding-right: 35%;
-}
-
-/* "Items should have 2 columns padding after." */
-.test__suffix .assert__wider .test {
-  padding-right: 57.5%;
-}
-.test__suffix .assert__wider .expect {
-  padding-right: 57.5%;
-}
-
-/* - [mixin] pad */
-/* "Items should have 2 columns padding before and after." */
-.test__pad .assert__simple .test {
-  padding-left: 35%;
-  padding-right: 35%;
-}
-.test__pad .assert__simple .expect {
-  padding-left: 35%;
-  padding-right: 35%;
-}
-
-/* "Items should have 1 column padding before, and 2 after - nested." */
-.test__pad .assert__nested .test {
-  padding-left: 15%;
-  padding-right: 30%;
-}
-.test__pad .assert__nested .expect {
-  padding-left: 15%;
-  padding-right: 30%;
-}
-
-/* "Items should have 2 columns padding before and after, and keep gutters." */
-.test__pad .assert__inside .test {
-  padding-left: 26.25%;
-  padding-right: 26.25%;
-}
-.test__pad .assert__inside .expect {
-  padding-left: 26.25%;
-  padding-right: 26.25%;
-}
-
-/* "Items should have 2 columns padding before and after, without gutters." */
-.test__pad .assert__inside-nogutters .test {
-  padding-left: 25%;
-  padding-right: 25%;
-}
-.test__pad .assert__inside-nogutters .expect {
-  padding-left: 25%;
-  padding-right: 25%;
-}
-
-/*  
-
-### Bleed Syntax ------ */
-/* - [mixin] bleed */
-/* "Items should bleed 1 column outside their nested context" */
-.test__bleed .assert__simple .test {
-  margin-right: -15%;
-  margin-left: -15%;
-  padding-right: 15%;
-  padding-left: 15%;
-}
-.test__bleed .assert__simple .expect {
-  margin-right: -15%;
-  margin-left: -15%;
-  padding-right: 15%;
-  padding-left: 15%;
-}
-
-/* "Items should bleed 1em on all sides, and retain their static gutters" */
-.test__bleed .assert__inside .test {
-  margin: -1em;
-  padding: 1em 1.5em;
-}
-.test__bleed .assert__inside .expect {
-  margin: -1em;
-  padding: 1em 1.5em;
-}
-
-/* "Items should bleed 1 column horizontal, and retain gutters." */
-.test__bleed .assert__split .test {
-  margin-right: -12.5%;
-  margin-left: -12.5%;
-  padding-right: 12.5%;
-  padding-left: 12.5%;
-}
-.test__bleed .assert__split .expect {
-  margin-right: -12.5%;
-  margin-left: -12.5%;
-  padding-right: 12.5%;
-  padding-left: 12.5%;
-}
-
-/* - [mixin] bleed-x */
-/* "Items should bleed 1 column left, and 2 columns right" */
-.test__bleed-x .assert__simple .test {
-  margin-right: -30%;
-  margin-left: -15%;
-  padding-right: 30%;
-  padding-left: 15%;
-}
-.test__bleed-x .assert__simple .expect {
-  margin-right: -30%;
-  margin-left: -15%;
-  padding-right: 30%;
-  padding-left: 15%;
-}
-
-/* "Items should bleed 1 column, and retain their gutters" */
-.test__bleed-x .assert__inside .test {
-  margin-right: -12.5%;
-  margin-left: -12.5%;
-  padding-right: 13.75%;
-  padding-left: 13.75%;
-}
-.test__bleed-x .assert__inside .expect {
-  margin-right: -12.5%;
-  margin-left: -12.5%;
-  padding-right: 13.75%;
-  padding-left: 13.75%;
-}
-
-/* - [mixin] bleed-y */
-/* "Items should bleed .5em top, and 1em bottom." */
-.test__bleed-y .assert__simple .test {
-  margin-top: -0.5em;
-  margin-bottom: -1em;
-  padding-top: 0.5em;
-  padding-bottom: 1em;
-}
-.test__bleed-y .assert__simple .expect {
-  margin-top: -0.5em;
-  margin-bottom: -1em;
-  padding-top: 0.5em;
-  padding-bottom: 1em;
-}
-
-/*  - [function] get-bleed (3 Assertions, 3 Passed, 0 Failed) */
-/*  - [function] bleed-shorthand (2 Assertions, 2 Passed, 0 Failed) */
-/*  
-    2 Tests:
-    - 2 Passed
-    - 0 Failed */
-/*  
-
-### breakpoint integration ------ */
-/*  - [mixin] susy-breakpoint (2 Assertions, 2 Passed, 0 Failed) */
-/*  
-    1 Tests:
-    - 1 Passed
-    - 0 Failed */
-/*
-
-### Shared Output ------ */
-/* - [mixin] output */
-/* "Property value pairs are passed in as maps and output as CSS." */
-.test__output .assert__output .test {
-  width: 3em;
-  position: relative;
-}
-.test__output .assert__output .expect {
-  width: 3em;
-  position: relative;
-}
-
-/*  
-
-### Direction Helpers ------ */
-/*  - [function] get-direction (2 Assertions, 2 Passed, 0 Failed) */
-/*  - [function] to (2 Assertions, 2 Passed, 0 Failed) */
-/*  - [function] from (2 Assertions, 2 Passed, 0 Failed) */
-/*  
-    3 Tests:
-    - 3 Passed
-    - 0 Failed */
-/*
-
-### Grid Background Output ------ */
-/* - [mixin] background-grid-output */
-/* "Elements should show a horizontal clipped red-green-blue gradient, and a vertical baseline" */
-.test__background-grid-output .assert__show .test {
-  background-image: linear-gradient(to right, #ffcccc, #ccffcc 25%, #ccccff), linear-gradient(to bottom, black 5%, transparent 5%);
-  background-size: auto, 100% 16px;
-  background-origin: content-box, border-box;
-  background-clip: content-box, border-box;
-  background-position: left top;
-}
-.test__background-grid-output .assert__show .expect {
-  background-image: linear-gradient(to right, #ffcccc, #ccffcc 25%, #ccccff), linear-gradient(to bottom, black 5%, transparent 5%);
-  background-size: auto, 100% 16px;
-  background-origin: content-box, border-box;
-  background-clip: content-box, border-box;
-  background-position: left top;
-}
-
-/*
-
-### Shared Container API ------ */
-/* - [mixin] container-output */
-/* "Containers should have 60em max-width, centered." */
-.test__container-output .assert__fluid .test {
-  max-width: 60em;
-  margin-left: auto;
-  margin-right: auto;
-}
-.test__container-output .assert__fluid .expect {
-  max-width: 60em;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-/* "Containers should have 30em width, flush right." */
-.test__container-output .assert__static .test {
-  width: 30em;
-  margin-left: auto;
-  margin-right: 0;
-}
-.test__container-output .assert__static .expect {
-  width: 30em;
-  margin-left: auto;
-  margin-right: 0;
-}
-
-/* "Containers should have 100% width." */
-.test__container-output .assert__auto .test {
-  max-width: 100%;
-  margin-left: auto;
-  margin-right: auto;
-}
-.test__container-output .assert__auto .expect {
-  max-width: 100%;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-/*
-
-### Shared Margin API ------ */
-/* - [mixin] margin-output */
-/* "Elements should have 25% right margin, 8em left." */
-.test__margin-output .assert__margin-output .test {
-  margin-right: 25%;
-  margin-left: 8em;
-}
-.test__margin-output .assert__margin-output .expect {
-  margin-right: 25%;
-  margin-left: 8em;
-}
-
-/*
-
-### Shared Padding API ------ */
-/* - [mixin] padding-output */
-/* "Elements should have 25% right padding, 8em left." */
-.test__padding-output .assert__padding-output .test {
-  padding-right: 25%;
-  padding-left: 8em;
-}
-.test__padding-output .assert__padding-output .expect {
-  padding-right: 25%;
-  padding-left: 8em;
-}
-
-/*
-
-### Prefix Support ------ */
-/* - [mixin] susy-prefix */
-/* "Requested prefixes are added to output." */
-.test__susy-prefix .assert__susy-prefix .test {
-  -moz-border-radius: 3em;
-  -webkit-border-radius: 3em;
-  border-radius: 3em;
-}
-.test__susy-prefix .assert__susy-prefix .expect {
-  -moz-border-radius: 3em;
-  -webkit-border-radius: 3em;
-  border-radius: 3em;
-}
-
-/*
-
-### Background Support ------ */
-/* - [mixin] susy-background-image */
-/* "Without Compass, background-image is output directly." */
-.test__susy-background-image .assert__susy-background-image .test {
-  background-image: linear-gradient(to left, red, green, blue);
-}
-.test__susy-background-image .assert__susy-background-image .expect {
-  background-image: linear-gradient(to left, red, green, blue);
-}
-
-/* - [mixin] susy-background-size */
-/* "Without Compass, background-size is output directly." */
-.test__susy-background-size .assert__susy-background-size .test {
-  background-size: cover;
-}
-.test__susy-background-size .assert__susy-background-size .expect {
-  background-size: cover;
-}
-
-/* - [mixin] susy-background-origin */
-/* "Without Compass, background-origin is output directly." */
-.test__susy-background-origin .assert__susy-background-origin .test {
-  background-origin: content-box;
-}
-.test__susy-background-origin .assert__susy-background-origin .expect {
-  background-origin: content-box;
-}
-
-/* - [mixin] susy-background-clip */
-/* "Without Compass, background-clip is output directly." */
-.test__susy-background-clip .assert__susy-background-clip .test {
-  background-clip: border-box;
-}
-.test__susy-background-clip .assert__susy-background-clip .expect {
-  background-clip: border-box;
-}
-
-/*  
-
-### Box Sizing Support ------ */
-/* - [mixin] susy-box-sizing */
-/* "Box-models are correctly output and prefixed." */
-.test__susy-box-sizing .assert__border-box .test {
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-}
-.test__susy-box-sizing .assert__border-box .expect {
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-}
-
-/*  
-    0 Tests:
-    - 0 Passed
-    - 0 Failed */
-/*
-
-### rem Support ------ */
-/* "Without compass, rem units are output unchanged." */
-.test__ .assert__ .test {
-  width: 3rem;
-}
-.test__ .assert__ .expect {
-  width: 3rem;
-}
-
-/*
-
-### Clearfix Support ------ */
-/* - [mixin] susy-clearfix */
-/* "Elements should clear floated children." */
-.test__susy-clearfix .assert__clearfix .test:after {
-  content: " ";
-  display: block;
-  clear: both;
-}
-.test__susy-clearfix .assert__clearfix .expect:after {
-  content: " ";
-  display: block;
-  clear: both;
-}
-
-/*  
-
-### Susy Support ------ */
-/* - [mixin] susy-support */
-/* "Recogizes properties that need special support,
-      and passes others through directly." */
-.test__susy-support .assert__susy-support .test {
-  width: 30em;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-}
-.test__susy-support .assert__susy-support .expect {
-  width: 30em;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-}
-
-/*  - [function] susy-support (3 Assertions, 3 Passed, 0 Failed) */
-/*  
-    1 Tests:
-    - 1 Passed
-    - 0 Failed */
-/*
-
-### Float Container API ------ */
-/* - [mixin] float-container */
-/* "Containers should be 30em wide, flush left." */
-.test__float-container .assert__float-container .test {
-  max-width: 30em;
-  margin-left: 0;
-  margin-right: auto;
-}
-.test__float-container .assert__float-container .test:after {
-  content: " ";
-  display: block;
-  clear: both;
-}
-.test__float-container .assert__float-container .expect {
-  max-width: 30em;
-  margin-left: 0;
-  margin-right: auto;
-}
-.test__float-container .assert__float-container .expect:after {
-  content: " ";
-  display: block;
-  clear: both;
-}
-
-/*
-
-### Float Span API ------ */
-/* - [mixin] float-span-output */
-/* "Output should be 25%, floated left, with matching margins/padding" */
-.test__float-span-output .assert__full .test {
-  width: 25%;
-  float: left;
-  margin-left: 5em;
-  margin-right: 2em;
-  padding-left: 3em;
-  padding-right: 4em;
-}
-.test__float-span-output .assert__full .expect {
-  width: 25%;
-  float: left;
-  margin-left: 5em;
-  margin-right: 2em;
-  padding-left: 3em;
-  padding-right: 4em;
-}
-
-/* "Output should be 25%, floated right" */
-.test__float-span-output .assert__float-to .test {
-  width: 25%;
-  float: right;
-}
-.test__float-span-output .assert__float-to .expect {
-  width: 25%;
-  float: right;
-}
-
-/* "Output should be 25%, not floated" */
-.test__float-span-output .assert__float-null .test {
-  width: 25%;
-}
-.test__float-span-output .assert__float-null .expect {
-  width: 25%;
-}
-
-/*
-
-### Float End API ------ */
-/* - [mixin] float-last */
-/* "Items should float flush right." */
-.test__float-last .assert__default .test {
-  float: right;
-  margin-right: 0;
-}
-.test__float-last .assert__default .expect {
-  float: right;
-  margin-right: 0;
-}
-
-/* "Items should not have any right margin." */
-.test__float-last .assert__last-flow-from .test {
-  margin-right: 0;
-}
-.test__float-last .assert__last-flow-from .expect {
-  margin-right: 0;
-}
-
-/* - [mixin] float-first */
-/* "Items should float flush left." */
-.test__float-first .assert__float-first .test {
-  margin-left: 0;
-}
-.test__float-first .assert__float-first .expect {
-  margin-left: 0;
-}
-
-/*
-
-### Isolation API ------ */
-/* - [mixin] isolate-output */
-/* "Isolation at 30%, has 30% left margin and -100% right margin." */
-.test__isolate-output .assert__isolate-output .test {
-  float: left;
-  margin-left: 30%;
-  margin-right: -100%;
-}
-.test__isolate-output .assert__isolate-output .expect {
-  float: left;
-  margin-left: 30%;
-  margin-right: -100%;
-}
+Syntax error: Function span-math is missing argument $input.
+        on line 165 of /Users/unicron/Git/_OpenSource/susy/test/scss/language/susy/_span.scss, in `@content'
+        from line 12 of /Users/unicron/.rvm/gems/ruby-1.9.3-p392@susynext/gems/true-0.2.0/sass/true/_tests.scss, in `test'
+        from line 152 of /Users/unicron/Git/_OpenSource/susy/test/scss/language/susy/_span.scss, in `@content'
+        from line 12 of /Users/unicron/.rvm/gems/ruby-1.9.3-p392@susynext/gems/true-0.2.0/sass/true/_modules.scss, in `test-module'
+        from line 15 of /Users/unicron/Git/_OpenSource/susy/test/scss/language/susy/_span.scss
+        from line 10 of /Users/unicron/Git/_OpenSource/susy/test/scss/language/_susy.scss
+        from line 4 of /Users/unicron/Git/_OpenSource/susy/test/scss/_language.scss
+        from line 5 of /Users/unicron/Git/_OpenSource/susy/test/scss/_tests.scss
+        from line 19 of /Users/unicron/Git/_OpenSource/susy/test/scss/test.scss
+
+Backtrace:
+/Users/unicron/Git/_OpenSource/susy/test/scss/language/susy/_span.scss:165:in `@content'
+/Users/unicron/.rvm/gems/ruby-1.9.3-p392@susynext/gems/true-0.2.0/sass/true/_tests.scss:12:in `test'
+/Users/unicron/Git/_OpenSource/susy/test/scss/language/susy/_span.scss:152:in `@content'
+/Users/unicron/.rvm/gems/ruby-1.9.3-p392@susynext/gems/true-0.2.0/sass/true/_modules.scss:12:in `test-module'
+/Users/unicron/Git/_OpenSource/susy/test/scss/language/susy/_span.scss:15
+/Users/unicron/Git/_OpenSource/susy/test/scss/language/_susy.scss:10
+/Users/unicron/Git/_OpenSource/susy/test/scss/_language.scss:4
+/Users/unicron/Git/_OpenSource/susy/test/scss/_tests.scss:5
+/Users/unicron/Git/_OpenSource/susy/test/scss/test.scss:19
+/Users/unicron/.rvm/gems/ruby-1.9.3-p392@susynext/gems/sass-3.3.4/lib/sass/tree/visitors/perform.rb:67:in `block in perform_arguments'
+/Users/unicron/.rvm/gems/ruby-1.9.3-p392@susynext/gems/sass-3.3.4/lib/sass/tree/visitors/perform.rb:59:in `zip'
+/Users/unicron/.rvm/gems/ruby-1.9.3-p392@susynext/gems/sass-3.3.4/lib/sass/tree/visitors/perform.rb:59:in `perform_arguments'
+/Users/unicron/.rvm/gems/ruby-1.9.3-p392@susynext/gems/sass-3.3.4/lib/sass/script/tree/funcall.rb:244:in `perform_sass_fn'
+/Users/unicron/.rvm/gems/ruby-1.9.3-p392@susynext/gems/sass-3.3.4/lib/sass/script/tree/funcall.rb:131:in `_perform'
+/Users/unicron/.rvm/gems/ruby-1.9.3-p392@susynext/gems/sass-3.3.4/lib/sass/script/tree/node.rb:50:in `perform'
+/Users/unicron/.rvm/gems/ruby-1.9.3-p392@susynext/gems/sass-3.3.4/lib/sass/tree/visitors/perform.rb:438:in `visit_variable'
+/Users/unicron/.rvm/gems/ruby-1.9.3-p392@susynext/gems/sass-3.3.4/lib/sass/tree/visitors/base.rb:36:in `visit'
+/Users/unicron/.rvm/gems/ruby-1.9.3-p392@susynext/gems/sass-3.3.4/lib/sass/tree/visitors/perform.rb:152:in `block in visit'
+/Users/unicron/.rvm/gems/ruby-1.9.3-p392@susynext/gems/sass-3.3.4/lib/sass/stack.rb:79:in `block in with_base'
+/Users/unicron/.rvm/gems/ruby-1.9.3-p392@susynext/gems/sass-3.3.4/lib/sass/stack.rb:121:in `with_frame'
+/Users/unicron/.rvm/gems/ruby-1.9.3-p392@susynext/gems/sass-3.3.4/lib/sass/stack.rb:79:in `with_base'
+/Users/unicron/.rvm/gems/ruby-1.9.3-p392@susynext/gems/sass-3.3.4/lib/sass/tree/visitors/perform.rb:152:in `visit'
+/Users/unicron/.rvm/gems/ruby-1.9.3-p392@susynext/gems/sass-3.3.4/lib/sass/tree/visitors/perform.rb:353:in `block (3 levels) in visit_content'
+/Users/unicron/.rvm/gems/ruby-1.9.3-p392@susynext/gems/sass-3.3.4/lib/sass/tree/visitors/perform.rb:353:in `map'
+/Users/unicron/.rvm/gems/ruby-1.9.3-p392@susynext/gems/sass-3.3.4/lib/sass/tree/visitors/perform.rb:353:in `block (2 levels) in visit_content'
+/Users/unicron/.rvm/gems/ruby-1.9.3-p392@susynext/gems/sass-3.3.4/lib/sass/tree/visitors/perform.rb:173:in `with_environment'
+/Users/unicron/.rvm/gems/ruby-1.9.3-p392@susynext/gems/sass-3.3.4/lib/sass/tree/visitors/perform.rb:352:in `block in visit_content'
+/Users/unicron/.rvm/gems/ruby-1.9.3-p392@susynext/gems/sass-3.3.4/lib/sass/stack.rb:98:in `block in with_mixin'
+/Users/unicron/.rvm/gems/ruby-1.9.3-p392@susynext/gems/sass-3.3.4/lib/sass/stack.rb:121:in `with_frame'
+/Users/unicron/.rvm/gems/ruby-1.9.3-p392@susynext/gems/sass-3.3.4/lib/sass/stack.rb:98:in `with_mixin'
+/Users/unicron/.rvm/gems/ruby-1.9.3-p392@susynext/gems/sass-3.3.4/lib/sass/tree/visitors/perform.rb:348:in `visit_content'
+/Users/unicron/.rvm/gems/ruby-1.9.3-p392@susynext/gems/sass-3.3.4/lib/sass/tree/visitors/base.rb:36:in `visit'
+/Users/unicron/.rvm/gems/ruby-1.9.3-p392@susynext/gems/sass-3.3.4/lib/sass/tree/visitors/perform.rb:152:in `block in visit'
+/Users/unicron/.rvm/gems/ruby-1.9.3-p392@susynext/gems/sass-3.3.4/lib/sass/stack.rb:79:in `block in with_base'
+/Users/unicron/.rvm/gems/ruby-1.9.3-p392@susynext/gems/sass-3.3.4/lib/sass/stack.rb:121:in `with_frame'
+/Users/unicron/.rvm/gems/ruby-1.9.3-p392@susynext/gems/sass-3.3.4/lib/sass/stack.rb:79:in `with_base'
+/Users/unicron/.rvm/gems/ruby-1.9.3-p392@susynext/gems/sass-3.3.4/lib/sass/tree/visitors/perform.rb:152:in `visit'
+/Users/unicron/.rvm/gems/ruby-1.9.3-p392@susynext/gems/sass-3.3.4/lib/sass/tree/visitors/perform.rb:335:in `block (4 levels) in visit_mixin'
+/Users/unicron/.rvm/gems/ruby-1.9.3-p392@susynext/gems/sass-3.3.4/lib/sass/tree/visitors/perform.rb:335:in `map'
+/Users/unicron/.rvm/gems/ruby-1.9.3-p392@susynext/gems/sass-3.3.4/lib/sass/tree/visitors/perform.rb:335:in `block (3 levels) in visit_mixin'
+/Users/unicron/.rvm/gems/ruby-1.9.3-p392@susynext/gems/sass-3.3.4/lib/sass/tree/visitors/perform.rb:173:in `with_environment'
+/Users/unicron/.rvm/gems/ruby-1.9.3-p392@susynext/gems/sass-3.3.4/lib/sass/tree/visitors/perform.rb:335:in `block (2 levels) in visit_mixin'
+/Users/unicron/.rvm/gems/ruby-1.9.3-p392@susynext/gems/sass-3.3.4/lib/sass/tree/visitors/perform.rb:78:in `perform_arguments'
+/Users/unicron/.rvm/gems/ruby-1.9.3-p392@susynext/gems/sass-3.3.4/lib/sass/tree/visitors/perform.rb:330:in `block in visit_mixin'
+/Users/unicron/.rvm/gems/ruby-1.9.3-p392@susynext/gems/sass-3.3.4/lib/sass/stack.rb:98:in `block in with_mixin'
+/Users/unicron/.rvm/gems/ruby-1.9.3-p392@susynext/gems/sass-3.3.4/lib/sass/stack.rb:121:in `with_frame'
+/Users/unicron/.rvm/gems/ruby-1.9.3-p392@susynext/gems/sass-3.3.4/lib/sass/stack.rb:98:in `with_mixin'
+/Users/unicron/.rvm/gems/ruby-1.9.3-p392@susynext/gems/sass-3.3.4/lib/sass/tree/visitors/perform.rb:318:in `visit_mixin'
+/Users/unicron/.rvm/gems/ruby-1.9.3-p392@susynext/gems/sass-3.3.4/lib/sass/tree/visitors/base.rb:36:in `visit'
+/Users/unicron/.rvm/gems/ruby-1.9.3-p392@susynext/gems/sass-3.3.4/lib/sass/tree/visitors/perform.rb:152:in `block in visit'
+/Users/unicron/.rvm/gems/ruby-1.9.3-p392@susynext/gems/sass-3.3.4/lib/sass/stack.rb:79:in `block in with_base'
+/Users/unicron/.rvm/gems/ruby-1.9.3-p392@susynext/gems/sass-3.3.4/lib/sass/stack.rb:121:in `with_frame'
+/Users/unicron/.rvm/gems/ruby-1.9.3-p392@susynext/gems/sass-3.3.4/lib/sass/stack.rb:79:in `with_base'
+/Users/unicron/.rvm/gems/ruby-1.9.3-p392@susynext/gems/sass-3.3.4/lib/sass/tree/visitors/perform.rb:152:in `visit'
+/Users/unicron/.rvm/gems/ruby-1.9.3-p392@susynext/gems/sass-3.3.4/lib/sass/tree/visitors/perform.rb:353:in `block (3 levels) in visit_content'
+/Users/unicron/.rvm/gems/ruby-1.9.3-p392@susynext/gems/sass-3.3.4/lib/sass/tree/visitors/perform.rb:353:in `map'
+/Users/unicron/.rvm/gems/ruby-1.9.3-p392@susynext/gems/sass-3.3.4/lib/sass/tree/visitors/perform.rb:353:in `block (2 levels) in visit_content'
+/Users/unicron/.rvm/gems/ruby-1.9.3-p392@susynext/gems/sass-3.3.4/lib/sass/tree/visitors/perform.rb:173:in `with_environment'
+/Users/unicron/.rvm/gems/ruby-1.9.3-p392@susynext/gems/sass-3.3.4/lib/sass/tree/visitors/perform.rb:352:in `block in visit_content'
+/Users/unicron/.rvm/gems/ruby-1.9.3-p392@susynext/gems/sass-3.3.4/lib/sass/stack.rb:98:in `block in with_mixin'
+/Users/unicron/.rvm/gems/ruby-1.9.3-p392@susynext/gems/sass-3.3.4/lib/sass/stack.rb:121:in `with_frame'
+/Users/unicron/.rvm/gems/ruby-1.9.3-p392@susynext/gems/sass-3.3.4/lib/sass/stack.rb:98:in `with_mixin'
+/Users/unicron/.rvm/gems/ruby-1.9.3-p392@susynext/gems/sass-3.3.4/lib/sass/tree/visitors/perform.rb:348:in `visit_content'
+/Users/unicron/.rvm/gems/ruby-1.9.3-p392@susynext/gems/sass-3.3.4/lib/sass/tree/visitors/base.rb:36:in `visit'
+/Users/unicron/.rvm/gems/ruby-1.9.3-p392@susynext/gems/sass-3.3.4/lib/sass/tree/visitors/perform.rb:152:in `block in visit'
+/Users/unicron/.rvm/gems/ruby-1.9.3-p392@susynext/gems/sass-3.3.4/lib/sass/stack.rb:79:in `block in with_base'
+/Users/unicron/.rvm/gems/ruby-1.9.3-p392@susynext/gems/sass-3.3.4/lib/sass/stack.rb:121:in `with_frame'
+/Users/unicron/.rvm/gems/ruby-1.9.3-p392@susynext/gems/sass-3.3.4/lib/sass/stack.rb:79:in `with_base'
+/Users/unicron/.rvm/gems/ruby-1.9.3-p392@susynext/gems/sass-3.3.4/lib/sass/tree/visitors/perform.rb:152:in `visit'
+/Users/unicron/.rvm/gems/ruby-1.9.3-p392@susynext/gems/sass-3.3.4/lib/sass/tree/visitors/perform.rb:335:in `block (4 levels) in visit_mixin'
+/Users/unicron/.rvm/gems/ruby-1.9.3-p392@susynext/gems/sass-3.3.4/lib/sass/tree/visitors/perform.rb:335:in `map'
+/Users/unicron/.rvm/gems/ruby-1.9.3-p392@susynext/gems/sass-3.3.4/lib/sass/tree/visitors/perform.rb:335:in `block (3 levels) in visit_mixin'
+/Users/unicron/.rvm/gems/ruby-1.9.3-p392@susynext/gems/sass-3.3.4/lib/sass/tree/visitors/perform.rb:173:in `with_environment'
+/Users/unicron/.rvm/gems/ruby-1.9.3-p392@susynext/gems/sass-3.3.4/lib/sass/tree/visitors/perform.rb:335:in `block (2 levels) in visit_mixin'
+/Users/unicron/.rvm/gems/ruby-1.9.3-p392@susynext/gems/sass-3.3.4/lib/sass/tree/visitors/perform.rb:78:in `perform_arguments'
+/Users/unicron/.rvm/gems/ruby-1.9.3-p392@susynext/gems/sass-3.3.4/lib/sass/tree/visitors/perform.rb:330:in `block in visit_mixin'
+/Users/unicron/.rvm/gems/ruby-1.9.3-p392@susynext/gems/sass-3.3.4/lib/sass/stack.rb:98:in `block in with_mixin'
+/Users/unicron/.rvm/gems/ruby-1.9.3-p392@susynext/gems/sass-3.3.4/lib/sass/stack.rb:121:in `with_frame'
+/Users/unicron/.rvm/gems/ruby-1.9.3-p392@susynext/gems/sass-3.3.4/lib/sass/stack.rb:98:in `with_mixin'
+/Users/unicron/.rvm/gems/ruby-1.9.3-p392@susynext/gems/sass-3.3.4/lib/sass/tree/visitors/perform.rb:318:in `visit_mixin'
+/Users/unicron/.rvm/gems/ruby-1.9.3-p392@susynext/gems/sass-3.3.4/lib/sass/tree/visitors/base.rb:36:in `visit'
+/Users/unicron/.rvm/gems/ruby-1.9.3-p392@susynext/gems/sass-3.3.4/lib/sass/tree/visitors/perform.rb:152:in `block in visit'
+/Users/unicron/.rvm/gems/ruby-1.9.3-p392@susynext/gems/sass-3.3.4/lib/sass/stack.rb:79:in `block in with_base'
+/Users/unicron/.rvm/gems/ruby-1.9.3-p392@susynext/gems/sass-3.3.4/lib/sass/stack.rb:121:in `with_frame'
+/Users/unicron/.rvm/gems/ruby-1.9.3-p392@susynext/gems/sass-3.3.4/lib/sass/stack.rb:79:in `with_base'
+/Users/unicron/.rvm/gems/ruby-1.9.3-p392@susynext/gems/sass-3.3.4/lib/sass/tree/visitors/perform.rb:152:in `visit'
+/Users/unicron/.rvm/gems/ruby-1.9.3-p392@susynext/gems/sass-3.3.4/lib/sass/tree/visitors/perform.rb:297:in `block (2 levels) in visit_import'
+/Users/unicron/.rvm/gems/ruby-1.9.3-p392@susynext/gems/sass-3.3.4/lib/sass/tree/visitors/perform.rb:297:in `map'
+/Users/unicron/.rvm/gems/ruby-1.9.3-p392@susynext/gems/sass-3.3.4/lib/sass/tree/visitors/perform.rb:297:in `block in visit_import'
+/Users/unicron/.rvm/gems/ruby-1.9.3-p392@susynext/gems/sass-3.3.4/lib/sass/stack.rb:88:in `block in with_import'
+/Users/unicron/.rvm/gems/ruby-1.9.3-p392@susynext/gems/sass-3.3.4/lib/sass/stack.rb:121:in `with_frame'
+/Users/unicron/.rvm/gems/ruby-1.9.3-p392@susynext/gems/sass-3.3.4/lib/sass/stack.rb:88:in `with_import'
+/Users/unicron/.rvm/gems/ruby-1.9.3-p392@susynext/gems/sass-3.3.4/lib/sass/tree/visitors/perform.rb:294:in `visit_import'
+/Users/unicron/.rvm/gems/ruby-1.9.3-p392@susynext/gems/sass-3.3.4/lib/sass/tree/visitors/base.rb:36:in `visit'
+/Users/unicron/.rvm/gems/ruby-1.9.3-p392@susynext/gems/sass-3.3.4/lib/sass/tree/visitors/perform.rb:152:in `block in visit'
+/Users/unicron/.rvm/gems/ruby-1.9.3-p392@susynext/gems/sass-3.3.4/lib/sass/stack.rb:79:in `block in with_base'
+/Users/unicron/.rvm/gems/ruby-1.9.3-p392@susynext/gems/sass-3.3.4/lib/sass/stack.rb:121:in `with_frame'
+/Users/unicron/.rvm/gems/ruby-1.9.3-p392@susynext/gems/sass-3.3.4/lib/sass/stack.rb:79:in `with_base'
+/Users/unicron/.rvm/gems/ruby-1.9.3-p392@susynext/gems/sass-3.3.4/lib/sass/tree/visitors/perform.rb:152:in `visit'
+/Users/unicron/.rvm/gems/ruby-1.9.3-p392@susynext/gems/sass-3.3.4/lib/sass/tree/visitors/perform.rb:297:in `block (2 levels) in visit_import'
+/Users/unicron/.rvm/gems/ruby-1.9.3-p392@susynext/gems/sass-3.3.4/lib/sass/tree/visitors/perform.rb:297:in `map'
+/Users/unicron/.rvm/gems/ruby-1.9.3-p392@susynext/gems/sass-3.3.4/lib/sass/tree/visitors/perform.rb:297:in `block in visit_import'
+/Users/unicron/.rvm/gems/ruby-1.9.3-p392@susynext/gems/sass-3.3.4/lib/sass/stack.rb:88:in `block in with_import'
+/Users/unicron/.rvm/gems/ruby-1.9.3-p392@susynext/gems/sass-3.3.4/lib/sass/stack.rb:121:in `with_frame'
+/Users/unicron/.rvm/gems/ruby-1.9.3-p392@susynext/gems/sass-3.3.4/lib/sass/stack.rb:88:in `with_import'
+/Users/unicron/.rvm/gems/ruby-1.9.3-p392@susynext/gems/sass-3.3.4/lib/sass/tree/visitors/perform.rb:294:in `visit_import'
+/Users/unicron/.rvm/gems/ruby-1.9.3-p392@susynext/gems/sass-3.3.4/lib/sass/tree/visitors/base.rb:36:in `visit'
+/Users/unicron/.rvm/gems/ruby-1.9.3-p392@susynext/gems/sass-3.3.4/lib/sass/tree/visitors/perform.rb:152:in `block in visit'
+/Users/unicron/.rvm/gems/ruby-1.9.3-p392@susynext/gems/sass-3.3.4/lib/sass/stack.rb:79:in `block in with_base'
+/Users/unicron/.rvm/gems/ruby-1.9.3-p392@susynext/gems/sass-3.3.4/lib/sass/stack.rb:121:in `with_frame'
+/Users/unicron/.rvm/gems/ruby-1.9.3-p392@susynext/gems/sass-3.3.4/lib/sass/stack.rb:79:in `with_base'
+/Users/unicron/.rvm/gems/ruby-1.9.3-p392@susynext/gems/sass-3.3.4/lib/sass/tree/visitors/perform.rb:152:in `visit'
+/Users/unicron/.rvm/gems/ruby-1.9.3-p392@susynext/gems/sass-3.3.4/lib/sass/tree/visitors/perform.rb:297:in `block (2 levels) in visit_import'
+/Users/unicron/.rvm/gems/ruby-1.9.3-p392@susynext/gems/sass-3.3.4/lib/sass/tree/visitors/perform.rb:297:in `map'
+/Users/unicron/.rvm/gems/ruby-1.9.3-p392@susynext/gems/sass-3.3.4/lib/sass/tree/visitors/perform.rb:297:in `block in visit_import'
+/Users/unicron/.rvm/gems/ruby-1.9.3-p392@susynext/gems/sass-3.3.4/lib/sass/stack.rb:88:in `block in with_import'
+/Users/unicron/.rvm/gems/ruby-1.9.3-p392@susynext/gems/sass-3.3.4/lib/sass/stack.rb:121:in `with_frame'
+/Users/unicron/.rvm/gems/ruby-1.9.3-p392@susynext/gems/sass-3.3.4/lib/sass/stack.rb:88:in `with_import'
+/Users/unicron/.rvm/gems/ruby-1.9.3-p392@susynext/gems/sass-3.3.4/lib/sass/tree/visitors/perform.rb:294:in `visit_import'
+/Users/unicron/.rvm/gems/ruby-1.9.3-p392@susynext/gems/sass-3.3.4/lib/sass/tree/visitors/base.rb:36:in `visit'
+/Users/unicron/.rvm/gems/ruby-1.9.3-p392@susynext/gems/sass-3.3.4/lib/sass/tree/visitors/perform.rb:152:in `block in visit'
+/Users/unicron/.rvm/gems/ruby-1.9.3-p392@susynext/gems/sass-3.3.4/lib/sass/stack.rb:79:in `block in with_base'
+/Users/unicron/.rvm/gems/ruby-1.9.3-p392@susynext/gems/sass-3.3.4/lib/sass/stack.rb:121:in `with_frame'
+/Users/unicron/.rvm/gems/ruby-1.9.3-p392@susynext/gems/sass-3.3.4/lib/sass/stack.rb:79:in `with_base'
+/Users/unicron/.rvm/gems/ruby-1.9.3-p392@susynext/gems/sass-3.3.4/lib/sass/tree/visitors/perform.rb:152:in `visit'
+/Users/unicron/.rvm/gems/ruby-1.9.3-p392@susynext/gems/sass-3.3.4/lib/sass/tree/visitors/perform.rb:297:in `block (2 levels) in visit_import'
+/Users/unicron/.rvm/gems/ruby-1.9.3-p392@susynext/gems/sass-3.3.4/lib/sass/tree/visitors/perform.rb:297:in `map'
+/Users/unicron/.rvm/gems/ruby-1.9.3-p392@susynext/gems/sass-3.3.4/lib/sass/tree/visitors/perform.rb:297:in `block in visit_import'
+/Users/unicron/.rvm/gems/ruby-1.9.3-p392@susynext/gems/sass-3.3.4/lib/sass/stack.rb:88:in `block in with_import'
+/Users/unicron/.rvm/gems/ruby-1.9.3-p392@susynext/gems/sass-3.3.4/lib/sass/stack.rb:121:in `with_frame'
+/Users/unicron/.rvm/gems/ruby-1.9.3-p392@susynext/gems/sass-3.3.4/lib/sass/stack.rb:88:in `with_import'
+/Users/unicron/.rvm/gems/ruby-1.9.3-p392@susynext/gems/sass-3.3.4/lib/sass/tree/visitors/perform.rb:294:in `visit_import'
+/Users/unicron/.rvm/gems/ruby-1.9.3-p392@susynext/gems/sass-3.3.4/lib/sass/tree/visitors/base.rb:36:in `visit'
+/Users/unicron/.rvm/gems/ruby-1.9.3-p392@susynext/gems/sass-3.3.4/lib/sass/tree/visitors/perform.rb:152:in `block in visit'
+/Users/unicron/.rvm/gems/ruby-1.9.3-p392@susynext/gems/sass-3.3.4/lib/sass/stack.rb:79:in `block in with_base'
+/Users/unicron/.rvm/gems/ruby-1.9.3-p392@susynext/gems/sass-3.3.4/lib/sass/stack.rb:121:in `with_frame'
+/Users/unicron/.rvm/gems/ruby-1.9.3-p392@susynext/gems/sass-3.3.4/lib/sass/stack.rb:79:in `with_base'
+/Users/unicron/.rvm/gems/ruby-1.9.3-p392@susynext/gems/sass-3.3.4/lib/sass/tree/visitors/perform.rb:152:in `visit'
+/Users/unicron/.rvm/gems/ruby-1.9.3-p392@susynext/gems/sass-3.3.4/lib/sass/tree/visitors/base.rb:52:in `block in visit_children'
+/Users/unicron/.rvm/gems/ruby-1.9.3-p392@susynext/gems/sass-3.3.4/lib/sass/tree/visitors/base.rb:52:in `map'
+/Users/unicron/.rvm/gems/ruby-1.9.3-p392@susynext/gems/sass-3.3.4/lib/sass/tree/visitors/base.rb:52:in `visit_children'
+/Users/unicron/.rvm/gems/ruby-1.9.3-p392@susynext/gems/sass-3.3.4/lib/sass/tree/visitors/perform.rb:161:in `block in visit_children'
+/Users/unicron/.rvm/gems/ruby-1.9.3-p392@susynext/gems/sass-3.3.4/lib/sass/tree/visitors/perform.rb:173:in `with_environment'
+/Users/unicron/.rvm/gems/ruby-1.9.3-p392@susynext/gems/sass-3.3.4/lib/sass/tree/visitors/perform.rb:160:in `visit_children'
+/Users/unicron/.rvm/gems/ruby-1.9.3-p392@susynext/gems/sass-3.3.4/lib/sass/tree/visitors/base.rb:36:in `block in visit'
+/Users/unicron/.rvm/gems/ruby-1.9.3-p392@susynext/gems/sass-3.3.4/lib/sass/tree/visitors/perform.rb:180:in `visit_root'
+/Users/unicron/.rvm/gems/ruby-1.9.3-p392@susynext/gems/sass-3.3.4/lib/sass/tree/visitors/base.rb:36:in `visit'
+/Users/unicron/.rvm/gems/ruby-1.9.3-p392@susynext/gems/sass-3.3.4/lib/sass/tree/visitors/perform.rb:151:in `visit'
+/Users/unicron/.rvm/gems/ruby-1.9.3-p392@susynext/gems/sass-3.3.4/lib/sass/tree/visitors/perform.rb:8:in `visit'
+/Users/unicron/.rvm/gems/ruby-1.9.3-p392@susynext/gems/sass-3.3.4/lib/sass/tree/root_node.rb:36:in `css_tree'
+/Users/unicron/.rvm/gems/ruby-1.9.3-p392@susynext/gems/sass-3.3.4/lib/sass/tree/root_node.rb:20:in `render'
+/Users/unicron/.rvm/gems/ruby-1.9.3-p392@susynext/gems/sass-3.3.4/lib/sass/engine.rb:274:in `render'
+/Users/unicron/.rvm/gems/ruby-1.9.3-p392@susynext/gems/compass-1.0.0.alpha.19/lib/compass/compiler.rb:171:in `block (2 levels) in compile'
+/Users/unicron/.rvm/gems/ruby-1.9.3-p392@susynext/gems/compass-1.0.0.alpha.19/lib/compass/compiler.rb:153:in `timed'
+/Users/unicron/.rvm/gems/ruby-1.9.3-p392@susynext/gems/compass-1.0.0.alpha.19/lib/compass/compiler.rb:166:in `block in compile'
+/Users/unicron/.rvm/gems/ruby-1.9.3-p392@susynext/gems/compass-1.0.0.alpha.19/lib/compass/logger.rb:46:in `red'
+/Users/unicron/.rvm/gems/ruby-1.9.3-p392@susynext/gems/compass-1.0.0.alpha.19/lib/compass/compiler.rb:165:in `compile'
+/Users/unicron/.rvm/gems/ruby-1.9.3-p392@susynext/gems/compass-1.0.0.alpha.19/lib/compass/compiler.rb:144:in `compile_if_required'
+/Users/unicron/.rvm/gems/ruby-1.9.3-p392@susynext/gems/compass-1.0.0.alpha.19/lib/compass/compiler.rb:129:in `block (2 levels) in run'
+/Users/unicron/.rvm/gems/ruby-1.9.3-p392@susynext/gems/compass-1.0.0.alpha.19/lib/compass/compiler.rb:127:in `each'
+/Users/unicron/.rvm/gems/ruby-1.9.3-p392@susynext/gems/compass-1.0.0.alpha.19/lib/compass/compiler.rb:127:in `block in run'
+/Users/unicron/.rvm/gems/ruby-1.9.3-p392@susynext/gems/compass-1.0.0.alpha.19/lib/compass/compiler.rb:153:in `timed'
+/Users/unicron/.rvm/gems/ruby-1.9.3-p392@susynext/gems/compass-1.0.0.alpha.19/lib/compass/compiler.rb:126:in `run'
+/Users/unicron/.rvm/gems/ruby-1.9.3-p392@susynext/gems/compass-1.0.0.alpha.19/lib/compass/watcher/compiler.rb:24:in `compile'
+/Users/unicron/.rvm/rubies/ruby-1.9.3-p392/lib/ruby/1.9.1/forwardable.rb:201:in `compile'
+/Users/unicron/.rvm/gems/ruby-1.9.3-p392@susynext/gems/compass-1.0.0.alpha.19/lib/compass/watcher/project_watcher.rb:101:in `sass_modified'
+/Users/unicron/.rvm/gems/ruby-1.9.3-p392@susynext/gems/compass-1.0.0.alpha.19/lib/compass/watcher/project_watcher.rb:89:in `sass_callback'
+/Users/unicron/.rvm/gems/ruby-1.9.3-p392@susynext/gems/compass-1.0.0.alpha.19/lib/compass/watcher/watch.rb:14:in `call'
+/Users/unicron/.rvm/gems/ruby-1.9.3-p392@susynext/gems/compass-1.0.0.alpha.19/lib/compass/watcher/watch.rb:14:in `run_callback'
+/Users/unicron/.rvm/gems/ruby-1.9.3-p392@susynext/gems/compass-1.0.0.alpha.19/lib/compass/watcher/project_watcher.rb:69:in `block in listen_callback'
+/Users/unicron/.rvm/gems/ruby-1.9.3-p392@susynext/gems/compass-1.0.0.alpha.19/lib/compass/watcher/project_watcher.rb:66:in `each'
+/Users/unicron/.rvm/gems/ruby-1.9.3-p392@susynext/gems/compass-1.0.0.alpha.19/lib/compass/watcher/project_watcher.rb:66:in `listen_callback'
+/Users/unicron/.rvm/gems/ruby-1.9.3-p392@susynext/gems/listen-1.1.6/lib/listen/listener.rb:236:in `call'
+/Users/unicron/.rvm/gems/ruby-1.9.3-p392@susynext/gems/listen-1.1.6/lib/listen/listener.rb:236:in `on_change'
+/Users/unicron/.rvm/gems/ruby-1.9.3-p392@susynext/gems/listen-1.1.6/lib/listen/listener.rb:271:in `block in initialize_adapter'
+/Users/unicron/.rvm/gems/ruby-1.9.3-p392@susynext/gems/listen-1.1.6/lib/listen/adapter.rb:244:in `call'
+/Users/unicron/.rvm/gems/ruby-1.9.3-p392@susynext/gems/listen-1.1.6/lib/listen/adapter.rb:244:in `report_changes'
+/Users/unicron/.rvm/gems/ruby-1.9.3-p392@susynext/gems/listen-1.1.6/lib/listen/adapter.rb:313:in `poll_changed_directories'
+/Users/unicron/.rvm/gems/ruby-1.9.3-p392@susynext/gems/listen-1.1.6/lib/listen/adapter.rb:289:in `block in start_poller'
+*/
+body:before {
+  white-space: pre;
+  font-family: monospace;
+  content: "Syntax error: Function span-math is missing argument $input.\A         on line 165 of /Users/unicron/Git/_OpenSource/susy/test/scss/language/susy/_span.scss, in `@content'\A         from line 12 of /Users/unicron/.rvm/gems/ruby-1.9.3-p392@susynext/gems/true-0.2.0/sass/true/_tests.scss, in `test'\A         from line 152 of /Users/unicron/Git/_OpenSource/susy/test/scss/language/susy/_span.scss, in `@content'\A         from line 12 of /Users/unicron/.rvm/gems/ruby-1.9.3-p392@susynext/gems/true-0.2.0/sass/true/_modules.scss, in `test-module'\A         from line 15 of /Users/unicron/Git/_OpenSource/susy/test/scss/language/susy/_span.scss\A         from line 10 of /Users/unicron/Git/_OpenSource/susy/test/scss/language/_susy.scss\A         from line 4 of /Users/unicron/Git/_OpenSource/susy/test/scss/_language.scss\A         from line 5 of /Users/unicron/Git/_OpenSource/susy/test/scss/_tests.scss\A         from line 19 of /Users/unicron/Git/_OpenSource/susy/test/scss/test.scss"; }

@@ -12,6 +12,8 @@ Changelog
   [`Adrien Antoine <https://github.com/Alshten>`_]
 - Compass 1.0 config no longer needs to ``require 'susy'``.
   Susy is registered with Compass automatically.
+- Add ``$clean`` argument to ``layout`` and ``with-layout`` mixins,
+  for creating new layout contexts from a clean slate.
 
 
 2.1.1 - Mar 13 2014

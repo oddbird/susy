@@ -390,7 +390,7 @@ You can pass that context along with the shorthand syntax.
   body { @include container(8); }
   .span { @include span(3 of 8); }
 
-But that gets repetative if you have large blocks of code
+But that gets repetitive if you have large blocks of code
 using a given context.
 The ``nested`` **mixin** provides a shortcut
 to change the default context for a section of code.

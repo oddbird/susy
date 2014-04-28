@@ -1,16 +1,20 @@
 Changelog
 =========
 
-2.2.0 - UNRELEASED
-------------------
+2.1.2 - Apr 28 2014
+-------------------
 
 - ``first`` and ``last`` keywords output ``0`` margins instead of ``null``
   so they can be used to override previous span settings.
 - Output ``:before`` / ``:after`` rather than ``::before`` / ``::after``
   to support IE8.
+- Load Susy paths in Compass if required, otherwise add it to SASS_PATH.
+  [`Adrien Antoine <https://github.com/Alshten>`_]
+- Compass 1.0 config no longer needs to ``require 'susy'``.
+  Susy is registered with Compass automatically.
 
 
-2.1.0 - Mar 13 2014
+2.1.1 - Mar 13 2014
 -------------------
 
 - Rename core math functions, and prepare for decomposition.

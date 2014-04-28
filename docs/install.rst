@@ -52,14 +52,7 @@ Create a new Compass project:
 .. code-block:: bash
 
   # command line
-  compass create <project name> -r susy -u susy
-
-Update an existing Compass project:
-
-.. code-block:: ruby
-
-  # config.rb
-  require "susy"
+  compass create --using susy <project name>
 
 .. _Compass: http://compass-style.org/
 .. _installing Compass: http://compass-style.org/install/
@@ -68,7 +61,7 @@ Update an existing Compass project:
 Grunt (and Yeoman)
 ------------------
 
-You can enable Susy in Grunt by adding a line to your ``Gruntfile.js``. 
+You can enable Susy in Grunt by adding a line to your ``Gruntfile.js``.
 You will need to add a line to either your Sass task or, if you're using Compass, your Compass task.
 
 To add Susy to the Sass task, edit your Gruntfile.js at the root level of your project
@@ -86,7 +79,7 @@ and look for the Sass-related rules. Add ``require: 'susy'`` inside the ``option
       files: {
           'css/style.css': 'scss/style.scss'
       }
-    } 
+    }
   }
 
 Assuming you've already installed Susy,

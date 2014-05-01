@@ -445,7 +445,6 @@ h1 {
 }
 
 .test__span .assert__default .test, .test__span .assert__default .expect {
-  susy: 7 .5 after;
   clear: both;
 }
 .test__span .assert__default .test:after, .test__span .assert__default .expect:after {

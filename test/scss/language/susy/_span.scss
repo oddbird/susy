@@ -21,7 +21,6 @@
     // default
     @include assert-setup('default', $grid: 7 .5 after) {
       .test, .expect {
-        susy: 7 .5 after;
         @include susy-clearfix;
         clear: both;
         .inner { background: rgba(yellow, .25); }
@@ -31,16 +30,15 @@
       'Span should set width (75%), float (left), and gutter (5% margin-right)'
     ) {
       .test {
-        @include span(5 content-box) { .inner { @include span(2); } }
+        @include span(5 content-box inspect) { .inner { @include span(2); } }
       }
       .expect {
-        susy: 5 content-box;
+        -susy-span: 5 content-box inspect;
         @include output((box-sizing: content-box));
         width: 70%;
         float: left;
         margin-right: 5%;
         .inner {
-          susy: 2;
           width: percentage(2.5/7);
           float: left;
           margin-right: percentage(.5/7);
@@ -62,7 +60,6 @@
 
       .test { @include span(5 break); }
       .expect {
-        susy: 5 break;
         clear: both;
         width: 62.5%;
         float: left;

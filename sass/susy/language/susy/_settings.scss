@@ -16,6 +16,7 @@
     color: rgba(#66f, .25),
     output: background,
     toggle: top right,
+    inspect: false,
   ),
 ));
 
@@ -39,6 +40,7 @@ $susy-keywords: (
   clear: break nobreak,
   debug image: show hide show-columns show-baseline,
   debug output: background overlay,
+  debug inspect: inspect,
 );
 
 

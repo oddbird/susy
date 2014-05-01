@@ -8,7 +8,7 @@
 @mixin span(
   $span
 ) {
-  $debug: $span;
+  $inspect: $span;
   $span: parse-span($span);
   $output: span-math($span);
   $nesting: susy-get(span, $span);
@@ -24,7 +24,7 @@
     @include nobreak;
   }
   
-  @include susy-debug(span, $debug);
+  @include susy-inspect(span, $inspect);
   @include output((box-sizing: $box));
   @include float-span-output($output...);
 

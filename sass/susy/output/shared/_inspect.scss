@@ -1,0 +1,33 @@
+// Susy Debug
+// ----------------
+// Output arguments passed to a inspect.
+// - $mixin  : <susy mixin>
+// - $inspec   : <mixin arguments>
+
+@mixin susy-inspect($mixin, $inspect) {
+  @if index($inspect, inspect) or susy-get(debug inspect) {
+    -susy-#{$mixin}: inspect($inspect);
+  }
+};
+
+// To Do: 
+// ---------------------
+// 1) Write tests for susy-debug.
+// 2) Add susy-inspect all mixins.
+
+// Mixins to include:
+// ----------------------
+// nested
+// layout
+// withl
+// gutters
+// container
+// nested-context
+// global-box-sizing
+// first, last, alpha, omega
+// full
+// pre, etc.
+// bleed
+// isolate
+// show-grid
+// susy-breakpoint

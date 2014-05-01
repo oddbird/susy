@@ -110,38 +110,32 @@ head:hover ~ .symmetrical:before, head:hover ~ body .symmetrical:before {
   min-height: 15em;
 }
 .symmetrical > .size1of5:first-of-type {
-  susy-span: false false first 1;
   width: 18.36735%;
   float: left;
   margin-left: 0;
 }
 .symmetrical > .size1of5 ~ .size1of5 {
-  susy-span: false false last 9;
   width: 18.36735%;
   float: right;
   margin-left: 2.04082%;
 }
 .symmetrical > .size3of5 {
-  susy-span: true false 3;
   width: 59.18367%;
   float: left;
   margin-left: 2.04082%;
 }
 .symmetrical > .size3of5 > .size1of2:first-child {
-  susy-span: false false first 1;
   width: 48.27586%;
   float: left;
   margin-left: 0;
 }
 .symmetrical > .size3of5 > .size1of2 + .size1of2 {
-  susy-span: false false last 4;
   width: 48.27586%;
   float: right;
   margin-left: 3.44828%;
 }
 .symmetrical > .size3of5 > .full {
   clear: both;
-  susy-span: true false full;
   width: 100%;
   float: left;
   margin-left: 0;
@@ -149,33 +143,28 @@ head:hover ~ .symmetrical:before, head:hover ~ body .symmetrical:before {
   background: none;
 }
 .symmetrical .full .size1of3 {
-  susy-span: false false first 1;
   width: 31.03448%;
   float: left;
   margin-left: 0;
   min-height: 9.75em;
 }
 .symmetrical .full .size2of3 {
-  susy-span: true false last 3;
   width: 65.51724%;
   float: right;
   margin-left: 3.44828%;
 }
 .symmetrical .size2of3 .size1of2:first-child {
-  susy-span: false false first 1;
   width: 47.36842%;
   float: left;
   margin-left: 0;
 }
 .symmetrical .size2of3 .size1of2 + .size1of2 {
-  susy-span: false false last 3;
   width: 47.36842%;
   float: right;
   margin-left: 5.26316%;
 }
 .symmetrical .size2of3 .full {
   clear: both;
-  susy-span: false false full;
   width: 100%;
   float: left;
   margin-left: 0;
@@ -246,35 +235,30 @@ head:hover ~ .asymmetrical:before, head:hover ~ body .asymmetrical:before {
   min-height: 15em;
 }
 .asymmetrical > .size1of5:first-of-type {
-  susy-span: false false first 1;
   width: 12.5%;
   float: left;
   margin-left: 0;
   margin-right: -100%;
 }
 .asymmetrical > .size1of5 ~ .size1of5 {
-  susy-span: false false last 9;
   width: 21.875%;
   float: left;
   margin-left: 78.125%;
   margin-right: -100%;
 }
 .asymmetrical > .size3of5 {
-  susy-span: true false 3;
   width: 61.45833%;
   float: left;
   margin-left: 14.58333%;
   margin-right: -100%;
 }
 .asymmetrical > .size3of5 > .size1of2:first-child {
-  susy-span: false false first 1;
   width: 44.0678%;
   float: left;
   margin-left: 0;
   margin-right: -100%;
 }
 .asymmetrical > .size3of5 > .size1of2 + .size1of2 {
-  susy-span: false false last 4;
   width: 52.54237%;
   float: left;
   margin-left: 47.45763%;
@@ -282,7 +266,6 @@ head:hover ~ .asymmetrical:before, head:hover ~ body .asymmetrical:before {
 }
 .asymmetrical > .size3of5 > .full {
   clear: both;
-  susy-span: true false full;
   width: 100%;
   float: left;
   margin-left: 0;
@@ -290,7 +273,6 @@ head:hover ~ .asymmetrical:before, head:hover ~ body .asymmetrical:before {
   background: none;
 }
 .asymmetrical .full .size1of3 {
-  susy-span: false false first 1;
   width: 18.64407%;
   float: left;
   margin-left: 0;
@@ -298,21 +280,18 @@ head:hover ~ .asymmetrical:before, head:hover ~ body .asymmetrical:before {
   min-height: 9.75em;
 }
 .asymmetrical .full .size2of3 {
-  susy-span: true false last 3;
   width: 77.9661%;
   float: left;
   margin-left: 22.0339%;
   margin-right: -100%;
 }
 .asymmetrical .size2of3 .size1of2:first-child {
-  susy-span: false false first 1;
   width: 47.82609%;
   float: left;
   margin-left: 0;
   margin-right: -100%;
 }
 .asymmetrical .size2of3 .size1of2 + .size1of2 {
-  susy-span: false false last 3;
   width: 47.82609%;
   float: left;
   margin-left: 52.17391%;
@@ -320,7 +299,6 @@ head:hover ~ .asymmetrical:before, head:hover ~ body .asymmetrical:before {
 }
 .asymmetrical .size2of3 .full {
   clear: both;
-  susy-span: false false full;
   width: 100%;
   float: left;
   margin-left: 0;
@@ -384,38 +362,32 @@ head:hover ~ .asymmetrical:before, head:hover ~ body .asymmetrical:before {
   min-height: 15em;
 }
 .static > .size1of5:first-of-type {
-  susy-span: false false first 1;
   width: 140px;
   float: left;
   margin-right: 20px;
 }
 .static > .size1of5 ~ .size1of5 {
-  susy-span: false false last 9;
   width: 140px;
   float: right;
   margin-right: 0;
 }
 .static > .size3of5 {
-  susy-span: true false 3;
   width: 460.0px;
   float: left;
   margin-right: 20px;
 }
 .static > .size3of5 > .size1of2:first-child {
-  susy-span: false false first 1;
   width: 220px;
   float: left;
   margin-right: 20px;
 }
 .static > .size3of5 > .size1of2 + .size1of2 {
-  susy-span: false false last 4;
   width: 220px;
   float: right;
   margin-right: 0;
 }
 .static > .size3of5 > .full {
   clear: both;
-  susy-span: true false full;
   width: 100%;
   float: left;
   margin-left: 0;
@@ -423,33 +395,28 @@ head:hover ~ .asymmetrical:before, head:hover ~ body .asymmetrical:before {
   background: none;
 }
 .static .full .size1of3 {
-  susy-span: false false first 1;
   width: 140px;
   float: left;
   margin-right: 20px;
   min-height: 9.75em;
 }
 .static .full .size2of3 {
-  susy-span: true false last 3;
   width: 300px;
   float: right;
   margin-right: 0;
 }
 .static .size2of3 .size1of2:first-child {
-  susy-span: false false first 1;
   width: 140px;
   float: left;
   margin-right: 20px;
 }
 .static .size2of3 .size1of2 + .size1of2 {
-  susy-span: false false last 3;
   width: 140px;
   float: right;
   margin-right: 0;
 }
 .static .size2of3 .full {
   clear: both;
-  susy-span: false false full;
   width: 100%;
   float: left;
   margin-left: 0;
@@ -509,33 +476,28 @@ head:hover ~ .asymmetrical:before, head:hover ~ body .asymmetrical:before {
   min-height: 15em;
 }
 .split > .size1of5:first-of-type {
-  susy-span: false false first 1;
   width: 10.9375%;
   float: left;
   margin-left: 0.78125%;
   margin-right: 0.78125%;
 }
 .split > .size1of5 ~ .size1of5 {
-  susy-span: false false last 9;
   width: 32.8125%;
   float: right;
   margin-left: 0.78125%;
   margin-right: 0.78125%;
 }
 .split > .size3of5 {
-  susy-span: true true 3;
   width: 53.125%;
   float: left;
 }
 .split > .size3of5 > .size1of2:first-child {
-  susy-span: false false first 1;
   width: 64.70588%;
   float: left;
   margin-left: 1.47059%;
   margin-right: 1.47059%;
 }
 .split > .size3of5 > .size1of2 + .size1of2 {
-  susy-span: false false last 4;
   width: 29.41176%;
   float: right;
   margin-left: 1.47059%;
@@ -543,13 +505,11 @@ head:hover ~ .asymmetrical:before, head:hover ~ body .asymmetrical:before {
 }
 .split > .size3of5 > .full {
   clear: both;
-  susy-span: true true full;
   width: 100%;
   float: left;
   background: none;
 }
 .split .full .size1of3 {
-  susy-span: false false first 1;
   width: 50%;
   float: left;
   margin-left: 1.47059%;
@@ -557,19 +517,16 @@ head:hover ~ .asymmetrical:before, head:hover ~ body .asymmetrical:before {
   min-height: 9.75em;
 }
 .split .full .size2of3 {
-  susy-span: true true last 3;
   width: 47.05882%;
   float: right;
 }
 .split .size2of3 .size1of2:first-child {
-  susy-span: false false first 1;
   width: 43.75%;
   float: left;
   margin-left: 3.125%;
   margin-right: 3.125%;
 }
 .split .size2of3 .size1of2 + .size1of2 {
-  susy-span: false false last 3;
   width: 43.75%;
   float: right;
   margin-left: 3.125%;
@@ -577,7 +534,6 @@ head:hover ~ .asymmetrical:before, head:hover ~ body .asymmetrical:before {
 }
 .split .size2of3 .full {
   clear: both;
-  susy-span: false false full;
   width: 93.75%;
   float: left;
   margin-left: 3.125%;
@@ -640,7 +596,6 @@ head:hover ~ .asymmetrical:before, head:hover ~ body .asymmetrical:before {
   min-height: 15em;
 }
 .inside > .size1of5:first-of-type {
-  susy-span: false false first 1;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
@@ -650,7 +605,6 @@ head:hover ~ .asymmetrical:before, head:hover ~ body .asymmetrical:before {
   padding-right: 0.78125%;
 }
 .inside > .size1of5 ~ .size1of5 {
-  susy-span: false false last 9;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
@@ -660,7 +614,6 @@ head:hover ~ .asymmetrical:before, head:hover ~ body .asymmetrical:before {
   padding-right: 0.78125%;
 }
 .inside > .size3of5 {
-  susy-span: true true 3;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
@@ -668,7 +621,6 @@ head:hover ~ .asymmetrical:before, head:hover ~ body .asymmetrical:before {
   float: left;
 }
 .inside > .size3of5 > .size1of2:first-child {
-  susy-span: false false first 1;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
@@ -678,7 +630,6 @@ head:hover ~ .asymmetrical:before, head:hover ~ body .asymmetrical:before {
   padding-right: 1.47059%;
 }
 .inside > .size3of5 > .size1of2 + .size1of2 {
-  susy-span: false false last 4;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
@@ -689,7 +640,6 @@ head:hover ~ .asymmetrical:before, head:hover ~ body .asymmetrical:before {
 }
 .inside > .size3of5 > .full {
   clear: both;
-  susy-span: true true full;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
@@ -698,7 +648,6 @@ head:hover ~ .asymmetrical:before, head:hover ~ body .asymmetrical:before {
   background: none;
 }
 .inside .full .size1of3 {
-  susy-span: false false first 1;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
@@ -709,7 +658,6 @@ head:hover ~ .asymmetrical:before, head:hover ~ body .asymmetrical:before {
   min-height: 9.75em;
 }
 .inside .full .size2of3 {
-  susy-span: true true last 3;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
@@ -717,7 +665,6 @@ head:hover ~ .asymmetrical:before, head:hover ~ body .asymmetrical:before {
   float: right;
 }
 .inside .size2of3 .size1of2:first-child {
-  susy-span: false false first 1;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
@@ -727,7 +674,6 @@ head:hover ~ .asymmetrical:before, head:hover ~ body .asymmetrical:before {
   padding-right: 3.125%;
 }
 .inside .size2of3 .size1of2 + .size1of2 {
-  susy-span: false false last 3;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
@@ -738,7 +684,6 @@ head:hover ~ .asymmetrical:before, head:hover ~ body .asymmetrical:before {
 }
 .inside .size2of3 .full {
   clear: both;
-  susy-span: false false full;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
@@ -809,7 +754,6 @@ head:hover ~ .asymmetrical:before, head:hover ~ body .asymmetrical:before {
   min-height: 15em;
 }
 .inside-static > .size1of5:first-of-type {
-  susy-span: false false first 1;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
@@ -819,7 +763,6 @@ head:hover ~ .asymmetrical:before, head:hover ~ body .asymmetrical:before {
   padding-right: 1em;
 }
 .inside-static > .size1of5 ~ .size1of5 {
-  susy-span: false false last 9;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
@@ -829,7 +772,6 @@ head:hover ~ .asymmetrical:before, head:hover ~ body .asymmetrical:before {
   padding-right: 1em;
 }
 .inside-static > .size3of5 {
-  susy-span: true true 3;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
@@ -837,7 +779,6 @@ head:hover ~ .asymmetrical:before, head:hover ~ body .asymmetrical:before {
   float: left;
 }
 .inside-static > .size3of5 > .size1of2:first-child {
-  susy-span: false false first 1;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
@@ -847,7 +788,6 @@ head:hover ~ .asymmetrical:before, head:hover ~ body .asymmetrical:before {
   padding-right: 1em;
 }
 .inside-static > .size3of5 > .size1of2 + .size1of2 {
-  susy-span: false false last 4;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
@@ -858,7 +798,6 @@ head:hover ~ .asymmetrical:before, head:hover ~ body .asymmetrical:before {
 }
 .inside-static > .size3of5 > .full {
   clear: both;
-  susy-span: true true full;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
@@ -867,7 +806,6 @@ head:hover ~ .asymmetrical:before, head:hover ~ body .asymmetrical:before {
   background: none;
 }
 .inside-static .full .size1of3 {
-  susy-span: false false first 1;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
@@ -878,7 +816,6 @@ head:hover ~ .asymmetrical:before, head:hover ~ body .asymmetrical:before {
   min-height: 9.75em;
 }
 .inside-static .full .size2of3 {
-  susy-span: true true last 3;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
@@ -886,7 +823,6 @@ head:hover ~ .asymmetrical:before, head:hover ~ body .asymmetrical:before {
   float: right;
 }
 .inside-static .size2of3 .size1of2:first-child {
-  susy-span: false false first 1;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
@@ -896,7 +832,6 @@ head:hover ~ .asymmetrical:before, head:hover ~ body .asymmetrical:before {
   padding-right: 1em;
 }
 .inside-static .size2of3 .size1of2 + .size1of2 {
-  susy-span: false false last 3;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
@@ -907,7 +842,6 @@ head:hover ~ .asymmetrical:before, head:hover ~ body .asymmetrical:before {
 }
 .inside-static .size2of3 .full {
   clear: both;
-  susy-span: false false full;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;

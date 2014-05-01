@@ -297,7 +297,6 @@
 /* - [mixin] span */
 /* "Span should set width (75%), float (left), and gutter (5% margin-right)" */
 .test__span .assert__default .test {
-  susy-span: false false;
   -moz-box-sizing: content-box;
   -webkit-box-sizing: content-box;
   box-sizing: content-box;
@@ -306,7 +305,6 @@
   margin-right: 5%;
 }
 .test__span .assert__default .test .inner {
-  susy-span: false false;
   width: 35.71429%;
   float: left;
   margin-right: 7.14286%;
@@ -335,7 +333,6 @@
 }
 .test__span .assert__inside .test {
   clear: both;
-  susy-span: false false;
   width: 62.5%;
   float: left;
   padding-left: 1.25%;
@@ -352,7 +349,6 @@
 
 /* "Span should set width, float, inside gutter, and border-box" */
 .test__span .assert__explicit .test {
-  susy-span: false false;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
@@ -766,7 +762,6 @@
 /* "Full spans clear preceeding floats, and have gutters." */
 .test__full .assert__split .test {
   clear: both;
-  susy-span: false false full;
   width: 97.5%;
   float: left;
   margin-left: 1.25%;
@@ -774,7 +769,6 @@
 }
 .test__full .assert__split .expect {
   clear: both;
-  susy-span: false false;
   width: 97.5%;
   float: left;
   margin-left: 1.25%;
@@ -784,7 +778,6 @@
 /* "Full spans clear preceeding floats, and have gutters." */
 .test__full .assert__after .test {
   clear: both;
-  susy-span: false false full;
   width: 100%;
   float: left;
   margin-left: 0;
@@ -792,7 +785,6 @@
 }
 .test__full .assert__after .expect {
   clear: both;
-  susy-span: false false;
   width: 100%;
   float: left;
 }

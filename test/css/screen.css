@@ -484,7 +484,6 @@ h1 {
 }
 
 .test__span .assert__inside .spacer {
-  susy-span: false false;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
@@ -656,7 +655,6 @@ h1 {
 }
 
 .test__isolate .assert__isolate .test, .test__isolate .assert__isolate .expect {
-  susy-span: false false last 6;
   width: 25%;
   float: right;
   margin-right: 0;
@@ -922,7 +920,6 @@ h1 {
 }
 
 .test__break .assert__break .spacer {
-  susy-span: false false;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
@@ -960,7 +957,6 @@ h1 {
 }
 
 .test__nobreak .assert__nobreak .spacer {
-  susy-span: false false;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
@@ -1001,7 +997,6 @@ h1 {
 }
 
 .test__full .assert__split .spacer {
-  susy-span: false false;
   width: 22.5%;
   float: left;
   margin-left: 1.25%;
@@ -1035,7 +1030,6 @@ h1 {
 }
 
 .test__full .assert__after .spacer {
-  susy-span: false false;
   width: 25%;
   float: left;
   margin-right: 5%;
@@ -1069,7 +1063,6 @@ h1 {
 }
 
 .test__first .assert__before .test, .test__first .assert__before .expect {
-  susy-span: false false;
   width: 25%;
   float: left;
   margin-left: 5%;
@@ -1103,7 +1096,6 @@ h1 {
 }
 
 .test__first .assert__split .test, .test__first .assert__split .expect {
-  susy-span: false false;
   width: 22.5%;
   float: left;
   margin-left: 1.25%;
@@ -1139,7 +1131,6 @@ h1 {
 }
 
 .test__alpha .assert__alpha .test, .test__alpha .assert__alpha .expect {
-  susy-span: false false;
   width: 25%;
   float: left;
   margin-left: 5%;
@@ -1174,7 +1165,6 @@ h1 {
 }
 
 .test__last .assert__after .test, .test__last .assert__after .expect {
-  susy-span: false false;
   width: 25%;
   float: left;
   margin-right: 5%;
@@ -1208,7 +1198,6 @@ h1 {
 }
 
 .test__last .assert__split .test, .test__last .assert__split .expect {
-  susy-span: false false;
   width: 23.80952%;
   float: left;
   margin-left: 2.38095%;
@@ -1244,7 +1233,6 @@ h1 {
 }
 
 .test__omega .assert__omega .test, .test__omega .assert__omega .expect {
-  susy-span: false false;
   width: 25%;
   float: left;
   margin-right: 5%;
@@ -1288,13 +1276,11 @@ h1 {
 }
 
 .test__pre .assert__wide .spacer {
-  susy-span: false false first 1;
   width: 15%;
   float: left;
   margin-left: 0;
 }
 .test__pre .assert__wide .test, .test__pre .assert__wide .expect {
-  susy-span: false false;
   width: 40%;
   float: left;
   margin-left: 5%;
@@ -1327,7 +1313,6 @@ h1 {
 }
 
 .test__pre .assert__split .test, .test__pre .assert__split .expect {
-  susy-span: false false;
   width: 47.5%;
   float: left;
   margin-left: 1.25%;
@@ -1361,13 +1346,11 @@ h1 {
 }
 
 .test__pre .assert__wider .spacer {
-  susy-span: false false first 1;
   width: 10%;
   float: left;
   margin-left: 0;
 }
 .test__pre .assert__wider .test, .test__pre .assert__wider .expect {
-  susy-span: false false;
   width: 40%;
   float: left;
   margin-left: 5%;
@@ -1455,14 +1438,12 @@ h1 {
 }
 
 .test__post .assert__wider .spacer {
-  susy-span: false false 4;
   width: 20%;
   float: left;
   margin-right: 2.5%;
   height: 1.5rem;
 }
 .test__post .assert__wider .test, .test__post .assert__wider .expect {
-  susy-span: false false first 1;
   width: 32.5%;
   float: left;
   margin-right: 2.5%;
@@ -1496,7 +1477,6 @@ h1 {
 }
 
 .test__push .assert__push .test, .test__push .assert__push .expect {
-  susy-span: false false;
   width: 47.5%;
   float: left;
   margin-left: 1.25%;
@@ -1530,13 +1510,11 @@ h1 {
 }
 
 .test__pull .assert__narrow .spacer {
-  susy-span: false false first 1;
   width: 32.5%;
   float: left;
   margin-left: 0;
 }
 .test__pull .assert__narrow .test, .test__pull .assert__narrow .expect {
-  susy-span: false false 2;
   width: 75%;
   float: left;
   margin-left: 2.5%;
@@ -1569,14 +1547,12 @@ h1 {
 }
 
 .test__pull .assert__split .spacer {
-  susy-span: false false first 1;
   width: 22.5%;
   float: left;
   margin-left: 1.25%;
   margin-right: 1.25%;
 }
 .test__pull .assert__split .test, .test__pull .assert__split .expect {
-  susy-span: false false;
   width: 72.5%;
   float: left;
   margin-left: 1.25%;
@@ -1609,13 +1585,11 @@ h1 {
 }
 
 .test__pull .assert__wide .spacer {
-  susy-span: false false first 1;
   width: 35%;
   float: left;
   margin-left: 0;
 }
 .test__pull .assert__wide .test, .test__pull .assert__wide .expect {
-  susy-span: false false 2;
   width: 75%;
   float: left;
   margin-left: 2.5%;
@@ -1647,13 +1621,11 @@ h1 {
 }
 
 .test__pull .assert__wider .spacer {
-  susy-span: false false first 1;
   width: 35%;
   float: left;
   margin-left: 0;
 }
 .test__pull .assert__wider .test, .test__pull .assert__wider .expect {
-  susy-span: false false 2;
   width: 80%;
   float: left;
   margin-left: 2.38095%;
@@ -1798,7 +1770,6 @@ h1 {
 }
 
 .test__prefix .assert__wider .spacer {
-  susy-span: false false;
   width: 10%;
   float: left;
 }
@@ -1858,7 +1829,6 @@ h1 {
 }
 
 .test__suffix .assert__wider .spacer {
-  susy-span: false false last 5;
   width: 10%;
   float: right;
   margin-right: 0;
@@ -2636,7 +2606,6 @@ h1 {
 }
 
 .test__isolate-output .assert__isolate-output .test, .test__isolate-output .assert__isolate-output .expect {
-  susy-span: false false;
   width: 40%;
   float: left;
   margin-right: 5.26316%;

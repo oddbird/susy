@@ -446,6 +446,7 @@
 /* - [mixin] gallery */
 /* "Items should create 3x symmetrical isolated gallery." */
 .test__gallery .assert__sym .test {
+  -susy-gallery: 2 inspect;
   width: 28.0%;
   float: left;
 }
@@ -466,6 +467,7 @@
   clear: none;
 }
 .test__gallery .assert__sym .expect {
+  -susy-gallery: 2 inspect;
   width: 28.0%;
   float: left;
 }

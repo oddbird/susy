@@ -11,8 +11,10 @@ $susy-overlay-grid-head-exists: false;
 @mixin show-grid(
   $grid: $susy
 ) {
+  $inspect: $grid;
   $_output: debug-get(output, $grid);
 
+  @include susy-inspect(show-grid, $inspect);
   @if $_output == overlay {
     @include overlay-grid($grid);
   } @else {

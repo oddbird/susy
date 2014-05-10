@@ -214,4 +214,21 @@
       'Returns combined shorthand for margin, no shorthand for padding.');
 
   }
+    // with inspect output
+    @include assert-setup('simple', $grid: 9 .5) {
+      .nest { @include squish(1); }
+    }
+    @include assert-output(
+      'Items should bleed 1 column outside their nested context and include inspection output.'
+    ) {
+      .test { @include bleed(0 1 of 7 inspect); }
+      .expect {
+        -susy-bleed: 0 1 of 7 inspect;
+        margin-right: -15%;
+        margin-left: -15%;
+        padding-right: 15%;
+        padding-left: 15%;
+      }
+    }
+
 }

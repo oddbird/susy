@@ -305,6 +305,41 @@
 /*  - [function] container (5 Assertions, 5 Passed, 0 Failed) */
 /*  - [function] get-container-width (6 Assertions, 6 Passed, 0 Failed) */
 /*  - [function] parse-container-position() (7 Assertions, 7 Passed, 0 Failed) */
+/* - [mixin] container */
+/* "Containers should have 80% max-width and show a 7 .5 grid with inspect argument." */
+.test__container .assert__default-box .test {
+  -susy-container: show-columns inspect;
+  max-width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 66.66667%, transparent 66.66667%);
+  background-size: 15%;
+  background-origin: content-box;
+  background-clip: content-box;
+  background-position: left top;
+}
+.test__container .assert__default-box .test:after {
+  content: " ";
+  display: block;
+  clear: both;
+}
+.test__container .assert__default-box .expect {
+  -susy-container: show-columns inspect;
+  max-width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 66.66667%, transparent 66.66667%);
+  background-size: 15%;
+  background-origin: content-box;
+  background-clip: content-box;
+  background-position: left top;
+}
+.test__container .assert__default-box .expect:after {
+  content: " ";
+  display: block;
+  clear: both;
+}
+
 /*  
     3 Tests:
     - 3 Passed

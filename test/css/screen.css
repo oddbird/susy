@@ -430,6 +430,20 @@ h1 {
 /*  - [function] container (5 Assertions, 5 Passed, 0 Failed) */
 /*  - [function] get-container-width (6 Assertions, 6 Passed, 0 Failed) */
 /*  - [function] parse-container-position() (7 Assertions, 7 Passed, 0 Failed) */
+/* - [mixin] container */
+.test__container .assert__default-box {
+  overflow: hidden;
+  background: rgba(204, 204, 255, 0.5);
+}
+
+.test__container .assert__default-box:before {
+  content: "Containers should have 80% max-width and show a 7 .5 grid with inspect argument.";
+  display: block;
+  padding: 0.375rem 0.75rem;
+  text-align: left;
+  font-style: italic;
+}
+
 /*  
     3 Tests:
     - 3 Passed

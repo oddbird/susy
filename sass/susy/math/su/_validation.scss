@@ -9,6 +9,8 @@
   $columns,
   $silent: false
 ) {
+  @return rb_valid_columns($columns, $silent);
+
   $type: type-of($columns);
   $return: null;
 

@@ -52,16 +52,19 @@ $susy: () !default;
 ) {
   $layout: parse-grid($layout);
   $_options: $layout $susy $susy-defaults;
+
   $_break: false;
   $_return: null;
 
   @each $opt in $_options {
     @if type-of($opt) == map and not $_break {
-      $_keyset: _susy-deep-has-key($opt, $key...);
+      $_keyset: rb_susy_deep_has_key($opt, $key...);
+
       @if $_keyset {
-        $_return: _susy-deep-get($opt, $key...);
+        $_return: rb_susy-deep-get($opt, $key...);
         $_break: true;
       }
+
     }
   }
 

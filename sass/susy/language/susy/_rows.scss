@@ -60,7 +60,7 @@
 ) {
   $inspect  : $context;
   $context  : parse-grid($context);
-  
+
   $output: (
     flow: susy-get(flow, $context),
     margin: if(is-split($context), null, 0),

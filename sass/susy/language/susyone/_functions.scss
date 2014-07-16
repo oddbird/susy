@@ -3,7 +3,6 @@
 
 // We need access to some basic font settings for handling media-queries.
 @import "compass/typography/vertical_rhythm";
-@import "../../math/su";
 
 // For now, we also need this...
 $browser-default-font-size-px       : 16px;
@@ -247,9 +246,9 @@ $rem-with-px-fallback               : true !default;
 
 // This name will be deprecated...
 @function absolute-ems(
-  $ems, 
+  $ems,
   $font-size: $base-font-size
-){ 
+){
   @return base-ems( $ems, $font-size);
   }
 
@@ -341,7 +340,7 @@ $rem-with-px-fallback               : true !default;
 // Return the nearest layout (column-count) above a given breakpoint.
 //
 // $min : The min-width media-query breakpoint above which to establish a new layout.
-@function get-layout( 
+@function get-layout(
   $min
 ) {
   $min      : fix-ems($min);

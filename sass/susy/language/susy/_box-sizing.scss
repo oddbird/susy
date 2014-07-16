@@ -28,6 +28,6 @@
   $box
 ) {
   @if $box != susy-get(global-box-sizing) {
-	@include susy-set(global-box-sizing, $box);
+  @include susy-set(global-box-sizing, $box);
   }
 }

@@ -20,7 +20,6 @@ $susy-overlay-grid-head-exists: false;
     @include background-grid($grid);
   }
   @include susy-inspect(show-grid, $inspect);
-
 }
 
 @mixin show-grids(

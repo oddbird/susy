@@ -13,6 +13,7 @@
 ) {
   $inspect: $layout;
   $susy: _get-layout($layout, $clean) !global;
+
   @include susy-inspect(layout, $inspect);
 }
 

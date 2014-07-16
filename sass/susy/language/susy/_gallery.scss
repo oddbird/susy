@@ -49,7 +49,6 @@
   $box          : susy-get(box-sizing, $span);
   $global-box   : if(susy-get(global-box-sizing) == 'border-box', true, false);
 
-  
   @include susy-inspect(gallery, $inspect);
 
   // Collective Output

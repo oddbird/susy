@@ -430,20 +430,6 @@ h1 {
 /*  - [function] container (5 Assertions, 5 Passed, 0 Failed) */
 /*  - [function] get-container-width (6 Assertions, 6 Passed, 0 Failed) */
 /*  - [function] parse-container-position() (7 Assertions, 7 Passed, 0 Failed) */
-/* - [mixin] container */
-.test__container .assert__default-box {
-  overflow: hidden;
-  background: rgba(204, 204, 255, 0.5);
-}
-
-.test__container .assert__default-box:before {
-  content: "Containers should have 80% max-width and show a 7 .5 grid with inspect argument.";
-  display: block;
-  padding: 0.375rem 0.75rem;
-  text-align: left;
-  font-style: italic;
-}
-
 /*  
     3 Tests:
     - 3 Passed
@@ -2181,37 +2167,6 @@ h1 {
 
 /*  - [function] get-bleed (3 Assertions, 3 Passed, 0 Failed) */
 /*  - [function] bleed-shorthand (2 Assertions, 2 Passed, 0 Failed) */
-.test__ .assert__simple {
-  max-width: 100%;
-  margin-left: auto;
-  margin-right: auto;
-  background-image: -moz-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 66.66667%, rgba(0, 0, 0, 0) 66.66667%);
-  background-image: -webkit-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 66.66667%, rgba(0, 0, 0, 0) 66.66667%);
-  background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 66.66667%, rgba(0, 0, 0, 0) 66.66667%);
-  background-size: 11.53846%;
-  background-origin: content-box;
-  background-clip: content-box;
-  background-position: left top;
-}
-.test__ .assert__simple:after {
-  content: " ";
-  display: block;
-  clear: both;
-}
-
-.test__ .assert__simple .nest {
-  margin-left: 11.53846%;
-  margin-right: 11.53846%;
-}
-
-.test__ .assert__simple:before {
-  content: "Items should bleed 1 column outside their nested context and include inspection output.";
-  display: block;
-  padding: 0.375rem 0.75rem;
-  text-align: left;
-  font-style: italic;
-}
-
 /*  
     2 Tests:
     - 2 Passed

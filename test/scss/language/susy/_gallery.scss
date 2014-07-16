@@ -15,9 +15,8 @@
     @include assert-output(
       'Items should create 3x symmetrical isolated gallery.'
     ) {
-      .test { @include gallery(2 inspect); }
+      .test { @include gallery(2); }
       .expect {
-        -susy-gallery: 2 inspect;
         width: 28.0%;
         float: left;
         &:nth-child(3n + 1) {

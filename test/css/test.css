@@ -210,7 +210,6 @@
 /*  - [function] get-debug (2 Assertions, 2 Passed, 0 Failed) */
 /* "Items should have a 7-column grid with outside gutters." */
 .test__ .assert__outside .test {
-  -susy-show-grid: 7 0.5 before show background inspect;
   background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 66.66667%, transparent 66.66667%), linear-gradient(to bottom, black 5%, transparent 5%);
   background-size: 15%, 100% 24px;
   background-origin: content-box, border-box;
@@ -305,41 +304,6 @@
 /*  - [function] container (5 Assertions, 5 Passed, 0 Failed) */
 /*  - [function] get-container-width (6 Assertions, 6 Passed, 0 Failed) */
 /*  - [function] parse-container-position() (7 Assertions, 7 Passed, 0 Failed) */
-/* - [mixin] container */
-/* "Containers should have 80% max-width and show a 7 .5 grid with inspect argument." */
-.test__container .assert__default-box .test {
-  -susy-container: show-columns inspect;
-  max-width: 80%;
-  margin-left: auto;
-  margin-right: auto;
-  background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 66.66667%, transparent 66.66667%);
-  background-size: 15%;
-  background-origin: content-box;
-  background-clip: content-box;
-  background-position: left top;
-}
-.test__container .assert__default-box .test:after {
-  content: " ";
-  display: block;
-  clear: both;
-}
-.test__container .assert__default-box .expect {
-  -susy-container: show-columns inspect;
-  max-width: 80%;
-  margin-left: auto;
-  margin-right: auto;
-  background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 66.66667%, transparent 66.66667%);
-  background-size: 15%;
-  background-origin: content-box;
-  background-clip: content-box;
-  background-position: left top;
-}
-.test__container .assert__default-box .expect:after {
-  content: " ";
-  display: block;
-  clear: both;
-}
-
 /*  
     3 Tests:
     - 3 Passed
@@ -350,7 +314,6 @@
 /* - [mixin] span */
 /* "Span should set width (75%), float (left), and gutter (5% margin-right)" */
 .test__span .assert__default .test {
-  -susy-span: 5 content-box inspect;
   -moz-box-sizing: content-box;
   -webkit-box-sizing: content-box;
   box-sizing: content-box;
@@ -499,7 +462,6 @@
 /* - [mixin] gallery */
 /* "Items should create 3x symmetrical isolated gallery." */
 .test__gallery .assert__sym .test {
-  -susy-gallery: 2 inspect;
   width: 28.0%;
   float: left;
 }
@@ -520,7 +482,6 @@
   clear: none;
 }
 .test__gallery .assert__sym .expect {
-  -susy-gallery: 2 inspect;
   width: 28.0%;
   float: left;
 }
@@ -1190,22 +1151,6 @@
 
 /*  - [function] get-bleed (3 Assertions, 3 Passed, 0 Failed) */
 /*  - [function] bleed-shorthand (2 Assertions, 2 Passed, 0 Failed) */
-/* "Items should bleed 1 column outside their nested context and include inspection output." */
-.test__ .assert__simple .test {
-  -susy-bleed: 0 1 of 7 inspect;
-  margin-right: -15%;
-  margin-left: -15%;
-  padding-right: 15%;
-  padding-left: 15%;
-}
-.test__ .assert__simple .expect {
-  -susy-bleed: 0 1 of 7 inspect;
-  margin-right: -15%;
-  margin-left: -15%;
-  padding-right: 15%;
-  padding-left: 15%;
-}
-
 /*  
     2 Tests:
     - 2 Passed

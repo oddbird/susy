@@ -1,7 +1,5 @@
 # Compass CSS framework config file
-require 'susy'
 require 'breakpoint'
-require 'true'
 
 project_type = :stand_alone
 http_path = "/"

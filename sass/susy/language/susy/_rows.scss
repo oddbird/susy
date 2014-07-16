@@ -1,7 +1,6 @@
 // Row Start & End
 // ===============
 
-
 // Break
 // -----
 // Apply to any element that should force a line break.
@@ -24,7 +23,9 @@
 @mixin full(
   $context: $susy
 ) {
+  $inspect : $context;
   @include span(full of parse-grid($context) break);
+  @include susy-inspect(full, $inspect);
 }
 
 

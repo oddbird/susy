@@ -9,9 +9,10 @@
   $box: susy-get(global-box-sizing)
 ) {
 	$inspect: $box;
+
+  @include susy-inspect(global-box-sizing, $inspect);
   *, *:before, *:after { @include output((box-sizing: $box)); }
   @include update-box-model($box);
-  @include susy-inspect(global-box-sizing, $inspect);
 }
 
 // Border Box Sizing

@@ -18,9 +18,11 @@
 @mixin with-layout(
   $layout
 ) {
-  $old: $susy;
+  $inspect	: $layout;
+  $old		: $susy;
 
   @include layout($layout);
+  @include susy-inspect(with-layout, $inspect);
   @content;
 
   $susy: $old !global;

@@ -10,7 +10,7 @@
   $span,
   $selector: child
 ) {
-  $inspect: $span;
+  $inspect    : $span;
   $span       : parse-span($span);
   $span       : map-merge($span, (location: 1));
 

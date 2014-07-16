@@ -381,18 +381,6 @@ h1 {
 /*  - [function] get-background-asym (2 Assertions, 2 Passed, 0 Failed) */
 /*  - [function] get-background (5 Assertions, 5 Passed, 0 Failed) */
 /*  - [function] get-debug (2 Assertions, 2 Passed, 0 Failed) */
-.test__ .assert__outside {
-  background: rgba(204, 204, 255, 0.5);
-}
-
-.test__ .assert__outside:before {
-  content: "Items should have a 7-column grid with outside gutters.";
-  display: block;
-  padding: 0.375rem 0.75rem;
-  text-align: left;
-  font-style: italic;
-}
-
 /*  
     7 Tests:
     - 7 Passed

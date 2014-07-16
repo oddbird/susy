@@ -212,6 +212,5 @@
     );
     @include assert-equal($test, $expect,
       'Returns combined shorthand for margin, no shorthand for padding.');
-
   }
 }

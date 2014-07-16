@@ -9,8 +9,9 @@
 @mixin gutters(
   $span: $susy
 ) {
-  $span: parse-gutters($span);
-  $_gutters: get-gutters($span);
+  $inspect  : $span;
+  $span     : parse-gutters($span);
+  $_gutters : get-gutters($span);
 
   $_output: (
     before: map-get($_gutters, before),
@@ -23,6 +24,7 @@
   } @else {
     @include margin-output($_output...);
   }
+  @susy-inspect(gutters, $inspect);
 }
 
 @mixin gutter(

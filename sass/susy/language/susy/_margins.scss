@@ -30,7 +30,7 @@
   $width    : if($split, span($span) + gutter($span), span($span));
 
   @include margin-output(null, $width, $flow);
-  @include sust-inspect(post, $inspect);
+  @include susy-inspect(post, $inspect);
 }
 
 // Push

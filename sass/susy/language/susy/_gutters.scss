@@ -24,7 +24,8 @@
   } @else {
     @include margin-output($_output...);
   }
-  @susy-inspect(gutters, $inspect);
+
+  @include susy-inspect(gutters, $inspect);
 }
 
 @mixin gutter(

@@ -231,11 +231,11 @@ h1 {
 /*  - [mixin] layout (7 Assertions, 7 Passed, 0 Failed) */
 /*  - [mixin] with-layout (6 Assertions, 6 Passed, 0 Failed) */
 /*  - [function] layout (1 Assertions, 1 Passed, 0 Failed) */
-/*  - FAIL: [function] _get-layout (2 Assertions, 1 Passed, 1 Failed) */
+/*  - [function] _get-layout (2 Assertions, 2 Passed, 0 Failed) */
 /*  
     4 Tests:
-    - 3 Passed
-    - 1 Failed */
+    - 4 Passed
+    - 0 Failed */
 /*  
 
 ### Global Box-Sizing Syntax ------ */
@@ -2623,6 +2623,10 @@ h1 {
   font-style: italic;
 }
 
+.results {
+  background: rgba(0, 128, 0, 0.25);
+  border-color: green;
+}
 .results:after {
-  content: "57 Tests, 56 Passed, 1 Failed";
+  content: "57 Tests, 57 Passed, 0 Failed";
 }

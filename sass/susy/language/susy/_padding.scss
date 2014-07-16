@@ -19,7 +19,7 @@
   }
 
   @include padding-output($width, null, $flow);
-  @include sust-inspect(prefix, $inspect);
+  @include susy-inspect(prefix, $inspect);
 }
 
 // Suffix
@@ -38,7 +38,7 @@
     $gutter: gutter($span);
     $width: if($gutter and comparable($width, $gutter), $width + $gutter, $width);
   }
-  
+
   @include padding-output(null, $width, $flow);
   @include susy-inspect(suffix, $inspect);
 }

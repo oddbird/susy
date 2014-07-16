@@ -86,7 +86,7 @@
     }
   }
 
-  @include susy-inspect(squish, $inspect);
+  @include susy-inspect(squish, $inspect...);
   @include pre($pre);
   @include post($post);
 }

@@ -307,6 +307,7 @@
 /* - [mixin] span */
 /* "Span should set width (75%), float (left), and gutter (5% margin-right)" */
 .test__span .assert__default .test {
+  -susy-span: (5 content-box inspect,);
   -moz-box-sizing: content-box;
   -webkit-box-sizing: content-box;
   box-sizing: content-box;
@@ -957,6 +958,7 @@
 /* - [mixin] squish */
 /* "Items should have 2-columns margin before and after." */
 .test__squish .assert__simple .test {
+  -susy-squish: first 2, last 2 inspect;
   margin-left: 35%;
   margin-right: 35%;
 }

@@ -6,8 +6,9 @@
 
 @mixin susy-inspect($mixin, $inspect...) {
   $show: false;
+
   @each $item in $inspect {
-    @if index($inspect, inspect) {
+    @if index($item, inspect) {
       $show: true;
     }
   }

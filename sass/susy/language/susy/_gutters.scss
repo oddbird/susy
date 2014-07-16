@@ -19,13 +19,13 @@
     flow: susy-get(flow, $span),
   );
 
+  @include susy-inspect(gutters, $inspect);
+
   @if is-inside($span) {
     @include padding-output($_output...);
   } @else {
     @include margin-output($_output...);
   }
-
-  @include susy-inspect(gutters, $inspect);
 }
 
 @mixin gutter(

@@ -18,8 +18,8 @@
     $width: if($gutter and comparable($width, $gutter), $width + $gutter, $width);
   }
 
-  @include padding-output($width, null, $flow);
   @include susy-inspect(prefix, $inspect);
+  @include padding-output($width, null, $flow);
 }
 
 // Suffix
@@ -39,8 +39,8 @@
     $width: if($gutter and comparable($width, $gutter), $width + $gutter, $width);
   }
 
-  @include padding-output(null, $width, $flow);
   @include susy-inspect(suffix, $inspect);
+  @include padding-output(null, $width, $flow);
 }
 
 // Pad
@@ -52,7 +52,6 @@
   $pre,
   $post: false
 ) {
-  $inspect  : $pre;
   $pre      : map-merge((spread: wide), parse-span($pre));
 
   @if $post {
@@ -69,5 +68,4 @@
 
   @include prefix($pre);
   @include suffix($post);
-  @include susy-inspect(pad, $inspect);
 }

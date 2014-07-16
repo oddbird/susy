@@ -14,12 +14,12 @@ $susy-overlay-grid-head-exists: false;
   $inspect: $grid;
   $_output: debug-get(output, $grid);
 
+  @include susy-inspect(show-grid, $inspect);
   @if $_output == overlay {
     @include overlay-grid($grid);
   } @else {
     @include background-grid($grid);
   }
-  @include susy-inspect(show-grid, $inspect);
 }
 
 @mixin show-grids(

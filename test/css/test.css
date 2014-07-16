@@ -208,23 +208,6 @@
 /*  - [function] get-background-asym (2 Assertions, 2 Passed, 0 Failed) */
 /*  - [function] get-background (5 Assertions, 5 Passed, 0 Failed) */
 /*  - [function] get-debug (2 Assertions, 2 Passed, 0 Failed) */
-/* "Items should have a 7-column grid with outside gutters." */
-.test__ .assert__outside .test {
-  background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 66.66667%, transparent 66.66667%), linear-gradient(to bottom, black 5%, transparent 5%);
-  background-size: 15%, 100% 24px;
-  background-origin: content-box, border-box;
-  background-clip: content-box, border-box;
-  background-position: left top;
-}
-.test__ .assert__outside .expect {
-  -susy-show-grid: 7 .5 before show background inspect;
-  background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 66.66667%, transparent 66.66667%);
-  background-size: 15%;
-  background-origin: content-box;
-  background-clip: content-box;
-  background-position: left top;
-}
-
 /*  
     7 Tests:
     - 7 Passed

@@ -34,12 +34,14 @@
 @mixin first(
   $context: $susy
 ) {
-  $context: parse-grid($context);
-  $flow: susy-get(flow, $context);
+  $inspect  : $context;
+  $context  : parse-grid($context);
+  $flow     : susy-get(flow, $context);
 
   @if not is-split($context) {
     @include float-first($flow);
   }
+  @include susy-inspect(first, $inspect);
 }
 
 @mixin alpha(
@@ -55,13 +57,16 @@
 @mixin last(
   $context: $susy
 ) {
-  $context: parse-grid($context);
+  $inspect  : $context;
+  $context  : parse-grid($context);
+  
   $output: (
     flow: susy-get(flow, $context),
     margin: if(is-split($context), null, 0),
   );
 
   @include float-last($output...);
+  @include susy-inspect(last, $inspect);
 }
 
 @mixin omega(

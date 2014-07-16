@@ -6,11 +6,9 @@
   background-image: linear-gradient(to right, rgba(0, 0, 0, 0) 0%, rgba(121, 121, 229, 0.25) 0%, rgba(79, 79, 221, 0.25) 6.77966%, rgba(0, 0, 0, 0) 6.77966%, rgba(0, 0, 0, 0) 8.47458%, rgba(121, 121, 229, 0.25) 8.47458%, rgba(79, 79, 221, 0.25) 15.25424%, rgba(0, 0, 0, 0) 15.25424%, rgba(0, 0, 0, 0) 16.94915%, rgba(121, 121, 229, 0.25) 16.94915%, rgba(79, 79, 221, 0.25) 23.72881%, rgba(0, 0, 0, 0) 23.72881%, rgba(0, 0, 0, 0) 25.42373%, rgba(121, 121, 229, 0.25) 25.42373%, rgba(79, 79, 221, 0.25) 32.20339%, rgba(0, 0, 0, 0) 32.20339%, rgba(0, 0, 0, 0) 33.89831%, rgba(121, 121, 229, 0.25) 33.89831%, rgba(79, 79, 221, 0.25) 40.67797%, rgba(0, 0, 0, 0) 40.67797%, rgba(0, 0, 0, 0) 42.37288%, rgba(121, 121, 229, 0.25) 42.37288%, rgba(79, 79, 221, 0.25) 49.15254%, rgba(0, 0, 0, 0) 49.15254%, rgba(0, 0, 0, 0) 50.84746%, rgba(121, 121, 229, 0.25) 50.84746%, rgba(79, 79, 221, 0.25) 57.62712%, rgba(0, 0, 0, 0) 57.62712%, rgba(0, 0, 0, 0) 59.32203%, rgba(121, 121, 229, 0.25) 59.32203%, rgba(79, 79, 221, 0.25) 66.10169%, rgba(0, 0, 0, 0) 66.10169%, rgba(0, 0, 0, 0) 67.79661%, rgba(121, 121, 229, 0.25) 67.79661%, rgba(79, 79, 221, 0.25) 74.57627%, rgba(0, 0, 0, 0) 74.57627%, rgba(0, 0, 0, 0) 76.27119%, rgba(121, 121, 229, 0.25) 76.27119%, rgba(79, 79, 221, 0.25) 83.05085%, rgba(0, 0, 0, 0) 83.05085%, rgba(0, 0, 0, 0) 84.74576%, rgba(121, 121, 229, 0.25) 84.74576%, rgba(79, 79, 221, 0.25) 91.52542%, rgba(0, 0, 0, 0) 91.52542%, rgba(0, 0, 0, 0) 93.22034%, rgba(121, 121, 229, 0.25) 93.22034%, rgba(79, 79, 221, 0.25) 100.0%, rgba(0, 0, 0, 0) 100.0%, rgba(0, 0, 0, 0) 100%);
   background-position: left top;
   -moz-background-origin: content;
-  -o-background-origin: content-box;
   -webkit-background-origin: content;
   background-origin: content-box;
   -moz-background-clip: content;
-  -o-background-clip: content-box;
   -webkit-background-clip: content;
   background-clip: content-box;
 }
@@ -36,24 +34,25 @@
   padding-bottom: 4%;
 }
 
-/*  
-
-### susyone functions ------ */
-/*  - container-outer-width (4 Assertions, 4 Passed, 0 Failed) */
-/*  - get-layout (1 Assertions, 1 Passed, 0 Failed) */
-/*  - format-nth (4 Assertions, 4 Passed, 0 Failed) */
-/*  - columns-width (3 Assertions, 3 Passed, 0 Failed) */
-/*  - relative-width (1 Assertions, 1 Passed, 0 Failed) */
-/*  - columns (3 Assertions, 3 Passed, 0 Failed) */
-/*  - medialayout (4 Assertions, 4 Passed, 0 Failed) */
-/*  - is-default-layout (4 Assertions, 4 Passed, 0 Failed) */
-/*  - split-columns-value (4 Assertions, 4 Passed, 0 Failed) */
-/*  - fix-static-misalignment (2 Assertions, 2 Passed, 0 Failed) */
-/*  - gutter (2 Assertions, 2 Passed, 0 Failed) */
-/*  
-    11 Tests:
-    - 11 Passed
-    - 0 Failed */
+/* ### susyone functions ---------- */
+/* - container-outer-width (4 Assertions, 4 Passed, 0 Failed) */
+/* - get-layout (1 Assertions, 1 Passed, 0 Failed) */
+/* - format-nth (4 Assertions, 4 Passed, 0 Failed) */
+/* - columns-width (3 Assertions, 3 Passed, 0 Failed) */
+/* - relative-width (1 Assertions, 1 Passed, 0 Failed) */
+/* - columns (3 Assertions, 3 Passed, 0 Failed) */
+/* - medialayout (4 Assertions, 4 Passed, 0 Failed) */
+/* - is-default-layout (4 Assertions, 4 Passed, 0 Failed) */
+/* - split-columns-value (4 Assertions, 4 Passed, 0 Failed) */
+/* - fix-static-misalignment (2 Assertions, 2 Passed, 0 Failed) */
+/* - gutter (2 Assertions, 2 Passed, 0 Failed) */
+/*
+*/
+/* 11 Tests: */
+/* - 11 Passed */
+/* - 0 Failed */
+/*
+*/
 .container {
   *zoom: 1;
   max-width: 59em;
@@ -180,6 +179,7 @@
 .nth-omega:last-child {
   float: right;
   margin-right: 0;
+  *margin-left: -1em;
 }
 
 .remove-omega {
@@ -191,6 +191,7 @@
 .remove-nth-omega:last-child {
   float: left;
   margin-right: 1.69492%;
+  *margin-left: auto;
 }
 
 /* ---------------------------------------------------------------------------

@@ -52,6 +52,7 @@
   $pre,
   $post: false
 ) {
+  $inspect: $pre, $post;
   $pre      : map-merge((spread: wide), parse-span($pre));
 
   @if $post {
@@ -66,6 +67,8 @@
     }
   }
 
+  @include susy-inspect(pad, $inspect);
   @include prefix($pre);
   @include suffix($post);
+
 }

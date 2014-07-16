@@ -175,13 +175,19 @@ Set a new layout as the global default.
 
 .. describe:: mixin
 
-  :format: :samp:`layout({$layout})`
+  :format: :samp:`layout($layout, $clean)`
   :$layout: :ref:`\<layout\> <shorthand-layout>`
+  :$clean: <boolean>
 
 .. code-block:: scss
 
   // mixin: set a global layout
   @include layout(12 1/4 inside-static);
+
+By default, these new settings are added to your
+existing global settings.
+Use the `$clean` argument
+to etablish new settings from scratch.
 
 
 -------------------------------------------------------------------------
@@ -196,8 +202,9 @@ for a section of your code.
 
 .. describe:: mixin
 
-  :format: ``with-layout($layout) { @content }``
+  :format: ``with-layout($layout, $clean) { @content }``
   :$layout: :ref:`\<layout\> <shorthand-layout>`
+  :$clean: <boolean>
   :@content: Sass content block
 
 .. code-block:: scss
@@ -207,6 +214,11 @@ for a section of your code.
   }
 
   // Global settings are restored...
+
+By default, these new settings are added to your
+existing global settings.
+Use the `$clean` argument
+to etablish new settings from scratch.
 
 
 -------------------------------------------------------------------------

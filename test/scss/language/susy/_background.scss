@@ -253,7 +253,7 @@
     $test: get-background($grid show-baseline);
     $expect: (
       image: (
-        baseline: (black 5%, rgba(black, 0) 5%),
+        baseline: (black 1px, rgba(black, 0) 1px),
       ),
       size: 100% 24px,
       flow: ltr,
@@ -266,7 +266,7 @@
     $expect: (
       image: (
         columns: ($color, $light),
-        baseline: (black 5%, rgba(black, 0) 5%),
+        baseline: (black 1px, rgba(black, 0) 1px),
       ),
       size: (percentage(1.25/10), 100% 24px),
       clip: (content-box, border-box),

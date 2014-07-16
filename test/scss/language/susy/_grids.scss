@@ -77,6 +77,30 @@
     );
     @include assert-equal($test, $expect,
       'Returns a parsed grid map based on shorthand syntax');
-
   }
+
+  // [function] _get-layout
+  // ----------------------
+
+  @include test('[function] _get-layout') {
+    @include with-layout(show-baseline, clean) {
+      $test: _get-layout(overlay);
+      $expect: (
+        debug: (
+          image: show-baseline,
+          output: overlay,
+        )
+      );
+      @include assert-equal($test, $expect,
+        'Returns layout merged with global settings');
+
+      $test: _get-layout(overlay, clean);
+      $expect: (
+        debug: (output: overlay)
+      );
+      @include assert-equal($test, $expect,
+        'Returns layout, without global settings');
+    }
+  }
+
 }

@@ -67,6 +67,36 @@
       'Set deep value even in new key path.');
   }
 
+  // Deep Merge
+  // ----------
+  @include test('deep-merge') {
+    $m1: (
+      hello: (
+        world: new york,
+        monday: work,
+      ),
+      pizza: cheese,
+    );
+    $m2: (
+      hello: (
+        world: china,
+      ),
+      sunday: ice cream,
+    );
+    $test: _susy-deep-merge($m1, $m2);
+    $expect: (
+      hello: (
+        world: china,
+        monday: work,
+      ),
+      pizza: cheese,
+      sunday: ice cream,
+    );
+    @include assert-equal($test, $expect,
+      'Should merge nested maps');
+  }
+
+
   // Deep Has-Key
   // ------------
   @include test('deep-has-key') {

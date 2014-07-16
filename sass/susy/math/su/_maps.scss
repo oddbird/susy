@@ -63,6 +63,27 @@
 }
 
 
+// Deep Merge
+// ----------
+// Return 2 objects of any depth, merged
+@function _susy-deep-merge(
+  $map1,
+  $map2
+) {
+
+  @if type-of($map1) != map or type-of($map2) != map {
+    $map1: $map2;
+  } @else {
+    @each $key, $value in $map2 {
+      $_new: ($key: _susy_deep-merge(map-get($map1, $key), $value));
+      $map1: map-merge($map1, $_new);
+    }
+  }
+
+  @return $map1;
+}
+
+
 // Deep Has-Key
 // ------------
 // - Return true if a deep key exists

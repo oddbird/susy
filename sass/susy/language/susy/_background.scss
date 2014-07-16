@@ -348,7 +348,7 @@ $susy-overlay-grid-head-exists: false;
 
         $_image: map-get($_return, image);
         $_size: map-get($_return, size);
-        $_baseline: (baseline: ($_color 5%, rgba($_color, 0) 5%));
+        $_baseline: (baseline: ($_color 1px, rgba($_color, 0) 1px));
         $_baseline-size: 100% $_line-height;
 
         $_return: map-merge($_return, (

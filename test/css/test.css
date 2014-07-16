@@ -7,10 +7,11 @@
 /*  - truncate-list (1 Assertions, 1 Passed, 0 Failed) */
 /*  - deep-get (1 Assertions, 1 Passed, 0 Failed) */
 /*  - deep-set (2 Assertions, 2 Passed, 0 Failed) */
+/*  - deep-merge (1 Assertions, 1 Passed, 0 Failed) */
 /*  - deep-has-key (2 Assertions, 2 Passed, 0 Failed) */
 /*  
-    4 Tests:
-    - 4 Passed
+    5 Tests:
+    - 5 Passed
     - 0 Failed */
 /*  
 
@@ -60,9 +61,10 @@
 /*  - [mixin] layout (7 Assertions, 7 Passed, 0 Failed) */
 /*  - [mixin] with-layout (6 Assertions, 6 Passed, 0 Failed) */
 /*  - [function] layout (1 Assertions, 1 Passed, 0 Failed) */
+/*  - [function] _get-layout (2 Assertions, 2 Passed, 0 Failed) */
 /*  
-    3 Tests:
-    - 3 Passed
+    4 Tests:
+    - 4 Passed
     - 0 Failed */
 /*  
 

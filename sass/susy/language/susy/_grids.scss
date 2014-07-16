@@ -8,7 +8,9 @@
 @mixin layout(
   $layout
 ) {
-  $susy: map-merge($susy, parse-grid($layout)) !global;
+  $inspect	: $layout;
+  $susy		: map-merge($susy, parse-grid($layout)) !global;
+  @include susy-inspec(layout, $inspect);
 }
 
 // Use Grid

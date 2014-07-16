@@ -23,11 +23,11 @@
 @mixin post(
   $span
 ) {
-  $inspect: $span;
-  $span   : map-merge((spread: wide), parse-span($span));
-  $flow   : susy-get(flow, $span);
-  $split  : if(susy-get(gutter-position, $span) == split, true, false);
-  $width  : if($split, span($span) + gutter($span), span($span));
+  $inspect  : $span;
+  $span     : map-merge((spread: wide), parse-span($span));
+  $flow     : susy-get(flow, $span);
+  $split    : if(susy-get(gutter-position, $span) == split, true, false);
+  $width    : if($split, span($span) + gutter($span), span($span));
 
   @include margin-output(null, $width, $flow);
   @include sust-inspect(post, $inspect);
@@ -50,11 +50,11 @@
 @mixin pull(
   $span
 ) {
-  $inspect: $span;
-  $span   : map-merge((spread: wide), parse-span($span));
-  $flow   : susy-get(flow, $span);
-  $split  : if(susy-get(gutter-position, $span) == split, true, false);
-  $width  : if($split, 0 - span($span) + gutter($span), 0 - span($span));
+  $inspect  : $span;
+  $span     : map-merge((spread: wide), parse-span($span));
+  $flow     : susy-get(flow, $span);
+  $split    : if(susy-get(gutter-position, $span) == split, true, false);
+  $width    : if($split, 0 - span($span) + gutter($span), 0 - span($span));
 
   @include margin-output($width, null, $flow);
   @include susy-inspect(pull, $inspect);
@@ -69,7 +69,9 @@
   $pre,
   $post: false
 ) {
-  $pre: map-merge((spread: wide), parse-span($pre));
+  $inspect      : $pre;
+  $inspect-alt  : $post;
+  $pre          : map-merge((spread: wide), parse-span($pre));
 
   @if $post {
     $post: map-merge((spread: wide), parse-span($post));
@@ -85,4 +87,6 @@
 
   @include pre($pre);
   @include post($post);
+  @include susy-inspect(squish--pre, $inspect);
+  @include susy-inspect(squish--post, $inspect-alt);
 }

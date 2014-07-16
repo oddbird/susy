@@ -160,8 +160,9 @@
     @include assert-output(
       'Items should have 2-columns margin before and after.'
     ) {
-      .test { @include squish(first 2, last 2); }
+      .test { @include squish(first 2, last 2 inspect); }
       .expect {
+        -susy-squish: first 2, last 2 inspect;
         margin-left: 35%;
         margin-right: 35%;
       }

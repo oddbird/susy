@@ -4,8 +4,15 @@
 // - $mixin  : <susy mixin>
 // - $inspec   : <mixin arguments>
 
-@mixin susy-inspect($mixin, $inspect) {
-  @if index($inspect, inspect) or susy-get(debug inspect) {
+@mixin susy-inspect($mixin, $inspect...) {
+  $show: false;
+  @each $item in $inspect {
+    @if index($inspect, inspect) {
+      $show: true;
+    }
+  }
+
+  @if $show or susy-get(debug inspect) {
     -susy-#{$mixin}: inspect($inspect);
   }
 };

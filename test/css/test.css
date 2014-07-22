@@ -84,10 +84,14 @@ html {
 *, *:before, *:after {
   box-sizing: inherit;
 }
-.test__global-box-sizing .assert__global-box-sizing .expect *, .test__global-box-sizing .assert__global-box-sizing .expect *:before, .test__global-box-sizing .assert__global-box-sizing .expect *:after {
+html {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
 }
 
 /* - [mixin] border-box-sizing */
@@ -101,10 +105,14 @@ html {
 *, *:before, *:after {
   box-sizing: inherit;
 }
-.test__border-box-sizing .assert__border-box-sizing .expect *, .test__border-box-sizing .assert__border-box-sizing .expect *:before, .test__border-box-sizing .assert__border-box-sizing .expect *:after {
+html {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
 }
 
 /* - update-box-model (2 Assertions, 2 Passed, 0 Failed) */

@@ -18,7 +18,10 @@
     ) {
       .test { @include global-box-sizing(border-box); }
       .expect {
-        *, *:before, *:after { @include output((box-sizing: border-box)); }
+        @at-root {
+          html { @include output((box-sizing: border-box)); }
+          *, *:before, *:after { box-sizing: inherit; }
+        }
       }
     }
   }
@@ -38,7 +41,10 @@
     ) {
       .test { @include border-box-sizing; }
       .expect {
-        *, *:before, *:after { @include output((box-sizing: border-box)); }
+        @at-root {
+          html { @include output((box-sizing: border-box)); }
+          *, *:before, *:after { box-sizing: inherit; }
+        }
       }
     }
   }

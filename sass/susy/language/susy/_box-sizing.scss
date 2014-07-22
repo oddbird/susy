@@ -8,8 +8,10 @@
 @mixin global-box-sizing(
   $box: susy-get(global-box-sizing)
 ) {
-  html { @include output((box-sizing: $box)); }
-  *, *:before, *:after { box-sizing: inherit; }
+  @at-root {
+    html { @include output((box-sizing: $box)); }
+    *, *:before, *:after { box-sizing: inherit; }
+  }
   @include update-box-model($box);
 }
 

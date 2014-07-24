@@ -1,7 +1,7 @@
 Changelog
 =========
 
-2.1.3 - Jul 23 2014
+2.2.0 - UNRELEASED
 -------------------
 
 - Update ``global-box-sizing`` and the legacy ``border-box-sizing``

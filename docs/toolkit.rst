@@ -445,9 +445,22 @@ to match.
 
 .. describe:: mixin
 
-  :format: ``global-box-sizing($box)``
-  :shortcut: ``border-box-sizing()``
+  :format: ``global-box-sizing($box [, $inherit])``
+  :shortcut: ``border-box-sizing([$inherit])``
   :$box: ``content-box`` | ``border-box``
+  :$inherit: [optional] ``true`` | ``false``
+
+Setting the optional argument, ``$inherit``, to ``true``
+will still globally set the ``box-sizing``, but in
+a way such that a component can easily override the
+global ``box-sizing`` by setting its own ``box-sizing``
+property. By setting ``box-sizing`` once on the
+component, all nested elements within the component
+will also be modified. The default behavior, where
+``$inherit`` is ``false``, would only update the
+``box-sizing`` of the component itself. Nested
+elements are not affected when ``$inherit`` is
+``false``.
 
 You can pass a ``box-sizing`` argument
 to the ``span`` mixin
@@ -473,8 +486,12 @@ of any kind.
 
 .. code-block:: scss
 
-  // the basics...
+  // the basics with default behavior:
   * { box-sizing: border-box; }
+
+  // the basics with $inherit set to true:
+  html { box-sizing: border-box; }
+  * { box-sizing: inherit; }
 
 Susy needs to know what box model you are using,
 so the best approach is to set global box sizing

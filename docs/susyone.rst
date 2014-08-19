@@ -444,7 +444,7 @@ as a way of minimizing sub-pixel rounding errors in specific trouble locations.
 Isolate Grid
 ~~~~~~~~~~~~
 
-Isolate a group of elements in an grid (such as an image gallery)
+Isolate a group of elements in a grid (such as an image gallery)
 using nth-child or nth-of-type for positioning.
 Provide the column-width of each element,
 and Susy will determine the positioning for you.

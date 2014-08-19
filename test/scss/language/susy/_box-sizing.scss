@@ -6,6 +6,7 @@
   // [mixin] global-box-sizing
   // -------------------------
   @include output-test('global-box-sizing') {
+    // sets box-sizing on all elements
     @include assert-setup {
       .nest {
         @include pad(15%);
@@ -21,11 +22,34 @@
         *, *:before, *:after { @include output((box-sizing: border-box)); }
       }
     }
+
+    // $inherit set to true:
+    // sets box-sizing on html element
+    // all other elements inherit from their parent
+    @include assert-setup {
+      .nest {
+        @include pad(15%);
+        width: 60%;
+        margin: 0 auto;
+      }
+    }
+    @include assert-output(
+      'Nested items should inherit the border-box model from the html element.'
+    ) {
+      .test { @include global-box-sizing(border-box, true); }
+      .expect {
+        @at-root {
+          html { @include output((box-sizing: border-box)); }
+          *, *:before, *:after { box-sizing: inherit; }
+        }
+      }
+    }
   }
 
   // [mixin] border-box-sizing
   // -------------------------
   @include output-test('border-box-sizing') {
+    // sets box-sizing to border-box on all elements
     @include assert-setup {
       .nest {
         @include pad(15%);
@@ -39,6 +63,28 @@
       .test { @include border-box-sizing; }
       .expect {
         *, *:before, *:after { @include output((box-sizing: border-box)); }
+      }
+    }
+
+    // $inherit set to true:
+    // sets box-sizing to border-box on html element
+    // all other elements will inherit box-sizing of border-box
+    @include assert-setup {
+      .nest {
+        @include pad(15%);
+        width: 60%;
+        margin: 0 auto;
+      }
+    }
+    @include assert-output(
+      'Nested items should inherit the border-box model from the html element.'
+    ) {
+      .test { @include border-box-sizing(true); }
+      .expect {
+        @at-root {
+          html { @include output((box-sizing: border-box)); }
+          *, *:before, *:after { box-sizing: inherit; }
+        }
       }
     }
   }

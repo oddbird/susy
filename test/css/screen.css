@@ -171,74 +171,78 @@ h1 {
   background: rgba(68, 68, 68, 0.125);
 }
 
-/*  
-
-### Map Helpers ------ */
-/*  - truncate-list (1 Assertions, 1 Passed, 0 Failed) */
-/*  - deep-get (1 Assertions, 1 Passed, 0 Failed) */
-/*  - deep-set (2 Assertions, 2 Passed, 0 Failed) */
-/*  - deep-merge (1 Assertions, 1 Passed, 0 Failed) */
-/*  - deep-has-key (2 Assertions, 2 Passed, 0 Failed) */
-/*  
-    5 Tests:
-    - 5 Passed
-    - 0 Failed */
-/*  
-
-### General Settings ------ */
-/*  - susy-defaults (2 Assertions, 2 Passed, 0 Failed) */
-/*  - [mixin] susy-set (1 Assertions, 1 Passed, 0 Failed) */
-/*  - [function] susy-get (6 Assertions, 6 Passed, 0 Failed) */
-/*  
-    3 Tests:
-    - 3 Passed
-    - 0 Failed */
-/*  
-
-### Grid Validation ------ */
-/*  - [mixin] valid-columns (4 Assertions, 4 Passed, 0 Failed) */
-/*  - [mixin] valid-gutters (2 Assertions, 2 Passed, 0 Failed) */
-/*  
-    2 Tests:
-    - 2 Passed
-    - 0 Failed */
-/*  
-
-### Column Math ------ */
-/*  - [function] is-symmetrical() (3 Assertions, 3 Passed, 0 Failed) */
-/*  - [function] susy-count() (2 Assertions, 2 Passed, 0 Failed) */
-/*  - [function] susy-sum() — symmetrical (4 Assertions, 4 Passed, 0 Failed) */
-/*  - [function] susy-sum() — asymmetrical (3 Assertions, 3 Passed, 0 Failed) */
-/*  - [function] susy-slice() (3 Assertions, 3 Passed, 0 Failed) */
-/*  - [function] susy() (2 Assertions, 2 Passed, 0 Failed) */
-/*  
-    6 Tests:
-    - 6 Passed
-    - 0 Failed */
-/*  
-
-### Language Settings ------ */
-/*  - [function] parse-grid (30 Assertions, 30 Passed, 0 Failed) */
-/*  - [function] parse-span (44 Assertions, 44 Passed, 0 Failed) */
-/*  - [function] parse-gutters (11 Assertions, 11 Passed, 0 Failed) */
-/*  
-    3 Tests:
-    - 3 Passed
-    - 0 Failed */
-/*  
-
-### Grids Syntax ------ */
-/*  - [mixin] layout (7 Assertions, 7 Passed, 0 Failed) */
-/*  - [mixin] with-layout (6 Assertions, 6 Passed, 0 Failed) */
-/*  - [function] layout (1 Assertions, 1 Passed, 0 Failed) */
-/*  - FAIL: [function] _get-layout (2 Assertions, 1 Passed, 1 Failed) */
-/*  
-    4 Tests:
-    - 3 Passed
-    - 1 Failed */
-/*  
-
-### Global Box-Sizing Syntax ------ */
+/* ### Map Helpers ---------- */
+/* - truncate-list (1 Assertions, 1 Passed, 0 Failed) */
+/* - deep-get (1 Assertions, 1 Passed, 0 Failed) */
+/* - deep-set (2 Assertions, 2 Passed, 0 Failed) */
+/* - deep-merge (1 Assertions, 1 Passed, 0 Failed) */
+/* - deep-has-key (2 Assertions, 2 Passed, 0 Failed) */
+/*
+*/
+/* 5 Tests: */
+/* - 5 Passed */
+/* - 0 Failed */
+/*
+*/
+/* ### General Settings ---------- */
+/* - susy-defaults (2 Assertions, 2 Passed, 0 Failed) */
+/* - [mixin] susy-set (1 Assertions, 1 Passed, 0 Failed) */
+/* - [function] susy-get (6 Assertions, 6 Passed, 0 Failed) */
+/*
+*/
+/* 3 Tests: */
+/* - 3 Passed */
+/* - 0 Failed */
+/*
+*/
+/* ### Grid Validation ---------- */
+/* - [mixin] valid-columns (4 Assertions, 4 Passed, 0 Failed) */
+/* - [mixin] valid-gutters (2 Assertions, 2 Passed, 0 Failed) */
+/*
+*/
+/* 2 Tests: */
+/* - 2 Passed */
+/* - 0 Failed */
+/*
+*/
+/* ### Column Math ---------- */
+/* - [function] is-symmetrical() (3 Assertions, 3 Passed, 0 Failed) */
+/* - [function] susy-count() (2 Assertions, 2 Passed, 0 Failed) */
+/* - [function] susy-sum() — symmetrical (4 Assertions, 4 Passed, 0 Failed) */
+/* - [function] susy-sum() — asymmetrical (3 Assertions, 3 Passed, 0 Failed) */
+/* - [function] susy-slice() (3 Assertions, 3 Passed, 0 Failed) */
+/* - [function] susy() (2 Assertions, 2 Passed, 0 Failed) */
+/*
+*/
+/* 6 Tests: */
+/* - 6 Passed */
+/* - 0 Failed */
+/*
+*/
+/* ### Language Settings ---------- */
+/* - [function] parse-grid (30 Assertions, 30 Passed, 0 Failed) */
+/* - [function] parse-span (44 Assertions, 44 Passed, 0 Failed) */
+/* - [function] parse-gutters (11 Assertions, 11 Passed, 0 Failed) */
+/*
+*/
+/* 3 Tests: */
+/* - 3 Passed */
+/* - 0 Failed */
+/*
+*/
+/* ### Grids Syntax ---------- */
+/* - [mixin] layout (7 Assertions, 7 Passed, 0 Failed) */
+/* - [mixin] with-layout (6 Assertions, 6 Passed, 0 Failed) */
+/* - [function] layout (1 Assertions, 1 Passed, 0 Failed) */
+/* - [function] _get-layout (2 Assertions, 2 Passed, 0 Failed) */
+/*
+*/
+/* 4 Tests: */
+/* - 4 Passed */
+/* - 0 Failed */
+/*
+*/
+/* ### Global Box-Sizing Syntax ---------- */
 /* - [mixin] global-box-sizing */
 .test__global-box-sizing .assert__global-box-sizing {
   overflow: hidden;
@@ -281,23 +285,25 @@ h1 {
   font-style: italic;
 }
 
-/*  - update-box-model (2 Assertions, 2 Passed, 0 Failed) */
-/*  
-    1 Tests:
-    - 1 Passed
-    - 0 Failed */
-/*  
-
-### Shared Context Language ------ */
-/*  - [function] nested (3 Assertions, 3 Passed, 0 Failed) */
-/*  - [mixin] nested (2 Assertions, 2 Passed, 0 Failed) */
-/*  
-    2 Tests:
-    - 2 Passed
-    - 0 Failed */
-/*  
-
-### Background Syntax ------ */
+/* - update-box-model (2 Assertions, 2 Passed, 0 Failed) */
+/*
+*/
+/* 1 Tests: */
+/* - 1 Passed */
+/* - 0 Failed */
+/*
+*/
+/* ### Shared Context Language ---------- */
+/* - [function] nested (3 Assertions, 3 Passed, 0 Failed) */
+/* - [mixin] nested (2 Assertions, 2 Passed, 0 Failed) */
+/*
+*/
+/* 2 Tests: */
+/* - 2 Passed */
+/* - 0 Failed */
+/*
+*/
+/* ### Background Syntax ---------- */
 /* - [mixin] background-grid */
 .test__background-grid .assert__outside {
   background: rgba(204, 204, 255, 0.5);
@@ -376,20 +382,21 @@ h1 {
   font-style: italic;
 }
 
-/*  - [function] get-background-sym (6 Assertions, 6 Passed, 0 Failed) */
-/*  - [function] get-asym-inside (1 Assertions, 1 Passed, 0 Failed) */
-/*  - [function] get-asym-split (1 Assertions, 1 Passed, 0 Failed) */
-/*  - [function] get-asym-outside (1 Assertions, 1 Passed, 0 Failed) */
-/*  - [function] get-background-asym (2 Assertions, 2 Passed, 0 Failed) */
-/*  - [function] get-background (5 Assertions, 5 Passed, 0 Failed) */
-/*  - [function] get-debug (2 Assertions, 2 Passed, 0 Failed) */
-/*  
-    7 Tests:
-    - 7 Passed
-    - 0 Failed */
-/*  
-
-### Container Syntax ------ */
+/* - [function] get-background-sym (6 Assertions, 6 Passed, 0 Failed) */
+/* - [function] get-asym-inside (1 Assertions, 1 Passed, 0 Failed) */
+/* - [function] get-asym-split (1 Assertions, 1 Passed, 0 Failed) */
+/* - [function] get-asym-outside (1 Assertions, 1 Passed, 0 Failed) */
+/* - [function] get-background-asym (2 Assertions, 2 Passed, 0 Failed) */
+/* - [function] get-background (5 Assertions, 5 Passed, 0 Failed) */
+/* - [function] get-debug (2 Assertions, 2 Passed, 0 Failed) */
+/*
+*/
+/* 7 Tests: */
+/* - 7 Passed */
+/* - 0 Failed */
+/*
+*/
+/* ### Container Syntax ---------- */
 /* - [mixin] container */
 .test__container .assert__default-box {
   overflow: hidden;
@@ -417,16 +424,17 @@ h1 {
   font-style: italic;
 }
 
-/*  - [function] container (5 Assertions, 5 Passed, 0 Failed) */
-/*  - [function] get-container-width (6 Assertions, 6 Passed, 0 Failed) */
-/*  - [function] parse-container-position() (7 Assertions, 7 Passed, 0 Failed) */
-/*  
-    3 Tests:
-    - 3 Passed
-    - 0 Failed */
-/*  
-
-### Span Syntax ------ */
+/* - [function] container (5 Assertions, 5 Passed, 0 Failed) */
+/* - [function] get-container-width (6 Assertions, 6 Passed, 0 Failed) */
+/* - [function] parse-container-position() (7 Assertions, 7 Passed, 0 Failed) */
+/*
+*/
+/* 3 Tests: */
+/* - 3 Passed */
+/* - 0 Failed */
+/*
+*/
+/* ### Span Syntax ---------- */
 /* - [mixin] span */
 .test__span .assert__default {
   max-width: 100%;
@@ -533,17 +541,18 @@ h1 {
   font-style: italic;
 }
 
-/*  - [mixin] span (4 Assertions, 4 Passed, 0 Failed) */
-/*  - [function] span (1 Assertions, 1 Passed, 0 Failed) */
-/*  - [function] span-math (14 Assertions, 14 Passed, 0 Failed) */
-/*  - [function] get-span-width (12 Assertions, 12 Passed, 0 Failed) */
-/*  
-    4 Tests:
-    - 4 Passed
-    - 0 Failed */
-/*  
-
-### Gutter Syntax ------ */
+/* - [mixin] span (4 Assertions, 4 Passed, 0 Failed) */
+/* - [function] span (1 Assertions, 1 Passed, 0 Failed) */
+/* - [function] span-math (14 Assertions, 14 Passed, 0 Failed) */
+/* - [function] get-span-width (12 Assertions, 12 Passed, 0 Failed) */
+/*
+*/
+/* 4 Tests: */
+/* - 4 Passed */
+/* - 0 Failed */
+/*
+*/
+/* ### Gutter Syntax ---------- */
 /* - [mixin] gutters */
 .test__gutters .assert__auto {
   max-width: 100%;
@@ -623,19 +632,20 @@ h1 {
   font-style: italic;
 }
 
-/*  - [function] gutter (2 Assertions, 2 Passed, 0 Failed) */
-/*  - [function] get-gutter-width (9 Assertions, 9 Passed, 0 Failed) */
-/*  - [function] get-gutters (3 Assertions, 3 Passed, 0 Failed) */
-/*  - [function] is-inside (2 Assertions, 2 Passed, 0 Failed) */
-/*  - [function] is-split (2 Assertions, 2 Passed, 0 Failed) */
-/*  - [function] gutter-math (2 Assertions, 2 Passed, 0 Failed) */
-/*  
-    6 Tests:
-    - 6 Passed
-    - 0 Failed */
-/*  
-
-### Isolation Syntax ------ */
+/* - [function] gutter (2 Assertions, 2 Passed, 0 Failed) */
+/* - [function] get-gutter-width (9 Assertions, 9 Passed, 0 Failed) */
+/* - [function] get-gutters (3 Assertions, 3 Passed, 0 Failed) */
+/* - [function] is-inside (2 Assertions, 2 Passed, 0 Failed) */
+/* - [function] is-split (2 Assertions, 2 Passed, 0 Failed) */
+/* - [function] gutter-math (2 Assertions, 2 Passed, 0 Failed) */
+/*
+*/
+/* 6 Tests: */
+/* - 6 Passed */
+/* - 0 Failed */
+/*
+*/
+/* ### Isolation Syntax ---------- */
 /* - [mixin] isolate */
 .test__isolate .assert__isolate {
   max-width: 100%;
@@ -670,15 +680,16 @@ h1 {
   font-style: italic;
 }
 
-/*  - [function] isolate (2 Assertions, 2 Passed, 0 Failed) */
-/*  - [function] get-isolation (4 Assertions, 4 Passed, 0 Failed) */
-/*  
-    2 Tests:
-    - 2 Passed
-    - 0 Failed */
-/*  
-
-### Gallery Syntax ------ */
+/* - [function] isolate (2 Assertions, 2 Passed, 0 Failed) */
+/* - [function] get-isolation (4 Assertions, 4 Passed, 0 Failed) */
+/*
+*/
+/* 2 Tests: */
+/* - 2 Passed */
+/* - 0 Failed */
+/*
+*/
+/* ### Gallery Syntax ---------- */
 /* - [mixin] gallery */
 .test__gallery .assert__sym {
   max-width: 100%;
@@ -894,13 +905,14 @@ h1 {
   font-style: italic;
 }
 
-/*  
-    0 Tests:
-    - 0 Passed
-    - 0 Failed */
-/*  
-
-### Row Syntax ------ */
+/*
+*/
+/* 0 Tests: */
+/* - 0 Passed */
+/* - 0 Failed */
+/*
+*/
+/* ### Row Syntax ---------- */
 /* - [mixin] break */
 .test__break .assert__break {
   max-width: 100%;
@@ -1248,12 +1260,15 @@ h1 {
   font-style: italic;
 }
 
-/*  - [function] get-edge (6 Assertions, 6 Passed, 0 Failed) */
-/*  - [function] get-location (4 Assertions, 4 Passed, 0 Failed) */
-/*  
-    2 Tests:
-    - 2 Passed
-    - 0 Failed */
+/* - [function] get-edge (6 Assertions, 6 Passed, 0 Failed) */
+/* - [function] get-location (4 Assertions, 4 Passed, 0 Failed) */
+/*
+*/
+/* 2 Tests: */
+/* - 2 Passed */
+/* - 0 Failed */
+/*
+*/
 /*
 
 ### Margin Syntax ------ */
@@ -1955,9 +1970,7 @@ h1 {
   font-style: italic;
 }
 
-/*  
-
-### Bleed Syntax ------ */
+/* ### Bleed Syntax ---------- */
 /* - [mixin] bleed */
 .test__bleed .assert__simple {
   max-width: 100%;
@@ -2155,20 +2168,24 @@ h1 {
   font-style: italic;
 }
 
-/*  - [function] get-bleed (3 Assertions, 3 Passed, 0 Failed) */
-/*  - [function] bleed-shorthand (2 Assertions, 2 Passed, 0 Failed) */
-/*  
-    2 Tests:
-    - 2 Passed
-    - 0 Failed */
-/*  
-
-### breakpoint integration ------ */
-/*  - [mixin] susy-breakpoint (2 Assertions, 2 Passed, 0 Failed) */
-/*  
-    1 Tests:
-    - 1 Passed
-    - 0 Failed */
+/* - [function] get-bleed (3 Assertions, 3 Passed, 0 Failed) */
+/* - [function] bleed-shorthand (2 Assertions, 2 Passed, 0 Failed) */
+/*
+*/
+/* 2 Tests: */
+/* - 2 Passed */
+/* - 0 Failed */
+/*
+*/
+/* ### breakpoint integration ---------- */
+/* - [mixin] susy-breakpoint (2 Assertions, 2 Passed, 0 Failed) */
+/*
+*/
+/* 1 Tests: */
+/* - 1 Passed */
+/* - 0 Failed */
+/*
+*/
 /*
 
 ### Shared Output ------ */
@@ -2186,16 +2203,17 @@ h1 {
   font-style: italic;
 }
 
-/*  
-
-### Direction Helpers ------ */
-/*  - [function] get-direction (2 Assertions, 2 Passed, 0 Failed) */
-/*  - [function] to (2 Assertions, 2 Passed, 0 Failed) */
-/*  - [function] from (2 Assertions, 2 Passed, 0 Failed) */
-/*  
-    3 Tests:
-    - 3 Passed
-    - 0 Failed */
+/* ### Direction Helpers ---------- */
+/* - [function] get-direction (2 Assertions, 2 Passed, 0 Failed) */
+/* - [function] to (2 Assertions, 2 Passed, 0 Failed) */
+/* - [function] from (2 Assertions, 2 Passed, 0 Failed) */
+/*
+*/
+/* 3 Tests: */
+/* - 3 Passed */
+/* - 0 Failed */
+/*
+*/
 /*
 
 ### Grid Background Output ------ */
@@ -2374,9 +2392,7 @@ h1 {
   font-style: italic;
 }
 
-/*  
-
-### Box Sizing Support ------ */
+/* ### Box Sizing Support ---------- */
 /* - [mixin] susy-box-sizing */
 .test__susy-box-sizing .assert__border-box {
   overflow: hidden;
@@ -2396,10 +2412,13 @@ h1 {
   font-style: italic;
 }
 
-/*  
-    0 Tests:
-    - 0 Passed
-    - 0 Failed */
+/*
+*/
+/* 0 Tests: */
+/* - 0 Passed */
+/* - 0 Failed */
+/*
+*/
 /*
 
 ### rem Support ------ */
@@ -2438,9 +2457,7 @@ h1 {
   font-style: italic;
 }
 
-/*  
-
-### Susy Support ------ */
+/* ### Susy Support ---------- */
 /* - [mixin] susy-support */
 .test__susy-support .assert__susy-support {
   overflow: hidden;
@@ -2456,11 +2473,14 @@ h1 {
   font-style: italic;
 }
 
-/*  - [function] susy-support (3 Assertions, 3 Passed, 0 Failed) */
-/*  
-    1 Tests:
-    - 1 Passed
-    - 0 Failed */
+/* - [function] susy-support (3 Assertions, 3 Passed, 0 Failed) */
+/*
+*/
+/* 1 Tests: */
+/* - 1 Passed */
+/* - 0 Failed */
+/*
+*/
 /*
 
 ### Float Container API ------ */
@@ -2623,6 +2643,10 @@ h1 {
   font-style: italic;
 }
 
+.results {
+  background: rgba(0, 128, 0, 0.25);
+  border-color: green;
+}
 .results:after {
-  content: "57 Tests, 56 Passed, 1 Failed";
+  content: "57 Tests, 57 Passed, 0 Failed";
 }

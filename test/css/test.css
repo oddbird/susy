@@ -1,74 +1,78 @@
 @charset "UTF-8";
 /* Susy Tests */
 /* ========== */
-/*  
-
-### Map Helpers ------ */
-/*  - truncate-list (1 Assertions, 1 Passed, 0 Failed) */
-/*  - deep-get (1 Assertions, 1 Passed, 0 Failed) */
-/*  - deep-set (2 Assertions, 2 Passed, 0 Failed) */
-/*  - deep-merge (1 Assertions, 1 Passed, 0 Failed) */
-/*  - deep-has-key (2 Assertions, 2 Passed, 0 Failed) */
-/*  
-    5 Tests:
-    - 5 Passed
-    - 0 Failed */
-/*  
-
-### General Settings ------ */
-/*  - susy-defaults (2 Assertions, 2 Passed, 0 Failed) */
-/*  - [mixin] susy-set (1 Assertions, 1 Passed, 0 Failed) */
-/*  - [function] susy-get (6 Assertions, 6 Passed, 0 Failed) */
-/*  
-    3 Tests:
-    - 3 Passed
-    - 0 Failed */
-/*  
-
-### Grid Validation ------ */
-/*  - [mixin] valid-columns (4 Assertions, 4 Passed, 0 Failed) */
-/*  - [mixin] valid-gutters (2 Assertions, 2 Passed, 0 Failed) */
-/*  
-    2 Tests:
-    - 2 Passed
-    - 0 Failed */
-/*  
-
-### Column Math ------ */
-/*  - [function] is-symmetrical() (3 Assertions, 3 Passed, 0 Failed) */
-/*  - [function] susy-count() (2 Assertions, 2 Passed, 0 Failed) */
-/*  - [function] susy-sum() — symmetrical (4 Assertions, 4 Passed, 0 Failed) */
-/*  - [function] susy-sum() — asymmetrical (3 Assertions, 3 Passed, 0 Failed) */
-/*  - [function] susy-slice() (3 Assertions, 3 Passed, 0 Failed) */
-/*  - [function] susy() (2 Assertions, 2 Passed, 0 Failed) */
-/*  
-    6 Tests:
-    - 6 Passed
-    - 0 Failed */
-/*  
-
-### Language Settings ------ */
-/*  - [function] parse-grid (30 Assertions, 30 Passed, 0 Failed) */
-/*  - [function] parse-span (44 Assertions, 44 Passed, 0 Failed) */
-/*  - [function] parse-gutters (11 Assertions, 11 Passed, 0 Failed) */
-/*  
-    3 Tests:
-    - 3 Passed
-    - 0 Failed */
-/*  
-
-### Grids Syntax ------ */
-/*  - [mixin] layout (7 Assertions, 7 Passed, 0 Failed) */
-/*  - [mixin] with-layout (6 Assertions, 6 Passed, 0 Failed) */
-/*  - [function] layout (1 Assertions, 1 Passed, 0 Failed) */
-/*  - [function] _get-layout (2 Assertions, 2 Passed, 0 Failed) */
-/*  
-    4 Tests:
-    - 4 Passed
-    - 0 Failed */
-/*  
-
-### Global Box-Sizing Syntax ------ */
+/* ### Map Helpers ---------- */
+/* - truncate-list (1 Assertions, 1 Passed, 0 Failed) */
+/* - deep-get (1 Assertions, 1 Passed, 0 Failed) */
+/* - deep-set (2 Assertions, 2 Passed, 0 Failed) */
+/* - deep-merge (1 Assertions, 1 Passed, 0 Failed) */
+/* - deep-has-key (2 Assertions, 2 Passed, 0 Failed) */
+/*
+*/
+/* 5 Tests: */
+/* - 5 Passed */
+/* - 0 Failed */
+/*
+*/
+/* ### General Settings ---------- */
+/* - susy-defaults (2 Assertions, 2 Passed, 0 Failed) */
+/* - [mixin] susy-set (1 Assertions, 1 Passed, 0 Failed) */
+/* - [function] susy-get (6 Assertions, 6 Passed, 0 Failed) */
+/*
+*/
+/* 3 Tests: */
+/* - 3 Passed */
+/* - 0 Failed */
+/*
+*/
+/* ### Grid Validation ---------- */
+/* - [mixin] valid-columns (4 Assertions, 4 Passed, 0 Failed) */
+/* - [mixin] valid-gutters (2 Assertions, 2 Passed, 0 Failed) */
+/*
+*/
+/* 2 Tests: */
+/* - 2 Passed */
+/* - 0 Failed */
+/*
+*/
+/* ### Column Math ---------- */
+/* - [function] is-symmetrical() (3 Assertions, 3 Passed, 0 Failed) */
+/* - [function] susy-count() (2 Assertions, 2 Passed, 0 Failed) */
+/* - [function] susy-sum() — symmetrical (4 Assertions, 4 Passed, 0 Failed) */
+/* - [function] susy-sum() — asymmetrical (3 Assertions, 3 Passed, 0 Failed) */
+/* - [function] susy-slice() (3 Assertions, 3 Passed, 0 Failed) */
+/* - [function] susy() (2 Assertions, 2 Passed, 0 Failed) */
+/*
+*/
+/* 6 Tests: */
+/* - 6 Passed */
+/* - 0 Failed */
+/*
+*/
+/* ### Language Settings ---------- */
+/* - [function] parse-grid (30 Assertions, 30 Passed, 0 Failed) */
+/* - [function] parse-span (44 Assertions, 44 Passed, 0 Failed) */
+/* - [function] parse-gutters (11 Assertions, 11 Passed, 0 Failed) */
+/*
+*/
+/* 3 Tests: */
+/* - 3 Passed */
+/* - 0 Failed */
+/*
+*/
+/* ### Grids Syntax ---------- */
+/* - [mixin] layout (7 Assertions, 7 Passed, 0 Failed) */
+/* - [mixin] with-layout (6 Assertions, 6 Passed, 0 Failed) */
+/* - [function] layout (1 Assertions, 1 Passed, 0 Failed) */
+/* - [function] _get-layout (2 Assertions, 2 Passed, 0 Failed) */
+/*
+*/
+/* 4 Tests: */
+/* - 4 Passed */
+/* - 0 Failed */
+/*
+*/
+/* ### Global Box-Sizing Syntax ---------- */
 /* - [mixin] global-box-sizing */
 /* "Nested items should use border-box model." */
 .test__global-box-sizing .assert__global-box-sizing .test *, .test__global-box-sizing .assert__global-box-sizing .test *:before, .test__global-box-sizing .assert__global-box-sizing .test *:after {
@@ -80,6 +84,26 @@
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
+}
+
+/* "Nested items should inherit the border-box model from the html element." */
+html {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+html {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
 }
 
 /* - [mixin] border-box-sizing */
@@ -95,23 +119,45 @@
   box-sizing: border-box;
 }
 
-/*  - update-box-model (2 Assertions, 2 Passed, 0 Failed) */
-/*  
-    1 Tests:
-    - 1 Passed
-    - 0 Failed */
-/*  
+/* "Nested items should inherit the border-box model from the html element." */
+html {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
 
-### Shared Context Language ------ */
-/*  - [function] nested (3 Assertions, 3 Passed, 0 Failed) */
-/*  - [mixin] nested (2 Assertions, 2 Passed, 0 Failed) */
-/*  
-    2 Tests:
-    - 2 Passed
-    - 0 Failed */
-/*  
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+html {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
 
-### Background Syntax ------ */
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+/* - update-box-model (2 Assertions, 2 Passed, 0 Failed) */
+/*
+*/
+/* 1 Tests: */
+/* - 1 Passed */
+/* - 0 Failed */
+/*
+*/
+/* ### Shared Context Language ---------- */
+/* - [function] nested (3 Assertions, 3 Passed, 0 Failed) */
+/* - [mixin] nested (2 Assertions, 2 Passed, 0 Failed) */
+/*
+*/
+/* 2 Tests: */
+/* - 2 Passed */
+/* - 0 Failed */
+/*
+*/
+/* ### Background Syntax ---------- */
 /* - [mixin] background-grid */
 /* "Items should have a 7-column grid with outside gutters." */
 .test__background-grid .assert__outside .test {
@@ -203,20 +249,21 @@
   background-position: left top;
 }
 
-/*  - [function] get-background-sym (6 Assertions, 6 Passed, 0 Failed) */
-/*  - [function] get-asym-inside (1 Assertions, 1 Passed, 0 Failed) */
-/*  - [function] get-asym-split (1 Assertions, 1 Passed, 0 Failed) */
-/*  - [function] get-asym-outside (1 Assertions, 1 Passed, 0 Failed) */
-/*  - [function] get-background-asym (2 Assertions, 2 Passed, 0 Failed) */
-/*  - [function] get-background (5 Assertions, 5 Passed, 0 Failed) */
-/*  - [function] get-debug (2 Assertions, 2 Passed, 0 Failed) */
-/*  
-    7 Tests:
-    - 7 Passed
-    - 0 Failed */
-/*  
-
-### Container Syntax ------ */
+/* - [function] get-background-sym (6 Assertions, 6 Passed, 0 Failed) */
+/* - [function] get-asym-inside (1 Assertions, 1 Passed, 0 Failed) */
+/* - [function] get-asym-split (1 Assertions, 1 Passed, 0 Failed) */
+/* - [function] get-asym-outside (1 Assertions, 1 Passed, 0 Failed) */
+/* - [function] get-background-asym (2 Assertions, 2 Passed, 0 Failed) */
+/* - [function] get-background (5 Assertions, 5 Passed, 0 Failed) */
+/* - [function] get-debug (2 Assertions, 2 Passed, 0 Failed) */
+/*
+*/
+/* 7 Tests: */
+/* - 7 Passed */
+/* - 0 Failed */
+/*
+*/
+/* ### Container Syntax ---------- */
 /* - [mixin] container */
 /* "Containers should have 80% max-width and show a 7 .5 grid." */
 .test__container .assert__default-box .test {
@@ -286,16 +333,17 @@
   clear: both;
 }
 
-/*  - [function] container (5 Assertions, 5 Passed, 0 Failed) */
-/*  - [function] get-container-width (6 Assertions, 6 Passed, 0 Failed) */
-/*  - [function] parse-container-position() (7 Assertions, 7 Passed, 0 Failed) */
-/*  
-    3 Tests:
-    - 3 Passed
-    - 0 Failed */
-/*  
-
-### Span Syntax ------ */
+/* - [function] container (5 Assertions, 5 Passed, 0 Failed) */
+/* - [function] get-container-width (6 Assertions, 6 Passed, 0 Failed) */
+/* - [function] parse-container-position() (7 Assertions, 7 Passed, 0 Failed) */
+/*
+*/
+/* 3 Tests: */
+/* - 3 Passed */
+/* - 0 Failed */
+/*
+*/
+/* ### Span Syntax ---------- */
 /* - [mixin] span */
 /* "Span should set width (75%), float (left), and gutter (5% margin-right)" */
 .test__span .assert__default .test {
@@ -366,17 +414,18 @@
   padding-right: 1.25%;
 }
 
-/*  - [mixin] span (4 Assertions, 4 Passed, 0 Failed) */
-/*  - [function] span (1 Assertions, 1 Passed, 0 Failed) */
-/*  - [function] span-math (14 Assertions, 14 Passed, 0 Failed) */
-/*  - [function] get-span-width (12 Assertions, 12 Passed, 0 Failed) */
-/*  
-    4 Tests:
-    - 4 Passed
-    - 0 Failed */
-/*  
-
-### Gutter Syntax ------ */
+/* - [mixin] span (4 Assertions, 4 Passed, 0 Failed) */
+/* - [function] span (1 Assertions, 1 Passed, 0 Failed) */
+/* - [function] span-math (14 Assertions, 14 Passed, 0 Failed) */
+/* - [function] get-span-width (12 Assertions, 12 Passed, 0 Failed) */
+/*
+*/
+/* 4 Tests: */
+/* - 4 Passed */
+/* - 0 Failed */
+/*
+*/
+/* ### Gutter Syntax ---------- */
 /* - [mixin] gutters */
 /* "Item should have 2.5% margin-gutters added before and after" */
 .test__gutters .assert__auto .test {
@@ -408,19 +457,20 @@
   padding-right: 5em;
 }
 
-/*  - [function] gutter (2 Assertions, 2 Passed, 0 Failed) */
-/*  - [function] get-gutter-width (9 Assertions, 9 Passed, 0 Failed) */
-/*  - [function] get-gutters (3 Assertions, 3 Passed, 0 Failed) */
-/*  - [function] is-inside (2 Assertions, 2 Passed, 0 Failed) */
-/*  - [function] is-split (2 Assertions, 2 Passed, 0 Failed) */
-/*  - [function] gutter-math (2 Assertions, 2 Passed, 0 Failed) */
-/*  
-    6 Tests:
-    - 6 Passed
-    - 0 Failed */
-/*  
-
-### Isolation Syntax ------ */
+/* - [function] gutter (2 Assertions, 2 Passed, 0 Failed) */
+/* - [function] get-gutter-width (9 Assertions, 9 Passed, 0 Failed) */
+/* - [function] get-gutters (3 Assertions, 3 Passed, 0 Failed) */
+/* - [function] is-inside (2 Assertions, 2 Passed, 0 Failed) */
+/* - [function] is-split (2 Assertions, 2 Passed, 0 Failed) */
+/* - [function] gutter-math (2 Assertions, 2 Passed, 0 Failed) */
+/*
+*/
+/* 6 Tests: */
+/* - 6 Passed */
+/* - 0 Failed */
+/*
+*/
+/* ### Isolation Syntax ---------- */
 /* - [mixin] isolate */
 /* "Item should be isolated in the last 2 columns" */
 .test__isolate .assert__isolate .test {
@@ -434,15 +484,16 @@
   margin-right: -100%;
 }
 
-/*  - [function] isolate (2 Assertions, 2 Passed, 0 Failed) */
-/*  - [function] get-isolation (4 Assertions, 4 Passed, 0 Failed) */
-/*  
-    2 Tests:
-    - 2 Passed
-    - 0 Failed */
-/*  
-
-### Gallery Syntax ------ */
+/* - [function] isolate (2 Assertions, 2 Passed, 0 Failed) */
+/* - [function] get-isolation (4 Assertions, 4 Passed, 0 Failed) */
+/*
+*/
+/* 2 Tests: */
+/* - 2 Passed */
+/* - 0 Failed */
+/*
+*/
+/* ### Gallery Syntax ---------- */
 /* - [mixin] gallery */
 /* "Items should create 3x symmetrical isolated gallery." */
 .test__gallery .assert__sym .test {
@@ -732,13 +783,14 @@
   clear: none;
 }
 
-/*  
-    0 Tests:
-    - 0 Passed
-    - 0 Failed */
-/*  
-
-### Row Syntax ------ */
+/*
+*/
+/* 0 Tests: */
+/* - 0 Passed */
+/* - 0 Failed */
+/*
+*/
+/* ### Row Syntax ---------- */
 /* - [mixin] break */
 /* "breaks should clear preceeding floats" */
 .test__break .assert__break .test {
@@ -837,12 +889,15 @@
   margin-right: 0;
 }
 
-/*  - [function] get-edge (6 Assertions, 6 Passed, 0 Failed) */
-/*  - [function] get-location (4 Assertions, 4 Passed, 0 Failed) */
-/*  
-    2 Tests:
-    - 2 Passed
-    - 0 Failed */
+/* - [function] get-edge (6 Assertions, 6 Passed, 0 Failed) */
+/* - [function] get-location (4 Assertions, 4 Passed, 0 Failed) */
+/*
+*/
+/* 2 Tests: */
+/* - 2 Passed */
+/* - 0 Failed */
+/*
+*/
 /*
 
 ### Margin Syntax ------ */
@@ -1047,9 +1102,7 @@
   padding-right: 25%;
 }
 
-/*  
-
-### Bleed Syntax ------ */
+/* ### Bleed Syntax ---------- */
 /* - [mixin] bleed */
 /* "Items should bleed 1 column outside their nested context" */
 .test__bleed .assert__simple .test {
@@ -1133,20 +1186,24 @@
   padding-bottom: 1em;
 }
 
-/*  - [function] get-bleed (3 Assertions, 3 Passed, 0 Failed) */
-/*  - [function] bleed-shorthand (2 Assertions, 2 Passed, 0 Failed) */
-/*  
-    2 Tests:
-    - 2 Passed
-    - 0 Failed */
-/*  
-
-### breakpoint integration ------ */
-/*  - [mixin] susy-breakpoint (2 Assertions, 2 Passed, 0 Failed) */
-/*  
-    1 Tests:
-    - 1 Passed
-    - 0 Failed */
+/* - [function] get-bleed (3 Assertions, 3 Passed, 0 Failed) */
+/* - [function] bleed-shorthand (2 Assertions, 2 Passed, 0 Failed) */
+/*
+*/
+/* 2 Tests: */
+/* - 2 Passed */
+/* - 0 Failed */
+/*
+*/
+/* ### breakpoint integration ---------- */
+/* - [mixin] susy-breakpoint (2 Assertions, 2 Passed, 0 Failed) */
+/*
+*/
+/* 1 Tests: */
+/* - 1 Passed */
+/* - 0 Failed */
+/*
+*/
 /*
 
 ### Shared Output ------ */
@@ -1161,16 +1218,17 @@
   position: relative;
 }
 
-/*  
-
-### Direction Helpers ------ */
-/*  - [function] get-direction (2 Assertions, 2 Passed, 0 Failed) */
-/*  - [function] to (2 Assertions, 2 Passed, 0 Failed) */
-/*  - [function] from (2 Assertions, 2 Passed, 0 Failed) */
-/*  
-    3 Tests:
-    - 3 Passed
-    - 0 Failed */
+/* ### Direction Helpers ---------- */
+/* - [function] get-direction (2 Assertions, 2 Passed, 0 Failed) */
+/* - [function] to (2 Assertions, 2 Passed, 0 Failed) */
+/* - [function] from (2 Assertions, 2 Passed, 0 Failed) */
+/*
+*/
+/* 3 Tests: */
+/* - 3 Passed */
+/* - 0 Failed */
+/*
+*/
 /*
 
 ### Grid Background Output ------ */
@@ -1314,9 +1372,7 @@
   background-clip: border-box;
 }
 
-/*  
-
-### Box Sizing Support ------ */
+/* ### Box Sizing Support ---------- */
 /* - [mixin] susy-box-sizing */
 /* "Box-models are correctly output and prefixed." */
 .test__susy-box-sizing .assert__border-box .test {
@@ -1330,10 +1386,13 @@
   box-sizing: border-box;
 }
 
-/*  
-    0 Tests:
-    - 0 Passed
-    - 0 Failed */
+/*
+*/
+/* 0 Tests: */
+/* - 0 Passed */
+/* - 0 Failed */
+/*
+*/
 /*
 
 ### rem Support ------ */
@@ -1361,9 +1420,7 @@
   clear: both;
 }
 
-/*  
-
-### Susy Support ------ */
+/* ### Susy Support ---------- */
 /* - [mixin] susy-support */
 /* "Recogizes properties that need special support,
       and passes others through directly." */
@@ -1380,11 +1437,14 @@
   box-sizing: border-box;
 }
 
-/*  - [function] susy-support (3 Assertions, 3 Passed, 0 Failed) */
-/*  
-    1 Tests:
-    - 1 Passed
-    - 0 Failed */
+/* - [function] susy-support (3 Assertions, 3 Passed, 0 Failed) */
+/*
+*/
+/* 1 Tests: */
+/* - 1 Passed */
+/* - 0 Failed */
+/*
+*/
 /*
 
 ### Float Container API ------ */

@@ -5,18 +5,31 @@
 // -----------------
 // Set a box model globally on all elements.
 // - [$box]: border-box | content-box
+// - [$inherit]: true | false
 @mixin global-box-sizing(
-  $box: susy-get(global-box-sizing)
+  $box: susy-get(global-box-sizing),
+  $inherit: false
 ) {
-  *, *:before, *:after { @include output((box-sizing: $box)); }
+  @if $inherit {
+    @at-root {
+       html { @include output((box-sizing: $box)); }
+       *, *:before, *:after { box-sizing: inherit; }
+     }
+  }
+  @else {
+    *, *:before, *:after { @include output((box-sizing: $box)); }
+  }
   @include update-box-model($box);
 }
 
 // Border Box Sizing
 // -----------------
 // A legacy shortcut...
-@mixin border-box-sizing {
-  @include global-box-sizing(border-box);
+// - [$inherit]: true | false
+@mixin border-box-sizing(
+  $inherit: false
+) {
+  @include global-box-sizing(border-box, $inherit);
 }
 
 // Update Box Model

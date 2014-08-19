@@ -46,24 +46,35 @@ $susy: () !default;
 // Return one setting from a grid
 // - $key     : <keyword>
 // - $layout  : <settings>
+$settings-cache: ();
 @function susy-get(
   $key,
   $layout: map-merge($susy-defaults, $susy)
 ) {
+  $cache-key: $key + inspect($layout);
+  @if map-has-key($settings-cache, $cache-key) {
+    @return map-get($settings-cache, $cache-key);
+  }
+
   $layout: parse-grid($layout);
   $_options: $layout $susy $susy-defaults;
+
   $_break: false;
   $_return: null;
 
   @each $opt in $_options {
     @if type-of($opt) == map and not $_break {
-      $_keyset: _susy-deep-has-key($opt, $key...);
+      $_keyset: rb_susy_deep_has_key($opt, $key...);
+
       @if $_keyset {
-        $_return: _susy-deep-get($opt, $key...);
+        $_return: rb_susy-deep-get($opt, $key...);
         $_break: true;
       }
+
     }
   }
+
+  $settings-cache: map-merge( $settings-cache, ($cache-key: $_return) ) !global;
 
   @return $_return;
 }

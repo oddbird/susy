@@ -878,6 +878,14 @@ html {
   float: right;
 }
 
+/* "Last items should not override float if last-flow is "from", with right margins removed" */
+.test__last .assert__last-flow .test {
+  margin-right: 0;
+}
+.test__last .assert__last-flow .expect {
+  margin-right: 0;
+}
+
 /* - [mixin] omega */
 /* "Omega items should float right, with right margins removed" */
 .test__omega .assert__omega .test {

@@ -27,10 +27,22 @@ Simple Install
 Bundler or Rails
 ----------------
 
+.. warning:: In order to use Susy 2 with Rails you must update your Gemfile to use sass-rails ~> 5.0.0.beta1. This is because Susy 2 requires Sass >= 3.3 whilst Rails 4.1 and below include a version of sass-rails which does not support Sass 3.3. As you can see the sass-rails requirement is still in beta so proceed with a drink in hand.
+
 .. code-block:: ruby
 
   # Gemfile
-  gem "susy"
+  # gem 'sass-rails', '~> 4.0.3'
+  gem 'sass-rails', '~> 5.0.0.beta1'
+  gem 'susy'
+  
+  # If you want Compass:
+  gem 'compass-rails', '~> 2.0.0'
+  
+.. code-block:: ruby
+
+  # config/application.rb
+  require 'susy'
 
 .. code-block:: bash
 
@@ -53,6 +65,13 @@ Create a new Compass project:
 
   # command line
   compass create --using susy <project name>
+  
+Alternatively, add Susy to a current project
+
+.. code-block:: bash
+
+  # command line
+  compass install susy
 
 .. _Compass: http://compass-style.org/
 .. _installing Compass: http://compass-style.org/install/

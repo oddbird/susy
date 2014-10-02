@@ -439,7 +439,7 @@ Establish the column-count and arrangement for a grid.
   :key: ``columns``
   :scope: global, local
   :options: ``<number>`` | ``<list>``
-  :default: ``12``
+  :default: ``4``
 
 ``<number>``
   The number of columns in your layout.

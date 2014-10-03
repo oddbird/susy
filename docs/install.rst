@@ -52,7 +52,13 @@ Bundler or Rails
 .. _Bundler: http://bundler.io/
 .. _Rails: http://rubyonrails.org/
 
+If you add Susy to an exsisting Rails app, follow the steps above, but use bundle update instead of bundle install.
 
+.. code-block:: bash
+
+  # command line
+  bundle update
+  
 Compass
 -------
 

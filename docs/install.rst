@@ -57,7 +57,7 @@ Compass
 -------
 
 If you want to use Susy with `Compass`_,
-start by `installing Compass`_.
+start by `installing the pre-release version of Compass`_.
 
 Create a new Compass project:
 
@@ -74,7 +74,7 @@ Alternatively, add Susy to a current project
   compass install susy
 
 .. _Compass: http://compass-style.org/
-.. _installing Compass: http://compass-style.org/install/
+.. _installing the pre-release version of Compass: http://beta.compass-style.org/install/
 
 
 Grunt (and Yeoman)

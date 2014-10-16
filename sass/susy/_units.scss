@@ -125,7 +125,7 @@ $rem-with-px-fallback: true !default;
     // For each property value, if it's in rem or px, derive both rem and
     // px values for it and add those to the end of the appropriate buffer.
     // Ensure all pixel values are rounded to the nearest pixel.
-    @if type-of($value) == number and not unitless($value) and (unit($value) == px or unit($value) == rem) {
+    @if type-of($value) == number and not(unitless($value)) and (unit($value) == px or unit($value) == rem) {
       @if unit($value) == px {
         $px-values: join($px-values, round($value));
         $rem-values: join($rem-values, convert-length($value, rem));

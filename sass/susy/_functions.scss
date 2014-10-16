@@ -92,7 +92,7 @@ $rem-with-px-fallback               : true !default;
   $outerwidth: if($width, $width, columns-width($columns));
 
   @if $width {
-    @if not $border-box-sizing { $outerwidth: handle-grid-padding($outerwidth, subtract); }
+    @if not($border-box-sizing) { $outerwidth: handle-grid-padding($outerwidth, subtract); }
   } @else {
     @if $border-box-sizing { $outerwidth: handle-grid-padding($outerwidth, add); }
   }
@@ -288,7 +288,7 @@ $rem-with-px-fallback               : true !default;
         $layout     : $val;
         $has-layout : true;
       } @else {
-        @if ($has-layout) and (not $media) {
+        @if ($has-layout) and not($media) {
           $max: $val;
         } @else {
           @if $media {

@@ -6,13 +6,24 @@
 // Set a box model globally on all elements.
 // - [$box]: border-box | content-box
 @mixin global-box-sizing(
-  $box: susy-get(global-box-sizing)
+  $box: susy-get(global-box-sizing),
+  $inherit: false
 ) {
 	$inspect: $box;
+  @if $inherit {
+    @at-root {
+       html { @include output((box-sizing: $box)); }
+       *, *:before, *:after { box-sizing: inherit; }
+     }
+  }
+  @else {
+    *, *:before, *:after { @include output((box-sizing: $box)); }
+  }
 
   @include susy-inspect(global-box-sizing, $inspect);
-  *, *:before, *:after { @include output((box-sizing: $box)); }
   @include update-box-model($box);
+
+  *, *:before, *:after { @include output((box-sizing: $box)); }
 }
 
 // Border Box Sizing

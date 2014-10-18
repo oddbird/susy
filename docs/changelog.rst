@@ -8,6 +8,11 @@ Changelog
 - Updated Sass dependency to work with 3.4.
 
 
+2.1.3 - Jul 16 2014
+-------------------
+- Baseline grid image uses `px` instead of `%`.
+- Updated Sass dependency to work with 3.4.
+
 2.1.2 - Apr 28 2014
 -------------------
 

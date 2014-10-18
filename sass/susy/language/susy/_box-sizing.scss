@@ -10,7 +10,7 @@
   $box: susy-get(global-box-sizing),
   $inherit: false
 ) {
-	$inspect: $box;
+  $inspect: $box;
 
   @if $inherit {
     @at-root {

@@ -65,6 +65,7 @@
 
   $output: (
     flow: susy-get(flow, $context),
+    last-flow: susy-get(last-flow, $context),
     margin: if(is-split($context), null, 0),
   );
 

@@ -264,6 +264,26 @@ h1 {
   font-style: italic;
 }
 
+.test__global-box-sizing .assert__global-box-sizing {
+  overflow: hidden;
+  background: rgba(204, 204, 255, 0.5);
+}
+
+.test__global-box-sizing .assert__global-box-sizing .nest {
+  padding-left: 15%;
+  padding-right: 15%;
+  width: 60%;
+  margin: 0 auto;
+}
+
+.test__global-box-sizing .assert__global-box-sizing:before {
+  content: "Nested items should inherit the border-box model from the html element.";
+  display: block;
+  padding: 0.375rem 0.75rem;
+  text-align: left;
+  font-style: italic;
+}
+
 /* - [mixin] border-box-sizing */
 .test__border-box-sizing .assert__border-box-sizing {
   overflow: hidden;
@@ -279,6 +299,26 @@ h1 {
 
 .test__border-box-sizing .assert__border-box-sizing:before {
   content: "Nested items should use border-box model.";
+  display: block;
+  padding: 0.375rem 0.75rem;
+  text-align: left;
+  font-style: italic;
+}
+
+.test__border-box-sizing .assert__border-box-sizing {
+  overflow: hidden;
+  background: rgba(204, 204, 255, 0.5);
+}
+
+.test__border-box-sizing .assert__border-box-sizing .nest {
+  padding-left: 15%;
+  padding-right: 15%;
+  width: 60%;
+  margin: 0 auto;
+}
+
+.test__border-box-sizing .assert__border-box-sizing:before {
+  content: "Nested items should inherit the border-box model from the html element.";
   display: block;
   padding: 0.375rem 0.75rem;
   text-align: left;
@@ -1220,6 +1260,39 @@ h1 {
 
 .test__last .assert__split:before {
   content: "Last items should float right.";
+  display: block;
+  padding: 0.375rem 0.75rem;
+  text-align: left;
+  font-style: italic;
+}
+
+.test__last .assert__last-flow {
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  background-image: -moz-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 66.66667%, rgba(0, 0, 0, 0) 66.66667%);
+  background-image: -webkit-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 66.66667%, rgba(0, 0, 0, 0) 66.66667%);
+  background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 66.66667%, rgba(0, 0, 0, 0) 66.66667%);
+  background-size: 15%;
+  background-origin: content-box;
+  background-clip: content-box;
+  background-position: left top;
+}
+.test__last .assert__last-flow:after {
+  content: " ";
+  display: block;
+  clear: both;
+}
+
+.test__last .assert__last-flow .test, .test__last .assert__last-flow .expect {
+  width: 25%;
+  float: left;
+  margin-right: 5%;
+  clear: both;
+}
+
+.test__last .assert__last-flow:before {
+  content: 'Last items should not override float if last-flow is "from", with right margins removed';
   display: block;
   padding: 0.375rem 0.75rem;
   text-align: left;

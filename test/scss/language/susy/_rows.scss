@@ -149,6 +149,27 @@
       .test { @include last; }
       .expect { float: right; }
     }
+
+    // last-flow
+    @include assert-setup('last-flow', $grid: (
+      columns: 7,
+      gutters: .5,
+      gutter-position: after,
+      last-flow: from
+    )) {
+      .test, .expect {
+        @include span(2);
+        clear: both;
+      }
+    }
+    @include assert-output(
+      'Last items should not override float if last-flow is "from", with right margins removed'
+    ) {
+      .test { @include last; }
+      .expect {
+        margin-right: 0;
+      }
+    }
   }
 
   // omega

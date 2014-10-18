@@ -1,6 +1,22 @@
 Changelog
 =========
 
+2.2.0 - UNRELEASED
+-------------------
+
+- Update ``global-box-sizing`` and the legacy ``border-box-sizing``
+  mixins to optionally take another argument, ``$inherit``. This new
+  argument is a boolean value that defaults to ``false``, meaning the
+  behavior of these mixins will not change by default. The default
+  behavior sets all elements to use the specified ``box-sizing``,
+  which can only be changed explicitly on a per-element basis. By passing
+  in ``$inherit`` as ``true``, the ``box-sizing`` is set on the
+  ``html`` element, and all other elements inherit this property. This
+  means that the ``box-sizing`` can be changed at the component level
+  and all nested elements will inherit this change. This cascading
+  effect can be prevented by explicitly setting ``box-sizing`` on the
+  exceptions within the nested context.
+
 2.1.3 - Jul 16 2014
 -------------------
 

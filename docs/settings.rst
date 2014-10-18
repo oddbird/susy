@@ -421,7 +421,7 @@ Align the container relative to it's parent element
   If one length is given,
   it will be applied to both side margins,
   to offset the container from the edges of the viewport.
-  If to values are given,
+  If two values are given,
   they will be used as ``left`` and ``right`` margins respectively.
 
 
@@ -439,7 +439,7 @@ Establish the column-count and arrangement for a grid.
   :key: ``columns``
   :scope: global, local
   :options: ``<number>`` | ``<list>``
-  :default: ``12``
+  :default: ``4``
 
 ``<number>``
   The number of columns in your layout.

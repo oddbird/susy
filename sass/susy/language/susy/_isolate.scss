@@ -9,11 +9,14 @@
 @mixin isolate(
   $isolate: 1
 ) {
+  $inspect: $isolate;
+
   $output: (
     push: isolate($isolate),
     flow: susy-get(flow, $isolate),
   );
 
+  @include susy-inspect(isolate, $inspect);
   @include isolate-output($output...);
 }
 

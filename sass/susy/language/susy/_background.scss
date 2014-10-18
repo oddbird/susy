@@ -11,8 +11,10 @@ $susy-overlay-grid-head-exists: false;
 @mixin show-grid(
   $grid: $susy
 ) {
+  $inspect: $grid;
   $_output: debug-get(output, $grid);
 
+  @include susy-inspect(show-grid, $inspect);
   @if $_output == overlay {
     @include overlay-grid($grid);
   } @else {
@@ -33,7 +35,8 @@ $susy-overlay-grid-head-exists: false;
 @mixin background-grid(
   $grid: $susy
 ) {
-  $_output: get-background($grid);
+  $inspect  : $grid;
+  $_output  : get-background($grid);
 
   @if length($_output) > 0 {
     $_flow: susy-get(flow, $grid);
@@ -46,6 +49,7 @@ $susy-overlay-grid-head-exists: false;
     $_output: map-merge($_output, (image: $_image));
 
     @include background-grid-output($_output...);
+    @include susy-inspect(background-grid, $inspect);
   }
 }
 

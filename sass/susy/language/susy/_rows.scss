@@ -1,7 +1,6 @@
 // Row Start & End
 // ===============
 
-
 // Break
 // -----
 // Apply to any element that should force a line break.
@@ -24,6 +23,8 @@
 @mixin full(
   $context: $susy
 ) {
+  $inspect : $context;
+  @include susy-inspect(full, $inspect);
   @include span(full of parse-grid($context) break);
 }
 
@@ -34,9 +35,11 @@
 @mixin first(
   $context: $susy
 ) {
-  $context: parse-grid($context);
-  $flow: susy-get(flow, $context);
+  $inspect  : $context;
+  $context  : parse-grid($context);
+  $flow     : susy-get(flow, $context);
 
+  @include susy-inspect(first, $inspect);
   @if not is-split($context) {
     @include float-first($flow);
   }
@@ -55,7 +58,11 @@
 @mixin last(
   $context: $susy
 ) {
-  $context: parse-grid($context);
+  $inspect  : $context;
+  $context  : parse-grid($context);
+
+  @include susy-inspect(last, $inspect);
+
   $output: (
     flow: susy-get(flow, $context),
     last-flow: susy-get(last-flow, $context),

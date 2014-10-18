@@ -30,9 +30,10 @@
       'Span should set width (75%), float (left), and gutter (5% margin-right)'
     ) {
       .test {
-        @include span(5 content-box) { .inner { @include span(2); } }
+        @include span(5 content-box inspect) { .inner { @include span(2); } }
       }
       .expect {
+        -susy-span: 5 content-box inspect;
         @include output((box-sizing: content-box));
         width: 70%;
         float: left;

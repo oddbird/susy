@@ -8,11 +8,13 @@
 @mixin pre(
   $span
 ) {
+  $inspect: $span;
   $span   : map-merge((spread: wide), parse-span($span));
   $flow   : susy-get(flow, $span);
   $split  : if(susy-get(gutter-position, $span) == split, true, false);
   $width  : if($split, span($span) + gutter($span), span($span));
 
+  @include susy-inspect(pre, $inspect);
   @include margin-output($width, null, $flow);
 }
 
@@ -23,11 +25,13 @@
 @mixin post(
   $span
 ) {
-  $span   : map-merge((spread: wide), parse-span($span));
-  $flow   : susy-get(flow, $span);
-  $split  : if(susy-get(gutter-position, $span) == split, true, false);
-  $width  : if($split, span($span) + gutter($span), span($span));
+  $inspect  : $span;
+  $span     : map-merge((spread: wide), parse-span($span));
+  $flow     : susy-get(flow, $span);
+  $split    : if(susy-get(gutter-position, $span) == split, true, false);
+  $width    : if($split, span($span) + gutter($span), span($span));
 
+  @include susy-inspect(post, $inspect);
   @include margin-output(null, $width, $flow);
 }
 
@@ -48,11 +52,13 @@
 @mixin pull(
   $span
 ) {
-  $span   : map-merge((spread: wide), parse-span($span));
-  $flow   : susy-get(flow, $span);
-  $split  : if(susy-get(gutter-position, $span) == split, true, false);
-  $width  : if($split, 0 - span($span) + gutter($span), 0 - span($span));
+  $inspect  : $span;
+  $span     : map-merge((spread: wide), parse-span($span));
+  $flow     : susy-get(flow, $span);
+  $split    : if(susy-get(gutter-position, $span) == split, true, false);
+  $width    : if($split, 0 - span($span) + gutter($span), 0 - span($span));
 
+  @include susy-inspect(pull, $inspect);
   @include margin-output($width, null, $flow);
 }
 
@@ -65,7 +71,8 @@
   $pre,
   $post: false
 ) {
-  $pre: map-merge((spread: wide), parse-span($pre));
+  $inspect      : $pre, $post;
+  $pre          : map-merge((spread: wide), parse-span($pre));
 
   @if $post {
     $post: map-merge((spread: wide), parse-span($post));
@@ -79,6 +86,7 @@
     }
   }
 
+  @include susy-inspect(squish, $inspect...);
   @include pre($pre);
   @include post($post);
 }

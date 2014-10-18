@@ -10,6 +10,7 @@
   $span,
   $selector: child
 ) {
+  $inspect    : $span;
   $span       : parse-span($span);
   $span       : map-merge($span, (location: 1));
 
@@ -47,6 +48,8 @@
 
   $box          : susy-get(box-sizing, $span);
   $global-box   : if(susy-get(global-box-sizing) == 'border-box', true, false);
+
+  @include susy-inspect(gallery, $inspect);
 
   // Collective Output
   @if $box == border-box or ($inside and not $box and not $global-box) {

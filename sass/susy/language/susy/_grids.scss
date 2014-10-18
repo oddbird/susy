@@ -11,7 +11,10 @@
   $layout,
   $clean: false
 ) {
-  $susy: _get-layout($layout, $clean) !global;
+  $inspect  : $layout;
+  $susy     : _get-layout($layout, $clean) !global;
+
+  @include susy-inspect(layout, $inspect);
 }
 
 
@@ -24,8 +27,11 @@
   $layout,
   $clean: false
 ) {
-  $old: $susy;
-  $susy: _get-layout($layout, $clean) !global;
+  $inspect  : $layout;
+  $old      : $susy;
+  $susy     : _get-layout($layout, $clean) !global;
+
+  @include susy-inspect(with-layout, $inspect);
 
   @content;
 

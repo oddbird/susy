@@ -1,4 +1,4 @@
-// Global Box Sizing
+// Susy Box Sizing
 // =================
 
 // Global Box Sizing
@@ -10,15 +10,18 @@
   $box: susy-get(global-box-sizing),
   $inherit: false
 ) {
+  $inspect: $box;
+
   @if $inherit {
     @at-root {
        html { @include output((box-sizing: $box)); }
        *, *:before, *:after { box-sizing: inherit; }
      }
-  }
-  @else {
+  } @else {
     *, *:before, *:after { @include output((box-sizing: $box)); }
   }
+
+  @include susy-inspect(global-box-sizing, $inspect);
   @include update-box-model($box);
 }
 
@@ -39,6 +42,6 @@
   $box
 ) {
   @if $box != susy-get(global-box-sizing) {
-    @include susy-set(global-box-sizing, $box);
+  @include susy-set(global-box-sizing, $box);
   }
 }

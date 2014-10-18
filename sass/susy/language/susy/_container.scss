@@ -8,6 +8,7 @@
 @mixin container(
   $layout: $susy
 ) {
+  $inspect    : $layout;
   $layout     : parse-grid($layout);
 
   $_width     : get-container-width($layout);
@@ -20,6 +21,7 @@
     @include output((box-sizing: $_box));
   }
 
+  @include susy-inspect(container, $inspect);
   @include float-container($_width, $_justify, $_property);
   @include show-grid($layout);
 }

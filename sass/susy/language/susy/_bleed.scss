@@ -8,12 +8,14 @@
 @mixin bleed(
   $bleed: 0 gutter()
 ) {
-  $output: get-bleed($bleed);
+  $inspect  : $bleed;
+  $output   : get-bleed($bleed);
 
   @if susy-get(global-box-sizing) != content-box {
     $output: map-merge((box-sizing: content-box), $output);
   }
-
+  
+  @include susy-inspect(bleed, $inspect);
   @include output($output);
 }
 

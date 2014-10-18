@@ -16,8 +16,8 @@
     flow: susy-get(flow, $isolate),
   );
 
-  @include isolate-output($output...);
   @include susy-inspect(isolate, $inspect);
+  @include isolate-output($output...);
 }
 
 

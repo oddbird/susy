@@ -17,15 +17,12 @@
        html { @include output((box-sizing: $box)); }
        *, *:before, *:after { box-sizing: inherit; }
      }
-  }
-  @else {
+  } @else {
     *, *:before, *:after { @include output((box-sizing: $box)); }
   }
 
   @include susy-inspect(global-box-sizing, $inspect);
   @include update-box-model($box);
-
-  *, *:before, *:after { @include output((box-sizing: $box)); }
 }
 
 // Border Box Sizing

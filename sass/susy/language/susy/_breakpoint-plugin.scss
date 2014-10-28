@@ -24,3 +24,32 @@
     @warn "Susy-breakpoint requires the Breakpoint plugin (http://breakpoint-sass.com/)";
   }
 }
+
+
+// Simple Susy Breakpoint
+// ---------------
+// Shorten mixin syntax & add `breakpoint` value to $susy maps
+// - $config    : a valid $susy config map
+// - $columns  : either a value/list that's valid for span() mixin, or the word 'container'
+// - $grid      : if true, calls show-grid() mixin if $columns == container
+@mixin simple-susy-breakpoint(
+  $config,
+  $columns,
+  $grid: false
+) {
+  @if map-get($config, breakpoint) == null {
+    @warn 'The map you specified does not have a breakpoint value.';
+  } @else {
+    $breakpoint: map-get($config, breakpoint);
+    @include susy-breakpoint($breakpoint, $config) {
+      @if $columns == container {
+        @include container;
+        @if $grid == true {
+          @include show-grid;
+        }
+      } @else {
+        @include span($columns);
+      }
+    }
+  }
+}

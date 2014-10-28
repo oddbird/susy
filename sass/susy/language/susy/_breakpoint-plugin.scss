@@ -30,7 +30,7 @@
 // ---------------
 // Shorten mixin syntax & add `breakpoint` value to $susy maps
 // - $config    : a valid $susy config map
-// - $columns  : either a value/list that's valid for span() mixin, or the word 'container'
+// - $columns   : either a value/list that's valid for span() mixin, or the word 'container'
 // - $grid      : if true, calls show-grid() mixin if $columns == container
 @mixin simple-susy-breakpoint(
   $config,

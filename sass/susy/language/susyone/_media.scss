@@ -36,7 +36,7 @@
   $max          : nth($media-layout,3);
   $ie           : nth($media-layout,4);
 
-  @if (not $breakpoint-media-output) and (not $breakpoint-ie-output) and (not $breakpoint-raw-output) {
+  @if not($breakpoint-media-output) and not($breakpoint-ie-output) and not($breakpoint-raw-output) {
     @warn "Either $breakpoint-media-output, $breakpoint-ie-output, or $breakpoint-raw-output must be true for at-breakpoint to work.";
   }
 
@@ -44,7 +44,7 @@
   @if $min or $layout or $max {
 
     // If we don't have a layout, we create one based on the min-width.
-    @if not $layout {
+    @if not($layout) {
       $layout: get-layout($min);
     }
 
@@ -60,7 +60,7 @@
                 @content;
               }
             } @else {
-              @if (not $min) and (not $max) {
+              @if not($min) and not($max) {
                 // Neither $min nor $max:
                 // We can create a breakpoint based on the number of columns in the layout.
                 $min: fix-ems(container-outer-width($width: false));

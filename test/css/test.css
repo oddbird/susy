@@ -80,11 +80,6 @@
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
-.test__global-box-sizing .assert__global-box-sizing .test *, .test__global-box-sizing .assert__global-box-sizing .test *:before, .test__global-box-sizing .assert__global-box-sizing .test *:after {
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-}
 .test__global-box-sizing .assert__global-box-sizing .expect *, .test__global-box-sizing .assert__global-box-sizing .expect *:before, .test__global-box-sizing .assert__global-box-sizing .expect *:after {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -101,11 +96,6 @@ html {
 *, *:before, *:after {
   box-sizing: inherit;
 }
-.test__global-box-sizing .assert__global-box-sizing .test *, .test__global-box-sizing .assert__global-box-sizing .test *:before, .test__global-box-sizing .assert__global-box-sizing .test *:after {
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-}
 html {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -118,11 +108,6 @@ html {
 
 /* - [mixin] border-box-sizing */
 /* "Nested items should use border-box model." */
-.test__border-box-sizing .assert__border-box-sizing .test *, .test__border-box-sizing .assert__border-box-sizing .test *:before, .test__border-box-sizing .assert__border-box-sizing .test *:after {
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-}
 .test__border-box-sizing .assert__border-box-sizing .test *, .test__border-box-sizing .assert__border-box-sizing .test *:before, .test__border-box-sizing .assert__border-box-sizing .test *:after {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -143,11 +128,6 @@ html {
 
 *, *:before, *:after {
   box-sizing: inherit;
-}
-.test__border-box-sizing .assert__border-box-sizing .test *, .test__border-box-sizing .assert__border-box-sizing .test *:before, .test__border-box-sizing .assert__border-box-sizing .test *:after {
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
 }
 html {
   -moz-box-sizing: border-box;
@@ -396,11 +376,6 @@ html {
 }
 
 /* "Span should set width, float, clear, and inside gutter" */
-.test__span .assert__inside *, .test__span .assert__inside *:before, .test__span .assert__inside *:after {
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-}
 .test__span .assert__inside *, .test__span .assert__inside *:before, .test__span .assert__inside *:after {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;

@@ -1,0 +1,38 @@
+// Flexbox Container API
+// ===================
+
+// Flexbox Container
+// ---------------
+// - [$width]         : <length>
+// - [$justify]       : left | center | right
+// - [$property]			: max-width | min-width
+// - [$align]					: stretch | start | center | end | baseline
+// - [$flow]					: ltr | rtl
+@mixin flexbox-container(
+	$width,
+	$justify: auto auto,
+	$property: max-width,
+	$align: null,
+	$flow: null
+) {
+	@if $align == start or $align == end {
+		$align: flex + -$align;
+	}
+
+	@if $flow == rtl {
+		$flow: row-reverse;
+	} @else {
+		$flow: null;
+	}
+
+	$output: (
+		#{$property}: $width or 100%,
+		margin-left: nth($justify, 1),
+		margin-right: nth($justify, 2),
+		display: flex,
+		align-items: $align,
+		flex-direction: $flow
+	);
+
+	@include output($output);
+}

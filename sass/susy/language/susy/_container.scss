@@ -22,14 +22,14 @@
 
   @include susy-inspect(container, $inspect);
 
-	$_output		: susy-get(output, $layout);
-	$_align			: susy-get(align, $layout);
-	$_flow			: susy-get(flow, $layout);
-	@if $_output == flexbox {
-		@include flexbox-container($_width, $_justify, $_property, $_align, $_flow);
-	} @else {
-		@include float-container($_width, $_justify, $_property);
-	}
+  $_output    : susy-get(output, $layout);
+  $_align     : susy-get(align, $layout);
+  $_flow      : susy-get(flow, $layout);
+  @if $_output == flexbox {
+    @include flexbox-container($_width, $_justify, $_property, $_align, $_flow);
+  } @else {
+    @include float-container($_width, $_justify, $_property);
+  }
 
   @include show-grid($layout);
 }

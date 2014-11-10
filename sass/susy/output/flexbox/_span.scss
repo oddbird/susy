@@ -10,35 +10,35 @@
 // - [$padding-before]  : <length>
 // - [$padding-after]   : <length>
 // - [$flow]            : ltr | rtl
-// - [$align]						: stretch | start | center | end | baseline
-// - [$order]						: <number>
+// - [$align]           : stretch | start | center | end | baseline
+// - [$order]           : <number>
 @mixin flexbox-span-output(
-	$width,
-	$float						: from,
-	$margin-before		: null,
-	$margin-after			: null,
-	$padding-before		: null,
-	$padding-after		: null,
-	$flow							: map-get($susy-default, flow),
-	$align						: null,
-	$order						: null
+  $width,
+  $float            : from,
+  $margin-before    : null,
+  $margin-after     : null,
+  $padding-before   : null,
+  $padding-after    : null,
+  $flow             : map-get($susy-default, flow),
+  $align            : null,
+  $order            : null
 ) {
-	$to			: to($flow);
-	$from		: from($flow);
+  $to     : to($flow);
+  $from   : from($flow);
 
-	@if $align == start or $align == end {
-		$align: flex + -$align;
-	}
+  @if $align == start or $align == end {
+    $align: flex + -$align;
+  }
 
-	$output: (
-		width: $width,
+  $output: (
+    width: $width,
     margin-#{$from}: $margin-before,
     margin-#{$to}: $margin-after,
     padding-#{$from}: $padding-before,
     padding-#{$to}: $padding-after,
-		align-self: $align,
-		order: $order
-	);
+    align-self: $align,
+    order: $order
+  );
 
-	@include output($output);
+  @include output($output);
 }

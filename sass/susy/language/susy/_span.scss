@@ -27,15 +27,15 @@
   @include susy-inspect(span, $inspect);
   @include output((box-sizing: $box));
 
-	$_output: susy-get(output, $span);
-	$_align: susy-get(align, $span);
-	$_order: get-location($span);
-	@if $_output == flexbox {
-		$output: map-merge($output, (align: $_align, order: $_order));
-		@include flexbox-span-output($output...);
-	} @else {
-		@include float-span-output($output...);
-	}
+  $_output: susy-get(output, $span);
+  $_align: susy-get(align, $span);
+  $_order: get-location($span);
+  @if $_output == flexbox {
+    $output: map-merge($output, (align: $_align, order: $_order));
+    @include flexbox-span-output($output...);
+  } @else {
+    @include float-span-output($output...);
+  }
 
   @if valid-columns($nesting, silent) {
     @include nested($span) { @content; }

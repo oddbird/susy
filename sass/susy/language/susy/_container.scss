@@ -1,6 +1,17 @@
 // Container Syntax
 // ================
 
+// Container Gallery [mixin]
+// -----------------
+// Set a container element for flexbox gallery
+// - [$layout]  : <settings>
+@mixin container-gallery(
+  $layout: $susy
+) {
+  @include output((flex-wrap: wrap));
+  @include container($layout);
+}
+
 // Container [mixin]
 // -----------------
 // Set a container element

@@ -58,7 +58,12 @@
     @include output((box-sizing: content-box));
   }
 
-  @include float-span-output($output...);
+  $_output: susy-get(output, $span);
+  @if $_output == flexbox {
+    @include flexbox-span-output($output...);
+  } @else {
+    @include float-span-output($output...);
+  }
 
   // Individual Loop
   @for $item from 1 through $line {
@@ -76,13 +81,23 @@
       );
 
       // Individual Output
-      @include float-span-output($output...);
+      @if $_output == flexbox {
+        $output: span-math($span);
+        @if $symmetrical {
+          $output: map-merge($output, (width: null));
+        }
 
-      @if get-edge($span) == first {
-        @include break;
-        @include first($span);
+        @include flexbox-span-output($output...);
+
       } @else {
-        @include nobreak;
+        @include float-span-output($output...);
+
+        @if get-edge($span) == first {
+          @include break;
+          @include first($span);
+        } @else {
+          @include nobreak;
+        }
       }
 
       // Individual Location Increment

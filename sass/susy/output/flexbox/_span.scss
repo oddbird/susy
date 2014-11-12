@@ -27,7 +27,7 @@
   $from   : from($flow);
 
   @if $align == start or $align == end {
-    $align: flex + -$align;
+    $align: flex-#{$align};
   }
 
   $output: (

@@ -2,8 +2,7 @@
 // // ========
 
 @import "susy";
-@import "compass/reset";
-@import "compass";
+
 
 // Complex AG tests
 // ----------------
@@ -13,11 +12,11 @@
 ) {
   .#{$class} {
     @include container;
-    @include leader(.5);
-    @include trailer(.5);
+    margin-bottom: .5rem;
+    margin-top: .5rem;
 
     > .size1of5 {
-      min-height: rhythm(10);
+      min-height: 10rem;
       &:first-of-type { @include span(2 at 1); }
       ~ .size1of5 { @include span(last 2); }
     }
@@ -37,7 +36,7 @@
       @include nested(6 at 3) {
         .size1of3 {
           @include span(first 2);
-          min-height: rhythm(6.5);
+          min-height: 6.5rem;
         }
         .size2of3 {
           @include span(4 omega nest);
@@ -110,25 +109,34 @@
 // Styles
 // ------
 
-@include establish-baseline;
+html {
+  font-size: 16px;
+  line-height: 1rem;
+}
 
-body { font-family: sans-serif; }
+body {
+  font-size: .75rem;
+  font-family: sans-serif;
+}
 
 h1 {
   background: #333;
   color: #eee;
-  text-transform: uppercase;
 }
+
 h1, h2, h3 {
   clear: both;
-  padding: rhythm(.5);
+  font-size: .75rem;
   font-weight: bold;
+  line-height: 1rem;
+  margin: 0;
+  padding: .5rem;
 }
 
 .grid-element {
-  @include trailer(.5);
+  margin-bottom: .5rem;
+  min-height: 3rem;
   opacity: .5;
-  min-height: rhythm(3);
 }
 
 .size1of2 { background: #f99; }
@@ -139,10 +147,11 @@ h1, h2, h3 {
 .gallery {
   @include susy-clearfix;
   clear: both;
+
   div {
-    @include trailer(.5);
-    height: rhythm(1);
     background: rgba(red,.25);
+    height: 1rem;
+    margin-bottom: .5rem;
     outline: 1px dotted red;
   }
 }

@@ -1,7 +1,7 @@
 // Shared Output
 // =============
 
-@include output-test-module('Shared Output') {
+@include test-module('Shared Output') {
   @include output-test('output') {
     $map: (
       width: 3em,

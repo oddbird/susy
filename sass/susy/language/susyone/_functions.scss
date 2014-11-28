@@ -57,8 +57,8 @@ $rem-with-px-fallback               : true !default;
   $columns  : $total-columns
 ) {
   @if round($columns) != $columns {
-    @warn "Susy works best with integer column-spans.
-    For partial-columns, you may need to finesse the math by hand using functions directly.";
+    @warn "Susy works best with integer column-spans." +
+    "For partial-columns, you may need to finesse the math by hand using functions directly.";
   }
   @return ($columns * $column-width) + (if($columns >= 1, ceil($columns - 1), 0) * $gutter-width);
 }
@@ -319,12 +319,12 @@ $rem-with-px-fallback               : true !default;
           $min: nth($media,2);
         }
       } @else {
-        @warn "Can't compare incompatible units.
-         Using #{$min} for min-width, and #{$max} for max-width";
+        @warn "Can't compare incompatible units." +
+         "Using #{$min} for min-width, and #{$max} for max-width";
       }
       @if (length($media) > 2) {
-        @warn "You can only send two lengths: a min-width and an (optional) max-width.
-         You sent #{length($media)}: #{$media}";
+        @warn "You can only send two lengths: a min-width and an (optional) max-width." +
+         "You sent #{length($media)}: #{$media}";
       }
     }
   }

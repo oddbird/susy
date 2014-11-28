@@ -1,7 +1,7 @@
 // Shared Grid Background Output Tests
 // ===================================
 
-@include output-test-module('Grid Background Output') {
+@include test-module('Grid Background Output') {
 
   // Grid Background Output
   // ----------------------
@@ -15,8 +15,9 @@
 
     @include assert-setup('show') {
       .test, .expect {
-        @include rhythm-padding(2);
         background: none;
+        padding-bottom: 2rem;
+        padding-top: 2rem;
       }
     }
     @include assert-output(

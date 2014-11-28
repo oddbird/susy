@@ -1,21 +1,25 @@
 /* Susy Tests */
 /* ========== */
 
-@import "susy";
-@import "true";
+@import "../sass/susy";
+@import "../bower_components/true/sass/true";
 @import "test/helpers";
+@import "test/layout";
 
 // test that susyone settings don't cause errors in susy
-@import "susy/language/susyone/settings";
-
-// Test
-// ----
-
-$default-module-output: css;
-
-$output-test-context: false;
-$output-test-results: true;
+@import "../sass/susy/language/susyone/settings";
 
 @import "tests";
+
+.results{
+  @if _true-get-result(global) == pass {
+    background: rgba(green, .25);
+    border-color: green;
+  }
+
+  &:after {
+    content: _true-report-message(global);
+  }
+}
 
 @include report;

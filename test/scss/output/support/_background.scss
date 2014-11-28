@@ -1,7 +1,7 @@
 // Background Support
 // ==================
 
-@include output-test-module('Background Support') {
+@include test-module('Background Support') {
 
   // Background Image
   @include output-test('susy-background-image') {

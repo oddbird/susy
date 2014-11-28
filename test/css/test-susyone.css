@@ -1,14 +1,19 @@
 /* Susy Tests */
 /* ========== */
 .background {
+  background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJvYmplY3RCb3VuZGluZ0JveCIgeDE9IjAuMCIgeTE9IjAuNSIgeDI9IjEuMCIgeTI9IjAuNSI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzAwMDAwMCIgc3RvcC1vcGFjaXR5PSIwLjAiLz48c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjNzk3OWU1IiBzdG9wLW9wYWNpdHk9IjAuMjUiLz48c3RvcCBvZmZzZXQ9IjYuNzc5NjYlIiBzdG9wLWNvbG9yPSIjNGY0ZmRkIiBzdG9wLW9wYWNpdHk9IjAuMjUiLz48c3RvcCBvZmZzZXQ9IjYuNzc5NjYlIiBzdG9wLWNvbG9yPSIjMDAwMDAwIiBzdG9wLW9wYWNpdHk9IjAuMCIvPjxzdG9wIG9mZnNldD0iOC40NzQ1OCUiIHN0b3AtY29sb3I9IiMwMDAwMDAiIHN0b3Atb3BhY2l0eT0iMC4wIi8+PHN0b3Agb2Zmc2V0PSI4LjQ3NDU4JSIgc3RvcC1jb2xvcj0iIzc5NzllNSIgc3RvcC1vcGFjaXR5PSIwLjI1Ii8+PHN0b3Agb2Zmc2V0PSIxNS4yNTQyNCUiIHN0b3AtY29sb3I9IiM0ZjRmZGQiIHN0b3Atb3BhY2l0eT0iMC4yNSIvPjxzdG9wIG9mZnNldD0iMTUuMjU0MjQlIiBzdG9wLWNvbG9yPSIjMDAwMDAwIiBzdG9wLW9wYWNpdHk9IjAuMCIvPjxzdG9wIG9mZnNldD0iMTYuOTQ5MTUlIiBzdG9wLWNvbG9yPSIjMDAwMDAwIiBzdG9wLW9wYWNpdHk9IjAuMCIvPjxzdG9wIG9mZnNldD0iMTYuOTQ5MTUlIiBzdG9wLWNvbG9yPSIjNzk3OWU1IiBzdG9wLW9wYWNpdHk9IjAuMjUiLz48c3RvcCBvZmZzZXQ9IjIzLjcyODgxJSIgc3RvcC1jb2xvcj0iIzRmNGZkZCIgc3RvcC1vcGFjaXR5PSIwLjI1Ii8+PHN0b3Agb2Zmc2V0PSIyMy43Mjg4MSUiIHN0b3AtY29sb3I9IiMwMDAwMDAiIHN0b3Atb3BhY2l0eT0iMC4wIi8+PHN0b3Agb2Zmc2V0PSIyNS40MjM3MyUiIHN0b3AtY29sb3I9IiMwMDAwMDAiIHN0b3Atb3BhY2l0eT0iMC4wIi8+PHN0b3Agb2Zmc2V0PSIyNS40MjM3MyUiIHN0b3AtY29sb3I9IiM3OTc5ZTUiIHN0b3Atb3BhY2l0eT0iMC4yNSIvPjxzdG9wIG9mZnNldD0iMzIuMjAzMzklIiBzdG9wLWNvbG9yPSIjNGY0ZmRkIiBzdG9wLW9wYWNpdHk9IjAuMjUiLz48c3RvcCBvZmZzZXQ9IjMyLjIwMzM5JSIgc3RvcC1jb2xvcj0iIzAwMDAwMCIgc3RvcC1vcGFjaXR5PSIwLjAiLz48c3RvcCBvZmZzZXQ9IjMzLjg5ODMxJSIgc3RvcC1jb2xvcj0iIzAwMDAwMCIgc3RvcC1vcGFjaXR5PSIwLjAiLz48c3RvcCBvZmZzZXQ9IjMzLjg5ODMxJSIgc3RvcC1jb2xvcj0iIzc5NzllNSIgc3RvcC1vcGFjaXR5PSIwLjI1Ii8+PHN0b3Agb2Zmc2V0PSI0MC42Nzc5NyUiIHN0b3AtY29sb3I9IiM0ZjRmZGQiIHN0b3Atb3BhY2l0eT0iMC4yNSIvPjxzdG9wIG9mZnNldD0iNDAuNjc3OTclIiBzdG9wLWNvbG9yPSIjMDAwMDAwIiBzdG9wLW9wYWNpdHk9IjAuMCIvPjxzdG9wIG9mZnNldD0iNDIuMzcyODglIiBzdG9wLWNvbG9yPSIjMDAwMDAwIiBzdG9wLW9wYWNpdHk9IjAuMCIvPjxzdG9wIG9mZnNldD0iNDIuMzcyODglIiBzdG9wLWNvbG9yPSIjNzk3OWU1IiBzdG9wLW9wYWNpdHk9IjAuMjUiLz48c3RvcCBvZmZzZXQ9IjQ5LjE1MjU0JSIgc3RvcC1jb2xvcj0iIzRmNGZkZCIgc3RvcC1vcGFjaXR5PSIwLjI1Ii8+PHN0b3Agb2Zmc2V0PSI0OS4xNTI1NCUiIHN0b3AtY29sb3I9IiMwMDAwMDAiIHN0b3Atb3BhY2l0eT0iMC4wIi8+PHN0b3Agb2Zmc2V0PSI1MC44NDc0NiUiIHN0b3AtY29sb3I9IiMwMDAwMDAiIHN0b3Atb3BhY2l0eT0iMC4wIi8+PHN0b3Agb2Zmc2V0PSI1MC44NDc0NiUiIHN0b3AtY29sb3I9IiM3OTc5ZTUiIHN0b3Atb3BhY2l0eT0iMC4yNSIvPjxzdG9wIG9mZnNldD0iNTcuNjI3MTIlIiBzdG9wLWNvbG9yPSIjNGY0ZmRkIiBzdG9wLW9wYWNpdHk9IjAuMjUiLz48c3RvcCBvZmZzZXQ9IjU3LjYyNzEyJSIgc3RvcC1jb2xvcj0iIzAwMDAwMCIgc3RvcC1vcGFjaXR5PSIwLjAiLz48c3RvcCBvZmZzZXQ9IjU5LjMyMjAzJSIgc3RvcC1jb2xvcj0iIzAwMDAwMCIgc3RvcC1vcGFjaXR5PSIwLjAiLz48c3RvcCBvZmZzZXQ9IjU5LjMyMjAzJSIgc3RvcC1jb2xvcj0iIzc5NzllNSIgc3RvcC1vcGFjaXR5PSIwLjI1Ii8+PHN0b3Agb2Zmc2V0PSI2Ni4xMDE2OSUiIHN0b3AtY29sb3I9IiM0ZjRmZGQiIHN0b3Atb3BhY2l0eT0iMC4yNSIvPjxzdG9wIG9mZnNldD0iNjYuMTAxNjklIiBzdG9wLWNvbG9yPSIjMDAwMDAwIiBzdG9wLW9wYWNpdHk9IjAuMCIvPjxzdG9wIG9mZnNldD0iNjcuNzk2NjElIiBzdG9wLWNvbG9yPSIjMDAwMDAwIiBzdG9wLW9wYWNpdHk9IjAuMCIvPjxzdG9wIG9mZnNldD0iNjcuNzk2NjElIiBzdG9wLWNvbG9yPSIjNzk3OWU1IiBzdG9wLW9wYWNpdHk9IjAuMjUiLz48c3RvcCBvZmZzZXQ9Ijc0LjU3NjI3JSIgc3RvcC1jb2xvcj0iIzRmNGZkZCIgc3RvcC1vcGFjaXR5PSIwLjI1Ii8+PHN0b3Agb2Zmc2V0PSI3NC41NzYyNyUiIHN0b3AtY29sb3I9IiMwMDAwMDAiIHN0b3Atb3BhY2l0eT0iMC4wIi8+PHN0b3Agb2Zmc2V0PSI3Ni4yNzExOSUiIHN0b3AtY29sb3I9IiMwMDAwMDAiIHN0b3Atb3BhY2l0eT0iMC4wIi8+PHN0b3Agb2Zmc2V0PSI3Ni4yNzExOSUiIHN0b3AtY29sb3I9IiM3OTc5ZTUiIHN0b3Atb3BhY2l0eT0iMC4yNSIvPjxzdG9wIG9mZnNldD0iODMuMDUwODUlIiBzdG9wLWNvbG9yPSIjNGY0ZmRkIiBzdG9wLW9wYWNpdHk9IjAuMjUiLz48c3RvcCBvZmZzZXQ9IjgzLjA1MDg1JSIgc3RvcC1jb2xvcj0iIzAwMDAwMCIgc3RvcC1vcGFjaXR5PSIwLjAiLz48c3RvcCBvZmZzZXQ9Ijg0Ljc0NTc2JSIgc3RvcC1jb2xvcj0iIzAwMDAwMCIgc3RvcC1vcGFjaXR5PSIwLjAiLz48c3RvcCBvZmZzZXQ9Ijg0Ljc0NTc2JSIgc3RvcC1jb2xvcj0iIzc5NzllNSIgc3RvcC1vcGFjaXR5PSIwLjI1Ii8+PHN0b3Agb2Zmc2V0PSI5MS41MjU0MiUiIHN0b3AtY29sb3I9IiM0ZjRmZGQiIHN0b3Atb3BhY2l0eT0iMC4yNSIvPjxzdG9wIG9mZnNldD0iOTEuNTI1NDIlIiBzdG9wLWNvbG9yPSIjMDAwMDAwIiBzdG9wLW9wYWNpdHk9IjAuMCIvPjxzdG9wIG9mZnNldD0iOTMuMjIwMzQlIiBzdG9wLWNvbG9yPSIjMDAwMDAwIiBzdG9wLW9wYWNpdHk9IjAuMCIvPjxzdG9wIG9mZnNldD0iOTMuMjIwMzQlIiBzdG9wLWNvbG9yPSIjNzk3OWU1IiBzdG9wLW9wYWNpdHk9IjAuMjUiLz48c3RvcCBvZmZzZXQ9IjEwMC4wJSIgc3RvcC1jb2xvcj0iIzRmNGZkZCIgc3RvcC1vcGFjaXR5PSIwLjI1Ii8+PHN0b3Agb2Zmc2V0PSIxMDAuMCUiIHN0b3AtY29sb3I9IiMwMDAwMDAiIHN0b3Atb3BhY2l0eT0iMC4wIi8+PHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjMDAwMDAwIiBzdG9wLW9wYWNpdHk9IjAuMCIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JhZCkiIC8+PC9zdmc+IA==');
+  background-size: 100%;
+  background-image: -webkit-gradient(linear, 0% 50%, 100% 50%, color-stop(0%, rgba(0, 0, 0, 0)), color-stop(0%, rgba(121, 121, 229, 0.25)), color-stop(6.77966%, rgba(79, 79, 221, 0.25)), color-stop(6.77966%, rgba(0, 0, 0, 0)), color-stop(8.47458%, rgba(0, 0, 0, 0)), color-stop(8.47458%, rgba(121, 121, 229, 0.25)), color-stop(15.25424%, rgba(79, 79, 221, 0.25)), color-stop(15.25424%, rgba(0, 0, 0, 0)), color-stop(16.94915%, rgba(0, 0, 0, 0)), color-stop(16.94915%, rgba(121, 121, 229, 0.25)), color-stop(23.72881%, rgba(79, 79, 221, 0.25)), color-stop(23.72881%, rgba(0, 0, 0, 0)), color-stop(25.42373%, rgba(0, 0, 0, 0)), color-stop(25.42373%, rgba(121, 121, 229, 0.25)), color-stop(32.20339%, rgba(79, 79, 221, 0.25)), color-stop(32.20339%, rgba(0, 0, 0, 0)), color-stop(33.89831%, rgba(0, 0, 0, 0)), color-stop(33.89831%, rgba(121, 121, 229, 0.25)), color-stop(40.67797%, rgba(79, 79, 221, 0.25)), color-stop(40.67797%, rgba(0, 0, 0, 0)), color-stop(42.37288%, rgba(0, 0, 0, 0)), color-stop(42.37288%, rgba(121, 121, 229, 0.25)), color-stop(49.15254%, rgba(79, 79, 221, 0.25)), color-stop(49.15254%, rgba(0, 0, 0, 0)), color-stop(50.84746%, rgba(0, 0, 0, 0)), color-stop(50.84746%, rgba(121, 121, 229, 0.25)), color-stop(57.62712%, rgba(79, 79, 221, 0.25)), color-stop(57.62712%, rgba(0, 0, 0, 0)), color-stop(59.32203%, rgba(0, 0, 0, 0)), color-stop(59.32203%, rgba(121, 121, 229, 0.25)), color-stop(66.10169%, rgba(79, 79, 221, 0.25)), color-stop(66.10169%, rgba(0, 0, 0, 0)), color-stop(67.79661%, rgba(0, 0, 0, 0)), color-stop(67.79661%, rgba(121, 121, 229, 0.25)), color-stop(74.57627%, rgba(79, 79, 221, 0.25)), color-stop(74.57627%, rgba(0, 0, 0, 0)), color-stop(76.27119%, rgba(0, 0, 0, 0)), color-stop(76.27119%, rgba(121, 121, 229, 0.25)), color-stop(83.05085%, rgba(79, 79, 221, 0.25)), color-stop(83.05085%, rgba(0, 0, 0, 0)), color-stop(84.74576%, rgba(0, 0, 0, 0)), color-stop(84.74576%, rgba(121, 121, 229, 0.25)), color-stop(91.52542%, rgba(79, 79, 221, 0.25)), color-stop(91.52542%, rgba(0, 0, 0, 0)), color-stop(93.22034%, rgba(0, 0, 0, 0)), color-stop(93.22034%, rgba(121, 121, 229, 0.25)), color-stop(100.0%, rgba(79, 79, 221, 0.25)), color-stop(100.0%, rgba(0, 0, 0, 0)), color-stop(100%, rgba(0, 0, 0, 0)));
   background-image: -moz-linear-gradient(left, rgba(0, 0, 0, 0) 0%, rgba(121, 121, 229, 0.25) 0%, rgba(79, 79, 221, 0.25) 6.77966%, rgba(0, 0, 0, 0) 6.77966%, rgba(0, 0, 0, 0) 8.47458%, rgba(121, 121, 229, 0.25) 8.47458%, rgba(79, 79, 221, 0.25) 15.25424%, rgba(0, 0, 0, 0) 15.25424%, rgba(0, 0, 0, 0) 16.94915%, rgba(121, 121, 229, 0.25) 16.94915%, rgba(79, 79, 221, 0.25) 23.72881%, rgba(0, 0, 0, 0) 23.72881%, rgba(0, 0, 0, 0) 25.42373%, rgba(121, 121, 229, 0.25) 25.42373%, rgba(79, 79, 221, 0.25) 32.20339%, rgba(0, 0, 0, 0) 32.20339%, rgba(0, 0, 0, 0) 33.89831%, rgba(121, 121, 229, 0.25) 33.89831%, rgba(79, 79, 221, 0.25) 40.67797%, rgba(0, 0, 0, 0) 40.67797%, rgba(0, 0, 0, 0) 42.37288%, rgba(121, 121, 229, 0.25) 42.37288%, rgba(79, 79, 221, 0.25) 49.15254%, rgba(0, 0, 0, 0) 49.15254%, rgba(0, 0, 0, 0) 50.84746%, rgba(121, 121, 229, 0.25) 50.84746%, rgba(79, 79, 221, 0.25) 57.62712%, rgba(0, 0, 0, 0) 57.62712%, rgba(0, 0, 0, 0) 59.32203%, rgba(121, 121, 229, 0.25) 59.32203%, rgba(79, 79, 221, 0.25) 66.10169%, rgba(0, 0, 0, 0) 66.10169%, rgba(0, 0, 0, 0) 67.79661%, rgba(121, 121, 229, 0.25) 67.79661%, rgba(79, 79, 221, 0.25) 74.57627%, rgba(0, 0, 0, 0) 74.57627%, rgba(0, 0, 0, 0) 76.27119%, rgba(121, 121, 229, 0.25) 76.27119%, rgba(79, 79, 221, 0.25) 83.05085%, rgba(0, 0, 0, 0) 83.05085%, rgba(0, 0, 0, 0) 84.74576%, rgba(121, 121, 229, 0.25) 84.74576%, rgba(79, 79, 221, 0.25) 91.52542%, rgba(0, 0, 0, 0) 91.52542%, rgba(0, 0, 0, 0) 93.22034%, rgba(121, 121, 229, 0.25) 93.22034%, rgba(79, 79, 221, 0.25) 100.0%, rgba(0, 0, 0, 0) 100.0%, rgba(0, 0, 0, 0) 100%);
   background-image: -webkit-linear-gradient(left, rgba(0, 0, 0, 0) 0%, rgba(121, 121, 229, 0.25) 0%, rgba(79, 79, 221, 0.25) 6.77966%, rgba(0, 0, 0, 0) 6.77966%, rgba(0, 0, 0, 0) 8.47458%, rgba(121, 121, 229, 0.25) 8.47458%, rgba(79, 79, 221, 0.25) 15.25424%, rgba(0, 0, 0, 0) 15.25424%, rgba(0, 0, 0, 0) 16.94915%, rgba(121, 121, 229, 0.25) 16.94915%, rgba(79, 79, 221, 0.25) 23.72881%, rgba(0, 0, 0, 0) 23.72881%, rgba(0, 0, 0, 0) 25.42373%, rgba(121, 121, 229, 0.25) 25.42373%, rgba(79, 79, 221, 0.25) 32.20339%, rgba(0, 0, 0, 0) 32.20339%, rgba(0, 0, 0, 0) 33.89831%, rgba(121, 121, 229, 0.25) 33.89831%, rgba(79, 79, 221, 0.25) 40.67797%, rgba(0, 0, 0, 0) 40.67797%, rgba(0, 0, 0, 0) 42.37288%, rgba(121, 121, 229, 0.25) 42.37288%, rgba(79, 79, 221, 0.25) 49.15254%, rgba(0, 0, 0, 0) 49.15254%, rgba(0, 0, 0, 0) 50.84746%, rgba(121, 121, 229, 0.25) 50.84746%, rgba(79, 79, 221, 0.25) 57.62712%, rgba(0, 0, 0, 0) 57.62712%, rgba(0, 0, 0, 0) 59.32203%, rgba(121, 121, 229, 0.25) 59.32203%, rgba(79, 79, 221, 0.25) 66.10169%, rgba(0, 0, 0, 0) 66.10169%, rgba(0, 0, 0, 0) 67.79661%, rgba(121, 121, 229, 0.25) 67.79661%, rgba(79, 79, 221, 0.25) 74.57627%, rgba(0, 0, 0, 0) 74.57627%, rgba(0, 0, 0, 0) 76.27119%, rgba(121, 121, 229, 0.25) 76.27119%, rgba(79, 79, 221, 0.25) 83.05085%, rgba(0, 0, 0, 0) 83.05085%, rgba(0, 0, 0, 0) 84.74576%, rgba(121, 121, 229, 0.25) 84.74576%, rgba(79, 79, 221, 0.25) 91.52542%, rgba(0, 0, 0, 0) 91.52542%, rgba(0, 0, 0, 0) 93.22034%, rgba(121, 121, 229, 0.25) 93.22034%, rgba(79, 79, 221, 0.25) 100.0%, rgba(0, 0, 0, 0) 100.0%, rgba(0, 0, 0, 0) 100%);
   background-image: linear-gradient(to right, rgba(0, 0, 0, 0) 0%, rgba(121, 121, 229, 0.25) 0%, rgba(79, 79, 221, 0.25) 6.77966%, rgba(0, 0, 0, 0) 6.77966%, rgba(0, 0, 0, 0) 8.47458%, rgba(121, 121, 229, 0.25) 8.47458%, rgba(79, 79, 221, 0.25) 15.25424%, rgba(0, 0, 0, 0) 15.25424%, rgba(0, 0, 0, 0) 16.94915%, rgba(121, 121, 229, 0.25) 16.94915%, rgba(79, 79, 221, 0.25) 23.72881%, rgba(0, 0, 0, 0) 23.72881%, rgba(0, 0, 0, 0) 25.42373%, rgba(121, 121, 229, 0.25) 25.42373%, rgba(79, 79, 221, 0.25) 32.20339%, rgba(0, 0, 0, 0) 32.20339%, rgba(0, 0, 0, 0) 33.89831%, rgba(121, 121, 229, 0.25) 33.89831%, rgba(79, 79, 221, 0.25) 40.67797%, rgba(0, 0, 0, 0) 40.67797%, rgba(0, 0, 0, 0) 42.37288%, rgba(121, 121, 229, 0.25) 42.37288%, rgba(79, 79, 221, 0.25) 49.15254%, rgba(0, 0, 0, 0) 49.15254%, rgba(0, 0, 0, 0) 50.84746%, rgba(121, 121, 229, 0.25) 50.84746%, rgba(79, 79, 221, 0.25) 57.62712%, rgba(0, 0, 0, 0) 57.62712%, rgba(0, 0, 0, 0) 59.32203%, rgba(121, 121, 229, 0.25) 59.32203%, rgba(79, 79, 221, 0.25) 66.10169%, rgba(0, 0, 0, 0) 66.10169%, rgba(0, 0, 0, 0) 67.79661%, rgba(121, 121, 229, 0.25) 67.79661%, rgba(79, 79, 221, 0.25) 74.57627%, rgba(0, 0, 0, 0) 74.57627%, rgba(0, 0, 0, 0) 76.27119%, rgba(121, 121, 229, 0.25) 76.27119%, rgba(79, 79, 221, 0.25) 83.05085%, rgba(0, 0, 0, 0) 83.05085%, rgba(0, 0, 0, 0) 84.74576%, rgba(121, 121, 229, 0.25) 84.74576%, rgba(79, 79, 221, 0.25) 91.52542%, rgba(0, 0, 0, 0) 91.52542%, rgba(0, 0, 0, 0) 93.22034%, rgba(121, 121, 229, 0.25) 93.22034%, rgba(79, 79, 221, 0.25) 100.0%, rgba(0, 0, 0, 0) 100.0%, rgba(0, 0, 0, 0) 100%);
   background-position: left top;
   -moz-background-origin: content;
+  -o-background-origin: content-box;
   -webkit-background-origin: content;
   background-origin: content-box;
   -moz-background-clip: content;
+  -o-background-clip: content-box;
   -webkit-background-clip: content;
   background-clip: content-box;
 }
@@ -34,25 +39,161 @@
   padding-bottom: 4%;
 }
 
-/* ### susyone functions ---------- */
-/* - container-outer-width (4 Assertions, 4 Passed, 0 Failed) */
-/* - get-layout (1 Assertions, 1 Passed, 0 Failed) */
-/* - format-nth (4 Assertions, 4 Passed, 0 Failed) */
-/* - columns-width (3 Assertions, 3 Passed, 0 Failed) */
-/* - relative-width (1 Assertions, 1 Passed, 0 Failed) */
-/* - columns (3 Assertions, 3 Passed, 0 Failed) */
-/* - medialayout (4 Assertions, 4 Passed, 0 Failed) */
-/* - is-default-layout (4 Assertions, 4 Passed, 0 Failed) */
-/* - split-columns-value (4 Assertions, 4 Passed, 0 Failed) */
-/* - fix-static-misalignment (2 Assertions, 2 Passed, 0 Failed) */
-/* - gutter (2 Assertions, 2 Passed, 0 Failed) */
-/*
-*/
-/* 11 Tests: */
-/* - 11 Passed */
-/* - 0 Failed */
-/*
-*/
+/* # susyone functions ---------- */
+/* container-outer-width */
+[data-module="susyone functions"] [data-test="container-outer-width"] .assert-equal {
+  -result: PASS;
+  -description: "Returns the correct outer width of a default container.";
+}
+[data-module="susyone functions"] [data-test="container-outer-width"] .assert-equal {
+  -result: PASS;
+  -description: "Returns the correct outer width whith specified columns.";
+}
+[data-module="susyone functions"] [data-test="container-outer-width"] .assert-equal {
+  -result: PASS;
+  -description: "Returns correct outer width when columns and outerwidth is specified.";
+}
+[data-module="susyone functions"] [data-test="container-outer-width"] .assert-equal {
+  -result: PASS;
+  -description: "Returns correct outer width when columns and outerwidth is specified.";
+}
+
+/* get-layout */
+[data-module="susyone functions"] [data-test="get-layout"] .assert-equal {
+  -result: PASS;
+  -description: "Returns correct layout based on min width.";
+}
+
+/* format-nth */
+[data-module="susyone functions"] [data-test="format-nth"] .assert-equal {
+  -result: PASS;
+  -description: "Returns correct selector for nth-child.";
+}
+[data-module="susyone functions"] [data-test="format-nth"] .assert-equal {
+  -result: PASS;
+  -description: "Returns correct selector for first-child.";
+}
+[data-module="susyone functions"] [data-test="format-nth"] .assert-equal {
+  -result: PASS;
+  -description: "Returns correct selector for last-child.";
+}
+[data-module="susyone functions"] [data-test="format-nth"] .assert-equal {
+  -result: PASS;
+  -description: "Returns correct selector for only child.";
+}
+
+/* columns-width */
+[data-module="susyone functions"] [data-test="columns-width"] .assert-equal {
+  -result: PASS;
+  -description: "Returns the full width of a grid based on grid settings.";
+}
+[data-module="susyone functions"] [data-test="columns-width"] .assert-equal {
+  -result: PASS;
+  -description: "Returns the full width of a grid based on custom param.";
+}
+[data-module="susyone functions"] [data-test="columns-width"] .assert-equal {
+  -result: FAIL;
+  -description: "Returns the full width of a grid based on custom param.";
+  -expected--number: 0;
+  -returned--number: 0em;
+}
+
+/* relative-width */
+[data-module="susyone functions"] [data-test="relative-width"] .assert-equal {
+  -result: PASS;
+  -description: "Returns width based on percentage of given context.";
+}
+
+/* columns */
+[data-module="susyone functions"] [data-test="columns"] .assert-equal {
+  -result: PASS;
+  -description: "Returns proper layout.";
+}
+[data-module="susyone functions"] [data-test="columns"] .assert-equal {
+  -result: PASS;
+  -description: "Returns proper layout.";
+}
+[data-module="susyone functions"] [data-test="columns"] .assert-equal {
+  -result: PASS;
+  -description: "Returns proper layout.";
+}
+
+/* medialayout */
+[data-module="susyone functions"] [data-test="medialayout"] .assert-equal {
+  -result: PASS;
+  -description: "Works with three arguments. $min: 30em, $cols: 12, $max: 30em .";
+}
+[data-module="susyone functions"] [data-test="medialayout"] .assert-equal {
+  -result: PASS;
+  -description: "Works with one argument for columns.";
+}
+[data-module="susyone functions"] [data-test="medialayout"] .assert-equal {
+  -result: PASS;
+  -description: "Works with columns and ie support.";
+}
+[data-module="susyone functions"] [data-test="medialayout"] .assert-equal {
+  -result: PASS;
+  -description: "Works with four arguments for min-width, columns, max-width and IE fallback.";
+}
+
+/* is-default-layout */
+[data-module="susyone functions"] [data-test="is-default-layout"] .assert-equal {
+  -result: PASS;
+  -description: "Returns false if $media-layout overrides the default layout.";
+}
+[data-module="susyone functions"] [data-test="is-default-layout"] .assert-equal {
+  -result: PASS;
+  -description: "Returns true if $media-layout matches default coulms.";
+}
+[data-module="susyone functions"] [data-test="is-default-layout"] .assert-equal {
+  -result: PASS;
+  -description: "Returns true if $media-layout matches default coulms.";
+}
+[data-module="susyone functions"] [data-test="is-default-layout"] .assert-equal {
+  -result: PASS;
+  -description: "Returns false if $media-layout overrides the default layout.";
+}
+
+/* split-columns-value */
+[data-module="susyone functions"] [data-test="split-columns-value"] .assert-equal {
+  -result: PASS;
+  -description: "Returns just column count when given two arguments.";
+}
+[data-module="susyone functions"] [data-test="split-columns-value"] .assert-equal {
+  -result: PASS;
+  -description: "Returns just column count when given one argument.";
+}
+[data-module="susyone functions"] [data-test="split-columns-value"] .assert-equal {
+  -result: PASS;
+  -description: "Returns column count when spcified.";
+}
+[data-module="susyone functions"] [data-test="split-columns-value"] .assert-equal {
+  -result: PASS;
+  -description: "Returns column position when specified.";
+}
+
+/* fix-static-misalignment */
+[data-module="susyone functions"] [data-test="fix-static-misalignment"] .assert-equal {
+  -result: PASS;
+  -description: "Confirm default container is set to magic";
+}
+[data-module="susyone functions"] [data-test="fix-static-misalignment"] .assert-equal {
+  -result: PASS;
+  -description: "Confirm custom container-width is accounted for.";
+}
+
+/* gutter */
+[data-module="susyone functions"] [data-test="gutter"] .assert-equal {
+  -result: PASS;
+  -description: "Return the percentage width of a single gutter in a given 'context'.";
+}
+[data-module="susyone functions"] [data-test="gutter"] .assert-equal {
+  -result: FAIL;
+  -description: "Return a fixed width if style is static.";
+  -expected--number: 1;
+  -returned--number: 1em;
+}
+
 .container {
   *zoom: 1;
   max-width: 59em;
@@ -433,3 +574,9 @@
   padding-left: 20.40816%;
   padding-right: 40.81633%;
 }
+
+/* # SUMMARY ---------- */
+/* 11 Tests: */
+/*  - 9 Passed */
+/*  - 2 Failed */
+/* -------------------- */

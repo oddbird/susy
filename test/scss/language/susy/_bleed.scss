@@ -27,8 +27,9 @@
     // explicit inside-static
     @include assert-setup('inside', $grid: 10 (4em 1em) inside-static) {
       .nest {
-        @include rhythm-margins;
         @include squish(1);
+        margin-bottom: 1rem;
+        margin-top: 1rem;
       }
     }
     @include assert-output(
@@ -104,8 +105,9 @@
     // simple
     @include assert-setup('simple', $grid: 11 .5) {
       .nest {
-        @include rhythm-margins(1);
         @include squish(1);
+        margin-bottom: 1rem;
+        margin-top: 1rem;
       }
     }
     @include assert-output(

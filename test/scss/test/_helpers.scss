@@ -1,8 +1,7 @@
 // Test Helpers
 // ============
 
-// Settings
-// --------
+$true-terminal-output: details;
 
 $output-test-context: true;
 $output-test-results: true;
@@ -10,24 +9,12 @@ $output-test-results: true;
 $output-test-slug: null;
 $output-assert-slug: null;
 
-$supported-browsers: firefox chrome;
 
 // reset the original grid
 @mixin original-grid {
   $susy: $susy-defaults !global;
 }
 
-// Test Output Module
-// ------------------
-
-@mixin output-test-module($name) {
-/*
-
-### #{$name} ------ */
-  @include test-module($name, false) {
-    @content;
-  }
-}
 
 // Output Test Setup/Teardown
 // --------------------------
@@ -101,7 +88,7 @@ $supported-browsers: firefox chrome;
       &:before {
         content: $message;
         display: block;
-        padding: rhythm(.25) rhythm(.5);
+        padding: .25rem .5rem;
         text-align: left;
         font-style: italic;
       }

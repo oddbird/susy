@@ -1,7 +1,7 @@
 // Prefix Support
 // ==============
 
-@include output-test-module('Prefix Support') {
+@include test-module('Prefix Support') {
   @include output-test('susy-prefix') {
     $prop: border-radius;
     $val: 3em;

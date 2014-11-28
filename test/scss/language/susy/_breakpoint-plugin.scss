@@ -1,8 +1,14 @@
 // Breakpoint Integration Tests
 // ============================
 
-@import "breakpoint";
+// Stub breakpoint mixin
+@mixin breakpoint($media, $no-media) {
+  @media (min-width: $media) {
+    @content;
+  }
+}
 
+// Tests
 @include test-module('breakpoint integration') {
   @include test('[mixin] susy-breakpoint') {
     $layout: 24 .5 static;

@@ -163,10 +163,10 @@
     $expect: (
       width: 70%,
       float: from,
-      margin_before: null,
-      margin_after: 5%,
-      padding_before: null,
-      padding_after: null,
+      margin-before: null,
+      margin-after: 5%,
+      padding-before: null,
+      padding-after: null,
       flow: ltr,
     );
     @include assert-equal($span, $expect,
@@ -187,10 +187,10 @@
     $expect: (
       width: 50%,
       float: from,
-      margin_before: null,
-      margin_after: 5%,
-      padding_before: null,
-      padding_after: null,
+      margin-before: null,
+      margin-after: 5%,
+      padding-before: null,
+      padding-after: null,
       flow: ltr,
     );
     @include assert-equal($span, $expect,
@@ -212,10 +212,10 @@
     $expect: (
       width: 97.5%,
       float: from,
-      margin_before: 1.25%,
-      margin_after: 1.25%,
-      padding_before: null,
-      padding_after: null,
+      margin-before: 1.25%,
+      margin-after: 1.25%,
+      padding-before: null,
+      padding-after: null,
       flow: ltr,
     );
     @include assert-equal($span, $expect,
@@ -234,7 +234,7 @@
       gutter-position: inside,
     );
     $span: span-math($span);
-    $padding: map-get($span, padding_before) map-get($span, padding_after);
+    $padding: map-get($span, padding-before) map-get($span, padding-after);
     $expect: 1.25% 1.25%;
     @include assert-equal($padding, $expect,
       'Returns correct padding for inside gutters.');
@@ -253,7 +253,7 @@
       role: nest,
     );
     $span: span-math($span);
-    $padding: map-get($span, padding_before) map-get($span, padding_after);
+    $padding: map-get($span, padding-before) map-get($span, padding-after);
     $expect: null null;
     @include assert-equal($padding, $expect,
       'The padding for any "inside nest" should be "null null"');
@@ -271,7 +271,7 @@
       role: nest,
     );
     $span: span-math($span);
-    $margin: map-get($span, width) map-get($span, margin_before) map-get($span, margin_after);
+    $margin: map-get($span, width) map-get($span, margin-before) map-get($span, margin-after);
     $expect: 62.5% null null;
     @include assert-equal($margin, $expect,
       'Split nest use outer width, and no margins.');
@@ -289,7 +289,7 @@
       gutter-position: after,
     );
     $span: span-math($span);
-    $margins: map-get($span, margin_before) map-get($span, margin_after);
+    $margins: map-get($span, margin-before) map-get($span, margin-after);
     $expect: 60% -100%;
     @include assert-equal($margins, $expect,
       'Returns correction margins for isolation.');
@@ -307,7 +307,7 @@
       gutter-position: after,
     );
     $span: span-math($span);
-    $margins: map-get($span, margin_before) map-get($span, margin_after);
+    $margins: map-get($span, margin-before) map-get($span, margin-after);
     $float: map-get($span, float);
     $expect: null 0;
     @include assert-equal($margins, $expect,
@@ -324,7 +324,7 @@
       gutter-position: after,
     );
     $span: span-math($span);
-    $margins: map-get($span, margin_before);
+    $margins: map-get($span, margin-before);
     $expect: null;
     @include assert-equal($margins, $expect,
       'No special margins for after first.');
@@ -342,7 +342,7 @@
       gutter-position: split,
     );
     $span: span-math($span);
-    $margins: map-get($span, margin_before) map-get($span, margin_after);
+    $margins: map-get($span, margin-before) map-get($span, margin-after);
     $float: map-get($span, float);
     $expect: 1.25% 1.25%;
     @include assert-equal($margins, $expect,
@@ -364,7 +364,7 @@
       gutter-position: before,
     );
     $span: span-math($span);
-    $margins: map-get($span, margin_before) map-get($span, margin_after);
+    $margins: map-get($span, margin-before) map-get($span, margin-after);
     $expect: 0 null;
     @include assert-equal($margins, $expect,
       'Removes correct margins when first.');
@@ -377,7 +377,7 @@
       gutter-position: before,
     );
     $span: span-math($span);
-    $margins: map-get($span, margin_after);
+    $margins: map-get($span, margin-after);
     $expect: null;
     @include assert-equal($margins, $expect,
       'No special margins for before last.');

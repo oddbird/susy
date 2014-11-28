@@ -109,7 +109,13 @@ $output-assert-slug: null;
 ) {
   @each $key, $value in $expect {
     $this: map-get($test, $key);
-    @include assert-equal($this, $value,
-      '[#{$name}] Returns the correct #{$key}.');
+
+    @if type-of($value) == map {
+      @include compare-maps($this, $value,
+      '#{$name} » #{$key}');
+    } @else {
+      @include assert-equal($this, $value,
+        '[#{$name}] Returns the correct #{$key}.');
+    }
   }
 }

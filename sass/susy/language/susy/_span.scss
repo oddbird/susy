@@ -65,18 +65,18 @@
 
   // calculate widths
   $spread: index(map-values($span), spread);
-  $span: if($split-nest and not $spread, map-merge($span, (spread: wide)), $span);
+  $span: if($split-nest and not($spread), map-merge($span, (spread: wide)), $span);
   $width: get-span-width($span);
   $gutters: get-gutters($span);
 
   // apply gutters
   @if is-inside($span) {
-    @if not susy-get(role, $span) {
+    @if not(susy-get(role, $span)) {
       $padding-before: map-get($gutters, before);
       $padding-after: map-get($gutters, after);
     }
   } @else {
-    @if not ($split-nest) {
+    @if not($split-nest) {
       $margin-before: map-get($gutters, before);
       $margin-after: map-get($gutters, after);
     }
@@ -94,7 +94,7 @@
       $float: susy-get(last-flow, $span);
     }
 
-    @if not $is-split {
+    @if not($is-split) {
       @if $edge == full or ($edge == first and $pos == before) {
         $margin-before: 0;
       }
@@ -108,10 +108,10 @@
   @return (
     width           : $width,
     float           : $float,
-    margin_before   : $margin-before,
-    margin_after    : $margin-after,
-    padding_before  : $padding-before,
-    padding_after   : $padding-after,
+    margin-before   : $margin-before,
+    margin-after    : $margin-after,
+    padding-before  : $padding-before,
+    padding-after   : $padding-after,
     flow            : susy-get(flow, $span),
   );
 }

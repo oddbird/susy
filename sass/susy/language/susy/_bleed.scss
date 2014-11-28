@@ -14,7 +14,7 @@
   @if susy-get(global-box-sizing) != content-box {
     $output: map-merge((box-sizing: content-box), $output);
   }
-  
+
   @include susy-inspect(bleed, $inspect);
   @include output($output);
 }
@@ -168,7 +168,7 @@
     $four: if(length(map-keys($map)) == 4, true, false);
     $null: if(index(map-values($map), null), true, false);
 
-    @if $four and not $null {
+    @if $four and not($null) {
       $top: map-get($map, '#{$name}-top');
       $right: map-get($map, '#{$name}-right');
       $bottom: map-get($map, '#{$name}-bottom');
@@ -180,7 +180,7 @@
 
       $new: if($all, $all, null);
 
-      @if not $new {
+      @if not($new) {
         @if $tb and $rl {
           $new: $tb $rl;
         } @else if $rl {

@@ -8,7 +8,7 @@
   $math,
   $column-width
 ) {
-  @if $math == static and not $column-width {
+  @if $math == static and not($column-width) {
     @warn 'Static math requires a valid column-width setting.';
   } @else {
     @return $column-width;

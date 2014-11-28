@@ -8,7 +8,7 @@
 
   @include output-test('background-grid-output') {
     $image: linear-gradient(to right, #fcc, #cfc 25%, #ccf),
-            linear-gradient(to bottom, black 5%, rgba(black, 0) 5%);
+            linear-gradient(to bottom, #000 5%, transparent 5%);
     $size: auto, 100% 16px;
     $clip: content-box, border-box;
     $flow: ltr;

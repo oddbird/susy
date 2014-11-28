@@ -255,7 +255,10 @@ h1 {
   -description: "[parse-grid: #1] Returns the correct gutter-position."; }
 [data-module="Language Settings"] [data-test="[function] parse-grid"] .assert-equal {
   -result: PASS;
-  -description: "[parse-grid: #1] Returns the correct debug."; }
+  -description: "[parse-grid: #1 » debug] Returns the correct image."; }
+[data-module="Language Settings"] [data-test="[function] parse-grid"] .assert-equal {
+  -result: PASS;
+  -description: "[parse-grid: #1 » debug] Returns the correct output."; }
 [data-module="Language Settings"] [data-test="[function] parse-grid"] .assert-equal {
   -result: PASS;
   -description: "[parse-grid: #2] Returns the correct columns."; }
@@ -288,7 +291,7 @@ h1 {
   -description: "[parse-grid: #2] Returns the correct box-sizing."; }
 [data-module="Language Settings"] [data-test="[function] parse-grid"] .assert-equal {
   -result: PASS;
-  -description: "[parse-grid: #2] Returns the correct debug."; }
+  -description: "[parse-grid: #2 » debug] Returns the correct image."; }
 [data-module="Language Settings"] [data-test="[function] parse-grid"] .assert-equal {
   -result: PASS;
   -description: "[parse-grid: #3] Returns the correct container-position."; }
@@ -300,7 +303,7 @@ h1 {
   -description: "[parse-grid: #3] Returns the correct box-sizing."; }
 [data-module="Language Settings"] [data-test="[function] parse-grid"] .assert-equal {
   -result: PASS;
-  -description: "[parse-grid: #3] Returns the correct debug."; }
+  -description: "[parse-grid: #3 » debug] Returns the correct image."; }
 [data-module="Language Settings"] [data-test="[function] parse-grid"] .assert-equal {
   -result: PASS;
   -description: "[parse-grid: #4] Returns the correct columns."; }
@@ -312,7 +315,7 @@ h1 {
   -description: "[parse-grid: #4] Returns the correct gutter-position."; }
 [data-module="Language Settings"] [data-test="[function] parse-grid"] .assert-equal {
   -result: PASS;
-  -description: "[parse-grid: #4] Returns the correct debug."; }
+  -description: "[parse-grid: #4 » debug] Returns the correct image."; }
 [data-module="Language Settings"] [data-test="[function] parse-grid"] .assert-equal {
   -result: PASS;
   -description: "[parse-grid: #5] Returns the correct gutter-position."; }
@@ -703,10 +706,10 @@ html {
   text-align: left;
   font-style: italic; }
 .test__background-grid .assert__outside .test {
-  background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 66.66667%, transparent 66.66667%);
-  background-size: 15%;
-  background-origin: content-box;
-  background-clip: content-box;
+  background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 66.66667%, transparent 66.66667%), linear-gradient(to bottom, #000 1px, transparent 1px);
+  background-size: 15%, 100% 24px;
+  background-origin: content-box, border-box;
+  background-clip: content-box, border-box;
   background-position: left top; }
 .test__background-grid .assert__outside .expect {
   background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 66.66667%, transparent 66.66667%);
@@ -727,10 +730,10 @@ html {
   text-align: left;
   font-style: italic; }
 .test__background-grid .assert__split .test {
-  background-image: linear-gradient(to right, transparent 10%, rgba(102, 102, 255, 0.25) 10%, rgba(179, 179, 255, 0.25) 90%, transparent 90%);
-  background-size: 12.5%;
-  background-origin: content-box;
-  background-clip: content-box;
+  background-image: linear-gradient(to right, transparent 10%, rgba(102, 102, 255, 0.25) 10%, rgba(179, 179, 255, 0.25) 90%, transparent 90%), linear-gradient(to bottom, #000 1px, transparent 1px);
+  background-size: 12.5%, 100% 24px;
+  background-origin: content-box, border-box;
+  background-clip: content-box, border-box;
   background-position: left top; }
 .test__background-grid .assert__split .expect {
   background-image: linear-gradient(to right, transparent 10%, rgba(102, 102, 255, 0.25) 10%, rgba(179, 179, 255, 0.25) 90%, transparent 90%);
@@ -751,10 +754,10 @@ html {
   text-align: left;
   font-style: italic; }
 .test__background-grid .assert__inside .test {
-  background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25));
-  background-size: 12.5%;
-  background-origin: content-box;
-  background-clip: content-box;
+  background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25)), linear-gradient(to bottom, #000 1px, transparent 1px);
+  background-size: 12.5%, 100% 24px;
+  background-origin: content-box, border-box;
+  background-clip: content-box, border-box;
   background-position: left top; }
 .test__background-grid .assert__inside .expect {
   background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25));
@@ -775,9 +778,10 @@ html {
   text-align: left;
   font-style: italic; }
 .test__background-grid .assert__asym-outside .test {
-  background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 9.09091%, transparent 9.09091%, transparent 13.63636%, rgba(102, 102, 255, 0.25) 13.63636%, rgba(179, 179, 255, 0.25) 31.81818%, transparent 31.81818%, transparent 36.36364%, rgba(102, 102, 255, 0.25) 36.36364%, rgba(179, 179, 255, 0.25) 63.63636%, transparent 63.63636%, transparent 68.18182%, rgba(102, 102, 255, 0.25) 68.18182%, rgba(179, 179, 255, 0.25) 86.36364%, transparent 86.36364%, transparent 90.90909%, rgba(102, 102, 255, 0.25) 90.90909%, rgba(179, 179, 255, 0.25));
-  background-origin: content-box;
-  background-clip: content-box;
+  background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 9.09091%, transparent 9.09091%, transparent 13.63636%, rgba(102, 102, 255, 0.25) 13.63636%, rgba(179, 179, 255, 0.25) 31.81818%, transparent 31.81818%, transparent 36.36364%, rgba(102, 102, 255, 0.25) 36.36364%, rgba(179, 179, 255, 0.25) 63.63636%, transparent 63.63636%, transparent 68.18182%, rgba(102, 102, 255, 0.25) 68.18182%, rgba(179, 179, 255, 0.25) 86.36364%, transparent 86.36364%, transparent 90.90909%, rgba(102, 102, 255, 0.25) 90.90909%, rgba(179, 179, 255, 0.25)), linear-gradient(to bottom, #000 1px, transparent 1px);
+  background-size: 100% 24px;
+  background-origin: content-box, border-box;
+  background-clip: content-box, border-box;
   background-position: left top; }
 .test__background-grid .assert__asym-outside .expect {
   background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 9.09091%, transparent 9.09091%, transparent 13.63636%, rgba(102, 102, 255, 0.25) 13.63636%, rgba(179, 179, 255, 0.25) 31.81818%, transparent 31.81818%, transparent 36.36364%, rgba(102, 102, 255, 0.25) 36.36364%, rgba(179, 179, 255, 0.25) 63.63636%, transparent 63.63636%, transparent 68.18182%, rgba(102, 102, 255, 0.25) 68.18182%, rgba(179, 179, 255, 0.25) 86.36364%, transparent 86.36364%, transparent 90.90909%, rgba(102, 102, 255, 0.25) 90.90909%, rgba(179, 179, 255, 0.25));
@@ -797,9 +801,10 @@ html {
   text-align: left;
   font-style: italic; }
 .test__background-grid .assert__asym-split .test {
-  background-image: linear-gradient(to right, transparent 1.25%, rgba(102, 102, 255, 0.25) 1.25%, rgba(179, 179, 255, 0.25) 11.25%, transparent 11.25%, transparent 13.75%, rgba(102, 102, 255, 0.25) 13.75%, rgba(179, 179, 255, 0.25) 33.75%, transparent 33.75%, transparent 36.25%, rgba(102, 102, 255, 0.25) 36.25%, rgba(179, 179, 255, 0.25) 66.25%, transparent 66.25%, transparent 68.75%, rgba(102, 102, 255, 0.25) 68.75%, rgba(179, 179, 255, 0.25) 98.75%, transparent 98.75%);
-  background-origin: content-box;
-  background-clip: content-box;
+  background-image: linear-gradient(to right, transparent 1.25%, rgba(102, 102, 255, 0.25) 1.25%, rgba(179, 179, 255, 0.25) 11.25%, transparent 11.25%, transparent 13.75%, rgba(102, 102, 255, 0.25) 13.75%, rgba(179, 179, 255, 0.25) 33.75%, transparent 33.75%, transparent 36.25%, rgba(102, 102, 255, 0.25) 36.25%, rgba(179, 179, 255, 0.25) 66.25%, transparent 66.25%, transparent 68.75%, rgba(102, 102, 255, 0.25) 68.75%, rgba(179, 179, 255, 0.25) 98.75%, transparent 98.75%), linear-gradient(to bottom, #000 1px, transparent 1px);
+  background-size: 100% 24px;
+  background-origin: content-box, border-box;
+  background-clip: content-box, border-box;
   background-position: left top; }
 .test__background-grid .assert__asym-split .expect {
   background-image: linear-gradient(to right, transparent 1.25%, rgba(102, 102, 255, 0.25) 1.25%, rgba(179, 179, 255, 0.25) 11.25%, transparent 11.25%, transparent 13.75%, rgba(102, 102, 255, 0.25) 13.75%, rgba(179, 179, 255, 0.25) 33.75%, transparent 33.75%, transparent 36.25%, rgba(102, 102, 255, 0.25) 36.25%, rgba(179, 179, 255, 0.25) 66.25%, transparent 66.25%, transparent 68.75%, rgba(102, 102, 255, 0.25) 68.75%, rgba(179, 179, 255, 0.25) 98.75%, transparent 98.75%);
@@ -819,9 +824,10 @@ html {
   text-align: left;
   font-style: italic; }
 .test__background-grid .assert__asym-inside .test {
-  background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 12.5%, rgba(102, 102, 255, 0.25) 12.5%, rgba(179, 179, 255, 0.25) 35%, rgba(102, 102, 255, 0.25) 35%, rgba(179, 179, 255, 0.25) 67.5%, rgba(102, 102, 255, 0.25) 67.5%, rgba(179, 179, 255, 0.25));
-  background-origin: content-box;
-  background-clip: content-box;
+  background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 12.5%, rgba(102, 102, 255, 0.25) 12.5%, rgba(179, 179, 255, 0.25) 35%, rgba(102, 102, 255, 0.25) 35%, rgba(179, 179, 255, 0.25) 67.5%, rgba(102, 102, 255, 0.25) 67.5%, rgba(179, 179, 255, 0.25)), linear-gradient(to bottom, #000 1px, transparent 1px);
+  background-size: 100% 24px;
+  background-origin: content-box, border-box;
+  background-clip: content-box, border-box;
   background-position: left top; }
 .test__background-grid .assert__asym-inside .expect {
   background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 12.5%, rgba(102, 102, 255, 0.25) 12.5%, rgba(179, 179, 255, 0.25) 35%, rgba(102, 102, 255, 0.25) 35%, rgba(179, 179, 255, 0.25) 67.5%, rgba(102, 102, 255, 0.25) 67.5%, rgba(179, 179, 255, 0.25));
@@ -884,10 +890,28 @@ html {
   -description: "Only show baseline if $base-line-height exists."; }
 [data-module="Background Syntax"] [data-test="[function] get-background"] .assert-equal {
   -result: PASS;
-  -description: "Return key/values for baseline."; }
+  -description: "[Return key/values for baseline. » image] Returns the correct baseline."; }
 [data-module="Background Syntax"] [data-test="[function] get-background"] .assert-equal {
   -result: PASS;
-  -description: "Return key/values for both baseline and columns."; }
+  -description: "[Return key/values for baseline.] Returns the correct size."; }
+[data-module="Background Syntax"] [data-test="[function] get-background"] .assert-equal {
+  -result: PASS;
+  -description: "[Return key/values for baseline.] Returns the correct flow."; }
+[data-module="Background Syntax"] [data-test="[function] get-background"] .assert-equal {
+  -result: PASS;
+  -description: "[Return key/values for both baseline and columns. » image] Returns the correct columns."; }
+[data-module="Background Syntax"] [data-test="[function] get-background"] .assert-equal {
+  -result: PASS;
+  -description: "[Return key/values for both baseline and columns. » image] Returns the correct baseline."; }
+[data-module="Background Syntax"] [data-test="[function] get-background"] .assert-equal {
+  -result: PASS;
+  -description: "[Return key/values for both baseline and columns.] Returns the correct size."; }
+[data-module="Background Syntax"] [data-test="[function] get-background"] .assert-equal {
+  -result: PASS;
+  -description: "[Return key/values for both baseline and columns.] Returns the correct clip."; }
+[data-module="Background Syntax"] [data-test="[function] get-background"] .assert-equal {
+  -result: PASS;
+  -description: "[Return key/values for both baseline and columns.] Returns the correct flow."; }
 
 /* [function] get-debug */
 [data-module="Background Syntax"] [data-test="[function] get-debug"] .assert-equal {
@@ -3311,13 +3335,13 @@ html {
   text-align: left;
   font-style: italic; }
 .test__background-grid-output .assert__show .test {
-  background-image: linear-gradient(to right, #fcc, #cfc 25%, #ccf), linear-gradient(to bottom, black 5%, transparent 5%);
+  background-image: linear-gradient(to right, #fcc, #cfc 25%, #ccf), linear-gradient(to bottom, #000 5%, transparent 5%);
   background-size: auto, 100% 16px;
   background-origin: content-box, border-box;
   background-clip: content-box, border-box;
   background-position: left top; }
 .test__background-grid-output .assert__show .expect {
-  background-image: linear-gradient(to right, #fcc, #cfc 25%, #ccf), linear-gradient(to bottom, black 5%, transparent 5%);
+  background-image: linear-gradient(to right, #fcc, #cfc 25%, #ccf), linear-gradient(to bottom, #000 5%, transparent 5%);
   background-size: auto, 100% 16px;
   background-origin: content-box, border-box;
   background-clip: content-box, border-box;

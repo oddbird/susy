@@ -26,7 +26,7 @@
     $return: if($fail, $return, $columns);
   }
 
-  @if $return != $columns and not $silent {
+  @if $return != $columns and not($silent) {
     $return: null;
     $warn: '$columns must be a unitless number or list of unitless numbers.';
     @warn $warn + ' Current value [#{$type}]: #{$columns}';
@@ -48,7 +48,7 @@
 
   @if $type == number and unitless($gutters) {
     $return: $gutters;
-  } @else if not $silent {
+  } @else if not($silent) {
     $warn: '$gutters must be a unitless number.';
     @warn $warn + ' Current value [#{$type}]: #{$gutters}';
   }

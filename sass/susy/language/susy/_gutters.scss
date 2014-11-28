@@ -69,7 +69,7 @@
   $_gutters : susy-get(gutters, $context);
   $_gutter  : susy-get(gutter-override, $context);
 
-  @if $_gutters and ($_gutters > 0) and not $_gutter {
+  @if $_gutters and ($_gutters > 0) and not($_gutter) {
     $_column-width: susy-get(column-width, $context);
     $_math: gutter-math($context);
     @if $_math == static {

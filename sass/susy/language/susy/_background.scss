@@ -44,7 +44,7 @@ $susy-overlay-grid-head-exists: false;
     $_image: ();
     @each $name, $layer in map-get($_output, image) {
       $_direction: if($name == baseline, to bottom, to to($_flow));
-      $_image: append($_image, linear-gradient($_direction, $layer...), comma);
+      $_image: append($_image, linear-gradient($_direction, $layer), comma);
     }
     $_output: map-merge($_output, (image: $_image));
 
@@ -61,7 +61,7 @@ $susy-overlay-grid-head-exists: false;
 @mixin overlay-grid (
   $grid: $susy
 ) {
-  @if not $susy-overlay-grid-head-exists {
+  @if not($susy-overlay-grid-head-exists) {
     @at-root head { @include overlay-head; }
     @at-root head:before { @include overlay-trigger; }
     @at-root head:hover { @include overlay-trigger-hover; }
@@ -336,18 +336,18 @@ $susy-overlay-grid-head-exists: false;
       $_sym: is-symmetrical($_columns);
       $_return: if($_sym, get-background-sym($grid), get-background-asym($grid));
       $_return: map-merge($_return, (clip: content-box));
-    } @else if not $_line-height {
+    } @else if not($_line-height) {
       @warn 'Please provide $base-line-height in order to see baseline grids.';
     }
 
     @if $_line-height {
       @if $_show != show-columns {
         $_color: variable-exists(grid-background-baseline-color);
-        $_color: if($_color, $grid-background-baseline-color, black);
+        $_color: if($_color, $grid-background-baseline-color, #000);
 
         $_image: map-get($_return, image);
         $_size: map-get($_return, size);
-        $_baseline: (baseline: ($_color 1px, rgba($_color, 0) 1px));
+        $_baseline: (baseline: ($_color 1px, transparent 1px));
         $_baseline-size: 100% $_line-height;
 
         $_return: map-merge($_return, (

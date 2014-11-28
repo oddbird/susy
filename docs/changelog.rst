@@ -2,7 +2,7 @@ Changelog
 =========
 
 2.2.0 - UNRELEASED
--------------------
+------------------
 
 - Update ``global-box-sizing`` and the legacy ``border-box-sizing``
   mixins to optionally take another argument, ``$inherit``. This new
@@ -16,6 +16,13 @@ Changelog
   and all nested elements will inherit this change. This cascading
   effect can be prevented by explicitly setting ``box-sizing`` on the
   exceptions within the nested context.
+- Add ``su`` import at root level.
+- Both ``su`` and ``susy`` work with the latest LibSass master branch (3.0.2+).
+  There are a few exceptions:
+
+  + The ``susysone`` syntax
+  + ``overlay`` grid output
+  + The ``inherit`` option for ``global-box-sizing`` & ``border-box-sizing``
 
 
 2.1.3 - Jul 16 2014

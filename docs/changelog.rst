@@ -4,6 +4,11 @@ Changelog
 2.2.0 - UNRELEASED
 ------------------
 
+- Add global ``$susy-breakpoints`` map for creating named breakpoints.
+- Add internal media-query support for ``susy-breakpoint``
+  without requiring the Breakpoint plugin.
+- ``susy-breakpoint`` mixin no longer requires ``$layout`` argument.
+  By default, no changes will be made to your existing layout.
 - Update ``global-box-sizing`` and the legacy ``border-box-sizing``
   mixins to optionally take another argument, ``$inherit``. This new
   argument is a boolean value that defaults to ``false``, meaning the

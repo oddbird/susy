@@ -1,6 +1,7 @@
 // Breakpoint Integration
 // ======================
-// REQUIRES Breakpoint: http://breakpoint-sass.com/
+
+$susy-breakpoints: ();
 
 
 // Susy Breakpoint
@@ -11,16 +12,141 @@
 // - $no-query  : <breakpoint $no-query>
 @mixin susy-breakpoint(
   $query,
-  $layout,
+  $layout: false,
   $no-query: false
 ) {
-  @if mixin-exists(breakpoint) {
-    @include breakpoint($query, $no-query) {
+  @include susy-mq($query, $no-query) {
+    @if $layout {
       @include with-layout($layout) {
         @content;
       }
+    } @else {
+      @content;
     }
-  } @else {
-    @warn "Susy-breakpoint requires the Breakpoint plugin (http://breakpoint-sass.com/)";
   }
+}
+
+// Media Queries
+// -------------
+// Check for an existing breakpoint mixin, or provide a simple fallback.
+// - $query: <min-width> [<max-width>] | <property> <value>
+// - $no-query: <boolean> | <selector>
+@mixin susy-mq(
+  $query,
+  $no-query: false
+) {
+  @if susy-support(breakpoint, (mixin: breakpoint), $warn: false) {
+    @include breakpoint($query, $no-query);
+  } @else {
+    @media #{susy-build-breakpoint($query)} {
+      @content;
+    }
+
+    @if $no-query {
+      @if type-of($no-query) == string {
+        #{$no-query} & {
+          @content;
+        }
+      } @else {
+        @content;
+      }
+    }
+  }
+}
+
+
+// Get Media
+// ---------
+// Return a named media-query from $susy-breakpoints.
+// - $name: <key>
+@function susy-get-media(
+  $name
+) {
+  $query: map-get($susy-breakpoints, $name);
+
+  @if map-has-key($susy-breakpoints, $query) {
+    $query: susy-get-media($query);
+  }
+
+  @if not($query) {
+    @warn '"#{$name}" is not an option in $susy-breakpoints.';
+  }
+
+  @return $query;
+}
+
+
+// Parse Breakpoint
+// ----------------
+// Return a formatted media-query
+// - $query: <min-width> [<max-width>] | <property> <value>
+@function susy-parse-breakpoint(
+  $query
+) {
+  $output: (
+    min-width: null,
+    max-width: null,
+  );
+
+  @if type-of($query) == map {
+    @return $query;
+  } @else if map-has-key($susy-breakpoints, $query) {
+    @return susy-parse-breakpoint(susy-get-media($query));
+  }
+
+  $i: 1;
+  @while $i <= length($query) {
+    $this: nth($query, $i);
+
+    @if type-of($this) == map {
+      $output: map-merge($output, $this);
+    } @else if type-of($this) == string {
+      $i: $i + 1;
+      @if $i > length($query) {
+        @warn 'No value supplied for #{$this}';
+      } @else {
+        $value: nth($query, $i);
+        $output: map-merge($output, ($this: $value));
+      }
+    } @else if type-of($this) == list {
+      $prop: nth($this, 1);
+      $value: nth($this, 2);
+      $output: map-merge($output, ($prop: $value));
+    } @else if type-of($this) == number {
+      $prop: null;
+      @each $key, $value in $output {
+        @if not($value) and not($prop) {
+          $prop: $key;
+        }
+      }
+      $output: map-merge($output, ($prop: $this));
+    }
+
+    $i: $i + 1;
+  }
+
+  @return $output;
+}
+
+
+// Build Breakpoint
+// ----------------
+
+@function susy-build-breakpoint(
+  $query
+) {
+  $query: susy-parse-breakpoint($query);
+  $return: null;
+
+  @each $prop, $value in $query {
+    @if $value {
+      @if $return {
+        $return: '#{$return} and (#{$prop}: #{$value})';
+      } @else {
+        $return: '(#{$prop}: #{$value})';
+      }
+    }
+  }
+
+  @return $return;
 }

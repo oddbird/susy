@@ -3271,6 +3271,114 @@ html {
     -result: PASS;
     -description: "Susy-breakpoint creates a new global layout context"; } }
 
+/* - [mixin] susy-breakpoint */
+.test__susy-breakpoint .assert__susy-breakpoint {
+  overflow: hidden;
+  background: rgba(204, 204, 255, 0.5); }
+
+.test__susy-breakpoint .assert__susy-breakpoint .test,
+.test__susy-breakpoint .assert__susy-breakpoint .expect {
+  width: 100%; }
+
+/* "Creates a custom media-query around any content block." */
+.test__susy-breakpoint .assert__susy-breakpoint:before {
+  content: "Creates a custom media-query around any content block.";
+  display: block;
+  padding: .25rem .5rem;
+  text-align: left;
+  font-style: italic; }
+@media (min-width: 35em) {
+  .test__susy-breakpoint .assert__susy-breakpoint .test {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    width: 50%;
+    float: left;
+    padding-left: 1.25%;
+    padding-right: 1.25%; } }
+.foo .test__susy-breakpoint .assert__susy-breakpoint .test {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 50%;
+  float: left;
+  padding-left: 1.25%;
+  padding-right: 1.25%; }
+@media (min-width: 35em) {
+  .test__susy-breakpoint .assert__susy-breakpoint .expect {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    width: 50%;
+    float: left;
+    padding-left: 1.25%;
+    padding-right: 1.25%; } }
+.foo .test__susy-breakpoint .assert__susy-breakpoint .expect {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 50%;
+  float: left;
+  padding-left: 1.25%;
+  padding-right: 1.25%; }
+
+/* - [mixin] susy-mq */
+.test__susy-mq .assert__susy-mq {
+  overflow: hidden;
+  background: rgba(204, 204, 255, 0.5); }
+
+.test__susy-mq .assert__susy-mq .test,
+.test__susy-mq .assert__susy-mq .expect {
+  width: 100%; }
+
+/* "Creates a custom media-query around any content block." */
+.test__susy-mq .assert__susy-mq:before {
+  content: "Creates a custom media-query around any content block.";
+  display: block;
+  padding: .25rem .5rem;
+  text-align: left;
+  font-style: italic; }
+@media (min-width: 35em) {
+  .test__susy-mq .assert__susy-mq .test {
+    width: 50%; } }
+.foo .test__susy-mq .assert__susy-mq .test {
+  width: 50%; }
+@media (min-width: 35em) {
+  .test__susy-mq .assert__susy-mq .expect {
+    width: 50%; } }
+.foo .test__susy-mq .assert__susy-mq .expect {
+  width: 50%; }
+
+/* [function] susy-get-media */
+[data-module="breakpoint integration"] [data-test="[function] susy-get-media"] .assert-equal {
+  -result: PASS;
+  -description: "Returns $susy-breakpoint values based on key name."; }
+
+/* [function] susy-parse-breakpoint */
+[data-module="breakpoint integration"] [data-test="[function] susy-parse-breakpoint"] .assert-equal {
+  -result: PASS;
+  -description: "Returns a simple length as min-width query."; }
+[data-module="breakpoint integration"] [data-test="[function] susy-parse-breakpoint"] .assert-equal {
+  -result: PASS;
+  -description: "Returns two length as min and max-width queries."; }
+[data-module="breakpoint integration"] [data-test="[function] susy-parse-breakpoint"] .assert-equal {
+  -result: PASS;
+  -description: "Returns implicit string/number pairs as custom queries."; }
+[data-module="breakpoint integration"] [data-test="[function] susy-parse-breakpoint"] .assert-equal {
+  -result: PASS;
+  -description: "Returns explicit list pairs as custom queries."; }
+[data-module="breakpoint integration"] [data-test="[function] susy-parse-breakpoint"] .assert-equal {
+  -result: PASS;
+  -description: "Returns a map as custom queries."; }
+[data-module="breakpoint integration"] [data-test="[function] susy-parse-breakpoint"] .assert-equal {
+  -result: PASS;
+  -description: "Returns a named media-query after parsing it."; }
+
+/* susy-build-breakpoint */
+[data-module="breakpoint integration"] [data-test="susy-build-breakpoint"] .assert-equal {
+  -result: PASS;
+  -description: "Returns a usable query string based on a map (ignoring null values)."; }
+
 /* # Shared Output ---------- */
 /* - [mixin] output */
 .test__output .assert__output {
@@ -3449,6 +3557,41 @@ html {
   padding-right: 25%;
   padding-left: 8em; }
 
+/* # Susy Support ---------- */
+/* - [mixin] susy-support */
+.test__susy-support .assert__susy-support {
+  overflow: hidden;
+  background: rgba(204, 204, 255, 0.5); }
+
+/* "Recogizes properties that need special support,and passes others through directly." */
+.test__susy-support .assert__susy-support:before {
+  content: "Recogizes properties that need special support,and passes others through directly.";
+  display: block;
+  padding: .25rem .5rem;
+  text-align: left;
+  font-style: italic; }
+.test__susy-support .assert__susy-support .test {
+  width: 30em;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box; }
+.test__susy-support .assert__susy-support .expect {
+  width: 30em;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box; }
+
+/* [function] susy-support */
+[data-module="Susy Support"] [data-test="[function] susy-support"] .assert-equal {
+  -result: PASS;
+  -description: "Returns false when support is turned off."; }
+[data-module="Susy Support"] [data-test="[function] susy-support"] .assert-equal {
+  -result: PASS;
+  -description: "Returns false when requirements are missing."; }
+[data-module="Susy Support"] [data-test="[function] susy-support"] .assert-equal {
+  -result: PASS;
+  -description: "Returns support value when requirements are available."; }
+
 /* # Prefix Support ---------- */
 /* - [mixin] susy-prefix */
 .test__susy-prefix .assert__susy-prefix {
@@ -3608,41 +3751,6 @@ html {
   content: " ";
   display: block;
   clear: both; }
-
-/* # Susy Support ---------- */
-/* - [mixin] susy-support */
-.test__susy-support .assert__susy-support {
-  overflow: hidden;
-  background: rgba(204, 204, 255, 0.5); }
-
-/* "Recogizes properties that need special support,and passes others through directly." */
-.test__susy-support .assert__susy-support:before {
-  content: "Recogizes properties that need special support,and passes others through directly.";
-  display: block;
-  padding: .25rem .5rem;
-  text-align: left;
-  font-style: italic; }
-.test__susy-support .assert__susy-support .test {
-  width: 30em;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box; }
-.test__susy-support .assert__susy-support .expect {
-  width: 30em;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box; }
-
-/* [function] susy-support */
-[data-module="Susy Support"] [data-test="[function] susy-support"] .assert-equal {
-  -result: PASS;
-  -description: "Returns false when support is turned off."; }
-[data-module="Susy Support"] [data-test="[function] susy-support"] .assert-equal {
-  -result: PASS;
-  -description: "Returns false when requirements are missing."; }
-[data-module="Susy Support"] [data-test="[function] susy-support"] .assert-equal {
-  -result: PASS;
-  -description: "Returns support value when requirements are available."; }
 
 /* # Float Container API ---------- */
 /* - [mixin] float-container */
@@ -3847,11 +3955,11 @@ html {
   background: rgba(0, 128, 0, 0.25);
   border-color: green; }
   .results:after {
-    content: "57 Tests, 57 Passed, 0 Failed"; }
+    content: "60 Tests, 60 Passed, 0 Failed"; }
 
 /* # SUMMARY ---------- */
-/* 57 Tests: */
-/*  - 57 Passed */
+/* 60 Tests: */
+/*  - 60 Passed */
 /*  - 0 Failed */
 /* -------------------- */
 

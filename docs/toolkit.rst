@@ -1172,16 +1172,54 @@ Susy Breakpoint
   :$layout: :ref:`\<layout\> <shorthand-layout>`
   :$no-query: See `Breakpoint: No Query Fallbacks`_
 
-If you have `Breakpoint`_ installed,
-they provide a standard ``breakpoint`` mixin
-that you should `learn to use`_.
-Their mixin takes two arguments:
+The `Breakpoint`_ plugin provides a ``breakpoint()`` mixin with two arguments:
 one to establish the media-query rules,
 and the second to handle fallbacks for older browsers.
 Our ``susy-breakpoint`` mixin keeps those two arguments,
 but adds a third one in the middle,
 so you can set the layout settings you want to use inside
 the given media-query.
+
+If you have `Breakpoint`_ installed,
+you'll get the full power of that plugin.
+Otherwise, we provide a fallback for simple media-queries.
+A single length will be used as a `min-width` query,
+two lengths will become `min-` and `max-` width queries,
+any string followed by a value, list of pairs, or maps
+will create a string of ``(property: value)`` queries.
+
+.. code-block:: scss
+
+  // input -----------
+  @include susy-breakpoint(30em) { /*...*/ }
+
+  // output
+  @media (min-width: 30em) { /*...*/ }
+
+  // input -----------
+  @include susy-breakpoint(30em 60em) { /*...*/ }
+
+  // output
+  @media (min-width: 30em) and (max-width: 60em) { /*...*/ }
+
+  // input -----------
+  @include susy-breakpoint(min-height 30em orientation landscape) { /*...*/ }
+
+  // output
+  @media (min-height: 30em) and (orientation: landscape) { /*...*/ }
+
+  // input -----------
+  $break: (
+    min-height: 30em,
+    orientation: landscape,
+  );
+
+  @include susy-breakpoint($break) { /*...*/ }
+
+  // output
+  @media (min-height: 30em) and (orientation: landscape) { /*...*/ }
+
+  // etc...
 
 This mixin acts as a wrapper,
 and changes the default settings for any mixins
@@ -1195,8 +1233,8 @@ that are nested inside.
     .example { @include span(3); }
   }
 
-This is a shortcut for combining the
-``breakpoint`` and ``with-layout`` mixins.
+This is a shortcut for combining the third-party
+``breakpoint`` mixin with Susy's ``with-layout``.
 
 .. code-block:: scss
 

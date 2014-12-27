@@ -36,7 +36,9 @@ $susy-breakpoints: ();
   $no-query: false
 ) {
   @if susy-support(breakpoint, (mixin: breakpoint), $warn: false) {
-    @include breakpoint($query, $no-query);
+    @include breakpoint($query, $no-query) {
+      @content;
+    }
   } @else {
     @media #{susy-build-breakpoint($query)} {
       @content;

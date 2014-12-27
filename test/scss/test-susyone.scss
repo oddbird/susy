@@ -1,8 +1,9 @@
 /* Susy Tests */
 /* ========== */
 
-@import "../../sass/susy";
-@import "../../bower_components/true/sass/true";
+@import "compass";
+@import "susyone";
+@import "true";
 
 @import "language/susyone";
 

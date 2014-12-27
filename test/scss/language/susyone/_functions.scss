@@ -2,7 +2,7 @@
 // =========
 
 @include test-module("susyone functions") {
-  
+
   // container-outer-width
   @include test("container-outer-width") {
     @include assert-equal(
@@ -24,7 +24,7 @@
     );
     $border-box-sizing: false !global;
   }
-  
+
   // get-layout
   @include test("get-layout") {
     @include assert-equal(
@@ -56,17 +56,13 @@
   // columns-width
   @include test("columns-width") {
     @include assert-equal(
-      columns-width(), 
+      columns-width(),
       59em,
       "Returns the full width of a grid based on grid settings."
     );
     @include assert-equal(
-      columns-width(24), 
+      columns-width(24),
       119em,
-      "Returns the full width of a grid based on custom param."
-    );
-    @include assert-equal(
-      columns-width(0), 0,
       "Returns the full width of a grid based on custom param."
     );
   }
@@ -86,12 +82,12 @@
       "Returns proper layout."
     );
     @include assert-equal(
-      columns(12, 12, fluid), 
+      columns(12, 12, fluid),
       100%,
       "Returns proper layout."
     );
     @include assert-equal(
-      columns(12, 24, fluid), 
+      columns(12, 24, fluid),
       percentage(59em / 119em),
       "Returns proper layout."
     );
@@ -100,12 +96,12 @@
   // medialayout
   @include test("medialayout") {
     @include assert-equal(
-      medialayout(30em 12 60em), 
+      medialayout(30em 12 60em),
       30em 12 60em false,
       "Works with three arguments. $min: 30em, $cols: 12, $max: 30em ."
     );
     @include assert-equal(
-      medialayout(12), 
+      medialayout(12),
       false 12 false false,
       "Works with one argument for columns."
     );
@@ -114,7 +110,7 @@
       "Works with columns and ie support."
     );
     @include assert-equal(
-      medialayout(60em 12 30em lt-ie9), 
+      medialayout(60em 12 30em lt-ie9),
       30em 12 60em lt-ie9,
       "Works with four arguments for min-width, columns, max-width and IE fallback."
     );
@@ -123,17 +119,17 @@
   // is-default-layout
   @include test("is-default-layout") {
     @include assert-equal(
-      is-default-layout(30em 12 60em), 
+      is-default-layout(30em 12 60em),
       false,
       "Returns false if $media-layout overrides the default layout."
     );
     @include assert-equal(
-      is-default-layout(12), 
+      is-default-layout(12),
       true,
       "Returns true if $media-layout matches default coulms."
     );
     @include assert-equal(
-      is-default-layout(12 lt-ie8), 
+      is-default-layout(12 lt-ie8),
       true,
       "Returns true if $media-layout matches default coulms."
     );
@@ -167,7 +163,7 @@
       "Returns column position when specified."
     );
   }
-  
+
   // fix-static-misalignment()
   @include test("fix-static-misalignment") {
     @include assert-equal(
@@ -180,7 +176,7 @@
       fix-static-misalignment(static, 12),
       fluid,
       "Confirm custom container-width is accounted for."
-    );    
+    );
     $container-width: false !global;
   }
 
@@ -193,7 +189,7 @@
     );
     @include assert-equal(
       gutter(24, static),
-      1,
+      1em,
       "Return a fixed width if style is static."
     );
   }

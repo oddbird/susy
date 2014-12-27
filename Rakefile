@@ -54,7 +54,7 @@ task :record_version do
       f.write(spec.version.to_s)
     end
     sh "git add VERSION bower.json"
-    sh %Q{git commit -m "Bump version to #{spec.version}."}
+    sh %Q{git commit -am "Bump version to #{spec.version}."}
   end
 end
 

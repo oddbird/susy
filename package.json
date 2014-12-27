@@ -1,7 +1,7 @@
 {
   "name": "susy",
   "version": "2.2.0",
-  "description": "Susy is an agnostic set of tools for creating powerful, custom layouts.",
+  "description": "Web layout power-tools for Sass.",
   "main": "sass/_susy.scss",
   "keywords": "sass, susy, grids, responsive, layout",
   "scripts": {

@@ -8,3 +8,4 @@ pkg/
 docs/_build/
 bower_components/
 Gemfile.lock
+*.css.map

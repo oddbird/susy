@@ -1,0 +1,12 @@
+{
+  "name": "susy",
+  "version": "2.2.0.rc.1",
+  "description": "Susy is an agnostic set of tools for creating powerful, custom layouts.",
+  "main": "sass/_susy.scss",
+  "keywords": "sass, susy, grids, responsive, layout",
+  "scripts": {
+    "test": "rake test"
+  },
+  "author": "Eric M. Suzanne <eric@oddbird.net>",
+  "license": "BSD-3-Clause"
+}

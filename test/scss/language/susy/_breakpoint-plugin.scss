@@ -59,8 +59,8 @@
     }
   }
 
-  @include output-test('susy-mq') {
-    @include assert-setup('susy-mq') {
+  @include output-test('susy-media') {
+    @include assert-setup('susy-media') {
       .test,
       .expect {
         width: 100%;
@@ -71,7 +71,7 @@
       'Creates a custom media-query around any content block.'
     ) {
       .test {
-        @include susy-mq(35em, '.foo') {
+        @include susy-media(35em, '.foo') {
           width: 50%;
         }
       }
@@ -89,24 +89,23 @@
   }
 
   @include test('[function] susy-get-media') {
-    $susy-breakpoints: (large: 60em) !global;
+    $susy-media: (large: 60em) !global;
 
     $test: susy-get-media(large);
     $expect: 60em;
     @include assert-equal($test, $expect,
-      'Returns $susy-breakpoint values based on key name.');
+      'Returns $susy-media values based on key name.');
   }
 
-  @include test('[function] susy-parse-breakpoint') {
-    $test: susy-parse-breakpoint(35em);
+  @include test('[function] susy-parse-media') {
+    $test: susy-parse-media(35em);
     $expect: (
       min-width: 35em,
-      max-width: null,
     );
     @include assert-equal($test, $expect,
       'Returns a simple length as min-width query.');
 
-    $test: susy-parse-breakpoint(400px 800px);
+    $test: susy-parse-media(400px 800px);
     $expect: (
       min-width: 400px,
       max-width: 800px,
@@ -114,51 +113,30 @@
     @include assert-equal($test, $expect,
       'Returns two length as min and max-width queries.');
 
-    $test: susy-parse-breakpoint(max-width 800px max-height 20em);
+    $test: susy-parse-media(max-width 800px);
     $expect: (
-      min-width: null,
       max-width: 800px,
-      max-height: 20em,
     );
     @include assert-equal($test, $expect,
-      'Returns implicit string/number pairs as custom queries.');
+      'Returns single list pair as custom query.');
 
-    $test: susy-parse-breakpoint((max-width 800px) (max-height 20em));
-    $expect: (
-      min-width: null,
-      max-width: 800px,
-      max-height: 20em,
-    );
-    @include assert-equal($test, $expect,
-      'Returns explicit list pairs as custom queries.');
-
-    $test: susy-parse-breakpoint((max-width: 800px, max-height: 20em));
+    $test: susy-parse-media((max-width: 800px, max-height: 20em));
     $expect: (
       max-width: 800px,
       max-height: 20em,
     );
     @include assert-equal($test, $expect,
       'Returns a map as custom queries.');
-
-    $susy-breakpoints: (large: 60em) !global;
-
-    $test: susy-parse-breakpoint(large);
-    $expect: (
-      min-width: 60em,
-      max-width: null,
-    );
-    @include assert-equal($test, $expect,
-      'Returns a named media-query after parsing it.');
   }
 
-  @include test('susy-build-breakpoint') {
-    $test: susy-build-breakpoint((
+  @include test('susy-render-media') {
+    $test: susy-render-media((
               min-width: 30em,
-              max-width: null,
+              max-width: 60em,
             ));
-    $expect: '(min-width: 30em)';
+    $expect: '(min-width: 30em) and (max-width: 60em)';
     @include assert-equal($test, $expect,
-      'Returns a usable query string based on a map (ignoring null values).');
+      'Returns a usable query string based on a map.');
 
   }
 }

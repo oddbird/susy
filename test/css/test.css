@@ -3322,62 +3322,56 @@ html {
   padding-left: 1.25%;
   padding-right: 1.25%; }
 
-/* - [mixin] susy-mq */
-.test__susy-mq .assert__susy-mq {
+/* - [mixin] susy-media */
+.test__susy-media .assert__susy-media {
   overflow: hidden;
   background: rgba(204, 204, 255, 0.5); }
 
-.test__susy-mq .assert__susy-mq .test,
-.test__susy-mq .assert__susy-mq .expect {
+.test__susy-media .assert__susy-media .test,
+.test__susy-media .assert__susy-media .expect {
   width: 100%; }
 
 /* "Creates a custom media-query around any content block." */
-.test__susy-mq .assert__susy-mq:before {
+.test__susy-media .assert__susy-media:before {
   content: "Creates a custom media-query around any content block.";
   display: block;
   padding: .25rem .5rem;
   text-align: left;
   font-style: italic; }
 @media (min-width: 35em) {
-  .test__susy-mq .assert__susy-mq .test {
+  .test__susy-media .assert__susy-media .test {
     width: 50%; } }
-.foo .test__susy-mq .assert__susy-mq .test {
+.foo .test__susy-media .assert__susy-media .test {
   width: 50%; }
 @media (min-width: 35em) {
-  .test__susy-mq .assert__susy-mq .expect {
+  .test__susy-media .assert__susy-media .expect {
     width: 50%; } }
-.foo .test__susy-mq .assert__susy-mq .expect {
+.foo .test__susy-media .assert__susy-media .expect {
   width: 50%; }
 
 /* [function] susy-get-media */
 [data-module="breakpoint integration"] [data-test="[function] susy-get-media"] .assert-equal {
   -result: PASS;
-  -description: "Returns $susy-breakpoint values based on key name."; }
+  -description: "Returns $susy-media values based on key name."; }
 
-/* [function] susy-parse-breakpoint */
-[data-module="breakpoint integration"] [data-test="[function] susy-parse-breakpoint"] .assert-equal {
+/* [function] susy-parse-media */
+[data-module="breakpoint integration"] [data-test="[function] susy-parse-media"] .assert-equal {
   -result: PASS;
   -description: "Returns a simple length as min-width query."; }
-[data-module="breakpoint integration"] [data-test="[function] susy-parse-breakpoint"] .assert-equal {
+[data-module="breakpoint integration"] [data-test="[function] susy-parse-media"] .assert-equal {
   -result: PASS;
   -description: "Returns two length as min and max-width queries."; }
-[data-module="breakpoint integration"] [data-test="[function] susy-parse-breakpoint"] .assert-equal {
+[data-module="breakpoint integration"] [data-test="[function] susy-parse-media"] .assert-equal {
   -result: PASS;
-  -description: "Returns implicit string/number pairs as custom queries."; }
-[data-module="breakpoint integration"] [data-test="[function] susy-parse-breakpoint"] .assert-equal {
-  -result: PASS;
-  -description: "Returns explicit list pairs as custom queries."; }
-[data-module="breakpoint integration"] [data-test="[function] susy-parse-breakpoint"] .assert-equal {
+  -description: "Returns single list pair as custom query."; }
+[data-module="breakpoint integration"] [data-test="[function] susy-parse-media"] .assert-equal {
   -result: PASS;
   -description: "Returns a map as custom queries."; }
-[data-module="breakpoint integration"] [data-test="[function] susy-parse-breakpoint"] .assert-equal {
-  -result: PASS;
-  -description: "Returns a named media-query after parsing it."; }
 
-/* susy-build-breakpoint */
-[data-module="breakpoint integration"] [data-test="susy-build-breakpoint"] .assert-equal {
+/* susy-render-media */
+[data-module="breakpoint integration"] [data-test="susy-render-media"] .assert-equal {
   -result: PASS;
-  -description: "Returns a usable query string based on a map (ignoring null values)."; }
+  -description: "Returns a usable query string based on a map."; }
 
 /* # Shared Output ---------- */
 /* - [mixin] output */

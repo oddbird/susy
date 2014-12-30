@@ -1,21 +1,23 @@
 // Breakpoint Integration
 // ======================
 
-$susy-breakpoints: ();
+$susy-media: ();
+$susy-media-context: ();
+$susy-media-fallback: false;
 
 
 // Susy Breakpoint
 // ---------------
-// Change grids at different mediaqueries.
-// - $query     : <breakpoint $query>
+// Change grids at different media query breakpoints.
+// - $query     : <min-width> [<max-width>] | <property> <value> | <map>
 // - $layout    : <settings>
-// - $no-query  : <breakpoint $no-query>
+// - $no-query  : <boolean> | <selector>
 @mixin susy-breakpoint(
   $query,
   $layout: false,
-  $no-query: false
+  $no-query: $susy-media-fallback
 ) {
-  @include susy-mq($query, $no-query) {
+  @include susy-media-router($query, $no-query) {
     @if $layout {
       @include with-layout($layout) {
         @content;
@@ -26,129 +28,153 @@ $susy-breakpoints: ();
   }
 }
 
-// Media Queries
-// -------------
-// Check for an existing breakpoint mixin, or provide a simple fallback.
+
+// Susy Media
+// ----------
 // - $query: <min-width> [<max-width>] | <property> <value>
 // - $no-query: <boolean> | <selector>
-@mixin susy-mq(
+@mixin susy-media(
   $query,
-  $no-query: false
+  $no-query: $susy-media-fallback
+) {
+  $old-context: $susy-media-context;
+  $name: if(map-has-key($susy-media, $query), $query, null);
+  $query: susy-get-media($query);
+  $query: susy-parse-media($query);
+
+  @include susy-media-context($query, $name);
+
+  @if $no-query and type-of($no-query) != string {
+    @content;
+  } @else {
+    @media #{susy-render-media($query)} {
+      @content;
+    }
+
+    @if type-of($no-query) == string {
+      #{$no-query} & {
+        @content;
+      }
+    }
+  }
+
+  @include susy-media-context($old-context, $clean: true);
+}
+
+
+// Media Router
+// ------------
+// Rout media arguments to the correct mixin.
+@mixin susy-media-router(
+  $query,
+  $no-query: $susy-media-fallback
 ) {
   @if susy-support(breakpoint, (mixin: breakpoint), $warn: false) {
     @include breakpoint($query, $no-query) {
       @content;
     }
   } @else {
-    @media #{susy-build-breakpoint($query)} {
+    @include susy-media($query, $no-query) {
       @content;
     }
+  }
+}
 
-    @if $no-query {
-      @if type-of($no-query) == string {
-        #{$no-query} & {
-          @content;
-        }
-      } @else {
-        @content;
-      }
-    }
+
+// Update Context
+// -------------
+// Set the new media context
+@mixin susy-media-context(
+  $query,
+  $name: null,
+  $clean: false
+) {
+  $query: map-merge((name: $name), $query);
+
+  @if $clean {
+    $susy-media-context: $query !global;
+  } @else {
+    $susy-media-context: map-merge($susy-media-context, $query) !global;
+  }
+}
+
+
+// Media Context
+// -------------
+// Return the full media context, or a single media property (e.g. min-width)
+@function susy-media-context(
+  $property: false
+) {
+  @if $property {
+    @return map-get($susy-media-context, $property);
+  } @else {
+    @return $susy-media-context;
   }
 }
 
 
 // Get Media
 // ---------
-// Return a named media-query from $susy-breakpoints.
+// Return a named media-query from $susy-media.
 // - $name: <key>
 @function susy-get-media(
   $name
 ) {
-  $query: map-get($susy-breakpoints, $name);
-
-  @if map-has-key($susy-breakpoints, $query) {
-    $query: susy-get-media($query);
+  @if map-has-key($susy-media, $name) {
+    $name: map-get($susy-media, $name);
+    $name: susy-get-media($name);
   }
 
-  @if not($query) {
-    @warn '"#{$name}" is not an option in $susy-breakpoints.';
-  }
-
-  @return $query;
+  @return $name;
 }
 
 
-// Parse Breakpoint
-// ----------------
-// Return a formatted media-query
-// - $query: <min-width> [<max-width>] | <property> <value>
-@function susy-parse-breakpoint(
+// Render Media
+// ------------
+// Build a media-query string from various media settings
+@function susy-render-media(
   $query
 ) {
-  $output: (
-    min-width: null,
-    max-width: null,
-  );
+  $output: null;
+  @each $property, $value in $query {
+    $string: null;
 
-  @if type-of($query) == map {
-    @return $query;
-  } @else if map-has-key($susy-breakpoints, $query) {
-    @return susy-parse-breakpoint(susy-get-media($query));
-  }
-
-  $i: 1;
-  @while $i <= length($query) {
-    $this: nth($query, $i);
-
-    @if type-of($this) == map {
-      $output: map-merge($output, $this);
-    } @else if type-of($this) == string {
-      $i: $i + 1;
-      @if $i > length($query) {
-        @warn 'No value supplied for #{$this}';
-      } @else {
-        $value: nth($query, $i);
-        $output: map-merge($output, ($this: $value));
-      }
-    } @else if type-of($this) == list {
-      $prop: nth($this, 1);
-      $value: nth($this, 2);
-      $output: map-merge($output, ($prop: $value));
-    } @else if type-of($this) == number {
-      $prop: null;
-      @each $key, $value in $output {
-        @if not($value) and not($prop) {
-          $prop: $key;
-        }
-      }
-      $output: map-merge($output, ($prop: $this));
+    @if $property == media {
+      $string: $value;
+    } @else {
+      $string: '(#{$property}: #{$value})';
     }
 
-    $i: $i + 1;
+    $output: if($output, '#{$output} and #{$string}', $string);
   }
 
   @return $output;
 }
 
 
-// Build Breakpoint
-// ----------------
-
-@function susy-build-breakpoint(
+// Parse Media
+// -----------
+// Return parsed media-query settings based on shorthand
+@function susy-parse-media(
   $query
 ) {
-  $query: susy-parse-breakpoint($query);
-  $return: null;
-
-  @each $prop, $value in $query {
-    @if $value {
-      @if $return {
-        $return: '#{$return} and (#{$prop}: #{$value})';
-      } @else {
-        $return: '(#{$prop}: #{$value})';
-      }
+  $mq: null;
+  @if type-of($query) == map {
+    $mq: $query;
+  } @else if type-of($query) == number {
+    $mq: (min-width: $query);
+  } @else if type-of($query) == list and length($query) == 2 {
+    @if type-of(nth($query, 1)) == number {
+      $mq: (
+        min-width: min($query...),
+        max-width: max($query...),
+      );
+    } @else {
+      $mq: (nth($query, 1): nth($query, 2));
     }
+  } @else {
+    $mq: (media: '#{$query}');
   }
 
-  @return $return;
+  @return $mq;
 }

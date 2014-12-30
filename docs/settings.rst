@@ -870,6 +870,34 @@ This is only used for debugging.
 
 -------------------------------------------------------------------------
 
+.. _settings-custom-breakpoint:
+
+Custom Breakpoint Options
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Tell Susy to use a custom ``breakpoint`` mixin,
+like the one provided by the `Breakpoint`_ plugin.
+
+.. _Breakpoint: http://breakpoint-sass.com/
+
+.. describe:: setting
+
+  :key: ``use-custom breakpoint``
+  :scope: global
+  :options: <boolean>
+  :default: ``true``
+
+``false``
+  Susy will use an internal fallback for media-queries.
+
+``true``
+  Susy will look for existing an ``breakpoint`` mixin
+  like the one provided by the [Breakpoint](http://breakpoint-sass.com) plugin,
+  and fallback to internal media-query support if none is found.
+
+
+-------------------------------------------------------------------------
+
 .. _settings-custom-box-sizing:
 
 Custom Box Sizing

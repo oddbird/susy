@@ -4,6 +4,7 @@ Changelog
 2.2.0 - UNRELEASED
 ------------------
 
+- Release npm ``susy`` package.
 - Add global ``$susy-breakpoints`` map for creating named breakpoints.
 - Add internal media-query support for ``susy-breakpoint``
   without requiring the Breakpoint plugin.

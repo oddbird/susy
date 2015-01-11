@@ -35,10 +35,10 @@ Bundler or Rails
   # gem 'sass-rails', '~> 4.0.3'
   gem 'sass-rails', '~> 5.0.0.beta1'
   gem 'susy'
-  
+
   # If you want Compass:
   gem 'compass-rails', '~> 2.0.0'
-  
+
 .. code-block:: ruby
 
   # config/application.rb
@@ -58,7 +58,7 @@ If you add Susy to an exsisting Rails app, follow the steps above, but use bundl
 
   # command line
   bundle update
-  
+
 Compass
 -------
 
@@ -71,7 +71,7 @@ Create a new Compass project:
 
   # command line
   compass create --using susy <project name>
-  
+
 Alternatively, add Susy to a current project
 
 .. code-block:: bash
@@ -81,6 +81,27 @@ Alternatively, add Susy to a current project
 
 .. _Compass: http://compass-style.org/
 .. _installing Compass: http://compass-style.org/install/
+
+
+Bower
+----------------
+
+.. code-block:: bash
+
+  # command line
+  bower install susy --save
+
+This will add the Susy repository to your `bower_components` directory or create a `bower_components` directory for you.
+
+.. code-block:: css
+  // Import Susy
+  @import "bower_components/susy/sass/susy";
+
+You can also import Susyone.
+
+.. code-block:: css
+  // Import Susy
+  @import "bower_components/susy/sass/susyone";
 
 
 Grunt (and Yeoman)

@@ -1,7 +1,7 @@
 // Clearfix Tests
 // ==============
 
-@include output-test-module('Clearfix Support') {
+@include test-module('Clearfix Support') {
 
   // susy-clearfix [mixin]
   // ---------------------

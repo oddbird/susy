@@ -5,8 +5,8 @@
   @include output-test('susy-support') {
     @include assert-setup;
     @include assert-output(
-      'Recogizes properties that need special support,
-      and passes others through directly.'
+      'Recogizes properties that need special support,' +
+      'and passes others through directly.'
     ) {
       .test {
         @include susy-support(width, 30em);

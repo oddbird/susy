@@ -10,7 +10,7 @@
     // sym
     @include assert-setup('sym', $grid: 6 .8) {
       .nest { @include susy-clearfix; }
-      .test, .expect { @include trailer(0); }
+      .test, .expect { margin-bottom: 0; }
     }
     @include assert-output(
       'Items should create 3x symmetrical isolated gallery.'
@@ -40,7 +40,7 @@
     // inside
     @include assert-setup('inside', $grid: 8 .25 inside) {
       .nest { @include susy-clearfix; }
-      .test, .expect { @include trailer(0); }
+      .test, .expect { margin-bottom: 0; }
     }
     @include assert-output(
       'Items should create 4x isolated gallery with inside-gutters.'
@@ -78,7 +78,7 @@
     // inside-static
     @include assert-setup('inside-static', $grid: 100% 6 (5em 4em) inside-static) {
       .nest { @include susy-clearfix; }
-      .test, .expect { @include trailer(0); }
+      .test, .expect { margin-bottom: 0; }
     }
     @include assert-output(
       'Items should create 3x isolated gallery with inside-static gutters.'
@@ -111,7 +111,7 @@
     // split
     @include assert-setup('split', $grid: 8 .25 split) {
       .nest { @include susy-clearfix; }
-      .test, .expect { @include trailer(0); }
+      .test, .expect { margin-bottom: 0; }
     }
     @include assert-output(
       'Items should create 4x isolated gallery with split-gutters.'
@@ -146,7 +146,7 @@
     // asymmetrical
     @include assert-setup('asym', $grid: (1 2 1 2 2 1) 1/5) {
       .nest { @include susy-clearfix; }
-      .test, .expect { @include trailer(0); }
+      .test, .expect { margin-bottom: 0; }
     }
     @include assert-output(
       'Items should create 3x isolated asymmetrical gallery.'
@@ -178,7 +178,7 @@
     // asymmetrical inside
     @include assert-setup('asym-inside', $grid: (1 2 4 1) .5 inside) {
       .nest { @include susy-clearfix; }
-      .test, .expect { @include trailer(0); }
+      .test, .expect { margin-bottom: 0; }
     }
     @include assert-output(
       'Items should create 2x isolated asymmetrical gallery, with inside gutters.'

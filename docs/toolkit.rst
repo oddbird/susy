@@ -1150,10 +1150,10 @@ as either a background, or a triggered overlay.
 Breakpoint
 ----------
 
-Susy has built-in integration with the `Breakpoint`_ plugin.
+Susy has built-in media-query handling,
+and also supports integration with the `Breakpoint`_ plugin.
 To install Breakpoint,
 follow the instuctions on their site.
-You have to install it before you can use it.
 
 .. _Breakpoint: http://breakpoint-sass.com/
 
@@ -1168,23 +1168,22 @@ Susy Breakpoint
 .. describe:: mixin
 
   :format: ``susy-breakpoint($query, $layout, $no-query)``
-  :$query: See `Breakpoint: Basic Media Queries`_
+  :$query: media query shorthand (see :ref:`susy-media <susy-media>`)
   :$layout: :ref:`\<layout\> <shorthand-layout>`
-  :$no-query: See `Breakpoint: No Query Fallbacks`_
+  :$no-query: <boolean> | <string> (see :ref:`susy-media <susy-media>`)
 
-If you have `Breakpoint`_ installed,
-they provide a standard ``breakpoint`` mixin
-that you should `learn to use`_.
-Their mixin takes two arguments:
-one to establish the media-query rules,
-and the second to handle fallbacks for older browsers.
-Our ``susy-breakpoint`` mixin keeps those two arguments,
-but adds a third one in the middle,
-so you can set the layout settings you want to use inside
-the given media-query.
+``susy-breakpoint()`` acts as a shortcut
+for changing layout settings at different media-query breakpoints,
+using either :ref:`susy-media <susy-media>` or
+the third-party `Breakpoint`_ plugin.
+
+If you are using the third-party plugin,
+see `Breakpoint: Basic Media Queries`_ and
+`Breakpoint: No Query Fallbacks`_ for details.
 
 This mixin acts as a wrapper,
-and changes the default settings for any mixins
+adding media-queries and
+changing the layout settings for any susy functions or mixins
 that are nested inside.
 
 .. code-block:: scss
@@ -1195,19 +1194,88 @@ that are nested inside.
     .example { @include span(3); }
   }
 
-This is a shortcut for combining the
-``breakpoint`` and ``with-layout`` mixins.
+.. _`Breakpoint: Basic Media Queries`: https://github.com/Team-Sass/breakpoint/wiki/Basic-Media-Queries
+.. _`Breakpoint: No Query Fallbacks`: https://github.com/Team-Sass/breakpoint/wiki/No-Query-Fallbacks
+
+
+-------------------------------------------------------------------------
+
+.. _tools-susy-media:
+
+Susy Media
+~~~~~~~~~~
+
+.. describe:: mixin
+
+  :format: ``susy-media($query, $no-query)``
+  :$query: <min-width> [<max-width>] | <string> | <pair> | <map>
+  :$no-query: <boolean> | <string>
+
+The ``susy-media`` mixin provides basic media-query handling,
+and handles the built-in functionality for ``susy-breakpoint``.
+
+``$query``
+  A single length will be used as a `min-width` query,
+  two lengths will become `min-` and `max-` width queries,
+  a property-value pair, or map of pairs
+  will become ``(property: value)`` queries,
+  and a lonely string will be used directly.
 
 .. code-block:: scss
 
-  @include breakpoint(30em) {
-    @include with-layout(8) {
-      // nested code uses an 8-column grid,
-      // starting at a 30em min-width breakpoint...
-      .example { @include span(3); }
-    }
-  }
+  // min
+  // ---
+  @include susy-media(30em) { /*...*/ }
 
-.. _`Breakpoint: Basic Media Queries`: https://github.com/Team-Sass/breakpoint/wiki/Basic-Media-Queries
-.. _`Breakpoint: No Query Fallbacks`: https://github.com/Team-Sass/breakpoint/wiki/No-Query-Fallbacks
-.. _`learn to use`: https://github.com/Team-Sass/breakpoint/wiki/Basic-Media-Queries
+  @media (min-width: 30em) { /*...*/ }
+
+  // min/max pair
+  // ------------
+  @include susy-media(30em 60em) { /*...*/ }
+
+  @media (min-width: 30em) and (max-width: 60em) { /*...*/ }
+
+  // property/value pair
+  // -------------------
+  @include susy-media(min-height 30em) { /*...*/ }
+
+  @media (min-height: 30em) { /*...*/ }
+
+  // map
+  // ---
+  @include susy-media((
+    min-height: 30em,
+    orientation: landscape,
+  )) { /*...*/ }
+
+  @media (min-height: 30em) and (orientation: landscape) { /*...*/ }
+
+
+``$no-query``
+  ``true`` will render the contents to css without any media-query.
+  This can be useful for creating separate no-query fallback files.
+
+  For inline fallbacks using a target class,
+  pass in a string (e.g. `.no-mqs`) to use as your fallback selector.
+  The contents will be output both inside a media-query
+  and again inside the given selector.
+
+  This can be set globally with the ``$susy-media-fallback`` variable.
+
+``susy-media`` also supports named media-queries,
+which can be set using the ``$susy-media`` variable:
+
+.. code-block:: scss
+
+  $susy-media: (
+    min: 20em,
+    max: 80em 60em,
+    string: 'screen and (orientation: landscape)',
+    pair: min-height 40em,
+    map: (
+      media: screen,
+      max-width: 30em
+    ),
+  );
+
+  @include susy-media(min);

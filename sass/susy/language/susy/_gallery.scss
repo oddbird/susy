@@ -27,18 +27,18 @@
   $output: (
     width             : null,
     float             : from,
-    margin_before     : null,
-    margin_after      : null,
-    padding_before    : null,
-    padding_after     : null,
+    margin-before     : null,
+    margin-after      : null,
+    padding-before    : null,
+    padding-after     : null,
     flow              : $flow,
   );
 
   @if $inside {
     $gutters: get-gutters($span);
     $output: map-merge($output, (
-      padding_before: map-get($gutters, before),
-      padding_after: map-get($gutters, after),
+      padding-before: map-get($gutters, before),
+      padding-after: map-get($gutters, after),
     ));
   }
 
@@ -52,7 +52,7 @@
   @include susy-inspect(gallery, $inspect);
 
   // Collective Output
-  @if $box == border-box or ($inside and not $box and not $global-box) {
+  @if $box == border-box or ($inside and not($box) and not($global-box)) {
     @include output((box-sizing: border-box));
   } @else if $box == content-box {
     @include output((box-sizing: content-box));
@@ -68,10 +68,10 @@
       $output: (
         width             : if($symmetrical, null, get-span-width($span)),
         float             : null,
-        margin_before     : get-isolation($span),
-        margin_after      : -100%,
-        padding_before    : null,
-        padding_after     : null,
+        margin-before     : get-isolation($span),
+        margin-after      : -100%,
+        padding-before    : null,
+        padding-after     : null,
         flow              : $flow,
       );
 

@@ -1,28 +1,32 @@
 // Output Test Layout
 // ==================
 
-@import "compass/reset";
-@import "compass/css3/images";
-@import "compass/css3/background-clip";
-@import "compass/typography/vertical_rhythm";
+html {
+  font-size: 100%;
+  line-height: 1.5em;
+  font-family: sans-serif;
+}
 
-$base-font-size: 16px;
-$base-line-height: 24px;
-$rhythm-unit: rem;
+body {
+  padding: 1;
+}
 
-@include establish-baseline;
+h1 {
+  font-weight: bold;
+}
 
-html { font-family: sans-serif; }
-body { padding: rhythm(1); }
-h1 { font-weight: bold; }
-
-[role="banner"] { @include adjust-font-size-to(24px); }
+[role="banner"] {
+  font-size: 1.5rem;
+  line-height: 2rem;
+}
 
 .results {
-  @include rhythm-margins(1);
-  @include rhythm-borders(1px,1);
   background-color: rgba(red, .25);
-  border-color: red;
+  border: 1px solid red;
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+  padding-bottom: 1rem;
+  padding-top: 1rem;
 
   &:before {
     content: 'Unit Tests: ';
@@ -35,9 +39,9 @@ h1 { font-weight: bold; }
 }
 
 .test-module {
-  @include trailing-border(6px);
-  @include trailer(.5);
-  border-style: dotted;
+  border-bottom: 6px dotted;
+  padding-bottom: 1rem;
+  margin-bottom: .5rem;
 
   &:last-of-type {
     padding-bottom: 0;
@@ -45,16 +49,17 @@ h1 { font-weight: bold; }
   }
 
   > h1 {
-    @include adjust-font-size-to(24px);
-    @include trailer(.5);
+    font-size: 1.5rem;
+    line-height: 2rem;
+    margin-bottom: .5rem;
   }
 }
 
 [class^="test__"] {
-  @include trailer(.5);
+  margin-bottom: .5rem;
 
   h1 {
-    padding: rhythm(.25) rhythm(.5);
+    padding: .25rem .5rem;
     background: #666;
     color: #eee;
     font-weight: normal;
@@ -63,7 +68,7 @@ h1 { font-weight: bold; }
 }
 
 [class^="assert__"] {
-  @include trailer(.5);
+  margin-bottom: .5rem;
   text-align: center;
 
   div {
@@ -73,18 +78,22 @@ h1 { font-weight: bold; }
   }
 
   .test, .expect {
-    @include trailer(.5);
-    @include adjust-font-size-to(14px);
-    @include background(
-      linear-gradient(to left, rgba(white,.75), rgba(white,.75)), rgba(#fcc,.5));
-    @include background-clip(content-box, border-box);
+    @include output((
+      background: (
+        linear-gradient(to left, rgba(white,.75), rgba(white,.75)),
+        rgba(#fcc,.5)
+      ),
+      background-clip: (content-box, border-box),
+    ));
+    font-size: .75rem;
+    margin-bottom: .5rem;
   }
 
   .test { outline-color: red; }
   .expect { outline-color: green; }
 
   .spacer {
-    height: rhythm(2.5);
+    height: 2.5rem;
     outline: 1px solid rgba(#444,.25);
     background: rgba(#444,.125);
   }

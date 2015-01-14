@@ -1,13 +1,9 @@
 /* Susy Tests */
 /* ========== */
 
+@import "compass";
 @import "susyone";
 @import "true";
-
-// Test
-// ----
-
-$default-module-output: css;
 
 @import "language/susyone";
 

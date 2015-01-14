@@ -31,7 +31,7 @@ end
 
 desc "run the tests"
 task :test do
-  sh "cd test && bundle install --quiet && bundle exec compass compile . scss/test.scss 2> error.output > /dev/null --force && cd - > /dev/null", :verbose => false
+  sh "bundle install --quiet && bower install && cd test && bundle exec sass scss/test.scss css/test.css 2> error.output > /dev/null --force && cd - > /dev/null", :verbose => false
   open("test/error.output") do |f|
     if f.read =~ /(.*):\d+.* (\d+) Passed.* (\d+) Failed/
       unless $3 == "0"
@@ -53,8 +53,8 @@ task :record_version do
     open(FileList["VERSION"].first, "w") do |f|
       f.write(spec.version.to_s)
     end
-    sh "git add VERSION test/Gemfile.lock bower.json"
-    sh %Q{git commit -m "Bump version to #{spec.version}."}
+    sh "git add VERSION bower.json"
+    sh %Q{git commit -am "Bump version to #{spec.version}."}
   end
 end
 

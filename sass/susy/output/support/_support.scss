@@ -8,6 +8,7 @@
     clearfix: false,
     background-image: true,
     background-options: false,
+    breakpoint: true,
     box-sizing: true,
     rem: true,
   ),
@@ -68,7 +69,7 @@
       @each $_i in $_req {
         $_pass: call(#{$_type}-exists, $_i);
 
-        @if not $_pass {
+        @if not($_pass) {
           $_fail: true;
           @if $warn {
             @warn "You requested custom support of #{$feature}, but the #{$_i} #{$_type} is not available.";

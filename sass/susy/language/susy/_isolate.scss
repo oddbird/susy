@@ -31,7 +31,7 @@
   $isolate: parse-span($isolate);
   $isolation: susy-get(span, $isolate);
 
-  @if $isolation and not get-location($isolate) {
+  @if $isolation and not(get-location($isolate)) {
     $new: (
       span: null,
       location: $isolation,
@@ -54,7 +54,7 @@
   $columns    : susy-get(columns, $input);
   $width      : null;
 
-  @if type-of($location) == number and not unitless($location) {
+  @if type-of($location) == number and not(unitless($location)) {
     $width: $location;
   } @else if $location {
     $push: $location - 1;

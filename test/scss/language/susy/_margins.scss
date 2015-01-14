@@ -1,7 +1,7 @@
 // Margin Syntax Tests
 // ===================
 
-@include output-test-module('Margin Syntax') {
+@include test-module('Margin Syntax') {
 
   // pre
   // ---
@@ -71,7 +71,7 @@
     @include assert-setup('wider', $grid: (1 2 3 2 1) .25 after) {
       .spacer {
         @include span(1 at 4);
-        height: rhythm(1);
+        height: 1rem;
       }
       .test, .expect { @include span(first 2); }
     }

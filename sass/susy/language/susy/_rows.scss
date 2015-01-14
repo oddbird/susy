@@ -40,7 +40,7 @@
   $flow     : susy-get(flow, $context);
 
   @include susy-inspect(first, $inspect);
-  @if not is-split($context) {
+  @if not(is-split($context)) {
     @include float-first($flow);
   }
 }
@@ -88,7 +88,7 @@
   $span       : parse-span($span);
   $edge       : susy-get(edge, $span);
 
-  @if not $edge {
+  @if not($edge) {
     $count: susy-count(susy-get(columns, $span));
     $location: susy-get(location, $span);
     $n: susy-get(span, $span);
@@ -126,7 +126,7 @@
   $edge       : get-edge($span);
   $n          : susy-get(span, $span);
 
-  @if $edge and not $location and type-of($n) == number and unitless($n) {
+  @if $edge and not($location) and type-of($n) == number and unitless($n) {
     @if $edge == first {
       $location: 1;
     } @else if $edge == last {

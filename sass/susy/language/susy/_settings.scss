@@ -81,7 +81,7 @@ $susy-keywords: (
   $_columns: ();
   $_gutters: null;
 
-  @if not unitless(nth(nth($short, 1), 1)) {
+  @if not(unitless(nth(nth($short, 1), 1))) {
     $_gutters: nth($short, 1);
   } @else {
     $_columns: (columns: nth($short, 1));
@@ -191,7 +191,7 @@ $susy-keywords: (
   $_gutters: parse-span($short, gutter-override);
   $_span: susy-get(gutter-override, $_gutters);
 
-  @if $_span and not map-get($_gutters, columns) {
+  @if $_span and not(map-get($_gutters, columns)) {
     $_context: ();
     $_new: ();
 

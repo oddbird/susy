@@ -1,0 +1,6 @@
+**/.*
+docs
+test
+Rakefile
+*.json
+*.gemspec

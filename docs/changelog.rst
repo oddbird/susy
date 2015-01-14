@@ -2,8 +2,14 @@ Changelog
 =========
 
 2.2.0 - UNRELEASED
--------------------
+------------------
 
+- Release npm ``susy`` package.
+- Add global ``$susy-media`` map for creating named breakpoints.
+- Add internal media-query support for ``susy-breakpoint``
+  without requiring the Breakpoint plugin.
+- ``susy-breakpoint`` mixin no longer requires ``$layout`` argument.
+  By default, no changes will be made to your existing layout.
 - Update ``global-box-sizing`` and the legacy ``border-box-sizing``
   mixins to optionally take another argument, ``$inherit``. This new
   argument is a boolean value that defaults to ``false``, meaning the
@@ -16,6 +22,13 @@ Changelog
   and all nested elements will inherit this change. This cascading
   effect can be prevented by explicitly setting ``box-sizing`` on the
   exceptions within the nested context.
+- Add ``su`` import at root level.
+- Both ``su`` and ``susy`` work with the latest LibSass master branch (3.0.2+).
+  There are a few exceptions:
+
+  + The ``susysone`` syntax
+  + ``overlay`` grid output
+  + The ``inherit`` option for ``global-box-sizing`` & ``border-box-sizing``
 
 
 2.1.3 - Jul 16 2014

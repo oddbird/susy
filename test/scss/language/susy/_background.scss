@@ -1,8 +1,10 @@
 // Background Syntax Tests
 // =======================
 
+$base-line-height: 24px;
+
 @include test-module(Background Syntax) {
-  $grid-background-baseline-color: black !global;
+  $grid-background-baseline-color: #000 !global;
 
   // Background Grid
   // ---------------
@@ -253,12 +255,12 @@
     $test: get-background($grid show-baseline);
     $expect: (
       image: (
-        baseline: (black 1px, rgba(black, 0) 1px),
+        baseline: (#000 1px, transparent 1px),
       ),
       size: 100% 24px,
       flow: ltr,
     );
-    @include assert-equal($test, $expect,
+    @include compare-maps($test, $expect,
       'Return key/values for baseline.');
 
     // show
@@ -266,13 +268,13 @@
     $expect: (
       image: (
         columns: ($color, $light),
-        baseline: (black 1px, rgba(black, 0) 1px),
+        baseline: (#000 1px, transparent 1px),
       ),
       size: (percentage(1.25/10), 100% 24px),
       clip: (content-box, border-box),
       flow: ltr,
     );
-    @include assert-equal($test, $expect,
+    @include compare-maps($test, $expect,
       'Return key/values for both baseline and columns.');
   }
 

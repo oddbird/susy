@@ -13,7 +13,7 @@
   $prefix: official
 ) {
   @each $fix in $prefix {
-    $fix: if($fix == official or not $fix, $prop, '-#{$fix}-#{$prop}');
+    $fix: if($fix == official or not($fix), $prop, '-#{$fix}-#{$prop}');
     @include susy-rem($fix, $val);
   }
 }

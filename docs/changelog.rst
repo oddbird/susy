@@ -1,8 +1,8 @@
 Changelog
 =========
 
-2.2.0 - UNRELEASED
-------------------
+2.2.1 - Jan 14 2015
+-------------------
 
 - Release npm ``susy`` package.
 - Add global ``$susy-media`` map for creating named breakpoints.

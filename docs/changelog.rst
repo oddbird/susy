@@ -5,7 +5,7 @@ Changelog
 ------------------
 
 - Release npm ``susy`` package.
-- Add global ``$susy-breakpoints`` map for creating named breakpoints.
+- Add global ``$susy-media`` map for creating named breakpoints.
 - Add internal media-query support for ``susy-breakpoint``
   without requiring the Breakpoint plugin.
 - ``susy-breakpoint`` mixin no longer requires ``$layout`` argument.

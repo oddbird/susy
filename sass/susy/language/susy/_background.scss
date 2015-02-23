@@ -35,22 +35,42 @@ $susy-overlay-grid-head-exists: false;
 @mixin background-grid(
   $grid: $susy
 ) {
-  $inspect  : $grid;
-  $_output  : get-background($grid);
+  
+  $colums-count: susy-count(  susy-get(columns, $grid));
+  $debug-color: susy-get(debug color, $grid);
+  $debug-color-light: lighten($debug-color,10) ;
+  $gutter: gutter($grid);
+ 
+  $svg-grid: '<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">';
+  //Devs
+  $svg-grid : $svg-grid + '<defs>';
+  $svg-grid : $svg-grid + '<linearGradient id="gr" x1="0%" y1="0%" x2="100%" y2="0%">';
+  $svg-grid : $svg-grid + '<stop offset="0%" style="stop-color:#{$debug-color};" />';
+  $svg-grid : $svg-grid + '<stop offset="100%" style="stop-color:#{$debug-color-light};" />';
+  $svg-grid : $svg-grid + '</linearGradient>';
+  
+  @if variable-exists(base-line-height){
 
-  @if length($_output) > 0 {
-    $_flow: susy-get(flow, $grid);
-
-    $_image: ();
-    @each $name, $layer in map-get($_output, image) {
-      $_direction: if($name == baseline, to bottom, to to($_flow));
-      $_image: append($_image, linear-gradient($_direction, $layer), comma);
-    }
-    $_output: map-merge($_output, (image: $_image));
-
-    @include background-grid-output($_output...);
-    @include susy-inspect(background-grid, $inspect);
+    $svg-grid : $svg-grid +'<pattern patternUnits="userSpaceOnUse" id="baseline" width="100%" height="#{$base-line-height}" >';
+    $svg-grid : $svg-grid +'<line x1="-10%" y1="1" x2="110%" y2="1" stroke="#666" stroke-width="0.5"  />';
+    $svg-grid : $svg-grid +'</pattern>';
   }
+  $svg-grid : $svg-grid + '</defs>';
+  @for $i from 1 through $colums-count {
+    $x: isolate($i of $grid);
+    $span: span(1 at $i of $grid);
+    $svg-grid : $svg-grid +  '<rect x="#{$x}" fill="url(#gr)" width="#{$span}" height="100%"/>';
+  }
+  @if variable-exists(base-line-height){
+    $svg-grid : $svg-grid +  '<rect x="0" fill="url(#baseline)" width="100%" height="100%"/>';
+  }
+
+  $svg-grid : $svg-grid +  '</svg>';
+  $data-prefix:"data:image/svg+xml,";
+
+  background-image: url( $data-prefix + html-encode($svg-grid));
+  background-size: 100% 100%;
+  background-position: 0 0;
 }
 
 
@@ -135,239 +155,6 @@ $susy-overlay-grid-head-exists: false;
   right: 0;
   content: " ";
   z-index: 998;
-}
-
-
-// Get Symmetrical Background
-// --------------------------
-// - $grid: <map>
-@function get-background-sym(
-  $grid
-) {
-  $grid           : parse-grid($grid);
-  $_gutters       : susy-get(gutters, $grid);
-  $_column-width  : susy-get(column-width, $grid);
-  $_math          : susy-get(math, $grid);
-
-  $_color         : debug-get(color);
-  $_trans         : transparent;
-  $_light         : lighten($_color, 15%);
-
-  $_end           : 1 + $_gutters;
-  $_after         : percentage(1/$_end);
-  $_stops         : ();
-  $_size          : span(1 $grid wide);
-
-  @if is-inside($grid) {
-    $_stops: $_color, $_light;
-  } @else if is-split($grid) {
-    $_split: $_gutters/2;
-    $_before: percentage($_split/$_end);
-    $_after: percentage((1 + $_split)/$_end);
-    $_stops: $_trans $_before, $_color $_before, $_light $_after, $_trans $_after;
-  } @else {
-    $_stops: $_color, $_light $_after, $_trans $_after;
-  }
-
-  @if $_math == static {
-    $_size: valid-column-math($_math, $_column-width) * $_end;
-  }
-
-  $_output: (
-    image: (columns: $_stops),
-    size: $_size,
-  );
-
-  @return $_output;
-}
-
-
-// Get Asymmetrical Inside
-// -----------------------
-// - $grid: <settings>
-@function get-asym-inside(
-  $grid
-) {
-  $grid     : parse-grid($grid);
-  $_columns : susy-get(columns, $grid);
-
-  $_color   : debug-get(color);
-  $_light   : lighten($_color, 15%);
-  $_stops   : ();
-
-  @for $location from 1 through susy-count($_columns) {
-    $this-stop: ();
-
-    @if $location == 1 {
-      $this-stop: append($this-stop, $_color, comma);
-    } @else {
-      $start: parse-span(1 at $location $grid);
-      $start: get-isolation($start);
-      $this-stop: append($this-stop, $_color $start, comma);
-    }
-
-    @if $location == susy-count($_columns) {
-      $this-stop: append($this-stop, $_light, comma);
-    } @else {
-      $_end: parse-span(1 at ($location + 1) $grid);
-      $_end: get-isolation($_end);
-      $this-stop: append($this-stop, $_light $_end, comma);
-    }
-
-    $_stops: join($_stops, $this-stop, comma);
-  }
-
-  @return $_stops;
-}
-
-
-// Get Asymmetrical Split
-// ----------------------
-// - $grid: <settings>
-@function get-asym-split(
-  $grid
-) {
-  $grid     : parse-grid($grid);
-  $_columns : susy-get(columns, $grid);
-
-  $_color   : debug-get(color);
-  $_light   : lighten($_color, 15%);
-  $_stops   : ();
-
-  @for $location from 1 through susy-count($_columns) {
-    $this-stop: ();
-
-    $start: parse-span(1 at $location $grid);
-    $start: get-isolation($start);
-    $this-stop: append($this-stop, transparent $start, comma);
-    $this-stop: append($this-stop, $_color $start, comma);
-
-    $_end: $start + span(1 at $location $grid);
-    $this-stop: append($this-stop, $_light $_end, comma);
-    $this-stop: append($this-stop, transparent $_end, comma);
-
-    $_stops: join($_stops, $this-stop, comma);
-  }
-
-  @return $_stops;
-}
-
-
-// Get Asymmetrical Outside
-// ------------------------
-// - $grid: <settings>
-@function get-asym-outside(
-  $grid
-) {
-  $grid     : parse-grid($grid);
-  $_columns : susy-get(columns, $grid);
-
-  $_color   : debug-get(color);
-  $_light   : lighten($_color, 15%);
-  $_trans   : transparent;
-  $_stops   : ();
-
-  @for $location from 1 through susy-count($_columns) {
-    $this-stop: ();
-
-    @if $location == 1 {
-      $this-stop: append($this-stop, $_color, comma);
-    } @else {
-      $start: parse-span(1 at $location $grid);
-      $start: get-isolation($start);
-      $this-stop: append($this-stop, $_color $start, comma);
-    }
-
-    @if $location == susy-count($_columns) {
-      $this-stop: append($this-stop, $_light, comma);
-    } @else {
-      $gutter: get-span-width(first $location $grid);
-
-      $_end: parse-span(1 at ($location + 1) $grid);
-      $_end: get-isolation($_end);
-
-      $gutter: $_light $gutter, $_trans $gutter, $_trans $_end;
-      $this-stop: join($this-stop, $gutter, comma);
-    }
-
-    $_stops: join($_stops, $this-stop, comma);
-  }
-
-  @return $_stops;
-}
-
-
-// Get Asymmetrical Background
-// ---------------------------
-// - $grid: <settings>
-@function get-background-asym(
-  $grid
-) {
-  $_stops: ();
-
-  @if is-inside($grid) {
-    $_stops: get-asym-inside($grid);
-  } @else if is-split($grid) {
-    $_stops: get-asym-split($grid);
-  } @else {
-    $_stops: get-asym-outside($grid);
-  }
-
-  @return (image: (columns: $_stops));
-}
-
-
-// Get Background
-// --------------
-// - $grid: <settings>
-@function get-background(
-  $grid
-) {
-  $grid     : parse-grid($grid);
-  $_show    : susy-get(debug image, $grid);
-  $_return  : ();
-
-  @if $_show and $_show != hide {
-    $_line-height: variable-exists(base-line-height);
-    $_line-height: if($_line-height, $base-line-height, false);
-    $_columns: susy-get(columns, $grid);
-
-    @if $_show != show-baseline {
-      $_sym: is-symmetrical($_columns);
-      $_return: if($_sym, get-background-sym($grid), get-background-asym($grid));
-      $_return: map-merge($_return, (clip: content-box));
-    } @else if not($_line-height) {
-      @warn 'Please provide $base-line-height in order to see baseline grids.';
-    }
-
-    @if $_line-height {
-      @if $_show != show-columns {
-        $_color: variable-exists(grid-background-baseline-color);
-        $_color: if($_color, $grid-background-baseline-color, #000);
-
-        $_image: map-get($_return, image);
-        $_size: map-get($_return, size);
-        $_baseline: (baseline: ($_color 1px, transparent 1px));
-        $_baseline-size: 100% $_line-height;
-
-        $_return: map-merge($_return, (
-          image: if($_image, map-merge($_image, $_baseline), $_baseline),
-          size: if($_size, ($_size, $_baseline-size), $_baseline-size),
-        ));
-      }
-
-      @if $_show == show {
-        $_clip: map-get($_return, clip);
-        $_return: map-merge($_return, (clip: join($_clip, border-box, comma)));
-      }
-    }
-  }
-
-  @if map-get($_return, image) {
-    $_return: map-merge($_return, (flow: susy-get(flow, $grid)));
-  }
-
-  @return $_return;
 }
 
 

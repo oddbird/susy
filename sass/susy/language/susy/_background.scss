@@ -35,7 +35,7 @@ $susy-overlay-grid-head-exists: false;
 @mixin background-grid(
   $grid: $susy
 ) {
-  
+  $grid: layout($grid);
   $colums-count: susy-count(  susy-get(columns, $grid));
   $debug-color: susy-get(debug color, $grid);
   $debug-color-light: lighten($debug-color,10) ;

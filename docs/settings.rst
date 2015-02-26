@@ -187,7 +187,7 @@ Set a new layout as the global default.
 By default, these new settings are added to your
 existing global settings.
 Use the `$clean` argument
-to etablish new settings from scratch.
+to establish new settings from scratch.
 
 
 -------------------------------------------------------------------------
@@ -218,7 +218,7 @@ for a section of your code.
 By default, these new settings are added to your
 existing global settings.
 Use the `$clean` argument
-to etablish new settings from scratch.
+to establish new settings from scratch.
 
 
 -------------------------------------------------------------------------

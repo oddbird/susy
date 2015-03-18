@@ -329,7 +329,7 @@ $susy-overlay-grid-head-exists: false;
 
   @if $_show and $_show != hide {
     $_line-height: variable-exists(base-line-height);
-    $_line-height: if($_line-height, $base-line-height, false);
+    $_line-height: if($_line-height, if(unitless($base-line-height), 0em + $base-line-height, $base-line-height), false);
     $_columns: susy-get(columns, $grid);
 
     @if $_show != show-baseline {

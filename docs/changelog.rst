@@ -1,6 +1,12 @@
 Changelog
 =========
 
+2.2.3 - Apr 28 2015
+-------------------
+
+- Work around libsass fraction bug.
+
+
 2.2.2 - Jan 23 2015
 -------------------
 

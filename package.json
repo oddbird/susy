@@ -14,8 +14,12 @@
     "sass",
     "responsive",
     "rwd",
-    "semantic"
+    "semantic",
+    "eyeglass-module"
   ],
+  "eyeglass": {
+    "exports": "eyeglass-exports.js"
+  },
   "scripts": {
     "test": "rake test"
   },

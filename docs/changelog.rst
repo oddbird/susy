@@ -1,6 +1,12 @@
 Changelog
 =========
 
+2.2.5 - May 14 2015
+-------------------
+
+- Pass grid arguments to overlay positioning mixin.
+
+
 2.2.3 - Apr 28 2015
 -------------------
 

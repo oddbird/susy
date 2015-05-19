@@ -89,12 +89,17 @@
   }
 
   @include test('[function] susy-get-media') {
-    $susy-media: (large: 60em) !global;
+    $susy-media: (large: 60em, print: 'print') !global;
 
     $test: susy-get-media(large);
     $expect: 60em;
     @include assert-equal($test, $expect,
       'Returns $susy-media values based on key name.');
+
+    $test: susy-get-media(print);
+    $expect: 'print';
+    @include assert-equal($test, $expect,
+      'Returns $susy-media values when key = value.');
   }
 
   @include test('[function] susy-parse-media') {

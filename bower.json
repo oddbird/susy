@@ -1,6 +1,5 @@
 {
   "name": "susy",
-  "version": "2.2.5",
   "description": "Sass power-tools for web layout.",
   "authors": [
     "Eric Suzanne <eric@oddbird.net>"

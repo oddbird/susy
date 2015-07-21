@@ -94,12 +94,14 @@ Bower
 This will add the Susy repository to your `bower_components` directory or create a `bower_components` directory for you.
 
 .. code-block:: css
+
   // Import Susy
   @import "bower_components/susy/sass/susy";
 
 You can also import Susyone.
 
 .. code-block:: css
+
   // Import Susy
   @import "bower_components/susy/sass/susyone";
 

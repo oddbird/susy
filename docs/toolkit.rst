@@ -1168,13 +1168,13 @@ Susy Breakpoint
 .. describe:: mixin
 
   :format: ``susy-breakpoint($query, $layout, $no-query)``
-  :$query: media query shorthand (see :ref:`susy-media <susy-media>`)
+  :$query: media query shorthand (see :ref:`susy-media <tools-susy-media>`)
   :$layout: :ref:`\<layout\> <shorthand-layout>`
-  :$no-query: <boolean> | <string> (see :ref:`susy-media <susy-media>`)
+  :$no-query: <boolean> | <string> (see :ref:`susy-media <tools-susy-media>`)
 
 ``susy-breakpoint()`` acts as a shortcut
 for changing layout settings at different media-query breakpoints,
-using either :ref:`susy-media <susy-media>` or
+using either :ref:`susy-media <tools-susy-media>` or
 the third-party `Breakpoint`_ plugin.
 
 If you are using the third-party plugin,

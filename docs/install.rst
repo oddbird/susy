@@ -91,7 +91,8 @@ Bower
   # command line
   bower install susy --save
 
-This will add the Susy repository to your `bower_components` directory or create a `bower_components` directory for you.
+This will add the Susy repository to your ``bower_components`` directory or
+create a ``bower_components`` directory for you.
 
 .. code-block:: scss
 

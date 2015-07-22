@@ -1088,7 +1088,7 @@ Gallery
   :$selector: (nth-) ``child``:abbr:`* (default)` | ``of-type``
 
 Gallery is a shortcut for creating gallery-style layouts,
-where a large number of elements are layed out on a consistent grid.
+where a large number of elements are laid out on a consistent grid.
 We take the standard :ref:`span shorthand <shorthand-span>`
 and apply it to all the elements,
 using ``nth-child`` or ``nth-of-type`` selectors

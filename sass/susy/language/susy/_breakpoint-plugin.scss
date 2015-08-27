@@ -122,8 +122,12 @@ $_susy-media-context: ();
   $name
 ) {
   @if map-has-key($susy-media, $name) {
-    $name: map-get($susy-media, $name);
-    $name: susy-get-media($name);
+    $map-value: map-get($susy-media, $name);
+    @if ($name == $map-value) {
+      $name: $map-value;
+    } @else {
+      $name: susy-get-media($map-value);
+    }
   }
 
   @return $name;

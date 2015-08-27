@@ -2404,6 +2404,36 @@ html {
 .test__pre .assert__split .expect {
   margin-left: 26.25%; }
 
+.test__pre .assert__split {
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  background-image: linear-gradient(to right, transparent 0%, rgba(102, 102, 255, 0.25) 0%, rgba(179, 179, 255, 0.25) 100%, transparent 100%);
+  background-size: 10%;
+  background-origin: content-box;
+  background-clip: content-box;
+  background-position: left top; }
+  .test__pre .assert__split:after {
+    content: " ";
+    display: block;
+    clear: both; }
+
+.test__pre .assert__split .test, .test__pre .assert__split .expect {
+  width: 40%;
+  float: left; }
+
+/* "Pre works with split 0 gutters." */
+.test__pre .assert__split:before {
+  content: "Pre works with split 0 gutters.";
+  display: block;
+  padding: .25rem .5rem;
+  text-align: left;
+  font-style: italic; }
+.test__pre .assert__split .test {
+  margin-left: 20%; }
+.test__pre .assert__split .expect {
+  margin-left: 20%; }
+
 .test__pre .assert__wider {
   max-width: 100%;
   margin-left: auto;
@@ -3356,6 +3386,9 @@ html {
 [data-module="breakpoint integration"] [data-test="[function] susy-get-media"] .assert-equal {
   -result: PASS;
   -description: "Returns $susy-media values based on key name."; }
+[data-module="breakpoint integration"] [data-test="[function] susy-get-media"] .assert-equal {
+  -result: PASS;
+  -description: "Returns $susy-media values when key = value."; }
 
 /* [function] susy-parse-media */
 [data-module="breakpoint integration"] [data-test="[function] susy-parse-media"] .assert-equal {

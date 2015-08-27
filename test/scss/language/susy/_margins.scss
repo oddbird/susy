@@ -30,6 +30,16 @@
       .expect { margin-left: 26.25%; }
     }
 
+    @include assert-setup('split', $grid: 10 0 split) {
+      .test, .expect { @include span(4); }
+    }
+    @include assert-output(
+      'Pre works with split 0 gutters.'
+    ) {
+      .test { @include pre(2); }
+      .expect { margin-left: 20%; }
+    }
+
     // wider
     @include assert-setup('wider', $grid: 7 .5 before) {
       .spacer { @include span(first 1); }

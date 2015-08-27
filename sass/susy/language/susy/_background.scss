@@ -329,39 +329,38 @@ $susy-overlay-grid-head-exists: false;
   $_show    : susy-get(debug image, $grid);
   $_return  : ();
 
-  @if $_show and $_show != hide {
-    $_line-height: variable-exists(base-line-height);
-    $_line-height: if($_line-height, $base-line-height, false);
+  @if $_show and $_show != 'hide' {
     $_columns: susy-get(columns, $grid);
 
-    @if $_show != show-baseline {
+    @if $_show != 'show-baseline' {
       $_sym: is-symmetrical($_columns);
       $_return: if($_sym, get-background-sym($grid), get-background-asym($grid));
       $_return: map-merge($_return, (clip: content-box));
-    } @else if not($_line-height) {
-      @warn 'Please provide $base-line-height in order to see baseline grids.';
     }
 
-    @if $_line-height {
-      @if $_show != show-columns {
-        $_color: variable-exists(grid-background-baseline-color);
-        $_color: if($_color, $grid-background-baseline-color, #000);
+    @if $_show != 'show-columns'
+      and global-variable-exists(base-line-height)
+      and type-of($base-line-height) == 'number'
+      and not unitless($base-line-height) {
+      $_color: variable-exists('grid-background-baseline-color');
+      $_color: if($_color, $grid-background-baseline-color, #000);
 
-        $_image: map-get($_return, image);
-        $_size: map-get($_return, size);
-        $_baseline: (baseline: ($_color 1px, transparent 1px));
-        $_baseline-size: 100% $_line-height;
+      $_image: map-get($_return, image);
+      $_size: map-get($_return, size);
+      $_baseline: (baseline: ($_color 1px, transparent 1px));
+      $_baseline-size: 100% $base-line-height;
 
-        $_return: map-merge($_return, (
-          image: if($_image, map-merge($_image, $_baseline), $_baseline),
-          size: if($_size, ($_size, $_baseline-size), $_baseline-size),
-        ));
-      }
+      $_return: map-merge($_return, (
+        image: if($_image, map-merge($_image, $_baseline), $_baseline),
+        size: if($_size, ($_size, $_baseline-size), $_baseline-size),
+      ));
 
-      @if $_show == show {
+      @if $_show == 'show' {
         $_clip: map-get($_return, clip);
         $_return: map-merge($_return, (clip: join($_clip, border-box, comma)));
       }
+    } @else if $_show == 'show-baseline' {
+      @warn 'Please provide a $base-line-height with the desired height and units';
     }
   }
 

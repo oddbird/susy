@@ -890,6 +890,9 @@ html {
   -description: "Only show baseline if $base-line-height exists."; }
 [data-module="Background Syntax"] [data-test="[function] get-background"] .assert-equal {
   -result: PASS;
+  -description: "Only show baseline if $base-line-height has units."; }
+[data-module="Background Syntax"] [data-test="[function] get-background"] .assert-equal {
+  -result: PASS;
   -description: "[Return key/values for baseline. » image] Returns the correct baseline."; }
 [data-module="Background Syntax"] [data-test="[function] get-background"] .assert-equal {
   -result: PASS;

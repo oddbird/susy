@@ -2,11 +2,32 @@
 // ===========
 
 
+// Su Spread
+// ---------
+// Returns -1, 0, or 1 for narrow, wide, wider
+// - [$spread]    : narrow | wide | wider
+@function su-spread (
+  $spread: susy-get('spread')
+) {
+  @if $spread == 'narrow' {
+    @return -1;
+  } @else if $spread == 'wide' {
+    @return 0;
+  } @else if $spread == 'wider' {
+    @return 1;
+  } @else {
+    $warn: '$spread must be narrow, wide, or wider';
+    @warn $warn + ' Current value [#{$type}]: #{$columns}';
+    @return -1;
+  }
+}
+
+
 // Is Symmetrical
 // --------------
 // Returns true if a grid is symmetrical.
 // - [$columns]   : <number> | <list>
-@function is-symmetrical(
+@function is-symmetrical (
   $columns: su-get(columns)
 ) {
   $columns: valid-columns($columns);
@@ -18,7 +39,7 @@
 // ----------
 // Find the number of columns in a given layout
 // - [$columns]   : <number> | <list>
-@function su-count(
+@function su-count (
   $columns: su-get(columns)
 ) {
   $columns: valid-columns($columns);
@@ -32,15 +53,15 @@
 // - [$columns]   : <number> | <list>
 // - [$gutters]   : <ratio>
 // - [$spread]    : false/narrow | wide | wider
-@function su-sum(
+@function su-sum (
   $columns  : su-get('columns'),
   $gutters  : su-get('gutters'),
   $spread   : false
 ) {
   $columns: valid-columns($columns);
   $gutters: valid-gutters($gutters);
+  $spread: su-spread($spread);
 
-  $spread: if($spread == 'wide', 0, if($spread == 'wider', 1, -1));
   $gutter-sum: (su-count($columns) + $spread) * $gutters;
   $column-sum: is-symmetrical($columns);
 
@@ -60,7 +81,7 @@
 // - $span        : <number>
 // - $location    : <number>
 // - [$columns]   : <number> | <list>
-@function su-slice(
+@function su-slice (
   $span,
   $location,
   $columns: su-get('columns')
@@ -88,7 +109,7 @@
 // - [$columns]   : <number> | <list>
 // - [$gutters]   : <ratio>
 // - [$spread]    : false/narrow | wide | wider
-@function su(
+@function su (
   $span,
   $location     : false,
   $columns      : su-get('columns'),

@@ -24,3 +24,18 @@ Resources
 - [Documentation](http://susydocs.oddbird.net/)
 - [Sites using Susy](http://susy.oddbird.net/sites-using-susy/)
 - [Twitter @SassSusy](http://twitter.com/Sasssusy/)
+
+
+Developement
+------------
+
+```
+gem install scss_lint
+```
+
+Linting and testing is done on pre-commit. It can also be triggered:
+
+```
+npm run lint --silent
+npm run test --silent
+```

@@ -1,0 +1,23 @@
+// Susy Next Syntax
+// ================
+
+$susy-version: 2.1;
+
+@import "output/float";
+
+@import "core/settings";
+@import "core/validation";
+@import "core/grids";
+@import "core/box-sizing";
+@import "core/context";
+@import "core/background";
+@import "core/container";
+@import "core/span";
+@import "core/gutters";
+@import "core/isolate";
+@import "core/gallery";
+@import "core/rows";
+@import "core/margins";
+@import "core/padding";
+@import "core/bleed";
+@import "core/breakpoint-plugin";

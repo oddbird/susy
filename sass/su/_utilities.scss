@@ -5,7 +5,7 @@
 // Truncate List
 // -------------
 // - Return a list, truncated to a given length
-@function _susy-truncate-list(
+@function _su-truncate-list(
   $list,
   $length
 ) {
@@ -22,7 +22,7 @@
 // Deep Get
 // --------
 // - Return a value deep in nested maps
-@function _susy-deep-get(
+@function _su-deep-get(
   $map,
   $keys...
 ) {
@@ -41,19 +41,19 @@
 // Deep Set
 // --------
 // - Set a value deep in nested maps
-@function _susy-deep-set(
+@function _su-deep-set(
   $map,
   $keys-value...
 ) {
   $value: nth($keys-value, -1);
-  $keys: _susy-truncate-list($keys-value, length($keys-value) - 1);
+  $keys: _su-truncate-list($keys-value, length($keys-value) - 1);
   $length: length($keys);
   $return: ();
 
   @for $i from 1 through $length {
     $n: 0 - $i;
-    $level: _susy-truncate-list($keys, $length + $n);
-    $level: _susy-deep-get($map, $level...);
+    $level: _su-truncate-list($keys, $length + $n);
+    $level: _su-deep-get($map, $level...);
     $merge: nth($keys, $n);
     $merge: ($merge: $value);
     $return: if($level, map-merge($level, $merge), $merge);
@@ -67,7 +67,7 @@
 // Deep Merge
 // ----------
 // Return 2 objects of any depth, merged
-@function _susy-deep-merge(
+@function _su-deep-merge(
   $map1,
   $map2
 ) {
@@ -76,7 +76,7 @@
     $map1: $map2;
   } @else {
     @each $key, $value in $map2 {
-      $new: ($key: _susy_deep-merge(map-get($map1, $key), $value));
+      $new: ($key: _su_deep-merge(map-get($map1, $key), $value));
       $map1: map-merge($map1, $new);
     }
   }
@@ -88,7 +88,7 @@
 // Deep Has-Key
 // ------------
 // - Return true if a deep key exists
-@function _susy-deep-has-key(
+@function _su-deep-has-key(
   $map,
   $keys...
 ) {

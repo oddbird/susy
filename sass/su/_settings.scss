@@ -9,7 +9,7 @@ $su-version: 1.1;
 // Default Settings
 // ----------------
 // PRIVATE: The basic settings
-$susy-defaults: (
+$su-defaults: (
   columns: 4,
   gutters: .25,
 );
@@ -17,53 +17,53 @@ $susy-defaults: (
 
 // User Settings
 // -------------
-// - Define the $susy variable with a map of your own settings.
+// - Define the $su variable with a map of your own settings.
 // - Set EITHER $column-width OR $container
 // - Use $column-width for static layouts
-$susy: () !default;
+$su: () !default;
 
 
-// Susy Defaults
+// Su Defaults
 // -------------
-// PRIVATE: Add defaults to Susy
-@mixin susy-defaults(
+// PRIVATE: Add defaults to su
+@mixin su-defaults(
   $defaults
 ) {
-  $susy-defaults: map-merge($susy-defaults, $defaults) !global;
+  $su-defaults: map-merge($su-defaults, $defaults) !global;
 }
 
 
-// Susy Set
+// Su Set
 // --------
 // Change one setting
 // - $key   : setting name
 // - $value : setting value
-@mixin susy-set(
+@mixin su-set(
   $key-value...
 ) {
-  $susy: _susy-deep-set($susy, $key-value...) !global;
+  $su: _su-deep-set($su, $key-value...) !global;
 }
 
 
-// Susy Get
+// Su Get
 // --------
 // Return one setting from a grid
 // - $key     : <keyword>
 // - $layout  : <settings>
-@function susy-get(
+@function su-get(
   $key,
-  $layout: map-merge($susy-defaults, $susy)
+  $layout: map-merge($su-defaults, $su)
 ) {
   $layout: parse-grid($layout);
-  $options: $layout $susy $susy-defaults;
+  $options: $layout $su $su-defaults;
   $break: false;
   $return: null;
 
   @each $opt in $options {
     @if type-of($opt) == map and not($break) {
-      $keyset: _susy-deep-has-key($opt, $key...);
+      $keyset: _su-deep-has-key($opt, $key...);
       @if $keyset {
-        $return: _susy-deep-get($opt, $key...);
+        $return: _su-deep-get($opt, $key...);
         $break: true;
       }
     }

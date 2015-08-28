@@ -55,19 +55,19 @@ $susy: () !default;
   $layout: map-merge($susy-defaults, $susy)
 ) {
   $layout: parse-grid($layout);
-  $_options: $layout $susy $susy-defaults;
-  $_break: false;
-  $_return: null;
+  $options: $layout $susy $susy-defaults;
+  $break: false;
+  $return: null;
 
-  @each $opt in $_options {
-    @if type-of($opt) == map and not($_break) {
-      $_keyset: _susy-deep-has-key($opt, $key...);
-      @if $_keyset {
-        $_return: _susy-deep-get($opt, $key...);
-        $_break: true;
+  @each $opt in $options {
+    @if type-of($opt) == map and not($break) {
+      $keyset: _susy-deep-has-key($opt, $key...);
+      @if $keyset {
+        $return: _susy-deep-get($opt, $key...);
+        $break: true;
       }
     }
   }
 
-  @return $_return;
+  @return $return;
 }

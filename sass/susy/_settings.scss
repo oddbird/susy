@@ -47,28 +47,28 @@ $susy-keywords: (
 @function parse-settings(
   $short: $susy
 ) {
-  $_return: ();
+  $return: ();
 
   @if type-of($short) == map {
-    $_return: $short;
+    $return: $short;
   } @else {
     @each $item in $short {
       // strings
       @if type-of($item) == string {
         @each $key, $value in $susy-keywords {
           @if index($value, $item) {
-            $_key-value: append($key, $item);
-            $_return: _susy-deep-set($_return, $_key-value...);
+            $key-value: append($key, $item);
+            $return: _susy-deep-set($return, $key-value...);
           }
         }
       // maps
       } @else if type-of($item) == map {
-        $_return: map-merge($_return, $item);
+        $return: map-merge($return, $item);
       }
     }
   }
 
-  @return $_return;
+  @return $return;
 }
 
 
@@ -77,30 +77,30 @@ $susy-keywords: (
 @function parse-layout(
   $short
 ) {
-  $_return: ();
-  $_columns: ();
-  $_gutters: null;
+  $return: ();
+  $columns: ();
+  $gutters: null;
 
   @if not(unitless(nth(nth($short, 1), 1))) {
-    $_gutters: nth($short, 1);
+    $gutters: nth($short, 1);
   } @else {
-    $_columns: (columns: nth($short, 1));
-    $_gutters: if(length($short) > 1, nth($short, 2), $_gutters);
+    $columns: (columns: nth($short, 1));
+    $gutters: if(length($short) > 1, nth($short, 2), $gutters);
   }
 
-  @if type-of($_gutters) == list and length($_gutters) > 0 {
-    $_gutters: (
-      gutters: nth($_gutters, 2) / nth($_gutters, 1),
-      column-width: nth($_gutters, 1),
+  @if type-of($gutters) == list and length($gutters) > 0 {
+    $gutters: (
+      gutters: nth($gutters, 2) / nth($gutters, 1),
+      column-width: nth($gutters, 1),
     );
   } @else {
-    $_gutters: if($_gutters, (gutters: $_gutters), ());
+    $gutters: if($gutters, (gutters: $gutters), ());
   }
 
-  $_return: map-merge($_return, $_columns);
-  $_return: map-merge($_return, $_gutters);
+  $return: map-merge($return, $columns);
+  $return: map-merge($return, $gutters);
 
-  @return $_return;
+  @return $return;
 }
 
 
@@ -109,27 +109,27 @@ $susy-keywords: (
 @function parse-grid(
   $short: $susy
 ) {
-  $_return: parse-settings($short);
-  $_layout: ();
+  $return: parse-settings($short);
+  $layout: ();
 
   @if type-of($short) == map {
-    $_return: $short;
+    $return: $short;
   } @else {
     @each $item in $short {
       // number or list
       @if type-of($item) == number or type-of($item) == list {
         @if type-of($item) == list or unitless($item) {
-          $_layout: append($_layout, $item);
+          $layout: append($layout, $item);
         } @else {
-          $_return: map-merge($_return, (container: $item));
+          $return: map-merge($return, (container: $item));
         }
       }
     }
 
-    $_layout: if(length($_layout) > 0, parse-layout($_layout), $_layout);
+    $layout: if(length($layout) > 0, parse-layout($layout), $layout);
   }
 
-  @return map-merge($_return, $_layout);
+  @return map-merge($return, $layout);
 }
 
 
@@ -139,47 +139,47 @@ $susy-keywords: (
   $short,
   $key: span
 ) {
-  $_return: ();
+  $return: ();
 
   @if type-of($short) == map {
-    $_return: $short;
+    $return: $short;
   } @else {
-    $_at: index($short, at);
+    $at: index($short, at);
 
-    @if $_at {
-      $_loci: $_at + 1;
-      $_location: nth($short, $_loci);
-      $_return: map-merge($_return, (location: $_location));
-      $short: set-nth($short, $_at, null);
-      $short: set-nth($short, $_loci, null);
+    @if $at {
+      $loci: $at + 1;
+      $location: nth($short, $loci);
+      $return: map-merge($return, (location: $location));
+      $short: set-nth($short, $at, null);
+      $short: set-nth($short, $loci, null);
     }
 
-    $_i: 1;
-    $_span: ();
+    $i: 1;
+    $span: ();
 
-    @while $_i <= length($short) {
-      $_this: nth($short, $_i);
+    @while $i <= length($short) {
+      $this: nth($short, $i);
 
-      @if type-of($_this) == number {
-        $_span: append($_span, $_this);
-        $short: set-nth($short, $_i, null);
-      } @else if $_this == of {
-        $short: set-nth($short, $_i, null);
-        $_i: length($short) + 1;
+      @if type-of($this) == number {
+        $span: append($span, $this);
+        $short: set-nth($short, $i, null);
+      } @else if $this == of {
+        $short: set-nth($short, $i, null);
+        $i: length($short) + 1;
       }
 
-      $_i: $_i + 1;
+      $i: $i + 1;
     }
 
-    @if length($_span) > 0 {
-      $_span: if(length($_span) == 1, nth($_span, 1), $_span);
-      $_return: map-merge($_return, ($key: $_span));
+    @if length($span) > 0 {
+      $span: if(length($span) == 1, nth($span, 1), $span);
+      $return: map-merge($return, ($key: $span));
     }
 
-    $_return: map-merge($_return, parse-grid($short));
+    $return: map-merge($return, parse-grid($short));
   }
 
-  @return $_return;
+  @return $return;
 }
 
 
@@ -188,31 +188,31 @@ $susy-keywords: (
 @function parse-gutters(
   $short: $susy
 ) {
-  $_gutters: parse-span($short, gutter-override);
-  $_span: susy-get(gutter-override, $_gutters);
+  $gutters: parse-span($short, gutter-override);
+  $span: susy-get(gutter-override, $gutters);
 
-  @if $_span and not(map-get($_gutters, columns)) {
-    $_context: ();
-    $_new: ();
+  @if $span and not(map-get($gutters, columns)) {
+    $context: ();
+    $new: ();
 
-    @each $item in $_span {
+    @each $item in $span {
       @if type-of($item) == number and unitless($item) {
-        $_context: append($_context, $item);
+        $context: append($context, $item);
       } @else {
-        $_new: append($_new, $item);
+        $new: append($new, $item);
       }
     }
 
-    $_context: parse-grid($_context);
-    $_new: if(length($_new) == 0, null, $_new);
-    $_new: if(length($_new) == 1, nth($_new, 1), $_new);
-    $_new: (gutter-override: if($_new != $_span, $_new, $_span));
+    $context: parse-grid($context);
+    $new: if(length($new) == 0, null, $new);
+    $new: if(length($new) == 1, nth($new, 1), $new);
+    $new: (gutter-override: if($new != $span, $new, $span));
 
-    $_gutters: map-merge($_gutters, $_new);
-    $_gutters: map-merge($_gutters, $_context);
+    $gutters: map-merge($gutters, $new);
+    $gutters: map-merge($gutters, $context);
   }
 
-  @return $_gutters;
+  @return $gutters;
 }
 
 

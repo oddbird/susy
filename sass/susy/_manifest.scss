@@ -1,9 +1,8 @@
 // Susy Next Syntax
 // ================
 
-$susy-version: 3.0.alpha.1;
+$susy-version: 3;
 
 @import 'settings';
-@import 'grids';
-@import 'span';
 @import 'gutters';
+@import 'span';

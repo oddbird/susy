@@ -25,27 +25,33 @@
 
 
 @function susy-span-parser(
-  $span
+  $shorthand
 ) {
   $span: null;
   $location: null;
   $columns: null;
 
-  @for $i from 1 through length($span) {
-    $item: nth($span, $i);
+  @for $i from 1 through length($shorthand) {
+    $item: nth($shorthand, $i);
 
     @if type-of($item) == 'string' {
       @if not index(('at', 'of'), $item) {
         $location: susy-location($item);
       } @else if $item == 'at' {
-        $location: nth($span, $i + 1);
+        $location: nth($shorthand, $i + 1);
       } @else if $item == 'of' {
-        $columns: nth($span, $i + 1);
+        $columns: nth($shorthand, $i + 1);
       }
     } @else if type-of($item) == 'number' and not $span {
       $span: $item;
     }
   }
+
+  @return (
+    'span': $span,
+    'location': $location,
+    'columns': $columns,
+  );
 }
 
 

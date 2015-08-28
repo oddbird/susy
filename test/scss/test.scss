@@ -1,0 +1,12 @@
+// Susy Tests
+// ==========
+
+@import '../../node_modules/sass-true/sass/true';
+@import '../../sass/susy';
+
+@include test('susy') {
+  @include assert-equal(susy-span(2 of 4, $spread: 'wide'), 50%,
+    'Susy works!');
+}
+
+@include report;

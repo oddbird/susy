@@ -8,6 +8,10 @@
     "type": "git",
     "url": "git://github.com/ericam/susy.git"
   },
+  "devDependencies": {
+    "mocha": "^2.2.5",
+    "sass-true": "^2.0.2"
+  },
   "keywords": [
     "layout",
     "grid",
@@ -21,7 +25,7 @@
     "exports": "eyeglass-exports.js"
   },
   "scripts": {
-    "test": "rake test"
+    "test": "node_modules/.bin/mocha"
   },
   "license": "BSD-3-Clause",
   "bugs": {

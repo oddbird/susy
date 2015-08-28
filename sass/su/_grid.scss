@@ -1,11 +1,12 @@
-// Column math
-// ===========
-
-
-// Su Spread
-// ---------
-// Returns -1, 0, or 1 for narrow, wide, wider
-// - [$spread]    : narrow | wide | wider
+/// Spread converter from Su
+/// 
+/// @access private
+/// 
+/// @param {String} $spread [su-get('spread')] -
+///     Either `narrow`, `wide` or `wider`
+/// 
+/// @return {Number} -
+///     Either `-1` for `narrow`, `0` for `wide` or `1` for `wider`
 @function su-spread (
   $spread: su-get('spread')
 ) {
@@ -16,17 +17,21 @@
   } @else if $spread == 'wider' {
     @return 1;
   } @else {
-    $warn: '$spread must be narrow, wide, or wider';
-    @warn $warn + ' Current value [#{$type}]: #{$columns}';
+    @warn '$spread must be narrow, wide, or wider. '
+        + 'Current value [#{$type}]: #{$columns}';
     @return -1;
   }
 }
 
 
-// Is Symmetrical
-// --------------
-// Returns true if a grid is symmetrical.
-// - [$columns]   : <number> | <list>
+/// Check if a grid is symmetrical
+/// 
+/// @access private
+/// 
+/// @param {List | Number} $columns - Columns 
+/// 
+/// @return {Bool} -
+///     Return `true` if the grid is symmetrical, `false` in other case
 @function su-is-symmetrical (
   $columns: su-get('columns')
 ) {
@@ -35,10 +40,14 @@
 }
 
 
-// Su Count
-// ----------
-// Find the number of columns in a given layout
-// - [$columns]   : <number> | <list>
+/// Find the number of columns in a given layout
+/// 
+/// @access private
+/// 
+/// @param {List | Number} $columns - Columns 
+///
+/// @return {Number} -
+///     Return the correct number of columns
 @function su-count (
   $columns: su-get('columns')
 ) {
@@ -47,12 +56,19 @@
 }
 
 
-// Su Sum
-// --------
-// Find the total sum of column-units in a layout
-// - [$columns]   : <number> | <list>
-// - [$gutters]   : <ratio>
-// - [$spread]    : false/narrow | wide | wider
+/// Find the total sum of column units in a layout
+/// 
+/// @access private
+/// 
+/// @param {List | Number} $columns [su-get('columns')] -
+///     The number of columns in the grid
+/// @param {Float} $gutters [su-get('gutters')] - 
+///     The ratio of a gutter based on a column
+/// @param {String | false} $spread [false] - 
+///     Either `narrow`, `wide` or `wider`
+///
+/// @return {Number} -
+///     Return the total sum of column units in a layout
 @function su-sum (
   $columns  : su-get('columns'),
   $gutters  : su-get('gutters'),
@@ -75,12 +91,19 @@
 }
 
 
-// su Slice
-// ----------
-// Return a subset of columns at a given location.
-// - $span        : <number>
-// - $location    : <number>
-// - [$columns]   : <number> | <list>
+/// Return a subset of columns at a given location
+/// 
+/// @access private
+/// 
+/// @param {Number} $span - 
+///     TBA
+/// @param {Number} $location -
+///     TBA
+/// @param {Number | List} $columns [su-get('columns')] -
+///     The number of columns in the grid
+/// 
+/// @return {List} -
+///     Subset of columns at given location    
 @function su-slice (
   $span,
   $location,
@@ -101,14 +124,23 @@
 }
 
 
-// Su
-// ----
-// Find the sum of a column-span.
-// - $span        : <number>
-// - $location    : <number>
-// - [$columns]   : <number> | <list>
-// - [$gutters]   : <ratio>
-// - [$spread]    : false/narrow | wide | wider
+/// Su main function
+/// 
+/// @access public
+/// 
+/// @param {Number} $span -
+///     TBA
+/// @param {Number} $location -
+///     TBA
+/// @param {Number | List} $columns -
+///     The number of columns in the grid
+/// @param {Float} $gutters -
+///     The ratio of a gutter based on a column
+/// @param {String} $spread -
+///     Either `narrow`, `wide` or `wider`
+/// 
+/// @return {Number} -
+///     Return the total sum of column units in a layout
 @function su (
   $span,
   $location     : false,

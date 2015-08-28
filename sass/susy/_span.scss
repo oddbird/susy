@@ -1,6 +1,30 @@
-// Span Syntax
-// ===========
-
+/// Main span function to compute a column
+/// 
+/// @access public
+/// 
+/// @param {List}   $span -
+///     Expression to compute the width of the column
+/// @param {Float}  $gutters [susy-get('gutters')] -
+///     The ratio of a gutter based on a column
+/// @param {Length} $column-width [susy-get('column-width')] -
+///     The width of a column; only used when `$math` is `static`
+/// @param {String} $math [susy-get('math')] -
+///     Either `fluid` or `static`
+/// @param {String} $spread [susy-get('spread')] -
+///     Either `narrow`, `wide` or `wider`
+/// 
+/// @return {Length} -
+///     Return either a value expressed in `%` when `$math` is `fluid` or an absolute length with `$math` is static
+///
+/// @example scss - Create a half-width column
+///   .foo
+///     width: susy-span(6 of 12);
+///   }
+///
+/// @example scss - Create a column at specific position
+///   .foo {
+///     width: susy-span(3 at 6);
+///   }
 @function susy-span(
   $span,
   $gutters      : susy-get('gutters'),
@@ -24,6 +48,14 @@
 }
 
 
+/// Internal parser for the span expression
+/// 
+/// @access private
+/// 
+/// @param {List} $shorthand -
+///     Expression to compute the width of the column
+/// 
+/// @return {Map} - Return a map with `span`, `location` and `columns` keys
 @function susy-span-parser(
   $shorthand
 ) {
@@ -55,6 +87,18 @@
 }
 
 
+/// Helper to determine the location of a column based on an alias keyword
+/// 
+/// @access private
+/// 
+/// @param {Number} $span -
+///     TBA
+/// @param {String} $location -
+///     TBA 
+/// @param {Integer} $columns [susy-get('columns')] -
+///     Number of columns in the grid
+/// 
+/// @return {Integer}
 @function susy-location(
   $span,
   $location,

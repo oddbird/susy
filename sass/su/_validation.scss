@@ -1,13 +1,13 @@
-// Math Validation
-// ===============
-
-
-// Valid Columns
-// -------------
-// Check that a column setting is valid.
+/// Check that a column setting is valid
+/// 
+/// @access private
+/// 
+/// @param {List | Number} $columns - Columns 
+///
+/// @return {List | Number | Null} -
+///     Return `$column` if valid, or `null`
 @function su-valid-columns(
-  $columns,
-  $silent: false
+  $columns
 ) {
   $type: type-of($columns);
   $return: null;
@@ -26,31 +26,35 @@
     $return: if($fail, $return, $columns);
   }
 
-  @if $return != $columns and not($silent) {
+  @if $return != $columns {
     $return: null;
-    $warn: '$columns must be a unitless number or list of unitless numbers.';
-    @warn $warn + ' Current value [#{$type}]: #{$columns}';
+    @warn '$columns must be a unitless number or list of unitless numbers. '
+        + 'Current value [#{$type}]: #{$columns}';
   }
 
   @return $return;
 }
 
 
-// Valid Gutters
-// -------------
-// Check that a gutter setting is valid.
+/// Check that a gutter setting is valid
+/// 
+/// @access private
+/// 
+/// @param {List | Number} $gutter - Gutter 
+///
+/// @return {List | Number | Null} -
+///     Return `$gutter` if valid, or `null`
 @function su-valid-gutters(
-  $gutters,
-  $silent: false
+  $gutters
 ) {
   $type: type-of($gutters);
   $return: null;
 
   @if $type == 'number' and unitless($gutters) {
     $return: $gutters;
-  } @else if not($silent) {
-    $warn: '$gutters must be a unitless number.';
-    @warn $warn + ' Current value [#{$type}]: #{$gutters}';
+  } @else {
+    @warn '$gutters must be a unitless number. '
+        + 'Current value [#{$type}]: #{$gutters}';
   }
 
   @return $return;

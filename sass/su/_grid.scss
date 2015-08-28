@@ -10,7 +10,7 @@
   $columns: su-get(columns)
 ) {
   $columns: valid-columns($columns);
-  @return if(type-of($columns) == number, $columns, null);
+  @return if(type-of($columns) == 'number', $columns, null);
 }
 
 
@@ -33,14 +33,14 @@
 // - [$gutters]   : <ratio>
 // - [$spread]    : false/narrow | wide | wider
 @function su-sum(
-  $columns  : su-get(columns),
-  $gutters  : su-get(gutters),
+  $columns  : su-get('columns'),
+  $gutters  : su-get('gutters'),
   $spread   : false
 ) {
   $columns: valid-columns($columns);
   $gutters: valid-gutters($gutters);
 
-  $spread: if($spread == wide, 0, if($spread == wider, 1, -1));
+  $spread: if($spread == 'wide', 0, if($spread == 'wider', 1, -1));
   $gutter-sum: (su-count($columns) + $spread) * $gutters;
   $column-sum: is-symmetrical($columns);
 
@@ -63,7 +63,7 @@
 @function su-slice(
   $span,
   $location,
-  $columns: su-get(columns)
+  $columns: su-get('columns')
 ) {
   $columns: valid-columns($columns);
   $sub-columns: $span;
@@ -91,8 +91,8 @@
 @function su(
   $span,
   $location     : false,
-  $columns      : su-get(columns),
-  $gutters      : su-get(gutters),
+  $columns      : su-get('columns'),
+  $gutters      : su-get('gutters'),
   $spread       : false
 ) {
   $columns: valid-columns($columns);

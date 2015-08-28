@@ -5,18 +5,8 @@
 // ----------------------
 // - PRIVATE
 @include susy-defaults((
-  container: auto,
-  math: fluid,
-  output: float,
-  container-position: center,
-  gutter-position: after,
-  global-box-sizing: content-box,
-  debug: (
-    image: hide,
-    color: rgba(#66f, .25),
-    output: background,
-    toggle: top right,
-  ),
+  'math': 'fluid',
+  'column-width': null,
 ));
 
 
@@ -24,21 +14,8 @@
 // --------------------
 // - PRIVATE: DONT'T TOUCH
 $susy-keywords: (
-  container: auto,
-  math: static fluid,
-  output: isolate float,
-  container-position: left center right,
-  flow: ltr rtl,
-  gutter-position: before after split inside inside-static,
-  box-sizing: border-box content-box,
-  span: full,
-  edge: first alpha last omega full,
-  spread: narrow wide wider,
-  gutter-override: no-gutters no-gutter,
-  role: nest,
-  clear: break nobreak,
-  debug image: show hide show-columns show-baseline,
-  debug output: background overlay,
+  'math': ('static', 'fluid'),
+  'span': 'full',
 );
 
 
@@ -49,12 +26,12 @@ $susy-keywords: (
 ) {
   $return: ();
 
-  @if type-of($short) == map {
+  @if type-of($short) == 'map' {
     $return: $short;
   } @else {
     @each $item in $short {
       // strings
-      @if type-of($item) == string {
+      @if type-of($item) == 'string' {
         @each $key, $value in $susy-keywords {
           @if index($value, $item) {
             $key-value: append($key, $item);
@@ -62,7 +39,7 @@ $susy-keywords: (
           }
         }
       // maps
-      } @else if type-of($item) == map {
+      } @else if type-of($item) == 'map' {
         $return: map-merge($return, $item);
       }
     }
@@ -84,17 +61,17 @@ $susy-keywords: (
   @if not(unitless(nth(nth($short, 1), 1))) {
     $gutters: nth($short, 1);
   } @else {
-    $columns: (columns: nth($short, 1));
+    $columns: ('columns': nth($short, 1));
     $gutters: if(length($short) > 1, nth($short, 2), $gutters);
   }
 
-  @if type-of($gutters) == list and length($gutters) > 0 {
+  @if type-of($gutters) == 'list' and length($gutters) > 0 {
     $gutters: (
-      gutters: nth($gutters, 2) / nth($gutters, 1),
-      column-width: nth($gutters, 1),
+      'gutters': nth($gutters, 2) / nth($gutters, 1),
+      'column-width': nth($gutters, 1),
     );
   } @else {
-    $gutters: if($gutters, (gutters: $gutters), ());
+    $gutters: if($gutters, ('gutters': $gutters), ());
   }
 
   $return: map-merge($return, $columns);
@@ -112,16 +89,16 @@ $susy-keywords: (
   $return: parse-settings($short);
   $layout: ();
 
-  @if type-of($short) == map {
+  @if type-of($short) == 'map' {
     $return: $short;
   } @else {
     @each $item in $short {
       // number or list
-      @if type-of($item) == number or type-of($item) == list {
-        @if type-of($item) == list or unitless($item) {
+      @if type-of($item) == 'number' or type-of($item) == 'list' {
+        @if type-of($item) == 'list' or unitless($item) {
           $layout: append($layout, $item);
         } @else {
-          $return: map-merge($return, (container: $item));
+          $return: map-merge($return, ('container': $item));
         }
       }
     }
@@ -141,15 +118,15 @@ $susy-keywords: (
 ) {
   $return: ();
 
-  @if type-of($short) == map {
+  @if type-of($short) == 'map' {
     $return: $short;
   } @else {
-    $at: index($short, at);
+    $at: index($short, 'at');
 
     @if $at {
       $loci: $at + 1;
       $location: nth($short, $loci);
-      $return: map-merge($return, (location: $location));
+      $return: map-merge($return, ('location': $location));
       $short: set-nth($short, $at, null);
       $short: set-nth($short, $loci, null);
     }
@@ -160,10 +137,10 @@ $susy-keywords: (
     @while $i <= length($short) {
       $this: nth($short, $i);
 
-      @if type-of($this) == number {
+      @if type-of($this) == 'number' {
         $span: append($span, $this);
         $short: set-nth($short, $i, null);
-      } @else if $this == of {
+      } @else if $this == 'of' {
         $short: set-nth($short, $i, null);
         $i: length($short) + 1;
       }
@@ -188,15 +165,15 @@ $susy-keywords: (
 @function parse-gutters(
   $short: $susy
 ) {
-  $gutters: parse-span($short, gutter-override);
-  $span: susy-get(gutter-override, $gutters);
+  $gutters: parse-span($short, 'gutter-override');
+  $span: susy-get('gutter-override', $gutters);
 
   @if $span and not(map-get($gutters, columns)) {
     $context: ();
     $new: ();
 
     @each $item in $span {
-      @if type-of($item) == number and unitless($item) {
+      @if type-of($item) == 'number' and unitless($item) {
         $context: append($context, $item);
       } @else {
         $new: append($new, $item);
@@ -206,7 +183,7 @@ $susy-keywords: (
     $context: parse-grid($context);
     $new: if(length($new) == 0, null, $new);
     $new: if(length($new) == 1, nth($new, 1), $new);
-    $new: (gutter-override: if($new != $span, $new, $span));
+    $new: ('gutter-override': if($new != $span, $new, $span));
 
     $gutters: map-merge($gutters, $new);
     $gutters: map-merge($gutters, $context);
@@ -222,7 +199,7 @@ $susy-keywords: (
   $math,
   $column-width
 ) {
-  @if $math == static and not($column-width) {
+  @if $math == 'static' and not($column-width) {
     @warn 'Static math requires a valid column-width setting.';
   } @else {
     @return $column-width;

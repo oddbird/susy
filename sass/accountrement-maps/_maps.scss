@@ -29,7 +29,7 @@
   $return: $map;
 
   @each $key in $keys {
-    @if type-of($return) == map {
+    @if type-of($return) == 'map' {
       $return: map-get($return, $key);
     }
   }
@@ -89,13 +89,34 @@
 }
 
 
+// Deep Merge
+// ----------
+// Return 2 objects of any depth, merged
+@function deep-merge(
+  $map1,
+  $map2
+) {
+
+  @if type-of($map1) != map or type-of($map2) != map {
+    $map1: $map2;
+  } @else {
+    @each $key, $value in $map2 {
+      $_new: ($key: _susy_deep-merge(map-get($map1, $key), $value));
+      $map1: map-merge($map1, $_new);
+    }
+  }
+
+  @return $map1;
+}
+
+
 // Render
 // ------
 @mixin render(
   $css
 ) {
   @each $key, $value in $css {
-    @if type-of($value) == map {
+    @if type-of($value) == 'map' {
       #{$key} {
         @include render($value);
       }
@@ -114,13 +135,13 @@
   $shorthand,
   $keywords
 ){
-  @if type-of($shorthand) == map {
+  @if type-of($shorthand) == 'map' {
     @return $shorthand;
   } @else {
     $return: ();
 
     @each $item in $shorthand {
-      @if type-of($item) == map {
+      @if type-of($item) == 'map' {
         $return: map-merge($return, $item);
       } @else {
         @each $setting, $options in $keywords {

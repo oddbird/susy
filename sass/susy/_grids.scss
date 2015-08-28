@@ -14,7 +14,7 @@
   $inspect  : $layout;
   $susy     : _get-layout($layout, $clean) !global;
 
-  @include susy-inspect(layout, $inspect);
+  @include susy-inspect('layout', $inspect);
 }
 
 
@@ -31,7 +31,7 @@
   $old      : $susy;
   $susy     : _get-layout($layout, $clean) !global;
 
-  @include susy-inspect(with-layout, $inspect);
+  @include susy-inspect('with-layout', $inspect);
 
   @content;
 
@@ -60,5 +60,5 @@
   $clean: false
 ) {
   $layout: layout($layout);
-  @return if($clean, $layout, _susy-deep-merge($susy, $layout));
+  @return if($clean, $layout, deep-merge($susy, $layout));
 }

@@ -12,12 +12,12 @@
   $type: type-of($columns);
   $return: null;
 
-  @if $type == number and unitless($columns) {
+  @if $type == 'number' and unitless($columns) {
     $return: $columns;
-  } @else if $type == list {
+  } @else if $type == 'list' {
     $fail: null;
     @each $col in $columns {
-      @if type-of($col) == number {
+      @if type-of($col) == 'number' {
         $fail: $fail or if(unitless($col), null, true);
       } @else {
         $fail: true;
@@ -46,7 +46,7 @@
   $type: type-of($gutters);
   $return: null;
 
-  @if $type == number and unitless($gutters) {
+  @if $type == 'number' and unitless($gutters) {
     $return: $gutters;
   } @else if not($silent) {
     $warn: '$gutters must be a unitless number.';

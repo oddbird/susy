@@ -10,8 +10,8 @@ $su-version: 1.1;
 // ----------------
 // PRIVATE: The basic settings
 $su-defaults: (
-  columns: 4,
-  gutters: .25,
+  'columns': 4,
+  'gutters': .25,
 );
 
 
@@ -60,7 +60,7 @@ $su: () !default;
   $return: null;
 
   @each $opt in $options {
-    @if type-of($opt) == map and not($break) {
+    @if type-of($opt) == 'map' and not($break) {
       $keyset: deep-has-key($opt, $key...);
       @if $keyset {
         $return: deep-get($opt, $key...);

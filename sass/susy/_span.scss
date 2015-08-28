@@ -35,8 +35,8 @@
     $item: nth($span, $i);
 
     @if type-of($item) == 'string' {
-      @if not index('at' 'of', $item) {
-        $location: su-location($item);
+      @if not index(('at', 'of'), $item) {
+        $location: susy-location($item);
       } @else if $item == 'at' {
         $location: nth($span, $i + 1);
       } @else if $item == 'of' {
@@ -46,4 +46,23 @@
       $span: $item;
     }
   }
+}
+
+
+@function susy-location(
+  $span,
+  $location,
+  $columns: susy-get('columns')
+) {
+  $count: su-count($columns);
+
+  @if type-of($location) == 'number' {
+    @return $location;
+  } @else if index(('first', 'alpha'), $location) {
+    @return 1;
+  } @else if index(('last', 'omega'), $location) {
+    @return $count - $span + 1;
+  }
+
+  @error '`#{$location}` is not a valid location.';
 }

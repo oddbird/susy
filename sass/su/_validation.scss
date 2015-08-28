@@ -55,21 +55,3 @@
 
   @return $return;
 }
-
-@function su-location(
-  $span,
-  $location,
-  $columns: susy-get('columns')
-) {
-  $count: su-count($columns);
-
-  @if type-of($location) == 'number' {
-    @return $location;
-  } @else if index(('first', 'alpha'), $location) {
-    @return 1;
-  } @else if index(('last', 'omega'), $location) {
-    @return $count - $span + 1;
-  }
-
-  @error '`#{$location}` is not a valid location.';
-}

@@ -5,7 +5,7 @@
 @import '../../sass/susy';
 
 @include test('susy') {
-  @include assert-equal(susy-span(2 of 4, $spread: 'wide'), 50%,
+  @include assert-equal(susy-span(last 2 of 4, $spread: 'wide'), 50%,
     'Susy works!');
 }
 

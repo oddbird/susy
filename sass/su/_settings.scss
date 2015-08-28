@@ -41,7 +41,7 @@ $su: () !default;
 @mixin su-set(
   $key-value...
 ) {
-  $su: _su-deep-set($su, $key-value...) !global;
+  $su: deep-set($su, $key-value...) !global;
 }
 
 
@@ -61,9 +61,9 @@ $su: () !default;
 
   @each $opt in $options {
     @if type-of($opt) == map and not($break) {
-      $keyset: _su-deep-has-key($opt, $key...);
+      $keyset: deep-has-key($opt, $key...);
       @if $keyset {
-        $return: _su-deep-get($opt, $key...);
+        $return: deep-get($opt, $key...);
         $break: true;
       }
     }

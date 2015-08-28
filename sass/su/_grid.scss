@@ -27,10 +27,10 @@
 // --------------
 // Returns true if a grid is symmetrical.
 // - [$columns]   : <number> | <list>
-@function is-symmetrical (
+@function su-is-symmetrical (
   $columns: su-get(columns)
 ) {
-  $columns: valid-columns($columns);
+  $columns: su-valid-columns($columns);
   @return if(type-of($columns) == 'number', $columns, null);
 }
 
@@ -42,8 +42,8 @@
 @function su-count (
   $columns: su-get(columns)
 ) {
-  $columns: valid-columns($columns);
-  @return is-symmetrical($columns) or length($columns);
+  $columns: su-valid-columns($columns);
+  @return su-is-symmetrical($columns) or length($columns);
 }
 
 
@@ -58,12 +58,12 @@
   $gutters  : su-get('gutters'),
   $spread   : false
 ) {
-  $columns: valid-columns($columns);
-  $gutters: valid-gutters($gutters);
+  $columns: su-valid-columns($columns);
+  $gutters: su-valid-gutters($gutters);
   $spread: su-spread($spread);
 
   $gutter-sum: (su-count($columns) + $spread) * $gutters;
-  $column-sum: is-symmetrical($columns);
+  $column-sum: su-is-symmetrical($columns);
 
   @if not($column-sum) {
     @each $column in $columns {
@@ -86,10 +86,10 @@
   $location,
   $columns: su-get('columns')
 ) {
-  $columns: valid-columns($columns);
+  $columns: su-valid-columns($columns);
   $sub-columns: $span;
 
-  @if not(is-symmetrical($columns)) {
+  @if not(su-is-symmetrical($columns)) {
     $location: $location or 1;
     $sub-columns: ();
     @for $i from $location to ($location + $span) {
@@ -116,8 +116,8 @@
   $gutters      : su-get('gutters'),
   $spread       : false
 ) {
-  $columns: valid-columns($columns);
-  $gutters: valid-gutters($gutters);
+  $columns: su-valid-columns($columns);
+  $gutters: su-valid-gutters($gutters);
   $span: su-slice($span, $location, $columns);
 
   @return su-sum($span, $gutters, $spread);

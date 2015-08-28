@@ -28,7 +28,7 @@
   @include output(('box-sizing': $box));
   @include float-span-output($output...);
 
-  @if valid-columns($nesting, 'silent') {
+  @if su-valid-columns($nesting, 'silent') {
     @include nested($span) { @content; }
   } @else {
     @content;

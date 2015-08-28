@@ -5,7 +5,7 @@
 // Valid Columns
 // -------------
 // Check that a column setting is valid.
-@function valid-columns(
+@function su-valid-columns(
   $columns,
   $silent: false
 ) {
@@ -39,7 +39,7 @@
 // Valid Gutters
 // -------------
 // Check that a gutter setting is valid.
-@function valid-gutters(
+@function su-valid-gutters(
   $gutters,
   $silent: false
 ) {

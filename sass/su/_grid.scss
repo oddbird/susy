@@ -7,7 +7,7 @@
 // Returns -1, 0, or 1 for narrow, wide, wider
 // - [$spread]    : narrow | wide | wider
 @function su-spread (
-  $spread: susy-get('spread')
+  $spread: su-get('spread')
 ) {
   @if $spread == 'narrow' {
     @return -1;
@@ -28,7 +28,7 @@
 // Returns true if a grid is symmetrical.
 // - [$columns]   : <number> | <list>
 @function su-is-symmetrical (
-  $columns: su-get(columns)
+  $columns: su-get('columns')
 ) {
   $columns: su-valid-columns($columns);
   @return if(type-of($columns) == 'number', $columns, null);
@@ -40,7 +40,7 @@
 // Find the number of columns in a given layout
 // - [$columns]   : <number> | <list>
 @function su-count (
-  $columns: su-get(columns)
+  $columns: su-get('columns')
 ) {
   $columns: su-valid-columns($columns);
   @return su-is-symmetrical($columns) or length($columns);

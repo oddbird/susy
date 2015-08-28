@@ -24,51 +24,10 @@ $su-defaults: (
 $su: () !default;
 
 
-// Su Defaults
-// -------------
-// PRIVATE: Add defaults to su
-@mixin su-defaults(
-  $defaults
-) {
-  $su-defaults: map-merge($su-defaults, $defaults) !global;
-}
-
-
-// Su Set
-// --------
-// Change one setting
-// - $key   : setting name
-// - $value : setting value
-@mixin su-set(
-  $key-value...
-) {
-  $su: deep-set($su, $key-value...) !global;
-}
-
-
 // Su Get
-// --------
-// Return one setting from a grid
-// - $key     : <keyword>
-// - $layout  : <settings>
-@function su-get(
-  $key,
-  $layout: map-merge($su-defaults, $su)
+// ------
+@function su-get (
+  $key
 ) {
-  $layout: parse-grid($layout);
-  $options: $layout $su $su-defaults;
-  $break: false;
-  $return: null;
-
-  @each $opt in $options {
-    @if type-of($opt) == 'map' and not($break) {
-      $keyset: deep-has-key($opt, $key...);
-      @if $keyset {
-        $return: deep-get($opt, $key...);
-        $break: true;
-      }
-    }
-  }
-
-  @return $return;
+  @return map-get(map-merge($su-defaults, $su), $key);
 }

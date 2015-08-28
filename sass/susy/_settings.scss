@@ -206,3 +206,30 @@ $susy-keywords: (
   }
 }
 
+
+// Susy Get
+// --------
+// Return one setting from a grid
+// - $key     : <keyword>
+// - $layout  : <settings>
+@function susy-get(
+  $key,
+  $layout: map-merge($su-defaults, $su)
+) {
+  $layout: parse-grid($layout);
+  $options: $layout $su $su-defaults;
+  $break: false;
+  $return: null;
+
+  @each $opt in $options {
+    @if type-of($opt) == 'map' and not($break) {
+      $keyset: deep-has-key($opt, $key...);
+      @if $keyset {
+        $return: deep-get($opt, $key...);
+        $break: true;
+      }
+    }
+  }
+
+  @return $return;
+}

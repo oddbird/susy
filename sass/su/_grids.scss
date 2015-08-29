@@ -13,18 +13,18 @@
 /// @group su
 ///
 /// @param {Number} $span -
-///     TBA
+///   TBA
 /// @param {Number} $location -
-///     TBA
+///   TBA
 /// @param {Number | List} $columns -
-///     The number of columns in the grid
+///   The number of columns in the grid
 /// @param {Float} $gutters -
-///     The ratio of a gutter based on a column
+///   The ratio of a gutter based on a column
 /// @param {String} $spread -
-///     Either `narrow`, `wide` or `wider`
+///   Either `narrow`, `wide` or `wider`
 ///
 /// @return {Number} -
-///     Return the total sum of column units in a layout
+///   Return the total sum of column units in a layout
 @function su (
   $span,
   $location: 1,
@@ -45,10 +45,10 @@
 /// @group su
 ///
 /// @param {List | Number} $columns [su-get('columns')] -
-///     Total number of columns, or list of asymmetrical columns
+///   Total number of columns, or list of asymmetrical columns
 ///
 /// @return {Number} -
-///     Return the number of columns in a grid
+///   Return the number of columns in a grid
 @function su-count (
   $columns: su-get('columns')
 ) {
@@ -67,14 +67,14 @@
 /// @group su
 ///
 /// @param {List | Number} $columns [su-get('columns')] -
-///     Total number of columns, or list of asymmetrical columns
+///   Total number of columns, or list of asymmetrical columns
 /// @param {Float} $gutters [su-get('gutters')] -
-///     The ratio of a gutter compared to 1 column-unit
+///   The ratio of a gutter compared to 1 column-unit
 /// @param {String | false} $spread [su-get('spread')] -
-///     Either `narrow`, `wide`, or `wider`
+///   Either `narrow`, `wide`, or `wider`
 ///
 /// @return {Number} -
-///     Return the total sum of column-units in a grid
+///   Return the total sum of column-units in a grid
 @function su-sum (
   $columns: su-get('columns'),
   $gutters: su-get('gutters'),
@@ -105,14 +105,14 @@
 /// @group su
 ///
 /// @param {Number} $span -
-///     The number of grid columns to span
+///   The number of grid columns to span
 /// @param {Number} $location -
-///     Optional position of span among full set of asymmetrical columns
+///   Optional position of span among full set of asymmetrical columns
 /// @param {Number | List} $columns [su-get('columns')] -
-///     Total number of columns, or list of asymmetrical columns available
+///   Total number of columns, or list of asymmetrical columns available
 ///
 /// @return {List} -
-///     Subset of columns at given location
+///   Subset of columns at given location
 @function su-slice (
   $span,
   $location: 1,
@@ -145,10 +145,10 @@
 /// @group su
 ///
 /// @param {List | Number} $columns [su-get('columns')] -
-///     Total number of columns, or list of asymmetrical columns
+///   Total number of columns, or list of asymmetrical columns
 ///
 /// @return {Bool} -
-///     Return `true` if the grid is symmetrical, otherwise `false`
+///   Return `true` if the grid is symmetrical, otherwise `false`
 @function su-is-symmetrical (
   $columns: su-get('columns')
 ) {

@@ -13,7 +13,7 @@
 /// @param {List | Number} $columns - Columns
 ///
 /// @return {List | Number | Null} -
-///     Return `$columns` input if valid, or `error`
+///   Return `$columns` input if valid, or `error`
 @function su-valid-columns(
   $columns
 ) {
@@ -35,7 +35,7 @@
 /// @param {List | Number} $gutter - Gutter
 ///
 /// @return {List | Number | Null} -
-///     Return `$gutter` if valid, or `null`
+///   Return `$gutter` if valid, or `null`
 @function su-valid-gutters(
   $gutters
 ) {
@@ -53,10 +53,10 @@
 /// @access private
 ///
 /// @param {String} $spread [su-get('spread')] -
-///     Either `narrow`, `wide` or `wider`
+///   Either `narrow`, `wide` or `wider`
 ///
 /// @return {Number} -
-///     Either `-1` for `narrow`, `0` for `wide` or `1` for `wider`
+///   Either `-1` for `narrow`, `0` for `wide` or `1` for `wider`
 @function su-valid-spread (
   $spread: su-get('spread')
 ) {

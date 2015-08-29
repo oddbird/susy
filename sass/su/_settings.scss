@@ -12,9 +12,9 @@
 /// @type Map
 ///
 /// @prop {Integer} columns [4] -
-///     The number of columns in the grid
+///   The number of columns in the grid
 /// @prop {Float} gutters [0.25] -
-///     The ratio of a gutter based on a column
+///   The ratio of a gutter based on a column
 $su: () !default;
 
 
@@ -26,9 +26,9 @@ $su: () !default;
 /// @type Map
 ///
 /// @prop {Integer} columns [4] -
-///     The number of columns in the grid
+///   The number of columns in the grid
 /// @prop {Float} gutters [0.25] -
-///     The ratio of a gutter based on a column
+///   The ratio of a gutter based on a column
 /// @prop {String} spread ['narrow'] -
 ///   The spread of an element across edge gutters:
 ///   either `narrow` (none), `wide` (one), or `wider` (two)
@@ -44,10 +44,10 @@ $su-defaults: (
 /// @group su
 ///
 /// @param {String} $key -
-///     Option to retrieve from the configuration
+///   Option to retrieve from the configuration
 ///
 /// @return {*} -
-///     Value mapped to `$key` in the configuration map
+///   Value mapped to `$key` in the configuration map
 @function su-get (
   $key
 ) {

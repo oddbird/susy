@@ -43,3 +43,10 @@ It can also be triggered:
 npm run lint --silent
 npm run test --silent
 ```
+
+Building SassDoc:
+
+```
+npm install sassdoc -g
+sassdoc sass --verbose
+```

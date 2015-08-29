@@ -10,7 +10,7 @@
 /// @access private
 ///
 /// @param {List} $shorthand -
-///     Shorthand for describing the width of a span
+///   Shorthand for describing the width of a span
 ///
 /// @return {Map} - Return a map with `span`, `location` and `columns` keys
 @function susy-span-parser (
@@ -71,11 +71,11 @@
 /// @access private
 ///
 /// @param {Number} $span -
-///     TBA
+///   TBA
 /// @param {String} $location -
-///     TBA
+///   TBA
 /// @param {Integer} $columns [susy-get('columns')] -
-///     Number of columns in the grid
+///   Number of columns in the grid
 ///
 /// @return {Integer}
 @function susy-location (

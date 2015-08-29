@@ -1,32 +1,62 @@
+// Settings
+// ========
+// - susy [variable]
+// - susy-defaults [variable]
+// - susy-get [function]
+
+
+/// User custom configuration for Susy
+///
+/// @group grids
+///
+/// @type Map
+///
+/// @see $su-defaults
+/// @see $susy-defaults
+///
+/// @prop {Integer} columns [4] -
+///     The number of columns in the grid
+/// @prop {Float} gutters [0.25] -
+///     The ratio of a gutter based on a column
+/// @prop {String} math ['fluid'] -
+///   Either `fluid` (percentiles) or `static`
+///   (any unit can be used for `column-width`)
+/// @prop {Length | null} column-width [null] -
+///   Only relevant when `math` option is set to `static`
+/// @prop {String} spread ['narrow'] -
+///   The spread of an element across edge gutters:
+///   either `narrow` (none), `wide` (one), or `wider` (two)
+/// @prop {String} context ['narrow'] -
+///   The spread of a container around edge gutters:
+///   either `narrow` (none), `wide` (one), or `wider` (two)
+$susy: () !default;
+
+
 /// Default configuration map for Susy
 ///
+/// @group x-private
 /// @access private
 ///
 /// @type Map
 ///
 /// @prop {String} math ['fluid'] -
-///     Either `fluid` (percentiles) or `static` (unit used in `column-width` option)
+///   Either `fluid` (percentiles) or `static`
+///   (any unit can be used for `column-width`)
 /// @prop {Length | null} column-width [null] -
-///     Only relevant when `math` option is set to `static`
+///   Only relevant when `math` option is set to `static`
+/// @prop {String} context ['narrow'] -
+///   The spread of a container around edge gutters:
+///   either `narrow` (none), `wide` (one), or `wider` (two)
 $susy-defaults: (
   'math': 'fluid',
   'column-width': null,
+  'context': 'narrow',
 );
 
 
-/// User custom configuration for Susy
+/// Get the current value of any Susy setting
 ///
-/// @access public
-///
-/// @type Map
-///
-/// @see $susy-defaults
-$susy: () !default;
-
-
-/// Configuration accessor for Susy
-///
-/// @access public
+/// @group grids
 ///
 /// @param {String} $key -
 ///     Option to retrieve from the configuration

@@ -1,8 +1,13 @@
 // Validation
 // ==========
+// - su-valid-columns [function]
+// - su-valid-gutters [function]
+// - su-valid-spread [function]
+
 
 /// Check that a column setting is valid
 ///
+/// @group x-private
 /// @access private
 ///
 /// @param {List | Number} $columns - Columns
@@ -31,6 +36,7 @@
 
 /// Check that a gutter setting is valid
 ///
+/// @group x-private
 /// @access private
 ///
 /// @param {List | Number} $gutter - Gutter
@@ -50,6 +56,7 @@
 
 /// Check that a spread setting is valid and ready for math
 ///
+/// @group x-private
 /// @access private
 ///
 /// @param {String} $spread [su-get('spread')] -

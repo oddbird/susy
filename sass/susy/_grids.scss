@@ -1,0 +1,114 @@
+// Grids
+// =====
+// - susy-span [function]
+// - susy-gutter [function]
+
+
+/// Calculate the width of any grid-span.
+/// This is the primary function in Susy,
+/// and can be used anywhere you need
+/// to span columns on the grid:
+/// `width` for grid contents,
+/// or `margin` and `padding`
+/// to push, pull, and pad your elements.
+///
+/// @group grids
+///
+/// @param {List}   $span -
+///   Shorthand expression to define the width of the span.
+///   Contains a unitless number for column-span,
+///   'of $n' for available grid columns [optional],
+///   'at $n' for spanning asymmetrical grids [optional],
+///   and 'narrow', 'wide', or 'wider' for defining the spread
+///   over available gutters (none, one, or two)
+/// @param {String} $math [susy-get('math')] -
+///   Either `fluid` or `static`
+/// @param {Float}  $gutters [susy-get('gutters')] -
+///   The ratio of a gutter based on a column
+/// @param {Length} $column-width [susy-get('column-width')] -
+///   The width of a column; only used when `$math` is `static`
+/// @param {String} $context [susy-get('context')] -
+///   The spread of a container around edge gutters:
+///   either `narrow` (none), `wide` (one), or `wider` (two)
+///
+/// @return {Length} -
+///   Return either a value expressed in `%` when `$math` is `fluid` or an absolute length with `$math` is static
+///
+/// @example scss - Span half the grid
+///   .foo
+///     width: susy-span(6 of 12);
+///   }
+///
+/// @example scss - Span a specific segment of asymmetrical grid
+///   .foo {
+///     width: susy-span(3 at 3 of (1 2 3 5 8));
+///   }
+@function susy-span(
+  $span,
+  $math: susy-get('math'),
+  $gutters: susy-get('gutters'),
+  $column-width: susy-get('column-width'),
+  $context: susy-get('context')
+) {
+  $span-map: susy-span-parser($span);
+  $span: map-get($span-map, 'span');
+
+  @if not unitless($span) {
+    @return $span;
+  }
+
+  $columns: map-get($span-map, 'columns');
+  $location: map-get($span-map, 'location');
+  $spread: map-get($span-map, 'spread');
+  $basis: su($span, $location, $columns, $gutters, $spread);
+
+  @if ($math == 'fluid') {
+    @return percentage($basis / su-sum($columns, $gutters, $context));
+  }
+
+  @return ($basis * $column-width);
+}
+
+
+/// Function to compute a gutter for a column
+///
+/// @group grids
+///
+/// @param {Integer} $columns [susy-get('columns')] -
+///     The number of columns in the grid
+/// @param {String}  $math [susy-get('math')] -
+///     Either `fluid` for `%` output,
+///     or `static` for output based on your `column-width` setting
+/// @param {Float}   $gutters [susy-get('gutters')] -
+///     The ratio of a gutter based on a column
+/// @param {Length}  $column-width [susy-get('column-width')] -
+///     The width of a column (only used when `$math` is `static`)
+/// @param {String}  $context [susy-get('context')] -
+///   The spread of a container around edge gutters:
+///   either `narrow` (none), `wide` (one), or `wider` (two)
+///
+/// @return {Length} -
+///     Return either a value expressed in `%` when `$math` is `fluid` or an absolute length with `$math` is static
+///
+/// @example scss - Add gutters before or after an element
+///   .foo {
+///     margin-left: gutter();
+///   }
+///
+/// @example scss - Add static gutters inside a fluid grid
+///   .foo {
+///     padding: 0 gutter($math: 'static')/2;
+///   }
+@function susy-gutter (
+  $columns: susy-get('columns'),
+  $math: susy-get('math'),
+  $gutters: susy-get('gutters'),
+  $column-width: susy-get('column-width'),
+  $context: susy-get('context')
+) {
+  @if ($math == 'fluid') {
+    @return percentage($gutters / su-sum($columns, $gutters, $context));
+  }
+
+  @return ($gutters * $column-width);
+}

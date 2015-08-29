@@ -12,9 +12,14 @@
 
 
 // Susy
-
-
+@include test-module('All of Susy') {
+  @include test('Susy Span [function]') {
+    @include assert-equal(
+      susy-span(5 of 10 'wide', $context: 'wide'),
+      50%,
+      'I really hope this works');
+  }
+}
 
 // Report
-
 @include report;

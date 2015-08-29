@@ -1,0 +1,44 @@
+// Validation Tests
+// ================
+// @@@ There is currently no good way to test Sass errors.
+
+@include test-module('Su Valid Columns [function]') {
+  @include test('Symmetrical grids') {
+    @include assert-equal(
+      su-valid-columns(3),
+      3,
+      'A unitless number is a valid setting for columns');
+  }
+
+  @include test('Asymmetrical grids') {
+    @include assert-equal(
+      su-valid-columns(1 2 4 2),
+      1 2 4 2,
+      'A list of unitless numbers is a valid setting for columns');
+  }
+}
+
+@include test-module('Su Valid Gutters [function]') {
+  @include test('Unitless float') {
+    @include assert-equal(
+      su-valid-gutters(0.75),
+      0.75,
+      'A unitless number is a valid setting for gutters');
+  }
+}
+
+@include test-module('Su Valid Spread [function]') {
+  @include test('Valid spread') {
+    @include assert-equal(
+      su-valid-spread('wider'),
+      1,
+      'Valid spread is converted to a number for grid-math');
+  }
+
+  @include test('Invalid spread') {
+    @include assert-equal(
+      su-valid-spread('SPREAD FAIL TEST'),
+      -1,
+      'Invalid spread gives warning & returns -1 default for grid-math');
+  }
+}

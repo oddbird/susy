@@ -1,0 +1,32 @@
+// Setting Tests
+// =============
+
+@include test-module('Su Get [function]') {
+  $su: (
+    'columns': 320,
+    'spread': null,
+  ) !global;
+
+  @include test('Get value from user settings') {
+    @include assert-equal(
+      su-get('columns'),
+      map-get($su, 'columns'),
+      'Su-get and map-get should return the same value');
+  }
+
+  @include test('Get falsey value from user settings') {
+    @include assert-equal(
+      su-get('spread'),
+      map-get($su, 'spread'),
+      'Su-get and map-get should return the same value');
+  }
+
+  @include test('Get value from defaults') {
+    @include assert-equal(
+      su-get('gutters'),
+      map-get($su-defaults, 'gutters'),
+      'Su-get and map-get should return the same value');
+  }
+
+  $su: () !global;
+}

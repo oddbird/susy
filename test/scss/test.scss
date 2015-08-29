@@ -4,9 +4,17 @@
 @import '../../node_modules/sass-true/sass/true';
 @import '../../sass/susy';
 
-@include test('susy') {
-  @include assert-equal(susy-span(last 2 of 4, $spread: 'wide'), 50%,
-    'Susy works!');
-}
+
+// Su
+@import 'su/settings';
+@import 'su/validation';
+@import 'su/grids';
+
+
+// Susy
+
+
+
+// Report
 
 @include report;

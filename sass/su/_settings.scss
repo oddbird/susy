@@ -1,9 +1,16 @@
+// Su Settings
+// ===========
+
+
+// Variables
+// ---------
+
 /// Default configuration map for Su
-/// 
+///
 /// @access private
-/// 
+///
 /// @type Map
-/// 
+///
 /// @prop {Integer} columns [4] -
 ///     The number of columns in the grid
 /// @prop {Float} gutters [0.25] -
@@ -18,26 +25,35 @@ $su-defaults: (
 
 
 /// User custom configuration for Su
-/// 
+///
 /// @access public
-/// 
+///
 /// @type Map
-/// 
+///
 /// @see $su-defaults
 $su: () !default;
 
 
+// Functions
+// ---------
+
 /// Configuration accessor for Su
-/// 
+///
 /// @access public
-/// 
+///
 /// @param {String} $key -
 ///     Option to retrieve from the configuration
-/// 
+///
 /// @return {*} -
 ///     Value mapped to `$key` in the configuration map
 @function su-get (
   $key
 ) {
-  @return map-get(map-merge($su-defaults, $su), $key);
+  $settings: map-merge($su-defaults, $su);
+
+  @if not map-has-key($settings, $key) {
+    @error 'There is no Su setting called `#{$key}`';
+  }
+
+  @return map-get($settings, $key);
 }

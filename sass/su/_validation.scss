@@ -1,3 +1,6 @@
+// Validation
+// ==========
+
 /// Check that a column setting is valid
 ///
 /// @access private
@@ -15,7 +18,7 @@
     @return $columns;
   } @else if $type == 'list' {
     @each $col in $columns {
-      @if not (($type-of($col) == 'number') and unitless($col)) {
+      @if not ((type-of($col) == 'number') and unitless($col)) {
         @error '`$columns` must be a unitless number or list of unitless numbers.';
       }
     }
@@ -42,4 +45,31 @@
   }
 
   @error '`$gutters` must be a unitless number.';
+}
+
+
+/// Check that a spread setting is valid and ready for math
+///
+/// @access private
+///
+/// @param {String} $spread [su-get('spread')] -
+///     Either `narrow`, `wide` or `wider`
+///
+/// @return {Number} -
+///     Either `-1` for `narrow`, `0` for `wide` or `1` for `wider`
+@function su-valid-spread (
+  $spread: su-get('spread')
+) {
+  $valid: (
+    'narrow': -1,
+    'wide': 0,
+    'wider': 1,
+  );
+
+  @if map-has-key($valid, $spread) {
+    @return map-get($valid, $spread);
+  }
+
+  @warn '`#{$spread}` is not a valid $spread. Use narrow, wide, or wider.';
+  @return map-get($valid, 'narrow');
 }

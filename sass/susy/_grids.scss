@@ -61,13 +61,14 @@
   $columns: map-get($span-map, 'columns');
   $location: map-get($span-map, 'location');
   $spread: map-get($span-map, 'spread');
-  $basis: su($span, $location, $columns, $gutters, $spread);
+  $span: su($span, $location, $columns, $gutters, $spread);
+  $container: su-sum($columns, $gutters, $context);
 
   @if ($math == 'fluid') {
-    @return percentage($basis / su-sum($columns, $gutters, $context));
+    @return percentage($span / $container);
   }
 
-  @return ($basis * $column-width);
+  @return ($span * $column-width);
 }
 
 
@@ -109,7 +110,8 @@
   $context: susy-get('context')
 ) {
   @if ($math == 'fluid') {
-    @return percentage($gutters / su-sum($columns, $gutters, $context));
+    $container: su-sum($columns, $gutters, $context);
+    @return percentage($gutters / $container);
   }
 
   @return ($gutters * $column-width);

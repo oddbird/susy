@@ -93,10 +93,10 @@
       $column-sum: ($column-sum or 0) + $column;
     }
 
-    @return $column-sum + $gutters;
+    @return ($column-sum + $gutters);
   }
 
-  @return $columns + $gutters;
+  @return ($columns + $gutters);
 }
 
 

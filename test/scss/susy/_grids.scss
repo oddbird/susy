@@ -1,0 +1,60 @@
+// Susy Grid Tests
+// ===============
+
+
+@include test-module('Susy Span [function]') {
+  @include test('Explicit Span') {
+    @include assert-equal(
+      susy-span(3em),
+      3em,
+      'Length span is returned directly');
+  }
+
+  @include test('Simple Span') {
+    @include assert-equal(
+      susy-span(3),
+      percentage(su(3) / su-sum(susy-get('columns'))),
+      'Simple span is calculated correctly using column defaults');
+  }
+
+  @include test('Span with location') {
+    $susy: ('columns': 1 2 3 4 2) !global;
+
+    @include assert-equal(
+      susy-span(3 at 2),
+      percentage(
+        su(3, 2, $columns: susy-get('columns')) / su-sum(susy-get('columns'))
+      ),
+      'Span with location is calculated correctly using column defaults');
+
+    $susy: () !global;
+  }
+
+  @include test('Span with spread') {
+    $susy: (
+      'math': 'static',
+      'column-width': 4em,
+    ) !global;
+
+    @include assert-equal(
+      susy-span(6 'wide'),
+      susy-span(6) + susy-span(1/4),
+      'Spread adds gutter width to usual span');
+
+    $susy: () !global;
+  }
+
+  @include test('Static math') {
+    $susy: (
+      'column-width': 4em,
+    ) !global;
+
+    @include assert-equal(
+      susy-span(2, $math: 'static'),
+      9em,
+      'Static math returns length based on column-width');
+
+    $susy: () !global;
+  }
+
+}

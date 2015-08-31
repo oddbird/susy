@@ -1,0 +1,248 @@
+/* # Su Get [function] ---------- */
+/* Get value from user settings */
+[data-module="Su Get [function]"] [data-test="Get value from user settings"] .assert-equal {
+  -result: PASS;
+  -description: "Su-get and map-get should return the same value"; }
+
+/* Get falsey value from user settings */
+[data-module="Su Get [function]"] [data-test="Get falsey value from user settings"] .assert-equal {
+  -result: PASS;
+  -description: "Su-get and map-get should return the same value"; }
+
+/* Get value from defaults */
+[data-module="Su Get [function]"] [data-test="Get value from defaults"] .assert-equal {
+  -result: PASS;
+  -description: "Su-get and map-get should return the same value"; }
+
+/* # Su Valid Columns [function] ---------- */
+/* Symmetrical grids */
+[data-module="Su Valid Columns [function]"] [data-test="Symmetrical grids"] .assert-equal {
+  -result: PASS;
+  -description: "A unitless number is a valid setting for columns"; }
+
+/* Asymmetrical grids */
+[data-module="Su Valid Columns [function]"] [data-test="Asymmetrical grids"] .assert-equal {
+  -result: PASS;
+  -description: "A list of unitless numbers is a valid setting for columns"; }
+
+/* # Su Valid Gutters [function] ---------- */
+/* Unitless float */
+[data-module="Su Valid Gutters [function]"] [data-test="Unitless float"] .assert-equal {
+  -result: PASS;
+  -description: "A unitless number is a valid setting for gutters"; }
+
+/* # Su Valid Spread [function] ---------- */
+/* Valid spread */
+[data-module="Su Valid Spread [function]"] [data-test="Valid spread"] .assert-equal {
+  -result: PASS;
+  -description: "Valid spread is converted to a number for grid-math"; }
+
+/* Invalid spread */
+[data-module="Su Valid Spread [function]"] [data-test="Invalid spread"] .assert-equal {
+  -result: PASS;
+  -description: "Invalid spread gives warning & returns -1 default for grid-math"; }
+
+/* # Su Valid Span [function] ---------- */
+/* Unitless float */
+[data-module="Su Valid Span [function]"] [data-test="Unitless float"] .assert-equal {
+  -result: PASS;
+  -description: "A unitless number is a valid setting for span"; }
+
+/* # Su Valid Location [function] ---------- */
+/* Numeric column position */
+[data-module="Su Valid Location [function]"] [data-test="Numeric column position"] .assert-equal {
+  -result: PASS;
+  -description: "Valid position returns unchanged"; }
+
+/* Initial position keyword */
+[data-module="Su Valid Location [function]"] [data-test="Initial position keyword"] .assert-equal {
+  -result: PASS;
+  -description: "Valid initial keyword returns 1"; }
+
+/* Final position keyword */
+[data-module="Su Valid Location [function]"] [data-test="Final position keyword"] .assert-equal {
+  -result: PASS;
+  -description: "Final keyword returns calculated position from end"; }
+
+/* No location given for symmetrical grid */
+[data-module="Su Valid Location [function]"] [data-test="No location given for symmetrical grid"] .assert-equal {
+  -result: PASS;
+  -description: "Null location is valid for symmetrical grids"; }
+
+/* # Su [function] ---------- */
+/* Symmetrical */
+[data-module="Su [function]"] [data-test="Symmetrical"] .assert-equal {
+  -result: PASS;
+  -description: "Symmetrical output is equal to the column-sum of the span"; }
+
+/* Asymmetrical */
+[data-module="Su [function]"] [data-test="Asymmetrical"] .assert-equal {
+  -result: PASS;
+  -description: "Asymmetrical output is equal to the column-sum of a subset slice"; }
+
+/* # Su Is Symmetrical [function] ---------- */
+/* Symmetrical */
+[data-module="Su Is Symmetrical [function]"] [data-test="Symmetrical"] .assert-true {
+  -result: PASS;
+  -description: "Numbers represent a symmetrical grid"; }
+
+/* Asymmetrical */
+[data-module="Su Is Symmetrical [function]"] [data-test="Asymmetrical"] .assert-false {
+  -result: PASS;
+  -description: "Lists of numbers represent an asymmetrical grid"; }
+
+/* Asymmetrical [one-column] */
+[data-module="Su Is Symmetrical [function]"] [data-test="Asymmetrical [one-column]"] .assert-false {
+  -result: PASS;
+  -description: "Single-item lists represent a (dumb) asymmetrical grid"; }
+
+/* # Su Count [function] ---------- */
+/* Count the columns in a symmetrical grid */
+[data-module="Su Count [function]"] [data-test="Count the columns in a symmetrical grid"] .assert-equal {
+  -result: PASS;
+  -description: "Input and output should be the same."; }
+
+/* Count the columns in an asymmetrical grid */
+[data-module="Su Count [function]"] [data-test="Count the columns in an asymmetrical grid"] .assert-equal {
+  -result: PASS;
+  -description: "Output should equal list length."; }
+
+/* # Su Sum [function] ---------- */
+/* Calculate the total units in a symmetrical grid */
+[data-module="Su Sum [function]"] [data-test="Calculate the total units in a symmetrical grid"] .assert-equal {
+  -result: PASS;
+  -description: "Returns combined column and gutter units"; }
+
+/* Calculate the total units in an asymmetrical grid */
+[data-module="Su Sum [function]"] [data-test="Calculate the total units in an asymmetrical grid"] .assert-equal {
+  -result: PASS;
+  -description: "Returns combined column and gutter units"; }
+
+/* Handle fraction spans */
+[data-module="Su Sum [function]"] [data-test="Handle fraction spans"] .assert-equal {
+  -result: PASS;
+  -description: "No fractional gutters are added to fraction spans"; }
+
+/* Handle fraction spans > 1 */
+[data-module="Su Sum [function]"] [data-test="Handle fraction spans > 1"] .assert-equal {
+  -result: PASS;
+  -description: "No fractional gutters are added to fraction spans"; }
+
+/* # Su Slice [function] ---------- */
+/* Slice a symmetrical grid */
+[data-module="Su Slice [function]"] [data-test="Slice a symmetrical grid"] .assert-equal {
+  -result: PASS;
+  -description: "Slice should equal $span, no matter what the $location or $columns"; }
+
+/* Slice an asymmetrical grid */
+[data-module="Su Slice [function]"] [data-test="Slice an asymmetrical grid"] .assert-equal {
+  -result: PASS;
+  -description: "Returns subset of asymmetrical columns based on span and location"; }
+
+/* Slice an asymmetrical grid with fractions */
+[data-module="Su Slice [function]"] [data-test="Slice an asymmetrical grid with fractions"] .assert-equal {
+  -result: PASS;
+  -description: "Slice a fraction of an asymmetrical column"; }
+
+/* Slice a symmetrical grid with location */
+[data-module="Su Slice [function]"] [data-test="Slice a symmetrical grid with location"] .assert-equal {
+  -result: PASS;
+  -description: "Location in symmetrical grid returns slice with warning"; }
+
+/* # Susy Get [function] ---------- */
+/* Get value from user settings */
+[data-module="Susy Get [function]"] [data-test="Get value from user settings"] .assert-equal {
+  -result: PASS;
+  -description: "Susy-get and map-get should return the same value"; }
+
+/* Get falsey value from user settings */
+[data-module="Susy Get [function]"] [data-test="Get falsey value from user settings"] .assert-equal {
+  -result: PASS;
+  -description: "Susy-get and map-get should return the same value"; }
+
+/* Get value from defaults */
+[data-module="Susy Get [function]"] [data-test="Get value from defaults"] .assert-equal {
+  -result: PASS;
+  -description: "Susy-get and map-get should return the same value"; }
+
+/* Get value from Su defaults */
+[data-module="Susy Get [function]"] [data-test="Get value from Su defaults"] .assert-equal {
+  -result: PASS;
+  -description: "Susy-get and map-get should return the same value"; }
+
+/* # Susy Valid Column Width [function] ---------- */
+/* Length in any units */
+[data-module="Susy Valid Column Width [function]"] [data-test="Length in any units"] .assert-equal {
+  -result: PASS;
+  -description: "Valid length returns unchanged"; }
+
+/* # Susy Valid Math [function] ---------- */
+/* Valid math keyword */
+[data-module="Susy Valid Math [function]"] [data-test="Valid math keyword"] .assert-equal {
+  -result: PASS;
+  -description: "Valid math keyword returns unchanged"; }
+
+/* # Susy Span Parser [function] ---------- */
+/* Simple grid span */
+[data-module="Susy Span Parser [function]"] [data-test="Simple grid span"] .assert-equal {
+  -result: PASS;
+  -description: "A single unitless number is returned as span only"; }
+
+/* Span with symmetrical columns */
+[data-module="Susy Span Parser [function]"] [data-test="Span with symmetrical columns"] .assert-equal {
+  -result: PASS;
+  -description: "Span and symmetrical columns are properly mapped"; }
+
+/* Span with spread */
+[data-module="Susy Span Parser [function]"] [data-test="Span with spread"] .assert-equal {
+  -result: PASS;
+  -description: "Span and spread are properly mapped"; }
+
+/* Span with location and asymmetrical columns */
+[data-module="Susy Span Parser [function]"] [data-test="Span with location and asymmetrical columns"] .assert-equal {
+  -result: PASS;
+  -description: "Span, location, and asymmetrical columns are properly mapped"; }
+
+/* Span with keyword location */
+[data-module="Susy Span Parser [function]"] [data-test="Span with keyword location"] .assert-equal {
+  -result: PASS;
+  -description: "Span, keyword location, and columns are properly mapped"; }
+
+/* Unknown values */
+[data-module="Susy Span Parser [function]"] [data-test="Unknown values"] .assert-equal {
+  -result: PASS;
+  -description: "Unknown values are ignored and reported as a warning"; }
+
+/* # Susy Span [function] ---------- */
+/* Explicit Span */
+[data-module="Susy Span [function]"] [data-test="Explicit Span"] .assert-equal {
+  -result: PASS;
+  -description: "Length span is returned directly"; }
+
+/* Simple Span */
+[data-module="Susy Span [function]"] [data-test="Simple Span"] .assert-equal {
+  -result: PASS;
+  -description: "Simple span is calculated correctly using column defaults"; }
+
+/* Span with location */
+[data-module="Susy Span [function]"] [data-test="Span with location"] .assert-equal {
+  -result: PASS;
+  -description: "Span with location is calculated correctly using column defaults"; }
+
+/* Span with spread */
+[data-module="Susy Span [function]"] [data-test="Span with spread"] .assert-equal {
+  -result: PASS;
+  -description: "Spread adds gutter width to usual span"; }
+
+/* Static math */
+[data-module="Susy Span [function]"] [data-test="Static math"] .assert-equal {
+  -result: PASS;
+  -description: "Static math returns length based on column-width"; }
+
+/* # SUMMARY ---------- */
+/* 45 Tests: */
+/*  - 45 Passed */
+/*  - 0 Failed */
+/* -------------------- */
+
+/*# sourceMappingURL=test.css.map */

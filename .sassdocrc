@@ -8,6 +8,5 @@ display:
 package: ./package.json
 theme: default
 groups:
-  x-private: Internal Helpers
-  su: Grid Engine
-  grids: Grids
+  su: Grid Engine [Su]
+  grids: Grids [Susy]

@@ -1,8 +1,15 @@
-// Validation Tests
-// ================
-// @@@ There is currently no good way to test Sass errors.
+// Su Validation Tests
+// ===================
+// [1] There is currently no good way to automate error tests.
+// [2] Tests that output warnings can be toggled on/off.
+
 
 @include test-module('Su Valid Columns [function]') {
+  // Error Tests [1]
+  // @debug su-valid-columns(5em);
+  // @debug su-valid-columns('foo');
+  // @debug su-valid-columns(1 2 3 5em 4);
+
   @include test('Symmetrical grids') {
     @include assert-equal(
       su-valid-columns(3),
@@ -18,7 +25,12 @@
   }
 }
 
+
 @include test-module('Su Valid Gutters [function]') {
+  // Error Tests [1]
+  // @debug su-valid-gutters(5em);
+  // @debug su-valid-gutters('foo');
+
   @include test('Unitless float') {
     @include assert-equal(
       su-valid-gutters(0.75),
@@ -26,6 +38,7 @@
       'A unitless number is a valid setting for gutters');
   }
 }
+
 
 @include test-module('Su Valid Spread [function]') {
   @include test('Valid spread') {
@@ -35,10 +48,65 @@
       'Valid spread is converted to a number for grid-math');
   }
 
-  @include test('Invalid spread') {
+  // Warning Tests [2]
+  @if $run-tests-with-warnings {
+    @include test('Invalid spread') {
+      @include assert-equal(
+        su-valid-spread('SPREAD FAIL TEST'),
+        -1,
+        'Invalid spread gives warning & returns -1 default for grid-math');
+    }
+  }
+}
+
+
+@include test-module('Su Valid Span [function]') {
+  // Error Tests [1]
+  // @debug su-valid-span(5em);
+  // @debug su-valid-span('foo');
+
+  @include test('Unitless float') {
     @include assert-equal(
-      su-valid-spread('SPREAD FAIL TEST'),
-      -1,
-      'Invalid spread gives warning & returns -1 default for grid-math');
+      su-valid-span(0.75),
+      0.75,
+      'A unitless number is a valid setting for span');
+  }
+}
+
+
+@include test-module('Su Valid Location [function]') {
+  // Error Tests [1]
+  // @debug su-valid-location(4, 'foo', 12);
+  // @debug su-valid-location(4, 5em, 12);
+  // @debug su-valid-location(4, 3, 2);
+  // @debug su-valid-location(4, 4, 5);
+  // @debug su-valid-location(4, null, 1 2 4 6);
+
+  @include test('Numeric column position') {
+    @include assert-equal(
+      su-valid-location(2, 3, 1 2 3 5 8),
+      3,
+      'Valid position returns unchanged');
+  }
+
+  @include test('Initial position keyword') {
+    @include assert-equal(
+      su-valid-location(2, 'first', 2 4 6 8),
+      1,
+      'Valid initial keyword returns 1');
+  }
+
+  @include test('Final position keyword') {
+    @include assert-equal(
+      su-valid-location(2, 'last', 2 4 6 8),
+      3,
+      'Final keyword returns calculated position from end');
+  }
+
+  @include test('No location given for symmetrical grid') {
+    @include assert-equal(
+      su-valid-location(2, null, 12),
+      null,
+      'Null location is valid for symmetrical grids');
   }
 }

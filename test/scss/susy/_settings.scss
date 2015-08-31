@@ -1,0 +1,40 @@
+// Susy Settings Tests
+// ===================
+
+
+@include test-module('Susy Get [function]') {
+  $susy: (
+    'column-width': 320px,
+    'spread': null,
+  ) !global;
+
+  @include test('Get value from user settings') {
+    @include assert-equal(
+      susy-get('column-width'),
+      map-get($susy, 'column-width'),
+      'Susy-get and map-get should return the same value');
+  }
+
+  @include test('Get falsey value from user settings') {
+    @include assert-equal(
+      susy-get('spread'),
+      map-get($susy, 'spread'),
+      'Susy-get and map-get should return the same value');
+  }
+
+  @include test('Get value from defaults') {
+    @include assert-equal(
+      susy-get('math'),
+      map-get($susy-defaults, 'math'),
+      'Susy-get and map-get should return the same value');
+  }
+
+  @include test('Get value from Su defaults') {
+    @include assert-equal(
+      susy-get('columns'),
+      map-get($su-defaults, 'columns'),
+      'Susy-get and map-get should return the same value');
+  }
+
+  $susy: () !global;
+}

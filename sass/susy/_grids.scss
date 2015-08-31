@@ -51,23 +51,34 @@
   $column-width: susy-get('column-width'),
   $context: susy-get('context')
 ) {
-  $span-map: susy-span-parser($span);
-  $span: map-get($span-map, 'span');
-
-  @if not unitless($span) {
+  @if type-of($span) == 'number' and not unitless($span) {
     @return $span;
   }
 
-  $columns: map-get($span-map, 'columns');
+  $math: susy-valid-math($math);
+  $span-map: (
+    'span': null,
+    'location': null,
+    'columns': null,
+    'spread': null,
+  );
+
+  @if length($span) > 1 {
+    $span-map: susy-span-parser($span);
+    $span: map-get($span-map, 'span');
+  }
+
   $location: map-get($span-map, 'location');
-  $spread: map-get($span-map, 'spread');
+  $columns: map-get($span-map, 'columns') or susy-get('columns');
+  $spread: map-get($span-map, 'spread') or susy-get('spread');
   $span: su($span, $location, $columns, $gutters, $spread);
-  $container: su-sum($columns, $gutters, $context);
 
   @if ($math == 'fluid') {
+    $container: su-sum($columns, $gutters, $context);
     @return percentage($span / $container);
   }
 
+  $column-width: susy-valid-column-width($column-width);
   @return ($span * $column-width);
 }
 
@@ -109,10 +120,14 @@
   $column-width: susy-get('column-width'),
   $context: susy-get('context')
 ) {
+  $math: susy-valid-math($math);
+
   @if ($math == 'fluid') {
     $container: su-sum($columns, $gutters, $context);
     @return percentage($gutters / $container);
   }
 
+  $column-width: susy-valid-column-width($column-width);
+  $gutters: su-valid-gutters($gutters);
   @return ($gutters * $column-width);
 }

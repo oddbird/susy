@@ -40,8 +40,14 @@ Linting and testing is done on pre-commit.
 It can also be triggered:
 
 ```
+# lint
 npm run lint --silent
+
+# test with mocha & node-sass
 npm run test --silent
+
+# test with ruby sass
+rake test
 ```
 
 Building SassDoc:

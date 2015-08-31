@@ -27,13 +27,11 @@
 ///   Return the total sum of column units in a layout
 @function su (
   $span,
-  $location: 1,
+  $location: null,
   $columns: su-get('columns'),
   $gutters: su-get('gutters'),
   $spread: su-get('spread')
 ) {
-  $columns: su-valid-columns($columns);
-  $gutters: su-valid-gutters($gutters);
   $span: su-slice($span, $location, $columns);
 
   @return su-sum($span, $gutters, $spread);
@@ -84,7 +82,7 @@
   $gutters: su-valid-gutters($gutters);
   $spread: su-valid-spread($spread);
 
-  $gutters: (su-count($columns) + $spread) * $gutters;
+  $gutters: (ceil(su-count($columns)) + $spread) * $gutters;
 
   @if not su-is-symmetrical($columns) {
     $column-sum: 0;
@@ -115,25 +113,31 @@
 ///   Subset of columns at given location
 @function su-slice (
   $span,
-  $location: 1,
+  $location: null,
   $columns: su-get('columns')
 ) {
-  $columns: su-valid-columns($columns);
+  $span: su-valid-span($span);
 
   @if not su-is-symmetrical($columns) {
+    $columns: su-valid-columns($columns);
+    $location: su-valid-location($span, $location, $columns);
+    $floor: floor($span);
     $sub-columns: ();
-    $end: $location + $span;
 
-    @if $end > length($columns) {
-      @error 'There are not `#{$span}` columns available '
-        + 'from position `#{$location}`';
-    }
-
-    @for $i from $location to $end {
+    @for $i from $location to ($location + $floor) {
       $sub-columns: append($sub-columns, nth($columns, $i));
     }
 
+    @if $floor != $span {
+      $remainder: $span - $floor;
+      $column: $location + $floor;
+      $sub-columns: append($sub-columns, nth($columns, $column) * $remainder);
+    }
+
     @return $sub-columns;
+  } @else if $location {
+    @warn '$location value `#{$location}` is not needed for symmetrical grids, '
+      + 'and will be ignored.';
   }
 
   @return $span;

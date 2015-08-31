@@ -1,7 +1,11 @@
-// Setting Tests
-// =============
+// Su Setting Tests
+// ================
+// [1] There is currently no good way to automate error tests.
 
 @include test-module('Su Get [function]') {
+  // Error Tests [1]
+  // @debug su-get('foo');
+
   $su: (
     'columns': 320,
     'spread': null,

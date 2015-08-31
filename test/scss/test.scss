@@ -1,25 +1,27 @@
 // Susy Tests
 // ==========
 
+// Toggle Warning Tests On/Off
+$run-tests-with-warnings: true;
+
+
+// Requirements
 @import '../../node_modules/sass-true/sass/true';
 @import '../../sass/susy';
 
 
-// Su
+// Su Tests
 @import 'su/settings';
 @import 'su/validation';
 @import 'su/grids';
 
 
-// Susy
-@include test-module('All of Susy') {
-  @include test('Susy Span [function]') {
-    @include assert-equal(
-      susy-span(5 of 10 'wide', $context: 'wide'),
-      50%,
-      'I really hope this works');
-  }
-}
+// Susy Tests
+@import 'susy/settings';
+@import 'susy/validation';
+@import 'susy/parser';
+@import 'susy/grids';
+
 
 // Report
 @include report;

@@ -1,12 +1,10 @@
 // Parser
 // ======
 // - susy-span-parser [function]
-// - susy-location [function]
 
 
 /// Internal parser for the span expression
 ///
-/// @group x-private
 /// @access private
 ///
 /// @param {List} $shorthand -
@@ -25,75 +23,56 @@
     'wide': 'spread',
     'wider': 'spread',
   );
-
   $return: (
     'span': null,
     'location': null,
     'columns': null,
     'spread': null,
   );
+  $span: null;
+  $invalid: ();
 
   @for $i from 1 through length($shorthand) {
     $item: nth($shorthand, $i);
+    $type: type-of($item);
 
-    @if type-of($item) == 'string' {
+    @if ($type == 'string') {
       @if map-has-key($options, $item) {
         $item: (map-get($options, $item): $item);
         $return: map-merge($return, $item);
-      } @else if $item == 'at' {
-        $item: ('location': nth($shorthand, $i + 1));
-        $return: map-merge($return, $item);
-      } @else if $item == 'of' {
-        $item: ('columns': nth($shorthand, $i + 1));
-        $return: map-merge($return, $item);
+      } @else if ($item == 'at') {
+        $span: $span or 'error';
+        $next: nth($shorthand, $i + 1);
+        $return: map-merge($return, ('location': $next));
+      } @else if ($item == 'of') {
+        $span: $span or 'error';
+        $next: nth($shorthand, $i + 1);
+        $return: map-merge($return, ('columns': $next));
       } @else {
-        @warn '`#{$item}` is not a valid span property, and will be ignored';
+        $invalid: append($invalid, $item);
       }
-    } @else if type-of($item) == 'number' and not map-get($return, 'span') {
-      $return: map-merge($return, ('span': $item));
+    } @else if ($type == 'number') or ($type == 'list') {
+      @if ($type == 'number') and not $span {
+        $span: $item;
+      } @else {
+        $previous: nth($shorthand, $i - 1);
+
+        @if not index(('at', 'of'), $previous) {
+          $invalid: append($invalid, $item);
+        }
+      }
+    } @else {
+      $invalid: append($invalid, $item);
     }
   }
 
-  $location: susy-location(
-    $span: map-get($return, 'span'),
-    $location: map-get($return, 'location'),
-    $columns: map-get($return, 'columns')
-  );
-
-  @return map-merge($return, ('location': $location));
-}
-
-
-/// Determine the location of a column
-/// based on an alias keyword
-///
-/// @group x-private
-/// @access private
-///
-/// @param {Number} $span -
-///   TBA
-/// @param {String} $location -
-///   TBA
-/// @param {Integer} $columns [susy-get('columns')] -
-///   Number of columns in the grid
-///
-/// @return {Integer}
-@function susy-location (
-  $span,
-  $location,
-  $columns: susy-get('columns')
-) {
-  $count: su-count($columns);
-
-  @if not $location {
-    @return null;
-  } @else if type-of($location) == 'number' {
-    @return $location;
-  } @else if index(('first', 'alpha'), $location) {
-    @return 1;
-  } @else if index(('last', 'omega'), $location) {
-    @return $count - $span + 1;
+  @if ($span == 'error') or not $span {
+    @error 'Not able to determine column-span from `#{$shorthand}`';
   }
 
-  @error '`#{$location}` is not a valid location.';
+  @if (length($invalid) > 0) {
+    @warn 'Unknown span properties will be ignored: `#{inspect($invalid)}`';
+  }
+
+  @return map-merge($return, ('span': $span));
 }

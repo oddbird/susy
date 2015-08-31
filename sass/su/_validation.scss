@@ -3,23 +3,26 @@
 // - su-valid-columns [function]
 // - su-valid-gutters [function]
 // - su-valid-spread [function]
+// - su-valid-span [function]
+// - su-valid-location [function]
 
 
 /// Check that a column setting is valid
 ///
-/// @group x-private
 /// @access private
 ///
 /// @param {List | Number} $columns - Columns
 ///
 /// @return {List | Number | Null} -
 ///   Return `$columns` input if valid, or `error`
-@function su-valid-columns(
+@function su-valid-columns (
   $columns
 ) {
   @each $col in $columns {
     @if (type-of($col) != 'number') or not unitless($col) {
-      @error '`$columns` must be a unitless number or list of unitless numbers.';
+      $actual: '[#{type-of($columns)}] #{inspect($columns)}';
+      @error '`#{$actual}` is not a value for $columns '
+        + '(must be a unitless number, or list of unitless numbers).';
     }
   }
 
@@ -29,18 +32,21 @@
 
 /// Check that a gutter setting is valid
 ///
-/// @group x-private
 /// @access private
 ///
 /// @param {List | Number} $gutter - Gutter
 ///
 /// @return {List | Number | Null} -
 ///   Return `$gutter` if valid, or `null`
-@function su-valid-gutters(
+@function su-valid-gutters (
   $gutters
 ) {
-  @if (type-of($gutters) != 'number') or not unitless($gutters) {
-    @error '`$gutters` must be a unitless number.';
+  $type: type-of($gutters);
+
+  @if ($type != 'number') or not unitless($gutters) {
+    $actual: '[#{$type}] #{inspect($gutters)}';
+    @error '`#{$actual}` is not a value for $gutters '
+      + '(must be a unitless number).';
   }
 
   @return $gutters;
@@ -49,27 +55,101 @@
 
 /// Check that a spread setting is valid and ready for math
 ///
-/// @group x-private
 /// @access private
 ///
-/// @param {String} $spread [su-get('spread')] -
-///   Either `narrow`, `wide` or `wider`
+/// @param {String} $spread -
+///   The spread of an element across edge gutters:
+///   either `narrow` (none), `wide` (one), or `wider` (two)
 ///
 /// @return {Number} -
-///   Either `-1` for `narrow`, `0` for `wide` or `1` for `wider`
+///   Either `-1` for `narrow`, `0` for `wide`, or `1` for `wider` (if valid)
 @function su-valid-spread (
-  $spread: su-get('spread')
+  $spread
 ) {
-  $valid: (
+  $valid-spread: (
     'narrow': -1,
     'wide': 0,
     'wider': 1,
   );
 
-  @if not map-has-key($valid, $spread) {
-    @warn '`#{$spread}` is not a valid $spread. Use narrow, wide, or wider.';
-    @return map-get($valid, 'narrow');
+  @if not map-has-key($valid-spread, $spread) {
+    @warn '`#{$spread}` is not a valid $spread or $context. '
+      + 'Use narrow, wide, or wider.';
+    @return map-get($valid-spread, 'narrow');
   }
 
-  @return map-get($valid, $spread);
+  @return map-get($valid-spread, $spread);
+}
+
+
+/// Check that a requested span is valid
+///
+/// @access private
+///
+/// @param {Number} $span -
+///   The number of grid-columns to be spanned
+///
+/// @return {Integer} -
+///   Numeric grid column position (1-indexed), `null`, or `error`
+@function su-valid-span (
+  $span
+) {
+  $type: type-of($span);
+
+  @if ($type != 'number') or not unitless($span) {
+    $actual: '[#{$type}] #{inspect($span)}';
+    @error '`#{$actual}` is not a value for $span '
+      + '(must be a unitless number).';
+  }
+
+  @return $span;
+}
+
+
+/// Check the location of a column
+/// and convert to numeric position if neessary
+///
+/// @access private
+///
+/// @param {Number} $span -
+///   The number of grid-columns to be spanned
+/// @param {String} $location -
+///   The starting column position of a span
+/// @param {Integer} $columns [susy-get('columns')] -
+///   Number of columns in the grid
+///
+/// @return {Integer} -
+///   Numeric grid column position (1-indexed), `null`, or `error`
+@function su-valid-location (
+  $span,
+  $location,
+  $columns
+) {
+  $count: su-count($columns);
+  $valid-locations: (
+    'first': 1,
+    'alpha': 1,
+    'last': $count - $span + 1,
+    'omega': $count - $span + 1,
+  );
+
+  @if $location {
+    @if map-has-key($valid-locations, $location) {
+      $location: map-get($valid-locations, $location);
+    } @else if (type-of($location) != 'number') or not unitless($location) {
+      @error '`#{$location}` is not a valid $location keyword '
+        + 'or unitless number.';
+    }
+
+    @if ($location > $count) {
+      @error 'Position `#{$location}` does not exist in grid `#{$columns}`.'
+    } @else if ($location + $span - 1 > $count) {
+      @error 'There are not enough columns in grid `#{$columns}` '
+        + 'for span `#{$span}` at position `#{$location}`';
+    }
+  } @else if not su-is-symmetrical($columns) {
+    @error '$location value is required for asymmetrical grids.';
+  }
+
+  @return $location;
 }

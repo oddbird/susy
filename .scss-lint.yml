@@ -1,0 +1,168 @@
+# For SCSS-Lint v0.32.0
+
+linters:
+
+  BangFormat:
+    enabled: true
+    space_before_bang: true
+    space_after_bang: false
+
+  BorderZero:
+    enabled: true
+
+  ColorKeyword:
+    enabled: false
+
+  Comment:
+    enabled: false
+
+  DebugStatement:
+    enabled: true
+
+  DeclarationOrder:
+    enabled: true
+
+  DuplicateProperty:
+    enabled: false
+
+  ElsePlacement:
+    enabled: true
+    style: same_line
+
+  EmptyLineBetweenBlocks:
+    enabled: true
+    ignore_single_line_blocks: false
+
+  EmptyRule:
+    enabled: true
+
+  FinalNewline:
+    enabled: true
+    present: true
+
+  HexLength:
+    enabled: true
+    style: short
+
+  HexNotation:
+    enabled: true
+    style: lowercase
+
+  HexValidation:
+    enabled: true
+
+  IdSelector:
+    enabled: true
+
+  ImportPath:
+    enabled: true
+    leading_underscore: false
+    filename_extension: false
+
+  Indentation:
+    enabled: true
+    character: space
+    width: 2
+
+  LeadingZero:
+    enabled: true
+    style: include_zero
+
+  MergeableSelector:
+    enabled: false
+    force_nesting: false
+
+  NameFormat:
+    enabled: true
+    convention: hyphenated_lowercase
+    allow_leading_underscore: true
+
+  NestingDepth:
+    enabled: true
+    max_depth: 3
+
+  PlaceholderInExtend:
+    enabled: true
+
+  PropertySortOrder:
+    enabled: false
+    ignore_unspecified: false
+
+  PropertySpelling:
+    enabled: true
+    extra_properties: []
+
+  QualifyingElement:
+    enabled: true
+    allow_element_with_attribute: false
+    allow_element_with_class: false
+    allow_element_with_id: false
+
+  SelectorDepth:
+    enabled: true
+    max_depth: 3
+
+  SelectorFormat:
+    enabled: true
+    convention: hyphenated_lowercase
+    class_convention: '^(?:u|is|has)\-[a-z][a-zA-Z0-9]*$|^(?!u|is|has)[a-zA-Z][a-zA-Z0-9]*(?:\-[a-z][a-zA-Z0-9]*)?(?:\-\-[a-z][a-zA-Z0-9]*)?$'
+
+  Shorthand:
+    enabled: true
+
+  SingleLinePerProperty:
+    enabled: true
+    allow_single_line_rule_sets: false
+
+  SingleLinePerSelector:
+    enabled: true
+
+  SpaceAfterComma:
+    enabled: true
+
+  SpaceAfterPropertyColon:
+    enabled: true
+    style: one_space
+
+  SpaceAfterPropertyName:
+    enabled: true
+
+  SpaceBeforeBrace:
+    enabled: true
+    style: space
+    allow_single_line_padding: true
+
+  SpaceBetweenParens:
+    enabled: true
+    spaces: 0
+
+  StringQuotes:
+    enabled: true
+    style: single_quotes
+
+  TrailingSemicolon:
+    enabled: true
+
+  TrailingZero:
+    enabled: true
+
+  UnnecessaryMantissa:
+    enabled: true
+
+  UnnecessaryParentReference:
+    enabled: true
+
+  UrlFormat:
+    enabled: false
+
+  UrlQuotes:
+    enabled: true
+
+  VendorPrefixes:
+    enabled: true
+    identifier_list: base
+    include: []
+    exclude: []
+
+  ZeroUnit:
+    enabled: true

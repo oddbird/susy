@@ -1,0 +1,160 @@
+// Grids
+// =====
+// - su [function]
+// - su-count [function]
+// - su-sum [function]
+// - su-slice [function]
+// - su-is-symmetrical [function]
+
+
+/// Get the sum of any column-slice,
+/// in order to determine the width of any span
+///
+/// @group su
+///
+/// @param {Number} $span -
+///   TBA
+/// @param {Number} $location -
+///   TBA
+/// @param {Number | List} $columns -
+///   The number of columns in the grid
+/// @param {Float} $gutters -
+///   The ratio of a gutter based on a column
+/// @param {String} $spread -
+///   Either `narrow`, `wide` or `wider`
+///
+/// @return {Number} -
+///   Return the total sum of column units in a layout
+@function su (
+  $span,
+  $location: null,
+  $columns: su-get('columns'),
+  $gutters: su-get('gutters'),
+  $spread: su-get('spread')
+) {
+  $span: su-slice($span, $location, $columns);
+
+  @return su-sum($span, $gutters, $spread);
+}
+
+
+/// Find the number of columns in a given layout
+///
+/// @group su
+///
+/// @param {List | Number} $columns [su-get('columns')] -
+///   Total number of columns, or list of asymmetrical columns
+///
+/// @return {Number} -
+///   Return the number of columns in a grid
+@function su-count (
+  $columns: su-get('columns')
+) {
+  $columns: su-valid-columns($columns);
+
+  @if su-is-symmetrical($columns) {
+    @return $columns;
+  }
+
+  @return length($columns);
+}
+
+
+/// Find the total sum of column units in a layout
+///
+/// @group su
+///
+/// @param {List | Number} $columns [su-get('columns')] -
+///   Total number of columns, or list of asymmetrical columns
+/// @param {Float} $gutters [su-get('gutters')] -
+///   The ratio of a gutter compared to 1 column-unit
+/// @param {String | false} $spread [su-get('spread')] -
+///   Either `narrow`, `wide`, or `wider`
+///
+/// @return {Number} -
+///   Return the total sum of column-units in a grid
+@function su-sum (
+  $columns: su-get('columns'),
+  $gutters: su-get('gutters'),
+  $spread: su-get('spread')
+) {
+  $columns: su-valid-columns($columns);
+  $gutters: su-valid-gutters($gutters);
+  $spread: su-valid-spread($spread);
+
+  $gutters: (ceil(su-count($columns)) + $spread) * $gutters;
+
+  @if not su-is-symmetrical($columns) {
+    $column-sum: 0;
+
+    @each $column in $columns {
+      $column-sum: ($column-sum or 0) + $column;
+    }
+
+    @return ($column-sum + $gutters);
+  }
+
+  @return ($columns + $gutters);
+}
+
+
+/// Return a subset of columns at a given location
+///
+/// @group su
+///
+/// @param {Number} $span -
+///   The number of grid columns to span
+/// @param {Number} $location -
+///   Optional position of span among full set of asymmetrical columns
+/// @param {Number | List} $columns [su-get('columns')] -
+///   Total number of columns, or list of asymmetrical columns available
+///
+/// @return {List} -
+///   Subset of columns at given location
+@function su-slice (
+  $span,
+  $location: null,
+  $columns: su-get('columns')
+) {
+  $span: su-valid-span($span);
+
+  @if not su-is-symmetrical($columns) {
+    $columns: su-valid-columns($columns);
+    $location: su-valid-location($span, $location, $columns);
+    $floor: floor($span);
+    $sub-columns: ();
+
+    @for $i from $location to ($location + $floor) {
+      $sub-columns: append($sub-columns, nth($columns, $i));
+    }
+
+    @if $floor != $span {
+      $remainder: $span - $floor;
+      $column: $location + $floor;
+      $sub-columns: append($sub-columns, nth($columns, $column) * $remainder);
+    }
+
+    @return $sub-columns;
+  } @else if $location {
+    @warn '$location value `#{$location}` is not needed for symmetrical grids, '
+      + 'and will be ignored.';
+  }
+
+  @return $span;
+}
+
+
+/// Check if a grid is symmetrical
+///
+/// @group su
+///
+/// @param {List | Number} $columns [su-get('columns')] -
+///   Total number of columns, or list of asymmetrical columns
+///
+/// @return {Bool} -
+///   Return `true` if the grid is symmetrical, otherwise `false`
+@function su-is-symmetrical (
+  $columns: su-get('columns')
+) {
+  @return type-of(su-valid-columns($columns)) == 'number';
+}

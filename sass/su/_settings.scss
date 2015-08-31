@@ -1,0 +1,60 @@
+// Su Settings
+// ===========
+// - su [variable]
+// - su-defaults [variable]
+// - su-get [function]
+
+
+/// User custom configuration for Su
+///
+/// @group su
+///
+/// @type Map
+///
+/// @prop {Integer} columns [4] -
+///   The number of columns in the grid
+/// @prop {Float} gutters [0.25] -
+///   The ratio of a gutter based on a column
+$su: () !default;
+
+
+/// Default configuration map for Su
+///
+/// @access private
+///
+/// @type Map
+///
+/// @prop {Integer} columns [4] -
+///   The number of columns in the grid
+/// @prop {Float} gutters [0.25] -
+///   The ratio of a gutter based on a column
+/// @prop {String} spread ['narrow'] -
+///   The spread of an element across edge gutters:
+///   either `narrow` (none), `wide` (one), or `wider` (two)
+$su-defaults: (
+  'columns': 4,
+  'gutters': 0.25,
+  'spread': 'narrow',
+);
+
+
+/// Get the current value of any Su setting
+///
+/// @group su
+///
+/// @param {String} $key -
+///   Option to retrieve from the configuration
+///
+/// @return {*} -
+///   Value mapped to `$key` in the configuration map
+@function su-get (
+  $key
+) {
+  $settings: map-merge($su-defaults, $su);
+
+  @if not map-has-key($settings, $key) {
+    @error 'There is no Su setting called `#{$key}`';
+  }
+
+  @return map-get($settings, $key);
+}

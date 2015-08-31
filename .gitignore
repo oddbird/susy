@@ -6,6 +6,7 @@ susy-*.gem
 pkg/
 *.sublime-*
 docs/_build/
-bower_components/
+node_modules
 Gemfile.lock
 *.css.map
+sassdoc

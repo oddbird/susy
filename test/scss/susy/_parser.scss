@@ -1,0 +1,99 @@
+// Susy Parser Tests
+// =================
+// [1] There is currently no good way to automate error tests.
+// [2] Tests that output warnings can be toggled on/off.
+
+
+@include test-module('Susy Span Parser [function]') {
+  // Error Tests [1]
+  // @debug susy-span-parser(at 5);
+  // @debug susy-span-parser('wide');
+
+  @include test('Simple grid span') {
+    $expect: (
+      'span': 5,
+      'location': null,
+      'columns': null,
+      'spread': null,
+    );
+
+    @include assert-equal(
+      susy-span-parser(5),
+      $expect,
+      'A single unitless number is returned as span only');
+  }
+
+  @include test('Span with symmetrical columns') {
+    $expect: (
+      'span': 5,
+      'location': null,
+      'columns': 12,
+      'spread': null,
+    );
+
+    @include assert-equal(
+      susy-span-parser(5 of 12),
+      $expect,
+      'Span and symmetrical columns are properly mapped');
+  }
+
+  @include test('Span with spread') {
+    $expect: (
+      'span': 5,
+      'location': null,
+      'columns': null,
+      'spread': 'wide',
+    );
+
+    @include assert-equal(
+      susy-span-parser(5 'wide'),
+      $expect,
+      'Span and spread are properly mapped');
+  }
+
+  @include test('Span with location and asymmetrical columns') {
+    $expect: (
+      'span': 4,
+      'location': 2,
+      'columns': (1 2 3 5 8),
+      'spread': null,
+    );
+
+    @include assert-equal(
+      susy-span-parser(4 of (1 2 3 5 8) at 2),
+      $expect,
+      'Span, location, and asymmetrical columns are properly mapped');
+  }
+
+  @include test('Span with keyword location') {
+    $expect: (
+      'span': 4,
+      'location': 'last',
+      'columns': (1 2 3 5 8),
+      'spread': null,
+    );
+
+    @include assert-equal(
+      susy-span-parser('last' 4 of (1 2 3 5 8)),
+      $expect,
+      'Span, keyword location, and columns are properly mapped');
+  }
+
+  // Warning Tests [2]
+  @if $run-tests-with-warnings {
+    @include test('Unknown values') {
+      $list: ('bar' 'baz');
+      $expect: (
+        'span': 5,
+        'location': null,
+        'columns': null,
+        'spread': null,
+      );
+
+      @include assert-equal(
+        susy-span-parser('PARSE FAIL TEST' 5 $list $expect true),
+        $expect,
+        'Unknown values are ignored and reported as a warning');
+    }
+  }
+}

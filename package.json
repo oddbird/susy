@@ -1,12 +1,17 @@
 {
   "name": "susy",
-  "version": "2.2.5",
+  "version": "3.0.0",
   "description": "Sass power-tools for web layout.",
   "author": "Eric M. Suzanne <eric@oddbird.net>",
   "main": "sass/_susy.scss",
   "repository": {
     "type": "git",
     "url": "git://github.com/ericam/susy.git"
+  },
+  "devDependencies": {
+    "captain-git-hook": "^1.1.0",
+    "mocha": "^2.2.5",
+    "sass-true": "^2.0.2"
   },
   "keywords": [
     "layout",
@@ -21,7 +26,10 @@
     "exports": "eyeglass-exports.js"
   },
   "scripts": {
-    "test": "rake test"
+    "test": "node_modules/.bin/mocha",
+    "lint": "scss-lint sass/susy/*",
+    "lint-staged": "git diff --cached --diff-filter=ACMRTUXB --pretty='format:' --name-only | grep -E .scss$ | xargs scss-lint --config .scss-lint.yml",
+    "pre-commit": "npm run --silent lint-staged && npm run --silent test && rake test"
   },
   "license": "BSD-3-Clause",
   "bugs": {

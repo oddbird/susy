@@ -1,0 +1,23 @@
+// Susy Validation Tests
+// =====================
+// @@@ There is currently no good way to test Sass errors.
+
+
+@include test-module('Susy Valid Column Width [function]') {
+  @include test('Length in any units') {
+    @include assert-equal(
+      susy-valid-column-width(4em),
+      4em,
+      'Valid length returns unchanged');
+  }
+}
+
+
+@include test-module('Susy Valid Math [function]') {
+  @include test('Valid math keyword') {
+    @include assert-equal(
+      susy-valid-math('fluid'),
+      'fluid',
+      'Valid math keyword returns unchanged');
+  }
+}

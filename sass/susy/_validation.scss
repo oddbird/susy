@@ -1,0 +1,48 @@
+// Validation
+// ==========
+// - susy-valid-column-width [function]
+// - susy-valid-math [function]
+
+
+/// Check that a column-width setting is valid
+///
+/// @access private
+///
+/// @param {Length} $column-width -
+///   The width of one column-unit, using any CSS units
+///
+/// @return {Length | Null} -
+///   Return `$columns-width` input if valid, or throw an error
+@function susy-valid-column-width (
+  $column-width
+) {
+  $type: type-of($column-width);
+
+  @if ($type != 'number') or unitless($column-width) {
+    $actual: '[#{$type}] #{inspect($column-width)}';
+    @error '`#{$actual}` is not a valid value for $column-width '
+         + '(must be a length, using any CSS units).';
+  }
+
+  @return $column-width;
+}
+
+
+/// Check that a math setting is valid
+///
+/// @access private
+///
+/// @param {String} $math -
+///   Either `fluid` (percentiles) or `static`
+///
+/// @return {String} -
+///   Return `$math` input if valid, or throw an error
+@function susy-valid-math (
+  $math
+) {
+  @if not index(('fluid', 'static'), $math) {
+    @error '`$math` must be either `fluid` or `static`.';
+  }
+
+  @return $math;
+}

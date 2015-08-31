@@ -1,25 +1,27 @@
-/* Susy Tests */
-/* ========== */
+// Susy Tests
+// ==========
 
-@import "../../sass/susy";
-@import "../../bower_components/true/sass/true";
-@import "test/helpers";
-@import "test/layout";
+// Toggle Warning Tests On/Off
+$run-tests-with-warnings: true;
 
-// test that susyone settings don't cause errors in susy
-@import "../../sass/susy/language/susyone/settings";
 
-@import "tests";
+// Requirements
+@import '../../node_modules/sass-true/sass/true';
+@import '../../sass/susy';
 
-.results{
-  @if _true-get-result(global) == pass {
-    background: rgba(green, .25);
-    border-color: green;
-  }
 
-  &:after {
-    content: _true-report-message(global);
-  }
-}
+// Su Tests
+@import 'su/settings';
+@import 'su/validation';
+@import 'su/grids';
 
+
+// Susy Tests
+@import 'susy/settings';
+@import 'susy/validation';
+@import 'susy/parser';
+@import 'susy/grids';
+
+
+// Report
 @include report;

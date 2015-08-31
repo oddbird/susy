@@ -1,0 +1,12 @@
+basePath: https://github.com/ericam/susy/tree/three/sass/susy
+display:
+  access:
+    - public
+  alias: false
+  watermark: true
+
+package: ./package.json
+theme: default
+groups:
+  su: Grid Engine [Su]
+  grids: Grids [Susy]

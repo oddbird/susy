@@ -1,0 +1,78 @@
+// Parser
+// ======
+// - susy-span-parser [function]
+
+
+/// Internal parser for the span expression
+///
+/// @access private
+///
+/// @param {List} $shorthand -
+///   Shorthand for describing the width of a span
+///
+/// @return {Map} - Return a map with `span`, `location` and `columns` keys
+@function susy-span-parser (
+  $shorthand
+) {
+  $options: (
+    'first': 'location',
+    'last': 'location',
+    'alpha': 'location',
+    'omega': 'location',
+    'narrow': 'spread',
+    'wide': 'spread',
+    'wider': 'spread',
+  );
+  $return: (
+    'span': null,
+    'location': null,
+    'columns': null,
+    'spread': null,
+  );
+  $span: null;
+  $invalid: ();
+
+  @for $i from 1 through length($shorthand) {
+    $item: nth($shorthand, $i);
+    $type: type-of($item);
+
+    @if ($type == 'string') {
+      @if map-has-key($options, $item) {
+        $item: (map-get($options, $item): $item);
+        $return: map-merge($return, $item);
+      } @else if ($item == 'at') {
+        $span: $span or null;
+        $next: nth($shorthand, $i + 1);
+        $return: map-merge($return, ('location': $next));
+      } @else if ($item == 'of') {
+        $span: $span or null;
+        $next: nth($shorthand, $i + 1);
+        $return: map-merge($return, ('columns': $next));
+      } @else {
+        $invalid: append($invalid, $item);
+      }
+    } @else if ($type == 'number') or ($type == 'list') {
+      @if ($type == 'number') and not $span {
+        $span: $item;
+      } @else {
+        $previous: nth($shorthand, $i - 1);
+
+        @if not index(('at', 'of'), $previous) {
+          $invalid: append($invalid, $item);
+        }
+      }
+    } @else {
+      $invalid: append($invalid, $item);
+    }
+  }
+
+  @if not $span {
+    @error 'Not able to determine column-span from `#{$shorthand}`';
+  }
+
+  @if (length($invalid) > 0) {
+    @warn 'Unknown span properties will be ignored: `#{inspect($invalid)}`';
+  }
+
+  @return map-merge($return, ('span': $span));
+}

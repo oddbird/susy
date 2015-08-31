@@ -12,14 +12,16 @@
 ///   The width of one column-unit, using any CSS units
 ///
 /// @return {Length | Null} -
-///   Return `$columns-width` input if valid, or `error`
+///   Return `$columns-width` input if valid, or throw an error
 @function susy-valid-column-width (
   $column-width
 ) {
-  @if (type-of($column-width) != 'number') or unitless($column-width) {
-    $actual: '[#{type-of($column-width)}] #{inspect($column-width)}';
+  $type: type-of($column-width);
+
+  @if ($type != 'number') or unitless($column-width) {
+    $actual: '[#{$type}] #{inspect($column-width)}';
     @error '`#{$actual}` is not a valid value for $column-width '
-      + '(must be a length, using any CSS units).';
+         + '(must be a length, using any CSS units).';
   }
 
   @return $column-width;
@@ -31,10 +33,10 @@
 /// @access private
 ///
 /// @param {String} $math -
-///   The width of one column-unit, using any CSS units
+///   Either `fluid` (percentiles) or `static`
 ///
 /// @return {String} -
-///   Return `$math` input if valid, or `error`
+///   Return `$math` input if valid, or throw an error
 @function susy-valid-math (
   $math
 ) {

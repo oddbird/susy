@@ -18,11 +18,13 @@
 @function su-valid-columns (
   $columns
 ) {
+  $actual: '[#{type-of($columns)}] #{inspect($columns)}';
+  $error: '`#{$actual}` is not a value for $columns '
+        + '(must be a unitless number, or list of unitless numbers).';
+
   @each $col in $columns {
     @if (type-of($col) != 'number') or not unitless($col) {
-      $actual: '[#{type-of($columns)}] #{inspect($columns)}';
-      @error '`#{$actual}` is not a value for $columns '
-        + '(must be a unitless number, or list of unitless numbers).';
+      @error $error;
     }
   }
 
@@ -74,7 +76,7 @@
 
   @if not map-has-key($valid-spread, $spread) {
     @warn '`#{$spread}` is not a valid $spread or $context. '
-      + 'Use narrow, wide, or wider.';
+        + 'Use narrow, wide, or wider. Default is narrow.';
     @return map-get($valid-spread, 'narrow');
   }
 

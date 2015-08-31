@@ -75,9 +75,9 @@ $susy-defaults: (
 @function susy-get (
   $key
 ) {
-  $settings: map-merge($susy-defaults, $susy);
-  $settings: map-merge($su, $settings);
-  $settings: map-merge($su-defaults, $settings);
+  $susy-settings: map-merge($susy-defaults, $susy);
+  $su-settings: map-merge($su-defaults, $su);
+  $settings: map-merge($su-settings, $susy-settings);
 
   @if not map-has-key($settings, $key) {
     @error 'There is no Susy setting called `#{$key}`';

@@ -156,6 +156,5 @@
 @function su-is-symmetrical (
   $columns: su-get('columns')
 ) {
-  $columns: su-valid-columns($columns);
-  @return if(type-of($columns) == 'number', true, false);
+  @return type-of(su-valid-columns($columns)) == 'number';
 }

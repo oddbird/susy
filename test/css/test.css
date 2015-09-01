@@ -1517,6 +1517,9 @@ html {
 [data-module="Isolation Syntax"] [data-test="[function] get-isolation"] .assert-equal {
   -result: PASS;
   -description: "Returns isolation value for first split element."; }
+[data-module="Isolation Syntax"] [data-test="[function] get-isolation"] .assert-equal {
+  -result: PASS;
+  -description: "Returns isolation value for first split element."; }
 
 /* # Gallery Syntax ---------- */
 /* - [mixin] gallery */
@@ -3992,5 +3995,3 @@ html {
 /*  - 60 Passed */
 /*  - 0 Failed */
 /* -------------------- */
-
-/*# sourceMappingURL=test.css.map */

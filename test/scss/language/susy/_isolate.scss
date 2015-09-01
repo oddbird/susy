@@ -85,6 +85,20 @@
     $expect: 1.25%;
     @include assert-equal($test, $expect,
       'Returns isolation value for first split element.');
+
+    // split (0 gutters)
+    $test: get-isolation((
+      span: 2,
+      location: 2,
+      columns: 10,
+      gutters: 0,
+      column-width: 4em,
+      math: fluid,
+      gutter-position: split,
+    ));
+    $expect: 10%;
+    @include assert-equal($test, $expect,
+      'Returns isolation value for first split element.');
   }
 
 }

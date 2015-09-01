@@ -68,7 +68,8 @@
     }
   }
 
-  @if susy-get(gutter-position, $input) == split {
+  @if susy-get(gutter-position, $input) == split
+      and susy-get(gutters, $input) > 0 {
     $width: if($width == null, gutters($input), $width + gutters($input));
   }
 

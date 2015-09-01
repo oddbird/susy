@@ -1,6 +1,14 @@
 Changelog
 =========
 
+2.2.6 - Sep 1 2015
+------------------
+
+- Fix a bug with overlay grids.
+- Fix a bug with 0-width split gutters.
+- Other small bug fixes.
+
+
 2.2.5 - May 14 2015
 -------------------
 

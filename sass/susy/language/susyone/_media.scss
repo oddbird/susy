@@ -98,8 +98,8 @@
     }
 
   } @else {
-    @warn "You need to provide either a valid layout (number of columns)
-    or a valid media-query min-width breakpoint (length).";
+    @warn "You need to provide either a valid layout (number of columns)"
+        + "or a valid media-query min-width breakpoint (length).";
   }
 
 }

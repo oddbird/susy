@@ -15,7 +15,7 @@ $susy-overlay-grid-head-exists: false;
   $_output: debug-get(output, $grid);
 
   @include susy-inspect(show-grid, $inspect);
-  @if $_output == overlay {
+  @if $_output == overlay and susy-get(debug image, $grid) != hide {
     @include overlay-grid($grid);
   } @else {
     @include background-grid($grid);

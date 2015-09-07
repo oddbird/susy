@@ -5,7 +5,7 @@ Gem::Specification.new do |s|
   s.name = "susy"
   s.version = File.read(File.join(File.dirname(__FILE__), "VERSION"))
   s.licenses = ['BSD-3-Clause']
-  s.date = "2014-02-18"
+  s.date = "2015-09-01"
 
   # RubyForge Information
   s.rubyforge_project = "susy"

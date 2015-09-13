@@ -75,9 +75,12 @@
   );
 
   @if not map-has-key($valid-spread, $spread) {
+    $setting: su-get('spread');
+    $default: if(map-has-key($valid-spread, $setting), $setting, 'narrow');
+
     @warn '`#{$spread}` is not a valid $spread or $context. '
-        + 'Use narrow, wide, or wider. Default is narrow.';
-    @return map-get($valid-spread, 'narrow');
+        + 'Use narrow, wide, or wider. Default is #{$default}.';
+    @return map-get($valid-spread, $default);
   }
 
   @return map-get($valid-spread, $spread);

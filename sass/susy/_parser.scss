@@ -41,11 +41,11 @@
         $item: (map-get($options, $item): $item);
         $return: map-merge($return, $item);
       } @else if ($item == 'at') {
-        $span: $span or null;
+        $span: $span or 'error';
         $next: nth($shorthand, $i + 1);
         $return: map-merge($return, ('location': $next));
       } @else if ($item == 'of') {
-        $span: $span or null;
+        $span: $span or 'error';
         $next: nth($shorthand, $i + 1);
         $return: map-merge($return, ('columns': $next));
       } @else {
@@ -66,7 +66,7 @@
     }
   }
 
-  @if not $span {
+  @if ($span == 'error') or not $span {
     @error 'Not able to determine column-span from `#{$shorthand}`';
   }
 

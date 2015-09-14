@@ -1,0 +1,22 @@
+// Parser Benchmark
+// ================
+
+@import '../../../sass/susy';
+
+@for $i from 1 through 500 {
+  $susy-span-parser: susy-span-parser(5);
+  $susy-span-parser: susy-span-parser(5 of 12);
+  $susy-span-parser: susy-span-parser(5 'wide');
+  $susy-span-parser: susy-span-parser(4 of (1 2 3 5 8) at 2);
+  $susy-span-parser: susy-span-parser('last' 4 of (1 2 3 5 8));
+
+  $list: ('bar' 'baz');
+  $map: (
+    'span': 5,
+    'location': null,
+    'columns': null,
+    'spread': null,
+  );
+
+  $susy-span-parser: susy-span-parser('PARSE FAIL TEST' 5 $list $map true);
+}

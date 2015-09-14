@@ -1,0 +1,35 @@
+// Helpers Benchmark
+// =================
+
+@import '../../../sass/su/manifest';
+
+@for $i from 1 through 500 {
+  $su-valid-columns: su-valid-columns(3);
+  $su-valid-columns: su-valid-columns(1 2 4 2);
+
+  $su-valid-gutters: su-valid-gutters(0.75);
+  $su-valid-gutters: su-valid-gutters(1/4);
+
+  $su-valid-spread: su-valid-spread('wider');
+  $su-valid-spread: su-valid-spread('monkey');
+
+  $su-valid-span: su-valid-span(0.75);
+  $su-valid-span: su-valid-span(12);
+
+  $su-valid-location: su-valid-location(2, 3, 1 2 3 5 8);
+  $su-valid-location: su-valid-location(2, 'first', 2 4 6 8);
+  $su-valid-location: su-valid-location(2, 'last', 2 4 6 8);
+  $su-valid-location: su-valid-location(2, null, 12);
+
+  // Settings
+  $su: (
+    'columns': 320,
+    'spread': null,
+  ) !global;
+
+  $su-get: su-get('columns');
+  $su-get: su-get('spread');
+  $su-get: su-get('gutters');
+
+  $su: () !global;
+}

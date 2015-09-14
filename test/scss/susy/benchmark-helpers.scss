@@ -1,0 +1,22 @@
+// Helpers Benchmark
+// =================
+
+@import '../../../sass/susy';
+
+@for $i from 1 through 500 {
+  $susy-valid-column-width: susy-valid-column-width(4em);
+  $susy-valid-math: susy-valid-math('fluid');
+
+  // Settings
+  $susy: (
+    'column-width': 320px,
+    'spread': null,
+  ) !global;
+
+  $susy-get: susy-get('column-width');
+  $susy-get: susy-get('spread');
+  $susy-get: susy-get('math');
+  $susy-get: susy-get('columns');
+
+  $susy: () !global;
+}

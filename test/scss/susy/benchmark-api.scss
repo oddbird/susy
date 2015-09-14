@@ -1,0 +1,12 @@
+// Grid API Benchmark
+// ==================
+
+@import '../../../sass/susy';
+
+@for $i from 1 through 500 {
+  $susy-span: susy-span(3em);
+  $susy-span: susy-span(3);
+  $susy-span: susy-span(3 at 2);
+  $susy-span: susy-span(6 'wide');
+  $susy-span: susy-span(2, $math: 'static', $column-width: 5em);
+}

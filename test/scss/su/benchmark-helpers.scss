@@ -25,11 +25,9 @@
   $su: (
     'columns': 320,
     'spread': null,
-  ) !global;
+  );
 
   $su-get: su-get('columns');
   $su-get: su-get('spread');
   $su-get: su-get('gutters');
-
-  $su: () !global;
 }

@@ -11,12 +11,10 @@
   $susy: (
     'column-width': 320px,
     'spread': null,
-  ) !global;
+  );
 
   $susy-get: susy-get('column-width');
   $susy-get: susy-get('spread');
   $susy-get: susy-get('math');
   $susy-get: susy-get('columns');
-
-  $susy: () !global;
 }

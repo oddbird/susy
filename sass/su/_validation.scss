@@ -122,15 +122,23 @@
 ///   The starting column position of a span
 /// @param {Integer} $columns [susy-get('columns')] -
 ///   Number of columns in the grid
+/// @param {Bool} $validate -
+///   Check that arguments are valid before proceeding
 ///
 /// @return {Integer} -
 ///   Numeric grid column position (1-indexed), `null`, or `error`
 @function su-valid-location (
   $span,
   $location,
-  $columns
+  $columns,
+  $validate: true
 ) {
-  $count: su-count($columns);
+  @if $validate {
+    $span: su-valid-span($span);
+    $columns: su-valid-columns($columns);
+  }
+
+  $count: su-count($columns, $validate: false);
   $valid-locations: (
     'first': 1,
     'alpha': 1,
@@ -152,7 +160,7 @@
       @error 'There are not enough columns in grid `#{$columns}` '
         + 'for span `#{$span}` at position `#{$location}`';
     }
-  } @else if not su-is-symmetrical($columns) {
+  } @else if not su-is-symmetrical($columns, $validate: false) {
     @error '$location value is required for asymmetrical grids.';
   }
 

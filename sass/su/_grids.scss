@@ -22,6 +22,8 @@
 ///   The ratio of a gutter based on a column
 /// @param {String} $spread -
 ///   Either `narrow`, `wide` or `wider`
+/// @param {Bool} $validate -
+///   Check that arguments are valid before proceeding
 ///
 /// @return {Number} -
 ///   Return the total sum of column units in a layout
@@ -30,11 +32,19 @@
   $location: null,
   $columns: su-get('columns'),
   $gutters: su-get('gutters'),
-  $spread: su-get('spread')
+  $spread: su-get('spread'),
+  $validate: true
 ) {
-  $span: su-slice($span, $location, $columns);
+  @if $validate {
+    $span: su-valid-span($span);
+    $columns: su-valid-columns($columns);
+    $gutters: su-valid-gutters($gutters);
+    $spread: su-valid-spread($spread);
+  }
 
-  @return su-sum($span, $gutters, $spread);
+  $span: su-slice($span, $location, $columns, $validate: false);
+
+  @return su-sum($span, $gutters, $spread, $validate: false);
 }
 
 
@@ -44,15 +54,20 @@
 ///
 /// @param {List | Number} $columns [su-get('columns')] -
 ///   Total number of columns, or list of asymmetrical columns
+/// @param {Bool} $validate -
+///   Check that arguments are valid before proceeding
 ///
 /// @return {Number} -
 ///   Return the number of columns in a grid
 @function su-count (
-  $columns: su-get('columns')
+  $columns: su-get('columns'),
+  $validate: true
 ) {
-  $columns: su-valid-columns($columns);
+  @if $validate {
+    $columns: su-valid-columns($columns);
+  }
 
-  @if su-is-symmetrical($columns) {
+  @if su-is-symmetrical($columns, $validate: false) {
     @return $columns;
   }
 
@@ -70,21 +85,27 @@
 ///   The ratio of a gutter compared to 1 column-unit
 /// @param {String | false} $spread [su-get('spread')] -
 ///   Either `narrow`, `wide`, or `wider`
+/// @param {Bool} $validate -
+///   Check that arguments are valid before proceeding
 ///
 /// @return {Number} -
 ///   Return the total sum of column-units in a grid
 @function su-sum (
   $columns: su-get('columns'),
   $gutters: su-get('gutters'),
-  $spread: su-get('spread')
+  $spread: su-get('spread'),
+  $validate: true
 ) {
-  $columns: su-valid-columns($columns);
-  $gutters: su-valid-gutters($gutters);
-  $spread: su-valid-spread($spread);
+  @if $validate {
+    $columns: su-valid-columns($columns);
+    $gutters: su-valid-gutters($gutters);
+    $spread: su-valid-spread($spread);
+  }
 
-  $gutters: (ceil(su-count($columns)) + $spread) * $gutters;
+  $count: su-count($columns, $validate: false);
+  $gutters: (ceil($count) + $spread) * $gutters;
 
-  @if not su-is-symmetrical($columns) {
+  @if not su-is-symmetrical($columns, $validate: false) {
     $column-sum: 0;
 
     @each $column in $columns {
@@ -108,19 +129,24 @@
 ///   Optional position of span among full set of asymmetrical columns
 /// @param {Number | List} $columns [su-get('columns')] -
 ///   Total number of columns, or list of asymmetrical columns available
+/// @param {Bool} $validate -
+///   Check that arguments are valid before proceeding
 ///
 /// @return {List} -
 ///   Subset of columns at given location
 @function su-slice (
   $span,
   $location: null,
-  $columns: su-get('columns')
+  $columns: su-get('columns'),
+  $validate: true
 ) {
-  $span: su-valid-span($span);
-
-  @if not su-is-symmetrical($columns) {
+  @if $validate {
+    $span: su-valid-span($span);
     $columns: su-valid-columns($columns);
-    $location: su-valid-location($span, $location, $columns);
+  }
+
+  @if not su-is-symmetrical($columns, $validate: false) {
+    $location: su-valid-location($span, $location, $columns, $validate: false);
     $floor: floor($span);
     $sub-columns: ();
 
@@ -150,11 +176,18 @@
 ///
 /// @param {List | Number} $columns [su-get('columns')] -
 ///   Total number of columns, or list of asymmetrical columns
+/// @param {Bool} $validate -
+///   Check that arguments are valid before proceeding
 ///
 /// @return {Bool} -
 ///   Return `true` if the grid is symmetrical, otherwise `false`
 @function su-is-symmetrical (
-  $columns: su-get('columns')
+  $columns: su-get('columns'),
+  $validate: true
 ) {
-  @return type-of(su-valid-columns($columns)) == 'number';
+  @if $validate {
+    $columns: su-valid-columns($columns);
+  }
+
+  @return type-of($columns) == 'number';
 }

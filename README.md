@@ -48,6 +48,9 @@ npm run test --silent
 
 # test with ruby sass
 rake test
+
+# run benchmark tests
+npm run benchmark
 ```
 
 Building SassDoc:

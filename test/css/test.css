@@ -149,6 +149,17 @@
   -result: PASS;
   -description: "Location in symmetrical grid returns slice with warning"; }
 
+/* # Susy Settings [function] ---------- */
+/* Default configuration */
+[data-module="Susy Settings [function]"] [data-test="Default configuration"] .assert-equal {
+  -result: PASS;
+  -description: "Returns merged map of Susy default config settings"; }
+
+/* Configuration overrides */
+[data-module="Susy Settings [function]"] [data-test="Configuration overrides"] .assert-equal {
+  -result: PASS;
+  -description: "Returns merged map of Susy defaults with custom overrides"; }
+
 /* # Susy Get [function] ---------- */
 /* Get value from user settings */
 [data-module="Susy Get [function]"] [data-test="Get value from user settings"] .assert-equal {
@@ -240,9 +251,14 @@
   -result: PASS;
   -description: "Gutters are calculated as a percentage of context"; }
 
+/* Gutters with custom config */
+[data-module="Susy Gutter [function]"] [data-test="Gutters with custom config"] .assert-equal {
+  -result: PASS;
+  -description: "Gutters account for custom configuration"; }
+
 /* # SUMMARY ---------- */
-/* 45 Tests: */
-/*  - 45 Passed */
+/* 48 Tests: */
+/*  - 48 Passed */
 /*  - 0 Failed */
 /* -------------------- */
 

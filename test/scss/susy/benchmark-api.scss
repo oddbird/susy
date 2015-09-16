@@ -7,5 +7,13 @@
   $susy-span: susy-span(3);
   $susy-span: susy-span(3 at 2);
   $susy-span: susy-span(6 'wide');
-  $susy-span: susy-span(2, $math: 'static', $column-width: 5em);
+  $susy-span: susy-span(2, ('math': 'static', 'column-width': 5em));
+
+  $config: (
+    'columns': 12,
+    'context': 'wide',
+  );
+
+  $susy-gutter: susy-gutter(13);
+  $susy-gutter: susy-gutter(4, $config);
 }

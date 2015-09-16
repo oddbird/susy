@@ -13,6 +13,9 @@
     'spread': null,
   );
 
+  $susy-settings: susy-settings();
+  $susy-settings: susy-settings(('context': 'wide'));
+
   $susy-get: susy-get('column-width');
   $susy-get: susy-get('spread');
   $susy-get: susy-get('math');

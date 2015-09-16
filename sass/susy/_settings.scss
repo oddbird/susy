@@ -7,7 +7,7 @@
 
 /// User custom configuration for Susy
 ///
-/// @group grids
+/// @group config
 ///
 /// @type Map
 ///
@@ -63,21 +63,45 @@ $susy-defaults: (
 );
 
 
-/// Get the current value of any Susy setting
+/// Return a combined map of Susy settings
 ///
-/// @group grids
+/// @group config
 ///
-/// @param {String} $key -
-///   Option to retrieve from the configuration
+/// @param {Map} $overrides [()] -
+///   Optional map override of global configuration settings
 ///
-/// @return {*} -
-///   Value mapped to `$key` in the configuration maps, in that specific order: `$susy`, `$susy-defaults`, `$su`, `$su-defaults`
-@function susy-get (
-  $key
+/// @return {Map} -
+///   Combined map of Susy configuration settings, in order of specificity:
+///   `$overrides`, `$susy`, `$susy-defaults`, `$su`, `$su-defaults`
+@function susy-settings (
+  $overrides: ()
 ) {
   $susy-settings: map-merge($susy-defaults, $susy);
   $su-settings: map-merge($su-defaults, $su);
   $settings: map-merge($su-settings, $susy-settings);
+
+  @if length($overrides) > 0 {
+    @return map-merge($settings, $overrides);
+  }
+
+  @return $settings;
+}
+
+
+/// Get the current value of any Susy setting
+///
+/// @group config
+///
+/// @param {String} $key -
+///   Setting to retrieve from the configuration
+///
+/// @return {*} -
+///   Value mapped to `$key` in the configuration maps, in order of specificity:
+///   `$susy`, `$susy-defaults`, `$su`, `$su-defaults`
+@function susy-get (
+  $key
+) {
+  $settings: susy-settings();
 
   @if not map-has-key($settings, $key) {
     @error 'There is no Susy setting called `#{$key}`';

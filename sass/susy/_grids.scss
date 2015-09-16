@@ -14,27 +14,19 @@
 ///
 /// @group grids
 ///
-/// @param {List}   $span -
+/// @param {List} $span -
 ///   Shorthand expression to define the width of the span.
 ///   Contains a unitless number for column-span,
 ///   'of $n' for available grid columns [optional],
 ///   'at $n' for spanning asymmetrical grids [optional],
 ///   and 'narrow', 'wide', or 'wider' for defining the spread
 ///   over available gutters (none, one, or two)
-/// @param {String} $math [susy-get('math')] -
-///   Either `fluid` or `static`
-/// @param {Float}  $gutters [susy-get('gutters')] -
-///   The ratio of a gutter based on a column
-/// @param {Length} $column-width [susy-get('column-width')] -
-///   The width of one column-unit
-///   (only relevant when `$math` is `static`)
-/// @param {String} $context [susy-get('context')] -
-///   The spread of a container around edge gutters:
-///   either `narrow` (none), `wide` (one), or `wider` (two)
+/// @param {Map} $config [()] -
+///   Optional map of Susy grid configuration settings
 ///
 /// @return {Length} -
-///   Return either a fluid `%` value when `$math` is `fluid`
-///   or a more explicit length if `$math` is static
+///   Return either a fluid `%` value when `math` setting is `fluid`
+///   or an explicit length if `math` is static
 ///
 /// @example scss - Span half the grid
 ///   .foo
@@ -47,34 +39,30 @@
 ///   }
 @function susy-span(
   $span,
-  $math: susy-get('math'),
-  $gutters: susy-get('gutters'),
-  $column-width: susy-get('column-width'),
-  $context: susy-get('context')
+  $config: ()
 ) {
-  $math: susy-valid-math($math);
-  $span-map: (
-    'span': null,
-    'location': null,
-    'columns': null,
-    'spread': null,
-  );
-
   @if length($span) > 1 {
     $span-map: susy-span-parser($span);
-    $span: map-get($span-map, 'span');
+    $config: map-merge($config, $span-map);
+    $span: map-get($config, 'span');
   }
 
-  $location: map-get($span-map, 'location');
-  $columns: map-get($span-map, 'columns') or susy-get('columns');
-  $spread: map-get($span-map, 'spread') or susy-get('spread');
+  $config: susy-settings($config);
+
+  $columns: map-get($config, 'columns');
+  $gutters: map-get($config, 'gutters');
+  $location: map-get($config, 'location');
+  $spread: map-get($config, 'spread');
+
   $span: su($span, $location, $columns, $gutters, $spread);
 
-  @if ($math == 'fluid') {
+  @if (map-get($config, 'math') == 'fluid') {
+    $context: map-get($config, 'context');
     $container: su-sum($columns, $gutters, $context);
     @return percentage($span / $container);
   }
 
+  $column-width: map-get($config, 'column-width');
   $column-width: susy-valid-column-width($column-width);
   @return ($span * $column-width);
 }
@@ -84,13 +72,10 @@
 ///
 /// @group grids
 ///
-/// @param {Integer} $columns [susy-get('columns')] -
-///   The number of columns in the grid
-/// @param {Float}   $gutters [susy-get('gutters')] -
-///   The ratio of a gutter based on a column
-/// @param {String}  $context [susy-get('context')] -
-///   The spread of a container around edge gutters:
-///   either `narrow` (none), `wide` (one), or `wider` (two)
+/// @param {Integer} $nested [null] -
+///   Optional number of columns in a nested context
+/// @param {Map} $config [()] -
+///   Optional map of Susy grid configuration settings
 ///
 /// @return {Length} -
 ///   Return a fluid gutter width as `%` of available space
@@ -100,10 +85,14 @@
 ///     margin-left: gutter();
 ///   }
 @function susy-gutter (
-  $columns: susy-get('columns'),
-  $gutters: susy-get('gutters'),
-  $context: susy-get('context')
+  $nested: null,
+  $config: ()
 ) {
+  $config: susy-settings($config);
+  $gutters: map-get($config, 'gutters');
+  $context: map-get($config, 'context');
+  $columns: $nested or map-get($config, 'columns');
+
   $container: su-sum($columns, $gutters, $context);
   @return percentage($gutters / $container);
 }

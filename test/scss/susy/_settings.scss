@@ -2,6 +2,27 @@
 // ===================
 
 
+@include test-module('Susy Settings [function]') {
+  $defaults: map-merge($su-defaults, $susy-defaults);
+
+  @include test('Default configuration') {
+    @include assert-equal(
+      susy-settings(),
+      $defaults,
+      'Returns merged map of Susy default config settings');
+  }
+
+  @include test('Configuration overrides') {
+    $override: ('context': 'wider');
+
+    @include assert-equal(
+      susy-settings($override),
+      map-merge($defaults, $override),
+      'Returns merged map of Susy defaults with custom overrides');
+  }
+}
+
+
 @include test-module('Susy Get [function]') {
   $susy: (
     'column-width': 320px,

@@ -10,5 +10,6 @@ package: ./package.json
 theme: default
 verbose: true
 groups:
-  su: Grid Engine [Su]
-  grids: Grids [Susy]
+  su: Su [Grid Engine]
+  grids: Grid Toolkit
+  config: Grid Configuration

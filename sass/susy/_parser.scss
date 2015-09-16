@@ -10,7 +10,8 @@
 /// @param {List} $shorthand -
 ///   Shorthand for describing the width of a span
 ///
-/// @return {Map} - Return a map with `span`, `location` and `columns` keys
+/// @return {Map} - Return a map with shorthand parsed into possible
+///   `span`, `location`, `columns`, and `spread` keys
 @function susy-span-parser (
   $shorthand
 ) {
@@ -23,12 +24,7 @@
     'wide': 'spread',
     'wider': 'spread',
   );
-  $return: (
-    'span': null,
-    'location': null,
-    'columns': null,
-    'spread': null,
-  );
+  $return: ();
   $span: null;
   $invalid: ();
 

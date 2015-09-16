@@ -1,5 +1,7 @@
 # For SCSS-Lint v0.32.0
 
+exclude: 'test/scss/ag.scss'
+
 linters:
 
   BangFormat:

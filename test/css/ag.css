@@ -1,0 +1,134 @@
+html {
+  background: #fff;
+  color: #4c4c4c;
+  font-family: Consolas, Menlo, Monaco, 'Lucida Console', 'Liberation Mono', 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Courier New', monospace, sans-serif;
+  line-height: 1.5; }
+
+* {
+  box-sizing: border-box; }
+
+[role='banner'] {
+  text-align: center; }
+
+h1,
+h2,
+h3 {
+  font-weight: normal;
+  margin: 0; }
+
+h1 {
+  font-size: 2rem;
+  line-height: 3rem; }
+
+h2 {
+  font-size: 1.5rem;
+  line-height: 2.25rem; }
+
+h3 {
+  font-size: 1rem;
+  line-height: inherit; }
+
+.container {
+  margin: 3rem auto;
+  max-width: 90%; }
+
+.ag-title {
+  background: #4c4c4c;
+  color: #fff;
+  padding: 0 1.5rem; }
+
+.grid-element {
+  padding: .75rem; }
+  .grid-element.size1of5 {
+    background: #7fdfff; }
+  .grid-element.size1of2 {
+    background: #ff7f7f; }
+  .grid-element.size1of3 {
+    background: #ffb27f; }
+  .grid-element.full {
+    background: #ff7fbf; }
+
+.symmetrical .ag {
+  align-items: stretch;
+  display: flex;
+  padding: 0 0.98039%; }
+.symmetrical .grid-element {
+  margin: 0 1%; }
+.symmetrical .size1of5 {
+  order: 1;
+  width: 18%; }
+  .symmetrical .size1of5 + .size1of5 {
+    order: 3; }
+.symmetrical .size3of5 {
+  align-items: stretch;
+  display: flex;
+  flex: 1 0 auto;
+  flex-wrap: wrap;
+  order: 2; }
+  .symmetrical .size3of5 .size1of2 {
+    margin: 0 1.66667%;
+    width: 46.66667%; }
+  .symmetrical .size3of5 > .full {
+    align-items: stretch;
+    display: flex;
+    flex: 1 0 auto; }
+.symmetrical .size1of3 {
+  margin: 0 1.66667%;
+  width: 30%; }
+.symmetrical .size2of3 {
+  align-items: stretch;
+  display: flex;
+  flex: 1 0 auto;
+  flex-wrap: wrap; }
+  .symmetrical .size2of3 .grid-element {
+    margin: 0 2.5%; }
+  .symmetrical .size2of3 .size1of2 {
+    width: 45%; }
+  .symmetrical .size2of3 .full {
+    flex: 1 0 auto; }
+
+.asymmetrical .ag:after {
+  content: " ";
+  display: block;
+  clear: both; }
+.asymmetrical .grid-element {
+  float: left;
+  margin-left: 2.12766%; }
+  .asymmetrical .grid-element:first-child, .asymmetrical .grid-element.full {
+    margin-left: 0 !important; }
+.asymmetrical .full {
+  width: 100%; }
+  .asymmetrical .full:after {
+    content: " ";
+    display: block;
+    clear: both; }
+.asymmetrical .size1of5 {
+  width: 14.89362%;
+  padding-bottom: 6.75rem; }
+  .asymmetrical .size1of5 + .size1of5 {
+    float: right;
+    width: 23.40426%; }
+.asymmetrical .size3of5 {
+  float: left;
+  margin-left: 2.12766%;
+  width: 57.44681%; }
+  .asymmetrical .size3of5 .size1of2:first-child {
+    width: 44.44444%; }
+    .asymmetrical .size3of5 .size1of2:first-child + .size1of2 {
+      margin-left: 3.7037%;
+      width: 51.85185%; }
+.asymmetrical .size1of3 {
+  width: 18.51852%;
+  padding-bottom: 3.75rem; }
+.asymmetrical .size2of3 {
+  float: right;
+  width: 77.77778%; }
+  .asymmetrical .size2of3 .grid-element {
+    margin-left: 4.7619%; }
+  .asymmetrical .size2of3 .size1of2:first-child {
+    width: 42.85714%; }
+  .asymmetrical .size2of3 .size1of2 + .size1of2 {
+    float: right;
+    width: 52.38095%; }
+
+/*# sourceMappingURL=ag.css.map */

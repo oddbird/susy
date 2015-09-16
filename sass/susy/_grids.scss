@@ -52,10 +52,6 @@
   $column-width: susy-get('column-width'),
   $context: susy-get('context')
 ) {
-  @if type-of($span) == 'number' and not unitless($span) {
-    @return $span;
-  }
-
   $math: susy-valid-math($math);
   $span-map: (
     'span': null,

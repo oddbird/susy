@@ -3,13 +3,6 @@
 
 
 @include test-module('Susy Span [function]') {
-  @include test('Explicit Span') {
-    @include assert-equal(
-      susy-span(3em),
-      3em,
-      'Length span is returned directly');
-  }
-
   @include test('Simple Span') {
     @include assert-equal(
       susy-span(3),
@@ -56,5 +49,4 @@
 
     $susy: () !global;
   }
-
 }

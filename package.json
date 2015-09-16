@@ -26,7 +26,7 @@
     "exports": "eyeglass-exports.js"
   },
   "scripts": {
-    "test": "node_modules/.bin/mocha",
+    "test": "node_modules/.bin/mocha; rake test",
     "benchmark": "cd test && ./benchmark.sh",
     "lint": "scss-lint sass/susy/*",
     "lint-staged": "git diff --cached --diff-filter=ACMRTUXB --pretty='format:' --name-only | grep -E .scss$ | xargs scss-lint --config .scss-lint.yml",

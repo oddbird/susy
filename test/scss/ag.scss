@@ -208,7 +208,7 @@ $susy: (
   $data: susy-settings($data);
 
   $span: map-get($data, 'span');
-  $location: map-get($data, 'location') or 1;
+  $location: map-get($data, 'location');
   $columns: map-get($data, 'columns');
 
   @return su-slice($span, $location, $columns);

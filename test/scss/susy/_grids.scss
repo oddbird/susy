@@ -3,7 +3,7 @@
 
 
 @include test-module('Susy Span [function]') {
-  @include test('Simple Span') {
+  @include test('Simple span') {
     @include assert-equal(
       susy-span(3),
       percentage(su(3) / su-sum(susy-get('columns'))),
@@ -48,5 +48,15 @@
       'Static math returns length based on column-width');
 
     $susy: () !global;
+  }
+}
+
+
+@include test-module('Susy Gutter [function]') {
+  @include test('Simple gutters') {
+    @include assert-equal(
+      susy-gutter(4, 0.25, 'wide'),
+      5%,
+      'Gutters are calculated as a percentage of context');
   }
 }

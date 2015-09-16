@@ -33,7 +33,8 @@
 ///   either `narrow` (none), `wide` (one), or `wider` (two)
 ///
 /// @return {Length} -
-///   Return either a value expressed in `%` when `$math` is `fluid` or an absolute length with `$math` is static
+///   Return either a fluid `%` value when `$math` is `fluid`
+///   or a more explicit length if `$math` is static
 ///
 /// @example scss - Span half the grid
 ///   .foo
@@ -89,45 +90,24 @@
 ///
 /// @param {Integer} $columns [susy-get('columns')] -
 ///   The number of columns in the grid
-/// @param {String}  $math [susy-get('math')] -
-///   Either `fluid` for `%` output,
-///   or `static` for output based on your `column-width` setting
 /// @param {Float}   $gutters [susy-get('gutters')] -
 ///   The ratio of a gutter based on a column
-/// @param {Length}  $column-width [susy-get('column-width')] -
-///   The width of one column-unit
-///   (only relevant when `$math` is `static`)
 /// @param {String}  $context [susy-get('context')] -
 ///   The spread of a container around edge gutters:
 ///   either `narrow` (none), `wide` (one), or `wider` (two)
 ///
 /// @return {Length} -
-///   Return either a value expressed in `%` when `$math` is `fluid` or an absolute length with `$math` is static
+///   Return a fluid gutter width as `%` of available space
 ///
 /// @example scss - Add gutters before or after an element
 ///   .foo {
 ///     margin-left: gutter();
 ///   }
-///
-/// @example scss - Add static gutters inside a fluid grid
-///   .foo {
-///     padding: 0 gutter($math: 'static')/2;
-///   }
 @function susy-gutter (
   $columns: susy-get('columns'),
-  $math: susy-get('math'),
   $gutters: susy-get('gutters'),
-  $column-width: susy-get('column-width'),
   $context: susy-get('context')
 ) {
-  $math: susy-valid-math($math);
-
-  @if ($math == 'fluid') {
-    $container: su-sum($columns, $gutters, $context);
-    @return percentage($gutters / $container);
-  }
-
-  $column-width: susy-valid-column-width($column-width);
-  $gutters: su-valid-gutters($gutters);
-  @return ($gutters * $column-width);
+  $container: su-sum($columns, $gutters, $context);
+  @return percentage($gutters / $container);
 }

@@ -214,8 +214,8 @@
   -description: "Unknown values are ignored and reported as a warning"; }
 
 /* # Susy Span [function] ---------- */
-/* Simple Span */
-[data-module="Susy Span [function]"] [data-test="Simple Span"] .assert-equal {
+/* Simple span */
+[data-module="Susy Span [function]"] [data-test="Simple span"] .assert-equal {
   -result: PASS;
   -description: "Simple span is calculated correctly using column defaults"; }
 
@@ -234,9 +234,15 @@
   -result: PASS;
   -description: "Static math returns length based on column-width"; }
 
+/* # Susy Gutter [function] ---------- */
+/* Simple gutters */
+[data-module="Susy Gutter [function]"] [data-test="Simple gutters"] .assert-equal {
+  -result: PASS;
+  -description: "Gutters are calculated as a percentage of context"; }
+
 /* # SUMMARY ---------- */
-/* 44 Tests: */
-/*  - 44 Passed */
+/* 45 Tests: */
+/*  - 45 Passed */
 /*  - 0 Failed */
 /* -------------------- */
 

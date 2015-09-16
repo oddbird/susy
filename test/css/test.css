@@ -214,11 +214,6 @@
   -description: "Unknown values are ignored and reported as a warning"; }
 
 /* # Susy Span [function] ---------- */
-/* Explicit Span */
-[data-module="Susy Span [function]"] [data-test="Explicit Span"] .assert-equal {
-  -result: PASS;
-  -description: "Length span is returned directly"; }
-
 /* Simple Span */
 [data-module="Susy Span [function]"] [data-test="Simple Span"] .assert-equal {
   -result: PASS;
@@ -240,8 +235,8 @@
   -description: "Static math returns length based on column-width"; }
 
 /* # SUMMARY ---------- */
-/* 45 Tests: */
-/*  - 45 Passed */
+/* 44 Tests: */
+/*  - 44 Passed */
 /*  - 0 Failed */
 /* -------------------- */
 

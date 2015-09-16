@@ -9,7 +9,6 @@
     "url": "git://github.com/ericam/susy.git"
   },
   "devDependencies": {
-    "captain-git-hook": "1.1.0",
     "mocha": "2.2.5",
     "sass-true": "2.0.2"
   },
@@ -30,9 +29,9 @@
     "test-libsass": "node_modules/.bin/mocha",
     "test-ruby": "rake test",
     "benchmark": "cd test && ./benchmark.sh",
-    "lint": "scss-lint sass",
+    "lint": "scss-lint sass && scss-lint test/scss",
     "lint-staged": "git diff --cached --diff-filter=ACMRTUXB --pretty='format:' --name-only | grep -E .scss$ | xargs scss-lint --config .scss-lint.yml",
-    "pre-commit": "npm run --silent lint-staged && npm run --silent test"
+    "pre-commit": "npm run --silent test && npm run --silent lint"
   },
   "license": "BSD-3-Clause",
   "bugs": {

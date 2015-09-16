@@ -30,14 +30,23 @@ When submitting a patch via pull request:
 Developement
 ------------
 
+Set up your dev environment
+with the appropriate dependencies:
+
 ```
 gem install bundler
 bundle install
 npm install
 ```
 
-Linting and testing is done on pre-commit.
-It can also be triggered:
+Linting and testing should be done
+before every commit:
+
+```
+npm run pre-commit
+```
+
+They can also be triggered individually:
 
 ```
 # lint
@@ -50,7 +59,11 @@ npm run test
 npm run benchmark
 ```
 
-Building SassDoc:
+
+Documentation
+-------------
+
+Build SassDoc:
 
 ```
 npm install sassdoc -g

@@ -256,9 +256,15 @@
   -result: PASS;
   -description: "Gutters account for custom configuration"; }
 
+/* # Susy Nested ---------- */
+/* Asymmetrical slicing */
+[data-module="Susy Nested"] [data-test="Asymmetrical slicing"] .assert-equal {
+  -result: PASS;
+  -description: "Returns a sub-slice of asymmetrical columns"; }
+
 /* # SUMMARY ---------- */
-/* 48 Tests: */
-/*  - 48 Passed */
+/* 49 Tests: */
+/*  - 49 Passed */
 /*  - 0 Failed */
 /* -------------------- */
 

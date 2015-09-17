@@ -72,3 +72,13 @@
       'Gutters account for custom configuration');
   }
 }
+
+
+@include test-module('Susy Nested') {
+  @include test('Asymmetrical slicing') {
+    @include assert-equal(
+      susy-nested(3 at 3 of (1 2 3 5 8)),
+      3 5 8,
+      'Returns a sub-slice of asymmetrical columns');
+  }
+}

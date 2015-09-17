@@ -2,6 +2,7 @@
 // =====
 // - susy-span [function]
 // - susy-gutter [function]
+// - susy-nested [function]
 
 
 /// Calculate the width of any grid-span.
@@ -95,4 +96,45 @@
 
   $container: su-sum($columns, $gutters, $context);
   @return percentage($gutters / $container);
+}
+
+
+/// Return a subset of asymmetrical columns
+/// to use for nesting context.
+///
+/// @group grids
+///
+/// @param {List} $span -
+///   Shorthand expression to define the width of the subset span.
+///   Contains a unitless number for column-span,
+///   'at $n', 'first', or 'last' for location on the grid,
+///   and optional 'of $n' for available grid columns.
+/// @param {Map} $config [()] -
+///   Optional map of Susy grid configuration settings
+///
+/// @return {List} -
+///   Return a subset list of asymmetrical columns.
+///
+/// @example scss - Span a specific segment of asymmetrical grid
+///   $context: susy-nested(3 at 3 of (1 2 3 5 8)); // returns `(3 5 8)`
+@function susy-nested (
+  $span,
+  $config: ()
+) {
+  $local: map-merge($config, susy-span-parser($span));
+  $global: susy-settings($local);
+
+  $columns: map-get($global, 'columns');
+  $location: map-get($global, 'location');
+  $span: map-get($global, 'span');
+
+  @if not $location {
+    @error 'Asymmetrical grids always require a location.';
+  }
+
+  @if su-is-symmetrical($columns) {
+    @error 'The `susy-nested` function is not needed for symmetrical grids';
+  }
+
+  @return su-slice($span, $location, $columns);
 }

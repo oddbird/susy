@@ -1,4 +1,4 @@
-basePath: https://github.com/ericam/susy/tree/three/sass/susy
+basePath: https://github.com/ericam/susy/tree/three/sass
 dest: ./docs
 display:
   access:

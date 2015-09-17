@@ -3,13 +3,14 @@ dest: ./docs
 display:
   access:
     - public
-  alias: false
+  alias: true
   watermark: true
 
 package: ./package.json
 theme: default
 verbose: true
 groups:
-  su: Su [Grid Engine]
-  grids: Grid Toolkit
   config: Grid Configuration
+  grids: Grid Toolkit
+  su: Su [Grid Engine]
+  plugin-unprefix: Plugin — Unprefix

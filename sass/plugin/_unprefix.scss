@@ -1,0 +1,49 @@
+// Unprefix Susy
+// =============
+
+@import '../susy';
+
+
+/// Un-prefixed alias for `susy-span`
+///
+/// @group plugin-unprefix
+/// @alias susy-span
+///
+/// @param {List} $span
+/// @param {Map} $config [()]
+@function span(
+  $span,
+  $config: ()
+) {
+  @return susy-span($span, $config);
+}
+
+
+/// Un-prefixed alias for `susy-gutter`
+///
+/// @group plugin-unprefix
+/// @alias susy-gutter
+///
+/// @param {Integer | List} $nested [null] -
+/// @param {Map} $config [()]
+@function gutter(
+  $nested: null,
+  $config: ()
+) {
+  @return susy-gutter($nested, $config);
+}
+
+
+/// Un-prefixed alias for `susy-nested`
+///
+/// @group plugin-unprefix
+/// @alias susy-nested
+///
+/// @param {List} $span
+/// @param {Map} $config [()]
+@function nested(
+  $span,
+  $config: ()
+) {
+  @return susy-nested($span, $config);
+}

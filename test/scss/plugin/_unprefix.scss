@@ -1,0 +1,31 @@
+// Unprefix Plugin Tests
+// =====================
+
+@import '../../../sass/plugin/unprefix';
+
+
+@include test-module('Unprefix Plugin') {
+  @include test('Span') {
+    $config: ('context': 'wide');
+    @include assert-equal(
+      span(6, $config),
+      susy-span(6, $config),
+      'Unprefixed span() returns same result as susy-span()');
+  }
+
+  @include test('Gutter') {
+    $config: ('gutters': 0.5);
+    @include assert-equal(
+      gutter(6, $config),
+      susy-gutter(6, $config),
+      'Unprefixed gutter() returns same result as susy-gutter()');
+  }
+
+  @include test('Nested') {
+    $config: ('columns': (1 1 2 3 5 8 13));
+    @include assert-equal(
+      nested('last' 4, $config),
+      susy-nested('last' 4, $config),
+      'Unprefixed nested() returns same result as susy-nested()');
+  }
+}

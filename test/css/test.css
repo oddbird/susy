@@ -262,9 +262,25 @@
   -result: PASS;
   -description: "Returns a sub-slice of asymmetrical columns"; }
 
+/* # Unprefix Plugin ---------- */
+/* Span */
+[data-module="Unprefix Plugin"] [data-test="Span"] .assert-equal {
+  -result: PASS;
+  -description: "Unprefixed span() returns same result as susy-span()"; }
+
+/* Gutter */
+[data-module="Unprefix Plugin"] [data-test="Gutter"] .assert-equal {
+  -result: PASS;
+  -description: "Unprefixed gutter() returns same result as susy-gutter()"; }
+
+/* Nested */
+[data-module="Unprefix Plugin"] [data-test="Nested"] .assert-equal {
+  -result: PASS;
+  -description: "Unprefixed nested() returns same result as susy-nested()"; }
+
 /* # SUMMARY ---------- */
-/* 49 Tests: */
-/*  - 49 Passed */
+/* 52 Tests: */
+/*  - 52 Passed */
 /*  - 0 Failed */
 /* -------------------- */
 

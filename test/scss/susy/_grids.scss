@@ -6,8 +6,8 @@
   @include test('Simple span') {
     @include assert-equal(
       susy-span(3),
-      percentage(su(3) / su-sum(susy-get('columns'))),
-      'Simple span is calculated correctly using column defaults');
+      percentage(3.5 / 4.75),
+      'Simple span is calculated correctly using defaults');
   }
 
   @include test('Span with location') {
@@ -15,9 +15,7 @@
 
     @include assert-equal(
       susy-span(3 at 2),
-      percentage(
-        su(3, 2, $columns: susy-get('columns')) / su-sum(susy-get('columns'))
-      ),
+      percentage(9.5 / 13),
       'Span with location is calculated correctly using column defaults');
 
     $susy: () !global;
@@ -43,7 +41,7 @@
     ) !global;
 
     @include assert-equal(
-      susy-span(2, ('math': 'static')),
+      susy-span(2),
       9em,
       'Static math returns length based on column-width');
 
@@ -63,7 +61,7 @@
   @include test('Gutters with custom config') {
     $config: (
       'columns': 12,
-      'context': 'wide',
+      'container-spread': 'wide',
     );
 
     @include assert-equal(

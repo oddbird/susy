@@ -1,38 +1,86 @@
 // Grids
 // =====
 // - su [function]
+// - su-span [function]
 // - su-count [function]
 // - su-sum [function]
 // - su-slice [function]
 // - su-is-symmetrical [function]
 
 
-/// Get the sum of any column-slice,
-/// in order to determine the width of any span
+/// Get a usable span length in either relative or static units
 ///
 /// @group su
 ///
 /// @param {Number} $span -
-///   TBA
-/// @param {Number} $location -
-///   TBA
+///   The number of grid columns to span
+/// @param {Number | List} $columns -
+///   The number of available columns in the grid
+/// @param {Float} $gutters -
+///   The ratio of a gutter to a column
+/// @param {String} $spread -
+///   The spread of a span across adjacent gutters:
+///   either `narrow` (0), `wide` (1), or `wider` (2)
+/// @param {Number} $location [null] -
+///   Optional position of span among full set of asymmetrical columns
+/// @param {Length} $column-width [null] -
+///   The width of one column-unit (for calculating static output)
+/// @param {String} $container-spread [$spread] -
+///   The spread of a container across adjacent gutters:
+///   either `narrow` (0), `wide` (1), or `wider` (2)
+///   (only used for relative output)
+///
+/// @return {Length} -
+///   Return a usable span length in either relative or static units
+@function su (
+  $span,
+  $columns,
+  $gutters,
+  $spread,
+  $location: null,
+  $column-width: null,
+  $container-spread: $spread
+) {
+  $span: su-span($span, $columns, $gutters, $spread, $location);
+
+  @if $column-width {
+    $column-width: su-valid-column-width($column-width);
+    @return ($span * $column-width);
+  }
+
+  $container-spread: su-valid-spread($container-spread);
+  $container: su-sum($columns, $gutters, $container-spread, $validate: false);
+  @return percentage($span / $container);
+}
+
+
+/// Get the sum of any column-slice,
+/// to determine the width of any span
+/// in abstract grid-units
+///
+/// @group su
+///
+/// @param {Number} $span -
+///   The number of grid columns to span
 /// @param {Number | List} $columns -
 ///   The number of columns in the grid
 /// @param {Float} $gutters -
 ///   The ratio of a gutter based on a column
 /// @param {String} $spread -
 ///   Either `narrow`, `wide` or `wider`
-/// @param {Bool} $validate -
+/// @param {Number} $location [null] -
+///   Optional position of span among full set of asymmetrical columns
+/// @param {Bool} $validate [true] -
 ///   Check that arguments are valid before proceeding
 ///
 /// @return {Number} -
 ///   Return the total sum of column units in a layout
-@function su (
+@function su-span (
   $span,
+  $columns,
+  $gutters,
+  $spread,
   $location: null,
-  $columns: su-get('columns'),
-  $gutters: su-get('gutters'),
-  $spread: su-get('spread'),
   $validate: true
 ) {
   @if $validate {
@@ -42,7 +90,9 @@
     $spread: su-valid-spread($spread);
   }
 
-  $span: su-slice($span, $location, $columns, $validate: false);
+  @if not su-is-symmetrical($columns, $validate: false) {
+    $span: su-slice($span, $columns, $location, $validate: false);
+  }
 
   @return su-sum($span, $gutters, $spread, $validate: false);
 }
@@ -52,15 +102,15 @@
 ///
 /// @group su
 ///
-/// @param {List | Number} $columns [su-get('columns')] -
+/// @param {List | Number} $columns -
 ///   Total number of columns, or list of asymmetrical columns
-/// @param {Bool} $validate -
+/// @param {Bool} $validate [true] -
 ///   Check that arguments are valid before proceeding
 ///
 /// @return {Number} -
 ///   Return the number of columns in a grid
 @function su-count (
-  $columns: su-get('columns'),
+  $columns,
   $validate: true
 ) {
   @if $validate {
@@ -79,21 +129,21 @@
 ///
 /// @group su
 ///
-/// @param {List | Number} $columns [su-get('columns')] -
+/// @param {List | Number} $columns -
 ///   Total number of columns, or list of asymmetrical columns
-/// @param {Float} $gutters [su-get('gutters')] -
+/// @param {Float} $gutters -
 ///   The ratio of a gutter compared to 1 column-unit
-/// @param {String | false} $spread [su-get('spread')] -
+/// @param {String | false} $spread -
 ///   Either `narrow`, `wide`, or `wider`
-/// @param {Bool} $validate -
+/// @param {Bool} $validate [true] -
 ///   Check that arguments are valid before proceeding
 ///
 /// @return {Number} -
 ///   Return the total sum of column-units in a grid
 @function su-sum (
-  $columns: su-get('columns'),
-  $gutters: su-get('gutters'),
-  $spread: su-get('spread'),
+  $columns,
+  $gutters,
+  $spread,
   $validate: true
 ) {
   @if $validate {
@@ -125,48 +175,44 @@
 ///
 /// @param {Number} $span -
 ///   The number of grid columns to span
+/// @param {Number | List} $columns -
+///   Total number of columns, or list of asymmetrical columns available
 /// @param {Number} $location -
 ///   Optional position of span among full set of asymmetrical columns
-/// @param {Number | List} $columns [su-get('columns')] -
-///   Total number of columns, or list of asymmetrical columns available
-/// @param {Bool} $validate -
+/// @param {Bool} $validate [true] -
 ///   Check that arguments are valid before proceeding
 ///
 /// @return {List} -
 ///   Subset of columns at given location
 @function su-slice (
   $span,
-  $location: null,
-  $columns: su-get('columns'),
+  $columns,
+  $location,
   $validate: true
 ) {
+  @if su-is-symmetrical($columns, $validate) {
+    @error 'The `su-slice` function is not needed for symmetrical grids';
+  }
+
   @if $validate {
     $span: su-valid-span($span);
-    $columns: su-valid-columns($columns);
-  }
-
-  @if not su-is-symmetrical($columns, $validate: false) {
     $location: su-valid-location($span, $location, $columns, $validate: false);
-    $floor: floor($span);
-    $sub-columns: ();
-
-    @for $i from $location to ($location + $floor) {
-      $sub-columns: append($sub-columns, nth($columns, $i));
-    }
-
-    @if $floor != $span {
-      $remainder: $span - $floor;
-      $column: $location + $floor;
-      $sub-columns: append($sub-columns, nth($columns, $column) * $remainder);
-    }
-
-    @return $sub-columns;
-  } @else if $location {
-    @warn '$location value `#{$location}` is not needed for symmetrical grids, '
-      + 'and will be ignored.';
   }
 
-  @return $span;
+  $floor: floor($span);
+  $sub-columns: ();
+
+  @for $i from $location to ($location + $floor) {
+    $sub-columns: append($sub-columns, nth($columns, $i));
+  }
+
+  @if $floor != $span {
+    $remainder: $span - $floor;
+    $column: $location + $floor;
+    $sub-columns: append($sub-columns, nth($columns, $column) * $remainder);
+  }
+
+  @return $sub-columns;
 }
 
 
@@ -174,15 +220,15 @@
 ///
 /// @group su
 ///
-/// @param {List | Number} $columns [su-get('columns')] -
+/// @param {List | Number} $columns -
 ///   Total number of columns, or list of asymmetrical columns
-/// @param {Bool} $validate -
+/// @param {Bool} $validate [true] -
 ///   Check that arguments are valid before proceeding
 ///
 /// @return {Bool} -
 ///   Return `true` if the grid is symmetrical, otherwise `false`
 @function su-is-symmetrical (
-  $columns: su-get('columns'),
+  $columns,
   $validate: true
 ) {
   @if $validate {

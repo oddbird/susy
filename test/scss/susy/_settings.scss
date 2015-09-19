@@ -3,13 +3,19 @@
 
 
 @include test-module('Susy Settings [function]') {
-  $defaults: map-merge($su-defaults, $susy-defaults);
 
   @include test('Default configuration') {
+    $susy: (
+      'column-width': 320px,
+      'spread': null,
+    ) !global;
+
     @include assert-equal(
       susy-settings(),
-      $defaults,
+      map-merge($susy-defaults, $susy),
       'Returns merged map of Susy default config settings');
+
+    $susy: () !global;
   }
 
   @include test('Configuration overrides') {
@@ -17,7 +23,7 @@
 
     @include assert-equal(
       susy-settings($override),
-      map-merge($defaults, $override),
+      map-merge($susy-defaults, $override),
       'Returns merged map of Susy defaults with custom overrides');
   }
 }
@@ -45,15 +51,8 @@
 
   @include test('Get value from defaults') {
     @include assert-equal(
-      susy-get('math'),
-      map-get($susy-defaults, 'math'),
-      'Susy-get and map-get should return the same value');
-  }
-
-  @include test('Get value from Su defaults') {
-    @include assert-equal(
-      susy-get('columns'),
-      map-get($su-defaults, 'columns'),
+      susy-get('container-spread'),
+      map-get($susy-defaults, 'container-spread'),
       'Susy-get and map-get should return the same value');
   }
 

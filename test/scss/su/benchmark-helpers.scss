@@ -11,23 +11,15 @@
   $su-valid-gutters: su-valid-gutters(1/4);
 
   $su-valid-spread: su-valid-spread('wider');
-  $su-valid-spread: su-valid-spread('monkey');
+  $su-valid-spread: su-valid-spread(-1);
 
   $su-valid-span: su-valid-span(0.75);
   $su-valid-span: su-valid-span(12);
+
+  $su-valid-column-width: susy-valid-column-width(4em);
 
   $su-valid-location: su-valid-location(2, 3, 1 2 3 5 8);
   $su-valid-location: su-valid-location(2, 'first', 2 4 6 8);
   $su-valid-location: su-valid-location(2, 'last', 2 4 6 8);
   $su-valid-location: su-valid-location(2, null, 12);
-
-  // Settings
-  $su: (
-    'columns': 320,
-    'spread': null,
-  );
-
-  $su-get: su-get('columns');
-  $su-get: su-get('spread');
-  $su-get: su-get('gutters');
 }

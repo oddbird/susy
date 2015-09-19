@@ -52,20 +52,12 @@
 
   $columns: map-get($config, 'columns');
   $gutters: map-get($config, 'gutters');
-  $location: map-get($config, 'location');
   $spread: map-get($config, 'spread');
+  $location: map-get($config, 'location');
+  $width: map-get($config, 'column-width');
+  $container: map-get($config, 'container-spread');
 
-  $span: su($span, $location, $columns, $gutters, $spread);
-
-  @if (map-get($config, 'math') == 'fluid') {
-    $context: map-get($config, 'context');
-    $container: su-sum($columns, $gutters, $context);
-    @return percentage($span / $container);
-  }
-
-  $column-width: map-get($config, 'column-width');
-  $column-width: susy-valid-column-width($column-width);
-  @return ($span * $column-width);
+  @return su($span, $columns, $gutters, $spread, $location, $width, $container);
 }
 
 
@@ -91,10 +83,10 @@
 ) {
   $config: susy-settings($config);
   $gutters: map-get($config, 'gutters');
-  $context: map-get($config, 'context');
+  $container: map-get($config, 'container-spread');
   $columns: $nested or map-get($config, 'columns');
 
-  $container: su-sum($columns, $gutters, $context);
+  $container: su-sum($columns, $gutters, $container);
   @return percentage($gutters / $container);
 }
 
@@ -128,13 +120,13 @@
   $location: map-get($global, 'location');
   $span: map-get($global, 'span');
 
-  @if not $location {
-    @error 'Asymmetrical grids always require a location.';
-  }
-
   @if su-is-symmetrical($columns) {
     @error 'The `susy-nested` function is not needed for symmetrical grids';
   }
 
-  @return su-slice($span, $location, $columns);
+  @if not $location {
+    @error 'Asymmetrical grids always require a location.';
+  }
+
+  @return su-slice($span, $columns, $location);
 }

@@ -1,44 +1,20 @@
 // Su Grid Tests
 // =============
-// [1] Tests that output warnings can be toggled on/off.
 
 
-@include test-module('Su [function]') {
+@include test-module('Su Span [function]') {
   @include test('Symmetrical') {
     @include assert-equal(
-      su(5, null, 8, 0.25, 'narrow'),
+      su-span(5, 8, 0.25, 'narrow'),
       6,
       'Symmetrical output is equal to the column-sum of the span');
   }
 
   @include test('Asymmetrical') {
     @include assert-equal(
-      su(3, 2, 1 3 2 4 2, 0.25, 'wider'),
+      su-span(3, 1 3 2 4 2, 0.25, 'wider', 2),
       10,
       'Asymmetrical output is equal to the column-sum of a subset slice');
-  }
-}
-
-
-@include test-module('Su Is Symmetrical [function]') {
-  @include test('Symmetrical') {
-    @include assert-true(
-      su-is-symmetrical(3),
-      'Numbers represent a symmetrical grid');
-  }
-
-  @include test('Asymmetrical') {
-    @include assert-false(
-      su-is-symmetrical(1 1 2 3 5 8),
-      'Lists of numbers represent an asymmetrical grid');
-  }
-
-  @include test('Asymmetrical [one-column]') {
-    $list: (4,);
-
-    @include assert-false(
-      su-is-symmetrical($list),
-      'Single-item lists represent a (dumb) asymmetrical grid');
   }
 }
 
@@ -70,21 +46,21 @@
 
   @include test('Calculate the total units in an asymmetrical grid') {
     @include assert-equal(
-      su-sum(1 2 3 1 2, 0.25),
+      su-sum(1 2 3 1 2, 0.25, 'narrow'),
       10,
       'Returns combined column and gutter units');
   }
 
   @include test('Handle fraction spans') {
     @include assert-equal(
-      su-sum(1/4),
+      su-sum(1/4, 0.25, 'narrow'),
       1/4,
       'No fractional gutters are added to fraction spans');
   }
 
   @include test('Handle fraction spans > 1') {
     @include assert-equal(
-      su-sum(2.5),
+      su-sum(2.5, 0.25, 'narrow'),
       3,
       'No fractional gutters are added to fraction spans');
   }
@@ -92,34 +68,40 @@
 
 
 @include test-module('Su Slice [function]') {
-  @include test('Slice a symmetrical grid') {
-    @include assert-equal(
-      su-slice(8, null, 3),
-      8,
-      'Slice should equal $span, no matter what the $location or $columns');
-  }
-
   @include test('Slice an asymmetrical grid') {
     @include assert-equal(
-      su-slice(3, 3, 1 1 2 3 5 8),
+      su-slice(3, 1 1 2 3 5 8, 3),
       2 3 5,
       'Returns subset of asymmetrical columns based on span and location');
   }
 
   @include test('Slice an asymmetrical grid with fractions') {
     @include assert-equal(
-      su-slice(2.5, 1, 2 4 6 8),
+      su-slice(2.5, 2 4 6 8, 1),
       2 4 3,
       'Slice a fraction of an asymmetrical column');
   }
+}
 
-  // Warning Tests [1]
-  @if $run-tests-with-warnings {
-    @include test('Slice a symmetrical grid with location') {
-      @include assert-equal(
-        su-slice(3, 'LOCATION FAIL TEST', 12),
-        3,
-        'Location in symmetrical grid returns slice with warning');
-    }
+
+@include test-module('Su Is Symmetrical [function]') {
+  @include test('Symmetrical') {
+    @include assert-true(
+      su-is-symmetrical(3),
+      'Numbers represent a symmetrical grid');
+  }
+
+  @include test('Asymmetrical') {
+    @include assert-false(
+      su-is-symmetrical(1 1 2 3 5 8),
+      'Lists of numbers represent an asymmetrical grid');
+  }
+
+  @include test('Asymmetrical [one-column]') {
+    $list: (4,);
+
+    @include assert-false(
+      su-is-symmetrical($list),
+      'Single-item lists represent a (dumb) asymmetrical grid');
   }
 }

@@ -57,9 +57,11 @@ $susy: () !default;
 ///   The spread of a container around edge gutters:
 ///   either `narrow` (none), `wide` (one), or `wider` (two)
 $susy-defaults: (
-  'math': 'fluid',
+  'columns': 4,
+  'gutters': 0.25,
+  'spread': 'narrow',
+  'container-spread': 'narrow',
   'column-width': null,
-  'context': 'narrow',
 );
 
 
@@ -76,9 +78,7 @@ $susy-defaults: (
 @function susy-settings (
   $overrides: ()
 ) {
-  $susy-settings: map-merge($susy-defaults, $susy);
-  $su-settings: map-merge($su-defaults, $su);
-  $settings: map-merge($su-settings, $susy-settings);
+  $settings: map-merge($susy-defaults, $susy);
 
   @if length($overrides) > 0 {
     @return map-merge($settings, $overrides);

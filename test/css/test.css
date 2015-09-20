@@ -215,10 +215,15 @@
   -description: "Static math returns length based on column-width"; }
 
 /* # Susy Gutter [function] ---------- */
-/* Simple gutters */
-[data-module="Susy Gutter [function]"] [data-test="Simple gutters"] .assert-equal {
+/* Fluid gutters */
+[data-module="Susy Gutter [function]"] [data-test="Fluid gutters"] .assert-equal {
   -result: PASS;
   -description: "Gutters are calculated as a percentage of context"; }
+
+/* Static gutters */
+[data-module="Susy Gutter [function]"] [data-test="Static gutters"] .assert-equal {
+  -result: PASS;
+  -description: "Gutters are calculated as a fraction of column-width"; }
 
 /* Gutters with custom config */
 [data-module="Susy Gutter [function]"] [data-test="Gutters with custom config"] .assert-equal {
@@ -248,8 +253,8 @@
   -description: "Unprefixed nested() returns same result as susy-nested()"; }
 
 /* # SUMMARY ---------- */
-/* 46 Tests: */
-/*  - 46 Passed */
+/* 47 Tests: */
+/*  - 47 Passed */
 /*  - 0 Failed */
 /* -------------------- */
 

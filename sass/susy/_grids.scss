@@ -61,7 +61,8 @@
 }
 
 
-/// Function to compute a gutter for a column
+/// Get the width of a gutter
+/// in your current context.
 ///
 /// @group grids
 ///
@@ -71,7 +72,8 @@
 ///   Optional map of Susy grid configuration settings
 ///
 /// @return {Length} -
-///   Fluid gutter width as `%` of available space
+///   The width of a gutter as `%` of current context,
+///   or in the units defined by `column-width` when available.
 ///
 /// @example scss - Add gutters before or after an element
 ///   .foo {
@@ -83,10 +85,15 @@
 ) {
   $config: susy-settings($config);
   $gutters: map-get($config, 'gutters');
-  $container: map-get($config, 'container-spread');
-  $columns: $nested or map-get($config, 'columns');
+  $column-width: map-get($config, 'column-width');
 
-  $container: su-sum($columns, $gutters, $container);
+  @if $column-width {
+    @return $column-width * $gutters;
+  }
+
+  $columns: $nested or map-get($config, 'columns');
+  $container-spread: map-get($config, 'container-spread');
+  $container: su-sum($columns, $gutters, $container-spread);
   @return percentage($gutters / $container);
 }
 

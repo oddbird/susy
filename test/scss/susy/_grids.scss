@@ -51,11 +51,22 @@
 
 
 @include test-module('Susy Gutter [function]') {
-  @include test('Simple gutters') {
+  @include test('Fluid gutters') {
     @include assert-equal(
       susy-gutter(13),
       1.5625%,
       'Gutters are calculated as a percentage of context');
+  }
+
+  @include test('Static gutters') {
+    $susy: ('column-width': 4em) !global;
+
+    @include assert-equal(
+      susy-gutter(),
+      1em,
+      'Gutters are calculated as a fraction of column-width');
+
+    $susy: () !global;
   }
 
   @include test('Gutters with custom config') {

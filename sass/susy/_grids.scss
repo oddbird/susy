@@ -19,15 +19,15 @@
 ///   Shorthand expression to define the width of the span.
 ///   Contains a unitless number for column-span,
 ///   'of $n' for available grid columns [optional],
-///   'at $n' for spanning asymmetrical grids [optional],
+///   'at $n' for location on asymmetrical grids [optional],
 ///   and 'narrow', 'wide', or 'wider' for defining the spread
 ///   over available gutters (none, one, or two)
 /// @param {Map} $config [()] -
 ///   Optional map of Susy grid configuration settings
 ///
 /// @return {Length} -
-///   Return either a fluid `%` value when `math` setting is `fluid`
-///   or an explicit length if `math` is static
+///   Fluid `%` length when no `column-width` is given,
+///   or a static length in the same units as `column-width`
 ///
 /// @example scss - Span half the grid
 ///   .foo
@@ -53,11 +53,11 @@
   $columns: map-get($config, 'columns');
   $gutters: map-get($config, 'gutters');
   $spread: map-get($config, 'spread');
-  $location: map-get($config, 'location');
   $width: map-get($config, 'column-width');
   $container: map-get($config, 'container-spread');
+  $location: map-get($config, 'location');
 
-  @return su($span, $columns, $gutters, $spread, $location, $width, $container);
+  @return su($span, $columns, $gutters, $spread, $width, $container, $location);
 }
 
 
@@ -65,13 +65,13 @@
 ///
 /// @group grids
 ///
-/// @param {Integer | List} $nested [null] -
+/// @param {Number | List} $nested [null] -
 ///   Optional columns in a nested context
 /// @param {Map} $config [()] -
 ///   Optional map of Susy grid configuration settings
 ///
 /// @return {Length} -
-///   Return a fluid gutter width as `%` of available space
+///   Fluid gutter width as `%` of available space
 ///
 /// @example scss - Add gutters before or after an element
 ///   .foo {
@@ -105,7 +105,7 @@
 ///   Optional map of Susy grid configuration settings
 ///
 /// @return {List} -
-///   Return a subset list of asymmetrical columns.
+///   Subset list of nested asymmetrical columns
 ///
 /// @example scss - Span a specific segment of asymmetrical grid
 ///   $context: susy-nested(3 at 3 of (1 2 3 5 8)); // returns `(3 5 8)`

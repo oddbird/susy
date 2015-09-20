@@ -12,10 +12,11 @@
 ///
 /// @access private
 ///
-/// @param {List | Number} $columns - Columns
+/// @param {Number | List} $columns -
+///   The number of available columns in the grid
 ///
-/// @return {List | Number | Null} -
-///   Return `$columns` input if valid, or `error`
+/// @return {Number | List} -
+///   `$columns` input if valid, otherwise `error`
 @function su-valid-columns (
   $columns
 ) {
@@ -37,10 +38,11 @@
 ///
 /// @access private
 ///
-/// @param {List | Number} $gutter - Gutter
+/// @param {Float} $gutters -
+///   The ratio of a gutter to a column
 ///
-/// @return {List | Number | Null} -
-///   Return `$gutter` if valid, or `null`
+/// @return {Number} -
+///   `$gutters` if valid, otherwise `error`
 @function su-valid-gutters (
   $gutters
 ) {
@@ -65,7 +67,8 @@
 ///   either `narrow` (0), `wide` (1), or `wider` (2)
 ///
 /// @return {Number} -
-///   Either `-1` for `narrow`, `0` for `wide`, or `1` for `wider` (if valid)
+///   Numeric representation of `$spread` value if valid,
+///   otherwise `error`
 @function su-valid-spread (
   $spread
 ) {
@@ -93,7 +96,7 @@
 ///   The number of grid-columns to be spanned
 ///
 /// @return {Integer} -
-///   Numeric grid column position (1-indexed), `null`, or `error`
+///   `$span` value if valid, otherwise `error`
 @function su-valid-span (
   $span
 ) {
@@ -114,10 +117,10 @@
 /// @access private
 ///
 /// @param {Length} $column-width -
-///   The width of one column-unit, using any CSS units
+///   The width of one column in any CSS units
 ///
 /// @return {Length | Null} -
-///   Return `$columns-width` input if valid, or throw an error
+///   `$columns-width` value if valid, otherwise `error`
 @function su-valid-column-width (
   $column-width
 ) {
@@ -140,15 +143,16 @@
 ///
 /// @param {Number} $span -
 ///   The number of grid-columns to be spanned
-/// @param {String} $location -
-///   The starting column position of a span
-/// @param {Integer} $columns [susy-get('columns')] -
-///   Number of columns in the grid
+/// @param {Integer | String} $location -
+///   The starting (1-indexed) column position of a span
+/// @param {Number | List} $columns -
+///   The number of available columns in the grid
 /// @param {Bool} $validate -
 ///   Check that arguments are valid before proceeding
 ///
 /// @return {Integer} -
-///   Numeric grid column position (1-indexed), `null`, or `error`
+///   Numeric representation of `$location` value if valid,
+///   otherwise `error`
 @function su-valid-location (
   $span,
   $location,

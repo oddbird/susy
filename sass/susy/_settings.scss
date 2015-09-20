@@ -5,39 +5,35 @@
 // - susy-get [function]
 
 
-/// User custom configuration for Susy
+/// Custom user configuration for Susy
 ///
 /// @group config
 ///
 /// @type Map
 ///
-/// @see $su-defaults
 /// @see $susy-defaults
 ///
-/// @prop {Integer} columns [4] -
-///   The number of columns in the grid
+/// @prop {Number | List} columns [4] -
+///   The number of available columns in the grid
 /// @prop {Float} gutters [0.25] -
-///   The ratio of a gutter based on a column
-/// @prop {String} math ['fluid'] -
-///   Either `fluid` (percentiles) or `static`
-///   (any unit can be used for `column-width`)
+///   The ratio of a gutter to a column
 /// @prop {Length | null} column-width [null] -
-///   Only relevant when `math` option is set to `static`
+///   The width of a column in any units,
+///   or `null` for a fluid (`%`-based) grid
 /// @prop {String} spread ['narrow'] -
-///   The spread of an element across edge gutters:
+///   The spread of an element across adjacent gutters:
 ///   either `narrow` (none), `wide` (one), or `wider` (two)
-/// @prop {String} context ['narrow'] -
-///   The spread of a container around edge gutters:
+/// @prop {String} container-spread ['narrow'] -
+///   The spread of a container around adjacent gutters:
 ///   either `narrow` (none), `wide` (one), or `wider` (two)
 ///
 /// @example scss - All available options (to their default value)
 ///   $susy: (
-///     'columns': 12,
-///     'gutters': 1/4,
-///     'math': 'fluid',
+///     'columns': 4,
+///     'gutters': 0.25,
 ///     'column-width': null,
 ///     'spread': 'narrow',
-///     'context': 'narrow',
+///     'container-spread': 'narrow',
 ///   );
 $susy: () !default;
 
@@ -48,24 +44,29 @@ $susy: () !default;
 ///
 /// @type Map
 ///
-/// @prop {String} math ['fluid'] -
-///   Either `fluid` (percentiles) or `static`
-///   (any unit can be used for `column-width`)
+/// @prop {Number | List} columns [4] -
+///   The number of available columns in the grid
+/// @prop {Float} gutters [0.25] -
+///   The ratio of a gutter to a column
 /// @prop {Length | null} column-width [null] -
-///   Only relevant when `math` option is set to `static`
-/// @prop {String} context ['narrow'] -
-///   The spread of a container around edge gutters:
+///   The width of a column in any units,
+///   or `null` for a fluid (`%`-based) grid
+/// @prop {String} spread ['narrow'] -
+///   The spread of an element across adjacent gutters:
+///   either `narrow` (none), `wide` (one), or `wider` (two)
+/// @prop {String} container-spread ['narrow'] -
+///   The spread of a container around adjacent gutters:
 ///   either `narrow` (none), `wide` (one), or `wider` (two)
 $susy-defaults: (
   'columns': 4,
   'gutters': 0.25,
+  'column-width': null,
   'spread': 'narrow',
   'container-spread': 'narrow',
-  'column-width': null,
 );
 
 
-/// Return a combined map of Susy settings
+/// Get a combined map of Susy settings
 ///
 /// @group config
 ///
@@ -74,7 +75,7 @@ $susy-defaults: (
 ///
 /// @return {Map} -
 ///   Combined map of Susy configuration settings, in order of specificity:
-///   `$overrides`, `$susy`, `$susy-defaults`, `$su`, `$su-defaults`
+///   `$overrides`, `$susy`, then `$susy-defaults`
 @function susy-settings (
   $overrides: ()
 ) {
@@ -97,7 +98,7 @@ $susy-defaults: (
 ///
 /// @return {*} -
 ///   Value mapped to `$key` in the configuration maps, in order of specificity:
-///   `$susy`, `$susy-defaults`, `$su`, `$su-defaults`
+///   `$susy`, then `$susy-defaults`
 @function susy-get (
   $key
 ) {

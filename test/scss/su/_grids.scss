@@ -2,6 +2,22 @@
 // =============
 
 
+@include test-module ('Su [function]') {
+  @include test('Fluid') {
+    @include assert-equal(
+      su(2, 4, 0.25, 'narrow', null, 'wide'),
+      percentage(2.25/5),
+      'Returns fluid span if no column-width is given');
+  }
+
+  @include test('Static') {
+    @include assert-equal(
+      su(2, 4, 0.25, 'narrow', 4em, 'wide'),
+      2.25*4em,
+      'Returns static span in same units as column-width');
+  }
+}
+
 @include test-module('Su Span [function]') {
   @include test('Symmetrical') {
     @include assert-equal(

@@ -59,6 +59,17 @@
   -result: PASS;
   -description: "Null location is valid for symmetrical grids"; }
 
+/* # Su [function] ---------- */
+/* Fluid */
+[data-module="Su [function]"] [data-test="Fluid"] .assert-equal {
+  -result: PASS;
+  -description: "Returns fluid span if no column-width is given"; }
+
+/* Static */
+[data-module="Su [function]"] [data-test="Static"] .assert-equal {
+  -result: PASS;
+  -description: "Returns static span in same units as column-width"; }
+
 /* # Su Span [function] ---------- */
 /* Symmetrical */
 [data-module="Su Span [function]"] [data-test="Symmetrical"] .assert-equal {
@@ -182,11 +193,6 @@
   -result: PASS;
   -description: "Span, keyword location, and columns are properly mapped"; }
 
-/* Unknown values */
-[data-module="Susy Span Parser [function]"] [data-test="Unknown values"] .assert-equal {
-  -result: PASS;
-  -description: "Unknown values are ignored and reported as a warning"; }
-
 /* # Susy Span [function] ---------- */
 /* Simple span */
 [data-module="Susy Span [function]"] [data-test="Simple span"] .assert-equal {
@@ -242,8 +248,8 @@
   -description: "Unprefixed nested() returns same result as susy-nested()"; }
 
 /* # SUMMARY ---------- */
-/* 45 Tests: */
-/*  - 45 Passed */
+/* 46 Tests: */
+/*  - 46 Passed */
 /*  - 0 Failed */
 /* -------------------- */
 

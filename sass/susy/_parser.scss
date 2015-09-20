@@ -8,10 +8,16 @@
 /// @access private
 ///
 /// @param {List} $shorthand -
-///   Shorthand for describing the width of a span
+///   Shorthand expression to define the width of the span.
+///   Contains a unitless number for column-span,
+///   'of $n' for available grid columns [optional],
+///   'at $n' for location on asymmetrical grids [optional],
+///   and 'narrow', 'wide', or 'wider' for defining the spread
+///   over available gutters (none, one, or two)
 ///
-/// @return {Map} - Return a map with shorthand parsed into possible
-///   `span`, `location`, `columns`, and `spread` keys
+/// @return {Map} -
+///   Map of span settings (`span`, `location`, `columns`, and `spread`)
+///   parsed from shorthand input
 @function susy-span-parser (
   $shorthand
 ) {
@@ -24,9 +30,10 @@
     'wide': 'spread',
     'wider': 'spread',
   );
-  $return: ();
+  $span-error: 'Not able to determine column-span from';
+  $parse-error: 'Unknown span property:';
+  $parsed: ();
   $span: null;
-  $invalid: ();
 
   @for $i from 1 through length($shorthand) {
     $item: nth($shorthand, $i);
@@ -35,40 +42,32 @@
     @if ($type == 'string') {
       @if map-has-key($options, $item) {
         $item: (map-get($options, $item): $item);
-        $return: map-merge($return, $item);
+        $parsed: map-merge($parsed, $item);
+      } @else if not $span {
+        @error '#{$span-error} `#{$shorthand}`';
       } @else if ($item == 'at') {
-        $span: $span or 'error';
         $next: nth($shorthand, $i + 1);
-        $return: map-merge($return, ('location': $next));
+        $parsed: map-merge($parsed, ('location': $next));
       } @else if ($item == 'of') {
-        $span: $span or 'error';
         $next: nth($shorthand, $i + 1);
-        $return: map-merge($return, ('columns': $next));
+        $parsed: map-merge($parsed, ('columns': $next));
       } @else {
-        $invalid: append($invalid, $item);
+        @error '#{$parse-error} #{$item}';
       }
     } @else if ($type == 'number') or ($type == 'list') {
       @if ($type == 'number') and not $span {
         $span: $item;
-      } @else {
-        $previous: nth($shorthand, $i - 1);
-
-        @if not index(('at', 'of'), $previous) {
-          $invalid: append($invalid, $item);
-        }
+      } @else if not index(('at', 'of'), nth($shorthand, $i - 1)) {
+        @error '#{$parse-error} #{$item}';
       }
     } @else {
-      $invalid: append($invalid, $item);
+      @error '#{$parse-error} #{$item}';
     }
   }
 
-  @if ($span == 'error') or not $span {
-    @error 'Not able to determine column-span from `#{$shorthand}`';
+  @if not $span {
+    @error '#{$span-error} `#{$shorthand}`';
   }
 
-  @if (length($invalid) > 0) {
-    @warn 'Unknown span properties will be ignored: `#{inspect($invalid)}`';
-  }
-
-  @return map-merge($return, ('span': $span));
+  @return map-merge($parsed, ('span': $span));
 }

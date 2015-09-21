@@ -6,7 +6,7 @@
 
 @include test-module('Unprefix Plugin') {
   @include test('Span') {
-    $config: ('context': 'wide');
+    $config: ('container-spread': 'wide');
     @include assert-equal(
       span(6, $config),
       susy-span(6, $config),

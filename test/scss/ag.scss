@@ -124,14 +124,14 @@ h3 {
 
 $susy: (
   'columns': 10,
-  'context': 'wide',
+  'container-spread': 'wide',
 );
 
 .symmetrical {
   .ag {
     align-items: stretch;
     display: flex;
-    padding: 0 susy-gutter($config: ('context': 'wider'))/2;
+    padding: 0 susy-gutter($config: ('container-spread': 'wider'))/2;
   }
 
   .grid-element {

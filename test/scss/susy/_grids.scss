@@ -23,7 +23,6 @@
 
   @include test('Span with spread') {
     $susy: (
-      'math': 'static',
       'column-width': 4em,
     ) !global;
 

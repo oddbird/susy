@@ -42,22 +42,9 @@
   $span,
   $config: ()
 ) {
-  @if length($span) > 1 {
-    $span-map: susy-span-parser($span);
-    $config: map-merge($config, $span-map);
-    $span: map-get($config, 'span');
-  }
+  $input: susy-settings($config, susy-span-parser($span));
 
-  $config: susy-settings($config);
-
-  $columns: map-get($config, 'columns');
-  $gutters: map-get($config, 'gutters');
-  $spread: map-get($config, 'spread');
-  $width: map-get($config, 'column-width');
-  $container: map-get($config, 'container-spread');
-  $location: map-get($config, 'location');
-
-  @return su($span, $columns, $gutters, $spread, $width, $container, $location);
+  @return su($input...);
 }
 
 
@@ -83,17 +70,18 @@
   $nested: null,
   $config: ()
 ) {
-  $config: susy-settings($config);
-  $gutters: map-get($config, 'gutters');
-  $column-width: map-get($config, 'column-width');
+  $input: susy-settings($config, ('columns': $nested));
+  $gutters: map-get($input, 'gutters');
+  $column-width: map-get($input, 'column-width');
 
   @if $column-width {
     @return $column-width * $gutters;
   }
 
-  $columns: $nested or map-get($config, 'columns');
-  $container-spread: map-get($config, 'container-spread');
+  $columns: map-get($input, 'columns');
+  $container-spread: map-get($input, 'container-spread');
   $container: su-sum($columns, $gutters, $container-spread);
+
   @return percentage($gutters / $container);
 }
 
@@ -120,20 +108,17 @@
   $span,
   $config: ()
 ) {
-  $local: map-merge($config, susy-span-parser($span));
-  $global: susy-settings($local);
-
-  $columns: map-get($global, 'columns');
-  $location: map-get($global, 'location');
-  $span: map-get($global, 'span');
+  $input: susy-settings($config, susy-span-parser($span));
+  $columns: map-get($input, 'columns');
+  $location: map-get($input, 'location');
 
   @if su-is-symmetrical($columns) {
     @error 'The `susy-nested` function is not needed for symmetrical grids';
-  }
-
-  @if not $location {
+  } @else if not $location {
     @error 'Asymmetrical grids always require a location.';
   }
+
+  $span: map-get($input, 'span');
 
   @return su-slice($span, $columns, $location);
 }

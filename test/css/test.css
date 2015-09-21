@@ -151,6 +151,11 @@
   -result: PASS;
   -description: "Returns merged map of Susy defaults with custom overrides"; }
 
+/* Multiple overrides */
+[data-module="Susy Settings [function]"] [data-test="Multiple overrides"] .assert-equal {
+  -result: PASS;
+  -description: "Returns merged map of Susy defaults with multiple overrides"; }
+
 /* # Susy Get [function] ---------- */
 /* Get value from user settings */
 [data-module="Susy Get [function]"] [data-test="Get value from user settings"] .assert-equal {
@@ -253,8 +258,8 @@
   -description: "Unprefixed nested() returns same result as susy-nested()"; }
 
 /* # SUMMARY ---------- */
-/* 47 Tests: */
-/*  - 47 Passed */
+/* 48 Tests: */
+/*  - 48 Passed */
 /*  - 0 Failed */
 /* -------------------- */
 

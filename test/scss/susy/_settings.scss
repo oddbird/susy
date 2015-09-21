@@ -19,12 +19,22 @@
   }
 
   @include test('Configuration overrides') {
-    $override: ('context': 'wider');
+    $override: ('container-spread': 'wider');
 
     @include assert-equal(
       susy-settings($override),
       map-merge($susy-defaults, $override),
       'Returns merged map of Susy defaults with custom overrides');
+  }
+
+  @include test('Multiple overrides') {
+    $override1: ('container-spread': 'wider');
+    $override2: ('column-width': 4em);
+
+    @include assert-equal(
+      susy-settings($override1, $override2),
+      map-merge(map-merge($susy-defaults, $override1), $override2),
+      'Returns merged map of Susy defaults with multiple overrides');
   }
 }
 

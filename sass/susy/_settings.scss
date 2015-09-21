@@ -70,19 +70,19 @@ $susy-defaults: (
 ///
 /// @group config
 ///
-/// @param {Map} $overrides [()] -
+/// @param {Map | Arglist} $overrides... -
 ///   Optional map override of global configuration settings
 ///
 /// @return {Map} -
 ///   Combined map of Susy configuration settings, in order of specificity:
-///   `$overrides`, `$susy`, then `$susy-defaults`
+///   `$overrides...`, `$susy`, then `$susy-defaults`
 @function susy-settings (
-  $overrides: ()
+  $overrides...
 ) {
   $settings: map-merge($susy-defaults, $susy);
 
-  @if length($overrides) > 0 {
-    @return map-merge($settings, $overrides);
+  @each $config in $overrides {
+    $settings: map-merge($settings, $config);
   }
 
   @return $settings;

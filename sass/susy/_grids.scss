@@ -70,7 +70,7 @@
   $nested: null,
   $config: ()
 ) {
-  $input: susy-settings($config, ('columns': $nested));
+  $input: susy-settings($config);
   $gutters: map-get($input, 'gutters');
   $column-width: map-get($input, 'column-width');
 
@@ -78,7 +78,7 @@
     @return $column-width * $gutters;
   }
 
-  $columns: map-get($input, 'columns');
+  $columns: $nested or map-get($input, 'columns');
   $container-spread: map-get($input, 'container-spread');
   $container: su-sum($columns, $gutters, $container-spread);
 

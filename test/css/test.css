@@ -81,6 +81,11 @@
   -result: PASS;
   -description: "Asymmetrical output is equal to the column-sum of a subset slice"; }
 
+/* Keyword location */
+[data-module="Su Span [function]"] [data-test="Keyword location"] .assert-equal {
+  -result: PASS;
+  -description: "Keyword location is converted before being processed"; }
+
 /* # Su Count [function] ---------- */
 /* Count the columns in a symmetrical grid */
 [data-module="Su Count [function]"] [data-test="Count the columns in a symmetrical grid"] .assert-equal {
@@ -225,6 +230,11 @@
   -result: PASS;
   -description: "Gutters are calculated as a percentage of context"; }
 
+/* Nested gutters */
+[data-module="Susy Gutter [function]"] [data-test="Nested gutters"] .assert-equal {
+  -result: PASS;
+  -description: "Gutters are calculated as a percentage of context"; }
+
 /* Static gutters */
 [data-module="Susy Gutter [function]"] [data-test="Static gutters"] .assert-equal {
   -result: PASS;
@@ -240,6 +250,11 @@
 [data-module="Susy Nested"] [data-test="Asymmetrical slicing"] .assert-equal {
   -result: PASS;
   -description: "Returns a sub-slice of asymmetrical columns"; }
+
+/* Keyword slicing */
+[data-module="Susy Nested"] [data-test="Keyword slicing"] .assert-equal {
+  -result: PASS;
+  -description: "Returns a keyword-slice of columns"; }
 
 /* # Unprefix Plugin ---------- */
 /* Span */
@@ -258,8 +273,8 @@
   -description: "Unprefixed nested() returns same result as susy-nested()"; }
 
 /* # SUMMARY ---------- */
-/* 48 Tests: */
-/*  - 48 Passed */
+/* 51 Tests: */
+/*  - 51 Passed */
 /*  - 0 Failed */
 /* -------------------- */
 

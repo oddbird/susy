@@ -32,6 +32,13 @@
       10,
       'Asymmetrical output is equal to the column-sum of a subset slice');
   }
+
+  @include test('Keyword location') {
+    @include assert-equal(
+      su-span(3, 3 2 4 1 2, 0.25, 'wider', 'first'),
+      10,
+      'Keyword location is converted before being processed');
+  }
 }
 
 

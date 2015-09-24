@@ -51,6 +51,17 @@
 
 @include test-module('Susy Gutter [function]') {
   @include test('Fluid gutters') {
+    $susy: ('container-spread': 'wide') !global;
+
+    @include assert-equal(
+      susy-gutter(),
+      5%,
+      'Gutters are calculated as a percentage of context');
+
+    $susy: () !global;
+  }
+
+  @include test('Nested gutters') {
     @include assert-equal(
       susy-gutter(13),
       1.5625%,
@@ -88,5 +99,12 @@
       susy-nested(3 at 3 of (1 2 3 5 8)),
       3 5 8,
       'Returns a sub-slice of asymmetrical columns');
+  }
+
+  @include test('Keyword slicing') {
+    @include assert-equal(
+      susy-nested('first' 3 of (1 2 3 5 8)),
+      1 2 3,
+      'Returns a keyword-slice of columns');
   }
 }

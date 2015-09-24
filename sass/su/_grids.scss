@@ -93,6 +93,7 @@
   }
 
   @if not su-is-symmetrical($columns, $validate: false) {
+    $location: su-valid-location($span, $location, $columns, $validate: false);
     $span: su-slice($span, $columns, $location, $validate: false);
   }
 

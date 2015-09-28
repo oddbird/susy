@@ -153,6 +153,37 @@ Again, assuming you've already installed Susy,
 it will now be added to the project.
 
 
+Webpack and npm
+------------
+
+Install using npm:
+
+.. code-block:: bash
+
+    npm install susy --save
+
+
+Make sure you have `sass-loader <https://github.com/jtangelder/sass-loader>`_ installed and enabled in your `webpack` configuration:
+
+.. code-block:: js
+    
+    // webpack.config.js
+    loaders: [
+      {
+        test: /\.scss$/,
+        loader: 'style!css!sass'
+      }
+    ]
+
+
+Start using Susy:
+
+.. code-block:: sass
+
+    /* app.scss */
+    @import "node_modules/susy/sass/susy";
+
+
 Manual Start
 ------------
 

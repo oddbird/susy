@@ -160,13 +160,13 @@ Install using npm:
 
 .. code-block:: bash
 
-    npm install susy --save
+    npm install susy sass-loader --save-dev
 
 
-Make sure you have `sass-loader <https://github.com/jtangelder/sass-loader>`_ installed and enabled in your `webpack` configuration:
+Make sure you have `sass-loader <https://github.com/jtangelder/sass-loader>`_ enabled in your `webpack` configuration:
 
 .. code-block:: js
-    
+
     // webpack.config.js
     loaders: [
       {

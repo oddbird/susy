@@ -181,7 +181,7 @@ Start using Susy:
 .. code-block:: sass
 
     /* app.scss */
-    @import "node_modules/susy/sass/susy";
+    @import "~susy/sass/susy";
 
 
 Manual Start

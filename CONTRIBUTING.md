@@ -67,7 +67,7 @@ but don't take it personally —
 we often do that to each other as well.
 
 We use [Compass](http://compass-style.org)
-and [True](http://ericsuzanne.com/true) in development,
+and [True](http://miriamsuzanne.com/true) in development,
 managed through [bundler](http://bundler.io/),
 to test Susy and make sure everything is working properly.
 

@@ -2,7 +2,7 @@
   "name": "susy",
   "version": "3.0.0",
   "description": "Sass power-tools for web layout.",
-  "author": "Eric M. Suzanne <eric@oddbird.net>",
+  "author": "E. Miriam Suzanne <miriam@oddbird.net>",
   "main": "sass/_susy.scss",
   "repository": {
     "type": "git",

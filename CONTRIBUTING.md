@@ -6,6 +6,7 @@ ideas, code, issues, and sites.
 Have you built a [site using Susy](http://susy.oddbird.net/sites-using-susy/)?
 [Add it to the list](https://github.com/ericam/susysite/tree/master/content/sites-using-susy.rst).
 
+We are committed to making participation in this project a harassment-free experience for everyone. Please reference the [contributor code of conduct](CODE_OF_CONDUCT.md) for our contributor expectations.
 
 Having issues?
 --------------

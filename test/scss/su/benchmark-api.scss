@@ -4,10 +4,10 @@
 @import '../../../sass/su/manifest';
 
 @for $i from 1 through 500 {
-  $test: su(2, 1 1 1 1, 0.25, 'narrow', 'wide');
-  $test: su(2, 4em 4em 4em 4em, 0.25, 'narrow', 'wide');
-  $test: su(2 3, 2 4 6 8, 0.25, 'wide', 'wide');
-  $test: su(50%, 2 4 6 8, 0.25, 'wide', 'wider');
+  $test: su-span(2, 1 1 1 1, 0.25, 'narrow', 'wide');
+  $test: su-span(2, 4em 4em 4em 4em, 0.25, 'narrow', 'wide');
+  $test: su-span(2 3, 2 4 6 8, 0.25, 'wide', 'wide');
+  $test: su-span(50%, 2 4 6 8, 0.25, 'wide', 'wider');
 
   $test: su-gutter(4, 1em, 'wide');
   $test: su-gutter(2 4 6, 0.25, 'narrow');

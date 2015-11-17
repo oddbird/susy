@@ -2,37 +2,41 @@
 // =============
 
 
-@include test-module ('Su [function]') {
+// Su Span
+// -------
+@include test-module ('Su Span [function]') {
   @include test('Fluid') {
     @include assert-equal(
-      su(2, 1 1 1 1, 0.25, 'narrow', 'wide'),
+      su-span(2, 1 1 1 1, 0.25, 'narrow', 'wide'),
       percentage(2.25/5),
       'Returns fluid span if no units are given');
   }
 
   @include test('Static') {
     @include assert-equal(
-      su(2, 4em 4em 4em 4em, 0.25, 'narrow', 'wide'),
+      su-span(2, 4em 4em 4em 4em, 0.25, 'narrow', 'wide'),
       8.25em,
       'Returns static span if units are given');
   }
 
   @include test('Explicit column span') {
     @include assert-equal(
-      su(2 3, 2 4 6 8, 0.25, 'wide', 'wide'),
+      su-span(2 3, 2 4 6 8, 0.25, 'wide', 'wide'),
       percentage(5.5/21),
       'Handles explicit column-spans');
   }
 
   @include test('Explicit length span') {
     @include assert-equal(
-      su(50%, 2 4 6 8, 0.25, 'wide', 'wider'),
+      su-span(50%, 2 4 6 8, 0.25, 'wide', 'wider'),
       50%,
       'Handles explicit length-spans');
   }
 }
 
 
+// Su Gutter
+// ---------
 @include test-module('Su Gutter [function]') {
   @include test('Static gutters') {
     @include assert-equal(
@@ -50,6 +54,8 @@
 }
 
 
+// Su Sum
+// ------
 @include test-module('Su Sum [function]') {
   @include test('Calculate the total units in a fluid grid') {
     @include assert-equal(
@@ -83,6 +89,8 @@
 }
 
 
+// Su Slice
+// --------
 @include test-module('Su Slice [function]') {
   @include test('Slice a grid') {
     @include assert-equal(

@@ -57,24 +57,24 @@
   -result: PASS;
   -description: "Final keyword returns calculated position from end"; }
 
-/* # Su [function] ---------- */
+/* # Su Span [function] ---------- */
 /* Fluid */
-[data-module="Su [function]"] [data-test="Fluid"] .assert-equal {
+[data-module="Su Span [function]"] [data-test="Fluid"] .assert-equal {
   -result: PASS;
   -description: "Returns fluid span if no units are given"; }
 
 /* Static */
-[data-module="Su [function]"] [data-test="Static"] .assert-equal {
+[data-module="Su Span [function]"] [data-test="Static"] .assert-equal {
   -result: PASS;
   -description: "Returns static span if units are given"; }
 
 /* Explicit column span */
-[data-module="Su [function]"] [data-test="Explicit column span"] .assert-equal {
+[data-module="Su Span [function]"] [data-test="Explicit column span"] .assert-equal {
   -result: PASS;
   -description: "Handles explicit column-spans"; }
 
 /* Explicit length span */
-[data-module="Su [function]"] [data-test="Explicit length span"] .assert-equal {
+[data-module="Su Span [function]"] [data-test="Explicit length span"] .assert-equal {
   -result: PASS;
   -description: "Handles explicit length-spans"; }
 

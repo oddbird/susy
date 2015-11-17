@@ -54,7 +54,7 @@
 
   $input: map-merge($input, $normalize);
 
-  @return su($input...);
+  @return su-span($input...);
 }
 
 

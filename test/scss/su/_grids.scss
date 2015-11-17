@@ -5,126 +5,96 @@
 @include test-module ('Su [function]') {
   @include test('Fluid') {
     @include assert-equal(
-      su(2, 4, 0.25, 'narrow', null, 'wide'),
+      su(2, 1 1 1 1, 0.25, 'narrow', 'wide'),
       percentage(2.25/5),
-      'Returns fluid span if no column-width is given');
+      'Returns fluid span if no units are given');
   }
 
   @include test('Static') {
     @include assert-equal(
-      su(2, 4, 0.25, 'narrow', 4em, 'wide'),
-      2.25*4em,
-      'Returns static span in same units as column-width');
-  }
-}
-
-@include test-module('Su Span [function]') {
-  @include test('Symmetrical') {
-    @include assert-equal(
-      su-span(5, 8, 0.25, 'narrow'),
-      6,
-      'Symmetrical output is equal to the column-sum of the span');
+      su(2, 4em 4em 4em 4em, 0.25, 'narrow', 'wide'),
+      8.25em,
+      'Returns static span if units are given');
   }
 
-  @include test('Asymmetrical') {
+  @include test('Explicit column span') {
     @include assert-equal(
-      su-span(3, 1 3 2 4 2, 0.25, 'wider', 2),
-      10,
-      'Asymmetrical output is equal to the column-sum of a subset slice');
+      su(2 3, 2 4 6 8, 0.25, 'wide', 'wide'),
+      percentage(5.5/21),
+      'Handles explicit column-spans');
   }
 
-  @include test('Keyword location') {
+  @include test('Explicit length span') {
     @include assert-equal(
-      su-span(3, 3 2 4 1 2, 0.25, 'wider', 'first'),
-      10,
-      'Keyword location is converted before being processed');
+      su(50%, 2 4 6 8, 0.25, 'wide', 'wider'),
+      50%,
+      'Handles explicit length-spans');
   }
 }
 
 
-@include test-module('Su Count [function]') {
-  @include test('Count the columns in a symmetrical grid') {
+@include test-module('Su Gutter [function]') {
+  @include test('Static gutters') {
     @include assert-equal(
-      su-count(12),
-      12,
-      'Input and output should be the same.');
+      su-gutter(4, 1em, 'wide'),
+      1em,
+      'Static gutters are returned directly');
   }
 
-  @include test('Count the columns in an asymmetrical grid') {
+  @include test('Fluid gutters') {
     @include assert-equal(
-      su-count(1 1 2 3 5 8),
-      length(1 1 2 3 5 8),
-      'Output should equal list length.');
+      su-gutter(2 4 6, 0.25, 'narrow'),
+      percentage(0.25/12.5),
+      'Gutters are calculated as a percentage of context');
   }
 }
 
 
 @include test-module('Su Sum [function]') {
-  @include test('Calculate the total units in a symmetrical grid') {
+  @include test('Calculate the total units in a fluid grid') {
     @include assert-equal(
-      su-sum(9, 0.5, 'wider'),
-      14,
+      su-sum(1 1 1, 0.5, 'wider'),
+      5,
       'Returns combined column and gutter units');
   }
 
-  @include test('Calculate the total units in an asymmetrical grid') {
+  @include test('Calculate the total units in a static grid') {
     @include assert-equal(
-      su-sum(1 2 3 1 2, 0.25, 'narrow'),
+      su-sum(1em 2em 3em 1em 2em, 0.25, 'narrow'),
+      10em,
+      'Returns combined column and gutter units');
+  }
+
+  @include test('Handle non-comparable gutters') {
+    @include assert-equal(
+      su-sum(1 2 3 4, 0.5em, 'narrow'),
       10,
-      'Returns combined column and gutter units');
+      'No static gutters are added to fluid grids');
   }
 
-  @include test('Handle fraction spans') {
-    @include assert-equal(
-      su-sum(1/4, 0.25, 'narrow'),
-      1/4,
-      'No fractional gutters are added to fraction spans');
-  }
+  @include test('Handle single-column spans') {
+    $span: (4);
 
-  @include test('Handle fraction spans > 1') {
     @include assert-equal(
-      su-sum(2.5, 0.25, 'narrow'),
-      3,
-      'No fractional gutters are added to fraction spans');
+      su-sum($span, 0.5, 'narrow'),
+      4,
+      'No static gutters are added to fluid grids');
   }
 }
 
 
 @include test-module('Su Slice [function]') {
-  @include test('Slice an asymmetrical grid') {
+  @include test('Slice a grid') {
     @include assert-equal(
-      su-slice(3, 1 1 2 3 5 8, 3),
-      2 3 5,
+      su-slice(3, 1em 1em 2em 3em 5em 8em, 3),
+      2em 3em 5em,
       'Returns subset of asymmetrical columns based on span and location');
   }
 
-  @include test('Slice an asymmetrical grid with fractions') {
+  @include test('Slice a grid with fractions') {
     @include assert-equal(
       su-slice(2.5, 2 4 6 8, 1),
       2 4 3,
       'Slice a fraction of an asymmetrical column');
-  }
-}
-
-
-@include test-module('Su Is Symmetrical [function]') {
-  @include test('Symmetrical') {
-    @include assert-true(
-      su-is-symmetrical(3),
-      'Numbers represent a symmetrical grid');
-  }
-
-  @include test('Asymmetrical') {
-    @include assert-false(
-      su-is-symmetrical(1 1 2 3 5 8),
-      'Lists of numbers represent an asymmetrical grid');
-  }
-
-  @include test('Asymmetrical [one-column]') {
-    $list: (4,);
-
-    @include assert-false(
-      su-is-symmetrical($list),
-      'Single-item lists represent a (dumb) asymmetrical grid');
   }
 }

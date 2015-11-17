@@ -4,16 +4,14 @@
 @import '../../../sass/susy';
 
 @for $i from 1 through 500 {
-  $susy-span: susy-span(3);
-  $susy-span: susy-span(3 at 2);
-  $susy-span: susy-span(6 'wide');
-  $susy-span: susy-span(2, ('column-width': 5em));
+  $test: susy-span(3);
+  $test: susy-span(3 at 2 'wider');
+  $test: susy-span(3 'wide' of 12 x 10em);
+  $test: susy-span(first (2em 4em 6em) of (6 4 2 8));
 
-  $config: (
-    'columns': 12,
-    'container-spread': 'wide',
-  );
+  $test: susy-gutter(13);
+  $test: susy-gutter($config: ('gutters': 1em));
 
-  $susy-gutter: susy-gutter(13);
-  $susy-gutter: susy-gutter(4, $config);
+  $test: susy-slice(3 at 3 of (1 2 3 5 8));
+  $test: susy-slice('first' 3 of (1 2 3 5 8));
 }

@@ -25,13 +25,11 @@
     "exports": "eyeglass-exports.js"
   },
   "scripts": {
-    "test": "npm run --silent test-libsass && npm run --silent test-ruby",
+    "test": "npm run test-libsass && npm run test-ruby",
     "test-libsass": "node_modules/.bin/mocha",
     "test-ruby": "rake test",
     "benchmark": "cd test && ./benchmark.sh",
-    "lint": "scss-lint sass && scss-lint test/scss",
-    "lint-staged": "git diff --cached --diff-filter=ACMRTUXB --pretty='format:' --name-only | grep -E .scss$ | xargs scss-lint --config .scss-lint.yml",
-    "pre-commit": "npm run --silent test && npm run --silent lint"
+    "lint": "scss-lint sass && scss-lint test/scss"
   },
   "license": "BSD-3-Clause",
   "bugs": {

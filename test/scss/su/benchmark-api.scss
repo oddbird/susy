@@ -4,21 +4,19 @@
 @import '../../../sass/su/manifest';
 
 @for $i from 1 through 500 {
-  $su-span: su-span(5, 8, 0.25, 'narrow', null);
-  $su-span: su-span(3, 1 3 2 4 2, 0.25, 'wider', 2);
+  $test: su(2, 1 1 1 1, 0.25, 'narrow', 'wide');
+  $test: su(2, 4em 4em 4em 4em, 0.25, 'narrow', 'wide');
+  $test: su(2 3, 2 4 6 8, 0.25, 'wide', 'wide');
+  $test: su(50%, 2 4 6 8, 0.25, 'wide', 'wider');
 
-  $su-is-symmetrical: su-is-symmetrical(3);
-  $su-is-symmetrical: su-is-symmetrical(1 1 2 3 5 8);
-  $su-is-symmetrical: su-is-symmetrical((4,));
+  $test: su-gutter(4, 1em, 'wide');
+  $test: su-gutter(2 4 6, 0.25, 'narrow');
 
-  $su-count: su-count(12);
-  $su-count: su-count(1 1 2 3 5 8);
+  $test: su-sum(1 1 1, 0.5, 'wider');
+  $test: su-sum(1em 2em 3em 1em 2em, 0.25, 'narrow');
+  $test: su-sum(1 2 3 4, 0.5em, 'narrow');
+  $test: su-sum((4), 0.5, 'narrow');
 
-  $su-sum: su-sum(9, 0.5, 'wider');
-  $su-sum: su-sum(1 2 3 1 2, 0.25, 0);
-  $su-sum: su-sum(1/4, 0.25, 'narrow');
-  $su-sum: su-sum(2.5, 0.25, 0);
-
-  $su-slice: su-slice(3, 1 1 2 3 5 8, 3);
-  $su-slice: su-slice(2.5, 2 4 6 8, 1);
+  $test: su-slice(3, 1em 1em 2em 3em 5em 8em, 3);
+  $test: su-slice(2.5, 2 4 6 8, 1);
 }

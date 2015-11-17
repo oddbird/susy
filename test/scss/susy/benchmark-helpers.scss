@@ -5,15 +5,15 @@
 
 @for $i from 1 through 500 {
   $susy: (
-    'column-width': 320px,
+    'gutters': 20px,
     'spread': null,
   );
 
-  $susy-settings: susy-settings();
-  $susy-settings: susy-settings(('container-spread': 'wide'));
+  $test: susy-settings();
+  $test: susy-settings(('container-spread': 'wide'));
 
-  $susy-get: susy-get('column-width');
-  $susy-get: susy-get('spread');
-  $susy-get: susy-get('container-spread');
-  $susy-get: susy-get('columns');
+  $test: susy-get('gutters');
+  $test: susy-get('spread');
+  $test: susy-get('container-spread');
+  $test: susy-get('columns');
 }

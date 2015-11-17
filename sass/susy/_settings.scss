@@ -14,12 +14,11 @@
 /// @see $susy-defaults
 ///
 /// @prop {Number | List} columns [4] -
-///   The number of available columns in the grid
+///   A description of the columns in a grid,
+///   their number, realtive sizes (if asymmetrical),
+///   and optional static widths
 /// @prop {Float} gutters [0.25] -
 ///   The ratio of a gutter to a column
-/// @prop {Length | null} column-width [null] -
-///   The width of a column in any units,
-///   or `null` for a fluid (`%`-based) grid
 /// @prop {String} spread ['narrow'] -
 ///   The spread of an element across adjacent gutters:
 ///   either `narrow` (none), `wide` (one), or `wider` (two)
@@ -45,12 +44,11 @@ $susy: () !default;
 /// @type Map
 ///
 /// @prop {Number | List} columns [4] -
-///   The number of available columns in the grid
+///   A description of the columns in a grid,
+///   their number, realtive sizes (if asymmetrical),
+///   and optional static widths
 /// @prop {Float} gutters [0.25] -
 ///   The ratio of a gutter to a column
-/// @prop {Length | null} column-width [null] -
-///   The width of a column in any units,
-///   or `null` for a fluid (`%`-based) grid
 /// @prop {String} spread ['narrow'] -
 ///   The spread of an element across adjacent gutters:
 ///   either `narrow` (none), `wide` (one), or `wider` (two)
@@ -60,7 +58,6 @@ $susy: () !default;
 $susy-defaults: (
   'columns': 4,
   'gutters': 0.25,
-  'column-width': null,
   'spread': 'narrow',
   'container-spread': 'narrow',
 );

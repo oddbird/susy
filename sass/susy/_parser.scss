@@ -1,9 +1,10 @@
 // Parser
 // ======
-// - susy-span-parser [function]
+// - susy-parse [function]
+// - susy-normalize [function]
 
 
-/// Internal parser for the span expression
+/// Parse shorthand span expression
 ///
 /// @access private
 ///
@@ -16,11 +17,14 @@
 ///   over available gutters (none, one, or two)
 ///
 /// @return {Map} -
-///   Map of span settings (`span`, `location`, `columns`, and `spread`)
+///   Map of span settings
+///   (`span`, `location`, `columns`, `spread`, `container-spread`)
 ///   parsed from shorthand input
-@function susy-span-parser (
+@function susy-parse (
   $shorthand
 ) {
+  $span-error: 'Not able to determine column-span from `#{$shorthand}`';
+  $parse-error: 'Unknown span property:';
   $options: (
     'first': 'location',
     'last': 'location',
@@ -30,38 +34,68 @@
     'wide': 'spread',
     'wider': 'spread',
   );
-  $span-error: 'Not able to determine column-span from `#{$shorthand}`';
-  $parse-error: 'Unknown span property:';
-  $parsed: ();
+
+  $return: ();
   $span: null;
+  $columns: null;
+
+  $of: false;
+  $next: false;
 
   @for $i from 1 through length($shorthand) {
     $item: nth($shorthand, $i);
     $type: type-of($item);
 
-    @if ($type == 'string') {
-      @if map-has-key($options, $item) {
-        $item: (map-get($options, $item): $item);
-        $parsed: map-merge($parsed, $item);
-      } @else if not $span {
-        @error $span-error;
-      } @else if ($item == 'at') {
-        $next: nth($shorthand, $i + 1);
-        $parsed: map-merge($parsed, ('location': $next));
-      } @else if ($item == 'of') {
-        $next: nth($shorthand, $i + 1);
-        $parsed: map-merge($parsed, ('columns': $next));
+    @if $next {
+      @if $next == 'column-width' {
+        @if $type == 'number' and not unitless($item) {
+          @if $columns {
+            $columns: join($columns, ('x' $item));
+          } @else {
+            $span: join($span, ('x' $item));
+          }
+        } @else {
+          @error '`#{item}` is not a valid column-width';
+        }
       } @else {
-        @error '#{$parse-error} #{$item}';
+        $return: map-merge($return, ($next: $item));
       }
-    } @else if ($type == 'number') or ($type == 'list') {
-      @if ($type == 'number') and not $span {
-        $span: $item;
-      } @else if not index(('at', 'of'), nth($shorthand, $i - 1)) {
-        @error '#{$parse-error} #{$item}';
-      }
+
+      $next: false;
     } @else {
-      @error '#{$parse-error} #{$item}';
+      @if ($type == 'string') {
+        @if map-has-key($options, $item) {
+          $setting: map-get($options, $item);
+
+          @if ($setting == 'spread') and $of {
+            $return: map-merge($return, ('container-spread': $item));
+          } @else {
+            $return: map-merge($return, ($setting: $item));
+          }
+        } @else if $item == 'all' {
+          $span: 'all';
+        } @else if not $span {
+          @error $span-error;
+        } @else if ($item == 'at') {
+          $next: 'location';
+        } @else if ($item == 'x') {
+          $next: 'column-width';
+        } @else if ($item == 'of') {
+          $of: true;
+        } @else {
+          @error '#{$parse-error} `#{$item}`';
+        }
+      } @else if ($type == 'number') or ($type == 'list') {
+        @if not $span {
+          $span: $item;
+        } @else if $of {
+          $columns: $item;
+        } @else {
+          @error '#{$parse-error} `#{$item}`';
+        }
+      } @else {
+        @error '#{$parse-error} `#{$item}`';
+      }
     }
   }
 
@@ -69,5 +103,44 @@
     @error $span-error;
   }
 
-  @return map-merge($parsed, ('span': $span));
+  @if $columns {
+    $return: map-merge($return, ('columns': $columns));
+  }
+
+  @return map-merge($return, ('span': $span));
 }
+
+
+/// Normalize columns for Su
+///
+/// @access private
+///
+/// @param {Number | List} $columns -
+///   Any valid `$columns` setting, in short or long form
+///
+/// @return {List} -
+///   A list of column-widths, normalized for Su
+@function susy-normalize-columns(
+  $columns
+) {
+  $return: ();
+
+  @if (type-of($columns) == 'number') and unitless($columns) {
+    @for $i from 1 through $columns {
+      $return: append($return, 1);
+    }
+
+    @return $return;
+  } @else if index($columns, 'x') and length($columns) == 3 {
+    $width: nth($columns, -1);
+
+    @for $i from 1 through nth($columns, 1) {
+      $return: append($return, $width);
+    }
+
+    @return $return;
+  }
+
+  @return $columns;
+}
+

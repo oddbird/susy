@@ -4,22 +4,17 @@
 @import '../../../sass/su/manifest';
 
 @for $i from 1 through 500 {
-  $su-valid-columns: su-valid-columns(3);
-  $su-valid-columns: su-valid-columns(1 2 4 2);
+  $test: su-valid-columns(3);
+  $test: su-valid-columns(1 2 4 2);
+  $test: su-valid-columns(10cm 200mm 45cm 230mm);
 
-  $su-valid-gutters: su-valid-gutters(0.75);
-  $su-valid-gutters: su-valid-gutters(1/4);
+  $test: su-valid-gutters(0.75);
+  $test: su-valid-gutters(3em);
 
-  $su-valid-spread: su-valid-spread('wider');
-  $su-valid-spread: su-valid-spread(-1);
+  $test: su-valid-spread('wider');
+  $test: su-valid-spread(-1);
 
-  $su-valid-span: su-valid-span(0.75);
-  $su-valid-span: su-valid-span(12);
-
-  $su-valid-column-width: susy-valid-column-width(4em);
-
-  $su-valid-location: su-valid-location(2, 3, 1 2 3 5 8);
-  $su-valid-location: su-valid-location(2, 'first', 2 4 6 8);
-  $su-valid-location: su-valid-location(2, 'last', 2 4 6 8);
-  $su-valid-location: su-valid-location(2, null, 12);
+  $test: su-valid-location(2, 3, 1 2 3 5 8);
+  $test: su-valid-location(2, 'first', 2 4 6 8);
+  $test: su-valid-location(2, 'last', 2 4 6 8);
 }

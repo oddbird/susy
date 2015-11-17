@@ -21,30 +21,34 @@
     $susy: () !global;
   }
 
-  @include test('Span with spread') {
+  @include test('Static math') {
     $susy: (
-      'column-width': 4em,
+      'columns': 6 x 4em,
+      'gutters': 0.25em,
     ) !global;
 
     @include assert-equal(
-      susy-span(6 'wide'),
-      susy-span(6) + susy-span(1/4),
+      susy-span(2),
+      8.25em,
+      'Static math returns length based on column-width');
+
+    $susy: () !global;
+  }
+
+  @include test('Span with spread') {
+    @include assert-equal(
+      susy-span(3 'wide' of 12 x 10em),
+      30.5em + 0.25em,
       'Spread adds gutter width to usual span');
 
     $susy: () !global;
   }
 
-  @include test('Static math') {
-    $susy: (
-      'column-width': 4em,
-    ) !global;
-
+  @include test('Explicit span') {
     @include assert-equal(
-      susy-span(2),
-      9em,
-      'Static math returns length based on column-width');
-
-    $susy: () !global;
+      susy-span(first (2em 4em 6em) of (6 4 2 8)),
+      12.5em,
+      'Span accepts explicit columns');
   }
 }
 
@@ -69,12 +73,12 @@
   }
 
   @include test('Static gutters') {
-    $susy: ('column-width': 4em) !global;
+    $susy: ('gutters': 1em) !global;
 
     @include assert-equal(
       susy-gutter(),
       1em,
-      'Gutters are calculated as a fraction of column-width');
+      'Static gutters are returned directly');
 
     $susy: () !global;
   }
@@ -93,17 +97,17 @@
 }
 
 
-@include test-module('Susy Nested') {
-  @include test('Asymmetrical slicing') {
+@include test-module('Susy slice [function]') {
+  @include test('Numerical slicing') {
     @include assert-equal(
-      susy-nested(3 at 3 of (1 2 3 5 8)),
+      susy-slice(3 at 3 of (1 2 3 5 8)),
       3 5 8,
-      'Returns a sub-slice of asymmetrical columns');
+      'Returns a sub-slice of columns');
   }
 
   @include test('Keyword slicing') {
     @include assert-equal(
-      susy-nested('first' 3 of (1 2 3 5 8)),
+      susy-slice('first' 3 of (1 2 3 5 8)),
       1 2 3,
       'Returns a keyword-slice of columns');
   }

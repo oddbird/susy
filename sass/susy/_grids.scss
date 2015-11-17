@@ -42,7 +42,17 @@
   $span,
   $config: ()
 ) {
-  $input: susy-settings($config, susy-span-parser($span));
+  $input: susy-settings($config, susy-parse($span));
+
+  $span: map-get($input, 'span');
+  $columns: map-get($input, 'columns');
+
+  $normalize: (
+    'span': if(type-of($span) == 'number', $span, susy-normalize-columns($span)),
+    'columns': susy-normalize-columns($columns),
+  );
+
+  $input: map-merge($input, $normalize);
 
   @return su($input...);
 }
@@ -53,7 +63,7 @@
 ///
 /// @group grids
 ///
-/// @param {Number | List} $nested [null] -
+/// @param {Number | List} $context [null] -
 ///   Optional columns in a nested context
 /// @param {Map} $config [()] -
 ///   Optional map of Susy grid configuration settings
@@ -67,58 +77,46 @@
 ///     margin-left: gutter();
 ///   }
 @function susy-gutter (
-  $nested: null,
+  $context: susy-get('columns'),
   $config: ()
 ) {
-  $input: susy-settings($config);
-  $gutters: map-get($input, 'gutters');
-  $column-width: map-get($input, 'column-width');
+  $config: susy-settings($config, ('columns': $context));
+  $config: map-merge($config, (
+    'columns': susy-normalize-columns(map-get($config, 'columns')),
+  ));
+  $config: map-remove($config, 'spread');
 
-  @if $column-width {
-    @return $column-width * $gutters;
-  }
-
-  $columns: $nested or map-get($input, 'columns');
-  $container-spread: map-get($input, 'container-spread');
-  $container: su-sum($columns, $gutters, $container-spread);
-
-  @return percentage($gutters / $container);
+  @return su-gutter($config...);
 }
 
 
-/// Return a subset of asymmetrical columns
-/// to use for nesting context.
+/// Return a sub-slice of columns to use in a nested context.
 ///
-/// @group grids
+/// @group advanced
 ///
 /// @param {List} $span -
-///   Shorthand expression to define the width of the subset span.
-///   Contains a unitless number for column-span,
-///   'at $n', 'first', or 'last' for location on the grid,
+///   Shorthand expression to define the width of the subset span —
+///   Contains a span,
+///   'at $n', 'first', or 'last' for location,
 ///   and optional 'of $n' for available grid columns.
 /// @param {Map} $config [()] -
-///   Optional map of Susy grid configuration settings
+///   Optional map of Susy grid configuration settings.
 ///
 /// @return {List} -
-///   Subset list of nested asymmetrical columns
+///   Subset list of columns for use in a nested context.
 ///
-/// @example scss - Span a specific segment of asymmetrical grid
-///   $context: susy-nested(3 at 3 of (1 2 3 5 8)); // returns `(3 5 8)`
-@function susy-nested (
+/// @example scss - Span a specific segment of the grid
+///   $context: susy-slice(3 at 3 of (1 2 3 5 8)); // returns `(3 5 8)`
+@function susy-slice (
   $span,
   $config: ()
 ) {
-  $input: susy-settings($config, susy-span-parser($span));
-  $columns: map-get($input, 'columns');
-  $location: map-get($input, 'location');
+  $input: susy-settings($config, susy-parse($span));
+  $output: (
+    'span': map-get($input, 'span'),
+    'columns': map-get($input, 'columns'),
+    'location': map-get($input, 'location'),
+  );
 
-  @if su-is-symmetrical($columns) {
-    @error 'The `susy-nested` function is not needed for symmetrical grids';
-  } @else if not $location {
-    @error 'Asymmetrical grids always require a location.';
-  }
-
-  $span: map-get($input, 'span');
-
-  @return su-slice($span, $columns, $location);
+  @return su-slice($output...);
 }

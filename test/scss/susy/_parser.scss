@@ -2,12 +2,12 @@
 // =================
 
 
-@include test-module('Susy Span Parser [function]') {
+@include test-module('Susy Parse [function]') {
   @include test('Simple grid span') {
     $expect: ('span': 5);
 
     @include assert-equal(
-      susy-span-parser(5),
+      susy-parse(5),
       $expect,
       'A single unitless number is returned as span only');
   }
@@ -19,7 +19,7 @@
     );
 
     @include assert-equal(
-      susy-span-parser(5 of 12),
+      susy-parse(5 of 12),
       $expect,
       'Span and symmetrical columns are properly mapped');
   }
@@ -31,7 +31,7 @@
     );
 
     @include assert-equal(
-      susy-span-parser(5 'wide'),
+      susy-parse(5 'wide'),
       $expect,
       'Span and spread are properly mapped');
   }
@@ -44,7 +44,7 @@
     );
 
     @include assert-equal(
-      susy-span-parser(4 of (1 2 3 5 8) at 2),
+      susy-parse(4 of (1 2 3 5 8) at 2),
       $expect,
       'Span, location, and asymmetrical columns are properly mapped');
   }
@@ -57,8 +57,94 @@
     );
 
     @include assert-equal(
-      susy-span-parser('last' 4 of (1 2 3 5 8)),
+      susy-parse('last' 4 of (1 2 3 5 8)),
       $expect,
       'Span, keyword location, and columns are properly mapped');
+  }
+
+  @include test('Span all') {
+    $expect: (
+      'span': 'all',
+      'columns': (1 2 3 5 8),
+    );
+
+    @include assert-equal(
+      susy-parse(all of (1 2 3 5 8)),
+      $expect,
+      'Span "all" is properly mapped');
+  }
+
+  @include test('Span with column-width') {
+    $expect: (
+      'span': 3 'x' 140px,
+      'spread': 'wide',
+    );
+
+    @include assert-equal(
+      susy-parse(3 x 140px 'wide'),
+      $expect,
+      'Span with column-width is properly mapped');
+  }
+
+  @include test('Columns with column-width') {
+    $expect: (
+      'span': 3,
+      'columns': 12 'x' 140px,
+    );
+
+    @include assert-equal(
+      susy-parse(3 of 12 x 140px),
+      $expect,
+      'Columns with column-width is properly mapped');
+  }
+
+  @include test('Container-spread') {
+    $expect: (
+      'span': 3,
+      'columns': 12 'x' 140px,
+      'container-spread': 'wide',
+    );
+
+    @include assert-equal(
+      susy-parse(3 of 12 'wide' x 140px),
+      $expect,
+      'Container-spread is properly mapped');
+  }
+
+  @include test('Explicit asymmetrical span') {
+    $span: (1 2 3 4);
+    $expect: (
+      'span': $span,
+      'columns': 12,
+    );
+
+    @include assert-equal(
+      susy-parse($span of 12),
+      $expect,
+      'Explicit asymmetrical span is parsed properly');
+  }
+}
+
+
+@include test-module('Susy Normalize Columns [function') {
+  @include test('Fluid shorthand') {
+    @include assert-equal(
+      susy-normalize-columns(4),
+      1 1 1 1,
+      'Fluid shorthand is converted to longform column description.');
+  }
+
+  @include test('Static shorthand') {
+    @include assert-equal(
+      susy-normalize-columns(4 x 25em),
+      25em 25em 25em 25em,
+      'Static shorthand is converted to longform column description.');
+  }
+
+  @include test('Longhand') {
+    @include assert-equal(
+      susy-normalize-columns(250px 25px 400px),
+      250px 25px 400px,
+      'Longhand is passed through without changes.');
   }
 }

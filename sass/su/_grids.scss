@@ -24,7 +24,7 @@
 /// @param {0 | 1 | -1 | 'narrow' | 'wide' | 'wider'} $container-spread [$spread] -
 ///   The number of gutters in relation to container-columns:
 ///   either `narrow` (-1), `wide` (0), or `wider` (1).
-/// @param {Integer} $location [null] -
+/// @param {Integer} $location [1] -
 ///   Optional position of sub-span among full set of columns.
 ///
 /// @return {Length} -
@@ -72,7 +72,7 @@
 ///   List of columns in the grid.
 /// @param {Number} $gutters -
 ///   The length of a gutter in column-comparable units.
-/// @param {0 | 1 | -1 | 'narrow' | 'wide' | 'wider'} $spread -
+/// @param {0 | 1 | -1 | 'narrow' | 'wide' | 'wider'} $container-spread -
 ///   The number of gutters in relation to container-columns:
 ///   either `narrow` (-1), `wide` (0), or `wider` (1).
 ///
@@ -84,7 +84,7 @@
   $container-spread
 ) {
   @if (type-of($gutters) == 'number') {
-    @if ($gutters == 0) or (unit($gutters) != '') {
+    @if ($gutters == 0) or (not unitless($gutters)) {
       @return $gutters;
     }
   }
@@ -151,7 +151,7 @@
 ///   The number of grid columns to span.
 /// @param {List} $columns -
 ///   List of columns in the grid.
-/// @param {Number} $location -
+/// @param {Number} $location [1] -
 ///   Starting index of a span in a list of columns.
 /// @param {Bool} $validate [true] -
 ///   Check that arguments are valid before proceeding.

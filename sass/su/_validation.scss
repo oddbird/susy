@@ -52,7 +52,7 @@
 ) {
   $type: type-of($gutters);
 
-  @if $type != 'number' {
+  @if ($type != 'number') {
     $actual: '[#{$type}] `#{inspect($gutters)}`';
     @error '#{$actual} is not a value for $gutters.';
   }

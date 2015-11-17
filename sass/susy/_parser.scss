@@ -47,8 +47,8 @@
     $type: type-of($item);
 
     @if $next {
-      @if $next == 'column-width' {
-        @if $type == 'number' and not unitless($item) {
+      @if ($next == 'column-width') {
+        @if ($type == 'number') and (not unitless($item)) {
           @if $columns {
             $columns: join($columns, ('x' $item));
           } @else {

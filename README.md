@@ -1,7 +1,7 @@
 Power Tools For The Web
 =======================
 
-[![Build Status](https://travis-ci.org/ericam/susy.png?branch=susy-next)](https://travis-ci.org/ericam/susy)
+[![Build Status](https://travis-ci.org/oddbird/susy.png?branch=susy-next)](https://travis-ci.org/oddbird/susy)
 
 Susy is an agnostic set of tools
 for creating powerful, custom layouts.

@@ -4,7 +4,7 @@ Contributing to Susy
 Susy exists because of people contributing
 ideas, code, issues, and sites.
 Have you built a [site using Susy](http://susy.oddbird.net/sites-using-susy/)?
-[Add it to the list](https://github.com/ericam/susysite/tree/master/content/sites-using-susy.rst).
+[Add it to the list](https://github.com/oddbird/susysite/tree/master/content/sites-using-susy.rst).
 
 We are committed to making participation in this project a harassment-free experience for everyone. Please reference the [contributor code of conduct](CODE_OF_CONDUCT.md) for our contributor expectations.
 
@@ -18,7 +18,7 @@ let us know.
 We're always happy to help!
 
 If it looks like a bug,
-post it in the [GitHub issue tracker](https://github.com/ericam/susy/issues).
+post it in the [GitHub issue tracker](https://github.com/oddbird/susy/issues).
 If you're just looking for advice
 on creative uses of Susy,
 maybe [Stack Overflow](http://stackoverflow.com/questions/tagged/susy-sass)
@@ -44,7 +44,7 @@ without the ideas and feature requests
 that people have sent in.
 If you want to do something,
 and don't see a good way to do it,
-[please tell us](https://github.com/ericam/susy/issues)
+[please tell us](https://github.com/oddbird/susy/issues)
 
 
 Fix a bug or typo?
@@ -82,7 +82,7 @@ When submitting a pull request, consider:
 - Make sure the tests are up to date and passing
 - Update the docs
 - Add your changes to the
-  [changelog](https://github.com/ericam/susy/blob/master/docs/changelog.rst).
+  [changelog](https://github.com/oddbird/susy/blob/master/docs/changelog.rst).
 
 
 Documentation

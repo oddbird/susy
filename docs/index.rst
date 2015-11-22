@@ -47,7 +47,7 @@ We're always happy to hear your ideas as well.
 Leave us a note on `GitHub Issues`_,
 or fork our code, and submit a pull request!
 
-.. _GitHub Issues: https://github.com/ericam/susy/issues
+.. _GitHub Issues: https://github.com/oddbird/susy/issues
 
 .. note::
 

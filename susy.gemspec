@@ -13,7 +13,7 @@ Gem::Specification.new do |s|
   s.required_rubygems_version = Gem::Requirement.new(">= 1.2") if s.respond_to? :required_rubygems_version=
 
   # Author Information
-  s.authors = ["E. Miriam Suzanne"]
+  s.authors = ["Miriam Eric Suzanne"]
   s.email = ["miriam@oddbird.net"]
   s.homepage = "http://susy.oddbird.net/"
 

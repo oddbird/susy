@@ -13,7 +13,7 @@
   }
 
   @include test('Single fluid column') {
-    $list: append((), 4);
+    $list: 4;
 
     @include assert-equal(
       su-valid-columns(4),
@@ -29,7 +29,7 @@
   }
 
   @include test('Single static column') {
-    $list: append((), 20em);
+    $list: 20em;
 
     @include assert-equal(
       su-valid-columns(20em),

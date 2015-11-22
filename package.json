@@ -2,11 +2,11 @@
   "name": "susy",
   "version": "3.0.0",
   "description": "Sass power-tools for web layout.",
-  "author": "E. Miriam Suzanne <miriam@oddbird.net>",
+  "author": "Miriam Eric Suzanne <miriam@oddbird.net>",
   "main": "sass/_susy.scss",
   "repository": {
     "type": "git",
-    "url": "git://github.com/ericam/susy.git"
+    "url": "git://github.com/oddbird/susy.git"
   },
   "devDependencies": {
     "mocha": "2.2.5",
@@ -33,6 +33,6 @@
   },
   "license": "BSD-3-Clause",
   "bugs": {
-    "url": "https://github.com/ericam/susy/issues"
+    "url": "https://github.com/oddbird/susy/issues"
   }
 }

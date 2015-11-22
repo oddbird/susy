@@ -14,7 +14,7 @@
 
   @include test('Static') {
     @include assert-equal(
-      su-span(2, 4em 4em 4em 4em, 0.25, 'narrow', 'wide'),
+      su-span(2, 4em 4em 4em 4em, 0.25em, 'narrow', 'wide'),
       8.25em,
       'Returns static span if units are given');
   }
@@ -66,7 +66,7 @@
 
   @include test('Calculate the total units in a static grid') {
     @include assert-equal(
-      su-sum(1em 2em 3em 1em 2em, 0.25, 'narrow'),
+      su-sum(1em 2em 3em 1em 2em, 0.25em, 'narrow'),
       10em,
       'Returns combined column and gutter units');
   }

@@ -8,7 +8,7 @@
 
 // Su Span
 // -------
-/// Get a usable span length in either relative or static units.
+/// Get a usable span width in either relative or static units.
 ///
 /// @group su
 ///
@@ -17,7 +17,7 @@
 /// @param {List} $columns -
 ///   The list of columns available.
 /// @param {Number} $gutters -
-///   The length of a gutter in column-comparable units.
+///   The width of a gutter in column-comparable units.
 /// @param {0 | 1 | -1 | 'narrow' | 'wide' | 'wider'} $spread -
 ///   The number of gutters in relation to span-columns:
 ///   either `narrow` (-1), `wide` (0), or `wider` (1).
@@ -46,19 +46,20 @@
       $location: su-valid-location($span, $location, $columns);
       $span: su-slice($span, $columns, $location, $validate: false);
     } @else {
+      // if you give us e.g. 3em, fine, we'll give it right back
       @return $span;
     }
   }
 
-  $span: su-sum($span, $gutters, $spread, $validate: false);
+  $span-width: su-sum($span, $gutters, $spread, $validate: false);
 
-  @if unitless($span) {
+  @if unitless($span-width) {
     $container-spread: su-valid-spread($container-spread);
     $container: su-sum($columns, $gutters, $container-spread, $validate: false);
-    @return percentage($span / $container);
+    @return percentage($span-width / $container);
   }
 
-  @return $span;
+  @return $span-width;
 }
 
 
@@ -71,13 +72,13 @@
 /// @param {List} $columns -
 ///   List of columns in the grid.
 /// @param {Number} $gutters -
-///   The length of a gutter in column-comparable units.
+///   The width of a gutter in column-comparable units.
 /// @param {0 | 1 | -1 | 'narrow' | 'wide' | 'wider'} $container-spread -
 ///   The number of gutters in relation to container-columns:
 ///   either `narrow` (-1), `wide` (0), or `wider` (1).
 ///
 /// @return {Number} -
-///   The length of one gutter in a grid.
+///   The width of one gutter in a grid.
 @function su-gutter (
   $columns,
   $gutters,
@@ -97,13 +98,15 @@
 // Su Sum
 // ------
 /// Get the total sum of column-units in a layout.
+/// If static-gutter units aren't comparable to column-units,
+/// gutters will be removed from the resulting sum.
 ///
 /// @group su
 ///
 /// @param {List} $columns -
 ///   List of columns in the grid
 /// @param {Number} $gutters -
-///   The length of a gutter in column-comparable units.
+///   The width of a gutter in column-comparable units.
 /// @param {0 | 1 | -1 | 'narrow' | 'wide' | 'wider'} $spread -
 ///   The number of gutters in relation to columns:
 ///   either `narrow` (-1), `wide` (0), or `wider` (1).
@@ -124,20 +127,26 @@
     $spread: su-valid-spread($spread);
   }
 
-  $gutter-sum: (ceil(length($columns)) + $spread) * $gutters;
+  // Error if gutters are fluid and columns are static
+  @if unitless($gutters) and (not unitless(nth($columns, 1))) {
+    @error 'Gutters must have units for a static grid.';
+  }
+
+  // Calculate column-sum
   $column-sum: 0;
 
   @each $column in $columns {
     $column-sum: $column-sum + $column;
   }
 
-  @if comparable($column-sum, $gutter-sum) {
-    @if (unit($column-sum) == unit($gutter-sum)) or not unitless($column-sum) {
-      @return $column-sum + $gutter-sum;
-    }
+  // Gutters are removed from the math if they use non-comparable static units
+  @if (not comparable($column-sum, $gutters))
+    or (unitless($column-sum) and (not unitless($gutters))) {
+    @return $column-sum;
   }
 
-  @return $column-sum;
+  $gutter-sum: (ceil(length($columns)) + $spread) * $gutters;
+  @return $column-sum + $gutter-sum;
 }
 
 

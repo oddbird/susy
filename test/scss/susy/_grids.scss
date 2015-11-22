@@ -36,6 +36,10 @@
   }
 
   @include test('Span with spread') {
+    $susy: (
+      'gutters': 0.25em,
+    ) !global;
+
     @include assert-equal(
       susy-span(3 'wide' of 12 x 10em),
       30.5em + 0.25em,
@@ -45,8 +49,12 @@
   }
 
   @include test('Explicit span') {
+    $config: (
+      'gutters': 0.25em,
+    );
+
     @include assert-equal(
-      susy-span(first (2em 4em 6em) of (6 4 2 8)),
+      susy-span(first (2em 4em 6em) of (6 4 2 8), $config),
       12.5em,
       'Span accepts explicit columns');
   }

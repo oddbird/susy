@@ -20,19 +20,16 @@
 @function su-valid-columns (
   $columns
 ) {
-  $return: ();
   $first: nth($columns, 1);
 
   @each $col in $columns {
-    @if (type-of($col) == 'number') and comparable($col, $first) {
-      $return: append($return, $col);
-    } @else {
+    @if (type-of($col) != 'number') or (not comparable($col, $first)) {
       $actual: '[#{type-of($columns)}] `#{inspect($columns)}`';
       @error '#{$actual} is not a value for $columns.';
     }
   }
 
-  @return $return;
+  @return $columns;
 }
 
 
@@ -96,7 +93,7 @@
 
 // Valid Location
 // --------------
-/// Check that a `location` argument is valid and normailzed,
+/// Check that a `location` argument is valid and normalized,
 /// given the span and available columns.
 ///
 /// @access private

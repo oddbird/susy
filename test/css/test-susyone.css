@@ -35,25 +35,122 @@
   margin-bottom: -4%;
   padding-bottom: 4%; }
 
-/* ### susyone functions ---------- */
-/* - container-outer-width (4 Assertions, 4 Passed, 0 Failed) */
-/* - get-layout (1 Assertions, 1 Passed, 0 Failed) */
-/* - format-nth (4 Assertions, 4 Passed, 0 Failed) */
-/* - columns-width (2 Assertions, 2 Passed, 0 Failed) */
-/* - relative-width (1 Assertions, 1 Passed, 0 Failed) */
-/* - columns (3 Assertions, 3 Passed, 0 Failed) */
-/* - medialayout (4 Assertions, 4 Passed, 0 Failed) */
-/* - is-default-layout (4 Assertions, 4 Passed, 0 Failed) */
-/* - split-columns-value (4 Assertions, 4 Passed, 0 Failed) */
-/* - fix-static-misalignment (2 Assertions, 2 Passed, 0 Failed) */
-/* - gutter (2 Assertions, 2 Passed, 0 Failed) */
-/*
-*/
-/* 11 Tests: */
-/*  - 11 Passed */
-/*  - 0 Failed */
-/*
-*/
+/* # susyone functions ---------- */
+/* container-outer-width */
+[data-module="susyone functions"] [data-test="container-outer-width"] .assert-equal {
+  -result: PASS;
+  -description: "Returns the correct outer width of a default container."; }
+[data-module="susyone functions"] [data-test="container-outer-width"] .assert-equal {
+  -result: PASS;
+  -description: "Returns the correct outer width whith specified columns."; }
+[data-module="susyone functions"] [data-test="container-outer-width"] .assert-equal {
+  -result: PASS;
+  -description: "Returns correct outer width when columns and outerwidth is specified."; }
+[data-module="susyone functions"] [data-test="container-outer-width"] .assert-equal {
+  -result: PASS;
+  -description: "Returns correct outer width when columns and outerwidth is specified."; }
+
+/* get-layout */
+[data-module="susyone functions"] [data-test="get-layout"] .assert-equal {
+  -result: PASS;
+  -description: "Returns correct layout based on min width."; }
+
+/* format-nth */
+[data-module="susyone functions"] [data-test="format-nth"] .assert-equal {
+  -result: PASS;
+  -description: "Returns correct selector for nth-child."; }
+[data-module="susyone functions"] [data-test="format-nth"] .assert-equal {
+  -result: PASS;
+  -description: "Returns correct selector for first-child."; }
+[data-module="susyone functions"] [data-test="format-nth"] .assert-equal {
+  -result: PASS;
+  -description: "Returns correct selector for last-child."; }
+[data-module="susyone functions"] [data-test="format-nth"] .assert-equal {
+  -result: PASS;
+  -description: "Returns correct selector for only child."; }
+
+/* columns-width */
+[data-module="susyone functions"] [data-test="columns-width"] .assert-equal {
+  -result: PASS;
+  -description: "Returns the full width of a grid based on grid settings."; }
+[data-module="susyone functions"] [data-test="columns-width"] .assert-equal {
+  -result: PASS;
+  -description: "Returns the full width of a grid based on custom param."; }
+
+/* relative-width */
+[data-module="susyone functions"] [data-test="relative-width"] .assert-equal {
+  -result: PASS;
+  -description: "Returns width based on percentage of given context."; }
+
+/* columns */
+[data-module="susyone functions"] [data-test="columns"] .assert-equal {
+  -result: PASS;
+  -description: "Returns proper layout."; }
+[data-module="susyone functions"] [data-test="columns"] .assert-equal {
+  -result: PASS;
+  -description: "Returns proper layout."; }
+[data-module="susyone functions"] [data-test="columns"] .assert-equal {
+  -result: PASS;
+  -description: "Returns proper layout."; }
+
+/* medialayout */
+[data-module="susyone functions"] [data-test="medialayout"] .assert-equal {
+  -result: PASS;
+  -description: "Works with three arguments. $min: 30em, $cols: 12, $max: 30em ."; }
+[data-module="susyone functions"] [data-test="medialayout"] .assert-equal {
+  -result: PASS;
+  -description: "Works with one argument for columns."; }
+[data-module="susyone functions"] [data-test="medialayout"] .assert-equal {
+  -result: PASS;
+  -description: "Works with columns and ie support."; }
+[data-module="susyone functions"] [data-test="medialayout"] .assert-equal {
+  -result: PASS;
+  -description: "Works with four arguments for min-width, columns, max-width and IE fallback."; }
+
+/* is-default-layout */
+[data-module="susyone functions"] [data-test="is-default-layout"] .assert-equal {
+  -result: PASS;
+  -description: "Returns false if $media-layout overrides the default layout."; }
+[data-module="susyone functions"] [data-test="is-default-layout"] .assert-equal {
+  -result: PASS;
+  -description: "Returns true if $media-layout matches default coulms."; }
+[data-module="susyone functions"] [data-test="is-default-layout"] .assert-equal {
+  -result: PASS;
+  -description: "Returns true if $media-layout matches default coulms."; }
+[data-module="susyone functions"] [data-test="is-default-layout"] .assert-equal {
+  -result: PASS;
+  -description: "Returns false if $media-layout overrides the default layout."; }
+
+/* split-columns-value */
+[data-module="susyone functions"] [data-test="split-columns-value"] .assert-equal {
+  -result: PASS;
+  -description: "Returns just column count when given two arguments."; }
+[data-module="susyone functions"] [data-test="split-columns-value"] .assert-equal {
+  -result: PASS;
+  -description: "Returns just column count when given one argument."; }
+[data-module="susyone functions"] [data-test="split-columns-value"] .assert-equal {
+  -result: PASS;
+  -description: "Returns column count when spcified."; }
+[data-module="susyone functions"] [data-test="split-columns-value"] .assert-equal {
+  -result: PASS;
+  -description: "Returns column position when specified."; }
+
+/* fix-static-misalignment */
+[data-module="susyone functions"] [data-test="fix-static-misalignment"] .assert-equal {
+  -result: PASS;
+  -description: "Confirm default container is set to magic"; }
+[data-module="susyone functions"] [data-test="fix-static-misalignment"] .assert-equal {
+  -result: PASS;
+  -description: "Confirm custom container-width is accounted for."; }
+
+/* gutter */
+[data-module="susyone functions"] [data-test="gutter"] .assert-equal {
+  -result: PASS;
+  -description: "Return the percentage width of a single gutter in a given 'context'."; }
+[data-module="susyone functions"] [data-test="gutter"] .assert-equal {
+  -result: PASS;
+  -description: "Return a fixed width if style is static."; }
+
 .container {
   *zoom: 1;
   max-width: 59em;
@@ -368,3 +465,9 @@
 .pad {
   padding-left: 20.40816%;
   padding-right: 40.81633%; }
+
+/* # SUMMARY ---------- */
+/* 11 Tests: */
+/*  - 11 Passed */
+/*  - 0 Failed */
+/* -------------------- */

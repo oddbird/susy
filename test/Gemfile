@@ -1,5 +1,5 @@
 source "http://rubygems.org"
 
 gemspec :path => '../'
-gem 'compass', '~> 1.0.1'
-gem 'true', '~> 1.0.1'
+gem 'compass', '~> 1.0.3'
+gem 'true', '~> 2.0.3'

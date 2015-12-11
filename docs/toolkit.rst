@@ -1102,6 +1102,14 @@ and the isolation technique to arrange them on the grid.
     @include gallery(3 of 12);
   }
 
+.. warning::
+
+  The `nth-child` selector
+  `has issues on iOS8 Safari`_.
+  Use `nth-of-type` for iOS8 support.
+
+  .. _has issues on iOS8 Safari: http://stackoverflow.com/questions/26032513/ios8-safari-after-a-pushstate-the-nth-child-selectors-not-works
+
 
 -------------------------------------------------------------------------
 

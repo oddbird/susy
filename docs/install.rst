@@ -84,7 +84,7 @@ Alternatively, add Susy to a current project
 
 
 Bower
-----------------
+-----
 
 .. code-block:: bash
 
@@ -154,7 +154,7 @@ it will now be added to the project.
 
 
 Webpack and npm
-------------
+---------------
 
 Install using npm:
 

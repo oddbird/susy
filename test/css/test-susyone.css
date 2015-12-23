@@ -315,6 +315,20 @@
   margin-left: 8.47458%;
   margin-right: 8.47458%; }
 
+/* ---------------------------------------------------------------------------
+/* Pixel-Values only */
+.container {
+  *zoom: 1;
+  width: 944px;
+  padding-left: 16px;
+  padding-right: 16px;
+  margin-left: auto;
+  margin-right: auto; }
+  .container:after {
+    content: "";
+    display: table;
+    clear: both; }
+
 .isolate {
   margin-right: -100%;
   margin-left: 16.94915%; }

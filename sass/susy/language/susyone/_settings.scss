@@ -42,6 +42,10 @@ $container-style    : magic           !default;
 // and simply apply the border-box-sizing mixin.
 $border-box-sizing  : false           !default;
 
+// Pixel Values only:
+// Make sure only pixel values are set for the container width.
+$pixel-values-only  : false           !default;
+
 // ---------------------------------------------------------------------------
 // IE Settings
 

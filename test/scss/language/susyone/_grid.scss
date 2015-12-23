@@ -73,4 +73,16 @@ $container-style: static;
   $container-width: false !global;
 }
 
+
+/* ---------------------------------------------------------------------------
+/* Pixel-Values only */
+
+$pixel-values-only: true;
+
+.container {
+  @include container;
+}
+
+$pixel-values-only: false;
 $container-style: magic;
+

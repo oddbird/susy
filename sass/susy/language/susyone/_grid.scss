@@ -22,17 +22,33 @@
 //  $columns  : The number of columns in the Grid Layout.
 @mixin set-container-width(
   $columns  : $total-columns,
-  $style    : $container-style
+  $style    : $container-style,
+  $px-vals  : $pixel-values-only
 ){
   $width: container-outer-width($columns);
 
   @if $style == 'static' {
-    @include rem(width, $width);
+    @if $px-vals == true {
+      width: round(convert-length($width, px));
+    } @else {
+      @include rem(width, $width);
+    }
   } @else {
     @if $style == 'fluid' {
-      @if unit($width) == '%' { @include rem(width, $width); }
+      @if unit($width) == '%' {
+        @if $px-vals == true {
+          width: round(convert-length($width, px));
+        } @else {
+          @include rem(width, $width);
+        }
+      }
     } @else {
-      @include rem(max-width, $width);
+      @if $px-vals == true {
+        max-width: round(convert-length($width, px));
+      } @else {
+        @include rem(max-width, $width);
+      }
+
       @include for-legacy-browser(ie,"6") {
         @if unit($width) == 'rem' {
           _width: round(convert-length($width, px));
@@ -48,12 +64,18 @@
 //
 //  $columns  : The number of columns in the container.
 @mixin apply-container(
-  $columns  : $total-columns
+  $columns  : $total-columns,
+  $px-vals  : $pixel-values-only
 ){
   @include pie-clearfix;
   @include set-container-width($columns);
-  @include rem(padding-left, $grid-padding);
-  @include rem(padding-right, $grid-padding);
+  @if $px-vals == true {
+    padding-left: round(convert-length($grid-padding, px));
+    padding-right: round(convert-length($grid-padding, px));
+  } @else {
+    @include rem(padding-left, $grid-padding);
+    @include rem(padding-right, $grid-padding);
+  }
   margin: { left: auto; right: auto; }
 }
 

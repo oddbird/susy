@@ -1,6 +1,13 @@
 Changelog
 =========
 
+2.2.10 - Jan 7 2016
+-------------------
+
+- Add `$pixel-values-only` setting to SusyOne,
+  for turning off Compass `rem` support.
+
+
 2.2.6 - Sep 1 2015
 ------------------
 

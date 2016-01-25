@@ -425,10 +425,12 @@ without having to calculate it yourself.
   $grid: (1 2 3 2 1);
 
   .outer {
-    @include span(3 of $grid at 2);
+    $context: 3 of $grid at 2;
+    @include span($context);
 
-    $context: nested(3 of $grid at 2);
-    .inner { @include span(2 of $context at 1); }
+    @include nested($context) {
+      .inner { @include span(2 at 1); }
+    }
   }
 
 

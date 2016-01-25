@@ -2757,6 +2757,7 @@ html {
   text-align: left;
   font-style: italic; }
 .test__squish .assert__simple .test {
+  -susy-squish: first 2, last 2 inspect;
   margin-left: 35%;
   margin-right: 35%; }
 .test__squish .assert__simple .expect {

@@ -735,8 +735,8 @@ or as a generated overlay.
   ``overlay``
     Debugging images will be generated as an overlay
     using the container's ``::before`` element.
-    By default, the overlay is hidden,
-    but we also generate a :ref:`toggle <settings-debug-toggle>`
+    Initially, the overlay is hidden, until you hover
+    over the :ref:`toggle <settings-debug-toggle>` we place
     in a corner of the viewport.
     Hover over the toggle to make the overlay appear.
 

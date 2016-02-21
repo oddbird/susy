@@ -498,7 +498,7 @@ Set the width of a gutter relative to columns on your grid.
 Column Width
 ------------
 
-Optionaly set the explicit width of a column.
+Optionally set the explicit width of a column.
 
 .. describe:: setting
 

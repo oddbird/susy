@@ -707,7 +707,9 @@ depending on the :ref:`flow <settings-flow>` direction.
 .. code-block:: scss
 
   .example1 { @include pre(25%); }
-  .example2 { @include push(2 of 7); }
+  .example2 { @include push(25%); }
+  .example3 { @include pre(2 of 7); }
+  .example4 { @include push(2 of 7); }
 
 
 -------------------------------------------------------------------------

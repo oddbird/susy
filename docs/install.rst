@@ -184,6 +184,32 @@ Start using Susy:
     @import "~susy/sass/susy";
 
 
+Gulp
+----
+
+Install susy with npm:
+
+.. code-block:: bash
+
+    npm install susy --save-dev
+
+
+Add Gulp Task:
+
+.. code-block:: js
+
+    // gulpfile.js
+    gulp.task('sass', function() {
+      return gulp.src('scss/*.scss')
+          .pipe(sass({
+              outputStyle: 'compressed',
+              includePaths: ['node_modules/susy/sass']
+          }).on('error', sass.logError))
+          .pipe(gulp.dest('dist/css'));
+    });
+
+
+
 Manual Start
 ------------
 

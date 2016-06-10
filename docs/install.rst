@@ -59,52 +59,61 @@ If you add Susy to an existing Rails app, follow the steps above, but use bundle
   # command line
   bundle update
 
-Compass
--------
 
-If you want to use Susy with `Compass`_,
-start by `installing Compass`_.
+Webpack and npm
+---------------
 
-Create a new Compass project:
+Install using npm:
 
 .. code-block:: bash
 
-  # command line
-  compass create --using susy <project name>
+    npm install susy sass-loader --save-dev
 
-Alternatively, add Susy to a current project
+
+Make sure you have `sass-loader <https://github.com/jtangelder/sass-loader>`_ enabled in your `webpack` configuration:
+
+.. code-block:: js
+
+    // webpack.config.js
+    loaders: [
+      {
+        test: /\.scss$/,
+        loader: 'style!css!sass'
+      }
+    ]
+
+
+Start using Susy:
+
+.. code-block:: sass
+
+    /* app.scss */
+    @import "~susy/sass/susy";
+
+
+Gulp
+----
+
+Install susy with npm:
 
 .. code-block:: bash
 
-  # command line
-  compass install susy
-
-.. _Compass: http://compass-style.org/
-.. _installing Compass: http://compass-style.org/install/
+    npm install susy --save-dev
 
 
-Bower
------
+Add Gulp Task:
 
-.. code-block:: bash
+.. code-block:: js
 
-  # command line
-  bower install susy --save
-
-This will add the Susy repository to your ``bower_components`` directory or
-create a ``bower_components`` directory for you.
-
-.. code-block:: scss
-
-  // Import Susy
-  @import "bower_components/susy/sass/susy";
-
-You can also import Susyone.
-
-.. code-block:: scss
-
-  // Import Susy
-  @import "bower_components/susy/sass/susyone";
+    // gulpfile.js
+    gulp.task('sass', function() {
+      return gulp.src('scss/*.scss')
+          .pipe(sass({
+              outputStyle: 'compressed',
+              includePaths: ['node_modules/susy/sass']
+          }).on('error', sass.logError))
+          .pipe(gulp.dest('dist/css'));
+    });
 
 
 Grunt (and Yeoman)
@@ -153,35 +162,52 @@ Again, assuming you've already installed Susy,
 it will now be added to the project.
 
 
-Webpack and npm
----------------
-
-Install using npm:
+Bower
+-----
 
 .. code-block:: bash
 
-    npm install susy sass-loader --save-dev
+  # command line
+  bower install susy --save
+
+This will add the Susy repository to your ``bower_components`` directory or
+create a ``bower_components`` directory for you.
+
+.. code-block:: scss
+
+  // Import Susy
+  @import "bower_components/susy/sass/susy";
+
+You can also import Susyone.
+
+.. code-block:: scss
+
+  // Import Susy
+  @import "bower_components/susy/sass/susyone";
 
 
-Make sure you have `sass-loader <https://github.com/jtangelder/sass-loader>`_ enabled in your `webpack` configuration:
+Compass
+-------
 
-.. code-block:: js
+If you want to use Susy with `Compass`_,
+start by `installing Compass`_.
 
-    // webpack.config.js
-    loaders: [
-      {
-        test: /\.scss$/,
-        loader: 'style!css!sass'
-      }
-    ]
+Create a new Compass project:
 
+.. code-block:: bash
 
-Start using Susy:
+  # command line
+  compass create --using susy <project name>
 
-.. code-block:: sass
+Alternatively, add Susy to a current project
 
-    /* app.scss */
-    @import "~susy/sass/susy";
+.. code-block:: bash
+
+  # command line
+  compass install susy
+
+.. _Compass: http://compass-style.org/
+.. _installing Compass: http://compass-style.org/install/
 
 
 Manual Start

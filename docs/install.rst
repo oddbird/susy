@@ -59,99 +59,6 @@ If you add Susy to an existing Rails app, follow the steps above, but use bundle
   # command line
   bundle update
 
-Compass
--------
-
-If you want to use Susy with `Compass`_,
-start by `installing Compass`_.
-
-Create a new Compass project:
-
-.. code-block:: bash
-
-  # command line
-  compass create --using susy <project name>
-
-Alternatively, add Susy to a current project
-
-.. code-block:: bash
-
-  # command line
-  compass install susy
-
-.. _Compass: http://compass-style.org/
-.. _installing Compass: http://compass-style.org/install/
-
-
-Bower
------
-
-.. code-block:: bash
-
-  # command line
-  bower install susy --save
-
-This will add the Susy repository to your ``bower_components`` directory or
-create a ``bower_components`` directory for you.
-
-.. code-block:: scss
-
-  // Import Susy
-  @import "bower_components/susy/sass/susy";
-
-You can also import Susyone.
-
-.. code-block:: scss
-
-  // Import Susy
-  @import "bower_components/susy/sass/susyone";
-
-
-Grunt (and Yeoman)
-------------------
-
-You can enable Susy in Grunt by adding a line to your ``Gruntfile.js``.
-You will need to add a line to either your Sass task or, if you're using Compass, your Compass task.
-
-To add Susy to the Sass task, edit your Gruntfile.js at the root level of your project
-and look for the Sass-related rules. Add ``require: 'susy'`` inside the ``options`` object:
-
-.. code-block:: js
-
-  // Gruntfile.js
-  sass: {
-    dist: {
-      options: {
-        style: 'expanded',
-        require: 'susy'
-      },
-      files: {
-          'css/style.css': 'scss/style.scss'
-      }
-    }
-  }
-
-Assuming you've already installed Susy,
-it will now be added to the project
-and will not clash with Yeomans grunt rules.
-
-To add Susy to the Compass task, edit your Gruntfile.js at the root level of your project
-and look for the Compass-related rules. Add ``require: 'susy'`` inside the ``options`` object:
-
-.. code-block:: js
-
-  // Gruntfile.js
-  compass: {
-      options: {
-        require: 'susy',
-        ...
-      }
-    }
-  }
-
-Again, assuming you've already installed Susy,
-it will now be added to the project.
-
 
 Webpack and npm
 ---------------
@@ -208,6 +115,99 @@ Add Gulp Task:
           .pipe(gulp.dest('dist/css'));
     });
 
+
+Grunt (and Yeoman)
+------------------
+
+You can enable Susy in Grunt by adding a line to your ``Gruntfile.js``.
+You will need to add a line to either your Sass task or, if you're using Compass, your Compass task.
+
+To add Susy to the Sass task, edit your Gruntfile.js at the root level of your project
+and look for the Sass-related rules. Add ``require: 'susy'`` inside the ``options`` object:
+
+.. code-block:: js
+
+  // Gruntfile.js
+  sass: {
+    dist: {
+      options: {
+        style: 'expanded',
+        require: 'susy'
+      },
+      files: {
+          'css/style.css': 'scss/style.scss'
+      }
+    }
+  }
+
+Assuming you've already installed Susy,
+it will now be added to the project
+and will not clash with Yeomans grunt rules.
+
+To add Susy to the Compass task, edit your Gruntfile.js at the root level of your project
+and look for the Compass-related rules. Add ``require: 'susy'`` inside the ``options`` object:
+
+.. code-block:: js
+
+  // Gruntfile.js
+  compass: {
+      options: {
+        require: 'susy',
+        ...
+      }
+    }
+  }
+
+Again, assuming you've already installed Susy,
+it will now be added to the project.
+
+
+Bower
+-----
+
+.. code-block:: bash
+
+  # command line
+  bower install susy --save
+
+This will add the Susy repository to your ``bower_components`` directory or
+create a ``bower_components`` directory for you.
+
+.. code-block:: scss
+
+  // Import Susy
+  @import "bower_components/susy/sass/susy";
+
+You can also import Susyone.
+
+.. code-block:: scss
+
+  // Import Susy
+  @import "bower_components/susy/sass/susyone";
+
+
+Compass
+-------
+
+If you want to use Susy with `Compass`_,
+start by `installing Compass`_.
+
+Create a new Compass project:
+
+.. code-block:: bash
+
+  # command line
+  compass create --using susy <project name>
+
+Alternatively, add Susy to a current project
+
+.. code-block:: bash
+
+  # command line
+  compass install susy
+
+.. _Compass: http://compass-style.org/
+.. _installing Compass: http://compass-style.org/install/
 
 
 Manual Start

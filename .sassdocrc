@@ -10,7 +10,6 @@ package: ./package.json
 theme: default
 verbose: true
 groups:
-  config: Grid Configuration
-  grids: Grid Toolkit
-  su: Su [Grid Engine]
-  plugin-unprefix: Plugin — Unprefix
+  a-config: Configuration
+  api: Grid Toolkit
+  math: Core Math

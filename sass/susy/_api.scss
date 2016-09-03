@@ -13,7 +13,7 @@
 /// or `margin` and `padding`
 /// to push, pull, and pad your elements.
 ///
-/// @group grids
+/// @group api
 ///
 /// @param {List} $span -
 ///   Shorthand expression to define the width of the span.
@@ -61,7 +61,7 @@
 /// Get the width of a gutter
 /// in your current context.
 ///
-/// @group grids
+/// @group api
 ///
 /// @param {Number | List} $context [null] -
 ///   Optional columns in a nested context
@@ -92,7 +92,7 @@
 
 /// Return a sub-slice of columns to use in a nested context.
 ///
-/// @group advanced
+/// @group api
 ///
 /// @param {List} $span -
 ///   Shorthand expression to define the width of the subset span —

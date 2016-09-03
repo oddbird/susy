@@ -10,7 +10,7 @@
 // -------
 /// Get a usable span width in either relative or static units.
 ///
-/// @group su
+/// @group math
 ///
 /// @param {Number | List} $span -
 ///   The number or list of grid columns to span.
@@ -67,7 +67,7 @@
 // ---------
 /// Get a usable gutter length in either relative or static units.
 ///
-/// @group su
+/// @group math
 ///
 /// @param {List} $columns -
 ///   List of columns in the grid.
@@ -101,7 +101,7 @@
 /// If static-gutter units aren't comparable to column-units,
 /// gutters will be removed from the resulting sum.
 ///
-/// @group su
+/// @group math
 ///
 /// @param {List} $columns -
 ///   List of columns in the grid
@@ -154,7 +154,7 @@
 // --------
 /// Get a subset of columns at a given location.
 ///
-/// @group su
+/// @group math
 ///
 /// @param {Number} $span -
 ///   The number of grid columns to span.

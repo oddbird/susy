@@ -1,8 +1,6 @@
 // Unprefix Susy
 // =============
 
-@import '../susy';
-
 
 /// Un-prefixed alias for `susy-span`
 ///
@@ -34,16 +32,16 @@
 }
 
 
-/// Un-prefixed alias for `susy-nested`
+/// Un-prefixed alias for `susy-slice`
 ///
 /// @group plugin-unprefix
-/// @alias susy-nested
+/// @alias susy-slice
 ///
 /// @param {List} $span
 /// @param {Map} $config [()]
-@function nested(
+@function slice(
   $span,
   $config: ()
 ) {
-  @return susy-nested($span, $config);
+  @return susy-slice($span, $config);
 }

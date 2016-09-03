@@ -9,8 +9,8 @@
     "url": "git://github.com/oddbird/susy.git"
   },
   "devDependencies": {
-    "mocha": "2.2.5",
-    "sass-true": "2.0.2"
+    "mocha": "3.0.2",
+    "sass-true": "2.1.3"
   },
   "keywords": [
     "layout",

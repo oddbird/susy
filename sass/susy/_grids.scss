@@ -1,122 +1,195 @@
 // Grids
 // =====
-// - susy-span [function]
-// - susy-gutter [function]
-// - susy-nested [function]
+// - su-span [function]
+// - su-gutter [function]
+// - su-sum [function]
+// - su-slice [function]
 
 
-/// Calculate the width of any grid-span.
-/// This is the primary function in Susy,
-/// and can be used anywhere you need
-/// to span columns on the grid:
-/// `width` for grid contents,
-/// or `margin` and `padding`
-/// to push, pull, and pad your elements.
+// Su Span
+// -------
+/// Get a usable span width in either relative or static units.
 ///
-/// @group grids
+/// @group su
 ///
-/// @param {List} $span -
-///   Shorthand expression to define the width of the span.
-///   Contains a unitless number for column-span,
-///   'of $n' for available grid columns [optional],
-///   'at $n' for location on asymmetrical grids [optional],
-///   and 'narrow', 'wide', or 'wider' for defining the spread
-///   over available gutters (none, one, or two)
-/// @param {Map} $config [()] -
-///   Optional map of Susy grid configuration settings
+/// @param {Number | List} $span -
+///   The number or list of grid columns to span.
+/// @param {List} $columns -
+///   The list of columns available.
+/// @param {Number} $gutters -
+///   The width of a gutter in column-comparable units.
+/// @param {0 | 1 | -1 | 'narrow' | 'wide' | 'wider'} $spread -
+///   The number of gutters in relation to span-columns:
+///   either `narrow` (-1), `wide` (0), or `wider` (1).
+/// @param {0 | 1 | -1 | 'narrow' | 'wide' | 'wider'} $container-spread [$spread] -
+///   The number of gutters in relation to container-columns:
+///   either `narrow` (-1), `wide` (0), or `wider` (1).
+/// @param {Integer} $location [1] -
+///   Optional position of sub-span among full set of columns.
 ///
 /// @return {Length} -
-///   Fluid `%` length when no `column-width` is given,
-///   or a static length in the same units as `column-width`
-///
-/// @example scss - Span half the grid
-///   .foo
-///     width: susy-span(6 of 12);
-///   }
-///
-/// @example scss - Span a specific segment of asymmetrical grid
-///   .foo {
-///     width: susy-span(3 at 3 of (1 2 3 5 8));
-///   }
-@function susy-span(
+///   The length of a span on the grid.
+@function su-span (
   $span,
-  $config: ()
+  $columns,
+  $gutters,
+  $spread,
+  $container-spread: $spread,
+  $location: 1
 ) {
-  $input: susy-settings($config, susy-parse($span));
+  $columns: su-valid-columns($columns);
+  $gutters: su-valid-gutters($gutters);
+  $spread: su-valid-spread($spread);
 
-  $span: map-get($input, 'span');
-  $columns: map-get($input, 'columns');
+  @if (type-of($span) == 'number') {
+    @if unitless($span) {
+      $location: su-valid-location($span, $location, $columns);
+      $span: su-slice($span, $columns, $location, $validate: false);
+    } @else {
+      // if you give us e.g. 3em, fine, we'll give it right back
+      @return $span;
+    }
+  }
 
-  $normalize: (
-    'span': if(type-of($span) == 'number', $span, susy-normalize-columns($span)),
-    'columns': susy-normalize-columns($columns),
-  );
+  $span-width: su-sum($span, $gutters, $spread, $validate: false);
 
-  $input: map-merge($input, $normalize);
+  @if unitless($span-width) {
+    $container-spread: su-valid-spread($container-spread);
+    $container: su-sum($columns, $gutters, $container-spread, $validate: false);
+    @return percentage($span-width / $container);
+  }
 
-  @return su-span($input...);
+  @return $span-width;
 }
 
 
-/// Get the width of a gutter
-/// in your current context.
+// Su Gutter
+// ---------
+/// Get a usable gutter length in either relative or static units.
 ///
-/// @group grids
+/// @group su
 ///
-/// @param {Number | List} $context [null] -
-///   Optional columns in a nested context
-/// @param {Map} $config [()] -
-///   Optional map of Susy grid configuration settings
+/// @param {List} $columns -
+///   List of columns in the grid.
+/// @param {Number} $gutters -
+///   The width of a gutter in column-comparable units.
+/// @param {0 | 1 | -1 | 'narrow' | 'wide' | 'wider'} $container-spread -
+///   The number of gutters in relation to container-columns:
+///   either `narrow` (-1), `wide` (0), or `wider` (1).
 ///
-/// @return {Length} -
-///   The width of a gutter as `%` of current context,
-///   or in the units defined by `column-width` when available.
-///
-/// @example scss - Add gutters before or after an element
-///   .foo {
-///     margin-left: gutter();
-///   }
-@function susy-gutter (
-  $context: susy-get('columns'),
-  $config: ()
+/// @return {Number} -
+///   The width of one gutter in a grid.
+@function su-gutter (
+  $columns,
+  $gutters,
+  $container-spread
 ) {
-  $config: susy-settings($config, ('columns': $context));
-  $config: map-merge($config, (
-    'columns': susy-normalize-columns(map-get($config, 'columns')),
-  ));
-  $config: map-remove($config, 'spread');
+  @if (type-of($gutters) == 'number') {
+    @if ($gutters == 0) or (not unitless($gutters)) {
+      @return $gutters;
+    }
+  }
 
-  @return su-gutter($config...);
+  $container: su-sum($columns, $gutters, $container-spread);
+  @return percentage($gutters / $container);
 }
 
 
-/// Return a sub-slice of columns to use in a nested context.
+// Su Sum
+// ------
+/// Get the total sum of column-units in a layout.
+/// If static-gutter units aren't comparable to column-units,
+/// gutters will be removed from the resulting sum.
 ///
-/// @group advanced
+/// @group su
 ///
-/// @param {List} $span -
-///   Shorthand expression to define the width of the subset span —
-///   Contains a span,
-///   'at $n', 'first', or 'last' for location,
-///   and optional 'of $n' for available grid columns.
-/// @param {Map} $config [()] -
-///   Optional map of Susy grid configuration settings.
+/// @param {List} $columns -
+///   List of columns in the grid
+/// @param {Number} $gutters -
+///   The width of a gutter in column-comparable units.
+/// @param {0 | 1 | -1 | 'narrow' | 'wide' | 'wider'} $spread -
+///   The number of gutters in relation to columns:
+///   either `narrow` (-1), `wide` (0), or `wider` (1).
+/// @param {Bool} $validate [true] -
+///   Check that arguments are valid before proceeding.
+///
+/// @return {Number} -
+///   Total sum of column-units in a grid.
+@function su-sum (
+  $columns,
+  $gutters,
+  $spread,
+  $validate: true
+) {
+  @if $validate {
+    $columns: su-valid-columns($columns);
+    $gutters: su-valid-gutters($gutters);
+    $spread: su-valid-spread($spread);
+  }
+
+  // Error if gutters are fluid and columns are static
+  @if unitless($gutters) and (not unitless(nth($columns, 1))) {
+    @error 'Gutters must have units for a static grid.';
+  }
+
+  // Calculate column-sum
+  $column-sum: 0;
+
+  @each $column in $columns {
+    $column-sum: $column-sum + $column;
+  }
+
+  // Gutters are removed from the math if they use non-comparable static units
+  @if (not comparable($column-sum, $gutters))
+    or (unitless($column-sum) and (not unitless($gutters))) {
+    @return $column-sum;
+  }
+
+  $gutter-sum: (ceil(length($columns)) + $spread) * $gutters;
+  @return $column-sum + $gutter-sum;
+}
+
+
+// Su Slice
+// --------
+/// Get a subset of columns at a given location.
+///
+/// @group su
+///
+/// @param {Number} $span -
+///   The number of grid columns to span.
+/// @param {List} $columns -
+///   List of columns in the grid.
+/// @param {Number} $location [1] -
+///   Starting index of a span in a list of columns.
+/// @param {Bool} $validate [true] -
+///   Check that arguments are valid before proceeding.
 ///
 /// @return {List} -
-///   Subset list of columns for use in a nested context.
-///
-/// @example scss - Span a specific segment of the grid
-///   $context: susy-slice(3 at 3 of (1 2 3 5 8)); // returns `(3 5 8)`
-@function susy-slice (
+///   Subset of grid columns based on span and location.
+@function su-slice (
   $span,
-  $config: ()
+  $columns,
+  $location: 1,
+  $validate: true
 ) {
-  $input: susy-settings($config, susy-parse($span));
-  $output: (
-    'span': map-get($input, 'span'),
-    'columns': map-get($input, 'columns'),
-    'location': map-get($input, 'location'),
-  );
+  @if $validate {
+    $columns: su-valid-columns($columns);
+    $location: su-valid-location($span, $location, $columns);
+  }
 
-  @return su-slice($output...);
+  $floor: floor($span);
+  $sub-columns: ();
+
+  @for $i from $location to ($location + $floor) {
+    $sub-columns: append($sub-columns, nth($columns, $i));
+  }
+
+  @if $floor != $span {
+    $remainder: $span - $floor;
+    $column: $location + $floor;
+    $sub-columns: append($sub-columns, nth($columns, $column) * $remainder);
+  }
+
+  @return $sub-columns;
 }

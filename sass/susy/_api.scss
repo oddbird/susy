@@ -1,0 +1,122 @@
+// Grids
+// =====
+// - susy-span [function]
+// - susy-gutter [function]
+// - susy-nested [function]
+
+
+/// Calculate the width of any grid-span.
+/// This is the primary function in Susy,
+/// and can be used anywhere you need
+/// to span columns on the grid:
+/// `width` for grid contents,
+/// or `margin` and `padding`
+/// to push, pull, and pad your elements.
+///
+/// @group grids
+///
+/// @param {List} $span -
+///   Shorthand expression to define the width of the span.
+///   Contains a unitless number for column-span,
+///   'of $n' for available grid columns [optional],
+///   'at $n' for location on asymmetrical grids [optional],
+///   and 'narrow', 'wide', or 'wider' for defining the spread
+///   over available gutters (none, one, or two)
+/// @param {Map} $config [()] -
+///   Optional map of Susy grid configuration settings
+///
+/// @return {Length} -
+///   Fluid `%` length when no `column-width` is given,
+///   or a static length in the same units as `column-width`
+///
+/// @example scss - Span half the grid
+///   .foo
+///     width: susy-span(6 of 12);
+///   }
+///
+/// @example scss - Span a specific segment of asymmetrical grid
+///   .foo {
+///     width: susy-span(3 at 3 of (1 2 3 5 8));
+///   }
+@function susy-span(
+  $span,
+  $config: ()
+) {
+  $input: susy-settings($config, susy-parse($span));
+
+  $span: map-get($input, 'span');
+  $columns: map-get($input, 'columns');
+
+  $normalize: (
+    'span': if(type-of($span) == 'number', $span, susy-normalize-columns($span)),
+    'columns': susy-normalize-columns($columns),
+  );
+
+  $input: map-merge($input, $normalize);
+
+  @return su-span($input...);
+}
+
+
+/// Get the width of a gutter
+/// in your current context.
+///
+/// @group grids
+///
+/// @param {Number | List} $context [null] -
+///   Optional columns in a nested context
+/// @param {Map} $config [()] -
+///   Optional map of Susy grid configuration settings
+///
+/// @return {Length} -
+///   The width of a gutter as `%` of current context,
+///   or in the units defined by `column-width` when available.
+///
+/// @example scss - Add gutters before or after an element
+///   .foo {
+///     margin-left: gutter();
+///   }
+@function susy-gutter (
+  $context: susy-get('columns'),
+  $config: ()
+) {
+  $config: susy-settings($config, ('columns': $context));
+  $config: map-merge($config, (
+    'columns': susy-normalize-columns(map-get($config, 'columns')),
+  ));
+  $config: map-remove($config, 'spread');
+
+  @return su-gutter($config...);
+}
+
+
+/// Return a sub-slice of columns to use in a nested context.
+///
+/// @group advanced
+///
+/// @param {List} $span -
+///   Shorthand expression to define the width of the subset span —
+///   Contains a span,
+///   'at $n', 'first', or 'last' for location,
+///   and optional 'of $n' for available grid columns.
+/// @param {Map} $config [()] -
+///   Optional map of Susy grid configuration settings.
+///
+/// @return {List} -
+///   Subset list of columns for use in a nested context.
+///
+/// @example scss - Span a specific segment of the grid
+///   $context: susy-slice(3 at 3 of (1 2 3 5 8)); // returns `(3 5 8)`
+@function susy-slice (
+  $span,
+  $config: ()
+) {
+  $input: susy-settings($config, susy-parse($span));
+  $output: (
+    'span': map-get($input, 'span'),
+    'columns': map-get($input, 'columns'),
+    'location': map-get($input, 'location'),
+  );
+
+  @return su-slice($output...);
+}

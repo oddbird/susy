@@ -76,14 +76,13 @@
 ///   .foo {
 ///     margin-left: gutter();
 ///   }
-@function susy-gutter (
+@function susy-gutter(
   $context: susy-get('columns'),
   $config: ()
 ) {
   $config: susy-settings($config, ('columns': $context));
-  $config: map-merge($config, (
-    'columns': susy-normalize-columns(map-get($config, 'columns')),
-  ));
+  $columns: ('columns': susy-normalize-columns(map-get($config, 'columns')));
+  $config: map-merge($config, $columns);
   $config: map-remove($config, 'spread');
 
   @return su-gutter($config...);
@@ -107,7 +106,7 @@
 ///
 /// @example scss - Span a specific segment of the grid
 ///   $context: susy-slice(3 at 3 of (1 2 3 5 8)); // returns `(3 5 8)`
-@function susy-slice (
+@function susy-slice(
   $span,
   $config: ()
 ) {

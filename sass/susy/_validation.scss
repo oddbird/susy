@@ -17,7 +17,7 @@
 ///
 /// @return {List} -
 ///   `$columns` input as list if valid, otherwise `error`.
-@function su-valid-columns (
+@function su-valid-columns(
   $columns
 ) {
   $first: nth($columns, 1);
@@ -44,7 +44,7 @@
 ///
 /// @return {Number} -
 ///   `$gutters` input if valid, otherwise `error`
-@function su-valid-gutters (
+@function su-valid-gutters(
   $gutters
 ) {
   $type: type-of($gutters);
@@ -71,7 +71,7 @@
 /// @return {Number} -
 ///   Numeric representation of `$spread` value if valid,
 ///   otherwise `error`
-@function su-valid-spread (
+@function su-valid-spread(
   $spread
 ) {
   $valid-spread: (
@@ -108,7 +108,7 @@
 /// @return {Integer} -
 ///   Numeric representation of `$location` value if valid,
 ///   otherwise `error`
-@function su-valid-location (
+@function su-valid-location(
   $span,
   $location,
   $columns
@@ -130,10 +130,10 @@
     }
 
     @if ($location > $count) {
-      @error 'Position `#{$location}` does not exist in grid `#{$columns}`.'
+      @error 'Position `#{$location}` does not exist in grid `#{$columns}`.';
     } @else if ($location + $span - 1 > $count) {
-      @error 'There are not enough columns in grid `#{$columns}` '
-        + 'for span `#{$span}` at position `#{$location}`';
+      $details: 'grid `#{$columns}` for span `#{$span}` at `#{$location}`';
+      @error 'There are not enough columns in #{$details}';
     }
   }
 

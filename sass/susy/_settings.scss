@@ -73,7 +73,7 @@ $susy-defaults: (
 /// @return {Map} -
 ///   Combined map of Susy configuration settings, in order of specificity:
 ///   `$overrides...`, `$susy`, then `$susy-defaults`
-@function susy-settings (
+@function susy-settings(
   $overrides...
 ) {
   $settings: map-merge($susy-defaults, $susy);
@@ -96,7 +96,7 @@ $susy-defaults: (
 /// @return {*} -
 ///   Value mapped to `$key` in the configuration maps, in order of specificity:
 ///   `$susy`, then `$susy-defaults`
-@function susy-get (
+@function susy-get(
   $key
 ) {
   $settings: susy-settings();

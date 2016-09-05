@@ -20,7 +20,7 @@
 ///   Map of span settings
 ///   (`span`, `location`, `columns`, `spread`, `container-spread`)
 ///   parsed from shorthand input
-@function susy-parse (
+@function susy-parse(
   $shorthand
 ) {
   $span-error: 'Not able to determine column-span from `#{$shorthand}`';

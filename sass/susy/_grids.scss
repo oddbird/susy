@@ -29,7 +29,7 @@
 ///
 /// @return {Length} -
 ///   The length of a span on the grid.
-@function su-span (
+@function su-span(
   $span,
   $columns,
   $gutters,
@@ -79,7 +79,7 @@
 ///
 /// @return {Number} -
 ///   The width of one gutter in a grid.
-@function su-gutter (
+@function su-gutter(
   $columns,
   $gutters,
   $container-spread
@@ -115,7 +115,7 @@
 ///
 /// @return {Number} -
 ///   Total sum of column-units in a grid.
-@function su-sum (
+@function su-sum(
   $columns,
   $gutters,
   $spread,
@@ -140,8 +140,9 @@
   }
 
   // Gutters are removed from the math if they use non-comparable static units
-  @if (not comparable($column-sum, $gutters))
-    or (unitless($column-sum) and (not unitless($gutters))) {
+  $not-comparable: not comparable($column-sum, $gutters);
+  $is-mismatch: unitless($column-sum) and (not unitless($gutters));
+  @if ($not-comparable or $is-mismatch) {
     @return $column-sum;
   }
 
@@ -167,7 +168,7 @@
 ///
 /// @return {List} -
 ///   Subset of grid columns based on span and location.
-@function su-slice (
+@function su-slice(
   $span,
   $columns,
   $location: 1,

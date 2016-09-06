@@ -1,0 +1,122 @@
+// Susy Grid Tests
+// ===============
+
+
+@include test-module('Susy Span [function]') {
+  @include test('Simple span') {
+    @include assert-equal(
+      susy-span(3),
+      percentage(3.5 / 4.75),
+      'Simple span is calculated correctly using defaults');
+  }
+
+  @include test('Span with location') {
+    $susy: ('columns': 1 2 3 4 2) !global;
+
+    @include assert-equal(
+      susy-span(3 at 2),
+      percentage(9.5 / 13),
+      'Span with location is calculated correctly using column defaults');
+
+    $susy: () !global;
+  }
+
+  @include test('Static math') {
+    $susy: (
+      'columns': 6 x 4em,
+      'gutters': 0.25em,
+    ) !global;
+
+    @include assert-equal(
+      susy-span(2),
+      8.25em,
+      'Static math returns length based on column-width');
+
+    $susy: () !global;
+  }
+
+  @include test('Span with spread') {
+    $susy: (
+      'gutters': 0.25em,
+    ) !global;
+
+    @include assert-equal(
+      susy-span(3 'wide' of 12 x 10em),
+      30.5em + 0.25em,
+      'Spread adds gutter width to usual span');
+
+    $susy: () !global;
+  }
+
+  @include test('Explicit span') {
+    $config: (
+      'gutters': 0.25em,
+    );
+
+    @include assert-equal(
+      susy-span(first (2em 4em 6em) of (6 4 2 8), $config),
+      12.5em,
+      'Span accepts explicit columns');
+  }
+}
+
+
+@include test-module('Susy Gutter [function]') {
+  @include test('Fluid gutters') {
+    $susy: ('container-spread': 'wide') !global;
+
+    @include assert-equal(
+      susy-gutter(),
+      5%,
+      'Gutters are calculated as a percentage of context');
+
+    $susy: () !global;
+  }
+
+  @include test('Nested gutters') {
+    @include assert-equal(
+      susy-gutter(13),
+      1.5625%,
+      'Gutters are calculated as a percentage of context');
+  }
+
+  @include test('Static gutters') {
+    $susy: ('gutters': 1em) !global;
+
+    @include assert-equal(
+      susy-gutter(),
+      1em,
+      'Static gutters are returned directly');
+
+    $susy: () !global;
+  }
+
+  @include test('Gutters with custom config') {
+    $config: (
+      'columns': 12,
+      'container-spread': 'wide',
+    );
+
+    @include assert-equal(
+      susy-gutter(4, $config),
+      5%,
+      'Gutters account for custom configuration');
+  }
+}
+
+
+@include test-module('Susy slice [function]') {
+  @include test('Numerical slicing') {
+    @include assert-equal(
+      susy-slice(3 at 3 of (1 2 3 5 8)),
+      3 5 8,
+      'Returns a sub-slice of columns');
+  }
+
+  @include test('Keyword slicing') {
+    @include assert-equal(
+      susy-slice('first' 3 of (1 2 3 5 8)),
+      1 2 3,
+      'Returns a keyword-slice of columns');
+  }
+}

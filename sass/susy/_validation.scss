@@ -1,0 +1,132 @@
+// Validation
+// ==========
+// - su-valid-columns [function]
+// - su-valid-gutters [function]
+// - su-valid-spread [function]
+// - su-valid-location [function]
+
+
+// Valid Columns
+// -------------
+/// Check that the `columns` argument is a valid
+/// list of comparable column-lengths
+///
+/// @access private
+///
+/// @param {List} $columns -
+///   List of column-lengths using comparable units
+///
+/// @return {List} -
+///   Validated `$columns` list
+@function su-valid-columns(
+  $columns
+) {
+  $first: nth($columns, 1);
+
+  @each $col in $columns {
+    @if (type-of($col) != 'number') or (not comparable($col, $first)) {
+      $actual: '[#{type-of($columns)}] `#{inspect($columns)}`';
+      @error '#{$actual} is not a value for $columns.';
+    }
+  }
+
+  @return $columns;
+}
+
+
+// Valid Gutters
+// -------------
+/// Check that the `gutters` argument is a valid number
+///
+/// @access private
+///
+/// @param {Number} $gutters -
+///   Width of a gutter
+/// @param {List} $columns -
+///   Valid list of column-lengths using comparable units
+///
+/// @return {Number} -
+///   Validated `$gutters` number
+@function su-valid-gutters(
+  $gutters,
+  $columns
+) {
+  $type: type-of($gutters);
+
+  @if ($type == 'number') {
+    @if unitless($gutters) and (not unitless(nth($columns, 1))) {
+      @error 'Gutters must have units for a static grid.';
+    }
+
+    @return $gutters;
+  }
+
+  $actual: '[#{$type}] `#{inspect($gutters)}`';
+  @error '#{$actual} is not a value for $gutters.';
+}
+
+
+// Valid Spread
+// ------------
+/// Check that the `spread` argument is a valid
+/// intiger between `-1` and `1`
+///
+/// @access private
+///
+/// @param {0 | 1 | -1} $spread -
+///   Number of gutters to include in a span,
+///   relative to the number columns
+///
+/// @return {0 | 1 | -1} -
+///   Validated `$spread` number
+@function su-valid-spread(
+  $spread
+) {
+  @if index(0 1 -1, $spread) {
+    @return $spread;
+  }
+
+  $actual: '[#{type-of($spread)}] `#{inspect($spread)}`';
+  @error '#{$actual} is not a value for $spread.';
+}
+
+
+// Valid Location
+// --------------
+/// Check that the `location` argument is a valid number,
+/// within the scope of available columns
+///
+/// @access private
+///
+/// @param {Number} $span -
+///   Number of grid-columns to be spanned
+/// @param {Integer | String} $location -
+///   Starting (1-indexed) column-position of that span
+/// @param {List} $columns -
+///   List of available columns in the grid
+///
+/// @return {Integer} -
+///   Validated `$location` intiger
+@function su-valid-location(
+  $span,
+  $location,
+  $columns
+) {
+  $count: length($columns);
+
+  @if $location {
+    @if (type-of($location) != 'number') or (not unitless($location)) {
+      $actual: '[#{type-of($location)}] `#{$location}`';
+      @error '#{$actual} is not a value for $location.';
+    } @else if (round($location) != $location) {
+      @error 'Location (`#{$location}`) must be a 1-indexed intiger position.';
+    } @else if ($location > $count) {
+      @error 'Position `#{$location}` does not exist in grid `#{$columns}`.';
+    } @else if ($location + $span - 1 > $count) {
+      $details: 'grid `#{$columns}` for span `#{$span}` at `#{$location}`';
+      @error 'There are not enough columns in #{$details}';
+    }
+  }
+
+  @return $location;
+}

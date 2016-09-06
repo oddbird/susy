@@ -2,15 +2,16 @@
   "name": "susy",
   "version": "3.0.0",
   "description": "Sass power-tools for web layout.",
-  "author": "E. Miriam Suzanne <miriam@oddbird.net>",
+  "author": "Miriam Eric Suzanne <miriam@oddbird.net>",
   "main": "sass/_susy.scss",
   "repository": {
     "type": "git",
-    "url": "git://github.com/ericam/susy.git"
+    "url": "git://github.com/oddbird/susy.git"
   },
   "devDependencies": {
-    "mocha": "2.2.5",
-    "sass-true": "2.0.2"
+    "mocha": "3.0.2",
+    "sass-lint": "1.9.1",
+    "sass-true": "2.1.3"
   },
   "keywords": [
     "layout",
@@ -25,16 +26,15 @@
     "exports": "eyeglass-exports.js"
   },
   "scripts": {
-    "test": "npm run --silent test-libsass && npm run --silent test-ruby",
+    "test": "npm run test-libsass && npm run test-ruby",
     "test-libsass": "node_modules/.bin/mocha",
     "test-ruby": "rake test",
-    "benchmark": "cd test && ./benchmark.sh",
-    "lint": "scss-lint sass && scss-lint test/scss",
-    "lint-staged": "git diff --cached --diff-filter=ACMRTUXB --pretty='format:' --name-only | grep -E .scss$ | xargs scss-lint --config .scss-lint.yml",
-    "pre-commit": "npm run --silent test && npm run --silent lint"
+    "lint": "node_modules/.bin/sass-lint -vq",
+    "docs": "sassdoc sass/susy/",
+    "commit": "npm run lint && npm test && npm run docs"
   },
   "license": "BSD-3-Clause",
   "bugs": {
-    "url": "https://github.com/ericam/susy/issues"
+    "url": "https://github.com/oddbird/susy/issues"
   }
 }

@@ -1,0 +1,91 @@
+# See https://github.com/sasstools/sass-lint/tree/develop/docs/rules
+# ------------------------------------------------------------------
+
+files:
+  include:
+    - 'sass/**/*.s+(a|c)ss'
+    - 'test/scss/**/*.s+(a|c)ss'
+  ignore:
+    - 'test/scss/ag.scss'
+
+
+# Rules
+rules:
+  # Extends
+  extends-before-declarations: 2
+  extends-before-mixins: 2
+  placeholder-in-extend: 2
+
+  # Mixins
+  mixins-before-declarations: 2
+
+  # Line Spacing
+  one-declaration-per-line: 2
+  empty-line-between-blocks: 2
+  single-line-per-selector: 2
+
+  # Disallows
+  no-color-keywords: 2
+  no-color-literals: 0
+  no-css-comments: 2
+  no-debug: 2
+  no-duplicate-properties: 2
+  no-empty-rulesets: 2
+  no-extends: 0
+  no-ids: 2
+  no-important: 2
+  no-invalid-hex: 2
+  no-mergeable-selectors: 1
+  no-misspelled-properties: 2
+  no-qualifying-elements: 2
+  no-trailing-zero: 2
+  no-transition-all: 0
+  no-url-protocols: 2
+  no-vendor-prefixes: 2
+  no-warn: 0
+
+  # nesting
+  force-attribute-nesting: 2
+  force-element-nesting: 2
+  force-pseudo-nesting: 2
+
+  # Style Guide
+  border-zero: 2
+  brace-style: 2
+  clean-import-paths:
+    - 2
+    - leading-underscore: false
+      filename-extension: false
+  empty-args: 1
+  function-name-format: 2
+  hex-length: 2
+  hex-notation: 2
+  indentation: 2
+  leading-zero:
+    - 2
+    - include: true
+  mixin-name-format: 2
+  nesting-depth:
+    - 2
+    - max-depth: 3
+  placeholder-name-format: 2
+  property-sort-order: 2
+  quotes: 2
+  shorthand-values: 2
+  url-quotes: 2
+  variable-for-property: 0
+  variable-name-format: 2
+  zero-unit: 2
+
+  # Inner Spacing
+  space-after-bang: 2
+  space-after-colon: 2
+  space-after-comma: 2
+  space-before-bang: 2
+  space-before-brace: 2
+  space-before-colon: 2
+  space-between-parens: 2
+
+  # Final Items
+  final-newline: 2
+  trailing-semicolon: 2

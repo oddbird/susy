@@ -1,110 +1,108 @@
-// Susy Grid Tests
-// ===============
+// Su Grid Tests
+// =============
 
 
-@include test-module('Susy Span [function]') {
-  @include test('Simple span') {
+// Su Span
+// -------
+@include test-module ('Su Span [function]') {
+  @include test('Fluid') {
     @include assert-equal(
-      susy-span(3),
-      percentage(3.5 / 4.75),
-      'Simple span is calculated correctly using defaults');
+      su-span(2, 1 1 1 1, 0.25, -1, 0),
+      percentage(2.25/5),
+      'Returns fluid span if no units are given');
   }
 
-  @include test('Span with location') {
-    $susy: ('columns': 1 2 3 4 2) !global;
-
+  @include test('Static') {
     @include assert-equal(
-      susy-span(3 at 2),
-      percentage(9.5 / 13),
-      'Span with location is calculated correctly using column defaults');
-
-    $susy: () !global;
+      su-span(2, 4em 4em 4em 4em, 0.25em, -1, 0),
+      8.25em,
+      'Returns static span if units are given');
   }
 
-  @include test('Span with spread') {
-    $susy: (
-      'column-width': 4em,
-    ) !global;
-
+  @include test('Explicit column span') {
     @include assert-equal(
-      susy-span(6 'wide'),
-      susy-span(6) + susy-span(1/4),
-      'Spread adds gutter width to usual span');
-
-    $susy: () !global;
+      su-span(2 3, 2 4 6 8, 0.25, 0, 0),
+      percentage(5.5/21),
+      'Handles explicit column-spans');
   }
 
-  @include test('Static math') {
-    $susy: (
-      'column-width': 4em,
-    ) !global;
-
+  @include test('Explicit length span') {
     @include assert-equal(
-      susy-span(2),
-      9em,
-      'Static math returns length based on column-width');
-
-    $susy: () !global;
+      su-span(50%, 2 4 6 8, 0.25, 0, 1),
+      50%,
+      'Handles explicit length-spans');
   }
 }
 
 
-@include test-module('Susy Gutter [function]') {
-  @include test('Fluid gutters') {
-    $susy: ('container-spread': 'wide') !global;
-
-    @include assert-equal(
-      susy-gutter(),
-      5%,
-      'Gutters are calculated as a percentage of context');
-
-    $susy: () !global;
-  }
-
-  @include test('Nested gutters') {
-    @include assert-equal(
-      susy-gutter(13),
-      1.5625%,
-      'Gutters are calculated as a percentage of context');
-  }
-
+// Su Gutter
+// ---------
+@include test-module('Su Gutter [function]') {
   @include test('Static gutters') {
-    $susy: ('column-width': 4em) !global;
-
     @include assert-equal(
-      susy-gutter(),
+      su-gutter(4, 1em, 0),
       1em,
-      'Gutters are calculated as a fraction of column-width');
-
-    $susy: () !global;
+      'Static gutters are returned directly');
   }
 
-  @include test('Gutters with custom config') {
-    $config: (
-      'columns': 12,
-      'container-spread': 'wide',
-    );
-
+  @include test('Fluid gutters') {
     @include assert-equal(
-      susy-gutter(4, $config),
-      5%,
-      'Gutters account for custom configuration');
+      su-gutter(2 4 6, 0.25, -1),
+      percentage(0.25/12.5),
+      'Gutters are calculated as a percentage of context');
   }
 }
 
 
-@include test-module('Susy Nested') {
-  @include test('Asymmetrical slicing') {
+// Su Sum
+// ------
+@include test-module('Su Sum [function]') {
+  @include test('Calculate the total units in a fluid grid') {
     @include assert-equal(
-      susy-nested(3 at 3 of (1 2 3 5 8)),
-      3 5 8,
-      'Returns a sub-slice of asymmetrical columns');
+      su-sum(1 1 1, 0.5, 1),
+      5,
+      'Returns combined column and gutter units');
   }
 
-  @include test('Keyword slicing') {
+  @include test('Calculate the total units in a static grid') {
     @include assert-equal(
-      susy-nested('first' 3 of (1 2 3 5 8)),
-      1 2 3,
-      'Returns a keyword-slice of columns');
+      su-sum(1em 2em 3em 1em 2em, 0.25em, -1),
+      10em,
+      'Returns combined column and gutter units');
+  }
+
+  @include test('Handle non-comparable gutters') {
+    @include assert-equal(
+      su-sum(1 2 3 4, 0.5em, -1),
+      10,
+      'No static gutters are added to fluid grids');
+  }
+
+  @include test('Handle single-column spans') {
+    $span: (4);
+
+    @include assert-equal(
+      su-sum($span, 0.5, -1),
+      4,
+      'No static gutters are added to fluid grids');
+  }
+}
+
+
+// Su Slice
+// --------
+@include test-module('Su Slice [function]') {
+  @include test('Slice a grid') {
+    @include assert-equal(
+      su-slice(3, 1em 1em 2em 3em 5em 8em, 3),
+      2em 3em 5em,
+      'Returns subset of asymmetrical columns based on span and location');
+  }
+
+  @include test('Slice a grid with fractions') {
+    @include assert-equal(
+      su-slice(2.5, 2 4 6 8, 1),
+      2 4 3,
+      'Slice a fraction of an asymmetrical column');
   }
 }

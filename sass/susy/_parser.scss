@@ -1,26 +1,37 @@
 // Parser
 // ======
-// - susy-span-parser [function]
+// - susy-parse [function]
+// - susy-normalize [function]
+// - susy-normalize-columns [function]
+// - susy-normalize-span [function]
+// - susy-normalize-spread [function]
+// - susy-normalize-location [function]
 
 
-/// Internal parser for the span expression
+// Parse
+// -----
+/// Parse shorthand span expression
 ///
 /// @access private
 ///
 /// @param {List} $shorthand -
-///   Shorthand expression to define the width of the span.
-///   Contains a unitless number for column-span,
-///   'of $n' for available grid columns [optional],
-///   'at $n' for location on asymmetrical grids [optional],
-///   and 'narrow', 'wide', or 'wider' for defining the spread
-///   over available gutters (none, one, or two)
+///   Shorthand expression to define the width of the span —
+///   containing a unitless column-span;
+///   'of $n' for available grid columns [optional];
+///   'at $n', 'first', or 'last' for location on asymmetrical grids;
+///   and 'narrow', 'wide', or 'wider' for
+///   optionally spreading over adjacent gutters
+///   with either the `span` or `columns` value
 ///
 /// @return {Map} -
-///   Map of span settings (`span`, `location`, `columns`, and `spread`)
+///   Map of span settings
+///   (`span`, `location`, `columns`, `spread`, `container-spread`)
 ///   parsed from shorthand input
-@function susy-span-parser (
+@function susy-parse(
   $shorthand
 ) {
+  $span-error: 'Not able to determine column-span from `#{$shorthand}`';
+  $parse-error: 'Unknown span property:';
   $options: (
     'first': 'location',
     'last': 'location',
@@ -30,44 +41,244 @@
     'wide': 'spread',
     'wider': 'spread',
   );
-  $span-error: 'Not able to determine column-span from `#{$shorthand}`';
-  $parse-error: 'Unknown span property:';
-  $parsed: ();
+
+  $return: ();
   $span: null;
+  $columns: null;
+
+  $of: false;
+  $next: false;
 
   @for $i from 1 through length($shorthand) {
     $item: nth($shorthand, $i);
     $type: type-of($item);
 
-    @if ($type == 'string') {
-      @if map-has-key($options, $item) {
-        $item: (map-get($options, $item): $item);
-        $parsed: map-merge($parsed, $item);
-      } @else if not $span {
-        @error $span-error;
-      } @else if ($item == 'at') {
-        $next: nth($shorthand, $i + 1);
-        $parsed: map-merge($parsed, ('location': $next));
-      } @else if ($item == 'of') {
-        $next: nth($shorthand, $i + 1);
-        $parsed: map-merge($parsed, ('columns': $next));
+    @if $next {
+      @if ($next == 'column-width') {
+        @if ($type == 'number') and (not unitless($item)) {
+          @if $columns {
+            $columns: join($columns, ('x' $item));
+          } @else {
+            $span: join($span, ('x' $item));
+          }
+        } @else {
+          @error '`#{item}` is not a valid column-width';
+        }
       } @else {
-        @error '#{$parse-error} #{$item}';
+        $return: map-merge($return, ($next: $item));
       }
-    } @else if ($type == 'number') or ($type == 'list') {
-      @if ($type == 'number') and not $span {
-        $span: $item;
-      } @else if not index(('at', 'of'), nth($shorthand, $i - 1)) {
-        @error '#{$parse-error} #{$item}';
-      }
+
+      $next: false;
     } @else {
-      @error '#{$parse-error} #{$item}';
+      @if ($type == 'string') {
+        @if map-has-key($options, $item) {
+          $setting: map-get($options, $item);
+
+          @if ($setting == 'spread') and $of {
+            $return: map-merge($return, ('container-spread': $item));
+          } @else {
+            $return: map-merge($return, ($setting: $item));
+          }
+        } @else if $item == 'all' {
+          $span: 'all';
+        } @else if not $span {
+          @error $span-error;
+        } @else if ($item == 'at') {
+          $next: 'location';
+        } @else if ($item == 'x') {
+          $next: 'column-width';
+        } @else if ($item == 'of') {
+          $of: true;
+        } @else {
+          @error '#{$parse-error} `#{$item}`';
+        }
+      } @else if ($type == 'number') or ($type == 'list') {
+        @if not $span {
+          $span: $item;
+        } @else if $of {
+          $columns: $item;
+        } @else {
+          @error '#{$parse-error} `#{$item}`';
+        }
+      } @else {
+        @error '#{$parse-error} `#{$item}`';
+      }
     }
   }
 
-  @if not $span {
+  @if $span {
+    $return: map-merge($return, ('span': $span));
+  } @else {
     @error $span-error;
   }
 
-  @return map-merge($parsed, ('span': $span));
+  @if $columns {
+    $return: map-merge($return, ('columns': $columns));
+  }
+
+  @return $return;
+}
+
+
+// Susy Normalize
+// --------------
+/// Normalize the values in a configuration map
+///
+/// @access private
+///
+/// @param {Map} $config -
+///   Map of Susy configuration settings to normalize
+///
+/// @return {Map} -
+///   Map of Susy configuration settings, with all values normalized
+@function susy-normalize(
+  $config
+) {
+  @each $setting in ('columns', 'spread', 'container-spread') {
+    $value: map-get($config, $setting);
+
+    @if $value {
+      $function: if(($setting == 'container-spread'), 'spread', $setting);
+      $value: call('susy-normalize-#{$function}', $value);
+    }
+
+    $config: map-merge($config, ($setting: $value));
+  }
+
+  $span: map-get($config, 'span');
+  $location: map-get($config, 'location');
+  $columns: map-get($config, 'columns');
+
+  @if $span {
+    $span: susy-normalize-span($span, $columns);
+    $config: map-merge($config, ('span': $span));
+  }
+
+  @if $location {
+    $location: susy-normalize-location($span, $location, $columns);
+    $config: map-merge($config, ('location': $location));
+  }
+
+  @return $config;
+}
+
+
+// Normalize Columns
+// -----------------
+/// Normalize `columns` shorthand for Su
+///
+/// @access private
+///
+/// @param {Number | List} $columns -
+///   Columns value to normalize
+///
+/// @return {List} -
+///   List value for `$columns`
+@function susy-normalize-columns(
+  $columns
+) {
+  $return: ();
+
+  @if (type-of($columns) == 'number') and unitless($columns) {
+    @for $i from 1 through $columns {
+      $return: append($return, 1);
+    }
+
+    @return $return;
+  } @else if index($columns, 'x') and length($columns) == 3 {
+    $width: nth($columns, -1);
+
+    @for $i from 1 through nth($columns, 1) {
+      $return: append($return, $width);
+    }
+
+    @return $return;
+  }
+
+  @return $columns;
+}
+
+
+// Normalize Span
+// --------------
+/// Normalize `span` shorthand for Su
+///
+/// @access private
+///
+/// @param {Number | List | 'all'} $span -
+///   Span value to normalize
+/// @param {List} $columns -
+///   Normalized list of columns in the grid
+///
+/// @return {Number | List} -
+///   Number or list value for `$span`
+@function susy-normalize-span(
+  $span,
+  $columns: susy-get('columns')
+) {
+  @if (type-of($span) == 'number') {
+    @return $span;
+  } @else if $span == 'all' {
+    @return length($columns);
+  }
+
+  @return susy-normalize-columns($span);
+}
+
+
+// Normalize Spread
+// ----------------
+/// Normalize `spread` shorthand for Su
+///
+/// @access private
+///
+/// @param {0 | 1 | -1 | 'narrow' | 'wide' | 'wider'} $spread -
+///   Spread across adjacent gutters, relative to a column-count —
+///   either `narrow` (-1), `wide` (0), or `wider` (1)
+///
+/// @return {Number} -
+///   Numeric value for `$spread`
+@function susy-normalize-spread(
+  $spread
+) {
+  $normal-spread: (
+    'narrow': -1,
+    'wide': 0,
+    'wider': 1,
+  );
+
+  @return map-get($normal-spread, $spread) or $spread;
+}
+
+
+// Normalize Location
+// ------------------
+/// Normalize `location` shorthand for Su
+///
+/// @access private
+///
+/// @param {Number} $span -
+///   Number of grid-columns to be spanned
+/// @param {Integer | 'first' | 'last'} $location -
+///   Starting (1-indexed) column position of a span,
+///   or a named location keyword
+/// @param {List} $columns -
+///   Normalized list of columns in the grid
+///
+/// @return {Integer} -
+///   Numeric value for `$location`
+@function susy-normalize-location(
+  $span,
+  $location,
+  $columns
+) {
+  $count: length($columns);
+  $normal-locations: (
+    'first': 1,
+    'alpha': 1,
+    'last': $count - $span + 1,
+    'omega': $count - $span + 1,
+  );
+
+  @return map-get($normal-locations, $location) or $location;
 }

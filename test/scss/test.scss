@@ -4,15 +4,16 @@
 
 // Requirements
 @import '../../node_modules/sass-true/sass/true';
+@import '../../sass/susy';
 
 
-// Core Tests
-@import 'su/manifest';
-@import 'susy/manifest';
-
-
-// Plugin Tests
-@import 'plugin/unprefix';
+// Tests
+@import 'susy/grids';
+@import 'susy/settings';
+@import 'susy/validation';
+@import 'susy/parser';
+@import 'susy/api';
+@import 'susy/unprefix';
 
 
 // Report

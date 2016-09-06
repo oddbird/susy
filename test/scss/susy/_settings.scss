@@ -6,7 +6,7 @@
 
   @include test('Default configuration') {
     $susy: (
-      'column-width': 320px,
+      'columns': 4 x 320px,
       'spread': null,
     ) !global;
 
@@ -29,7 +29,7 @@
 
   @include test('Multiple overrides') {
     $override1: ('container-spread': 'wider');
-    $override2: ('column-width': 4em);
+    $override2: ('columns': 4em 3em 22em);
 
     @include assert-equal(
       susy-settings($override1, $override2),
@@ -41,14 +41,14 @@
 
 @include test-module('Susy Get [function]') {
   $susy: (
-    'column-width': 320px,
+    'columns': 12 x 120px,
     'spread': null,
   ) !global;
 
   @include test('Get value from user settings') {
     @include assert-equal(
-      susy-get('column-width'),
-      map-get($susy, 'column-width'),
+      susy-get('columns'),
+      map-get($susy, 'columns'),
       'Susy-get and map-get should return the same value');
   }
 

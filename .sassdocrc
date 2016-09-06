@@ -1,16 +1,13 @@
-basePath: https://github.com/ericam/susy/tree/three/sass
+basePath: https://github.com/oddbird/susy/tree/three/sass
 dest: ./docs
 display:
   access:
     - public
-  alias: true
-  watermark: true
 
 package: ./package.json
 theme: default
 verbose: true
 groups:
-  config: Grid Configuration
-  grids: Grid Toolkit
-  su: Su [Grid Engine]
-  plugin-unprefix: Plugin — Unprefix
+  a-config: Configuration
+  api: Grid Toolkit
+  math: Core Math

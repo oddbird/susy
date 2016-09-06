@@ -88,11 +88,14 @@
 /*  */
 /* # Module: Su Valid Gutters [function] */
 /* ------------------------------------- */
-/* Test: Ratio */
+/* Test: Fluid */
 /*   ✔ A unitless number is a valid setting for gutters */
 /*  */
-/* Test: Length */
-/*   ✔ Any length is a valid setting for gutters */
+/* Test: Static */
+/*   ✔ Any length is a valid setting for gutters on a static grid */
+/*  */
+/* Test: Static gutters, fluid grid */
+/*   ✔ Static gutters are allowed on a fluid grid */
 /*  */
 /*  */
 /* # Module: Su Valid Spread [function] */
@@ -243,8 +246,8 @@
 /*  */
 /*  */
 /* # SUMMARY ---------- */
-/* 61 Tests: */
-/*  - 61 Passed */
+/* 62 Tests: */
+/*  - 62 Passed */
 /*  - 0 Failed */
 /* -------------------- */
 

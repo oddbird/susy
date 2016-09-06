@@ -17,16 +17,17 @@
 /// @see $susy-defaults
 ///
 /// @prop {Number | List} columns [4] -
-///   A description of the columns in a grid,
+///   Description of the columns in a grid,
 ///   their number, realtive sizes (if asymmetrical),
 ///   and optional static widths
-/// @prop {Float} gutters [0.25] -
-///   The ratio of a gutter to a column
+/// @prop {Number} gutters [0.25] -
+///   Ratio of a gutter to a column,
+///   or static width of a single gutter
 /// @prop {String} spread ['narrow'] -
-///   The spread of an element across adjacent gutters:
+///   Spread of an element across adjacent gutters:
 ///   either `narrow` (none), `wide` (one), or `wider` (two)
 /// @prop {String} container-spread ['narrow'] -
-///   The spread of a container around adjacent gutters:
+///   Spread of a container around adjacent gutters:
 ///   either `narrow` (none), `wide` (one), or `wider` (two)
 ///
 /// @example scss - All available options (to their default value)
@@ -48,16 +49,17 @@ $susy: () !default;
 /// @type Map
 ///
 /// @prop {Number | List} columns [4] -
-///   A description of the columns in a grid,
+///   Description of the columns in a grid,
 ///   their number, realtive sizes (if asymmetrical),
 ///   and optional static widths
-/// @prop {Float} gutters [0.25] -
-///   The ratio of a gutter to a column
+/// @prop {Number} gutters [0.25] -
+///   Ratio of a gutter to a column,
+///   or static width of a single gutter
 /// @prop {String} spread ['narrow'] -
-///   The spread of an element across adjacent gutters:
+///   Spread of an element across adjacent gutters:
 ///   either `narrow` (none), `wide` (one), or `wider` (two)
 /// @prop {String} container-spread ['narrow'] -
-///   The spread of a container around adjacent gutters:
+///   Spread of a container around adjacent gutters:
 ///   either `narrow` (none), `wide` (one), or `wider` (two)
 $susy-defaults: (
   'columns': 4,

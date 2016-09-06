@@ -8,27 +8,28 @@
 
 // Su Span
 // -------
-/// Get a usable span width in either relative or static units.
+/// Return a usable span width
+/// in either relative or static units
 ///
 /// @group math
 ///
 /// @param {Number | List} $span -
-///   The number or list of grid columns to span.
+///   Number or list of grid columns to span
 /// @param {List} $columns -
-///   The list of columns available.
+///   List of columns available
 /// @param {Number} $gutters -
-///   The width of a gutter in column-comparable units.
-/// @param {0 | 1 | -1 | 'narrow' | 'wide' | 'wider'} $spread -
-///   The number of gutters in relation to span-columns:
-///   either `narrow` (-1), `wide` (0), or `wider` (1).
-/// @param {0 | 1 | -1 | 'narrow' | 'wide' | 'wider'} $container-spread [$spread] -
-///   The number of gutters in relation to container-columns:
-///   either `narrow` (-1), `wide` (0), or `wider` (1).
+///   Width of a gutter in column-comparable units
+/// @param {0 | 1 | -1} $spread -
+///   Number of gutters spanned,
+///   relative to `span` count
+/// @param {0 | 1 | -1} $container-spread [$spread] -
+///   Number of gutters spanned,
+///   relative to `columns` count
 /// @param {Integer} $location [1] -
-///   Optional position of sub-span among full set of columns.
+///   Optional position of sub-span among full set of columns
 ///
 /// @return {Length} -
-///   The length of a span on the grid.
+///   Relative or static length of a span on the grid
 @function su-span(
   $span,
   $columns,
@@ -38,7 +39,7 @@
   $location: 1
 ) {
   $columns: su-valid-columns($columns);
-  $gutters: su-valid-gutters($gutters);
+  $gutters: su-valid-gutters($gutters, $columns);
   $spread: su-valid-spread($spread);
 
   @if (type-of($span) == 'number') {
@@ -65,20 +66,21 @@
 
 // Su Gutter
 // ---------
-/// Get a usable gutter length in either relative or static units.
+/// Return a usable gutter length
+/// in either relative or static units
 ///
 /// @group math
 ///
 /// @param {List} $columns -
-///   List of columns in the grid.
+///   List of columns in the grid
 /// @param {Number} $gutters -
-///   The width of a gutter in column-comparable units.
-/// @param {0 | 1 | -1 | 'narrow' | 'wide' | 'wider'} $container-spread -
-///   The number of gutters in relation to container-columns:
-///   either `narrow` (-1), `wide` (0), or `wider` (1).
+///   Width of a gutter in column-comparable units
+/// @param {0 | 1 | -1} $container-spread -
+///   Number of gutters spanned,
+///   relative to `columns` count
 ///
-/// @return {Number} -
-///   The width of one gutter in a grid.
+/// @return {Length} -
+///   Relative or static length of one gutter in a grid
 @function su-gutter(
   $columns,
   $gutters,
@@ -106,12 +108,12 @@
 /// @param {List} $columns -
 ///   List of columns in the grid
 /// @param {Number} $gutters -
-///   The width of a gutter in column-comparable units.
-/// @param {0 | 1 | -1 | 'narrow' | 'wide' | 'wider'} $spread -
-///   The number of gutters in relation to columns:
-///   either `narrow` (-1), `wide` (0), or `wider` (1).
+///   Width of a gutter in column-comparable units
+/// @param {0 | 1 | -1} $spread -
+///   Number of gutters spanned,
+///   relative to `columns` count
 /// @param {Bool} $validate [true] -
-///   Check that arguments are valid before proceeding.
+///   Check that arguments are valid before proceeding
 ///
 /// @return {Number} -
 ///   Total sum of column-units in a grid.
@@ -123,18 +125,12 @@
 ) {
   @if $validate {
     $columns: su-valid-columns($columns);
-    $gutters: su-valid-gutters($gutters);
+    $gutters: su-valid-gutters($gutters, $columns);
     $spread: su-valid-spread($spread);
-  }
-
-  // Error if gutters are fluid and columns are static
-  @if unitless($gutters) and (not unitless(nth($columns, 1))) {
-    @error 'Gutters must have units for a static grid.';
   }
 
   // Calculate column-sum
   $column-sum: 0;
-
   @each $column in $columns {
     $column-sum: $column-sum + $column;
   }
@@ -153,21 +149,21 @@
 
 // Su Slice
 // --------
-/// Get a subset of columns at a given location.
+/// Return a subset of columns at a given location
 ///
 /// @group math
 ///
 /// @param {Number} $span -
-///   The number of grid columns to span.
+///   Number of grid columns to span
 /// @param {List} $columns -
-///   List of columns in the grid.
+///   List of columns in the grid
 /// @param {Number} $location [1] -
-///   Starting index of a span in a list of columns.
+///   Starting index of a span in the list of columns
 /// @param {Bool} $validate [true] -
-///   Check that arguments are valid before proceeding.
+///   Check that arguments are valid before proceeding
 ///
 /// @return {List} -
-///   Subset of grid columns based on span and location.
+///   Subset list of grid columns, based on span and location
 @function su-slice(
   $span,
   $columns,

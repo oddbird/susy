@@ -15,12 +15,13 @@
 /// @access private
 ///
 /// @param {List} $shorthand -
-///   Shorthand expression to define the width of the span.
-///   Contains a unitless number for column-span,
-///   'of $n' for available grid columns [optional],
-///   'at $n' for location on asymmetrical grids [optional],
-///   and 'narrow', 'wide', or 'wider' for defining the spread
-///   over available gutters (none, one, or two)
+///   Shorthand expression to define the width of the span —
+///   containing a unitless column-span;
+///   'of $n' for available grid columns [optional];
+///   'at $n', 'first', or 'last' for location on asymmetrical grids;
+///   and 'narrow', 'wide', or 'wider' for
+///   optionally spreading over adjacent gutters
+///   with either the `span` or `columns` value
 ///
 /// @return {Map} -
 ///   Map of span settings
@@ -169,7 +170,7 @@
 /// @access private
 ///
 /// @param {Number | List} $columns -
-///   Any valid `$columns` setting, in short or long form
+///   Columns value to normalize
 ///
 /// @return {List} -
 ///   List value for `$columns`
@@ -205,9 +206,9 @@
 /// @access private
 ///
 /// @param {Number | List | 'all'} $span -
-///   Any valid `$span` setting, in short or long form
+///   Span value to normalize
 /// @param {List} $columns -
-///   A normalized `$columns` setting
+///   Normalized list of columns in the grid
 ///
 /// @return {Number | List} -
 ///   Number or list value for `$span`
@@ -232,8 +233,8 @@
 /// @access private
 ///
 /// @param {0 | 1 | -1 | 'narrow' | 'wide' | 'wider'} $spread -
-///   The spread of a span across gutters (relative to the span):
-///   either `narrow` (-1), `wide` (0), or `wider` (1).
+///   Spread across adjacent gutters, relative to a column-count —
+///   either `narrow` (-1), `wide` (0), or `wider` (1)
 ///
 /// @return {Number} -
 ///   Numeric value for `$spread`
@@ -257,12 +258,12 @@
 /// @access private
 ///
 /// @param {Number} $span -
-///   The number of grid-columns to be spanned.
-/// @param {Integer | String} $location -
-///   The starting (1-indexed) column position of a span,
-///   or a named location keyword.
+///   Number of grid-columns to be spanned
+/// @param {Integer | 'first' | 'last'} $location -
+///   Starting (1-indexed) column position of a span,
+///   or a named location keyword
 /// @param {List} $columns -
-///   A normalized list of columns in the grid.
+///   Normalized list of columns in the grid
 ///
 /// @return {Integer} -
 ///   Numeric value for `$location`

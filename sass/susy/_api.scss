@@ -18,12 +18,13 @@
 /// @group api
 ///
 /// @param {List} $span -
-///   Shorthand expression to define the width of the span.
-///   Contains a unitless number for column-span,
-///   'of $n' for available grid columns [optional],
-///   'at $n' for location on asymmetrical grids [optional],
-///   and 'narrow', 'wide', or 'wider' for defining the spread
-///   over available gutters (none, one, or two)
+///   Shorthand expression to define the width of the span —
+///   containing a unitless column-span;
+///   'of $n' for available grid columns [optional];
+///   'at $n', 'first', or 'last' for location on asymmetrical grids;
+///   and 'narrow', 'wide', or 'wider' for
+///   optionally spreading over adjacent gutters
+///   with either the `span` or `columns` value
 /// @param {Map} $config [()] -
 ///   Optional map of Susy grid configuration settings
 ///
@@ -53,8 +54,8 @@
 
 // Susy Gutter
 // -----------
-/// Get the width of a gutter
-/// in your current context.
+/// Get the width of a single gutter
+/// in your current context
 ///
 /// @group api
 ///
@@ -64,8 +65,8 @@
 ///   Optional map of Susy grid configuration settings
 ///
 /// @return {Length} -
-///   The width of a gutter as `%` of current context,
-///   or in the units defined by `column-width` when available.
+///   Width of a gutter as `%` of current context,
+///   or in the units defined by `column-width` when available
 ///
 /// @example scss - Add gutters before or after an element
 ///   .foo {
@@ -90,20 +91,25 @@
 
 // Susy Slice
 // ----------
-/// Return a sub-slice of columns to use in a nested context.
+/// Get a sub-slice of columns to use
+/// for a nested context
 ///
 /// @group api
 ///
 /// @param {List} $span -
 ///   Shorthand expression to define the width of the subset span —
-///   Contains a span,
-///   'at $n', 'first', or 'last' for location,
-///   and optional 'of $n' for available grid columns.
+///   containing a unitless column-span;
+///   'of $n' for available grid columns [optional];
+///   'at $n', 'first', or 'last' for location on asymmetrical grids;
+///   and 'narrow', 'wide', or 'wider' for
+///   optionally spreading over adjacent gutters
+///   with either the `span` or `columns` value
+///
 /// @param {Map} $config [()] -
-///   Optional map of Susy grid configuration settings.
+///   Optional map of Susy grid configuration settings
 ///
 /// @return {List} -
-///   Subset list of columns for use in a nested context.
+///   Subset list of columns for use for a nested context
 ///
 /// @example scss - Span a specific segment of the grid
 ///   $context: susy-slice(3 at 3 of (1 2 3 5 8)); // returns `(3 5 8)`

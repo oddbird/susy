@@ -3,8 +3,6 @@ dest: ./docs
 display:
   access:
     - public
-  alias: true
-  watermark: true
 
 package: ./package.json
 theme: default

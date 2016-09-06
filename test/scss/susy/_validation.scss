@@ -42,18 +42,25 @@
 // Valid Gutters
 // -------------
 @include test-module('Su Valid Gutters [function]') {
-  @include test('Ratio') {
+  @include test('Fluid') {
     @include assert-equal(
-      su-valid-gutters(0.75),
+      su-valid-gutters(0.75, 1 1 1),
       0.75,
       'A unitless number is a valid setting for gutters');
   }
 
-  @include test('Length') {
+  @include test('Static') {
     @include assert-equal(
-      su-valid-gutters(3cm),
+      su-valid-gutters(3cm, 10cm 10cm),
       3cm,
-      'Any length is a valid setting for gutters');
+      'Any length is a valid setting for gutters on a static grid');
+  }
+
+  @include test('Static gutters, fluid grid') {
+    @include assert-equal(
+      su-valid-gutters(3cm, 1 1 1 1),
+      3cm,
+      'Static gutters are allowed on a fluid grid');
   }
 }
 

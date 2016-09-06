@@ -16,10 +16,13 @@ This is truely a grids-on-demand approach,
 where you build your own system,
 and we handle the math.
 
-Do It Yourself.
-Your Markup,
-Your Layout —
-*Our Math*
+We're planning to build various output-modules
+with mixins to help you get started.
+We'll probably start with a float-based module,
+and a flexbox module.
+If you have ideas for another plugin,
+or want to help move floats or flexbox along,
+pull requests are welcome!
 
 
 Getting Started

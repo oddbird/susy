@@ -2,9 +2,11 @@
 // =====
 // - susy-span [function]
 // - susy-gutter [function]
-// - susy-nested [function]
+// - susy-slice [function]
 
 
+// Susy Span
+// ---------
 /// Calculate the width of any grid-span.
 /// This is the primary function in Susy,
 /// and can be used anywhere you need
@@ -43,21 +45,14 @@
   $config: ()
 ) {
   $input: susy-settings($config, susy-parse($span));
+  $normal: susy-normalize($input);
 
-  $span: map-get($input, 'span');
-  $columns: map-get($input, 'columns');
-
-  $normalize: (
-    'span': if(type-of($span) == 'number', $span, susy-normalize-columns($span)),
-    'columns': susy-normalize-columns($columns),
-  );
-
-  $input: map-merge($input, $normalize);
-
-  @return su-span($input...);
+  @return su-span($normal...);
 }
 
 
+// Susy Gutter
+// -----------
 /// Get the width of a gutter
 /// in your current context.
 ///
@@ -80,15 +75,21 @@
   $context: susy-get('columns'),
   $config: ()
 ) {
-  $config: susy-settings($config, ('columns': $context));
-  $columns: ('columns': susy-normalize-columns(map-get($config, 'columns')));
-  $config: map-merge($config, $columns);
-  $config: map-remove($config, 'spread');
+  $args: ('columns', 'gutters', 'container-spread');
+  $input: susy-settings($config, ('columns': $context));
+  $normal: susy-normalize($input);
+  $output: ();
 
-  @return su-gutter($config...);
+  @each $setting in $args {
+    $output: map-merge($output, ($setting: map-get($normal, $setting)));
+  }
+
+  @return su-gutter($output...);
 }
 
 
+// Susy Slice
+// ----------
 /// Return a sub-slice of columns to use in a nested context.
 ///
 /// @group api
@@ -110,12 +111,14 @@
   $span,
   $config: ()
 ) {
+  $args: ('span', 'columns', 'location');
   $input: susy-settings($config, susy-parse($span));
-  $output: (
-    'span': map-get($input, 'span'),
-    'columns': map-get($input, 'columns'),
-    'location': map-get($input, 'location'),
-  );
+  $normal: susy-normalize($input);
+  $output: ();
+
+  @each $setting in $args {
+    $output: map-merge($output, ($setting: map-get($normal, $setting)));
+  }
 
   @return su-slice($output...);
 }

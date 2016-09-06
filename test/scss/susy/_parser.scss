@@ -2,6 +2,8 @@
 // =================
 
 
+// Susy Parse
+// ----------
 @include test-module('Susy Parse [function]') {
   @include test('Simple grid span') {
     $expect: ('span': 5);
@@ -126,7 +128,36 @@
 }
 
 
-@include test-module('Susy Normalize Columns [function') {
+// Normalize
+// ---------
+@include test-module('Susy Normalize [function]') {
+  @include test('All values') {
+    $config: (
+      'span': 'all',
+      'columns': 6 x 140px,
+      'location': 'last',
+      'spread': 'wider',
+      'container-spread': 'narrow',
+    );
+
+    $expect: (
+      'span': 6,
+      'columns': (140px 140px 140px 140px 140px 140px),
+      'location': 1,
+      'spread': 1,
+      'container-spread': -1,
+    );
+
+    @include assert-equal(
+      susy-normalize($config),
+      $expect);
+  }
+}
+
+
+// Normalize Columns
+// -----------------
+@include test-module('Susy Normalize Columns [function]') {
   @include test('Fluid shorthand') {
     @include assert-equal(
       susy-normalize-columns(4),
@@ -146,5 +177,67 @@
       susy-normalize-columns(250px 25px 400px),
       250px 25px 400px,
       'Longhand is passed through without changes.');
+  }
+}
+
+
+// Normalize Span
+// --------------
+@include test-module('Susy Normalize Span [funtion]') {
+  @include test('Keyword span') {
+    @include assert-equal(
+      susy-normalize-span('all', 1 1 1 1 1 1),
+      6);
+  }
+
+  @include test('Shorthand span') {
+    @include assert-equal(
+      susy-normalize-span(3 x 4em),
+      4em 4em 4em);
+  }
+}
+
+
+// Normalize Spread
+// ----------------
+@include test-module('Susy Normalize Spread [function]') {
+  @include test('Keyword spread') {
+    @include assert-equal(
+      susy-normalize-spread('wider'),
+      1,
+      'Keyword is converted to a number for grid-math');
+  }
+
+  @include test('Numeric spread') {
+    @include assert-equal(
+      susy-normalize-spread(-1),
+      -1,
+      'Number is returned directly');
+  }
+}
+
+
+// Normalize Location
+// ------------------
+@include test-module('Susy Normalize Location [function]') {
+  @include test('Numeric column position') {
+    @include assert-equal(
+      susy-normalize-location(2, 3, 1 2 3 5 8),
+      3,
+      'Valid position returns unchanged');
+  }
+
+  @include test('Initial position keyword') {
+    @include assert-equal(
+      susy-normalize-location(2, 'first', 2 4 6 8),
+      1,
+      'Valid initial keyword returns 1');
+  }
+
+  @include test('Final position keyword') {
+    @include assert-equal(
+      susy-normalize-location(2, 'last', 2 4 6 8),
+      3,
+      'Final keyword returns calculated position from end');
   }
 }

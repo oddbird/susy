@@ -2,8 +2,14 @@
 // ======
 // - susy-parse [function]
 // - susy-normalize [function]
+// - susy-normalize-columns [function]
+// - susy-normalize-span [function]
+// - susy-normalize-spread [function]
+// - susy-normalize-location [function]
 
 
+// Parse
+// -----
 /// Parse shorthand span expression
 ///
 /// @access private
@@ -99,7 +105,9 @@
     }
   }
 
-  @if not $span {
+  @if $span {
+    $return: map-merge($return, ('span': $span));
+  } @else {
     @error $span-error;
   }
 
@@ -107,11 +115,56 @@
     $return: map-merge($return, ('columns': $columns));
   }
 
-  @return map-merge($return, ('span': $span));
+  @return $return;
 }
 
 
-/// Normalize columns for Su
+// Susy Normalize
+// --------------
+/// Normalize the values in a configuration map
+///
+/// @access private
+///
+/// @param {Map} $config -
+///   Map of Susy configuration settings to normalize
+///
+/// @return {Map} -
+///   Map of Susy configuration settings, with all values normalized
+@function susy-normalize(
+  $config
+) {
+  @each $setting in ('columns', 'spread', 'container-spread') {
+    $value: map-get($config, $setting);
+
+    @if $value {
+      $function: if(($setting == 'container-spread'), 'spread', $setting);
+      $value: call('susy-normalize-#{$function}', $value);
+    }
+
+    $config: map-merge($config, ($setting: $value));
+  }
+
+  $span: map-get($config, 'span');
+  $location: map-get($config, 'location');
+  $columns: map-get($config, 'columns');
+
+  @if $span {
+    $span: susy-normalize-span($span, $columns);
+    $config: map-merge($config, ('span': $span));
+  }
+
+  @if $location {
+    $location: susy-normalize-location($span, $location, $columns);
+    $config: map-merge($config, ('location': $location));
+  }
+
+  @return $config;
+}
+
+
+// Normalize Columns
+// -----------------
+/// Normalize `columns` shorthand for Su
 ///
 /// @access private
 ///
@@ -119,7 +172,7 @@
 ///   Any valid `$columns` setting, in short or long form
 ///
 /// @return {List} -
-///   A list of column-widths, normalized for Su
+///   List value for `$columns`
 @function susy-normalize-columns(
   $columns
 ) {
@@ -144,3 +197,87 @@
   @return $columns;
 }
 
+
+// Normalize Span
+// --------------
+/// Normalize `span` shorthand for Su
+///
+/// @access private
+///
+/// @param {Number | List | 'all'} $span -
+///   Any valid `$span` setting, in short or long form
+/// @param {List} $columns -
+///   A normalized `$columns` setting
+///
+/// @return {Number | List} -
+///   Number or list value for `$span`
+@function susy-normalize-span(
+  $span,
+  $columns: susy-get('columns')
+) {
+  @if (type-of($span) == 'number') {
+    @return $span;
+  } @else if $span == 'all' {
+    @return length($columns);
+  }
+
+  @return susy-normalize-columns($span);
+}
+
+
+// Normalize Spread
+// ----------------
+/// Normalize `spread` shorthand for Su
+///
+/// @access private
+///
+/// @param {0 | 1 | -1 | 'narrow' | 'wide' | 'wider'} $spread -
+///   The spread of a span across gutters (relative to the span):
+///   either `narrow` (-1), `wide` (0), or `wider` (1).
+///
+/// @return {Number} -
+///   Numeric value for `$spread`
+@function susy-normalize-spread(
+  $spread
+) {
+  $normal-spread: (
+    'narrow': -1,
+    'wide': 0,
+    'wider': 1,
+  );
+
+  @return map-get($normal-spread, $spread) or $spread;
+}
+
+
+// Normalize Location
+// ------------------
+/// Normalize `location` shorthand for Su
+///
+/// @access private
+///
+/// @param {Number} $span -
+///   The number of grid-columns to be spanned.
+/// @param {Integer | String} $location -
+///   The starting (1-indexed) column position of a span,
+///   or a named location keyword.
+/// @param {List} $columns -
+///   A normalized list of columns in the grid.
+///
+/// @return {Integer} -
+///   Numeric value for `$location`
+@function susy-normalize-location(
+  $span,
+  $location,
+  $columns
+) {
+  $count: length($columns);
+  $normal-locations: (
+    'first': 1,
+    'alpha': 1,
+    'last': $count - $span + 1,
+    'omega': $count - $span + 1,
+  );
+
+  @return map-get($normal-locations, $location) or $location;
+}

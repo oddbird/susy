@@ -61,13 +61,6 @@
 // Valid Spread
 // ------------
 @include test-module('Su Valid Spread [function]') {
-  @include test('Keyword spread') {
-    @include assert-equal(
-      su-valid-spread('wider'),
-      1,
-      'Keyword is converted to a number for grid-math');
-  }
-
   @include test('Numeric spread') {
     @include assert-equal(
       su-valid-spread(-1),
@@ -85,19 +78,5 @@
       su-valid-location(2, 3, 1 2 3 5 8),
       3,
       'Valid position returns unchanged');
-  }
-
-  @include test('Initial position keyword') {
-    @include assert-equal(
-      su-valid-location(2, 'first', 2 4 6 8),
-      1,
-      'Valid initial keyword returns 1');
-  }
-
-  @include test('Final position keyword') {
-    @include assert-equal(
-      su-valid-location(2, 'last', 2 4 6 8),
-      3,
-      'Final keyword returns calculated position from end');
   }
 }

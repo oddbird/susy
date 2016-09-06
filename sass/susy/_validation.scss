@@ -49,12 +49,12 @@
 ) {
   $type: type-of($gutters);
 
-  @if ($type != 'number') {
-    $actual: '[#{$type}] `#{inspect($gutters)}`';
-    @error '#{$actual} is not a value for $gutters.';
+  @if ($type == 'number') {
+    @return $gutters;
   }
 
-  @return $gutters;
+  $actual: '[#{$type}] `#{inspect($gutters)}`';
+  @error '#{$actual} is not a value for $gutters.';
 }
 
 
@@ -74,16 +74,8 @@
 @function su-valid-spread(
   $spread
 ) {
-  $valid-spread: (
-    'narrow': -1,
-    'wide': 0,
-    'wider': 1,
-  );
-
   @if index(0 1 -1, $spread) {
     @return $spread;
-  } @else if map-has-key($valid-spread, $spread) {
-    @return map-get($valid-spread, $spread);
   }
 
   $actual: '[#{type-of($spread)}] `#{inspect($spread)}`';
@@ -93,7 +85,7 @@
 
 // Valid Location
 // --------------
-/// Check that a `location` argument is valid and normalized,
+/// Check that a `location` argument is valid ,
 /// given the span and available columns.
 ///
 /// @access private
@@ -114,22 +106,12 @@
   $columns
 ) {
   $count: length($columns);
-  $valid-locations: (
-    'first': 1,
-    'alpha': 1,
-    'last': $count - $span + 1,
-    'omega': $count - $span + 1,
-  );
 
   @if $location {
-    @if map-has-key($valid-locations, $location) {
-      $location: map-get($valid-locations, $location);
-    } @else if (type-of($location) != 'number') or not unitless($location) {
+    @if (type-of($location) != 'number') or not unitless($location) {
       $actual: '[#{type-of($location)}] `#{$location}`';
       @error '#{$actual} is not a value for $location.';
-    }
-
-    @if ($location > $count) {
+    } @else if ($location > $count) {
       @error 'Position `#{$location}` does not exist in grid `#{$columns}`.';
     } @else if ($location + $span - 1 > $count) {
       $details: 'grid `#{$columns}` for span `#{$span}` at `#{$location}`';

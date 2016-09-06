@@ -7,28 +7,28 @@
 @include test-module ('Su Span [function]') {
   @include test('Fluid') {
     @include assert-equal(
-      su-span(2, 1 1 1 1, 0.25, 'narrow', 'wide'),
+      su-span(2, 1 1 1 1, 0.25, -1, 0),
       percentage(2.25/5),
       'Returns fluid span if no units are given');
   }
 
   @include test('Static') {
     @include assert-equal(
-      su-span(2, 4em 4em 4em 4em, 0.25em, 'narrow', 'wide'),
+      su-span(2, 4em 4em 4em 4em, 0.25em, -1, 0),
       8.25em,
       'Returns static span if units are given');
   }
 
   @include test('Explicit column span') {
     @include assert-equal(
-      su-span(2 3, 2 4 6 8, 0.25, 'wide', 'wide'),
+      su-span(2 3, 2 4 6 8, 0.25, 0, 0),
       percentage(5.5/21),
       'Handles explicit column-spans');
   }
 
   @include test('Explicit length span') {
     @include assert-equal(
-      su-span(50%, 2 4 6 8, 0.25, 'wide', 'wider'),
+      su-span(50%, 2 4 6 8, 0.25, 0, 1),
       50%,
       'Handles explicit length-spans');
   }
@@ -40,14 +40,14 @@
 @include test-module('Su Gutter [function]') {
   @include test('Static gutters') {
     @include assert-equal(
-      su-gutter(4, 1em, 'wide'),
+      su-gutter(4, 1em, 0),
       1em,
       'Static gutters are returned directly');
   }
 
   @include test('Fluid gutters') {
     @include assert-equal(
-      su-gutter(2 4 6, 0.25, 'narrow'),
+      su-gutter(2 4 6, 0.25, -1),
       percentage(0.25/12.5),
       'Gutters are calculated as a percentage of context');
   }
@@ -59,21 +59,21 @@
 @include test-module('Su Sum [function]') {
   @include test('Calculate the total units in a fluid grid') {
     @include assert-equal(
-      su-sum(1 1 1, 0.5, 'wider'),
+      su-sum(1 1 1, 0.5, 1),
       5,
       'Returns combined column and gutter units');
   }
 
   @include test('Calculate the total units in a static grid') {
     @include assert-equal(
-      su-sum(1em 2em 3em 1em 2em, 0.25em, 'narrow'),
+      su-sum(1em 2em 3em 1em 2em, 0.25em, -1),
       10em,
       'Returns combined column and gutter units');
   }
 
   @include test('Handle non-comparable gutters') {
     @include assert-equal(
-      su-sum(1 2 3 4, 0.5em, 'narrow'),
+      su-sum(1 2 3 4, 0.5em, -1),
       10,
       'No static gutters are added to fluid grids');
   }
@@ -82,7 +82,7 @@
     $span: (4);
 
     @include assert-equal(
-      su-sum($span, 0.5, 'narrow'),
+      su-sum($span, 0.5, -1),
       4,
       'No static gutters are added to fluid grids');
   }

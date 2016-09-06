@@ -29,8 +29,8 @@
     "test": "npm run test-libsass && npm run test-ruby",
     "test-libsass": "node_modules/.bin/mocha",
     "test-ruby": "rake test",
-    "benchmark": "cd test && ./benchmark.sh",
-    "lint": "node_modules/.bin/sass-lint -vq"
+    "lint": "node_modules/.bin/sass-lint -vq",
+    "commit": "npm run lint && npm test"
   },
   "license": "BSD-3-Clause",
   "bugs": {

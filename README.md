@@ -10,6 +10,12 @@ full of rules and restrictions —
 we wanted a power tool
 for building our own damn systems.
 
+Version Three is trimmed down to it's most basic components —
+functions that can be used to build any grid system.
+This is truely a grids-on-demand approach,
+where you build your own system,
+and we handle the math.
+
 Do It Yourself.
 Your Markup,
 Your Layout —
@@ -19,127 +25,171 @@ Your Layout —
 Getting Started
 ---------------
 
-Susy v3 is trimmed down to it's most basic components —
-functions that can be used to build any grid system.
+You can install Susy as a rubygem,
+npm module, bower package, or git repo.
 
-There are four global settings to understand,
-and two of them are identical:
+```
+npm install susy@pre
+```
 
-
-### Columns
-
-The `columns` setting describes the columns in your grid.
-The most basic syntax uses a list of numbers
-to describe the relative size of each column.
+There are two imports to choose from.
+The default `sass/_susy.scss` comes with
+un-prefixed versions of the core API functions.
+If you want Susy to be name-spaced,
+import `sass/_prefix.scss` instead.
 
 ```scss
-// five equal columns
-$symmetrical: (1 1 1 1 1);
+@import '../node_modules/susy/sass/susy';
+```
 
-// six fibonacci columns
+
+Spanning Columns & Gutters
+--------------------------
+
+There are two core funtions:
+`span()` (or `susy-span()`),
+and `gutter()` (or `susy-gutter()`).
+
+The **gutter** function returns
+the width of a single gutter on your grid —
+to be applied as you see fit:
+
+```scss
+.example {
+  margin: susy-gutter();
+}
+```
+
+The **span** function
+describes a span of one or more columns,
+and any relevant gutters along the way:
+
+```scss
+.example {
+  // the width of three columns, and the two intervening gutters
+  width: susy-span(3);
+}
+```
+
+When nesting fluid grids,
+you can use the old `of $n` syntax
+to describe changes in context —
+e.g. `susy-span(3 of 6)`.
+When using asymmetrical grids,
+you can use the old `at $n`, `first`, or `last` syntax
+to describe the specific columns you want to span —
+e.g. `susy-span(3 at 2 of (1 2 3 4 5 6))`
+to span across `(2 3 4)`.
+
+You can use these two functions
+to build all sorts of grids:
+
+```scss
+.float {
+  float: left;
+  width: span(3);
+  margin-right: gutter();
+}
+
+.flexbox {
+  flex-basis: span(3);
+  padding: gutter() / 2;
+}
+
+// Make your own class system!
+.span {
+  float: left;
+  margin-right: gutter();
+
+  &.last {
+    margin-right: 0;
+  }
+}
+
+@for $span from 1 through susy-get('columns') {
+  .span-#{$i} {
+    width: span($i);
+  }
+}
+```
+
+
+Defining Grids
+--------------
+
+A grid is defined by a series of `columns`
+with optional `gutters` between them.
+
+**Columns** are described by a list of numbers,
+representing the relative width of each column.
+By default, a grid is fluid —
+but you can add units to create a static layout:
+
+```scss
+// six equal fluid columns
+$equal: (1 1 1 1 1 1);
+
+// six equal 5em columns
+$static: (5em 5em 5em 5em 5em 5em);
+
+// six unequal fluid columns
 $asymmetrical: (1 1 2 3 5 8);
+
+// six unequal fluid columns
+// you can mix units, as long as they are comparable...
+$strange: (1in 1cm 2pt 3mm 5in 8cm);
 ```
 
-If you want static grids,
-you can add units to the numbers —
-as long as all the units are comparable.
+Since `(1 1 1 1 1 1)` is so repetative,
+we've provided a shorthand syntax
+for describung equal columns:
 
 ```scss
-// five equal static columns
-$symmetrical: (120px 120px 120px 120px 120px);
+// six equal fluid columns (shorthand)
+$fluid: 6;
 
-// six not-fibonacci static columns
-$asymmetrical: (1in 1cm 2pt 3mm 5in 8cm);
+// six 120px static columns (shorthand)
+// that's a lowercase 'x' — not a star or any other symbol...
+$static: 6 x 120px;
 ```
 
-That can get repetative
-when you are working with symmetrical grids,
-so we've provided a symmetrical shorthand.
+**Gutters**
+are defined relative to columns,
+in comparable units.
+Both settings go together
+in a single map variable:
 
 ```scss
-// five equal fluid columns (shorthand)
-$fluid: 5;
+// fluid 4-column grid
+// with gutters 1/4 the size of a column
+$fluid: (
+  'columns': 4;
+  'gutters': 0.25;
+);
 
-// five equal static columns (shorthand)
-$static: 5 x 120px;
+// Static un-equal grid
+// with comparable gutters
+$static: (
+  'columns': (1em 1em 2em 3em 5em 8em)
+  'gutters': 0.25em;
+);
 ```
 
-That static-symmetrical shorthand
-is technically a list.
-The first value is a unitless number,
-representing the number of columns in the grid.
-The second value is the letter "x"
-(not a star or times symbol).
-The third value is the static width of your columns.
+Anything you put in the root `$susy` variable map
+will be treated as a global default
+across your project.
 
 
-### Gutters
+Advanced Features
+-----------------
 
-The `gutters` setting describes the space between
-(and sometimes around)
-your columns.
-It is always defined in units
-comparable to the rest of your grid.
+Once you get used to the basics,
+you can dig into the `spread` options —
+allowing you to include extra gutters in a span —
+and the `susy-slice()` function
+that can help you handle nesting-context with asymmetrical grids.
 
-```scss
-// fluid 4-column grid, with gutters 1/4 the size of a column
-$columns: (1 1 1 1);
-$gutters: 0.25;
-
-// Static em-based grid, with 0.25em gutters
-$columns: (1em 1em 2em 3em 5em 8em)
-$gutters: 0.25em;
-```
-
-There is a special case
-allowing you to use static gutters in a fluid grid,
-but that's too advanced for a quick-start guide.
-
-
-### Spread & Container-Spread
-
-The concept of `spread`
-helps us describe what gutters to include
-in a grid span or container.
-There are three options:
-`narrow`, `wide`, and `wider`.
-
-Imagine a four-column grid.
-How many gutters are in that grid?
-
-- The most common answer is `3`.
-  Gutters only exist between the columns —
-  `c1 (g1) c2 (g2) c3 (g3) c4`.
-  We call that option `narrow`,
-  and it is the default value for both
-  spans and containers.
-
-- The other common answer is `5`,
-  if we want to include gutters on the outside edges —
-  `(g1) c1 (g2) c2 (g3) c3 (g4) c4 (g5)`.
-  We call that option `wider`.
-
-- Less commonly,
-  you might want only one edge gutter
-  either before or after —
-  `c1 (g1) c2 (g2) c3 (g3) c4 (g4)` —
-  leaving your with `4` gutters.
-  We call that `wide`.
-
-Spread and container-spread work in the same way,
-but one applies to a span,
-and the other applies to the parent context
-when calculating relative widths.
-If you are using static grids,
-the `container-spread` isn't used.
-
-In most cases,
-you can set the default spread for a project,
-and never look back.
-Sometimes,
-when you are pushing and pulling
-elements around on the grid,
-it is helpful to add and remove gutters on the fly.
+Happy grid-building!
 
 
 Resources

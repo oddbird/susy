@@ -7,13 +7,13 @@
 
 // Susy Span
 // ---------
-/// Calculate the width of any grid-span.
-/// This is the primary function in Susy,
-/// and can be used anywhere you need
-/// to span columns on the grid:
-/// `width` for grid contents,
+/// This is the primary function in Susy —
+/// used to return the width of any grid-span —
+/// such as the `width` property of grid elements,
 /// or `margin` and `padding`
-/// to push, pull, and pad your elements.
+/// to push, pull, and pad your elements
+/// (un-prefixed alias `span()` is available
+/// unless you import `susy/prefix` explicitly)
 ///
 /// @group api
 ///
@@ -54,8 +54,10 @@
 
 // Susy Gutter
 // -----------
-/// Get the width of a single gutter
-/// in your current context
+/// Return the width of a single gutter
+/// in your current grid context
+/// (un-prefixed alias `gutter()` is available
+/// unless you import `susy/prefix` explicitly)
 ///
 /// @group api
 ///
@@ -91,14 +93,16 @@
 
 // Susy Slice
 // ----------
-/// Get a sub-slice of columns to use
+/// Return a sub-slice of asymmetrical columns to use
 /// for a nested context
+/// (un-prefixed alias `slice()` is available
+/// unless you import `susy/prefix` explicitly)
 ///
 /// @group api
 ///
 /// @param {List} $span -
-///   Shorthand expression to define the width of the subset span —
-///   containing a unitless column-span;
+///   Shorthand expression to define the subset span —
+///   containing a unitless column-count;
 ///   'of $n' for available grid columns [optional];
 ///   'at $n', 'first', or 'last' for location on asymmetrical grids;
 ///   and 'narrow', 'wide', or 'wider' for
@@ -111,7 +115,7 @@
 /// @return {List} -
 ///   Subset list of columns for use for a nested context
 ///
-/// @example scss - Span a specific segment of the grid
+/// @example scss - Return a nested segment of asymmetrical grid
 ///   $context: susy-slice(3 at 3 of (1 2 3 5 8)); // returns `(3 5 8)`
 @function susy-slice(
   $span,

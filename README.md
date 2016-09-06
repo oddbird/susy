@@ -25,8 +25,8 @@ functions that can be used to build any grid system.
 There are four global settings to understand,
 and two of them are identical:
 
-Columns
-~~~~~~~
+
+### Columns
 
 The `columns` setting describes the columns in your grid.
 The most basic syntax uses a list of numbers
@@ -72,8 +72,8 @@ The second value is the letter "x"
 (not a star or times symbol).
 The third value is the static width of your columns.
 
-Gutters
-~~~~~~~
+
+### Gutters
 
 The `gutters` setting describes the space between
 (and sometimes around)
@@ -96,8 +96,7 @@ allowing you to use static gutters in a fluid grid,
 but that's too advanced for a quick-start guide.
 
 
-Spread & Container-Spread
-~~~~~~~~~~~~~~~~~~~~~~~~~
+### Spread & Container-Spread
 
 The concept of `spread`
 helps us describe what gutters to include

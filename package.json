@@ -23,8 +23,10 @@
     "eyeglass-module"
   ],
   "eyeglass": {
+    "sassDir": "sass",
     "exports": "eyeglass-exports.js",
-    "needs": "*"
+    "name": "susy",
+    "needs": "^1.0.0"
   },
   "scripts": {
     "test": "npm run test-libsass && npm run test-ruby",

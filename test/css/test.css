@@ -58,8 +58,8 @@ h1 {
     outline: 1px solid rgba(255, 0, 0, 0.25);
     outline-offset: -1px; }
   [class^="assert__"] .test, [class^="assert__"] .expect {
-    /*   OUTPUT   */
-    /*   END_OUTPUT   */
+    background: linear-gradient(to left, rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0.75)), rgba(255, 204, 204, 0.5);
+    background-clip: content-box, border-box;
     font-size: .75rem;
     margin-bottom: .5rem; }
   [class^="assert__"] .test {
@@ -71,223 +71,490 @@ h1 {
     outline: 1px solid rgba(68, 68, 68, 0.25);
     background: rgba(68, 68, 68, 0.125); }
 
-/* # Module: Map Helpers */
-/* --------------------- */
-/* Test: truncate-list */
-/*   ✔ Returns a list truncated to the given length. */
-/*  */
-/* Test: deep-get */
-/*   ✔ Returns value of deep key. */
-/*  */
-/* Test: deep-set */
-/*   ✔ Returns map with deep value adjusted. */
-/*   ✔ Set deep value even in new key path. */
-/*  */
-/* Test: deep-merge */
-/*   ✔ Should merge nested maps */
-/*  */
-/* Test: deep-has-key */
-/*   ✔ Returns true for existing deep key. */
-/*   ✔ Returns false for non-existing deep key. */
-/*  */
-/*  */
-/* # Module: General Settings */
-/* -------------------------- */
-/* Test: susy-defaults */
-/*   ✔ Assert that there is no "test" default. */
-/*   ✔ Assert that we have added a "test" default. */
-/*  */
-/* Test: [mixin] susy-set */
-/*   ✔ Changes the global value for a setting. */
-/*  */
-/* Test: [function] susy-get */
-/*   ✔ susy-get should be the same whether pre-parsed or not */
-/*   ✔ Returns local grid setting when available. */
-/*   ✔ Returns global default grid setting, when local is missing. */
-/*   ✔ Returns null gutter setting without falling back on default. */
-/*   ✔ Returns deep grid setting when available. */
-/*   ✔ Returns null when deep grid setting is not available. */
-/*  */
-/*  */
-/* # Module: Grid Validation */
-/* ------------------------- */
-/* Test: [mixin] valid-columns */
-/*   ✔ A unitless number is a valid setting for columns. */
-/*   ✔ A list of unitless numbers is a valid setting for columns. */
-/*   ✔ A length is not a valid setting for columns */
-/*   ✔ A list including strings is not a valid setting for columns */
-/*  */
-/* Test: [mixin] valid-gutters */
-/*   ✔ A unitless number is a valid setting for gutters. */
-/*   ✔ A length is not a valid setting for gutters. */
-/*  */
-/*  */
-/* # Module: Column Math */
-/* --------------------- */
-/* Test: [function] is-symmetrical() */
-/*   ✔ Number is parsed as symmetrical grid. */
-/*   ✔ List is parsed as asymmetrical grid. */
-/*   ✔ Single-item list is parsed as asymmetrical grid. */
-/*  */
-/* Test: [function] susy-count() */
-/*   ✔ Symmetrical grid-count is equal to columns setting. */
-/*   ✔ Asymmetrical grid-count is equal to columns list length. */
-/*  */
-/* Test: [function] susy-sum() — symmetrical */
-/*   ✔ Symmetrical sum properly adds columns and gutters. */
-/*   ✔ Narrow sum properly adds columns and gutters. */
-/*   ✔ Wide sum includes an extra gutter. */
-/*   ✔ Wider sum includes two extra gutters. */
-/*  */
-/* Test: [function] susy-sum() — asymmetrical */
-/*   ✔ Asymmetrical sum properly adds columns and gutters. */
-/*   ✔ Wide sum includes an extra gutter. */
-/*   ✔ Wider sum includes two extra gutters. */
-/*  */
-/* Test: [function] susy-slice() */
-/*   ✔ Subset is equal to the span. */
-/*   ✔ Subset is an extracted list of span length, starting at location. */
-/*   ✔ Asymmetrical context without location returns first-position subset. */
-/*  */
-/* Test: [function] susy() */
-/*   ✔ Symmetrical column-span-sum is equal to column-sum of span. */
-/*   ✔ Asymmetrical column-span-sum fetches subset before calculating sum. */
-/*  */
-/*  */
-/* # Module: Language Settings */
-/* --------------------------- */
-/* Test: [function] parse-grid */
-/*   ✔ [parse-grid: map] Returns the correct columns. */
-/*   ✔ [parse-grid: #1] Returns the correct columns. */
-/*   ✔ [parse-grid: #1] Returns the correct gutters. */
-/*   ✔ [parse-grid: #1] Returns the correct container. */
-/*   ✔ [parse-grid: #1] Returns the correct math. */
-/*   ✔ [parse-grid: #1] Returns the correct output. */
-/*   ✔ [parse-grid: #1] Returns the correct container-position. */
-/*   ✔ [parse-grid: #1] Returns the correct flow. */
-/*   ✔ [parse-grid: #1] Returns the correct gutter-position. */
-/*   ✔ [parse-grid: #1 » debug] Returns the correct image. */
-/*   ✔ [parse-grid: #1 » debug] Returns the correct output. */
-/*   ✔ [parse-grid: #2] Returns the correct columns. */
-/*   ✔ [parse-grid: #2] Returns the correct gutters. */
-/*   ✔ [parse-grid: #2] Returns the correct container. */
-/*   ✔ [parse-grid: #2] Returns the correct column-width. */
-/*   ✔ [parse-grid: #2] Returns the correct math. */
-/*   ✔ [parse-grid: #2] Returns the correct output. */
-/*   ✔ [parse-grid: #2] Returns the correct container-position. */
-/*   ✔ [parse-grid: #2] Returns the correct flow. */
-/*   ✔ [parse-grid: #2] Returns the correct gutter-position. */
-/*   ✔ [parse-grid: #2] Returns the correct box-sizing. */
-/*   ✔ [parse-grid: #2 » debug] Returns the correct image. */
-/*   ✔ [parse-grid: #3] Returns the correct container-position. */
-/*   ✔ [parse-grid: #3] Returns the correct gutter-position. */
-/*   ✔ [parse-grid: #3] Returns the correct box-sizing. */
-/*   ✔ [parse-grid: #3 » debug] Returns the correct image. */
-/*   ✔ [parse-grid: #4] Returns the correct columns. */
-/*   ✔ [parse-grid: #4] Returns the correct gutters. */
-/*   ✔ [parse-grid: #4] Returns the correct gutter-position. */
-/*   ✔ [parse-grid: #4 » debug] Returns the correct image. */
-/*   ✔ [parse-grid: #5] Returns the correct gutter-position. */
-/*  */
-/* Test: [function] parse-span */
-/*   ✔ [parse-span: #1] Returns the correct span. */
-/*   ✔ [parse-span: #1] Returns the correct edge. */
-/*   ✔ [parse-span: #1] Returns the correct columns. */
-/*   ✔ [parse-span: #1] Returns the correct gutters. */
-/*   ✔ [parse-span: #1] Returns the correct output. */
-/*   ✔ [parse-span: #1] Returns the correct math. */
-/*   ✔ [parse-span: #1] Returns the correct spread. */
-/*   ✔ [parse-span: #1] Returns the correct flow. */
-/*   ✔ [parse-span: #1] Returns the correct gutter-position. */
-/*   ✔ [parse-span: #2] Returns the correct span. */
-/*   ✔ [parse-span: #2] Returns the correct edge. */
-/*   ✔ [parse-span: #2] Returns the correct columns. */
-/*   ✔ [parse-span: #2] Returns the correct gutters. */
-/*   ✔ [parse-span: #2] Returns the correct column-width. */
-/*   ✔ [parse-span: #2] Returns the correct output. */
-/*   ✔ [parse-span: #2] Returns the correct math. */
-/*   ✔ [parse-span: #2] Returns the correct flow. */
-/*   ✔ [parse-span: #2] Returns the correct gutter-position. */
-/*   ✔ [parse-span: #2] Returns the correct role. */
-/*   ✔ [parse-span: #3] Returns the correct span. */
-/*   ✔ [parse-span: #3] Returns the correct edge. */
-/*   ✔ [parse-span: #3] Returns the correct columns. */
-/*   ✔ [parse-span: #3] Returns the correct column-width. */
-/*   ✔ [parse-span: #3] Returns the correct gutter-position. */
-/*   ✔ [parse-span: #3] Returns the correct spread. */
-/*   ✔ [parse-span: #4] Returns the correct span. */
-/*   ✔ [parse-span: #4] Returns the correct edge. */
-/*   ✔ [parse-span: #4] Returns the correct columns. */
-/*   ✔ [parse-span: #4] Returns the correct gutters. */
-/*   ✔ [parse-span: #4] Returns the correct gutter-position. */
-/*   ✔ [parse-span: #5] Returns the correct span. */
-/*   ✔ [parse-span: #5] Returns the correct location. */
-/*   ✔ [parse-span: #5] Returns the correct gutter-position. */
-/*   ✔ [parse-span: #5] Returns the correct gutter-override. */
-/*   ✔ [parse-span: #5] Returns the correct clear. */
-/*   ✔ [parse-span: #6] Returns the correct span. */
-/*   ✔ [parse-span: #6] Returns the correct gutter-override. */
-/*   ✔ [parse-span: #6] Returns the correct clear. */
-/*   ✔ [parse-span: #7] Returns the correct span. */
-/*   ✔ [parse-span: #7] Returns the correct edge. */
-/*   ✔ [parse-span: #7] Returns the correct columns. */
-/*   ✔ [parse-span: #7] Returns the correct gutters. */
-/*   ✔ [parse-span: #7] Returns the correct column-width. */
-/*   ✔ [parse-span: #7] Returns the correct gutter-position. */
-/*  */
-/* Test: [function] parse-gutters */
-/*   ✔ [context-only] Returns the correct columns. */
-/*   ✔ [context-only] Returns the correct gutters. */
-/*   ✔ [context-only] Returns the correct gutter-position. */
-/*   ✔ [context-only [no "of"]] Returns the correct columns. */
-/*   ✔ [context-only [no "of"]] Returns the correct gutters. */
-/*   ✔ [context-only [no "of"]] Returns the correct gutter-position. */
-/*   ✔ [explicit-only] Returns the correct gutter-override. */
-/*   ✔ [explicit] Returns the correct columns. */
-/*   ✔ [explicit] Returns the correct gutters. */
-/*   ✔ [explicit] Returns the correct gutter-position. */
-/*   ✔ [explicit] Returns the correct gutter-override. */
-/*  */
-/*  */
-/* # Module: Grids Syntax */
-/* ---------------------- */
-/* Test: [mixin] layout */
-/*   ✔ New container setting should be "960px" */
-/*   ✔ New columns setting should still be the default */
-/*   ✔ New box-sizing should be "border-box" */
-/*   ✔ New gutter-position should be "inside" */
-/*   ✔ New container setting should remain "960px" */
-/*   ✔ New columns setting should be "12" */
-/*   ✔ New box-sizing should remain "border-box" */
-/*  */
-/* Test: [mixin] with-layout */
-/*   ✔ Start with 4 columns, before with-layout */
-/*   ✔ Start with 960px container, before with-layout */
-/*   ✔ Switch to 12 columns, inside with-layout */
-/*   ✔ Switch to auto container, inside with-layout */
-/*   ✔ End with 4 columns, after with-layout */
-/*   ✔ End with 960px container, after with-layout */
-/*  */
-/* Test: [function] layout */
-/*   ✔ Returns a parsed grid map based on shorthand syntax */
-/*  */
-/* Test: [function] _get-layout */
-/*   ✔ Returns layout merged with global settings */
-/*   ✔ Returns layout, without global settings */
-/*  */
-/*  */
-/* # Module: Global Box-Sizing Syntax */
-/* ---------------------------------- */
+/* # Map Helpers ---------- */
+/* truncate-list */
+[data-module="Map Helpers"] [data-test="truncate-list"] .assert-equal {
+  -result: PASS;
+  -description: "Returns a list truncated to the given length."; }
+
+/* deep-get */
+[data-module="Map Helpers"] [data-test="deep-get"] .assert-equal {
+  -result: PASS;
+  -description: "Returns value of deep key."; }
+
+/* deep-set */
+[data-module="Map Helpers"] [data-test="deep-set"] .assert-equal {
+  -result: PASS;
+  -description: "Returns map with deep value adjusted."; }
+[data-module="Map Helpers"] [data-test="deep-set"] .assert-equal {
+  -result: PASS;
+  -description: "Set deep value even in new key path."; }
+
+/* deep-merge */
+[data-module="Map Helpers"] [data-test="deep-merge"] .assert-equal {
+  -result: PASS;
+  -description: "Should merge nested maps"; }
+
+/* deep-has-key */
+[data-module="Map Helpers"] [data-test="deep-has-key"] .assert-equal {
+  -result: PASS;
+  -description: "Returns true for existing deep key."; }
+[data-module="Map Helpers"] [data-test="deep-has-key"] .assert-equal {
+  -result: PASS;
+  -description: "Returns false for non-existing deep key."; }
+
+/* # General Settings ---------- */
+/* susy-defaults */
+[data-module="General Settings"] [data-test="susy-defaults"] .assert-equal {
+  -result: PASS;
+  -description: 'Assert that there is no "test" default.'; }
+[data-module="General Settings"] [data-test="susy-defaults"] .assert-true {
+  -result: PASS;
+  -description: 'Assert that we have added a "test" default.'; }
+
+/* [mixin] susy-set */
+[data-module="General Settings"] [data-test="[mixin] susy-set"] .assert-equal {
+  -result: PASS;
+  -description: "Changes the global value for a setting."; }
+
+/* [function] susy-get */
+[data-module="General Settings"] [data-test="[function] susy-get"] .assert-equal {
+  -result: PASS;
+  -description: "susy-get should be the same whether pre-parsed or not"; }
+[data-module="General Settings"] [data-test="[function] susy-get"] .assert-equal {
+  -result: PASS;
+  -description: "Returns local grid setting when available."; }
+[data-module="General Settings"] [data-test="[function] susy-get"] .assert-equal {
+  -result: PASS;
+  -description: "Returns global default grid setting, when local is missing."; }
+[data-module="General Settings"] [data-test="[function] susy-get"] .assert-equal {
+  -result: PASS;
+  -description: "Returns null gutter setting without falling back on default."; }
+[data-module="General Settings"] [data-test="[function] susy-get"] .assert-equal {
+  -result: PASS;
+  -description: "Returns deep grid setting when available."; }
+[data-module="General Settings"] [data-test="[function] susy-get"] .assert-equal {
+  -result: PASS;
+  -description: "Returns null when deep grid setting is not available."; }
+
+/* # Grid Validation ---------- */
+/* [mixin] valid-columns */
+[data-module="Grid Validation"] [data-test="[mixin] valid-columns"] .assert-equal {
+  -result: PASS;
+  -description: "A unitless number is a valid setting for columns."; }
+[data-module="Grid Validation"] [data-test="[mixin] valid-columns"] .assert-equal {
+  -result: PASS;
+  -description: "A list of unitless numbers is a valid setting for columns."; }
+[data-module="Grid Validation"] [data-test="[mixin] valid-columns"] .assert-equal {
+  -result: PASS;
+  -description: "A length is not a valid setting for columns"; }
+[data-module="Grid Validation"] [data-test="[mixin] valid-columns"] .assert-equal {
+  -result: PASS;
+  -description: "A list including strings is not a valid setting for columns"; }
+
+/* [mixin] valid-gutters */
+[data-module="Grid Validation"] [data-test="[mixin] valid-gutters"] .assert-equal {
+  -result: PASS;
+  -description: "A unitless number is a valid setting for gutters."; }
+[data-module="Grid Validation"] [data-test="[mixin] valid-gutters"] .assert-equal {
+  -result: PASS;
+  -description: "A length is not a valid setting for gutters."; }
+
+/* # Column Math ---------- */
+/* [function] is-symmetrical() */
+[data-module="Column Math"] [data-test="[function] is-symmetrical()"] .assert-true {
+  -result: PASS;
+  -description: "Number is parsed as symmetrical grid."; }
+[data-module="Column Math"] [data-test="[function] is-symmetrical()"] .assert-equal {
+  -result: PASS;
+  -description: "List is parsed as asymmetrical grid."; }
+[data-module="Column Math"] [data-test="[function] is-symmetrical()"] .assert-equal {
+  -result: PASS;
+  -description: "Single-item list is parsed as asymmetrical grid."; }
+
+/* [function] susy-count() */
+[data-module="Column Math"] [data-test="[function] susy-count()"] .assert-equal {
+  -result: PASS;
+  -description: "Symmetrical grid-count is equal to columns setting."; }
+[data-module="Column Math"] [data-test="[function] susy-count()"] .assert-equal {
+  -result: PASS;
+  -description: "Asymmetrical grid-count is equal to columns list length."; }
+
+/* [function] susy-sum() — symmetrical */
+[data-module="Column Math"] [data-test="[function] susy-sum() — symmetrical"] .assert-equal {
+  -result: PASS;
+  -description: "Symmetrical sum properly adds columns and gutters."; }
+[data-module="Column Math"] [data-test="[function] susy-sum() — symmetrical"] .assert-equal {
+  -result: PASS;
+  -description: "Narrow sum properly adds columns and gutters."; }
+[data-module="Column Math"] [data-test="[function] susy-sum() — symmetrical"] .assert-equal {
+  -result: PASS;
+  -description: "Wide sum includes an extra gutter."; }
+[data-module="Column Math"] [data-test="[function] susy-sum() — symmetrical"] .assert-equal {
+  -result: PASS;
+  -description: "Wider sum includes two extra gutters."; }
+
+/* [function] susy-sum() — asymmetrical */
+[data-module="Column Math"] [data-test="[function] susy-sum() — asymmetrical"] .assert-equal {
+  -result: PASS;
+  -description: "Asymmetrical sum properly adds columns and gutters."; }
+[data-module="Column Math"] [data-test="[function] susy-sum() — asymmetrical"] .assert-equal {
+  -result: PASS;
+  -description: "Wide sum includes an extra gutter."; }
+[data-module="Column Math"] [data-test="[function] susy-sum() — asymmetrical"] .assert-equal {
+  -result: PASS;
+  -description: "Wider sum includes two extra gutters."; }
+
+/* [function] susy-slice() */
+[data-module="Column Math"] [data-test="[function] susy-slice()"] .assert-equal {
+  -result: PASS;
+  -description: "Subset is equal to the span."; }
+[data-module="Column Math"] [data-test="[function] susy-slice()"] .assert-equal {
+  -result: PASS;
+  -description: "Subset is an extracted list of span length, starting at location."; }
+[data-module="Column Math"] [data-test="[function] susy-slice()"] .assert-equal {
+  -result: PASS;
+  -description: "Asymmetrical context without location returns first-position subset."; }
+
+/* [function] susy() */
+[data-module="Column Math"] [data-test="[function] susy()"] .assert-equal {
+  -result: PASS;
+  -description: "Symmetrical column-span-sum is equal to column-sum of span."; }
+[data-module="Column Math"] [data-test="[function] susy()"] .assert-equal {
+  -result: PASS;
+  -description: "Asymmetrical column-span-sum fetches subset before calculating sum."; }
+
+/* # Language Settings ---------- */
+/* [function] parse-grid */
+[data-module="Language Settings"] [data-test="[function] parse-grid"] .assert-equal {
+  -result: PASS;
+  -description: "[parse-grid: map] Returns the correct columns."; }
+[data-module="Language Settings"] [data-test="[function] parse-grid"] .assert-equal {
+  -result: PASS;
+  -description: "[parse-grid: #1] Returns the correct columns."; }
+[data-module="Language Settings"] [data-test="[function] parse-grid"] .assert-equal {
+  -result: PASS;
+  -description: "[parse-grid: #1] Returns the correct gutters."; }
+[data-module="Language Settings"] [data-test="[function] parse-grid"] .assert-equal {
+  -result: PASS;
+  -description: "[parse-grid: #1] Returns the correct container."; }
+[data-module="Language Settings"] [data-test="[function] parse-grid"] .assert-equal {
+  -result: PASS;
+  -description: "[parse-grid: #1] Returns the correct math."; }
+[data-module="Language Settings"] [data-test="[function] parse-grid"] .assert-equal {
+  -result: PASS;
+  -description: "[parse-grid: #1] Returns the correct output."; }
+[data-module="Language Settings"] [data-test="[function] parse-grid"] .assert-equal {
+  -result: PASS;
+  -description: "[parse-grid: #1] Returns the correct container-position."; }
+[data-module="Language Settings"] [data-test="[function] parse-grid"] .assert-equal {
+  -result: PASS;
+  -description: "[parse-grid: #1] Returns the correct flow."; }
+[data-module="Language Settings"] [data-test="[function] parse-grid"] .assert-equal {
+  -result: PASS;
+  -description: "[parse-grid: #1] Returns the correct gutter-position."; }
+[data-module="Language Settings"] [data-test="[function] parse-grid"] .assert-equal {
+  -result: PASS;
+  -description: "[parse-grid: #1 » debug] Returns the correct image."; }
+[data-module="Language Settings"] [data-test="[function] parse-grid"] .assert-equal {
+  -result: PASS;
+  -description: "[parse-grid: #1 » debug] Returns the correct output."; }
+[data-module="Language Settings"] [data-test="[function] parse-grid"] .assert-equal {
+  -result: PASS;
+  -description: "[parse-grid: #2] Returns the correct columns."; }
+[data-module="Language Settings"] [data-test="[function] parse-grid"] .assert-equal {
+  -result: PASS;
+  -description: "[parse-grid: #2] Returns the correct gutters."; }
+[data-module="Language Settings"] [data-test="[function] parse-grid"] .assert-equal {
+  -result: PASS;
+  -description: "[parse-grid: #2] Returns the correct container."; }
+[data-module="Language Settings"] [data-test="[function] parse-grid"] .assert-equal {
+  -result: PASS;
+  -description: "[parse-grid: #2] Returns the correct column-width."; }
+[data-module="Language Settings"] [data-test="[function] parse-grid"] .assert-equal {
+  -result: PASS;
+  -description: "[parse-grid: #2] Returns the correct math."; }
+[data-module="Language Settings"] [data-test="[function] parse-grid"] .assert-equal {
+  -result: PASS;
+  -description: "[parse-grid: #2] Returns the correct output."; }
+[data-module="Language Settings"] [data-test="[function] parse-grid"] .assert-equal {
+  -result: PASS;
+  -description: "[parse-grid: #2] Returns the correct container-position."; }
+[data-module="Language Settings"] [data-test="[function] parse-grid"] .assert-equal {
+  -result: PASS;
+  -description: "[parse-grid: #2] Returns the correct flow."; }
+[data-module="Language Settings"] [data-test="[function] parse-grid"] .assert-equal {
+  -result: PASS;
+  -description: "[parse-grid: #2] Returns the correct gutter-position."; }
+[data-module="Language Settings"] [data-test="[function] parse-grid"] .assert-equal {
+  -result: PASS;
+  -description: "[parse-grid: #2] Returns the correct box-sizing."; }
+[data-module="Language Settings"] [data-test="[function] parse-grid"] .assert-equal {
+  -result: PASS;
+  -description: "[parse-grid: #2 » debug] Returns the correct image."; }
+[data-module="Language Settings"] [data-test="[function] parse-grid"] .assert-equal {
+  -result: PASS;
+  -description: "[parse-grid: #3] Returns the correct container-position."; }
+[data-module="Language Settings"] [data-test="[function] parse-grid"] .assert-equal {
+  -result: PASS;
+  -description: "[parse-grid: #3] Returns the correct gutter-position."; }
+[data-module="Language Settings"] [data-test="[function] parse-grid"] .assert-equal {
+  -result: PASS;
+  -description: "[parse-grid: #3] Returns the correct box-sizing."; }
+[data-module="Language Settings"] [data-test="[function] parse-grid"] .assert-equal {
+  -result: PASS;
+  -description: "[parse-grid: #3 » debug] Returns the correct image."; }
+[data-module="Language Settings"] [data-test="[function] parse-grid"] .assert-equal {
+  -result: PASS;
+  -description: "[parse-grid: #4] Returns the correct columns."; }
+[data-module="Language Settings"] [data-test="[function] parse-grid"] .assert-equal {
+  -result: PASS;
+  -description: "[parse-grid: #4] Returns the correct gutters."; }
+[data-module="Language Settings"] [data-test="[function] parse-grid"] .assert-equal {
+  -result: PASS;
+  -description: "[parse-grid: #4] Returns the correct gutter-position."; }
+[data-module="Language Settings"] [data-test="[function] parse-grid"] .assert-equal {
+  -result: PASS;
+  -description: "[parse-grid: #4 » debug] Returns the correct image."; }
+[data-module="Language Settings"] [data-test="[function] parse-grid"] .assert-equal {
+  -result: PASS;
+  -description: "[parse-grid: #5] Returns the correct gutter-position."; }
+
+/* [function] parse-span */
+[data-module="Language Settings"] [data-test="[function] parse-span"] .assert-equal {
+  -result: PASS;
+  -description: "[parse-span: #1] Returns the correct span."; }
+[data-module="Language Settings"] [data-test="[function] parse-span"] .assert-equal {
+  -result: PASS;
+  -description: "[parse-span: #1] Returns the correct edge."; }
+[data-module="Language Settings"] [data-test="[function] parse-span"] .assert-equal {
+  -result: PASS;
+  -description: "[parse-span: #1] Returns the correct columns."; }
+[data-module="Language Settings"] [data-test="[function] parse-span"] .assert-equal {
+  -result: PASS;
+  -description: "[parse-span: #1] Returns the correct gutters."; }
+[data-module="Language Settings"] [data-test="[function] parse-span"] .assert-equal {
+  -result: PASS;
+  -description: "[parse-span: #1] Returns the correct output."; }
+[data-module="Language Settings"] [data-test="[function] parse-span"] .assert-equal {
+  -result: PASS;
+  -description: "[parse-span: #1] Returns the correct math."; }
+[data-module="Language Settings"] [data-test="[function] parse-span"] .assert-equal {
+  -result: PASS;
+  -description: "[parse-span: #1] Returns the correct spread."; }
+[data-module="Language Settings"] [data-test="[function] parse-span"] .assert-equal {
+  -result: PASS;
+  -description: "[parse-span: #1] Returns the correct flow."; }
+[data-module="Language Settings"] [data-test="[function] parse-span"] .assert-equal {
+  -result: PASS;
+  -description: "[parse-span: #1] Returns the correct gutter-position."; }
+[data-module="Language Settings"] [data-test="[function] parse-span"] .assert-equal {
+  -result: PASS;
+  -description: "[parse-span: #2] Returns the correct span."; }
+[data-module="Language Settings"] [data-test="[function] parse-span"] .assert-equal {
+  -result: PASS;
+  -description: "[parse-span: #2] Returns the correct edge."; }
+[data-module="Language Settings"] [data-test="[function] parse-span"] .assert-equal {
+  -result: PASS;
+  -description: "[parse-span: #2] Returns the correct columns."; }
+[data-module="Language Settings"] [data-test="[function] parse-span"] .assert-equal {
+  -result: PASS;
+  -description: "[parse-span: #2] Returns the correct gutters."; }
+[data-module="Language Settings"] [data-test="[function] parse-span"] .assert-equal {
+  -result: PASS;
+  -description: "[parse-span: #2] Returns the correct column-width."; }
+[data-module="Language Settings"] [data-test="[function] parse-span"] .assert-equal {
+  -result: PASS;
+  -description: "[parse-span: #2] Returns the correct output."; }
+[data-module="Language Settings"] [data-test="[function] parse-span"] .assert-equal {
+  -result: PASS;
+  -description: "[parse-span: #2] Returns the correct math."; }
+[data-module="Language Settings"] [data-test="[function] parse-span"] .assert-equal {
+  -result: PASS;
+  -description: "[parse-span: #2] Returns the correct flow."; }
+[data-module="Language Settings"] [data-test="[function] parse-span"] .assert-equal {
+  -result: PASS;
+  -description: "[parse-span: #2] Returns the correct gutter-position."; }
+[data-module="Language Settings"] [data-test="[function] parse-span"] .assert-equal {
+  -result: PASS;
+  -description: "[parse-span: #2] Returns the correct role."; }
+[data-module="Language Settings"] [data-test="[function] parse-span"] .assert-equal {
+  -result: PASS;
+  -description: "[parse-span: #3] Returns the correct span."; }
+[data-module="Language Settings"] [data-test="[function] parse-span"] .assert-equal {
+  -result: PASS;
+  -description: "[parse-span: #3] Returns the correct edge."; }
+[data-module="Language Settings"] [data-test="[function] parse-span"] .assert-equal {
+  -result: PASS;
+  -description: "[parse-span: #3] Returns the correct columns."; }
+[data-module="Language Settings"] [data-test="[function] parse-span"] .assert-equal {
+  -result: PASS;
+  -description: "[parse-span: #3] Returns the correct column-width."; }
+[data-module="Language Settings"] [data-test="[function] parse-span"] .assert-equal {
+  -result: PASS;
+  -description: "[parse-span: #3] Returns the correct gutter-position."; }
+[data-module="Language Settings"] [data-test="[function] parse-span"] .assert-equal {
+  -result: PASS;
+  -description: "[parse-span: #3] Returns the correct spread."; }
+[data-module="Language Settings"] [data-test="[function] parse-span"] .assert-equal {
+  -result: PASS;
+  -description: "[parse-span: #4] Returns the correct span."; }
+[data-module="Language Settings"] [data-test="[function] parse-span"] .assert-equal {
+  -result: PASS;
+  -description: "[parse-span: #4] Returns the correct edge."; }
+[data-module="Language Settings"] [data-test="[function] parse-span"] .assert-equal {
+  -result: PASS;
+  -description: "[parse-span: #4] Returns the correct columns."; }
+[data-module="Language Settings"] [data-test="[function] parse-span"] .assert-equal {
+  -result: PASS;
+  -description: "[parse-span: #4] Returns the correct gutters."; }
+[data-module="Language Settings"] [data-test="[function] parse-span"] .assert-equal {
+  -result: PASS;
+  -description: "[parse-span: #4] Returns the correct gutter-position."; }
+[data-module="Language Settings"] [data-test="[function] parse-span"] .assert-equal {
+  -result: PASS;
+  -description: "[parse-span: #5] Returns the correct span."; }
+[data-module="Language Settings"] [data-test="[function] parse-span"] .assert-equal {
+  -result: PASS;
+  -description: "[parse-span: #5] Returns the correct location."; }
+[data-module="Language Settings"] [data-test="[function] parse-span"] .assert-equal {
+  -result: PASS;
+  -description: "[parse-span: #5] Returns the correct gutter-position."; }
+[data-module="Language Settings"] [data-test="[function] parse-span"] .assert-equal {
+  -result: PASS;
+  -description: "[parse-span: #5] Returns the correct gutter-override."; }
+[data-module="Language Settings"] [data-test="[function] parse-span"] .assert-equal {
+  -result: PASS;
+  -description: "[parse-span: #5] Returns the correct clear."; }
+[data-module="Language Settings"] [data-test="[function] parse-span"] .assert-equal {
+  -result: PASS;
+  -description: "[parse-span: #6] Returns the correct span."; }
+[data-module="Language Settings"] [data-test="[function] parse-span"] .assert-equal {
+  -result: PASS;
+  -description: "[parse-span: #6] Returns the correct gutter-override."; }
+[data-module="Language Settings"] [data-test="[function] parse-span"] .assert-equal {
+  -result: PASS;
+  -description: "[parse-span: #6] Returns the correct clear."; }
+[data-module="Language Settings"] [data-test="[function] parse-span"] .assert-equal {
+  -result: PASS;
+  -description: "[parse-span: #7] Returns the correct span."; }
+[data-module="Language Settings"] [data-test="[function] parse-span"] .assert-equal {
+  -result: PASS;
+  -description: "[parse-span: #7] Returns the correct edge."; }
+[data-module="Language Settings"] [data-test="[function] parse-span"] .assert-equal {
+  -result: PASS;
+  -description: "[parse-span: #7] Returns the correct columns."; }
+[data-module="Language Settings"] [data-test="[function] parse-span"] .assert-equal {
+  -result: PASS;
+  -description: "[parse-span: #7] Returns the correct gutters."; }
+[data-module="Language Settings"] [data-test="[function] parse-span"] .assert-equal {
+  -result: PASS;
+  -description: "[parse-span: #7] Returns the correct column-width."; }
+[data-module="Language Settings"] [data-test="[function] parse-span"] .assert-equal {
+  -result: PASS;
+  -description: "[parse-span: #7] Returns the correct gutter-position."; }
+
+/* [function] parse-gutters */
+[data-module="Language Settings"] [data-test="[function] parse-gutters"] .assert-equal {
+  -result: PASS;
+  -description: "[context-only] Returns the correct columns."; }
+[data-module="Language Settings"] [data-test="[function] parse-gutters"] .assert-equal {
+  -result: PASS;
+  -description: "[context-only] Returns the correct gutters."; }
+[data-module="Language Settings"] [data-test="[function] parse-gutters"] .assert-equal {
+  -result: PASS;
+  -description: "[context-only] Returns the correct gutter-position."; }
+[data-module="Language Settings"] [data-test="[function] parse-gutters"] .assert-equal {
+  -result: PASS;
+  -description: '[context-only [no "of"]] Returns the correct columns.'; }
+[data-module="Language Settings"] [data-test="[function] parse-gutters"] .assert-equal {
+  -result: PASS;
+  -description: '[context-only [no "of"]] Returns the correct gutters.'; }
+[data-module="Language Settings"] [data-test="[function] parse-gutters"] .assert-equal {
+  -result: PASS;
+  -description: '[context-only [no "of"]] Returns the correct gutter-position.'; }
+[data-module="Language Settings"] [data-test="[function] parse-gutters"] .assert-equal {
+  -result: PASS;
+  -description: "[explicit-only] Returns the correct gutter-override."; }
+[data-module="Language Settings"] [data-test="[function] parse-gutters"] .assert-equal {
+  -result: PASS;
+  -description: "[explicit] Returns the correct columns."; }
+[data-module="Language Settings"] [data-test="[function] parse-gutters"] .assert-equal {
+  -result: PASS;
+  -description: "[explicit] Returns the correct gutters."; }
+[data-module="Language Settings"] [data-test="[function] parse-gutters"] .assert-equal {
+  -result: PASS;
+  -description: "[explicit] Returns the correct gutter-position."; }
+[data-module="Language Settings"] [data-test="[function] parse-gutters"] .assert-equal {
+  -result: PASS;
+  -description: "[explicit] Returns the correct gutter-override."; }
+
+/* # Grids Syntax ---------- */
+/* [mixin] layout */
+[data-module="Grids Syntax"] [data-test="[mixin] layout"] .assert-equal {
+  -result: PASS;
+  -description: 'New container setting should be "960px"'; }
+[data-module="Grids Syntax"] [data-test="[mixin] layout"] .assert-equal {
+  -result: PASS;
+  -description: "New columns setting should still be the default"; }
+[data-module="Grids Syntax"] [data-test="[mixin] layout"] .assert-equal {
+  -result: PASS;
+  -description: 'New box-sizing should be "border-box"'; }
+[data-module="Grids Syntax"] [data-test="[mixin] layout"] .assert-equal {
+  -result: PASS;
+  -description: 'New gutter-position should be "inside"'; }
+[data-module="Grids Syntax"] [data-test="[mixin] layout"] .assert-equal {
+  -result: PASS;
+  -description: 'New container setting should remain "960px"'; }
+[data-module="Grids Syntax"] [data-test="[mixin] layout"] .assert-equal {
+  -result: PASS;
+  -description: 'New columns setting should be "12"'; }
+[data-module="Grids Syntax"] [data-test="[mixin] layout"] .assert-equal {
+  -result: PASS;
+  -description: 'New box-sizing should remain "border-box"'; }
+
+/* [mixin] with-layout */
+[data-module="Grids Syntax"] [data-test="[mixin] with-layout"] .assert-equal {
+  -result: PASS;
+  -description: "Start with 4 columns, before with-layout"; }
+[data-module="Grids Syntax"] [data-test="[mixin] with-layout"] .assert-equal {
+  -result: PASS;
+  -description: "Start with 960px container, before with-layout"; }
+[data-module="Grids Syntax"] [data-test="[mixin] with-layout"] .assert-equal {
+  -result: PASS;
+  -description: "Switch to 12 columns, inside with-layout"; }
+[data-module="Grids Syntax"] [data-test="[mixin] with-layout"] .assert-equal {
+  -result: PASS;
+  -description: "Switch to auto container, inside with-layout"; }
+[data-module="Grids Syntax"] [data-test="[mixin] with-layout"] .assert-equal {
+  -result: PASS;
+  -description: "End with 4 columns, after with-layout"; }
+[data-module="Grids Syntax"] [data-test="[mixin] with-layout"] .assert-equal {
+  -result: PASS;
+  -description: "End with 960px container, after with-layout"; }
+
+/* [function] layout */
+[data-module="Grids Syntax"] [data-test="[function] layout"] .assert-equal {
+  -result: PASS;
+  -description: "Returns a parsed grid map based on shorthand syntax"; }
+
+/* [function] _get-layout */
+[data-module="Grids Syntax"] [data-test="[function] _get-layout"] .assert-equal {
+  -result: PASS;
+  -description: "Returns layout merged with global settings"; }
+[data-module="Grids Syntax"] [data-test="[function] _get-layout"] .assert-equal {
+  -result: PASS;
+  -description: "Returns layout, without global settings"; }
+
+/* # Global Box-Sizing Syntax ---------- */
 /* - [mixin] global-box-sizing */
 .test__global-box-sizing .assert__global-box-sizing {
   overflow: hidden;
   background: rgba(204, 204, 255, 0.5); }
 
 .test__global-box-sizing .assert__global-box-sizing .nest {
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */
+  padding-left: 15%;
+  padding-right: 15%;
   width: 60%;
   margin: 0 auto; }
 
@@ -299,21 +566,21 @@ h1 {
   text-align: left;
   font-style: italic; }
 .test__global-box-sizing .assert__global-box-sizing .test *, .test__global-box-sizing .assert__global-box-sizing .test *:before, .test__global-box-sizing .assert__global-box-sizing .test *:after {
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */ }
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box; }
 .test__global-box-sizing .assert__global-box-sizing .expect *, .test__global-box-sizing .assert__global-box-sizing .expect *:before, .test__global-box-sizing .assert__global-box-sizing .expect *:after {
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */ }
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box; }
 
 .test__global-box-sizing .assert__global-box-sizing {
   overflow: hidden;
   background: rgba(204, 204, 255, 0.5); }
 
 .test__global-box-sizing .assert__global-box-sizing .nest {
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */
+  padding-left: 15%;
+  padding-right: 15%;
   width: 60%;
   margin: 0 auto; }
 
@@ -325,14 +592,16 @@ h1 {
   text-align: left;
   font-style: italic; }
 html {
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */ }
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box; }
 
 *, *:before, *:after {
   box-sizing: inherit; }
 html {
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */ }
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box; }
 
 *, *:before, *:after {
   box-sizing: inherit; }
@@ -343,10 +612,8 @@ html {
   background: rgba(204, 204, 255, 0.5); }
 
 .test__border-box-sizing .assert__border-box-sizing .nest {
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */
+  padding-left: 15%;
+  padding-right: 15%;
   width: 60%;
   margin: 0 auto; }
 
@@ -358,21 +625,21 @@ html {
   text-align: left;
   font-style: italic; }
 .test__border-box-sizing .assert__border-box-sizing .test *, .test__border-box-sizing .assert__border-box-sizing .test *:before, .test__border-box-sizing .assert__border-box-sizing .test *:after {
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */ }
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box; }
 .test__border-box-sizing .assert__border-box-sizing .expect *, .test__border-box-sizing .assert__border-box-sizing .expect *:before, .test__border-box-sizing .assert__border-box-sizing .expect *:after {
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */ }
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box; }
 
 .test__border-box-sizing .assert__border-box-sizing {
   overflow: hidden;
   background: rgba(204, 204, 255, 0.5); }
 
 .test__border-box-sizing .assert__border-box-sizing .nest {
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */
+  padding-left: 15%;
+  padding-right: 15%;
   width: 60%;
   margin: 0 auto; }
 
@@ -384,37 +651,49 @@ html {
   text-align: left;
   font-style: italic; }
 html {
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */ }
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box; }
 
 *, *:before, *:after {
   box-sizing: inherit; }
 html {
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */ }
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box; }
 
 *, *:before, *:after {
   box-sizing: inherit; }
 
-/* Test: update-box-model */
-/*   ✔ Box models are different before we test. */
-/*   ✔ Changes the global-box-sizing. */
-/*  */
-/*  */
-/* # Module: Shared Context Language */
-/* --------------------------------- */
-/* Test: [function] nested */
-/*   ✔ Symmetrical nested context should be equal to the given span */
-/*   ✔ Symmetrical nested context should be equal no matter what the location */
-/*   ✔ Nested "3 of (1 1 2 3 5 8) at 2" should be "(1 2 3)" */
-/*  */
-/* Test: [mixin] nested */
-/*   ✔ Symmetrical nested $columns should be equal to nesting span */
-/*   ✔ Last 4 of "(1 1 2 3 5 8 13)" should be "(3 5 8 13)" */
-/*  */
-/*  */
-/* # Module: Background Syntax */
-/* --------------------------- */
+/* update-box-model */
+[data-module="Global Box-Sizing Syntax"] [data-test="update-box-model"] .assert-unequal {
+  -result: PASS;
+  -description: "Box models are different before we test."; }
+[data-module="Global Box-Sizing Syntax"] [data-test="update-box-model"] .assert-equal {
+  -result: PASS;
+  -description: "Changes the global-box-sizing."; }
+
+/* # Shared Context Language ---------- */
+/* [function] nested */
+[data-module="Shared Context Language"] [data-test="[function] nested"] .assert-equal {
+  -result: PASS;
+  -description: "Symmetrical nested context should be equal to the given span"; }
+[data-module="Shared Context Language"] [data-test="[function] nested"] .assert-equal {
+  -result: PASS;
+  -description: "Symmetrical nested context should be equal no matter what the location"; }
+[data-module="Shared Context Language"] [data-test="[function] nested"] .assert-equal {
+  -result: PASS;
+  -description: 'Nested "3 of (1 1 2 3 5 8) at 2" should be "(1 2 3)"'; }
+
+/* [mixin] nested */
+[data-module="Shared Context Language"] [data-test="[mixin] nested"] .assert-equal {
+  -result: PASS;
+  -description: "Symmetrical nested $columns should be equal to nesting span"; }
+[data-module="Shared Context Language"] [data-test="[mixin] nested"] .assert-equal {
+  -result: PASS;
+  -description: 'Last 4 of "(1 1 2 3 5 8 13)" should be "(3 5 8 13)"'; }
+
+/* # Background Syntax ---------- */
 /* - [mixin] background-grid */
 .test__background-grid .assert__outside {
   background: rgba(204, 204, 255, 0.5); }
@@ -427,8 +706,11 @@ html {
   text-align: left;
   font-style: italic; }
 .test__background-grid .assert__outside .test {
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */ }
+  background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 66.66667%, transparent 66.66667%), linear-gradient(to bottom, #000 1px, transparent 1px);
+  background-size: 15%, 100% 24px;
+  background-origin: content-box, border-box;
+  background-clip: content-box, border-box;
+  background-position: left top; }
 .test__background-grid .assert__outside .expect {
   background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 66.66667%, transparent 66.66667%);
   background-size: 15%;
@@ -448,8 +730,11 @@ html {
   text-align: left;
   font-style: italic; }
 .test__background-grid .assert__split .test {
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */ }
+  background-image: linear-gradient(to right, transparent 10%, rgba(102, 102, 255, 0.25) 10%, rgba(179, 179, 255, 0.25) 90%, transparent 90%), linear-gradient(to bottom, #000 1px, transparent 1px);
+  background-size: 12.5%, 100% 24px;
+  background-origin: content-box, border-box;
+  background-clip: content-box, border-box;
+  background-position: left top; }
 .test__background-grid .assert__split .expect {
   background-image: linear-gradient(to right, transparent 10%, rgba(102, 102, 255, 0.25) 10%, rgba(179, 179, 255, 0.25) 90%, transparent 90%);
   background-size: 12.5%;
@@ -469,8 +754,11 @@ html {
   text-align: left;
   font-style: italic; }
 .test__background-grid .assert__inside .test {
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */ }
+  background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25)), linear-gradient(to bottom, #000 1px, transparent 1px);
+  background-size: 12.5%, 100% 24px;
+  background-origin: content-box, border-box;
+  background-clip: content-box, border-box;
+  background-position: left top; }
 .test__background-grid .assert__inside .expect {
   background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25));
   background-size: 12.5%;
@@ -490,8 +778,11 @@ html {
   text-align: left;
   font-style: italic; }
 .test__background-grid .assert__asym-outside .test {
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */ }
+  background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 9.09091%, transparent 9.09091%, transparent 13.63636%, rgba(102, 102, 255, 0.25) 13.63636%, rgba(179, 179, 255, 0.25) 31.81818%, transparent 31.81818%, transparent 36.36364%, rgba(102, 102, 255, 0.25) 36.36364%, rgba(179, 179, 255, 0.25) 63.63636%, transparent 63.63636%, transparent 68.18182%, rgba(102, 102, 255, 0.25) 68.18182%, rgba(179, 179, 255, 0.25) 86.36364%, transparent 86.36364%, transparent 90.90909%, rgba(102, 102, 255, 0.25) 90.90909%, rgba(179, 179, 255, 0.25)), linear-gradient(to bottom, #000 1px, transparent 1px);
+  background-size: 100% 24px;
+  background-origin: content-box, border-box;
+  background-clip: content-box, border-box;
+  background-position: left top; }
 .test__background-grid .assert__asym-outside .expect {
   background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 9.09091%, transparent 9.09091%, transparent 13.63636%, rgba(102, 102, 255, 0.25) 13.63636%, rgba(179, 179, 255, 0.25) 31.81818%, transparent 31.81818%, transparent 36.36364%, rgba(102, 102, 255, 0.25) 36.36364%, rgba(179, 179, 255, 0.25) 63.63636%, transparent 63.63636%, transparent 68.18182%, rgba(102, 102, 255, 0.25) 68.18182%, rgba(179, 179, 255, 0.25) 86.36364%, transparent 86.36364%, transparent 90.90909%, rgba(102, 102, 255, 0.25) 90.90909%, rgba(179, 179, 255, 0.25));
   background-origin: content-box;
@@ -510,8 +801,11 @@ html {
   text-align: left;
   font-style: italic; }
 .test__background-grid .assert__asym-split .test {
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */ }
+  background-image: linear-gradient(to right, transparent 1.25%, rgba(102, 102, 255, 0.25) 1.25%, rgba(179, 179, 255, 0.25) 11.25%, transparent 11.25%, transparent 13.75%, rgba(102, 102, 255, 0.25) 13.75%, rgba(179, 179, 255, 0.25) 33.75%, transparent 33.75%, transparent 36.25%, rgba(102, 102, 255, 0.25) 36.25%, rgba(179, 179, 255, 0.25) 66.25%, transparent 66.25%, transparent 68.75%, rgba(102, 102, 255, 0.25) 68.75%, rgba(179, 179, 255, 0.25) 98.75%, transparent 98.75%), linear-gradient(to bottom, #000 1px, transparent 1px);
+  background-size: 100% 24px;
+  background-origin: content-box, border-box;
+  background-clip: content-box, border-box;
+  background-position: left top; }
 .test__background-grid .assert__asym-split .expect {
   background-image: linear-gradient(to right, transparent 1.25%, rgba(102, 102, 255, 0.25) 1.25%, rgba(179, 179, 255, 0.25) 11.25%, transparent 11.25%, transparent 13.75%, rgba(102, 102, 255, 0.25) 13.75%, rgba(179, 179, 255, 0.25) 33.75%, transparent 33.75%, transparent 36.25%, rgba(102, 102, 255, 0.25) 36.25%, rgba(179, 179, 255, 0.25) 66.25%, transparent 66.25%, transparent 68.75%, rgba(102, 102, 255, 0.25) 68.75%, rgba(179, 179, 255, 0.25) 98.75%, transparent 98.75%);
   background-origin: content-box;
@@ -530,56 +824,107 @@ html {
   text-align: left;
   font-style: italic; }
 .test__background-grid .assert__asym-inside .test {
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */ }
+  background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 12.5%, rgba(102, 102, 255, 0.25) 12.5%, rgba(179, 179, 255, 0.25) 35%, rgba(102, 102, 255, 0.25) 35%, rgba(179, 179, 255, 0.25) 67.5%, rgba(102, 102, 255, 0.25) 67.5%, rgba(179, 179, 255, 0.25)), linear-gradient(to bottom, #000 1px, transparent 1px);
+  background-size: 100% 24px;
+  background-origin: content-box, border-box;
+  background-clip: content-box, border-box;
+  background-position: left top; }
 .test__background-grid .assert__asym-inside .expect {
   background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 12.5%, rgba(102, 102, 255, 0.25) 12.5%, rgba(179, 179, 255, 0.25) 35%, rgba(102, 102, 255, 0.25) 35%, rgba(179, 179, 255, 0.25) 67.5%, rgba(102, 102, 255, 0.25) 67.5%, rgba(179, 179, 255, 0.25));
   background-origin: content-box;
   background-clip: content-box;
   background-position: left top; }
 
-/* Test: [function] get-background-sym */
-/*   ✔ Returns the correct columns gradient for an inside grid. */
-/*   ✔ Returns the correct background size for a fluid grid. */
-/*   ✔ Returns the correct columns gradient for an outside grid. */
-/*   ✔ Returns the correct background size for a static grid. */
-/*   ✔ Returns the correct columns gradient for a split-gutters grid. */
-/*   ✔ Returns the correct background size for a split-gutters grid. */
-/*  */
-/* Test: [function] get-asym-inside */
-/*   ✔ Returns column gradient stops for asymmetric inside grid. */
-/*  */
-/* Test: [function] get-asym-split */
-/*   ✔ Returns column gradient stops for asymmetric split grid. */
-/*  */
-/* Test: [function] get-asym-outside */
-/*   ✔ Returns column gradient stops for asymmetric outside grid. */
-/*  */
-/* Test: [function] get-background-asym */
-/*   ✔ Returns column background for asymmetric outside grid. */
-/*   ✔ Returns column background for asymmetric inside grid. */
-/*  */
-/* Test: [function] get-background */
-/*   ✔ No values for a hidden grid (hide). */
-/*   ✔ Return key/values for columns. */
-/*   ✔ Only show baseline if $base-line-height exists. */
-/*   ✔ Only show baseline if $base-line-height has units. */
-/*   ✔ [Return key/values for baseline. » image] Returns the correct baseline. */
-/*   ✔ [Return key/values for baseline.] Returns the correct size. */
-/*   ✔ [Return key/values for baseline.] Returns the correct flow. */
-/*   ✔ [Return key/values for both baseline and columns. » image] Returns the correct columns. */
-/*   ✔ [Return key/values for both baseline and columns. » image] Returns the correct baseline. */
-/*   ✔ [Return key/values for both baseline and columns.] Returns the correct size. */
-/*   ✔ [Return key/values for both baseline and columns.] Returns the correct clip. */
-/*   ✔ [Return key/values for both baseline and columns.] Returns the correct flow. */
-/*  */
-/* Test: [function] get-debug */
-/*   ✔ Returns proper default debug value. */
-/*   ✔ Returns proper user-set debug value. */
-/*  */
-/*  */
-/* # Module: Container Syntax */
-/* -------------------------- */
+/* [function] get-background-sym */
+[data-module="Background Syntax"] [data-test="[function] get-background-sym"] .assert-equal {
+  -result: PASS;
+  -description: "Returns the correct columns gradient for an inside grid."; }
+[data-module="Background Syntax"] [data-test="[function] get-background-sym"] .assert-equal {
+  -result: PASS;
+  -description: "Returns the correct background size for a fluid grid."; }
+[data-module="Background Syntax"] [data-test="[function] get-background-sym"] .assert-equal {
+  -result: PASS;
+  -description: "Returns the correct columns gradient for an outside grid."; }
+[data-module="Background Syntax"] [data-test="[function] get-background-sym"] .assert-equal {
+  -result: PASS;
+  -description: "Returns the correct background size for a static grid."; }
+[data-module="Background Syntax"] [data-test="[function] get-background-sym"] .assert-equal {
+  -result: PASS;
+  -description: "Returns the correct columns gradient for a split-gutters grid."; }
+[data-module="Background Syntax"] [data-test="[function] get-background-sym"] .assert-equal {
+  -result: PASS;
+  -description: "Returns the correct background size for a split-gutters grid."; }
+
+/* [function] get-asym-inside */
+[data-module="Background Syntax"] [data-test="[function] get-asym-inside"] .assert-equal {
+  -result: PASS;
+  -description: "Returns column gradient stops for asymmetric inside grid."; }
+
+/* [function] get-asym-split */
+[data-module="Background Syntax"] [data-test="[function] get-asym-split"] .assert-equal {
+  -result: PASS;
+  -description: "Returns column gradient stops for asymmetric split grid."; }
+
+/* [function] get-asym-outside */
+[data-module="Background Syntax"] [data-test="[function] get-asym-outside"] .assert-equal {
+  -result: PASS;
+  -description: "Returns column gradient stops for asymmetric outside grid."; }
+
+/* [function] get-background-asym */
+[data-module="Background Syntax"] [data-test="[function] get-background-asym"] .assert-equal {
+  -result: PASS;
+  -description: "Returns column background for asymmetric outside grid."; }
+[data-module="Background Syntax"] [data-test="[function] get-background-asym"] .assert-equal {
+  -result: PASS;
+  -description: "Returns column background for asymmetric inside grid."; }
+
+/* [function] get-background */
+[data-module="Background Syntax"] [data-test="[function] get-background"] .assert-equal {
+  -result: PASS;
+  -description: "No values for a hidden grid (hide)."; }
+[data-module="Background Syntax"] [data-test="[function] get-background"] .assert-equal {
+  -result: PASS;
+  -description: "Return key/values for columns."; }
+[data-module="Background Syntax"] [data-test="[function] get-background"] .assert-equal {
+  -result: PASS;
+  -description: "Only show baseline if $base-line-height exists."; }
+[data-module="Background Syntax"] [data-test="[function] get-background"] .assert-equal {
+  -result: PASS;
+  -description: "Only show baseline if $base-line-height has units."; }
+[data-module="Background Syntax"] [data-test="[function] get-background"] .assert-equal {
+  -result: PASS;
+  -description: "[Return key/values for baseline. » image] Returns the correct baseline."; }
+[data-module="Background Syntax"] [data-test="[function] get-background"] .assert-equal {
+  -result: PASS;
+  -description: "[Return key/values for baseline.] Returns the correct size."; }
+[data-module="Background Syntax"] [data-test="[function] get-background"] .assert-equal {
+  -result: PASS;
+  -description: "[Return key/values for baseline.] Returns the correct flow."; }
+[data-module="Background Syntax"] [data-test="[function] get-background"] .assert-equal {
+  -result: PASS;
+  -description: "[Return key/values for both baseline and columns. » image] Returns the correct columns."; }
+[data-module="Background Syntax"] [data-test="[function] get-background"] .assert-equal {
+  -result: PASS;
+  -description: "[Return key/values for both baseline and columns. » image] Returns the correct baseline."; }
+[data-module="Background Syntax"] [data-test="[function] get-background"] .assert-equal {
+  -result: PASS;
+  -description: "[Return key/values for both baseline and columns.] Returns the correct size."; }
+[data-module="Background Syntax"] [data-test="[function] get-background"] .assert-equal {
+  -result: PASS;
+  -description: "[Return key/values for both baseline and columns.] Returns the correct clip."; }
+[data-module="Background Syntax"] [data-test="[function] get-background"] .assert-equal {
+  -result: PASS;
+  -description: "[Return key/values for both baseline and columns.] Returns the correct flow."; }
+
+/* [function] get-debug */
+[data-module="Background Syntax"] [data-test="[function] get-debug"] .assert-equal {
+  -result: PASS;
+  -description: "Returns proper default debug value."; }
+[data-module="Background Syntax"] [data-test="[function] get-debug"] .assert-equal {
+  -result: PASS;
+  -description: "Returns proper user-set debug value."; }
+
+/* # Container Syntax ---------- */
 /* - [mixin] container */
 .test__container .assert__default-box {
   overflow: hidden;
@@ -593,10 +938,14 @@ html {
   text-align: left;
   font-style: italic; }
 .test__container .assert__default-box .test {
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */ }
+  max-width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 66.66667%, transparent 66.66667%);
+  background-size: 15%;
+  background-origin: content-box;
+  background-clip: content-box;
+  background-position: left top; }
   .test__container .assert__default-box .test:after {
     content: " ";
     display: block;
@@ -627,19 +976,24 @@ html {
   text-align: left;
   font-style: italic; }
 .test__container .assert__border-box .test {
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */ }
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  max-width: 40em;
+  margin-left: 0;
+  margin-right: auto;
+  background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, transparent 10%, transparent 12.5%, rgba(102, 102, 255, 0.25) 12.5%, rgba(179, 179, 255, 0.25) 32.5%, transparent 32.5%, transparent 35%, rgba(102, 102, 255, 0.25) 35%, rgba(179, 179, 255, 0.25) 65%, transparent 65%, transparent 67.5%, rgba(102, 102, 255, 0.25) 67.5%, rgba(179, 179, 255, 0.25) 87.5%, transparent 87.5%, transparent 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
+  background-origin: content-box;
+  background-clip: content-box;
+  background-position: left top; }
   .test__container .assert__border-box .test:after {
     content: " ";
     display: block;
     clear: both; }
 .test__container .assert__border-box .expect {
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
   max-width: 40em;
   margin-left: 0;
   margin-right: auto;
@@ -652,39 +1006,77 @@ html {
     display: block;
     clear: both; }
 
-/* Test: [function] container */
-/*   ✔ The container-width of "960px 12 0.25 left static" should be 960px */
-/*   ✔ The container-width of "12 6em 1em" should be 83em */
-/*   ✔ The container-width of "1 3 4 2 1 0.25" should be 100% */
-/*   ✔ Omitted grid-widths should still be respected. */
-/*   ✔ Auto container-width should override existing grid. */
-/*  */
-/* Test: [function] get-container-width */
-/*   ✔ An explicit container width should be returned without changes. */
-/*   ✔ An empty container value should return 100%. */
-/*   ✔ An auto container with no specified widths should return 100%. */
-/*   ✔ Returns narrow container for outside gutters. */
-/*   ✔ Returns wide container for inside gutters. */
-/*   ✔ Returns wide container for split gutters. */
-/*  */
-/* Test: [function] parse-container-position() */
-/*   ✔ A null value should return null for both sides. */
-/*   ✔ A 2-part list is already a valid container position. */
-/*   ✔ A left-aligned container should have 0 margin-left, and auto right. */
-/*   ✔ A right-aligned container should have 0 margin-right, and auto left. */
-/*   ✔ A centered container should have auto left and right margins. */
-/*   ✔ A number should be used for both left and right container margins. */
-/*   ✔ A string should be used for both left and right container margins. */
-/*  */
-/*  */
-/* # Module: Span Syntax */
-/* --------------------- */
+/* [function] container */
+[data-module="Container Syntax"] [data-test="[function] container"] .assert-equal {
+  -result: PASS;
+  -description: 'The container-width of "960px 12 0.25 left static" should be 960px'; }
+[data-module="Container Syntax"] [data-test="[function] container"] .assert-equal {
+  -result: PASS;
+  -description: 'The container-width of "12 6em 1em" should be 83em'; }
+[data-module="Container Syntax"] [data-test="[function] container"] .assert-equal {
+  -result: PASS;
+  -description: 'The container-width of "1 3 4 2 1 0.25" should be 100%'; }
+[data-module="Container Syntax"] [data-test="[function] container"] .assert-equal {
+  -result: PASS;
+  -description: "Omitted grid-widths should still be respected."; }
+[data-module="Container Syntax"] [data-test="[function] container"] .assert-equal {
+  -result: PASS;
+  -description: "Auto container-width should override existing grid."; }
+
+/* [function] get-container-width */
+[data-module="Container Syntax"] [data-test="[function] get-container-width"] .assert-equal {
+  -result: PASS;
+  -description: "An explicit container width should be returned without changes."; }
+[data-module="Container Syntax"] [data-test="[function] get-container-width"] .assert-equal {
+  -result: PASS;
+  -description: "An empty container value should return 100%."; }
+[data-module="Container Syntax"] [data-test="[function] get-container-width"] .assert-equal {
+  -result: PASS;
+  -description: "An auto container with no specified widths should return 100%."; }
+[data-module="Container Syntax"] [data-test="[function] get-container-width"] .assert-equal {
+  -result: PASS;
+  -description: "Returns narrow container for outside gutters."; }
+[data-module="Container Syntax"] [data-test="[function] get-container-width"] .assert-equal {
+  -result: PASS;
+  -description: "Returns wide container for inside gutters."; }
+[data-module="Container Syntax"] [data-test="[function] get-container-width"] .assert-equal {
+  -result: PASS;
+  -description: "Returns wide container for split gutters."; }
+
+/* [function] parse-container-position() */
+[data-module="Container Syntax"] [data-test="[function] parse-container-position()"] .assert-equal {
+  -result: PASS;
+  -description: "A null value should return null for both sides."; }
+[data-module="Container Syntax"] [data-test="[function] parse-container-position()"] .assert-equal {
+  -result: PASS;
+  -description: "A 2-part list is already a valid container position."; }
+[data-module="Container Syntax"] [data-test="[function] parse-container-position()"] .assert-equal {
+  -result: PASS;
+  -description: "A left-aligned container should have 0 margin-left, and auto right."; }
+[data-module="Container Syntax"] [data-test="[function] parse-container-position()"] .assert-equal {
+  -result: PASS;
+  -description: "A right-aligned container should have 0 margin-right, and auto left."; }
+[data-module="Container Syntax"] [data-test="[function] parse-container-position()"] .assert-equal {
+  -result: PASS;
+  -description: "A centered container should have auto left and right margins."; }
+[data-module="Container Syntax"] [data-test="[function] parse-container-position()"] .assert-equal {
+  -result: PASS;
+  -description: "A number should be used for both left and right container margins."; }
+[data-module="Container Syntax"] [data-test="[function] parse-container-position()"] .assert-equal {
+  -result: PASS;
+  -description: "A string should be used for both left and right container margins."; }
+
+/* # Span Syntax ---------- */
 /* - [mixin] span */
 .test__span .assert__default {
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */ }
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 66.66667%, transparent 66.66667%);
+  background-size: 15%;
+  background-origin: content-box;
+  background-clip: content-box;
+  background-position: left top; }
   .test__span .assert__default:after {
     content: " ";
     display: block;
@@ -708,19 +1100,21 @@ html {
   font-style: italic; }
 .test__span .assert__default .test {
   -susy-span: 5 content-box inspect;
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */ }
+  -moz-box-sizing: content-box;
+  -webkit-box-sizing: content-box;
+  box-sizing: content-box;
+  width: 70%;
+  float: left;
+  margin-right: 5%; }
   .test__span .assert__default .test .inner {
-    /*   OUTPUT   */
-    /*   END_OUTPUT   */
-    /*   OUTPUT   */
-    /*   END_OUTPUT   */ }
+    width: 35.71429%;
+    float: left;
+    margin-right: 7.14286%; }
 .test__span .assert__default .expect {
   -susy-span: 5 content-box inspect;
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */
+  -moz-box-sizing: content-box;
+  -webkit-box-sizing: content-box;
+  box-sizing: content-box;
   width: 70%;
   float: left;
   margin-right: 5%; }
@@ -730,20 +1124,27 @@ html {
     margin-right: 7.14286%; }
 
 .test__span .assert__inside {
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */ }
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25));
+  background-size: 12.5%;
+  background-origin: content-box;
+  background-clip: content-box;
+  background-position: left top; }
   .test__span .assert__inside:after {
     content: " ";
     display: block;
     clear: both; }
 
 .test__span .assert__inside .spacer {
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 25%;
+  float: left;
+  padding-left: 1.25%;
+  padding-right: 1.25%;
   clear: left; }
 
 /* "Span should set width, float, clear, and inside gutter" */
@@ -754,15 +1155,15 @@ html {
   text-align: left;
   font-style: italic; }
 .test__span .assert__inside *, .test__span .assert__inside *:before, .test__span .assert__inside *:after {
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */ }
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box; }
 .test__span .assert__inside .test {
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */ }
+  clear: both;
+  width: 62.5%;
+  float: left;
+  padding-left: 1.25%;
+  padding-right: 1.25%; }
 .test__span .assert__inside .expect {
   clear: both;
   width: 62.5%;
@@ -771,10 +1172,14 @@ html {
   padding-right: 1.25%; }
 
 .test__span .assert__explicit {
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */ }
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25));
+  background-size: 12.5%;
+  background-origin: content-box;
+  background-clip: content-box;
+  background-position: left top; }
   .test__span .assert__explicit:after {
     content: " ";
     display: block;
@@ -791,62 +1196,121 @@ html {
   text-align: left;
   font-style: italic; }
 .test__span .assert__explicit .test {
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */ }
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 80%;
+  float: left;
+  padding-left: 1.25%;
+  padding-right: 1.25%; }
 .test__span .assert__explicit .expect {
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
   width: 80%;
   float: left;
   padding-left: 1.25%;
   padding-right: 1.25%; }
 
-/* Test: [mixin] span */
-/*  */
-/* Test: [function] span */
-/*   ✔ Span function returns expected width value. */
-/*  */
-/* Test: [function] span-math */
-/*   ✔ Returns correct span-math with outside gutters. */
-/*   ✔ Returns correct span-math gutters with explicit span. */
-/*   ✔ Returns correct span-math with split gutters. */
-/*   ✔ Returns correct padding for inside gutters. */
-/*   ✔ The padding for any "inside nest" should be "null null" */
-/*   ✔ Split nest use outer width, and no margins. */
-/*   ✔ Returns correction margins for isolation. */
-/*   ✔ Removes correct margins when last. */
-/*   ✔ Sets the correct float when last. */
-/*   ✔ No special margins for after first. */
-/*   ✔ Removes correct margins when full. */
-/*   ✔ Sets the correct float when full. */
-/*   ✔ Removes correct margins when first. */
-/*   ✔ No special margins for before last. */
-/*  */
-/* Test: [function] get-span-width */
-/*   ✔ Explicit width is returned without changes. */
-/*   ✔ Returns correct fluid span width. */
-/*   ✔ Returns correct full span width. */
-/*   ✔ Returns correct width with inside gutters. */
-/*   ✔ Returns correct width with no-gutters. */
-/*   ✔ Returns correct width with split gutters. */
-/*   ✔ Returns the correct static span width. */
-/*   ✔ Returns the correct static width with inside gutters. */
-/*   ✔ Returns the correct wide span width. */
-/*   ✔ Returns the correct wider span width. */
-/*   ✔ Returns the correct narrow inside span width. */
-/*   ✔ Returns the correct narrow inside span width. */
-/*  */
-/*  */
-/* # Module: Gutter Syntax */
-/* ----------------------- */
+/* [mixin] span */
+/* [function] span */
+[data-module="Span Syntax"] [data-test="[function] span"] .assert-equal {
+  -result: PASS;
+  -description: "Span function returns expected width value."; }
+
+/* [function] span-math */
+[data-module="Span Syntax"] [data-test="[function] span-math"] .assert-equal {
+  -result: PASS;
+  -description: "Returns correct span-math with outside gutters."; }
+[data-module="Span Syntax"] [data-test="[function] span-math"] .assert-equal {
+  -result: PASS;
+  -description: "Returns correct span-math gutters with explicit span."; }
+[data-module="Span Syntax"] [data-test="[function] span-math"] .assert-equal {
+  -result: PASS;
+  -description: "Returns correct span-math with split gutters."; }
+[data-module="Span Syntax"] [data-test="[function] span-math"] .assert-equal {
+  -result: PASS;
+  -description: "Returns correct padding for inside gutters."; }
+[data-module="Span Syntax"] [data-test="[function] span-math"] .assert-equal {
+  -result: PASS;
+  -description: 'The padding for any "inside nest" should be "null null"'; }
+[data-module="Span Syntax"] [data-test="[function] span-math"] .assert-equal {
+  -result: PASS;
+  -description: "Split nest use outer width, and no margins."; }
+[data-module="Span Syntax"] [data-test="[function] span-math"] .assert-equal {
+  -result: PASS;
+  -description: "Returns correction margins for isolation."; }
+[data-module="Span Syntax"] [data-test="[function] span-math"] .assert-equal {
+  -result: PASS;
+  -description: "Removes correct margins when last."; }
+[data-module="Span Syntax"] [data-test="[function] span-math"] .assert-equal {
+  -result: PASS;
+  -description: "Sets the correct float when last."; }
+[data-module="Span Syntax"] [data-test="[function] span-math"] .assert-equal {
+  -result: PASS;
+  -description: "No special margins for after first."; }
+[data-module="Span Syntax"] [data-test="[function] span-math"] .assert-equal {
+  -result: PASS;
+  -description: "Removes correct margins when full."; }
+[data-module="Span Syntax"] [data-test="[function] span-math"] .assert-equal {
+  -result: PASS;
+  -description: "Sets the correct float when full."; }
+[data-module="Span Syntax"] [data-test="[function] span-math"] .assert-equal {
+  -result: PASS;
+  -description: "Removes correct margins when first."; }
+[data-module="Span Syntax"] [data-test="[function] span-math"] .assert-equal {
+  -result: PASS;
+  -description: "No special margins for before last."; }
+
+/* [function] get-span-width */
+[data-module="Span Syntax"] [data-test="[function] get-span-width"] .assert-equal {
+  -result: PASS;
+  -description: "Explicit width is returned without changes."; }
+[data-module="Span Syntax"] [data-test="[function] get-span-width"] .assert-equal {
+  -result: PASS;
+  -description: "Returns correct fluid span width."; }
+[data-module="Span Syntax"] [data-test="[function] get-span-width"] .assert-equal {
+  -result: PASS;
+  -description: "Returns correct full span width."; }
+[data-module="Span Syntax"] [data-test="[function] get-span-width"] .assert-equal {
+  -result: PASS;
+  -description: "Returns correct width with inside gutters."; }
+[data-module="Span Syntax"] [data-test="[function] get-span-width"] .assert-equal {
+  -result: PASS;
+  -description: "Returns correct width with no-gutters."; }
+[data-module="Span Syntax"] [data-test="[function] get-span-width"] .assert-equal {
+  -result: PASS;
+  -description: "Returns correct width with split gutters."; }
+[data-module="Span Syntax"] [data-test="[function] get-span-width"] .assert-equal {
+  -result: PASS;
+  -description: "Returns the correct static span width."; }
+[data-module="Span Syntax"] [data-test="[function] get-span-width"] .assert-equal {
+  -result: PASS;
+  -description: "Returns the correct static width with inside gutters."; }
+[data-module="Span Syntax"] [data-test="[function] get-span-width"] .assert-equal {
+  -result: PASS;
+  -description: "Returns the correct wide span width."; }
+[data-module="Span Syntax"] [data-test="[function] get-span-width"] .assert-equal {
+  -result: PASS;
+  -description: "Returns the correct wider span width."; }
+[data-module="Span Syntax"] [data-test="[function] get-span-width"] .assert-equal {
+  -result: PASS;
+  -description: "Returns the correct narrow inside span width."; }
+[data-module="Span Syntax"] [data-test="[function] get-span-width"] .assert-equal {
+  -result: PASS;
+  -description: "Returns the correct narrow inside span width."; }
+
+/* # Gutter Syntax ---------- */
 /* - [mixin] gutters */
 .test__gutters .assert__auto {
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */ }
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  background-image: linear-gradient(to right, transparent 10%, rgba(102, 102, 255, 0.25) 10%, rgba(179, 179, 255, 0.25) 90%, transparent 90%);
+  background-size: 12.5%;
+  background-origin: content-box;
+  background-clip: content-box;
+  background-position: left top; }
   .test__gutters .assert__auto:after {
     content: " ";
     display: block;
@@ -860,17 +1324,21 @@ html {
   text-align: left;
   font-style: italic; }
 .test__gutters .assert__auto .test {
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */ }
+  margin-left: 1.25%;
+  margin-right: 1.25%; }
 .test__gutters .assert__auto .expect {
   margin-left: 1.25%;
   margin-right: 1.25%; }
 
 .test__gutters .assert__inside-static {
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */ }
+  max-width: 42em;
+  margin-left: auto;
+  margin-right: auto;
+  background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25));
+  background-size: 14.28571%;
+  background-origin: content-box;
+  background-clip: content-box;
+  background-position: left top; }
   .test__gutters .assert__inside-static:after {
     content: " ";
     display: block;
@@ -884,17 +1352,21 @@ html {
   text-align: left;
   font-style: italic; }
 .test__gutters .assert__inside-static .test {
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */ }
+  padding-left: 1em;
+  padding-right: 1em; }
 .test__gutters .assert__inside-static .expect {
   padding-left: 1em;
   padding-right: 1em; }
 
 .test__gutters .assert__explicit {
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */ }
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25));
+  background-size: 14.28571%;
+  background-origin: content-box;
+  background-clip: content-box;
+  background-position: left top; }
   .test__gutters .assert__explicit:after {
     content: " ";
     display: block;
@@ -908,63 +1380,104 @@ html {
   text-align: left;
   font-style: italic; }
 .test__gutters .assert__explicit .test {
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */ }
+  padding-left: 5em;
+  padding-right: 5em; }
 .test__gutters .assert__explicit .expect {
   padding-left: 5em;
   padding-right: 5em; }
 
-/* Test: [function] gutter */
-/*   ✔ Returns correct outside gutters. */
-/*   ✔ Returns correct inside gutters. */
-/*  */
-/* Test: [function] get-gutter-width */
-/*   ✔ Returns correct explicit gutter width. */
-/*   ✔ Returns correct static gutter width. */
-/*   ✔ Returns correct fluid gutter width. */
-/*   ✔ Returns correct inside gutter width. */
-/*   ✔ Returns correct split gutter width. */
-/*   ✔ Returns correct split no-gutters width. */
-/*   ✔ Returns correct null gutters width. */
-/*   ✔ Returns null width for 0-gutters. */
-/*   ✔ Returns correct override width for 0 gutters. */
-/*  */
-/* Test: [function] get-gutters */
-/*   ✔ Returns correct explicit before gutter. */
-/*   ✔ Returns correct after gutters. */
-/*   ✔ Split gutters should be divided, even when explicit. */
-/*  */
-/* Test: [function] is-inside */
-/*   ✔ After gutters are not inside. */
-/*   ✔ Inside-static gutters are inside. */
-/*  */
-/* Test: [function] is-split */
-/*   ✔ After gutters are not split. */
-/*   ✔ Inside gutters are split. */
-/*  */
-/* Test: [function] gutter-math */
-/*   ✔ Returns static gutters when math is static. */
-/*   ✔ Returns static gutters when gutter-position inside-static. */
-/*  */
-/*  */
-/* # Module: Isolation Syntax */
-/* -------------------------- */
+/* [function] gutter */
+[data-module="Gutter Syntax"] [data-test="[function] gutter"] .assert-equal {
+  -result: PASS;
+  -description: "Returns correct outside gutters."; }
+[data-module="Gutter Syntax"] [data-test="[function] gutter"] .assert-equal {
+  -result: PASS;
+  -description: "Returns correct inside gutters."; }
+
+/* [function] get-gutter-width */
+[data-module="Gutter Syntax"] [data-test="[function] get-gutter-width"] .assert-equal {
+  -result: PASS;
+  -description: "Returns correct explicit gutter width."; }
+[data-module="Gutter Syntax"] [data-test="[function] get-gutter-width"] .assert-equal {
+  -result: PASS;
+  -description: "Returns correct static gutter width."; }
+[data-module="Gutter Syntax"] [data-test="[function] get-gutter-width"] .assert-equal {
+  -result: PASS;
+  -description: "Returns correct fluid gutter width."; }
+[data-module="Gutter Syntax"] [data-test="[function] get-gutter-width"] .assert-equal {
+  -result: PASS;
+  -description: "Returns correct inside gutter width."; }
+[data-module="Gutter Syntax"] [data-test="[function] get-gutter-width"] .assert-equal {
+  -result: PASS;
+  -description: "Returns correct split gutter width."; }
+[data-module="Gutter Syntax"] [data-test="[function] get-gutter-width"] .assert-equal {
+  -result: PASS;
+  -description: "Returns correct split no-gutters width."; }
+[data-module="Gutter Syntax"] [data-test="[function] get-gutter-width"] .assert-equal {
+  -result: PASS;
+  -description: "Returns correct null gutters width."; }
+[data-module="Gutter Syntax"] [data-test="[function] get-gutter-width"] .assert-equal {
+  -result: PASS;
+  -description: "Returns null width for 0-gutters."; }
+[data-module="Gutter Syntax"] [data-test="[function] get-gutter-width"] .assert-equal {
+  -result: PASS;
+  -description: "Returns correct override width for 0 gutters."; }
+
+/* [function] get-gutters */
+[data-module="Gutter Syntax"] [data-test="[function] get-gutters"] .assert-equal {
+  -result: PASS;
+  -description: "Returns correct explicit before gutter."; }
+[data-module="Gutter Syntax"] [data-test="[function] get-gutters"] .assert-equal {
+  -result: PASS;
+  -description: "Returns correct after gutters."; }
+[data-module="Gutter Syntax"] [data-test="[function] get-gutters"] .assert-equal {
+  -result: PASS;
+  -description: "Split gutters should be divided, even when explicit."; }
+
+/* [function] is-inside */
+[data-module="Gutter Syntax"] [data-test="[function] is-inside"] .assert-equal {
+  -result: PASS;
+  -description: "After gutters are not inside."; }
+[data-module="Gutter Syntax"] [data-test="[function] is-inside"] .assert-equal {
+  -result: PASS;
+  -description: "Inside-static gutters are inside."; }
+
+/* [function] is-split */
+[data-module="Gutter Syntax"] [data-test="[function] is-split"] .assert-equal {
+  -result: PASS;
+  -description: "After gutters are not split."; }
+[data-module="Gutter Syntax"] [data-test="[function] is-split"] .assert-equal {
+  -result: PASS;
+  -description: "Inside gutters are split."; }
+
+/* [function] gutter-math */
+[data-module="Gutter Syntax"] [data-test="[function] gutter-math"] .assert-equal {
+  -result: PASS;
+  -description: "Returns static gutters when math is static."; }
+[data-module="Gutter Syntax"] [data-test="[function] gutter-math"] .assert-equal {
+  -result: PASS;
+  -description: "Returns static gutters when gutter-position inside-static."; }
+
+/* # Isolation Syntax ---------- */
 /* - [mixin] isolate */
 .test__isolate .assert__isolate {
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */ }
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 66.66667%, transparent 66.66667%);
+  background-size: 15%;
+  background-origin: content-box;
+  background-clip: content-box;
+  background-position: left top; }
   .test__isolate .assert__isolate:after {
     content: " ";
     display: block;
     clear: both; }
 
 .test__isolate .assert__isolate .test, .test__isolate .assert__isolate .expect {
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */
+  width: 25%;
+  float: right;
+  margin-right: 0;
   clear: both; }
 
 /* "Item should be isolated in the last 2 columns" */
@@ -975,33 +1488,50 @@ html {
   text-align: left;
   font-style: italic; }
 .test__isolate .assert__isolate .test {
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */ }
+  float: left;
+  margin-left: 75%;
+  margin-right: -100%; }
 .test__isolate .assert__isolate .expect {
   float: left;
   margin-left: 75%;
   margin-right: -100%; }
 
-/* Test: [function] isolate */
-/*   ✔ Explicit value is passed through as isolation offset. */
-/*   ✔ Index span is calculated as isolation location. */
-/*  */
-/* Test: [function] get-isolation */
-/*   ✔ Explicit isolation placements should be passed back unchanged. */
-/*   ✔ Isolation in the first column doesnt require any prefixed margins. */
-/*   ✔ Isolation for "last 2 of 7 (4em 2em) static" (5 wide) should be 30em. */
-/*   ✔ Returns isolation value for first split element. */
-/*   ✔ Returns isolation value for first split element. */
-/*  */
-/*  */
-/* # Module: Gallery Syntax */
-/* ------------------------ */
+/* [function] isolate */
+[data-module="Isolation Syntax"] [data-test="[function] isolate"] .assert-equal {
+  -result: PASS;
+  -description: "Explicit value is passed through as isolation offset."; }
+[data-module="Isolation Syntax"] [data-test="[function] isolate"] .assert-equal {
+  -result: PASS;
+  -description: "Index span is calculated as isolation location."; }
+
+/* [function] get-isolation */
+[data-module="Isolation Syntax"] [data-test="[function] get-isolation"] .assert-equal {
+  -result: PASS;
+  -description: "Explicit isolation placements should be passed back unchanged."; }
+[data-module="Isolation Syntax"] [data-test="[function] get-isolation"] .assert-equal {
+  -result: PASS;
+  -description: "Isolation in the first column doesnt require any prefixed margins."; }
+[data-module="Isolation Syntax"] [data-test="[function] get-isolation"] .assert-equal {
+  -result: PASS;
+  -description: 'Isolation for "last 2 of 7 (4em 2em) static" (5 wide) should be 30em.'; }
+[data-module="Isolation Syntax"] [data-test="[function] get-isolation"] .assert-equal {
+  -result: PASS;
+  -description: "Returns isolation value for first split element."; }
+[data-module="Isolation Syntax"] [data-test="[function] get-isolation"] .assert-equal {
+  -result: PASS;
+  -description: "Returns isolation value for first split element."; }
+
+/* # Gallery Syntax ---------- */
 /* - [mixin] gallery */
 .test__gallery .assert__sym {
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */ }
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 55.55556%, transparent 55.55556%);
+  background-size: 18%;
+  background-origin: content-box;
+  background-clip: content-box;
+  background-position: left top; }
   .test__gallery .assert__sym:after {
     content: " ";
     display: block;
@@ -1022,25 +1552,21 @@ html {
   text-align: left;
   font-style: italic; }
 .test__gallery .assert__sym .test {
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */ }
+  width: 28%;
+  float: left; }
   .test__gallery .assert__sym .test:nth-child(3n + 1) {
-    /*   OUTPUT   */
-    /*   END_OUTPUT   */
-    /*   OUTPUT   */
-    /*   END_OUTPUT   */
-    /*   OUTPUT   */
-    /*   END_OUTPUT   */ }
+    margin-left: 0;
+    margin-right: -100%;
+    clear: both;
+    margin-left: 0; }
   .test__gallery .assert__sym .test:nth-child(3n + 2) {
-    /*   OUTPUT   */
-    /*   END_OUTPUT   */
-    /*   OUTPUT   */
-    /*   END_OUTPUT   */ }
+    margin-left: 36%;
+    margin-right: -100%;
+    clear: none; }
   .test__gallery .assert__sym .test:nth-child(3n + 3) {
-    /*   OUTPUT   */
-    /*   END_OUTPUT   */
-    /*   OUTPUT   */
-    /*   END_OUTPUT   */ }
+    margin-left: 72%;
+    margin-right: -100%;
+    clear: none; }
 .test__gallery .assert__sym .expect {
   width: 28.0%;
   float: left; }
@@ -1058,10 +1584,14 @@ html {
     clear: none; }
 
 .test__gallery .assert__inside {
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */ }
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25));
+  background-size: 12.5%;
+  background-origin: content-box;
+  background-clip: content-box;
+  background-position: left top; }
   .test__gallery .assert__inside:after {
     content: " ";
     display: block;
@@ -1082,33 +1612,33 @@ html {
   text-align: left;
   font-style: italic; }
 .test__gallery .assert__inside .test {
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */ }
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 25%;
+  float: left;
+  padding-left: 1.25%;
+  padding-right: 1.25%; }
   .test__gallery .assert__inside .test:nth-child(4n + 1) {
-    /*   OUTPUT   */
-    /*   END_OUTPUT   */
-    /*   OUTPUT   */
-    /*   END_OUTPUT   */ }
+    margin-left: 0;
+    margin-right: -100%;
+    clear: both; }
   .test__gallery .assert__inside .test:nth-child(4n + 2) {
-    /*   OUTPUT   */
-    /*   END_OUTPUT   */
-    /*   OUTPUT   */
-    /*   END_OUTPUT   */ }
+    margin-left: 25%;
+    margin-right: -100%;
+    clear: none; }
   .test__gallery .assert__inside .test:nth-child(4n + 3) {
-    /*   OUTPUT   */
-    /*   END_OUTPUT   */
-    /*   OUTPUT   */
-    /*   END_OUTPUT   */ }
+    margin-left: 50%;
+    margin-right: -100%;
+    clear: none; }
   .test__gallery .assert__inside .test:nth-child(4n + 4) {
-    /*   OUTPUT   */
-    /*   END_OUTPUT   */
-    /*   OUTPUT   */
-    /*   END_OUTPUT   */ }
+    margin-left: 75%;
+    margin-right: -100%;
+    clear: none; }
 .test__gallery .assert__inside .expect {
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
   width: 25.0%;
   float: left;
   padding-left: 1.25%;
@@ -1131,10 +1661,14 @@ html {
     clear: none; }
 
 .test__gallery .assert__inside-static {
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */ }
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25));
+  background-size: 16.66667%;
+  background-origin: content-box;
+  background-clip: content-box;
+  background-position: left top; }
   .test__gallery .assert__inside-static:after {
     content: " ";
     display: block;
@@ -1155,28 +1689,29 @@ html {
   text-align: left;
   font-style: italic; }
 .test__gallery .assert__inside-static .test {
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */ }
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 33.33333%;
+  float: left;
+  padding-left: 2em;
+  padding-right: 2em; }
   .test__gallery .assert__inside-static .test:nth-child(3n + 1) {
-    /*   OUTPUT   */
-    /*   END_OUTPUT   */
-    /*   OUTPUT   */
-    /*   END_OUTPUT   */ }
+    margin-left: 0;
+    margin-right: -100%;
+    clear: both; }
   .test__gallery .assert__inside-static .test:nth-child(3n + 2) {
-    /*   OUTPUT   */
-    /*   END_OUTPUT   */
-    /*   OUTPUT   */
-    /*   END_OUTPUT   */ }
+    margin-left: 33.33333%;
+    margin-right: -100%;
+    clear: none; }
   .test__gallery .assert__inside-static .test:nth-child(3n + 3) {
-    /*   OUTPUT   */
-    /*   END_OUTPUT   */
-    /*   OUTPUT   */
-    /*   END_OUTPUT   */ }
+    margin-left: 66.66667%;
+    margin-right: -100%;
+    clear: none; }
 .test__gallery .assert__inside-static .expect {
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
   width: 33.33333%;
   float: left;
   padding-left: 2em;
@@ -1195,10 +1730,14 @@ html {
     clear: none; }
 
 .test__gallery .assert__split {
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */ }
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  background-image: linear-gradient(to right, transparent 10%, rgba(102, 102, 255, 0.25) 10%, rgba(179, 179, 255, 0.25) 90%, transparent 90%);
+  background-size: 12.5%;
+  background-origin: content-box;
+  background-clip: content-box;
+  background-position: left top; }
   .test__gallery .assert__split:after {
     content: " ";
     display: block;
@@ -1219,28 +1758,24 @@ html {
   text-align: left;
   font-style: italic; }
 .test__gallery .assert__split .test {
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */ }
+  width: 22.5%;
+  float: left; }
   .test__gallery .assert__split .test:nth-child(4n + 1) {
-    /*   OUTPUT   */
-    /*   END_OUTPUT   */
-    /*   OUTPUT   */
-    /*   END_OUTPUT   */ }
+    margin-left: 1.25%;
+    margin-right: -100%;
+    clear: both; }
   .test__gallery .assert__split .test:nth-child(4n + 2) {
-    /*   OUTPUT   */
-    /*   END_OUTPUT   */
-    /*   OUTPUT   */
-    /*   END_OUTPUT   */ }
+    margin-left: 26.25%;
+    margin-right: -100%;
+    clear: none; }
   .test__gallery .assert__split .test:nth-child(4n + 3) {
-    /*   OUTPUT   */
-    /*   END_OUTPUT   */
-    /*   OUTPUT   */
-    /*   END_OUTPUT   */ }
+    margin-left: 51.25%;
+    margin-right: -100%;
+    clear: none; }
   .test__gallery .assert__split .test:nth-child(4n + 4) {
-    /*   OUTPUT   */
-    /*   END_OUTPUT   */
-    /*   OUTPUT   */
-    /*   END_OUTPUT   */ }
+    margin-left: 76.25%;
+    margin-right: -100%;
+    clear: none; }
 .test__gallery .assert__split .expect {
   width: 22.5%;
   float: left; }
@@ -1262,10 +1797,13 @@ html {
     clear: none; }
 
 .test__gallery .assert__asym {
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */ }
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, transparent 10%, transparent 12%, rgba(102, 102, 255, 0.25) 12%, rgba(179, 179, 255, 0.25) 32%, transparent 32%, transparent 34%, rgba(102, 102, 255, 0.25) 34%, rgba(179, 179, 255, 0.25) 44%, transparent 44%, transparent 46%, rgba(102, 102, 255, 0.25) 46%, rgba(179, 179, 255, 0.25) 66%, transparent 66%, transparent 68%, rgba(102, 102, 255, 0.25) 68%, rgba(179, 179, 255, 0.25) 88%, transparent 88%, transparent 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
+  background-origin: content-box;
+  background-clip: content-box;
+  background-position: left top; }
   .test__gallery .assert__asym:after {
     content: " ";
     display: block;
@@ -1286,25 +1824,23 @@ html {
   text-align: left;
   font-style: italic; }
 .test__gallery .assert__asym .test {
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */ }
+  float: left; }
   .test__gallery .assert__asym .test:nth-child(3n + 1) {
-    /*   OUTPUT   */
-    /*   END_OUTPUT   */
-    /*   OUTPUT   */
-    /*   END_OUTPUT   */
-    /*   OUTPUT   */
-    /*   END_OUTPUT   */ }
+    width: 32%;
+    margin-left: 0;
+    margin-right: -100%;
+    clear: both;
+    margin-left: 0; }
   .test__gallery .assert__asym .test:nth-child(3n + 2) {
-    /*   OUTPUT   */
-    /*   END_OUTPUT   */
-    /*   OUTPUT   */
-    /*   END_OUTPUT   */ }
+    width: 32%;
+    margin-left: 34%;
+    margin-right: -100%;
+    clear: none; }
   .test__gallery .assert__asym .test:nth-child(3n + 3) {
-    /*   OUTPUT   */
-    /*   END_OUTPUT   */
-    /*   OUTPUT   */
-    /*   END_OUTPUT   */ }
+    width: 32%;
+    margin-left: 68%;
+    margin-right: -100%;
+    clear: none; }
 .test__gallery .assert__asym .expect {
   float: left; }
   .test__gallery .assert__asym .expect:nth-child(3n + 1) {
@@ -1324,10 +1860,13 @@ html {
     clear: none; }
 
 .test__gallery .assert__asym-inside {
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */ }
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 15%, rgba(102, 102, 255, 0.25) 15%, rgba(179, 179, 255, 0.25) 40%, rgba(102, 102, 255, 0.25) 40%, rgba(179, 179, 255, 0.25) 85%, rgba(102, 102, 255, 0.25) 85%, rgba(179, 179, 255, 0.25));
+  background-origin: content-box;
+  background-clip: content-box;
+  background-position: left top; }
   .test__gallery .assert__asym-inside:after {
     content: " ";
     display: block;
@@ -1348,23 +1887,26 @@ html {
   text-align: left;
   font-style: italic; }
 .test__gallery .assert__asym-inside .test {
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */ }
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  float: left;
+  padding-left: 2.5%;
+  padding-right: 2.5%; }
   .test__gallery .assert__asym-inside .test:nth-child(2n + 1) {
-    /*   OUTPUT   */
-    /*   END_OUTPUT   */
-    /*   OUTPUT   */
-    /*   END_OUTPUT   */ }
+    width: 40%;
+    margin-left: 0;
+    margin-right: -100%;
+    clear: both; }
   .test__gallery .assert__asym-inside .test:nth-child(2n + 2) {
-    /*   OUTPUT   */
-    /*   END_OUTPUT   */
-    /*   OUTPUT   */
-    /*   END_OUTPUT   */ }
+    width: 60%;
+    margin-left: 40%;
+    margin-right: -100%;
+    clear: none; }
 .test__gallery .assert__asym-inside .expect {
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
   float: left;
   padding-left: 2.5%;
   padding-right: 2.5%; }
@@ -1379,25 +1921,30 @@ html {
     margin-right: -100%;
     clear: none; }
 
-/*  */
-/* # Module: Row Syntax */
-/* -------------------- */
+/* # Row Syntax ---------- */
 /* - [mixin] break */
 .test__break .assert__break {
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */ }
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25));
+  background-size: 14.28571%;
+  background-origin: content-box;
+  background-clip: content-box;
+  background-position: left top; }
   .test__break .assert__break:after {
     content: " ";
     display: block;
     clear: both; }
 
 .test__break .assert__break .spacer {
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */ }
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 28.57143%;
+  float: left;
+  padding-left: 2.38095%;
+  padding-right: 2.38095%; }
 
 /* "breaks should clear preceeding floats" */
 .test__break .assert__break:before {
@@ -1407,30 +1954,35 @@ html {
   text-align: left;
   font-style: italic; }
 .test__break .assert__break .test {
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */ }
+  clear: both; }
 .test__break .assert__break .expect {
   clear: both; }
 
 /* - [mixin] nobreak */
 .test__nobreak .assert__nobreak {
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */ }
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25));
+  background-size: 14.28571%;
+  background-origin: content-box;
+  background-clip: content-box;
+  background-position: left top; }
   .test__nobreak .assert__nobreak:after {
     content: " ";
     display: block;
     clear: both; }
 
 .test__nobreak .assert__nobreak .spacer {
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */ }
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 28.57143%;
+  float: left;
+  padding-left: 2.38095%;
+  padding-right: 2.38095%; }
 .test__nobreak .assert__nobreak .test, .test__nobreak .assert__nobreak .expect {
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */ }
+  clear: both; }
 
 /* "Non-breaks should not clear floated elements" */
 .test__nobreak .assert__nobreak:before {
@@ -1440,27 +1992,30 @@ html {
   text-align: left;
   font-style: italic; }
 .test__nobreak .assert__nobreak .test {
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */ }
+  clear: none; }
 .test__nobreak .assert__nobreak .expect {
   clear: none; }
 
 /* - [mixin] full */
 .test__full .assert__split {
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */ }
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  background-image: linear-gradient(to right, transparent 10%, rgba(102, 102, 255, 0.25) 10%, rgba(179, 179, 255, 0.25) 90%, transparent 90%);
+  background-size: 12.5%;
+  background-origin: content-box;
+  background-clip: content-box;
+  background-position: left top; }
   .test__full .assert__split:after {
     content: " ";
     display: block;
     clear: both; }
 
 .test__full .assert__split .spacer {
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */ }
+  width: 22.5%;
+  float: left;
+  margin-left: 1.25%;
+  margin-right: 1.25%; }
 
 /* "Full spans clear preceeding floats, and have gutters." */
 .test__full .assert__split:before {
@@ -1470,35 +2025,36 @@ html {
   text-align: left;
   font-style: italic; }
 .test__full .assert__split .test {
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */ }
+  clear: both;
+  width: 97.5%;
+  float: left;
+  margin-left: 1.25%;
+  margin-right: 1.25%; }
 .test__full .assert__split .expect {
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */ }
+  clear: both;
+  width: 97.5%;
+  float: left;
+  margin-left: 1.25%;
+  margin-right: 1.25%; }
 
 .test__full .assert__after {
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */ }
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 66.66667%, transparent 66.66667%);
+  background-size: 15%;
+  background-origin: content-box;
+  background-clip: content-box;
+  background-position: left top; }
   .test__full .assert__after:after {
     content: " ";
     display: block;
     clear: both; }
 
 .test__full .assert__after .spacer {
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */ }
+  width: 25%;
+  float: left;
+  margin-right: 5%; }
 
 /* "Full spans clear preceeding floats, and have gutters." */
 .test__full .assert__after:before {
@@ -1508,36 +2064,35 @@ html {
   text-align: left;
   font-style: italic; }
 .test__full .assert__after .test {
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */ }
+  clear: both;
+  width: 100%;
+  float: left;
+  margin-left: 0;
+  margin-right: 0; }
 .test__full .assert__after .expect {
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */ }
+  clear: both;
+  width: 100%;
+  float: left; }
 
 /* - [mixin] first */
 .test__first .assert__before {
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */ }
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 66.66667%, transparent 66.66667%);
+  background-size: 15%;
+  background-origin: content-box;
+  background-clip: content-box;
+  background-position: left top; }
   .test__first .assert__before:after {
     content: " ";
     display: block;
     clear: both; }
 
 .test__first .assert__before .test, .test__first .assert__before .expect {
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */
+  width: 25%;
+  float: left;
+  margin-left: 5%;
   clear: left; }
 
 /* "First items should have left margins removed." */
@@ -1548,26 +2103,29 @@ html {
   text-align: left;
   font-style: italic; }
 .test__first .assert__before .test {
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */ }
+  margin-left: 0; }
 .test__first .assert__before .expect {
   margin-left: 0; }
 
 .test__first .assert__split {
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */ }
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  background-image: linear-gradient(to right, transparent 10%, rgba(102, 102, 255, 0.25) 10%, rgba(179, 179, 255, 0.25) 90%, transparent 90%);
+  background-size: 12.5%;
+  background-origin: content-box;
+  background-clip: content-box;
+  background-position: left top; }
   .test__first .assert__split:after {
     content: " ";
     display: block;
     clear: both; }
 
 .test__first .assert__split .test, .test__first .assert__split .expect {
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */
+  width: 22.5%;
+  float: left;
+  margin-left: 1.25%;
+  margin-right: 1.25%;
   clear: left; }
 
 /* "Nothing should happen to split first items." */
@@ -1580,20 +2138,23 @@ html {
 
 /* - [mixin] alpha */
 .test__alpha .assert__alpha {
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */ }
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 66.66667%, transparent 66.66667%);
+  background-size: 15%;
+  background-origin: content-box;
+  background-clip: content-box;
+  background-position: left top; }
   .test__alpha .assert__alpha:after {
     content: " ";
     display: block;
     clear: both; }
 
 .test__alpha .assert__alpha .test, .test__alpha .assert__alpha .expect {
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */
+  width: 25%;
+  float: left;
+  margin-left: 5%;
   clear: left; }
 
 /* "Alpha items should have left margins removed." */
@@ -1604,27 +2165,29 @@ html {
   text-align: left;
   font-style: italic; }
 .test__alpha .assert__alpha .test {
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */ }
+  margin-left: 0; }
 .test__alpha .assert__alpha .expect {
   margin-left: 0; }
 
 /* - [mixin] last */
 .test__last .assert__after {
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */ }
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 66.66667%, transparent 66.66667%);
+  background-size: 15%;
+  background-origin: content-box;
+  background-clip: content-box;
+  background-position: left top; }
   .test__last .assert__after:after {
     content: " ";
     display: block;
     clear: both; }
 
 .test__last .assert__after .test, .test__last .assert__after .expect {
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */
+  width: 25%;
+  float: left;
+  margin-right: 5%;
   clear: both; }
 
 /* "Last items should float right, with right margins removed" */
@@ -1635,27 +2198,31 @@ html {
   text-align: left;
   font-style: italic; }
 .test__last .assert__after .test {
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */ }
+  float: right;
+  margin-right: 0; }
 .test__last .assert__after .expect {
   float: right;
   margin-right: 0; }
 
 .test__last .assert__split {
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */ }
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  background-image: linear-gradient(to right, transparent 16.66667%, rgba(102, 102, 255, 0.25) 16.66667%, rgba(179, 179, 255, 0.25) 83.33333%, transparent 83.33333%);
+  background-size: 14.28571%;
+  background-origin: content-box;
+  background-clip: content-box;
+  background-position: left top; }
   .test__last .assert__split:after {
     content: " ";
     display: block;
     clear: both; }
 
 .test__last .assert__split .test, .test__last .assert__split .expect {
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */
+  width: 23.80952%;
+  float: left;
+  margin-left: 2.38095%;
+  margin-right: 2.38095%;
   clear: both; }
 
 /* "Last items should float right." */
@@ -1666,26 +2233,28 @@ html {
   text-align: left;
   font-style: italic; }
 .test__last .assert__split .test {
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */ }
+  float: right; }
 .test__last .assert__split .expect {
   float: right; }
 
 .test__last .assert__last-flow {
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */ }
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 66.66667%, transparent 66.66667%);
+  background-size: 15%;
+  background-origin: content-box;
+  background-clip: content-box;
+  background-position: left top; }
   .test__last .assert__last-flow:after {
     content: " ";
     display: block;
     clear: both; }
 
 .test__last .assert__last-flow .test, .test__last .assert__last-flow .expect {
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */
+  width: 25%;
+  float: left;
+  margin-right: 5%;
   clear: both; }
 
 /* "Last items should not override float if last-flow is "from", with right margins removed" */
@@ -1696,27 +2265,29 @@ html {
   text-align: left;
   font-style: italic; }
 .test__last .assert__last-flow .test {
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */ }
+  margin-right: 0; }
 .test__last .assert__last-flow .expect {
   margin-right: 0; }
 
 /* - [mixin] omega */
 .test__omega .assert__omega {
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */ }
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 66.66667%, transparent 66.66667%);
+  background-size: 15%;
+  background-origin: content-box;
+  background-clip: content-box;
+  background-position: left top; }
   .test__omega .assert__omega:after {
     content: " ";
     display: block;
     clear: both; }
 
 .test__omega .assert__omega .test, .test__omega .assert__omega .expect {
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */
+  width: 25%;
+  float: left;
+  margin-right: 5%;
   clear: both; }
 
 /* "Omega items should float right, with right margins removed" */
@@ -1727,50 +2298,70 @@ html {
   text-align: left;
   font-style: italic; }
 .test__omega .assert__omega .test {
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */ }
+  float: right;
+  margin-right: 0; }
 .test__omega .assert__omega .expect {
   float: right;
   margin-right: 0; }
 
-/* Test: [function] get-edge */
-/*   ✔ Returns full if span is equal to column-count */
-/*   ✔ Returns null if no location or edge given */
-/*   ✔ Returns valid edge without changes */
-/*   ✔ Returns last in place of omega */
-/*   ✔ Calculates first based on location when possible */
-/*   ✔ Calculates last based on location when possible */
-/*  */
-/* Test: [function] get-location */
-/*   ✔ Returns valid location without changes */
-/*   ✔ Calculates location based on first when possible */
-/*   ✔ Calculates location based on last when possible */
-/*   ✔ Return null when location can't be calculated */
-/*  */
-/*  */
-/* # Module: Margin Syntax */
-/* ----------------------- */
+/* [function] get-edge */
+[data-module="Row Syntax"] [data-test="[function] get-edge"] .assert-equal {
+  -result: PASS;
+  -description: "Returns full if span is equal to column-count"; }
+[data-module="Row Syntax"] [data-test="[function] get-edge"] .assert-equal {
+  -result: PASS;
+  -description: "Returns null if no location or edge given"; }
+[data-module="Row Syntax"] [data-test="[function] get-edge"] .assert-equal {
+  -result: PASS;
+  -description: "Returns valid edge without changes"; }
+[data-module="Row Syntax"] [data-test="[function] get-edge"] .assert-equal {
+  -result: PASS;
+  -description: "Returns last in place of omega"; }
+[data-module="Row Syntax"] [data-test="[function] get-edge"] .assert-equal {
+  -result: PASS;
+  -description: "Calculates first based on location when possible"; }
+[data-module="Row Syntax"] [data-test="[function] get-edge"] .assert-equal {
+  -result: PASS;
+  -description: "Calculates last based on location when possible"; }
+
+/* [function] get-location */
+[data-module="Row Syntax"] [data-test="[function] get-location"] .assert-equal {
+  -result: PASS;
+  -description: "Returns valid location without changes"; }
+[data-module="Row Syntax"] [data-test="[function] get-location"] .assert-equal {
+  -result: PASS;
+  -description: "Calculates location based on first when possible"; }
+[data-module="Row Syntax"] [data-test="[function] get-location"] .assert-equal {
+  -result: PASS;
+  -description: "Calculates location based on last when possible"; }
+[data-module="Row Syntax"] [data-test="[function] get-location"] .assert-equal {
+  -result: PASS;
+  -description: "Return null when location can't be calculated"; }
+
+/* # Margin Syntax ---------- */
 /* - [mixin] pre */
 .test__pre .assert__wide {
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */ }
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 66.66667%, transparent 66.66667%);
+  background-size: 15%;
+  background-origin: content-box;
+  background-clip: content-box;
+  background-position: left top; }
   .test__pre .assert__wide:after {
     content: " ";
     display: block;
     clear: both; }
 
 .test__pre .assert__wide .spacer {
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */ }
+  width: 15%;
+  float: left;
+  margin-left: 0; }
 .test__pre .assert__wide .test, .test__pre .assert__wide .expect {
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */ }
+  width: 40%;
+  float: left;
+  margin-left: 5%; }
 
 /* "Items should have 2-columns (wide) margin before." */
 .test__pre .assert__wide:before {
@@ -1780,26 +2371,29 @@ html {
   text-align: left;
   font-style: italic; }
 .test__pre .assert__wide .test {
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */ }
+  margin-left: 30%; }
 .test__pre .assert__wide .expect {
   margin-left: 30%; }
 
 .test__pre .assert__split {
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */ }
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  background-image: linear-gradient(to right, transparent 10%, rgba(102, 102, 255, 0.25) 10%, rgba(179, 179, 255, 0.25) 90%, transparent 90%);
+  background-size: 12.5%;
+  background-origin: content-box;
+  background-clip: content-box;
+  background-position: left top; }
   .test__pre .assert__split:after {
     content: " ";
     display: block;
     clear: both; }
 
 .test__pre .assert__split .test, .test__pre .assert__split .expect {
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */ }
+  width: 47.5%;
+  float: left;
+  margin-left: 1.25%;
+  margin-right: 1.25%; }
 
 /* "Items should have 2-columns margin before, including split gutter." */
 .test__pre .assert__split:before {
@@ -1809,26 +2403,27 @@ html {
   text-align: left;
   font-style: italic; }
 .test__pre .assert__split .test {
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */ }
+  margin-left: 26.25%; }
 .test__pre .assert__split .expect {
   margin-left: 26.25%; }
 
 .test__pre .assert__split {
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */ }
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  background-image: linear-gradient(to right, transparent 0%, rgba(102, 102, 255, 0.25) 0%, rgba(179, 179, 255, 0.25) 100%, transparent 100%);
+  background-size: 10%;
+  background-origin: content-box;
+  background-clip: content-box;
+  background-position: left top; }
   .test__pre .assert__split:after {
     content: " ";
     display: block;
     clear: both; }
 
 .test__pre .assert__split .test, .test__pre .assert__split .expect {
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */ }
+  width: 40%;
+  float: left; }
 
 /* "Pre works with split 0 gutters." */
 .test__pre .assert__split:before {
@@ -1838,31 +2433,32 @@ html {
   text-align: left;
   font-style: italic; }
 .test__pre .assert__split .test {
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */ }
+  margin-left: 20%; }
 .test__pre .assert__split .expect {
   margin-left: 20%; }
 
 .test__pre .assert__wider {
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */ }
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 66.66667%, transparent 66.66667%);
+  background-size: 15%;
+  background-origin: content-box;
+  background-clip: content-box;
+  background-position: left top; }
   .test__pre .assert__wider:after {
     content: " ";
     display: block;
     clear: both; }
 
 .test__pre .assert__wider .spacer {
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */ }
+  width: 10%;
+  float: left;
+  margin-left: 0; }
 .test__pre .assert__wider .test, .test__pre .assert__wider .expect {
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */ }
+  width: 40%;
+  float: left;
+  margin-left: 5%; }
 
 /* "Items should have 2-columns (wider) margin before." */
 .test__pre .assert__wider:before {
@@ -1872,17 +2468,19 @@ html {
   text-align: left;
   font-style: italic; }
 .test__pre .assert__wider .test {
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */ }
+  margin-left: 35%; }
 .test__pre .assert__wider .expect {
   margin-left: 35%; }
 
 /* - [mixin] post */
 .test__post .assert__wide {
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */ }
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, transparent 10%, transparent 12.5%, rgba(102, 102, 255, 0.25) 12.5%, rgba(179, 179, 255, 0.25) 32.5%, transparent 32.5%, transparent 35%, rgba(102, 102, 255, 0.25) 35%, rgba(179, 179, 255, 0.25) 65%, transparent 65%, transparent 67.5%, rgba(102, 102, 255, 0.25) 67.5%, rgba(179, 179, 255, 0.25) 87.5%, transparent 87.5%, transparent 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
+  background-origin: content-box;
+  background-clip: content-box;
+  background-position: left top; }
   .test__post .assert__wide:after {
     content: " ";
     display: block;
@@ -1896,24 +2494,26 @@ html {
   text-align: left;
   font-style: italic; }
 .test__post .assert__wide .test {
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */ }
+  margin-right: 35%; }
 .test__post .assert__wide .expect {
   margin-right: 35%; }
 
 .test__post .assert__split {
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */ }
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  background-image: linear-gradient(to right, transparent 1.25%, rgba(102, 102, 255, 0.25) 1.25%, rgba(179, 179, 255, 0.25) 11.25%, transparent 11.25%, transparent 13.75%, rgba(102, 102, 255, 0.25) 13.75%, rgba(179, 179, 255, 0.25) 33.75%, transparent 33.75%, transparent 36.25%, rgba(102, 102, 255, 0.25) 36.25%, rgba(179, 179, 255, 0.25) 66.25%, transparent 66.25%, transparent 68.75%, rgba(102, 102, 255, 0.25) 68.75%, rgba(179, 179, 255, 0.25) 98.75%, transparent 98.75%);
+  background-origin: content-box;
+  background-clip: content-box;
+  background-position: left top; }
   .test__post .assert__split:after {
     content: " ";
     display: block;
     clear: both; }
 
 .test__post .assert__split .test, .test__post .assert__split .expect {
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */ }
+  margin-left: 1.25%;
+  margin-right: 1.25%; }
 
 /* "Items should have 2-columns margin after, including split gutter." */
 .test__post .assert__split:before {
@@ -1923,32 +2523,32 @@ html {
   text-align: left;
   font-style: italic; }
 .test__post .assert__split .test {
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */ }
+  margin-right: 33.75%; }
 .test__post .assert__split .expect {
   margin-right: 33.75%; }
 
 .test__post .assert__wider {
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */ }
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, transparent 10%, transparent 12.5%, rgba(102, 102, 255, 0.25) 12.5%, rgba(179, 179, 255, 0.25) 32.5%, transparent 32.5%, transparent 35%, rgba(102, 102, 255, 0.25) 35%, rgba(179, 179, 255, 0.25) 65%, transparent 65%, transparent 67.5%, rgba(102, 102, 255, 0.25) 67.5%, rgba(179, 179, 255, 0.25) 87.5%, transparent 87.5%, transparent 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
+  background-origin: content-box;
+  background-clip: content-box;
+  background-position: left top; }
   .test__post .assert__wider:after {
     content: " ";
     display: block;
     clear: both; }
 
 .test__post .assert__wider .spacer {
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */
+  width: 20%;
+  float: left;
+  margin-right: 2.5%;
   height: 1rem; }
 .test__post .assert__wider .test, .test__post .assert__wider .expect {
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */ }
+  width: 32.5%;
+  float: left;
+  margin-right: 2.5%; }
 
 /* "Items should have 1-column (wide-2) margin after." */
 .test__post .assert__wider:before {
@@ -1958,27 +2558,30 @@ html {
   text-align: left;
   font-style: italic; }
 .test__post .assert__wider .test {
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */ }
+  margin-right: 35%; }
 .test__post .assert__wider .expect {
   margin-right: 35%; }
 
 /* - [mixin] push */
 .test__push .assert__push {
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */ }
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  background-image: linear-gradient(to right, transparent 10%, rgba(102, 102, 255, 0.25) 10%, rgba(179, 179, 255, 0.25) 90%, transparent 90%);
+  background-size: 12.5%;
+  background-origin: content-box;
+  background-clip: content-box;
+  background-position: left top; }
   .test__push .assert__push:after {
     content: " ";
     display: block;
     clear: both; }
 
 .test__push .assert__push .test, .test__push .assert__push .expect {
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */ }
+  width: 47.5%;
+  float: left;
+  margin-left: 1.25%;
+  margin-right: 1.25%; }
 
 /* "Items should have 2-columns margin before." */
 .test__push .assert__push:before {
@@ -1988,32 +2591,32 @@ html {
   text-align: left;
   font-style: italic; }
 .test__push .assert__push .test {
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */ }
+  margin-left: 26.25%; }
 .test__push .assert__push .expect {
   margin-left: 26.25%; }
 
 /* - [mixin] pull */
 .test__pull .assert__narrow {
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */ }
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, transparent 10%, transparent 12.5%, rgba(102, 102, 255, 0.25) 12.5%, rgba(179, 179, 255, 0.25) 32.5%, transparent 32.5%, transparent 35%, rgba(102, 102, 255, 0.25) 35%, rgba(179, 179, 255, 0.25) 65%, transparent 65%, transparent 67.5%, rgba(102, 102, 255, 0.25) 67.5%, rgba(179, 179, 255, 0.25) 87.5%, transparent 87.5%, transparent 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
+  background-origin: content-box;
+  background-clip: content-box;
+  background-position: left top; }
   .test__pull .assert__narrow:after {
     content: " ";
     display: block;
     clear: both; }
 
 .test__pull .assert__narrow .spacer {
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */ }
+  width: 32.5%;
+  float: left;
+  margin-left: 0; }
 .test__pull .assert__narrow .test, .test__pull .assert__narrow .expect {
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */ }
+  width: 75%;
+  float: left;
+  margin-left: 2.5%; }
 
 /* "Items should pull 1-column, overlapping the spacer." */
 .test__pull .assert__narrow:before {
@@ -2023,31 +2626,34 @@ html {
   text-align: left;
   font-style: italic; }
 .test__pull .assert__narrow .test {
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */ }
+  margin-left: -20%; }
 .test__pull .assert__narrow .expect {
   margin-left: -20%; }
 
 .test__pull .assert__split {
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */ }
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  background-image: linear-gradient(to right, transparent 10%, rgba(102, 102, 255, 0.25) 10%, rgba(179, 179, 255, 0.25) 90%, transparent 90%);
+  background-size: 12.5%;
+  background-origin: content-box;
+  background-clip: content-box;
+  background-position: left top; }
   .test__pull .assert__split:after {
     content: " ";
     display: block;
     clear: both; }
 
 .test__pull .assert__split .spacer {
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */ }
+  width: 22.5%;
+  float: left;
+  margin-left: 1.25%;
+  margin-right: 1.25%; }
 .test__pull .assert__split .test, .test__pull .assert__split .expect {
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */ }
+  width: 72.5%;
+  float: left;
+  margin-left: 1.25%;
+  margin-right: 1.25%; }
 
 /* "Items should pull 1-column, overlapping the spacer." */
 .test__pull .assert__split:before {
@@ -2057,31 +2663,31 @@ html {
   text-align: left;
   font-style: italic; }
 .test__pull .assert__split .test {
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */ }
+  margin-left: -11.25%; }
 .test__pull .assert__split .expect {
   margin-left: -11.25%; }
 
 .test__pull .assert__wide {
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */ }
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, transparent 10%, transparent 12.5%, rgba(102, 102, 255, 0.25) 12.5%, rgba(179, 179, 255, 0.25) 32.5%, transparent 32.5%, transparent 35%, rgba(102, 102, 255, 0.25) 35%, rgba(179, 179, 255, 0.25) 65%, transparent 65%, transparent 67.5%, rgba(102, 102, 255, 0.25) 67.5%, rgba(179, 179, 255, 0.25) 87.5%, transparent 87.5%, transparent 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
+  background-origin: content-box;
+  background-clip: content-box;
+  background-position: left top; }
   .test__pull .assert__wide:after {
     content: " ";
     display: block;
     clear: both; }
 
 .test__pull .assert__wide .spacer {
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */ }
+  width: 35%;
+  float: left;
+  margin-left: 0; }
 .test__pull .assert__wide .test, .test__pull .assert__wide .expect {
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */ }
+  width: 75%;
+  float: left;
+  margin-left: 2.5%; }
 
 /* "Items should pull 1-column, overlapping the spacer." */
 .test__pull .assert__wide:before {
@@ -2091,31 +2697,31 @@ html {
   text-align: left;
   font-style: italic; }
 .test__pull .assert__wide .test {
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */ }
+  margin-left: -22.5%; }
 .test__pull .assert__wide .expect {
   margin-left: -22.5%; }
 
 .test__pull .assert__wider {
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */ }
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, transparent 10%, transparent 12.5%, rgba(102, 102, 255, 0.25) 12.5%, rgba(179, 179, 255, 0.25) 32.5%, transparent 32.5%, transparent 35%, rgba(102, 102, 255, 0.25) 35%, rgba(179, 179, 255, 0.25) 65%, transparent 65%, transparent 67.5%, rgba(102, 102, 255, 0.25) 67.5%, rgba(179, 179, 255, 0.25) 87.5%, transparent 87.5%, transparent 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
+  background-origin: content-box;
+  background-clip: content-box;
+  background-position: left top; }
   .test__pull .assert__wider:after {
     content: " ";
     display: block;
     clear: both; }
 
 .test__pull .assert__wider .spacer {
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */ }
+  width: 35%;
+  float: left;
+  margin-left: 0; }
 .test__pull .assert__wider .test, .test__pull .assert__wider .expect {
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */ }
+  width: 80%;
+  float: left;
+  margin-left: 2.38095%; }
 
 /* "Items should pull 1-column, overlapping the spacer." */
 .test__pull .assert__wider:before {
@@ -2125,17 +2731,19 @@ html {
   text-align: left;
   font-style: italic; }
 .test__pull .assert__wider .test {
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */ }
+  margin-left: -25%; }
 .test__pull .assert__wider .expect {
   margin-left: -25%; }
 
 /* - [mixin] squish */
 .test__squish .assert__simple {
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */ }
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, transparent 10%, transparent 12.5%, rgba(102, 102, 255, 0.25) 12.5%, rgba(179, 179, 255, 0.25) 32.5%, transparent 32.5%, transparent 35%, rgba(102, 102, 255, 0.25) 35%, rgba(179, 179, 255, 0.25) 65%, transparent 65%, transparent 67.5%, rgba(102, 102, 255, 0.25) 67.5%, rgba(179, 179, 255, 0.25) 87.5%, transparent 87.5%, transparent 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
+  background-origin: content-box;
+  background-clip: content-box;
+  background-position: left top; }
   .test__squish .assert__simple:after {
     content: " ";
     display: block;
@@ -2150,20 +2758,21 @@ html {
   font-style: italic; }
 .test__squish .assert__simple .test {
   -susy-squish: first 2, last 2 inspect;
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */ }
+  margin-left: 35%;
+  margin-right: 35%; }
 .test__squish .assert__simple .expect {
   -susy-squish: first 2, last 2 inspect;
   margin-left: 35%;
   margin-right: 35%; }
 
 .test__squish .assert__split {
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */ }
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  background-image: linear-gradient(to right, transparent 1.21951%, rgba(102, 102, 255, 0.25) 1.21951%, rgba(179, 179, 255, 0.25) 10.97561%, transparent 10.97561%, transparent 13.41463%, rgba(102, 102, 255, 0.25) 13.41463%, rgba(179, 179, 255, 0.25) 32.92683%, transparent 32.92683%, transparent 35.36585%, rgba(102, 102, 255, 0.25) 35.36585%, rgba(179, 179, 255, 0.25) 64.63415%, transparent 64.63415%, transparent 67.07317%, rgba(102, 102, 255, 0.25) 67.07317%, rgba(179, 179, 255, 0.25) 86.58537%, transparent 86.58537%, transparent 89.02439%, rgba(102, 102, 255, 0.25) 89.02439%, rgba(179, 179, 255, 0.25) 98.78049%, transparent 98.78049%);
+  background-origin: content-box;
+  background-clip: content-box;
+  background-position: left top; }
   .test__squish .assert__split:after {
     content: " ";
     display: block;
@@ -2177,29 +2786,29 @@ html {
   text-align: left;
   font-style: italic; }
 .test__squish .assert__split .test {
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */ }
+  margin-left: 35.36585%;
+  margin-right: 35.36585%; }
 .test__squish .assert__split .expect {
   margin-left: 35.25%;
   margin-right: 35.25%; }
 
 .test__squish .assert__nested {
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */ }
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25));
+  background-size: 14.28571%;
+  background-origin: content-box;
+  background-clip: content-box;
+  background-position: left top; }
   .test__squish .assert__nested:after {
     content: " ";
     display: block;
     clear: both; }
 
 .test__squish .assert__nested .nest {
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */ }
+  margin-left: 14.28571%;
+  margin-right: 14.28571%; }
 
 /* "Items should have 1-column margin before, and 2 after - nested." */
 .test__squish .assert__nested:before {
@@ -2209,23 +2818,23 @@ html {
   text-align: left;
   font-style: italic; }
 .test__squish .assert__nested .test {
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */ }
+  margin-left: 20%;
+  margin-right: 40%; }
 .test__squish .assert__nested .expect {
   margin-left: 20%;
   margin-right: 40%; }
 
-/*  */
-/* # Module: Padding Syntax */
-/* ------------------------ */
+/* # Padding Syntax ---------- */
 /* - [mixin] prefix */
 .test__prefix .assert__wide {
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */ }
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 66.66667%, transparent 66.66667%);
+  background-size: 15%;
+  background-origin: content-box;
+  background-clip: content-box;
+  background-position: left top; }
   .test__prefix .assert__wide:after {
     content: " ";
     display: block;
@@ -2239,26 +2848,27 @@ html {
   text-align: left;
   font-style: italic; }
 .test__prefix .assert__wide .test {
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */ }
+  padding-left: 45%; }
 .test__prefix .assert__wide .expect {
   padding-left: 45%; }
 
 .test__prefix .assert__wider {
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */ }
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 66.66667%, transparent 66.66667%);
+  background-size: 15%;
+  background-origin: content-box;
+  background-clip: content-box;
+  background-position: left top; }
   .test__prefix .assert__wider:after {
     content: " ";
     display: block;
     clear: both; }
 
 .test__prefix .assert__wider .spacer {
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */ }
+  width: 10%;
+  float: left; }
 .test__prefix .assert__wider .test, .test__prefix .assert__wider .expect {
   overflow: hidden; }
 
@@ -2270,17 +2880,19 @@ html {
   text-align: left;
   font-style: italic; }
 .test__prefix .assert__wider .test {
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */ }
+  padding-left: 50%; }
 .test__prefix .assert__wider .expect {
   padding-left: 50%; }
 
 /* - [mixin] suffix */
 .test__suffix .assert__wide {
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */ }
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, transparent 10%, transparent 12.5%, rgba(102, 102, 255, 0.25) 12.5%, rgba(179, 179, 255, 0.25) 32.5%, transparent 32.5%, transparent 35%, rgba(102, 102, 255, 0.25) 35%, rgba(179, 179, 255, 0.25) 65%, transparent 65%, transparent 67.5%, rgba(102, 102, 255, 0.25) 67.5%, rgba(179, 179, 255, 0.25) 87.5%, transparent 87.5%, transparent 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
+  background-origin: content-box;
+  background-clip: content-box;
+  background-position: left top; }
   .test__suffix .assert__wide:after {
     content: " ";
     display: block;
@@ -2294,26 +2906,27 @@ html {
   text-align: left;
   font-style: italic; }
 .test__suffix .assert__wide .test {
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */ }
+  padding-right: 35%; }
 .test__suffix .assert__wide .expect {
   padding-right: 35%; }
 
 .test__suffix .assert__wider {
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */ }
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, transparent 10%, transparent 12.5%, rgba(102, 102, 255, 0.25) 12.5%, rgba(179, 179, 255, 0.25) 32.5%, transparent 32.5%, transparent 35%, rgba(102, 102, 255, 0.25) 35%, rgba(179, 179, 255, 0.25) 65%, transparent 65%, transparent 67.5%, rgba(102, 102, 255, 0.25) 67.5%, rgba(179, 179, 255, 0.25) 87.5%, transparent 87.5%, transparent 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
+  background-origin: content-box;
+  background-clip: content-box;
+  background-position: left top; }
   .test__suffix .assert__wider:after {
     content: " ";
     display: block;
     clear: both; }
 
 .test__suffix .assert__wider .spacer {
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */ }
+  width: 10%;
+  float: right;
+  margin-right: 0; }
 .test__suffix .assert__wider .test, .test__suffix .assert__wider .expect {
   overflow: hidden; }
 
@@ -2325,17 +2938,19 @@ html {
   text-align: left;
   font-style: italic; }
 .test__suffix .assert__wider .test {
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */ }
+  padding-right: 57.5%; }
 .test__suffix .assert__wider .expect {
   padding-right: 57.5%; }
 
 /* - [mixin] pad */
 .test__pad .assert__simple {
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */ }
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, transparent 10%, transparent 12.5%, rgba(102, 102, 255, 0.25) 12.5%, rgba(179, 179, 255, 0.25) 32.5%, transparent 32.5%, transparent 35%, rgba(102, 102, 255, 0.25) 35%, rgba(179, 179, 255, 0.25) 65%, transparent 65%, transparent 67.5%, rgba(102, 102, 255, 0.25) 67.5%, rgba(179, 179, 255, 0.25) 87.5%, transparent 87.5%, transparent 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
+  background-origin: content-box;
+  background-clip: content-box;
+  background-position: left top; }
   .test__pad .assert__simple:after {
     content: " ";
     display: block;
@@ -2349,29 +2964,29 @@ html {
   text-align: left;
   font-style: italic; }
 .test__pad .assert__simple .test {
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */ }
+  padding-left: 35%;
+  padding-right: 35%; }
 .test__pad .assert__simple .expect {
   padding-left: 35%;
   padding-right: 35%; }
 
 .test__pad .assert__nested {
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */ }
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 66.66667%, transparent 66.66667%);
+  background-size: 11.53846%;
+  background-origin: content-box;
+  background-clip: content-box;
+  background-position: left top; }
   .test__pad .assert__nested:after {
     content: " ";
     display: block;
     clear: both; }
 
 .test__pad .assert__nested .nest {
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */ }
+  padding-left: 11.53846%;
+  padding-right: 11.53846%; }
 
 /* "Items should have 1 column padding before, and 2 after - nested." */
 .test__pad .assert__nested:before {
@@ -2381,19 +2996,21 @@ html {
   text-align: left;
   font-style: italic; }
 .test__pad .assert__nested .test {
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */ }
+  padding-left: 15%;
+  padding-right: 30%; }
 .test__pad .assert__nested .expect {
   padding-left: 15%;
   padding-right: 30%; }
 
 .test__pad .assert__inside {
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */ }
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25));
+  background-size: 12.5%;
+  background-origin: content-box;
+  background-clip: content-box;
+  background-position: left top; }
   .test__pad .assert__inside:after {
     content: " ";
     display: block;
@@ -2407,19 +3024,21 @@ html {
   text-align: left;
   font-style: italic; }
 .test__pad .assert__inside .test {
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */ }
+  padding-left: 26.25%;
+  padding-right: 26.25%; }
 .test__pad .assert__inside .expect {
   padding-left: 26.25%;
   padding-right: 26.25%; }
 
 .test__pad .assert__inside-nogutters {
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */ }
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25));
+  background-size: 12.5%;
+  background-origin: content-box;
+  background-clip: content-box;
+  background-position: left top; }
   .test__pad .assert__inside-nogutters:after {
     content: " ";
     display: block;
@@ -2433,33 +3052,31 @@ html {
   text-align: left;
   font-style: italic; }
 .test__pad .assert__inside-nogutters .test {
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */ }
+  padding-left: 25%;
+  padding-right: 25%; }
 .test__pad .assert__inside-nogutters .expect {
   padding-left: 25%;
   padding-right: 25%; }
 
-/*  */
-/* # Module: Bleed Syntax */
-/* ---------------------- */
+/* # Bleed Syntax ---------- */
 /* - [mixin] bleed */
 .test__bleed .assert__simple {
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */ }
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 66.66667%, transparent 66.66667%);
+  background-size: 11.53846%;
+  background-origin: content-box;
+  background-clip: content-box;
+  background-position: left top; }
   .test__bleed .assert__simple:after {
     content: " ";
     display: block;
     clear: both; }
 
 .test__bleed .assert__simple .nest {
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */ }
+  margin-left: 11.53846%;
+  margin-right: 11.53846%; }
 
 /* "Items should bleed 1 column outside their nested context" */
 .test__bleed .assert__simple:before {
@@ -2469,8 +3086,10 @@ html {
   text-align: left;
   font-style: italic; }
 .test__bleed .assert__simple .test {
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */ }
+  margin-right: -15%;
+  margin-left: -15%;
+  padding-right: 15%;
+  padding-left: 15%; }
 .test__bleed .assert__simple .expect {
   margin-right: -15%;
   margin-left: -15%;
@@ -2478,20 +3097,22 @@ html {
   padding-left: 15%; }
 
 .test__bleed .assert__inside {
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */ }
+  max-width: 50em;
+  margin-left: auto;
+  margin-right: auto;
+  background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25));
+  background-size: 10%;
+  background-origin: content-box;
+  background-clip: content-box;
+  background-position: left top; }
   .test__bleed .assert__inside:after {
     content: " ";
     display: block;
     clear: both; }
 
 .test__bleed .assert__inside .nest {
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */
+  margin-left: 10%;
+  margin-right: 10%;
   margin-bottom: 1rem;
   margin-top: 1rem; }
 
@@ -2503,27 +3124,29 @@ html {
   text-align: left;
   font-style: italic; }
 .test__bleed .assert__inside .test {
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */ }
+  margin: -1em;
+  padding: 1em 1.5em; }
 .test__bleed .assert__inside .expect {
   margin: -1em;
   padding: 1em 1.5em; }
 
 .test__bleed .assert__split {
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */ }
+  max-width: 60em;
+  margin-left: auto;
+  margin-right: auto;
+  background-image: linear-gradient(to right, transparent 10%, rgba(102, 102, 255, 0.25) 10%, rgba(179, 179, 255, 0.25) 90%, transparent 90%);
+  background-size: 8.33333%;
+  background-origin: content-box;
+  background-clip: content-box;
+  background-position: left top; }
   .test__bleed .assert__split:after {
     content: " ";
     display: block;
     clear: both; }
 
 .test__bleed .assert__split .nest {
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */ }
+  margin-left: 17.5%;
+  margin-right: 17.5%; }
 
 /* "Items should bleed 1 column horizontal, and retain gutters." */
 .test__bleed .assert__split:before {
@@ -2533,8 +3156,10 @@ html {
   text-align: left;
   font-style: italic; }
 .test__bleed .assert__split .test {
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */ }
+  margin-right: -12.5%;
+  margin-left: -12.5%;
+  padding-right: 12.5%;
+  padding-left: 12.5%; }
 .test__bleed .assert__split .expect {
   margin-right: -12.5%;
   margin-left: -12.5%;
@@ -2543,20 +3168,22 @@ html {
 
 /* - [mixin] bleed-x */
 .test__bleed-x .assert__simple {
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */ }
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 66.66667%, transparent 66.66667%);
+  background-size: 9.375%;
+  background-origin: content-box;
+  background-clip: content-box;
+  background-position: left top; }
   .test__bleed-x .assert__simple:after {
     content: " ";
     display: block;
     clear: both; }
 
 .test__bleed-x .assert__simple .nest {
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */ }
+  margin-left: 18.75%;
+  margin-right: 18.75%; }
 
 /* "Items should bleed 1 column left, and 2 columns right" */
 .test__bleed-x .assert__simple:before {
@@ -2566,8 +3193,10 @@ html {
   text-align: left;
   font-style: italic; }
 .test__bleed-x .assert__simple .test {
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */ }
+  margin-right: -30%;
+  margin-left: -15%;
+  padding-right: 30%;
+  padding-left: 15%; }
 .test__bleed-x .assert__simple .expect {
   margin-right: -30%;
   margin-left: -15%;
@@ -2575,20 +3204,22 @@ html {
   padding-left: 15%; }
 
 .test__bleed-x .assert__inside {
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */ }
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25));
+  background-size: 10%;
+  background-origin: content-box;
+  background-clip: content-box;
+  background-position: left top; }
   .test__bleed-x .assert__inside:after {
     content: " ";
     display: block;
     clear: both; }
 
 .test__bleed-x .assert__inside .nest {
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */ }
+  margin-left: 10%;
+  margin-right: 10%; }
 
 /* "Items should bleed 1 column, and retain their gutters" */
 .test__bleed-x .assert__inside:before {
@@ -2598,8 +3229,10 @@ html {
   text-align: left;
   font-style: italic; }
 .test__bleed-x .assert__inside .test {
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */ }
+  margin-right: -12.5%;
+  margin-left: -12.5%;
+  padding-right: 13.75%;
+  padding-left: 13.75%; }
 .test__bleed-x .assert__inside .expect {
   margin-right: -12.5%;
   margin-left: -12.5%;
@@ -2608,20 +3241,22 @@ html {
 
 /* - [mixin] bleed-y */
 .test__bleed-y .assert__simple {
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */ }
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 66.66667%, transparent 66.66667%);
+  background-size: 9.375%;
+  background-origin: content-box;
+  background-clip: content-box;
+  background-position: left top; }
   .test__bleed-y .assert__simple:after {
     content: " ";
     display: block;
     clear: both; }
 
 .test__bleed-y .assert__simple .nest {
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */
+  margin-left: 9.375%;
+  margin-right: 9.375%;
   margin-bottom: 1rem;
   margin-top: 1rem; }
 
@@ -2633,31 +3268,45 @@ html {
   text-align: left;
   font-style: italic; }
 .test__bleed-y .assert__simple .test {
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */ }
+  margin-top: -0.5em;
+  margin-bottom: -1em;
+  padding-top: 0.5em;
+  padding-bottom: 1em; }
 .test__bleed-y .assert__simple .expect {
   margin-top: -0.5em;
   margin-bottom: -1em;
   padding-top: 0.5em;
   padding-bottom: 1em; }
 
-/* Test: [function] get-bleed */
-/*   ✔ get-bleed handles 0, span, and length arguments. */
-/*   ✔ get-bleed handles inside gutters. */
-/*   ✔ get-bleed can handle no-gutters inside. */
-/*  */
-/* Test: [function] bleed-shorthand */
-/*   ✔ Returns shorthand for margin and padding, separate or combined. */
-/*   ✔ Returns combined shorthand for margin, no shorthand for padding. */
-/*  */
-/*  */
-/* # Module: breakpoint integration */
-/* -------------------------------- */
-/* Test: [mixin] susy-breakpoint */
-/*   ✔ Assert that we arent testing the default layout */
+/* [function] get-bleed */
+[data-module="Bleed Syntax"] [data-test="[function] get-bleed"] .assert-equal {
+  -result: PASS;
+  -description: "get-bleed handles 0, span, and length arguments."; }
+[data-module="Bleed Syntax"] [data-test="[function] get-bleed"] .assert-equal {
+  -result: PASS;
+  -description: "get-bleed handles inside gutters."; }
+[data-module="Bleed Syntax"] [data-test="[function] get-bleed"] .assert-equal {
+  -result: PASS;
+  -description: "get-bleed can handle no-gutters inside."; }
+
+/* [function] bleed-shorthand */
+[data-module="Bleed Syntax"] [data-test="[function] bleed-shorthand"] .assert-equal {
+  -result: PASS;
+  -description: "Returns shorthand for margin and padding, separate or combined."; }
+[data-module="Bleed Syntax"] [data-test="[function] bleed-shorthand"] .assert-equal {
+  -result: PASS;
+  -description: "Returns combined shorthand for margin, no shorthand for padding."; }
+
+/* # breakpoint integration ---------- */
+/* [mixin] susy-breakpoint */
+[data-module="breakpoint integration"] [data-test="[mixin] susy-breakpoint"] .assert-unequal {
+  -result: PASS;
+  -description: "Assert that we arent testing the default layout"; }
 @media (min-width: 720px) {
-  /*   ✔ Susy-breakpoint creates a new global layout context */ }
-/*  */
+  [data-module="breakpoint integration"] [data-test="[mixin] susy-breakpoint"] .assert-equal {
+    -result: PASS;
+    -description: "Susy-breakpoint creates a new global layout context"; } }
+
 /* - [mixin] susy-breakpoint */
 .test__susy-breakpoint .assert__susy-breakpoint {
   overflow: hidden;
@@ -2676,15 +3325,21 @@ html {
   font-style: italic; }
 @media (min-width: 35em) {
   .test__susy-breakpoint .assert__susy-breakpoint .test {
-    /*   OUTPUT   */
-    /*   END_OUTPUT   */
-    /*   OUTPUT   */
-    /*   END_OUTPUT   */ } }
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    width: 50%;
+    float: left;
+    padding-left: 1.25%;
+    padding-right: 1.25%; } }
 .foo .test__susy-breakpoint .assert__susy-breakpoint .test {
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */ }
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 50%;
+  float: left;
+  padding-left: 1.25%;
+  padding-right: 1.25%; }
 @media (min-width: 35em) {
   .test__susy-breakpoint .assert__susy-breakpoint .expect {
     -moz-box-sizing: border-box;
@@ -2730,22 +3385,34 @@ html {
 .foo .test__susy-media .assert__susy-media .expect {
   width: 50%; }
 
-/* Test: [function] susy-get-media */
-/*   ✔ Returns $susy-media values based on key name. */
-/*   ✔ Returns $susy-media values when key = value. */
-/*  */
-/* Test: [function] susy-parse-media */
-/*   ✔ Returns a simple length as min-width query. */
-/*   ✔ Returns two length as min and max-width queries. */
-/*   ✔ Returns single list pair as custom query. */
-/*   ✔ Returns a map as custom queries. */
-/*  */
-/* Test: susy-render-media */
-/*   ✔ Returns a usable query string based on a map. */
-/*  */
-/*  */
-/* # Module: Shared Output */
-/* ----------------------- */
+/* [function] susy-get-media */
+[data-module="breakpoint integration"] [data-test="[function] susy-get-media"] .assert-equal {
+  -result: PASS;
+  -description: "Returns $susy-media values based on key name."; }
+[data-module="breakpoint integration"] [data-test="[function] susy-get-media"] .assert-equal {
+  -result: PASS;
+  -description: "Returns $susy-media values when key = value."; }
+
+/* [function] susy-parse-media */
+[data-module="breakpoint integration"] [data-test="[function] susy-parse-media"] .assert-equal {
+  -result: PASS;
+  -description: "Returns a simple length as min-width query."; }
+[data-module="breakpoint integration"] [data-test="[function] susy-parse-media"] .assert-equal {
+  -result: PASS;
+  -description: "Returns two length as min and max-width queries."; }
+[data-module="breakpoint integration"] [data-test="[function] susy-parse-media"] .assert-equal {
+  -result: PASS;
+  -description: "Returns single list pair as custom query."; }
+[data-module="breakpoint integration"] [data-test="[function] susy-parse-media"] .assert-equal {
+  -result: PASS;
+  -description: "Returns a map as custom queries."; }
+
+/* susy-render-media */
+[data-module="breakpoint integration"] [data-test="susy-render-media"] .assert-equal {
+  -result: PASS;
+  -description: "Returns a usable query string based on a map."; }
+
+/* # Shared Output ---------- */
 /* - [mixin] output */
 .test__output .assert__output {
   overflow: hidden;
@@ -2759,30 +3426,38 @@ html {
   text-align: left;
   font-style: italic; }
 .test__output .assert__output .test {
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */ }
+  width: 3em;
+  position: relative; }
 .test__output .assert__output .expect {
   width: 3em;
   position: relative; }
 
-/*  */
-/* # Module: Direction Helpers */
-/* --------------------------- */
-/* Test: [function] get-direction */
-/*   ✔ The to-direction for "ltr" should be "right". */
-/*   ✔ The from-direction for "rtl" should be "right". */
-/*  */
-/* Test: [function] to */
-/*   ✔ The to-direction for "ltr" should be "right". */
-/*   ✔ The to-direction for "rtl" should be "left". */
-/*  */
-/* Test: [function] from */
-/*   ✔ The from-direction for "ltr" should be "left". */
-/*   ✔ The from-direction for "rtl" should be "right". */
-/*  */
-/*  */
-/* # Module: Grid Background Output */
-/* -------------------------------- */
+/* # Direction Helpers ---------- */
+/* [function] get-direction */
+[data-module="Direction Helpers"] [data-test="[function] get-direction"] .assert-equal {
+  -result: PASS;
+  -description: 'The to-direction for "ltr" should be "right".'; }
+[data-module="Direction Helpers"] [data-test="[function] get-direction"] .assert-equal {
+  -result: PASS;
+  -description: 'The from-direction for "rtl" should be "right".'; }
+
+/* [function] to */
+[data-module="Direction Helpers"] [data-test="[function] to"] .assert-equal {
+  -result: PASS;
+  -description: 'The to-direction for "ltr" should be "right".'; }
+[data-module="Direction Helpers"] [data-test="[function] to"] .assert-equal {
+  -result: PASS;
+  -description: 'The to-direction for "rtl" should be "left".'; }
+
+/* [function] from */
+[data-module="Direction Helpers"] [data-test="[function] from"] .assert-equal {
+  -result: PASS;
+  -description: 'The from-direction for "ltr" should be "left".'; }
+[data-module="Direction Helpers"] [data-test="[function] from"] .assert-equal {
+  -result: PASS;
+  -description: 'The from-direction for "rtl" should be "right".'; }
+
+/* # Grid Background Output ---------- */
 /* - [mixin] background-grid-output */
 .test__background-grid-output .assert__show {
   overflow: hidden;
@@ -2801,8 +3476,11 @@ html {
   text-align: left;
   font-style: italic; }
 .test__background-grid-output .assert__show .test {
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */ }
+  background-image: linear-gradient(to right, #fcc, #cfc 25%, #ccf), linear-gradient(to bottom, #000 5%, transparent 5%);
+  background-size: auto, 100% 16px;
+  background-origin: content-box, border-box;
+  background-clip: content-box, border-box;
+  background-position: left top; }
 .test__background-grid-output .assert__show .expect {
   background-image: linear-gradient(to right, #fcc, #cfc 25%, #ccf), linear-gradient(to bottom, #000 5%, transparent 5%);
   background-size: auto, 100% 16px;
@@ -2810,9 +3488,7 @@ html {
   background-clip: content-box, border-box;
   background-position: left top; }
 
-/*  */
-/* # Module: Shared Container API */
-/* ------------------------------ */
+/* # Shared Container API ---------- */
 /* - [mixin] container-output */
 .test__container-output .assert__fluid {
   overflow: hidden;
@@ -2826,8 +3502,9 @@ html {
   text-align: left;
   font-style: italic; }
 .test__container-output .assert__fluid .test {
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */ }
+  max-width: 60em;
+  margin-left: auto;
+  margin-right: auto; }
 .test__container-output .assert__fluid .expect {
   max-width: 60em;
   margin-left: auto;
@@ -2845,8 +3522,9 @@ html {
   text-align: left;
   font-style: italic; }
 .test__container-output .assert__static .test {
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */ }
+  width: 30em;
+  margin-left: auto;
+  margin-right: 0; }
 .test__container-output .assert__static .expect {
   width: 30em;
   margin-left: auto;
@@ -2864,16 +3542,15 @@ html {
   text-align: left;
   font-style: italic; }
 .test__container-output .assert__auto .test {
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */ }
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto; }
 .test__container-output .assert__auto .expect {
   max-width: 100%;
   margin-left: auto;
   margin-right: auto; }
 
-/*  */
-/* # Module: Shared Margin API */
-/* --------------------------- */
+/* # Shared Margin API ---------- */
 /* - [mixin] margin-output */
 .test__margin-output .assert__margin-output {
   overflow: hidden;
@@ -2887,15 +3564,13 @@ html {
   text-align: left;
   font-style: italic; }
 .test__margin-output .assert__margin-output .test {
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */ }
+  margin-right: 25%;
+  margin-left: 8em; }
 .test__margin-output .assert__margin-output .expect {
   margin-right: 25%;
   margin-left: 8em; }
 
-/*  */
-/* # Module: Shared Padding API */
-/* ---------------------------- */
+/* # Shared Padding API ---------- */
 /* - [mixin] padding-output */
 .test__padding-output .assert__padding-output {
   overflow: hidden;
@@ -2909,15 +3584,13 @@ html {
   text-align: left;
   font-style: italic; }
 .test__padding-output .assert__padding-output .test {
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */ }
+  padding-right: 25%;
+  padding-left: 8em; }
 .test__padding-output .assert__padding-output .expect {
   padding-right: 25%;
   padding-left: 8em; }
 
-/*  */
-/* # Module: Susy Support */
-/* ---------------------- */
+/* # Susy Support ---------- */
 /* - [mixin] susy-support */
 .test__susy-support .assert__susy-support {
   overflow: hidden;
@@ -2941,14 +3614,18 @@ html {
   -webkit-box-sizing: border-box;
   box-sizing: border-box; }
 
-/* Test: [function] susy-support */
-/*   ✔ Returns false when support is turned off. */
-/*   ✔ Returns false when requirements are missing. */
-/*   ✔ Returns support value when requirements are available. */
-/*  */
-/*  */
-/* # Module: Prefix Support */
-/* ------------------------ */
+/* [function] susy-support */
+[data-module="Susy Support"] [data-test="[function] susy-support"] .assert-equal {
+  -result: PASS;
+  -description: "Returns false when support is turned off."; }
+[data-module="Susy Support"] [data-test="[function] susy-support"] .assert-equal {
+  -result: PASS;
+  -description: "Returns false when requirements are missing."; }
+[data-module="Susy Support"] [data-test="[function] susy-support"] .assert-equal {
+  -result: PASS;
+  -description: "Returns support value when requirements are available."; }
+
+/* # Prefix Support ---------- */
 /* - [mixin] susy-prefix */
 .test__susy-prefix .assert__susy-prefix {
   overflow: hidden;
@@ -2970,9 +3647,7 @@ html {
   -webkit-border-radius: 3em;
   border-radius: 3em; }
 
-/*  */
-/* # Module: Background Support */
-/* ---------------------------- */
+/* # Background Support ---------- */
 /* - [mixin] susy-background-image */
 .test__susy-background-image .assert__susy-background-image {
   overflow: hidden;
@@ -3041,9 +3716,7 @@ html {
 .test__susy-background-clip .assert__susy-background-clip .expect {
   background-clip: border-box; }
 
-/*  */
-/* # Module: Box Sizing Support */
-/* ---------------------------- */
+/* # Box Sizing Support ---------- */
 /* - [mixin] susy-box-sizing */
 .test__susy-box-sizing .assert__border-box {
   overflow: hidden;
@@ -3069,9 +3742,7 @@ html {
   -webkit-box-sizing: border-box;
   box-sizing: border-box; }
 
-/*  */
-/* # Module: rem Support */
-/* --------------------- */
+/* # rem Support ---------- */
 .test__ .assert__ {
   overflow: hidden;
   background: rgba(204, 204, 255, 0.5); }
@@ -3088,9 +3759,7 @@ html {
 .test__ .assert__ .expect {
   width: 3rem; }
 
-/*  */
-/* # Module: Clearfix Support */
-/* -------------------------- */
+/* # Clearfix Support ---------- */
 /* - [mixin] susy-clearfix */
 .test__susy-clearfix .assert__clearfix {
   overflow: hidden;
@@ -3116,9 +3785,7 @@ html {
   display: block;
   clear: both; }
 
-/*  */
-/* # Module: Float Container API */
-/* ----------------------------- */
+/* # Float Container API ---------- */
 /* - [mixin] float-container */
 .test__float-container .assert__float-container {
   overflow: hidden;
@@ -3132,8 +3799,9 @@ html {
   text-align: left;
   font-style: italic; }
 .test__float-container .assert__float-container .test {
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */ }
+  max-width: 30em;
+  margin-left: 0;
+  margin-right: auto; }
   .test__float-container .assert__float-container .test:after {
     content: " ";
     display: block;
@@ -3147,9 +3815,7 @@ html {
     display: block;
     clear: both; }
 
-/*  */
-/* # Module: Float Span API */
-/* ------------------------ */
+/* # Float Span API ---------- */
 /* - [mixin] float-span-output */
 .test__float-span-output .assert__full {
   overflow: hidden;
@@ -3166,8 +3832,12 @@ html {
   text-align: left;
   font-style: italic; }
 .test__float-span-output .assert__full .test {
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */ }
+  width: 25%;
+  float: left;
+  margin-left: 5em;
+  margin-right: 2em;
+  padding-left: 3em;
+  padding-right: 4em; }
 .test__float-span-output .assert__full .expect {
   width: 25%;
   float: left;
@@ -3191,8 +3861,8 @@ html {
   text-align: left;
   font-style: italic; }
 .test__float-span-output .assert__float-to .test {
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */ }
+  width: 25%;
+  float: right; }
 .test__float-span-output .assert__float-to .expect {
   width: 25%;
   float: right; }
@@ -3209,14 +3879,11 @@ html {
   text-align: left;
   font-style: italic; }
 .test__float-span-output .assert__float-null .test {
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */ }
+  width: 25%; }
 .test__float-span-output .assert__float-null .expect {
   width: 25%; }
 
-/*  */
-/* # Module: Float End API */
-/* ----------------------- */
+/* # Float End API ---------- */
 /* - [mixin] float-last */
 .test__float-last .assert__default {
   overflow: hidden;
@@ -3235,8 +3902,8 @@ html {
   text-align: left;
   font-style: italic; }
 .test__float-last .assert__default .test {
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */ }
+  float: right;
+  margin-right: 0; }
 .test__float-last .assert__default .expect {
   float: right;
   margin-right: 0; }
@@ -3262,8 +3929,7 @@ html {
   text-align: left;
   font-style: italic; }
 .test__float-last .assert__last-flow-from .test {
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */ }
+  margin-right: 0; }
 .test__float-last .assert__last-flow-from .expect {
   margin-right: 0; }
 
@@ -3285,24 +3951,20 @@ html {
   text-align: left;
   font-style: italic; }
 .test__float-first .assert__float-first .test {
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */ }
+  margin-left: 0; }
 .test__float-first .assert__float-first .expect {
   margin-left: 0; }
 
-/*  */
-/* # Module: Isolation API */
-/* ----------------------- */
+/* # Isolation API ---------- */
 /* - [mixin] isolate-output */
 .test__isolate-output .assert__isolate-output {
   overflow: hidden;
   background: rgba(204, 204, 255, 0.5); }
 
 .test__isolate-output .assert__isolate-output .test, .test__isolate-output .assert__isolate-output .expect {
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */ }
+  width: 40%;
+  float: left;
+  margin-right: 5.26316%; }
 .test__isolate-output .assert__isolate-output .expect {
   clear: both; }
 
@@ -3314,20 +3976,23 @@ html {
   text-align: left;
   font-style: italic; }
 .test__isolate-output .assert__isolate-output .test {
-  /*   OUTPUT   */
-  /*   END_OUTPUT   */ }
+  float: left;
+  margin-left: 30%;
+  margin-right: -100%; }
 .test__isolate-output .assert__isolate-output .expect {
   float: left;
   margin-left: 30%;
   margin-right: -100%; }
 
-/*  */
-.results:after {
-  content: "282 Tests, 282 Passed, 0 Failed"; }
+.results {
+  background: rgba(0, 128, 0, 0.25);
+  border-color: green; }
+  .results:after {
+    content: "60 Tests, 60 Passed, 0 Failed"; }
 
 /* # SUMMARY ---------- */
-/* 282 Tests: */
-/*  - 282 Passed */
+/* 60 Tests: */
+/*  - 60 Passed */
 /*  - 0 Failed */
 /* -------------------- */
 

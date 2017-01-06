@@ -6,7 +6,7 @@
     $original-defaults: $susy-defaults;
 
     $test: map-get($susy-defaults, test);
-    @include assert-false($test,
+    @include assert-equal($test, null,
       'Assert that there is no "test" default.');
 
     @include susy-defaults((test: hello world));

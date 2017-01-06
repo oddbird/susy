@@ -29,6 +29,6 @@
     "url": "https://github.com/oddbird/susy/issues"
   },
   "devDependencies": {
-    "sass-true": "^2.0.3"
+    "sass-true": "2.0.3"
   }
 }

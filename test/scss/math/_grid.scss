@@ -18,12 +18,12 @@
 
     // asymmetrical
     $asym: is-symmetrical($asym);
-    @include assert-false($asym,
+    @include assert-equal($asym, null,
       'List is parsed as asymmetrical grid.');
 
     // single-item list
     $single: is-symmetrical($single);
-    @include assert-false($single,
+    @include assert-equal($single, null,
       'Single-item list is parsed as asymmetrical grid.');
   }
 

@@ -105,7 +105,7 @@ h1 {
 
 /* # General Settings ---------- */
 /* susy-defaults */
-[data-module="General Settings"] [data-test="susy-defaults"] .assert-false {
+[data-module="General Settings"] [data-test="susy-defaults"] .assert-equal {
   -result: PASS;
   -description: 'Assert that there is no "test" default.'; }
 [data-module="General Settings"] [data-test="susy-defaults"] .assert-true {
@@ -165,10 +165,10 @@ h1 {
 [data-module="Column Math"] [data-test="[function] is-symmetrical()"] .assert-true {
   -result: PASS;
   -description: "Number is parsed as symmetrical grid."; }
-[data-module="Column Math"] [data-test="[function] is-symmetrical()"] .assert-false {
+[data-module="Column Math"] [data-test="[function] is-symmetrical()"] .assert-equal {
   -result: PASS;
   -description: "List is parsed as asymmetrical grid."; }
-[data-module="Column Math"] [data-test="[function] is-symmetrical()"] .assert-false {
+[data-module="Column Math"] [data-test="[function] is-symmetrical()"] .assert-equal {
   -result: PASS;
   -description: "Single-item list is parsed as asymmetrical grid."; }
 
@@ -1552,7 +1552,7 @@ html {
   text-align: left;
   font-style: italic; }
 .test__gallery .assert__sym .test {
-  width: 28.0%;
+  width: 28%;
   float: left; }
   .test__gallery .assert__sym .test:nth-child(3n + 1) {
     margin-left: 0;
@@ -1800,7 +1800,7 @@ html {
   max-width: 100%;
   margin-left: auto;
   margin-right: auto;
-  background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, transparent 10%, transparent 12%, rgba(102, 102, 255, 0.25) 12%, rgba(179, 179, 255, 0.25) 32%, transparent 32%, transparent 34%, rgba(102, 102, 255, 0.25) 34%, rgba(179, 179, 255, 0.25) 44%, transparent 44%, transparent 46%, rgba(102, 102, 255, 0.25) 46%, rgba(179, 179, 255, 0.25) 66.0%, transparent 66.0%, transparent 68%, rgba(102, 102, 255, 0.25) 68%, rgba(179, 179, 255, 0.25) 88%, transparent 88%, transparent 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
+  background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 10%, transparent 10%, transparent 12%, rgba(102, 102, 255, 0.25) 12%, rgba(179, 179, 255, 0.25) 32%, transparent 32%, transparent 34%, rgba(102, 102, 255, 0.25) 34%, rgba(179, 179, 255, 0.25) 44%, transparent 44%, transparent 46%, rgba(102, 102, 255, 0.25) 46%, rgba(179, 179, 255, 0.25) 66%, transparent 66%, transparent 68%, rgba(102, 102, 255, 0.25) 68%, rgba(179, 179, 255, 0.25) 88%, transparent 88%, transparent 90%, rgba(102, 102, 255, 0.25) 90%, rgba(179, 179, 255, 0.25));
   background-origin: content-box;
   background-clip: content-box;
   background-position: left top; }
@@ -2336,7 +2336,7 @@ html {
   -description: "Calculates location based on last when possible"; }
 [data-module="Row Syntax"] [data-test="[function] get-location"] .assert-equal {
   -result: PASS;
-  -description: "Return null when location can" t be calculated; }
+  -description: "Return null when location can't be calculated"; }
 
 /* # Margin Syntax ---------- */
 /* - [mixin] pre */

@@ -250,7 +250,7 @@
     $test: get-location(last 50% of 8);
     $expect: null;
     @include assert-equal($test, $expect,
-      'Return null when location can't be calculated);
+      "Return null when location can't be calculated");
   }
 
 }

@@ -1,4 +1,13 @@
 @charset "UTF-8";
+/* # Module: Susy Get Function [function] */
+/* -------------------------------------- */
+/* Test: Returns a function or function-name */
+/*   ✔  */
+/*  */
+/* Test: Returned function or name is callable */
+/*   ✔  */
+/*  */
+/*  */
 /* # Module: Su Span [function] */
 /* ---------------------------- */
 /* Test: Fluid */
@@ -246,8 +255,8 @@
 /*  */
 /*  */
 /* # SUMMARY ---------- */
-/* 62 Tests: */
-/*  - 62 Passed */
+/* 64 Tests: */
+/*  - 64 Passed */
 /*  - 0 Failed */
 /* -------------------- */
 

@@ -139,6 +139,7 @@
 
     @if $value {
       $function: if(($setting == 'container-spread'), 'spread', $setting);
+      $function: _susy-get-function($function);
       $value: call('susy-normalize-#{$function}', $value);
     }
 

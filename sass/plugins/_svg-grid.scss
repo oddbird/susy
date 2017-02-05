@@ -1,0 +1,114 @@
+// SVG Grid background
+// ===================
+
+
+
+// SVG Validate Units
+// ------------------
+/// @access private
+@function _susy-svg-validate-units(
+  $length,
+  $name: null
+) {
+  $_svg-units: 'em', 'ex', 'px', 'pt', 'pc', 'cm', 'mm', 'in', '%';
+
+  @if index($_svg-units, unit($length)) {
+    @return $length;
+  }
+
+  @error '"#{unit($length)}" #{$name} units are not supported in SVG';
+}
+
+
+
+// SVG Rect
+// --------
+/// @access private
+@function _susy-svg-rect(
+  $x,
+  $width
+) {
+  $width: _susy-svg-validate-units($width);
+  @return '%3Crect x="#{$x}" width="#{$width}" height="100%" /%3E';
+}
+
+
+
+// SVG Color
+// ---------
+/// @access private
+@function _susy-svg-color(
+  $color
+) {
+  $color: inspect($color); // convert to string
+
+  @if (str-index($color, '#') == 1) {
+    $color: '%23' + str-slice($color, 2);
+  }
+
+  @return $color;
+}
+
+
+
+// SVG Offset
+// ----------
+/// @access private
+@function _susy-svg-offset(
+  $grid
+) {
+  $container: map-get($grid, 'container-spread');
+  $span: map-get($grid, 'spread');
+
+  @return ($container - $span) * susy-gutter($config: $grid) * 0.5;
+}
+
+
+
+// SVG Column Position
+// -------------------
+/// @access private
+@function _susy-svg-column-position(
+  $column,
+  $offset,
+  $grid
+) {
+  $x: $column - 1;
+
+  @if ($x > 0) {
+    $x: susy-span(first $x wide, $grid);
+  }
+
+  @return $x + $offset;
+}
+
+
+
+// SVG Grid
+// --------
+/// Return inline svg to display the grid.
+/// @group plugins
+@function susy-svg-grid(
+  $grid: $susy,
+  $color: hsla(120, 50%, 50%, 0.5),
+  $offset: null
+) {
+  $grid: susy-settings($grid);
+  $grid: susy-normalize($grid);
+
+  $columns: map-get($grid, 'columns');
+  $color: _susy-svg-color($color);
+  $offset: $offset or _susy-svg-offset($grid);
+
+  $svg: 'data:image/svg+xml;charset=utf8,';
+  $svg: $svg + '%3Csvg xmlns="http://www.w3.org/2000/svg" fill="#{$color}" %3E';
+
+  @for $column from 1 through length($columns) {
+    $width: susy-span(1 at $column, $grid);
+    $x: _susy-svg-column-position($column, $offset, $grid);
+
+    $svg: $svg + _susy-svg-rect($x, $width);
+  }
+
+  @return $svg + '%3C/svg%3E';
+}

@@ -328,9 +328,9 @@
   -result: PASS;
   -description: "Unprefixed slice() returns same result as susy-slice()"; }
 
-/* # Susy Validate SVG Units [function] ---------- */
+/* # SVG Validate Units [function] ---------- */
 /* Success */
-[data-module="Susy Validate SVG Units [function]"] [data-test="Success"] .assert-equal {
+[data-module="SVG Validate Units [function]"] [data-test="Success"] .assert-equal {
   -result: PASS;
   -description: "Ems are a valid unit for SVG"; }
 

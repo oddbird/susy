@@ -26,10 +26,20 @@
 /// @access private
 @function _susy-svg-rect(
   $x,
-  $width
+  $width,
+  $offset: null
 ) {
   $width: _susy-svg-validate-units($width);
-  @return '%3Crect x="#{$x}" width="#{$width}" height="100%" /%3E';
+  $offset: if($offset == 0, null, $offset);
+
+  @if $offset and comparable($x, $offset) {
+    $x: $x + $offset;
+    $offset: null;
+  } @else if $offset {
+    $offset: 'style="transform:translateX(#{$offset})"';
+  }
+
+  @return '%3Crect x="#{$x}" width="#{$width}" height="100%" #{$offset}/%3E';
 }
 
 
@@ -57,10 +67,26 @@
 @function _susy-svg-offset(
   $grid
 ) {
+  $columns: nth(map-get($grid, 'columns'), 1);
+  $gutters: map-get($grid, 'gutters');
+
+  $comparable: comparable($columns, $gutters);
+  $flex-columns: unitless($columns) and not unitless($gutters);
+  $flex-gutters: unitless($gutters) and not unitless($columns);
+
+  @if ($flex-columns) or ($flex-gutters) or (not $comparable) {
+    @return null;
+  }
+
   $container: map-get($grid, 'container-spread');
   $span: map-get($grid, 'spread');
+  $extra: $container - $span;
 
-  @return ($container - $span) * susy-gutter($config: $grid) * 0.5;
+  @if $extra == 0 {
+    @return null;
+  }
+
+  @return $extra * susy-gutter($config: $grid) / 2;
 }
 
 
@@ -70,7 +96,6 @@
 /// @access private
 @function _susy-svg-column-position(
   $column,
-  $offset,
   $grid
 ) {
   $x: $column - 1;
@@ -79,9 +104,30 @@
     $x: susy-span(first $x wide, $grid);
   }
 
-  @return $x + $offset;
+  @return $x;
 }
 
+
+
+// SVG Gradient
+// ------------
+/// @access private
+@function _susy-svg-gradient(
+  $colors
+) {
+  $gradient: '%3Cdefs%3E%3ClinearGradient spreadMethod="pad" id="svg-gradient"';
+  $gradient: '#{$gradient} x1="0%" y1="0%" x2="100%" y2="0%"%3E';
+
+  @for $i from 1 through length($colors) {
+    $color: _susy-svg-color(nth($colors, $i));
+    $offset: percentage(($i - 1) / (length($colors) - 1));
+    $stop: '%3Cstop offset="#{$offset}" style="stop-color:#{$color};" /%3E';
+
+    $gradient: $gradient + $stop;
+  }
+
+  @return $gradient + '%3C/linearGradient%3E%3C/defs%3E';
+}
 
 
 // SVG Grid
@@ -90,25 +136,42 @@
 /// @group plugins
 @function susy-svg-grid(
   $grid: $susy,
-  $color: hsla(120, 50%, 50%, 0.5),
+  $colors: hsla(120, 50%, 50%, 0.5),
   $offset: null
 ) {
   $grid: susy-settings($grid);
   $grid: susy-normalize($grid);
 
+  $color: nth($colors, 1);
+  $gradient: '';
+
+  @if length($colors) > 1 {
+    $gradient: _susy-svg-gradient($colors);
+    $color: 'url(%23svg-gradient)';
+  } @else {
+    $color: _susy-svg-color($color);
+  }
+
   $columns: map-get($grid, 'columns');
-  $color: _susy-svg-color($color);
   $offset: $offset or _susy-svg-offset($grid);
 
   $svg: 'data:image/svg+xml;charset=utf8,';
   $svg: $svg + '%3Csvg xmlns="http://www.w3.org/2000/svg" fill="#{$color}" %3E';
+  $svg: $svg + $gradient;
 
   @for $column from 1 through length($columns) {
     $width: susy-span(1 at $column, $grid);
-    $x: _susy-svg-column-position($column, $offset, $grid);
+    $x: _susy-svg-column-position($column, $grid);
 
-    $svg: $svg + _susy-svg-rect($x, $width);
+    $svg: $svg + _susy-svg-rect($x, $width, $offset);
   }
 
   @return $svg + '%3C/svg%3E';
 }
+
+// $susy: (
+//   'gutters': 1rem,
+//   'container-spread': 'wider',
+// );
+
+@debug susy-svg-grid();

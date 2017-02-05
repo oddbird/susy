@@ -136,7 +136,7 @@
 /// @group plugins
 @function susy-svg-grid(
   $grid: $susy,
-  $colors: hsla(120, 50%, 50%, 0.5),
+  $colors: hsla(120, 50%, 50%, 0.5) hsla(120, 50%, 75%, 0.5),
   $offset: null
 ) {
   $grid: susy-settings($grid);
@@ -168,10 +168,3 @@
 
   @return $svg + '%3C/svg%3E';
 }
-
-// $susy: (
-//   'gutters': 1rem,
-//   'container-spread': 'wider',
-// );
-
-@debug susy-svg-grid();

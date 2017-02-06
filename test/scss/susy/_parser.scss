@@ -88,6 +88,13 @@
       'Span with column-width is properly mapped');
   }
 
+  @include test('Error on invalid column-width') {
+    @include assert-equal(
+      susy-parse(3 x 'wide'),
+      'ERROR [susy-parse] `wide` is not a valid column-width',
+      'Errors when column-width is invalid');
+  }
+
   @include test('Columns with column-width') {
     $expect: (
       'span': 3,
@@ -124,6 +131,40 @@
       susy-parse($span of 12),
       $expect,
       'Explicit asymmetrical span is parsed properly');
+  }
+
+  @include test('Invalid span error') {
+    @include assert-equal(
+      susy-parse(of 32),
+      'ERROR [susy-parse] Not able to determine column-span from `of 32`');
+  }
+
+  @include test('Missing span error') {
+    @include assert-equal(
+      susy-parse(wide),
+      'ERROR [susy-parse] Not able to determine column-span from `wide`');
+  }
+
+  @include test('Unknown string parsing error') {
+    @include assert-equal(
+      susy-parse(3 wtf),
+      'ERROR [susy-parse] Unknown shorthand property: `wtf`');
+  }
+
+  @include test('Unknown number parsing error') {
+    @include assert-equal(
+      susy-parse(3 156),
+      'ERROR [susy-parse] Unknown shorthand property: `156`');
+
+    @include assert-equal(
+      susy-parse(3 of 12 156),
+      'ERROR [susy-parse] Unknown shorthand property: `156`');
+  }
+
+  @include test('Unknown type parsing error') {
+    @include assert-equal(
+      susy-parse(3 #fff),
+      'ERROR [susy-parse] Unknown shorthand property: `#fff`');
   }
 }
 

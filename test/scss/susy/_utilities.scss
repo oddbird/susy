@@ -21,3 +21,12 @@
       );
   }
 }
+
+
+@include test-module('Susy Error') {
+  @include test('Allow errors to return without blocking compilation') {
+    @include assert-equal(
+      _susy-error('This is a test error message', '_susy-error test'),
+      'ERROR [_susy-error test] This is a test error message');
+  }
+}

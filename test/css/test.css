@@ -8,6 +8,12 @@
 /*   ✔  */
 /*  */
 /*  */
+/* # Module: Susy Error */
+/* -------------------- */
+/* Test: Allow errors to return without blocking compilation */
+/*   ✔  */
+/*  */
+/*  */
 /* # Module: Su Span [function] */
 /* ---------------------------- */
 /* Test: Fluid */
@@ -79,6 +85,9 @@
 /* Test: Get value from defaults */
 /*   ✔ Susy-get and map-get should return the same value */
 /*  */
+/* Test: Unknown setting error */
+/*   ✔  */
+/*  */
 /*  */
 /* # Module: Su Valid Columns [function] */
 /* ------------------------------------- */
@@ -94,6 +103,13 @@
 /* Test: Single static column */
 /*   ✔ A single united number is a single static column */
 /*  */
+/* Test: Mismatched units error */
+/*   ✔  */
+/*  */
+/* Test: Mismatched unitless error */
+/*   ✔  */
+/*   ✔  */
+/*  */
 /*  */
 /* # Module: Su Valid Gutters [function] */
 /* ------------------------------------- */
@@ -106,17 +122,42 @@
 /* Test: Static gutters, fluid grid */
 /*   ✔ Static gutters are allowed on a fluid grid */
 /*  */
+/* Test: Invalid gutters error */
+/*   ✔  */
+/*  */
+/* Test: Mismatched gutter/column unitless error */
+/*   ✔  */
+/*  */
+/* Test: Mismatched gutter/column units error */
+/*   ✔  */
+/*  */
 /*  */
 /* # Module: Su Valid Spread [function] */
 /* ------------------------------------ */
 /* Test: Numeric spread */
 /*   ✔ Valid number is returned directly */
 /*  */
+/* Test: Unknown spread error */
+/*   ✔  */
+/*  */
 /*  */
 /* # Module: Su Valid Location [function] */
 /* -------------------------------------- */
 /* Test: Numeric column position */
 /*   ✔ Valid position returns unchanged */
+/*  */
+/* Test: Location units error */
+/*   ✔  */
+/*  */
+/* Test: Location floating-point error */
+/*   ✔  */
+/*  */
+/* Test: Location off-grid error */
+/*   ✔  */
+/*   ✔  */
+/*  */
+/* Test: Location/span combination error */
+/*   ✔  */
 /*  */
 /*  */
 /* # Module: Susy Parse [function] */
@@ -142,6 +183,9 @@
 /* Test: Span with column-width */
 /*   ✔ Span with column-width is properly mapped */
 /*  */
+/* Test: Error on invalid column-width */
+/*   ✔ Errors when column-width is invalid */
+/*  */
 /* Test: Columns with column-width */
 /*   ✔ Columns with column-width is properly mapped */
 /*  */
@@ -150,6 +194,22 @@
 /*  */
 /* Test: Explicit asymmetrical span */
 /*   ✔ Explicit asymmetrical span is parsed properly */
+/*  */
+/* Test: Invalid span error */
+/*   ✔  */
+/*  */
+/* Test: Missing span error */
+/*   ✔  */
+/*  */
+/* Test: Unknown string parsing error */
+/*   ✔  */
+/*  */
+/* Test: Unknown number parsing error */
+/*   ✔  */
+/*   ✔  */
+/*  */
+/* Test: Unknown type parsing error */
+/*   ✔  */
 /*  */
 /*  */
 /* # Module: Susy Normalize [function] */
@@ -255,8 +315,8 @@
 /*  */
 /*  */
 /* # SUMMARY ---------- */
-/* 64 Tests: */
-/*  - 64 Passed */
+/* 85 Tests: */
+/*  - 85 Passed */
 /*  - 0 Failed */
 /* -------------------- */
 

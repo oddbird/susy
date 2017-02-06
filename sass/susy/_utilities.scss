@@ -1,6 +1,8 @@
 // Sass Utilities
 // ==============
-// - Susy Get Function
+// - Susy Get Function [function]
+// - Susy Error Output Override [variable]
+// - Susy Error [function]
 
 
 
@@ -23,7 +25,9 @@
   $type: type-of($function);
 
   @if ($type != 'string') {
-    @error 'Invalid function-name, [#{$type}] `#{$function}` must be a string';
+    @return _susy-error(
+      'Invalid function-name [#{$type}] `#{$function}`, name must be a string.',
+      '_susy-get-function');
   }
 
   @if function-exists('get-function') {
@@ -31,4 +35,26 @@
   }
 
   @return $function;
+}
+
+
+
+// Susy Error Output Override
+// --------------------------
+$_susy-error-output-override: false !default;
+
+
+
+// Susy Error
+// ----------
+@function _susy-error(
+  $message,
+  $source,
+  $override: $_susy-error-output-override
+) {
+  @if $override {
+    @return 'ERROR [#{$source}] #{$message}';
+  }
+
+  @error '[#{$source}] #{$message}';
 }

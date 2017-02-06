@@ -6,6 +6,7 @@
 // - susy-get [function]
 
 
+
 // Susy
 // ----
 /// Custom user configuration map for Susy
@@ -38,6 +39,7 @@
 ///     'container-spread': 'narrow',
 ///   );
 $susy: () !default;
+
 
 
 // Susy Defaults
@@ -95,6 +97,7 @@ $susy-defaults: (
 }
 
 
+
 // Susy Get
 // --------
 /// Return the current value of any Susy setting
@@ -113,7 +116,9 @@ $susy-defaults: (
   $settings: susy-settings();
 
   @if not map-has-key($settings, $key) {
-    @error 'There is no Susy setting called `#{$key}`';
+    @return _susy-error(
+      'There is no Susy setting called `#{$key}`',
+      'susy-get');
   }
 
   @return map-get($settings, $key);

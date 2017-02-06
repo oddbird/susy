@@ -6,6 +6,7 @@
 // - su-valid-location [function]
 
 
+
 // Valid Columns
 // -------------
 /// Check that the `columns` argument is a valid
@@ -24,14 +25,20 @@
   $first: nth($columns, 1);
 
   @each $col in $columns {
-    @if (type-of($col) != 'number') or (not comparable($col, $first)) {
+    $error: false;
+
+    @if (type-of($col) != 'number') or (not comparable($col, $first)) or (unitless($col) and not unitless($first)) or (unitless($first) and not unitless($col)) {
       $actual: '[#{type-of($columns)}] `#{inspect($columns)}`';
-      @error '#{$actual} is not a value for $columns.';
+      @return _susy-error(
+        '#{$actual} is not a list of comparable lengths, valid for $columns.',
+        'su-valid-columns');
     }
+
   }
 
   @return $columns;
 }
+
 
 
 // Valid Gutters
@@ -54,16 +61,29 @@
   $type: type-of($gutters);
 
   @if ($type == 'number') {
-    @if unitless($gutters) and (not unitless(nth($columns, 1))) {
-      @error 'Gutters must have units for a static grid.';
+    $first: nth($columns, 1);
+
+    @if (unitless($gutters) and not unitless($first)) {
+      @return _susy-error(
+        'Gutters must have units for a static grid.',
+        'su-valid-gutters');
+    }
+
+    @if (not comparable($gutters, $first)) {
+      @return _susy-error(
+        'Gutter and column units must be comparable.',
+        'su-valid-gutters');
     }
 
     @return $gutters;
   }
 
   $actual: '[#{$type}] `#{inspect($gutters)}`';
-  @error '#{$actual} is not a value for $gutters.';
+  @return _susy-error(
+    '#{$actual} is not a value for $gutters.',
+    'su-valid-gutters');
 }
+
 
 
 // Valid Spread
@@ -87,8 +107,11 @@
   }
 
   $actual: '[#{type-of($spread)}] `#{inspect($spread)}`';
-  @error '#{$actual} is not a value for $spread.';
+  @return _susy-error(
+    '#{$actual} is not a normalized [0 | 1 | -1] value for `$spread`.',
+    'su-valid-spread');
 }
+
 
 
 // Valid Location
@@ -117,14 +140,22 @@
   @if $location {
     @if (type-of($location) != 'number') or (not unitless($location)) {
       $actual: '[#{type-of($location)}] `#{$location}`';
-      @error '#{$actual} is not a value for $location.';
+      @return _susy-error(
+        '#{$actual} is not a unitless number for $location.',
+        'su-valid-location');
     } @else if (round($location) != $location) {
-      @error 'Location (`#{$location}`) must be a 1-indexed intiger position.';
-    } @else if ($location > $count) {
-      @error 'Position `#{$location}` does not exist in grid `#{$columns}`.';
+      @return _susy-error(
+        'Location (`#{$location}`) must be a 1-indexed intiger position.',
+        'su-valid-location');
+    } @else if ($location > $count) or ($location < 1) {
+      @return _susy-error(
+        'Position `#{$location}` does not exist in grid `#{$columns}`.',
+        'su-valid-location');
     } @else if ($location + $span - 1 > $count) {
       $details: 'grid `#{$columns}` for span `#{$span}` at `#{$location}`';
-      @error 'There are not enough columns in #{$details}';
+      @return _susy-error(
+        'There are not enough columns in #{$details}.',
+        'su-valid-location');
     }
   }
 

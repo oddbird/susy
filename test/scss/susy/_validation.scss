@@ -36,6 +36,22 @@
       $list,
       'A single united number is a single static column');
   }
+
+  @include test('Mismatched units error') {
+    @include assert-equal(
+      su-valid-columns(1px 2 4em 3),
+      'ERROR [su-valid-columns] [list] `1px 2 4em 3` is not a list of comparable lengths, valid for $columns.');
+  }
+
+  @include test('Mismatched unitless error') {
+    @include assert-equal(
+      su-valid-columns(1 2 4em 3),
+      'ERROR [su-valid-columns] [list] `1 2 4em 3` is not a list of comparable lengths, valid for $columns.');
+
+    @include assert-equal(
+      su-valid-columns(1em 2 4em 3),
+      'ERROR [su-valid-columns] [list] `1em 2 4em 3` is not a list of comparable lengths, valid for $columns.');
+  }
 }
 
 
@@ -62,6 +78,24 @@
       3cm,
       'Static gutters are allowed on a fluid grid');
   }
+
+  @include test('Invalid gutters error') {
+    @include assert-equal(
+      su-valid-gutters('wtf', 1cm 1cm 1cm 1cm),
+      'ERROR [su-valid-gutters] [string] `#{inspect("wtf")}` is not a value for $gutters.')
+  }
+
+  @include test('Mismatched gutter/column unitless error') {
+    @include assert-equal(
+      su-valid-gutters(1, 1px 1px 1px 1px),
+      'ERROR [su-valid-gutters] Gutters must have units for a static grid.')
+  }
+
+  @include test('Mismatched gutter/column units error') {
+    @include assert-equal(
+      su-valid-gutters(1em, 1px 1px 1px 1px),
+      'ERROR [su-valid-gutters] Gutter and column units must be comparable.')
+  }
 }
 
 
@@ -74,6 +108,12 @@
       -1,
       'Valid number is returned directly');
   }
+
+  @include test('Unknown spread error') {
+    @include assert-equal(
+      su-valid-spread(4),
+      'ERROR [su-valid-spread] [number] `4` is not a normalized [0 | 1 | -1] value for `$spread`.');
+  }
 }
 
 
@@ -85,5 +125,33 @@
       su-valid-location(2, 3, 1 2 3 5 8),
       3,
       'Valid position returns unchanged');
+  }
+
+  @include test('Location units error') {
+    @include assert-equal(
+      su-valid-location(2, 3em, 1 2 3 5 8),
+      'ERROR [su-valid-location] [number] `3em` is not a unitless number for $location.');
+  }
+
+  @include test('Location floating-point error') {
+    @include assert-equal(
+      su-valid-location(2, 3.5, 1 2 3 5 8),
+      'ERROR [su-valid-location] Location (`3.5`) must be a 1-indexed intiger position.');
+  }
+
+  @include test('Location off-grid error') {
+    @include assert-equal(
+      su-valid-location(2, 8, 1 2 3 5 8),
+      'ERROR [su-valid-location] Position `8` does not exist in grid `1 2 3 5 8`.');
+
+    @include assert-equal(
+      su-valid-location(2, -2, 1 2 3 5 8),
+      'ERROR [su-valid-location] Position `-2` does not exist in grid `1 2 3 5 8`.');
+  }
+
+  @include test('Location/span combination error') {
+    @include assert-equal(
+      su-valid-location(6, 3, 1 2 3 5 8),
+      'ERROR [su-valid-location] There are not enough columns in grid `1 2 3 5 8` for span `6` at `3`.');
   }
 }

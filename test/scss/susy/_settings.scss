@@ -66,5 +66,11 @@
       'Susy-get and map-get should return the same value');
   }
 
+  @include test('Unknown setting error') {
+    @include assert-equal(
+      susy-get('wtf'),
+      'ERROR [susy-get] There is no Susy setting called `wtf`');
+  }
+
   $susy: () !global;
 }

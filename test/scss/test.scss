@@ -2,6 +2,10 @@
 // ==========
 
 
+// Override Error Output
+$_susy-error-output-override: true;
+
+
 // Requirements
 @import '../../node_modules/sass-true/sass/true';
 @import '../../sass/susy';
@@ -9,6 +13,7 @@
 
 
 // Tests
+@import 'susy/utilities';
 @import 'susy/grids';
 @import 'susy/settings';
 @import 'susy/validation';

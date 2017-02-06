@@ -1,0 +1,32 @@
+// Sass Utilities
+// ==============
+
+
+@include test-module('Susy Get Function [function]') {
+  $test: _susy-get-function('susy-get');
+  $expect: 'susy-get';
+
+  @if function-exists('get-function') {
+    $expect: get-function('susy-get');
+  }
+
+  @include test('Returns a function or function-name') {
+    @include assert-equal($test, $expect);
+  }
+
+  @include test('Returned function or name is callable') {
+    @include assert-equal(
+      call($test, 'columns'),
+      susy-get('columns')
+      );
+  }
+}
+
+
+@include test-module('Susy Error') {
+  @include test('Allow errors to return without blocking compilation') {
+    @include assert-equal(
+      _susy-error('This is a test error message', '_susy-error test'),
+      'ERROR [_susy-error test] This is a test error message');
+  }
+}

@@ -8,6 +8,7 @@
 // - susy-normalize-location [function]
 
 
+
 // Parse
 // -----
 /// Parse shorthand span expression
@@ -31,7 +32,7 @@
   $shorthand
 ) {
   $span-error: 'Not able to determine column-span from `#{$shorthand}`';
-  $parse-error: 'Unknown span property:';
+  $parse-error: 'Unknown shorthand property:';
   $options: (
     'first': 'location',
     'last': 'location',
@@ -62,7 +63,9 @@
             $span: join($span, ('x' $item));
           }
         } @else {
-          @error '`#{item}` is not a valid column-width';
+          @return _susy-error(
+            '`#{$item}` is not a valid column-width',
+            'susy-parse');
         }
       } @else {
         $return: map-merge($return, ($next: $item));
@@ -82,7 +85,7 @@
         } @else if $item == 'all' {
           $span: 'all';
         } @else if not $span {
-          @error $span-error;
+          @return _susy-error($span-error, 'susy-parse');
         } @else if ($item == 'at') {
           $next: 'location';
         } @else if ($item == 'x') {
@@ -90,18 +93,18 @@
         } @else if ($item == 'of') {
           $of: true;
         } @else {
-          @error '#{$parse-error} `#{$item}`';
+          @return _susy-error('#{$parse-error} `#{$item}`', 'susy-parse');
         }
       } @else if ($type == 'number') or ($type == 'list') {
         @if not $span {
           $span: $item;
-        } @else if $of {
+        } @else if $of and not $columns {
           $columns: $item;
         } @else {
-          @error '#{$parse-error} `#{$item}`';
+          @return _susy-error('#{$parse-error} `#{$item}`', 'susy-parse');
         }
       } @else {
-        @error '#{$parse-error} `#{$item}`';
+        @return _susy-error('#{$parse-error} `#{$item}`', 'susy-parse');
       }
     }
   }
@@ -109,7 +112,7 @@
   @if $span {
     $return: map-merge($return, ('span': $span));
   } @else {
-    @error $span-error;
+    @return _susy-error($span-error, 'susy-parse');
   }
 
   @if $columns {
@@ -118,6 +121,7 @@
 
   @return $return;
 }
+
 
 
 // Susy Normalize
@@ -139,6 +143,7 @@
 
     @if $value {
       $function: if(($setting == 'container-spread'), 'spread', $setting);
+      $function: _susy-get-function($function);
       $value: call('susy-normalize-#{$function}', $value);
     }
 
@@ -161,6 +166,7 @@
 
   @return $config;
 }
+
 
 
 // Normalize Columns
@@ -199,6 +205,7 @@
 }
 
 
+
 // Normalize Span
 // --------------
 /// Normalize `span` shorthand for Su
@@ -226,6 +233,7 @@
 }
 
 
+
 // Normalize Spread
 // ----------------
 /// Normalize `spread` shorthand for Su
@@ -249,6 +257,7 @@
 
   @return map-get($normal-spread, $spread) or $spread;
 }
+
 
 
 // Normalize Location

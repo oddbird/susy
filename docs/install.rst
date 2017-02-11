@@ -120,7 +120,7 @@ Start using Susy:
 .. code-block:: sass
 
     /* app.scss */
-    @import "_susy";
+    @import "susy";
 
 Grunt (and Yeoman)
 ------------------

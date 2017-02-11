@@ -115,6 +115,12 @@ Add Gulp Task:
           .pipe(gulp.dest('dist/css'));
     });
 
+Start using Susy:
+
+.. code-block:: sass
+
+    /* app.scss */
+    @import "_susy";
 
 Grunt (and Yeoman)
 ------------------

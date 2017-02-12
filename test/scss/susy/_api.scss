@@ -58,6 +58,13 @@
       12.5em,
       'Span accepts explicit columns');
   }
+
+  @include test('Span error') {
+    @include assert-equal(
+      susy-span(wide),
+      'ERROR [susy-span] Unable to determine span value from [string] `wide`.',
+      'Error when there is no span');
+  }
 }
 
 

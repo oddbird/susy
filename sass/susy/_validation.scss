@@ -7,6 +7,36 @@
 
 
 
+// Valid Span
+// ----------
+/// Check that the `span` argument
+/// is a number
+///
+/// @access private
+///
+/// @param {Number | Length} $span -
+///   Number of columns, or length of span
+///
+/// @return {Number | Length} -
+///   Validated `$span` number, length, or columns list
+@function su-valid-span(
+  $span
+) {
+  $type: type-of($span);
+  @if ($type == 'number') {
+    @return $span;
+  } @else if ($type == 'list') and su-valid-columns($span, 'silent-failure') {
+    @return $span;
+  }
+
+  $actual: '[#{type-of($span)}] `#{inspect($span)}`';
+  @return _susy-error(
+    '#{$actual} is not a valid number, length, or column-list for $span.',
+    'su-valid-span');
+}
+
+
+
 // Valid Columns
 // -------------
 /// Check that the `columns` argument is a valid
@@ -35,7 +65,7 @@
 
       $actual: '[#{type-of($columns)}] `#{inspect($columns)}`';
       @return _susy-error(
-        '#{$actual} is not a list of comparable lengths, valid for $columns.',
+        '#{$actual} is not a valid list of comparable lengths for $columns.',
         'su-valid-columns');
     }
 

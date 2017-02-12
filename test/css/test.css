@@ -310,6 +310,9 @@
 /* Test: Nested gutters */
 /*   ✔ Gutters are calculated as a percentage of context */
 /*  */
+/* Test: Nested Asymmetrical gutters */
+/*   ✔ Gutters are calculated as a percentage of context */
+/*  */
 /* Test: Static gutters */
 /*   ✔ Static gutters are returned directly */
 /*  */
@@ -318,6 +321,9 @@
 /*  */
 /* Test: Gutters with custom config */
 /*   ✔ Gutters account for custom configuration */
+/*  */
+/* Test: Gutters with full span shorthand */
+/*   ✔ Allow full span shorthand */
 /*  */
 /*  */
 /* # Module: Susy slice [function] */
@@ -342,8 +348,8 @@
 /*  */
 /*  */
 /* # SUMMARY ---------- */
-/* 90 Tests: */
-/*  - 90 Passed */
+/* 92 Tests: */
+/*  - 92 Passed */
 /*  - 0 Failed */
 /* -------------------- */
 

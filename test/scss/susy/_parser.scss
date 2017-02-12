@@ -120,6 +120,43 @@
       'Container-spread is properly mapped');
   }
 
+  @include test('Keywords before span') {
+    $expect: (
+      'span': 3,
+      'spread': 'wide',
+      'location': 'first',
+    );
+
+    @include assert-equal(
+      susy-parse('wide' 'first' 3),
+      $expect,
+      'Keywords can be passed in before the span value');
+  }
+
+  @include test('Context-only') {
+    $expect: (
+      'columns': 12,
+      'container-spread': 'wide',
+    );
+
+    @include assert-equal(
+      susy-parse(12 'wide', 'context-only'),
+      $expect,
+      'Able to parse context-only, without span values or `of` flag');
+  }
+
+  @include test('Asymmetrical columns only') {
+    $context: (1 2 3 2 1);
+    $expect: (
+      'columns': $context,
+    );
+
+    @include assert-equal(
+      susy-parse($context, 'context-only'),
+      $expect,
+      'Able to parse asymmetrical columns only');
+  }
+
   @include test('Explicit asymmetrical span') {
     $span: (1 2 3 4);
     $expect: (
@@ -131,6 +168,18 @@
       susy-parse($span of 12),
       $expect,
       'Explicit asymmetrical span is parsed properly');
+  }
+
+  @include test('Parse gutters') {
+    $expect: (
+      'span': 3,
+      'gutters': 2,
+    );
+
+    @include assert-equal(
+      susy-parse(3 set-gutters 2),
+      $expect,
+      'Set-gutters keyword allows shorthand gutters');
   }
 
   @include test('Invalid span error') {
@@ -148,23 +197,23 @@
   @include test('Unknown string parsing error') {
     @include assert-equal(
       susy-parse(3 wtf),
-      'ERROR [susy-parse] Unknown shorthand property: `wtf`');
+      'ERROR [susy-parse] Unknown shorthand property: [string] `wtf`');
   }
 
   @include test('Unknown number parsing error') {
     @include assert-equal(
       susy-parse(3 156),
-      'ERROR [susy-parse] Unknown shorthand property: `156`');
+      'ERROR [susy-parse] Unknown shorthand property: [number] `156`');
 
     @include assert-equal(
       susy-parse(3 of 12 156),
-      'ERROR [susy-parse] Unknown shorthand property: `156`');
+      'ERROR [susy-parse] Unknown shorthand property: [number] `156`');
   }
 
   @include test('Unknown type parsing error') {
     @include assert-equal(
       susy-parse(3 #fff),
-      'ERROR [susy-parse] Unknown shorthand property: `#fff`');
+      'ERROR [susy-parse] Unknown shorthand property: [color] `#fff`');
   }
 }
 

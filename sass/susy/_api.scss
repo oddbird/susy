@@ -22,9 +22,10 @@
 ///   containing a unitless column-span;
 ///   'of $n' for available grid columns [optional];
 ///   'at $n', 'first', or 'last' for location on asymmetrical grids;
-///   and 'narrow', 'wide', or 'wider' for
-///   optionally spreading over adjacent gutters
-///   with either the `span` or `columns` value
+///   'narrow', 'wide', or 'wider' for optionally spreading
+///   either the `span` (before `of`) or `columns` (after `of`)
+///   over adjacent gutters;
+///   and 'set-gutters $n' to override global gutter settings.
 /// @param {Map} $config [()] -
 ///   Optional map of Susy grid configuration settings
 ///
@@ -62,7 +63,9 @@
 /// @group api
 ///
 /// @param {Number | List} $context [null] -
-///   Optional columns in a nested context
+///   Optional context for nested gutters,
+///   including shorthand for
+///   `columns`, `gutters`, and `container-spread`
 /// @param {Map} $config [()] -
 ///   Optional map of Susy grid configuration settings
 ///
@@ -79,7 +82,7 @@
   $config: ()
 ) {
   $args: ('columns', 'gutters', 'container-spread');
-  $input: susy-settings($config, ('columns': $context));
+  $input: susy-settings($config, susy-parse($context, 'context-only'));
   $normal: susy-normalize($input);
   $output: ();
 

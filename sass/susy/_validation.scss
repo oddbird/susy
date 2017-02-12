@@ -10,14 +10,14 @@
 // Valid Span
 // ----------
 /// Check that the `span` argument
-/// is a number
+/// is a number, length, or column-list
 ///
 /// @access private
 ///
-/// @param {Number | Length} $span -
+/// @param {Number | List} $span -
 ///   Number of columns, or length of span
 ///
-/// @return {Number | Length} -
+/// @return {Number | List} -
 ///   Validated `$span` number, length, or columns list
 @function su-valid-span(
   $span

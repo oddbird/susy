@@ -131,15 +131,22 @@ $susy: (
   'container-spread': 'wide',
 );
 
+@function half-gutter(
+  $context: susy-get('columns'),
+  $config: ()
+) {
+  @return susy-gutter($context, $config) / 2;
+}
+
 .symmetrical {
   .ag {
     align-items: stretch;
     display: flex;
-    padding: 0 susy-gutter($config: ('container-spread': 'wider'))/2;
+    padding: 0 half-gutter('wider');
   }
 
   .grid-element {
-    margin: 0 susy-gutter()/2;
+    margin: 0 half-gutter();
   }
 
   .size1of5 {
@@ -159,7 +166,7 @@ $susy: (
     order: 2;
 
     .size1of2 {
-      margin: 0 susy-gutter(6)/2;
+      margin: 0 half-gutter(6);
       width: susy-span(3 of 6);
     }
 
@@ -171,7 +178,7 @@ $susy: (
   }
 
   .size1of3 {
-    margin: 0 susy-gutter(6)/2;
+    margin: 0 half-gutter(6);
     width: susy-span(2 of 6);
   }
 
@@ -182,7 +189,7 @@ $susy: (
     flex-wrap: wrap;
 
     .grid-element {
-      margin: 0 susy-gutter(4)/2;
+      margin: 0 half-gutter(4);
     }
 
     .size1of2 {

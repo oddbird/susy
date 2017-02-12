@@ -43,6 +43,12 @@
       'ERROR [su-valid-columns] [list] `1px 2 4em 3` is not a list of comparable lengths, valid for $columns.');
   }
 
+  @include test('Silent failure') {
+    @include assert-equal(
+      su-valid-columns(1px 2 4em 3, 'silent-failure'),
+      null);
+  }
+
   @include test('Mismatched unitless error') {
     @include assert-equal(
       su-valid-columns(1 2 4em 3),

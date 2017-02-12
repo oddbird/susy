@@ -106,6 +106,9 @@
 /* Test: Mismatched units error */
 /*   ✔ ""ERROR [su-valid-columns] [list] `1px 2 4em 3` is not a list of comparable lengths, valid for $columns."" and ""ERROR [su-valid-columns] [list] `1px 2 4em 3` is not a list of comparable lengths, valid for $columns."" should be equal */
 /*  */
+/* Test: Silent failure */
+/*   ✔ "null" and "null" should be equal */
+/*  */
 /* Test: Mismatched unitless error */
 /*   ✔ ""ERROR [su-valid-columns] [list] `1 2 4em 3` is not a list of comparable lengths, valid for $columns."" and ""ERROR [su-valid-columns] [list] `1 2 4em 3` is not a list of comparable lengths, valid for $columns."" should be equal */
 /*   ✔ ""ERROR [su-valid-columns] [list] `1em 2 4em 3` is not a list of comparable lengths, valid for $columns."" and ""ERROR [su-valid-columns] [list] `1em 2 4em 3` is not a list of comparable lengths, valid for $columns."" should be equal */
@@ -192,8 +195,20 @@
 /* Test: Container-spread */
 /*   ✔ Container-spread is properly mapped */
 /*  */
+/* Test: Keywords before span */
+/*   ✔ Keywords can be passed in before the span value */
+/*  */
+/* Test: Context-only */
+/*   ✔ Able to parse context-only, without span values or `of` flag */
+/*  */
+/* Test: Asymmetrical columns only */
+/*   ✔ Able to parse asymmetrical columns only */
+/*  */
 /* Test: Explicit asymmetrical span */
 /*   ✔ Explicit asymmetrical span is parsed properly */
+/*  */
+/* Test: Parse gutters */
+/*   ✔ Set-gutters keyword allows shorthand gutters */
 /*  */
 /* Test: Invalid span error */
 /*   ✔ ""ERROR [susy-parse] Not able to determine column-span from `of 32`"" and ""ERROR [susy-parse] Not able to determine column-span from `of 32`"" should be equal */
@@ -202,14 +217,14 @@
 /*   ✔ ""ERROR [susy-parse] Not able to determine column-span from `wide`"" and ""ERROR [susy-parse] Not able to determine column-span from `wide`"" should be equal */
 /*  */
 /* Test: Unknown string parsing error */
-/*   ✔ ""ERROR [susy-parse] Unknown shorthand property: `wtf`"" and ""ERROR [susy-parse] Unknown shorthand property: `wtf`"" should be equal */
+/*   ✔ ""ERROR [susy-parse] Unknown shorthand property: [string] `wtf`"" and ""ERROR [susy-parse] Unknown shorthand property: [string] `wtf`"" should be equal */
 /*  */
 /* Test: Unknown number parsing error */
-/*   ✔ ""ERROR [susy-parse] Unknown shorthand property: `156`"" and ""ERROR [susy-parse] Unknown shorthand property: `156`"" should be equal */
-/*   ✔ ""ERROR [susy-parse] Unknown shorthand property: `156`"" and ""ERROR [susy-parse] Unknown shorthand property: `156`"" should be equal */
+/*   ✔ ""ERROR [susy-parse] Unknown shorthand property: [number] `156`"" and ""ERROR [susy-parse] Unknown shorthand property: [number] `156`"" should be equal */
+/*   ✔ ""ERROR [susy-parse] Unknown shorthand property: [number] `156`"" and ""ERROR [susy-parse] Unknown shorthand property: [number] `156`"" should be equal */
 /*  */
 /* Test: Unknown type parsing error */
-/*   ✔ ""ERROR [susy-parse] Unknown shorthand property: `#fff`"" and ""ERROR [susy-parse] Unknown shorthand property: `#fff`"" should be equal */
+/*   ✔ ""ERROR [susy-parse] Unknown shorthand property: [color] `#fff`"" and ""ERROR [susy-parse] Unknown shorthand property: [color] `#fff`"" should be equal */
 /*  */
 /*  */
 /* # Module: Susy Normalize [function] */
@@ -289,6 +304,9 @@
 /* Test: Static gutters */
 /*   ✔ Static gutters are returned directly */
 /*  */
+/* Test: Gutters with container-spread */
+/*   ✔ Factor container-spread into gutter context */
+/*  */
 /* Test: Gutters with custom config */
 /*   ✔ Gutters account for custom configuration */
 /*  */
@@ -315,8 +333,8 @@
 /*  */
 /*  */
 /* # SUMMARY ---------- */
-/* 82 Tests: */
-/*  - 82 Passed */
+/* 88 Tests: */
+/*  - 88 Passed */
 /*  - 0 Failed */
 /* -------------------- */
 

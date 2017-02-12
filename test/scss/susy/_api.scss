@@ -91,6 +91,13 @@
     $susy: () !global;
   }
 
+  @include test('Gutters with container-spread') {
+    @include assert-equal(
+      susy-gutter(4 'wide'),
+      5%,
+      'Factor container-spread into gutter context');
+  }
+
   @include test('Gutters with custom config') {
     $config: (
       'columns': 12,

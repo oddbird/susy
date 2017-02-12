@@ -1,0 +1,85 @@
+// Flexbox
+// =======
+
+
+
+// Symmetrical, Split
+// ------------------
+
+$susy: (
+  'columns': 10,
+  'container-spread': 'wide',
+);
+
+@function half-gutter(
+  $context: susy-get('columns'),
+  $config: ()
+) {
+  @return susy-gutter($context, $config) / 2;
+}
+
+.flex-sym-split {
+  .ag {
+    align-items: stretch;
+    background: url(susy-svg-grid()) no-repeat scroll;
+    background-origin: content-box;
+    display: flex;
+    padding: 0 half-gutter('wider');
+  }
+
+  .grid-element {
+    margin: 0 half-gutter();
+  }
+
+  .size1of5 {
+    order: 1;
+    width: susy-span(2);
+
+    + .size1of5 {
+      order: 3;
+    }
+  }
+
+  .size3of5 {
+    align-items: stretch;
+    display: flex;
+    flex: 1 0 auto;
+    flex-wrap: wrap;
+    order: 2;
+
+    .size1of2 {
+      margin: 0 half-gutter(6);
+      width: susy-span(3 of 6);
+    }
+
+    > .full {
+      align-items: stretch;
+      display: flex;
+      flex: 1 0 auto;
+    }
+  }
+
+  .size1of3 {
+    margin: 0 half-gutter(6);
+    width: susy-span(2 of 6);
+  }
+
+  .size2of3 {
+    align-items: stretch;
+    display: flex;
+    flex: 1 0 auto;
+    flex-wrap: wrap;
+
+    .grid-element {
+      margin: 0 half-gutter(4);
+    }
+
+    .size1of2 {
+      width: susy-span(2 of 4);
+    }
+
+    .full {
+      flex: 1 0 auto;
+    }
+  }
+}

@@ -133,30 +133,6 @@
       'Keywords can be passed in before the span value');
   }
 
-  @include test('Context-only') {
-    $expect: (
-      'columns': 12,
-      'container-spread': 'wide',
-    );
-
-    @include assert-equal(
-      susy-parse(12 'wide', 'context-only'),
-      $expect,
-      'Able to parse context-only, without span values or `of` flag');
-  }
-
-  @include test('Asymmetrical columns only') {
-    $context: (1 2 3 2 1);
-    $expect: (
-      'columns': $context,
-    );
-
-    @include assert-equal(
-      susy-parse($context, 'context-only'),
-      $expect,
-      'Able to parse asymmetrical columns only');
-  }
-
   @include test('Explicit asymmetrical span') {
     $span: (1 2 3 4);
     $expect: (
@@ -180,18 +156,6 @@
       susy-parse(3 set-gutters 2),
       $expect,
       'Set-gutters keyword allows shorthand gutters');
-  }
-
-  @include test('Invalid span error') {
-    @include assert-equal(
-      susy-parse(of 32),
-      'ERROR [susy-parse] Not able to determine column-span from `of 32`');
-  }
-
-  @include test('Missing span error') {
-    @include assert-equal(
-      susy-parse(wide),
-      'ERROR [susy-parse] Not able to determine column-span from `wide`');
   }
 
   @include test('Unknown string parsing error') {

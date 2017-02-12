@@ -12,7 +12,7 @@ $colors: (
   'text': #4c4c4c,
   'background': #fff,
   'border': 'text',
-  'action': #0099cc,
+  'action': #09c,
   'focus': 'brand',
 );
 
@@ -30,10 +30,10 @@ $colors: (
 // ----------------
 
 @mixin clearfix {
-  &:after {
+  &::after {
+    clear: both;
     content: ' ';
     display: block;
-    clear: both;
   }
 }
 
@@ -45,8 +45,8 @@ html {
   background: color('background');
   color: color('text');
   font-family: Consolas, Menlo, Monaco, 'Lucida Console', 'Liberation Mono',
-               'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Courier New',
-               monospace, sans-serif;
+  'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Courier New',
+  monospace, sans-serif;
   line-height: 1.5;
 }
 
@@ -102,8 +102,8 @@ h3 {
 }
 
 .grid-element {
-  padding: .75rem;
   outline: 1px solid;
+  padding: 0.75rem;
 
   &.size1of5 {
     background: color('blue');

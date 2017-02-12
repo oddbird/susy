@@ -2,6 +2,46 @@
 // ===================
 
 
+// Valid Span
+// ----------
+@include test-module('Su Valid Span [function]') {
+  @include test('Arbitrary span') {
+    @include assert-equal(
+      su-valid-span(4),
+      4,
+      'A unitless span is valid');
+  }
+
+  @include test('Explicit span') {
+    @include assert-equal(
+      su-valid-span(200mm),
+      200mm,
+      'A united length is valid');
+  }
+
+  @include test('Explicit list of columns') {
+    $list: 8em 6em 4em;
+
+    @include assert-equal(
+      su-valid-span($list),
+      $list,
+      'A list of comparable columns is valid');
+  }
+
+  @include test('Mismatched list error') {
+    @include assert-equal(
+      su-valid-span(1px 2 4em 3),
+      'ERROR [su-valid-span] [list] `1px 2 4em 3` is not a valid number, length, or column-list for $span.');
+  }
+
+  @include test('Unknown type error') {
+    @include assert-equal(
+      su-valid-span(blue),
+      'ERROR [su-valid-span] [color] `blue` is not a valid number, length, or column-list for $span.');
+  }
+}
+
+
 // Valid Columns
 // -------------
 @include test-module('Su Valid Columns [function]') {
@@ -40,7 +80,7 @@
   @include test('Mismatched units error') {
     @include assert-equal(
       su-valid-columns(1px 2 4em 3),
-      'ERROR [su-valid-columns] [list] `1px 2 4em 3` is not a list of comparable lengths, valid for $columns.');
+      'ERROR [su-valid-columns] [list] `1px 2 4em 3` is not a valid list of comparable lengths for $columns.');
   }
 
   @include test('Silent failure') {
@@ -52,11 +92,11 @@
   @include test('Mismatched unitless error') {
     @include assert-equal(
       su-valid-columns(1 2 4em 3),
-      'ERROR [su-valid-columns] [list] `1 2 4em 3` is not a list of comparable lengths, valid for $columns.');
+      'ERROR [su-valid-columns] [list] `1 2 4em 3` is not a valid list of comparable lengths for $columns.');
 
     @include assert-equal(
       su-valid-columns(1em 2 4em 3),
-      'ERROR [su-valid-columns] [list] `1em 2 4em 3` is not a list of comparable lengths, valid for $columns.');
+      'ERROR [su-valid-columns] [list] `1em 2 4em 3` is not a valid list of comparable lengths for $columns.');
   }
 }
 

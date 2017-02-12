@@ -23,7 +23,9 @@ $susy: (
 
     &:first-child,
     &.full {
+      // sass-lint:disable no-important
       margin-left: 0 !important;
+      // sass-lint:enable no-important
     }
   }
 
@@ -33,8 +35,8 @@ $susy: (
   }
 
   .size1of5 {
-    width: susy-span('first' 2);
     padding-bottom: 6.75rem;
+    width: susy-span('first' 2);
 
     + .size1of5 {
       float: right;
@@ -47,6 +49,7 @@ $susy: (
     margin-left: susy-gutter();
     width: susy-span(6 at 3);
 
+    // sass-lint:disable force-pseudo-nesting
     > .size1of2:first-child {
       width: susy-span('first' 3 of susy-slice(6 at 3));
 
@@ -55,11 +58,12 @@ $susy: (
         width: susy-span('last' 3 of susy-slice(6 at 3));
       }
     }
+    // sass-lint:enable force-pseudo-nesting
   }
 
   .size1of3 {
-    width: susy-span('first' 2 of susy-slice(6 at 3));
     padding-bottom: 3.75rem;
+    width: susy-span('first' 2 of susy-slice(6 at 3));
   }
 
   .size2of3 {

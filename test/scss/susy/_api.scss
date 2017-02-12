@@ -58,6 +58,13 @@
       12.5em,
       'Span accepts explicit columns');
   }
+
+  @include test('Span error') {
+    @include assert-equal(
+      susy-span(wide),
+      'ERROR [susy-span] Unable to determine span value from [string] `wide`.',
+      'Error when there is no span');
+  }
 }
 
 
@@ -77,6 +84,13 @@
     @include assert-equal(
       susy-gutter(13),
       1.5625%,
+      'Gutters are calculated as a percentage of context');
+  }
+
+  @include test('Nested Asymmetrical gutters') {
+    @include assert-equal(
+      susy-gutter(1 2 3 2 1),
+      2.5%,
       'Gutters are calculated as a percentage of context');
   }
 
@@ -108,6 +122,13 @@
       susy-gutter(4, $config),
       5%,
       'Gutters account for custom configuration');
+  }
+
+  @include test('Gutters with full span shorthand') {
+    @include assert-equal(
+      susy-gutter(3 of 4 'wide'),
+      5%,
+      'Allow full span shorthand');
   }
 }
 

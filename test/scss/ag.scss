@@ -32,8 +32,8 @@ $colors: (
 }
 
 
-// Base
-// ----
+// Shared Utilities
+// ----------------
 
 @mixin clearfix {
   &:after {
@@ -42,6 +42,10 @@ $colors: (
     clear: both;
   }
 }
+
+
+// Base
+// ----
 
 html {
   background: color('background');
@@ -236,36 +240,36 @@ $susy: (
     width: susy-span(6 at 3);
 
     .size1of2:first-child {
-      width: susy-span('first' 3 of susy-nested(6 at 3));
+      width: susy-span('first' 3 of susy-slice(6 at 3));
 
       + .size1of2 {
-        margin-left: susy-gutter(susy-nested(6 at 3));
-        width: susy-span('last' 3 of susy-nested(6 at 3));
+        margin-left: susy-gutter(susy-slice(6 at 3));
+        width: susy-span('last' 3 of susy-slice(6 at 3));
       }
     }
   }
 
   .size1of3 {
-    width: susy-span('first' 2 of susy-nested(6 at 3));
+    width: susy-span('first' 2 of susy-slice(6 at 3));
     padding-bottom: 3.75rem;
   }
 
   .size2of3 {
     float: right;
-    width: susy-span('last' 4 of susy-nested(6 at 3));
+    width: susy-span('last' 4 of susy-slice(6 at 3));
 
     .grid-element {
-      margin-left: susy-gutter(susy-nested(4 at 5));
+      margin-left: susy-gutter(susy-slice(4 at 5));
     }
 
     .size1of2 {
       &:first-child {
-        width: susy-span('first' 2 of susy-nested(4 at 5));
+        width: susy-span('first' 2 of susy-slice(4 at 5));
       }
 
       + .size1of2 {
         float: right;
-        width: susy-span('last' 2 of susy-nested(4 at 5));
+        width: susy-span('last' 2 of susy-slice(4 at 5));
       }
     }
   }

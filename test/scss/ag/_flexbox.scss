@@ -21,8 +21,7 @@ $susy: (
 .flex-sym-split {
   .ag {
     align-items: stretch;
-    background: url(susy-svg-grid()) no-repeat scroll;
-    background-origin: content-box;
+    background: url(susy-svg-grid('wider')) no-repeat scroll;
     display: flex;
     padding: 0 half-gutter('wider');
   }

@@ -135,11 +135,15 @@
 /// Return inline svg to display the grid.
 /// @group plugins
 @function susy-svg-grid(
-  $grid: $susy,
+  $context: (),
   $colors: hsla(120, 50%, 50%, 0.5) hsla(120, 50%, 75%, 0.5),
   $offset: null
 ) {
-  $grid: susy-settings($grid);
+  @if (type-of($context) != 'map') and (length($context) > 0) {
+    $context: susy-parse($context, 'context-only');
+  }
+
+  $grid: susy-settings($context);
   $grid: susy-normalize($grid);
 
   $color: nth($colors, 1);

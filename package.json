@@ -34,7 +34,7 @@
     "test-libsass": "node_modules/.bin/mocha",
     "test-ruby": "rake test",
     "lint": "node_modules/.bin/sass-lint -vq",
-    "docs": "sassdoc sass/susy/",
+    "docs": "sassdoc sass/",
     "commit": "npm run lint && npm test && npm run docs"
   },
   "license": "BSD-3-Clause",

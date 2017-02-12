@@ -14,7 +14,7 @@ $susy: (
 .float-asym-before {
   .ag {
     @include clearfix;
-    background: url(susy-svg-grid()) no-repeat scroll;
+    background: susy-svg-grid() no-repeat scroll;
   }
 
   .grid-element {

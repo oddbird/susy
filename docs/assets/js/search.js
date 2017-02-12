@@ -30,7 +30,6 @@
       var $item = $(item);
 
       return {
-        group: $item.data('group'),
         name: $item.data('name'),
         type: $item.data('type'),
         node: $item
@@ -47,10 +46,9 @@
 
     var suggestions = $.map(items.slice(0, 10), function (item) {
       var $li = $('<li />', {
-        'data-group': item.group,
         'data-type': item.type,
         'data-name': item.name,
-        'html': '<a href="#' + item.group + '-' + item.type + '-' + item.name + '"><code>' + item.type.slice(0, 3) + '</code> ' + item.name + '</a>'
+        'html': '<a href="#' + item.type + '-' + item.name + '"><code>' + item.type.slice(0, 3) + '</code> ' + item.name + '</a>'
       });
 
       searchSuggestions.append($li);

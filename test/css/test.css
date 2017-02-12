@@ -1,6 +1,6 @@
 @charset "UTF-8";
 /* # Module: Susy Get Function [function] */
-/* -------------------------------------- */
+/* ---------------------------------------- */
 /* Test: Returns a function or function-name */
 /*   ✔ ""susy-get"" and ""susy-get"" should be equal */
 /*  */
@@ -9,13 +9,13 @@
 /*  */
 /*  */
 /* # Module: Susy Error */
-/* -------------------- */
+/* ---------------------- */
 /* Test: Allow errors to return without blocking compilation */
 /*   ✔ ""ERROR [_susy-error test] This is a test error message"" and ""ERROR [_susy-error test] This is a test error message"" should be equal */
 /*  */
 /*  */
 /* # Module: Su Span [function] */
-/* ---------------------------- */
+/* ------------------------------ */
 /* Test: Fluid */
 /*   ✔ Returns fluid span if no units are given */
 /*  */
@@ -30,7 +30,7 @@
 /*  */
 /*  */
 /* # Module: Su Gutter [function] */
-/* ------------------------------ */
+/* -------------------------------- */
 /* Test: Static gutters */
 /*   ✔ Static gutters are returned directly */
 /*  */
@@ -39,7 +39,7 @@
 /*  */
 /*  */
 /* # Module: Su Sum [function] */
-/* --------------------------- */
+/* ----------------------------- */
 /* Test: Calculate the total units in a fluid grid */
 /*   ✔ Returns combined column and gutter units */
 /*  */
@@ -54,7 +54,7 @@
 /*  */
 /*  */
 /* # Module: Su Slice [function] */
-/* ----------------------------- */
+/* ------------------------------- */
 /* Test: Slice a grid */
 /*   ✔ Returns subset of asymmetrical columns based on span and location */
 /*  */
@@ -63,7 +63,7 @@
 /*  */
 /*  */
 /* # Module: Susy Settings [function] */
-/* ---------------------------------- */
+/* ------------------------------------ */
 /* Test: Default configuration */
 /*   ✔ Returns merged map of Susy default config settings */
 /*  */
@@ -75,7 +75,7 @@
 /*  */
 /*  */
 /* # Module: Susy Get [function] */
-/* ----------------------------- */
+/* ------------------------------- */
 /* Test: Get value from user settings */
 /*   ✔ Susy-get and map-get should return the same value */
 /*  */
@@ -90,7 +90,7 @@
 /*  */
 /*  */
 /* # Module: Su Valid Columns [function] */
-/* ------------------------------------- */
+/* --------------------------------------- */
 /* Test: Fluid columns */
 /*   ✔ A list of unitless numbers is list of fluid columns */
 /*  */
@@ -106,13 +106,16 @@
 /* Test: Mismatched units error */
 /*   ✔ ""ERROR [su-valid-columns] [list] `1px 2 4em 3` is not a list of comparable lengths, valid for $columns."" and ""ERROR [su-valid-columns] [list] `1px 2 4em 3` is not a list of comparable lengths, valid for $columns."" should be equal */
 /*  */
+/* Test: Silent failure */
+/*   ✔ "null" and "null" should be equal */
+/*  */
 /* Test: Mismatched unitless error */
 /*   ✔ ""ERROR [su-valid-columns] [list] `1 2 4em 3` is not a list of comparable lengths, valid for $columns."" and ""ERROR [su-valid-columns] [list] `1 2 4em 3` is not a list of comparable lengths, valid for $columns."" should be equal */
 /*   ✔ ""ERROR [su-valid-columns] [list] `1em 2 4em 3` is not a list of comparable lengths, valid for $columns."" and ""ERROR [su-valid-columns] [list] `1em 2 4em 3` is not a list of comparable lengths, valid for $columns."" should be equal */
 /*  */
 /*  */
 /* # Module: Su Valid Gutters [function] */
-/* ------------------------------------- */
+/* --------------------------------------- */
 /* Test: Fluid */
 /*   ✔ A unitless number is a valid setting for gutters */
 /*  */
@@ -133,7 +136,7 @@
 /*  */
 /*  */
 /* # Module: Su Valid Spread [function] */
-/* ------------------------------------ */
+/* -------------------------------------- */
 /* Test: Numeric spread */
 /*   ✔ Valid number is returned directly */
 /*  */
@@ -142,7 +145,7 @@
 /*  */
 /*  */
 /* # Module: Su Valid Location [function] */
-/* -------------------------------------- */
+/* ---------------------------------------- */
 /* Test: Numeric column position */
 /*   ✔ Valid position returns unchanged */
 /*  */
@@ -161,7 +164,7 @@
 /*  */
 /*  */
 /* # Module: Susy Parse [function] */
-/* ------------------------------- */
+/* --------------------------------- */
 /* Test: Simple grid span */
 /*   ✔ A single unitless number is returned as span only */
 /*  */
@@ -192,8 +195,20 @@
 /* Test: Container-spread */
 /*   ✔ Container-spread is properly mapped */
 /*  */
+/* Test: Keywords before span */
+/*   ✔ Keywords can be passed in before the span value */
+/*  */
+/* Test: Context-only */
+/*   ✔ Able to parse context-only, without span values or `of` flag */
+/*  */
+/* Test: Asymmetrical columns only */
+/*   ✔ Able to parse asymmetrical columns only */
+/*  */
 /* Test: Explicit asymmetrical span */
 /*   ✔ Explicit asymmetrical span is parsed properly */
+/*  */
+/* Test: Parse gutters */
+/*   ✔ Set-gutters keyword allows shorthand gutters */
 /*  */
 /* Test: Invalid span error */
 /*   ✔ ""ERROR [susy-parse] Not able to determine column-span from `of 32`"" and ""ERROR [susy-parse] Not able to determine column-span from `of 32`"" should be equal */
@@ -202,24 +217,24 @@
 /*   ✔ ""ERROR [susy-parse] Not able to determine column-span from `wide`"" and ""ERROR [susy-parse] Not able to determine column-span from `wide`"" should be equal */
 /*  */
 /* Test: Unknown string parsing error */
-/*   ✔ ""ERROR [susy-parse] Unknown shorthand property: `wtf`"" and ""ERROR [susy-parse] Unknown shorthand property: `wtf`"" should be equal */
+/*   ✔ ""ERROR [susy-parse] Unknown shorthand property: [string] `wtf`"" and ""ERROR [susy-parse] Unknown shorthand property: [string] `wtf`"" should be equal */
 /*  */
 /* Test: Unknown number parsing error */
-/*   ✔ ""ERROR [susy-parse] Unknown shorthand property: `156`"" and ""ERROR [susy-parse] Unknown shorthand property: `156`"" should be equal */
-/*   ✔ ""ERROR [susy-parse] Unknown shorthand property: `156`"" and ""ERROR [susy-parse] Unknown shorthand property: `156`"" should be equal */
+/*   ✔ ""ERROR [susy-parse] Unknown shorthand property: [number] `156`"" and ""ERROR [susy-parse] Unknown shorthand property: [number] `156`"" should be equal */
+/*   ✔ ""ERROR [susy-parse] Unknown shorthand property: [number] `156`"" and ""ERROR [susy-parse] Unknown shorthand property: [number] `156`"" should be equal */
 /*  */
 /* Test: Unknown type parsing error */
-/*   ✔ ""ERROR [susy-parse] Unknown shorthand property: `#fff`"" and ""ERROR [susy-parse] Unknown shorthand property: `#fff`"" should be equal */
+/*   ✔ ""ERROR [susy-parse] Unknown shorthand property: [color] `#fff`"" and ""ERROR [susy-parse] Unknown shorthand property: [color] `#fff`"" should be equal */
 /*  */
 /*  */
 /* # Module: Susy Normalize [function] */
-/* ----------------------------------- */
+/* ------------------------------------- */
 /* Test: All values */
 /*   ✔ "("span": 6, "columns": 140px 140px 140px 140px 140px 140px, "location": 1, "spread": 1, "container-spread": -1)" and "("span": 6, "columns": 140px 140px 140px 140px 140px 140px, "location": 1, "spread": 1, "container-spread": -1)" should be equal */
 /*  */
 /*  */
 /* # Module: Susy Normalize Columns [function] */
-/* ------------------------------------------- */
+/* --------------------------------------------- */
 /* Test: Fluid shorthand */
 /*   ✔ Fluid shorthand is converted to longform column description. */
 /*  */
@@ -231,7 +246,7 @@
 /*  */
 /*  */
 /* # Module: Susy Normalize Span [funtion] */
-/* --------------------------------------- */
+/* ----------------------------------------- */
 /* Test: Keyword span */
 /*   ✔ "6" and "6" should be equal */
 /*  */
@@ -240,7 +255,7 @@
 /*  */
 /*  */
 /* # Module: Susy Normalize Spread [function] */
-/* ------------------------------------------ */
+/* -------------------------------------------- */
 /* Test: Keyword spread */
 /*   ✔ Keyword is converted to a number for grid-math */
 /*  */
@@ -249,7 +264,7 @@
 /*  */
 /*  */
 /* # Module: Susy Normalize Location [function] */
-/* -------------------------------------------- */
+/* ---------------------------------------------- */
 /* Test: Numeric column position */
 /*   ✔ Valid position returns unchanged */
 /*  */
@@ -261,7 +276,7 @@
 /*  */
 /*  */
 /* # Module: Susy Span [function] */
-/* ------------------------------ */
+/* -------------------------------- */
 /* Test: Simple span */
 /*   ✔ Simple span is calculated correctly using defaults */
 /*  */
@@ -279,7 +294,7 @@
 /*  */
 /*  */
 /* # Module: Susy Gutter [function] */
-/* -------------------------------- */
+/* ---------------------------------- */
 /* Test: Fluid gutters */
 /*   ✔ Gutters are calculated as a percentage of context */
 /*  */
@@ -289,12 +304,15 @@
 /* Test: Static gutters */
 /*   ✔ Static gutters are returned directly */
 /*  */
+/* Test: Gutters with container-spread */
+/*   ✔ Factor container-spread into gutter context */
+/*  */
 /* Test: Gutters with custom config */
 /*   ✔ Gutters account for custom configuration */
 /*  */
 /*  */
 /* # Module: Susy slice [function] */
-/* ------------------------------- */
+/* --------------------------------- */
 /* Test: Numerical slicing */
 /*   ✔ Returns a sub-slice of columns */
 /*  */
@@ -303,7 +321,7 @@
 /*  */
 /*  */
 /* # Module: Unprefix */
-/* ------------------ */
+/* -------------------- */
 /* Test: Span */
 /*   ✔ Unprefixed span() returns same result as susy-span() */
 /*  */
@@ -315,14 +333,14 @@
 /*  */
 /*  */
 /* # Module: SVG Validate Units [function] */
-/* --------------------------------------- */
+/* ----------------------------------------- */
 /* Test: Success */
 /*   ✔ Ems are a valid unit for SVG */
 /*  */
 /*  */
 /* # SUMMARY ---------- */
-/* 86 Tests: */
-/*  - 86 Passed */
+/* 89 Tests: */
+/*  - 89 Passed */
 /*  - 0 Failed */
 /* -------------------- */
 

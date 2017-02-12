@@ -88,7 +88,7 @@ h3 {
     flex: 1 0 auto; }
 
 .asymmetrical .ag:after {
-  content: " ";
+  content: ' ';
   display: block;
   clear: both; }
 .asymmetrical .grid-element {
@@ -99,7 +99,7 @@ h3 {
 .asymmetrical .full {
   width: 100%; }
   .asymmetrical .full:after {
-    content: " ";
+    content: ' ';
     display: block;
     clear: both; }
 .asymmetrical .size1of5 {

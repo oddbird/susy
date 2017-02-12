@@ -16,18 +16,23 @@
 ///
 /// @param {List} $columns -
 ///   List of column-lengths using comparable units
+/// @param {Bool} $silent-failure [true] -
+///   Set false to return null on failure
 ///
 /// @return {List} -
 ///   Validated `$columns` list
 @function su-valid-columns(
-  $columns
+  $columns,
+  $silent-failure: false
 ) {
   $first: nth($columns, 1);
 
   @each $col in $columns {
-    $error: false;
-
     @if (type-of($col) != 'number') or (not comparable($col, $first)) or (unitless($col) and not unitless($first)) or (unitless($first) and not unitless($col)) {
+      @if $silent-failure {
+        @return null;
+      }
+
       $actual: '[#{type-of($columns)}] `#{inspect($columns)}`';
       @return _susy-error(
         '#{$actual} is not a list of comparable lengths, valid for $columns.',

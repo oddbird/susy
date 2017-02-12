@@ -21,12 +21,12 @@
 ///   Shorthand expression to define the width of the span,
 ///   optionally containing:
 ///   - a count, length, or column-list span;
-///   - 'at $n', 'first', or 'last' location on asymmetrical grids;
-///   - 'narrow', 'wide', or 'wider' for optionally spreading
+///   - `at $n`, `first`, or `last` location on asymmetrical grids;
+///   - `narrow`, `wide`, or `wider` for optionally spreading
 ///     across adjacent gutters;
-///   - 'of $n <spread>' for available grid columns
+///   - `of $n <spread>` for available grid columns
 ///     and spread of the container;
-///   - and 'set-gutters $n' to override global gutter settings
+///   - and `set-gutters $n` to override global gutter settings
 /// @param {Map} $config [()] -
 ///   Optional map of Susy grid configuration settings
 ///

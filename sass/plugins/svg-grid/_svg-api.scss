@@ -10,7 +10,7 @@
 ///
 /// @group plugin_svg-grid
 ///
-/// @param {Map | List} $grid [()] -
+/// @param {Map | List} $grid [$susy] -
 ///   Map or shorthand defining the current grid
 /// @param {Color | List} $colors [hsla(120, 50%, 50%, 0.5) hsla(120, 50%, 75%, 0.5)] -
 ///   Column color, or list of colors for column-gradient
@@ -22,12 +22,20 @@
 ///   CSS inline-data SVG string, in `url(<svg>)` format,
 ///   for use in image or content properties
 @function susy-svg-grid(
-  $grid: (),
+  $grid: $susy,
   $colors: hsla(120, 50%, 50%, 0.5) hsla(120, 50%, 75%, 0.5),
   $offset: null
 ) {
   @if (type-of($grid) != 'map') and (length($grid) > 0) {
-    $grid: susy-parse($grid, 'context-only');
+    @if (not index($grid, 'of')) {
+      @if su-valid-columns($grid, 'fail-silent') {
+        $grid: 'of' $grid;
+      } @else {
+        $grid: join('of', $grid);
+      }
+    }
+
+    $grid: susy-parse($grid);
   }
 
   $grid: susy-settings($grid);

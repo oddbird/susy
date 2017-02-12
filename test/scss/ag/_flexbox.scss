@@ -11,13 +11,6 @@ $susy: (
   'container-spread': 'wide',
 );
 
-@function half-gutter(
-  $context: susy-get('columns'),
-  $config: ()
-) {
-  @return susy-gutter($context, $config) / 2;
-}
-
 .flex-sym-split {
   .ag {
     align-items: stretch;

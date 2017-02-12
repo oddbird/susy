@@ -37,6 +37,13 @@ $colors: (
   }
 }
 
+@function half-gutter(
+  $context: susy-get('columns'),
+  $config: ()
+) {
+  @return susy-gutter($context, $config) / 2;
+}
+
 
 // Base
 // ----

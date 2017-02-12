@@ -26,11 +26,11 @@
   $_svg-compare: 0em, 0ex, 0px, 0pt, 0pc, 0cm, 0mm, 0in, 0%;
   // sass-lint:enable zero-unit
 
-  @if index($_svg-units, unit($length)) {
+  @if ($length == 0) or index($_svg-units, unit($length)) {
     @return $length;
   }
 
-  @each $compare in $svg-compare {
+  @each $compare in $_svg-compare {
     @if (comparable($length, $compare)) {
       @return $compare + $length;
     }

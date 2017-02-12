@@ -16,14 +16,15 @@
 /// @access private
 ///
 /// @param {List} $shorthand -
-///   Shorthand expression to define the width of the span —
-///   containing a unitless column-span;
-///   'of $n' for available grid columns [optional];
-///   'at $n', 'first', or 'last' for location on asymmetrical grids;
-///   'narrow', 'wide', or 'wider' for optionally spreading
-///   either the `span` (before `of`) or `columns` (after `of`)
-///   over adjacent gutters;
-///   and 'set-gutters $n' to override global gutter settings
+///   Shorthand expression to define the width of the span,
+///   optionally containing:
+///   - a count, length, or column-list span;
+///   - `at $n`, `first`, or `last` location on asymmetrical grids;
+///   - `narrow`, `wide`, or `wider` for optionally spreading
+///     across adjacent gutters;
+///   - `of $n <spread>` for available grid columns
+///     and spread of the container;
+///   - and `set-gutters $n` to override global gutter settings
 /// @param {Bool} $context-only -
 ///   Allow the parser to ignore span and span-spread values,
 ///   only parsing context and container-spread
@@ -33,10 +34,8 @@
 ///   (`span`, `location`, `columns`, `gutters`, `spread`, `container-spread`)
 ///   parsed from shorthand input
 @function susy-parse(
-  $shorthand,
-  $context-only: false
+  $shorthand
 ) {
-  $span-error: 'Not able to determine column-span from `#{$shorthand}`';
   $parse-error: 'Unknown shorthand property:';
   $options: (
     'first': 'location',
@@ -52,13 +51,8 @@
   $span: null;
   $columns: null;
 
-  $of: $context-only;
+  $of: null;
   $next: false;
-
-  // if we're only looking at context, we might have a valid columns list…
-  @if ($context-only) and (su-valid-columns($shorthand, 'silent-failure')) {
-    @return ('columns': $shorthand);
-  }
 
   // loop through the shorthand list
   @for $i from 1 through length($shorthand) {
@@ -73,7 +67,7 @@
         // if it looks like a column width…
         @if ($type == 'number') and (not unitless($item)) {
           // could be either span or context width…
-          @if $columns {
+          @if $of {
             $columns: join($columns, ('x' $item));
           } @else {
             $span: join($span, ('x' $item));
@@ -109,9 +103,6 @@
         } @else if ($item == 'all') { // `All` is a span shortcut
           $span: 'all';
 
-        } @else if (not $span) and (not $context-only) { // Error: we need span
-          @return _susy-error($span-error, 'susy-parse');
-
         } @else if ($item == 'at') { // Some keywords setup what's next…
           $next: 'location';
         } @else if ($item == 'x') {
@@ -128,7 +119,7 @@
       } @else if ($type == 'number') or ($type == 'list') { // Numbers & lists…
 
         // We don't have a span, and we're not expecting context…
-        @if (not $span) and (not $of) {
+        @if not ($span or $of) {
           $span: $item;
 
         } @else if ($of) and (not $columns) { // We are expecting context…
@@ -144,15 +135,12 @@
     }
   }
 
-  // Make sure we have a span, and merge it in
+  // If we have span, merge it in
   @if $span {
     $return: map-merge($return, ('span': $span));
-
-  } @else if (not $context-only) { // Error if we need span and don't have it
-    @return _susy-error($span-error, 'susy-parse');
   }
 
-  // Merge in our final compiled columns value
+  // If we have columns, merge them in
   @if $columns {
     $return: map-merge($return, ('columns': $columns));
   }

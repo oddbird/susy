@@ -38,18 +38,18 @@
   $container-spread: $spread,
   $location: 1
 ) {
+  $span: su-valid-span($span);
   $columns: su-valid-columns($columns);
   $gutters: su-valid-gutters($gutters, $columns);
   $spread: su-valid-spread($spread);
 
   @if (type-of($span) == 'number') {
-    @if unitless($span) {
-      $location: su-valid-location($span, $location, $columns);
-      $span: su-slice($span, $columns, $location, $validate: false);
-    } @else {
-      // if you give us e.g. 3em, fine, we'll give it right back
+    @if (not unitless($span)) {
       @return $span;
     }
+
+    $location: su-valid-location($span, $location, $columns);
+    $span: su-slice($span, $columns, $location, $validate: false);
   }
 
   $span-width: su-sum($span, $gutters, $spread, $validate: false);

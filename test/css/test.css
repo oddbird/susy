@@ -89,6 +89,24 @@
 /*   ✔ ""ERROR [susy-get] There is no Susy setting called `wtf`"" and ""ERROR [susy-get] There is no Susy setting called `wtf`"" should be equal */
 /*  */
 /*  */
+/* # Module: Su Valid Span [function] */
+/* ------------------------------------ */
+/* Test: Arbitrary span */
+/*   ✔ A unitless span is valid */
+/*  */
+/* Test: Explicit span */
+/*   ✔ A united length is valid */
+/*  */
+/* Test: Explicit list of columns */
+/*   ✔ A list of comparable columns is valid */
+/*  */
+/* Test: Mismatched list error */
+/*   ✔ ""ERROR [su-valid-span] [list] `1px 2 4em 3` is not a valid number, length, or column-list for $span."" and ""ERROR [su-valid-span] [list] `1px 2 4em 3` is not a valid number, length, or column-list for $span."" should be equal */
+/*  */
+/* Test: Unknown type error */
+/*   ✔ ""ERROR [su-valid-span] [color] `blue` is not a valid number, length, or column-list for $span."" and ""ERROR [su-valid-span] [color] `blue` is not a valid number, length, or column-list for $span."" should be equal */
+/*  */
+/*  */
 /* # Module: Su Valid Columns [function] */
 /* --------------------------------------- */
 /* Test: Fluid columns */
@@ -104,14 +122,14 @@
 /*   ✔ A single united number is a single static column */
 /*  */
 /* Test: Mismatched units error */
-/*   ✔ ""ERROR [su-valid-columns] [list] `1px 2 4em 3` is not a list of comparable lengths, valid for $columns."" and ""ERROR [su-valid-columns] [list] `1px 2 4em 3` is not a list of comparable lengths, valid for $columns."" should be equal */
+/*   ✔ ""ERROR [su-valid-columns] [list] `1px 2 4em 3` is not a valid list of comparable lengths for $columns."" and ""ERROR [su-valid-columns] [list] `1px 2 4em 3` is not a valid list of comparable lengths for $columns."" should be equal */
 /*  */
 /* Test: Silent failure */
 /*   ✔ "null" and "null" should be equal */
 /*  */
 /* Test: Mismatched unitless error */
-/*   ✔ ""ERROR [su-valid-columns] [list] `1 2 4em 3` is not a list of comparable lengths, valid for $columns."" and ""ERROR [su-valid-columns] [list] `1 2 4em 3` is not a list of comparable lengths, valid for $columns."" should be equal */
-/*   ✔ ""ERROR [su-valid-columns] [list] `1em 2 4em 3` is not a list of comparable lengths, valid for $columns."" and ""ERROR [su-valid-columns] [list] `1em 2 4em 3` is not a list of comparable lengths, valid for $columns."" should be equal */
+/*   ✔ ""ERROR [su-valid-columns] [list] `1 2 4em 3` is not a valid list of comparable lengths for $columns."" and ""ERROR [su-valid-columns] [list] `1 2 4em 3` is not a valid list of comparable lengths for $columns."" should be equal */
+/*   ✔ ""ERROR [su-valid-columns] [list] `1em 2 4em 3` is not a valid list of comparable lengths for $columns."" and ""ERROR [su-valid-columns] [list] `1em 2 4em 3` is not a valid list of comparable lengths for $columns."" should be equal */
 /*  */
 /*  */
 /* # Module: Su Valid Gutters [function] */
@@ -198,23 +216,11 @@
 /* Test: Keywords before span */
 /*   ✔ Keywords can be passed in before the span value */
 /*  */
-/* Test: Context-only */
-/*   ✔ Able to parse context-only, without span values or `of` flag */
-/*  */
-/* Test: Asymmetrical columns only */
-/*   ✔ Able to parse asymmetrical columns only */
-/*  */
 /* Test: Explicit asymmetrical span */
 /*   ✔ Explicit asymmetrical span is parsed properly */
 /*  */
 /* Test: Parse gutters */
 /*   ✔ Set-gutters keyword allows shorthand gutters */
-/*  */
-/* Test: Invalid span error */
-/*   ✔ ""ERROR [susy-parse] Not able to determine column-span from `of 32`"" and ""ERROR [susy-parse] Not able to determine column-span from `of 32`"" should be equal */
-/*  */
-/* Test: Missing span error */
-/*   ✔ ""ERROR [susy-parse] Not able to determine column-span from `wide`"" and ""ERROR [susy-parse] Not able to determine column-span from `wide`"" should be equal */
 /*  */
 /* Test: Unknown string parsing error */
 /*   ✔ ""ERROR [susy-parse] Unknown shorthand property: [string] `wtf`"" and ""ERROR [susy-parse] Unknown shorthand property: [string] `wtf`"" should be equal */
@@ -292,6 +298,9 @@
 /* Test: Explicit span */
 /*   ✔ Span accepts explicit columns */
 /*  */
+/* Test: Span error */
+/*   ✔ Error when there is no span */
+/*  */
 /*  */
 /* # Module: Susy Gutter [function] */
 /* ---------------------------------- */
@@ -299,6 +308,9 @@
 /*   ✔ Gutters are calculated as a percentage of context */
 /*  */
 /* Test: Nested gutters */
+/*   ✔ Gutters are calculated as a percentage of context */
+/*  */
+/* Test: Nested Asymmetrical gutters */
 /*   ✔ Gutters are calculated as a percentage of context */
 /*  */
 /* Test: Static gutters */
@@ -309,6 +321,9 @@
 /*  */
 /* Test: Gutters with custom config */
 /*   ✔ Gutters account for custom configuration */
+/*  */
+/* Test: Gutters with full span shorthand */
+/*   ✔ Allow full span shorthand */
 /*  */
 /*  */
 /* # Module: Susy slice [function] */
@@ -333,8 +348,8 @@
 /*  */
 /*  */
 /* # SUMMARY ---------- */
-/* 88 Tests: */
-/*  - 88 Passed */
+/* 92 Tests: */
+/*  - 92 Passed */
 /*  - 0 Failed */
 /* -------------------- */
 

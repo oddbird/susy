@@ -18,14 +18,15 @@
 /// @group api
 ///
 /// @param {List} $span -
-///   Shorthand expression to define the width of the span —
-///   containing a unitless column-span;
-///   'of $n' for available grid columns [optional];
-///   'at $n', 'first', or 'last' for location on asymmetrical grids;
-///   'narrow', 'wide', or 'wider' for optionally spreading
-///   either the `span` (before `of`) or `columns` (after `of`)
-///   over adjacent gutters;
-///   and 'set-gutters $n' to override global gutter settings.
+///   Shorthand expression to define the width of the span,
+///   optionally containing:
+///   - a count, length, or column-list span;
+///   - `at $n`, `first`, or `last` location on asymmetrical grids;
+///   - `narrow`, `wide`, or `wider` for optionally spreading
+///     across adjacent gutters;
+///   - `of $n <spread>` for available grid columns
+///     and spread of the container;
+///   - and `set-gutters $n` to override global gutter settings
 /// @param {Map} $config [()] -
 ///   Optional map of Susy grid configuration settings
 ///
@@ -49,7 +50,14 @@
   $input: susy-settings($config, susy-parse($span));
   $normal: susy-normalize($input);
 
-  @return su-span($normal...);
+  @if map-get($normal, 'span') {
+    @return su-span($normal...);
+  }
+
+  $actual: '[#{type-of($span)}] `#{inspect($span)}`';
+  @return _susy-error(
+    'Unable to determine span value from #{$actual}.',
+    'susy-span');
 }
 
 
@@ -66,6 +74,7 @@
 ///   Optional context for nested gutters,
 ///   including shorthand for
 ///   `columns`, `gutters`, and `container-spread`
+///   (additional shorthand will be ignored)
 /// @param {Map} $config [()] -
 ///   Optional map of Susy grid configuration settings
 ///
@@ -81,9 +90,18 @@
   $context: susy-get('columns'),
   $config: ()
 ) {
+  @if (not index($context, 'of')) {
+    @if su-valid-columns($context, 'fail-silent') {
+      $context: 'of' $context;
+    } @else {
+      $context: join('of', $context);
+    }
+  }
+
+  $parsed: susy-settings($config, susy-parse($context));
+  $normal: susy-normalize($parsed);
+
   $args: ('columns', 'gutters', 'container-spread');
-  $input: susy-settings($config, susy-parse($context, 'context-only'));
-  $normal: susy-normalize($input);
   $output: ();
 
   @each $setting in $args {

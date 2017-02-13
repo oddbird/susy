@@ -135,10 +135,8 @@
     $column-sum: $column-sum + $column;
   }
 
-  // Gutters are removed from the math if they use non-comparable static units
-  $not-comparable: not comparable($column-sum, $gutters);
-  $is-mismatch: unitless($column-sum) and (not unitless($gutters));
-  @if ($not-comparable or $is-mismatch) {
+  // Gutters are removed from the math if they are non-comparable
+  @if (unitless($column-sum)) and (not unitless($gutters)) {
     @return $column-sum;
   }
 

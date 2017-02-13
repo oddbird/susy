@@ -49,14 +49,11 @@
 @function _susy-svg-offset(
   $grid
 ) {
-  $columns: nth(map-get($grid, 'columns'), 1);
-  $gutters: map-get($grid, 'gutters');
+  $columns: su-valid-columns(map-get($grid, 'columns'));
+  $gutters: su-valid-gutters(map-get($grid, 'gutters'), $columns);
+  $first: nth($columns, 1);
 
-  $comparable: comparable($columns, $gutters);
-  $flex-columns: unitless($columns) and not unitless($gutters);
-  $flex-gutters: unitless($gutters) and not unitless($columns);
-
-  @if ($flex-columns) or ($flex-gutters) or (not $comparable) {
+  @if (unitless($first)) and (not unitless($gutters)) {
     @return null;
   }
 

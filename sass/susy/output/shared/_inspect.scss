@@ -13,7 +13,7 @@
 ) {
   $show: false;
 
-  @each $item in $inspect {
+  @each $item in join($inspect, ()) {
     @if index($item, inspect) {
       $show: true;
     }

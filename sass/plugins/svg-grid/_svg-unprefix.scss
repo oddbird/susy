@@ -10,8 +10,8 @@
 /// @group plugin_svg-grid
 /// @alias susy-svg-grid
 @function svg-grid(
-  $grid: (),
-  $colors: hsla(120, 50%, 50%, 0.5) hsla(120, 50%, 75%, 0.5),
+  $grid: $susy,
+  $colors: susy-get('svg-grid-colors'),
   $offset: null
 ) {
   @return susy-svg-grid($grid, $colors, $offset);

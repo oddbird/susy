@@ -1,0 +1,7 @@
+// SVG Settings
+// ============
+
+
+$susy-defaults: map-merge((
+    'svg-grid-colors': hsla(120, 50%, 50%, 0.5) hsla(120, 50%, 75%, 0.5),
+  ), $susy-defaults);

@@ -51,6 +51,16 @@
   $normal: susy-normalize($input);
 
   @if map-get($normal, 'span') {
+    $args: (
+      'span', 'columns', 'gutters', 'spread', 'container-spread', 'location'
+    );
+
+    @each $key in map-keys($normal) {
+      @if not (index($args, $key)) {
+        $normal: map-remove($normal, $key);
+      }
+    }
+
     @return su-span($normal...);
   }
 
@@ -100,15 +110,15 @@
 
   $parsed: susy-settings($config, susy-parse($context));
   $normal: susy-normalize($parsed);
-
   $args: ('columns', 'gutters', 'container-spread');
-  $output: ();
 
-  @each $setting in $args {
-    $output: map-merge($output, ($setting: map-get($normal, $setting)));
+  @each $key in map-keys($normal) {
+    @if not (index($args, $key)) {
+      $normal: map-remove($normal, $key);
+    }
   }
 
-  @return su-gutter($output...);
+  @return su-gutter($normal...);
 }
 
 

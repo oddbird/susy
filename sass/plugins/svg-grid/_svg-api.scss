@@ -12,7 +12,7 @@
 ///
 /// @param {Map | List} $grid [$susy] -
 ///   Map or shorthand defining the current grid
-/// @param {Color | List} $colors [hsla(120, 50%, 50%, 0.5) hsla(120, 50%, 75%, 0.5)] -
+/// @param {Color | List} $colors [susy-get('svg-grid-colors')] -
 ///   Column color, or list of colors for column-gradient
 /// @param {Length} $offset [null] -
 ///   Manually override the default grid-image offset,
@@ -23,7 +23,7 @@
 ///   for use in image or content properties
 @function susy-svg-grid(
   $grid: $susy,
-  $colors: hsla(120, 50%, 50%, 0.5) hsla(120, 50%, 75%, 0.5),
+  $colors: susy-get('svg-grid-colors'),
   $offset: null
 ) {
   @if (type-of($grid) != 'map') and (length($grid) > 0) {

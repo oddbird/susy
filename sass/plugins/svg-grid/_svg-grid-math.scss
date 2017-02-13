@@ -13,7 +13,7 @@
 /// @param {Integer} $column -
 ///   1-indexed column location on the grid
 /// @param {Map} $grid -
-///   Settings map representing the current grid
+///   Normalized settings map representing the current grid
 ///
 /// @return {Length} -
 ///   Horizontal position of svg column rectangle,
@@ -41,7 +41,7 @@
 /// @access private
 ///
 /// @param {Map} $grid -
-///   Settings map representing the current grid
+///   Normalized settings map representing the current grid
 ///
 /// @return {Length | null} -
 ///   Expected distance from container edge to first column,

@@ -1,0 +1,68 @@
+// SVG Utility Tests
+// =================
+
+
+// SVG Validate Units [function]
+@include test-module('SVG Validate Units [function]') {
+  @include test('Success') {
+    @include assert-equal(
+      _susy-svg-validate-units(3em),
+      3em,
+      'Ems are a valid unit for SVG');
+  }
+
+  @include test('Error') {
+    @include assert-equal(
+      _susy-svg-validate-units(3deg, test),
+      'ERROR [_susy-svg-validate-units] `deg` test units are not supported in SVG',
+      'Ems are a valid unit for SVG');
+  }
+}
+
+
+// SVG Rect [function]
+@include test-module('SVG Rect [function]') {
+  @include test('Width and position') {
+    @include assert-equal(
+      _susy-svg-rect(3em, 6em),
+      '%3Crect x="3em" width="6em" height="100%" /%3E');
+  }
+
+  @include test('Offset') {
+    @include assert-equal(
+      _susy-svg-rect(3em, 6em, 1em),
+      '%3Crect x="4em" width="6em" height="100%" /%3E');
+  }
+
+  @include test('Mismatched Offset') {
+    @include assert-equal(
+      _susy-svg-rect(50%, 20%, 4em),
+      '%3Crect x="50%" width="20%" height="100%" style="transform:translateX(4em)"/%3E');
+  }
+}
+
+
+// SVG Color [function]
+@include test-module('SVG Color [function]') {
+  @include test('Hex color') {
+    @include assert-equal(
+      _susy-svg-color(#eee),
+      '%23eee');
+  }
+
+  @include test('non-hex color') {
+    @include assert-equal(
+      _susy-svg-color(rgba(140, 115, 115, 0.5)),
+      'rgba(140, 115, 115, 0.5)');
+  }
+}
+
+
+// SVG Gradient [function]
+@include test-module('SVG Gradient [function]') {
+  @include test('Hex color') {
+    @include assert-equal(
+      _susy-svg-gradient(#933 #393 #339),
+      '%3Cdefs%3E%3ClinearGradient spreadMethod="pad" id="susy-svg-gradient" x1="0%" y1="0%" x2="100%" y2="0%"%3E%3Cstop offset="0%" style="stop-color:%23933;" /%3E%3Cstop offset="50%" style="stop-color:%23393;" /%3E%3Cstop offset="100%" style="stop-color:%23339;" /%3E%3C/linearGradient%3E%3C/defs%3E');
+  }
+}

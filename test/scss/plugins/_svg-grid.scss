@@ -1,13 +1,4 @@
-// SVG Grid Image
-// ==============
+// SVG Grid Image Tests
+// ====================
 
-
-// SVG Validate Units [function]
-@include test-module('SVG Validate Units [function]') {
-  @include test('Success') {
-    @include assert-equal(
-      _susy-svg-validate-units(3em),
-      3em,
-      'Ems are a valid unit for SVG');
-  }
-}
+@import 'svg-grid/svg-utilities';

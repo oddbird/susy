@@ -12,9 +12,10 @@
 ///
 /// @param {Map | List} $grid [$susy] -
 ///   Map or shorthand defining the current grid
-/// @param {Color | List} $colors [susy-get('svg-grid-colors')] -
-///   Column color, or list of colors for column-gradient
-/// @param {Length} $offset [null] -
+/// @param {Color | List | null} $colors [null] -
+///   Column color, or list of colors for column-gradient,
+///   used to override the global `svg-grid-colors` setting
+/// @param {Length | null} $offset [null] -
 ///   Manually override the default grid-image offset,
 ///   to account for grid edges
 ///
@@ -23,9 +24,10 @@
 ///   for use in image or content properties
 @function susy-svg-grid(
   $grid: $susy,
-  $colors: susy-get('svg-grid-colors'),
+  $colors: null,
   $offset: null
 ) {
+  // Grid parsing & normalizing
   @if (type-of($grid) != 'map') and (length($grid) > 0) {
     @if (not index($grid, 'of')) {
       @if su-valid-columns($grid, 'fail-silent') {
@@ -41,21 +43,28 @@
   $grid: susy-settings($grid);
   $grid: susy-normalize($grid);
 
-  $color: nth($colors, 1);
+
+  // Color and gradient handling
   $gradient: '';
+
+  @if (not $colors) {
+    $colors: susy-get('svg-grid-colors');
+  }
 
   @if length($colors) > 1 {
     $gradient: _susy-svg-gradient($colors);
-    $color: 'url(%23susy-svg-gradient)';
+    $colors: 'url(%23susy-svg-gradient)';
   } @else {
-    $color: _susy-svg-color($color);
+    $colors: _susy-svg-color($colors);
   }
 
+
+  // SVG construction
   $columns: map-get($grid, 'columns');
   $offset: $offset or _susy-svg-offset($grid);
 
   $svg: 'data:image/svg+xml,';
-  $svg: $svg + '%3Csvg xmlns="http://www.w3.org/2000/svg" fill="#{$color}" %3E';
+  $svg: $svg + '%3Csvg xmlns="http://www.w3.org/2000/svg" fill="#{$colors}" %3E';
   $svg: $svg + $gradient;
 
   @for $column from 1 through length($columns) {

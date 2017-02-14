@@ -404,9 +404,40 @@
 /*   ✔ "4.7619%" and "4.7619%" should be equal */
 /*  */
 /*  */
+/* # Module: SVG Grid [function] */
+/* ------------------------------- */
+/* Test: Map grid settings (default) */
+/*   ✔ "url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" fill="url(%23susy-svg-gradient)" %3E%3Cdefs%3E%3ClinearGradient spreadMethod="pad" id="susy-svg-gradient" x1="0%" y1="0%" x2="100%" y2="0%"%3E%3Cstop offset="0%" style="stop-color:rgba(64, 191, 64, 0.5);" /%3E%3Cstop offset="100%" style="stop-color:rgba(159, 223, 159, 0.5);" /%3E%3C/linearGradient%3E%3C/defs%3E%3Crect x="0" width="21.05263%" height="100%" /%3E%3Crect x="26.31579%" width="21.05263%" height="100%" /%3E%3Crect x="52.63158%" width="21.05263%" height="100%" /%3E%3Crect x="78.94737%" width="21.05263%" height="100%" /%3E%3C/svg%3E')" and "url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" fill="url(%23susy-svg-gradient)" %3E%3Cdefs%3E%3ClinearGradient spreadMethod="pad" id="susy-svg-gradient" x1="0%" y1="0%" x2="100%" y2="0%"%3E%3Cstop offset="0%" style="stop-color:rgba(64, 191, 64, 0.5);" /%3E%3Cstop offset="100%" style="stop-color:rgba(159, 223, 159, 0.5);" /%3E%3C/linearGradient%3E%3C/defs%3E%3Crect x="0" width="21.05263%" height="100%" /%3E%3Crect x="26.31579%" width="21.05263%" height="100%" /%3E%3Crect x="52.63158%" width="21.05263%" height="100%" /%3E%3Crect x="78.94737%" width="21.05263%" height="100%" /%3E%3C/svg%3E')" should be equal */
+/*  */
+/* Test: Zero-length list grid */
+/*   ✔ "url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" fill="url(%23susy-svg-gradient)" %3E%3Cdefs%3E%3ClinearGradient spreadMethod="pad" id="susy-svg-gradient" x1="0%" y1="0%" x2="100%" y2="0%"%3E%3Cstop offset="0%" style="stop-color:rgba(64, 191, 64, 0.5);" /%3E%3Cstop offset="100%" style="stop-color:rgba(159, 223, 159, 0.5);" /%3E%3C/linearGradient%3E%3C/defs%3E%3Crect x="0" width="21.05263%" height="100%" /%3E%3Crect x="26.31579%" width="21.05263%" height="100%" /%3E%3Crect x="52.63158%" width="21.05263%" height="100%" /%3E%3Crect x="78.94737%" width="21.05263%" height="100%" /%3E%3C/svg%3E')" and "url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" fill="url(%23susy-svg-gradient)" %3E%3Cdefs%3E%3ClinearGradient spreadMethod="pad" id="susy-svg-gradient" x1="0%" y1="0%" x2="100%" y2="0%"%3E%3Cstop offset="0%" style="stop-color:rgba(64, 191, 64, 0.5);" /%3E%3Cstop offset="100%" style="stop-color:rgba(159, 223, 159, 0.5);" /%3E%3C/linearGradient%3E%3C/defs%3E%3Crect x="0" width="21.05263%" height="100%" /%3E%3Crect x="26.31579%" width="21.05263%" height="100%" /%3E%3Crect x="52.63158%" width="21.05263%" height="100%" /%3E%3Crect x="78.94737%" width="21.05263%" height="100%" /%3E%3C/svg%3E')" should be equal */
+/*  */
+/* Test: Grid shorthand */
+/*   ✔ Should assume that non-explicit settings are context not span */
+/*   ✔ Most span data should be ignored */
+/*  */
+/* Test: Grid shorthand asymmetrical */
+/*   ✔ Understands context-only asymmetrical shorthand */
+/*  */
+/* Test: Grid shorthand spread */
+/*   ✔ Span spread is relevant to output */
+/*  */
+/* Test: Single-color override */
+/*   ✔ "url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" fill="%239cc" %3E%3Crect x="0" width="21.05263%" height="100%" /%3E%3Crect x="26.31579%" width="21.05263%" height="100%" /%3E%3Crect x="52.63158%" width="21.05263%" height="100%" /%3E%3Crect x="78.94737%" width="21.05263%" height="100%" /%3E%3C/svg%3E')" and "url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" fill="%239cc" %3E%3Crect x="0" width="21.05263%" height="100%" /%3E%3Crect x="26.31579%" width="21.05263%" height="100%" /%3E%3Crect x="52.63158%" width="21.05263%" height="100%" /%3E%3Crect x="78.94737%" width="21.05263%" height="100%" /%3E%3C/svg%3E')" should be equal */
+/*  */
+/* Test: Override offset */
+/*   ✔ "url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" fill="url(%23susy-svg-gradient)" %3E%3Cdefs%3E%3ClinearGradient spreadMethod="pad" id="susy-svg-gradient" x1="0%" y1="0%" x2="100%" y2="0%"%3E%3Cstop offset="0%" style="stop-color:rgba(64, 191, 64, 0.5);" /%3E%3Cstop offset="100%" style="stop-color:rgba(159, 223, 159, 0.5);" /%3E%3C/linearGradient%3E%3C/defs%3E%3Crect x="1em" width="21.05263%" height="100%" /%3E%3Crect x="26.31579%" width="21.05263%" height="100%" style="transform:translateX(1em)"/%3E%3Crect x="52.63158%" width="21.05263%" height="100%" style="transform:translateX(1em)"/%3E%3Crect x="78.94737%" width="21.05263%" height="100%" style="transform:translateX(1em)"/%3E%3C/svg%3E')" and "url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" fill="url(%23susy-svg-gradient)" %3E%3Cdefs%3E%3ClinearGradient spreadMethod="pad" id="susy-svg-gradient" x1="0%" y1="0%" x2="100%" y2="0%"%3E%3Cstop offset="0%" style="stop-color:rgba(64, 191, 64, 0.5);" /%3E%3Cstop offset="100%" style="stop-color:rgba(159, 223, 159, 0.5);" /%3E%3C/linearGradient%3E%3C/defs%3E%3Crect x="1em" width="21.05263%" height="100%" /%3E%3Crect x="26.31579%" width="21.05263%" height="100%" style="transform:translateX(1em)"/%3E%3Crect x="52.63158%" width="21.05263%" height="100%" style="transform:translateX(1em)"/%3E%3Crect x="78.94737%" width="21.05263%" height="100%" style="transform:translateX(1em)"/%3E%3C/svg%3E')" should be equal */
+/*  */
+/*  */
+/* # Module: SVG Grid (unprefixed) [function] */
+/* -------------------------------------------- */
+/* Test: Pass settings through */
+/*   ✔ "url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" fill="%239cc" %3E%3Crect x="1em" width="44.44444%" height="100%" /%3E%3Crect x="55.55556%" width="44.44444%" height="100%" style="transform:translateX(1em)"/%3E%3C/svg%3E')" and "url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" fill="%239cc" %3E%3Crect x="1em" width="44.44444%" height="100%" /%3E%3Crect x="55.55556%" width="44.44444%" height="100%" style="transform:translateX(1em)"/%3E%3C/svg%3E')" should be equal */
+/*  */
+/*  */
 /* # SUMMARY ---------- */
-/* 105 Tests: */
-/*  - 105 Passed */
+/* 113 Tests: */
+/*  - 113 Passed */
 /*  - 0 Failed */
 /* -------------------- */
 

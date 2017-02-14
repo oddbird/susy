@@ -1,0 +1,16 @@
+// SVG Unprefix
+// ============
+
+
+// SVG Grid [function]
+// -------------------
+@include test-module('SVG Grid (unprefixed) [function]') {
+
+  @include test('Pass settings through') {
+    $data: 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" fill="%239cc" %3E%3Crect x="1em" width="44.44444%" height="100%" /%3E%3Crect x="55.55556%" width="44.44444%" height="100%" style="transform:translateX(1em)"/%3E%3C/svg%3E';
+    @include assert-equal(
+      susy-svg-grid(2, #9cc, 1em),
+      url($data));
+  }
+
+}

@@ -4,6 +4,11 @@ html {
   font-family: Consolas, Menlo, Monaco, 'Lucida Console', 'Liberation Mono', 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Courier New', monospace, sans-serif;
   line-height: 1.5; }
 
+html,
+body {
+  margin: 0;
+  max-width: 100%; }
+
 * {
   box-sizing: border-box; }
 
@@ -38,97 +43,138 @@ h3 {
   padding: 0 1.5rem; }
 
 .grid-element {
-  padding: .75rem; }
+  outline: 1px solid;
+  padding: 0.75rem; }
   .grid-element.size1of5 {
-    background: #7fdfff; }
+    background: rgba(127, 223, 255, 0.75); }
   .grid-element.size1of2 {
-    background: #ff7f7f; }
+    background: rgba(255, 127, 127, 0.75); }
   .grid-element.size1of3 {
-    background: #ffb27f; }
+    background: rgba(255, 178, 127, 0.75); }
   .grid-element.full {
-    background: #ff7fbf; }
+    background: rgba(255, 127, 191, 0.75); }
 
-.symmetrical .ag {
+.flex-sym-split .ag {
   align-items: stretch;
+  background: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" fill="url(%23susy-svg-gradient)" %3E%3Cdefs%3E%3ClinearGradient spreadMethod="pad" id="susy-svg-gradient" x1="0%" y1="0%" x2="100%" y2="0%"%3E%3Cstop offset="0%" style="stop-color:rgba(64, 191, 64, 0.5);" /%3E%3Cstop offset="100%" style="stop-color:rgba(159, 223, 159, 0.5);" /%3E%3C/linearGradient%3E%3C/defs%3E%3Crect x="1.96078%" width="7.84314%" height="100%" /%3E%3Crect x="11.76471%" width="7.84314%" height="100%" /%3E%3Crect x="21.56863%" width="7.84314%" height="100%" /%3E%3Crect x="31.37255%" width="7.84314%" height="100%" /%3E%3Crect x="41.17647%" width="7.84314%" height="100%" /%3E%3Crect x="50.98039%" width="7.84314%" height="100%" /%3E%3Crect x="60.78431%" width="7.84314%" height="100%" /%3E%3Crect x="70.58824%" width="7.84314%" height="100%" /%3E%3Crect x="80.39216%" width="7.84314%" height="100%" /%3E%3Crect x="90.19608%" width="7.84314%" height="100%" /%3E%3C/svg%3E') no-repeat scroll;
   display: flex;
   padding: 0 0.98039%; }
-.symmetrical .grid-element {
+.flex-sym-split .grid-element {
   margin: 0 1%; }
-.symmetrical .size1of5 {
+.flex-sym-split .size1of5 {
   order: 1;
   width: 18%; }
-  .symmetrical .size1of5 + .size1of5 {
+  .flex-sym-split .size1of5 + .size1of5 {
     order: 3; }
-.symmetrical .size3of5 {
+.flex-sym-split .size3of5 {
   align-items: stretch;
   display: flex;
   flex: 1 0 auto;
   flex-wrap: wrap;
   order: 2; }
-  .symmetrical .size3of5 .size1of2 {
+  .flex-sym-split .size3of5 .size1of2 {
     margin: 0 1.66667%;
     width: 46.66667%; }
-  .symmetrical .size3of5 > .full {
+  .flex-sym-split .size3of5 > .full {
     align-items: stretch;
     display: flex;
     flex: 1 0 auto; }
-.symmetrical .size1of3 {
+.flex-sym-split .size1of3 {
   margin: 0 1.66667%;
   width: 30%; }
-.symmetrical .size2of3 {
+.flex-sym-split .size2of3 {
   align-items: stretch;
   display: flex;
   flex: 1 0 auto;
   flex-wrap: wrap; }
-  .symmetrical .size2of3 .grid-element {
+  .flex-sym-split .size2of3 .grid-element {
     margin: 0 2.5%; }
-  .symmetrical .size2of3 .size1of2 {
+  .flex-sym-split .size2of3 .size1of2 {
     width: 45%; }
-  .symmetrical .size2of3 .full {
+  .flex-sym-split .size2of3 .full {
     flex: 1 0 auto; }
 
-.asymmetrical .ag:after {
-  content: ' ';
-  display: block;
-  clear: both; }
-.asymmetrical .grid-element {
+.float-asym-before .ag {
+  background: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" fill="url(%23susy-svg-gradient)" %3E%3Cdefs%3E%3ClinearGradient spreadMethod="pad" id="susy-svg-gradient" x1="0%" y1="0%" x2="100%" y2="0%"%3E%3Cstop offset="0%" style="stop-color:rgba(64, 191, 64, 0.5);" /%3E%3Cstop offset="100%" style="stop-color:rgba(159, 223, 159, 0.5);" /%3E%3C/linearGradient%3E%3C/defs%3E%3Crect x="0" width="4.25532%" height="100%" /%3E%3Crect x="6.38298%" width="8.51064%" height="100%" /%3E%3Crect x="17.02128%" width="4.25532%" height="100%" /%3E%3Crect x="23.40426%" width="4.25532%" height="100%" /%3E%3Crect x="29.78723%" width="12.76596%" height="100%" /%3E%3Crect x="44.68085%" width="4.25532%" height="100%" /%3E%3Crect x="51.06383%" width="12.76596%" height="100%" /%3E%3Crect x="65.95745%" width="8.51064%" height="100%" /%3E%3Crect x="76.59574%" width="4.25532%" height="100%" /%3E%3Crect x="82.97872%" width="17.02128%" height="100%" /%3E%3C/svg%3E') no-repeat scroll; }
+  .float-asym-before .ag::after {
+    clear: both;
+    content: ' ';
+    display: block; }
+.float-asym-before .grid-element {
   float: left;
   margin-left: 2.12766%; }
-  .asymmetrical .grid-element:first-child, .asymmetrical .grid-element.full {
+  .float-asym-before .grid-element:first-child, .float-asym-before .grid-element.full {
     margin-left: 0 !important; }
-.asymmetrical .full {
+.float-asym-before .full {
   width: 100%; }
-  .asymmetrical .full:after {
+  .float-asym-before .full::after {
+    clear: both;
     content: ' ';
-    display: block;
-    clear: both; }
-.asymmetrical .size1of5 {
-  width: 14.89362%;
-  padding-bottom: 6.75rem; }
-  .asymmetrical .size1of5 + .size1of5 {
+    display: block; }
+.float-asym-before .size1of5 {
+  padding-bottom: 6.75rem;
+  width: 14.89362%; }
+  .float-asym-before .size1of5 + .size1of5 {
     float: right;
     width: 23.40426%; }
-.asymmetrical .size3of5 {
+.float-asym-before .size3of5 {
   float: left;
   margin-left: 2.12766%;
   width: 57.44681%; }
-  .asymmetrical .size3of5 .size1of2:first-child {
+  .float-asym-before .size3of5 > .size1of2:first-child {
     width: 44.44444%; }
-    .asymmetrical .size3of5 .size1of2:first-child + .size1of2 {
-      margin-left: 3.7037%;
-      width: 51.85185%; }
-.asymmetrical .size1of3 {
-  width: 18.51852%;
-  padding-bottom: 3.75rem; }
-.asymmetrical .size2of3 {
+  .float-asym-before .size3of5 > .size1of2 + .size1of2 {
+    margin-left: 3.7037%;
+    width: 51.85185%; }
+.float-asym-before .size1of3 {
+  padding-bottom: 3.75rem;
+  width: 18.51852%; }
+.float-asym-before .size2of3 {
   float: right;
   width: 77.77778%; }
-  .asymmetrical .size2of3 .grid-element {
+  .float-asym-before .size2of3 .grid-element {
     margin-left: 4.7619%; }
-  .asymmetrical .size2of3 .size1of2:first-child {
+  .float-asym-before .size2of3 .size1of2:first-child {
     width: 42.85714%; }
-  .asymmetrical .size2of3 .size1of2 + .size1of2 {
-    float: right;
+  .float-asym-before .size2of3 .size1of2 + .size1of2 {
     width: 52.38095%; }
+
+.float-static-inside {
+  max-width: 55em;
+  width: 55em; }
+  .float-static-inside .ag {
+    background: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" fill="url(%23susy-svg-gradient)" %3E%3Cdefs%3E%3ClinearGradient spreadMethod="pad" id="susy-svg-gradient" x1="0%" y1="0%" x2="100%" y2="0%"%3E%3Cstop offset="0%" style="stop-color:rgba(64, 191, 64, 0.5);" /%3E%3Cstop offset="100%" style="stop-color:rgba(159, 223, 159, 0.5);" /%3E%3C/linearGradient%3E%3C/defs%3E%3Crect x="0" width="5.5em" height="100%" /%3E%3Crect x="5.5em" width="5.5em" height="100%" /%3E%3Crect x="11em" width="5.5em" height="100%" /%3E%3Crect x="16.5em" width="5.5em" height="100%" /%3E%3Crect x="22em" width="5.5em" height="100%" /%3E%3Crect x="27.5em" width="5.5em" height="100%" /%3E%3Crect x="33em" width="5.5em" height="100%" /%3E%3Crect x="38.5em" width="5.5em" height="100%" /%3E%3Crect x="44em" width="5.5em" height="100%" /%3E%3Crect x="49.5em" width="5.5em" height="100%" /%3E%3C/svg%3E') no-repeat scroll; }
+    .float-static-inside .ag::after {
+      clear: both;
+      content: ' ';
+      display: block; }
+  .float-static-inside .grid-element {
+    float: left;
+    padding-left: 0.25em;
+    padding-right: 0.25em; }
+  .float-static-inside .full {
+    width: 100%; }
+    .float-static-inside .full::after {
+      clear: both;
+      content: ' ';
+      display: block; }
+  .float-static-inside .size1of5 {
+    padding-bottom: 6.75rem;
+    width: 11em; }
+    .float-static-inside .size1of5 + .size1of5 {
+      float: right; }
+  .float-static-inside .size3of5 {
+    float: left;
+    width: 33em; }
+    .float-static-inside .size3of5 > .size1of2 {
+      width: 50%; }
+  .float-static-inside .size1of3 {
+    padding-bottom: 3.75rem;
+    width: 33.33333%; }
+  .float-static-inside .size2of3 {
+    float: right;
+    width: 66.66667%; }
+    .float-static-inside .size2of3 .size1of2 {
+      width: 50%; }
 
 /*# sourceMappingURL=ag.css.map */

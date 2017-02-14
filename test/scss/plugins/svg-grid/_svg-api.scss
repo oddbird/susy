@@ -1,0 +1,70 @@
+// SVG API Tests
+// =============
+
+
+// SVG Grid [function]
+// -------------------
+@include test-module('SVG Grid [function]') {
+
+  // grid parsing and normalizing
+  @include test('Map grid settings (default)') {
+    $data: 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" fill="url(%23susy-svg-gradient)" %3E%3Cdefs%3E%3ClinearGradient spreadMethod="pad" id="susy-svg-gradient" x1="0%" y1="0%" x2="100%" y2="0%"%3E%3Cstop offset="0%" style="stop-color:rgba(64, 191, 64, 0.5);" /%3E%3Cstop offset="100%" style="stop-color:rgba(159, 223, 159, 0.5);" /%3E%3C/linearGradient%3E%3C/defs%3E%3Crect x="0" width="21.05263%" height="100%" /%3E%3Crect x="26.31579%" width="21.05263%" height="100%" /%3E%3Crect x="52.63158%" width="21.05263%" height="100%" /%3E%3Crect x="78.94737%" width="21.05263%" height="100%" /%3E%3C/svg%3E';
+    @include assert-equal(
+      susy-svg-grid(),
+      url($data));
+  }
+
+  @include test('Zero-length list grid') {
+    $list: ();
+    $data: 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" fill="url(%23susy-svg-gradient)" %3E%3Cdefs%3E%3ClinearGradient spreadMethod="pad" id="susy-svg-gradient" x1="0%" y1="0%" x2="100%" y2="0%"%3E%3Cstop offset="0%" style="stop-color:rgba(64, 191, 64, 0.5);" /%3E%3Cstop offset="100%" style="stop-color:rgba(159, 223, 159, 0.5);" /%3E%3C/linearGradient%3E%3C/defs%3E%3Crect x="0" width="21.05263%" height="100%" /%3E%3Crect x="26.31579%" width="21.05263%" height="100%" /%3E%3Crect x="52.63158%" width="21.05263%" height="100%" /%3E%3Crect x="78.94737%" width="21.05263%" height="100%" /%3E%3C/svg%3E';
+    @include assert-equal(
+      susy-svg-grid($list),
+      url($data));
+  }
+
+  @include test('Grid shorthand') {
+    $data: 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" fill="url(%23susy-svg-gradient)" %3E%3Cdefs%3E%3ClinearGradient spreadMethod="pad" id="susy-svg-gradient" x1="0%" y1="0%" x2="100%" y2="0%"%3E%3Cstop offset="0%" style="stop-color:rgba(64, 191, 64, 0.5);" /%3E%3Cstop offset="100%" style="stop-color:rgba(159, 223, 159, 0.5);" /%3E%3C/linearGradient%3E%3C/defs%3E%3Crect x="4.7619%" width="12.90323%" height="100%" /%3E%3Crect x="20.89094%" width="12.90323%" height="100%" /%3E%3Crect x="37.01997%" width="12.90323%" height="100%" /%3E%3Crect x="53.149%" width="12.90323%" height="100%" /%3E%3Crect x="69.27803%" width="12.90323%" height="100%" /%3E%3Crect x="85.40707%" width="12.90323%" height="100%" /%3E%3C/svg%3E';
+    @include assert-equal(
+      susy-svg-grid(6 'wider'),
+      url($data),
+      'Should assume that non-explicit settings are context not span');
+
+    @include assert-equal(
+      susy-svg-grid('first' 3 'of' 6 'wider'),
+      url($data),
+      'Most span data should be ignored');
+  }
+
+  @include test('Grid shorthand asymmetrical') {
+    $data: 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" fill="url(%23susy-svg-gradient)" %3E%3Cdefs%3E%3ClinearGradient spreadMethod="pad" id="susy-svg-gradient" x1="0%" y1="0%" x2="100%" y2="0%"%3E%3Cstop offset="0%" style="stop-color:rgba(64, 191, 64, 0.5);" /%3E%3Cstop offset="100%" style="stop-color:rgba(159, 223, 159, 0.5);" /%3E%3C/linearGradient%3E%3C/defs%3E%3Crect x="0" width="4.70588%" height="100%" /%3E%3Crect x="5.88235%" width="4.70588%" height="100%" /%3E%3Crect x="11.76471%" width="9.41176%" height="100%" /%3E%3Crect x="22.35294%" width="14.11765%" height="100%" /%3E%3Crect x="37.64706%" width="23.52941%" height="100%" /%3E%3Crect x="62.35294%" width="37.64706%" height="100%" /%3E%3C/svg%3E';
+
+    @include assert-equal(
+      susy-svg-grid(1 1 2 3 5 8),
+      url($data),
+      'Understands context-only asymmetrical shorthand');
+  }
+
+  @include test('Grid shorthand spread') {
+    $data: 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" fill="url(%23susy-svg-gradient)" %3E%3Cdefs%3E%3ClinearGradient spreadMethod="pad" id="susy-svg-gradient" x1="0%" y1="0%" x2="100%" y2="0%"%3E%3Cstop offset="0%" style="stop-color:rgba(64, 191, 64, 0.5);" /%3E%3Cstop offset="100%" style="stop-color:rgba(159, 223, 159, 0.5);" /%3E%3C/linearGradient%3E%3C/defs%3E%3Crect x="-2.63158%" width="26.31579%" height="100%" /%3E%3Crect x="23.68421%" width="26.31579%" height="100%" /%3E%3Crect x="50%" width="26.31579%" height="100%" /%3E%3Crect x="76.31579%" width="26.31579%" height="100%" /%3E%3C/svg%3E';
+
+    @include assert-equal(
+      susy-svg-grid('wide' 'of'),
+      url($data),
+      'Span spread is relevant to output');
+  }
+
+  @include test('Single-color override') {
+    $data: 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" fill="%239cc" %3E%3Crect x="0" width="21.05263%" height="100%" /%3E%3Crect x="26.31579%" width="21.05263%" height="100%" /%3E%3Crect x="52.63158%" width="21.05263%" height="100%" /%3E%3Crect x="78.94737%" width="21.05263%" height="100%" /%3E%3C/svg%3E';
+
+    @include assert-equal(
+      susy-svg-grid($colors: #9cc),
+      url($data));
+  }
+
+  @include test('Override offset') {
+    $data: 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" fill="url(%23susy-svg-gradient)" %3E%3Cdefs%3E%3ClinearGradient spreadMethod="pad" id="susy-svg-gradient" x1="0%" y1="0%" x2="100%" y2="0%"%3E%3Cstop offset="0%" style="stop-color:rgba(64, 191, 64, 0.5);" /%3E%3Cstop offset="100%" style="stop-color:rgba(159, 223, 159, 0.5);" /%3E%3C/linearGradient%3E%3C/defs%3E%3Crect x="1em" width="21.05263%" height="100%" /%3E%3Crect x="26.31579%" width="21.05263%" height="100%" style="transform:translateX(1em)"/%3E%3Crect x="52.63158%" width="21.05263%" height="100%" style="transform:translateX(1em)"/%3E%3Crect x="78.94737%" width="21.05263%" height="100%" style="transform:translateX(1em)"/%3E%3C/svg%3E';
+    @include assert-equal(
+      susy-svg-grid($offset: 1em),
+      url($data));
+  }
+}

@@ -16,7 +16,7 @@ end
 spec.bump! unless ENV["SAME_VERSION"]
 
 desc "Run tests and build susy-#{spec.version}.gem"
-task :build => [:test, :gem]
+task :build => [:test, :ag, :gem]
 
 desc "Make make the prebuilt gem susy-#{spec.version}.gem public."
 task :publish => [:record_version, :push_gem, :tag]
@@ -45,6 +45,11 @@ task :test do
     end
   end
   sh "rm test/error.output", :verbose => false
+end
+
+desc "compile the ag tests"
+task :ag do
+  sh "bundle install --quiet && bundle exec sass test/scss/ag.scss test/css/ag.css", :verbose => false
 end
 
 desc "Record the new version in version control for posterity"

@@ -8,7 +8,8 @@ package: ./package.json
 theme: default
 verbose: true
 groups:
-  a-config: Configuration
-  api: Grid Toolkit
-  math: Core Math
-  unprefix: Un-Prefixed Toolkit
+  a-config: 'Configuration'
+  api: 'Grid Toolkit'
+  math: 'Core Math'
+  plugin_svg-grid: '[Plugin] SVG Grid Image'
+  unprefix: 'Un-Prefixed Toolkit'

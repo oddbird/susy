@@ -1,6 +1,6 @@
 {
   "name": "susy",
-  "version": "3.0.0-alpha.1",
+  "version": "3.0.0-alpha.2",
   "description": "Sass power-tools for web layout.",
   "author": "Miriam Eric Suzanne <miriam@oddbird.net>",
   "main": "sass/_susy.scss",
@@ -30,9 +30,8 @@
     "needs": "^1.0.0"
   },
   "scripts": {
-    "test": "npm run test-libsass && npm run test-ruby",
+    "test": "npm run test-libsass && rake test && rake ag",
     "test-libsass": "node_modules/.bin/mocha",
-    "test-ruby": "rake test",
     "lint": "node_modules/.bin/sass-lint -vq",
     "docs": "sassdoc sass/",
     "commit": "npm run lint && npm test && npm run docs"

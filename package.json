@@ -34,7 +34,8 @@
     "test-libsass": "node_modules/.bin/mocha",
     "lint": "node_modules/.bin/sass-lint -vq",
     "docs": "sassdoc sass/",
-    "commit": "npm run lint && npm test && npm run docs"
+    "commit": "npm run lint && npm test && npm run docs",
+    "release": "npm run commit && git add . && git commit -m 'Release' && rake release SAME_VERSION=True"
   },
   "license": "BSD-3-Clause",
   "bugs": {

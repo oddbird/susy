@@ -209,6 +209,25 @@
 }
 
 
+// Repeat
+// ------
+@include test-module('Repeat [function]') {
+  @include test('Repeat single values') {
+    $list: (1 1 1 1);
+    @include assert-equal(
+      susy-repeat(4),
+      $list);
+  }
+
+  @include test('Repeat list values') {
+    $list: (6em 4em 6em 4em 6em 4em 6em 4em);
+    @include assert-equal(
+      susy-repeat(4, 6em 4em),
+      $list);
+  }
+}
+
+
 // Normalize Columns
 // -----------------
 @include test-module('Susy Normalize Columns [function]') {

@@ -196,6 +196,37 @@
 
 
 
+// Repeat
+// ------
+/// Similar to the `repeat(<count>, <value>)` function
+/// that is available in CSS Grid templates,
+/// repeats any value a given number of times —
+/// a useful shortcut for defining symetrical static grids
+///
+/// @group a-config
+///
+/// @param {Integer} $count -
+///   The number of repetitions
+/// @param {Any} $value -
+///   Any value can be repeated
+///
+/// @return {List} -
+///   List of repeated values
+@function susy-repeat(
+  $count,
+  $value: 1
+) {
+  $return: ();
+
+  @for $i from 1 through $count {
+    $return: join($return, $value);
+  }
+
+  @return $return;
+}
+
+
+
 // Normalize Columns
 // -----------------
 /// Normalize `columns` shorthand for Su
@@ -213,19 +244,11 @@
   $return: ();
 
   @if (type-of($columns) == 'number') and unitless($columns) {
-    @for $i from 1 through $columns {
-      $return: append($return, 1);
-    }
-
-    @return $return;
+    @return susy-repeat($columns);
   } @else if index($columns, 'x') and length($columns) == 3 {
+    $count: nth($columns, 1);
     $width: nth($columns, -1);
-
-    @for $i from 1 through nth($columns, 1) {
-      $return: append($return, $width);
-    }
-
-    @return $return;
+    @return susy-repeat($count, $width);
   }
 
   @return $columns;

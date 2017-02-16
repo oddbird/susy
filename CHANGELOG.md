@@ -1,6 +1,53 @@
 Changelog
 =========
 
+3.0.0.rc.1
+----------
+
+- Add `susy-repeat()` function
+  to generate repeating gradients with the same syntax
+  provided in CSS Grid templates
+
+
+3.0.0.alpha.5
+-------------
+
+- SVG Grid plugin, to provide grid-debugging options:
+  - `svg-grid-colors` global setting accepts one or more colors
+  - `susy-svg-grid()` function returns inline svg
+    for use in the `background` or generated `content` properties
+- Add `set-gutters $n` shorthand to override global gutter settings
+- Allow gutters function to take either context-only,
+  or full span/context shorthand —
+  useful when passing in details from a combined mixin
+- More test coverage, including error-handling!
+
+
+3.0.0.alpha.1
+-------------
+
+- No Mixins!
+- Trim down to the core math, and a thin layer of api functions:
+  - `susy-span()` to return a column-spanning width
+  - `susy-gutter()` to return a gutter width
+  - `susy-slice()` to return a slice of asymmetrical grid
+- Simplify to four settings:
+  - `columns` to define the grid columns
+    as a list of comparable or unitless relative numbers
+  - `gutters` to define the size of a gutter
+    in units comparable to the columns,
+    or a unitless relative number
+  - `spread` to define the default spread of a span
+    across adjacent gutters
+  - `container-spread` to define the default spread of a container
+    across side-edge gutters
+- Shorthand syntax for overriding settings on-the-fly:
+  - starting with a count, length, or column-list span
+  - `at $n`, `first`, or `last` location on asymmetrical grids
+  - `narrow`, `wide`, or `wider` for spread
+  - `of $n <spread>` for available grid columns and container-spread
+
+
 2.2.5 - May 14 2015
 -------------------
 

@@ -1,16 +1,16 @@
 Changelog
 =========
 
-3.0.0.rc.1
-----------
+3.0.0.rc.1 - UNRELEASED
+-----------------------
 
 - Add `susy-repeat()` function
   to generate repeating gradients with the same syntax
   provided in CSS Grid templates
 
 
-3.0.0.alpha.5
--------------
+3.0.0.alpha.5 - Feb 14, 2017
+----------------------------
 
 - SVG Grid plugin, to provide grid-debugging options:
   - `svg-grid-colors` global setting accepts one or more colors
@@ -23,8 +23,8 @@ Changelog
 - More test coverage, including error-handling!
 
 
-3.0.0.alpha.1
--------------
+3.0.0.alpha.1 - Sep 6, 2016
+---------------------------
 
 - No Mixins!
 - Trim down to the core math, and a thin layer of api functions:

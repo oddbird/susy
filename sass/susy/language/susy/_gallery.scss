@@ -8,7 +8,7 @@
 // - [$selector]  : child | of-type
 @mixin gallery(
   $span,
-  $selector: child
+  $selector: of-type
 ) {
   $inspect    : $span;
   $span       : parse-span($span);

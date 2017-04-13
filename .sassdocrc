@@ -5,12 +5,11 @@ display:
   access: public
 
 package: ./package.json
-theme: default
+theme: 'herman'
 verbose: true
 groups:
   a-config: 'Configuration'
-  api: 'Grid Toolkit'
+  api: 'Main API'
   math: 'Core Math'
   plugin-helpers: 'Plugin Helpers'
   plugin_svg-grid: '[Plugin] SVG Grid Image'
-  unprefix: 'Un-Prefixed Toolkit'

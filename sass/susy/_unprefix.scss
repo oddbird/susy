@@ -5,8 +5,9 @@
 // Span
 // ----
 /// Un-prefixed alias for `susy-span`
+/// (available by default)
 ///
-/// @group unprefix
+/// @group api
 /// @alias susy-span
 ///
 /// @param {List} $span
@@ -22,8 +23,9 @@
 // Gutter
 // ------
 /// Un-prefixed alias for `susy-gutter`
+/// (available by default)
 ///
-/// @group unprefix
+/// @group api
 /// @alias susy-gutter
 ///
 /// @param {Integer | List} $nested [null] -
@@ -39,8 +41,9 @@
 // Slice
 // -----
 /// Un-prefixed alias for `susy-slice`
+/// (available by default)
 ///
-/// @group unprefix
+/// @group api
 /// @alias susy-slice
 ///
 /// @param {List} $span

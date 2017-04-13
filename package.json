@@ -9,10 +9,10 @@
     "url": "git://github.com/oddbird/susy.git"
   },
   "devDependencies": {
-    "mocha": "3.0.2",
-    "sass-lint": "1.10.2",
-    "sass-true": "2.2.1",
-    "sassdoc": "2.1.20"
+    "mocha": "^3.2.0",
+    "sass-lint": "^1.10.2",
+    "sass-true": "^2.2.2",
+    "sassdoc": "^2.2.2"
   },
   "keywords": [
     "layout",
@@ -40,5 +40,8 @@
   "license": "BSD-3-Clause",
   "bugs": {
     "url": "https://github.com/oddbird/susy/issues"
+  },
+  "dependencies": {
+    "sassdoc-theme-herman": "^0.5.5"
   }
 }

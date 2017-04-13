@@ -23,8 +23,8 @@
 ///     across adjacent gutters;
 ///   - `of $n <spread>` for available grid columns
 ///     and spread of the container;
-///   - and `set-gutters $n` to override global gutter settings
-///   Can also accept a pre-parsed settings map...
+///   - and `set-gutters $n` to override
+///     global gutter settings
 /// @param {Map} $config [()] -
 ///   Optional map of Susy grid configuration settings
 /// @param {Bool} $context-only [false] -

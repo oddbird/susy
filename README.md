@@ -16,14 +16,6 @@ This is truely a grids-on-demand approach,
 where you build your own system,
 and we handle the math.
 
-We're planning to build various output-modules
-with mixins to help you get started.
-We'll probably start with a float-based module,
-and a flexbox module.
-If you have ideas for another plugin,
-or want to help move floats or flexbox along,
-pull requests are welcome!
-
 
 Getting Started
 ---------------
@@ -36,13 +28,17 @@ npm install susy@pre
 ```
 
 There are two imports to choose from.
-The default `sass/_susy.scss` comes with
+The default `sass/susy` comes with
 un-prefixed versions of the core API functions.
 If you want Susy to be name-spaced,
-import `sass/_prefix.scss` instead.
+import `sass/prefix` instead.
 
 ```scss
+// un-prefixed api functions
 @import '<path-to>/susy/sass/susy';
+
+// fully-prefixed functions
+@import '<path-to>/susy/sass/prefix';
 ```
 
 
@@ -100,6 +96,7 @@ to build all sorts of grids:
   flex-basis: span(3);
   padding: gutter() / 2;
 }
+
 
 // Make your own class system!
 .span {
@@ -201,8 +198,8 @@ will be treated as a global default
 across your project.
 
 
-Debugging [plugin]
-------------------
+Debugging Plugin: SVG Grid Image
+--------------------------------
 
 If you want to generate svg-backgrounds
 for help visualizing and debugging your grids,
@@ -236,14 +233,21 @@ background: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg"
                  /%3E%3C/svg%3E') no-repeat scroll;
 ```
 
+
 Advanced Features
 -----------------
 
 Once you get used to the basics,
-you can dig into the `spread` options —
-allowing you to include extra gutters in a span —
-and the `susy-slice()` function
-that can help you handle nesting-context with asymmetrical grids.
+you can dig into some of the more advanced features:
+
+- Use the `spread` and `container-spread` options
+  to include extra gutters in a span, or it's container.
+- Use the `susy-slice()` function
+  to handle nesting-context with asymmetrical grids.
+- Use `susy-compile()` and `susy-call`
+  to quickly access the full power of our
+  syntax-parsing and math engines,
+  while building plugins of your own.
 
 Happy grid-building!
 

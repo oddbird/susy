@@ -47,21 +47,10 @@
   $span,
   $config: ()
 ) {
-  $input: susy-settings($config, susy-parse($span));
-  $normal: susy-normalize($input);
+  $output: susy-compile($span, $config);
 
-  @if map-get($normal, 'span') {
-    $args: (
-      'span', 'columns', 'gutters', 'spread', 'container-spread', 'location'
-    );
-
-    @each $key in map-keys($normal) {
-      @if not (index($args, $key)) {
-        $normal: map-remove($normal, $key);
-      }
-    }
-
-    @return su-span($normal...);
+  @if map-get($output, 'span') {
+    @return susy-call('su-span', $output);
   }
 
   $actual: '[#{type-of($span)}] `#{inspect($span)}`';
@@ -100,25 +89,9 @@
   $context: susy-get('columns'),
   $config: ()
 ) {
-  @if (not index($context, 'of')) {
-    @if su-valid-columns($context, 'fail-silent') {
-      $context: 'of' $context;
-    } @else {
-      $context: join('of', $context);
-    }
-  }
+  $context: susy-compile($context, $config, 'context-only');
 
-  $parsed: susy-settings($config, susy-parse($context));
-  $normal: susy-normalize($parsed);
-  $args: ('columns', 'gutters', 'container-spread');
-
-  @each $key in map-keys($normal) {
-    @if not (index($args, $key)) {
-      $normal: map-remove($normal, $key);
-    }
-  }
-
-  @return su-gutter($normal...);
+  @return susy-call('su-gutter', $context);
 }
 
 
@@ -152,14 +125,7 @@
   $span,
   $config: ()
 ) {
-  $args: ('span', 'columns', 'location');
-  $input: susy-settings($config, susy-parse($span));
-  $normal: susy-normalize($input);
-  $output: ();
+  $span: susy-compile($span, $config);
 
-  @each $setting in $args {
-    $output: map-merge($output, ($setting: map-get($normal, $setting)));
-  }
-
-  @return su-slice($output...);
+  @return susy-call('su-slice', $span);
 }

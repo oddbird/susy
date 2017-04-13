@@ -25,7 +25,7 @@
 ///   - `of $n <spread>` for available grid columns
 ///     and spread of the container;
 ///   - and `set-gutters $n` to override global gutter settings
-/// @param {Bool} $context-only -
+/// @param {Bool} $context-only [false] -
 ///   Allow the parser to ignore span and span-spread values,
 ///   only parsing context and container-spread
 ///
@@ -34,7 +34,8 @@
 ///   (`span`, `location`, `columns`, `gutters`, `spread`, `container-spread`)
 ///   parsed from shorthand input
 @function susy-parse(
-  $shorthand
+  $shorthand,
+  $context-only: false
 ) {
   $parse-error: 'Unknown shorthand property:';
   $options: (
@@ -53,6 +54,15 @@
 
   $of: null;
   $next: false;
+
+  // Allow context-only shorthand, without span
+  @if ($context-only) and (not index($shorthand, 'of')) {
+    @if su-valid-columns($shorthand, 'fail-silent') {
+      $shorthand: 'of' $shorthand;
+    } @else {
+      $shorthand: join('of', $shorthand);
+    }
+  }
 
   // loop through the shorthand list
   @for $i from 1 through length($shorthand) {
@@ -170,8 +180,13 @@
 
     @if $value {
       $function: if(($setting == 'container-spread'), 'spread', $setting);
-      $function: _susy-get-function($function);
-      $value: call('susy-normalize-#{$function}', $value);
+      $function: 'susy-normalize-#{$function}';
+
+      @if function-exists('get-function') {
+        $function: get-function($function);
+      }
+
+      $value: call($function, $value);
     }
 
     $config: map-merge($config, ($setting: $value));

@@ -1,0 +1,99 @@
+// Plugin Helpers
+// ==============
+// - susy-compile [function]
+// - susy-call [function]
+
+
+
+// Compile
+// -------
+/// Combines parsed shorthand
+/// with local and global config,
+/// normalizing the results
+/// into a standard Susy settings map.
+///
+/// @group plugin-helpers
+///
+/// @param {List | Map} $shorthand -
+///   Shorthand expression to define the width of the span,
+///   optionally containing:
+///   - a count, length, or column-list span;
+///   - `at $n`, `first`, or `last` location on asymmetrical grids;
+///   - `narrow`, `wide`, or `wider` for optionally spreading
+///     across adjacent gutters;
+///   - `of $n <spread>` for available grid columns
+///     and spread of the container;
+///   - and `set-gutters $n` to override global gutter settings
+///   Can also accept a pre-parsed settings map...
+/// @param {Map} $config [()] -
+///   Optional map of Susy grid configuration settings
+/// @param {Bool} $context-only [false] -
+///   Allow the parser to ignore span and span-spread values,
+///   only parsing context and container-spread
+///
+/// @return {Map} -
+///   Parsed and normalized map of settings,
+///   based on global and local configuration,
+///   alongwith shorthad adjustments.
+///
+/// @example scss -
+///   $grid-data: susy-compile($user-input, $config);
+///   width: susy-call('su-span', $grid-data);
+@function susy-compile(
+  $short,
+  $config: (),
+  $context-only: false
+) {
+  @if (type-of($short) != 'map') and (length($short) > 0) {
+    $short: susy-parse($short, $context-only);
+  }
+
+  $merge: susy-settings($config, $short);
+  $normal: susy-normalize($merge);
+
+  @return $normal;
+}
+
+
+
+// Call
+// ----
+/// Calls a given grid function
+/// using the approapriate arguments
+/// from the passed-in config.
+///
+/// @group plugin-helpers
+///
+/// @param {String} $name -
+///   Name of the `su-` function to call
+/// @param {Map} $config -
+///   Map of Susy configuration settings to use as needed for arguments
+///
+/// @return {Any} -
+///   Results of the called function
+///
+/// @example scss -
+///   $grid-data: susy-compile($user-input, $config);
+///   width: susy-call('su-span', $grid-data);
+@function susy-call(
+  $name,
+  $config
+) {
+  $grid-function-args: (
+    'su-span': ('span', 'columns', 'gutters', 'spread', 'container-spread', 'location' ),
+    'su-gutter': ('columns', 'gutters', 'container-spread'),
+    'su-slice': ('span', 'columns', 'location'),
+    'su-sum': ('columns', 'gutters', 'spread'),
+  );
+
+  $args: map-get($grid-function-args, $name);
+  $call: if(function-exists('get-function'), get-function($name), $name);
+  $output: ();
+
+  @each $arg in $args {
+    $value: map-get($config, $arg);
+    $output: if($value, map-merge($output, ($arg: $value)), $output);
+  }
+
+  @return call($call, $output...);
+}

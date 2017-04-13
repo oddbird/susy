@@ -28,20 +28,7 @@
   $offset: null
 ) {
   // Grid parsing & normalizing
-  @if (type-of($grid) != 'map') and (length($grid) > 0) {
-    @if (not index($grid, 'of')) {
-      @if su-valid-columns($grid, 'fail-silent') {
-        $grid: 'of' $grid;
-      } @else {
-        $grid: join('of', $grid);
-      }
-    }
-
-    $grid: susy-parse($grid);
-  }
-
-  $grid: susy-settings($grid);
-  $grid: susy-normalize($grid);
+  $grid: susy-compile($grid, $context-only: true);
 
 
   // Color and gradient handling

@@ -1,13 +1,4 @@
 @charset "UTF-8";
-/* # Module: Susy Get Function [function] */
-/* ---------------------------------------- */
-/* Test: Returns a function or function-name */
-/*   ✔ ""susy-get"" and ""susy-get"" should be equal */
-/*  */
-/* Test: Returned function or name is callable */
-/*   ✔ "4" and "4" should be equal */
-/*  */
-/*  */
 /* # Module: Susy Error */
 /* ---------------------- */
 /* Test: Allow errors to return without blocking compilation */
@@ -290,6 +281,24 @@
 /*   ✔ Final keyword returns calculated position from end */
 /*  */
 /*  */
+/* # Module: Susy Compile [function] */
+/* ----------------------------------- */
+/* Test: Compiles normalized settings map from shorthand */
+/*   ✔ "("svg-grid-colors": #ccc, "columns": 1 1 1 1 1 1, "gutters": 1, "spread": 0, "container-spread": -1, "location": 5, "span": 2)" and "("svg-grid-colors": #ccc, "columns": 1 1 1 1 1 1, "gutters": 1, "spread": 0, "container-spread": -1, "location": 5, "span": 2)" should be equal */
+/*  */
+/* Test: Compiles normalized settings map from existing maps */
+/*   ✔ "("svg-grid-colors": #ccc, "columns": 1 1 1 1 1 1, "gutters": 1, "spread": 0, "container-spread": -1, "location": 5, "span": 2)" and "("svg-grid-colors": #ccc, "columns": 1 1 1 1 1 1, "gutters": 1, "spread": 0, "container-spread": -1, "location": 5, "span": 2)" should be equal */
+/*  */
+/* Test: Allows context-only parsing */
+/*   ✔ "("svg-grid-colors": #ccc, "columns": 1 1 1 1 1 1, "gutters": 0.25, "spread": -1, "container-spread": 0)" and "("svg-grid-colors": #ccc, "columns": 1 1 1 1 1 1, "gutters": 0.25, "spread": -1, "container-spread": 0)" should be equal */
+/*  */
+/*  */
+/* # Module: Susy Call [function] */
+/* -------------------------------- */
+/* Test: Calls a function using the appropriate args */
+/*   ✔ "1 1" and "1 1" should be equal */
+/*  */
+/*  */
 /* # Module: Susy Span [function] */
 /* -------------------------------- */
 /* Test: Simple span */
@@ -445,8 +454,8 @@
 /*  */
 /*  */
 /* # SUMMARY ---------- */
-/* 115 Tests: */
-/*  - 115 Passed */
+/* 117 Tests: */
+/*  - 117 Passed */
 /*  - 0 Failed */
 /* -------------------- */
 

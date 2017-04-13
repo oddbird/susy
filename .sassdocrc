@@ -11,5 +11,6 @@ groups:
   a-config: 'Configuration'
   api: 'Grid Toolkit'
   math: 'Core Math'
+  plugin-helpers: 'Plugin Helpers'
   plugin_svg-grid: '[Plugin] SVG Grid Image'
   unprefix: 'Un-Prefixed Toolkit'

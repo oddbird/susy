@@ -1,41 +1,7 @@
 // Sass Utilities
 // ==============
-// - Susy Get Function [function]
 // - Susy Error Output Override [variable]
 // - Susy Error [function]
-
-
-
-// Susy Get Function
-// -----------------
-/// Get a first-class function in Sass 3.5+,
-/// or the function name string (unchanged)
-/// in older Sass versions.
-///
-/// @access private
-///
-/// @param {String} $function -
-///   The name (string) of a function to be called.
-/// @return {String | Function} -
-///   Returns a first-class function in Sass 3.5+,
-///   or the function name string in older Sass versions.
-@function _susy-get-function(
-  $function
-) {
-  $type: type-of($function);
-
-  @if ($type != 'string') {
-    @return _susy-error(
-      'Invalid function-name [#{$type}] `#{$function}`, name must be a string.',
-      '_susy-get-function');
-  }
-
-  @if function-exists('get-function') {
-    @return get-function($function);
-  }
-
-  @return $function;
-}
 
 
 

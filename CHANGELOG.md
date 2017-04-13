@@ -7,6 +7,9 @@ Changelog
 - Add `susy-repeat()` function
   to generate repeating gradients with the same syntax
   provided in CSS Grid templates
+- Add `susy-compile()` and `susy-call()` plugin helpers,
+  to aide with conversions between the user API and
+  internal math functions.
 
 
 3.0.0.alpha.5 - Feb 14, 2017

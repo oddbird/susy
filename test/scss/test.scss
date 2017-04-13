@@ -18,6 +18,7 @@ $_susy-error-output-override: true;
 @import 'susy/settings';
 @import 'susy/validation';
 @import 'susy/parser';
+@import 'susy/plugin-helpers';
 @import 'susy/api';
 @import 'susy/unprefix';
 

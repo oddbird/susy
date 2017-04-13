@@ -19,31 +19,39 @@ or up-for-debate.
 
 When submitting a patch via pull request:
 
-- Write a clear, descriptive commit message with proper grammar
-- Include any appropriate unit tests, and make sure all tests are passing
+- Write a clear, descriptive commit message
+- Include any appropriate unit tests,
+  and make sure all tests are passing (`npm run test`)
 - Add your changes to the [changelog](CHANGELOG.md)
 - Update or write appropriate [SassDoc](http://sassdoc.com/)
   inline documentation for your changes
 - Keep it simple: one bug fix or feature per pull request
 
 
-Developement
-------------
+Development
+-----------
 
 Set up your dev environment
-with the appropriate dependencies:
+with the appropriate ruby and/or js dependencies:
 
 ```
+# for ruby sass:
 gem install bundler
 bundle install
-npm install
+
+# for libsass:
+yarn
 ```
 
-Linting and testing should be done
-before every commit:
+
+Committing
+----------
+
+Linting, testing, and documentation
+should be done before every commit:
 
 ```
-npm run pre-commit
+npm run commit
 ```
 
 They can also be triggered individually:
@@ -55,17 +63,12 @@ npm run lint
 # test with mocha/node-sass and ruby sass
 npm run test
 
-# run benchmark tests
-npm run benchmark
+# compile docs
+npm run docs
 ```
 
+Optionally use `npm run test-libsass` for js-only tests,
+or `rake test` for ruby-only environments.
 
-Documentation
--------------
-
-Build SassDoc:
-
-```
-npm install sassdoc -g
-sassdoc sass
-```
+Once you've fixed any final errors or typos,
+commit your changes, and submit a pull request!

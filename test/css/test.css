@@ -360,6 +360,7 @@
 /*  */
 /* Test: Gutter */
 /*   ✔ Unprefixed gutter() returns same result as susy-gutter() */
+/*   ✔ Unprefixed gutter() returns same result as susy-gutter() */
 /*  */
 /* Test: Slice */
 /*   ✔ Unprefixed slice() returns same result as susy-slice() */
@@ -460,7 +461,7 @@
 /* Stats:  */
 /*  - 33 Modules  */
 /*  - 117 Tests  */
-/*  - 121 Assertions */
+/*  - 122 Assertions */
 /* -------------------- */
 
 /*# sourceMappingURL=test.css.map */

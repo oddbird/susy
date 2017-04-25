@@ -16,6 +16,11 @@
       gutter(6, $config),
       susy-gutter(6, $config),
       'Unprefixed gutter() returns same result as susy-gutter()');
+
+    @include assert-equal(
+      gutter(),
+      susy-gutter(),
+      'Unprefixed gutter() returns same result as susy-gutter()');
   }
 
   @include test('Slice') {

@@ -28,13 +28,13 @@
 /// @group api
 /// @alias susy-gutter
 ///
-/// @param {Integer | List} $nested [null] -
+/// @param {Integer | List} $context [null] -
 /// @param {Map} $config [()]
 @function gutter(
-  $nested: null,
+  $context: susy-get('columns'),
   $config: ()
 ) {
-  @return susy-gutter($nested, $config);
+  @return susy-gutter($context, $config);
 }
 
 

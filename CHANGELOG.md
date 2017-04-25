@@ -1,9 +1,10 @@
 Changelog
 =========
 
-3.0.0.rc.1 - UNRELEASED
------------------------
+3.0.0.alpha.6 - Apr 25, 2017
+----------------------------
 
+- Fix bug in empty `gutter()` alias
 - Add `susy-repeat()` function
   to generate repeating gradients with the same syntax
   provided in CSS Grid templates

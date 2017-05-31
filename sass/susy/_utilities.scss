@@ -24,3 +24,24 @@ $_susy-error-output-override: false !default;
 
   @error '[#{$source}] #{$message}';
 }
+
+
+// Susy Map Add Units
+// ------------------
+@function _susy-map-add-units(
+  $map,
+  $value
+) {
+  $unit: $value * 0;
+  $has: map-get($map, $unit) or 0;
+
+  @if ($has == 0) {
+    @each $try, $could in $map {
+      $match: comparable($try, $value);
+      $unit: if($match, $try, $unit);
+      $has: if($match, $could, $has);
+    }
+  }
+
+  @return map-merge($map, ($unit: $has + $value));
+}

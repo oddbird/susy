@@ -1,0 +1,87 @@
+// Float
+// =====
+
+
+
+// Asymmetrical Calc, Before
+// -------------------------
+
+$susy: (
+  'columns': (50px 4em 1 1 3 1 3 6em 3em 3cm),
+  'gutters': 0.125in,
+);
+
+.float-calc-before {
+  .ag {
+    @include clearfix;
+    background: susy-svg-grid() no-repeat scroll;
+  }
+
+  .grid-element {
+    float: left;
+    margin-left: susy-gutter();
+
+    &:first-child,
+    &.full {
+      // sass-lint:disable no-important
+      margin-left: 0 !important;
+      // sass-lint:enable no-important
+    }
+  }
+
+  .full {
+    @include clearfix;
+    width: 100%;
+  }
+
+  .size1of5 {
+    padding-bottom: 6.75rem;
+    width: susy-span('first' 2);
+
+    + .size1of5 {
+      float: right;
+      width: susy-span(last 2);
+    }
+  }
+
+  .size3of5 {
+    float: left;
+    margin-left: susy-gutter();
+    width: susy-span(6 at 3);
+
+    > .size1of2 {
+      &:first-child {
+        width: susy-span('first' 3 of susy-slice(6 at 3));
+      }
+
+      + .size1of2 {
+        margin-left: susy-gutter(susy-slice(6 at 3));
+        width: susy-span('last' 3 of susy-slice(6 at 3));
+      }
+    }
+  }
+
+  .size1of3 {
+    padding-bottom: 3.75rem;
+    width: susy-span('first' 2 of susy-slice(6 at 3));
+  }
+
+  .size2of3 {
+    float: right;
+    width: susy-span('last' 4 of susy-slice(6 at 3));
+
+    .grid-element {
+      margin-left: susy-gutter(susy-slice(4 at 5));
+    }
+
+    .size1of2 {
+      &:first-child {
+        width: susy-span('first' 2 of susy-slice(4 at 5));
+      }
+
+      + .size1of2 {
+        width: susy-span('last' 2 of susy-slice(4 at 5));
+      }
+    }
+  }
+}

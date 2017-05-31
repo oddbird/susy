@@ -167,14 +167,57 @@ h3 {
     float: left;
     width: 33em; }
     .float-static-inside .size3of5 > .size1of2 {
-      width: 50%; }
+      width: calc(1.5em + ((100% - 3em) / 6 * 3)); }
   .float-static-inside .size1of3 {
     padding-bottom: 3.75rem;
-    width: 33.33333%; }
+    width: calc(1em + ((100% - 3em) / 6 * 2)); }
   .float-static-inside .size2of3 {
     float: right;
-    width: 66.66667%; }
+    width: calc(2em + ((100% - 3em) / 6 * 4)); }
     .float-static-inside .size2of3 .size1of2 {
-      width: 50%; }
+      width: calc(1em + ((100% - 2em) / 4 * 2)); }
+
+.float-calc-before .ag::after {
+  clear: both;
+  content: ' ';
+  display: block; }
+.float-calc-before .grid-element {
+  float: left;
+  margin-left: 0.125in; }
+  .float-calc-before .grid-element:first-child, .float-calc-before .grid-element.full {
+    margin-left: 0 !important; }
+.float-calc-before .full {
+  width: 100%; }
+  .float-calc-before .full::after {
+    clear: both;
+    content: ' ';
+    display: block; }
+.float-calc-before .size1of5 {
+  padding-bottom: 6.75rem;
+  width: calc((62px + 4em)); }
+  .float-calc-before .size1of5 + .size1of5 {
+    float: right;
+    width: calc((3em + 3ch + 0.125in)); }
+.float-calc-before .size3of5 {
+  float: left;
+  margin-left: 0.125in;
+  width: calc((6em + 0.625in) + (100% - (158px + 13em + 3ch))); }
+  .float-calc-before .size3of5 > .size1of2:first-child {
+    width: calc(0.25in + ((100% - (6em + 0.625in)) / 9 * 5)); }
+  .float-calc-before .size3of5 > .size1of2 + .size1of2 {
+    margin-left: 0.125in;
+    width: calc((6em + 0.25in) + ((100% - (6em + 0.625in)) / 9 * 4)); }
+.float-calc-before .size1of3 {
+  padding-bottom: 3.75rem;
+  width: calc(0.125in + ((100% - (6em + 0.625in)) / 9 * 2)); }
+.float-calc-before .size2of3 {
+  float: right;
+  width: calc((6em + 0.375in) + ((100% - (6em + 0.625in)) / 9 * 7)); }
+  .float-calc-before .size2of3 .grid-element {
+    margin-left: 0.125in; }
+  .float-calc-before .size2of3 .size1of2:first-child {
+    width: calc(0.125in + ((100% - (6em + 0.375in)) / 7 * 4)); }
+  .float-calc-before .size2of3 .size1of2 + .size1of2 {
+    width: calc((6em + 0.125in) + ((100% - (6em + 0.375in)) / 7 * 3)); }
 
 /*# sourceMappingURL=ag.css.map */

@@ -22,8 +22,9 @@
   $name: null
 ) {
   $_svg-units: ('em', 'ex', 'px', 'pt', 'pc', 'cm', 'mm', 'in', '%');
+  $string: type-of($length) == 'string';
 
-  @if ($length == 0) or index($_svg-units, unit($length)) {
+  @if ($length == 0) or ($string) or index($_svg-units, unit($length)) {
     @return $length;
   }
 

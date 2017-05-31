@@ -40,7 +40,7 @@
 ) {
   $span: su-valid-span($span);
   $columns: su-valid-columns($columns);
-  $gutters: su-valid-gutters($gutters, $columns);
+  $gutters: su-valid-gutters($gutters);
   $spread: su-valid-spread($spread);
 
   @if (type-of($span) == 'number') {
@@ -50,6 +50,10 @@
 
     $location: su-valid-location($span, $location, $columns);
     $span: su-slice($span, $columns, $location, $validate: false);
+  }
+
+  @if su-needs-calc($span, $columns, $gutters, not 'validate') {
+    @return su-calc($span, $columns, $gutters, $spread, $container-spread, not 'validate');
   }
 
   $span-width: su-sum($span, $gutters, $spread, $validate: false);
@@ -92,6 +96,10 @@
     }
   }
 
+  @if su-needs-calc($gutters, $columns, $gutters, not 'validate') {
+    @return su-calc($gutters, $columns, $gutters, -1, $container-spread, not 'validate');
+  }
+
   $container: su-sum($columns, $gutters, $container-spread);
   @return percentage($gutters / $container);
 }
@@ -125,7 +133,7 @@
 ) {
   @if $validate {
     $columns: su-valid-columns($columns);
-    $gutters: su-valid-gutters($gutters, $columns);
+    $gutters: su-valid-gutters($gutters);
     $spread: su-valid-spread($spread);
   }
 
@@ -135,13 +143,10 @@
     $column-sum: $column-sum + $column;
   }
 
-  // Gutters are removed from the math if they are non-comparable
-  @if (unitless($column-sum)) and (not unitless($gutters)) {
-    @return $column-sum;
-  }
-
   $gutter-sum: (ceil(length($columns)) + $spread) * $gutters;
-  @return $column-sum + $gutter-sum;
+  $total: if(($gutter-sum > 0), $column-sum + $gutter-sum, $column-sum);
+
+  @return $total;
 }
 
 
@@ -187,4 +192,107 @@
   }
 
   @return $sub-columns;
+}
+
+
+// Su Calc-Sum
+// -----------
+@function su-calc-sum(
+  $columns,
+  $gutters,
+  $spread,
+  $validate: true
+) {
+  @if $validate {
+    $columns: su-valid-columns($columns);
+    $gutters: su-valid-gutters($gutters);
+    $spread: su-valid-spread($spread);
+  }
+
+  $fluid: 0;
+  $fixed: ();
+  $calc: null;
+
+  // Gutters
+  $gutters:  $gutters * (length($columns) + $spread);
+
+  // Columns
+  @each $col in append($columns, $gutters) {
+    @if unitless($col) {
+      $fluid: $fluid + $col;
+    } @else {
+      $fixed: _susy-map-add-units($fixed, $col);
+    }
+  }
+
+  // Compile Fixed Units
+  @each $unit, $total in $fixed {
+    @if ($total != (0 * $total)) {
+      $calc: if($calc, '#{$calc} + #{$total}', '#{$total}');
+    }
+  }
+
+  // Calc null or string
+  @if $calc {
+    $calc: if(str-index($calc, '+'), '(#{$calc})', '#{$calc}');
+  }
+
+  // Fluid 0 => null
+  $fluid: if(($fluid == 0), null, $fluid);
+
+
+  // Return map
+  @return (
+    'fixed': $calc,
+    'fluid': $fluid,
+  );
+}
+
+
+// Su Calc
+// -------
+@function su-calc(
+  $span,
+  $columns,
+  $gutters,
+  $spread,
+  $container-spread: $spread,
+  $validate: true
+) {
+  @if $validate {
+    $span: su-valid-span($span);
+    $columns: su-valid-columns($columns);
+    $gutters: su-valid-gutters($gutters);
+    $spread: su-valid-spread($spread);
+    $container-spread: su-valid-spread($container-spread);
+  }
+
+  // Span and context
+  $span: su-calc-sum($span, $gutters, $spread, not 'validate');
+  $context: su-calc-sum($columns, $gutters, $container-spread, not 'validate');
+
+  // Fixed and fluid
+  $fixed-span: map-get($span, 'fixed');
+  $fluid-span: map-get($span, 'fluid');
+  $fixed-context: map-get($context, 'fixed');
+  $fluid-context: map-get($context, 'fluid');
+
+  $calc: '#{$fixed-span}';
+  $fluid-calc: '(100% - #{$fixed-context})';
+
+  // Fluid-values
+  @if (not $fluid-span) {
+    $fluid-calc: null;
+  } @else if ($fluid-span != $fluid-context) {
+    $fluid-span: '* #{$fluid-span}';
+    $fluid-context: if($fluid-context, '/ #{$fluid-context}', '');
+    $fluid-calc: '(#{$fluid-calc $fluid-context $fluid-span})';
+  }
+
+  @if $fluid-calc {
+    $calc: if(($calc != ''), '#{$calc} + ', '');
+    $calc: '#{$calc + $fluid-calc}';
+  }
+
+  @return calc(#{unquote($calc)});
 }

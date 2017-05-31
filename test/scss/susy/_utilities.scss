@@ -2,10 +2,56 @@
 // ==============
 
 
-@include test-module('Susy Error') {
+// Susy Error
+// ----------
+@include test-module('Susy Error [function]') {
   @include test('Allow errors to return without blocking compilation') {
     @include assert-equal(
       _susy-error('This is a test error message', '_susy-error test'),
       'ERROR [_susy-error test] This is a test error message');
+  }
+}
+
+
+// Susy Map Add Units
+// ------------------
+@include test-module('Susy Map Add Units [function]') {
+  $map: (
+    0cm: 300cm,
+    0em: 20em,
+  );
+
+  @include test('Matched units') {
+    $expect: (
+      0cm: 310cm,
+      0em: 20em,
+    );
+
+    @include assert-equal(
+      _susy-map-add-units($map, 10cm),
+      $expect);
+  }
+
+  @include test('Comparable units') {
+    $expect: (
+      0cm: 310cm,
+      0em: 20em,
+    );
+
+    @include assert-equal(
+      _susy-map-add-units($map, 100mm),
+      $expect);
+  }
+
+  @include test('New units') {
+    $expect: (
+      0cm: 300cm,
+      0em: 20em,
+      0fr: 1fr,
+    );
+
+    @include assert-equal(
+      _susy-map-add-units($map, 1fr),
+      $expect);
   }
 }

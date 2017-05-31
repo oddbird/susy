@@ -1,8 +1,20 @@
 @charset "UTF-8";
-/* # Module: Susy Error */
-/* ---------------------- */
+/* # Module: Susy Error [function] */
+/* --------------------------------- */
 /* Test: Allow errors to return without blocking compilation */
 /*   ✔ ""ERROR [_susy-error test] This is a test error message"" and ""ERROR [_susy-error test] This is a test error message"" should be equal */
+/*  */
+/*  */
+/* # Module: Susy Map Add Units [function] */
+/* ----------------------------------------- */
+/* Test: Matched units */
+/*   ✔ "(0cm: 310cm, 0em: 20em)" and "(0cm: 310cm, 0em: 20em)" should be equal */
+/*  */
+/* Test: Comparable units */
+/*   ✔ "(0cm: 310cm, 0em: 20em)" and "(0cm: 310cm, 0em: 20em)" should be equal */
+/*  */
+/* Test: New units */
+/*   ✔ "(0cm: 300cm, 0em: 20em, 0fr: 1fr)" and "(0cm: 300cm, 0em: 20em, 0fr: 1fr)" should be equal */
 /*  */
 /*  */
 /* # Module: Su Span [function] */
@@ -18,6 +30,18 @@
 /*  */
 /* Test: Explicit length span */
 /*   ✔ Handles explicit length-spans */
+/*  */
+/* Test: Mixed fluid-static */
+/*   ✔ "calc(310px + ((100% - 350px) / 3 * 2))" and ""calc(310px + ((100% - 350px) / 3 * 2))"" should be equal */
+/*  */
+/* Test: Mixed static */
+/*   ✔ "calc((300mm + 2em) + ((100% - (500mm + 5em)) / 3 * 2))" and ""calc((300mm + 2em) + ((100% - (500mm + 5em)) / 3 * 2))"" should be equal */
+/*  */
+/* Test: Mixed static with location */
+/*   ✔ "calc(1em + (100% - (500mm + 3em)))" and ""calc(1em + (100% - (500mm + 3em)))"" should be equal */
+/*  */
+/* Test: Single span, mixed columns and gutters */
+/*   ✔ "40pt" and "40pt" should be equal */
 /*  */
 /*  */
 /* # Module: Su Gutter [function] */
@@ -37,8 +61,8 @@
 /* Test: Calculate the total units in a static grid */
 /*   ✔ Returns combined column and gutter units */
 /*  */
-/* Test: Handle non-comparable gutters */
-/*   ✔ No static gutters are added to fluid grids */
+/* Test: Ignore 0 gutters */
+/*   ✔ "10em" and "10em" should be equal */
 /*  */
 /* Test: Handle single-column spans */
 /*   ✔ No static gutters are added to fluid grids */
@@ -51,6 +75,27 @@
 /*  */
 /* Test: Slice a grid with fractions */
 /*   ✔ Slice a fraction of an asymmetrical column */
+/*  */
+/*  */
+/* # Module: Su Calc Sum [function] */
+/* ---------------------------------- */
+/* Test: Mixed fluid-static */
+/*   ✔ "("fixed": "350px", "fluid": 3)" and "("fixed": "350px", "fluid": 3)" should be equal */
+/*  */
+/* Test: Mixed static */
+/*   ✔ "("fixed": "(500mm + 4em)", "fluid": 3)" and "("fixed": "(500mm + 4em)", "fluid": 3)" should be equal */
+/*  */
+/* Test: Zero handling */
+/*   ✔ "("fixed": "4em", "fluid": null)" and "("fixed": "4em", "fluid": null)" should be equal */
+/*  */
+/*  */
+/* # Module: Su Calc [function] */
+/* ------------------------------ */
+/* Test: Mixed fluid-static */
+/*   ✔ "calc(310px + ((100% - 350px) / 3 * 2))" and ""calc(310px + ((100% - 350px) / 3 * 2))"" should be equal */
+/*  */
+/* Test: Mixed static */
+/*   ✔ "calc(1em + ((100% - (500mm + 5em)) / 3 * 2))" and ""calc(1em + ((100% - (500mm + 5em)) / 3 * 2))"" should be equal */
 /*  */
 /*  */
 /* # Module: Susy Settings [function] */
@@ -91,8 +136,11 @@
 /* Test: Explicit list of columns */
 /*   ✔ A list of comparable columns is valid */
 /*  */
-/* Test: Mismatched list error */
-/*   ✔ ""ERROR [su-valid-span] [list] `1px 2 4em 3` is not a valid number, length, or column-list for $span."" and ""ERROR [su-valid-span] [list] `1px 2 4em 3` is not a valid number, length, or column-list for $span."" should be equal */
+/* Test: Mismatched list */
+/*   ✔ "1px 2 4em 3" and "1px 2 4em 3" should be equal */
+/*  */
+/* Test: Single-item unitless explicit list */
+/*   ✔ "2" and "2" should be equal */
 /*  */
 /* Test: Unknown type error */
 /*   ✔ ""ERROR [su-valid-span] [color] `blue` is not a valid number, length, or column-list for $span."" and ""ERROR [su-valid-span] [color] `blue` is not a valid number, length, or column-list for $span."" should be equal */
@@ -101,26 +149,26 @@
 /* # Module: Su Valid Columns [function] */
 /* --------------------------------------- */
 /* Test: Fluid columns */
-/*   ✔ A list of unitless numbers is list of fluid columns */
+/*   ✔ "1 2 4 2" and "1 2 4 2" should be equal */
 /*  */
 /* Test: Single fluid column */
-/*   ✔ A single unitless number is a single fluid column */
+/*   ✔ "4" and "4" should be equal */
 /*  */
 /* Test: Static columns */
-/*   ✔ A list of comparably-united numbers are a list of static columns */
+/*   ✔ "10cm 200mm 45cm 230mm" and "10cm 200mm 45cm 230mm" should be equal */
 /*  */
 /* Test: Single static column */
-/*   ✔ A single united number is a single static column */
+/*   ✔ "20em" and "20em" should be equal */
 /*  */
-/* Test: Mismatched units error */
-/*   ✔ ""ERROR [su-valid-columns] [list] `1px 2 4em 3` is not a valid list of comparable lengths for $columns."" and ""ERROR [su-valid-columns] [list] `1px 2 4em 3` is not a valid list of comparable lengths for $columns."" should be equal */
+/* Test: Mismatched units */
+/*   ✔ "1px 2 4em 3" and "1px 2 4em 3" should be equal */
 /*  */
 /* Test: Silent failure */
 /*   ✔ "null" and "null" should be equal */
 /*  */
-/* Test: Mismatched unitless error */
-/*   ✔ ""ERROR [su-valid-columns] [list] `1 2 4em 3` is not a valid list of comparable lengths for $columns."" and ""ERROR [su-valid-columns] [list] `1 2 4em 3` is not a valid list of comparable lengths for $columns."" should be equal */
-/*   ✔ ""ERROR [su-valid-columns] [list] `1em 2 4em 3` is not a valid list of comparable lengths for $columns."" and ""ERROR [su-valid-columns] [list] `1em 2 4em 3` is not a valid list of comparable lengths for $columns."" should be equal */
+/* Test: Mismatched unitless */
+/*   ✔ "1 2 4em 3" and "1 2 4em 3" should be equal */
+/*   ✔ "1em 2 4em 3" and "1em 2 4em 3" should be equal */
 /*  */
 /*  */
 /* # Module: Su Valid Gutters [function] */
@@ -129,19 +177,10 @@
 /*   ✔ A unitless number is a valid setting for gutters */
 /*  */
 /* Test: Static */
-/*   ✔ Any length is a valid setting for gutters on a static grid */
-/*  */
-/* Test: Static gutters, fluid grid */
-/*   ✔ Static gutters are allowed on a fluid grid */
+/*   ✔ Any length is a valid setting for gutters */
 /*  */
 /* Test: Invalid gutters error */
-/*   ✔ "'ERROR [su-valid-gutters] [string] `"wtf"` is not a value for $gutters.'" and "'ERROR [su-valid-gutters] [string] `"wtf"` is not a value for $gutters.'" should be equal */
-/*  */
-/* Test: Mismatched gutter/column unitless error */
-/*   ✔ ""ERROR [su-valid-gutters] Gutters must have units for a static grid."" and ""ERROR [su-valid-gutters] Gutters must have units for a static grid."" should be equal */
-/*  */
-/* Test: Mismatched gutter/column units error */
-/*   ✔ ""ERROR [su-valid-gutters] Gutter and column units must be comparable."" and ""ERROR [su-valid-gutters] Gutter and column units must be comparable."" should be equal */
+/*   ✔ "'ERROR [su-valid-gutters] [string] `"wtf"` is not a number or length for $gutters.'" and "'ERROR [su-valid-gutters] [string] `"wtf"` is not a number or length for $gutters.'" should be equal */
 /*  */
 /*  */
 /* # Module: Su Valid Spread [function] */
@@ -170,6 +209,49 @@
 /*  */
 /* Test: Location/span combination error */
 /*   ✔ ""ERROR [su-valid-location] There are not enough columns in grid `1 2 3 5 8` for span `6` at `3`."" and ""ERROR [su-valid-location] There are not enough columns in grid `1 2 3 5 8` for span `6` at `3`."" should be equal */
+/*  */
+/*  */
+/* # Module: Su Is Comparable [function] */
+/* --------------------------------------- */
+/* Test: Fully fluid */
+/*   ✔ ""fluid"" and ""fluid"" should be equal */
+/*  */
+/* Test: Comparable static */
+/*   ✔ ""static"" and ""static"" should be equal */
+/*  */
+/* Test: Mixed fluid-static */
+/*   ✔ "false" should be falsey */
+/*  */
+/* Test: Non-comparable static */
+/*   ✔ "false" should be falsey */
+/*  */
+/*  */
+/* # Module: Su Needs Calc [function] */
+/* ------------------------------------ */
+/* Test: Fully fluid */
+/*   ✔ "false" should be falsey */
+/*  */
+/* Test: Fully static */
+/*   ✔ "false" should be falsey */
+/*  */
+/* Test: Static span and gutters */
+/*   ✔ "false" should be falsey */
+/*  */
+/* Test: Mismatched span units (complex) */
+/*   ✔ "true" should be truthy */
+/*  */
+/* Test: Mismatched span units (simple) */
+/*   ✔ "true" should be truthy */
+/*   ✔ "true" should be truthy */
+/*  */
+/* Test: Mismatched gutter units */
+/*   ✔ "true" should be truthy */
+/*  */
+/* Test: Fluid span and gutters, mixed columns */
+/*   ✔ "true" should be truthy */
+/*  */
+/* Test: Single span, mixed columns and gutters */
+/*   ✔ "false" should be falsey */
 /*  */
 /*  */
 /* # Module: Susy Parse [function] */
@@ -319,6 +401,10 @@
 /* Test: Span error */
 /*   ✔ Error when there is no span */
 /*  */
+/* Test: wtf */
+/*   ✔ "calc(((100% - (271.38583px + 13em)) / 9 * 1))" and ""calc(((100% - (271.38583px + 13em)) / 9 * 1))"" should be equal */
+/*   ✔ "calc((74px + 4em))" and ""calc((74px + 4em))"" should be equal */
+/*  */
 /*  */
 /* # Module: Susy Gutter [function] */
 /* ---------------------------------- */
@@ -455,13 +541,13 @@
 /*  */
 /*  */
 /* # SUMMARY ---------- */
-/* 117 Tests: */
-/*  - 117 Passed */
+/* 140 Tests: */
+/*  - 140 Passed */
 /*  - 0 Failed */
 /* Stats:  */
-/*  - 33 Modules  */
-/*  - 117 Tests  */
-/*  - 122 Assertions */
+/*  - 38 Modules  */
+/*  - 140 Tests  */
+/*  - 147 Assertions */
 /* -------------------- */
 
 /*# sourceMappingURL=test.css.map */

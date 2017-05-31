@@ -25,26 +25,32 @@
 // ---------------------
 @include test-module('SVG Offset [function]') {
   @include test('Fluid/Static mismatch') {
-    $test: susy-settings((
+    $test: (
       'columns': 1 1 1 1 1,
       'gutters': 2em,
-    ));
+    );
+    $test: susy-compile($test, $susy);
+
     @include assert-false(_susy-svg-offset($test));
   }
 
   @include test('No extra spread') {
-    $test: susy-settings((
+    $test: (
       'container-spread': 0,
       'spread': 0,
-    ));
+    );
+    $test: susy-compile($test, $susy);
+
     @include assert-false(_susy-svg-offset($test));
   }
 
   @include test('No extra spread') {
-    $test: susy-settings((
+    $test: (
       'container-spread': 1,
       'spread': -1,
-    ));
+    );
+    $test: susy-compile($test, $susy);
+
     @include assert-equal(
       _susy-svg-offset($test),
       susy-gutter($config: $test));

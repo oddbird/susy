@@ -40,12 +40,12 @@
 // Valid Columns
 // -------------
 /// Check that the `columns` argument is a valid
-/// list of comparable column-lengths
+/// list of column-lengths
 ///
 /// @access private
 ///
 /// @param {List} $columns -
-///   List of column-lengths using comparable units
+///   List of column-lengths
 /// @param {Bool} $silent-failure [true] -
 ///   Set false to return null on failure
 ///
@@ -55,20 +55,17 @@
   $columns,
   $silent-failure: false
 ) {
-  $first: nth($columns, 1);
-
   @each $col in $columns {
-    @if (type-of($col) != 'number') or (not comparable($col, $first)) or (unitless($col) and not unitless($first)) or (unitless($first) and not unitless($col)) {
+    @if (type-of($col) != 'number') {
       @if $silent-failure {
         @return null;
       }
 
       $actual: '[#{type-of($columns)}] `#{inspect($columns)}`';
       @return _susy-error(
-        '#{$actual} is not a valid list of comparable lengths for $columns.',
+        '#{$actual} is not a valid list of numbers for $columns.',
         'su-valid-columns');
     }
-
   }
 
   @return $columns;
@@ -84,38 +81,21 @@
 ///
 /// @param {Number} $gutters -
 ///   Width of a gutter
-/// @param {List} $columns -
-///   Valid list of column-lengths using comparable units
 ///
 /// @return {Number} -
 ///   Validated `$gutters` number
 @function su-valid-gutters(
-  $gutters,
-  $columns
+  $gutters
 ) {
   $type: type-of($gutters);
 
   @if ($type == 'number') {
-    $first: nth($columns, 1);
-
-    @if (unitless($gutters) and not unitless($first)) {
-      @return _susy-error(
-        'Gutters must have units for a static grid.',
-        'su-valid-gutters');
-    }
-
-    @if (not comparable($gutters, $first)) {
-      @return _susy-error(
-        'Gutter and column units must be comparable.',
-        'su-valid-gutters');
-    }
-
     @return $gutters;
   }
 
   $actual: '[#{$type}] `#{inspect($gutters)}`';
   @return _susy-error(
-    '#{$actual} is not a value for $gutters.',
+    '#{$actual} is not a number or length for $gutters.',
     'su-valid-gutters');
 }
 
@@ -196,3 +176,60 @@
 
   @return $location;
 }
+
+
+// Is Comparable
+// -------------
+@function su-is-comparable(
+  $lengths...
+) {
+  $first: nth($lengths, 1);
+
+  @if (length($lengths) == 1) {
+    @return if(unitless($first), 'fluid', 'static');
+  }
+
+  @for $i from 2 through length($lengths) {
+    $comp: nth($lengths, $i);
+
+    $fail: not comparable($first, $comp);
+    $fail: $fail or (unitless($first) and not unitless($comp));
+    $fail: $fail or (unitless($comp) and not unitless($first));
+
+    @if $fail {
+      @return false;
+    }
+  }
+
+  @return if(unitless($first), 'fluid', 'static');
+}
+
+
+// Needs Calc
+// ----------
+@function su-needs-calc(
+  $span,
+  $columns,
+  $gutters,
+  $validate: true
+) {
+  @if $validate {
+    $span: su-valid-span($span);
+    $columns: su-valid-columns($columns);
+    $gutters: su-valid-gutters($gutters);
+  }
+
+  $check: if((length($span) > 1), append($span, $gutters), $span);
+  $safe-span: su-is-comparable($check...);
+
+  @if ($safe-span == 'static') {
+    @return false;
+  } @else if (not $safe-span) {
+    @return true;
+  }
+
+  $safe-fluid: su-is-comparable($gutters, $columns...);
+
+  @return not $safe-fluid;
+}
+

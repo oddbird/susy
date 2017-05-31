@@ -50,18 +50,13 @@
   $grid
 ) {
   $columns: su-valid-columns(map-get($grid, 'columns'));
-  $gutters: su-valid-gutters(map-get($grid, 'gutters'), $columns);
-  $first: nth($columns, 1);
+  $gutters: su-valid-gutters(map-get($grid, 'gutters'));
+  $container: su-valid-spread(map-get($grid, 'container-spread'));
+  $span: su-valid-spread(map-get($grid, 'spread'));
 
-  @if (unitless($first)) and (not unitless($gutters)) {
-    @return null;
-  }
-
-  $container: map-get($grid, 'container-spread');
-  $span: map-get($grid, 'spread');
   $extra: $container - $span;
 
-  @if $extra == 0 {
+  @if ($extra == 0) {
     @return null;
   }
 

@@ -15,19 +15,19 @@
 ///
 /// @type Map
 ///
-/// @see $susy-defaults
+/// @see $_susy-defaults
 ///
-/// @prop {Number | List} columns [4] -
+/// @prop {number | list} columns [4] -
 ///   Description of the columns in a grid,
 ///   their number, realtive sizes (if asymmetrical),
 ///   and optional static widths
-/// @prop {Number} gutters [0.25] -
+/// @prop {number} gutters [0.25] -
 ///   Ratio of a gutter to a column,
 ///   or static width of a single gutter
-/// @prop {String} spread ['narrow'] -
+/// @prop {string} spread ['narrow'] -
 ///   Spread of an element across adjacent gutters:
 ///   either `narrow` (none), `wide` (one), or `wider` (two)
-/// @prop {String} container-spread ['narrow'] -
+/// @prop {string} container-spread ['narrow'] -
 ///   Spread of a container around adjacent gutters:
 ///   either `narrow` (none), `wide` (one), or `wider` (two)
 ///
@@ -42,6 +42,49 @@ $susy: () !default;
 
 
 
+// Repeat
+// ------
+/// Similar to the `repeat(<count>, <value>)` function
+/// that is available in native CSS Grid templates,
+/// repeats any value a given number of times —
+/// a useful shortcut for defining symetrical static grids
+///
+/// @group a-config
+///
+/// @param {integer} $count -
+///   The number of repetitions
+/// @param {*} $value -
+///   Any value can be repeated
+///
+/// @return {list} -
+///   List of repeated values
+///
+/// @example scss
+///   // 12 column grid, with 5em columns
+///   $susy: (
+///     columns: repeat(12, 5em),
+///   );
+///
+/// @example scss
+///   // asymmetrical 5-column grid
+///   $susy: (
+///     columns: 20px repeat(3, 100px) 20px,
+///   );
+@function susy-repeat(
+  $count,
+  $value: 1
+) {
+  $return: ();
+
+  @for $i from 1 through $count {
+    $return: join($return, $value);
+  }
+
+  @return $return;
+}
+
+
+
 // Susy Defaults
 // -------------
 /// Configuration map of Susy factory defaults
@@ -50,20 +93,20 @@ $susy: () !default;
 ///
 /// @type Map
 ///
-/// @prop {Number | List} columns [4] -
+/// @prop {number | list} columns [4] -
 ///   Description of the columns in a grid,
 ///   their number, realtive sizes (if asymmetrical),
 ///   and optional static widths
-/// @prop {Number} gutters [0.25] -
+/// @prop {number} gutters [0.25] -
 ///   Ratio of a gutter to a column,
 ///   or static width of a single gutter
-/// @prop {String} spread ['narrow'] -
+/// @prop {string} spread ['narrow'] -
 ///   Spread of an element across adjacent gutters:
 ///   either `narrow` (none), `wide` (one), or `wider` (two)
-/// @prop {String} container-spread ['narrow'] -
+/// @prop {string} container-spread ['narrow'] -
 ///   Spread of a container around adjacent gutters:
 ///   either `narrow` (none), `wide` (one), or `wider` (two)
-$susy-defaults: (
+$_susy-defaults: (
   'columns': 4,
   'gutters': 0.25,
   'spread': 'narrow',
@@ -78,16 +121,16 @@ $susy-defaults: (
 ///
 /// @group a-config
 ///
-/// @param {Map | Arglist} $overrides... -
+/// @param {map | arglist} $overrides... -
 ///   Optional map override of global configuration settings
 ///
-/// @return {Map} -
+/// @return {map} -
 ///   Combined map of Susy configuration settings, in order of specificity:
-///   `$overrides...`, `$susy`, then `$susy-defaults`
+///   `$overrides...`, `$susy`, then `$_susy-defaults`
 @function susy-settings(
   $overrides...
 ) {
-  $settings: map-merge($susy-defaults, $susy);
+  $settings: map-merge($_susy-defaults, $susy);
 
   @each $config in $overrides {
     $settings: map-merge($settings, $config);
@@ -104,12 +147,12 @@ $susy-defaults: (
 ///
 /// @group a-config
 ///
-/// @param {String} $key -
+/// @param {string} $key -
 ///   Setting to retrieve from the configuration
 ///
 /// @return {*} -
 ///   Value mapped to `$key` in the configuration maps, in order of specificity:
-///   `$susy`, then `$susy-defaults`
+///   `$susy`, then `$_susy-defaults`
 @function susy-get(
   $key
 ) {

@@ -2,6 +2,8 @@
 // ===================
 
 
+// Susy Settings
+// -------------
 @include test-module('Susy Settings [function]') {
 
   @include test('Default configuration') {
@@ -12,7 +14,7 @@
 
     @include assert-equal(
       susy-settings(),
-      map-merge($susy-defaults, $susy),
+      map-merge($_susy-defaults, $susy),
       'Returns merged map of Susy default config settings');
 
     $susy: () !global;
@@ -23,7 +25,7 @@
 
     @include assert-equal(
       susy-settings($override),
-      map-merge($susy-defaults, $override),
+      map-merge($_susy-defaults, $override),
       'Returns merged map of Susy defaults with custom overrides');
   }
 
@@ -33,12 +35,35 @@
 
     @include assert-equal(
       susy-settings($override1, $override2),
-      map-merge(map-merge($susy-defaults, $override1), $override2),
+      map-merge(map-merge($_susy-defaults, $override1), $override2),
       'Returns merged map of Susy defaults with multiple overrides');
   }
 }
 
 
+
+// Susy Repeat
+// -----------
+@include test-module('Repeat [function]') {
+  @include test('Repeat single values') {
+    $list: (1 1 1 1);
+    @include assert-equal(
+      susy-repeat(4),
+      $list);
+  }
+
+  @include test('Repeat list values') {
+    $list: (6em 4em 6em 4em 6em 4em 6em 4em);
+    @include assert-equal(
+      susy-repeat(4, 6em 4em),
+      $list);
+  }
+}
+
+
+
+// Susy Get
+// --------
 @include test-module('Susy Get [function]') {
   $susy: (
     'columns': 12 x 120px,
@@ -62,7 +87,7 @@
   @include test('Get value from defaults') {
     @include assert-equal(
       susy-get('container-spread'),
-      map-get($susy-defaults, 'container-spread'),
+      map-get($_susy-defaults, 'container-spread'),
       'Susy-get and map-get should return the same value');
   }
 

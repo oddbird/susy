@@ -13,9 +13,9 @@
 // -----
 /// Parse shorthand span expression
 ///
-/// @access private
+/// @group x-parser
 ///
-/// @param {List} $shorthand -
+/// @param {list} $shorthand -
 ///   Shorthand expression to define the width of the span,
 ///   optionally containing:
 ///   - a count, length, or column-list span;
@@ -25,11 +25,11 @@
 ///   - `of $n <spread>` for available grid columns
 ///     and spread of the container;
 ///   - and `set-gutters $n` to override global gutter settings
-/// @param {Bool} $context-only [false] -
+/// @param {bool} $context-only [false] -
 ///   Allow the parser to ignore span and span-spread values,
 ///   only parsing context and container-spread
 ///
-/// @return {Map} -
+/// @return {map} -
 ///   Map of span settings
 ///   (`span`, `location`, `columns`, `gutters`, `spread`, `container-spread`)
 ///   parsed from shorthand input
@@ -165,12 +165,12 @@
 // --------------
 /// Normalize the values in a configuration map
 ///
-/// @access private
+/// @group x-parser
 ///
-/// @param {Map} $config -
+/// @param {map} $config -
 ///   Map of Susy configuration settings to normalize
 ///
-/// @return {Map} -
+/// @return {map} -
 ///   Map of Susy configuration settings, with all values normalized
 @function susy-normalize(
   $config
@@ -211,47 +211,16 @@
 
 
 
-// Repeat
-// ------
-/// Similar to the `repeat(<count>, <value>)` function
-/// that is available in CSS Grid templates,
-/// repeats any value a given number of times —
-/// a useful shortcut for defining symetrical static grids
-///
-/// @group a-config
-///
-/// @param {Integer} $count -
-///   The number of repetitions
-/// @param {Any} $value -
-///   Any value can be repeated
-///
-/// @return {List} -
-///   List of repeated values
-@function susy-repeat(
-  $count,
-  $value: 1
-) {
-  $return: ();
-
-  @for $i from 1 through $count {
-    $return: join($return, $value);
-  }
-
-  @return $return;
-}
-
-
-
 // Normalize Columns
 // -----------------
 /// Normalize `columns` shorthand for Su
 ///
-/// @access private
+/// @group x-parser
 ///
-/// @param {Number | List} $columns -
+/// @param {number | list} $columns -
 ///   Columns value to normalize
 ///
-/// @return {List} -
+/// @return {list} -
 ///   List value for `$columns`
 @function susy-normalize-columns(
   $columns
@@ -275,14 +244,14 @@
 // --------------
 /// Normalize `span` shorthand for Su
 ///
-/// @access private
+/// @group x-parser
 ///
-/// @param {Number | List | 'all'} $span -
+/// @param {number | list | 'all'} $span -
 ///   Span value to normalize
-/// @param {List} $columns -
+/// @param {list} $columns -
 ///   Normalized list of columns in the grid
 ///
-/// @return {Number | List} -
+/// @return {number | list} -
 ///   Number or list value for `$span`
 @function susy-normalize-span(
   $span,
@@ -303,13 +272,13 @@
 // ----------------
 /// Normalize `spread` shorthand for Su
 ///
-/// @access private
+/// @group x-parser
 ///
 /// @param {0 | 1 | -1 | 'narrow' | 'wide' | 'wider'} $spread -
 ///   Spread across adjacent gutters, relative to a column-count —
 ///   either `narrow` (-1), `wide` (0), or `wider` (1)
 ///
-/// @return {Number} -
+/// @return {number} -
 ///   Numeric value for `$spread`
 @function susy-normalize-spread(
   $spread
@@ -329,17 +298,17 @@
 // ------------------
 /// Normalize `location` shorthand for Su
 ///
-/// @access private
+/// @group x-parser
 ///
-/// @param {Number} $span -
+/// @param {number} $span -
 ///   Number of grid-columns to be spanned
-/// @param {Integer | 'first' | 'last'} $location -
+/// @param {integer | 'first' | 'last'} $location -
 ///   Starting (1-indexed) column position of a span,
 ///   or a named location keyword
-/// @param {List} $columns -
+/// @param {list} $columns -
 ///   Normalized list of columns in the grid
 ///
-/// @return {Integer} -
+/// @return {integer} -
 ///   Numeric value for `$location`
 @function susy-normalize-location(
   $span,

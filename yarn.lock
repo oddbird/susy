@@ -311,8 +311,8 @@ chalk@^1.0.0, chalk@^1.1.1, chalk@^1.1.3:
     supports-color "^2.0.0"
 
 chokidar@^1.6.0:
-  version "1.6.1"
-  resolved "https://registry.yarnpkg.com/chokidar/-/chokidar-1.6.1.tgz#2f4447ab5e96e50fb3d789fd90d4c72e0e4c70c2"
+  version "1.7.0"
+  resolved "https://registry.yarnpkg.com/chokidar/-/chokidar-1.7.0.tgz#798e689778151c8076b4b360e5edd28cda2bb468"
   dependencies:
     anymatch "^1.3.0"
     async-each "^1.0.0"
@@ -1438,6 +1438,13 @@ js-yaml@^3.2.1, js-yaml@^3.4.6, js-yaml@^3.5.1, js-yaml@^3.5.4:
     argparse "^1.0.7"
     esprima "^3.1.1"
 
+js-yaml@^3.8.4:
+  version "3.8.4"
+  resolved "https://registry.yarnpkg.com/js-yaml/-/js-yaml-3.8.4.tgz#520b4564f86573ba96662af85a8cafa7b4b5a6f6"
+  dependencies:
+    argparse "^1.0.7"
+    esprima "^3.1.1"
+
 jsbn@~0.1.0:
   version "0.1.1"
   resolved "https://registry.yarnpkg.com/jsbn/-/jsbn-0.1.1.tgz#a5e654c2e5a2deb5f201d96cefbca80c0ef2f513"
@@ -1844,11 +1851,11 @@ minimist@0.0.8, minimist@~0.0.1:
   version "0.0.8"
   resolved "https://registry.yarnpkg.com/minimist/-/minimist-0.0.8.tgz#857fcabfc3397d2625b8228262e86aa7a011b05d"
 
-minimist@1.1.x, minimist@^1.1.3:
+minimist@1.1.x:
   version "1.1.3"
   resolved "https://registry.yarnpkg.com/minimist/-/minimist-1.1.3.tgz#3bedfd91a92d39016fcfaa1c681e8faa1a1efda8"
 
-minimist@^1.2.0:
+minimist@^1.1.3, minimist@^1.2.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/minimist/-/minimist-1.2.0.tgz#a35008b20f41383eec1fb914f4cd5df79a264284"
 
@@ -1924,8 +1931,8 @@ node-gyp@^3.3.1:
     which "1"
 
 node-pre-gyp@^0.6.29:
-  version "0.6.34"
-  resolved "https://registry.yarnpkg.com/node-pre-gyp/-/node-pre-gyp-0.6.34.tgz#94ad1c798a11d7fc67381b50d47f8cc18d9799f7"
+  version "0.6.36"
+  resolved "https://registry.yarnpkg.com/node-pre-gyp/-/node-pre-gyp-0.6.36.tgz#db604112cb74e0d477554e9b505b17abddfab786"
   dependencies:
     mkdirp "^0.5.1"
     nopt "^4.0.1"
@@ -1937,9 +1944,9 @@ node-pre-gyp@^0.6.29:
     tar "^2.2.1"
     tar-pack "^3.4.0"
 
-node-sass@^4.0.0:
-  version "4.5.2"
-  resolved "https://registry.yarnpkg.com/node-sass/-/node-sass-4.5.2.tgz#4012fa2bd129b1d6365117e88d9da0500d99da64"
+node-sass@^4.0.0, node-sass@^4.5.3:
+  version "4.5.3"
+  resolved "https://registry.yarnpkg.com/node-sass/-/node-sass-4.5.3.tgz#d09c9d1179641239d1b97ffc6231fdcec53e1568"
   dependencies:
     async-foreach "^0.1.3"
     chalk "^1.1.1"
@@ -2481,9 +2488,9 @@ sass-lint@^1.10.2:
     path-is-absolute "^1.0.0"
     util "^0.10.3"
 
-sass-true@^2.2.2:
-  version "2.2.2"
-  resolved "https://registry.yarnpkg.com/sass-true/-/sass-true-2.2.2.tgz#e3db3264a60d9e290d7e7ab8d51afe87ac21b7fc"
+sass-true@^3.0.0-beta.1:
+  version "3.0.0-beta.1"
+  resolved "https://registry.yarnpkg.com/sass-true/-/sass-true-3.0.0-beta.1.tgz#d5e99054f6068de89b2bb4013b936e9b46409c03"
   dependencies:
     css "^2.2.1"
     css-selector-parser "^1.1.0"
@@ -2511,14 +2518,16 @@ sassdoc-theme-default@^2.5.2:
     swig "1.4.0"
     swig-extras "0.0.1"
 
-sassdoc-theme-herman@^0.5.5:
-  version "0.5.5"
-  resolved "https://registry.yarnpkg.com/sassdoc-theme-herman/-/sassdoc-theme-herman-0.5.5.tgz#4d7f62e0d77b3ae458c9ac7e6d80099207c93acb"
+sassdoc-theme-herman@^1.0.0-alpha.4:
+  version "1.0.0-alpha.4"
+  resolved "https://registry.yarnpkg.com/sassdoc-theme-herman/-/sassdoc-theme-herman-1.0.0-alpha.4.tgz#37a24a6ac659f7ef86bb5cea4c3edde2a492b38d"
   dependencies:
     bluebird "^3.4.6"
     extend "^3.0.0"
     gulp-rename "^1.2.2"
     html-minifier "^3.1.0"
+    js-yaml "^3.8.4"
+    node-sass "^4.5.3"
     nunjucks "^2.5.2"
     sassdoc-extras "^2.4.1"
     through2 "^2.0.1"
@@ -2550,6 +2559,10 @@ sassdoc@^2.2.2:
     update-notifier "^2.1.0"
     vinyl-fs "^2.4.4"
     vinyl-source-stream "^1.0.0"
+
+sassdocify@^0.3.4:
+  version "0.3.4"
+  resolved "https://registry.yarnpkg.com/sassdocify/-/sassdocify-0.3.4.tgz#d965444d1ac90ad9ec98f55d85644bb6909c7f12"
 
 scss-comment-parser@^0.8.1:
   version "0.8.2"

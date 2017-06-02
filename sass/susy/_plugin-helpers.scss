@@ -12,9 +12,9 @@
 /// normalizing the results
 /// into a standard Susy settings map.
 ///
-/// @group plugin-helpers
+/// @group x--plugin-helpers
 ///
-/// @param {List | Map} $shorthand -
+/// @param {list | map} $shorthand -
 ///   Shorthand expression to define the width of the span,
 ///   optionally containing:
 ///   - a count, length, or column-list span;
@@ -25,20 +25,24 @@
 ///     and spread of the container;
 ///   - and `set-gutters $n` to override
 ///     global gutter settings
-/// @param {Map} $config [()] -
+/// @param {map} $config [()] -
 ///   Optional map of Susy grid configuration settings
-/// @param {Bool} $context-only [false] -
+/// @param {bool} $context-only [false] -
 ///   Allow the parser to ignore span and span-spread values,
 ///   only parsing context and container-spread
 ///
-/// @return {Map} -
+/// @return {map} -
 ///   Parsed and normalized map of settings,
 ///   based on global and local configuration,
 ///   alongwith shorthad adjustments.
 ///
 /// @example scss -
-///   $grid-data: susy-compile($user-input, $config);
-///   width: susy-call('su-span', $grid-data);
+///   $user-input: 3 wide of susy-repeat(6, 120px) set-gutters 10px;
+///   $grid-data: susy-compile($user-input, $susy);
+///
+///   @each $key, $value in $grid-data {
+///     /* #{$key}: #{$value}, */
+///   }
 @function susy-compile(
   $short,
   $config: (),
@@ -58,23 +62,26 @@
 
 // Call
 // ----
-/// Calls a given grid function
+/// Call a grid-math function
 /// using the approapriate arguments
-/// from the passed-in config.
+/// from the passed-in data.
 ///
-/// @group plugin-helpers
+/// @group x--plugin-helpers
 ///
-/// @param {String} $name -
+/// @param {string} $name -
 ///   Name of the `su-` function to call
-/// @param {Map} $config -
+/// @param {map} $config -
 ///   Map of Susy configuration settings to use as needed for arguments
 ///
-/// @return {Any} -
+/// @return {*} -
 ///   Results of the called function
 ///
 /// @example scss -
-///   $grid-data: susy-compile($user-input, $config);
-///   width: susy-call('su-span', $grid-data);
+///   $user-input: 3 wide of susy-repeat(6, 120px) set-gutters 10px;
+///   $grid-data: susy-compile($user-input, $susy);
+///   .su-span {
+///     width: susy-call('su-span', $grid-data);
+///   }
 @function susy-call(
   $name,
   $config

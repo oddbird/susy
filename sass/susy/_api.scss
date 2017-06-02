@@ -35,7 +35,7 @@
 ///   or a static length in the same units as `column-width`
 ///
 /// @example scss - Span half the grid
-///   .foo
+///   .foo {
 ///     width: susy-span(6 of 12);
 ///   }
 ///

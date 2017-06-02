@@ -12,12 +12,12 @@
 /// Check that the `span` argument
 /// is a number, length, or column-list
 ///
-/// @access private
+/// @group x-validation
 ///
-/// @param {Number | List} $span -
+/// @param {number | list} $span -
 ///   Number of columns, or length of span
 ///
-/// @return {Number | List} -
+/// @return {number | list} -
 ///   Validated `$span` number, length, or columns list
 @function su-valid-span(
   $span
@@ -42,14 +42,14 @@
 /// Check that the `columns` argument is a valid
 /// list of column-lengths
 ///
-/// @access private
+/// @group x-validation
 ///
-/// @param {List} $columns -
+/// @param {list} $columns -
 ///   List of column-lengths
-/// @param {Bool} $silent-failure [true] -
+/// @param {bool} $silent-failure [true] -
 ///   Set false to return null on failure
 ///
-/// @return {List} -
+/// @return {list} -
 ///   Validated `$columns` list
 @function su-valid-columns(
   $columns,
@@ -77,12 +77,12 @@
 // -------------
 /// Check that the `gutters` argument is a valid number
 ///
-/// @access private
+/// @group x-validation
 ///
-/// @param {Number} $gutters -
+/// @param {number} $gutters -
 ///   Width of a gutter
 ///
-/// @return {Number} -
+/// @return {number} -
 ///   Validated `$gutters` number
 @function su-valid-gutters(
   $gutters
@@ -106,7 +106,7 @@
 /// Check that the `spread` argument is a valid
 /// intiger between `-1` and `1`
 ///
-/// @access private
+/// @group x-validation
 ///
 /// @param {0 | 1 | -1} $spread -
 ///   Number of gutters to include in a span,
@@ -134,16 +134,16 @@
 /// Check that the `location` argument is a valid number,
 /// within the scope of available columns
 ///
-/// @access private
+/// @group x-validation
 ///
-/// @param {Number} $span -
+/// @param {number} $span -
 ///   Number of grid-columns to be spanned
-/// @param {Integer | String} $location -
+/// @param {integer | string} $location -
 ///   Starting (1-indexed) column-position of that span
-/// @param {List} $columns -
+/// @param {list} $columns -
 ///   List of available columns in the grid
 ///
-/// @return {Integer} -
+/// @return {integer} -
 ///   Validated `$location` intiger
 @function su-valid-location(
   $span,
@@ -180,6 +180,16 @@
 
 // Is Comparable
 // -------------
+/// Check that the units in a grid are comparable
+///
+/// @group x-validation
+///
+/// @param {arglist} $lengths... -
+///   All the values to compare (columns, gutters, span, etc)
+///
+/// @return {'fluid' | 'static' | false} -
+///   The type of span (fluid or static) when units match,
+///   or `false` for mismatched units
 @function su-is-comparable(
   $lengths...
 ) {
@@ -207,6 +217,22 @@
 
 // Needs Calc
 // ----------
+/// Check if `calc()` will be needed in defining a span,
+/// if the necessary units in a grid are not comparable.
+///
+/// @group x-validation
+///
+/// @param {number} $span -
+///   Number of grid-columns to be spanned
+/// @param {list} $columns -
+///   List of available columns in the grid
+/// @param {number} $gutters -
+///   Width of a gutter
+/// @param {bool} $validate [true] -
+///   Check that arguments are valid before proceeding
+///
+/// @return {bool} -
+///   `True` when units do not match, and `calc()` will be required
 @function su-needs-calc(
   $span,
   $columns,

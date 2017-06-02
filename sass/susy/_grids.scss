@@ -13,11 +13,11 @@
 ///
 /// @group math
 ///
-/// @param {Number | List} $span -
+/// @param {number | list} $span -
 ///   Number or list of grid columns to span
-/// @param {List} $columns -
+/// @param {list} $columns -
 ///   List of columns available
-/// @param {Number} $gutters -
+/// @param {number} $gutters -
 ///   Width of a gutter in column-comparable units
 /// @param {0 | 1 | -1} $spread -
 ///   Number of gutters spanned,
@@ -25,10 +25,10 @@
 /// @param {0 | 1 | -1} $container-spread [$spread] -
 ///   Number of gutters spanned,
 ///   relative to `columns` count
-/// @param {Integer} $location [1] -
+/// @param {integer} $location [1] -
 ///   Optional position of sub-span among full set of columns
 ///
-/// @return {Length} -
+/// @return {length} -
 ///   Relative or static length of a span on the grid
 @function su-span(
   $span,
@@ -71,19 +71,21 @@
 // Su Gutter
 // ---------
 /// Return a usable gutter length
-/// in either relative or static units
+/// in either relative or static units.
+/// If units don't match,
+/// return a `calc()` value.
 ///
 /// @group math
 ///
-/// @param {List} $columns -
+/// @param {list} $columns -
 ///   List of columns in the grid
-/// @param {Number} $gutters -
+/// @param {number} $gutters -
 ///   Width of a gutter in column-comparable units
 /// @param {0 | 1 | -1} $container-spread -
 ///   Number of gutters spanned,
 ///   relative to `columns` count
 ///
-/// @return {Length} -
+/// @return {length} -
 ///   Relative or static length of one gutter in a grid
 @function su-gutter(
   $columns,
@@ -108,22 +110,20 @@
 // Su Sum
 // ------
 /// Get the total sum of column-units in a layout.
-/// If static-gutter units aren't comparable to column-units,
-/// gutters will be removed from the resulting sum
 ///
 /// @group math
 ///
-/// @param {List} $columns -
+/// @param {list} $columns -
 ///   List of columns in the grid
-/// @param {Number} $gutters -
+/// @param {number} $gutters -
 ///   Width of a gutter in column-comparable units
 /// @param {0 | 1 | -1} $spread -
 ///   Number of gutters spanned,
 ///   relative to `columns` count
-/// @param {Bool} $validate [true] -
+/// @param {bool} $validate [true] -
 ///   Check that arguments are valid before proceeding
 ///
-/// @return {Number} -
+/// @return {number} -
 ///   Total sum of column-units in a grid
 @function su-sum(
   $columns,
@@ -152,20 +152,20 @@
 
 // Su Slice
 // --------
-/// Return a subset of columns at a given location
+/// Return a subset of columns at a given location.
 ///
 /// @group math
 ///
-/// @param {Number} $span -
+/// @param {number} $span -
 ///   Number of grid columns to span
-/// @param {List} $columns -
+/// @param {list} $columns -
 ///   List of columns in the grid
-/// @param {Number} $location [1] -
+/// @param {number} $location [1] -
 ///   Starting index of a span in the list of columns
-/// @param {Bool} $validate [true] -
+/// @param {bool} $validate [true] -
 ///   Check that arguments are valid before proceeding
 ///
-/// @return {List} -
+/// @return {list} -
 ///   Subset list of grid columns, based on span and location
 @function su-slice(
   $span,
@@ -197,6 +197,24 @@
 
 // Su Calc-Sum
 // -----------
+/// Get the total sum of fixed and fluid column-units
+/// for creating a mixed-unit layout with `calc()` values.
+///
+/// @group math
+///
+/// @param {list} $columns -
+///   List of columns available
+/// @param {number} $gutters -
+///   Width of a gutter in column-comparable units
+/// @param {0 | 1 | -1} $spread -
+///   Number of gutters spanned,
+///   relative to `span` count
+/// @param {bool} $validate [true] -
+///   Check that arguments are valid before proceeding
+///
+/// @return {map} -
+///   Map with `fixed` and `fluid` keys
+///   containing the proper math as strings
 @function su-calc-sum(
   $columns,
   $gutters,
@@ -251,6 +269,28 @@
 
 // Su Calc
 // -------
+/// Return a usable span width as a `calc()` function,
+/// in order to create mixed-unit grids.
+///
+/// @group math
+///
+/// @param {number | list} $span -
+///   Number or list of grid columns to span
+/// @param {list} $columns -
+///   List of columns available
+/// @param {number} $gutters -
+///   Width of a gutter in column-comparable units
+/// @param {0 | 1 | -1} $spread -
+///   Number of gutters spanned,
+///   relative to `span` count
+/// @param {0 | 1 | -1} $container-spread [$spread] -
+///   Number of gutters spanned,
+///   relative to `columns` count
+/// @param {bool} $validate [true] -
+///   Check that arguments are valid before proceeding
+///
+/// @return {length} -
+///   Relative or static length of a span on the grid
 @function su-calc(
   $span,
   $columns,

@@ -11,8 +11,10 @@
   "devDependencies": {
     "mocha": "^3.2.0",
     "sass-lint": "^1.10.2",
-    "sass-true": "^2.2.2",
-    "sassdoc": "^2.2.2"
+    "sass-true": "^3.0.0-beta.1",
+    "sassdoc": "^2.2.2",
+    "sassdoc-theme-herman": "^1.0.0-alpha.4",
+    "sassdocify": "^0.3.4"
   },
   "keywords": [
     "layout",
@@ -30,18 +32,20 @@
     "needs": "^1.0.0"
   },
   "scripts": {
-    "test": "npm run test-libsass && rake test && rake ag",
+    "test": "npm run test-libsass && npm run compile",
     "test-libsass": "node_modules/.bin/mocha",
+    "test-compile": "./node_modules/node-sass/bin/node-sass test/scss/test.scss test/css/test.css --include-path ./sass/",
+    "ag": "./node_modules/node-sass/bin/node-sass test/scss/ag.scss test/css/ag.css --include-path ./sass/",
+    "compile": "npm run test-compile && npm run ag",
     "lint": "node_modules/.bin/sass-lint -vq",
-    "docs": "sassdoc sass/",
-    "commit": "npm run lint && npm test && npm run docs",
-    "release": "npm run commit && git add . && git commit -m 'Release' && rake release SAME_VERSION=True"
+    "sassdoc": "sassdoc sass/ --dest .sassdoc",
+    "sassdocify": "sassdocify sass && cd .pages && git remote set-url origin git@github.com:oddbird/susy.git",
+    "commit": "npm run lint && npm test && npm run compile && npm run sassdoc",
+    "release": "npm run lint && npm test && npm run compile && npm run sassdocify"
   },
   "license": "BSD-3-Clause",
   "bugs": {
     "url": "https://github.com/oddbird/susy/issues"
   },
-  "dependencies": {
-    "sassdoc-theme-herman": "^0.5.5"
-  }
+  "dependencies": {}
 }

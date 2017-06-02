@@ -1,7 +1,7 @@
+theme: Herman
 basePath: https://github.com/oddbird/susy/tree/threeish/sass/susy/
-dest: ./docs
+
 display:
-  alias: true
   access: public
 
 package: ./package.json
@@ -10,5 +10,12 @@ groups:
   a-config: 'Configuration'
   api: 'Main API'
   math: 'Core Math'
-  plugin-helpers: 'Plugin Helpers'
   plugin_svg-grid: '[Plugin] SVG Grid Image'
+  x--plugin-helpers: 'Plugin Helpers'
+  x-parser: 'Syntax Parser'
+  x-validation: 'Syntax Validation'
+
+herman:
+  sass:
+    includepaths: ['sass']
+    includes: ['susy']

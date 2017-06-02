@@ -61,10 +61,10 @@ They can also be triggered individually:
 npm run lint
 
 # test with mocha/node-sass and ruby sass
-npm run test
+npm test
 
 # compile docs
-npm run docs
+npm run sassdoc
 ```
 
 Optionally use `npm run test-libsass` for js-only tests,

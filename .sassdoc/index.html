@@ -1,0 +1,94 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>susy Documentation</title><link href="assets/img/favicon.ico" rel="shortcut icon"><link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:400,700|Source+Sans+Pro:400,400i,700,700i" rel="stylesheet"><link rel="stylesheet" href="assets/css/main.css"><link rel="stylesheet" href="assets/css/theme.css"></head><body><svg xmlns="http://www.w3.org/2000/svg" hidden><symbol id="icon-menu" viewBox="0 0 24 28"><title>menu icon</title><path d="M24 21v2c0 .547-.453 1-1 1H1c-.547 0-1-.453-1-1v-2c0-.547.453-1 1-1h22c.547 0 1 .453 1 1zm0-8v2c0 .547-.453 1-1 1H1c-.547 0-1-.453-1-1v-2c0-.547.453-1 1-1h22c.547 0 1 .453 1 1zm0-8v2c0 .547-.453 1-1 1H1c-.547 0-1-.453-1-1V5c0-.547.453-1 1-1h22c.547 0 1 .453 1 1z"/></symbol><symbol id="icon-search" viewBox="0 0 24 28"><title>search icon</title><path d="M24 21v2c0 .547-.453 1-1 1H1c-.547 0-1-.453-1-1v-2c0-.547.453-1 1-1h22c.547 0 1 .453 1 1zm0-8v2c0 .547-.453 1-1 1H1c-.547 0-1-.453-1-1v-2c0-.547.453-1 1-1h22c.547 0 1 .453 1 1zm0-8v2c0 .547-.453 1-1 1H1c-.547 0-1-.453-1-1V5c0-.547.453-1 1-1h22c.547 0 1 .453 1 1z"/></symbol></svg><div data-sassdoc-region="app"><header role="banner" data-sassdoc-region="banner"><button data-nav-toggle="small" data-toggle="button" aria-controls="nav-small" aria-pressed="false" data-toggle-synced="false"><svg data-icon="menu" data-icon-size="icon-small"><title>menu</title><use xlink:href="#icon-menu"/></svg></button> <button data-nav-toggle="large" data-toggle="button" aria-controls="nav-large" aria-pressed="true" data-toggle-synced="false"><svg data-icon="menu" data-icon-size="icon-small"><title>menu</title><use xlink:href="#icon-menu"/></svg></button><h1 data-sassdoc="project-title"><a href="index.html" rel="home" data-sassdoc="project-name">susy</a> <span data-sassdoc="project-version">3.0.0-alpha.6</span></h1></header><div data-sassdoc-region="container"><nav role="navigation" data-nav-menu="small" data-toggle="target" id="nav-small" data-target-id="nav-small" aria-expanded="false" data-auto-closing="false" data-auto-closing-on-any-click="false"><h3 data-sassdoc="nav-title"><a href="index.html" data-sassdoc-nav="is-active">susy</a></h3><li data-sassdoc="nav-item"><a href="a-config.html" data-sassdoc-nav="is-not-active">Configuration</a></li><li data-sassdoc="nav-item"><a href="api.html" data-sassdoc-nav="is-not-active">Main API</a></li><li data-sassdoc="nav-item"><a href="math.html" data-sassdoc-nav="is-not-active">Core Math</a></li><li data-sassdoc="nav-item"><a href="plugin_svg-grid.html" data-sassdoc-nav="is-not-active">[Plugin] SVG Grid Image</a></li><li data-sassdoc="nav-item"><a href="x--plugin-helpers.html" data-sassdoc-nav="is-not-active">Plugin Helpers</a></li><li data-sassdoc="nav-item"><a href="x-parser.html" data-sassdoc-nav="is-not-active">Syntax Parser</a></li><li data-sassdoc="nav-item"><a href="x-validation.html" data-sassdoc-nav="is-not-active">Syntax Validation</a></li></nav><nav role="navigation" data-nav-menu="large" data-toggle="target" id="nav-large" data-target-id="nav-large" aria-expanded="true" data-auto-closing="false" data-auto-closing-on-any-click="false"><h3 data-sassdoc="nav-title"><a href="index.html" data-sassdoc-nav="is-active">susy</a></h3><li data-sassdoc="nav-item"><a href="a-config.html" data-sassdoc-nav="is-not-active">Configuration</a></li><li data-sassdoc="nav-item"><a href="api.html" data-sassdoc-nav="is-not-active">Main API</a></li><li data-sassdoc="nav-item"><a href="math.html" data-sassdoc-nav="is-not-active">Core Math</a></li><li data-sassdoc="nav-item"><a href="plugin_svg-grid.html" data-sassdoc-nav="is-not-active">[Plugin] SVG Grid Image</a></li><li data-sassdoc="nav-item"><a href="x--plugin-helpers.html" data-sassdoc-nav="is-not-active">Plugin Helpers</a></li><li data-sassdoc="nav-item"><a href="x-parser.html" data-sassdoc-nav="is-not-active">Syntax Parser</a></li><li data-sassdoc="nav-item"><a href="x-validation.html" data-sassdoc-nav="is-not-active">Syntax Validation</a></li></nav><main role="main"><div data-sassdoc-region="main" data-sassdoc-page="index"><ul class="project-links"><li class="project-link-item"><a href="git://github.com/oddbird/susy.git" class="project-link">View Source</a></li></ul><h1 id="power-tools-for-the-web">Power Tools For The Web</h1><p><a href="https://travis-ci.org/oddbird/susy"><img src="https://travis-ci.org/oddbird/susy.png?branch=threeish" alt="Build Status"></a></p><p>Susy is an agnostic set of tools for creating powerful, custom layouts. We didn&#39;t want another grid system full of rules and restrictions — we wanted a power tool for building our own damn systems.</p><p>Version Three is trimmed down to it&#39;s most basic components — functions that can be used to build any grid system. This is truely a grids-on-demand approach, where you build your own system, and we handle the math.</p><h2 id="getting-started">Getting Started</h2><p>You can install Susy as a rubygem, npm module, bower package, or git repo.</p><pre><code>npm install susy@pre
+</code></pre><p>There are two imports to choose from. The default <code>sass/susy</code> comes with un-prefixed versions of the core API functions. If you want Susy to be name-spaced, import <code>sass/prefix</code> instead.</p><pre><code class="lang-scss">// un-prefixed api functions
+@import &#39;&lt;path-to&gt;/susy/sass/susy&#39;;
+
+// fully-prefixed functions
+@import &#39;&lt;path-to&gt;/susy/sass/prefix&#39;;
+</code></pre><h2 id="spanning-columns-gutters">Spanning Columns &amp; Gutters</h2><p>There are two core funtions: <code>span()</code> (or <code>susy-span()</code>), and <code>gutter()</code> (or <code>susy-gutter()</code>).</p><p>The <strong>gutter</strong> function returns the width of a single gutter on your grid — to be applied as you see fit:</p><pre><code class="lang-scss">.example {
+  margin: susy-gutter();
+}
+</code></pre><p>The <strong>span</strong> function describes a span of one or more columns, and any relevant gutters along the way:</p><pre><code class="lang-scss">.example {
+  // the width of three columns, and the two intervening gutters
+  width: susy-span(3);
+}
+</code></pre><p>When nesting fluid grids, you can use the old <code>of $n</code> syntax to describe changes in context — e.g. <code>susy-span(3 of 6)</code>. When using asymmetrical grids, you can use the old <code>at $n</code>, <code>first</code>, or <code>last</code> syntax to describe the specific columns you want to span — e.g. <code>susy-span(3 at 2 of (1 2 3 4 5 6))</code> to span across <code>(2 3 4)</code>. To define new gutter-values in the shorthand syntax, use <code>set-gutters $n</code>.</p><p>You can use these two functions to build all sorts of grids:</p><pre><code class="lang-scss">.float {
+  float: left;
+  width: span(3);
+  margin-right: gutter();
+}
+
+.flexbox {
+  flex-basis: span(3);
+  padding: gutter() / 2;
+}
+
+
+// Make your own class system!
+.span {
+  float: left;
+  margin-right: gutter();
+
+  &amp;.last {
+    margin-right: 0;
+  }
+}
+
+@for $span from 1 through susy-get(&#39;columns&#39;) {
+  .span-#{$i} {
+    width: span($i);
+  }
+}
+</code></pre><h2 id="defining-grids">Defining Grids</h2><p>A grid is defined by a series of <code>columns</code> with optional <code>gutters</code> between them.</p><p><strong>Columns</strong> are described by a list of numbers, representing the relative width of each column. By default, a grid is fluid — but you can add units to create a static layout:</p><pre><code class="lang-scss">// six equal fluid columns
+$equal: (1 1 1 1 1 1);
+
+// six equal 5em columns
+$static: (5em 5em 5em 5em 5em 5em);
+
+// six unequal fluid columns
+$asymmetrical: (1 1 2 3 5 8);
+
+// six unequal static columns
+// you can mix units, as long as they are comparable...
+$strange: (1in 1cm 2pt 3mm 5in 8cm);
+</code></pre><p>Since <code>(1 1 1 1 1 1)</code> is so repetative, we&#39;ve provided a shorthand syntax for describung equal columns:</p><pre><code class="lang-scss">// six equal fluid columns (shorthand)
+$fluid: 6;
+
+// six 120px static columns (shorthand)
+// that&#39;s a lowercase &#39;x&#39; — not a star or any other symbol...
+$static: 6 x 120px;
+</code></pre><p>We also provide a function that mimics CSS Grids <code>repeat()</code> to generate repetative grid definitions:</p><pre><code class="lang-scss">// six equal fluid columns
+$fluid: susy-repeat(6);
+
+// six 120px static columns
+$static: susy-repeat(6, 120px);
+
+// 12 columns, alternating 4em and 6em
+$static: susy-repeat(6, 4em 6em);
+</code></pre><p><strong>Gutters</strong> are defined relative to columns, in comparable units. Both settings go together in a single map variable:</p><pre><code class="lang-scss">// fluid 4-column grid
+// with gutters 1/4 the size of a column
+$fluid: (
+  &#39;columns&#39;: 4;
+  &#39;gutters&#39;: 0.25;
+);
+
+// Static un-equal grid
+// with comparable gutters
+$static: (
+  &#39;columns&#39;: (1em 1em 2em 3em 5em 8em)
+  &#39;gutters&#39;: 0.25em;
+);
+</code></pre><p>Anything you put in the root <code>$susy</code> variable map will be treated as a global default across your project.</p><h2 id="debugging-plugin-svg-grid-image">Debugging Plugin: SVG Grid Image</h2><p>If you want to generate svg-backgrounds for help visualizing and debugging your grids, import the SVG Grid Plugin:</p><pre><code>// unprefixed
+@import &#39;&lt;path-to&gt;/susy/sass/plugins/svg-grid&#39;;
+
+// prefixed
+@import &#39;&lt;path-to&gt;/susy/sass/plugins/svg-grid/prefix&#39;;
+</code></pre><p>The plugin adds <code>svg-grid-colors</code> setting to your global defaults, which you can override in <code>$susy</code>. It also provides you with a new function, <code>susy-svg-grids()</code>, which will return inline svg for use in backgrounds or generated content:</p><pre><code class="lang-scss">// usage
+background: susy-svg-grids() no-repeat scroll;
+
+// output sample
+background: url(&#39;data:image/svg+xml,%3Csvg xmlns=&quot;http://www.w3.org/2000/svg&quot;
+                 fill=&quot;%239cc&quot; %3E%3Crect x=&quot;1em&quot; width=&quot;44.44444%&quot;
+                 height=&quot;100%&quot; /%3E%3Crect x=&quot;55.55556%&quot; width=&quot;44.44444%&quot;
+                 height=&quot;100%&quot; style=&quot;transform:translateX(1em)&quot;
+                 /%3E%3C/svg%3E&#39;) no-repeat scroll;
+</code></pre><h2 id="advanced-features">Advanced Features</h2><p>Once you get used to the basics, you can dig into some of the more advanced features:</p><ul><li>Use the <code>spread</code> and <code>container-spread</code> options to include extra gutters in a span, or it&#39;s container.</li><li>Use the <code>susy-slice()</code> function to handle nesting-context with asymmetrical grids.</li><li>Use <code>susy-compile()</code> and <code>susy-call</code> to quickly access the full power of our syntax-parsing and math engines, while building plugins of your own.</li></ul><p>Happy grid-building!</p><h2 id="resources">Resources</h2><ul><li><a href="http://susy.oddbird.net/">Website</a></li><li><a href="http://susydocs.oddbird.net/">Documentation</a></li><li><a href="http://susy.oddbird.net/sites-using-susy/">Sites using Susy</a></li><li><a href="http://twitter.com/Sasssusy/">Twitter @SassSusy</a></li></ul></div></main></div></div><script type="text/javascript" src="assets/js/jquery-3.1.1.slim.js"></script><script type="text/javascript" src="assets/js/highlight.js"></script><script type="text/javascript" src="assets/js/base.js"></script><script type="text/javascript" src="assets/js/init.js"></script></body></html>

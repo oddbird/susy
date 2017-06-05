@@ -40,8 +40,8 @@
     "lint": "node_modules/.bin/sass-lint -vq",
     "sassdoc": "sassdoc sass/ --dest .sassdoc",
     "sassdocify": "sassdocify sass && cd .pages && git remote set-url origin git@github.com:oddbird/susy.git",
-    "commit": "npm run lint && npm test && npm run compile && npm run sassdoc",
-    "release": "npm run lint && npm test && npm run compile && npm run sassdocify"
+    "commit": "npm run lint && npm test && npm run sassdoc",
+    "release": "npm run lint && npm test && npm run sassdocify"
   },
   "license": "BSD-3-Clause",
   "bugs": {

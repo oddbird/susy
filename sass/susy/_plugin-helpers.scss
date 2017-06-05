@@ -25,7 +25,7 @@
 ///     and spread of the container;
 ///   - and `set-gutters $n` to override
 ///     global gutter settings
-/// @param {map} $config [()] -
+/// @param {map} $config [null] -
 ///   Optional map of Susy grid configuration settings
 /// @param {bool} $context-only [false] -
 ///   Allow the parser to ignore span and span-spread values,
@@ -45,9 +45,11 @@
 ///   }
 @function susy-compile(
   $short,
-  $config: (),
+  $config: null,
   $context-only: false
 ) {
+  $config: $config or ();
+
   @if (type-of($short) != 'map') and (length($short) > 0) {
     $short: susy-parse($short, $context-only);
   }

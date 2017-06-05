@@ -110,6 +110,15 @@
 /*   ✔ [assert-equal] Returns merged map of Susy defaults with multiple overrides */
 /*  */
 /*  */
+/* # Module: Repeat [function] */
+/* --------------------------- */
+/* Test: Repeat single values */
+/*   ✔ [assert-equal] Repeat single values */
+/*  */
+/* Test: Repeat list values */
+/*   ✔ [assert-equal] Repeat list values */
+/*  */
+/*  */
 /* # Module: Susy Get [function] */
 /* ----------------------------- */
 /* Test: Get value from user settings */
@@ -310,15 +319,6 @@
 /* ----------------------------------- */
 /* Test: All values */
 /*   ✔ [assert-equal] All values */
-/*  */
-/*  */
-/* # Module: Repeat [function] */
-/* --------------------------- */
-/* Test: Repeat single values */
-/*   ✔ [assert-equal] Repeat single values */
-/*  */
-/* Test: Repeat list values */
-/*   ✔ [assert-equal] Repeat list values */
 /*  */
 /*  */
 /* # Module: Susy Normalize Columns [function] */

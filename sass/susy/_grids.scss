@@ -260,10 +260,12 @@
 
 
   // Return map
-  @return (
+  $return: (
     'fixed': $calc,
     'fluid': $fluid,
   );
+
+  @return $return;
 }
 
 

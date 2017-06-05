@@ -4,9 +4,8 @@
 files:
   include:
     - 'sass/**/*.s+(a|c)ss'
-    - 'test/scss/**/*.s+(a|c)ss'
   ignore:
-    - 'test/scss/ag.scss'
+    - 'test/scss/**/*.s+(a|c)ss'
 
 
 # Rules

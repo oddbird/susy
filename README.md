@@ -217,13 +217,13 @@ The plugin adds `svg-grid-colors` setting
 to your global defaults,
 which you can override in `$susy`.
 It also provides you with a new function,
-`susy-svg-grids()`,
+`susy-svg-grid()`,
 which will return inline svg for use in
 backgrounds or generated content:
 
 ```scss
 // usage
-background: susy-svg-grids() no-repeat scroll;
+background: susy-svg-grid() no-repeat scroll;
 
 // output sample
 background: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg"

@@ -150,3 +150,66 @@ $susy: (
     }
   }
 }
+
+
+// Inside-Static
+// -------------
+
+$susy: (
+  'columns': 10,
+  'gutters': 0.5em,
+  'spread': 'wide',
+  'container-spread': 'wide',
+);
+
+.float-inside-static {
+  max-width: 90%;
+
+  .ag {
+    @include clearfix;
+    background: susy-svg-grid() no-repeat scroll;
+  }
+
+  .grid-element {
+    float: left;
+    padding-left: half-gutter();
+    padding-right: half-gutter();
+  }
+
+  .full {
+    @include clearfix;
+    width: 100%;
+  }
+
+  .size1of5 {
+    padding-bottom: 6.75rem;
+    width: susy-span(2);
+
+    + .size1of5 {
+      float: right;
+    }
+  }
+
+  .size3of5 {
+    float: left;
+    width: susy-span(6);
+
+    > .size1of2 {
+      width: susy-span(3 of 6);
+    }
+  }
+
+  .size1of3 {
+    padding-bottom: 3.75rem;
+    width: susy-span(2 of 6);
+  }
+
+  .size2of3 {
+    float: right;
+    width: susy-span(4 of 6);
+
+    .size1of2 {
+      width: susy-span(2 of 4);
+    }
+  }
+}

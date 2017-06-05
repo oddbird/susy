@@ -27,7 +27,7 @@
   ],
   "eyeglass": {
     "sassDir": "sass",
-    "exports": "eyeglass-exports.js",
+    "exports": false,
     "name": "susy",
     "needs": "^1.0.0"
   },

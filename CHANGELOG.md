@@ -1,7 +1,21 @@
 Changelog
 =========
 
-3.0.0.alpha.6 - Apr 25, 2017
+
+3.0.0-beta.1 - UNRELEASED
+-------------------------
+
+- BREAKING: Remove rubygems/bower,
+  and distribute on npm only.
+- BREAKING: Add support for `calc()` output
+  so all mixed-unit grids are possible.
+  This means the old inside-static solution
+  has been replaced by calc() output as well.
+- SVG background images now have a default size included.
+  You can override the default using the CSS `background-size` property.
+
+
+3.0.0-alpha.6 - Apr 25, 2017
 ----------------------------
 
 - Fix bug in empty `gutter()` alias
@@ -13,7 +27,7 @@ Changelog
   internal math functions.
 
 
-3.0.0.alpha.5 - Feb 14, 2017
+3.0.0-alpha.5 - Feb 14, 2017
 ----------------------------
 
 - SVG Grid plugin, to provide grid-debugging options:
@@ -27,7 +41,7 @@ Changelog
 - More test coverage, including error-handling!
 
 
-3.0.0.alpha.1 - Sep 6, 2016
+3.0.0-alpha.1 - Sep 6, 2016
 ---------------------------
 
 - No Mixins!
@@ -286,7 +300,7 @@ BREAKING:
 .. _Breakpoint: http://breakpoint-sass.com/
 
 
-2.0.0.alpha.6 — Dec 5 2013
+2.0.0-alpha.6 — Dec 5 2013
 --------------------------
 
 - Rewrite syntax parsing so parser and resulting maps are shared across Susy.
@@ -300,7 +314,7 @@ Backwards Incompatible:
   Use ``(gutter-override: $n)`` map instead.
 
 
-2.0.0.alpha.5 — Nov 25 2013
+2.0.0-alpha.5 — Nov 25 2013
 ---------------------------
 
 - Compass is no longer a dependency.
@@ -348,7 +362,7 @@ Backwards Incompatible:
 - ``first``/``alpha``/``last``/``omega``/``nth-`` mixins require grid context.
 
 
-2.0.0.alpha.4 — Sept 4 2013
+2.0.0-alpha.4 — Sept 4 2013
 ---------------------------
 
 - Add ``bleed`` mixin.
@@ -371,7 +385,7 @@ Backwards Incompatible:
 - Explicit gutter-overrides are divided when gutters are ``split``/``inside``.
 
 
-2.0.0.alpha.3 — July 9 2013
+2.0.0-alpha.3 — July 9 2013
 ---------------------------
 
 - ``row`` now includes clearfix, and ``unrow`` removes clearfix.
@@ -411,7 +425,7 @@ Backwards Incompatible:
 .. _True: http://miriamsuzanne.com/true/
 
 
-2.0.0.alpha.2 — May 7 2013
+2.0.0-alpha.2 — May 7 2013
 --------------------------
 
 - Added ``gutter <length>``/``gutters <length>``
@@ -436,7 +450,7 @@ Backwards Incompatible:
 - Remove breakpoint core requirement (will come back as option)
 
 
-2.0.0.alpha.1 — Jan 26 2013
+2.0.0-alpha.1 — Jan 26 2013
 ---------------------------
 
 **Susy 2.0 was re-written from the ground up.**

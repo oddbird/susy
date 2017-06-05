@@ -44,13 +44,22 @@
     $colors: _susy-svg-color($colors);
   }
 
+  // Get a default image-width
+  $span: (
+    'span': map-get($grid, 'columns'),
+    'spread': map-get($grid, 'container-spread'),
+  );
+  $span: map-merge($grid, $span);
+  $image-width: susy-call('su-span', $span);
+  $image-width: if((type-of($image-width) == 'number'), $image-width, 100%);
 
   // SVG construction
   $columns: map-get($grid, 'columns');
   $offset: $offset or _susy-svg-offset($grid);
 
+  $attrs: 'fill="#{$colors}" width="#{$image-width}"';
   $svg: 'data:image/svg+xml,';
-  $svg: $svg + '%3Csvg xmlns="http://www.w3.org/2000/svg" fill="#{$colors}" %3E';
+  $svg: $svg + '%3Csvg xmlns="http://www.w3.org/2000/svg" #{$attrs} %3E';
   $svg: $svg + $gradient;
 
   @for $column from 1 through length($columns) {

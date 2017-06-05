@@ -511,11 +511,11 @@
 /*  */
 /* # Module: SVG Grid [function] */
 /* ----------------------------- */
-/* Test: Map grid settings (default) */
-/*   ✔ [assert-equal] Map grid settings (default) */
+/* Test: Default grid settings */
+/*   ✔ [assert-equal] Default grid settings */
 /*  */
-/* Test: Zero-length list grid */
-/*   ✔ [assert-equal] Zero-length list grid */
+/* Test: Zero-length list grid should use default */
+/*   ✔ [assert-equal] Zero-length list grid should use default */
 /*  */
 /* Test: Grid shorthand */
 /*   ✔ [assert-equal] Should assume that non-explicit settings are context not span */
@@ -533,6 +533,9 @@
 /* Test: Override offset */
 /*   ✔ [assert-equal] Override offset */
 /*  */
+/* Test: Fixed Width */
+/*   ✔ [assert-equal] Fixed Width */
+/*  */
 /*  */
 /* # Module: SVG Grid (unprefixed) [function] */
 /* ------------------------------------------ */
@@ -541,11 +544,11 @@
 /*  */
 /*  */
 /* # SUMMARY ---------- */
-/* 140 Tests: */
-/* - 140 Passed */
+/* 141 Tests: */
+/* - 141 Passed */
 /* - 0 Failed */
 /* Stats: */
 /* - 38 Modules */
-/* - 140 Tests */
-/* - 147 Assertions */
+/* - 141 Tests */
+/* - 148 Assertions */
 /* -------------------- */

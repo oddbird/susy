@@ -20,11 +20,10 @@ and we handle the math.
 Getting Started
 ---------------
 
-You can install Susy as a rubygem,
-npm module, bower package, or git repo.
+Install Susy:
 
 ```
-npm install susy@pre
+npm install susy
 ```
 
 There are two imports to choose from.
@@ -34,12 +33,89 @@ If you want Susy to be name-spaced,
 import `sass/prefix` instead.
 
 ```scss
-// un-prefixed api functions
+// un-prefixed functions
 @import '<path-to>/susy/sass/susy';
 
-// fully-prefixed functions
+// susy-prefixed functions
 @import '<path-to>/susy/sass/prefix';
 ```
+
+
+Defining Grids
+--------------
+
+A grid is defined by a series of `columns`
+with optional `gutters` between them.
+
+**Columns** are described by a list of numbers,
+representing the relative width of each column.
+By default, a grid is fluid —
+but you can add units to create a static layout:
+
+```scss
+// six equal fluid columns
+$equal: (1 1 1 1 1 1);
+
+// six equal 5em columns
+$static: (5em 5em 5em 5em 5em 5em);
+
+// six unequal fluid columns
+$asymmetrical: (1 1 2 3 5 8);
+
+// six unequal static columns
+// (if units can't be compared Susy will output a calc() value)
+$strange: (1in 1cm 2pt 3mm 5in 8cm);
+```
+
+Since `(1 1 1 1 1 1)` is so repetative,
+we've provided some shorthand options
+for describung symmetrical fluid columns:
+
+```scss
+// six equal fluid columns (shorthand)
+$fluid: 6;
+```
+
+We also provide a function
+that mimics CSS Grids `repeat()`
+to generate repetative grid definitions:
+
+```scss
+// six equal fluid columns
+$fluid: susy-repeat(6);
+
+// six 120px static columns
+$static: susy-repeat(6, 120px);
+
+// 12 columns, alternating 4em and 6em
+$static: susy-repeat(6, 4em 6em);
+```
+
+
+**Gutters**
+are defined relative to columns.
+Both settings go together
+in a single map variable:
+
+```scss
+// fluid 4-column grid
+// with gutters 1/4 the size of a column
+$fluid: (
+  'columns': 4;
+  'gutters': 0.25;
+);
+
+// Static un-equal grid
+// with comparable gutters
+$static: (
+  'columns': (1em 1em 2em 3em 5em 8em)
+  'gutters': 0.25em;
+);
+```
+
+Anything you put in the root `$susy` variable map
+will be treated as a global default
+across your project.
 
 
 Spanning Columns & Gutters
@@ -55,7 +131,7 @@ to be applied as you see fit:
 
 ```scss
 .example {
-  margin: susy-gutter();
+  margin: gutter();
 }
 ```
 
@@ -66,18 +142,18 @@ and any relevant gutters along the way:
 ```scss
 .example {
   // the width of three columns, and the two intervening gutters
-  width: susy-span(3);
+  width: span(3);
 }
 ```
 
 When nesting fluid grids,
 you can use the old `of $n` syntax
 to describe changes in context —
-e.g. `susy-span(3 of 6)`.
+e.g. `span(3 of 6)`.
 When using asymmetrical grids,
 you can use the old `at $n`, `first`, or `last` syntax
 to describe the specific columns you want to span —
-e.g. `susy-span(3 at 2 of (1 2 3 4 5 6))`
+e.g. `span(3 at 2 of (1 2 3 4 5 6))`
 to span across `(2 3 4)`.
 To define new gutter-values in the shorthand syntax,
 use `set-gutters $n`.
@@ -114,88 +190,6 @@ to build all sorts of grids:
   }
 }
 ```
-
-
-Defining Grids
---------------
-
-A grid is defined by a series of `columns`
-with optional `gutters` between them.
-
-**Columns** are described by a list of numbers,
-representing the relative width of each column.
-By default, a grid is fluid —
-but you can add units to create a static layout:
-
-```scss
-// six equal fluid columns
-$equal: (1 1 1 1 1 1);
-
-// six equal 5em columns
-$static: (5em 5em 5em 5em 5em 5em);
-
-// six unequal fluid columns
-$asymmetrical: (1 1 2 3 5 8);
-
-// six unequal static columns
-// you can mix units, as long as they are comparable...
-$strange: (1in 1cm 2pt 3mm 5in 8cm);
-```
-
-Since `(1 1 1 1 1 1)` is so repetative,
-we've provided a shorthand syntax
-for describung equal columns:
-
-```scss
-// six equal fluid columns (shorthand)
-$fluid: 6;
-
-// six 120px static columns (shorthand)
-// that's a lowercase 'x' — not a star or any other symbol...
-$static: 6 x 120px;
-```
-
-We also provide a function
-that mimics CSS Grids `repeat()`
-to generate repetative grid definitions:
-
-```scss
-// six equal fluid columns
-$fluid: susy-repeat(6);
-
-// six 120px static columns
-$static: susy-repeat(6, 120px);
-
-// 12 columns, alternating 4em and 6em
-$static: susy-repeat(6, 4em 6em);
-```
-
-
-**Gutters**
-are defined relative to columns,
-in comparable units.
-Both settings go together
-in a single map variable:
-
-```scss
-// fluid 4-column grid
-// with gutters 1/4 the size of a column
-$fluid: (
-  'columns': 4;
-  'gutters': 0.25;
-);
-
-// Static un-equal grid
-// with comparable gutters
-$static: (
-  'columns': (1em 1em 2em 3em 5em 8em)
-  'gutters': 0.25em;
-);
-```
-
-Anything you put in the root `$susy` variable map
-will be treated as a global default
-across your project.
 
 
 Debugging Plugin: SVG Grid Image

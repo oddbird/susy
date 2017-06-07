@@ -23,7 +23,7 @@
 
   @include test('Static math') {
     $susy: (
-      'columns': 6 x 4em,
+      'columns': susy-repeat(6, 4em),
       'gutters': 0.25em,
     ) !global;
 
@@ -41,7 +41,7 @@
     ) !global;
 
     @include assert-equal(
-      susy-span(3 'wide' of 12 x 10em),
+      susy-span(3 'wide' of susy-repeat(12, 10em)),
       30.5em + 0.25em,
       'Spread adds gutter width to usual span');
 
@@ -66,7 +66,7 @@
       'Error when there is no span');
   }
 
-  @include test('wtf') {
+  @include test('Complex Grid') {
     $grid: (
       'svg-grid-colors': rgba(64, 191, 64, 0.5) rgba(159, 223, 159, 0.5),
       'columns': 50px 4em 1 1 3 1 3 6em 3em 3cm,
@@ -82,6 +82,32 @@
     @include assert-equal(
       susy-span(first 2 wide, $grid),
       'calc((74px + 4em))');
+  }
+
+  @include test('Convert context-number to slice') {
+    $grid: (
+      'columns': susy-repeat(10, 5em),
+      'gutters': 0.5em,
+      'spread': 'wide',
+      'container-spread': 'wide',
+    );
+
+    @include assert-equal(
+      susy-span(3 of 6, $grid),
+      16.5em);
+  }
+
+  @include test('All') {
+    $grid: (
+      'columns': susy-repeat(10, 5em),
+      'gutters': 0.5em,
+      'spread': 'wide',
+      'container-spread': 'wide',
+    );
+
+    @include assert-equal(
+      susy-span('all', $grid),
+      55em);
   }
 }
 
@@ -132,7 +158,7 @@
 
   @include test('Gutters with custom config') {
     $config: (
-      'columns': 12,
+      'columns': susy-repeat(12),
       'container-spread': 'wide',
     );
 
@@ -159,10 +185,17 @@
       'Returns a sub-slice of columns');
   }
 
-  @include test('Keyword slicing') {
+  @include test('Keyword slicing: first') {
     @include assert-equal(
       susy-slice('first' 3 of (1 2 3 5 8)),
       1 2 3,
       'Returns a keyword-slice of columns');
+  }
+
+  @include test('Keyword slicing: last') {
+    $config: ('columns': (1 1 2 3 5 8 13));
+    @include assert-equal(
+      susy-slice('last' 4, $config),
+      3 5 8 13);
   }
 }

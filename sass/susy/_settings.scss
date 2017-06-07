@@ -16,24 +16,30 @@
 /// @type Map
 ///
 /// @see $_susy-defaults
+/// @see {function} susy-repeat
 ///
-/// @prop {number | list} columns [4] -
+/// @prop {list} columns -
 ///   Description of the columns in a grid,
-///   their number, realtive sizes (if asymmetrical),
-///   and optional static widths
-/// @prop {number} gutters [0.25] -
+///   and their realtive sizes if asymmetrical.
+///   The syntax is a simplified version of CSS native
+///   [grid-template-columns](https://developer.mozilla.org/en-US/docs/Web/CSS/grid-template-columns),
+///   expecting a list of grid-column widths.
+///   - Use the `susy-repeat($count, $value)` function
+///     to repetative columns, similar to CSS-native `repeat()`
+///   - Use unitless numbers in place of `fr` units
+/// @prop {number} gutters -
 ///   Ratio of a gutter to a column,
 ///   or static width of a single gutter
-/// @prop {string} spread ['narrow'] -
+/// @prop {string} spread -
 ///   Spread of an element across adjacent gutters:
 ///   either `narrow` (none), `wide` (one), or `wider` (two)
-/// @prop {string} container-spread ['narrow'] -
+/// @prop {string} container-spread -
 ///   Spread of a container around adjacent gutters:
 ///   either `narrow` (none), `wide` (one), or `wider` (two)
 ///
 /// @example scss - All available options (to their default value)
 ///   $susy: (
-///     'columns': 4,
+///     'columns': susy-repeat(4),
 ///     'gutters': 0.25,
 ///     'spread': 'narrow',
 ///     'container-spread': 'narrow',
@@ -50,11 +56,14 @@ $susy: () !default;
 /// a useful shortcut for defining symetrical static grids
 ///
 /// @group a-config
+/// @link
+///   https://developer.mozilla.org/en-US/docs/Web/CSS/grid-template-columns
+///   CSS grid-template-columns property
 ///
 /// @param {integer} $count -
 ///   The number of repetitions
-/// @param {*} $value -
-///   Any value can be repeated
+/// @param {*} $value [1] -
+///   Any value to be repeated
 ///
 /// @return {list} -
 ///   List of repeated values
@@ -62,13 +71,13 @@ $susy: () !default;
 /// @example scss
 ///   // 12 column grid, with 5em columns
 ///   $susy: (
-///     columns: repeat(12, 5em),
+///     columns: susy-repeat(12, 5em),
 ///   );
 ///
 /// @example scss
 ///   // asymmetrical 5-column grid
 ///   $susy: (
-///     columns: 20px repeat(3, 100px) 20px,
+///     columns: 20px susy-repeat(3, 100px) 20px,
 ///   );
 @function susy-repeat(
   $count,
@@ -93,21 +102,12 @@ $susy: () !default;
 ///
 /// @type Map
 ///
-/// @prop {number | list} columns [4] -
-///   Description of the columns in a grid,
-///   their number, realtive sizes (if asymmetrical),
-///   and optional static widths
-/// @prop {number} gutters [0.25] -
-///   Ratio of a gutter to a column,
-///   or static width of a single gutter
-/// @prop {string} spread ['narrow'] -
-///   Spread of an element across adjacent gutters:
-///   either `narrow` (none), `wide` (one), or `wider` (two)
-/// @prop {string} container-spread ['narrow'] -
-///   Spread of a container around adjacent gutters:
-///   either `narrow` (none), `wide` (one), or `wider` (two)
+/// @prop {number | list} columns [susy-repeat(4)]
+/// @prop {number} gutters [0.25]
+/// @prop {string} spread ['narrow']
+/// @prop {string} container-spread ['narrow']
 $_susy-defaults: (
-  'columns': 4,
+  'columns': susy-repeat(4),
   'gutters': 0.25,
   'spread': 'narrow',
   'container-spread': 'narrow',

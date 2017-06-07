@@ -132,7 +132,7 @@
   $validate: true
 ) {
   @if $validate {
-    $columns: su-valid-columns($columns);
+    $columns: su-valid-span($columns);
     $gutters: su-valid-gutters($gutters);
     $spread: su-valid-spread($spread);
   }
@@ -222,7 +222,7 @@
   $validate: true
 ) {
   @if $validate {
-    $columns: su-valid-columns($columns);
+    $columns: su-valid-span($columns);
     $gutters: su-valid-gutters($gutters);
     $spread: su-valid-spread($spread);
   }

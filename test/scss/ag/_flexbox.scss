@@ -7,7 +7,7 @@
 // ------------------
 
 $susy: (
-  'columns': 10,
+  'columns': susy-repeat(10),
   'container-spread': 'wide',
 );
 

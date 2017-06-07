@@ -55,3 +55,38 @@
       $expect);
   }
 }
+
+
+// Susy Flatten
+// ------------
+@include test-module('Susy Flatten [function]') {
+  @include test('Flattens a multi-dimensional list') {
+    $list: 30px susy-repeat(3, 120px) (2 (4 6));
+    $expect: 30px 120px 120px 120px 2 4 6;
+
+    @include assert-unequal(
+      $list,
+      $expect,
+      'Confirm that the list is not flat before testing');
+
+    @include assert-equal(
+      _susy-flatten($list),
+      $expect);
+  }
+
+  @include test('Returns flat list un-changed') {
+    $expect: 30px 120px 120px 120px 2 4 6;
+
+    @include assert-equal(
+      _susy-flatten($expect),
+      $expect);
+  }
+
+  @include test('Do not flatten maps') {
+    $expect: 30px ('key': 120px) 2 4 6;
+
+    @include assert-equal(
+      _susy-flatten($expect),
+      $expect);
+  }
+}

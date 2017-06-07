@@ -2,17 +2,24 @@ Changelog
 =========
 
 
-3.0.0-beta.1 - UNRELEASED
--------------------------
+3.0.0-alpha.7 - UNRELEASED
+--------------------------
 
-- BREAKING: Remove rubygems/bower,
-  and distribute on npm only.
-- BREAKING: Add support for `calc()` output
+- BREAKING: Remove support for non-list `columns`:
+  `'columns': 4` => `'columns': susy-repeat(4)` == `'columns': 1 1 1 1`.
+- BREAKING: Remove support for `$count x $width` syntax in `columns`:
+  `'columns': 4 x 120px` =>
+  `'columns': susy-repeat(4, 120px)` == `'columns': 120px 120px 120px 120px`.
+- BREAKING: Remove rubygems/bower, to distribute on npm only.
+- BREAKING: Add support for `calc()` output,
   so all mixed-unit grids are possible.
   This means the old inside-static solution
   has been replaced by calc() output as well.
 - SVG background images now have a default size included.
   You can override the default using the CSS `background-size` property.
+- Add list-flattening to columns normalization,
+  so that `susy-repeat()` can be used along-side other values.
+- Improved documentation
 
 
 3.0.0-alpha.6 - Apr 25, 2017

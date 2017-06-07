@@ -1,0 +1,50 @@
+// Su Helpers
+// ==========
+
+
+// Call
+// ----
+/// Call a grid-math function
+/// using the approapriate arguments
+/// from the passed-in data.
+///
+/// @group x--helpers
+///
+/// @param {string} $name -
+///   Name of the `su-` function to call
+/// @param {map} $config -
+///   Map of Susy configuration settings to use for arguments
+///
+/// @return {*} -
+///   Results of the called function
+///
+/// @example scss -
+///   $user-input: 3 wide of susy-repeat(6, 120px) set-gutters 10px;
+///   $grid-data: susy-compile($user-input, $susy);
+///   .su-span {
+///     width: su-call('su-span', $grid-data);
+///   }
+@function su-call(
+  $name,
+  $config
+) {
+  $grid-function-args: (
+    'su-span': ('span', 'columns', 'gutters', 'spread', 'container-spread', 'location' ),
+    'su-gutter': ('columns', 'gutters', 'container-spread'),
+    'su-slice': ('span', 'columns', 'location'),
+    'su-sum': ('columns', 'gutters', 'spread'),
+    'su-calc': ('span', 'columns', 'gutters', 'spread', 'container-spread'),
+    'su-calc-sum': ('columns', 'gutters', 'spread'),
+  );
+
+  $args: map-get($grid-function-args, $name);
+  $call: if(function-exists('get-function'), get-function($name), $name);
+  $output: ();
+
+  @each $arg in $args {
+    $value: map-get($config, $arg);
+    $output: if($value, map-merge($output, ($arg: $value)), $output);
+  }
+
+  @return call($call, $output...);
+}

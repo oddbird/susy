@@ -59,26 +59,22 @@
       1 2 4 2);
   }
 
-  @include test('Single fluid column') {
-    $list: 4;
+  @include test('No single columns') {
+    @include assert-equal(
+      su-valid-columns(4, 'silent-fail'),
+      null,
+      'Has no units');
 
     @include assert-equal(
-      su-valid-columns(4),
-      $list);
+      su-valid-columns(20em, 'silent-fail'),
+      null,
+      'Has units');
   }
 
   @include test('Static columns') {
     @include assert-equal(
       su-valid-columns(10cm 200mm 45cm 230mm),
       10cm 200mm 45cm 230mm);
-  }
-
-  @include test('Single static column') {
-    $list: 20em;
-
-    @include assert-equal(
-      su-valid-columns(20em),
-      $list);
   }
 
   @include test('Mismatched units') {

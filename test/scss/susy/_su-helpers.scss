@@ -1,0 +1,24 @@
+// Su Helper Tests
+// ---------------
+
+@include test-module('Su Call [function]') {
+  @include test('Calls a function using the appropriate args') {
+    $map: (
+      'svg-grid-colors': #ccc,
+      'columns': 1 1 1 1 1 1,
+      'gutters': 1,
+      'spread': 0,
+      'container-spread': -1,
+      'location': 5,
+      'span': 2,
+    );
+    $args: (
+      map-get($map, 'span'),
+      map-get($map, 'columns'),
+      map-get($map, 'location'),
+    );
+    @include assert-equal(
+      su-call('su-slice', $map),
+      su-slice($args...));
+  }
+}

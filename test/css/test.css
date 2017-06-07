@@ -17,121 +17,17 @@
 /*   ✔ [assert-equal] New units */
 /*  */
 /*  */
-/* # Module: Su Span [function] */
-/* ---------------------------- */
-/* Test: Fluid */
-/*   ✔ [assert-equal] Returns fluid span if no units are given */
+/* # Module: Susy Flatten [function] */
+/* --------------------------------- */
+/* Test: Flattens a multi-dimensional list */
+/*   ✔ [assert-unequal] Confirm that the list is not flat before testing */
+/*   ✔ [assert-equal] Flattens a multi-dimensional list */
 /*  */
-/* Test: Static */
-/*   ✔ [assert-equal] Returns static span if units are given */
+/* Test: Returns flat list un-changed */
+/*   ✔ [assert-equal] Returns flat list un-changed */
 /*  */
-/* Test: Explicit column span */
-/*   ✔ [assert-equal] Handles explicit column-spans */
-/*  */
-/* Test: Explicit length span */
-/*   ✔ [assert-equal] Handles explicit length-spans */
-/*  */
-/* Test: Mixed fluid-static */
-/*   ✔ [assert-equal] Mixed fluid-static */
-/*  */
-/* Test: Mixed static */
-/*   ✔ [assert-equal] Mixed static */
-/*  */
-/* Test: Mixed static with location */
-/*   ✔ [assert-equal] Mixed static with location */
-/*  */
-/* Test: Single span, mixed columns and gutters */
-/*   ✔ [assert-equal] Single span, mixed columns and gutters */
-/*  */
-/*  */
-/* # Module: Su Gutter [function] */
-/* ------------------------------ */
-/* Test: Static gutters */
-/*   ✔ [assert-equal] Static gutters are returned directly */
-/*  */
-/* Test: Fluid gutters */
-/*   ✔ [assert-equal] Gutters are calculated as a percentage of context */
-/*  */
-/*  */
-/* # Module: Su Sum [function] */
-/* --------------------------- */
-/* Test: Calculate the total units in a fluid grid */
-/*   ✔ [assert-equal] Returns combined column and gutter units */
-/*  */
-/* Test: Calculate the total units in a static grid */
-/*   ✔ [assert-equal] Returns combined column and gutter units */
-/*  */
-/* Test: Ignore 0 gutters */
-/*   ✔ [assert-equal] Ignore 0 gutters */
-/*  */
-/* Test: Handle single-column spans */
-/*   ✔ [assert-equal] No static gutters are added to fluid grids */
-/*  */
-/*  */
-/* # Module: Su Slice [function] */
-/* ----------------------------- */
-/* Test: Slice a grid */
-/*   ✔ [assert-equal] Returns subset of asymmetrical columns based on span and location */
-/*  */
-/* Test: Slice a grid with fractions */
-/*   ✔ [assert-equal] Slice a fraction of an asymmetrical column */
-/*  */
-/*  */
-/* # Module: Su Calc Sum [function] */
-/* -------------------------------- */
-/* Test: Mixed fluid-static */
-/*   ✔ [assert-equal] Mixed fluid-static */
-/*  */
-/* Test: Mixed static */
-/*   ✔ [assert-equal] Mixed static */
-/*  */
-/* Test: Zero handling */
-/*   ✔ [assert-equal] Zero handling */
-/*  */
-/*  */
-/* # Module: Su Calc [function] */
-/* ---------------------------- */
-/* Test: Mixed fluid-static */
-/*   ✔ [assert-equal] Mixed fluid-static */
-/*  */
-/* Test: Mixed static */
-/*   ✔ [assert-equal] Mixed static */
-/*  */
-/*  */
-/* # Module: Susy Settings [function] */
-/* ---------------------------------- */
-/* Test: Default configuration */
-/*   ✔ [assert-equal] Returns merged map of Susy default config settings */
-/*  */
-/* Test: Configuration overrides */
-/*   ✔ [assert-equal] Returns merged map of Susy defaults with custom overrides */
-/*  */
-/* Test: Multiple overrides */
-/*   ✔ [assert-equal] Returns merged map of Susy defaults with multiple overrides */
-/*  */
-/*  */
-/* # Module: Repeat [function] */
-/* --------------------------- */
-/* Test: Repeat single values */
-/*   ✔ [assert-equal] Repeat single values */
-/*  */
-/* Test: Repeat list values */
-/*   ✔ [assert-equal] Repeat list values */
-/*  */
-/*  */
-/* # Module: Susy Get [function] */
-/* ----------------------------- */
-/* Test: Get value from user settings */
-/*   ✔ [assert-equal] Susy-get and map-get should return the same value */
-/*  */
-/* Test: Get falsey value from user settings */
-/*   ✔ [assert-equal] Susy-get and map-get should return the same value */
-/*  */
-/* Test: Get value from defaults */
-/*   ✔ [assert-equal] Susy-get and map-get should return the same value */
-/*  */
-/* Test: Unknown setting error */
-/*   ✔ [assert-equal] Unknown setting error */
+/* Test: Do not flatten maps */
+/*   ✔ [assert-equal] Do not flatten maps */
 /*  */
 /*  */
 /* # Module: Su Valid Span [function] */
@@ -160,14 +56,12 @@
 /* Test: Fluid columns */
 /*   ✔ [assert-equal] Fluid columns */
 /*  */
-/* Test: Single fluid column */
-/*   ✔ [assert-equal] Single fluid column */
+/* Test: No single columns */
+/*   ✔ [assert-equal] Has no units */
+/*   ✔ [assert-equal] Has units */
 /*  */
 /* Test: Static columns */
 /*   ✔ [assert-equal] Static columns */
-/*  */
-/* Test: Single static column */
-/*   ✔ [assert-equal] Single static column */
 /*  */
 /* Test: Mismatched units */
 /*   ✔ [assert-equal] Mismatched units */
@@ -263,12 +157,159 @@
 /*   ✔ [assert-false] Single span, mixed columns and gutters */
 /*  */
 /*  */
+/* # Module: Su Span [function] */
+/* ---------------------------- */
+/* Test: Fluid */
+/*   ✔ [assert-equal] Returns fluid span if no units are given */
+/*  */
+/* Test: Static */
+/*   ✔ [assert-equal] Returns static span if units are given */
+/*  */
+/* Test: Explicit column span */
+/*   ✔ [assert-equal] Handles explicit column-spans */
+/*  */
+/* Test: Explicit length span */
+/*   ✔ [assert-equal] Handles explicit length-spans */
+/*  */
+/* Test: Mixed fluid-static */
+/*   ✔ [assert-equal] Mixed fluid-static */
+/*  */
+/* Test: Mixed static */
+/*   ✔ [assert-equal] Mixed static */
+/*  */
+/* Test: Mixed static with location */
+/*   ✔ [assert-equal] Mixed static with location */
+/*  */
+/* Test: Single span, mixed columns and gutters */
+/*   ✔ [assert-equal] Single span, mixed columns and gutters */
+/*  */
+/*  */
+/* # Module: Su Gutter [function] */
+/* ------------------------------ */
+/* Test: Static gutters */
+/*   ✔ [assert-equal] Static gutters are returned directly */
+/*  */
+/* Test: Fluid gutters */
+/*   ✔ [assert-equal] Gutters are calculated as a percentage of context */
+/*  */
+/*  */
+/* # Module: Su Sum [function] */
+/* --------------------------- */
+/* Test: Calculate the total units in a fluid grid */
+/*   ✔ [assert-equal] Returns combined column and gutter units */
+/*  */
+/* Test: Calculate the total units in a static grid */
+/*   ✔ [assert-equal] Returns combined column and gutter units */
+/*  */
+/* Test: Ignore 0 gutters */
+/*   ✔ [assert-equal] Ignore 0 gutters */
+/*  */
+/* Test: Handle single-column spans */
+/*   ✔ [assert-equal] No static gutters are added to fluid grids */
+/*  */
+/*  */
+/* # Module: Su Slice [function] */
+/* ----------------------------- */
+/* Test: Slice a grid */
+/*   ✔ [assert-equal] Returns subset of asymmetrical columns based on span and location */
+/*  */
+/* Test: Slice a grid with fractions */
+/*   ✔ [assert-equal] Slice a fraction of an asymmetrical column */
+/*  */
+/*  */
+/* # Module: Su Calc Sum [function] */
+/* -------------------------------- */
+/* Test: Mixed fluid-static */
+/*   ✔ [assert-equal] Mixed fluid-static */
+/*  */
+/* Test: Mixed static */
+/*   ✔ [assert-equal] Mixed static */
+/*  */
+/* Test: Zero handling */
+/*   ✔ [assert-equal] Zero handling */
+/*  */
+/*  */
+/* # Module: Su Calc [function] */
+/* ---------------------------- */
+/* Test: Mixed fluid-static */
+/*   ✔ [assert-equal] Mixed fluid-static */
+/*  */
+/* Test: Mixed static */
+/*   ✔ [assert-equal] Mixed static */
+/*  */
+/*  */
+/* # Module: Su Call [function] */
+/* ---------------------------- */
+/* Test: Calls a function using the appropriate args */
+/*   ✔ [assert-equal] Calls a function using the appropriate args */
+/*  */
+/*  */
+/* # Module: Susy Settings [function] */
+/* ---------------------------------- */
+/* Test: Default configuration */
+/*   ✔ [assert-equal] Returns merged map of Susy default config settings */
+/*  */
+/* Test: Configuration overrides */
+/*   ✔ [assert-equal] Returns merged map of Susy defaults with custom overrides */
+/*  */
+/* Test: Multiple overrides */
+/*   ✔ [assert-equal] Returns merged map of Susy defaults with multiple overrides */
+/*  */
+/*  */
+/* # Module: Repeat [function] */
+/* --------------------------- */
+/* Test: Repeat single values */
+/*   ✔ [assert-equal] Repeat single values */
+/*  */
+/* Test: Repeat list values */
+/*   ✔ [assert-equal] Repeat list values */
+/*  */
+/*  */
+/* # Module: Susy Get [function] */
+/* ----------------------------- */
+/* Test: Get value from user settings */
+/*   ✔ [assert-equal] Susy-get and map-get should return the same value */
+/*  */
+/* Test: Get falsey value from user settings */
+/*   ✔ [assert-equal] Susy-get and map-get should return the same value */
+/*  */
+/* Test: Get value from defaults */
+/*   ✔ [assert-equal] Susy-get and map-get should return the same value */
+/*  */
+/* Test: Unknown setting error */
+/*   ✔ [assert-equal] Unknown setting error */
+/*  */
+/*  */
+/* # Module: Susy Compile [function] */
+/* --------------------------------- */
+/* Test: Compiles normalized settings map from shorthand */
+/*   ✔ [assert-equal] Compiles normalized settings map from shorthand */
+/*  */
+/* Test: Compiles normalized settings map from existing maps */
+/*   ✔ [assert-equal] Compiles normalized settings map from existing maps */
+/*  */
+/* Test: Missing columns */
+/*   ✔ [assert-equal] Missing columns */
+/*  */
+/* Test: Allows context-only parsing */
+/*   ✔ [assert-equal] Allows context-only parsing */
+/*  */
+/* Test: Handles context-count as slice */
+/*   ✔ [assert-equal] Handles context-count as slice */
+/*  */
+/* Test: Last */
+/*   ✔ [assert-equal] Last */
+/*  */
+/* Test: All */
+/*   ✔ [assert-equal] All */
+/*  */
+/*  */
 /* # Module: Susy Parse [function] */
 /* ------------------------------- */
 /* Test: Simple grid span */
 /*   ✔ [assert-equal] A single unitless number is returned as span only */
 /*  */
-/* Test: Span with symmetrical columns */
+/* Test: Span with symmetrical column-slice */
 /*   ✔ [assert-equal] Span and symmetrical columns are properly mapped */
 /*  */
 /* Test: Span with spread */
@@ -282,15 +323,6 @@
 /*  */
 /* Test: Span all */
 /*   ✔ [assert-equal] Span "all" is properly mapped */
-/*  */
-/* Test: Span with column-width */
-/*   ✔ [assert-equal] Span with column-width is properly mapped */
-/*  */
-/* Test: Error on invalid column-width */
-/*   ✔ [assert-equal] Errors when column-width is invalid */
-/*  */
-/* Test: Columns with column-width */
-/*   ✔ [assert-equal] Columns with column-width is properly mapped */
 /*  */
 /* Test: Container-spread */
 /*   ✔ [assert-equal] Container-spread is properly mapped */
@@ -320,17 +352,14 @@
 /* Test: All values */
 /*   ✔ [assert-equal] All values */
 /*  */
+/* Test: Missing Columns */
+/*   ✔ [assert-equal] Missing Columns */
 /*  */
-/* # Module: Susy Normalize Columns [function] */
-/* ------------------------------------------- */
-/* Test: Fluid shorthand */
-/*   ✔ [assert-equal] Fluid shorthand is converted to longform column description. */
+/* Test: Last */
+/*   ✔ [assert-equal] Last */
 /*  */
-/* Test: Static shorthand */
-/*   ✔ [assert-equal] Static shorthand is converted to longform column description. */
-/*  */
-/* Test: Longhand */
-/*   ✔ [assert-equal] Longhand is passed through without changes. */
+/* Test: All */
+/*   ✔ [assert-equal] All */
 /*  */
 /*  */
 /* # Module: Susy Normalize Span [funtion] */
@@ -338,8 +367,24 @@
 /* Test: Keyword span */
 /*   ✔ [assert-equal] Keyword span */
 /*  */
-/* Test: Shorthand span */
-/*   ✔ [assert-equal] Shorthand span */
+/*  */
+/* # Module: Susy Normalize Columns [function] */
+/* ------------------------------------------- */
+/* Test: Nothing to normalize */
+/*   ✔ [assert-equal] Nothing to normalize */
+/*  */
+/* Test: Nothing to normalize */
+/*   ✔ [assert-equal] Nothing to normalize */
+/*  */
+/* Test: Get Symmetrical Slice */
+/*   ✔ [assert-equal] Get Symmetrical Slice */
+/*  */
+/* Test: Flatten lists */
+/*   ✔ [assert-unequal] Flatten lists */
+/*   ✔ [assert-equal] Confirm that the list is now flat */
+/*  */
+/* Test: Error on failed slice */
+/*   ✔ [assert-equal] Error on failed slice */
 /*  */
 /*  */
 /* # Module: Susy Normalize Spread [function] */
@@ -363,24 +408,6 @@
 /*   ✔ [assert-equal] Final keyword returns calculated position from end */
 /*  */
 /*  */
-/* # Module: Susy Compile [function] */
-/* --------------------------------- */
-/* Test: Compiles normalized settings map from shorthand */
-/*   ✔ [assert-equal] Compiles normalized settings map from shorthand */
-/*  */
-/* Test: Compiles normalized settings map from existing maps */
-/*   ✔ [assert-equal] Compiles normalized settings map from existing maps */
-/*  */
-/* Test: Allows context-only parsing */
-/*   ✔ [assert-equal] Allows context-only parsing */
-/*  */
-/*  */
-/* # Module: Susy Call [function] */
-/* ------------------------------ */
-/* Test: Calls a function using the appropriate args */
-/*   ✔ [assert-equal] Calls a function using the appropriate args */
-/*  */
-/*  */
 /* # Module: Susy Span [function] */
 /* ------------------------------ */
 /* Test: Simple span */
@@ -401,9 +428,15 @@
 /* Test: Span error */
 /*   ✔ [assert-equal] Error when there is no span */
 /*  */
-/* Test: wtf */
-/*   ✔ [assert-equal] wtf */
-/*   ✔ [assert-equal] wtf */
+/* Test: Complex Grid */
+/*   ✔ [assert-equal] Complex Grid */
+/*   ✔ [assert-equal] Complex Grid */
+/*  */
+/* Test: Convert context-number to slice */
+/*   ✔ [assert-equal] Convert context-number to slice */
+/*  */
+/* Test: All */
+/*   ✔ [assert-equal] All */
 /*  */
 /*  */
 /* # Module: Susy Gutter [function] */
@@ -435,8 +468,11 @@
 /* Test: Numerical slicing */
 /*   ✔ [assert-equal] Returns a sub-slice of columns */
 /*  */
-/* Test: Keyword slicing */
+/* Test: Keyword slicing: first */
 /*   ✔ [assert-equal] Returns a keyword-slice of columns */
+/*  */
+/* Test: Keyword slicing: last */
+/*   ✔ [assert-equal] Keyword slicing: last */
 /*  */
 /*  */
 /* # Module: Unprefix */
@@ -544,11 +580,11 @@
 /*  */
 /*  */
 /* # SUMMARY ---------- */
-/* 141 Tests: */
-/* - 141 Passed */
+/* 151 Tests: */
+/* - 151 Passed */
 /* - 0 Failed */
 /* Stats: */
-/* - 38 Modules */
-/* - 141 Tests */
-/* - 148 Assertions */
+/* - 39 Modules */
+/* - 151 Tests */
+/* - 161 Assertions */
 /* -------------------- */

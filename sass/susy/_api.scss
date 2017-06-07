@@ -17,7 +17,7 @@
 ///
 /// @group api
 ///
-/// @param {List} $span -
+/// @param {list} $span -
 ///   Shorthand expression to define the width of the span,
 ///   optionally containing:
 ///   - a count, length, or column-list span;
@@ -25,12 +25,14 @@
 ///   - `narrow`, `wide`, or `wider` for optionally spreading
 ///     across adjacent gutters;
 ///   - `of $n <spread>` for available grid columns
-///     and spread of the container;
+///     and spread of the container
+///     - Span counts like `of 6` are only valid
+///       in the context of symmetrical grids
 ///   - and `set-gutters $n` to override global gutter settings
-/// @param {Map} $config [()] -
+/// @param {map} $config [()] -
 ///   Optional map of Susy grid configuration settings
 ///
-/// @return {Length} -
+/// @return {length} -
 ///   Fluid `%` length when no `column-width` is given,
 ///   or a static length in the same units as `column-width`
 ///
@@ -50,7 +52,7 @@
   $output: susy-compile($span, $config);
 
   @if map-get($output, 'span') {
-    @return susy-call('su-span', $output);
+    @return su-call('su-span', $output);
   }
 
   $actual: '[#{type-of($span)}] `#{inspect($span)}`';
@@ -69,15 +71,15 @@
 ///
 /// @group api
 ///
-/// @param {Number | List} $context [null] -
+/// @param {list | number} $context [null] -
 ///   Optional context for nested gutters,
 ///   including shorthand for
 ///   `columns`, `gutters`, and `container-spread`
 ///   (additional shorthand will be ignored)
-/// @param {Map} $config [()] -
+/// @param {map} $config [()] -
 ///   Optional map of Susy grid configuration settings
 ///
-/// @return {Length} -
+/// @return {length} -
 ///   Width of a gutter as `%` of current context,
 ///   or in the units defined by `column-width` when available
 ///
@@ -91,7 +93,7 @@
 ) {
   $context: susy-compile($context, $config, 'context-only');
 
-  @return susy-call('su-gutter', $context);
+  @return su-call('su-gutter', $context);
 }
 
 
@@ -104,19 +106,19 @@
 ///
 /// @group api
 ///
-/// @param {List} $span -
-///   Shorthand expression to define the subset span —
-///   containing a unitless column-count;
-///   'of $n' for available grid columns [optional];
-///   'at $n', 'first', or 'last' for location on asymmetrical grids;
-///   and 'narrow', 'wide', or 'wider' for
-///   optionally spreading over adjacent gutters
-///   with either the `span` or `columns` value
+/// @param {list} $span -
+///   Shorthand expression to define the subset span, optionally containing:
+///   - `at $n`, `first`, or `last` location on asymmetrical grids;
+///   - `of $n <spread>` for available grid columns
+///     and spread of the container
+///     - Span-counts like `of 6` are only valid
+///       in the context of symmetrical grids
+///     - Valid spreads include `narrow`, `wide`, or `wider`
 ///
-/// @param {Map} $config [()] -
+/// @param {map} $config [()] -
 ///   Optional map of Susy grid configuration settings
 ///
-/// @return {List} -
+/// @return {list} -
 ///   Subset list of columns for use for a nested context
 ///
 /// @example scss - Return a nested segment of asymmetrical grid
@@ -127,5 +129,5 @@
 ) {
   $span: susy-compile($span, $config);
 
-  @return susy-call('su-slice', $span);
+  @return su-call('su-slice', $span);
 }

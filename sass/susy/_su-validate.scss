@@ -4,6 +4,8 @@
 // - su-valid-gutters [function]
 // - su-valid-spread [function]
 // - su-valid-location [function]
+// - su-is-comparable [function]
+// - su-needs-calc [function]
 
 
 
@@ -12,7 +14,7 @@
 /// Check that the `span` argument
 /// is a number, length, or column-list
 ///
-/// @group x-validation
+/// @group x--validation
 ///
 /// @param {number | list} $span -
 ///   Number of columns, or length of span
@@ -42,7 +44,7 @@
 /// Check that the `columns` argument is a valid
 /// list of column-lengths
 ///
-/// @group x-validation
+/// @group x--validation
 ///
 /// @param {list} $columns -
 ///   List of column-lengths
@@ -55,20 +57,31 @@
   $columns,
   $silent-failure: false
 ) {
-  @each $col in $columns {
-    @if (type-of($col) != 'number') {
-      @if $silent-failure {
-        @return null;
-      }
+  @if (type-of($columns) == 'list') {
+    $fail: false;
 
-      $actual: '[#{type-of($columns)}] `#{inspect($columns)}`';
-      @return _susy-error(
-        '#{$actual} is not a valid list of numbers for $columns.',
-        'su-valid-columns');
+    @each $col in $columns {
+      @if (type-of($col) != 'number') {
+        $fail: true;
+      }
+    }
+
+    @if not $fail {
+      @return $columns;
     }
   }
 
-  @return $columns;
+  // Silent Failure
+  @if $silent-failure {
+    @return null;
+  }
+
+  // Error Message
+  $actual: '[#{type-of($columns)}] `#{inspect($columns)}`';
+
+  @return _susy-error(
+    '#{$actual} is not a valid list of numbers for $columns.',
+    'su-valid-columns');
 }
 
 
@@ -77,7 +90,7 @@
 // -------------
 /// Check that the `gutters` argument is a valid number
 ///
-/// @group x-validation
+/// @group x--validation
 ///
 /// @param {number} $gutters -
 ///   Width of a gutter
@@ -106,7 +119,7 @@
 /// Check that the `spread` argument is a valid
 /// intiger between `-1` and `1`
 ///
-/// @group x-validation
+/// @group x--validation
 ///
 /// @param {0 | 1 | -1} $spread -
 ///   Number of gutters to include in a span,
@@ -134,7 +147,7 @@
 /// Check that the `location` argument is a valid number,
 /// within the scope of available columns
 ///
-/// @group x-validation
+/// @group x--validation
 ///
 /// @param {number} $span -
 ///   Number of grid-columns to be spanned
@@ -182,7 +195,7 @@
 // -------------
 /// Check that the units in a grid are comparable
 ///
-/// @group x-validation
+/// @group x--validation
 ///
 /// @param {arglist} $lengths... -
 ///   All the values to compare (columns, gutters, span, etc)
@@ -220,7 +233,7 @@
 /// Check if `calc()` will be needed in defining a span,
 /// if the necessary units in a grid are not comparable.
 ///
-/// @group x-validation
+/// @group x--validation
 ///
 /// @param {number} $span -
 ///   Number of grid-columns to be spanned

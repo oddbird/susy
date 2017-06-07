@@ -9,6 +9,17 @@ In all cases,
 we ask you to follow the
 [Sass community guidelines](http://sass-lang.com/community-guidelines).
 
+Susy is roughly divided into two layers,
+the core grid-math layer is called **Su**,
+and is made up of "pure" functions
+that expect normalized values.
+
+The "Susy" layer provides extra syntax-sugar
+to the API –
+with parsing, normalization,
+and a smaller set of "common" functions
+that call on the core math as necessary.
+
 
 Development
 -----------

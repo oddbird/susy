@@ -8,7 +8,7 @@
 
   @include test('Default configuration') {
     $susy: (
-      'columns': 4 x 320px,
+      'columns': susy-repeat(4, 320px),
       'spread': null,
     ) !global;
 
@@ -66,7 +66,7 @@
 // --------
 @include test-module('Susy Get [function]') {
   $susy: (
-    'columns': 12 x 120px,
+    'columns': susy-repeat(12, 120px),
     'spread': null,
   ) !global;
 

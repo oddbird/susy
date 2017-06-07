@@ -28,7 +28,7 @@
 /// @group api
 /// @alias susy-gutter
 ///
-/// @param {Integer | List} $context [null] -
+/// @param {integer | list} $context [null] -
 /// @param {map} $config [()]
 @function gutter(
   $context: susy-get('columns'),

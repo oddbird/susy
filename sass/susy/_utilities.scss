@@ -7,12 +7,30 @@
 
 // Susy Error Output Override
 // --------------------------
+/// Turn off error output for testing
+/// @group x-utility
+/// @access private
 $_susy-error-output-override: false !default;
 
 
 
 // Susy Error
 // ----------
+/// Optionally return error messages without failing,
+/// as a way to test error cases
+///
+/// @group x-utility
+/// @access private
+///
+/// @param {string} $message -
+///   A useful error message, explaining the problem
+/// @param {string} $source -
+///   The original source of the error for debugging
+/// @param {bool} $override [$_susy-error-output-override] -
+///   Optionally return the error rather than failing
+/// @return {string} -
+///   Combined error with source and message
+/// @throws When `$override == true`
 @function _susy-error(
   $message,
   $source,
@@ -28,6 +46,30 @@ $_susy-error-output-override: false !default;
 
 // Susy Map Add Units
 // ------------------
+/// The calc features use a map of units and values
+/// to compile the proper algorythm.
+/// This function adds a new value to any comparable existing unit/value,
+/// or adds a new unit/value pair to the map
+///
+/// @group x-utility
+/// @access private
+///
+/// @param {map} $map -
+///   A map of unit/value pairs, e.g. ('px': 120px)
+/// @param {length} $value -
+///   A new length to be added to the map
+/// @return {map} -
+///   The updated map, with new value added
+///
+/// @example scss -
+///   $map: (0px: 120px);
+///   $map: _susy-map-add-units($map, 1in); // add a comparable unit
+///   $map: _susy-map-add-units($map, 3vw); // add a new unit
+///   /* $map: ( */
+///   @each $units, $value in $map {
+///     /*   #{$units}: #{$value} */
+///   }
+///   /* ); */
 @function _susy-map-add-units(
   $map,
   $value
@@ -44,4 +86,44 @@ $_susy-error-output-override: false !default;
   }
 
   @return map-merge($map, ($unit: $has + $value));
+}
+
+
+// Susy Flatten
+// ------------
+/// Flatten a multidimensional list
+///
+/// @group x-utility
+/// @access private
+///
+/// @param {list} $list -
+///   The list to be flattened
+/// @return {list} -
+///   The flattened list
+///
+/// @example scss -
+///   $list: 120px (30em 30em) 120px;
+///   /* #{_susy-flatten($list)} */
+@function _susy-flatten(
+  $list
+) {
+  $flat: ();
+
+  // Don't iterate over maps
+  @if (type-of($list) == 'map') {
+    @return $list;
+  }
+
+  // Iterate over lists (or single items)
+  @each $item in $list {
+    @if (type-of($item) == 'list') {
+      $item: _susy-flatten($item);
+      $flat: join($flat, $item);
+    } @else {
+      $flat: append($flat, $item);
+    }
+  }
+
+  // Return flattened list
+  @return $flat;
 }

@@ -1,11 +1,73 @@
 // Parser
 // ======
+// - susy-compile [function]
 // - susy-parse [function]
 // - susy-normalize [function]
-// - susy-normalize-columns [function]
 // - susy-normalize-span [function]
+// - susy-normalize-columns [function]
 // - susy-normalize-spread [function]
 // - susy-normalize-location [function]
+
+
+
+// Compile
+// -------
+/// Combines parsed shorthand
+/// with local and global config,
+/// normalizing the results
+/// into a standard Susy settings map.
+///
+/// @group x-parser
+///
+/// @param {list | map} $shorthand -
+///   Shorthand expression to define the width of the span,
+///   optionally containing:
+///   - a count, length, or column-list span;
+///   - `at $n`, `first`, or `last` location on asymmetrical grids;
+///   - `narrow`, `wide`, or `wider` for optionally spreading
+///     across adjacent gutters;
+///   - `of $n <spread>` for available grid columns
+///     and spread of the container
+///     (span counts like `of 6` are only valid
+///     in the context of symmetrical grids);
+///   - and `set-gutters $n` to override global gutter settings
+/// @param {map} $config [null] -
+///   Optional map of Susy grid configuration settings
+/// @param {bool} $context-only [false] -
+///   Allow the parser to ignore span and span-spread values,
+///   only parsing context and container-spread
+///
+/// @return {map} -
+///   Parsed and normalized map of settings,
+///   based on global and local configuration,
+///   alongwith shorthad adjustments.
+///
+/// @example scss -
+///   $user-input: 3 wide of susy-repeat(6, 120px) set-gutters 10px;
+///   $grid-data: susy-compile($user-input, $susy);
+///
+///   @each $key, $value in $grid-data {
+///     /* #{$key}: #{$value}, */
+///   }
+@function susy-compile(
+  $short,
+  $config: null,
+  $context-only: false
+) {
+  // Get and normalize config
+  $config: if($config, susy-settings($config), susy-settings());
+  $normal-config: susy-normalize($config);
+
+  // Parse and normalize shorthand
+  @if (type-of($short) != 'map') and (length($short) > 0) {
+    $short: susy-parse($short, $context-only);
+  }
+
+  $normal-short: susy-normalize($short, $normal-config);
+
+  // Merge and return
+  @return map-merge($normal-config, $normal-short);
+}
 
 
 
@@ -23,7 +85,9 @@
 ///   - `narrow`, `wide`, or `wider` for optionally spreading
 ///     across adjacent gutters;
 ///   - `of $n <spread>` for available grid columns
-///     and spread of the container;
+///     and spread of the container
+///     (span counts like `of 6` are only valid
+///     in the context of symmetrical grids);
 ///   - and `set-gutters $n` to override global gutter settings
 /// @param {bool} $context-only [false] -
 ///   Allow the parser to ignore span and span-spread values,
@@ -72,31 +136,15 @@
 
     // if we know what's supposed to be coming next…
     @if $next {
-      // If it's supposed to be a column width…
-      @if ($next == 'column-width') {
-        // if it looks like a column width…
-        @if ($type == 'number') and (not unitless($item)) {
-          // could be either span or context width…
-          @if $of {
-            $columns: join($columns, ('x' $item));
-          } @else {
-            $span: join($span, ('x' $item));
-          }
 
-        } @else { // Column-width error
-          @return _susy-error(
-            '`#{$item}` is not a valid column-width',
-            'susy-parse');
-        }
-
-      } @else { // For other values of next, we simply add to the return map
-        $return: map-merge($return, ($next: $item));
-      }
+      // Add to the return map
+      $return: map-merge($return, ($next: $item));
 
       // Reset next to `false`
       $next: false;
 
     } @else { // If we don't know what's supposed to be coming…
+
       // Keywords…
       @if ($type == 'string') {
         // Check the map for keywords…
@@ -110,36 +158,36 @@
             $return: map-merge($return, ($setting: $item));
           }
 
-        } @else if ($item == 'all') { // `All` is a span shortcut
+        } @else if ($item == 'all') {
+          // `All` is a span shortcut
           $span: 'all';
-
-        } @else if ($item == 'at') { // Some keywords setup what's next…
+        } @else if ($item == 'at') {
+          // Some keywords setup what's next…
           $next: 'location';
-        } @else if ($item == 'x') {
-          $next: 'column-width';
         } @else if ($item == 'set-gutters') {
           $next: 'gutters';
         } @else if ($item == 'of') {
           $of: true;
-
-        } @else { // Error if we're out of ideas
+        } @else {
+          // Error if we're out of ideas
           @return _susy-error('#{$parse-error} #{$details}', 'susy-parse');
         }
 
       } @else if ($type == 'number') or ($type == 'list') { // Numbers & lists…
 
-        // We don't have a span, and we're not expecting context…
         @if not ($span or $of) {
+          // We don't have a span, and we're not expecting context…
           $span: $item;
-
-        } @else if ($of) and (not $columns) { // We are expecting context…
+        } @else if ($of) and (not $columns) {
+          // We are expecting context…
           $columns: $item;
-
-        } @else { // Error if we don't understand…
+        } @else {
+          // Error if we don't understand…
           @return _susy-error('#{$parse-error} #{$details}', 'susy-parse');
         }
 
-      } @else { // Error if we don't know this type…
+      } @else {
+        // Error if we don't know this type…
         @return _susy-error('#{$parse-error} #{$details}', 'susy-parse');
       }
     }
@@ -169,37 +217,50 @@
 ///
 /// @param {map} $config -
 ///   Map of Susy configuration settings to normalize
+/// @param {map | null} $context [null] -
+///   Map of Susy configuration settings to use as global reference,
+///   or `null` to access global settings
 ///
 /// @return {map} -
 ///   Map of Susy configuration settings, with all values normalized
 @function susy-normalize(
-  $config
+  $config,
+  $context: null
 ) {
-  @each $setting in ('columns', 'spread', 'container-spread') {
+  // Spread
+  @each $setting in ('spread', 'container-spread') {
     $value: map-get($config, $setting);
 
     @if $value {
-      $function: if(($setting == 'container-spread'), 'spread', $setting);
-      $function: 'susy-normalize-#{$function}';
-
-      @if function-exists('get-function') {
-        $function: get-function($function);
-      }
-
-      $value: call($function, $value);
+      $value: susy-normalize-spread($value);
+      $config: map-merge($config, ($setting: $value));
     }
-
-    $config: map-merge($config, ($setting: $value));
   }
 
-  $span: map-get($config, 'span');
-  $location: map-get($config, 'location');
+  // Columns
   $columns: map-get($config, 'columns');
+
+  @if $columns {
+    $columns: susy-normalize-columns($columns, $context);
+    $config: map-merge($config, ('columns': $columns));
+  }
+
+  @if not $columns {
+    $map: type-of($context) == 'map';
+    $columns: if($map, map-get($context, 'columns'), null);
+    $columns: $columns or susy-get('columns');
+  }
+
+  // Span
+  $span: map-get($config, 'span');
 
   @if $span {
     $span: susy-normalize-span($span, $columns);
     $config: map-merge($config, ('span': $span));
   }
+
+  // Location
+  $location: map-get($config, 'location');
 
   @if $location {
     $location: susy-normalize-location($span, $location, $columns);
@@ -207,35 +268,6 @@
   }
 
   @return $config;
-}
-
-
-
-// Normalize Columns
-// -----------------
-/// Normalize `columns` shorthand for Su
-///
-/// @group x-parser
-///
-/// @param {number | list} $columns -
-///   Columns value to normalize
-///
-/// @return {list} -
-///   List value for `$columns`
-@function susy-normalize-columns(
-  $columns
-) {
-  $return: ();
-
-  @if (type-of($columns) == 'number') and unitless($columns) {
-    @return susy-repeat($columns);
-  } @else if index($columns, 'x') and length($columns) == 3 {
-    $count: nth($columns, 1);
-    $width: nth($columns, -1);
-    @return susy-repeat($count, $width);
-  }
-
-  @return $columns;
 }
 
 
@@ -257,13 +289,58 @@
   $span,
   $columns: susy-get('columns')
 ) {
-  @if (type-of($span) == 'number') {
-    @return $span;
-  } @else if $span == 'all' {
+  @if ($span == 'all') {
     @return length($columns);
   }
 
-  @return susy-normalize-columns($span);
+  @return $span;
+}
+
+
+
+// Normalize Columns
+// -----------------
+/// Normalize `column` slice shorthand for Su
+///
+/// @group x-parser
+///
+/// @param {list | integer} $columns -
+///   List of available columns,
+///   or unitless integer representing a slice of
+///   available the context
+/// @param {map | null} $context [null] -
+///   Map of Susy configuration settings to use as global reference,
+///   or `null` to access global settings
+/// @return {list} -
+///   Columns value, normalized into a list
+/// @throws When attempting to access slice of asymmetrical context
+@function susy-normalize-columns(
+  $columns,
+  $context: null
+) {
+  $context: $context or susy-settings();
+
+  @if type-of($columns) == 'list' {
+    @return _susy-flatten($columns);
+  }
+
+  @if (type-of($columns) == 'number') and (unitless($columns)) {
+    $span: $columns;
+    $context: map-get($context, 'columns');
+    $symmetrical: susy-repeat(length($context), nth($context, 1));
+
+    @if ($context == $symmetrical) {
+      @return susy-repeat($span, nth($context, 1));
+    } @else {
+      $actual: 'of `#{$span}`';
+      $columns: 'grid-columns `#{$context}`';
+      @return _susy-error(
+        'context-slice #{$actual} can not be determined based on #{$columns}.',
+        'susy-normalize-columns');
+    }
+  }
+
+  @return $columns;
 }
 
 

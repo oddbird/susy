@@ -5,6 +5,10 @@ Changelog
 3.0.0-alpha.7 - UNRELEASED
 --------------------------
 
+- BREAKING: `_prefix.scss` has been renamed `_susy-prefix.scss`
+  for clarity when importing.
+- BREAKING: `susy-call()` has been renamed `su-call()`.
+  since it is directly related to accessing the `su` functions.
 - BREAKING: Remove support for non-list `columns`:
   `'columns': 4` => `'columns': susy-repeat(4)` == `'columns': 1 1 1 1`.
 - BREAKING: Remove support for `$count x $width` syntax in `columns`:

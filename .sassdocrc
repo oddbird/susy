@@ -8,12 +8,13 @@ package: ./package.json
 verbose: true
 groups:
   a-config: 'Configuration'
-  api: 'Main API'
-  math: 'Core Math'
-  plugin_svg-grid: '[Plugin] SVG Grid Image'
-  x--helpers: '[Su Access Helpers]'
-  x-parser: '[Susy Syntax Parser]'
+  b-api: 'Grid Functions'
+  plugin-utils: 'Plugin Utilities'
+  plugin_svg-grid: 'Plugin: SVG Grid Image'
+  su-math: 'Su: Core Math'
   x--validation: '[Su Input Validation]'
+  x-normal: '[Susy Normalization]'
+  x-parser: '[Susy Syntax Parser]'
 
 herman:
   sass:

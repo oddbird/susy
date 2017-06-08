@@ -5,6 +5,21 @@
 /*   ✔ [assert-equal] Allow errors to return without blocking compilation */
 /*  */
 /*  */
+/* # Module: Su Is Comparable [function] */
+/* ------------------------------------- */
+/* Test: Fully fluid */
+/*   ✔ [assert-equal] Fully fluid */
+/*  */
+/* Test: Comparable static */
+/*   ✔ [assert-equal] Comparable static */
+/*  */
+/* Test: Mixed fluid-static */
+/*   ✔ [assert-false] Mixed fluid-static */
+/*  */
+/* Test: Non-comparable static */
+/*   ✔ [assert-false] Non-comparable static */
+/*  */
+/*  */
 /* # Module: Susy Map Add Units [function] */
 /* --------------------------------------- */
 /* Test: Matched units */
@@ -114,49 +129,6 @@
 /*   ✔ [assert-equal] Location/span combination error */
 /*  */
 /*  */
-/* # Module: Su Is Comparable [function] */
-/* ------------------------------------- */
-/* Test: Fully fluid */
-/*   ✔ [assert-equal] Fully fluid */
-/*  */
-/* Test: Comparable static */
-/*   ✔ [assert-equal] Comparable static */
-/*  */
-/* Test: Mixed fluid-static */
-/*   ✔ [assert-false] Mixed fluid-static */
-/*  */
-/* Test: Non-comparable static */
-/*   ✔ [assert-false] Non-comparable static */
-/*  */
-/*  */
-/* # Module: Su Needs Calc [function] */
-/* ---------------------------------- */
-/* Test: Fully fluid */
-/*   ✔ [assert-false] Fully fluid */
-/*  */
-/* Test: Fully static */
-/*   ✔ [assert-false] Fully static */
-/*  */
-/* Test: Static span and gutters */
-/*   ✔ [assert-false] Static span and gutters */
-/*  */
-/* Test: Mismatched span units (complex) */
-/*   ✔ [assert-true] Mismatched span units (complex) */
-/*  */
-/* Test: Mismatched span units (simple) */
-/*   ✔ [assert-true] Mismatched span units (simple) */
-/*   ✔ [assert-true] Mismatched span units (simple) */
-/*  */
-/* Test: Mismatched gutter units */
-/*   ✔ [assert-true] Mismatched gutter units */
-/*  */
-/* Test: Fluid span and gutters, mixed columns */
-/*   ✔ [assert-true] Fluid span and gutters, mixed columns */
-/*  */
-/* Test: Single span, mixed columns and gutters */
-/*   ✔ [assert-false] Single span, mixed columns and gutters */
-/*  */
-/*  */
 /* # Module: Su Span [function] */
 /* ---------------------------- */
 /* Test: Fluid */
@@ -229,8 +201,8 @@
 /*   ✔ [assert-equal] Zero handling */
 /*  */
 /*  */
-/* # Module: Su Calc [function] */
-/* ---------------------------- */
+/* # Module: Su Calc Span [function] */
+/* --------------------------------- */
 /* Test: Mixed fluid-static */
 /*   ✔ [assert-equal] Mixed fluid-static */
 /*  */
@@ -238,10 +210,32 @@
 /*   ✔ [assert-equal] Mixed static */
 /*  */
 /*  */
-/* # Module: Su Call [function] */
-/* ---------------------------- */
-/* Test: Calls a function using the appropriate args */
-/*   ✔ [assert-equal] Calls a function using the appropriate args */
+/* # Module: Su Needs Calc [function] */
+/* ---------------------------------- */
+/* Test: Fully fluid */
+/*   ✔ [assert-false] Fully fluid */
+/*  */
+/* Test: Fully static */
+/*   ✔ [assert-false] Fully static */
+/*  */
+/* Test: Static span and gutters */
+/*   ✔ [assert-false] Static span and gutters */
+/*  */
+/* Test: Mismatched span units (complex) */
+/*   ✔ [assert-true] Mismatched span units (complex) */
+/*  */
+/* Test: Mismatched span units (simple) */
+/*   ✔ [assert-true] Mismatched span units (simple) */
+/*   ✔ [assert-true] Mismatched span units (simple) */
+/*  */
+/* Test: Mismatched gutter units */
+/*   ✔ [assert-true] Mismatched gutter units */
+/*  */
+/* Test: Fluid span and gutters, mixed columns */
+/*   ✔ [assert-true] Fluid span and gutters, mixed columns */
+/*  */
+/* Test: Single span, mixed columns and gutters */
+/*   ✔ [assert-false] Single span, mixed columns and gutters */
 /*  */
 /*  */
 /* # Module: Susy Settings [function] */
@@ -278,30 +272,6 @@
 /*  */
 /* Test: Unknown setting error */
 /*   ✔ [assert-equal] Unknown setting error */
-/*  */
-/*  */
-/* # Module: Susy Compile [function] */
-/* --------------------------------- */
-/* Test: Compiles normalized settings map from shorthand */
-/*   ✔ [assert-equal] Compiles normalized settings map from shorthand */
-/*  */
-/* Test: Compiles normalized settings map from existing maps */
-/*   ✔ [assert-equal] Compiles normalized settings map from existing maps */
-/*  */
-/* Test: Missing columns */
-/*   ✔ [assert-equal] Missing columns */
-/*  */
-/* Test: Allows context-only parsing */
-/*   ✔ [assert-equal] Allows context-only parsing */
-/*  */
-/* Test: Handles context-count as slice */
-/*   ✔ [assert-equal] Handles context-count as slice */
-/*  */
-/* Test: Last */
-/*   ✔ [assert-equal] Last */
-/*  */
-/* Test: All */
-/*   ✔ [assert-equal] All */
 /*  */
 /*  */
 /* # Module: Susy Parse [function] */
@@ -475,6 +445,47 @@
 /*   ✔ [assert-equal] Keyword slicing: last */
 /*  */
 /*  */
+/* # Module: Susy Compile [function] */
+/* --------------------------------- */
+/* Test: Compiles normalized settings map from shorthand */
+/*   ✔ [assert-equal] Compiles normalized settings map from shorthand */
+/*  */
+/* Test: Compiles normalized settings map from existing maps */
+/*   ✔ [assert-equal] Compiles normalized settings map from existing maps */
+/*  */
+/* Test: Missing columns */
+/*   ✔ [assert-equal] Missing columns */
+/*  */
+/* Test: Allows context-only parsing */
+/*   ✔ [assert-equal] Allows context-only parsing */
+/*  */
+/* Test: Handles context-count as slice */
+/*   ✔ [assert-equal] Handles context-count as slice */
+/*  */
+/* Test: Last */
+/*   ✔ [assert-equal] Last */
+/*  */
+/* Test: All */
+/*   ✔ [assert-equal] All */
+/*  */
+/*  */
+/* # Module: Su Call [function] */
+/* ---------------------------- */
+/* Test: Calls su-span */
+/*   ✔ [assert-equal] Calls su-span */
+/*  */
+/* Test: Calls su-gutter */
+/*   ✔ [assert-equal] Calls su-gutter */
+/*  */
+/* Test: Calls su-slice */
+/*   ✔ [assert-equal] Calls su-slice */
+/*  */
+/* Test: Does not call other functions */
+/*   ✔ [assert-equal] Does not call other functions */
+/*   ✔ [assert-equal] Does not call other functions */
+/*   ✔ [assert-equal] Does not call other functions */
+/*  */
+/*  */
 /* # Module: Unprefix */
 /* ------------------ */
 /* Test: Span */
@@ -580,11 +591,11 @@
 /*  */
 /*  */
 /* # SUMMARY ---------- */
-/* 151 Tests: */
-/* - 151 Passed */
+/* 154 Tests: */
+/* - 154 Passed */
 /* - 0 Failed */
 /* Stats: */
 /* - 39 Modules */
-/* - 151 Tests */
-/* - 161 Assertions */
+/* - 154 Tests */
+/* - 166 Assertions */
 /* -------------------- */

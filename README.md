@@ -3,18 +3,17 @@ Power Tools For The Web
 
 [![Build Status](https://travis-ci.org/oddbird/susy.png?branch=threeish)](https://travis-ci.org/oddbird/susy)
 
-Susy is an agnostic set of tools
+Susy is a design-agnostic set of tools
 for creating powerful, custom layouts.
 We didn't want another grid system
 full of rules and restrictions —
 we wanted a power tool
 for building our own damn systems.
-
 Version Three is trimmed down to it's most basic components —
 functions that can be used to build any grid system.
-This is truely a grids-on-demand approach,
-where you build your own system,
-and we handle the math.
+
+> I like the idea of grids-on-demand, rather than a strict framework.<br />
+> – Chris Coyier, CSS Tricks
 
 
 Getting Started
@@ -133,146 +132,33 @@ Start using Susy:
 ```
 
 
-
-Defining Grids
---------------
-
-The grid is defined in a single map variable,
-with four initial properties:
-
-```scss
-// The factory defaults…
-$susy: (
-  'columns': susy-repeat(4),
-  'gutters': 0.5,
-  'spread': 'narrow',
-  'container-spread': 'narrow',
-);
-```
-
-Columns and gutters are conceptually similar
-to native CSS `grid-template-columns`
-and `grid-column-gap`,
-with a few simplifications.
-
-
-
-Defining Columns
-----------------
-
-Columns are described by a list of numbers,
-representing the relative width of each column.
-This is a simplified adaptation of the CSS-native
-[grid-template-columns](https://developer.mozilla.org/en-US/docs/Web/CSS/grid-template-columns)
-syntax:
-
-```scss
-// six equal fluid columns
-// (use unitless numbers in place of `fr` unit)
-$susy: (
-  'columns': 1 1 1 1 1 1
-);
-
-// six equal 5em columns
-$susy: (
-  'columns': 5em 5em 5em 5em 5em 5em
-);
-
-// six unequal fluid columns
-$susy: (
-  'columns': 1 1 2 3 5 8
-);
-
-// six unequal mixed-unit columns
-// (if units can't be compared, Susy will output a calc() value)
-$susy: (
-  'columns': 1in 1cm 2pt 3mm 5in 8cm
-);
-```
-
-Since this syntax can be repetative,
-we also provide a function
-that mimics the native-CSS `repeat()`
-for generating grid-column definitions:
-
-```scss
-// six equal fluid columns (1 1 1 1 1 1)
-$susy: (
-  'columns': susy-repeat(6)
-);
-
-// six 120px static columns
-$susy: (
-  'columns': susy-repeat(6, 120px)
-);
-
-// 12 columns, alternating 4em and 6em
-$susy: (
-  'columns': susy-repeat(6, 4em 6em)
-);
-
-// Mixing it up
-$susy: (
-  'columns': 120px susy-repeat(4) 120px
-);
-```
-
-
-Defining Gutters
-----------------
-
-Gutters are defined as a single width,
-or fluid ratio.
-This is similar to the native-CSS
-[grid-column-gap](https://developer.mozilla.org/en-US/docs/Web/CSS/grid-column-gap)
-syntax:
-
-```scss
-// fluid 4-column grid
-// with gutters 1/4 the size of a column
-$fluid: (
-  'columns': susy-repeat(4),
-  'gutters': 0.25,
-);
-
-// Static un-equal grid
-// with comparable gutters
-$static: (
-  'columns': (1em 1em 2em 3em 5em 8em),
-  'gutters': 0.25em,
-);
-```
-
-Anything you put in the root `$susy` variable map
-will be treated as a project default.
-Create configuration maps under different variable names,
-and you can pass in on-the-fly settings
-to override the defaults as-needed.
-
-
-
-Spread & Container-Spread
--------------------------
+Undestanding Spread & Container-Spread
+--------------------------------------
 
 Susy3 has two core settings you may not recognize
 from older versions of Susy:
 `spread` and `container-spread`.
-These define the way columns and gutters relate to each other,
-and were previously defined by the `gutter-position` setting.
-By making spread explicit,
-we hope to provide more flexibility.
+Every grid system (especially fluid grids)
+will have to make a decision about how containers
+and grid elements spread across adjacent gutters.
+These were previously defined by the `gutter-position` setting,
+but we hope this provides more flexibility and clarity.
 
 - Both spread settings default to `narrow`,
   the most common use-case.
   A `narrow` spread only has gutters *between* columns
   (one less gutter than columns).
+  This is how all css-native grids work,
+  and most margin-based grid systems.
 - A `wide` spread includes the same number of gutters as columns,
   spanning across a single side-gutter.
+  This is how most padding-based grid systems often work,
+  and is also useful for pushing and pulling elements into place.
 - The rare `wider` spread includes gutters
   on both sides of the column-span
   (one more gutters than columns).
 
-[![Spread Diagram](https://github.com/oddbird/susy/blob/threeish/spread.jpg)][spread]
+[![Spread Diagram](https://raw.githubusercontent.com/oddbird/susy/threeish/spread.jpg)][spread]
 
 [spread]: https://codepen.io/mirisuzanne/pen/EgmJJp?editors=1100
 
@@ -280,68 +166,31 @@ The `spread` property describes your target output,
 while `container-spread` describes your context,
 for the sake of fluid grids.
 
-
-
-Spanning Columns & Gutters
---------------------------
-
-There are two core funtions in the Susy3 API,
-each with an unprefixed alias by default:
-`span()` (or `susy-span()`),
-and `gutter()` (or `susy-gutter()`).
-
-The **gutter** function returns
-the width of a single gutter on your grid —
-to be applied as you see fit:
+If you are in a "wide" context,
+that means the parent element contains
+as many gutters as columns.
+To describe a "narrow" span inside that "wide" context:
 
 ```scss
-.example {
-  margin: gutter();
-}
+width: span(3 narrow of 6 wide);
 ```
 
-The **span** function
-describes a span of one or more columns,
-and any relevant gutters along the way:
+
+Get Creative
+------------
+
+Since the Susy API functions return length values
+instead of HTML properties,
+how you apply the math is up to you.
+Susy works great with `float`, `flexbox`,
+`inline-block`, `table`, and any other layout technique you use.
+You can even use it with CSS Grid,
+but it doesn't provide much advantage.
+
+Here's a real-quick class-based grid system,
+like you might find in one of the other frameworks:
 
 ```scss
-.example {
-  // the width of three columns, and the two intervening gutters
-  width: span(3);
-}
-```
-
-- When nesting symmetrical grids,
-  you can use the old `of $n` syntax
-  to describe changes in context —
-  e.g. `span(3 of 6)`.
-- When nesting asymmetrical grids,
-  you can use the old `at $n`, `first`, or `last` syntax
-  to describe the specific columns you want to span —
-  e.g. `span(3 at 2 of (1 2 3 4 5 6))`
-  to span across `(2 3 4)`.
-  (Note that Susy calculates the proper span-width,
-  but does not automatically move elements to the proper location)
-- To define new gutter-values in the shorthand syntax,
-  use `set-gutters $n`.
-
-You can use these two functions
-to build all sorts of grids:
-
-```scss
-.float {
-  float: left;
-  width: span(3);
-  margin-right: gutter();
-}
-
-.flexbox {
-  flex-basis: span(3);
-  padding: gutter() / 2;
-}
-
-
-// Make your own class system!
 .span {
   float: left;
   margin-right: gutter();
@@ -358,9 +207,14 @@ to build all sorts of grids:
 }
 ```
 
+[Read the docs](http://susydocs.oddbird.net/)
+for more details on configuration
+and available functions.
 
-Debugging Plugin: SVG Grid Image
---------------------------------
+
+
+Plugin: SVG Grid Image
+----------------------
 
 If you want to generate svg-backgrounds
 for help visualizing and debugging your grids,
@@ -396,38 +250,24 @@ background: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg"
 
 
 
-Advanced Features
------------------
-
-Once you get used to the basics,
-you can dig into some of the more advanced features:
-
-- Use the `susy-slice()` function
-  to handle nesting-context with asymmetrical grids.
-- Use `susy-compile()` and `su-call()`
-  to quickly access the full power of Susy's
-  syntax-parsing, normalization, and math engines,
-  while building plugins of your own.
-
-Happy griding!
-
-
-
 Susy vs Su
 ----------
 
-The Susy code is roughly divided into two layers.
+You may notice that some functions have a `susy-` prefix,
+while others only have `su-`.
+This helps distinguish between the two distinct layers:
 
 - The core grid-math layer is called **Su**,
   and is made up of "pure" functions
   that expect normalized values.
-  Most users will never access Su directly,
-  unless building a more involved plugin.
-- The **Susy** layer provides extra syntax-sugar –
-  with defaults, shorthand-parsing, normalization,
+  This is useful if you prefer argument-syntax to shorthand syntax,
+  or if you are building your own Susy mixins.
+- The upper **Susy** layer provides syntax-sugar –
+  global defaults, shorthand-parsing, normalization,
   and a smaller set of common-use functions
   that call on the core math as necessary.
   This is the primary API for most users.
+
 
 
 Resources

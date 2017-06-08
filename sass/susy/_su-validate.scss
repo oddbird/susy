@@ -21,6 +21,9 @@
 ///
 /// @return {number | list} -
 ///   Validated `$span` number, length, or columns list
+///
+/// @throw
+///   when span value is not a number, or valid column list
 @function su-valid-span(
   $span
 ) {
@@ -53,6 +56,9 @@
 ///
 /// @return {list} -
 ///   Validated `$columns` list
+///
+/// @throw
+///   when column value is not a valid list of numbers
 @function su-valid-columns(
   $columns,
   $silent-failure: false
@@ -97,6 +103,9 @@
 ///
 /// @return {number} -
 ///   Validated `$gutters` number
+///
+/// @throw
+///   when gutter value is not a number
 @function su-valid-gutters(
   $gutters
 ) {
@@ -127,6 +136,9 @@
 ///
 /// @return {0 | 1 | -1} -
 ///   Validated `$spread` number
+///
+/// @throw
+///   when spread value is not a valid spread
 @function su-valid-spread(
   $spread
 ) {
@@ -158,6 +170,10 @@
 ///
 /// @return {integer} -
 ///   Validated `$location` intiger
+///
+/// @throw
+///   when location value is not a valid index,
+///   given the context and span.
 @function su-valid-location(
   $span,
   $location,
@@ -189,86 +205,3 @@
 
   @return $location;
 }
-
-
-// Is Comparable
-// -------------
-/// Check that the units in a grid are comparable
-///
-/// @group x--validation
-///
-/// @param {arglist} $lengths... -
-///   All the values to compare (columns, gutters, span, etc)
-///
-/// @return {'fluid' | 'static' | false} -
-///   The type of span (fluid or static) when units match,
-///   or `false` for mismatched units
-@function su-is-comparable(
-  $lengths...
-) {
-  $first: nth($lengths, 1);
-
-  @if (length($lengths) == 1) {
-    @return if(unitless($first), 'fluid', 'static');
-  }
-
-  @for $i from 2 through length($lengths) {
-    $comp: nth($lengths, $i);
-
-    $fail: not comparable($first, $comp);
-    $fail: $fail or (unitless($first) and not unitless($comp));
-    $fail: $fail or (unitless($comp) and not unitless($first));
-
-    @if $fail {
-      @return false;
-    }
-  }
-
-  @return if(unitless($first), 'fluid', 'static');
-}
-
-
-// Needs Calc
-// ----------
-/// Check if `calc()` will be needed in defining a span,
-/// if the necessary units in a grid are not comparable.
-///
-/// @group x--validation
-///
-/// @param {number} $span -
-///   Number of grid-columns to be spanned
-/// @param {list} $columns -
-///   List of available columns in the grid
-/// @param {number} $gutters -
-///   Width of a gutter
-/// @param {bool} $validate [true] -
-///   Check that arguments are valid before proceeding
-///
-/// @return {bool} -
-///   `True` when units do not match, and `calc()` will be required
-@function su-needs-calc(
-  $span,
-  $columns,
-  $gutters,
-  $validate: true
-) {
-  @if $validate {
-    $span: su-valid-span($span);
-    $columns: su-valid-columns($columns);
-    $gutters: su-valid-gutters($gutters);
-  }
-
-  $check: if((length($span) > 1), append($span, $gutters), $span);
-  $safe-span: su-is-comparable($check...);
-
-  @if ($safe-span == 'static') {
-    @return false;
-  } @else if (not $safe-span) {
-    @return true;
-  }
-
-  $safe-fluid: su-is-comparable($gutters, $columns...);
-
-  @return not $safe-fluid;
-}
-

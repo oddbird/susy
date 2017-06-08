@@ -19,6 +19,8 @@ Changelog
   so all mixed-unit grids are possible.
   This means the old inside-static solution
   has been replaced by calc() output as well.
+- BREAKING: `su-sum` has been renamed `_su-sum`
+  and is now considered a private function.
 - SVG background images now have a default size included.
   You can override the default using the CSS `background-size` property.
 - Add list-flattening to columns normalization,

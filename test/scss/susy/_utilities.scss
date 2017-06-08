@@ -13,6 +13,33 @@
 }
 
 
+// Su Is Comparable
+// -------------
+@include test-module('Su Is Comparable [function]') {
+  @include test('Fully fluid') {
+    @include assert-equal(
+      _su-is-comparable(0.5, 1, 2, 4, 2),
+      'fluid');
+  }
+
+  @include test('Comparable static') {
+    @include assert-equal(
+      _su-is-comparable(10px, 3px, 2in, 33cm),
+      'static');
+  }
+
+  @include test('Mixed fluid-static') {
+    @include assert-false(
+      _su-is-comparable(10px, 3, 2in, 33cm));
+  }
+
+  @include test('Non-comparable static') {
+    @include assert-false(
+      _su-is-comparable(10px, 3rem, 2in, 33cm));
+  }
+}
+
+
 // Susy Map Add Units
 // ------------------
 @include test-module('Susy Map Add Units [function]') {
@@ -28,7 +55,7 @@
     );
 
     @include assert-equal(
-      _susy-map-add-units($map, 10cm),
+      _su-map-add-units($map, 10cm),
       $expect);
   }
 
@@ -39,7 +66,7 @@
     );
 
     @include assert-equal(
-      _susy-map-add-units($map, 100mm),
+      _su-map-add-units($map, 100mm),
       $expect);
   }
 
@@ -51,7 +78,7 @@
     );
 
     @include assert-equal(
-      _susy-map-add-units($map, 1fr),
+      _su-map-add-units($map, 1fr),
       $expect);
   }
 }

@@ -3,45 +3,81 @@
 // - susy-span [function]
 // - susy-gutter [function]
 // - susy-slice [function]
+//
+// These three functions form the core of Susy's
+// layout-building API.
+// Get the width of a `span()` or `gutter()`
+// on any given `slice` of your grid –
+// and apply the results anywhere you need them:
+// CSS `width`, `margin`, `padding`, `flex-basis`, `transform`, etc.
+// Anything you can do in CSS,
+// Susy is just here to help with the math.
+//
+// - All three functions come with an unprefixed alias by default,
+//   with the `susy` import.
+//   Import the `susy-prefix` partial instead,
+//   if you only only want prefixed versions of the API.
+//
+// - This is a thin syntax-sugar shell around
+//   the "Su" core-math functions: `su-span`, `su-gutter`, and `su-slice`.
+//   If you prefer the more constrained syntax of the math engine,
+//   you are welcome to use those functions instead.
 
 
 // Susy Span
 // ---------
 /// This is the primary function in Susy —
-/// used to return the width of any grid-span —
-/// such as the `width` property of grid elements,
+/// used to return the width of a span across one or more columns,
+/// and any relevant gutters along the way.
+/// With the default settings,
+/// `span(3)` will return the width of 3 columns,
+/// and the 2 intermediate gutters.
+/// This can be used to set the `width` property of grid elements,
 /// or `margin` and `padding`
-/// to push, pull, and pad your elements
-/// (un-prefixed alias `span()` is available
-/// unless you import `susy/prefix` explicitly)
+/// to push, pull, and pad your elements.
 ///
-/// @group api
+/// - This is a thin syntax-sugar shell around
+///   the core-math `su-span()` function.
+/// - The un-prefixed alias `span()` is available by default.
+///
+/// @group b-api
+/// @see su-span
+/// @see $susy
 ///
 /// @param {list} $span -
 ///   Shorthand expression to define the width of the span,
 ///   optionally containing:
-///   - a count, length, or column-list span;
-///   - `at $n`, `first`, or `last` location on asymmetrical grids;
+///   - a count, length, or column-list span.
+///   - `at $n`, `first`, or `last` location on asymmetrical grids,
+///     where `at 1 == first`,
+///     and `last` will calculate the proper location
+///     based on columns and span.
 ///   - `narrow`, `wide`, or `wider` for optionally spreading
-///     across adjacent gutters;
+///     across adjacent gutters.
 ///   - `of $n <spread>` for available grid columns
-///     and spread of the container
-///     - Span counts like `of 6` are only valid
-///       in the context of symmetrical grids
-///   - and `set-gutters $n` to override global gutter settings
+///     and spread of the container.
+///     Span counts like `of 6` are valid
+///     in the context of symmetrical grids,
+///     where Susy can safely infer a slice of the parent columns.
+///   - and `set-gutters $n` to override global gutter settings.
+///
 /// @param {map} $config [()] -
-///   Optional map of Susy grid configuration settings
+///   Optional map of Susy grid configuration settings.
+///   See `$susy` documentation for details.
 ///
 /// @return {length} -
-///   Fluid `%` length when no `column-width` is given,
-///   or a static length in the same units as `column-width`
+///   Calculated length value, using the units given,
+///   or converting to `%` for fraction-based grids,
+///   or a full `calc` function when units/fractions
+///   are not comparable outside the browser.
 ///
-/// @example scss - Span half the grid
+/// @example scss - span half the grid
 ///   .foo {
+///     // the result is a bit under 50% to account for gutters
 ///     width: susy-span(6 of 12);
 ///   }
 ///
-/// @example scss - Span a specific segment of asymmetrical grid
+/// @example scss - span a specific segment of asymmetrical grid
 ///   .foo {
 ///     width: susy-span(3 at 3 of (1 2 3 5 8));
 ///   }
@@ -64,29 +100,46 @@
 
 // Susy Gutter
 // -----------
-/// Return the width of a single gutter
-/// in your current grid context
-/// (un-prefixed alias `gutter()` is available
-/// unless you import `susy/prefix` explicitly)
+/// The gutter function returns
+/// the width of a single gutter on your grid,
+/// to be applied where you see fit –
+/// on `margins`, `padding`, `transform`, or element `width`.
 ///
-/// @group api
+/// - This is a thin syntax-sugar shell around
+///   the core-math `su-gutter()` function.
+/// - The un-prefixed alias `gutter()` is available by default.
+///
+/// @group b-api
+/// @see su-gutter
+/// @see $susy
 ///
 /// @param {list | number} $context [null] -
 ///   Optional context for nested gutters,
 ///   including shorthand for
 ///   `columns`, `gutters`, and `container-spread`
 ///   (additional shorthand will be ignored)
+///
 /// @param {map} $config [()] -
-///   Optional map of Susy grid configuration settings
+///   Optional map of Susy grid configuration settings.
+///   See `$susy` documentation for details.
 ///
 /// @return {length} -
 ///   Width of a gutter as `%` of current context,
 ///   or in the units defined by `column-width` when available
 ///
-/// @example scss - Add gutters before or after an element
-///   .foo {
-///     margin-left: gutter();
+/// @example scss - add gutters before or after an element
+///   .floats {
+///     float: left;
+///     width: span(3 of 6);
+///     margin-left: gutter(of 6);
 ///   }
+///
+/// @example scss - add gutters to padding
+///   .flexbox {
+///     flex: 1 1 span(3 wide of 6 wide);
+///     padding: gutter(of 6) / 2;
+///   }
+///
 @function susy-gutter(
   $context: susy-get('columns'),
   $config: ()
@@ -99,12 +152,23 @@
 
 // Susy Slice
 // ----------
-/// Return a sub-slice of asymmetrical columns to use
-/// for a nested context
-/// (un-prefixed alias `slice()` is available
-/// unless you import `susy/prefix` explicitly)
+/// Working with asymmetrical grids (un-equal column widths)
+/// can be challenging – 
+/// expecially when they involve fluid/fractional elements.
+/// Describing a context `of (15em 6em 6em 6em 15em)` is a lot
+/// to put inside the span or gutter function shorthand.
+/// This slice function returns a sub-slice of asymmetrical columns to use
+/// for a nested context.
+/// `slice(3 at 2)` will give you a subset of the global grid,
+/// spanning 3 columns, starting with the second.
 ///
-/// @group api
+/// - This is a thin syntax-sugar shell around
+///   the core-math `su-slice()` function.
+/// - The un-prefixed alias `slice()` is available by default.
+///
+/// @group b-api
+/// @see su-slice
+/// @see $susy
 ///
 /// @param {list} $span -
 ///   Shorthand expression to define the subset span, optionally containing:
@@ -116,13 +180,15 @@
 ///     - Valid spreads include `narrow`, `wide`, or `wider`
 ///
 /// @param {map} $config [()] -
-///   Optional map of Susy grid configuration settings
+///   Optional map of Susy grid configuration settings.
+///   See `$susy` documentation for details.
 ///
 /// @return {list} -
 ///   Subset list of columns for use for a nested context
 ///
 /// @example scss - Return a nested segment of asymmetrical grid
-///   $context: susy-slice(3 at 3 of (1 2 3 5 8)); // returns `(3 5 8)`
+///   $context: susy-slice(3 at 3 of (1 2 3 5 8));
+///   /* $context: #{$context}; */
 @function susy-slice(
   $span,
   $config: ()

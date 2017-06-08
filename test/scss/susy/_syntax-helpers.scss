@@ -1,0 +1,215 @@
+// Su Helper Tests
+// ---------------
+
+
+// Susy Compile
+// ------------
+@include test-module('Susy Compile [function]') {
+  @include test('Compiles normalized settings map from shorthand') {
+    $shorthand: 'last' 2 'wide' of 6;
+    $config: (
+      'columns': susy-repeat(10),
+      'gutters': 1,
+      'svg-grid-colors': #ccc,
+    );
+    $expected: (
+      'svg-grid-colors': #ccc,
+      'columns': 1 1 1 1 1 1,
+      'gutters': 1,
+      'spread': 0,
+      'container-spread': -1,
+      'location': 5,
+      'span': 2,
+    );
+
+    @include assert-equal(
+      susy-compile($shorthand, $config),
+      $expected);
+  }
+
+  @include test('Compiles normalized settings map from existing maps') {
+    $shorthand: (
+      'location': 'last',
+      'span': 2,
+      'spread': 'wide',
+      'columns': 6
+    );
+    $config: (
+      'columns': 10,
+      'gutters': 1,
+      'svg-grid-colors': #ccc,
+    );
+    $expected: (
+      'svg-grid-colors': #ccc,
+      'columns': 1 1 1 1 1 1,
+      'gutters': 1,
+      'spread': 0,
+      'container-spread': -1,
+      'location': 5,
+      'span': 2,
+    );
+
+    @include assert-equal(
+      susy-compile($shorthand, $config),
+      $expected);
+  }
+
+  @include test('Missing columns') {
+    $expect: (
+      'svg-grid-colors': susy-get('svg-grid-colors'),
+      'columns': susy-get('columns'),
+      'gutters': susy-get('gutters'),
+      'spread': -1,
+      'container-spread': -1,
+      'span': 3,
+    );
+
+    @include assert-equal(
+      susy-compile(3),
+      $expect);
+  }
+
+  @include test('Allows context-only parsing') {
+    $shorthand: 6 'wide';
+    $config: (
+      'svg-grid-colors': #ccc,
+    );
+    $expected: (
+      'svg-grid-colors': #ccc,
+      'columns': 1 1 1 1 1 1,
+      'gutters': 0.25,
+      'spread': -1,
+      'container-spread': 0,
+    );
+
+    @include assert-equal(
+      susy-compile($shorthand, $config, 'context-only'),
+      $expected);
+  }
+
+  @include test('Handles context-count as slice') {
+    $grid: (
+      'columns': susy-repeat(10, 5em),
+      'gutters': 0.5em,
+      'spread': 0,
+      'container-spread': 0,
+      'svg-grid-colors': #ccc,
+    );
+    $short: 3 of 6;
+    $expect: (
+      'svg-grid-colors': #ccc,
+      'columns': susy-repeat(6, 5em),
+      'gutters': 0.5em,
+      'spread': 0,
+      'container-spread': 0,
+      'span': 3,
+    );
+
+    @include assert-equal(
+      susy-compile($short, $grid),
+      $expect);
+  }
+
+  @include test('Last') {
+    $config: ('columns': (1 1 2 3 5 8 13));
+    $expect: (
+      'svg-grid-colors': susy-get('svg-grid-colors'),
+      'columns': map-get($config, 'columns'),
+      'gutters': susy-get('gutters'),
+      'spread': -1,
+      'container-spread': -1,
+      'location': 4,
+      'span': 4,
+    );
+    @include assert-equal(
+      susy-compile('last' 4, $config),
+      $expect);
+  }
+
+  @include test('All') {
+    $grid: (
+      'columns': susy-repeat(10, 5em),
+      'gutters': 0.5em,
+      'spread': 'wide',
+      'container-spread': 'wide',
+    );
+    $expect: (
+      'svg-grid-colors': susy-get('svg-grid-colors'),
+      'columns': map-get($grid, 'columns'),
+      'gutters': map-get($grid, 'gutters'),
+      'spread': 0,
+      'container-spread': 0,
+      'span': 10,
+    );
+
+    @include assert-equal(
+      susy-compile('all', $grid),
+      $expect);
+  }
+}
+
+
+
+// Su Call
+// -------
+@include test-module('Su Call [function]') {
+  $map: (
+    'svg-grid-colors': #ccc,
+    'columns': 1 1 1 1 1 1,
+    'gutters': 1,
+    'spread': 0,
+    'container-spread': -1,
+    'location': 5,
+    'span': 2,
+  );
+
+  @include test('Calls su-span') {
+    $args: (
+      map-get($map, 'span'),
+      map-get($map, 'columns'),
+      map-get($map, 'gutters'),
+      map-get($map, 'spread'),
+      map-get($map, 'container-spread'),
+      map-get($map, 'location'),
+    );
+    @include assert-equal(
+      su-call('su-span', $map),
+      su-span($args...));
+  }
+
+  @include test('Calls su-gutter') {
+    $args: (
+      map-get($map, 'columns'),
+      map-get($map, 'gutters'),
+      map-get($map, 'container-spread'),
+    );
+    @include assert-equal(
+      su-call('su-gutter', $map),
+      su-gutter($args...));
+  }
+
+  @include test('Calls su-slice') {
+    $args: (
+      map-get($map, 'span'),
+      map-get($map, 'columns'),
+      map-get($map, 'location'),
+    );
+    @include assert-equal(
+      su-call('su-slice', $map),
+      su-slice($args...));
+  }
+
+  @include test('Does not call other functions') {
+    @include assert-equal(
+      su-call('su-sum', $map),
+      'ERROR [su-call] su-sum is not a public Su function. Try one of these: su-span, su-gutter, su-slice');
+
+    @include assert-equal(
+      su-call('su-calc-span', $map),
+      'ERROR [su-call] su-calc-span is not a public Su function. Try one of these: su-span, su-gutter, su-slice');
+
+    @include assert-equal(
+      su-call('su-calc-sum', $map),
+      'ERROR [su-call] su-calc-sum is not a public Su function. Try one of these: su-span, su-gutter, su-slice');
+  }
+}

@@ -2,6 +2,7 @@
   "name": "susy",
   "version": "3.0.0-alpha.6",
   "description": "Sass power-tools for web layout.",
+  "homepage": "http://susy.oddbird.net",
   "author": "Miriam Eric Suzanne <miriam@oddbird.net>",
   "main": "sass/_susy.scss",
   "repository": {

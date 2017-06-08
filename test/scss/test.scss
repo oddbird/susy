@@ -16,10 +16,10 @@ $_susy-error-output-override: true;
 @import 'susy/utilities';
 @import 'susy/su-validate';
 @import 'susy/su-math';
-@import 'susy/su-helpers';
 @import 'susy/settings';
 @import 'susy/parser';
 @import 'susy/api';
+@import 'susy/syntax-helpers';
 @import 'susy/unprefix';
 
 

@@ -9,61 +9,144 @@
 
 // Susy
 // ----
-/// Custom user configuration map for Susy
+/// The grid is defined in a single map variable,
+/// with four initial properties:
+/// `columns`, `gutters`, `spread` and `container-spread`.
+/// Anything you put in the root `$susy` variable map
+/// will be treated as a global project default.
+/// You can create similar configuration maps
+/// under different variable names,
+/// to override the defaults as-needed.
 ///
 /// @group a-config
-///
 /// @type Map
 ///
 /// @see $_susy-defaults
 /// @see {function} susy-repeat
+/// @link
+///   https://codepen.io/mirisuzanne/pen/EgmJJp?editors=1100
+///   Spread examples on CodePen
 ///
 /// @prop {list} columns -
-///   Description of the columns in a grid,
-///   and their realtive sizes if asymmetrical.
+///   Columns are described by a list of numbers,
+///   representing the relative width of each column.
 ///   The syntax is a simplified version of CSS native
-///   [grid-template-columns](https://developer.mozilla.org/en-US/docs/Web/CSS/grid-template-columns),
+///   `grid-template-columns`,
 ///   expecting a list of grid-column widths.
-///   - Use the `susy-repeat($count, $value)` function
-///     to repetative columns, similar to CSS-native `repeat()`
-///   - Use unitless numbers in place of `fr` units
+///   Unitless numbers create fractional fluid columns
+///   (similar to the CSS-native `fr` unit),
+///   while length values (united numbers)
+///   are used to define static columns.
+///   You can mix-and match units and fractions,
+///   to create a mixed grid.
+///   Susy will generate `calc()` values when necessary,
+///   to make all your units work together.
+///
+///   Use the `susy-repeat($count, $value)` function
+///   to more easily repetative columns,
+///   similar to the CSS-native `repeat()`.
+///
+///   - `susy-repeat(8)`:
+///     an 8-column, symmetrical, fluid grid.
+///     <br />Identical to `(1 1 1 1 1 1 1 1)`.
+///   - `susy-repeat(6, 8em)`:
+///     a 6-column, symmetrical, em-based grid.
+///     <br />Identical to `(8em 8em 8em 8em 8em 8em)`.
+///   - `(300px susy-repeat(4) 300px)`:
+///     a 6-column, asymmetrical, mixed fluid/static grid
+///     using `calc()` output.
+///     <br />Identical to `(300px 1 1 1 1 300px)`.
+///
+///   **NOTE** that `12` is no longer a valid 12-column grid definition,
+///   and you must list all the columns individually
+///   (or by using the `susy-repeat()` function).
+///
 /// @prop {number} gutters -
-///   Ratio of a gutter to a column,
-///   or static width of a single gutter
-/// @prop {string} spread -
+///   Gutters are defined as a single width,
+///   or fluid ratio, similar to the native-CSS
+///   `grid-column-gap` syntax.
+///   Similar to columns,
+///   gutters can use any valid CSS length unit,
+///   or unitless numbers to define a relative fraction.
+///
+///   - `0.5`:
+///     a fluid gutter, half the size of a single-fraction column.
+///   - `1em`:
+///     a static gutter, `1em` wide.
+///
+///   Mix static gutters with fluid columns, or vice versa,
+///   and Susy will generate the required `calc()` to make it work.
+///
+/// @prop {string} spread [narrow] -
 ///   Spread of an element across adjacent gutters:
 ///   either `narrow` (none), `wide` (one), or `wider` (two)
-/// @prop {string} container-spread -
-///   Spread of a container around adjacent gutters:
-///   either `narrow` (none), `wide` (one), or `wider` (two)
 ///
-/// @example scss - All available options (to their default value)
+///   - Both spread settings default to `narrow`,
+///     the most common use-case.
+///     A `narrow` spread only has gutters *between* columns
+///     (one less gutter than columns).
+///     This is how all css-native grids work,
+///     and most margin-based grid systems.
+///   - A `wide` spread includes the same number of gutters as columns,
+///     spanning across a single side-gutter.
+///     This is how most padding-based grid systems often work,
+///     and is also useful for pushing and pulling elements into place.
+///   - The rare `wider` spread includes gutters
+///     on both sides of the column-span
+///     (one more gutters than columns).
+///
+/// @prop {string} container-spread [narrow] -
+///   Spread of a container around adjacent gutters:
+///   either `narrow` (none), `wide` (one), or `wider` (two).
+///   See `spread` property for details.
+///
+/// @example scss - default values
+///   // 4 symmetrical, fluid columns
+///   // gutters are 1/4 the size of a column
+///   // elements span 1 less gutter than columns
+///   // containers span 1 less gutter as well
 ///   $susy: (
 ///     'columns': susy-repeat(4),
 ///     'gutters': 0.25,
 ///     'spread': 'narrow',
 ///     'container-spread': 'narrow',
 ///   );
+///
+/// @example scss - inside-static gutters
+///   // 6 symmetrical, fluid columns…
+///   // gutters are static, triggering calc()…
+///   // elements span equal columns & gutters…
+///   // containers span equal columns & gutters…
+///   $susy: (
+///     'columns': susy-repeat(6),
+///     'gutters': 0.5em,
+///     'spread': 'wide',
+///     'container-spread': 'wide',
+///   );
 $susy: () !default;
 
 
 
-// Repeat
-// ------
+// Susy Repeat
+// -----------
 /// Similar to the `repeat(<count>, <value>)` function
 /// that is available in native CSS Grid templates,
-/// repeats any value a given number of times —
-/// a useful shortcut for defining symetrical static grids
+/// the `susy-repeat()` function helps generate repetative layouts
+/// by repeating any value a given number of times.
+/// Where Susy previously allowed `8` as a column definition
+/// for 8 equal columns, you should now use `susy-repeat(8)`.
 ///
 /// @group a-config
-/// @link
-///   https://developer.mozilla.org/en-US/docs/Web/CSS/grid-template-columns
-///   CSS grid-template-columns property
 ///
 /// @param {integer} $count -
-///   The number of repetitions
+///   The number of repetitions, e.g. `12` for a 12-column grid.
 /// @param {*} $value [1] -
-///   Any value to be repeated
+///   The value to be repeated.
+///   Technically any value can be repeated here,
+///   but the function exists to repeat column-width descriptions:
+///   e.g. the default `1` for single-fraction fluid columns,
+///   `5em` for a static column,
+///   or even `5em 120px` if you are alternating column widths.
 ///
 /// @return {list} -
 ///   List of repeated values
@@ -79,6 +162,8 @@ $susy: () !default;
 ///   $susy: (
 ///     columns: 20px susy-repeat(3, 100px) 20px,
 ///   );
+///
+///   /* result: #{susy-get('columns')} */
 @function susy-repeat(
   $count,
   $value: 1
@@ -96,11 +181,14 @@ $susy: () !default;
 
 // Susy Defaults
 // -------------
-/// Configuration map of Susy factory defaults
+/// Configuration map of Susy factory defaults.
+/// Do not override this map directly –
+/// use `$susy` for user and project setting overrides.
 ///
 /// @access private
-///
 /// @type Map
+///
+/// @see $susy
 ///
 /// @prop {number | list} columns [susy-repeat(4)]
 /// @prop {number} gutters [0.25]
@@ -117,16 +205,36 @@ $_susy-defaults: (
 
 // Susy Settings
 // -------------
-/// Return a combined map of Susy settings
+/// Return a combined map of Susy settings,
+/// based on the factory defaults (`$_susy-defaults`),
+/// user-defined project configuration (`$susy`),
+/// and any local overrides required –
+/// such as a configuration map passed into a function.
 ///
 /// @group a-config
 ///
 /// @param {map | arglist} $overrides... -
-///   Optional map override of global configuration settings
+///   Optional map override of global configuration settings.
+///   See `$susy` above for properties.
 ///
 /// @return {map} -
-///   Combined map of Susy configuration settings, in order of specificity:
-///   `$overrides...`, `$susy`, then `$_susy-defaults`
+///   Combined map of Susy configuration settings,
+///   in order of specificity:
+///   any `$overrides...`,
+///   then `$susy` project settings,
+///   and finally the `$_susy-defaults`
+///
+/// @example scss - global settings
+///   @each $key, $value in susy-settings() {
+///     /* #{$key}: #{$value} */
+///   }
+///
+/// @example scss - local settings
+///   $local: ('columns': 1 2 3 5 8);
+///
+///   @each $key, $value in susy-settings($local) {
+///     /* #{$key}: #{$value} */
+///   }
 @function susy-settings(
   $overrides...
 ) {
@@ -143,16 +251,21 @@ $_susy-defaults: (
 
 // Susy Get
 // --------
-/// Return the current value of any Susy setting
+/// Return the current global value of any Susy setting
 ///
 /// @group a-config
 ///
 /// @param {string} $key -
-///   Setting to retrieve from the configuration
+///   Setting to retrieve from the configuration.
 ///
 /// @return {*} -
-///   Value mapped to `$key` in the configuration maps, in order of specificity:
+///   Value mapped to `$key` in the configuration maps,
+///   in order of specificity:
 ///   `$susy`, then `$_susy-defaults`
+///
+/// @example scss -
+///   /* columns: #{susy-get('columns')} */
+///   /* gutters: #{susy-get('gutters')} */
 @function susy-get(
   $key
 ) {

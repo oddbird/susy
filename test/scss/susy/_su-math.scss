@@ -84,21 +84,21 @@
 @include test-module('Su Sum [function]') {
   @include test('Calculate the total units in a fluid grid') {
     @include assert-equal(
-      su-sum(1 1 1, 0.5, 1),
+      _su-sum(1 1 1, 0.5, 1),
       5,
       'Returns combined column and gutter units');
   }
 
   @include test('Calculate the total units in a static grid') {
     @include assert-equal(
-      su-sum(1em 2em 3em 1em 2em, 0.25em, -1),
+      _su-sum(1em 2em 3em 1em 2em, 0.25em, -1),
       10em,
       'Returns combined column and gutter units');
   }
 
   @include test('Ignore 0 gutters') {
     @include assert-equal(
-      su-sum(10em, 0.25pt, -1),
+      _su-sum(10em, 0.25pt, -1),
       10em);
   }
 
@@ -106,7 +106,7 @@
     $span: (4);
 
     @include assert-equal(
-      su-sum($span, 0.5, -1),
+      _su-sum($span, 0.5, -1),
       4,
       'No static gutters are added to fluid grids');
   }
@@ -142,7 +142,7 @@
     );
 
     @include assert-equal(
-      su-calc-sum(300px 2 1 20px, 10px, -1),
+      _su-calc-sum(300px 2 1 20px, 10px, -1),
       $map);
   }
 
@@ -153,7 +153,7 @@
     );
 
     @include assert-equal(
-      su-calc-sum(300mm 2 1 20cm, 1em, 0),
+      _su-calc-sum(300mm 2 1 20cm, 1em, 0),
       $map);
   }
 
@@ -164,24 +164,92 @@
     );
 
     @include assert-equal(
-      su-calc-sum(4em, 0.125in, -1),
+      _su-calc-sum(4em, 0.125in, -1),
       $map);
   }
 }
 
 
-// Su Calc
-// -------
-@include test-module('Su Calc [function]') {
+// Su Calc Span
+// ------------
+@include test-module('Su Calc Span [function]') {
   @include test('Mixed fluid-static') {
     @include assert-equal(
-      su-calc(300px 2, 300px 2 1 20px, 10px, -1),
+      _su-calc-span(300px 2, 300px 2 1 20px, 10px, -1),
       'calc(310px + ((100% - 350px) / 3 * 2))');
   }
 
   @include test('Mixed static') {
     @include assert-equal(
-      su-calc(2, 300mm 2 1 20cm, 1em, 0, 1),
+      _su-calc-span(2, 300mm 2 1 20cm, 1em, 0, 1),
       'calc(1em + ((100% - (500mm + 5em)) / 3 * 2))');
+  }
+}
+
+// Needs Calc
+// ----------
+@include test-module('Su Needs Calc [function]') {
+  @include test('Fully fluid') {
+    @include assert-false(
+      _su-needs-calc-output(1 2 4 2, 1 2 4 2 6 8, 0.5));
+  }
+
+  @include test('Fully static') {
+    $span: 10cm 200mm 45cm 230mm;
+    $columns: 10cm 200mm 45cm 230mm 25px;
+
+    @include assert-false(
+      _su-needs-calc-output($span, $columns, 2cm));
+  }
+
+  @include test('Static span and gutters') {
+    $span: 10cm 200mm 45cm 230mm;
+    $columns: 10cm 200mm 4 2 25em;
+
+    @include assert-false(
+      _su-needs-calc-output($span, $columns, 2cm));
+  }
+
+  @include test('Mismatched span units (complex)') {
+    $span: 1px 2 4em 3;
+    $columns: 100px 200px 400px 300px 250px;
+
+    @include assert-true(
+      _su-needs-calc-output($span, $columns, 10px));
+  }
+
+  @include test('Mismatched span units (simple)') {
+    $span: 1 2 4em 3;
+    $columns: 1 2 4em 3 10em;
+
+    @include assert-true(
+      _su-needs-calc-output($span, $columns, 0.25));
+
+    @include assert-true(
+      _su-needs-calc-output($span, $columns, 0.25em));
+  }
+
+  @include test('Mismatched gutter units') {
+    $span: 1em 2em 4em 3em;
+    $columns: 1em 2em 4em 3em 10em;
+
+    @include assert-true(
+      _su-needs-calc-output($span, $columns, 10px));
+  }
+
+  @include test('Fluid span and gutters, mixed columns') {
+    $span: 1 2 4 3;
+    $columns: 1 2 4 3 10em;
+
+    @include assert-true(
+      _su-needs-calc-output($span, $columns, 0.25));
+  }
+
+  @include test('Single span, mixed columns and gutters') {
+    $span: (40pt,);
+    $columns: 1 2 40pt 3 10em;
+
+    @include assert-false(
+      _su-needs-calc-output($span, $columns, 0.25));
   }
 }

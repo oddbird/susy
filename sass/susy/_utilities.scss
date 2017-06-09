@@ -51,8 +51,9 @@ $_susy-error-output-override: false !default;
 /// @group x--validation
 /// @access private
 ///
-/// @param {arglist} $lengths... -
-///   All the values to compare (columns, gutters, span, etc)
+/// @param {numbers} $lengths… -
+///   Arglist of all the number values to compare
+///   (columns, gutters, span, etc)
 ///
 /// @return {'fluid' | 'static' | false} -
 ///   The type of span (fluid or static) when units match,

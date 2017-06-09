@@ -14,7 +14,7 @@
     "sass-lint": "^1.10.2",
     "sass-true": "^3.0.0-beta.1",
     "sassdoc": "^2.2.2",
-    "sassdoc-theme-herman": "^1.0.0-alpha.4",
+    "sassdoc-theme-herman": "^1.0.0-alpha.5",
     "sassdocify": "^0.3.4"
   },
   "keywords": [

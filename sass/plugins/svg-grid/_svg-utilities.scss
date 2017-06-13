@@ -59,14 +59,19 @@
   $width: _susy-svg-validate-units($width);
   $offset: if($offset == 0, null, $offset);
 
-  @if $offset and comparable($x, $offset) {
-    $x: $x + $offset;
-    $offset: null;
+  @if (type-of($offset) == 'number') and (type-of($x) == 'number') {
+    @if comparable($x, $offset) {
+      $x: $x + $offset;
+    } @else {
+      $x: 'calc(#{$x} + #{$offset})';
+    }
+  } @else if $offset and ($x != 0) {
+    $x: 'calc(#{$x} + #{$offset})';
   } @else if $offset {
-    $offset: 'style="transform:translateX(#{$offset})"';
+    $x: $offset;
   }
 
-  @return '%3Crect x="#{$x}" width="#{$width}" height="100%" #{$offset}/%3E';
+  @return '%3Crect x="#{$x}" width="#{$width}" height="100%"/%3E';
 }
 
 

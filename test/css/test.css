@@ -237,6 +237,9 @@
 /* Test: Single span, mixed columns and gutters */
 /*   ✔ [assert-false] Single span, mixed columns and gutters */
 /*  */
+/* Test: Single wide span, mixed columns and gutters */
+/*   ✔ [assert-true] Single wide span, mixed columns and gutters */
+/*  */
 /*  */
 /* # Module: Susy Settings [function] */
 /* ---------------------------------- */
@@ -546,14 +549,14 @@
 /*  */
 /* # Module: SVG Offset [function] */
 /* ------------------------------- */
-/* Test: Fluid/Static mismatch */
-/*   ✔ [assert-false] Fluid/Static mismatch */
+/* Test: No extra spread with defaults */
+/*   ✔ [assert-false] No extra spread with defaults */
 /*  */
-/* Test: No extra spread */
-/*   ✔ [assert-false] No extra spread */
+/* Test: Container is wide */
+/*   ✔ [assert-equal] Container is wide */
 /*  */
-/* Test: No extra spread */
-/*   ✔ [assert-equal] No extra spread */
+/* Test: Container is wider */
+/*   ✔ [assert-equal] Container is wider */
 /*  */
 /*  */
 /* # Module: SVG Grid [function] */
@@ -591,11 +594,11 @@
 /*  */
 /*  */
 /* # SUMMARY ---------- */
-/* 154 Tests: */
-/* - 154 Passed */
+/* 155 Tests: */
+/* - 155 Passed */
 /* - 0 Failed */
 /* Stats: */
 /* - 39 Modules */
-/* - 154 Tests */
-/* - 166 Assertions */
+/* - 155 Tests */
+/* - 167 Assertions */
 /* -------------------- */

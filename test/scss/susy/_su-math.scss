@@ -191,7 +191,7 @@
 @include test-module('Su Needs Calc [function]') {
   @include test('Fully fluid') {
     @include assert-false(
-      _su-needs-calc-output(1 2 4 2, 1 2 4 2 6 8, 0.5));
+      _su-needs-calc-output(1 2 4 2, 1 2 4 2 6 8, 0.5, -1));
   }
 
   @include test('Fully static') {
@@ -199,7 +199,7 @@
     $columns: 10cm 200mm 45cm 230mm 25px;
 
     @include assert-false(
-      _su-needs-calc-output($span, $columns, 2cm));
+      _su-needs-calc-output($span, $columns, 2cm, -1));
   }
 
   @include test('Static span and gutters') {
@@ -207,7 +207,7 @@
     $columns: 10cm 200mm 4 2 25em;
 
     @include assert-false(
-      _su-needs-calc-output($span, $columns, 2cm));
+      _su-needs-calc-output($span, $columns, 2cm, -1));
   }
 
   @include test('Mismatched span units (complex)') {
@@ -215,7 +215,7 @@
     $columns: 100px 200px 400px 300px 250px;
 
     @include assert-true(
-      _su-needs-calc-output($span, $columns, 10px));
+      _su-needs-calc-output($span, $columns, 10px, -1));
   }
 
   @include test('Mismatched span units (simple)') {
@@ -223,10 +223,10 @@
     $columns: 1 2 4em 3 10em;
 
     @include assert-true(
-      _su-needs-calc-output($span, $columns, 0.25));
+      _su-needs-calc-output($span, $columns, 0.25, -1));
 
     @include assert-true(
-      _su-needs-calc-output($span, $columns, 0.25em));
+      _su-needs-calc-output($span, $columns, 0.25em, -1));
   }
 
   @include test('Mismatched gutter units') {
@@ -234,7 +234,7 @@
     $columns: 1em 2em 4em 3em 10em;
 
     @include assert-true(
-      _su-needs-calc-output($span, $columns, 10px));
+      _su-needs-calc-output($span, $columns, 10px, -1));
   }
 
   @include test('Fluid span and gutters, mixed columns') {
@@ -242,7 +242,7 @@
     $columns: 1 2 4 3 10em;
 
     @include assert-true(
-      _su-needs-calc-output($span, $columns, 0.25));
+      _su-needs-calc-output($span, $columns, 0.25, -1));
   }
 
   @include test('Single span, mixed columns and gutters') {
@@ -250,6 +250,14 @@
     $columns: 1 2 40pt 3 10em;
 
     @include assert-false(
-      _su-needs-calc-output($span, $columns, 0.25));
+      _su-needs-calc-output($span, $columns, 0.25, -1));
+  }
+
+  @include test('Single wide span, mixed columns and gutters') {
+    $span: (4em,);
+    $columns: susy-repeat(4, 4em);
+
+    @include assert-true(
+      _su-needs-calc-output($span, $columns, 5mm, 0));
   }
 }

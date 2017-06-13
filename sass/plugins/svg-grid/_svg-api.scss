@@ -63,7 +63,7 @@
   $svg: $svg + $gradient;
 
   @for $column from 1 through length($columns) {
-    $width: susy-span(1 at $column, $grid);
+    $width: susy-span(1 narrow at $column, $grid);
     $x: _susy-svg-column-position($column, $grid);
 
     $svg: $svg + _susy-svg-rect($x, $width, $offset);

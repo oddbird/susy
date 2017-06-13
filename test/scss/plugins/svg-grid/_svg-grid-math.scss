@@ -24,7 +24,7 @@
 // SVG Offset [function]
 // ---------------------
 @include test-module('SVG Offset [function]') {
-  @include test('Fluid/Static mismatch') {
+  @include test('No extra spread with defaults') {
     $test: (
       'columns': 1 1 1 1 1,
       'gutters': 2em,
@@ -34,17 +34,19 @@
     @include assert-false(_susy-svg-offset($test));
   }
 
-  @include test('No extra spread') {
+  @include test('Container is wide') {
     $test: (
       'container-spread': 0,
       'spread': 0,
     );
     $test: susy-compile($test, $susy);
 
-    @include assert-false(_susy-svg-offset($test));
+    @include assert-equal(
+      _susy-svg-offset($test),
+      susy-gutter($config: $test) / 2);
   }
 
-  @include test('No extra spread') {
+  @include test('Container is wider') {
     $test: (
       'container-spread': 1,
       'spread': -1,

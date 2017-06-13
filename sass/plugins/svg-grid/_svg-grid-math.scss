@@ -51,17 +51,17 @@
 ) {
   $columns: su-valid-columns(map-get($grid, 'columns'));
   $gutters: su-valid-gutters(map-get($grid, 'gutters'));
-  $container: su-valid-spread(map-get($grid, 'container-spread'));
-  $span: su-valid-spread(map-get($grid, 'spread'));
+  $container: su-valid-spread(map-get($grid, 'container-spread')) + 1;
 
-  $extra: $container - $span;
-
-  @if ($extra == 0) {
+  @if ($container == 0) {
     @return null;
   }
 
-  @return $extra * susy-gutter($config: $grid) / 2;
+  $gutter: su-call('su-gutter', $grid);
+
+  @if (type-of($gutter) == 'string') {
+    @return 'calc(#{$container} * #{$gutter} / 2)';
+  }
+
+  @return $container * $gutter / 2;
 }
-
-
-

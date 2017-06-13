@@ -65,7 +65,7 @@
     $span: su-slice($span, $columns, $location, $validate: false);
   }
 
-  @if _su-needs-calc-output($span, $columns, $gutters, not 'validate') {
+  @if _su-needs-calc-output($span, $columns, $gutters, $spread, not 'validate') {
     @return _su-calc-span($span, $columns, $gutters, $spread, $container-spread, not 'validate');
   }
 
@@ -119,7 +119,7 @@
     }
   }
 
-  @if _su-needs-calc-output($gutters, $columns, $gutters, not 'validate') {
+  @if _su-needs-calc-output($gutters, $columns, $gutters, -1, not 'validate') {
     @return _su-calc-span($gutters, $columns, $gutters, -1, $container-spread, not 'validate');
   }
 
@@ -376,12 +376,15 @@
 /// @group su-math
 /// @access private
 ///
-/// @param {number} $span -
-///   Number of grid-columns to be spanned
+/// @param {list} $span -
+///   Slice of columns to span
 /// @param {list} $columns -
 ///   List of available columns in the grid
 /// @param {number} $gutters -
 ///   Width of a gutter
+/// @param {0 | 1 | -1} $spread -
+///   Number of gutters spanned,
+///   relative to `span` count
 /// @param {bool} $validate [true] -
 ///   Check that arguments are valid before proceeding
 ///
@@ -391,6 +394,7 @@
   $span,
   $columns,
   $gutters,
+  $spread,
   $validate: true
 ) {
   @if $validate {
@@ -399,7 +403,8 @@
     $gutters: su-valid-gutters($gutters);
   }
 
-  $check: if((length($span) > 1), append($span, $gutters), $span);
+  $has-gutter: if((length($span) > 1) or ($spread >= 0), true, false);
+  $check: if($has-gutter, append($span, $gutters), $span);
   $safe-span: _su-is-comparable($check...);
 
   @if ($safe-span == 'static') {

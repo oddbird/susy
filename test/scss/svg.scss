@@ -1,0 +1,62 @@
+// Functional AG Tests
+// ===================
+
+
+// Requirements
+@import '../../sass/susy';
+@import '../../sass/plugins/svg-grid';
+
+
+// Layouts
+$spread: 'narrow', 'wide', 'wider';
+$columns: (
+  'fluid' : susy-repeat(6),
+  'static' : susy-repeat(6, 4em),
+  'calc' : susy-repeat(3, 1 4em)
+);
+$gutters: (
+  'fluid' : 0.25,
+  'static' : 1em,
+  'calc' : 5mm
+);
+
+
+// All the options!
+@each $container in $spread {
+  [data-container='#{$container}'] {
+    @each $span in $spread {
+      &[data-span='#{$span}'] {
+        @each $col-name, $column in $columns {
+          &[data-column='#{$col-name}'] {
+            @each $gut-name, $gutter in $gutters {
+              &[data-gutter='#{$gut-name}'] {
+                $grid: (
+                  'columns': $column,
+                  'gutters': $gutter,
+                  'spread': $span,
+                  'container-spread': $container,
+                );
+
+                background: susy-svg-grid($grid) no-repeat scroll;
+                width: span('all' $container of $container, $grid);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+
+// Styles
+[data-container] {
+  margin: 2rem auto;
+  outline: 1px solid;
+  padding: 3rem 0;
+  text-align: center;
+
+  &::before {
+    content: attr(data-container) ', ' attr(data-span) ', ' attr(data-column) ', ' attr(data-gutter);
+  }
+}

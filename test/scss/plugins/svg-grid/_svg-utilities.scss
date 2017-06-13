@@ -25,19 +25,19 @@
   @include test('Width and position') {
     @include assert-equal(
       _susy-svg-rect(3em, 6em),
-      '%3Crect x="3em" width="6em" height="100%" /%3E');
+      '%3Crect x="3em" width="6em" height="100%"/%3E');
   }
 
   @include test('Offset') {
     @include assert-equal(
       _susy-svg-rect(3em, 6em, 1em),
-      '%3Crect x="4em" width="6em" height="100%" /%3E');
+      '%3Crect x="4em" width="6em" height="100%"/%3E');
   }
 
   @include test('Mismatched Offset') {
     @include assert-equal(
       _susy-svg-rect(50%, 20%, 4em),
-      '%3Crect x="50%" width="20%" height="100%" style="transform:translateX(4em)"/%3E');
+      '%3Crect x="calc(50% + 4em)" width="20%" height="100%"/%3E');
   }
 }
 

@@ -287,7 +287,7 @@ Start using Susy:
 @import 'susy';
 ```
 
-### Usig Grunt (and Yeoman)
+### Using Grunt (and Yeoman)
 
 To add Susy to the Sass task,
 edit your `Gruntfile.js` at the root level of your project
@@ -311,7 +311,7 @@ sass: {
 
 Assuming you’ve already installed Susy,
 it will now be added to the project
-and will not clash with Yeomans grunt rules.
+and will not clash with Yeoman's grunt rules.
 
 Start using Susy:
 

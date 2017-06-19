@@ -41,7 +41,9 @@
     "compile": "npm run test-compile && npm run ag && npm run svg",
     "lint": "node_modules/.bin/sass-lint -vq",
     "sassdoc": "sassdoc sass/ --dest .sassdoc",
-    "sassdocify": "sassdocify sass && cd .pages && git remote set-url origin git@github.com:oddbird/susy.git",
+    "fix-remote": "cd .pages && git remote set-url origin git@github.com:oddbird/susy.git",
+    "fix-cname": "cd .pages && echo 'susydocs.oddbird.net' >> CNAME && git add CNAME",
+    "sassdocify": "sassdocify sass && npm run fix-remote && npm run fix-cname",
     "commit": "npm run lint && npm test && npm run sassdoc",
     "release": "npm run lint && npm test && npm run sassdocify"
   },

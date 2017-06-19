@@ -86,7 +86,7 @@ and was otherwise handled behind the scenes.
 Now we're giving you full control over all spread issues.
 You can find a more [detailed explanation of spread on the blog][spread].
 
-[spread]: https://codepen.io/mirisuzanne/pen/EgmJJp?editors=1100
+[spread]: http://oddbird.net/2017/06/13/susy-spread/
 
 You can access your global settings at any time
 with the `susy-settings()` function,

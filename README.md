@@ -35,10 +35,14 @@ Resources
 - [Susy Website](http://susy.oddbird.net/)
 - [Twitter @SassSusy](http://twitter.com/sasssusy/)
 - [BSD3 License](https://github.com/oddbird/susy/blob/master/LICENSE.txt)
-- [Live Documentation](http://susydocs.oddbird.net/)
+- [Susy3 Documentation](http://susydocs.oddbird.net/)
+- [Susy2 & Susy1 Documentation](http://susy.readthedocs.org)
 - [Sites using Susy](http://susy.oddbird.net/sites-using-susy/)
 - [Guidelines for contributing](https://github.com/oddbird/susy/blob/master/CONTRIBUTING.md)
 
+Note, the following describes Susy `3.x`.
+For the Susy `2.x` documentation,
+see [susy.readthedocs.org](http://susy.readthedocs.org).
 
 
 Configuration Overview

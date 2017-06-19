@@ -2,8 +2,8 @@ Changelog
 =========
 
 
-3.0.0-alpha.7 - UNRELEASED
---------------------------
+3.0.0-beta.1 - June 19, 2017
+----------------------------
 
 - BREAKING: `_prefix.scss` has been renamed `_susy-prefix.scss`
   for clarity when importing.

@@ -3,6 +3,7 @@ susy-*.gem
 *.DS_Store
 .sass-cache
 .rvmrc
+.pages/
 pkg/
 *.sublime-*
 docs/_build/

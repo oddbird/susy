@@ -1,6 +1,7 @@
 Power Tools For The Web
 =======================
 
+[![npm version](https://badge.fury.io/js/susy.svg)](https://badge.fury.io/js/susy)<br />
 [![Build Status](https://travis-ci.org/oddbird/susy.png?branch=threeish)](https://travis-ci.org/oddbird/susy)
 
 Susy is a design-agnostic set of tools

@@ -1,6 +1,6 @@
 {
   "name": "susy",
-  "version": "3.0.0-alpha.6",
+  "version": "3.0.0-beta.1",
   "description": "Sass power-tools for web layout.",
   "homepage": "http://susy.oddbird.net",
   "author": "Miriam Eric Suzanne <miriam@oddbird.net>",
@@ -14,7 +14,7 @@
     "sass-lint": "^1.10.2",
     "sass-true": "^3.0.0-beta.1",
     "sassdoc": "^2.2.2",
-    "sassdoc-theme-herman": "^1.0.0-alpha.5",
+    "sassdoc-theme-herman": "^1.0.0-alpha.7",
     "sassdocify": "^0.3.4"
   },
   "keywords": [

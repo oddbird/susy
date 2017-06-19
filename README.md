@@ -4,6 +4,10 @@ Power Tools For The Web
 [![npm version](https://badge.fury.io/js/susy.svg)](https://badge.fury.io/js/susy)<br />
 [![Build Status](https://travis-ci.org/oddbird/susy.png?branch=threeish)](https://travis-ci.org/oddbird/susy)
 
+**Note**, the following describes Susy `3.x`.
+For the Susy `2.x` documentation,
+see [susy.readthedocs.org](http://susy.readthedocs.org).
+
 Susy is a design-agnostic set of tools
 for creating powerful, custom layouts.
 We didn't want another grid system
@@ -39,10 +43,6 @@ Resources
 - [Susy2 & Susy1 Documentation](http://susy.readthedocs.org)
 - [Sites using Susy](http://susy.oddbird.net/sites-using-susy/)
 - [Guidelines for contributing](https://github.com/oddbird/susy/blob/master/CONTRIBUTING.md)
-
-Note, the following describes Susy `3.x`.
-For the Susy `2.x` documentation,
-see [susy.readthedocs.org](http://susy.readthedocs.org).
 
 
 Configuration Overview

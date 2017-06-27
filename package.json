@@ -1,21 +1,20 @@
 {
   "name": "susy",
-  "version": "3.0.0-beta.1",
+  "version": "3.0.0",
   "description": "Sass power-tools for web layout.",
-  "homepage": "http://susy.oddbird.net",
+  "homepage": "http://oddbird.net/susy",
   "author": "Miriam Eric Suzanne <miriam@oddbird.net>",
   "main": "sass/_susy.scss",
   "repository": {
     "type": "git",
-    "url": "git://github.com/oddbird/susy.git"
+    "url": "https://github.com/oddbird/susy"
   },
   "devDependencies": {
-    "mocha": "^3.2.0",
+    "mocha": "^3.4.2",
     "sass-lint": "^1.10.2",
     "sass-true": "^3.0.0-beta.1",
-    "sassdoc": "^2.2.2",
-    "sassdoc-theme-herman": "^1.0.0-alpha.7",
-    "sassdocify": "^0.3.4"
+    "sassdoc": "^2.3.0",
+    "sassdoc-theme-herman": "^1.0.0-alpha.7"
   },
   "keywords": [
     "layout",
@@ -40,12 +39,8 @@
     "svg": "./node_modules/node-sass/bin/node-sass test/scss/svg.scss test/css/svg.css --include-path ./sass/",
     "compile": "npm run test-compile && npm run ag && npm run svg",
     "lint": "node_modules/.bin/sass-lint -vq",
-    "sassdoc": "sassdoc sass/ --dest .sassdoc",
-    "fix-remote": "cd .pages && git remote set-url origin git@github.com:oddbird/susy.git",
-    "fix-cname": "cd .pages && echo 'susydocs.oddbird.net' >> CNAME && git add CNAME",
-    "sassdocify": "sassdocify sass && npm run fix-remote && npm run fix-cname",
-    "commit": "npm run lint && npm test && npm run sassdoc",
-    "release": "npm run lint && npm test && npm run sassdocify"
+    "sassdoc": "sassdoc sass/",
+    "commit": "npm run lint && npm test && npm run sassdoc"
   },
   "license": "BSD-3-Clause",
   "bugs": {

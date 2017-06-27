@@ -4,9 +4,6 @@ Power Tools For The Web
 [![npm version](https://badge.fury.io/js/susy.svg)](https://badge.fury.io/js/susy)<br />
 [![Build Status](https://travis-ci.org/oddbird/susy.png?branch=threeish)](https://travis-ci.org/oddbird/susy)
 
-**Note**, the following describes Susy `3.x`.
-For the Susy `2.x` documentation,
-see [susy.readthedocs.org](http://susy.readthedocs.org).
 
 Susy is a design-agnostic set of tools
 for creating powerful, custom layouts.
@@ -17,6 +14,10 @@ for building our own damn systems.
 Version Three is trimmed down to it's most basic components —
 functions that can be used to build any grid system.
 
+- [Susy Website](http://oddbird.net/susy/) |
+  [@SassSusy](http://twitter.com/sasssusy/)
+- [Susy3 Documentation](http://oddbird.net/susy/docs/)
+- [Susy1/Susy2 Documentation](http://susy.readthedocs.org)
 
 > "I like the idea of grids-on-demand,
 > rather than a strict framework."<br />
@@ -31,18 +32,14 @@ functions that can be used to build any grid system.
 > — Hugo Giraudel, [SitePoint](http://www.sitepoint.com/my-favorite-sass-tools/)
 
 
-
 Resources
 ---------
 
-- [OddBird](http://oddbird.net/)
-- [Susy Website](http://susy.oddbird.net/)
-- [Twitter @SassSusy](http://twitter.com/sasssusy/)
-- [BSD3 License](https://github.com/oddbird/susy/blob/master/LICENSE.txt)
-- [Susy3 Documentation](http://susydocs.oddbird.net/)
-- [Susy2 & Susy1 Documentation](http://susy.readthedocs.org)
-- [Sites using Susy](http://susy.oddbird.net/sites-using-susy/)
+- [OddBird](http://oddbird.net/) | [@OddBird](http://twitter.com/oddbird/)
+- [Sites using Susy](http://oddbird.net/susy/sites/)
+- [Changelog](https://github.com/oddbird/susy/blob/master/CHANGELOG.md)
 - [Guidelines for contributing](https://github.com/oddbird/susy/blob/master/CONTRIBUTING.md)
+- [BSD3 License](https://github.com/oddbird/susy/blob/master/LICENSE.txt)
 
 
 Configuration Overview

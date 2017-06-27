@@ -2,6 +2,16 @@ Changelog
 =========
 
 
+3.0.0 - June 19, 2017
+---------------------
+
+- No code changes from the beta
+- Site moved to [oddbird.net/susy/](http://oddbird.net/susy/)
+- Docs moved to [oddbird.net/susy/docs/](http://oddbird.net/susy/docs/)
+- See [Introducing Susy3]()
+  and [Undesanding Spread in Susy3]()
+
+
 3.0.0-beta.1 - June 19, 2017
 ----------------------------
 

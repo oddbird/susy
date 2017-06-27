@@ -2,8 +2,8 @@ Changelog
 =========
 
 
-3.0.0 - June 19, 2017
----------------------
+3.0.0 - UNRELEASED
+------------------
 
 - No code changes from the beta
 - Site moved to [oddbird.net/susy/](http://oddbird.net/susy/)

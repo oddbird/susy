@@ -1,5 +1,38 @@
-// SVG API
-// =======
+// Plugin: SVG Grid Image
+// ======================
+// @group plugin_svg-grid
+// @see susy-svg-grid
+
+
+// Overview
+// --------
+// If you want to generate svg-backgrounds
+// for help visualizing and debugging your grids,
+// import the SVG Grid Plugin.
+//
+// The plugin adds `svg-grid-colors` setting
+// to your global defaults,
+// which you can override in `$susy`.
+// It also provides you with a new function,
+// `susy-svg-grid()`,
+// which will return inline svg for use in
+// backgrounds or generated content:
+//
+// @group plugin_svg-grid
+//
+// @example scss - importing the plugin
+//   // The full path to import Susy will depend on your setup…
+//
+//   // unprefixed
+//   @import 'plugins/svg-grid';
+//
+//   // prefixed
+//   @import 'plugins/svg-grid/prefix';
+//
+// @example scss - generating background grids
+//   .grid {
+//     background: susy-svg-grid() no-repeat scroll;
+//   }
 
 
 
@@ -22,6 +55,10 @@
 /// @return {String} -
 ///   CSS inline-data SVG string, in `url(<svg>)` format,
 ///   for use in image or content properties
+/// @example scss
+///   .grid {
+///     background: susy-svg-grid() no-repeat scroll;
+///   }
 @function susy-svg-grid(
   $grid: $susy,
   $colors: null,

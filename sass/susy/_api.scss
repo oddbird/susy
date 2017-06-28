@@ -1,27 +1,110 @@
-// Grids
-// =====
-// - susy-span [function]
-// - susy-gutter [function]
-// - susy-slice [function]
-//
-// These three functions form the core of Susy's
+// Susy3 API Functions
+// ===================
+// @group b-api
+// @see susy-span
+// @see susy-gutter
+// @see susy-slice
+
+
+// Overview
+// ========
+// The following three functions form the core of Susy's
 // layout-building API.
-// Get the width of a `span()` or `gutter()`
-// on any given `slice` of your grid –
+// Use `span()` and `gutter()` to return any grid-width,
 // and apply the results anywhere you need them:
 // CSS `width`, `margin`, `padding`, `flex-basis`, `transform`, etc.
-// Anything you can do in CSS,
-// Susy is just here to help with the math.
+// For asymmetrical grids, `slice()` can help get a new nesting context.
 //
-// - All three functions come with an unprefixed alias by default,
-//   with the `susy` import.
-//   Import the `susy-prefix` partial instead,
-//   if you only only want prefixed versions of the API.
+// All three functions come with an unprefixed alias by default,
+// with the `susy` import.
+// Import the `susy-prefix` partial instead,
+// if you only only want prefixed versions of the API.
 //
-// - This is a thin syntax-sugar shell around
-//   the "Su" core-math functions: `su-span`, `su-gutter`, and `su-slice`.
-//   If you prefer the more constrained syntax of the math engine,
-//   you are welcome to use those functions instead.
+// This is a thin syntax-sugar shell around
+// the "Su" core-math functions: `su-span`, `su-gutter`, and `su-slice`.
+// If you prefer the more constrained syntax of the math engine,
+// you are welcome to use those functions instead.
+//
+// @group b-api
+//
+// @example scss - using the api functions
+//   .float {
+//     width: span(3);
+//     margin-right: gutter();
+//   }
+//
+//   .flexbox {
+//     flex: 1 1 span(3);
+//     padding: 0 gutter() / 2;
+//   }
+//
+//   .push-3 {
+//     margin-left: span(3 wide);
+//   }
+//
+// @example scss - building a class-based system
+//   .span {
+//     float: left;
+//     margin-right: gutter();
+//
+//     &:last-child {
+//       margin-right: 0;
+//     }
+//   }
+//
+//   @for $span from 1 through length(susy-get('columns')) {
+//     .span-#{$span} {
+//       width: span($span);
+//     }
+//   }
+
+
+
+// Shorthand
+// ---------
+// All functions draw on the same shorthand syntax in two parts,
+// seperated by the word `of`.
+// The first part describes the
+// **span** `width`, `location`, and `spread` in any order.
+// Only the width is required:
+//
+// ```scss
+// // <width> <location> <spread>
+// $span: 2;
+// $spread: 3 wide;
+//
+// // location is only needed with asymmetrical grids
+// $location: 3 at 2 narrow;
+// ```
+//
+// The second half of Susy's shorthand
+// describes the grid-**context**
+// `columns`, `container-spread`, and `gutters`
+// in any order.
+// None are required:
+//
+// ```scss
+// // of <columns> <container-spread> <gutters>
+// $columns: of 6;
+// $spread: of 12 wide;
+// $gutters: of 12 set-gutters 2em;
+// ```
+//
+// A single unitless number for `columns`
+// will be treated as a slice of the parent grid.
+// On a grid with `columns: susy-repeat(12, 120px)`,
+// the shorthand `of 4` will use the parent `120px` column-width.
+// you can also be more explicit,
+// and say `of susy-repeat(4, 100px)`.
+// If you are using asymmetrical grids,
+// like the `(1 1 2 3 5 8)` example above,
+// Susy can't slice it for you without knowing which slice you want.
+// The `slice` function accepts exactly the same syntax as `span`,
+// but returns a list of columns rather than a width.
+// Use it in your context like `of slice(first 3)`.
+//
+// @group b-api
+
 
 
 // Susy Span

@@ -1,45 +1,49 @@
-// Plugin: SVG Grid Image
-// ======================
-// @group plugin_svg-grid
-// @see susy-svg-grid
+/// Plugin: SVG Grid Image
+/// ======================
+/// @group plugin_svg-grid
+/// @see susy-svg-grid
 
 
-// Overview
-// --------
-// If you want to generate svg-backgrounds
-// for help visualizing and debugging your grids,
-// import the SVG Grid Plugin.
-//
-// The plugin adds `svg-grid-colors` setting
-// to your global defaults,
-// which you can override in `$susy`.
-// It also provides you with a new function,
-// `susy-svg-grid()`,
-// which will return inline svg for use in
-// backgrounds or generated content:
-//
-// @group plugin_svg-grid
-//
-// @example scss - importing the plugin
-//   // The full path to import Susy will depend on your setup…
-//
-//   // unprefixed
-//   @import 'plugins/svg-grid';
-//
-//   // prefixed
-//   @import 'plugins/svg-grid/prefix';
-//
-// @example scss - generating background grids
-//   .grid {
-//     background: susy-svg-grid() no-repeat scroll;
-//   }
+
+/// ## Overview
+/// If you want to generate svg-backgrounds
+/// for help visualizing and debugging your grids,
+/// import the SVG Grid Plugin.
+///
+/// The plugin adds `svg-grid-colors` setting
+/// to your global defaults,
+/// which you can override in `$susy`.
+/// It also provides you with a new function,
+/// `susy-svg-grid()`,
+/// which will return inline svg for use in
+/// backgrounds or generated content.
+///
+/// This function come with an unprefixed alias by default,
+/// using the `svg-grid` import.
+/// If you only only want prefixed versions of the API,
+/// import the `svg-grid/prefix` partial instead.
+///
+/// @group plugin_svg-grid
+///
+/// @example scss - importing the plugin
+///   // The full path to import Susy will depend on your setup…
+///
+///   // unprefixed
+///   @import 'plugins/svg-grid';
+///
+///   // prefixed
+///   @import 'plugins/svg-grid/prefix';
+///
+/// @example scss - generating background grids
+///   .grid {
+///     background: susy-svg-grid() no-repeat scroll;
+///   }
 
 
 
 // SVG Grid
 // --------
-/// Return inline svg-data in  to display the grid
-/// (import `plugins/svg-grid/prefix` to remove unprefixed alias)
+/// Return inline svg-data in  to display the grid.
 ///
 /// @group plugin_svg-grid
 ///

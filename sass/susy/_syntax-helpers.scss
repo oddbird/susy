@@ -1,16 +1,56 @@
-// Syntax Utilities
-// ================
-// - susy-compile [function]
-// - su-call [function]
-//
-// There are many steps involved
-// when translating between the Susy syntax layer,
-// and the Su core math.
-// That entire process can be condensed with these two functions.
-// For anyone that wants to access the full power of Susy,
-// and build their own plugins, functions, and mixins –
-// this is the primary API for compiling user input,
-// and accessing the core math.
+/// Syntax Utilities for Extending Susy
+/// ===================================
+/// There are many steps involved
+/// when translating between the Susy syntax layer,
+/// and the Su core math.
+/// That entire process can be condensed with these two functions.
+/// For anyone that wants to access the full power of Susy,
+/// and build their own plugins, functions, or mixins –
+/// this is the primary API for compiling user input,
+/// and accessing the core math.
+///
+/// This is the same technique we use internally,
+/// to keep our API layer simple and light-weight.
+/// Every function accepts two arguments,
+/// a "shorthand" description of the span or context,
+/// and an optional settings-map to override global defaults.
+///
+/// - Use `susy-compile()` to parse, merge, and normalize
+///   all the user settings into a single map.
+/// - Then use `su-call()` to call one of the core math functions,
+///   with whatever data is needed for that function.
+///
+/// @group plugin-utils
+/// @see susy-compile
+/// @see su-call
+///
+/// @example scss - Susy API `gutter` function
+///   @function susy-gutter(
+///     $context: susy-get('columns'),
+///     $config: ()
+///   ) {
+///     // compile and normalize all user arguments and global settings
+///     $context: susy-compile($context, $config, 'context-only');
+///     // call `su-gutter` with the appropriate data
+///     @return su-call('su-gutter', $context);
+///   }
+///
+/// @example scss - Sample `span` mixin for floated grids
+///   @mixin span(
+///     $span,
+///     $config: ()
+///   ) {
+///     $context: susy-compile($span, $config);
+///     width: su-call('su-span', $context);
+///
+///     @if index($span, 'last') {
+///       float: right;
+///     } @else {
+///       float: left;
+///       margin-right: su-call('su-gutter', $context);
+///     }
+///   }
+
 
 
 // Compile

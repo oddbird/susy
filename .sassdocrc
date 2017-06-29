@@ -11,10 +11,10 @@ groups:
   b-api: 'Grid Functions'
   plugin-utils: 'Plugin Utilities'
   plugin_svg-grid: 'Plugin: SVG Grid Image'
-  su-math: 'Su: Core Math'
-  x--validation: '[Su Input Validation]'
+  su-math: 'Su: Core Math Engine'
   x-normal: '[Susy Normalization]'
   x-parser: '[Susy Syntax Parser]'
+  x-validation: '[Su Input Validation]'
 
 herman:
   sass:

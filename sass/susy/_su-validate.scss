@@ -1,11 +1,17 @@
-// Validation
-// ==========
-// - su-valid-columns [function]
-// - su-valid-gutters [function]
-// - su-valid-spread [function]
-// - su-valid-location [function]
-// - su-is-comparable [function]
-// - su-needs-calc [function]
+/// Validation
+/// ==========
+/// Each argument to Su has a single canonical syntax.
+/// These validation functions check to ensure
+/// that each argument is valid,
+/// in order to provide useful errors
+/// before attempting to calculate the results/
+///
+/// @group x--validation
+///
+/// @see su-valid-columns
+/// @see su-valid-gutters
+/// @see su-valid-spread
+/// @see su-valid-location
 
 
 

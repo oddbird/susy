@@ -1,6 +1,12 @@
-// Parser
-// ======
-// - susy-parse [function]
+/// Shorthand Syntax Parser
+/// =======================
+/// The syntax parser converts [shorthand syntax][short]
+/// into a map of settings that can be compared/merged with
+/// other config maps and global setting.
+///
+/// [short]: b-api.html
+///
+/// @group x-parser
 
 
 

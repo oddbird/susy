@@ -1,18 +1,23 @@
-// Parser
-// ======
-// - susy-normalize [function]
-// - susy-normalize-span [function]
-// - susy-normalize-columns [function]
-// - susy-normalize-spread [function]
-// - susy-normalize-location [function]
-//
-// Susy is divided into two layers:
-// "Su" provides the core math functions with a stripped-down syntax,
-// while "Susy" adds global settings, shorthand syntax,
-// and other helpers.
-// This normalization module helps translate between those layers,
-// transforming parsed Susy input into
-// values that Su will understand.
+/// Syntax Normalization
+/// ====================
+/// Susy is divided into two layers:
+/// "Su" provides the core math functions with a stripped-down syntax,
+/// while "Susy" adds global settings, shorthand syntax,
+/// and other helpers.
+/// Each setting (e.g. span, location, columns, spread, etc.)
+/// has a single canonical syntax in Su.
+///
+/// This normalization module helps translate between those layers,
+/// transforming parsed Susy input into
+/// values that Su will understand.
+///
+/// @group x-normal
+///
+/// @see susy-normalize
+/// @see susy-normalize-span
+/// @see susy-normalize-columns
+/// @see susy-normalize-spread
+/// @see susy-normalize-location
 
 
 

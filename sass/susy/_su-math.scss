@@ -1,12 +1,28 @@
-// Grids
-// =====
-// - su-span [function]
-// - su-gutter [function]
-// - su-slice [function]
-// - _su-sum [function]
-// - _su-calc-span [function]
-// - _su-calc-sum [function]
-// - _su-needs-calc-output [function]
+/// Grid Math Engine
+/// ================
+/// The `su` functions give you direct access to the math layer,
+/// without any syntax-sugar like shorthand parsing, and normalization.
+/// If you prefer named arguments, and stripped-down syntax,
+/// you can use these functions directly in your code –
+/// replacing `span`, `gutter`, and `slice`.
+///
+/// These functions are also useful
+/// for building mixins or other extensions to Susy.
+/// Apply the Susy syntax to new mixins and functions,
+/// using our "Plugin Helpers",
+/// or write your own syntax and pass the normalized results along
+/// to `su` for compilation.
+///
+/// @group su-math
+///
+/// @see su-span
+/// @see su-gutter
+/// @see su-slice
+/// @ignore _su-sum
+/// @ignore _su-calc-span
+/// @ignore _su-calc-sum
+/// @ignore _su-needs-calc-output
+
 
 
 // Su Span
@@ -81,6 +97,7 @@
 }
 
 
+
 // Su Gutter
 // ---------
 /// Calculates and returns a CSS-ready gutter width,
@@ -126,6 +143,7 @@
   $container: _su-sum($columns, $gutters, $container-spread);
   @return percentage($gutters / $container);
 }
+
 
 
 // Su Slice
@@ -177,6 +195,7 @@
 }
 
 
+
 // Su Sum
 // ------
 /// Get the total sum of column-units in a layout.
@@ -219,6 +238,7 @@
 
   @return $total;
 }
+
 
 
 // Su Calc
@@ -291,6 +311,7 @@
 
   @return calc(#{unquote($calc)});
 }
+
 
 
 // Su Calc-Sum
@@ -366,6 +387,7 @@
 
   @return $return;
 }
+
 
 
 // Needs Calc

@@ -2,16 +2,17 @@ Changelog
 =========
 
 
-3.0.0 - UNRELEASED
-------------------
+3.0.0 - June 29, 2017
+---------------------
 
-See [Introducing Susy3](http://oddbird.net/2017/06/28/susy3)
-and [Undesanding Spread in Susy3](http://oddbird.net/2017/06/13/susy-spread/)
+See [Introducing Susy3](http://oddbird.net/2017/06/28/susy3),
+[Undesanding Spread in Susy3](http://oddbird.net/2017/06/13/susy-spread/).
 
 - No code changes from the beta
 - Site moved to [oddbird.net/susy/](http://oddbird.net/susy/)
 - Docs moved to [oddbird.net/susy/docs/](http://oddbird.net/susy/docs/)
-- Document deprecations
+- Document beta deprecations
+- Add full documentation
 
 
 3.0.0-beta.1 - June 19, 2017

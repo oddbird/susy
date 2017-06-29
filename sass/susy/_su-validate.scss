@@ -6,7 +6,7 @@
 /// in order to provide useful errors
 /// before attempting to calculate the results/
 ///
-/// @group x--validation
+/// @group x-validation
 ///
 /// @see su-valid-columns
 /// @see su-valid-gutters
@@ -20,7 +20,7 @@
 /// Check that the `span` argument
 /// is a number, length, or column-list
 ///
-/// @group x--validation
+/// @group x-validation
 ///
 /// @param {number | list} $span -
 ///   Number of columns, or length of span
@@ -53,7 +53,7 @@
 /// Check that the `columns` argument is a valid
 /// list of column-lengths
 ///
-/// @group x--validation
+/// @group x-validation
 ///
 /// @param {list} $columns -
 ///   List of column-lengths
@@ -102,7 +102,7 @@
 // -------------
 /// Check that the `gutters` argument is a valid number
 ///
-/// @group x--validation
+/// @group x-validation
 ///
 /// @param {number} $gutters -
 ///   Width of a gutter
@@ -134,7 +134,7 @@
 /// Check that the `spread` argument is a valid
 /// intiger between `-1` and `1`
 ///
-/// @group x--validation
+/// @group x-validation
 ///
 /// @param {0 | 1 | -1} $spread -
 ///   Number of gutters to include in a span,
@@ -165,7 +165,7 @@
 /// Check that the `location` argument is a valid number,
 /// within the scope of available columns
 ///
-/// @group x--validation
+/// @group x-validation
 ///
 /// @param {number} $span -
 ///   Number of grid-columns to be spanned

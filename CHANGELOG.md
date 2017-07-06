@@ -6,7 +6,7 @@ Changelog
 ---------------------
 
 See [Introducing Susy3](http://oddbird.net/2017/06/28/susy3),
-[Undesanding Spread in Susy3](http://oddbird.net/2017/06/13/susy-spread/).
+[Understanding Spread in Susy3](http://oddbird.net/2017/06/13/susy-spread/).
 
 - No code changes from the beta
 - Site moved to [oddbird.net/susy/](http://oddbird.net/susy/)

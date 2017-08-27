@@ -1,6 +1,12 @@
 Changelog
 =========
 
+3.0.1 - August 27, 2017
+-----------------------
+
+- NEW: `susy-version()` function for accessing the active version number.
+- Minor documentation improvements.
+
 
 3.0.0 - June 29, 2017
 ---------------------

@@ -1,5 +1,5 @@
 theme: Herman
-dest: .sassdoc
+dest: docs/
 
 display:
   access: public
@@ -15,6 +15,7 @@ groups:
   x-normal: '[Susy Normalization]'
   x-parser: '[Susy Syntax Parser]'
   x-validation: '[Su Input Validation]'
+  x-version: '[Release Notes]'
 
 herman:
   sass:

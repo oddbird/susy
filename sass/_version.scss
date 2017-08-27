@@ -1,0 +1,111 @@
+// Release Management in Susy
+// ==========================
+
+
+// Susy Version [variable]
+// -----------------------
+/// The current version of Susy being used.
+/// - We will release a major version for any BREAKING changes.
+/// - We will release a minor version for any significant NEW features.
+/// - We will release a patch for any BUGFIX changes.
+///
+/// @group x-version
+/// @access private
+/// @since 3.0.1
+///
+/// @prop {integer} 'major' - the major release number
+/// @prop {integer} 'minor' - the minor release number
+/// @prop {integer} 'patch' - the patch number
+$_susy-version: (
+  'major': 3,
+  'minor': 0,
+  'patch': 1,
+);
+
+
+// Susy Version [function]
+// -----------------------
+/// Returns the current version of Susy
+/// as a string in the common `major.minor.patch` format –
+/// or returns one part (major | minor | patch) as a number
+/// for version comparisons.
+/// Since version numbers aren't actual decimals,
+/// there is no simple way to return the full version
+/// as a comparable number in Sass.
+///
+/// @group x-version
+///
+/// @param {'major' | 'minor' | 'patch'} $part [null] -
+///   The part (major | minor | patch) to return as a number.
+///   Any other value will return the full version as a string.
+/// @example scss - Current Susy Version
+///   /* Full Version: #{susy-version()} */
+///   /* Major Release: #{susy-version('major')} */
+@function susy-version(
+  $part: null
+) {
+  $major: map-get($_susy-version, 'major');
+  $minor: map-get($_susy-version, 'minor');
+  $patch: map-get($_susy-version, 'patch');
+  $full: '#{$major}.#{$minor}.#{$patch}';
+
+  @return map-get($_susy-version, $part) or $full;
+}
+
+
+/// # Release Notes for Susy v3.0.0 (and 3.0.1)
+///
+/// - BREAKING: No More Mixins!
+///   `span`, `container`, `gutters`, `last`, `gallery`, etc.
+///   have all been removed from Susy.
+///   Web layout has become too powerful & flexible to contain
+///   in a simple set of shortcuts.
+/// - BREAKING: Remove rubygems/bower, to distribute on npm only.
+/// - BREAKING: Trim down to the core math, and a thin layer of api functions:
+///   - `susy-span()` (aliased as `span`)
+///     to return a column-spanning width.
+///   - `susy-gutter()` (aliased as `gutter`)
+///     to return a gutter width.
+///   - `susy-slice()` (aliased as `slice`)
+///     to return a slice of asymmetrical grid.
+/// - BREAKING: Simplify to four settings:
+///   - `columns` to define the grid columns
+///     as a list of lengths or unitless relative numbers.
+///   - `gutters` to define the length or relative size of a gutter.
+///   - `spread` to define the default spread of a span
+///     across adjacent gutters.
+///   - `container-spread` to define the default spread of a container
+///     across side-edge gutters.
+/// - BREAKING: Add support for `calc()` output,
+///   so mixed-unit grids are possible.
+///   This means the old inside-static solution
+///   has been replaced by calc() output as well.
+/// - BREAKING: Shorthand syntax for on-the-fly span and settings.
+///   This is similar to the previous shorthand,
+///   but has been simplified to remove mixin-related features.
+///   - starting with a count, length, or column-list "span"
+///   - `at $n`, `first`, or `last` location on asymmetrical grids
+///   - `narrow`, `wide`, or `wider` for spread
+///   - `of $n <spread>` for available grid columns and container-spread
+///   - `set-gutters $n` shorthand to override global gutter settings
+/// - NEW: `susy-repeat()` function
+///   to generate repeating gradients with the same syntax
+///   provided in CSS Grid templates
+/// - NEW: SVG Grid plugin (`susy/plugins/svg-grid`),
+///   to provide grid-debugging options
+///   when applied as a background image to any container element:
+///   - `svg-grid-colors` global setting accepts one or more colors
+///   - `susy-svg-grid()` function returns inline svg
+///     for use in the `background` or generated `content` properties
+/// - NEW: `susy-compile()` and `su-call()` plugin helpers,
+///   to aide with conversions between the user API and internal math functions.
+///   This is primarily useful for anyone building Susy extensions or mixins.
+/// - NEW: prefixed and unprefixed versions of all major API functions.
+/// - NEW: `susy-version()` function for accessing the active version number.
+///
+/// @group x-version
+/// @link http://oddbird.net/susy/ Official Site
+/// @link http://oddbird.net/susy/docs/ Latest Docs
+/// @link https://github.com/oddbird/susy/blob/master/CHANGELOG.md Full Changelog
+/// @link http://oddbird.net/2017/06/28/susy3 Introducing Susy3 [article]
+/// @link http://oddbird.net/2017/06/13/susy-spread/ Understanding Spread in Susy3 [article]

@@ -1944,7 +1944,7 @@ node-pre-gyp@^0.6.29:
     tar "^2.2.1"
     tar-pack "^3.4.0"
 
-node-sass@^4.0.0, node-sass@^4.5.3:
+node-sass@^4.5.3:
   version "4.5.3"
   resolved "https://registry.yarnpkg.com/node-sass/-/node-sass-4.5.3.tgz#d09c9d1179641239d1b97ffc6231fdcec53e1568"
   dependencies:
@@ -2488,13 +2488,13 @@ sass-lint@^1.10.2:
     path-is-absolute "^1.0.0"
     util "^0.10.3"
 
-sass-true@^3.0.0-beta.1:
-  version "3.0.0-beta.1"
-  resolved "https://registry.yarnpkg.com/sass-true/-/sass-true-3.0.0-beta.1.tgz#d5e99054f6068de89b2bb4013b936e9b46409c03"
+sass-true@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/sass-true/-/sass-true-3.0.0.tgz#f266f4bf97b61d05e0599fc04f1d36f9382a809e"
   dependencies:
     css "^2.2.1"
     css-selector-parser "^1.1.0"
-    node-sass "^4.0.0"
+    node-sass "^4.5.3"
     underscore "^1.8.3"
 
 sassdoc-extras@^2.4.0, sassdoc-extras@^2.4.1:

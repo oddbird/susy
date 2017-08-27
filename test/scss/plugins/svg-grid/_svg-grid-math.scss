@@ -4,15 +4,15 @@
 
 // SVG Column Position [function]
 // ------------------------------
-@include test-module('SVG Column Position [function]') {
-  @include test('First column') {
+@include describe('SVG Column Position [function]') {
+  @include it('First column') {
     @include assert-equal(
       _susy-svg-column-position(1, $susy),
       0,
       'First column always has a position of zero');
   }
 
-  @include test('First column') {
+  @include it('First column') {
     @include assert-equal(
       _susy-svg-column-position(3, $susy),
       susy-span(first 2 wide, $susy),
@@ -23,8 +23,8 @@
 
 // SVG Offset [function]
 // ---------------------
-@include test-module('SVG Offset [function]') {
-  @include test('No extra spread with defaults') {
+@include describe('SVG Offset [function]') {
+  @include it('No extra spread with defaults') {
     $test: (
       'columns': 1 1 1 1 1,
       'gutters': 2em,
@@ -34,7 +34,7 @@
     @include assert-false(_susy-svg-offset($test));
   }
 
-  @include test('Container is wide') {
+  @include it('Container is wide') {
     $test: (
       'container-spread': 0,
       'spread': 0,
@@ -46,7 +46,7 @@
       susy-gutter($config: $test) / 2);
   }
 
-  @include test('Container is wider') {
+  @include it('Container is wider') {
     $test: (
       'container-spread': 1,
       'spread': -1,

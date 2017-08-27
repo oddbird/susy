@@ -4,8 +4,8 @@
 
 // Susy Compile
 // ------------
-@include test-module('Susy Compile [function]') {
-  @include test('Compiles normalized settings map from shorthand') {
+@include describe('Susy Compile [function]') {
+  @include it('Compiles normalized settings map from shorthand') {
     $shorthand: 'last' 2 'wide' of 6;
     $config: (
       'columns': susy-repeat(10),
@@ -27,7 +27,7 @@
       $expected);
   }
 
-  @include test('Compiles normalized settings map from existing maps') {
+  @include it('Compiles normalized settings map from existing maps') {
     $shorthand: (
       'location': 'last',
       'span': 2,
@@ -54,7 +54,7 @@
       $expected);
   }
 
-  @include test('Missing columns') {
+  @include it('Missing columns') {
     $expect: (
       'svg-grid-colors': susy-get('svg-grid-colors'),
       'columns': susy-get('columns'),
@@ -69,7 +69,7 @@
       $expect);
   }
 
-  @include test('Allows context-only parsing') {
+  @include it('Allows context-only parsing') {
     $shorthand: 6 'wide';
     $config: (
       'svg-grid-colors': #ccc,
@@ -87,7 +87,7 @@
       $expected);
   }
 
-  @include test('Handles context-count as slice') {
+  @include it('Handles context-count as slice') {
     $grid: (
       'columns': susy-repeat(10, 5em),
       'gutters': 0.5em,
@@ -110,7 +110,7 @@
       $expect);
   }
 
-  @include test('Last') {
+  @include it('Last') {
     $config: ('columns': (1 1 2 3 5 8 13));
     $expect: (
       'svg-grid-colors': susy-get('svg-grid-colors'),
@@ -126,7 +126,7 @@
       $expect);
   }
 
-  @include test('All') {
+  @include it('All') {
     $grid: (
       'columns': susy-repeat(10, 5em),
       'gutters': 0.5em,
@@ -152,7 +152,7 @@
 
 // Su Call
 // -------
-@include test-module('Su Call [function]') {
+@include describe('Su Call [function]') {
   $map: (
     'svg-grid-colors': #ccc,
     'columns': 1 1 1 1 1 1,
@@ -163,7 +163,7 @@
     'span': 2,
   );
 
-  @include test('Calls su-span') {
+  @include it('Calls su-span') {
     $args: (
       map-get($map, 'span'),
       map-get($map, 'columns'),
@@ -177,7 +177,7 @@
       su-span($args...));
   }
 
-  @include test('Calls su-gutter') {
+  @include it('Calls su-gutter') {
     $args: (
       map-get($map, 'columns'),
       map-get($map, 'gutters'),
@@ -188,7 +188,7 @@
       su-gutter($args...));
   }
 
-  @include test('Calls su-slice') {
+  @include it('Calls su-slice') {
     $args: (
       map-get($map, 'span'),
       map-get($map, 'columns'),
@@ -199,7 +199,7 @@
       su-slice($args...));
   }
 
-  @include test('Does not call other functions') {
+  @include it('Does not call other functions') {
     @include assert-equal(
       su-call('su-sum', $map),
       'ERROR [su-call] su-sum is not a public Su function. Try one of these: su-span, su-gutter, su-slice');

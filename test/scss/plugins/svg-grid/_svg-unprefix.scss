@@ -4,9 +4,9 @@
 
 // SVG Grid [function]
 // -------------------
-@include test-module('SVG Grid (unprefixed) [function]') {
+@include describe('SVG Grid (unprefixed) [function]') {
 
-  @include test('Pass settings through') {
+  @include it('Pass settings through') {
     @include assert-equal(
       svg-grid(2, #9cc, 1em),
       susy-svg-grid(2, #9cc, 1em));

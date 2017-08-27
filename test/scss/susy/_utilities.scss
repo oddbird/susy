@@ -4,8 +4,8 @@
 
 // Susy Error
 // ----------
-@include test-module('Susy Error [function]') {
-  @include test('Allow errors to return without blocking compilation') {
+@include describe('Susy Error [function]') {
+  @include it('Allow errors to return without blocking compilation') {
     @include assert-equal(
       _susy-error('This is a test error message', '_susy-error test'),
       'ERROR [_susy-error test] This is a test error message');
@@ -15,25 +15,25 @@
 
 // Su Is Comparable
 // -------------
-@include test-module('Su Is Comparable [function]') {
-  @include test('Fully fluid') {
+@include describe('Su Is Comparable [function]') {
+  @include it('Fully fluid') {
     @include assert-equal(
       _su-is-comparable(0.5, 1, 2, 4, 2),
       'fluid');
   }
 
-  @include test('Comparable static') {
+  @include it('Comparable static') {
     @include assert-equal(
       _su-is-comparable(10px, 3px, 2in, 33cm),
       'static');
   }
 
-  @include test('Mixed fluid-static') {
+  @include it('Mixed fluid-static') {
     @include assert-false(
       _su-is-comparable(10px, 3, 2in, 33cm));
   }
 
-  @include test('Non-comparable static') {
+  @include it('Non-comparable static') {
     @include assert-false(
       _su-is-comparable(10px, 3rem, 2in, 33cm));
   }
@@ -42,13 +42,13 @@
 
 // Susy Map Add Units
 // ------------------
-@include test-module('Susy Map Add Units [function]') {
+@include describe('Susy Map Add Units [function]') {
   $map: (
     0cm: 300cm,
     0em: 20em,
   );
 
-  @include test('Matched units') {
+  @include it('Matched units') {
     $expect: (
       0cm: 310cm,
       0em: 20em,
@@ -59,7 +59,7 @@
       $expect);
   }
 
-  @include test('Comparable units') {
+  @include it('Comparable units') {
     $expect: (
       0cm: 310cm,
       0em: 20em,
@@ -70,7 +70,7 @@
       $expect);
   }
 
-  @include test('New units') {
+  @include it('New units') {
     $expect: (
       0cm: 300cm,
       0em: 20em,
@@ -86,8 +86,8 @@
 
 // Susy Flatten
 // ------------
-@include test-module('Susy Flatten [function]') {
-  @include test('Flattens a multi-dimensional list') {
+@include describe('Susy Flatten [function]') {
+  @include it('Flattens a multi-dimensional list') {
     $list: 30px susy-repeat(3, 120px) (2 (4 6));
     $expect: 30px 120px 120px 120px 2 4 6;
 
@@ -101,7 +101,7 @@
       $expect);
   }
 
-  @include test('Returns flat list un-changed') {
+  @include it('Returns flat list un-changed') {
     $expect: 30px 120px 120px 120px 2 4 6;
 
     @include assert-equal(
@@ -109,7 +109,7 @@
       $expect);
   }
 
-  @include test('Do not flatten maps') {
+  @include it('Do not flatten maps') {
     $expect: 30px ('key': 120px) 2 4 6;
 
     @include assert-equal(

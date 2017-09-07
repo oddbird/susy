@@ -92,7 +92,7 @@ Make sure you have sass-loader enabled in your webpack configuration:
 loaders: [
   {
     test: /\.scss$/,
-    loader: 'style!css!sass'
+    loader: 'style-loader!css-loader!sass-loader'
   }
 ]
 ```

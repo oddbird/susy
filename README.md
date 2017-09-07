@@ -89,12 +89,14 @@ Make sure you have sass-loader enabled in your webpack configuration:
 
 ```javascript
 // webpack.config.js
-loaders: [
-  {
-    test: /\.scss$/,
-    loader: 'style-loader!css-loader!sass-loader'
-  }
-]
+module: {
+  rules: [
+    {
+      test: /\.scss$/,
+      use: ['style-loader', 'css-loader', 'sass-loader']
+    }
+  ]
+}
 ```
 
 Start using Susy:

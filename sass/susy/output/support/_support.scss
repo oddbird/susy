@@ -67,7 +67,16 @@
 
     @each $_type, $_req in $requirements {
       @each $_i in $_req {
-        $_pass: call(unquote("#{$_type}-exists"), $_i);
+        // interpolate function name
+        $function: "#{$_type}-exists";
+
+        // if `get-function` exists, then we can use it…
+        // @@@ this is a temporary solution for Sass 3.5
+        $get: function-exists('get-function');
+        $function: if($get, get-function($function), $function);
+
+        // call the function – either as a string, or as a first-class function
+        $_pass: call($function, $_i);
 
         @if not($_pass) {
           $_fail: true;

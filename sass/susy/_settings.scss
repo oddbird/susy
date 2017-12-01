@@ -38,7 +38,7 @@
 /// or grab a single setting from the global scope
 /// with `susy-get('columns')`, `susy-get('gutters')` etc.
 ///
-/// @group a-config
+/// @group config
 /// @link http://oddbird.net/2017/06/13/susy-spread/
 ///   Article: Understanding Spread in Susy3
 ///
@@ -59,7 +59,7 @@
 /// under different variable names,
 /// to override the defaults as-needed.
 ///
-/// @group a-config
+/// @group config
 /// @type Map
 ///
 /// @see $_susy-defaults
@@ -184,7 +184,7 @@ $susy: () !default;
 /// Where Susy previously allowed `8` as a column definition
 /// for 8 equal columns, you should now use `susy-repeat(8)`.
 ///
-/// @group a-config
+/// @group config
 ///
 /// @param {integer} $count -
 ///   The number of repetitions, e.g. `12` for a 12-column grid.
@@ -259,7 +259,7 @@ $_susy-defaults: (
 /// and any local overrides required –
 /// such as a configuration map passed into a function.
 ///
-/// @group a-config
+/// @group config
 ///
 /// @param {maps} $overrides… -
 ///   Optional map override of global configuration settings.
@@ -301,7 +301,7 @@ $_susy-defaults: (
 // --------
 /// Return the current global value of any Susy setting
 ///
-/// @group a-config
+/// @group config
 ///
 /// @param {string} $key -
 ///   Setting to retrieve from the configuration.

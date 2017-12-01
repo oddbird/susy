@@ -19,7 +19,7 @@
 /// If you prefer the more constrained syntax of the math engine,
 /// you are welcome to use those functions instead.
 ///
-/// @group b-api
+/// @group api
 /// @see susy-span
 /// @see susy-gutter
 /// @see susy-slice
@@ -75,7 +75,7 @@
 /// but returns a list of columns rather than a width.
 /// Use it in your context like `of slice(first 3)`.
 ///
-/// @group b-api
+/// @group api
 
 
 
@@ -95,7 +95,7 @@
 ///   the core-math `su-span()` function.
 /// - The un-prefixed alias `span()` is available by default.
 ///
-/// @group b-api
+/// @group api
 /// @see su-span
 /// @see $susy
 ///
@@ -165,7 +165,7 @@
 ///   the core-math `su-gutter()` function.
 /// - The un-prefixed alias `gutter()` is available by default.
 ///
-/// @group b-api
+/// @group api
 /// @see su-gutter
 /// @see $susy
 ///
@@ -223,7 +223,7 @@
 ///   the core-math `su-slice()` function.
 /// - The un-prefixed alias `slice()` is available by default.
 ///
-/// @group b-api
+/// @group api
 /// @see su-slice
 /// @see $susy
 ///
@@ -276,7 +276,7 @@
 ///
 /// [welcome]: http://oddbird.net/2017/06/28/susy3/
 ///
-/// @group b-api
+/// @group api
 /// @link http://oddbird.net/2017/06/28/susy3/ Article: Welcome to Susy3
 ///
 /// @example scss - floats

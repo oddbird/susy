@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <title>Su: Core Math Engine | susy Documentation</title>
+  <title>[Susy Normalization] | susy Documentation</title>
 
   <link href="assets/img/favicon.ico" rel="shortcut icon">
   <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:400,600|Source+Sans+Pro:400,400i,700,700i" rel="stylesheet">
@@ -105,12 +105,12 @@
         
           
           <li data-sassdoc="nav-item">
-            <a href="su-math.html" data-sassdoc-nav="is-active">Su: Core Math<span class="widont">&nbsp;</span>Engine</a>
+            <a href="su-math.html" data-sassdoc-nav="is-not-active">Su: Core Math<span class="widont">&nbsp;</span>Engine</a>
           </li>
         
           
           <li data-sassdoc="nav-item">
-            <a href="_normal.html" data-sassdoc-nav="is-not-active">[Susy Normalization]</a>
+            <a href="_normal.html" data-sassdoc-nav="is-active">[Susy Normalization]</a>
           </li>
         
           
@@ -192,11 +192,11 @@
   <nav data-sassdoc-region="breadcrumb">
     
     <a href="index.html" >susy</a> »
-    <strong>Su: Core Math Engine</strong>
+    <strong>[Susy Normalization]</strong>
   </nav>
 
 
-        <div data-sassdoc-page="su-math">
+        <div data-sassdoc-page="_normal">
           
   
     
@@ -221,18 +221,16 @@
 
   
     <div data-item-section="prose" class="text-block">
-      <h1 id="grid-math-engine">Grid Math Engine</h1>
-<p>The <code>su</code> functions give you direct access to the math layer,
-without any syntax-sugar like shorthand parsing, and normalization.
-If you prefer named arguments, and stripped-down syntax,
-you can use these functions directly in your code –
-replacing <code>span</code>, <code>gutter</code>, and <code>slice</code>.</p>
-<p>These functions are also useful
-for building mixins or other extensions to Susy.
-Apply the Susy syntax to new mixins and functions,
-using our “Plugin Helpers”,
-or write your own syntax and pass the normalized results along
-to <code>su</code> for compilation.</p>
+      <h1 id="syntax-normalization">Syntax Normalization</h1>
+<p>Susy is divided into two layers:
+“Su” provides the core math functions with a stripped-down syntax,
+while “Susy” adds global settings, shorthand syntax,
+and other helpers.
+Each setting (e.g. span, location, columns, spread, etc.)
+has a single canonical syntax in<span class="widont">&nbsp;</span>Su.</p>
+<p>This normalization module helps translate between those layers,
+transforming parsed Susy input into
+values that Su will<span class="widont">&nbsp;</span>understand.</p>
 
       
   
@@ -290,7 +288,7 @@ to <code>su</code> for compilation.</p>
       <span class="item-type">@function</span>
       
         <a href="
-  su-math.html#function--su-span" class="item-name">su-span()</a>
+  _normal.html#function--susy-normalize" class="item-name">susy-normalize()</a>
       
       
       
@@ -315,7 +313,7 @@ to <code>su</code> for compilation.</p>
       <span class="item-type">@function</span>
       
         <a href="
-  su-math.html#function--su-gutter" class="item-name">su-gutter()</a>
+  _normal.html#function--susy-normalize-span" class="item-name">susy-normalize-span()</a>
       
       
       
@@ -340,7 +338,57 @@ to <code>su</code> for compilation.</p>
       <span class="item-type">@function</span>
       
         <a href="
-  su-math.html#function--su-slice" class="item-name">su-slice()</a>
+  _normal.html#function--susy-normalize-columns" class="item-name">susy-normalize-columns()</a>
+      
+      
+      
+      
+    </h4>
+
+    
+  </div>
+
+
+      
+        
+  
+  
+  
+  
+  
+
+  
+  <div class="param-list">
+    <h4 class="param-title">
+      <span class="item-type">@function</span>
+      
+        <a href="
+  _normal.html#function--susy-normalize-spread" class="item-name">susy-normalize-spread()</a>
+      
+      
+      
+      
+    </h4>
+
+    
+  </div>
+
+
+      
+        
+  
+  
+  
+  
+  
+
+  
+  <div class="param-list">
+    <h4 class="param-title">
+      <span class="item-type">@function</span>
+      
+        <a href="
+  _normal.html#function--susy-normalize-location" class="item-name">susy-normalize-location()</a>
       
       
       
@@ -390,7 +438,7 @@ to <code>su</code> for compilation.</p>
 
 
 
-<section class="item" id="function--su-span">
+<section class="item" id="function--susy-normalize">
   
     
   
@@ -408,7 +456,7 @@ to <code>su</code> for compilation.</p>
       
 
       
-        <a href="#function--su-span" class="item-name">su-span()</a>
+        <a href="#function--susy-normalize" class="item-name">susy-normalize()</a>
       
 
       
@@ -429,18 +477,548 @@ to <code>su</code> for compilation.</p>
 
   
     <div class="text-block">
-      <p>Calculates and returns a CSS-ready span width,
-based on normalized span and context data –
-a low-level version of <code>susy-span</code>,
-with all of the logic and none of the syntax<span class="widont">&nbsp;</span>sugar.</p>
-<ul>
-<li>Grids defined with unitless numbers will return <code>%</code> values.</li>
-<li>Grids defined with comparable units
-will return a value in the units<span class="widont">&nbsp;</span>provided.</li>
-<li>Grids defined with a mix of units,
-or a combination of untiless numbers and unit-lengths,
-will return a <code>calc()</code> string.</li>
-</ul>
+      <p>Normalize the values in a configuration map.
+In addition to the global <code>$susy</code> properties,
+this map can include local span-related imformation,
+like <code>span</code> and <code>location</code>.</p>
+<p>Normalization does not check that values are valid,
+which will happen in the Su math layer.
+These functions merely look for known Susy syntax –
+returning a map with those shorthand values
+converted into low-level data for Su.
+For example <code>span: all</code> and <code>location: first</code>
+will be converted into specific<span class="widont">&nbsp;</span>numbers.</p>
+
+      
+  
+
+      
+  
+
+      
+  
+
+    </div>
+  
+
+  </div>
+
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    
+  <div data-item-section="parameter">
+    
+      <h3 class="item-subtitle">
+        <span class="item-subtitle-main">Parameters &amp;<span class="widont">&nbsp;</span>Return</span>
+        
+      </h3>
+    
+
+    
+      
+        
+  
+  
+
+  
+  <div class="param-list">
+    <h4 class="param-title">
+      
+      
+        <span class="item-name">$config:</span>
+      
+      
+      <span class="value-type">(map)</span>
+      
+    </h4>
+
+    
+      
+      <div class="param-details text-block">
+        <p>Map of Susy configuration settings to normalize.
+See <code>$susy</code> and <code>susy-parse()</code> documentation for<span class="widont">&nbsp;</span>details.</p>
+
+      </div>
+    
+  </div>
+
+
+      
+        
+  
+  
+
+  
+  <div class="param-list">
+    <h4 class="param-title">
+      
+      
+        <span class="item-name">$context:</span>
+      
+      <span class="item-value">null</span>
+      <span class="value-type">(map |<span class="widont">&nbsp;</span>null)</span>
+      
+    </h4>
+
+    
+      
+      <div class="param-details text-block">
+        <p>Map of Susy configuration settings to use as global reference,
+or <code>null</code> to use global<span class="widont">&nbsp;</span>settings.</p>
+
+      </div>
+    
+  </div>
+
+
+      
+
+      
+  
+
+      
+  
+    
+  <div class="param-list">
+    <h4 class="param-title">
+      
+      
+        <span class="item-name">@return</span>
+      
+      
+      <span class="value-type">(map)</span>
+      
+    </h4>
+
+    
+      
+      <div class="param-details text-block">
+        <p>Map of Susy configuration settings,
+with all values normalized for Su math<span class="widont">&nbsp;</span>functions.</p>
+
+      </div>
+    
+  </div>
+
+  
+
+      
+  
+
+      
+  
+
+    
+  </div>
+
+  
+
+
+  
+  
+
+
+  
+
+    
+  <div data-item-section="related">
+    
+      <h3 class="item-subtitle">
+        <span class="item-subtitle-main">Related</span>
+        
+      </h3>
+    
+
+    
+      
+
+      
+        
+  
+  
+  
+  
+  
+
+  
+  <div class="param-list">
+    <h4 class="param-title">
+      
+      
+        <a href="
+  config.html#variable--susy" class="item-name">$susy</a>
+      
+      
+      
+      
+    </h4>
+
+    
+  </div>
+
+
+      
+        
+  
+  
+  
+  
+  
+
+  
+  <div class="param-list">
+    <h4 class="param-title">
+      <span class="item-type">@function</span>
+      
+        <a href="
+  _parser.html#function--susy-parse" class="item-name">susy-parse()</a>
+      
+      
+      
+      
+    </h4>
+
+    
+  </div>
+
+
+      
+    
+  </div>
+
+  
+  
+  
+  
+    <div class="requires-wrapper">
+      
+    
+  <div data-item-section="requires">
+    
+      <h3 class="item-subtitle">
+        <span class="item-subtitle-main">Requires</span>
+        
+      </h3>
+    
+
+    
+      
+      
+        
+        
+        
+
+        
+          
+          
+  
+  
+  
+  
+  
+  
+  
+  
+
+  
+  <div class="param-list">
+    <h4 class="param-title">
+      <span class="item-type">@function</span>
+      
+        <a href="
+  _normal.html#function--susy-normalize-spread" class="item-name">susy-normalize-spread()</a>
+      
+      
+      
+      
+    </h4>
+
+    
+  </div>
+
+
+        
+      
+        
+        
+        
+
+        
+          
+          
+  
+  
+  
+  
+  
+  
+  
+  
+
+  
+  <div class="param-list">
+    <h4 class="param-title">
+      <span class="item-type">@function</span>
+      
+        <a href="
+  _normal.html#function--susy-normalize-columns" class="item-name">susy-normalize-columns()</a>
+      
+      
+      
+      
+    </h4>
+
+    
+  </div>
+
+
+        
+      
+        
+        
+        
+
+        
+          
+          
+  
+  
+  
+  
+  
+  
+  
+  
+
+  
+  <div class="param-list">
+    <h4 class="param-title">
+      <span class="item-type">@function</span>
+      
+        <a href="
+  config.html#function--susy-get" class="item-name">susy-get()</a>
+      
+      
+      
+      
+    </h4>
+
+    
+  </div>
+
+
+        
+      
+        
+        
+        
+
+        
+          
+          
+  
+  
+  
+  
+  
+  
+  
+  
+
+  
+  <div class="param-list">
+    <h4 class="param-title">
+      <span class="item-type">@function</span>
+      
+        <a href="
+  _normal.html#function--susy-normalize-span" class="item-name">susy-normalize-span()</a>
+      
+      
+      
+      
+    </h4>
+
+    
+  </div>
+
+
+        
+      
+        
+        
+        
+
+        
+          
+          
+  
+  
+  
+  
+  
+  
+  
+  
+
+  
+  <div class="param-list">
+    <h4 class="param-title">
+      <span class="item-type">@function</span>
+      
+        <a href="
+  _normal.html#function--susy-normalize-location" class="item-name">susy-normalize-location()</a>
+      
+      
+      
+      
+    </h4>
+
+    
+  </div>
+
+
+        
+      
+    
+  </div>
+
+  
+      
+  
+    
+  <div data-item-section="used-by">
+    
+      <h3 class="item-subtitle">
+        <span class="item-subtitle-main">Used By</span>
+        
+      </h3>
+    
+
+    
+      
+      
+        
+
+        
+          
+          
+  
+  
+  
+  
+  
+  
+
+  
+  <div class="param-list">
+    <h4 class="param-title">
+      <span class="item-type">@function</span>
+      
+        <a href="
+  plugin-utils.html#function--susy-compile" class="item-name">susy-compile()</a>
+      
+      
+      
+      
+    </h4>
+
+    
+  </div>
+
+
+        
+      
+        
+
+        
+      
+    
+  </div>
+
+  
+
+    </div>
+  
+
+  
+  
+
+
+  
+  
+
+  
+  
+
+</section>
+
+  
+    
+    
+
+
+
+
+
+
+
+
+
+
+<section class="item" id="function--susy-normalize-span">
+  
+    
+  
+  
+
+  
+  
+  
+  
+
+  <div data-item-section="header">
+    <h2 class="item-title">
+      
+        <span class="item-type">@function</span>
+      
+
+      
+        <a href="#function--susy-normalize-span" class="item-name">susy-normalize-span()</a>
+      
+
+      
+
+      
+    </h2>
+
+    
+  
+
+
+    
+    
+  
+  
+  
+  
+
+  
+    <div class="text-block">
+      <p>Normalize <code>span</code> shorthand for Su.
+Su span syntax allows an explicit length (e.g. <code>3em</code>),
+unitless column-span number (e.g. <code>3</code> columns),
+or an explicit list of columns (e.g. <code>(3 5 8)</code>).</p>
+<p>Susy span syntax also allows the <code>all</code> keyword,
+which will be converted to a slice of the context
+in<span class="widont">&nbsp;</span>normalization.</p>
 
       
   
@@ -489,14 +1067,14 @@ will return a <code>calc()</code> string.</li>
         <span class="item-name">$span:</span>
       
       
-      <span class="value-type">(number |<span class="widont">&nbsp;</span>list)</span>
+      <span class="value-type">(number | list |<span class="widont">&nbsp;</span>&#39;all&#39;)</span>
       
     </h4>
 
     
       
       <div class="param-details text-block">
-        <p>Number or list of grid columns to<span class="widont">&nbsp;</span>span</p>
+        <p>Span value to<span class="widont">&nbsp;</span>normalize.</p>
 
       </div>
     
@@ -523,7 +1101,243 @@ will return a <code>calc()</code> string.</li>
     
       
       <div class="param-details text-block">
-        <p>List of columns<span class="widont">&nbsp;</span>available</p>
+        <p>Normalized list of columns in the<span class="widont">&nbsp;</span>grid</p>
+
+      </div>
+    
+  </div>
+
+
+      
+
+      
+  
+
+      
+  
+    
+  <div class="param-list">
+    <h4 class="param-title">
+      
+      
+        <span class="item-name">@return</span>
+      
+      
+      <span class="value-type">(number |<span class="widont">&nbsp;</span>list)</span>
+      
+    </h4>
+
+    
+      
+      <div class="param-details text-block">
+        <p>Number or list value for <code>$span</code></p>
+
+      </div>
+    
+  </div>
+
+  
+
+      
+  
+
+      
+  
+
+    
+  </div>
+
+  
+
+
+  
+  
+
+
+  
+  
+  
+  
+    
+    
+  
+    
+  <div data-item-section="used-by">
+    
+      <h3 class="item-subtitle">
+        <span class="item-subtitle-main">Used By</span>
+        
+      </h3>
+    
+
+    
+      
+      
+        
+
+        
+          
+          
+  
+  
+  
+  
+  
+  
+
+  
+  <div class="param-list">
+    <h4 class="param-title">
+      <span class="item-type">@function</span>
+      
+        <a href="
+  _normal.html#function--susy-normalize" class="item-name">susy-normalize()</a>
+      
+      
+      
+      
+    </h4>
+
+    
+  </div>
+
+
+        
+      
+    
+  </div>
+
+  
+
+  
+
+  
+  
+
+
+  
+  
+
+  
+  
+
+</section>
+
+  
+    
+    
+
+
+
+
+
+
+
+
+
+
+<section class="item" id="function--susy-normalize-columns">
+  
+    
+  
+  
+
+  
+  
+  
+  
+
+  <div data-item-section="header">
+    <h2 class="item-title">
+      
+        <span class="item-type">@function</span>
+      
+
+      
+        <a href="#function--susy-normalize-columns" class="item-name">susy-normalize-columns()</a>
+      
+
+      
+
+      
+    </h2>
+
+    
+  
+
+
+    
+    
+  
+  
+  
+  
+
+  
+    <div class="text-block">
+      <p>Normalize <code>column</code> shorthand for Su.
+Su column syntax only allows column lists (e.g. <code>120px 1 1 1 120px</code>).</p>
+<p>Susy span syntax also allows a unitless <code>slice</code> number (e.g <code>of 5</code>),
+which will be converted to a slice of the context
+in<span class="widont">&nbsp;</span>normalization.</p>
+
+      
+  
+
+      
+  
+
+      
+  
+
+    </div>
+  
+
+  </div>
+
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    
+  <div data-item-section="parameter">
+    
+      <h3 class="item-subtitle">
+        <span class="item-subtitle-main">Parameters &amp;<span class="widont">&nbsp;</span>Return</span>
+        
+      </h3>
+    
+
+    
+      
+        
+  
+  
+
+  
+  <div class="param-list">
+    <h4 class="param-title">
+      
+      
+        <span class="item-name">$columns:</span>
+      
+      
+      <span class="value-type">(list |<span class="widont">&nbsp;</span>integer)</span>
+      
+    </h4>
+
+    
+      
+      <div class="param-details text-block">
+        <p>List of available columns,
+or unitless integer representing a slice of
+the available<span class="widont">&nbsp;</span>context.</p>
 
       </div>
     
@@ -540,23 +1354,420 @@ will return a <code>calc()</code> string.</li>
     <h4 class="param-title">
       
       
-        <span class="item-name">$gutters:</span>
+        <span class="item-name">$context:</span>
       
-      
-      <span class="value-type">(number)</span>
+      <span class="item-value">null</span>
+      <span class="value-type">(map |<span class="widont">&nbsp;</span>null)</span>
       
     </h4>
 
     
       
       <div class="param-details text-block">
-        <p>Width of a gutter in column-comparable<span class="widont">&nbsp;</span>units</p>
+        <p>Map of Susy configuration settings to use as global reference,
+or <code>null</code> to access global<span class="widont">&nbsp;</span>settings.</p>
 
       </div>
     
   </div>
 
 
+      
+
+      
+  
+
+      
+  
+    
+  <div class="param-list">
+    <h4 class="param-title">
+      
+      
+        <span class="item-name">@return</span>
+      
+      
+      <span class="value-type">(list)</span>
+      
+    </h4>
+
+    
+      
+      <div class="param-details text-block">
+        <p>Columns list value, normalized for Su<span class="widont">&nbsp;</span>input.</p>
+
+      </div>
+    
+  </div>
+
+  
+
+      
+  
+
+      
+  
+    
+      
+  <div class="param-list">
+    <h4 class="param-title">
+      
+      
+        <span class="item-name">@error</span>
+      
+      
+      
+      
+    </h4>
+
+    
+      
+      <div class="param-details text-block">
+        <p>when attempting to access a slice of asymmetrical<span class="widont">&nbsp;</span>context</p>
+
+      </div>
+    
+  </div>
+
+    
+  
+
+    
+  </div>
+
+  
+
+
+  
+  
+
+
+  
+  
+  
+  
+    <div class="requires-wrapper">
+      
+    
+  <div data-item-section="requires">
+    
+      <h3 class="item-subtitle">
+        <span class="item-subtitle-main">Requires</span>
+        
+      </h3>
+    
+
+    
+      
+      
+        
+        
+        
+
+        
+          
+          
+  
+  
+  
+  
+  
+  
+  
+  
+
+  
+  <div class="param-list">
+    <h4 class="param-title">
+      <span class="item-type">@function</span>
+      
+        <a href="
+  config.html#function--susy-settings" class="item-name">susy-settings()</a>
+      
+      
+      
+      
+    </h4>
+
+    
+  </div>
+
+
+        
+      
+        
+        
+        
+
+        
+          
+          
+  
+  
+  
+  
+  
+  
+  
+  
+
+  
+  <div class="param-list">
+    <h4 class="param-title">
+      <span class="item-type">@function</span>
+      
+        <span class="item-name">_susy-flatten()</span>
+      
+      
+      
+      <span class="item-note">[private]</span>
+    </h4>
+
+    
+  </div>
+
+
+        
+      
+        
+        
+        
+
+        
+          
+          
+  
+  
+  
+  
+  
+  
+  
+  
+
+  
+  <div class="param-list">
+    <h4 class="param-title">
+      <span class="item-type">@function</span>
+      
+        <a href="
+  config.html#function--susy-repeat" class="item-name">susy-repeat()</a>
+      
+      
+      
+      
+    </h4>
+
+    
+  </div>
+
+
+        
+      
+        
+        
+        
+
+        
+      
+        
+        
+        
+
+        
+          
+          
+  
+  
+  
+  
+  
+  
+  
+  
+
+  
+  <div class="param-list">
+    <h4 class="param-title">
+      <span class="item-type">@function</span>
+      
+        <span class="item-name">_susy-error()</span>
+      
+      
+      
+      <span class="item-note">[private]</span>
+    </h4>
+
+    
+  </div>
+
+
+        
+      
+    
+  </div>
+
+  
+      
+  
+    
+  <div data-item-section="used-by">
+    
+      <h3 class="item-subtitle">
+        <span class="item-subtitle-main">Used By</span>
+        
+      </h3>
+    
+
+    
+      
+      
+        
+
+        
+          
+          
+  
+  
+  
+  
+  
+  
+
+  
+  <div class="param-list">
+    <h4 class="param-title">
+      <span class="item-type">@function</span>
+      
+        <a href="
+  _normal.html#function--susy-normalize" class="item-name">susy-normalize()</a>
+      
+      
+      
+      
+    </h4>
+
+    
+  </div>
+
+
+        
+      
+    
+  </div>
+
+  
+
+    </div>
+  
+
+  
+  
+
+
+  
+  
+
+  
+  
+
+</section>
+
+  
+    
+    
+
+
+
+
+
+
+
+
+
+
+<section class="item" id="function--susy-normalize-spread">
+  
+    
+  
+  
+
+  
+  
+  
+  
+
+  <div data-item-section="header">
+    <h2 class="item-title">
+      
+        <span class="item-type">@function</span>
+      
+
+      
+        <a href="#function--susy-normalize-spread" class="item-name">susy-normalize-spread()</a>
+      
+
+      
+
+      
+    </h2>
+
+    
+  
+
+
+    
+    
+  
+  
+  
+  
+
+  
+    <div class="text-block">
+      <p>Normalize <code>spread</code> shorthand for Su.
+Su spread syntax only allows the numbers <code>-1</code>, <code>0</code>, or <code>1</code> –
+representing the number of gutters covered
+in relation to columns<span class="widont">&nbsp;</span>spanned.</p>
+<p>Susy spread syntax also allows keywords for each value –
+<code>narrow</code> for <code>-1</code>, <code>wide</code> for <code>0</code>, or <code>wider</code> for <code>1</code> –
+which will be converted to their respective integers
+in<span class="widont">&nbsp;</span>normalization.</p>
+
+      
+  
+
+      
+  
+
+      
+  
+
+    </div>
+  
+
+  </div>
+
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    
+  <div data-item-section="parameter">
+    
+      <h3 class="item-subtitle">
+        <span class="item-subtitle-main">Parameters &amp;<span class="widont">&nbsp;</span>Return</span>
+        
+      </h3>
+    
+
+    
       
         
   
@@ -570,70 +1781,15 @@ will return a <code>calc()</code> string.</li>
         <span class="item-name">$spread:</span>
       
       
-      <span class="value-type">(0 | 1 |<span class="widont">&nbsp;</span>-1)</span>
+      <span class="value-type">(0 | 1 | -1 | &#39;narrow&#39; | &#39;wide&#39; |<span class="widont">&nbsp;</span>&#39;wider&#39;)</span>
       
     </h4>
 
     
       
       <div class="param-details text-block">
-        <p>Number of gutters spanned,
-relative to <code>span</code> count</p>
-
-      </div>
-    
-  </div>
-
-
-      
-        
-  
-  
-
-  
-  <div class="param-list">
-    <h4 class="param-title">
-      
-      
-        <span class="item-name">$container-spread:</span>
-      
-      <span class="item-value">$spread</span>
-      <span class="value-type">(0 | 1 |<span class="widont">&nbsp;</span>-1)</span>
-      
-    </h4>
-
-    
-      
-      <div class="param-details text-block">
-        <p>Number of gutters spanned,
-relative to <code>columns</code> count</p>
-
-      </div>
-    
-  </div>
-
-
-      
-        
-  
-  
-
-  
-  <div class="param-list">
-    <h4 class="param-title">
-      
-      
-        <span class="item-name">$location:</span>
-      
-      <span class="item-value">1</span>
-      <span class="value-type">(integer)</span>
-      
-    </h4>
-
-    
-      
-      <div class="param-details text-block">
-        <p>Optional position of sub-span among full set of<span class="widont">&nbsp;</span>columns</p>
+        <p>Spread across adjacent gutters, relative to a column-count —
+either <code>narrow</code> (-1), <code>wide</code> (0), or <code>wider</code> (1)</p>
 
       </div>
     
@@ -653,630 +1809,6 @@ relative to <code>columns</code> count</p>
       
       
         <span class="item-name">@return</span>
-      
-      
-      <span class="value-type">(length)</span>
-      
-    </h4>
-
-    
-      
-      <div class="param-details text-block">
-        <p>Relative or static length of a span on the<span class="widont">&nbsp;</span>grid</p>
-
-      </div>
-    
-  </div>
-
-  
-
-      
-  
-
-      
-  
-
-    
-  </div>
-
-  
-
-
-  
-  
-
-
-  
-
-    
-  <div data-item-section="related">
-    
-      <h3 class="item-subtitle">
-        <span class="item-subtitle-main">Related</span>
-        
-      </h3>
-    
-
-    
-      
-
-      
-        
-  
-  
-  
-  
-  
-
-  
-  <div class="param-list">
-    <h4 class="param-title">
-      <span class="item-type">@function</span>
-      
-        <a href="
-  api.html#function--susy-span" class="item-name">susy-span()</a>
-      
-      
-      
-      
-    </h4>
-
-    
-  </div>
-
-
-      
-    
-  </div>
-
-  
-  
-  
-  
-    <div class="requires-wrapper">
-      
-    
-  <div data-item-section="requires">
-    
-      <h3 class="item-subtitle">
-        <span class="item-subtitle-main">Requires</span>
-        
-      </h3>
-    
-
-    
-      
-      
-        
-        
-        
-
-        
-          
-          
-  
-  
-  
-  
-  
-  
-  
-  
-
-  
-  <div class="param-list">
-    <h4 class="param-title">
-      <span class="item-type">@function</span>
-      
-        <a href="
-  _validation.html#function--su-valid-span" class="item-name">su-valid-span()</a>
-      
-      
-      
-      
-    </h4>
-
-    
-  </div>
-
-
-        
-      
-        
-        
-        
-
-        
-          
-          
-  
-  
-  
-  
-  
-  
-  
-  
-
-  
-  <div class="param-list">
-    <h4 class="param-title">
-      <span class="item-type">@function</span>
-      
-        <a href="
-  _validation.html#function--su-valid-columns" class="item-name">su-valid-columns()</a>
-      
-      
-      
-      
-    </h4>
-
-    
-  </div>
-
-
-        
-      
-        
-        
-        
-
-        
-          
-          
-  
-  
-  
-  
-  
-  
-  
-  
-
-  
-  <div class="param-list">
-    <h4 class="param-title">
-      <span class="item-type">@function</span>
-      
-        <a href="
-  _validation.html#function--su-valid-gutters" class="item-name">su-valid-gutters()</a>
-      
-      
-      
-      
-    </h4>
-
-    
-  </div>
-
-
-        
-      
-        
-        
-        
-
-        
-          
-          
-  
-  
-  
-  
-  
-  
-  
-  
-
-  
-  <div class="param-list">
-    <h4 class="param-title">
-      <span class="item-type">@function</span>
-      
-        <a href="
-  _validation.html#function--su-valid-spread" class="item-name">su-valid-spread()</a>
-      
-      
-      
-      
-    </h4>
-
-    
-  </div>
-
-
-        
-      
-        
-        
-        
-
-        
-          
-          
-  
-  
-  
-  
-  
-  
-  
-  
-
-  
-  <div class="param-list">
-    <h4 class="param-title">
-      <span class="item-type">@function</span>
-      
-        <a href="
-  _validation.html#function--su-valid-location" class="item-name">su-valid-location()</a>
-      
-      
-      
-      
-    </h4>
-
-    
-  </div>
-
-
-        
-      
-        
-        
-        
-
-        
-          
-          
-  
-  
-  
-  
-  
-  
-  
-  
-
-  
-  <div class="param-list">
-    <h4 class="param-title">
-      <span class="item-type">@function</span>
-      
-        <a href="
-  su-math.html#function--su-slice" class="item-name">su-slice()</a>
-      
-      
-      
-      
-    </h4>
-
-    
-  </div>
-
-
-        
-      
-        
-        
-        
-
-        
-          
-          
-  
-  
-  
-  
-  
-  
-  
-  
-
-  
-  <div class="param-list">
-    <h4 class="param-title">
-      <span class="item-type">@function</span>
-      
-        <span class="item-name">_su-needs-calc-output()</span>
-      
-      
-      
-      <span class="item-note">[private]</span>
-    </h4>
-
-    
-  </div>
-
-
-        
-      
-        
-        
-        
-
-        
-          
-          
-  
-  
-  
-  
-  
-  
-  
-  
-
-  
-  <div class="param-list">
-    <h4 class="param-title">
-      <span class="item-type">@function</span>
-      
-        <span class="item-name">_su-calc-span()</span>
-      
-      
-      
-      <span class="item-note">[private]</span>
-    </h4>
-
-    
-  </div>
-
-
-        
-      
-        
-        
-        
-
-        
-          
-          
-  
-  
-  
-  
-  
-  
-  
-  
-
-  
-  <div class="param-list">
-    <h4 class="param-title">
-      <span class="item-type">@function</span>
-      
-        <span class="item-name">_su-sum()</span>
-      
-      
-      
-      <span class="item-note">[private]</span>
-    </h4>
-
-    
-  </div>
-
-
-        
-      
-        
-        
-        
-
-        
-      
-        
-        
-        
-
-        
-      
-    
-  </div>
-
-  
-      
-  
-    
-  <div data-item-section="used-by">
-    
-      <h3 class="item-subtitle">
-        <span class="item-subtitle-main">Used By</span>
-        
-      </h3>
-    
-
-    
-      
-      
-        
-
-        
-          
-          
-  
-  
-  
-  
-  
-  
-
-  
-  <div class="param-list">
-    <h4 class="param-title">
-      <span class="item-type">@function</span>
-      
-        <a href="
-  plugin-utils.html#function--su-call" class="item-name">su-call()</a>
-      
-      
-      
-      
-    </h4>
-
-    
-  </div>
-
-
-        
-      
-    
-  </div>
-
-  
-
-    </div>
-  
-
-  
-  
-
-
-  
-  
-
-  
-  
-
-</section>
-
-  
-    
-    
-
-
-
-
-
-
-
-
-
-
-<section class="item" id="function--su-gutter">
-  
-    
-  
-  
-
-  
-  
-  
-  
-
-  <div data-item-section="header">
-    <h2 class="item-title">
-      
-        <span class="item-type">@function</span>
-      
-
-      
-        <a href="#function--su-gutter" class="item-name">su-gutter()</a>
-      
-
-      
-
-      
-    </h2>
-
-    
-  
-
-
-    
-    
-  
-  
-  
-  
-
-  
-    <div class="text-block">
-      <p>Calculates and returns a CSS-ready gutter width,
-based on normalized grid data –
-a low-level version of <code>susy-gutter</code>,
-with all of the logic and none of the syntax<span class="widont">&nbsp;</span>sugar.</p>
-<ul>
-<li>Grids defined with unitless numbers will return <code>%</code> values.</li>
-<li>Grids defined with comparable units
-will return a value in the units<span class="widont">&nbsp;</span>provided.</li>
-<li>Grids defined with a mix of units,
-or a combination of untiless numbers and unit-lengths,
-will return a <code>calc()</code> string.</li>
-</ul>
-
-      
-  
-
-      
-  
-
-      
-  
-
-    </div>
-  
-
-  </div>
-
-  
-
-  
-  
-  
-  
-  
-  
-
-  
-    
-  <div data-item-section="parameter">
-    
-      <h3 class="item-subtitle">
-        <span class="item-subtitle-main">Parameters &amp;<span class="widont">&nbsp;</span>Return</span>
-        
-      </h3>
-    
-
-    
-      
-        
-  
-  
-
-  
-  <div class="param-list">
-    <h4 class="param-title">
-      
-      
-        <span class="item-name">$columns:</span>
-      
-      
-      <span class="value-type">(list)</span>
-      
-    </h4>
-
-    
-      
-      <div class="param-details text-block">
-        <p>List of columns in the<span class="widont">&nbsp;</span>grid</p>
-
-      </div>
-    
-  </div>
-
-
-      
-        
-  
-  
-
-  
-  <div class="param-list">
-    <h4 class="param-title">
-      
-      
-        <span class="item-name">$gutters:</span>
       
       
       <span class="value-type">(number)</span>
@@ -1286,64 +1818,7 @@ will return a <code>calc()</code> string.</li>
     
       
       <div class="param-details text-block">
-        <p>Width of a gutter in column-comparable<span class="widont">&nbsp;</span>units</p>
-
-      </div>
-    
-  </div>
-
-
-      
-        
-  
-  
-
-  
-  <div class="param-list">
-    <h4 class="param-title">
-      
-      
-        <span class="item-name">$container-spread:</span>
-      
-      
-      <span class="value-type">(0 | 1 |<span class="widont">&nbsp;</span>-1)</span>
-      
-    </h4>
-
-    
-      
-      <div class="param-details text-block">
-        <p>Number of gutters spanned,
-relative to <code>columns</code> count</p>
-
-      </div>
-    
-  </div>
-
-
-      
-
-      
-  
-
-      
-  
-    
-  <div class="param-list">
-    <h4 class="param-title">
-      
-      
-        <span class="item-name">@return</span>
-      
-      
-      <span class="value-type">(length)</span>
-      
-    </h4>
-
-    
-      
-      <div class="param-details text-block">
-        <p>Relative or static length of one gutter in a<span class="widont">&nbsp;</span>grid</p>
+        <p>Numeric value for <code>$spread</code></p>
 
       </div>
     
@@ -1368,173 +1843,11 @@ relative to <code>columns</code> count</p>
 
 
   
-
+  
+  
+  
     
-  <div data-item-section="related">
     
-      <h3 class="item-subtitle">
-        <span class="item-subtitle-main">Related</span>
-        
-      </h3>
-    
-
-    
-      
-
-      
-        
-  
-  
-  
-  
-  
-
-  
-  <div class="param-list">
-    <h4 class="param-title">
-      <span class="item-type">@function</span>
-      
-        <a href="
-  api.html#function--susy-gutter" class="item-name">susy-gutter()</a>
-      
-      
-      
-      
-    </h4>
-
-    
-  </div>
-
-
-      
-    
-  </div>
-
-  
-  
-  
-  
-    <div class="requires-wrapper">
-      
-    
-  <div data-item-section="requires">
-    
-      <h3 class="item-subtitle">
-        <span class="item-subtitle-main">Requires</span>
-        
-      </h3>
-    
-
-    
-      
-      
-        
-        
-        
-
-        
-          
-          
-  
-  
-  
-  
-  
-  
-  
-  
-
-  
-  <div class="param-list">
-    <h4 class="param-title">
-      <span class="item-type">@function</span>
-      
-        <span class="item-name">_su-needs-calc-output()</span>
-      
-      
-      
-      <span class="item-note">[private]</span>
-    </h4>
-
-    
-  </div>
-
-
-        
-      
-        
-        
-        
-
-        
-          
-          
-  
-  
-  
-  
-  
-  
-  
-  
-
-  
-  <div class="param-list">
-    <h4 class="param-title">
-      <span class="item-type">@function</span>
-      
-        <span class="item-name">_su-calc-span()</span>
-      
-      
-      
-      <span class="item-note">[private]</span>
-    </h4>
-
-    
-  </div>
-
-
-        
-      
-        
-        
-        
-
-        
-          
-          
-  
-  
-  
-  
-  
-  
-  
-  
-
-  
-  <div class="param-list">
-    <h4 class="param-title">
-      <span class="item-type">@function</span>
-      
-        <span class="item-name">_su-sum()</span>
-      
-      
-      
-      <span class="item-note">[private]</span>
-    </h4>
-
-    
-  </div>
-
-
-        
-      
-    
-  </div>
-
-  
-      
   
     
   <div data-item-section="used-by">
@@ -1566,7 +1879,7 @@ relative to <code>columns</code> count</p>
       <span class="item-type">@function</span>
       
         <a href="
-  plugin-utils.html#function--su-call" class="item-name">su-call()</a>
+  _normal.html#function--susy-normalize" class="item-name">susy-normalize()</a>
       
       
       
@@ -1584,7 +1897,6 @@ relative to <code>columns</code> count</p>
 
   
 
-    </div>
   
 
   
@@ -1612,7 +1924,7 @@ relative to <code>columns</code> count</p>
 
 
 
-<section class="item" id="function--su-slice">
+<section class="item" id="function--susy-normalize-location">
   
     
   
@@ -1630,7 +1942,7 @@ relative to <code>columns</code> count</p>
       
 
       
-        <a href="#function--su-slice" class="item-name">su-slice()</a>
+        <a href="#function--susy-normalize-location" class="item-name">susy-normalize-location()</a>
       
 
       
@@ -1651,10 +1963,13 @@ relative to <code>columns</code> count</p>
 
   
     <div class="text-block">
-      <p>Returns a list of columns
-based on a given span/location slice of the grid –
-a low-level version of <code>susy-slice</code>,
-with all of the logic and none of the syntax<span class="widont">&nbsp;</span>sugar.</p>
+      <p>Normalize <code>location</code> shorthand for Su.
+Su location syntax requires the (1-indexed) number for a<span class="widont">&nbsp;</span>column.</p>
+<p>Susy also allows the <code>first</code> and <code>last</code> keywords,
+where <code>first</code> is always <code>1</code>,
+and <code>last</code> is calculated based on span and column values.
+Both keywords are normalized into an integer index
+in<span class="widont">&nbsp;</span>normalization.</p>
 
       
   
@@ -1710,7 +2025,35 @@ with all of the logic and none of the syntax<span class="widont">&nbsp;</span>su
     
       
       <div class="param-details text-block">
-        <p>Number of grid columns to<span class="widont">&nbsp;</span>span</p>
+        <p>Number of grid-columns to be<span class="widont">&nbsp;</span>spanned</p>
+
+      </div>
+    
+  </div>
+
+
+      
+        
+  
+  
+
+  
+  <div class="param-list">
+    <h4 class="param-title">
+      
+      
+        <span class="item-name">$location:</span>
+      
+      
+      <span class="value-type">(integer | &#39;first&#39; |<span class="widont">&nbsp;</span>&#39;last&#39;)</span>
+      
+    </h4>
+
+    
+      
+      <div class="param-details text-block">
+        <p>Starting (1-indexed) column position of a span,
+or a named location<span class="widont">&nbsp;</span>keyword.</p>
 
       </div>
     
@@ -1737,61 +2080,7 @@ with all of the logic and none of the syntax<span class="widont">&nbsp;</span>su
     
       
       <div class="param-details text-block">
-        <p>List of columns in the<span class="widont">&nbsp;</span>grid</p>
-
-      </div>
-    
-  </div>
-
-
-      
-        
-  
-  
-
-  
-  <div class="param-list">
-    <h4 class="param-title">
-      
-      
-        <span class="item-name">$location:</span>
-      
-      <span class="item-value">1</span>
-      <span class="value-type">(number)</span>
-      
-    </h4>
-
-    
-      
-      <div class="param-details text-block">
-        <p>Starting index of a span in the list of<span class="widont">&nbsp;</span>columns</p>
-
-      </div>
-    
-  </div>
-
-
-      
-        
-  
-  
-
-  
-  <div class="param-list">
-    <h4 class="param-title">
-      
-      
-        <span class="item-name">$validate:</span>
-      
-      <span class="item-value">true</span>
-      <span class="value-type">(bool)</span>
-      
-    </h4>
-
-    
-      
-      <div class="param-details text-block">
-        <p>Check that arguments are valid before<span class="widont">&nbsp;</span>proceeding</p>
+        <p>Already-normalized list of columns in the<span class="widont">&nbsp;</span>grid.</p>
 
       </div>
     
@@ -1813,14 +2102,14 @@ with all of the logic and none of the syntax<span class="widont">&nbsp;</span>su
         <span class="item-name">@return</span>
       
       
-      <span class="value-type">(list)</span>
+      <span class="value-type">(integer)</span>
       
     </h4>
 
     
       
       <div class="param-details text-block">
-        <p>Subset list of grid columns, based on span and<span class="widont">&nbsp;</span>location</p>
+        <p>Numeric value for <code>$location</code></p>
 
       </div>
     
@@ -1845,141 +2134,11 @@ with all of the logic and none of the syntax<span class="widont">&nbsp;</span>su
 
 
   
-
+  
+  
+  
     
-  <div data-item-section="related">
     
-      <h3 class="item-subtitle">
-        <span class="item-subtitle-main">Related</span>
-        
-      </h3>
-    
-
-    
-      
-
-      
-        
-  
-  
-  
-  
-  
-
-  
-  <div class="param-list">
-    <h4 class="param-title">
-      <span class="item-type">@function</span>
-      
-        <a href="
-  api.html#function--susy-slice" class="item-name">susy-slice()</a>
-      
-      
-      
-      
-    </h4>
-
-    
-  </div>
-
-
-      
-    
-  </div>
-
-  
-  
-  
-  
-    <div class="requires-wrapper">
-      
-    
-  <div data-item-section="requires">
-    
-      <h3 class="item-subtitle">
-        <span class="item-subtitle-main">Requires</span>
-        
-      </h3>
-    
-
-    
-      
-      
-        
-        
-        
-
-        
-          
-          
-  
-  
-  
-  
-  
-  
-  
-  
-
-  
-  <div class="param-list">
-    <h4 class="param-title">
-      <span class="item-type">@function</span>
-      
-        <a href="
-  _validation.html#function--su-valid-columns" class="item-name">su-valid-columns()</a>
-      
-      
-      
-      
-    </h4>
-
-    
-  </div>
-
-
-        
-      
-        
-        
-        
-
-        
-          
-          
-  
-  
-  
-  
-  
-  
-  
-  
-
-  
-  <div class="param-list">
-    <h4 class="param-title">
-      <span class="item-type">@function</span>
-      
-        <a href="
-  _validation.html#function--su-valid-location" class="item-name">su-valid-location()</a>
-      
-      
-      
-      
-    </h4>
-
-    
-  </div>
-
-
-        
-      
-    
-  </div>
-
-  
-      
   
     
   <div data-item-section="used-by">
@@ -2011,38 +2170,7 @@ with all of the logic and none of the syntax<span class="widont">&nbsp;</span>su
       <span class="item-type">@function</span>
       
         <a href="
-  plugin-utils.html#function--su-call" class="item-name">su-call()</a>
-      
-      
-      
-      
-    </h4>
-
-    
-  </div>
-
-
-        
-      
-        
-
-        
-          
-          
-  
-  
-  
-  
-  
-  
-
-  
-  <div class="param-list">
-    <h4 class="param-title">
-      <span class="item-type">@function</span>
-      
-        <a href="
-  su-math.html#function--su-span" class="item-name">su-span()</a>
+  _normal.html#function--susy-normalize" class="item-name">susy-normalize()</a>
       
       
       
@@ -2060,7 +2188,6 @@ with all of the logic and none of the syntax<span class="widont">&nbsp;</span>su
 
   
 
-    </div>
   
 
   

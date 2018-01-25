@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <title>Susy Documentation</title>
+  <title>Philosophy | Susy Documentation</title>
 
   <link href="assets/img/favicon.ico" rel="shortcut icon">
   <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:400,600|Source+Sans+Pro:400,400i,700,700i" rel="stylesheet">
@@ -57,7 +57,7 @@
     <div class="nav-subsection">
       <h3 class="nav-home">
         
-        <a href="index.html" data-nav="is-active">Susy</a>
+        <a href="index.html" data-nav="is-not-active">Susy</a>
       </h3>
 
       
@@ -66,7 +66,7 @@
           
             
             <li class="nav-item">
-              <a href="PHILOSOPHY.html" data-nav="is-not-active">Philosophy</a>
+              <a href="PHILOSOPHY.html" data-nav="is-active">Philosophy</a>
             </li>
           
             
@@ -208,164 +208,136 @@
 
       <main data-region="main">
         
+  <nav class="breadcrumb">
+    
+    <a href="index.html" >Susy</a> »
+    <strong>Philosophy</strong>
+  </nav>
 
-        <div data-page="index">
+
+        <div data-page="PHILOSOPHY">
           
-  
-  
-    <ul class="project-links">
-      
-        <li class="project-link-item">
-          <a href="http://oddbird.net/susy" class="project-link">View Project</a>
-        </li>
-      
-      
-        <li class="project-link-item">
-          <a href="https://github.com/oddbird/susy" class="project-link">View Source</a>
-        </li>
-      
-    </ul>
-  
-
-
   <div class="text-block">
-    <h1 id="power-tools-for-the-web">Power Tools For The<span class="widont">&nbsp;</span>Web</h1>
-<p><a href="https://badge.fury.io/js/susy"><img src="https://badge.fury.io/js/susy.svg" alt="npm version"></a><br />
-<a href="https://travis-ci.org/oddbird/susy"><img src="https://travis-ci.org/oddbird/susy.png?branch=master" alt="Build Status"></a></p>
-<p>Susy is a design-agnostic set of tools
-for creating powerful, custom layouts.
-We didn’t want another grid system
-full of rules and restrictions —
-we wanted a power tool
-for building our own damn systems.
-Version Three is trimmed down to it’s most basic components —
-functions that can be used to build any grid<span class="widont">&nbsp;</span>system.</p>
+    <h1 id="the-susy3-philosophy">The Susy3 Philosophy</h1>
+<p><strong>We no longer recommend using Susy as a primary layout<span class="widont">&nbsp;</span>solution.</strong></p>
+<p>With the advent of <a href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/">flexbox</a> and the <a href="https://css-tricks.com/snippets/css/complete-guide-grid/">CSS Grid module</a>,
+there are fewer and fewer reasons
+to use a grid library like Susy,
+and that’s wonderful!
+Grid libraries were always a temporary fix,
+waiting for the browser to take over.
+Still, not everyone can play with the latest specs,
+and there will always be edge-cases
+that require manual<span class="widont">&nbsp;</span>grid-math.</p>
+<p>Susy3 is trimmed down to the most basic features:
+a lightweight library of functions
+that can be used along with float, flexbox,
+or any other CSS.
+Susy can be used for on-the-fly grid-math,
+or used to generate a class-based system –
+so that your grids are built to spec
+for the requirements of your team and<span class="widont">&nbsp;</span>application.</p>
+<h2 id="not-for-everyone">Not For Everyone</h2>
+<p>Much of the power and flexibility in Susy
+is now available directly in the browser
+with additional benefits and lower<span class="widont">&nbsp;</span>overhead.</p>
+<h3 id="css-grids">CSS Grids</h3>
+<p>The CSS Grid module is relatively new,
+but has gained <a href="https://caniuse.com/#feat=css-grid">browser-support</a> quickly –
+and there is no third-party tool available
+with the same power and simplicity it provides.
+Rachel Andrew and Jen Simmons have compiled
+a comprehensive set of articles, examples,
+and even copy-paste templates (with fallbacks built in)
+on their <a href="http://gridbyexample.com">gridbyexample.com</a><span class="widont">&nbsp;</span>site.</p>
+<h3 id="flexbox">Flexbox</h3>
+<p>Flexbox also provides intrinsic sizing and relationships,
+with near-complete <a href="https://caniuse.com/#feat=flexbox">support in modern browsers</a>
+which can help make strict/explicit grids<span class="widont">&nbsp;</span>obsolete.</p>
+<h3 id="fractions">Fractions</h3>
+<p>If you need a grid system
+that works with legacy browsers,
+I recommend an approach similar to <a href="https://github.com/stubbornella/oocss/wiki/Grids">OOCSS</a>.
+While their code is out of date,
+the approach is worth adopting to modern<span class="widont">&nbsp;</span>practices:</p>
 <ul>
-<li><a href="http://oddbird.net/susy/">Susy Website</a> |
-<a href="http://twitter.com/sasssusy/">@SassSusy</a></li>
-<li><a href="http://oddbird.net/2017/06/28/susy3">Susy3 Intro</a> |
-<a href="http://oddbird.net/2017/06/13/susy-spread">Spread in<span class="widont">&nbsp;</span>Susy3</a></li>
-<li><a href="http://oddbird.net/susy/docs/">Susy3 Documentation</a></li>
-<li><a href="http://susy.readthedocs.io">Susy1/Susy2 Documentation</a></li>
+<li>Remove gutters (or use padding for gutters)
+to dramatically simplify the grid<span class="widont">&nbsp;</span>math.</li>
+<li>Use simple fractions to create a robust nested<span class="widont">&nbsp;</span>grid.</li>
+<li>Optionally create class-names as<span class="widont">&nbsp;</span>needed.</li>
 </ul>
-<h2 id="quotes">Quotes</h2>
-<blockquote>
-<p>“I like the idea of grids-on-demand,
-rather than a strict framework.”<br />
-– Chris Coyier, <a href="http://css-tricks.com/build-web-layouts-easily-susy/">CSS<span class="widont">&nbsp;</span>Tricks</a></p>
-</blockquote>
-<blockquote>
-<p>“Susy and Zendesk have been getting along magically…
-It’s precisely what you need and nothing more.”<br />
-— Stephany Varga, <a href="https://medium.com/zendesk-creative-blog/responsive-a-harrowing-meditation-on-the-brutal-realities-of-web-content-organization-in-5-acts-1d33ce25f062">Zendesk</a></p>
-</blockquote>
-<blockquote>
-<p>“If you’re interested in reading Sass poetry,
-be sure to look at Susy’s source code!”<br />
-— Hugo Giraudel, <a href="http://www.sitepoint.com/my-favorite-sass-tools/">SitePoint</a></p>
-</blockquote>
-<h2 id="resources">Resources</h2>
-<ul>
-<li><a href="http://oddbird.net/">OddBird</a> | <a href="http://twitter.com/oddbird/">@OddBird</a></li>
-<li><a href="http://oddbird.net/susy/sites/">Sites using Susy</a></li>
-<li><a href="https://github.com/oddbird/susy/blob/master/CHANGELOG.md">Changelog</a></li>
-<li><a href="https://github.com/oddbird/susy/blob/master/CONTRIBUTING.md">Guidelines for contributing</a></li>
-<li><a href="https://github.com/oddbird/susy/blob/master/LICENSE.txt">BSD3 License</a></li>
-</ul>
-<h2 id="installation">Installation</h2>
-<pre><code>npm install susy
-</code></pre>
-<p>There are two imports to choose from.
-The default <code>sass/susy</code> comes with
-un-prefixed versions of the core API functions.
-If you want Susy to be name-spaced,
-import <code>sass/susy-prefix</code> instead.</p>
-<pre><code class="lang-scss">// un-prefixed functions
-@import '&lt;path-to&gt;/susy/sass/susy';
+<p>Those techniques can be used with floats, flexbox,
+display-tables, and more.
+In Sass it might looks something like<span class="widont">&nbsp;</span>this:</p>
+<pre><code class="lang-scss">.span1of2 {
+  width: percentage(1/2);
+}
 
-// susy-prefixed functions
-@import '&lt;path-to&gt;/susy/sass/susy-prefix';
-</code></pre>
-<h3 id="using-eyeglass">Using <a href="http://eyeglass.rocks/">Eyeglass</a></h3>
-<p>With eyeglass set up,
-you can <code>@import 'susy';</code>
-without providing the npm-modules<span class="widont">&nbsp;</span>path.</p>
-<h3 id="using-webpack">Using Webpack</h3>
-<p>Make sure <code>sass-loader</code> is installed:</p>
-<pre><code class="lang-bash">npm install sass-loader --save-dev
-</code></pre>
-<p>Make sure you have sass-loader enabled in your webpack<span class="widont">&nbsp;</span>configuration:</p>
-<pre><code class="lang-javascript">// webpack.config.js
-module: {
-  rules: [
-    {
-      test: /\.scss$/,
-      use: ['style-loader', 'css-loader', 'sass-loader']
-    }
-  ]
+.span3of12 {
+  width: percentage(3/12);
 }
 </code></pre>
-<p>Start using Susy:</p>
-<pre><code class="lang-scss">/* app.scss */
-@import &quot;~susy/sass/susy&quot;;
-</code></pre>
-<h3 id="using-gulp">Using Gulp</h3>
-<p>Add a gulp<span class="widont">&nbsp;</span>task:</p>
-<pre><code class="lang-javascript">// gulpfile.js
-gulp.task('sass', function() {
-  return gulp.src('scss/*.scss')
-      .pipe(sass({
-          outputStyle: 'compressed',
-          includePaths: ['node_modules/susy/sass']
-      }).on('error', sass.logError))
-      .pipe(gulp.dest('dist/css'));
-});
-</code></pre>
-<p>Start using Susy:</p>
-<pre><code class="lang-scss">/* app.scss */
-@import 'susy';
-</code></pre>
-<h3 id="using-grunt-and-yeoman-">Using Grunt (and<span class="widont">&nbsp;</span>Yeoman)</h3>
-<p>To add Susy to the Sass task,
-edit your <code>Gruntfile.js</code> at the root level of your project
-and look for the Sass-related rules.
-Add <code>require: 'susy'</code> inside the options<span class="widont">&nbsp;</span>object:</p>
-<pre><code class="lang-javascript">// Gruntfile.js
-sass: {
-  dist: {
-    options: {
-      style: 'expanded',
-      require: 'susy'
-    },
-    files: {
-      'css/style.css': 'scss/style.scss'
-    }
+<p>This is the same technique used by
+previous versions of Susy
+when you set <code>gutter-position</code> to <code>inside</code> or <code>inside-static</code>.
+In order to create a class-based system in Sass,
+you can run a loop like this<span class="widont">&nbsp;</span>one:</p>
+<pre><code class="lang-scss">$columns: 12;
+
+[class^='span'] {
+  float: left;
+}
+
+@for $i from 1 through $columns {
+  .span#{$i}of#{$columns} {
+    width: percentage($i / $columns);
   }
 }
 </code></pre>
-<p>Assuming you’ve already installed Susy,
-it will now be added to the project
-and will not clash with Yeoman’s grunt<span class="widont">&nbsp;</span>rules.</p>
-<p>Start using Susy:</p>
-<pre><code class="lang-scss">/* app.scss */
-@import 'susy';
+<p><em>Without ever loading a third-party tool</em>,
+you can design your own grid system
+in a few lines of<span class="widont">&nbsp;</span>code.</p>
+<h2 id="susy-as-a-fallback">Susy as a<span class="widont">&nbsp;</span>Fallback</h2>
+<p>Susy3 works similarly
+to the <code>percentage()</code> technique,
+but provides support for margin-gutters
+and (simple) mixed-unit<span class="widont">&nbsp;</span>grids:</p>
+<pre><code class="lang-scss">.span1of2 {
+  width: span(1 of 2);
+  margin-right: gutter(of 2);
+}
+
+.span3of12 {
+  width: span(3 of 12);
+  margin: 0 (gutter() / 2);
+}
 </code></pre>
-<h2 id="susy-vs-su">Susy vs Su</h2>
-<p>You may notice that some functions have a <code>susy-</code> prefix,
-while others only have <code>su-</code>.
-This helps distinguish between the two distinct<span class="widont">&nbsp;</span>layers:</p>
+<p>When the math gets complicated,
+Susy can be there to step in –
+but <strong>there is no need for Susy if you can keep the math<span class="widont">&nbsp;</span>simple</strong>.</p>
+<h3 id="no-mixins">No Mixins</h3>
+<p>The biggest change in Susy3 is that we’ve removed all the mixins.
+On initial upgrade, most projects will run into errors
+with missing mixins –
+<code>container</code>, <code>span</code>, or otherwise.
+While mixins can provide a nice shortcut for common use-cases,
+they also make the actual CSS more opaque,
+and quickly become out-of-date –
+discouraging incremental improvements to your<span class="widont">&nbsp;</span>application.</p>
+<p>In a world with growing browser support for
+any number of powerful CSS layout techniques,
+it would be neglegent of us to push everyone
+into a single one-size-fits-all solution.
+There are other frameworks that provide that service,
+but Susy was never intended to be one of<span class="widont">&nbsp;</span>them.</p>
+<h2 id="resources">Resources</h2>
 <ul>
-<li>The core grid-math layer is called <strong>Su</strong>,
-and is made up of “pure” functions
-that expect normalized values.
-This is useful if you prefer argument-syntax to shorthand syntax,
-or if you are building your own Susy<span class="widont">&nbsp;</span>mixins.</li>
-<li>The upper <strong>Susy</strong> layer provides syntax-sugar –
-global defaults, shorthand-parsing, normalization,
-and a smaller set of common-use functions
-that call on the core math as necessary.
-This is the primary API for most<span class="widont">&nbsp;</span>users.</li>
+<li><a href="http://oddbird.net/2017/06/28/susy3">Welcome to Susy3</a></li>
+<li><a href="http://oddbird.net/2017/06/13/susy-spread">Understanding <code>Spread</code> in Susy</a></li>
+<li><a href="http://oddbird.net/2017/09/25/susy-use">Media Queries in<span class="widont">&nbsp;</span>Susy</a></li>
 </ul>
+<p>See our full list of <a href="http://oddbird.net/susy/articles/">Susy News &amp; Tutorials</a>
+for more<span class="widont">&nbsp;</span>details.</p>
 
   </div>
 

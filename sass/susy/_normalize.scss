@@ -11,7 +11,7 @@
 /// transforming parsed Susy input into
 /// values that Su will understand.
 ///
-/// @group x-normal
+/// @group _normal
 ///
 /// @see susy-normalize
 /// @see susy-normalize-span
@@ -36,7 +36,7 @@
 /// For example `span: all` and `location: first`
 /// will be converted into specific numbers.
 ///
-/// @group x-normal
+/// @group _normal
 /// @see $susy
 /// @see susy-parse
 ///
@@ -110,7 +110,7 @@
 /// which will be converted to a slice of the context
 /// in normalization.
 ///
-/// @group x-normal
+/// @group _normal
 ///
 /// @param {number | list | 'all'} $span -
 ///   Span value to normalize.
@@ -141,7 +141,7 @@
 /// which will be converted to a slice of the context
 /// in normalization.
 ///
-/// @group x-normal
+/// @group _normal
 ///
 /// @param {list | integer} $columns -
 ///   List of available columns,
@@ -199,7 +199,7 @@
 /// which will be converted to their respective integers
 /// in normalization.
 ///
-/// @group x-normal
+/// @group _normal
 ///
 /// @param {0 | 1 | -1 | 'narrow' | 'wide' | 'wider'} $spread -
 ///   Spread across adjacent gutters, relative to a column-count —
@@ -232,7 +232,7 @@
 /// Both keywords are normalized into an integer index
 /// in normalization.
 ///
-/// @group x-normal
+/// @group _normal
 ///
 /// @param {number} $span -
 ///   Number of grid-columns to be spanned

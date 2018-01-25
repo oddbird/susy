@@ -1,28 +1,75 @@
-Changelog
-=========
+# Changelog
 
-3.0.1 - August 27, 2017
------------------------
+
+## 3.0.2 - January 25, 2018
+
+- Documentation updates.
+
+
+## 3.0.1 - August 27, 2017
 
 - NEW: `susy-version()` function for accessing the active version number.
-- Minor documentation improvements.
+- Documentation improvements.
 
 
-3.0.0 - June 29, 2017
----------------------
+## 3.0.0 - June 29, 2017
 
 See [Introducing Susy3](http://oddbird.net/2017/06/28/susy3),
 [Understanding Spread in Susy3](http://oddbird.net/2017/06/13/susy-spread/).
 
-- No code changes from the beta
 - Site moved to [oddbird.net/susy/](http://oddbird.net/susy/)
 - Docs moved to [oddbird.net/susy/docs/](http://oddbird.net/susy/docs/)
-- Document beta deprecations
-- Add full documentation
+- BREAKING: No More Mixins!
+  `span`, `container`, `gutters`, `last`, `gallery`, etc.
+  have all been removed from Susy.
+  Web layout has become too powerful & flexible to contain
+  in a simple set of shortcuts.
+- BREAKING: Remove rubygems/bower, to distribute on npm only.
+- BREAKING: Trim down to the core math, and a thin layer of api functions:
+  - `susy-span()` (aliased as `span`)
+    to return a column-spanning width.
+  - `susy-gutter()` (aliased as `gutter`)
+    to return a gutter width.
+  - `susy-slice()` (aliased as `slice`)
+    to return a slice of asymmetrical grid.
+- BREAKING: Simplify to four settings:
+  - `columns` to define the grid columns
+    as a list of lengths or unitless relative numbers.
+  - `gutters` to define the length or relative size of a gutter.
+  - `spread` to define the default spread of a span
+    across adjacent gutters.
+  - `container-spread` to define the default spread of a container
+    across side-edge gutters.
+- BREAKING: Add support for `calc()` output,
+  so mixed-unit grids are possible.
+  This means the old inside-static solution
+  has been replaced by calc() output as well.
+- BREAKING: Shorthand syntax for on-the-fly span and settings.
+  This is similar to the previous shorthand,
+  but has been simplified to remove mixin-related features.
+  - starting with a count, length, or column-list "span"
+  - `at $n`, `first`, or `last` location on asymmetrical grids
+  - `narrow`, `wide`, or `wider` for spread
+  - `of $n <spread>` for available grid columns and container-spread
+  - `set-gutters $n` shorthand to override global gutter settings
+- NEW: `susy-repeat()` function
+  to generate repeating gradients with the same syntax
+  provided in CSS Grid templates
+- NEW: SVG Grid plugin (`susy/plugins/svg-grid`),
+  to provide grid-debugging options
+  when applied as a background image to any container element:
+  - `svg-grid-colors` global setting accepts one or more colors
+  - `susy-svg-grid()` function returns inline svg
+    for use in the `background` or generated `content` properties
+- NEW: `susy-compile()` and `su-call()` plugin helpers,
+  to aide with conversions between the user API and internal math functions.
+  This is primarily useful for anyone building Susy extensions or mixins.
+- NEW: prefixed and unprefixed versions of all major API functions.
+  Import `susy-prefix` instead of `susy`
+  to eliminate the un-prefixed alias versions.
 
 
-3.0.0-beta.1 - June 19, 2017
-----------------------------
+## 3.0.0-beta.1 - June 19, 2017
 
 - BREAKING: `_prefix.scss` has been renamed `_susy-prefix.scss`
   for clarity when importing.
@@ -47,8 +94,7 @@ See [Introducing Susy3](http://oddbird.net/2017/06/28/susy3),
 - Improved documentation
 
 
-3.0.0-alpha.6 - Apr 25, 2017
-----------------------------
+## 3.0.0-alpha.6 - Apr 25, 2017
 
 - Fix bug in empty `gutter()` alias
 - Add `susy-repeat()` function
@@ -59,8 +105,7 @@ See [Introducing Susy3](http://oddbird.net/2017/06/28/susy3),
   internal math functions.
 
 
-3.0.0-alpha.5 - Feb 14, 2017
-----------------------------
+## 3.0.0-alpha.5 - Feb 14, 2017
 
 - SVG Grid plugin, to provide grid-debugging options:
   - `svg-grid-colors` global setting accepts one or more colors
@@ -73,8 +118,7 @@ See [Introducing Susy3](http://oddbird.net/2017/06/28/susy3),
 - More test coverage, including error-handling!
 
 
-3.0.0-alpha.1 - Sep 6, 2016
----------------------------
+## 3.0.0-alpha.1 - Sep 6, 2016
 
 - No Mixins!
 - Trim down to the core math, and a thin layer of api functions:
@@ -98,26 +142,22 @@ See [Introducing Susy3](http://oddbird.net/2017/06/28/susy3),
   - `of $n <spread>` for available grid columns and container-spread
 
 
-2.2.5 - May 14 2015
--------------------
+## 2.2.5 - May 14 2015
 
 - Pass grid arguments to overlay positioning mixin.
 
 
-2.2.3 - Apr 28 2015
--------------------
+## 2.2.3 - Apr 28 2015
 
 - Work around libsass fraction bug.
 
 
-2.2.2 - Jan 23 2015
--------------------
+## 2.2.2 - Jan 23 2015
 
 - Fix bug in npm package.
 
 
-2.2.1 - Jan 14 2015
--------------------
+## 2.2.1 - Jan 14 2015
 
 - Release npm ``susy`` package.
 - Add global ``$susy-media`` map for creating named breakpoints.
@@ -141,20 +181,18 @@ See [Introducing Susy3](http://oddbird.net/2017/06/28/susy3),
 - Both ``su`` and ``susy`` work with the latest LibSass master branch (3.0.2+).
   There are a few exceptions:
 
-  + The ``susysone`` syntax
-  + ``overlay`` grid output
-  + The ``inherit`` option for ``global-box-sizing`` & ``border-box-sizing``
+  - The ``susysone`` syntax
+  - ``overlay`` grid output
+  - The ``inherit`` option for ``global-box-sizing`` & ``border-box-sizing``
 
 
-2.1.3 - Jul 16 2014
--------------------
+## 2.1.3 - Jul 16 2014
 
 - Baseline grid image uses `px` instead of `%`.
 - Updated Sass dependency to work with 3.4.
 
 
-2.1.2 - Apr 28 2014
--------------------
+## 2.1.2 - Apr 28 2014
 
 - ``first`` and ``last`` keywords output ``0`` margins instead of ``null``
   so they can be used to override previous span settings.
@@ -168,21 +206,19 @@ See [Introducing Susy3](http://oddbird.net/2017/06/28/susy3),
   for creating new layout contexts from a clean slate.
 
 
-2.1.1 - Mar 13 2014
--------------------
+## 2.1.1 - Mar 13 2014
 
 - Rename core math functions, and prepare for decomposition.
 
-  + ``column-count()`` => ``susy-count()``
-  + ``column-sum()`` => ``susy-sum()``
-  + ``column-span()`` => ``susy-slice()``
-  + ``column-span-sum()`` => ``susy()``
+  - ``column-count()`` => ``susy-count()``
+  - ``column-sum()`` => ``susy-sum()``
+  - ``column-span()`` => ``susy-slice()``
+  - ``column-span-sum()`` => ``susy()``
 
 - Add tests for core math validation.
 
 
-2.0.0 — Mar 10 2014
--------------------
+## 2.0.0 — Mar 10 2014
 
 - New susyone tests for split-columns, is-default-layout, medialayout, columns,
   relative-width, columns width and nth-of-type (using True).
@@ -191,15 +227,13 @@ See [Introducing Susy3](http://oddbird.net/2017/06/28/susy3),
 - Susyone container mixin applies full container settings at every breakpoint.
 
 
-2.0.0.rc.2 — Mar 4 2014
------------------------
+## 2.0.0.rc.2 — Mar 4 2014
 
 - Fix `templates_path` and compass project templates
 - Fix Compass "rem" integration to respect ``$rhythm-units`` setting.
 
 
-2.0.0.rc.1 — Feb 7 2014
------------------------
+## 2.0.0.rc.1 — Feb 7 2014
 
 - Add browser support module with settings to ``use-custom`` mixins
   for ``background-image``,
@@ -229,18 +263,16 @@ See [Introducing Susy3](http://oddbird.net/2017/06/28/susy3),
 - Remove legacy Compass polyfils from susyone code.
 
 
-2.0.0.beta.3 — Jan 10 2014
---------------------------
+## 2.0.0.beta.3 — Jan 10 2014
 
 - Fix a bug making ``show-grid`` unaware of local ``debug/output`` keywords.
 - Added Susyone syntax for those that need to use the old Susy syntax,
   with updated Sass and Compass.
 
-  + ``@import 'susyone';``
+  - ``@import 'susyone';``
 
 
-2.0.0.beta.2 — Jan 6 2014
--------------------------
+## 2.0.0.beta.2 — Jan 6 2014
 
 - Allow nesting of Susy settings.
 - ``show-grid`` mixin can output either background or overlay grids.
@@ -252,7 +284,7 @@ See [Introducing Susy3](http://oddbird.net/2017/06/28/susy3),
 - Clean up and document the core math functions.
 - Document upgrade path, core-math, and DIY grids.
 
-BREAKING:
+### BREAKING:
 
 - Move debug settings into ``$susy: (debug: (<settings>));``.
 - Replace ``show-grid`` setting with new ``debug: image`` setting.
@@ -260,32 +292,31 @@ BREAKING:
   to toggle between ``background`` and ``overlay`` grid images.
 - Remove ``grid-overlay`` mixin.
 
-  + Becomes part of ``show-grid`` mixin.
-  + Doesn't take ``$selector`` argument — should be nested instead.
-  + Can still be used multiple times.
+  - Becomes part of ``show-grid`` mixin.
+  - Doesn't take ``$selector`` argument — should be nested instead.
+  - Can still be used multiple times.
 
 - ``isolate`` mixin now interprets span argument as location,
   unless location is otherwise specified.
 
-  + ``isolate(2)`` is the same as ``isolate(at 2)``.
-  + ``isolate(25%)`` will isolate *at* ``25%``.
+  - ``isolate(2)`` is the same as ``isolate(at 2)``.
+  - ``isolate(25%)`` will isolate *at* ``25%``.
 
 - Rename setting controls for consistency.
 
-  + ``set-grid`` => ``layout``
-  + ``use-grid`` => ``with-layout``
+  - ``set-grid`` => ``layout``
+  - ``use-grid`` => ``with-layout``
 
 - ``pad`` and ``squish`` use RL shorthand for shared context.
 
-  + ``pad(1, 3 of 12)`` => ``pad(1 3 of 12)``
+  - ``pad(1, 3 of 12)`` => ``pad(1 3 of 12)``
 
 
-2.0.0.beta.1 — Dec 24 2013
---------------------------
+## 2.0.0.beta.1 — Dec 24 2013
 
-- Add ``susy-breakpoint`` mixin for basic integration with `Breakpoint`_.
+- Add ``susy-breakpoint`` mixin for basic integration with [Breakpoint]
 
-  + Syntax: ``breakpoint($query, $layout, $no-query)``
+  - Syntax: ``breakpoint($query, $layout, $no-query)``
     where ``$query`` and ``no-query`` follow the Breakpoint syntax,
     and ``$layout`` uses the Susy syntax for defining grids.
 
@@ -307,9 +338,9 @@ BREAKING:
   Format your nth-selectors manually to apply ``first``/``last`` mixins.
 - Gutter mixins/functions can accept context-only (without the "of" syntax):
 
-  + ``gutters(of 10 .25)`` == ``gutters(10 .25)``
-  + Unitless numbers are used for context.
-  + Lengths (with units) are used as explicit gutter-overrides.
+  - ``gutters(of 10 .25)`` == ``gutters(10 .25)``
+  - Unitless numbers are used for context.
+  - Lengths (with units) are used as explicit gutter-overrides.
 
 - BREAKING: Re-purposed ``susy-set`` as reverse of ``susy-get`` —
   to adjust a single setting.
@@ -317,23 +348,22 @@ BREAKING:
 
 - Replace global ``box-sizing`` setting with ``global-box-sizing``.
 
-  + Let Susy know what box model you are using globally.
-  + ``box-sizing`` can still be passed as a keyword argument.
+  - Let Susy know what box model you are using globally.
+  - ``box-sizing`` can still be passed as a keyword argument.
 
 - Add ``global-box-sizing()`` mixin to set your global box model.
 
-  + Example: ``@include global-box-sizing(border-box);``
-  + You can still use the legacy ``@include border-box-sizing;`` as a shortcut.
-  + Uses your global setting as a default.
-  + Updates your global setting to match, if you pass a different value.
+  - Example: ``@include global-box-sizing(border-box);``
+  - You can still use the legacy ``@include border-box-sizing;`` as a shortcut.
+  - Uses your global setting as a default.
+  - Updates your global setting to match, if you pass a different value.
 
 - ``gallery`` and ``span`` mixins take global-box-sizing into account.
 
-.. _Breakpoint: http://breakpoint-sass.com/
+[Breakpoint]: http://breakpoint-sass.com/
 
 
-2.0.0-alpha.6 — Dec 5 2013
---------------------------
+## 2.0.0-alpha.6 — Dec 5 2013
 
 - Rewrite syntax parsing so parser and resulting maps are shared across Susy.
 - Fix explicit-span bug causing large gutters.
@@ -346,18 +376,17 @@ Backwards Incompatible:
   Use ``(gutter-override: $n)`` map instead.
 
 
-2.0.0-alpha.5 — Nov 25 2013
----------------------------
+## 2.0.0-alpha.5 — Nov 25 2013
 
 - Compass is no longer a dependency.
 
-  + Only registers as a compass extension if compass is present.
+  - Only registers as a compass extension if compass is present.
 
 - Any mixin/function that accepts natural language syntax also accepts maps.
 - Maps and natural language can be mixed:
 
-  + ``$large: (columns: 12, gutters: .5);``
-  + ``span(3 $large no-gutters)``
+  - ``$large: (columns: 12, gutters: .5);``
+  - ``span(3 $large no-gutters)``
 
 - Add ``full`` mixin for full-width spans.
 
@@ -369,33 +398,32 @@ Backwards Incompatible:
 
 - ``bleed`` now takes standard span syntax, with multiple (TRBL) spans.
 
-  + e.g. ``bleed(1em 2 of 8)`` for 1em top/bottom and 2-columns left/right.
-  + Add ``bleed-x``/``bleed-y`` mixins for horizontal and vertical shortcuts.
+  - e.g. ``bleed(1em 2 of 8)`` for 1em top/bottom and 2-columns left/right.
+  - Add ``bleed-x``/``bleed-y`` mixins for horizontal and vertical shortcuts.
 
 - Span arguments now accept ``narrow``, ``wide``, or ``wider`` keywords.
 
-  + The ``wide`` keyword replaces the old ``outer`` keyword.
-  + This setting has been re-named from ``outer`` to ``spread``.
+  - The ``wide`` keyword replaces the old ``outer`` keyword.
+  - This setting has been re-named from ``outer`` to ``spread``.
 
 - Re-wrote grid debugging
 
-  + More concise & accurate output for symmetrical grids.
-  + Changed ``grid-background()`` to ``show-grid()``/``show-grids()``
-  + Changed ``overlay-grid()`` to ``grid-overlay()``
-  + Moved settings into ``$debug: (color: rgba(#66f, .25), toggle: top right);``
-  + Removed overlay-position setting.
-  + Only display vertical-rhythms when ``$base-line-height`` is available.
+  - More concise & accurate output for symmetrical grids.
+  - Changed ``grid-background()`` to ``show-grid()``/``show-grids()``
+  - Changed ``overlay-grid()`` to ``grid-overlay()``
+  - Moved settings into ``$debug: (color: rgba(#66f, .25), toggle: top right);``
+  - Removed overlay-position setting.
+  - Only display vertical-rhythms when ``$base-line-height`` is available.
 
 - ``split`` gutters are no longer removed at the grid edges.
 
-  + ``first`` and ``last`` are not special cases for split gutter-handling.
-  + pass the ``container`` argument to wrappers you plan to nest inside.
+  - ``first`` and ``last`` are not special cases for split gutter-handling.
+  - pass the ``container`` argument to wrappers you plan to nest inside.
 
 - ``first``/``alpha``/``last``/``omega``/``nth-`` mixins require grid context.
 
 
-2.0.0-alpha.4 — Sept 4 2013
----------------------------
+## 2.0.0-alpha.4 — Sept 4 2013
 
 - Add ``bleed`` mixin.
 - Fix bug with fluid inside-gutter calculations.
@@ -406,10 +434,10 @@ Backwards Incompatible:
   & ``$grid-background-color``
   have been renamed to remiain consistent and avoid conflicts with Compass:
 
-  + ``grid-background`` => ``background-grid``
-  + ``grid-overlay`` => ``overlay-grid``
-  + ``grid-background-output`` => ``background-grid-output``
-  + ``$grid-background-color`` => ``$grid-color``
+  - ``grid-background`` => ``background-grid``
+  - ``grid-overlay`` => ``overlay-grid``
+  - ``grid-background-output`` => ``background-grid-output``
+  - ``$grid-background-color`` => ``$grid-color``
 
 - ``span`` mixing accepts nested ``@content``, and uses nested context.
 - Add ``inside-static`` option for static gutters in otherwise fluid grids.
@@ -417,8 +445,7 @@ Backwards Incompatible:
 - Explicit gutter-overrides are divided when gutters are ``split``/``inside``.
 
 
-2.0.0-alpha.3 — July 9 2013
----------------------------
+## 2.0.0-alpha.3 — July 9 2013
 
 - ``row`` now includes clearfix, and ``unrow`` removes clearfix.
 - ``gallery`` output should override previous gallery settings.
@@ -431,39 +458,39 @@ Backwards Incompatible:
 - Add ``outer`` keyword to ``span`` syntax,
   to return span-width including gutters.
 
-  + Works with both span mixin and span function.
-  + Replaces Susy 1.0 ``space`` function.
+  - Works with both span mixin and span function.
+  - Replaces Susy 1.0 ``space`` function.
 
-- Add comrehensive unit tests, using `True`_.
+- Add comrehensive unit tests, using [True].
 - Improve fall-abck handling of ommitted arguments.
 - Add ``container`` function to return a given container's width.
 - Add ``auto`` keyword to override ``$container-width``,
   otherwise respect existing width.
 - Renamed ``$isolate`` to ``$layout-method``
 
-  + No longer accepts boolean.
-  + Accepts keywords ``isolate`` and (default) ``float``.
+  - No longer accepts boolean.
+  - Accepts keywords ``isolate`` and (default) ``float``.
 
 - Renamed ``$static`` to ``$layout-math``
 
-  + No longer accepts boolean.
-  + Accepts keywords ``static`` (use given units)
+  - No longer accepts boolean.
+  - Accepts keywords ``static`` (use given units)
     and (default) ``fluid`` (use % units).
 
 - Add ``show-columns`` and ``show-baseline`` keywords
   to ``$show-grids`` setting.
   ``show`` will show both columns/baseline, default is ``show-columns``.
 
-.. _True: http://miriamsuzanne.com/true/
+[True]: http://miriamsuzanne.com/true/
 
 
-2.0.0-alpha.2 — May 7 2013
---------------------------
+## 2.0.0-alpha.2 — May 7 2013
 
 - Added ``gutter <length>``/``gutters <length>``
   to override the attached gutter width on a single span.
-  NOTE: ``gutters 0`` is not the same as ``no-gutters``.
-  ``0`` is an output value, ``no-gutters`` removes output.
+
+  - NOTE: ``gutters 0`` is not the same as ``no-gutters``.
+    ``0`` is an output value, ``no-gutters`` removes output.
 
 - Added ``container`` span option
   to remove inside gutters from nesting containers.
@@ -482,8 +509,7 @@ Backwards Incompatible:
 - Remove breakpoint core requirement (will come back as option)
 
 
-2.0.0-alpha.1 — Jan 26 2013
----------------------------
+## 2.0.0-alpha.1 — Jan 26 2013
 
 **Susy 2.0 was re-written from the ground up.**
 
@@ -497,37 +523,32 @@ Backwards Incompatible:
 
 
 
-1.0.5 — Nov 27 2012
--------------------
+## 1.0.5 — Nov 27 2012
 
 - Add support for rem-units.
 - Clean-up quoted arguments.
 - Fix a few bugs related to the override settings.
 
 
-1.0.4 — Nov 3 2012
--------------------
+## 1.0.4 — Nov 3 2012
 
 - Fix bug in nested mixins that adjust support
   (e.g. ``nth-omeg`` inside ``at-breakpoint``).
 - Remove non-ie experimental support in ``at-breakpoint`` ie-fallback output.
 
 
-1.0.3 — Oct 20 2012
--------------------
+## 1.0.3 — Oct 20 2012
 
 - Fix Compass dependencies.
 
 
-1.0.2 — Oct 20 2012
--------------------
+## 1.0.2 — Oct 20 2012
 
 - Fix a bug with ``container-outer-width`` ignoring ``$columns`` argument.
 - Turn off legacy-ie support inside CSS3 selectors (``nth-omega`` etc).
 
 
-1.0.1 — Sept 12 2012
---------------------
+## 1.0.1 — Sept 12 2012
 
 - Fix a bug in the relationship
   between ``$container-width`` and ``$border-box-sizing``,
@@ -535,8 +556,7 @@ Backwards Incompatible:
 - Reset right margin to ``auto`` rather than ``0`` with ``remove-omega``.
 
 
-1.0 — Aug 14 2012
------------------
+## 1.0 — Aug 14 2012
 
 This release is loaded with new features, but don't let that fool you. Susy
 just became shockingly simple to use.
@@ -588,9 +608,9 @@ New Features:
 
 - ``span-columns`` supports new features:
 
-  + "omega" can be applied directly through the ``$columns`` argument.
-  + Internal padding can be added through the ``$padding`` argument.
-  + This pushes the ``$from`` argument from third position into fourth.
+  - "omega" can be applied directly through the ``$columns`` argument.
+  - Internal padding can be added through the ``$padding`` argument.
+  - This pushes the ``$from`` argument from third position into fourth.
 
 - ``at-breakpoint`` allows you to change layouts at media breakpoints.
 - ``container`` accepts multiple media-layout combinations as a shortcut.
@@ -616,8 +636,7 @@ New Features:
   (magic, fluid, fixed, static, etc) to use.
 
 
-0.9 — Apr 25 2011
------------------
+## 0.9 — Apr 25 2011
 
 Everything here is about simplicity. Susy has scaled back to it's most basic
 function: providing flexible grids. That is all.
@@ -642,8 +661,7 @@ New:
   grid-background module.
 
 
-0.9.beta.3 — Mar 16 2011
-------------------------
+## 0.9.beta.3 — Mar 16 2011
 
 Deprecated:
 
@@ -674,14 +692,12 @@ New Features:
   Thanks to the Sass team for making it possible.
 
 
-0.8.1 — Sep 24 2010
--------------------
+## 0.8.1 — Sep 24 2010
 
 - Fixed typos in tutorial and ``_defaults.scss``
 
 
-0.8.0 — Aug 13 2010
--------------------
+## 0.8.0 — Aug 13 2010
 
 Deprecated:
 
@@ -711,20 +727,17 @@ Other Changes:
   use of ``@extend``, and overall simplification.
 
 
-0.7.0 — Jun 01 2010
--------------------
+## 0.7.0 — Jun 01 2010
 
 - updated documentation
 
 
-0.7.0.rc2 — May 13 2010
------------------------
+## 0.7.0.rc2 — May 13 2010
 
 - Fixes a bug with grid.png and a typo in the readme. Nothing major here.
 
 
-0.7.0.rc1 — May 12 2010
------------------------
+## 0.7.0.rc1 — May 12 2010
 
 - template cleanup & simplification - no more pushing CSSEdit comments, etc.
 - expanded base and defaults with better fonts & styles out-of-the-box
@@ -732,8 +745,7 @@ Other Changes:
   This will expand out into a larger docs/tutorial site in the next week.
 
 
-0.7.0.pre8 — Apr 20 2010
-------------------------
+## 0.7.0.pre8 — Apr 20 2010
 
 - mostly syntax and gem cleanup
 - added ``un-column`` mixin to reset elements previously declared as columns.
@@ -743,8 +755,7 @@ Other Changes:
   to remind you that ``alpha`` is not needed at nested levels.
 
 
-0.7.0.pre7 — Apr 13 2010
-------------------------
+## 0.7.0.pre7 — Apr 13 2010
 
 - *Requires HAML 3 and Compass 0.10.0.rc2*
 - Internal syntax switched to scss. This will have little or no effect on users.
@@ -753,16 +764,14 @@ Other Changes:
 - Better handling of sub-pixel rounding for IE6
 
 
-0.7.0.pre6 — Mar 29 2010
-------------------------
+## 0.7.0.pre6 — Mar 29 2010
 
 - Added ``+h-borders()`` shortcut for vertical_rhythm ``+horizontal-borders()``
 - Fixed vertical rhythm font-size typo (thanks @oscarduignan)
 - Added to template styles, so susy is already in place from the start
 
 
-0.7.0.pre5 — Mar 19 2010
-------------------------
+## 0.7.0.pre5 — Mar 19 2010
 
 - Expanded and adjusted ``_vertical_rhythm.sass``
   in ways that are not entirely backwards compatible.
@@ -772,8 +781,7 @@ Other Changes:
 - README and docs updated.
 
 
-0.7.0.pre4 — Jan 20 2010
-------------------------
+## 0.7.0.pre4 — Jan 20 2010
 
 Update: pre2 was missing a file in the manifest. Use pre4.
 
@@ -820,8 +828,7 @@ Once you've upgraded, before you compile your files, make these changes:
 - enjoy!
 
 
-0.7.0.pre1 — Nov 30 2009
-------------------------
+## 0.7.0.pre1 — Nov 30 2009
 
 Not a lot of new functionality here –
 it all moved over to Compass 0.10.0 –
@@ -840,7 +847,6 @@ mostly just cleaning it up to match.
 - little internal management fixes and so on and so on…
 
 
-Older
------
+## Older
 
 Not documented here. Check the commit log...

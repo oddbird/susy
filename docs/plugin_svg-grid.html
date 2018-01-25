@@ -7,12 +7,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <title>Plugin: SVG Grid Image | susy Documentation</title>
+  <title>Plugin: SVG Grid Image | Susy Documentation</title>
 
   <link href="assets/img/favicon.ico" rel="shortcut icon">
   <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:400,600|Source+Sans+Pro:400,400i,700,700i" rel="stylesheet">
 
   <link rel="stylesheet" href="assets/webpack/app_styles.min.css" />
+
+  
+
+  
 </head>
 <body>
   <svg xmlns="http://www.w3.org/2000/svg" hidden>
@@ -24,36 +28,36 @@
   </symbol>
 </svg>
 
-  <div data-sassdoc-region="app">
-    <header data-sassdoc-region="banner">
+  <div data-region="app">
+    <header data-region="banner">
       
   <button data-nav-toggle data-toggle="button" aria-controls="nav" aria-pressed="false" type="button" data-toggle-synced="false">
     
-  <svg data-icon="menu" data-icon-size="icon-small" ><title>menu</title><use xlink:href="#icon-menu" />
+  <svg data-icon="menu" data-icon-size="nav-icon" ><title>menu</title><use xlink:href="#icon-menu" />
   </svg>
 
   </button>
 
 
-      <div data-sassdoc="project-title">
-        <a href="index.html" rel="home" data-sassdoc="project-name">susy</a>
+      <div class="project-title">
+        <a href="index.html" rel="home" class="project-name">Susy</a>
         
-          <span data-sassdoc="project-version">3.0.1</span>
+          <span class="project-version">3.0.2</span>
         
       </div>
     </header>
 
-    <div data-sassdoc-region="container">
+    <div data-region="container">
       
-  <nav data-nav-menu data-toggle="target" id="nav" data-target-id="nav" aria-expanded="false" data-auto-closing="false" data-auto-closing-on-any-click="false">
-    <form action="/search.html">
+  <nav data-region="nav" data-toggle="target" id="nav" data-target-id="nav" aria-expanded="false" data-auto-closing="false" data-auto-closing-on-any-click="false">
+    <form action="search.html">
       <input type="text" name="q" placeholder="Search…" required minlength="3">
     </form>
 
-    <div data-sassdoc="nav-subsection">
-      <h3 data-sassdoc="nav-title">
+    <div class="nav-subsection">
+      <h3 class="nav-home">
         
-        <a href="index.html" data-sassdoc-nav="is-not-active">susy</a>
+        <a href="index.html" data-nav="is-not-active">Susy</a>
       </h3>
 
       
@@ -61,18 +65,18 @@
         <ul>
           
             
-            <li data-sassdoc="nav-item">
-              <a href="PHILOSOPHY.html" data-sassdoc-nav="is-not-active">Philosophy</a>
+            <li class="nav-item">
+              <a href="PHILOSOPHY.html" data-nav="is-not-active">Philosophy</a>
             </li>
           
             
-            <li data-sassdoc="nav-item">
-              <a href="CHANGELOG.html" data-sassdoc-nav="is-not-active">Changelog</a>
+            <li class="nav-item">
+              <a href="CHANGELOG.html" data-nav="is-not-active">Changelog</a>
             </li>
           
             
-            <li data-sassdoc="nav-item">
-              <a href="CONTRIBUTING.html" data-sassdoc-nav="is-not-active">Contributing</a>
+            <li class="nav-item">
+              <a href="CONTRIBUTING.html" data-nav="is-not-active">Contributing</a>
             </li>
           
         </ul>
@@ -80,123 +84,138 @@
     </div>
 
     
-    <div data-sassdoc="nav-subsection">
+    <div class="nav-subsection">
       <ul>
-        
-          
-          <li data-sassdoc="nav-item">
-            <a href="config.html" data-sassdoc-nav="is-not-active">Configuration</a>
-          </li>
-        
-          
-          <li data-sassdoc="nav-item">
-            <a href="api.html" data-sassdoc-nav="is-not-active">Grid Functions</a>
-          </li>
-        
-          
-          <li data-sassdoc="nav-item">
-            <a href="plugin-utils.html" data-sassdoc-nav="is-not-active">Plugin Utilities</a>
-          </li>
-        
-          
-          <li data-sassdoc="nav-item">
-            <a href="plugin_svg-grid.html" data-sassdoc-nav="is-active">Plugin: SVG Grid<span class="widont">&nbsp;</span>Image</a>
-          </li>
-        
-          
-          <li data-sassdoc="nav-item">
-            <a href="su-math.html" data-sassdoc-nav="is-not-active">Su: Core Math<span class="widont">&nbsp;</span>Engine</a>
-          </li>
-        
-          
-          <li data-sassdoc="nav-item">
-            <a href="_normal.html" data-sassdoc-nav="is-not-active">[Susy Normalization]</a>
-          </li>
-        
-          
-          <li data-sassdoc="nav-item">
-            <a href="_parser.html" data-sassdoc-nav="is-not-active">[Susy Syntax<span class="widont">&nbsp;</span>Parser]</a>
-          </li>
-        
-          
-          <li data-sassdoc="nav-item">
-            <a href="_validation.html" data-sassdoc-nav="is-not-active">[Su Input<span class="widont">&nbsp;</span>Validation]</a>
-          </li>
-        
-          
-          <li data-sassdoc="nav-item">
-            <a href="_version.html" data-sassdoc-nav="is-not-active">[Versioning]</a>
-          </li>
-        
-      </ul>
+            <li class="nav-subsection">
+              <h3 class="nav-title">Public Grid API</h3>
+              <ul>
+                
+  
+    <li class="nav-item">
+      <a href="config.html" data-nav="is-not-active">Grid Configuration</a>
+    </li>
+  
+  
+    <li class="nav-item">
+      <a href="api.html" data-nav="is-not-active">Grid Functions</a>
+    </li>
+  </ul>
+            </li>
+            <li class="nav-subsection">
+              <h3 class="nav-title">Extras</h3>
+              <ul>
+                
+  
+    <li class="nav-item">
+      <a href="plugin-utils.html" data-nav="is-not-active">Extending Susy</a>
+    </li>
+  
+  
+    <li class="nav-item">
+      <a href="su-math.html" data-nav="is-not-active">Su: Core Math<span class="widont">&nbsp;</span>Engine</a>
+    </li>
+  
+  
+    <li class="nav-item">
+      <a href="plugin_svg-grid.html" data-nav="is-active">Plugin: SVG Grid<span class="widont">&nbsp;</span>Image</a>
+    </li>
+  </ul>
+            </li>
+            <li class="nav-subsection">
+              <h3 class="nav-title">Internal Functions (Private)</h3>
+              <ul>
+                
+  
+    <li class="nav-item">
+      <a href="_normal.html" data-nav="is-not-active">Susy Normalization</a>
+    </li>
+  
+  
+    <li class="nav-item">
+      <a href="_parser.html" data-nav="is-not-active">Susy Syntax<span class="widont">&nbsp;</span>Parser</a>
+    </li>
+  
+  
+    <li class="nav-item">
+      <a href="_validation.html" data-nav="is-not-active">Su Input<span class="widont">&nbsp;</span>Validation</a>
+    </li>
+  
+  
+    <li class="nav-item">
+      <a href="_version.html" data-nav="is-not-active">Versioning</a>
+    </li>
+  </ul>
+            </li></ul>
     </div>
 
     
     
-      <div data-sassdoc="nav-subsection">
-        <h3 data-sassdoc="nav-title">
+      <div class="nav-subsection">
+        <h3 class="nav-title">
           External Links
         </h3>
 
         <ul>
           
-            <li data-sassdoc="nav-item">
-              <a href="http://oddbird.net/susy/" data-sassdoc-nav="is-not-active">Susy Website</a>
+            <li class="nav-item">
+              <a href="http://oddbird.net/susy/" data-nav="is-not-active">Susy Website</a>
             </li>
           
-            <li data-sassdoc="nav-item">
-              <a href="http://twitter.com/sasssusy/" data-sassdoc-nav="is-not-active">Twitter @SassSusy</a>
+            <li class="nav-item">
+              <a href="http://twitter.com/sasssusy/" data-nav="is-not-active">Twitter @SassSusy</a>
             </li>
           
-            <li data-sassdoc="nav-item">
-              <a href="http://oddbird.net/2017/06/28/susy3" data-sassdoc-nav="is-not-active">Intro to<span class="widont">&nbsp;</span>Susy3</a>
+            <li class="nav-item">
+              <a href="http://oddbird.net/2017/06/28/susy3" data-nav="is-not-active">Intro to<span class="widont">&nbsp;</span>Susy3</a>
             </li>
           
-            <li data-sassdoc="nav-item">
-              <a href="http://susy.readthedocs.io" data-sassdoc-nav="is-not-active">Susy2 Documentation</a>
+            <li class="nav-item">
+              <a href="http://susy.readthedocs.io" data-nav="is-not-active">Susy2 Documentation</a>
             </li>
           
-            <li data-sassdoc="nav-item">
-              <a href="http://oddbird.net/" data-sassdoc-nav="is-not-active">OddBird</a>
+            <li class="nav-item">
+              <a href="http://oddbird.net/" data-nav="is-not-active">OddBird</a>
             </li>
           
         </ul>
       </div>
     
 
-    <aside class="footer-credit">
-      <a href="http://oddbird.net/herman/" class="footer-icon">
-        
+    
+      <aside class="footer-credit">
+        <a href="http://oddbird.net/herman/" class="footer-icon">
+          
   <svg data-icon="logo" data-icon-size="footer-logo" ><use xlink:href="#icon-logo" />
   </svg>
 
-      </a>
-      <span>
-        Documented with
-        <a href="http://oddbird.net/herman/" class="footer-link">
-          Herman
         </a>
-      </span>
-      <span>
-        by
-        <a href="http://oddbird.net/" class="footer-link">
-          OddBird
-        </a>
-      </span>
-    </aside>
+        <span>
+          Documented with
+          <a href="http://oddbird.net/herman/" class="footer-link">
+            Herman
+          </a>
+        </span>
+        <span>
+          by
+          <a href="http://oddbird.net/" class="footer-link">
+            OddBird
+          </a>
+        </span>
+      </aside>
+    
   </nav>
 
 
-      <main data-sassdoc-region="main">
+      <main data-region="main">
         
-  <nav data-sassdoc-region="breadcrumb">
+  <nav class="breadcrumb">
     
-    <a href="index.html" >susy</a> »
+    <a href="index.html" >Susy</a> »
     <strong>Plugin: SVG Grid Image</strong>
   </nav>
 
 
-        <div data-sassdoc-page="plugin_svg-grid">
+        <div data-page="plugin_svg-grid">
           
   
     
@@ -427,7 +446,7 @@ import the <code>svg-grid/prefix</code> partial instead.</p>
 
       
       
-      <pre data-sassdoc="hljs"><code class="lang-scss">// The full path to import Susy will depend on your setup…
+      <pre class="hljs-pre"><code class="lang-scss">// The full path to import Susy will depend on your setup…
 
 // unprefixed
 @import &#39;plugins/svg-grid&#39;;
@@ -481,7 +500,7 @@ import the <code>svg-grid/prefix</code> partial instead.</p>
 
       
       
-      <pre data-sassdoc="hljs"><code class="lang-scss">.grid {
+      <pre class="hljs-pre"><code class="lang-scss">.grid {
   background: susy-svg-grid() no-repeat scroll;
 }</code></pre>
     </div>
@@ -507,7 +526,7 @@ import the <code>svg-grid/prefix</code> partial instead.</p>
 
       
       
-      <pre data-sassdoc="hljs"><code class="lang-css">.grid {
+      <pre class="hljs-pre"><code class="lang-css">.grid {
   background: susy-svg-grid() no-repeat scroll;
 }
 </code></pre>
@@ -817,7 +836,7 @@ for use in image or content<span class="widont">&nbsp;</span>properties</p>
 
       
       
-      <pre data-sassdoc="hljs"><code class="lang-scss">.grid {
+      <pre class="hljs-pre"><code class="lang-scss">.grid {
   background: susy-svg-grid() no-repeat scroll;
 }</code></pre>
     </div>
@@ -843,7 +862,7 @@ for use in image or content<span class="widont">&nbsp;</span>properties</p>
 
       
       
-      <pre data-sassdoc="hljs"><code class="lang-css">.grid {
+      <pre class="hljs-pre"><code class="lang-css">.grid {
   background: susy-svg-grid() no-repeat scroll;
 }
 </code></pre>

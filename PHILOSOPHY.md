@@ -130,6 +130,25 @@ Susy can be there to step in --
 but **there is no need for Susy if you can keep the math simple**.
 
 
+### No Mixins
+
+The biggest change in Susy3 is that we've removed all the mixins.
+On initial upgrade, most projects will run into errors
+with missing mixins --
+`container`, `span`, or otherwise.
+While mixins can provide a nice shortcut for common use-cases,
+they also make the actual CSS more opaque,
+and quickly become out-of-date --
+discouraging incremental improvements to your application.
+
+In a world with growing browser support for
+any number of powerful CSS layout techniques,
+it would be neglegent of us to push everyone
+into a single one-size-fits-all solution.
+There are other frameworks that provide that service,
+but Susy was never intended to be one of them.
+
+
 ## Resources
 
 - [Welcome to Susy3](http://oddbird.net/2017/06/28/susy3)

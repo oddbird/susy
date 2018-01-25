@@ -9,15 +9,18 @@ shortcutIcon: ./favicon.ico
 verbose: true
 
 groups:
-  config: 'Configuration'
-  api: 'Grid Functions'
-  plugin-utils: 'Plugin Utilities'
-  plugin_svg-grid: 'Plugin: SVG Grid Image'
-  su-math: 'Su: Core Math Engine'
-  _normal: '[Susy Normalization]'
-  _parser: '[Susy Syntax Parser]'
-  _validation: '[Su Input Validation]'
-  _version: '[Versioning]'
+  Public Grid API:
+    config: 'Grid Configuration'
+    api: 'Grid Functions'
+  Extras:
+    plugin-utils: 'Extending Susy'
+    su-math: 'Su: Core Math Engine'
+    plugin_svg-grid: 'Plugin: SVG Grid Image'
+  Internal Functions (Private):
+    _normal: 'Susy Normalization'
+    _parser: 'Susy Syntax Parser'
+    _validation: 'Su Input Validation'
+    _version: 'Versioning'
 
 herman:
   extraDocs:

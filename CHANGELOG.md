@@ -1,6 +1,12 @@
 # Changelog
 
 
+## 3.0.3 - January 30, 2018
+
+- Fix missing doc JSON file in npm package.
+- Update dev dependencies.
+
+
 ## 3.0.2 - January 25, 2018
 
 - Documentation updates.

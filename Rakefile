@@ -18,7 +18,7 @@ spec.bump! unless ENV["SAME_VERSION"]
 desc "Run tests and build susy-#{spec.version}.gem"
 task :build => [:test, :gem]
 
-desc "Make make the prebuilt gem susy-#{spec.version}.gem public."
+desc "Make the prebuilt gem susy-#{spec.version}.gem public."
 task :publish => [:record_version, :push_gem, :tag]
 
 desc "Build & Publish version #{spec.version}"

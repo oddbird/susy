@@ -1,6 +1,6 @@
 {
   "name": "susy",
-  "version": "2.2.12",
+  "version": "2.2.14",
   "description": "Sass power-tools for web layout.",
   "author": "Miriam Eric Suzanne <miriam@oddbird.net>",
   "main": "sass/_susy.scss",

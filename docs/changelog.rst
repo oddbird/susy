@@ -1,6 +1,19 @@
 Changelog
 =========
 
+2.2.13 - Apr 10 2018
+--------------------
+
+- Support Sass 3.5+ `get-function` requirements.
+- Doc updates & typo fixes.
+
+
+2.2.12 - Jan 25 2016
+--------------------
+
+- Fix bug in validation-errors.
+
+
 2.2.11 - Jan 15 2016
 --------------------
 

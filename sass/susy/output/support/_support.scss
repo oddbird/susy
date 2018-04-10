@@ -67,7 +67,8 @@
 
     @each $_type, $_req in $requirements {
       @each $_i in $_req {
-        $_pass: call(unquote("#{$_type}-exists"), $_i);
+        $_exists: "#{$_type}-exists";
+        $_pass: call(if(function-exists('get-function'), get-function($_exists), unquote($_exists)), $_i);
 
         @if not($_pass) {
           $_fail: true;

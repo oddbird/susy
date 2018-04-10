@@ -67,7 +67,17 @@
 
     @each $_type, $_req in $requirements {
       @each $_i in $_req {
-        $_pass: call(unquote("#{$_type}-exists"), $_i);
+
+        $_pass : null;
+
+        // sass 3.5 or greater
+        @if function-exists('get-function') {
+          $_pass: call(get-function(unquote("#{$_type}-exists")), $_i);
+        }
+        // sass 3.4 or less
+        @else {
+          $_pass: call(unquote("#{$_type}-exists"), $_i);
+        }
 
         @if not($_pass) {
           $_fail: true;

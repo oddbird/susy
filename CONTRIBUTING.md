@@ -88,3 +88,14 @@ When submitting a patch via pull request:
 
 - Write a clear, descriptive commit message
 - Keep it simple: one bug fix or feature per pull request
+
+
+Release
+-------
+
+- Update the version number in both
+`package.json` and `_version.scss`,
+- Updated the changelog & release date
+- `npm run commit`
+- Release on Github
+- Publish release to NPM

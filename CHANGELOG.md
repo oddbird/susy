@@ -1,6 +1,13 @@
 # Changelog
 
 
+## 3.0.4 - April 30, 2018
+
+- BUGFIX: Gutter function works when default `columns`
+  setting is not parser-friendly (e.g. `150px susy-repeat(2)`).
+- Update dev dependencies.
+
+
 ## 3.0.3 - January 30, 2018
 
 - Fix missing doc JSON file in npm package.

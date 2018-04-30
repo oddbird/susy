@@ -426,6 +426,9 @@
 /* Test: Static gutters */
 /*   ✔ [assert-equal] Static gutters are returned directly */
 /*  */
+/* Test: Mixed default context */
+/*   ✔ [assert-equal] Default does not choke on mixed context */
+/*  */
 /* Test: Gutters with container-spread */
 /*   ✔ [assert-equal] Factor container-spread into gutter context */
 /*  */
@@ -594,11 +597,11 @@
 /*  */
 /*  */
 /* # SUMMARY ---------- */
-/* 155 Tests: */
-/* - 155 Passed */
+/* 156 Tests: */
+/* - 156 Passed */
 /* - 0 Failed */
 /* Stats: */
 /* - 39 Modules */
-/* - 155 Tests */
-/* - 167 Assertions */
+/* - 156 Tests */
+/* - 168 Assertions */
 /* -------------------- */

@@ -149,6 +149,19 @@
     $susy: () !global;
   }
 
+  @include it('Mixed default context') {
+    $susy: (
+      'columns': 150px susy-repeat(2),
+    ) !global;
+
+    @include assert-equal(
+      susy-gutter(),
+      calc(((100% - 150px) / 2.5 * 0.25)),
+      'Default does not choke on mixed context');
+
+    $susy: () !global;
+  }
+
   @include it('Gutters with container-spread') {
     @include assert-equal(
       susy-gutter(4 'wide'),

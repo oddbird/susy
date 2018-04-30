@@ -31,7 +31,7 @@
 /// @param {integer | list} $context [null] -
 /// @param {map} $config [()]
 @function gutter(
-  $context: susy-get('columns'),
+  $context: null,
   $config: ()
 ) {
   @return susy-gutter($context, $config);

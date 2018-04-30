@@ -1,6 +1,11 @@
 # Changelog
 
 
+## 3.0.5 - April 30, 2018
+
+- BUGFIX: Update gutter alias default `$context`
+
+
 ## 3.0.4 - April 30, 2018
 
 - BUGFIX: Gutter function works when default `columns`

@@ -44,6 +44,15 @@ As you work...
 [sassdoc]: http://sassdoc.com/
 
 
+**Note:**
+The primary API functions
+(`susy-span`, `susy-gutter`, `susy-slice`)
+all have unprefixed alias functions:
+`span`, `gutter`, and `slice`.
+Any changes to arguments or defaults
+should be made in both locations.
+
+
 Committing
 ----------
 

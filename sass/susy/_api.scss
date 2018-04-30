@@ -197,7 +197,7 @@
 ///   }
 ///
 @function susy-gutter(
-  $context: susy-get('columns'),
+  $context: null,
   $config: ()
 ) {
   $context: susy-compile($context, $config, 'context-only');

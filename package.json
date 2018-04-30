@@ -12,10 +12,11 @@
   },
   "devDependencies": {
     "mocha": "^5.0.0",
+    "node-sass": "^4.9.0",
     "sass-lint": "^1.12.1",
-    "sass-true": "^3.0.2",
+    "sass-true": "^4.0.0",
     "sassdoc": "^2.5.0",
-    "sassdoc-theme-herman": "^1.1.0"
+    "sassdoc-theme-herman": "^3.0.0"
   },
   "keywords": [
     "layout",

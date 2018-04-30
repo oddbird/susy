@@ -70,7 +70,7 @@
 /// @group plugin-utils
 /// @see su-call
 ///
-/// @param {list | map} $shorthand -
+/// @param {list | map} $short [null] -
 ///   Shorthand expression to define the width of the span,
 ///   optionally containing:
 ///   - a count, length, or column-list span;
@@ -101,7 +101,7 @@
 ///     /* #{$key}: #{$value}, */
 ///   }
 @function susy-compile(
-  $short,
+  $short: null,
   $config: null,
   $context-only: false
 ) {
@@ -110,11 +110,15 @@
   $normal-config: susy-normalize($config);
 
   // Parse and normalize shorthand
-  @if (type-of($short) != 'map') and (length($short) > 0) {
-    $short: susy-parse($short, $context-only);
-  }
+  $normal-short: ();
 
-  $normal-short: susy-normalize($short, $normal-config);
+  @if $short {
+    @if (type-of($short) != 'map') and (length($short) > 0) {
+      $short: susy-parse($short, $context-only);
+    }
+
+    $normal-short: susy-normalize($short, $normal-config);
+  }
 
   // Merge and return
   @return map-merge($normal-config, $normal-short);

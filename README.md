@@ -46,6 +46,7 @@ Resources
 - [Changelog](https://github.com/oddbird/susy/blob/master/CHANGELOG.md)
 - [Guidelines for contributing](https://github.com/oddbird/susy/blob/master/CONTRIBUTING.md)
 - [BSD3 License](https://github.com/oddbird/susy/blob/master/LICENSE.txt)
+- [Susy.js](https://github.com/ignota/susy.js) CSS-in-JS port
 
 
 Installation

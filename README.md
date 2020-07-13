@@ -1,9 +1,10 @@
-Power Tools For The Web
-=======================
+Power Tools For The Web [Deprecated]
+====================================
+
+**Susy is Deprecated. It should no longer be used on new projects, and will no longer be receiving any updates.**
 
 [![npm version](https://badge.fury.io/js/susy.svg)](https://badge.fury.io/js/susy)<br />
 [![Build Status](https://travis-ci.org/oddbird/susy.png?branch=master)](https://travis-ci.org/oddbird/susy)
-
 
 Susy is a design-agnostic set of tools
 for creating powerful, custom layouts.

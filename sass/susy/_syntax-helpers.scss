@@ -43,7 +43,10 @@
 ///     $context: susy-compile($span, $config);
 ///     width: su-call('su-span', $context);
 ///
-///     @if index($span, 'last') {
+///     $end: map-get($context, 'span') + map-get($context, 'location') - 1;
+///     $is-last: ($end == map-get($context, 'columns'));
+///
+///     @if $is-last {
 ///       float: right;
 ///     } @else {
 ///       float: left;

@@ -1,6 +1,11 @@
 # Changelog
 
 
+## 3.0.6 - July 15, 2020
+
+- **Susy has been deprecated and will not receive any further updates.**
+- DOCS: Fix some typos
+
 ## 3.0.5 - April 30, 2018
 
 - BUGFIX: Update gutter alias default `$context`

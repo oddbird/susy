@@ -42,7 +42,7 @@
       <div class="project-title">
         <a href="index.html" rel="home" class="project-name">Susy</a>
         
-          <span class="project-version">3.0.5</span>
+          <span class="project-version">3.0.6</span>
         
       </div>
     </header>
@@ -392,7 +392,10 @@ with whatever data is needed for that<span class="widont">&nbsp;</span>function.
   $context: susy-compile($span, $config);
   width: su-call(&#39;su-span&#39;, $context);
 
-  @if index($span, &#39;last&#39;) {
+  $end: map-get($context, &#39;span&#39;) + map-get($context, &#39;location&#39;) - 1;
+  $is-last: ($end == map-get($context, &#39;columns&#39;));
+
+  @if $is-last {
     float: right;
   } @else {
     float: left;

@@ -1,5 +1,8 @@
 # Changelog
 
+## 3.0.7 - March 5, 2021
+
+- DOCS: Fix some typos
 
 ## 3.0.6 - July 15, 2020
 

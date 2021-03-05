@@ -36,7 +36,7 @@ Quotes
 
 > "If you’re interested in reading Sass poetry,
 > be sure to look at Susy’s source code!"<br />
-> — Hugo Giraudel, [SitePoint](http://www.sitepoint.com/my-favorite-sass-tools/)
+> — Kitty Giraudel, [SitePoint](http://www.sitepoint.com/my-favorite-sass-tools/)
 
 
 Resources

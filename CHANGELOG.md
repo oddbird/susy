@@ -507,7 +507,7 @@ Backwards Incompatible:
   to ``$show-grids`` setting.
   ``show`` will show both columns/baseline, default is ``show-columns``.
 
-[True]: http://miriamsuzanne.com/true/
+[True]: https://www.oddbird.net/true/
 
 
 ## 2.0.0-alpha.2 — May 7 2013

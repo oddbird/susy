@@ -36,12 +36,13 @@ As you work...
 - Add or update any appropriate unit tests
   in the `test` directory,
   and make sure all tests are passing with `npm test`
-- Add your changes to the [changelog](CHANGELOG.md)
+- Add your changes to the [changelog][]
 - Update or add inline documentation
   using [SassDoc][sassdoc] as appropriate,
   and compile the docs with `npm run sassdoc`
 
 [sassdoc]: http://sassdoc.com/
+[changelog]: https://github.com/oddbird/susy/blob/master/CHANGELOG.md
 
 
 **Note:**

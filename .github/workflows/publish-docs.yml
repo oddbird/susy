@@ -1,0 +1,54 @@
+name: Publish documentation
+on:
+  release: # Run when stable releases are published
+    types: [released]
+  workflow_dispatch: # Run on-demand
+    inputs:
+      ref:
+        description: Git ref to build docs from
+        required: true
+        default: main
+        type: string
+
+jobs:
+  push-branch:
+    name: Build & push docs
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    concurrency:
+      group: ${{ github.workflow }}-${{ github.ref }}
+    steps:
+      - name: Check out from release
+        if: github.event_name == 'release'
+        uses: actions/checkout@v3
+      - name: Check out from manual input
+        if: github.event_name == 'workflow_dispatch'
+        uses: actions/checkout@v3
+        with:
+          ref: ${{ inputs.ref }}
+      - uses: actions/setup-node@v3
+        with:
+          version: 6
+          cache: yarn
+      - run: yarn install
+      - run: yarn sassdoc
+      - name: Clone docs branch
+        uses: actions/checkout@v3
+        with:
+          path: docs-branch
+          ref: oddleventy-docs
+      - name: Commit & push to docs branch
+        run: |
+          SHA=$(git rev-parse HEAD)
+          cd docs-branch
+          rm -rf susy/docs
+          mkdir -p susy/docs
+          cp -r ${{ github.workspace }}/docs/ susy/
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git add -A .
+          git commit --allow-empty \
+          -m "Update from https://github.com/${{ github.repository }}/commit/$SHA" \
+          -m "Full log: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+          git push origin oddleventy-docs

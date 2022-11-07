@@ -7,3 +7,4 @@ susy-*.gem
 node_modules
 *.css.map
 npm-debug.log
+docs/

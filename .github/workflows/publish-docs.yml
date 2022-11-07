@@ -29,7 +29,7 @@ jobs:
           ref: ${{ inputs.ref }}
       - uses: actions/setup-node@v3
         with:
-          node-version: '6'
+          node-version: '10'
           cache: yarn
       - run: yarn install
       - run: yarn sassdoc

@@ -1,0 +1,2922 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <title>Grid Functions | Susy Documentation</title>
+
+  <link href="assets/img/favicon.ico" rel="shortcut icon">
+  <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:400,600|Source+Sans+Pro:400,400i,700,700i" rel="stylesheet">
+
+  <link rel="stylesheet" href="assets/webpack/app_styles.min.css" />
+
+  
+
+  
+</head>
+<body>
+  <svg xmlns="http://www.w3.org/2000/svg" hidden>
+  <symbol id="icon-logo" viewBox="0 0 16 16">
+    <path d="M.2 8L0 7.8v-.2C.8 6.9 1.9 5.9 2.7 5l.4.3c-.5.8-1.1 1.6-1.8 2.3 1 1.2 1 1.3 1.7 2.4l-.4.3c-.4-.4-.5-.6-1-1C1 8.6 1.1 8.7.2 8zM13 10c.6-1.1.7-1.1 1.7-2.4-.6-.6-1.3-1.5-1.7-2.3l.3-.3c.8.8 1.8 1.8 2.7 2.6v.2l-.8.7c-.3.3-1.2 1.1-1.8 1.7L13 10z"/><path d="M2.6 13.1H3c.9 0 1.1-.2 1.1-1.4V4.2c0-1.1-.2-1.4-1.1-1.4h-.4v-.6h4.5v.7h-.3c-.9 0-1.1.2-1.1 1.4v3.2h4.6V4.2c0-1.1-.2-1.4-1.1-1.4h-.3v-.6h4.5v.7H13c-.9 0-1.1.2-1.1 1.4v7.5c0 1.1.2 1.4 1.1 1.4h.4v.7H8.9v-.7h.3c.9 0 1.1-.2 1.1-1.4V8.2H5.7v3.5c0 1.1.2 1.4 1.1 1.4h.3v.7H2.6v-.7z"/>
+  </symbol>
+  <symbol id="icon-menu" viewBox="0 0 24 28">
+    <path d="M24 21v2c0 .547-.453 1-1 1H1c-.547 0-1-.453-1-1v-2c0-.547.453-1 1-1h22c.547 0 1 .453 1 1zm0-8v2c0 .547-.453 1-1 1H1c-.547 0-1-.453-1-1v-2c0-.547.453-1 1-1h22c.547 0 1 .453 1 1zm0-8v2c0 .547-.453 1-1 1H1c-.547 0-1-.453-1-1V5c0-.547.453-1 1-1h22c.547 0 1 .453 1 1z"/>
+  </symbol>
+</svg>
+
+  <div data-region="app">
+    <header data-region="banner">
+      
+  <button data-nav-toggle data-toggle="button" aria-controls="nav" aria-pressed="false" type="button" data-toggle-synced="false">
+    
+  <svg data-icon="menu" data-icon-size="nav-icon" ><title>menu</title><use xlink:href="#icon-menu" />
+  </svg>
+
+  </button>
+
+
+      <div class="project-title">
+        <a href="index.html" rel="home" class="project-name">Susy</a>
+        
+          <span class="project-version">3.0.7</span>
+        
+      </div>
+    </header>
+
+    <div data-region="container">
+      
+  <nav data-region="nav" data-toggle="target" id="nav" data-target-id="nav" aria-expanded="false" data-auto-closing="false" data-auto-closing-on-any-click="false">
+    <form action="search.html">
+      <input type="text" name="q" placeholder="Search…" required minlength="3">
+    </form>
+
+    <div class="nav-subsection">
+      <h3 class="nav-home">
+        
+        <a href="index.html" data-nav="is-not-active">Susy</a>
+      </h3>
+
+      
+      
+        <ul>
+          
+            
+            <li class="nav-item">
+              <a href="PHILOSOPHY.html" data-nav="is-not-active">Philosophy</a>
+            </li>
+          
+            
+            <li class="nav-item">
+              <a href="CHANGELOG.html" data-nav="is-not-active">Changelog</a>
+            </li>
+          
+            
+            <li class="nav-item">
+              <a href="CONTRIBUTING.html" data-nav="is-not-active">Contributing</a>
+            </li>
+          
+        </ul>
+      
+    </div>
+
+    
+    <div class="nav-subsection">
+      <ul>
+            <li class="nav-subsection">
+              <h3 class="nav-title">Public Grid API</h3>
+              <ul>
+                
+  
+    <li class="nav-item">
+      <a href="config.html" data-nav="is-not-active">Grid Configuration</a>
+    </li>
+  
+  
+    <li class="nav-item">
+      <a href="api.html" data-nav="is-active">Grid Functions</a>
+    </li>
+  </ul>
+            </li>
+            <li class="nav-subsection">
+              <h3 class="nav-title">Extras</h3>
+              <ul>
+                
+  
+    <li class="nav-item">
+      <a href="plugin-utils.html" data-nav="is-not-active">Extending Susy</a>
+    </li>
+  
+  
+    <li class="nav-item">
+      <a href="su-math.html" data-nav="is-not-active">Su: Core Math<span class="widont">&nbsp;</span>Engine</a>
+    </li>
+  
+  
+    <li class="nav-item">
+      <a href="plugin_svg-grid.html" data-nav="is-not-active">Plugin: SVG Grid<span class="widont">&nbsp;</span>Image</a>
+    </li>
+  </ul>
+            </li>
+            <li class="nav-subsection">
+              <h3 class="nav-title">Internal Functions (Private)</h3>
+              <ul>
+                
+  
+    <li class="nav-item">
+      <a href="_normal.html" data-nav="is-not-active">Susy Normalization</a>
+    </li>
+  
+  
+    <li class="nav-item">
+      <a href="_parser.html" data-nav="is-not-active">Susy Syntax<span class="widont">&nbsp;</span>Parser</a>
+    </li>
+  
+  
+    <li class="nav-item">
+      <a href="_validation.html" data-nav="is-not-active">Su Input<span class="widont">&nbsp;</span>Validation</a>
+    </li>
+  
+  
+    <li class="nav-item">
+      <a href="_version.html" data-nav="is-not-active">Versioning</a>
+    </li>
+  </ul>
+            </li></ul>
+    </div>
+
+    
+    
+      <div class="nav-subsection">
+        <h3 class="nav-title">
+          External Links
+        </h3>
+
+        <ul>
+          
+            <li class="nav-item">
+              <a href="http://oddbird.net/susy/" data-nav="is-not-active">Susy Website</a>
+            </li>
+          
+            <li class="nav-item">
+              <a href="http://twitter.com/sasssusy/" data-nav="is-not-active">Twitter @SassSusy</a>
+            </li>
+          
+            <li class="nav-item">
+              <a href="http://oddbird.net/2017/06/28/susy3" data-nav="is-not-active">Intro to<span class="widont">&nbsp;</span>Susy3</a>
+            </li>
+          
+            <li class="nav-item">
+              <a href="http://susy.readthedocs.io" data-nav="is-not-active">Susy2 Documentation</a>
+            </li>
+          
+            <li class="nav-item">
+              <a href="http://oddbird.net/" data-nav="is-not-active">OddBird</a>
+            </li>
+          
+        </ul>
+      </div>
+    
+
+    
+      <aside class="footer-credit">
+        <a href="http://oddbird.net/herman/" class="footer-icon">
+          
+  <svg data-icon="logo" data-icon-size="footer-logo" ><use xlink:href="#icon-logo" />
+  </svg>
+
+        </a>
+        <span>
+          Documented with
+          <a href="http://oddbird.net/herman/" class="footer-link">
+            Herman
+          </a>
+        </span>
+        <span>
+          by
+          <a href="http://oddbird.net/" class="footer-link">
+            OddBird
+          </a>
+        </span>
+      </aside>
+    
+  </nav>
+
+
+      <main data-region="main">
+        
+  <nav class="breadcrumb">
+    
+    <a href="index.html" >Susy</a> »
+    <strong>Grid Functions</strong>
+  </nav>
+
+
+        <div data-page="api">
+          
+  
+    
+    
+
+
+
+
+
+
+
+
+
+
+<section class="item" >
+  
+    
+  
+  
+  
+  
+
+  
+    <div data-item-section="prose" class="text-block">
+      <h1 id="susy3-api-functions">Susy3 API Functions</h1>
+<p>These three functions form the core of Susy’s
+layout-building grid<span class="widont">&nbsp;</span>API.</p>
+<ul>
+<li>Use <code>span()</code> and <code>gutter()</code> to return any grid-width,
+and apply the results wherever you need them:
+CSS <code>width</code>, <code>margin</code>, <code>padding</code>, <code>flex-basis</code>, <code>transform</code>, etc.</li>
+<li>For asymmetrical-fluid grids,
+<code>slice()</code> can help manage your nesting<span class="widont">&nbsp;</span>context.</li>
+</ul>
+<p>All three functions come with an unprefixed alias by default,
+using the <code>susy</code> import.
+Import the <code>susy-prefix</code> partial instead,
+if you only only want prefixed versions of the<span class="widont">&nbsp;</span>API.</p>
+<p>This is a thin syntax-sugar shell around
+the “Su” core-math functions: <code>su-span</code>, <code>su-gutter</code>, and <code>su-slice</code>.
+If you prefer the more constrained syntax of the math engine,
+you are welcome to use those functions<span class="widont">&nbsp;</span>instead.</p>
+
+      
+  
+
+      
+  
+
+      
+  
+
+    </div>
+  
+
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+
+  
+  
+
+
+  
+
+    
+  <div data-item-section="related">
+    
+      <h3 class="item-subtitle">
+        <span class="item-subtitle-main">Related</span>
+        
+      </h3>
+    
+
+    
+      
+
+      
+        
+  
+  
+  
+  
+  
+
+  
+  <div class="param-list">
+    <h4 class="param-title">
+      <span class="item-type">@function</span>
+      
+        <a href="
+  api.html#function--susy-span" class="item-name">susy-span()</a>
+      
+      
+      
+      
+    </h4>
+
+    
+  </div>
+
+
+      
+        
+  
+  
+  
+  
+  
+
+  
+  <div class="param-list">
+    <h4 class="param-title">
+      <span class="item-type">@function</span>
+      
+        <a href="
+  api.html#function--susy-gutter" class="item-name">susy-gutter()</a>
+      
+      
+      
+      
+    </h4>
+
+    
+  </div>
+
+
+      
+        
+  
+  
+  
+  
+  
+
+  
+  <div class="param-list">
+    <h4 class="param-title">
+      <span class="item-type">@function</span>
+      
+        <a href="
+  api.html#function--susy-slice" class="item-name">susy-slice()</a>
+      
+      
+      
+      
+    </h4>
+
+    
+  </div>
+
+
+      
+        
+  
+  
+  
+  
+  
+
+  
+  <div class="param-list">
+    <h4 class="param-title">
+      <span class="item-type">@function</span>
+      
+        <a href="
+  su-math.html#function--su-span" class="item-name">su-span()</a>
+      
+      
+      
+      
+    </h4>
+
+    
+  </div>
+
+
+      
+        
+  
+  
+  
+  
+  
+
+  
+  <div class="param-list">
+    <h4 class="param-title">
+      <span class="item-type">@function</span>
+      
+        <a href="
+  su-math.html#function--su-gutter" class="item-name">su-gutter()</a>
+      
+      
+      
+      
+    </h4>
+
+    
+  </div>
+
+
+      
+        
+  
+  
+  
+  
+  
+
+  
+  <div class="param-list">
+    <h4 class="param-title">
+      <span class="item-type">@function</span>
+      
+        <a href="
+  su-math.html#function--su-slice" class="item-name">su-slice()</a>
+      
+      
+      
+      
+    </h4>
+
+    
+  </div>
+
+
+      
+    
+  </div>
+
+  
+  
+  
+  
+    
+    
+  
+
+  
+
+  
+  
+
+
+  
+  
+
+  
+  
+
+</section>
+
+  
+    
+    
+
+
+
+
+
+
+
+
+
+
+<section class="item" >
+  
+    
+  
+  
+  
+  
+
+  
+    <div data-item-section="prose" class="text-block">
+      <h2 id="shorthand">Shorthand</h2>
+<p>All functions draw on the same shorthand syntax in two parts,
+seperated by the word <code>of</code>.</p>
+<h3 id="span-syntax-width-location-spread-">Span Syntax: <code>&lt;width&gt;</code> [<code>&lt;location&gt;</code> <code>&lt;spread&gt;</code>]</h3>
+<p>The first part describes the
+<strong>span</strong> width, location, and spread in any order.
+Only the width is<span class="widont">&nbsp;</span>required:</p>
+<ul>
+<li><code>span(2)</code> will return the width of 2<span class="widont">&nbsp;</span>columns.</li>
+<li><code>span(3 wide)</code> will return 3-columns, with an additional<span class="widont">&nbsp;</span>gutter.</li>
+<li>location is only needed with asymmetrical grids,
+where <code>span(3 at 2)</code> will return the width of
+specific columns on the grid.
+Since these are functions, they will not handle placement for<span class="widont">&nbsp;</span>you.</li>
+</ul>
+<h3 id="context-syntax-of-columns-container-spread-gutters-">Context Syntax: <code>[of &lt;columns&gt; &lt;container-spread&gt; &lt;gutters&gt;]</code></h3>
+<p>The second half of Susy’s shorthand
+describes the grid-<strong>context</strong> –
+available columns, container-spread, and optional gutter override –
+in any order.
+All of these settings have globally-defined<span class="widont">&nbsp;</span>defaults:</p>
+<ul>
+<li><code>span(2 of 6)</code> will set the context to
+a slice of 6 columns from the global grid.
+More details<span class="widont">&nbsp;</span>below.</li>
+<li><code>span(2 of 12 wide)</code> changes the container-spread
+as well as the<span class="widont">&nbsp;</span>column-context.</li>
+<li><code>span(2 of 12 set-gutters 0.5em)</code>
+will override the global gutters setting
+for this one<span class="widont">&nbsp;</span>calculation.</li>
+</ul>
+<p>A single unitless number for <code>columns</code>
+will be treated as a slice of the parent grid.
+On a grid with <code>columns: susy-repeat(12, 120px)</code>,
+the shorthand <code>of 4</code> will use the parent <code>120px</code> column-width.
+You can also be more explicit,
+and say <code>of susy-repeat(4, 100px)</code>.
+If you are using asymmetrical grids,
+like <code>columns: (1 1 2 3 5 8)</code>,
+Susy can’t slice it for you without knowing which columns you want.
+The <code>slice</code> function accepts exactly the same syntax as <code>span</code>,
+but returns a list of columns rather than a width.
+Use it in your context like <code>of slice(first 3)</code>.</p>
+
+      
+  
+
+      
+  
+
+      
+  
+
+    </div>
+  
+
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+
+  
+  
+
+
+  
+  
+  
+  
+    
+    
+  
+
+  
+
+  
+  
+
+
+  
+  
+
+  
+  
+
+</section>
+
+  
+    
+    
+
+
+
+
+
+
+
+
+
+
+<section class="item" id="function--susy-span">
+  
+    
+  
+  
+
+  
+  
+  
+  
+
+  <div data-item-section="header">
+    <h2 class="item-title">
+      
+        <span class="item-type">@function</span>
+      
+
+      
+        <a href="#function--susy-span" class="item-name">susy-span()</a>
+      
+
+      
+
+      
+    </h2>
+
+    
+  
+    
+    
+    
+
+    <p class="alias">
+      aliased as
+
+      
+        <span class="alias-title">span()</span>
+        
+      
+    </p>
+  
+
+
+    
+    
+  
+  
+  
+  
+
+  
+    <div class="text-block">
+      <p>This is the primary function in Susy —
+used to return the width of a span across one or more columns,
+and any relevant gutters along the way.
+With the default settings,
+<code>span(3)</code> will return the width of 3 columns,
+and the 2 intermediate gutters.
+This can be used to set the <code>width</code> property of grid elements,
+or <code>margin</code> and <code>padding</code>
+to push, pull, and pad your<span class="widont">&nbsp;</span>elements.</p>
+<ul>
+<li>This is a thin syntax-sugar shell around
+the core-math <code>su-span()</code> function.</li>
+<li>The un-prefixed alias <code>span()</code> is available by<span class="widont">&nbsp;</span>default.</li>
+</ul>
+
+      
+  
+
+      
+  
+
+      
+  
+
+    </div>
+  
+
+  </div>
+
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    
+  <div data-item-section="parameter">
+    
+      <h3 class="item-subtitle">
+        <span class="item-subtitle-main">Parameters &amp;<span class="widont">&nbsp;</span>Return</span>
+        
+      </h3>
+    
+
+    
+      
+        
+  
+  
+
+  
+  <div class="param-list">
+    <h4 class="param-title">
+      
+      
+        <span class="item-name">$span:</span>
+      
+      
+      <span class="value-type">(list)</span>
+      
+    </h4>
+
+    
+      
+      <div class="param-details text-block">
+        <p>Shorthand expression to define the width of the span,
+optionally<span class="widont">&nbsp;</span>containing:</p>
+<ul>
+<li>a count, length, or column-list<span class="widont">&nbsp;</span>span.</li>
+<li><code>at $n</code>, <code>first</code>, or <code>last</code> location on asymmetrical grids,
+where <code>at 1 == first</code>,
+and <code>last</code> will calculate the proper location
+based on columns and<span class="widont">&nbsp;</span>span.</li>
+<li><code>narrow</code>, <code>wide</code>, or <code>wider</code> for optionally spreading
+across adjacent<span class="widont">&nbsp;</span>gutters.</li>
+<li><code>of $n &lt;spread&gt;</code> for available grid columns
+and spread of the container.
+Span counts like <code>of 6</code> are valid
+in the context of symmetrical grids,
+where Susy can safely infer a slice of the parent<span class="widont">&nbsp;</span>columns.</li>
+<li>and <code>set-gutters $n</code> to override global gutter<span class="widont">&nbsp;</span>settings.</li>
+</ul>
+
+      </div>
+    
+  </div>
+
+
+      
+        
+  
+  
+
+  
+  <div class="param-list">
+    <h4 class="param-title">
+      
+      
+        <span class="item-name">$config:</span>
+      
+      <span class="item-value">()</span>
+      <span class="value-type">(map)</span>
+      
+    </h4>
+
+    
+      
+      <div class="param-details text-block">
+        <p>Optional map of Susy grid configuration settings.
+See <code>$susy</code> documentation for<span class="widont">&nbsp;</span>details.</p>
+
+      </div>
+    
+  </div>
+
+
+      
+
+      
+  
+
+      
+  
+    
+  <div class="param-list">
+    <h4 class="param-title">
+      
+      
+        <span class="item-name">@return</span>
+      
+      
+      <span class="value-type">(length)</span>
+      
+    </h4>
+
+    
+      
+      <div class="param-details text-block">
+        <p>Calculated length value, using the units given,
+or converting to <code>%</code> for fraction-based grids,
+or a full <code>calc</code> function when units/fractions
+are not comparable outside the<span class="widont">&nbsp;</span>browser.</p>
+
+      </div>
+    
+  </div>
+
+  
+
+      
+  
+
+      
+  
+
+    
+  </div>
+
+  
+
+
+  
+  
+    
+
+    <div data-item-section="examples">
+      <h3 class="item-subtitle">
+        <span class="item-subtitle-main">Examples</span>
+      </h3>
+
+      
+        
+  
+  
+
+  
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  <div class="example">
+    <div class="example-code">
+      
+  
+    <div class="code-block">
+      
+        <div class="code-header">
+          <span class="code-language">
+            scss
+          </span>
+
+          
+            <span class='code-description'>
+              span half the grid
+            </span>
+          
+        </div>
+      
+
+      
+      
+      <pre class="hljs-pre"><code class="lang-scss">.foo {
+  // the result is a bit under 50% to account for gutters
+  width: susy-span(6 of 12);
+}</code></pre>
+    </div>
+  
+
+  
+    <div class="code-block">
+      
+        <div class="code-header">
+          <span class="code-language">
+            css
+          </span>
+
+          
+            <span class='code-description'>
+              compiled
+            </span>
+          
+        </div>
+      
+
+      
+      
+      <pre class="hljs-pre"><code class="lang-css">.foo {
+  width: 49.15254%;
+}
+</code></pre>
+    </div>
+  
+
+    </div>
+
+    
+  </div>
+
+      
+        
+  
+  
+
+  
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  <div class="example">
+    <div class="example-code">
+      
+  
+    <div class="code-block">
+      
+        <div class="code-header">
+          <span class="code-language">
+            scss
+          </span>
+
+          
+            <span class='code-description'>
+              span a specific segment of asymmetrical grid
+            </span>
+          
+        </div>
+      
+
+      
+      
+      <pre class="hljs-pre"><code class="lang-scss">.foo {
+  width: susy-span(3 at 3 of (1 2 3 5 8));
+}</code></pre>
+    </div>
+  
+
+  
+    <div class="code-block">
+      
+        <div class="code-header">
+          <span class="code-language">
+            css
+          </span>
+
+          
+            <span class='code-description'>
+              compiled
+            </span>
+          
+        </div>
+      
+
+      
+      
+      <pre class="hljs-pre"><code class="lang-css">.foo {
+  width: 82.5%;
+}
+</code></pre>
+    </div>
+  
+
+    </div>
+
+    
+  </div>
+
+      
+    </div>
+  
+
+
+  
+
+    
+  <div data-item-section="related">
+    
+      <h3 class="item-subtitle">
+        <span class="item-subtitle-main">Related</span>
+        
+      </h3>
+    
+
+    
+      
+
+      
+        
+  
+  
+  
+  
+  
+
+  
+  <div class="param-list">
+    <h4 class="param-title">
+      <span class="item-type">@function</span>
+      
+        <a href="
+  su-math.html#function--su-span" class="item-name">su-span()</a>
+      
+      
+      
+      
+    </h4>
+
+    
+  </div>
+
+
+      
+        
+  
+  
+  
+  
+  
+
+  
+  <div class="param-list">
+    <h4 class="param-title">
+      
+      
+        <a href="
+  config.html#variable--susy" class="item-name">$susy</a>
+      
+      
+      
+      
+    </h4>
+
+    
+  </div>
+
+
+      
+    
+  </div>
+
+  
+  
+  
+  
+    <div class="requires-wrapper">
+      
+    
+  <div data-item-section="requires">
+    
+      <h3 class="item-subtitle">
+        <span class="item-subtitle-main">Requires</span>
+        
+      </h3>
+    
+
+    
+      
+      
+        
+        
+        
+
+        
+          
+          
+  
+  
+  
+  
+  
+  
+  
+  
+
+  
+  <div class="param-list">
+    <h4 class="param-title">
+      <span class="item-type">@function</span>
+      
+        <a href="
+  plugin-utils.html#function--susy-compile" class="item-name">susy-compile()</a>
+      
+      
+      
+      
+    </h4>
+
+    
+  </div>
+
+
+        
+      
+        
+        
+        
+
+        
+          
+          
+  
+  
+  
+  
+  
+  
+  
+  
+
+  
+  <div class="param-list">
+    <h4 class="param-title">
+      <span class="item-type">@function</span>
+      
+        <a href="
+  plugin-utils.html#function--su-call" class="item-name">su-call()</a>
+      
+      
+      
+      
+    </h4>
+
+    
+  </div>
+
+
+        
+      
+        
+        
+        
+
+        
+          
+          
+  
+  
+  
+  
+  
+  
+  
+  
+
+  
+  <div class="param-list">
+    <h4 class="param-title">
+      <span class="item-type">@function</span>
+      
+        <span class="item-name">_susy-error()</span>
+      
+      
+      
+      <span class="item-note">[private]</span>
+    </h4>
+
+    
+  </div>
+
+
+        
+      
+    
+  </div>
+
+  
+      
+  
+    
+  <div data-item-section="used-by">
+    
+      <h3 class="item-subtitle">
+        <span class="item-subtitle-main">Used By</span>
+        
+      </h3>
+    
+
+    
+      
+      
+        
+
+        
+          
+          
+  
+  
+  
+  
+  
+  
+
+  
+  <div class="param-list">
+    <h4 class="param-title">
+      <span class="item-type">@function</span>
+      
+        <span class="item-name">span()</span>
+      
+      
+      
+      
+    </h4>
+
+    
+  </div>
+
+
+        
+      
+        
+
+        
+          
+          
+  
+  
+  
+  
+  
+  
+
+  
+  <div class="param-list">
+    <h4 class="param-title">
+      <span class="item-type">@function</span>
+      
+        <a href="
+  plugin_svg-grid.html#function--susy-svg-grid" class="item-name">susy-svg-grid()</a>
+      
+      
+      
+      
+    </h4>
+
+    
+  </div>
+
+
+        
+      
+        
+
+        
+          
+          
+  
+  
+  
+  
+  
+  
+
+  
+  <div class="param-list">
+    <h4 class="param-title">
+      <span class="item-type">@function</span>
+      
+        <span class="item-name">_susy-svg-column-position()</span>
+      
+      
+      
+      <span class="item-note">[private]</span>
+    </h4>
+
+    
+  </div>
+
+
+        
+      
+    
+  </div>
+
+  
+
+    </div>
+  
+
+  
+  
+
+
+  
+  
+
+  
+  
+
+</section>
+
+  
+    
+    
+
+
+
+
+
+
+
+
+
+
+<section class="item" id="function--susy-gutter">
+  
+    
+  
+  
+
+  
+  
+  
+  
+
+  <div data-item-section="header">
+    <h2 class="item-title">
+      
+        <span class="item-type">@function</span>
+      
+
+      
+        <a href="#function--susy-gutter" class="item-name">susy-gutter()</a>
+      
+
+      
+
+      
+    </h2>
+
+    
+  
+    
+    
+    
+
+    <p class="alias">
+      aliased as
+
+      
+        <span class="alias-title">gutter()</span>
+        
+      
+    </p>
+  
+
+
+    
+    
+  
+  
+  
+  
+
+  
+    <div class="text-block">
+      <p>The gutter function returns
+the width of a single gutter on your grid,
+to be applied where you see fit –
+on <code>margins</code>, <code>padding</code>, <code>transform</code>, or element <code>width</code>.</p>
+<ul>
+<li>This is a thin syntax-sugar shell around
+the core-math <code>su-gutter()</code> function.</li>
+<li>The un-prefixed alias <code>gutter()</code> is available by<span class="widont">&nbsp;</span>default.</li>
+</ul>
+
+      
+  
+
+      
+  
+
+      
+  
+
+    </div>
+  
+
+  </div>
+
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    
+  <div data-item-section="parameter">
+    
+      <h3 class="item-subtitle">
+        <span class="item-subtitle-main">Parameters &amp;<span class="widont">&nbsp;</span>Return</span>
+        
+      </h3>
+    
+
+    
+      
+        
+  
+  
+
+  
+  <div class="param-list">
+    <h4 class="param-title">
+      
+      
+        <span class="item-name">$context:</span>
+      
+      <span class="item-value">null</span>
+      <span class="value-type">(list |<span class="widont">&nbsp;</span>number)</span>
+      
+    </h4>
+
+    
+      
+      <div class="param-details text-block">
+        <p>Optional context for nested gutters,
+including shorthand for
+<code>columns</code>, <code>gutters</code>, and <code>container-spread</code>
+(additional shorthand will be<span class="widont">&nbsp;</span>ignored)</p>
+
+      </div>
+    
+  </div>
+
+
+      
+        
+  
+  
+
+  
+  <div class="param-list">
+    <h4 class="param-title">
+      
+      
+        <span class="item-name">$config:</span>
+      
+      <span class="item-value">()</span>
+      <span class="value-type">(map)</span>
+      
+    </h4>
+
+    
+      
+      <div class="param-details text-block">
+        <p>Optional map of Susy grid configuration settings.
+See <code>$susy</code> documentation for<span class="widont">&nbsp;</span>details.</p>
+
+      </div>
+    
+  </div>
+
+
+      
+
+      
+  
+
+      
+  
+    
+  <div class="param-list">
+    <h4 class="param-title">
+      
+      
+        <span class="item-name">@return</span>
+      
+      
+      <span class="value-type">(length)</span>
+      
+    </h4>
+
+    
+      
+      <div class="param-details text-block">
+        <p>Width of a gutter as <code>%</code> of current context,
+or in the units defined by <code>column-width</code> when available</p>
+
+      </div>
+    
+  </div>
+
+  
+
+      
+  
+
+      
+  
+
+    
+  </div>
+
+  
+
+
+  
+  
+    
+
+    <div data-item-section="examples">
+      <h3 class="item-subtitle">
+        <span class="item-subtitle-main">Examples</span>
+      </h3>
+
+      
+        
+  
+  
+
+  
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  <div class="example">
+    <div class="example-code">
+      
+  
+    <div class="code-block">
+      
+        <div class="code-header">
+          <span class="code-language">
+            scss
+          </span>
+
+          
+            <span class='code-description'>
+              add gutters before or after an element
+            </span>
+          
+        </div>
+      
+
+      
+      
+      <pre class="hljs-pre"><code class="lang-scss">.floats {
+  float: left;
+  width: span(3 of 6);
+  margin-left: gutter(of 6);
+}</code></pre>
+    </div>
+  
+
+  
+    <div class="code-block">
+      
+        <div class="code-header">
+          <span class="code-language">
+            css
+          </span>
+
+          
+            <span class='code-description'>
+              compiled
+            </span>
+          
+        </div>
+      
+
+      
+      
+      <pre class="hljs-pre"><code class="lang-css">.floats {
+  float: left;
+  width: 48.27586%;
+  margin-left: 3.44828%;
+}
+</code></pre>
+    </div>
+  
+
+    </div>
+
+    
+  </div>
+
+      
+        
+  
+  
+
+  
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  <div class="example">
+    <div class="example-code">
+      
+  
+    <div class="code-block">
+      
+        <div class="code-header">
+          <span class="code-language">
+            scss
+          </span>
+
+          
+            <span class='code-description'>
+              add gutters to padding
+            </span>
+          
+        </div>
+      
+
+      
+      
+      <pre class="hljs-pre"><code class="lang-scss">.flexbox {
+  flex: 1 1 span(3 wide of 6 wide);
+  padding: gutter(of 6) / 2;
+}</code></pre>
+    </div>
+  
+
+  
+    <div class="code-block">
+      
+        <div class="code-header">
+          <span class="code-language">
+            css
+          </span>
+
+          
+            <span class='code-description'>
+              compiled
+            </span>
+          
+        </div>
+      
+
+      
+      
+      <pre class="hljs-pre"><code class="lang-css">.flexbox {
+  flex: 1 1 50%;
+  padding: 1.72414%;
+}
+</code></pre>
+    </div>
+  
+
+    </div>
+
+    
+  </div>
+
+      
+    </div>
+  
+
+
+  
+
+    
+  <div data-item-section="related">
+    
+      <h3 class="item-subtitle">
+        <span class="item-subtitle-main">Related</span>
+        
+      </h3>
+    
+
+    
+      
+
+      
+        
+  
+  
+  
+  
+  
+
+  
+  <div class="param-list">
+    <h4 class="param-title">
+      <span class="item-type">@function</span>
+      
+        <a href="
+  su-math.html#function--su-gutter" class="item-name">su-gutter()</a>
+      
+      
+      
+      
+    </h4>
+
+    
+  </div>
+
+
+      
+        
+  
+  
+  
+  
+  
+
+  
+  <div class="param-list">
+    <h4 class="param-title">
+      
+      
+        <a href="
+  config.html#variable--susy" class="item-name">$susy</a>
+      
+      
+      
+      
+    </h4>
+
+    
+  </div>
+
+
+      
+    
+  </div>
+
+  
+  
+  
+  
+    <div class="requires-wrapper">
+      
+    
+  <div data-item-section="requires">
+    
+      <h3 class="item-subtitle">
+        <span class="item-subtitle-main">Requires</span>
+        
+      </h3>
+    
+
+    
+      
+      
+        
+        
+        
+
+        
+          
+          
+  
+  
+  
+  
+  
+  
+  
+  
+
+  
+  <div class="param-list">
+    <h4 class="param-title">
+      <span class="item-type">@function</span>
+      
+        <a href="
+  plugin-utils.html#function--susy-compile" class="item-name">susy-compile()</a>
+      
+      
+      
+      
+    </h4>
+
+    
+  </div>
+
+
+        
+      
+        
+        
+        
+
+        
+          
+          
+  
+  
+  
+  
+  
+  
+  
+  
+
+  
+  <div class="param-list">
+    <h4 class="param-title">
+      <span class="item-type">@function</span>
+      
+        <a href="
+  plugin-utils.html#function--su-call" class="item-name">su-call()</a>
+      
+      
+      
+      
+    </h4>
+
+    
+  </div>
+
+
+        
+      
+    
+  </div>
+
+  
+      
+  
+    
+  <div data-item-section="used-by">
+    
+      <h3 class="item-subtitle">
+        <span class="item-subtitle-main">Used By</span>
+        
+      </h3>
+    
+
+    
+      
+      
+        
+
+        
+          
+          
+  
+  
+  
+  
+  
+  
+
+  
+  <div class="param-list">
+    <h4 class="param-title">
+      <span class="item-type">@function</span>
+      
+        <span class="item-name">gutter()</span>
+      
+      
+      
+      
+    </h4>
+
+    
+  </div>
+
+
+        
+      
+    
+  </div>
+
+  
+
+    </div>
+  
+
+  
+  
+
+
+  
+  
+
+  
+  
+
+</section>
+
+  
+    
+    
+
+
+
+
+
+
+
+
+
+
+<section class="item" id="function--susy-slice">
+  
+    
+  
+  
+
+  
+  
+  
+  
+
+  <div data-item-section="header">
+    <h2 class="item-title">
+      
+        <span class="item-type">@function</span>
+      
+
+      
+        <a href="#function--susy-slice" class="item-name">susy-slice()</a>
+      
+
+      
+
+      
+    </h2>
+
+    
+  
+    
+    
+    
+
+    <p class="alias">
+      aliased as
+
+      
+        <span class="alias-title">slice()</span>
+        
+      
+    </p>
+  
+
+
+    
+    
+  
+  
+  
+  
+
+  
+    <div class="text-block">
+      <p>Working with asymmetrical grids (un-equal column widths)
+can be challenging – 
+expecially when they involve fluid/fractional elements.
+Describing a context <code>of (15em 6em 6em 6em 15em)</code> is a lot
+to put inside the span or gutter function shorthand.
+This slice function returns a sub-slice of asymmetrical columns to use
+for a nested context.
+<code>slice(3 at 2)</code> will give you a subset of the global grid,
+spanning 3 columns, starting with the<span class="widont">&nbsp;</span>second.</p>
+<ul>
+<li>This is a thin syntax-sugar shell around
+the core-math <code>su-slice()</code> function.</li>
+<li>The un-prefixed alias <code>slice()</code> is available by<span class="widont">&nbsp;</span>default.</li>
+</ul>
+
+      
+  
+
+      
+  
+
+      
+  
+
+    </div>
+  
+
+  </div>
+
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    
+  <div data-item-section="parameter">
+    
+      <h3 class="item-subtitle">
+        <span class="item-subtitle-main">Parameters &amp;<span class="widont">&nbsp;</span>Return</span>
+        
+      </h3>
+    
+
+    
+      
+        
+  
+  
+
+  
+  <div class="param-list">
+    <h4 class="param-title">
+      
+      
+        <span class="item-name">$span:</span>
+      
+      
+      <span class="value-type">(list)</span>
+      
+    </h4>
+
+    
+      
+      <div class="param-details text-block">
+        <p>Shorthand expression to define the subset span, optionally<span class="widont">&nbsp;</span>containing:</p>
+<ul>
+<li><code>at $n</code>, <code>first</code>, or <code>last</code> location on asymmetrical<span class="widont">&nbsp;</span>grids;</li>
+<li><code>of $n &lt;spread&gt;</code> for available grid columns
+and spread of the container
+<ul>
+<li>Span-counts like <code>of 6</code> are only valid
+in the context of symmetrical<span class="widont">&nbsp;</span>grids</li>
+<li>Valid spreads include <code>narrow</code>, <code>wide</code>, or <code>wider</code></li>
+</ul>
+</li>
+</ul>
+
+      </div>
+    
+  </div>
+
+
+      
+        
+  
+  
+
+  
+  <div class="param-list">
+    <h4 class="param-title">
+      
+      
+        <span class="item-name">$config:</span>
+      
+      <span class="item-value">()</span>
+      <span class="value-type">(map)</span>
+      
+    </h4>
+
+    
+      
+      <div class="param-details text-block">
+        <p>Optional map of Susy grid configuration settings.
+See <code>$susy</code> documentation for<span class="widont">&nbsp;</span>details.</p>
+
+      </div>
+    
+  </div>
+
+
+      
+
+      
+  
+
+      
+  
+    
+  <div class="param-list">
+    <h4 class="param-title">
+      
+      
+        <span class="item-name">@return</span>
+      
+      
+      <span class="value-type">(list)</span>
+      
+    </h4>
+
+    
+      
+      <div class="param-details text-block">
+        <p>Subset list of columns for use for a nested<span class="widont">&nbsp;</span>context</p>
+
+      </div>
+    
+  </div>
+
+  
+
+      
+  
+
+      
+  
+
+    
+  </div>
+
+  
+
+
+  
+  
+    
+
+    <div data-item-section="examples">
+      <h3 class="item-subtitle">
+        <span class="item-subtitle-main">Example</span>
+      </h3>
+
+      
+        
+  
+  
+
+  
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  <div class="example">
+    <div class="example-code">
+      
+  
+    <div class="code-block">
+      
+        <div class="code-header">
+          <span class="code-language">
+            scss
+          </span>
+
+          
+            <span class='code-description'>
+              Return a nested segment of asymmetrical grid
+            </span>
+          
+        </div>
+      
+
+      
+      
+      <pre class="hljs-pre"><code class="lang-scss">$context: susy-slice(3 at 3 of (1 2 3 5 8));
+/* $context: #{$context}; */</code></pre>
+    </div>
+  
+
+  
+    <div class="code-block">
+      
+        <div class="code-header">
+          <span class="code-language">
+            css
+          </span>
+
+          
+            <span class='code-description'>
+              compiled
+            </span>
+          
+        </div>
+      
+
+      
+      
+      <pre class="hljs-pre"><code class="lang-css">/* $context: 3 5 8; */
+</code></pre>
+    </div>
+  
+
+    </div>
+
+    
+  </div>
+
+      
+    </div>
+  
+
+
+  
+
+    
+  <div data-item-section="related">
+    
+      <h3 class="item-subtitle">
+        <span class="item-subtitle-main">Related</span>
+        
+      </h3>
+    
+
+    
+      
+
+      
+        
+  
+  
+  
+  
+  
+
+  
+  <div class="param-list">
+    <h4 class="param-title">
+      <span class="item-type">@function</span>
+      
+        <a href="
+  su-math.html#function--su-slice" class="item-name">su-slice()</a>
+      
+      
+      
+      
+    </h4>
+
+    
+  </div>
+
+
+      
+        
+  
+  
+  
+  
+  
+
+  
+  <div class="param-list">
+    <h4 class="param-title">
+      
+      
+        <a href="
+  config.html#variable--susy" class="item-name">$susy</a>
+      
+      
+      
+      
+    </h4>
+
+    
+  </div>
+
+
+      
+    
+  </div>
+
+  
+  
+  
+  
+    <div class="requires-wrapper">
+      
+    
+  <div data-item-section="requires">
+    
+      <h3 class="item-subtitle">
+        <span class="item-subtitle-main">Requires</span>
+        
+      </h3>
+    
+
+    
+      
+      
+        
+        
+        
+
+        
+          
+          
+  
+  
+  
+  
+  
+  
+  
+  
+
+  
+  <div class="param-list">
+    <h4 class="param-title">
+      <span class="item-type">@function</span>
+      
+        <a href="
+  plugin-utils.html#function--susy-compile" class="item-name">susy-compile()</a>
+      
+      
+      
+      
+    </h4>
+
+    
+  </div>
+
+
+        
+      
+        
+        
+        
+
+        
+          
+          
+  
+  
+  
+  
+  
+  
+  
+  
+
+  
+  <div class="param-list">
+    <h4 class="param-title">
+      <span class="item-type">@function</span>
+      
+        <a href="
+  plugin-utils.html#function--su-call" class="item-name">su-call()</a>
+      
+      
+      
+      
+    </h4>
+
+    
+  </div>
+
+
+        
+      
+    
+  </div>
+
+  
+      
+  
+    
+  <div data-item-section="used-by">
+    
+      <h3 class="item-subtitle">
+        <span class="item-subtitle-main">Used By</span>
+        
+      </h3>
+    
+
+    
+      
+      
+        
+
+        
+          
+          
+  
+  
+  
+  
+  
+  
+
+  
+  <div class="param-list">
+    <h4 class="param-title">
+      <span class="item-type">@function</span>
+      
+        <span class="item-name">slice()</span>
+      
+      
+      
+      
+    </h4>
+
+    
+  </div>
+
+
+        
+      
+    
+  </div>
+
+  
+
+    </div>
+  
+
+  
+  
+
+
+  
+  
+
+  
+  
+
+</section>
+
+  
+    
+    
+
+
+
+
+
+
+
+
+
+
+<section class="item" >
+  
+    
+  
+  
+  
+  
+
+  
+    <div data-item-section="prose" class="text-block">
+      <h2 id="building-grids">Building Grids</h2>
+<p>The web has come a long way
+since the days of double-margin-hacks
+and inconsistent subpixel rounding.
+In addition to floats and tables,
+we can now use much more powerful tools,
+like flexbox and CSS grid,
+to build more interesting and responsive<span class="widont">&nbsp;</span>layouts.</p>
+<p>With Susy3, we hope you’ll start moving in that direction.
+You can still build classic 12-column Grid Systems,
+and we’ll help you get there,
+but Susy3 is primarily designed for a grid-math-on-demand
+approach to layout:
+applying our functions only where you really need grid math.
+Read the <a href="http://oddbird.net/2017/06/28/susy3/">intro article by OddBird</a> for more<span class="widont">&nbsp;</span>details.</p>
+
+      
+  
+
+      
+  
+
+      
+  
+
+    </div>
+  
+
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+
+  
+  
+    
+
+    <div data-item-section="examples">
+      <h3 class="item-subtitle">
+        <span class="item-subtitle-main">Examples</span>
+      </h3>
+
+      
+        
+  
+  
+
+  
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  <div class="example">
+    <div class="example-code">
+      
+  
+    <div class="code-block">
+      
+        <div class="code-header">
+          <span class="code-language">
+            scss
+          </span>
+
+          
+            <span class='code-description'>
+              floats
+            </span>
+          
+        </div>
+      
+
+      
+      
+      <pre class="hljs-pre"><code class="lang-scss">.float {
+  width: span(3);
+  margin-right: gutter();
+}</code></pre>
+    </div>
+  
+
+  
+    <div class="code-block">
+      
+        <div class="code-header">
+          <span class="code-language">
+            css
+          </span>
+
+          
+            <span class='code-description'>
+              compiled
+            </span>
+          
+        </div>
+      
+
+      
+      
+      <pre class="hljs-pre"><code class="lang-css">.float {
+  width: 73.68421%;
+  margin-right: 5.26316%;
+}
+</code></pre>
+    </div>
+  
+
+    </div>
+
+    
+  </div>
+
+      
+        
+  
+  
+
+  
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  <div class="example">
+    <div class="example-code">
+      
+  
+    <div class="code-block">
+      
+        <div class="code-header">
+          <span class="code-language">
+            scss
+          </span>
+
+          
+            <span class='code-description'>
+              flexbox
+            </span>
+          
+        </div>
+      
+
+      
+      
+      <pre class="hljs-pre"><code class="lang-scss">.flexbox {
+  flex: 1 1 span(3);
+  // half a gutter on either side…
+  padding: 0 gutter() / 2;
+}</code></pre>
+    </div>
+  
+
+  
+    <div class="code-block">
+      
+        <div class="code-header">
+          <span class="code-language">
+            css
+          </span>
+
+          
+            <span class='code-description'>
+              compiled
+            </span>
+          
+        </div>
+      
+
+      
+      
+      <pre class="hljs-pre"><code class="lang-css">.flexbox {
+  flex: 1 1 73.68421%;
+  padding: 0 2.63158%;
+}
+</code></pre>
+    </div>
+  
+
+    </div>
+
+    
+  </div>
+
+      
+        
+  
+  
+
+  
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  <div class="example">
+    <div class="example-code">
+      
+  
+    <div class="code-block">
+      
+        <div class="code-header">
+          <span class="code-language">
+            scss
+          </span>
+
+          
+            <span class='code-description'>
+              pushing and pulling
+            </span>
+          
+        </div>
+      
+
+      
+      
+      <pre class="hljs-pre"><code class="lang-scss">.push-3 {
+  margin-left: span(3 wide);
+}
+
+.pull-3 {
+  margin-left: 0 - span(3 wide);
+}</code></pre>
+    </div>
+  
+
+  
+    <div class="code-block">
+      
+        <div class="code-header">
+          <span class="code-language">
+            css
+          </span>
+
+          
+            <span class='code-description'>
+              compiled
+            </span>
+          
+        </div>
+      
+
+      
+      
+      <pre class="hljs-pre"><code class="lang-css">.push-3 {
+  margin-left: 78.94737%;
+}
+
+.pull-3 {
+  margin-left: -78.94737%;
+}
+</code></pre>
+    </div>
+  
+
+    </div>
+
+    
+  </div>
+
+      
+        
+  
+  
+
+  
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  <div class="example">
+    <div class="example-code">
+      
+  
+    <div class="code-block">
+      
+        <div class="code-header">
+          <span class="code-language">
+            scss
+          </span>
+
+          
+            <span class='code-description'>
+              building an attribute system
+            </span>
+          
+        </div>
+      
+
+      
+      
+      <pre class="hljs-pre"><code class="lang-scss">// markup example: &lt;div data-span=&quot;last 3&quot;&gt;&lt;/div&gt;
+[data-span] {
+  float: left;
+
+  &amp;:not([data-span*=&#39;last&#39;]) {
+    margin-right: gutter();
+  }
+}
+
+@for $span from 1 through length(susy-get(&#39;columns&#39;)) {
+  [data-span*=&#39;#{$span}&#39;] {
+    width: span($span);
+  }
+}</code></pre>
+    </div>
+  
+
+  
+    <div class="code-block">
+      
+        <div class="code-header">
+          <span class="code-language">
+            css
+          </span>
+
+          
+            <span class='code-description'>
+              compiled
+            </span>
+          
+        </div>
+      
+
+      
+      
+      <pre class="hljs-pre"><code class="lang-css">[data-span] {
+  float: left;
+}
+
+[data-span]:not([data-span*=&#39;last&#39;]) {
+  margin-right: 5.26316%;
+}
+
+[data-span*=&#39;1&#39;] {
+  width: 21.05263%;
+}
+
+[data-span*=&#39;2&#39;] {
+  width: 47.36842%;
+}
+
+[data-span*=&#39;3&#39;] {
+  width: 73.68421%;
+}
+
+[data-span*=&#39;4&#39;] {
+  width: 100%;
+}
+</code></pre>
+    </div>
+  
+
+    </div>
+
+    
+  </div>
+
+      
+    </div>
+  
+
+
+  
+
+    
+  <div data-item-section="related">
+    
+      <h3 class="item-subtitle">
+        <span class="item-subtitle-main">Related</span>
+        
+      </h3>
+    
+
+    
+      
+        
+  
+
+  
+  <div class="param-list">
+    <h4 class="param-title">
+      
+      
+        <a href="http://oddbird.net/2017/06/28/susy3/" class="item-name">Article: Welcome to Susy3</a>
+      
+      
+      
+      <span class="item-note">[external]</span>
+    </h4>
+
+    
+  </div>
+
+
+      
+
+      
+    
+  </div>
+
+  
+  
+  
+  
+    
+    
+  
+
+  
+
+  
+  
+
+
+  
+  
+
+  
+  
+
+</section>
+
+  
+
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <script type="text/javascript" src="assets/webpack/runtime.min.js"></script>
+  <script type="text/javascript" src="assets/webpack/common.min.js"></script>
+  <script type="text/javascript" src="assets/webpack/app.min.js"></script>
+  
+</body>
+</html>

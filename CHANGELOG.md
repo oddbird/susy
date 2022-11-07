@@ -1,5 +1,9 @@
 # Changelog
 
+## UNRELEASED
+
+- 🏠 INTERNAL: Remove documentation from npm package
+
 ## 3.0.7 - March 5, 2021
 
 - DOCS: Fix some typos

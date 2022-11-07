@@ -43,9 +43,9 @@ Resources
 
 - [OddBird](http://oddbird.net/) | [@OddBird](http://twitter.com/oddbird/)
 - [Sites using Susy](http://oddbird.net/susy/sites/)
-- [Changelog](https://github.com/oddbird/susy/blob/master/CHANGELOG.md)
-- [Guidelines for contributing](https://github.com/oddbird/susy/blob/master/CONTRIBUTING.md)
-- [BSD3 License](https://github.com/oddbird/susy/blob/master/LICENSE.txt)
+- [Changelog](https://github.com/oddbird/susy/blob/main/CHANGELOG.md)
+- [Guidelines for contributing](https://github.com/oddbird/susy/blob/main/CONTRIBUTING.md)
+- [BSD3 License](https://github.com/oddbird/susy/blob/main/LICENSE.txt)
 
 Third-Party Tools
 -----------------

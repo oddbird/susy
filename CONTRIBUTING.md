@@ -42,7 +42,7 @@ As you work...
   and compile the docs with `npm run sassdoc`
 
 [sassdoc]: http://sassdoc.com/
-[changelog]: https://github.com/oddbird/susy/blob/master/CHANGELOG.md
+[changelog]: https://github.com/oddbird/susy/blob/main/CHANGELOG.md
 
 
 **Note:**
@@ -90,7 +90,7 @@ commit your changes, and submit a pull request!
 Pull Requests
 -------------
 
-We use the `master` branch for production-ready code,
+We use the `main` branch for production-ready code,
 and side-branches for everything in-progress
 or up-for-debate.
 

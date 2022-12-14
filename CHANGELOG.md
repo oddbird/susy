@@ -1,6 +1,6 @@
 # Changelog
 
-## UNRELEASED
+## 3.0.8 - December 14, 2022
 
 - 🏠 INTERNAL: Remove documentation from npm package
 

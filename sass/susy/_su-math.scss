@@ -1,3 +1,5 @@
+@use 'sass:math';
+
 /// Grid Math Engine
 /// ================
 /// The `su` functions give you direct access to the math layer,
@@ -90,7 +92,7 @@
   @if unitless($span-width) {
     $container-spread: su-valid-spread($container-spread);
     $container: _su-sum($columns, $gutters, $container-spread, $validate: false);
-    @return percentage($span-width / $container);
+    @return percentage(math.div($span-width, $container));
   }
 
   @return $span-width;
@@ -141,7 +143,7 @@
   }
 
   $container: _su-sum($columns, $gutters, $container-spread);
-  @return percentage($gutters / $container);
+  @return percentage(math.div($gutters, $container));
 }
 
 

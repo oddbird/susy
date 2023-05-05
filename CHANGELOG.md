@@ -1,8 +1,8 @@
 # Changelog
 
-## 3.0.9 - May 4, 2023
+## 3.0.9 - May 5, 2023
 
-- Replace legacy dash divisions with math.div to get rid of sass warnings
+- Replace legacy slash divisions with `math.div()` to get rid of sass warnings
 
 ## 3.0.8 - December 14, 2022
 

@@ -1,5 +1,9 @@
 # Changelog
 
+## 3.0.9 - May 5, 2023
+
+- Replace legacy slash divisions with `math.div()` to get rid of sass warnings
+
 ## 3.0.8 - December 14, 2022
 
 - 🏠 INTERNAL: Remove documentation from npm package

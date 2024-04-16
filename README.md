@@ -1,5 +1,4 @@
-Power Tools For The Web [Deprecated]
-====================================
+# Power Tools For The Web [Deprecated]
 
 **Susy is Deprecated. It should no longer be used on new projects, and will no longer be receiving any updates.**
 
@@ -21,9 +20,7 @@ functions that can be used to build any grid system.
 - [Susy3 Documentation](http://oddbird.net/susy/docs/)
 - [Susy1/Susy2 Documentation](http://susy.readthedocs.io)
 
-
-Quotes
-------
+## Quotes
 
 > "I like the idea of grids-on-demand,
 > rather than a strict framework."<br />
@@ -37,9 +34,7 @@ Quotes
 > be sure to look at Susy’s source code!"<br />
 > — Kitty Giraudel, [SitePoint](http://www.sitepoint.com/my-favorite-sass-tools/)
 
-
-Resources
----------
+## Resources
 
 - [OddBird](http://oddbird.net/) | [@OddBird](http://twitter.com/oddbird/)
 - [Sites using Susy](http://oddbird.net/susy/sites/)
@@ -47,14 +42,11 @@ Resources
 - [Guidelines for contributing](https://github.com/oddbird/susy/blob/main/CONTRIBUTING.md)
 - [BSD3 License](https://github.com/oddbird/susy/blob/main/LICENSE.txt)
 
-Third-Party Tools
------------------
+## Third-Party Tools
 
 - [Susy.js](https://github.com/ignota/susy.js) CSS-in-JS port
 
-
-Installation
-------------
+## Installation
 
 ```
 npm install susy
@@ -74,13 +66,11 @@ import `sass/susy-prefix` instead.
 @import '<path-to>/susy/sass/susy-prefix';
 ```
 
-
 ### Using [Eyeglass](http://eyeglass.rocks/)
 
 With eyeglass set up,
 you can `@import 'susy';`
 without providing the npm-modules path.
-
 
 ### Using Webpack
 
@@ -98,9 +88,9 @@ module: {
   rules: [
     {
       test: /\.scss$/,
-      use: ['style-loader', 'css-loader', 'sass-loader']
-    }
-  ]
+      use: ['style-loader', 'css-loader', 'sass-loader'],
+    },
+  ];
 }
 ```
 
@@ -108,9 +98,8 @@ Start using Susy:
 
 ```scss
 /* app.scss */
-@import "~susy/sass/susy";
+@import '~susy/sass/susy';
 ```
-
 
 ### Using Gulp
 
@@ -118,13 +107,16 @@ Add a gulp task:
 
 ```javascript
 // gulpfile.js
-gulp.task('sass', function() {
-  return gulp.src('scss/*.scss')
-      .pipe(sass({
-          outputStyle: 'compressed',
-          includePaths: ['node_modules/susy/sass']
-      }).on('error', sass.logError))
-      .pipe(gulp.dest('dist/css'));
+gulp.task('sass', function () {
+  return gulp
+    .src('scss/*.scss')
+    .pipe(
+      sass({
+        outputStyle: 'compressed',
+        includePaths: ['node_modules/susy/sass'],
+      }).on('error', sass.logError),
+    )
+    .pipe(gulp.dest('dist/css'));
 });
 ```
 
@@ -168,9 +160,7 @@ Start using Susy:
 @import 'susy';
 ```
 
-
-Susy vs Su
-----------
+## Susy vs Su
 
 You may notice that some functions have a `susy-` prefix,
 while others only have `su-`.
@@ -187,9 +177,15 @@ This helps distinguish between the two distinct layers:
   that call on the core math as necessary.
   This is the primary API for most users.
 
-_____
+---
+
 ### Sponsor OddBird's OSS Work
 
-At OddBird, we love contributing to the languages & tools developers rely on. We're currently working on polyfills for new Popover & Anchor Positioning functionality, as well as CSS specifications for functions, mixins, and responsive typography. Help us keep this work sustainable and centered on your needs as a developer! We display sponsor logos and avatars on our website.
+At OddBird, we love contributing to the languages & tools developers rely on.
+We're currently working on polyfills for new Popover & Anchor Positioning
+functionality, as well as CSS specifications for functions, mixins, and
+responsive typography. Help us keep this work sustainable and centered on your
+needs as a developer! We display sponsor logos and avatars on our
+[website](https://www.oddbird.net/susy/#open-source-sponsors).
 
 [Sponsor OddBird's OSS Work](https://opencollective.com/oddbird-open-source)
